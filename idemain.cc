@@ -1011,7 +1011,8 @@ void AddInspect(const char *expr)
   buf[0] = 0;
   if (expr)
     strcpy(buf, expr);
-  if (inputBox(_("Expression to inspect"), _("~E~xpression"), buf, 999) == cmOK)
+  if (HistinputBox(_("Expression to inspect"), _("~E~xpression"),
+                   buf, 999, RHIDE_History_Inspect) == cmOK)
   {
     TInspector *w = new TInspector(TProgram::deskTop->getExtent(), buf);
     w->update(buf);
@@ -1512,8 +1513,9 @@ void IDE::handleEvent(TEvent & event)
          break;
        case cmUserScreen:
        {
+         int old_flag = update_flag;
          TMouse::suspend();
-         update_flag--;
+         update_flag = 0;
 #ifdef __DJGPP__
          TScreen::suspend();
 #else
@@ -1521,6 +1523,7 @@ void IDE::handleEvent(TEvent & event)
 #endif
          do
          {
+           idle();
            clearEvent(event);
            event.getKeyEvent();
          } while (event.what == evNothing);
@@ -1528,7 +1531,7 @@ void IDE::handleEvent(TEvent & event)
 #ifdef __DJGPP__
          TScreen::resume();
 #endif
-         update_flag++;
+         update_flag = old_flag;
          TMouse::resume();
          Repaint();
          break;

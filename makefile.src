@@ -242,8 +242,8 @@ _install.doc:
 	$(MAKE) -C doc install prefix=$(prefix) logfile=../doc.log \
 	  $(FLAGS_TO_PASS)
 
-_install.rhgdb:
-	$(MAKE) -C rhgdb install prefix=$(prefix) logfile=../rhgdb.log \
+install.rhgdb:
+	$(MAKE) -C rhgdb install prefix=$(prefix) logfile=../$(logfile) \
 	  $(FLAGS_TO_PASS)
 
 ifeq ($(rhide_OS),DJGPP)

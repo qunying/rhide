@@ -1,0 +1,1 @@
+-ot -i sdg -c -n Index cindex.idx cindex.tdx -n "Index of variables and commands" vindex.idx vindex.tdx -I e:/dj/contrib/rhide-1.2/src/doc

@@ -3,4 +3,3 @@
 #
 
 include $(RHIDESRC)/common.var
-RHIDE_COMPILE_ARCHIVE=$(RHIDE_COMPILE_LINK)

@@ -90,7 +90,8 @@ static void select_source_line(char *fname,int line)
   }
   if (!fname)
   {
-    OpenDisWin();
+    OpenDisWin(force_disassembler_window);
+    force_disassembler_window = 0;
     if (!dis_win)
       goto end;
     select_dis_win = 1;

@@ -796,20 +796,23 @@ static void ScanForTraceback(TFileViewer *viewer)
         dummy = (char *)alloca(len+1);
         memcpy(dummy,tmp,len);
         dummy[len] = 0;
-        char function[256],file[256],temp[512];
         int line;
-        symify(dummy,function,file,&line,0);
-        if (*function)
+        char *function, *file, *temp = NULL;
+        symify(dummy, &function, &file, &line, 0);
+        if (function)
         {
-          strcpy(temp,_("in function "));
-          strcat(temp,function);
+          string_dup(temp, _("in function "));
+          string_cat(temp, function);
         }
         else
         {
-          strcpy(temp,tmp);
-          strcat(temp," ???");
+          string_dup(temp, tmp);
+          string_cat(temp, " ???");
         }
-        msgs->insert(new MsgRec(file,temp,msgMessage,line));
+        msgs->insert(new MsgRec(file, temp, msgMessage, line));
+        string_free(function);
+        string_free(file);
+        string_free(temp);
       }
     }
     else

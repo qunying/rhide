@@ -4,7 +4,7 @@
 #include <unistd.h>
 #include <librhgdb.h>
 
-void symify(const char *s,char *function,char *file,int * line,int _diff)
+void symify(const char *s,char **function,char **file,int * line,int _diff)
 {
   struct minimal_symbol *msymbol = NULL;
   struct symtab_and_line sal;
@@ -13,7 +13,11 @@ void symify(const char *s,char *function,char *file,int * line,int _diff)
   struct symbol *symbol;
   unsigned long core;
   long diff;
-  char *tmp = alloca(1000);
+  char *tmp = alloca(100);
+  int sl;
+  char diff_string[100];
+  *function = NULL;
+  *file = NULL;
   sscanf(s,"%lx",&core);
   core += _diff;
   sprintf(tmp,"*%ld",core);
@@ -23,22 +27,28 @@ void symify(const char *s,char *function,char *file,int * line,int _diff)
       msymbol = lookup_minimal_symbol_by_pc(core);
       if (!msymbol)
       {
-        *function = 0;
-        *file = 0;
         *line = 0;
         return;
       }
       diff = core - SYMBOL_VALUE_ADDRESS(msymbol);
-      sprintf(function,"%s%+ld",SYMBOL_NAME(msymbol),diff);
-      *file = 0;
+      sl = strlen(SYMBOL_NAME(msymbol));
+      sprintf(diff_string, "%+ld", diff);
+      sl += strlen(diff_string);
+      *function = (char *)malloc(sl+1);
+      strcpy(*function, SYMBOL_NAME(msymbol));
+      strcat(*function, diff_string);
       *line = 0;
       return;
   }
   sal = find_pc_line(core,1);
   symbol = find_pc_function(core);
   symtab = sal.symtab;
-  strcpy(function,SYMBOL_SOURCE_NAME(symbol));
-  strcpy(file,symtab->filename);
+  sl = strlen(SYMBOL_SOURCE_NAME(symbol));
+  *function = (char *)malloc(sl+1);
+  strcpy(*function, SYMBOL_SOURCE_NAME(symbol));
+  sl = strlen(symtab->filename);
+  *file = (char *)malloc(sl+1);
+  strcpy(*file, symtab->filename);
   *line = sal.line;
 }
 
@@ -60,7 +70,7 @@ static char *GetProgName()
 
 int main(int argc,char *argv[])
 {
-  char function[1024],file[256];
+  char *function, *file;
   int lineno;
   int r, c;
   short *sc;
@@ -122,14 +132,16 @@ int main(int argc,char *argv[])
       if (strncmp(line, "  0x", 4) == 0)
       {
         sscanf(line+4, "%x", &v);
-        symify(line+4,function,file,&lineno,diff);
+        symify(line+4, &function, &file, &lineno, diff);
         fprintf(ofile, "  0x%08x", v);
-        if (*function)
+        if (function)
         {
-          fprintf(ofile," %s",function);
-          if (*file)
+          fprintf(ofile, " %s", function);
+          free(function);
+          if (file)
           {
-            fprintf(ofile,", line %d of %s",lineno,file);
+            fprintf(ofile, ", line %d of %s", lineno, file);
+            free(file);
           }
         }
         fprintf(ofile,"\n");
@@ -154,18 +166,20 @@ int main(int argc,char *argv[])
       for (i=0; i<8; i++)
         buf[i] = SC(r, i+4);
       sscanf(buf, "%x", &v);
-      symify(buf,function,file,&lineno,diff);
+      symify(buf, &function, &file, &lineno, diff);
 
       buf[0] = 0;
-      if (*function)
+      if (function)
       {
-	strcpy(buf, function);
+	     strcpy(buf, function);
+        free(function);
       }
-      if (*file)
+      if (file)
       {
         if (buf[0])
           strcat(buf, ", ");
         sprintf(buf+strlen(buf), "line %d of %s", lineno, file);
+        free(file);
       }
       if (buf[0])
         for (i=0; buf[i]; i++)

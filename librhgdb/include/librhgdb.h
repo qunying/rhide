@@ -287,9 +287,12 @@ char *SetValue(char *var,char *expr);
    This functions tries to make a traceback line like '  0x00001234'
    more readable by returning the corresponding symbols and/or
    file in 'function', 'file' and 'line'. If one of the return
-   values could not found, it will be "" and line will be 0. 
+   values could not found, it will be "" and line will be 0.
+   The strings in `function` and `file` will be allocated and
+   should be freed by the caller. If there was no function or file
+   was found, `function` and/or `file` will be set to NULL.
 */
-void symify(const char *s,char *function,char *file,int * line,int diff);
+void symify(const char *s,char **function,char **file,int * line,int diff);
 
 /* 
   This function returns in 'list' a array of 'function_entry' with function

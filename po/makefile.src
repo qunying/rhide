@@ -72,7 +72,8 @@ MSGCAT_OPTIONS=-s
 $(addsuffix .po,$(LANGUAGES)): potfiles.po $(MSGCAT)
 	@echo updating $@
 	@-cp -f $@ $(subst .po,.bak,$@)
-	@$(MSGCAT) $(MSGCAT_OPTIONS) -cat $(subst .po,.cat,$@) \
+	@$(MSGCAT) $(MSGCAT_OPTIONS) -directory $(RHIDESRC) \
+	  -cat $(subst .po,.cat,$@) \
 	  -ocat __cat__ $(wildcard $@) $< __po__
 	@$(move-if-change) __cat__ $(subst .po,.cat,$@)
 	@$(move-if-change) __po__ $@
@@ -109,6 +110,3 @@ include msgcat.mak
 $(addsuffix .zip,$(LANGUAGES)): $(MSGCAT)
 
 lang_packages: $(addsuffix .zip,$(LANGUAGES))
-CURRENT_LANGUAGES=cz da de es fi fr it nl no pl pt sv
-LANGUAGES=$(CURRENT_LANGUAGES)
-FUTURE_LANGUAGES=ee ru # they were not ready when releasing RHIDE

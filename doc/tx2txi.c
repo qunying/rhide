@@ -88,10 +88,19 @@ readln()
         return;
       case '\r':
         continue;
+      case -1:
+        Line[cur_pos] = 0;
+        return;
       default:
         cur_pos++;
     }
   }
+  if (cur_pos >= line_size)
+  {
+    line_size += 1024;
+    Line = (char *) realloc(Line, line_size);
+  }
+  Line[cur_pos] = 0;
 }
 
 static struct Node *

@@ -308,6 +308,8 @@ void SyntaxIndex();
 /* ideenv.cc */
 void rhide_load_environment_file(char *appname,char *basename,
                                  int only_current = 0, int unload = 0);
+void push_environment();
+void pop_environment();
 
 /* idercs.cc */
 Boolean FindRCSFile(const char *name, char *&fname, char *&sname);

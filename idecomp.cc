@@ -97,13 +97,13 @@ static FILE *errfile;
 char *cpp_outname;
 char *cpp_errname;
 
-static Boolean
-open_errfile(char *errname)
+static bool
+open_errfile(const char *errname)
 {
   errfile = fopen(errname, "rt");
   if (!errfile)
-    return False;
-  return True;
+    return false;
+  return true;
 }
 
 static void
@@ -382,38 +382,43 @@ check_compile_pascal_errors(TMsgCollection & errs)
   return check_compile_c_errors(errs);
 }
 
-/* must be modified */
-static Boolean
-check_compile_fpc_errors(TMsgCollection & errs)
+static bool
+check_compile_fpc_errors_(TMsgCollection & errs, const char *_fname)
 {
-  Boolean retval = True;
+  bool retval = true;
   static char _buffer[512];
   char *tmp, *fname, *temp;
   int lineno;
   msgType error;
 
-  if (open_errfile(cpp_errname) == False)
-    return False;
+  if (open_errfile(_fname) == false)
+    return false;
 /* Scan the file for messages. Each message is of the form:
    filename:[lineno:] [Warning] [message]
    or
    In file included from FILE:LINE[,:]
    or
                     from FILE:LINE[,:]
+   or filename(LINE) TYPE: message
+   or filename(LINE,COLUMN) TYPE: message
+   
    Any other message is not converted (except Control-Break Pressed)
+   and ignored.
 */
   while (next_error_line() >= 0)
   {
+    int column = 1;
     error = msgError;
     if (strncmp(buffer, "Control-Break Pressed", 21) == 0)
     {
       errs.insert(new MsgRec(NULL, _("Control-Break Pressed"), msgError));
-      retval = False;
+      retval = false;
       continue;
     }
-    if (buffer[0] && buffer[1] == ':')	/*
-	   filename starts with a drive letter 
-	 */
+    if (buffer[0] && buffer[1] == ':')
+    /*
+      filename starts with a drive letter
+    */
     {
       tmp = buffer + 2;
     }
@@ -446,8 +451,16 @@ check_compile_fpc_errors(TMsgCollection & errs)
     }
     else
     {
+      char *brace = NULL;
+      char *colon = NULL;
       if (buffer[0] != ' ')
-        tmp = strchr(tmp, ':');
+        brace = strchr(tmp, '(');
+      if (buffer[0] != ' ')
+        colon = strchr(tmp, ':');
+      if (brace != NULL)
+        tmp = brace;
+      else if (colon != NULL)
+        tmp = colon;
       else
         tmp = NULL;
       if (tmp)
@@ -467,7 +480,7 @@ check_compile_fpc_errors(TMsgCollection & errs)
           temp = tmp;
           while (rh_isdigit(*tmp))
             tmp++;
-          if (*tmp == ':')
+          if ((*tmp == ':') || (*tmp == ',') || (*tmp == ')' && brace != NULL))
           {
             *tmp = 0;
             sscanf(temp, "%d", &lineno);
@@ -476,6 +489,18 @@ check_compile_fpc_errors(TMsgCollection & errs)
           else
           {
             lineno = 0;
+          }
+          if (brace != NULL)
+          {
+            tmp = temp;
+            while (rh_isdigit(*tmp))
+              tmp++;
+            if (*tmp == ')')
+            {
+              *tmp = 0;
+              sscanf(temp, "%d", &column);
+              temp = tmp+1;
+            }
           }
         }
       }
@@ -492,6 +517,7 @@ check_compile_fpc_errors(TMsgCollection & errs)
      */
     if (!fname)
     {
+#if 0
       /*
          if no filename was found, make all to a normal message 
        */
@@ -502,6 +528,7 @@ check_compile_fpc_errors(TMsgCollection & errs)
       if (!*tmp)
         continue;               // empty message
       errs.insert(new MsgRec(NULL, buffer, msgMessage));
+#endif
       continue;
     }
     /*
@@ -518,26 +545,59 @@ check_compile_fpc_errors(TMsgCollection & errs)
       {
         error = msgWarning;
         temp += 8;
-        /*
-           skip whitespaces 
-         */
-        while (*temp && *temp == ' ')
-          temp++;
-        if (*temp)
-          temp--;
       }
+      else if (strncasecmp(temp, "error:", 6) == 0)
+      {
+        error = msgError;
+        temp += 6;
+      }
+      else if (strncmp(temp, "Fatal:", 6) == 0)
+      {
+        error = msgError;
+        temp += 6;
+      }
+      /*
+         skip whitespaces 
+       */
+      while (*temp && *temp == ' ')
+        temp++;
+      tmp = temp;
+      while (rh_isdigit(*tmp))
+        tmp++;
+      if (*tmp == ':')
+      {
+        *tmp = 0;
+        sscanf(temp, "%d", &column);
+        if (lineno == 0)
+        {
+          lineno = column;
+          column = 1;
+        }
+        temp = tmp+1;
+      }
+//      if (*temp)
+//        temp--;
     }
     /*
        if there was no lineno found, assume it is only a message, not an error 
      */
     if (lineno == 0 && error == msgError)
       error = msgMessage;
-    errs.insert(new MsgRec(fname, temp, error, lineno));
+    errs.insert(new MsgRec(fname, temp, error, lineno, column));
     if (error == msgError)
-      retval = False;
+      retval = false;
   }
   close_errfile();
   return retval;
+}
+
+
+static bool
+check_compile_fpc_errors(TMsgCollection & errs)
+{
+  bool ret = check_compile_fpc_errors_(errs, cpp_errname);
+  ret &= check_compile_fpc_errors_(errs, cpp_outname);
+  return ret;
 }
 
 
@@ -761,6 +821,7 @@ compile_user(TDependency * dep, char *spec)
           error = ERROR_BUILTIN_ASM;
           break;
         case COMPILE_FPC:
+        case COMPILE_LINK_FPC_AUTOMAKE:
           error = ERROR_BUILTIN_FPC;
           break;
         case COMPILE_LINK:
@@ -779,6 +840,9 @@ compile_user(TDependency * dep, char *spec)
   }
   switch (error)
   {
+    case ERROR_BUILTIN_FPC:
+      retval = check_compile_fpc_errors(*errs);
+      break;
     case ERROR_USER:
       retval = user_check_errors(dep, *errs);
       break;
@@ -1144,7 +1208,15 @@ compile_pascal_to_obj(TDependency * dep, char *spec)
 static Boolean
 compile_fpc_to_obj(TDependency * dep, char *spec)
 {
-  return compile_c_to_obj(dep, spec);
+  int run_ret = CompileDep(dep, spec);
+
+  TMsgCollection *errs = new TMsgCollection();
+  Boolean retval = check_compile_fpc_errors(*errs);
+
+  ShowMessages(errs, False);
+  if (run_ret != 0)
+    retval = False;
+  return retval;
 }
 
 static Boolean

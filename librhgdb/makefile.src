@@ -9,7 +9,7 @@ project=librhgdb
 po_files=\
 	annotate.c breakpoi.c defaults.c gdbcontr.c gdbinter.c \
 	listfunc.c symify.c watches.c watchdog.c frame.c dis.c \
-	regs.c gdbdummy.c
+	regs.c
 
 src_files=$(po_files) Makefile librhgdb.gpr librhgdb.mak makefile.src \
 	  rhide.env rhide.var

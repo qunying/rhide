@@ -45,6 +45,7 @@ int convert_file(const char *arg)
     return -3;
   }
   utime(fname, &ut);
+  chmod(fname, st.st_mode);
   string_free(fname);
   string_free(tmp_name);
   return 0;

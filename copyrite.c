@@ -109,7 +109,7 @@ main(int argc, char *argv[])
       continue;
 
     /* read first line */
-    f = fopen(argv[i], "r");
+    f = fopen(argv[i], "rt");
     fgets(line1, 2000, f);
 
     /* It's OK */

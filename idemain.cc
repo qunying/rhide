@@ -95,6 +95,8 @@
 #include <loadkbin.h>
 #define KeyBindFName "rhide.key"
 
+#include <edhists.h>
+
 void SaveScreen();
 void RestoreScreen();
 
@@ -2005,6 +2007,16 @@ static void dump_environment()
   exit(0);
 }
 
+/* Init the history saving for the editor related history ID`s */
+static
+void __InitHistoryIDs()
+{
+  int i;
+  for (i=hID_Start;i<hID_Start+hID_Cant;i++)
+    InitHistoryID(i);
+  InitHistoryID(100); // Read/Write block
+}
+
 static
 void init_rhide(int _argc, char **_argv)
 #define __crt0_argc _argc
@@ -2065,6 +2077,7 @@ void init_rhide(int _argc, char **_argv)
   fprintf(stderr,"             (%s %s)\n",build_date,build_time);
   TScreen::resume();
   PrintSetDefaults();
+  InitHistoryIDs = __InitHistoryIDs;
 }
 
 /*
@@ -2176,6 +2189,10 @@ static void rhide_sig(int signo)
     case SIGSEGV:
       remove_tmpdir();
       signal(SIGSEGV,SIG_DFL);
+      /* Try to save all opened editors */
+      SaveAll();
+      /* Try to save the project */
+      SaveProject();
       // Try the best to restore all to default (keyboard, screen, mouse )
       destroy(App);
       chdir(startup_directory);
@@ -2211,10 +2228,10 @@ static void init_signals()
     signal(SIGINT,rhide_sig);
   else
     signal(SIGINT, SIG_IGN);
+  signal(SIGSEGV,rhide_sig);
 #ifndef __DJGPP__
   signal(SIGTSTP,rhide_sig);
   signal(SIGTTOU,SIG_IGN);
-  signal(SIGSEGV,rhide_sig);
   signal(SIGWINCH,rhide_sig);
 #endif
 }

@@ -581,3 +581,9 @@
 04.01.1998: Placed version 1.4.3 on my beta-site
  
 05.01.1998: Reenabled the Alt+Space (was disabled after SET's patches)
+
+11.01.1998: New preferences option to remember old messages
+
+11.01.1998: New menu entry in Windows to reshow the messages window.
+
+12.01.1998: Clearing of messages is now possible in the messages window.

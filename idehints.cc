@@ -65,6 +65,12 @@ _("save the current editor under a different name to disk")
 h(SaveAll,
 _("save all opened editors to disk (if modified)")
 )
+h(PrintSetup,
+_("konfigure your print settings")
+)
+h(Print,
+_("print the current editor file")
+)
 #ifdef __DJGPP__
 h(DosShell,
 _("switch to DOS (call of %COMSPEC%, return with EXIT)")
@@ -153,6 +159,15 @@ _("Stop the recording for a macro")
 )
 h(Play,
 _("Run the recorded macro")
+)
+h(ChooseMacro,
+_("choose a named macro")
+)
+h(RepeatMacro,
+_("repeat the last macro")
+)
+h(GenCodeForMacro,
+_("write code for recorded macro")
 )
 h(ProfileEditor,
 _("Check the speed of the editor")
@@ -248,17 +263,26 @@ _("Evaluate or modify an expression")
 h(AddWatchEntry,
 _("Add an expression to the watching list")
 )
+h(Inspect,
+_("Open an inspector window for an expression")
+)
 h(BreakPoints,
 _("Show/Modify the breakpoints")
 )
 h(DisWindow,
 _("Show a disassembler window at the current execution point")
 )
+h(CallStack,
+_("Shows a window with the function call stack")
+)
 h(FunctionList,
 _("Show a list with all functions")
 )
-h(CallStack,
-_("Shows a window with the function call stack")
+h(AddDataWindow,
+_("Open a window with a memory dump")
+)
+h(ShowStackWindow,
+_("Open a window showing the dump of the stack")
 )
 // Project
 h(ProjectMenu,
@@ -368,9 +392,23 @@ _("customize the IDE")
 h(Colors,
 _("customize the colors of the IDE")
 )
+// Options/Environment/Editor
+h(Editor,
+_("various options relating to the editor")
+)
 h(SetGlobalOptions,
 _("Set the editor options")
 )
+h(EditKeyBind,
+_("Customize your key bindings")
+)
+h(SetUpAltKeys,
+_("Define the meaning of the Alt-keys")
+)
+h(KbBackDefault,
+_("Restore default key bindings")
+)
+
 h(Preferences,
 _("set basic options for the IDE")
 )
@@ -447,11 +485,14 @@ _("show a list of all windows on the desktop")
 h(ShowProject,
 _("show the project window")
 )
-h(UserScreen,
-_("show the user screen")
-)
 h(ShowWatchWindow,
 _("Opens the window with watches")
+)
+h(ShowMessages,
+_("show the message window")
+)
+h(UserScreen,
+_("show the user screen")
 )
 // Help
 h(HelpMenu,

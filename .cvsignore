@@ -6,4 +6,7 @@ config.log
 config.status
 gdb_obj
 ideversi.cc
-rhide.gdt
+*.gdt
+install
+logfile
+

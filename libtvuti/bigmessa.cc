@@ -37,7 +37,7 @@ ushort BigmessageBox( ushort aOptions, const char *fmt, ... )
 {
     va_list argptr;
     va_start( argptr, fmt );
-    char msg[256];
+    char msg[1000];
     vsprintf( msg, fmt, argptr );
     va_end( argptr );
     return messageBoxRect( makeRect(), msg, aOptions );

@@ -141,6 +141,7 @@ void ShowMessages(TMsgCollection *msgs,Boolean remove_old,
       msg_list->list() == NULL)
   {
     msg_list->newList(msgs);
+    old_count = 0;
   }
   else if (msgs)
   {
@@ -195,6 +196,27 @@ void ShowMessages(TMsgCollection *msgs,Boolean remove_old,
   else if (old_focused)
     old_focused->select();
   TProgram::deskTop->unlock();
+}
+
+void
+ClearMessages(int what)
+{
+  if (msg_list)
+  {
+    if (what == -1)
+      msg_list->newList(NULL);
+    else
+    {
+      int r = msg_list->range;
+      if (r > 0)
+      {
+        msg_list->list()->atFree(msg_list->focused);
+        r--;
+        msg_list->setRange(r);
+        msg_list->drawView();
+      }
+    }
+  }
 }
 
 

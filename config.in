@@ -1,0 +1,11 @@
+export RHIDE_OS=@RHIDE_OS@
+export RHIDESRC=@orig_srcdir@
+export TV_INC=@TV_INC@
+export SETSRC=@SETSRC@
+export GDB_SRC=@GDB_SRC@
+export TVOBJ=@TVOBJ@
+export SETOBJ=@SETOBJ@
+export GDB_OBJ=@GDB_OBJ@
+export SET_LIBS=@SET_LIBS@
+export LIB_INTL=@LIB_INTL@
+export SET_SPECIAL_LDFLAGS=@SET_SPECIAL_LDFLAGS@

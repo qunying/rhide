@@ -1,0 +1,7 @@
+#!/bin/sh
+CURRENT_DIR=`pwd`
+_SRC_DIR=`dirname $0`
+SRC_DIR=`cd $_SRC_DIR && pwd`
+
+make -C $SRC_DIR config config_dir=$CURRENT_DIR RHIDESRC=$SRC_DIR
+

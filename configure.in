@@ -1,0 +1,110 @@
+dnl Process this file with autoconf to produce a configure script.
+
+AC_PREREQ(2.13)
+AC_INIT(idemain.cc)
+AC_PROG_CC
+AC_CANONICAL_HOST
+
+case "$host" in
+  i?86-*-linux*) RHIDE_OS=Linux ;;
+  i?86-pc-msdosdjgpp) RHIDE_OS=DJGPP ;;
+  *-pc-cygwin) RHIDE_OS=CYGWIN ;;
+  *) AC_MSG_ERROR([$host is not supported (yet). Sorry.]) ;;
+esac
+AC_SUBST(RHIDE_OS)
+
+dnl This fixes the annoing bug in autoconf which
+dnl does not handle correct drive letters in diretories
+dnl I save at first the original srcdir and translate
+dnl it then to the /dev/drive_letter syntax. In the
+dnl config files I should refere then orig_srcdir instead
+dnl of srcdir
+
+orig_srcdir=$srcdir
+changequote(, )dnl
+if test "$RHIDE_OS" = DJGPP; then
+  srcdir=`echo $srcdir | sed "s,^\([a-zA-Z]\):,/dev/\1,g"`
+fi
+changequote([, ])dnl
+AC_SUBST(orig_srcdir)
+
+AC_MSG_CHECKING([needed libs for gettext])
+rh_save_LIBS="$LIBS"
+LIBS="-lintl $LIBS"
+AC_TRY_LINK([#include <libintl.h>
+#include <stdio.h>],printf(gettext("test")),
+[LIB_INTL=intl])dnl
+LIBS="$rh_save_LIBS"
+if test "x$LIB_INTL" = x; then
+  rh_save_LIBS="$LIBS"
+  LIBS="-lintl -liconv $LIBS"
+  AC_TRY_LINK([#include <libintl.h>
+#include <stdio.h>],
+printf(gettext("test")),
+[LIB_INTL="intl iconv"])dnl
+  LIBS="$rh_save_LIBS"
+fi
+AC_MSG_RESULT([$LIB_INTL])
+AC_SUBST(LIB_INTL)
+
+TV_INC_SEARCH="$srcdir/../tvision/include \
+$DJDIR/contrib/tvision/include \
+$DJDIR/include/rhtvision \
+/usr/local/src/tvision/include \
+/usr/src/tvision/include \
+/usr/local/include/rhtvision \
+/usr/include/rhtvision"
+RH_CHECK_FILE_LIST(TV_INC, tv.h, $TV_INC_SEARCH,[Turbo Vision header files])
+
+TV_OBJ_SEARCH="$TV_INC/../`echo $RHIDE_OS | sed s,Linux,linux,g` \
+$TV_INC/../../lib"
+RH_CHECK_FILE_LIST(TVOBJ, librhtv.a, $TV_OBJ_SEARCH,[Turbo Vision libraray])
+
+SETSRC_SEARCH="$srcdir/../setedit \
+$DJDIR/contrib/setedit \
+/usr/local/src/setedit \
+/usr/src/setedit"
+RH_CHECK_FILE_LIST(SETSRC,mainsrc/ceditor.cc,$SETSRC_SEARCH,[SET's editor sources])
+
+RH_CHECK_FILE_LIST(SETOBJ,libset.a,$SETSRC/makes,[SET's editor libraries])
+
+gdb_version="gdb-5.1"
+
+GDB_SRC_SEARCH="$srcdir/../$gdb_version \
+$DJDIR/gnu/$gdb_version \
+/usr/local/src/$gdb_version \
+/usr/src/$gdb_version"
+RH_CHECK_FILE_LIST(GDB_SRC,gdb/main.c,$GDB_SRC_SEARCH,[GDB sources])
+
+AC_CACHE_CHECK([GDB objects],GDB_OBJ,
+[
+mkdir gdb_obj
+GDB_OBJ=`pwd`/gdb_obj
+AC_SUBST(GDB_OBJ)
+])
+
+SET_LIBS="pcre bz2 z"
+SET_SPECIAL_LDFLAGS=
+if test -f $SETOBJ/libeasyd.a; then
+  SET_LIBS="$SET_LIBS easyd settv"
+else
+  SET_SPECIAL_LDFLAGS="$SET_OBJ/easydiag.a"
+fi
+
+AC_CHECK_LIB(bz2,BZ2_bzlibVersion,
+[],
+[SET_SPECIAL_LDFLAGS="$SET_SPECIAL_LDFLAGS -L$SETOBJ/../libbzip2"])
+
+AC_CHECK_LIB(z,zlibVersion,
+[],
+[SET_SPECIAL_LDFLAGS="$SET_SPECIAL_LDFLAGS -L$SETOBJ/../libz"])
+
+AC_CHECK_LIB(pcre,pcre_version,
+[],
+[SET_SPECIAL_LDFLAGS="$SET_SPECIAL_LDFLAGS -L$SETOBJ/../libpcre"])
+
+AC_SUBST(SET_SPECIAL_LDFLAGS)
+AC_SUBST(SET_LIBS)
+
+AC_OUTPUT(config.env:config.in)
+AC_OUTPUT_COMMANDS([$srcdir/configure.sub $orig_srcdir])

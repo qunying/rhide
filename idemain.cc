@@ -602,6 +602,7 @@ void IDE::update()
       D(cmcCopy);
     }
     E(cmcFind);
+    E(cmcSearchAgain);
   }
 
   if (has_editors)

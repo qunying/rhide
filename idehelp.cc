@@ -472,7 +472,7 @@ static CtxInfoRec known_contexts[] = {
   HH(LocalOtheroptions+14, "Local options"),
   HH(LocalOtheroptions+15, "Local options"),
 
-  {hcCalculatorDialog,{"editor","Calculator"}},
+  {hcCalculatorDialog,{"setedit","Calculator"}},
 
   HH(ClosedWindows, "Closed windows"),
   {0,{"rhide",""}}

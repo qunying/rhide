@@ -34,4 +34,5 @@ N(TNoCaseStringCollection,\x0F)
 N(TInfViewer,\x10)
 //N(TIDEInfWindow,\x11) // defined in idehelp.cc for now
 N(TSIndicator,\x12)
+N(TStringCollectionW,\x13)
 

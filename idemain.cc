@@ -525,11 +525,13 @@ void IDE::update()
   {
     E(cmSaveEditor);
     E(cmJumpToFunction);
+    E(cmPrint);
   }
   else
   {
     D(cmSaveEditor);
     D(cmJumpToFunction);
+    D(cmPrint);
   }
 
   if (current_is_editor || current_is_clip)

@@ -1,3 +1,5 @@
+/* Copyright (C) 1996-2003 Robert Hoehne, see COPYING.RH for details */
+/* This file is part of RHIDE. */
 #ifdef USE_DUMMY_ICONV
 
 int iconv_open(const char* tocode __attribute__((unused)), 
@@ -42,3 +44,4 @@ int libiconv_close(int cd)
 }
 	    
 #endif
+

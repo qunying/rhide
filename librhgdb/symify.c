@@ -1,6 +1,7 @@
 /* Copyright (C) 1996-1998 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
 #include <libgdb.h>
+#include <unistd.h>
 #include <librhgdb.h>
 
 void symify(const char *s,char *function,char *file,int * line,int _diff)
@@ -105,6 +106,12 @@ int main(int argc,char *argv[])
   _GetProgName = GetProgName;
   InitRHGDB();
 
+  if (!isatty(0) && !ifile)
+    ifile = stdin;
+
+  if (!isatty(1) && !ofile)
+    ofile = stdout;
+
   if (ifile)
   {
     char line[1000];
@@ -130,6 +137,8 @@ int main(int argc,char *argv[])
       else
         fputs(line, ofile);
     }
+    fclose(ifile);
+    fclose(ofile);
     return 0;
   }
 

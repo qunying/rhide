@@ -2,8 +2,8 @@
 # This file is part of RHIDE. 
 #
 
-include $(RHIDESRC)/common.var
-RHIDE_OS_LIBS_DJGPP=dbg
-RHIDE_OS_LIBS_Linux=ncurses
-RHIDE_OS_LIBS=$(RHIDE_OS_LIBS_$(RHIDE_OS))
+include $(RHIDESRC)/rhide.var
+RHIDE_OS_LIBS_DJGPP_gsymify.exe=dbg
+RHIDE_OS_LIBS_DJGPP_mygdb.exe=dbg
+RHIDE_OS_LIBS_DJGPP_listfunc.exe=dbg
 

@@ -233,6 +233,7 @@ LD_EXTRA_FLAGS=
 C_EXTRA_FLAGS=-DRHIDE
 LOCAL_OPT=$(subst ___~~~___, ,$(subst $(notdir $<)___,,$(filter $(notdir\
 	$<)___%,$(LOCAL_OPTIONS))))
+
 OBJFILES=sdirlist.o sparamli.o
 ALL_OBJFILES=sdirlist.o sparamli.o
 LIBRARIES=

@@ -241,13 +241,14 @@ RHIDE_STDINC_C=$(RHIDE_STDINC_C_$(RHIDE_OS))
 RHIDE_STDINC_CXX=$(RHIDE_STDINC_CXX_$(RHIDE_OS)) $(TVSRC)/include $(SETSRC)
 RHIDE_STDINC_GCC=$(RHIDE_STDINC_GCC_$(RHIDE_OS))
 RHIDE_STDINC=$(RHIDE_STDINC_C) $(RHIDE_STDINC_CXX) $(RHIDE_STDINC_GCC)\
-	$(RHIDE_STDINC_EXTRA)
+	$(RHIDE_STDINC_EXTRA) $(dir $(LIBGDB_H))
 RHIDE_OS_CFLAGS_Linux=-D_GNU_SOURCE
 RHIDE_OS_CFLAGS=$(RHIDE_OS_CFLAGS_$(RHIDE_OS)) $(RH_WARN)
 RHIDE_OS_CXXFLAGS_Linux=-D_GNU_SOURCE
 RHIDE_OS_CXXFLAGS_DJGPP=
 RHIDE_OS_CXXFLAGS=$(RHIDE_OS_CXXFLAGS_$(RHIDE_OS)) $(RH_WARN)\
 	-fno-exceptions -fno-rtti
+RHIDE_LIBDIRS=$(addprefix -L,$(dir $(LIBGDB_A)) $(LIB_DIRS))
 PCRE_OBJ=$(subst Linux,linux,$(SETOBJ)/$(RHIDE_OS))
 RHIDE_OS_LIBS_Linux=ncurses gpm m
 RHIDE_OS_LIBS_DJGPP_idegc.exe=dbg
@@ -268,13 +269,14 @@ RHIDE_STDINC_C=$(RHIDE_STDINC_C_$(RHIDE_OS))
 RHIDE_STDINC_CXX=$(RHIDE_STDINC_CXX_$(RHIDE_OS)) $(TVSRC)/include $(SETSRC)
 RHIDE_STDINC_GCC=$(RHIDE_STDINC_GCC_$(RHIDE_OS))
 RHIDE_STDINC=$(RHIDE_STDINC_C) $(RHIDE_STDINC_CXX) $(RHIDE_STDINC_GCC)\
-	$(RHIDE_STDINC_EXTRA)
+	$(RHIDE_STDINC_EXTRA) $(dir $(LIBGDB_H))
 RHIDE_OS_CFLAGS_Linux=-D_GNU_SOURCE
 RHIDE_OS_CFLAGS=$(RHIDE_OS_CFLAGS_$(RHIDE_OS)) $(RH_WARN)
 RHIDE_OS_CXXFLAGS_Linux=-D_GNU_SOURCE
 RHIDE_OS_CXXFLAGS_DJGPP=
 RHIDE_OS_CXXFLAGS=$(RHIDE_OS_CXXFLAGS_$(RHIDE_OS)) $(RH_WARN)\
 	-fno-exceptions -fno-rtti
+RHIDE_LIBDIRS=$(addprefix -L,$(dir $(LIBGDB_A)) $(LIB_DIRS))
 PCRE_OBJ=$(subst Linux,linux,$(SETOBJ)/$(RHIDE_OS))
 RHIDE_OS_LIBS_Linux=ncurses gpm m
 RHIDE_OS_LIBS_DJGPP_idegc.exe=dbg
@@ -307,6 +309,7 @@ LD_EXTRA_FLAGS=-Map rhide.map
 C_EXTRA_FLAGS=-DRHIDE -DINTERNAL_DEBUGGER -DFOR_LIBSET
 LOCAL_OPT=$(subst ___~~~___, ,$(subst $(notdir $<)___,,$(filter $(notdir\
 	$<)___%,$(LOCAL_OPTIONS))))
+
 OBJFILES=debobj/commands.o debobj/fstrcmp.o debobj/ideapp.o debobj/idebug.o\
 	debobj/idecheck.o debobj/idecolor.o debobj/idecomp.o\
 	debobj/idedebug.o debobj/idedefau.o debobj/idedial.o\

@@ -233,6 +233,7 @@ LD_EXTRA_FLAGS=
 C_EXTRA_FLAGS=-DRHIDE
 LOCAL_OPT=$(subst ___~~~___, ,$(subst $(notdir $<)___,,$(filter $(notdir\
 	$<)___%,$(LOCAL_OPTIONS))))
+
 OBJFILES=ndirlist.o nparamli.o
 ALL_OBJFILES=ndirlist.o nparamli.o
 LIBRARIES=

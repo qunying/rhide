@@ -229,6 +229,7 @@ LD_EXTRA_FLAGS=
 C_EXTRA_FLAGS=
 LOCAL_OPT=$(subst ___~~~___, ,$(subst $(notdir $<)___,,$(filter $(notdir\
 	$<)___%,$(LOCAL_OPTIONS))))
+
 OBJFILES=
 ALL_OBJFILES=
 LIBRARIES=

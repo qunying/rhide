@@ -54,12 +54,14 @@ VARIABLE=CONTENTS
   In addition to this, the file can have some special
   things.
   1) A line, which begins with # is a comment
-  2) A line, which begins with a dot, means, read
+  2) A line, which begins with the word include, read
      here the file, with the name, which starts after
-     the dot.
-  3) A line, which begins with ! tells RHIDE, to put
-     this variable also in the environment with
-     putenv().
+     the include separated by a space.
+     (For compatibility I still support the old dot
+      syntax).
+  3) A line, which starts with the word export, tells
+     RHIDE, to put this variable also in the environment
+     with putenv(). (The old ! syntax is still working)
 */
 
 static int
@@ -82,12 +84,24 @@ _rhide_load_environment_file(char *fname, int unload)
       string_free(_fname);
       continue;
     }
+    if (strncmp(line, "include ", 8) == 0)
+    {
+      char *_fname = expand_spec(line+8,NULL);
+      _rhide_load_environment_file(_fname, unload);
+      string_free(_fname);
+      continue;
+    }
     int _putenv = 0;
     variable = line;
     if (line[0] == '!')
     {
       _putenv = 1;
       variable++;
+    }
+    if (strncmp(variable, "export ", 7) == 0)
+    {
+      _putenv = 1;
+      variable += 7;
     }
     char *equal = strchr(line,'=');
     if (equal)

@@ -190,6 +190,31 @@ int AbsToRelPath(const char *ref_path,char * & ret, const char *subst = 0,
                  int allow_prevdirs = 1);
 
 /*
+  This macros declares a function to be called before main.
+  Normally with gcc you can use __attribute__((constructor)), but
+  for some reason it didn`t work for me on DJGPP with gcc 2.95.2
+  (wit gcc 2.81 it worked). So I designed the following macro, with
+  creates a (kopefully) unique class with a constructor where the
+  function is called and the it declares a static variable of this
+  class.
+*/
+
+#define CONSTRUCTOR_FUNCTION(x) \
+static void x(); \
+\
+class __rh_construct_##x\
+{\
+public:\
+  __rh_construct_##x()\
+  {\
+    x();\
+  }\
+};\
+\
+static __rh_construct_##x ___rh_construct_##x;\
+static void x()
+
+/*
   The following macros are used to cast the arguments of the ctype
   functions to the proper type without getting negative arguments */
 

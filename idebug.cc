@@ -26,8 +26,7 @@ _get_win_version()
   return regs.x.bx;
 }
 
-static void __attribute__ (( __constructor__ ))
-_init_win_check()
+CONSTRUCTOR_FUNCTION(init_win_check)
 {
   win_version = _get_win_version();
   nt_detected = (win_version == 0) && (_get_dos_version(1) == 0x0532);

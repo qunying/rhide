@@ -2,6 +2,7 @@
 /* This file is part of RHIDE. */
 #define Uses_IDEConst
 #include <rhide.h>
+#include <rhutils.h>
 
 #define Uses_tvutilFunctions
 #include <libtvuti.h>
@@ -14,8 +15,7 @@
 #define __CM(x,y) add_command_constant("cm"#x,cm##x);
 #define __HC(x,y) add_help_constant("hc"#x,hc##x);
 
-static void __attribute__ (( __constructor__ ))
-init_rhide_commands()
+CONSTRUCTOR_FUNCTION(init_rhide_commands)
 {
   __RHIDE_COMMAND_CODES__
   __RHIDE_HELP_CODES__

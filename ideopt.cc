@@ -116,6 +116,7 @@ InitOptions()
   VerboseGDB = 0;
   NoShadows = 0;
 //  TransparentBlocks = 0;
+  AskReadOnlyFiles = 0;
 
   TCEditor::staticTabSize = 8;
   Project.screen_mode = TScreen::screenMode;
@@ -429,10 +430,11 @@ const ushort cmMoreOptions = 9999;
     S(UseRCS, 18);\
     S(UseFPC, 19);
 
-#define SetGetOptions1()      \
-    S(SaveMessages, 0);\
-    S(DontShowExitCode, 1);\
-    S(DeleteRecursive, 2);
+#define SetGetOptions1()       \
+    S(SaveMessages, 0);        \
+    S(DontShowExitCode, 1);    \
+    S(DeleteRecursive, 2);     \
+    S(AskReadOnlyFiles, 3);
 
 TEnvironmentDialog::TEnvironmentDialog():
 TDialog(TRect(0, 0, 76, 23), _("Environment options")),
@@ -450,13 +452,14 @@ TWindowInit(TEnvironmentDialog::initFrame)
 
   r1 = TRect(3, 2, 49, 2 + 20);
 
-  r1.b.y = r1.a.y + 3;
+  r1.b.y = r1.a.y + 4;
 /* *INDENT-OFF* */
   cluster[1] = new TEnterCheckBoxes(r1,
                  new TSItem(_("~R~emember old messages"),   // r
-                 new TSItem(_("~D~on`t show exit code"),    // d
+                 new TSItem(_("~D~on't show exit code"),    // d
                  new TSItem(_("~C~lean files recursive"),   // c
-                 NULL))), 1);
+                 new TSItem(_("Ask to revert read-only ~f~iles"), // f
+                 NULL)))), 1);
 /* *INDENT-OFF* */
   cluster[1]->helpCtx = hcPreferenceCheckbox1;
 

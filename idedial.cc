@@ -7,6 +7,7 @@
 #define Uses_THistory
 #define Uses_TDialog
 #define Uses_IDEConst
+#define Uses_TIDEFileEditor
 #include "rhide.h"
 #include "rhidehis.h"
 
@@ -45,10 +46,14 @@ IDEdoEditDialog(int dialog, ...)
   {
     /* Silence some SetEdit warnings about attempts to revert R/O files
        as they seems (at least to me) major muisance especially at debugging
-       time when opening R/O system header files  */
+       time when opening R/O system header files (Andris) */
      case edIsReadOnly:
      case edStillReadOnly:
-             ret = cmOK;
+             TCEditor::editorFlags |= efROasRO; /* SET: Open it RO if not reverted */
+             if (AskReadOnlyFiles) /* SET: Made an option*/
+               ret = doEditDialog(dialog, args);
+             else
+               ret = cmOK;
              break;
 
      default:

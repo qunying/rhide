@@ -119,14 +119,13 @@ TCFileEditor(rect, ahscrollbar, avscrollbar, aindicator, aFileName)
   if (*fileName && stat(fileName, &st) == 0)
   {
     edittime = st.st_mtime;
-#if 0
-    if (!(st.st_mode & S_IWUSR))
-#else
-    if (access(fileName, W_OK) != 0)
-#endif
+    if (0)
     {
-      messageBox(mfWarning | mfOKButton,
-                 _("Warning: %s is write protected"), fileName);
+      if (access(fileName, W_OK) != 0) // (!(st.st_mode & S_IWUSR))
+      {
+        messageBox(mfWarning | mfOKButton,
+                   _("Warning: %s is write protected"), fileName);
+      }
     }
   }
   else
@@ -322,14 +321,13 @@ TIDEFileEditor::read(ipstream & is)
   if (stat(fileName, &st) == 0)
   {
     edittime = st.st_mtime;
-#if 0
-    if (!(st.st_mode & S_IWUSR))
-#else
-    if (access(fileName, W_OK) != 0)
-#endif
+    if (0)
     {
-      messageBox(mfWarning | mfOKButton,
-                 _("Warning: %s is write protected"), fileName);
+      if (access(fileName, W_OK) != 0) // (!(st.st_mode & S_IWUSR))
+      {
+        messageBox(mfWarning | mfOKButton,
+                   _("Warning: %s is write protected"), fileName);
+      }
     }
   }
   else

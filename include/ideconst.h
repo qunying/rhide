@@ -124,7 +124,9 @@
   __CM(KbBackDefault,114)\
   __CM(Print,115)\
   __CM(PrintSetup,116)\
-  __CM(Inspect,117)
+  __CM(Inspect,117)\
+  __CM(AddDataWindow,118)\
+  __CM(ShowStackWindow,119)
 
 #define __RHIDE_HELP_CODES__\
   __HC(Compile,1)\
@@ -308,7 +310,9 @@
   __HC(GenCodeForMacro,302)\
   __HC(Print,303)\
   __HC(PrintSetup,304)\
-  __HC(Inspect,305)
+  __HC(Inspect,305)\
+  __HC(AddDataWindow,306)\
+  __HC(ShowStackWindow,307)
 
 __RHIDE_COMMAND_CODES__
 __RHIDE_HELP_CODES__

@@ -297,22 +297,24 @@ TMenuBar *IDE::initMenuBar( TRect r )
     +*new _TMenuItem( __("~D~isassembler window"),cmDisWindow,kbNoKey,hcDisWindow)
     +*new _TMenuItem( __("~C~all stack"),cmCallStack,kbCtF3,hcCallStack,"Ctrl+F3")
     +*new _TMenuItem( __("List of ~F~unctions"), cmFunctionList, kbNoKey, hcFunctionList)
+    +*new _TMenuItem( __("D~a~ta window"), cmAddDataWindow, kbNoKey, hcAddDataWindow)
+    +*new _TMenuItem( __("S~t~ack window"), cmShowStackWindow, kbNoKey, hcShowStackWindow)
   ;
 #endif
 
   bar = new TMenuBar( r,
-	   space_menu
-	 + file_menu
-	 + edit_menu
-	 + search_menu
-	 + run_menu
-	 + compile_menu
+           space_menu
+         + file_menu
+         + edit_menu
+         + search_menu
+         + run_menu
+         + compile_menu
 #ifdef INTERNAL_DEBUGGER
-	 + debug_menu
+         + debug_menu
 #endif
          + project_menu
          + option_menu
-	 + window_menu
+         + window_menu
          + help_menu
         );
 

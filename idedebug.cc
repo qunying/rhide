@@ -322,6 +322,7 @@ static void UPDATE_WATCH()
 {
   if (watchwindow) watches->update();
   UpdateCallStackWindow();
+  UpdateDataWindows();
 }
 
 int dual_display_supported();

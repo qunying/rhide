@@ -44,7 +44,8 @@ int DebuggerFormatLine(TCEditor *editor,
 #define drawbuf ((ushort *)DrawBuf)
   uint32 offset = 0;
   ushort color;
-  if (DEBUGGER_STARTED() && editor == current_editor->editor &&
+  if (DEBUGGER_STARTED() && current_editor &&
+      editor == current_editor->editor &&
       CPULine == LineNo)
   {
      editor->formatLine(DrawBuf,LinePtr,Width,Colors,lineLen,Attr,LineNo);

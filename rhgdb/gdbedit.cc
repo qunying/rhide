@@ -68,7 +68,7 @@ public:
   void formatLine(void *, unsigned, int, unsigned short, unsigned, uint32, unsigned );
   void setFormatLine();
   void (TCEditor::*FormatLinePtr)(void *, unsigned, int, unsigned short, unsigned,
-                                  uint32 short, unsigned );
+                                  uint32, unsigned );
   ~TGDBEditor();
   char *bname;
 };

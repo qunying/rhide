@@ -1012,6 +1012,14 @@ void IDE::handleEvent(TEvent & event)
     case evBroadcast:
       switch (event.message.command)
       {
+        case cmWindowOpened:
+        {
+          const char *name = (const char *)event.message.infoPtr;
+          if (__file_exists(name))
+            TimeOfFile(name, True); // this removes the file from the hashtable
+          clearEvent(event);
+          break;
+        }
         case cmFocusWindow:
           Focus = True;
         case cmOpenWindow:
@@ -1371,15 +1379,13 @@ void IDE::handleEvent(TEvent & event)
         case cmCompile:
          if (DEBUGGER_STARTED()) RESET();
          ShowMessages(NULL,True);
-         if (Compile() == False)
-           ShowMessages(NULL,False,True);
+         Compile();
          clearEvent(event);
          break;
        case cmLink:
          if (DEBUGGER_STARTED()) RESET();
          ShowMessages(NULL,True);
-         if (Compile(project) == False)
-           ShowMessages(NULL,False,True);
+         Compile(project);
          clearEvent(event);
          break;
        case cmStandardIncludeDir:

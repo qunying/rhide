@@ -809,6 +809,19 @@ SetMainTargetName(const char *name, TProject * _prj)
     prj->source_file_type = get_file_type(FName(prj->source_name));
     prj->compile_id = how_to_compile(prj->source_file_type,
                                      prj->dest_file_type);
+    string_free(prj->main_function);
+    switch (prj->compile_id)
+    {
+      default:
+        prj->main_function = string_dup("main");
+        break;
+      case COMPILE_LINK_FPC_AUTOMAKE:
+        prj->main_function = string_dup("PASCALMAIN");
+        break;
+      case COMPILE_LINK_PASCAL_AUTOMAKE:
+        prj->main_function = string_dup("pascal_main_program");
+        break;
+    }
     return;
   }
   prj->source_file_type = FILE_UNKNOWN;

@@ -8,4 +8,7 @@ export SETOBJ=@SETOBJ@
 export GDB_OBJ=@GDB_OBJ@
 export SET_LIBS=@SET_LIBS@
 export LIB_INTL=@LIB_INTL@
-export SET_SPECIAL_LDFLAGS=@SET_SPECIAL_LDFLAGS@
+# I place the CONIO_PATCH into SET_SPECIAL_LDFLAGS
+# since this is the fastes ways to apply the patched
+# conio.o for DJGPP
+export SET_SPECIAL_LDFLAGS=@CONIO_PATCH@ @SET_SPECIAL_LDFLAGS@

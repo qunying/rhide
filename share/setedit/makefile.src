@@ -5,13 +5,14 @@ VPATH=$(srcdir)
 
 src_files=Makefile makefile.src \
 	  clippmac.pmc cpmacros.pmc htmlmac.pmc perlmac.pmc \
-	  pmacros.pmc syntaxhl.shl
+	  pmacros.pmc syntaxhl.shl infview.inf setedit.inf
 
 po_files=
 cfg_files=
 update_files=
 install_data_files=clippmac.pmc cpmacros.pmc htmlmac.pmc perlmac.pmc \
 	           pmacros.pmc syntaxhl.shl
+install_info_files=infview.inf setedit.inf
 subdirs=
 po_subdirs=
 

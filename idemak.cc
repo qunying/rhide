@@ -504,7 +504,7 @@ check_vars(TStringCollection * vars, TDirList * dirs)
 }
 
 void
-WriteMake(char *outname, int argc, char *argv[])
+WriteMake(char *outname, int argc, char *argv[], bool default_vars)
 {
   char *dir = NULL, *fname = NULL, *ext = NULL, *name = NULL;
   FILE *f;
@@ -551,17 +551,20 @@ WriteMake(char *outname, int argc, char *argv[])
   check_vars(vars, Options.ObjDirs);
   check_vars(vars, Options.include_path);
   check_vars(vars, Options.library_path);
-  for (i = 0; i < vars->getCount(); i++)
+  if (default_vars)
   {
-    char *var, *env;
-
-    var = (char *) vars->at(i);
-    env = getenv(var);
-    fprintf(f, "ifeq ($(strip $(%s)),)\n", var);
-    fprintf(f, "%s=", var);
-    if (env)
-      fprintf(f, "%s", env);
-    fprintf(f, "\nendif\n");
+    for (i = 0; i < vars->getCount(); i++)
+    {
+      char *var, *env;
+  
+      var = (char *) vars->at(i);
+      env = getenv(var);
+      fprintf(f, "ifeq ($(strip $(%s)),)\n", var);
+      fprintf(f, "%s=", var);
+      if (env)
+        fprintf(f, "%s", env);
+      fprintf(f, "\nendif\n");
+    }
   }
   if (Options.SrcDirs->getCount() > 0)
   {

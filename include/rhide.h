@@ -274,7 +274,8 @@ void OpenDisWin(int force_open = 0);
 /* module idemak.cc */
 class TProject;
 TProject *ReadProject(const char *, bool from_ide = true);
-void WriteMake(char *outname = NULL, int argc = 0, char *arg[] = NULL);
+void WriteMake(char *outname = NULL, int argc = 0, char *arg[] = NULL,
+               bool default_vars = false);
 void put_breakline(FILE * f, int start_len, int max_len, const char *s);
 extern TProject *project;
 
@@ -449,8 +450,6 @@ ide_options1;
 #define RHIDEUserWords (_RHIDEUserWords(project))
 
 #define IsRooted(x) (x[0] == '/' || (rh_isalpha(x[0]) && x[1] == ':'))
-
-#include <intl.h>
 
 void setup_title(const char *);
 void setup_main_title();

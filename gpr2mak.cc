@@ -38,7 +38,7 @@ init_gpr2mak()
 }
 
 static void
-_WriteMake(int all_deps, int argc, char **argv)
+_WriteMake(int all_deps, int argc, char **argv, bool default_vars)
 {
   if (recursive_make && Project.dependencies)
   {
@@ -60,8 +60,8 @@ _WriteMake(int all_deps, int argc, char **argv)
           FExpand(outname);
           fprintf(stdout, _("Writing Makefile : %s\n"), outname);
           string_free(outname);
-          WriteMake(NULL, argc, argv);
-          _WriteMake(all_deps, argc, argv);
+          WriteMake(NULL, argc, argv, default_vars);
+          _WriteMake(all_deps, argc, argv, default_vars);
           _PopProject();
         }
       }
@@ -74,6 +74,7 @@ main(int argc, char *argv[])
 {
   char *tmp;
   char *orig_dir;
+  bool default_vars = false;
 
   orig_dir = getcwd(NULL, PATH_MAX);
   string_dup(tmp, argv[0]);
@@ -138,6 +139,14 @@ $(wildcard $(path)/$(notdir ", tmp, "))))", NULL);
   recursive_make = 0;
   for (i = 1; i < argc; i++)
   {
+    if (strcmp(argv[i], "-V") == 0)
+    {
+      default_vars = true;
+    }
+    if (strcmp(argv[i], "-V-") == 0)
+    {
+      default_vars = false;
+    }
     if (strcmp(argv[i], "-r") == 0)
     {
       recursive_make = 1;
@@ -204,8 +213,8 @@ $(wildcard $(path)/$(notdir ", tmp, "))))", NULL);
   }
   push_environment();
   AllDeps = all_deps;
-  WriteMake(outname, argc, argv);
-  _WriteMake(all_deps, argc, argv);
+  WriteMake(outname, argc, argv, default_vars);
+  _WriteMake(all_deps, argc, argv, default_vars);
   chdir(orig_dir);
   return 0;
 }

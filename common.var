@@ -5,7 +5,10 @@
 #
 
 RHIDE_STDINC_C_DJGPP=$(DJDIR)/include
-RHIDE_STDINC_CXX_DJGPP=$(DJDIR)/lang/cxx
+
+RHIDE_STDINC_C_DJGPP=$(DJGPP_ROOT)/include
+
+RHIDE_STDINC_CXX_DJGPP=$(DJDIR)/lang/cxx 
 RHIDE_STDINC_GCC_DJGPP=$(DJDIR)/lib/gcc-lib
 RHIDE_STDINC_C_Linux=/usr/include
 RHIDE_STDINC_CXX_Linux=/usr/include/g++

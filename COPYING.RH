@@ -41,10 +41,6 @@ you have to add a notification which is printed at startup of RHIDE
 and in the about box to tell the user that you have made modifications
 and that it is not the binary from the original sources distributed by me.
 
-If you distribute the sources for RHIDE, you are not allowed to distribute
-the full modified sources for the Turbo Vision library because of the
-copying conditions by Borland International.
-
 If you want to include RHIDE (binaries and/or sources) in a commercial
 product (on a CD-ROM for a book or something else) contact me first.
 

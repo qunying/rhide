@@ -5,6 +5,7 @@
 
 #include <tv.h>
 #include <stdio.h>
+#include "rhutils.h"
 
 #define MODE_INPUT ios::in
 #define MODE_OUTPUT ios::out
@@ -279,6 +280,7 @@ void OpenDisWin(int force_open = 0);
 /* module idemak.cc */
 class TProject;
 TProject *ReadProject(const char *, bool from_ide = true);
+void SaveProject(TProject * _project, const char *_project_name);
 void WriteMake(char *outname = NULL, int argc = 0, char *arg[] = NULL,
                bool default_vars = false);
 void put_breakline(FILE * f, int start_len, int max_len, const char *s);
@@ -460,3 +462,5 @@ void setup_title(const char *);
 void setup_main_title();
 
 #endif
+
+

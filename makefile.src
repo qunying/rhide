@@ -283,7 +283,7 @@ endif
 ifeq ($(rhide_OS),Linux)
 install_prefix_bin=/$(PACKAGE_DIR)$(DIR_VERSION)
 DISTRIB_BIN_FLAGS=\
-	"LDFLAGS=$(LDFLAGS) -static"
+	"LDFLAGS=$(LDFLAGS) -s -static"
 endif
 
 install::

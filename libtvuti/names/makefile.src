@@ -9,7 +9,7 @@ project=names
 
 po_files=
 
-src_files=$(po_files) makefile.src \
+src_files=$(po_files) makefile.src rhide.env rhide.var\
 	ndirlist.cc nparamli.cc Makefile names.gpr names.mak
 cfg_files=
 projects=names

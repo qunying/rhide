@@ -9,7 +9,7 @@ project=stream
 
 po_files=
 
-src_files=$(po_files) makefile.src \
+src_files=$(po_files) makefile.src rhide.env rhide.var\
 	sdirlist.cc sparamli.cc Makefile stream.gpr stream.mak
 cfg_files=
 projects=stream

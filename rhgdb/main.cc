@@ -910,7 +910,7 @@ init_rhgdb(int __crt0_argc, char **__crt0_argv)
                "/usr/local/share/locale ",
                "/usr/share/locale",
                "),$(wildcard $(file))))))", NULL);
-    char *file = expand_rhide_spec(spec);
+    char *file = expand_spec(spec, NULL);
     string_free(spec);
     if (*file)
     {

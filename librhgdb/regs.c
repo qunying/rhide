@@ -30,20 +30,17 @@ unsigned long get_register_value(int num)
 
 long double get_float_register_value(int num)
 {
-#ifdef LD_I387
-  long
-#endif
-       double d;
+  char d[sizeof(long double)];
   char buf[20];
   if (!debugger_started)
     return 0;
   read_register_gen(num, buf);
 #ifdef REGISTER_CONVERT_TO_VIRTUAL
-  REGISTER_CONVERT_TO_VIRTUAL(num, REGISTER_VIRTUAL_TYPE(num), buf, &d);
+  REGISTER_CONVERT_TO_VIRTUAL(num, REGISTER_VIRTUAL_TYPE(num), buf, d);
 #else
-  floatformat_to_double(&floatformat_i387_ext, buf, &d);
+  floatformat_to_double(&floatformat_i387_ext, buf, d);
 #endif
-  return d+0.0;
+  return *((long double *)d)+0.0;
 }
 
 void set_register_value(int num, unsigned long value)
@@ -101,19 +98,15 @@ write_register_gen (regno, myaddr)
 
 void set_float_register_value(int num, long double value)
 {
-#ifdef LD_I387
-  long
-#endif
-       double d;
+  char d[sizeof(long double)];
   char buf[20];
   if (!debugger_started)
     return;
-  d = value;
+  *(long double *)d = value;
 #ifdef REGISTER_CONVERT_TO_RAW
-  REGISTER_CONVERT_TO_RAW(REGISTER_VIRTUAL_TYPE(num), num, &d, buf);
+  REGISTER_CONVERT_TO_RAW(REGISTER_VIRTUAL_TYPE(num), num, d, buf);
 #else
-  floatformat_from_double(&floatformat_i387_ext, &d, buf);
-
+  floatformat_from_double(&floatformat_i387_ext, d, buf);
 #endif
   write_register_gen(register_count()+num, buf);
 }

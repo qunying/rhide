@@ -27,6 +27,8 @@
 
 #include <rhutils.h>
 
+extern int SHLSelect(TCEditor &e, char *buffer, int buf_len);
+
 TIDEFileEditor::~TIDEFileEditor()
 {
   string_free(bname);
@@ -56,13 +58,12 @@ void TIDEFileEditor::formatLine( void *DrawBuf,
 
 void TIDEFileEditor::setFormatLine()
 {
-  extern int SHLSelectByExtention(TCEditor &e);
   if (bname) string_free(bname);
   BaseName(fileName,bname);
   if (!use_syntax)
     SetHighlightTo(shlNoSyntax);
   else
-    SHLSelectByExtention(*this);
+    SHLSelect(*this, buffer, bufLen);
   FormatLinePtr = formatLinePtr;
   formatLinePtr = (void (TCEditor::*)
                   (void *, unsigned, int, unsigned short, unsigned,

@@ -2303,10 +2303,17 @@ int main(int argc, char **argv)
   App = new IDE();
   init_signals();
   if (!PRJNAME) find_project();
-#if 0 // The error is handled in OpenProject
-  if (OpenProject(PRJNAME) == True)
-#else
   OpenProject(PRJNAME);
+#ifdef __DJGPP__
+  if (getenv("DJDIR") == NULL)
+  {
+    BigmessageBox(mfError | mfOKButton,
+        _("RHIDE has detected, that the environment variable \
+has not been set. This means, you haven't installed DJGPP correct. \
+Please read the file README.1ST from the DJGPP distribution how to \
+install DJGPP. If you continue now, you will get probably many \
+errors."));
+  }
 #endif
   {
     if (!PRJNAME)

@@ -992,36 +992,36 @@ main(int argc, char **argv)
   signal(SIGTSTP, rhgdb_sig);
   signal(SIGTTOU, SIG_IGN);
 #endif
+  if (!init_name)
+  {
+    if (!progname)
+      usage();
+    char *dot;
+
+    strcpy(initname, progname);
+    dot = strrchr(initname, '.');
+    if (dot)
+      *dot = 0;
+    strcat(initname, ".rgd");
+    init_name = initname;
+  }
+  ReadOptions(init_name);
+  if (!progname)              // probably an old ini file
+  {
+    char *spec = string_dup("$(subst .rgd,");
+
+#ifndef __linux__
+    string_cat(spec, ".exe");
+#endif
+    string_cat(spec, ",");
+    string_cat(spec, init_name);
+    string_cat(spec, ")");
+    progname = expand_spec(spec, NULL);
+    string_free(spec);
+  }
   InitDebuggerInterface();
   if (InitRHGDB())
   {
-    if (!init_name)
-    {
-      if (!progname)
-        usage();
-      char *dot;
-
-      strcpy(initname, progname);
-      dot = strrchr(initname, '.');
-      if (dot)
-        *dot = 0;
-      strcat(initname, ".rgd");
-      init_name = initname;
-    }
-    ReadOptions(init_name);
-    if (!progname)              // probably an old ini file
-    {
-      char *spec = string_dup("$(subst .rgd,");
-
-      string_cat(spec, init_name);
-      string_cat(spec, ",");
-#ifndef __linux__
-      string_cat(spec, ".exe");
-#endif
-      string_cat(spec, ")");
-      progname = expand_spec(spec, NULL);
-      string_free(spec);
-    }
     main_source = SourceForMain(&main_line);
     if (main_source)
     {
@@ -1365,7 +1365,7 @@ ReadIDEOptions()
       string_free(main_function);
       string_dup(main_function, &read_buffer[index]);
     }
-    else if ((index == key_index("PROGRAM")) != 0)
+    else if ((index = key_index("PROGRAM")) != 0)
     {
       string_free(progname);
       progname = string_dup(&read_buffer[index]);

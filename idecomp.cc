@@ -940,7 +940,7 @@ Boolean compile_dep(TDependency *dep)
 {
   Boolean retval;
   int old_msg_count = -1;
-  if (msg_list)
+  if (msg_list && msg_list->range > 0)
     old_msg_count = msg_list->list()->getCount();
   char *sname = NULL,*dname = NULL;
   if (dep->compile_id == COMPILE_NONE) return True;

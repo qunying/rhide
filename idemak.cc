@@ -365,6 +365,10 @@ WriteTarget(FILE * f, TDependency * dep, int depth, TStringCollection * vars)
     fprintf(f, "%s%s%s.force:\n", dir, name, ext);
     fprintf(f, "\t$(MAKE)%s%s -f %s.mak $(FLAGS_FOR_SUBPROJECTS)\n",
             *dir ? " -C " : "", *dir ? dir : "", name);
+    fprintf(f, "clean::\n\t");
+    if (DeleteRecursive)
+      fprintf(f, "$(MAKE)%s%s -f %s.mak $(FLAGS_FOR_SUBPROJECTS) clean\n",
+              *dir ? " -C " : "", *dir ? dir : "", name);
     if (recursive_make && (_PushProject(dep) == True))
     {
       int _depcount = depcount;
@@ -626,6 +630,9 @@ WriteMake(char *outname, int argc, char *argv[])
   target0 = FName(Project.dest_name);
   // make it the default rule
   fprintf(f, "all::\n");
+  fprintf(f, "clean::\n\t");
+  put_breakline(f, 0, 75,
+                "rm -f $(CLEAN_FILES)");
   WriteTargets(f, vars);
   if (!target0 || !*target0)
     target0 = "TARGET_0";

@@ -16,7 +16,7 @@ contain three binaries, the docs, the language files and all other standard
 configuration files. The binaries are:
 
 rhide.exe     - this is the full featured RHIDE
-rhgdb.exe     - this is a standalone debugger (GDB 4.16) with Turbo Vison
+rhgdb.exe     - this is a standalone debugger (GDB 5.0) with Turbo Vison
                 interface
 gpr2mak.exe   - use this for creating a makefile from a RHIDE project file
 
@@ -46,10 +46,9 @@ server to work. If a DPMI server is not already installed on your system, you
 can use the free services from Charles Sandman's CWSDPMI, which is available at
 any SimtelNet ftp site in the 'djgpp/v2misc' directory.
 
-The primary site for RHIDE is at the University in Chemnitz(Germany) and the
-RHIDE home page is
+The primary site for RHIDE is
 
-http://www.tu-chemnitz.de/~sho/rho/rhide.html
+http://www.rhide.com
 
 This page contains also every time the latest news about RHIDE.
 

@@ -1,14 +1,13 @@
 This file will give you some hints to the linux port
 of RHIDE.
 
-It is currently available ONLY on my website and NOT
-via FTP. The main URL for RHIDE is
+It is currently available on RHIDE website
 
-http://www.tu-chemnitz.de/~sho/rho/rhide.html
+http://www.rhide.com
 
-and specific to the linux RHIDE you can use also
+or on sourceforge
 
-http://www.tu-chemnitz.de/~sho/rho/rhide-linux.html
+http://sourceforge.net/projects/rhide
 
 I will place there the sources and also ready binaries.
 After seeing the problems with shared linked binaries,
@@ -127,7 +126,7 @@ to it (there are not many question asked to be registered).
 
 For mor information on the list please look on my web-site at
 
-http://www.tu-chemnitz.de/~sho/rho/rhide.html
+http://www.rhide.com
 
 
 

@@ -31,6 +31,10 @@
 
 #include "pal.c"
 
+#ifdef __DJGPP__
+#include <sys/exceptn.h>
+#endif
+
 TStringCollection *ReservedWords;
 TStringCollection *UserWords;
 TStringCollection *PascalRWords;
@@ -143,9 +147,11 @@ void IDE::DosShell()
 #ifdef __DJGPP__
   if (debug_commands)
   {
-    fprintf(stderr,"%s: %s\n",_("executing: "),"calling system(NULL)");
+    fprintf(stderr,"%s: %s\n",_("executing: "),"calling system(\"\")");
   }
-  system(NULL); // let system() choose the correct shell
+  __djgpp_exception_toggle();
+  system(""); // let system() choose the correct shell
+  __djgpp_exception_toggle();
 #else
   char *sh = expand_spec("$(SHELL)",NULL);
   if (!*sh) sh = string_dup("/bin/sh");

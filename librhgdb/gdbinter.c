@@ -191,6 +191,7 @@ annotate_stopped()
       dirname = s.symtab->dirname;
       fullname = s.symtab->fullname;
     }
+    _DEBUG("select_source_line(%s,%s,%s)\n", fname, dirname, fullname);
     _select_source_line(fname, s.line, dirname, fullname);
   }
   _DEBUG("a_stopped(%s,%d)\n", fname, s.line);

@@ -21,7 +21,7 @@ vpath %.m $(vpath_src)
 vpath %.asm $(vpath_src)
 vpath %.nsm $(vpath_src)
 vpath_header=$(RHIDESRC)/libtvuti/include $(RHIDESRC)/librhuti\
-	$(TVSRC)/include $(TVSRC)
+	$(TVSRC)/include
 vpath %.h $(vpath_header)
 vpath %.hpp $(vpath_header)
 vpath %.ha $(vpath_header)
@@ -38,7 +38,7 @@ endif
 endif
 
 INCLUDE_DIRS=$(RHIDESRC)/libtvuti/include $(RHIDESRC)/librhuti\
-	$(TVSRC)/include $(TVSRC)
+	$(TVSRC)/include
 LIB_DIRS=
 C_DEBUG_FLAGS=-g
 C_OPT_FLAGS=-O2

@@ -22,7 +22,7 @@ vpath %.asm $(vpath_src)
 vpath %.nsm $(vpath_src)
 vpath_header=$(RHIDESRC)/include $(RHIDESRC)/libtvuti/include\
 	$(RHIDESRC)/librhuti $(RHIDESRC)/libide/include\
-	$(SETSRC)/setedit/include $(SETSRC) $(TVSRC)/include $(TVSRC)
+	$(SETSRC)/setedit/include $(SETSRC)/include $(TVSRC)/include
 vpath %.h $(vpath_header)
 vpath %.hpp $(vpath_header)
 vpath %.ha $(vpath_header)
@@ -42,7 +42,7 @@ endif
 
 INCLUDE_DIRS=$(RHIDESRC)/include $(RHIDESRC)/libtvuti/include\
 	$(RHIDESRC)/librhuti $(RHIDESRC)/libide/include\
-	$(SETSRC)/setedit/include $(SETSRC) $(TVSRC)/include $(TVSRC)
+	$(SETSRC)/setedit/include $(SETSRC)/include $(TVSRC)/include
 LIB_DIRS=libide libtvuti librhuti $(TVOBJ) $(SETOBJ)
 C_DEBUG_FLAGS=-g
 C_OPT_FLAGS=-O2
@@ -380,7 +380,7 @@ DEPS_2=idedefau.cc flags/ada_opt.h flags/c_opt.h flags/cxx_opt.h\
 	flags/deb_opt.h flags/f_opt.h flags/fpc_opt.h flags/fpcreser.h\
 	flags/gpcreser.h flags/opt_opt.h flags/pas_opt.h flags/reserved.h\
 	flags/warn_opt.h rhide.h ideenums.h libide.h tdepende.h tflagcol.h\
-	tflagent.h tfname.h toptions.h tproject.h
+	tflagent.h tfname.h toptions.h tproject.h libtvuti.h
 nodebobj/idedefau.o:: $(DEPS_2)
 	$(RHIDE_COMPILE.cc.o)
 DEPS_3=ideenv.cc rhide.h rhutils.h

@@ -23,10 +23,9 @@ vpath %.nsm $(vpath_src)
 vpath_header=$(RHIDESRC)/include $(RHIDESRC)/libtvuti/include\
 	$(RHIDESRC)/librhuti $(RHIDESRC)/libide/include\
 	$(RHIDESRC)/librhgdb/include $(RHIDESRC)/libtvgdb/include\
-	$(TVSRC)/include $(TVSRC) $(RHIDESRC)/tvdemo/include\
-	$(SETSRC)/include $(SETSRC)/settvuti/include\
-	$(SETSRC)/infview/include $(SETSRC)/calcu $(SETSRC)/setedit/include\
-	$(SETSRC) $(SETSRC)/easydiag
+	$(TVSRC)/include $(RHIDESRC)/tvdemo/include $(SETSRC)/include\
+	$(SETSRC)/settvuti/include $(SETSRC)/infview/include\
+	$(SETSRC)/calcu $(SETSRC)/setedit/include
 vpath %.h $(vpath_header)
 vpath %.hpp $(vpath_header)
 vpath %.ha $(vpath_header)
@@ -47,10 +46,9 @@ endif
 INCLUDE_DIRS=$(RHIDESRC)/include $(RHIDESRC)/libtvuti/include\
 	$(RHIDESRC)/librhuti $(RHIDESRC)/libide/include\
 	$(RHIDESRC)/librhgdb/include $(RHIDESRC)/libtvgdb/include\
-	$(TVSRC)/include $(TVSRC) $(RHIDESRC)/tvdemo/include\
-	$(SETSRC)/include $(SETSRC)/settvuti/include\
-	$(SETSRC)/infview/include $(SETSRC)/calcu $(SETSRC)/setedit/include\
-	$(SETSRC) $(SETSRC)/easydiag
+	$(TVSRC)/include $(RHIDESRC)/tvdemo/include $(SETSRC)/include\
+	$(SETSRC)/settvuti/include $(SETSRC)/infview/include\
+	$(SETSRC)/calcu $(SETSRC)/setedit/include
 LIB_DIRS=libide libtvuti tvdemo librhuti $(TVOBJ) $(SETOBJ) $(PCRE_OBJ)
 C_DEBUG_FLAGS=-g
 C_OPT_FLAGS=-O2

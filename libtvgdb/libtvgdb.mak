@@ -22,8 +22,7 @@ vpath %.asm $(vpath_src)
 vpath %.nsm $(vpath_src)
 vpath_header=../libgdb $(RHIDESRC)/libtvgdb/include\
 	$(RHIDESRC)/librhgdb/include $(RHIDESRC)/libtvuti/include\
-	$(RHIDESRC)/librhuti $(TVSRC)/include $(TVSRC)\
-	$(SETSRC)/settvuti/include $(SETSRC)
+	$(RHIDESRC)/librhuti $(TVSRC)/include $(SETSRC)/settvuti/include
 vpath %.h $(vpath_header)
 vpath %.hpp $(vpath_header)
 vpath %.ha $(vpath_header)
@@ -41,8 +40,7 @@ endif
 
 INCLUDE_DIRS=../libgdb $(RHIDESRC)/libtvgdb/include\
 	$(RHIDESRC)/librhgdb/include $(RHIDESRC)/libtvuti/include\
-	$(RHIDESRC)/librhuti $(TVSRC)/include $(TVSRC)\
-	$(SETSRC)/settvuti/include $(SETSRC)
+	$(RHIDESRC)/librhuti $(TVSRC)/include $(SETSRC)/settvuti/include
 LIB_DIRS=
 C_DEBUG_FLAGS=-g
 C_OPT_FLAGS=-O2

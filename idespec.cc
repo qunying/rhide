@@ -1579,7 +1579,7 @@ GetCompilerSpec(TDependency * dep, Boolean & is_user)
   return NULL;
 }
 
-#include <include/ced_inte.h> // for TCEDITOR_VERSION
+#include <ced_inte.h> // for TCEDITOR_VERSION
 
 void
 #if (TCEDITOR_VERSION >= 0x000447UL)

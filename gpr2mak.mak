@@ -22,7 +22,7 @@ vpath %.asm $(vpath_src)
 vpath %.nsm $(vpath_src)
 vpath_header=$(RHIDESRC)/include $(RHIDESRC)/libtvuti/include\
 	$(RHIDESRC)/librhuti $(RHIDESRC)/libide/include $(TVSRC)/include\
-	$(TVSRC) $(SETSRC)/setedit/include $(SETSRC)
+	$(TVSRC) $(SETSRC)/include $(SETSRC)/setedit/include
 vpath %.h $(vpath_header)
 vpath %.hpp $(vpath_header)
 vpath %.ha $(vpath_header)
@@ -42,7 +42,7 @@ endif
 
 INCLUDE_DIRS=$(RHIDESRC)/include $(RHIDESRC)/libtvuti/include\
 	$(RHIDESRC)/librhuti $(RHIDESRC)/libide/include $(TVSRC)/include\
-	$(TVSRC) $(SETSRC)/setedit/include $(SETSRC)
+	$(TVSRC) $(SETSRC)/include $(SETSRC)/setedit/include
 LIB_DIRS=libide libtvuti librhuti $(TVOBJ) $(SETOBJ) $(PCRE_OBJ)
 C_DEBUG_FLAGS=-g
 C_OPT_FLAGS=-O2
@@ -396,21 +396,16 @@ DEPS_5=idemak.cc rhide.h ideenums.h idefunct.h libide.h tdepende.h tfname.h\
 	tscollec.h
 nodebobj/idemak.o:: $(DEPS_5)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_6=idespec.cc rhide.h rhidehis.h idecomma.h ideenums.h idefunct.h\
-	libide.h tdepende.h tflagcol.h tfname.h toptions.h tproject.h\
-	rhutils.h libtvuti.h tdirlist.h tenterli.h tparamli.h tscollec.h\
-	tvutilfu.h twindowl.h
+DEPS_6=idespec.cc
 nodebobj/idespec.o:: $(DEPS_6)
 	$(RHIDE_COMPILE.cc.o)
 DEPS_7=idestrm.cc
 nodebobj/idestrm.o:: $(DEPS_7)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_8=idesupp.cc rhide.h rhutils.h
+DEPS_8=idesupp.cc
 nodebobj/idesupp.o:: $(DEPS_8)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_9=ideutil.cc rhide.h ideenums.h idefunct.h libide.h tdepende.h\
-	tfname.h toptions.h tproject.h rhutils.h libtvuti.h tdirlist.h\
-	tvutilfu.h
+DEPS_9=ideutil.cc
 nodebobj/ideutil.o:: $(DEPS_9)
 	$(RHIDE_COMPILE.cc.o)
 DEPS_10=ideversi.cc

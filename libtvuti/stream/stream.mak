@@ -20,8 +20,7 @@ vpath %.ii $(vpath_src)
 vpath %.m $(vpath_src)
 vpath %.asm $(vpath_src)
 vpath %.nsm $(vpath_src)
-vpath_header=$(RHIDESRC)/libtvuti/include $(RHIDESRC)/librhuti\
-	$(TVSRC)/include $(TVSRC)
+vpath_header=$(RHIDESRC)/libtvuti/include $(TVSRC)/include
 vpath %.h $(vpath_header)
 vpath %.hpp $(vpath_header)
 vpath %.ha $(vpath_header)
@@ -37,8 +36,7 @@ RHIDE_OS_:=$(patsubst CYGWIN%,CYGWIN,$(shell uname))
 endif
 endif
 
-INCLUDE_DIRS=$(RHIDESRC)/libtvuti/include $(RHIDESRC)/librhuti\
-	$(TVSRC)/include $(TVSRC)
+INCLUDE_DIRS=$(RHIDESRC)/libtvuti/include $(TVSRC)/include
 LIB_DIRS=
 C_DEBUG_FLAGS=
 C_OPT_FLAGS=-O2

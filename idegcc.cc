@@ -519,7 +519,7 @@ time_of_dep(TDependency * dep, long &target_time, Boolean build,
         FExpand(dname);
       pname = string_dup(pname);
       FExpand(pname);
-      PopProject();
+      PopProject(SaveProjectOnlyWhenClosing == 0);
       RemoveFromStack();
       AbsToRelPath(project_directory, dname);
       InitFName(dep->dest_name, dname);

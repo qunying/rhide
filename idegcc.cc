@@ -406,50 +406,6 @@ Boolean time_of_dep(TDependency *dep,long &target_time,Boolean build,
   Boolean retval=True;
   Boolean is_rcs_file = False;
   char *rcs_file = NULL;
-#if 0
-  if (dep->compile_id == COMPILE_PROJECT)
-  {
-    char *dname,*pname;
-    const char *_pname;
-    dname = (char *)alloca(strlen(FName(dep->dest_name))+1);
-    expandPath(FName(dep->dest_name),dname,NULL);
-    if (*dname)
-      dname[strlen(dname)-1] = 0;
-    if (!dep->rebuild_only_nonexistant ||
-        !__file_exists(dname))
-    {
-      _pname = FName(dep->source_name);
-      pname = (char *)alloca(strlen(_pname)+1);
-      strcpy(pname,_pname);
-      BaseName(pname);
-      AddToStack();
-      if (PushProject(dname,pname) == False)
-      {
-        ResetProjectStack();
-        longjmp(cancel_make,-1);
-      }
-      retval = time_of_dep(project,target_time,build,depth+1,depth+1);
-      if (retval == False)
-      {
-        ResetProjectStack();
-        longjmp(cancel_make,-1);
-      }
-      if (dep->dest_name) delete dep->dest_name;
-      string_dup(dname,FName(project->dest_name));
-      FExpand(dname);
-      PopProject();
-      RemoveFromStack();
-      AbsToRelPath(project_directory,dname);
-      InitFName(dep->dest_name,dname);
-      string_free(dname);
-    }
-    else
-    {
-      target_time = TimeOfFile(dname, False, True);
-    }
-    return retval;
-  }
-#else
   if (dep->source_file_type == FILE_PROJECT)
   {
     char *dname=NULL,*pname;
@@ -512,7 +468,6 @@ Boolean time_of_dep(TDependency *dep,long &target_time,Boolean build,
     }
     return retval;
   }
-#endif
   if (dep->dest_file_type == FILE_NOTHING)
   {
     if (dep != project)

@@ -39,6 +39,8 @@ TStringCollection *FpcRWords;
 TStringCollection *ClipperRWords;
 TCEditWindow *clipWindow;
 
+extern "C" unsigned IDEdoEditDialog( int dialog, ...);
+
 IDE::IDE() :
     TProgInit( IDE::initStatusLine,
                IDE::initMenuBar,
@@ -61,7 +63,7 @@ IDE::IDE() :
     ts.enableCmd( cmcSearchAgain );
     disableCommands( ts );
 
-    TCEditor::editorDialog = doEditDialog;
+    TCEditor::editorDialog = IDEdoEditDialog;
     createClipBoard();
 }
 

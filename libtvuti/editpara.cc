@@ -14,16 +14,20 @@ editParamList(TParamList * paramlist, const char *title, int hist_id)
 {
   ushort result;
   Boolean retval = False;
-  char *tmp, temp[1000];        // 1000 should be enough
+  char *tmp;
   TParamList *pl;
 
   paramlist->ToString(tmp);
+  int l = strlen(tmp);
+  if (l < 1024)
+    l = 1024;
+  char temp[l*2+1];
   strcpy(temp, tmp);
   string_free(tmp);
   pl = new TParamList();
   do
   {
-    result = HistinputBox(title, _("~P~arameter"), temp, 999, hist_id);
+    result = HistinputBox(title, _("~P~arameter"), temp, l*2, hist_id);
     if (result == cmOK)
     {
       retval = pl->FromString(temp);

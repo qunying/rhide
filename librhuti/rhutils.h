@@ -22,7 +22,12 @@ char *string_up(char *str);
    specs and/or special variables. The 'ext_func' function is called
    in the second argument with the internal function of
    'expand_spec' which does the real expansion so you can use in your
-   code also references to the standard expansion code. */
+   code also references to the standard expansion code.
+
+   If you set the last argument to nonzero, the external function
+   is called before any builtin function, otherwise it is called
+   last.
+   */
 typedef char *(*token_func)(const char *);
 typedef char *(*external_token_func)(const char *, token_func);
 /* This returns a malloced string ever!!
@@ -45,7 +50,21 @@ typedef char *(*external_token_func)(const char *, token_func);
   $(wildcard WILDCARD)
   $(word nr,TEXT)
 */
-char *expand_spec(const char *spec, external_token_func ext_func);
+char *expand_spec(const char *spec, external_token_func ext_func,
+                  int expand_extern_first = 0);
+
+/*
+  Set this to a function, which is called for each newline '\n'
+  character.
+*/
+extern void (*handle_newline)();
+
+/*
+  Set this variable to 0, if variable-names itself should not
+  be expanded, i.e. treat $(var$(other)) as a variable with the
+  name 'var$(other)', otherwise $(other) is expande to lets say
+  'foo' and $(var$(other)) becomes to $(varfoo) */
+extern int expand_variable_names;
 
 /* Some helper functions for 'expand_spec' which expand _ONLY_ variables,
    and no string functions or external specs. The first simply calls the

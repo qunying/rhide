@@ -202,8 +202,11 @@ static Boolean check_compile_c_errors(TMsgCollection &errs)
     }
     /* The special case "In file included from FILE:LINE" or
                         "                 from FILE:LINE" */
-    if (strncmp(buffer,"In file included from ",22) == 0 ||
-        strncmp(buffer,"                 from ",22) == 0)
+    if (strncmp(buffer,"In file included from ",   22) == 0 ||
+        strncmp(buffer,"                 from ",   22) == 0 ||
+        strncmp(buffer,"In instantiation of ",     20) == 0 ||
+        strncmp(buffer,"  instantiated from ",     20) == 0 ||
+        strncmp(buffer,"  instantiated from here", 24) == 0)
     {
       char *last,_last,*l;
       fname = buffer+22;

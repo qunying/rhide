@@ -8,11 +8,11 @@ endif
 
 srcdir=$(RHIDESRC)
 VPATH=$(srcdir)
-projects=gpr2mak rhide_ rhide gprexp rh tolf.gpr tocrlf.gpr
+projects=gpr2mak rhide_ rhide gprexp rh tolf tocrlf
 project=
 cfg_files=
 txt_conv_DJGPP=tocrlf.exe
-txt_conv_Linux=tocr.exe
+txt_conv_Linux=tolf.exe
 
 po_files=\
 	gpr2mak.cc idecolor.cc idedebug.cc idedefau.cc ideexter.cc \
@@ -256,7 +256,7 @@ distrib.src: init.version touch_gprs
 	$(MAKE) $(FLAGS_TO_PASS) gpr2mak.exe
 	$(MAKE) $(FLAGS_TO_PASS) \
 	  prefix=$(copy_dir)/$(install_prefix_src) distrib.src_ \
-	  LFN=y FNCASE=y txt_conv=$(txt_conv_$(rhide_OS))
+	  LFN=y FNCASE=y txt_conv=$(top_obj_dir)/$(txt_conv_$(rhide_OS))
 
 doc info dvi:
 	$(MAKE) -C doc $@
@@ -339,6 +339,9 @@ ifneq ($(bin_src_bin_files),)
 	chmod +x $(addprefix $(prefix)/$(bin_src_prefix),$(bin_src_bin_files))
 endif
 	echo $(addprefix $(bin_src_prefix),$(bin_src_files)) >> $(logfile)
+ifneq ($(txt_conv),)
+	$(txt_conv) $(addprefix $(prefix)/$(bin_src_prefix),$(bin_src_files))
+endif
 
 ifneq ($(link_type),dynamic)
 DISTRIB_BIN_FLAGS=\
@@ -364,7 +367,7 @@ install::
 install.all:
 	$(MAKE) $(FLAGS_TO_PASS) install logfile=$(logfile)
 
-distrib.bin_: install.all install.bin_src_files $(MANIFEST)
+distrib.bin_: $(txt_conv) install.all install.bin_src_files $(MANIFEST)
 
 distrib.dynamic:
 	$(MAKE) link_type=dynamic archive_id=.dynamic distrib.bin 
@@ -376,7 +379,7 @@ distrib.bin: init.version touch_gprs
 	$(MAKE) $(FLAGS_TO_PASS) $(DISTRIB_BIN_FLAGS) gpr2mak.exe
 	$(MAKE)  $(FLAGS_TO_PASS) prefix=$(copy_dir)$(install_prefix_bin) \
 	  distrib.bin_ \
-	  logfile=rhide.log $(DISTRIB_BIN_FLAGS)
+	  logfile=rhide.log $(DISTRIB_BIN_FLAGS) txt_conv="$(top_obj_dir)/$(txt_conv_$(rhide_OS))"
 ifeq ($(rhide_OS),DJGPP)
 # On DJGPP the ZIP format is default
 	rm -f $(rhideb).zip

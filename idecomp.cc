@@ -1,4 +1,4 @@
-/* Copyright (C) 1996-2000 Robert H”hne, see COPYING.RH for details */
+/* Copyright (C) 1996-2003 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
 #define Uses_MsgBox
 #include "rhide.h"
@@ -982,7 +982,8 @@ check_c_deps(TDependency * dep)
       temp++;
       while (*temp == ' ')
         temp++;
-      temp = strchr(temp, ' ');
+      if (OnlyUserIncludes)
+        temp = strchr(temp, ' ');
       do
       {
         while (temp)

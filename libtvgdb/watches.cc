@@ -84,7 +84,10 @@ void Evaluate(char *watch)
 void AddWatch(char *buffer, Boolean show_window)
 {
   if ((show_window == True) && !watchwindow) OpenWatchWindow();
-  Watches.insert(strdup(buffer));
+  if (watchwindow)
+    Watches.atInsert(watches->focused, strdup(buffer));
+  else
+    Watches.insert(strdup(buffer));
   if (watchwindow) watches->AddVariable(buffer);
 }
 

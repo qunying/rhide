@@ -1,7 +1,15 @@
 /* Copyright (C) 1996-1998 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/stat.h>
+#include <unistd.h>
+#include <fcntl.h>
+
 #define Uses_TNSSortedCollection
 #define Uses_ifpstream
+#define Uses_fpstream
 
 #define Uses_TDirList
 #define Uses_tvutilFunctions
@@ -14,12 +22,6 @@
 #define Uses_ideFunctions
 #include <libide.h>
 #include <rhide.h>
-#include <string.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <sys/stat.h>
-#include <unistd.h>
-#include <fcntl.h>
 
 int debug_dependencies = 0;
 int debug_commands = 0;
@@ -313,5 +315,4 @@ void close_ifpstream(ifpstream *is)
 #endif
   delete is;
 }
-
 

@@ -157,7 +157,17 @@ add_nodes_from_topic(char *name)
 
     return 0;
   }
+// FIXME!!
+/* Ther is currently no other way for me,
+   to see if I'm compiling with the InfView
+   from setedit 0.4.45.
+*/
+#ifdef InfV_UseBinaryFile
+  int suggY;
+  topic = inf->getTopic(fname + 1, 0, moinHideNodeLink, suggY);
+#else
   topic = inf->getTopic(fname + 1, 0, moinHideNodeLink);
+#endif
   if (!topic || inf->Status == True
       || (count = topic->getNumCrossRefs()) == 0)
   {

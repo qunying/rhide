@@ -503,6 +503,11 @@ extern "C"
 */
   int is_float_reg(int num);
 
+/*
+  Return the gdb version as a string
+*/
+  const char *gdb_version();
+
 #ifdef __cplusplus
 }
 #endif

@@ -599,3 +599,9 @@ ShowUserScreen()
     user_screen_shown = 1;
   }
 }
+
+const char *gdb_version()
+{
+  return version;
+}
+

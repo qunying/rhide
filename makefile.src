@@ -25,7 +25,7 @@ src_files=$(po_files) Makefile common.mak README.IDE RHIDE.BIN RHIDE.SRC \
 	rhide_ch.log todo pal.c zipcomm.bin zipcomm.src rhide.env \
 	LINUX.TXT rhide.var VCSA.SH common.var \
 	ideversi.in ideversi.cc readme.key rhide_.env \
-	rhide.terminfo moveifch gprexp.gpr gprexp.mak
+	moveifch gprexp.gpr gprexp.mak
 
 ifeq ($(rhide_OS),DJGPP)
 ADD_SUBDIRS=
@@ -45,7 +45,7 @@ install_doc_files=readme.key COPYING COPYING.RH README.IDE RHIDE.BIN\
 	LINUX.TXT VCSA.SH
 
 install_data_files_common=rhide_.env
-install_data_files_Linux=rhide.terminfo
+install_data_files_Linux=
 install_data_files=$(install_data_files_common) $(install_data_files_$(rhide_OS))
 
 include $(RHIDESRC)/common.mak

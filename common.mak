@@ -341,9 +341,6 @@ config:: $(addsuffix .cfo,$(subdirs))
 endif
 endif
 
-$(RHIDESRC)/tvision/include/tv.h:
-	$(MAKE) -C $(top_dir)/tvpatch patches
-
 install.data::
 install.bin::
 install.info::

@@ -61,7 +61,7 @@ ALL_OBJFILES=copyrite.o doc/htmlspl.o doc/tx2txi.o nodebobj/gpr2mak.o\
 	nodebobj/idespec.o nodebobj/idestatu.o nodebobj/idestrm.o\
 	nodebobj/idesupp.o nodebobj/idesynta.o nodebobj/ideuser.o\
 	nodebobj/ideutil.o nodebobj/ideversi.o nodebobj/openedit.o\
-	nodebobj/rhassert.o
+	nodebobj/rhassert.o nodebobj/tocrlf.o nodebobj/tolf.o
 LIBRARIES=
 SOURCE_NAME=$<
 OUTFILE=$@
@@ -75,7 +75,7 @@ MAIN_TARGET=
 PROJECT_ITEMS=copyrite.gpr doc/htmlspl.gpr doc/tx2txi.gpr gpr2mak.gpr\
 	gprexp.gpr librhgdb/test/gsymify.gpr librhgdb/test/listfunc.gpr\
 	librhgdb/test/mygdb.gpr po/msgcat.gpr rhgdb/rhgdb.gpr rhide.gpr\
-	rhide_.gpr
+	rhide_.gpr tocrlf.gpr tolf.gpr
 DEFAULT_MASK=*.gpr
 RHIDE_BIN_DIR=c:/obj/rhide
 PASCAL_TYPE=GPC
@@ -316,7 +316,6 @@ RHIDE_OS_LIBS_DJGPP_rhgdb.exe=dbg
 RHIDE_OS_LIBS_DJGPP=$(RHIDE_OS_LIBS_DJGPP_$(MAIN_TARGET))
 RHIDE_OS_LIBS=$(PCRE_LIB_$(RHIDE_OS)) $(INTL_LIB_$(RHIDE_OS))\
 	$(RHIDE_OS_LIBS_$(RHIDE_OS))
-RHIDE_LIBS+=$(SETOBJ)/easydiag.a -lrhtv
 SET_FILES=$(DJDIR)/share/setedit
 RHIDE_STDINC_C_$(RHIDE_OS)=/usr/include /usr/local/include
 RHIDE_STDINC_C_DJGPP=/usr/include /usr/local/include
@@ -353,7 +352,6 @@ RHIDE_OS_LIBS_DJGPP_rhgdb.exe=dbg
 RHIDE_OS_LIBS_DJGPP=$(RHIDE_OS_LIBS_DJGPP_$(MAIN_TARGET))
 RHIDE_OS_LIBS=$(PCRE_LIB_$(RHIDE_OS)) $(INTL_LIB_$(RHIDE_OS))\
 	$(RHIDE_OS_LIBS_$(RHIDE_OS))
-RHIDE_LIBS+=$(SETOBJ)/easydiag.a -lrhtv
 SET_FILES=$(DJDIR)/share/setedit
 %.o: %.c
 	$(RHIDE_COMPILE.c.o)
@@ -532,5 +530,21 @@ rhide_.gpr.force:
 	$(MAKE) -f rhide_.mak $(FLAGS_FOR_SUBPROJECTS)
 clean::
 	$(MAKE) -f rhide_.mak $(FLAGS_FOR_SUBPROJECTS) clean
+
+DEPS_13=
+.PHONY: tocrlf.gpr.force
+all:: tocrlf.gpr.force
+tocrlf.gpr.force:
+	$(MAKE) -f tocrlf.mak $(FLAGS_FOR_SUBPROJECTS)
+clean::
+	$(MAKE) -f tocrlf.mak $(FLAGS_FOR_SUBPROJECTS) clean
+
+DEPS_14=
+.PHONY: tolf.gpr.force
+all:: tolf.gpr.force
+tolf.gpr.force:
+	$(MAKE) -f tolf.mak $(FLAGS_FOR_SUBPROJECTS)
+clean::
+	$(MAKE) -f tolf.mak $(FLAGS_FOR_SUBPROJECTS) clean
 
 all:: TARGET_0

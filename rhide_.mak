@@ -346,7 +346,6 @@ RHIDE_OS_LIBS_DJGPP_rhgdb.exe=dbg
 RHIDE_OS_LIBS_DJGPP=$(RHIDE_OS_LIBS_DJGPP_$(MAIN_TARGET))
 RHIDE_OS_LIBS=$(PCRE_LIB_$(RHIDE_OS)) $(INTL_LIB_$(RHIDE_OS))\
 	$(RHIDE_OS_LIBS_$(RHIDE_OS))
-RHIDE_LIBS+=$(SETOBJ)/easydiag.a -lrhtv
 SET_FILES=$(DJDIR)/share/setedit
 RHIDE_STDINC_C_$(RHIDE_OS)=/usr/include /usr/local/include
 RHIDE_STDINC_C_DJGPP=/usr/include /usr/local/include
@@ -383,7 +382,6 @@ RHIDE_OS_LIBS_DJGPP_rhgdb.exe=dbg
 RHIDE_OS_LIBS_DJGPP=$(RHIDE_OS_LIBS_DJGPP_$(MAIN_TARGET))
 RHIDE_OS_LIBS=$(PCRE_LIB_$(RHIDE_OS)) $(INTL_LIB_$(RHIDE_OS))\
 	$(RHIDE_OS_LIBS_$(RHIDE_OS))
-RHIDE_LIBS+=$(SETOBJ)/easydiag.a -lrhtv
 SET_FILES=$(DJDIR)/share/setedit
 %.o: %.c
 	$(RHIDE_COMPILE.c.o)

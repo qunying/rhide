@@ -1,5 +1,6 @@
 /* Copyright (C) 1996-1998 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
+#include <sys/stat.h>
 #define Uses_TDialog
 #define Uses_TScrollBar
 #define Uses_TIDEEditWindow
@@ -28,7 +29,8 @@ TDialog *msg_window = NULL;
 TMsgListBox *msg_list = NULL;
 TRect MsgWindowRect(-1,-1,-1,-1);
 
-TCEditWindow *is_on_desktop(const char * fname,Boolean is_full_name)
+TCEditWindow *is_on_desktop(const char * fname,Boolean is_full_name,
+                            Boolean check_inode)
 {
   int i,count;
   char *name1,*bname;
@@ -58,6 +60,24 @@ TCEditWindow *is_on_desktop(const char * fname,Boolean is_full_name)
     {
       string_free(name1);
       return (TCEditWindow *)w->window;
+    }
+  }
+  if (check_inode == True)
+  {
+    struct stat st;
+    if ( stat(name1, &st) !=0 )
+    {
+      string_free(name1);
+      return NULL;
+    }
+    for (i=0;i<count;i++)
+    {
+      DeskTopWindow *w = (DeskTopWindow *)windows->at(i);
+      if ((st.st_dev == w->dev) && (st.st_ino == w->inode))
+      {
+        string_free(name1);
+        return (TCEditWindow *)w->window;
+      }
     }
   }
   string_free(name1);

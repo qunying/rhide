@@ -464,8 +464,6 @@ void WriteMake(char *outname,int argc,char *argv[])
   {
     fprintf(f,"# created from within RHIDE\n");
   }
-  if (__file_exists("rhide.env"))
-    fprintf(f,"include rhide.env\n");
   check_vars(vars,Options.SrcDirs);
   check_vars(vars,Options.ObjDirs);
   check_vars(vars,Options.include_path);
@@ -522,6 +520,8 @@ void WriteMake(char *outname,int argc,char *argv[])
     fprintf(f,"vpath %c.o $(vpath_obj)\n",'%');
   }
   WriteSpecData(f);
+  if (__file_exists("rhide.env"))
+    fprintf(f,"include rhide.env\n");
   target0 = FName(Project.dest_name);
   // make it the default rule
   fprintf(f, "all::\n");

@@ -18,12 +18,11 @@ binaries.
 Installing RHIDE
 ================
 
-The binary archive has all the RHIDE files stored
-in a subdirectoy called rhide-?.??. In this directory
-is also a installation script, which installs the
-the binaries and other needed files on your system.
-Look at INSTALL.LINUX for additional options to that
-script.
+The binary archive has all the RHIDE files based on the
+/usr directory tree. If you got only the tar archive, untar
+it in the root directory / and you should be ready. If you
+got the rpm archive, install it using your rpm software.
+
 
 Documentation about RHIDE
 =========================
@@ -47,7 +46,10 @@ but not all is fineshed yet.
 The main differences (and difficulties when porting
 RHIDE to linux) is all the stuff which depends on
 the hardware. These are the keyboard, the screen and
-the mouse.
+the mouse. These problems are handled mostly in the
+TV (Turbo Vision) releated code and this separate 
+library is now maintained by Salvador Eduardo Tropea
+who fixed many things and did many work on it.
 
 Since a normal user under linux has no direct access
 to the hardware you will get the best results with
@@ -61,51 +63,47 @@ But you can make RHIDE also as a setgid program, when
 you create a new group and allow this group rw permissions
 to the /dev/vcsa.. devices. I have written a small
 script, which setup the correct things for that. Look
-at VCSA.SH.
+at VCSA.SH. Alternatively you can also look in your /dev
+directory if the /dev/vcsa devices already have rw access
+for a special group. On my SuSE 6.2 system this is the
+group tty. So you simply have either to make the rhide
+binary setgid tty or an other way is to add all the users,
+which are allowed on your system to use RHIDE to belong to the
+group tty.
 
 Other known problems:
   - RHIDE knows currently nothing about any installed fonts.
     It uses at any time the IBM PC charset.
 
 
-Because I found until now no documentation about a
-standard directory tree for such a package like RHIDE,
-I hope I made a tree which is acceptable. After a hint
-of a first RHIDE tester on linux, I made now a directory
-tree for RHIDE, where all is placed in one directory,
-called after the RHIDE version, as writing this it is
+Running RHIDE under X
+======================
 
-rhide-1.3
+Running RHIDE in a X terminal should now work much better
+than versions 1.4.x.
 
+Running RHIDE via a remote terminal
+===================================
 
-Running RHIDE in a xterm
-========================
-
-I had many problems, when running RHIDE in a xterm. I don't
-know what is wrong (either the terminfo file for the xterm
-or my X setup) but I think it is the terminfo file.
-
-At first I recommend to run RHIDE in a rxvt because of a better
-color support. In a standard xterm RHIDE will use only black
-and white.
-For the keys I have patched my xterm-color terminfo file to
-have the keysequences the same as generated. For instance there
-was a difference in the cursor key sequences. In the terminfo
-file, there was \EOA for the cursor up key, but \E[A is generated.
-So I have changed simply most of the \EO to \E[ and after this
-most of the keys worked.
+This depends now on you terminal settings. If the terminfo
+entries on your system (come with ncurses) math the produced
+codes by your terminal, then you should be able to run RHIDE
+in a somewhat usable way. Otherwise (this is the only case I
+currently know) you will have many many problems at first with
+the keyboard and as next with the shown colors/characters.
 
 
 Problems with the editor
 ========================
 
-Since the editor was designed to be used on DJGPP, it was written
-in the hardly assumption, that the text files are in MS-DOS style
-(CR/LF). I have tried to make it now working also on files from
-the unix world by accepting only LF as line terminator, but
-not all is working correct (you can see this when you select
-text, use autoindent and so on), but I think for a first try to
-RHIDE you can live with it.
+Of course the are probably sometimes proiblems with the editor
+like with any other software, but I think, Salvador (the author
+of the editor) has done here a very great job. He ditributes also
+the editor as standalone program. I have in RHIDE 1.5 integrated
+the version 0.4.39 of the editor but I hadn't the time to make all
+features of the editor available in RHIDE. So if you are missing 
+someting in RHIDE which you used in the standalone editor, I can
+say, that is only related to my missing time.
 
 Reporting bugs
 ==============
@@ -118,6 +116,20 @@ send also a CC to me.
 But before doing so, please remember at first the above mentioned
 problems, because they are known to me and they need not to be reported
 to me.
+
+Mailing list for RHIDE
+======================
+
+I have installed a mailing list for RHIDE using ony of the free
+systems in the net. Maybe it is not the best but it is a starting
+point. You can post to this list only if you have been registered
+to it (there are not many question asked to be registered).
+
+For mor information on the list please look on my web-site at
+
+http://www.tu-chemnitz.de/~sho/rho/rhide.html
+
+
 
       Have fun with RHIDE, 
 

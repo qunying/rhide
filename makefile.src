@@ -380,8 +380,11 @@ TV_SRC=\
 	$(wildcard $(addprefix $(REAL_TVSRC)/classes/linux/,$(RAW_TV_SRC)))\
 	$(wildcard $(addprefix $(REAL_TVSRC)/classes/djgpp/,$(RAW_TV_SRC)))
 
-RAW_SET_SRC=$(sort $(subst .o,.cc,$(shell ar t $(SETOBJ)/libset.a)) \
-	$(subst .o,.cc,$(shell ar t $(SETOBJ)/easydiag.a)))
+RAW_SET_SRC_BASE=$(subst .o,.cc,$(shell ar t $(SETOBJ)/libset.a))
+ifneq ($(wildcard $(SETOBJ)/easydiag.a),)
+RAW_SET_SRC_EASY=$(subst .o,.cc,$(shell ar t $(SETOBJ)/easydiag.a))
+endif
+RAW_SET_SRC=$(sort $(RAW_SET_SRC_BASE) $(RAW_SET_SRC_EASY))
 SET_SRC=\
 	$(wildcard $(addprefix $(REAL_SETSRC)/calcu/,$(RAW_SET_SRC)))\
 	$(wildcard $(addprefix $(REAL_SETSRC)/doc/,$(RAW_SET_SRC)))\

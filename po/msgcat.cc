@@ -89,6 +89,7 @@ static void LIGHT()
 
 #define cscanf scanw
 #define cprintf printw
+#define cputs(x) printw("%s", x)
 
 #include <unistd.h>
 
@@ -149,13 +150,16 @@ read_source_file(char *fname)
   }
   last_lines_count = 0;
   char *_fname = NULL;
-  string_cat(_fname, base_dir, "/", fname, NULL);
+  if (__file_exists(fname))
+    string_cat(_fname, fname, NULL);
+  else
+    string_cat(_fname, base_dir, "/", fname, NULL);
   FILE *f = fopen(_fname, "rt");
   string_free(_fname);
   if (!f)
     return 0;
-  char buf[4000];
-  while (fgets(buf, 3999, f))
+  char buf[80];
+  while (fgets(buf, 79, f))
   {
     if (last_lines_count == last_lines_size)
     {
@@ -189,7 +193,8 @@ write_source_lines(char *fname, int line_no)
       LIGHT();
     else
       NORM();
-    cprintf("%s\r", last_source[start_line]);
+    cputs(last_source[start_line]);
+    cputs("\r");
     start_line++;
   }
 }
@@ -284,7 +289,11 @@ int read_id(int write_it)
         file_seen = 1;
         char *a = LINE+3;
         char *b=a;
-        while (*b && (*b != ':')) b++;
+        while (*b)
+        {
+          if ((*b == ':') && isdigit(b[1])) break;
+          b++;
+        }
         *b = 0;
         SOURCE_FILE = string_dup(a);
         b++;
@@ -386,6 +395,7 @@ void write_id(char *msg, char *comment)
   }
   if (started) fprintf(fo,"msgid  ");
   if (started || *start) put_breakline(fo, started, 75, start);
+  fflush(fo);
 }
 
 void write_msg(char *msg)
@@ -407,6 +417,7 @@ void write_msg(char *msg)
   if (started) fprintf(fo,"msgstr ");
   if (started || *start) put_breakline(fo, started, 75, start);
   fprintf(fo, "\n");
+  fflush(fo);
 }
 
 static void convert(char *s)

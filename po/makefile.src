@@ -21,7 +21,7 @@
 CURRENT_LANGUAGES=cs da de es fi fr it nl no pl pt sv
 FUTURE_LANGUAGES=ee ru # they were not ready when releasing RHIDE
 LANGUAGES=$(CURRENT_LANGUAGES)
-ADDITIONAL_LANG_es=$(SETSRC)/internac/es.po
+ADDITIONAL_LANG_es=$(wildcard $(REAL_SETSRC)/internac/es.po)
 
 srcdir=$(RHIDESRC)/po
 VPATH=$(srcdir)
@@ -78,7 +78,8 @@ $(addsuffix .po,$(LANGUAGES)): potfiles.po $(MSGCAT)
 	-cp -f $@ $(subst .po,.bak,$@)
 	$(MSGCAT) $(MSGCAT_OPTIONS) -directory $(RHIDESRC) \
 	  -cat $(subst .po,.cat,$@) \
-	  -ocat __cat__ $(wildcard $@) $(ADDITIONAL_LANG) $< __po__
+	  -ocat __cat__ $(wildcard $@) $(ADDITIONAL_LANG) \
+	  -po $< -o __po__
 	$(move-if-change) __cat__ $(subst .po,.cat,$@)
 	$(move-if-change) __po__ $@
 	
@@ -110,5 +111,14 @@ install:: install.languages
 	  $(srcdir)/readme.lan
 	
 $(addsuffix .zip,$(LANGUAGES)): $(MSGCAT)
+
+translate:
+ifeq ($(TRANS_LANG),)
+	@echo Please run \"make translate TRANS_LANG=de\", where
+	@echo you should replace \"de\" with the language you
+	@echo want to translate
+else
+	$(MAKE) $(TRANS_LANG).po MSGCAT_OPTIONS=
+endif
 
 lang_packages: $(addsuffix .zip,$(LANGUAGES))

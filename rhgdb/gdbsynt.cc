@@ -4,6 +4,7 @@
 #include <tv.h>
 
 #define Uses_TCEditor
+#define Uses_TNoCaseStringCollection
 #define Uses_TCEditor_Internal
 #include <ceditor.h>
 
@@ -39,11 +40,10 @@ static void __attribute__ ((__constructor__))
 init_syntax()
 {
   char *syntax_file;
-  TCEditor::SHLSOStack=new SOStack;
-  TCEditor::SHLGenList=new TNoCaseSOSStringCollection(5,5,TCEditor::SHLSOStack);
+  TCEditor::SHLGenList=new TNoCaseStringCollection(5,5);
   syntax_file = ExpandFileNameToThePointWhereTheProgramWasLoaded(SHLFile);
   if (LoadSyntaxHighLightFile(syntax_file,TCEditor::SHLArray,
-                              *TCEditor::SHLSOStack,TCEditor::SHLGenList,
+                              TCEditor::SHLGenList,
                               TCEditor::SHLCant) != 0)
   {
     syntax_file = "__syntax__";
@@ -60,7 +60,7 @@ End\n\
 ");
     fclose(f);
     LoadSyntaxHighLightFile(syntax_file,TCEditor::SHLArray,
-                            *TCEditor::SHLSOStack,TCEditor::SHLGenList,
+                            TCEditor::SHLGenList,
                             TCEditor::SHLCant);
     unlink(syntax_file);
   }

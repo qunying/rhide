@@ -15,6 +15,12 @@
 extern "C" {
 #endif
 
+#define OLD_GDB
+
+#ifdef UI_FILE_H
+#undef OLD_GDB
+#endif
+
 #ifdef OLD_GDB
 #define RH_GDB_FILE GDB_FILE
 #else

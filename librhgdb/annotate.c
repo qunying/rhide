@@ -193,6 +193,67 @@ DEBUG("|catchpoint(%d)|",number);
 }
 
 void
+annotate_field (int num __attribute__((unused)))
+{
+_DEBUG("a_field(%d)\n",num);
+}
+
+void
+annotate_field_begin (struct type *type __attribute__((unused)))
+{
+_DEBUG("a_field_begin\n");
+}
+
+void
+annotate_field_name_end ()
+{
+_DEBUG("a_field_name_end\n");
+}
+
+void
+annotate_field_value ()
+{
+_DEBUG("a_field_value\n");
+}
+
+void
+annotate_field_end ()
+{
+_DEBUG("a_field_end\n");
+}
+
+void
+annotate_value_history_begin (int histindex __attribute__((unused)),
+                              struct type *type __attribute__((unused)))
+{
+_DEBUG("a_value_history_begin(%d)\n",histindex);
+}
+
+void
+annotate_value_begin (struct type *type __attribute__((unused)))
+{
+_DEBUG("a_value_begin\n");
+}
+
+void
+annotate_value_history_value ()
+{
+_DEBUG("a_value_history_value\n");
+}
+
+void
+annotate_value_history_end ()
+{
+_DEBUG("a_value_history_end\n");
+}
+
+void
+annotate_value_end ()
+{
+_DEBUG("a_value_end\n");
+}
+
+void
 _initialize_annotate ()
 {
 }

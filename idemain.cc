@@ -2171,14 +2171,17 @@ find_project()
   }
   string_cat(spec, "$(word 2,", files, ")", NULL);
   char *file = expand_rhide_spec(spec);
-  string_free(files);
   string_free(spec);
   if (!*file) // only one .gpr file was found
   {
-    PRJNAME = file;
-    return;
+    PRJNAME = files;
   }
-  PRJNAME = select_project(_("Select a project"));
+  else
+  {
+    string_free(files);
+    PRJNAME = select_project(_("Select a project"));
+  }
+  string_free(file);
 }
 
 static char *tmpdir = NULL;

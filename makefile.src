@@ -25,7 +25,7 @@ src_files=$(po_files) Makefile common.mak README.IDE RHIDE.BIN RHIDE.SRC \
 	rhide_ch.log edit_ch.log todo pal.c zipcomm.bin zipcomm.src rhide.env \
 	LINUX.TXT rhide.var INSTALL.LINUX INSTALL.MAK VCSA.SH common.var \
 	ideversi.in ideversi.cc readme.key rhide_.env \
-	rhide.terminfo
+	rhide.terminfo move-if-change
 
 ifeq ($(rhide_OS),DJGPP)
 ADD_SUBDIRS=diffs

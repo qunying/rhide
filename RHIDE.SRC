@@ -49,13 +49,26 @@ GDB_SRC=s:/gnu/gdb-4.16
   you must also set in your DJGPP.ENV the variable GDB_OBJ to point
   to that directory.
 
+  On Linux the default directory for the GNU sources differ from
+  distribution to distribution, so please check your correct directory
+  and edit the makefile.src in the libgdb/ subdirectory.
+
+  To get the GDB sources compiled correct by the step from the RHIDE
+  build process
+
+  make needed
+
+  you have to configure the GDB sources at first on Linux. (DJGPP
+  sources come already configured!)
+
+[???]
 - The original sources for the Turbo Vision libraray version 2.0 from
   Borland. Because of the copying conditions of Borland I cannot distribute
   the full modified sources for that lib but only diffs against them.
   But you can get the sources from Borland's public FTP-site
 
   ftp://ftp.borland.com/pub/borlandcpp/devsupport/archive/turbovision/tv.zip
-
+[???]
 - And some time.
 
 =======================================================================
@@ -159,6 +172,9 @@ make install
 to install RHIDE in %DJDIR%/bin together with the docs and the language
 files. If you want to install only parts of RHIDE, see at the makefile,
 how this can be done.
+
+On Linux DO NOT USE THE INSTALL.LINUX script!! This script should be
+used only for the binary distribution!
 
 
 Please do not expect too much from a look at the source files. I haven't

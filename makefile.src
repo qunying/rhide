@@ -173,10 +173,10 @@ endif
 init.version:
 	sed -e s,@version@,$(VERSION),g \
 	    -e "s/WARN/This file is generated automatically, do not edit!/g" \
-          $(srcdir)/ideversi.in > $(srcdir)/ideversi.cc
+          $(srcdir)/ideversi.in > ideversi.cc
 	sed -e s,@version@,$(VERSION),g \
 	    -e "s/WARN/This file is generated automatically, do not edit!/g" \
-          $(srcdir)/rhgdb/version.in > $(srcdir)/rhgdb/version.cc
+          $(srcdir)/rhgdb/version.in > rhgdb/version.cc
 
 distrib.src: init.version
 	$(MAKE) $(FLAGS_TO_PASS) gpr2mak.exe

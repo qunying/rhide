@@ -1,5 +1,6 @@
 /* Copyright (C) 1996-2000 Robert H”hne, see COPYING.RHU for details */
 #include <limits.h>
+#include <string.h>
 #include <rhutils.h>
 
 #ifdef __DJGPP__

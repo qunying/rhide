@@ -23,6 +23,7 @@
 #include <sys/stat.h>
 #include <sys/timeb.h>
 #include <stdio.h>
+#include <string.h>
 #include <unistd.h>
 
 #include <rhutils.h>

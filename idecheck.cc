@@ -16,6 +16,13 @@
 #include "rhide.h"
 #include <rhutils.h>
 
+static int
+TestDirectory(const char *lcdir)
+{
+  struct stat st;
+  return (stat(lcdir, &st) == 0) && (S_ISDIR(st.st_mode));
+}
+
 int
 CheckIDE()
 {
@@ -88,10 +95,25 @@ CheckIDE()
     if (!*localedir)
       string_cat(localedir, djdir, "/share/locale", NULL);
     string_cat(lcdir, localedir, "/", language, "/LC_MESSAGES", NULL);
-    if (stat(lcdir, &st) == 0)
-    {
-      if (S_ISDIR(st.st_mode))
-        lcdir_valid = 1;
+    lcdir_valid = TestDirectory(lcdir);
+    if (!lcdir_valid)
+    { // SET: This is not that simple, it can be lg_CT.codepage
+      // lg == language, CT == country
+      int len = strlen(language);
+      if (len > 6 && language[5] == '.')
+      {
+        language[5] = 0;
+        string_free(lcdir);
+        string_cat(lcdir, localedir, "/", language, "/LC_MESSAGES", NULL);
+        lcdir_valid = TestDirectory(lcdir);
+        if (!lcdir_valid && language[2] == '_')
+        {
+          language[2] = 0;
+          string_free(lcdir);
+          string_cat(lcdir, localedir, "/", language, "/LC_MESSAGES", NULL);
+          lcdir_valid = TestDirectory(lcdir);
+        }
+      }
     }
   }
   else

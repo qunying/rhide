@@ -9,68 +9,38 @@
 @set update-date 29 September 1997
 @set update-month September 1997
 
+@macro quest{stuff}
+@quote-arg
+@emph{@strong{Question}: \stuff\}
+@end macro
+
+@macro ans
+@strong{Answer}:
+@end macro
+
 @c I'm using a4 paper
 @iftex
 @afourlatex
 @end iftex
 
-@iftex
-@immediate@write17{-------------------------------------------------------------------}
-@immediate@write17{---------IGNORE THE FOLLOWING ERROR ABOUT THE INVALID CHARACTER----}
-@immediate@write17{-------------------------BY SIMPLY PRESSING ENTER------------------}
-@immediate@write17{-------------------------------------------------------------------}
-@end iftex
-
-@c This is for the text version
-@set rh Robert H”hne
-@iftex
 @set rh Robert H@"ohne
-@end iftex
-@ifset html
-@set rh Robert H&ouml;hne
-@end ifset
 @settitle RHIDE Version @value{version}
 @footnotestyle separate
 @paragraphindent asis
 
 @comment %**end of header
 
-@ifclear html
-@ifinfo
-@format
-START-INFO-DIR-ENTRY
-* RHIDE: (rhide.inf).   Documentation about RHIDE, an IDE for DJGPP or Linux.
-END-INFO-DIR-ENTRY
-@end format
-@end ifinfo
-@end ifclear
-
-@ifset html
-@include rhidemac.htm
-@clear text
-@end ifset
-
-@ifset text
-@include rhidemac.txt
-@clear html
-@end ifset
-
-@ifclear html
-@ifclear text
-@include rhidemac.txi
-@end ifclear
-@end ifclear
-
-@ifinfo
-@html
-@end ifinfo
+@dircategory Integrated Environment
+@direntry
+* RHIDE: (rhide).   Documentation about RHIDE, an IDE for DJGPP or Linux.
+@end direntry
 
 @macro RH{}
-@mail{@value{rh},robert.hoehne@@gmx.net}
+@email{@value{rh},robert.hoehne@@gmx.net}
 @end macro
 
 @macro SET{}
-@mail{Salvador Eduardo Tropea (SET),salvador@@inti.gov.ar}
+@email{Salvador Eduardo Tropea (SET),salvador@@inti.gov.ar}
 @end macro
 
 @macro SPANISH{}
@@ -78,15 +48,15 @@ END-INFO-DIR-ENTRY
 @end macro
 
 @macro FRENCH{}
-@mail{Eric Nicolas,nicolas@@dsys.ceng.cea.fr}
+@email{Eric Nicolas,nicolas@@dsys.ceng.cea.fr}
 @end macro
 
 @macro SWEDISH{}
-@mail{Christian Axbrink,sa9471@@ida.utb.hb.se}
+@email{Christian Axbrink,sa9471@@ida.utb.hb.se}
 @end macro
 
 @macro ITALIAN{}
-@mail{Normando Marcolongo,i094968@@spv.ing.uniroma1.it}
+@email{Normando Marcolongo,i094968@@spv.ing.uniroma1.it}
 @end macro
 
 @macro ENGLISH{}
@@ -159,8 +129,7 @@ END-INFO-DIR-ENTRY
 @end ifset
 
 @macro RHIDEHOME
-@www{the RHIDE home page,www.tu-chemnitz.de/~sho/rho/rhide.html}
-(valid until at least 30. September 1997)
+@uref{http://www.tu-chemnitz.de/~sho/rho/rhide.html,the RHIDE home page}
 @end macro
 
 
@@ -239,36 +208,26 @@ People, who helped me, to develop RHIDE:
 @end itemize
 
 @vskip 0pt plus 1filll
-Copyright @copyright{} 1996-1998 @value{rh}
+Copyright @copyright{} 1996-2000 @value{rh}
 
 @end titlepage
 
-@ifinfo
-@htmltitle RHIDE documentation for Version @value{version}
-@htmlsubtitle @value{update-month}
-
-@htmlauthor by @value{rh}
-@paragraph{}
 @*
 @*
 This is the documentation for the Integrated Development
 Environment RHIDE.
-@paragraph{}
 
 Copyright @copyright{} 1996-1998 @value{rh}
-@paragraph{}
 
-@paragraph{}
 
 This documentation may be freely distributed with the RHIDE package or any
 part thereof, provided this copyright notice is left intact on all copies.
-@end ifinfo
 
-@ifset html
-@include rhide.ctx
-@end ifset
+@ifclear text
+@contents
+@end ifclear
 
-@ifinfo
+@ifnottex
 @node Top, Introduction, (dir), (dir)
 @top RHIDE
 
@@ -286,7 +245,7 @@ including all the indices.
 @end format
 @*
 @end ifset
-@end ifinfo
+@end ifnottex
 
 @chapter Introduction
 @section Copying
@@ -332,7 +291,7 @@ required.
 
 For contacting the author send electronic mail to
 
-robert.hoehne@@gmx.net
+@email{robert.hoehne@@gmx.net}
 
 or paper mail to
 
@@ -348,17 +307,17 @@ Germany
 There are two archives
 
 @table @file
-@titem rhide??b.zip
+@item rhide??b.zip
 This contains the executables and the documentation for RHIDE
 running on DJGPP
 
-@titem rhide-?.?-1.i386.rpm
+@item rhide-?.?-1.i386.rpm
 This is a RPM package with the binaries of RHIDE for Linux.
 
-@titem rhide??s.zip
+@item rhide??s.zip
 This contains the sources of RHIDE for DJGPP.
 
-@titem rhide-?.?-1.src.rpm
+@item rhide-?.?-1.src.rpm
 This is a RPM package with the sources of RHIDE for Linux.
 
 @end table
@@ -367,33 +326,27 @@ NOTE: The sources for the Linux and DJGPP versions are of course
 in its core the same, there are only differences in the directory
 structure and myabe in some preconfigured files. But in general
 both archives can be used on both systems (after some cosmetic changes).
-@paragraph{}
 
 where @file{??} in the above filenames stand for the digits of the actual
 version of RHIDE which is as of writing this version 1.5 which leads to
 @file{15}.
 
-@paragraph{}
 
 These archives can be found at
-@www{The RHIDE home page, www.tu-chemnitz.de/~sho/rho/rhide.html}
+@uref{http://ww.tu-chemnitz.de/~sho/rho/rhide.html, The RHIDE home page}
 or at any ftp site, which mirrors DJGPP. On that DJGPP mirrors are of
 course only the DJGPP archives available.
-@paragraph{}
 
 The RPM packackes can be found at sunsite mirrors and/or also
 in some Linux distributions. (At least I hope so when I`m ready
 to upload them there)
-@paragraph{}
 
 To install these archives, unzip them in the DJGPP-root
 directory, like any other DJGPP package.
-@paragraph{}
 
 To install the Linux RPM packages, use your favorite install
 program (most Linux distributions allow to install RPM packages)
 or install it with the Redhat package manager itself.
-@paragraph{}
 
 @ignore
 @subsection Configuring RHIDE
@@ -402,14 +355,13 @@ or install it with the Redhat package manager itself.
 In most cases do nothing to configure RHIDE. But there are
 some special things, which must be configured which have mostly to do with
 the editor (or better) the keyboard layout.
-@paragraph{}
 
 The editor of RHIDE is configurable for the keyboard. For this it uses a
 text file @file{keybind.txt}, which is searched in the following
 directories (in that order). If it was not found in any of these
 directories RHIDE uses builtin defaults. For more information about
 creating (customizing) the file and about the syntax of that file
-@extref{Keyboard,Documentation about the keyboard,setedit,SET's editor,setedit.html}
+see @ref{Keyboard,Documentation about the keyboard,,setedit}.
 
 @itemize @bullet
 @item The current directory
@@ -417,33 +369,32 @@ creating (customizing) the file and about the syntax of that file
 @item The contents of the variable @samp{$(HOME)} it is set.
 @item @file{%DJDIR%/share/rhide}
 @end itemize
-@paragraph{}
 
 The binary archive of RHIDE includes already the config files for
 the US keyboard layout (@file{us.txt}) and many others, which are based
 on the Linux keytables. If you have problems with the keyboard layout
 try to copy one of the files to @file{keybind.txt} (probably the one,
 which has a name similar to your country).
-@paragraph{}
+
 
 RHIDE also contains the file @file{keybind.txt} which IS @file{us.txt}.
-@paragraph{}
+
 
 As an example,
 if you are are using a German keyboard, and you have installed @file{keyb.com}
 as your keyboard driver program, you need to copy @file{de.txt} to
 @file{keybind.txt} otherwise (for example) the keys @key{y} and @key{z}
 are exchanged.
-@paragraph{}
+
 
 If you are using a keyboard driver (like I), which converts the scancodes
 of the keys (@file{keyb.com} does that NOT) you will probably not need
 the file @file{de.txt} (but the default @file{keybind.txt}).
-@paragraph{}
+
 
 For configuring RHIDE on Linux (especially when running under X)
-@xref{Running under Linux}
-@paragraph{}
+@pxref{Running under Linux}.
+
 @end ignore
 
 @section What is RHIDE?
@@ -453,11 +404,11 @@ compiling C- or C++-files (GNU-Assembler source files also supported)
 in an environment, which has an integrated editor where you can edit your
 source files and a project management, where you can define, which
 files are needed to build a program or a library.
-@paragraph{}
+
 
 For what stands the name RHIDE? This has nothing mystic in it. It comes
 simply from my initials RH and IDE (Integrated Development Environment).
-@paragraph{}
+
 
 RHIDE works like the IDE from Borland, which comes with Turbo C++ 3.1 and
 is written with the Turbo Vision library, which I have ported to use with
@@ -503,12 +454,12 @@ and expressions.
 You can define another compiler to compile your source files.
 
 @end itemize
-@paragraph{}
+
 
 In addition to RHIDE I have included a stand-alone debugger
 (called @file{rhgdb.exe}), which is GDB 4.18 with a Turbo Vision user
 interface.
-@paragraph{}
+
 
 @section Requirements
 
@@ -521,21 +472,21 @@ need either a memory-manager, which give you DPMI-services (I think QEMM is
 it, EMM386 has no DPMI-support), or you use CWSDPMI, the free DPMI-server
 from Charles W.@: Sandmann, which you can find on SimTel-ftp-sites. I use it
 and it works fine for me.
-@paragraph{}
+
 
 The builtin editor uses a simple heuristic to check, if a file
 is in UNIX or DOS text format. It checks the first 1024 Bytes, and if
 there is a lf without a cr, all lf's will be translated to cr/lf's. This
 is done at first only in memory. But if you save your file to disk,
 it will be saved in DOS text format.
-@paragraph{}
+
 
 RHIDE will work correctly only with DJGPP version 2.01 or higher. If
 you have installed DJGPP 2.0, you will run into problems when the
 commandline passed to the called compilers or the linker will exceed
 the 126 character limit. There is a new technique used from
 DJGPP 2.01 on, which programs compiled under 2.0 don't understand.
-@paragraph{}
+
 
 @section Getting started
 @cindex Start
@@ -551,17 +502,17 @@ rhide [options] 'project-name' [options]
 @end example
 Here stands 'file-name', for a file, which you want to open at start up.
 If it has no suffix it is assumed to be a 'project-name'.
-@paragraph{}
+
 
 'project-name' stands for a name of your project. If you don't type
 it, RHIDE searches the current directory for a project file. If there exists
 only one, it will be opened. If there exist more than one or none, RHIDE
 will not open a project, you have to do it manually.
-(@xref{Open project})
-@paragraph{}
+@pxref{Open project}.
+
 
 Possible options are
-for debugging RHIDE itself (@xref{Debugging RHIDE}).
+for debugging RHIDE itself @pxref{Debugging RHIDE}.
 If no project was open, you will see an empty desktop.
 At the top-line of the screen you can see the menu. This is activated by
 pressing @ikey{F10,Menu}or by clicking with the mouse at this line.
@@ -569,75 +520,75 @@ Alternatively
 you can press @key{Alt} plus the highlighted character of a pull-down
 menu, @i{e.g.@:} to activate the @emph{File} menu, press @kbd{Alt+F}. At the
 bottom is the status line with some hotkeys and their functions displayed.
-@paragraph{}
+
 
 Other options are:
 
 @table @samp
-@titem -H
+@item -H
 Do not install the console switch handler, which saves/restores
 the modified keyboard layout. This options works only when running
 under Linux.
 
-@titem -S
+@item -S
 Tells RHIDE to use only 16bit access to the video memory under
 DJGPP, becuase some video cards cannot handle the 32bit access.
 
-@titem -E
+@item -E
 Dump all variables known to RHIDE (the builtins and the real environment
 variables) to @code{stderr} end exit.
 
 
-@titem -C
+@item -C
 Disable the handling of SIGINT
 
-@titem -y
+@item -y
 Use long filenames (only under Windows 95)
 
-@titem -n
+@item -n
 Do not use long filenames (only under Windows 95)
 
-@titem -c
+@item -c
 Do not convert the case of any file name
 
-@titem -h
+@item -h
 Show a short help about all the possible options.
 
-@titem -b
+@item -b
 Use BIOS calls for setting and resetting the behavior of the
 7th bit in a color attribute (blinking or 16 background colors) instead of
 direct outputs to the VGA registers.
 
 @ignore
-@titem -k KEY_FILE
+@item -k KEY_FILE
 The editor in RHIDE is now configurable also for the keyboard.
 The file, where the key bindings are stored, is searched at
 first in the current directory; then in the directory
 @file{%DJDIR%/data}; and then in the directory where the
 executable is. If all this fails default values are taken.
-@paragraph{}
+
 @end ignore
 
 With this switch you can override the default name of @file{keybind.txt}
 to whatever you want.
 
-@titem -p
+@item -p
 Normally RHIDE converts all the num-pad keys to the equivalent keys on the
 other keyboard (of course also by checking the @key{NumLock} key). With this
 switch you can disable this.
 
-@titem -G n
+@item -G n
 Select which method is used for swapping the display. Currently there
 are two, little different functions implemented.
 If you have problems with display swapping when in graphics mode, try
 to use another method and see if that helps.
 
-@titem -K
+@item -K
 Tell RHIDE, to use real BIOS calls for it's keyboard input. This is
 needed sometimes, when you have installed some special keyboard
 drivers.
 
-@titem -M
+@item -M
 This tells RHIDE to not to install the mouse callback function for
 getting the mouse events. Instead of this RHIDE calls the mouse
 BIOS functions for getting any event of the mouse. This option should
@@ -648,8 +599,8 @@ now automatically by default)
 
 At the upper right corner of the screen you can see the free virtual/physical
 memory (where M stands for Megabytes, K for Kilobytes and B for Bytes), if
-enabled (@xref{Preferences}).
-@paragraph{}
+enabled @pxref{Preferences}.
+
 
 If you try to open a project, which does not exist, RHIDE will create a
 new one. For the default setting in the newly created project, RHIDE
@@ -664,7 +615,7 @@ hardcoded defaults are used.
 There is also support for multiple languages. For this RHIDE uses the
 GNU gettext library. With this lib it is possible to support multiple
 languages without changing any code of RHIDE, when adding a new language.
-@paragraph{}
+
 
 There are two ways for selecting the language. Either you set the environment
 variable @var{LANGUAGE} to the language you want or give it as a commandline
@@ -679,10 +630,10 @@ syntax:
 rhide -L LANGUAGE
 @end example
 where LANGUAGE represents the language code.
-@paragraph{}
+
 
 If you do not specify any language, English is assumed.
-@paragraph{}
+
 
 Because it was not possible to get all the translations at the time
 when RHIDE was ready, I included only the
@@ -690,7 +641,7 @@ message files (that are the files with the @file{.mo} suffix) as they
 are ready in the binary archive. That means that it is possible that
 you will see some strings
 in English instead of your language.
-@paragraph{}
+
 
 @subsection Debugging RHIDE
 @cindex Debugging
@@ -700,30 +651,30 @@ are the following:
 
 @table @samp
 
-@titem -dt
+@item -dt
 Do not remove the temporary files which the IDE creates. The
 names of these files will be printed to stderr.
 
-@titem -dc
+@item -dc
 Print to @code{stderr} the commands which the IDE executes.
 
-@titem -dd
+@item -dd
 Print to @code{stderr} how the IDE checks the dependencies.
 
-@titem -df
+@item -df
 Print to @code{stderr} how the IDE searches for files.
 
-@titem -ds
+@item -ds
 Print to @code{stderr} how the IDE expands the specs.
 
-@titem -da
+@item -da
 Turns on all of the above
 
 @end table
 
 You can also combine these options like @samp{-dct}, which is the same as
 @samp{-dc -dt}.
-@paragraph{}
+
 
 To examine this debugging information, it is the best to use the redir
 command, to redirect the stderr to a file like
@@ -731,53 +682,53 @@ command, to redirect the stderr to a file like
 redir -e err rhide -da project
 @end example
 which will redirect stderr to the file @file{err}.
-@paragraph{}
+
 
 Each of the letters above (after @samp{-d}) can be prefixed by
 a @samp{-} or a @samp{+} to explicitely turn the flag on or off.
 For instance @samp{-dc} and @samp{-d+c} are the same and
 @samp{-da-c} selects all debugging options except the @samp{-dc}
 switch.
-@paragraph{}
+
 
 If you want to supply certain switches for RHIDE as a default,
 you may put them into the environment variable @samp{$(RHIDEOPT)}.
 The contents of
 this variable is used before the the real commandline is parsed.
 That means you can overwrite the switches from the environment variable.
-@paragraph{}
+
 
 @section The program GPR2MAK
 @cindex Creating a makefile
 This program can be used to create a makefile from your project-file.
 It does exactly the same as the function which is selectable from
-the RHIDE menu (@xref{Write Makefile}).
-@paragraph{}
+the RHIDE menu @pxref{Write Makefile}.
+
 
 In RHIDE you have only the possibility to say, if in the generated
 makefile all dependencies should be included or not. With
 @file{gpr2mak} you can tell also to create recursively all the
 needed makefiles. This makes sense only if you have included other
 projects in your project.
-@paragraph{}
+
 
 Here are the possible commandline options for @file{gpr2mak}.
 @table @samp
-@titem -d
+@item -d
 Include all dependencies in the makefile
 
-@titem -d-
+@item -d-
 Include only the needed dependencies to create the final program or
 library.
 
-@titem -r
+@item -r
 Call @file{gpr2mak} recursively, if there are other projects part
 of the project.
 
-@titem -r-
+@item -r-
 Do not call @file{gpr2mak} recursively.
 
-@titem -o OUTFILE
+@item -o OUTFILE
 Use @samp{OUTFILE} instead of the project name (with the suffix @file{.mak})
 as the created makefile. If you want to write the makefile to @code{stdout},
 use @samp{-} as @samp{OUTFILE}.
@@ -789,11 +740,11 @@ And the complete syntax for calling @file{gpr2mak} is also:
 @example
 gpr2mak [-d[-]] [-r[-]] [-o OUTFILE] project-file
 @end example
-@paragraph{}
+
 
 If you give no options, (the project-file must be given), @file{gpr2mak}
 assumes the flags @samp{-d- -r-} as default.
-@paragraph{}
+
 
 @section The program GPREXP
 @cindex Exporting the RHIDE project files
@@ -803,7 +754,7 @@ on different systems (like DJGPP and GNU/Linux). The task for this
 program is to convert as most as possible absolute filenames stored
 in the project file to use variables so the project can be used by
 simply changing some variables outside RHIDE.
-@paragraph{}
+
 
 GPREXP replaces all directories, which are used also in the dialogs
 like the directory customizations for include file searches, by the
@@ -813,24 +764,24 @@ variables if they are known there.
 
 Here I will give you some instructions for the first steps to get
 contact with RHIDE.
-@paragraph{}
+
 
 @subsection What are these so called projects
 A project for RHIDE is a file, which contains all the needed information
 required to build a program or library from
 one or more source files. Also all the other options which belong
 to the look and feel of your desktop are stored there.
-@paragraph{}
+
 
 In general RHIDE creates for each project two files. One for the project
 itself (it has the suffix @file{.gpr}) and one for the desktop related
 things (it has the suffix @file{.gdt}).
-@paragraph{}
+
 
 To create a new project either run rhide with a not existing project
 name as argument or open within RHIDE a project by selecting a name
 which is not existent.
-@paragraph{}
+
 
 @subsection Creating your first project
 
@@ -846,12 +797,12 @@ and you will see an empty desktop and one window opened, the project window.
 This window will show you that there is no file defined for your project.
 If the project window is selected, (it has a double frame), then hit there
 @key{Ins} and you will be prompted for adding an item to your project.
-@paragraph{}
+
 
 Type in the input line now @file{hello.c} and hit @key{ENTER}. Now hit
 @key{ESC} to leave the dialog. You will see now, that the project window
 contains a line with @file{hello.c}.
-@paragraph{}
+
 
 Now hit @key{ENTER} on that filename and you will get an empty editor window
 named @file{hello.c} prepended by the current directory. In this editor
@@ -871,19 +822,19 @@ int main()
 Now you can select from the Run-menu the Run entry (or use the
 hotkey @kbd{Ctrl+F9}) and RHIDE will do all the necessary steps
 to compile, link and execute the program.
-@paragraph{}
+
 
 If everything was correct (no typing errors) or some other error,
 you will get a message box where RHIDE tells you, that the program
 exited with an exit code of 0. (This is the value, which you have
 specified in your program above in the @code{exit(0);} statement)
 This box you can close with @key{ENTER} or @key{ESC}.
-@paragraph{}
+
 
 To see the output of the program, you can switch now to the user
 screen with @kbd{Alt+F5} or from the menu (Windows/User screen).
 To return back to RHIDE hit any key.
-@paragraph{}
+
 
 @section Environment variables
 @cindex Environment variables
@@ -893,35 +844,35 @@ and behavior. This includes also some standard variables, which
 are used by the in RHIDE linked libraries. These are:
 
 @table @asis
-@titem $(LOCALEDIR)
+@item $(LOCALEDIR)
 This should point to the directory, where your locale files are
 stored. If it is not set, RHIDE tries to get the system default
 value, which is for Linux @file{/usr/share/locale} and for
 DJGPP @file{$(DJDIR)/share/locale}.
 
-@titem $(INFOPATH)
+@item $(INFOPATH)
 This is a pathlist of directories, where your INFO files are
 stored. If not set, RHIDE tries the standard directory, which
 should for Linux @file{/usr/info} and for DJGPP @file{$(DJDIR)/info}.
 
-@titem $(RHIDEOPT)
+@item $(RHIDEOPT)
 This variable can be used, to define global RHIDE commandline
 options. The value of this variable is used, as if the contents
 are given on commandline before any of the real commandline
 options. Which means, they can be overwritten on the commandline.
 
-@titem $(ESCDELAY)
+@item $(ESCDELAY)
 This variable is used @emph{ONLY} in the Linux version, where it
 defines the delay after pressing @key{ESC} to wait for another
 keypress to simulate an @key{Alt} keycode. The value is given in
 milliseconds and defaults to 1000.
 
-@titem $(LANGUAGE)
+@item $(LANGUAGE)
 This variable is used to specify the language, in which RHIDE should
 communicate with you. The contents of this variable should be the
 ISO 2-character code of your country.
 
-@titem $(RHIDE_SHARE)
+@item $(RHIDE_SHARE)
 With this variable you can tell RHIDE where it should look
 at first for it's configuration files.
 
@@ -936,41 +887,41 @@ for RHIDE. One of them is to set them like
 any other environment variable on your system. But this
 means that these variables are visible also by all the
 other programs.
-@paragraph{}
+
 
 When using the DJGPP version, you can set them in your
 @file{djgpp.env} file either at the beginning as global variables
 for any DJGPP program or in a special section @samp{[RHIDE]} only
 for RHIDE. Please read the doc about the format of the @file{djgpp.env}
 file for more information.
-@paragraph{}
+
 
 @cindex rhide.env
 Derived from the technique used on DJGPP for setting environment
 variables which are visible only for DJGPP programs, I have added
 in RHIDE a similar thing. RHIDE can read environment variables also
 from a file called @file{rhide.env}.
-@paragraph{}
+
 
 The syntax of this file is very simple. Each line has one of the
 following syntax:
 @table @asis
-@titem VARIABLE=CONTENTS
+@item VARIABLE=CONTENTS
 Which means, that the environment variable @samp{VARIABLE} should
 become the contents @samp{CONTENTS} where @samp{CONTENTS} can be also
 a variable, which is expanded at runtime.
 
-@titem .OTHER_ENV_FILE
+@item .OTHER_ENV_FILE
 Such a line (it begins with a dot) tells RHIDE to read in at that point
 the file @file{OTHER_ENV_FILE} as environment file. The name
 @file{OTHER_ENV_FILE} can be also an environment variable, which is
 expanded before reading the file.
 
-@titem # comments
+@item # comments
 A line, which begins with a @samp{#} means, that this line is ignored.
 It can be used for you to write there some comments about that file.
 
-@titem !VARIABLE=CONTENTS
+@item !VARIABLE=CONTENTS
 This is the same syntax as without the ! at the beginning of the
 line but it tells RHIDE to place the variable also in the environmen
 so also other programs (called by RHIDE) can see this variable.
@@ -981,21 +932,21 @@ RHIDE is very powerful in handling the environment variables. Most
 of it is taken from the behavior of GNU make. On this great things
 depend, that a variable name can consist also of other variables, which are
 computed when the variable should be expanded.
-@paragraph{}
+
 
 @cindex rhide.env, Samples
 As an example of this, you can take a look on the RHIDE sources in the
 @file{rhide.env} files. There I'm using, for instance, the RHIDE
 builtin variable $(RHIDE_OS) to define the libraries, which are linked
 in RHIDE depending on the operating system where RHIDE is built.
-@paragraph{}
+
 
 An other example is distributed with RHIDE in it's binary archives
 as @file{rhide_.env} which is commented and should be in a directory
 @file{.../share/rhide/} where the @file{...} stand for a different
 directory on different OS's. (on DJGPP it is %DJDIR% and on Linux it
 is /usr/local )
-@paragraph{}
+
 
 Here is a part of the environment file @file{rhide.var} in the main
 RHIDE source directory (which is included by @file{rhide.env} with
@@ -1011,11 +962,11 @@ RHIDE_OS_LIBS_DJGPP=$(RHIDE_OS_LIBS_DJGPP_$(MAIN_TARGET))
 RHIDE_OS_LIBS=$(RHIDE_OS_LIBS_$(RHIDE_OS))
 @end format
 
-The RHIDE builtin linker spec (@xref{Builtin compiler specs})
+The RHIDE builtin linker spec @pxref{Builtin compiler specs}
 includes also $(RHIDE_OS_LIBS) when linking. Since RHIDE
 can be built on DJGPP and Linux and on these different operating
 systems I have to link different libraries.
-@paragraph{}
+
 
 Description of the above: When linking on DJGPP the file
 @file{idegc.exe} (which is RHIDE) I have to include (in addition
@@ -1042,19 +993,19 @@ $(RHIDE_OS_LIBS) -> ncurses gpm m
 RHIDE searches some known directories for the file
 @file{rhide.env} (and of course also other there defined
 included files).
-@paragraph{}
+
 
 At first it searches for a global file in @file{/usr/local/share/rhide}
 (on Linux) or @file{$(DJDIR)/share/rhide}. Then it searches in
 @file{$(HOME)} and at last in the current directory.
-@paragraph{}
+
 
 RHIDE does not only a search, it also loads the file, if it was found
 in any of the above mentioned directories. That means, if in all these
 directories @file{rhide.env} exists, it is loaded. This has the effect,
 that you can define some global defaults which can be overwritten with
 a @file{rhide.env} in the current or your home directory.
-@paragraph{}
+
 
 @chapter General information about how RHIDE works
 
@@ -1066,28 +1017,28 @@ compilers for you.
 (@file{cpp} for preprocessing your input files,
 @file{cc1} for compiling C programs, @file{cc1plus} for
 compiling C++ programs and @file{as} for compiling assembler files and so on)
-@paragraph{}
+
 
 Selecting the right compiler for a specific file is done by RHIDE in the
 same way as GCC does it. It looks for the extension of the file
 and determines the language of this file.
-@paragraph{}
+
 
 @section Known suffixes
 
 The list of the known suffixes is taken from GCC. Remember the fact, that
 GCC and RHIDE check the suffixes in a case sensitive way especially when
-running under Windows 95 (@xref{Running under Windows 95}).
+running under Windows 95 @pxref{Running under Windows 95}.
 
 @itemize @bullet
 
 @item Valid suffixes for C source files are
 @table @file
 
-@titem .c
+@item .c
 Normal C source file
 
-@titem .i
+@item .i
 C source file, which doesn't need the preprocessor
 
 @end table
@@ -1095,13 +1046,13 @@ C source file, which doesn't need the preprocessor
 @item Valid suffixes for C++ source files are
 @table @file
 
-@titem .cc
-@titemx .cpp
-@titemx .cxx
-@titemx .C
+@item .cc
+@itemx .cpp
+@itemx .cxx
+@itemx .C
 Normal C++ source file
 
-@titem .ii
+@item .ii
 C++ source file, which doesn't need the preprocessor
 
 @end table
@@ -1109,7 +1060,7 @@ C++ source file, which doesn't need the preprocessor
 @item Valid suffixes for Objective C source files
 @table @file
 
-@titem .m
+@item .m
 Normal Objective C source file
 
 @end table
@@ -1117,8 +1068,8 @@ Normal Objective C source file
 @item Valid suffixes for Pascal source files
 @table @file
 
-@titem .p
-@titemx .pas
+@item .p
+@itemx .pas
 Normal Pascal source file
 
 @end table
@@ -1126,10 +1077,10 @@ Normal Pascal source file
 @item Valid suffixes for object files
 @table @file
 
-@titem .o
+@item .o
 Normal object file
 
-@titem
+@item
 any other suffix,
 which has no predefined meaning
 
@@ -1138,7 +1089,7 @@ which has no predefined meaning
 @item Valid suffixes for libraries
 @table @file
 
-@titem .a
+@item .a
 Normal library file
 
 @end table
@@ -1146,10 +1097,10 @@ Normal library file
 @item Valid suffixes for executable files
 @table @file
 
-@titem .exe
+@item .exe
 Normal executable file for MS-DOS
 
-@titem .
+@item .
 No suffix means the raw COFF image of an executable file. These
 can be handled only by programs, which know about this format.
 (DJGPP programs know this)
@@ -1159,17 +1110,17 @@ can be handled only by programs, which know about this format.
 @item Valid suffixes for include files
 @table @file
 
-@titem .h
+@item .h
 Normal include files
 
-@titem .hpp
+@item .hpp
 Some people told me, that this suffix should also be treated
 as a valid suffix for header files, so I applied it.
 
-@titem
+@item
 Theoretically there is no restriction for such a suffix, but
 RHIDE searches and finds only files with the above suffixes
-in the specified directories (@xref{Include directories})
+in the specified directories @pxref{Include directories}.
 
 @end table
 @ignore
@@ -1177,7 +1128,7 @@ in the specified directories (@xref{Include directories})
 @item Valid suffixes for flex source files
 @table @file
 
-@titem .l
+@item .l
 Normal flex source file
 
 @end table
@@ -1185,7 +1136,7 @@ Normal flex source file
 @item Valid suffixes for bison source files
 @table @file
 
-@titem .y
+@item .y
 Normal bison source file
 
 @end table
@@ -1196,15 +1147,15 @@ Normal bison source file
 @item Valid suffixes for Assembler source files
 @table @file
 
-@titem .s
+@item .s
 Normal Assembler source file
 
-@titem .S
+@item .S
 Assembler source file, which must be preprocessed
 by @file{cpp}. If you have such files, there is a problem, when
 long filenames are not enabled (default in MS-DOS), because
 RHIDE converts all filenames in this situation to lower case. But you
-can add to the local options for this item (@xref{Local options})
+can add to the local options for this item @pxref{Local options}
 the commandline argument @var{-x assembler-with-cpp}, to tell
 @file{GCC} to preprocess this file first before assembling it.
 
@@ -1213,19 +1164,19 @@ the commandline argument @var{-x assembler-with-cpp}, to tell
 @item Valid suffixes for Fortran source files
 @table @file
 
-@titem .f
-@titemx .for
+@item .f
+@itemx .for
 Normal Fortran source files
 
-@titem .F
-@titemx .fpp
+@item .F
+@itemx .fpp
 Fortran source files which need not to be run through @file{cpp}.
 @end table
 
 @item Valid suffixes for ADA source files
 @table @file
 
-@titem .adb
+@item .adb
 Normal ADA source file
 
 @item .ads
@@ -1235,8 +1186,8 @@ ADA specs file
 @item Valid suffixes for NASM
 @table @file
 
-@titem .nsm
-@titem .asm
+@item .nsm
+@item .asm
 Normal NASM source files.
 @end table
 
@@ -1249,7 +1200,7 @@ In RHIDE you can specify some arguments to other programs. These arguments
 must be a space separated list of strings. If you want to have one or
 more spaces as part of an argument, you have to enclose the whole argument
 in single or double quotes.
-@paragraph{}
+
 
 @section Running under Windows 95
 @cindex Windows 95
@@ -1263,11 +1214,11 @@ with different case. That means, all normal 8+3 DOS filenames, which
 are normally reported in Windows 95 in upper cases, are automatically
 converted to lower case. For more information about filename
 conversion look at the libc reference.
-@paragraph{}
+
 
 If you really need the filenames exactly as they are reported by the
-OS, you can use the @var{-c} switch (@xref{Getting started}).
-@paragraph{}
+OS, you can use the @var{-c} switch @pxref{Getting started}.
+
 
 @cindex Temp directory
 @cindex Directory for temp files
@@ -1279,7 +1230,7 @@ variables %TMPDIR%, %TEMP% or %TMP%, in that order, until one of them exists. If
 none of them exists, the current directory is assumed. Then RHIDE puts the value
 of this directory into the environment variable %TMPDIR%. After leaving RHIDE
 this directory will be removed, if it is empty.
-@paragraph{}
+
 
 @section Running under OS/2
 @cindex OS/2
@@ -1287,7 +1238,7 @@ this directory will be removed, if it is empty.
 Because I have no access to OS/2, I cannot say anything about it. But
 some people said that they run RHIDE under OS/2 successfully, but there
 must be the exclusive mouse access to the DOS window disabled.
-@paragraph{}
+
 
 @section Running under Windows NT
 
@@ -1300,14 +1251,14 @@ to make it as secure as possible. After getting acces to the screen and
 the keyboard RHIDE will switch back to your normal rights and does not
 use root rights any more. It does not write any data or modify any file
 on disk with root rights (except you are running as root of course).
-@paragraph{}
+
 
 The reason for this is the rudimentary support for fast access to the
 screen and the totally hided acces to the keyboard in the Linux kernel.
 Additionally when you want to use the dual monitor debugging feature
 of RHIDE this is also needed, because RHIDE needs in that case access
 to the ports of your monochrome video card.
-@paragraph{}
+
 
 @cindex xterm, running RHIDE in it
 Running RHIDE under X-Window is not full supported (but it is possible).
@@ -1317,7 +1268,7 @@ completetly on your terminfo database and these are (at least for me)
 in some cases totally wrong. You can see this mostly that RHIDE does not
 handle correct the keyboard. Other programs which use ncurses know this also
 and have there own hardcaded patches but I do not want to do so.
-@paragraph{}
+
 
 To fix the keyboard conflicts whenrunning in a xterm, I distribute
 little modified terminfo file @file{/usr/local/share/rhide/xterm-rhide}
@@ -1329,7 +1280,7 @@ this new terminal with
   export TERM=xterm-rhide
 @end format
 before running RHIDE in the xterm.
-@paragraph{}
+
 
 An other alternative is to run RHIDE in a rxvt terminal but there
 you have to set also explicitely the TERM variable, because it
@@ -1337,7 +1288,7 @@ is set mostly to xterm-color.
 @format
   export TERM=rxvt
 @end format
-@paragraph{}
+
 
 @section General use of RHIDE
 
@@ -1347,12 +1298,12 @@ For creating a program, RHIDE allows you to define multiple source
 files which should be compiled and linked to your final program. This
 is done by creating a project. In this project you insert your source
 files (and not all the include files).
-@paragraph{}
+
 
 After a source file (which is inserted in your project) compiled at least
 once, RHIDE knows about all dependencies of this file, so this file will
 be compiled again only, if one of the include files have changed.
-@paragraph{}
+
 
 
 @subsubsection Creating a program without a project
@@ -1361,12 +1312,12 @@ Because of many requests of users I made RHIDE to work also without
 using a project. This may be good, if you have a single file, but if
 your program should be build from more than one file I suggest you to
 use a project.
-@paragraph{}
+
 
 If you have only one editor window opened, the name of the resulting
 program is taken from the name of the source file by removing the suffix
 and on DJGPP appending @file{.exe}.
-@paragraph{}
+
 
 If you have more than one files opened, I saw no other way for determining
 the name of the produced program, than naming it @file{aout} (on DJGPP
@@ -1377,17 +1328,17 @@ the name of the produced program, than naming it @file{aout} (on DJGPP
 You can also create libraries (a collection of object files,
 which can be linked with other programs) with RHIDE. The way for doing this is
 very simple. Because RHIDE knows about the meaning of file suffixes, you can
-change the name of the main target (@xref{Main targetname}) to have a suffix
+change the name of the main target @pxref{Main targetname} to have a suffix
 @file{.a} and that's all. Now RHIDE will run @file{ar} instead of linking.
 
-@paragraph{}
+
 
 @subsection Saving/Loading the options
 @cindex Save options
 @cindex Load options
 RHIDE supports two different ways for saving the options which you
 have customized.
-@paragraph{}
+
 
 The first one (which I prefer) is the use of the so called default
 project. This is the project @file{rhide.gpr} and must be located
@@ -1402,12 +1353,12 @@ rhide rhide
 Now change any options you want and exit RHIDE. From now on these
 options are used for any newly created project or when running
 RHIDE without a project.
-@paragraph{}
+
 
 The second way is to save your options to a project file
-(@xref{Save options}) or to load them from any existing project
-file (@xref{Load options}).
-@paragraph{}
+@pxref{Save options} or to load them from any existing project
+file @pxref{Load options}.
+
 
 @chapter Description of the pull-down menus
 
@@ -1416,7 +1367,7 @@ The main menu bar, the topmost line of the screen, is selected with the
 hotkey @ikey{F10,Menu}or by clicking with the mouse at this line. You can walk
 through the menu with the cursor keys and a menu entry is selected with
 @ikey{ENTER,Select menu item}or by clicking with the mouse on it.
-@paragraph{}
+
 
 @section System menu
 
@@ -1424,74 +1375,74 @@ This menu has its name only that one can speak about it. The symbol for this
 menu is the leftmost symbol in the menu bar.
 @ikey{Alt+SPACE,System Menu}selects this menu.
 
-@paragraph{}
+
 
 @subsection About
 @cindex Version of RHIDE
 
 This brings up a window with information about the author and the version
 of RHIDE.
-@paragraph{}
+
 
 @subsection Bug report
 @cindex Bug report
 @cindex Reporting bugs
 This menu entry opens an editor with some important information which
 should be part of a bug report and where you can describe the problem.
-@paragraph{}
+
 
 @subsection FSDB
 With this menu item you can call the FSDB debugger, which comes with
 DJGPP. But remember, this runs the debugger as an external program and
 it is not integrated in RHIDE.
-@paragraph{}
+
 
 @subsection GREP
 
 This is a very useful function. You can type the arguments for grep
 in the input line, which will be shown, and after this the program
 grep is called. The messages from grep are redirected to the
-message window (@xref{Message window}).
-@paragraph{}
+message window @pxref{Message window}.
+
 
 @subsection GDB
 
-This is analog to the call of FSDB (@xref{FSDB}).
-@paragraph{}
+This is analog to the call of FSDB @pxref{FSDB}.
+
 
 @subsection Refresh Desktop
 
 This function is sometimes useful, if you had run your program and
 it wrote some things to the screen (for redirecting @code{stdout}
 and @code{stderr} from your program to a window in RHIDE
-(@xref{Preferences})).
-@paragraph{}
+@pxref{Preferences}.)
+
 
 @subsection Calculator
 @cindex Calculator
 This brings up a dialog, where you can do some calculations. This
-dialog is similar to the evaluate dialog (@xref{Evaluate/Modify}), but it
+dialog is similar to the evaluate dialog @pxref{Evaluate/Modify}, but it
 uses not the feature of GDB, but it is a separate calculator.
 For more information
-@extref{Calculator,Documentation for the editor,setedit,SET's editor,setedit.html}
-@paragraph{}
+see @ref{Calculator,Documentation for the editor,,setedit}.
+
 
 There can be used also some of the standard functions like
 @samp{log}, @samp{sin} and so on and it can convert also integer
 values between different bases (@samp{hex}, @samp{oct}, @samp{dec}).
-@paragraph{}
+
 
 @subsection Puzzle
 This will open a small window, where you can play a little puzzle
 game. The "stones" are moved with the cursor keys or by clicking
 with the mouse on it.
-@paragraph{}
+
 
 @subsection Calender
 This will open a little calender. With the cursor keys @key{Up} and
 @key{Down} you can switch to the next/previous month or click with
 the mouse on the small symbols in the upper corners.
-@paragraph{}
+
 
 @subsection ASCII table
 This will open a window with all the ASCII characters. Move around
@@ -1500,13 +1451,13 @@ In the bottom line you will see the the character and the value
 of it (decimal and hexadecimal). The decimal value can be used to
 create that character for instance in the editor by holding the
 @key{Alt} key down and typing the value on the numeric key pad.
-@paragraph{}
+
 
 @section File
 
 In this menu you can find functions, which deal with files, like open, close,
 save and so on.
-@paragraph{}
+
 
 @subsection Open
 @cindex Open a file
@@ -1517,7 +1468,7 @@ Brings up the file-open dialog, where you can select a
 file to open (hotkey @ikey{F3,open a file}). This dialog
 contains an input line for the filename, a list of filenames, an information
 window and the buttons for opening and canceling.
-@paragraph{}
+
 
 @cindex File open dialog
 @cindex Default file mask
@@ -1528,7 +1479,7 @@ typed mask is stored as the default mask for the next use. There is also
 a history of your previous typed inputs available. This is selected when
 you hit the down key or click at the small symbol at the end of the input line
 with your mouse.
-@paragraph{}
+
 
 The list of filenames shows all the files that correspond to the mask.
 If this list is selected you can choose a file with the cursor keys, or
@@ -1536,14 +1487,14 @@ you can type the first letters of the filename you want, and the
 bar is located at the first file, which has these letters as the first
 characters. To open the file simply press @key{ENTER} or double click
 with the mouse on it.
-@paragraph{}
+
 
 Below the list of filenames there is a small window with information
 about the selected file (complete path, size, modification time).
-@paragraph{}
+
 
 To leave the dialog without opening a file press @ikey{ESC,Leaving a dialog}.
-@paragraph{}
+
 
 @subsection New
 @cindex Creating a new file
@@ -1551,7 +1502,7 @@ To leave the dialog without opening a file press @ikey{ESC,Leaving a dialog}.
 This is the menu entry for creating a new file to edit. This file gets
 the title 'Untitled'. If you save or close it, you will be prompted
 for a new name of this file by opening the file-open dialog.
-@paragraph{}
+
 
 @subsection Save
 @cindex Save the file to disk
@@ -1562,10 +1513,10 @@ the name of the current file is 'Untitled' you will be prompted for
 a new name. @ikey{F2,saving a file}is the hotkey for this function.
 The modification of the file on disk is set to the time of the last
 modification of this file and not to the time when saving to disk.
-@paragraph{}
+
 
 If the file was not modified, it is not saved!!
-@paragraph{}
+
 
 @subsection Save as
 @cindex Save the file under a different name
@@ -1573,14 +1524,14 @@ If the file was not modified, it is not saved!!
 Save the file in the current editor-window to disk under
 a different name, for which you will be prompted. For choosing the
 new name the file-open dialog will be opened.
-@paragraph{}
+
 
 @subsection Save all
 @cindex Save all files to disk
 
 Save all the editor files to disk. If they are not
 modified, they will not be saved.
-@paragraph{}
+
 
 @subsection DOS Shell
 @cindex DOS
@@ -1593,8 +1544,8 @@ which is set in the environment variable COMSPEC. If this variable
 does not exist, the program @file{c:/command.com} is executed.
 To return to the IDE type
 @kbd{exit} at the DOS-prompt. Before calling DOS, the program does
-a @emph{Save all} (@xref{Save all}) automatically.
-@paragraph{}
+a @emph{Save all} @pxref{Save all} automatically.
+
 
 @subsection Exit
 @cindex Exit
@@ -1603,24 +1554,24 @@ a @emph{Save all} (@xref{Save all}) automatically.
 
 Here you can quit the IDE. If there are any unsaved editor-files,
 you will be prompted for saving them. (@ikey{Alt+X,Leaving RHIDE}is the hotkey.)
-@paragraph{}
+
 
 @section Edit
 
 In this menu you can activate functions, which are related to the integrated
 editor. Most of them have a hotkey.
-@paragraph{}
+
 
 @subsection Undo
 @cindex Undo
 
 This undoes your last change in the current editor-window.
 @ikey{Alt+Backspace,Undo}is the hotkey for this function.
-@paragraph{}
+
 
 @subsection Redo
 @cindex Redo
-This does the reverse to undo (@xref{Undo}). That means, it is the undo
+This does the reverse to undo @pxref{Undo}. That means, it is the undo
 of the undo.
 
 @subsection Cut
@@ -1628,21 +1579,21 @@ of the undo.
 
 This @emph{moves} the selected text in the current editor-window to
 the clipboard. (@ikey{Shift+Del,Cut}is the hotkey.)
-@paragraph{}
+
 
 @subsection Copy
 @cindex Copy
 
 This @emph{copys} the selected text in the current editor-window to
 the clipboard. (@ikey{Ctrl+Ins,Copy}is the hotkey.)
-@paragraph{}
+
 
 @subsection Paste
 @cindex Paste
 
 This inserts the selected text in the clipboard in the current
 editor-window at the current cursor-position. (@ikey{Shift+Ins,Paste}is the hotkey.)
-@paragraph{}
+
 
 @subsection Show Clipboard
 @cindex Clipboard
@@ -1650,36 +1601,36 @@ editor-window at the current cursor-position. (@ikey{Shift+Ins,Paste}is the hotk
 This brings up an editor-window with the contents of
 the clipboard. The contents of the clipboard will be lost, if you
 exit the IDE.
-@paragraph{}
+
 
 @subsection Clear
 @cindex Clear
 @cindex Delete the selected text
 
 This erases the selected text in the current editor-window.
-@paragraph{}
+
 
 @subsection Copy to Windows clipboard
 @cindex Copy to Windows clipboard
-This is the same function as @xref{Copy} but it uses the
+This is the same function as @xref{Copy}, but it uses the
 Windows clipboard and works only, when running under Windows.
-@paragraph{}
+
 
 @subsection Paste from Windows clipboard
 @cindex Paste from Windows clipboard
-This is the same function as @xref{Paste} but it uses the
+This is the same function as @xref{Paste}, but it uses the
 Windows clipboard and works only, when running under Windows.
-@paragraph{}
+
 
 @subsection Expand all tabs
 @cindex Expanding tabs
 @cindex Tabs to spaces
 When selecting this menu entry, all real tabs (all characters with
 the code @code{0x9}) are expanded to as many spaces as defined as
-the tabsize (@xref{Preferences}).
+the tabsize @pxref{Preferences}.
 
 @subsection Compact text
-This function is the reverse to (@xref{Expand all tabs}). That means,
+This function is the reverse to @xref{Expand all tabs}. That means,
 RHIDE tries to make as many as possible spaces (count is taken from
 the defined tabsize) to real tabs.
 
@@ -1688,7 +1639,7 @@ the defined tabsize) to real tabs.
 Here is a submenu for handling macros. Currently there is
 only one recordable macro available and it is NOT stored anywhere. That
 means it is lost when you leave RHIDE and restart it. There is another
-way of using macros (@xref{Defining macros}).
+way of using macros @pxref{Defining macros}.
 
 @subsubsection Record
 @cindex Starting a macro
@@ -1717,7 +1668,7 @@ This executes the recorded macro.
 
 Menu for searching and replacing strings in the editor-window. These functions
 have also hotkeys.
-@paragraph{}
+
 
 @subsection Find
 @cindex Searching text
@@ -1726,10 +1677,10 @@ have also hotkeys.
 Find a string in the current editor-window. You can type the string for
 searching in an input line and you can also select, if the search is
 case sensitive or not and to search for whole words only or not.
-@paragraph{}
+
 
 (@ikey{Ctrl+Q+F,Find}is the hotkey.)
-@paragraph{}
+
 
 @subsection Replace
 @cindex Replacing text
@@ -1737,69 +1688,69 @@ case sensitive or not and to search for whole words only or not.
 Find and replace a string in the current editor-window. This works in the
 same way like searching text, but additionally you can give a string, with
 which the found text will be replaced.
-@paragraph{}
+
 
 (@ikey{Ctrl+Q+A,Replace}is the hotkey.)
-@paragraph{}
+
 
 @subsection Search again
 @cindex Repeat of searching
 @cindex Repeat of replacing
 
 This function repeats the last search or replace operation.
-@paragraph{}
+
 
 (@ikey{Ctrl+L,Search again}is the hotkey,)
-@paragraph{}
+
 
 @subsection Goto line
 @cindex Goto a line number
 
 After prompting for a line number (with range checking),
 the cursor will be located at this line.
-@paragraph{}
+
 
 (@ikey{Ctrl+J,Goto line}is the hotkey.)
-@paragraph{}
+
 
 @subsection Jump to function
 @cindex Search a function
 With this feature you can easily jump to the source line of a function
 to edit or see it. This is only a heuristic by parsing your source
 file and does not take the information from the debugging symbols.
-@paragraph{}
+
 
 After selecting it you will get a dialog, from where you can select the
 function to which you want to jump.
-@paragraph{}
+
 
 (@ikey{Alt+F2,Jump to function}is the hotkey.)
 
 @subsection Next message
 @cindex Next message
 
-This selects the next message in the message window (@xref{Message window}),
+This selects the next message in the message window @pxref{Message window},
 but only, if there is a next message available.
-@paragraph{}
+
 
 (@ikey{Alt+F8,Next message}is the hotkey.)
-@paragraph{}
+
 
 @subsection Previous message
 @cindex Previous message
 
-This selects the previous message in the message window (@xref{Message window}),
+This selects the previous message in the message window @pxref{Message window},
 but only, if there is a previous message available.
-@paragraph{}
+
 
 (@ikey{Alt+F7,Previous message}is the hotkey.)
-@paragraph{}
+
 
 @node RUN
 @section Run
 
 In this menu you find the functions for running your program.
-@paragraph{}
+
 
 @subsection Run
 @cindex Running your program
@@ -1807,17 +1758,17 @@ In this menu you find the functions for running your program.
 @cindex Executing your program
 
 If your project-target is an executable, this will be run after doing
-a Make (@xref{Make}). @ikey{Ctrl+F9,Run}is the hotkey. If the build was
+a @xref{Make}. @ikey{Ctrl+F9,Run}is the hotkey. If the build was
 not successful, the program will not be started. The debugging functions
-are only available if @samp{-g} was used for compiling.
-(@xref{Syntax of arguments})
-@paragraph{}
+are only available if @samp{-g} was used for compiling
+@pxref{Syntax of arguments}.
+
 
 @subsection Step over
 This executes the code for exactly one source line. If there is a function
 call at the current line this function is executed at once without
 stepping through this function.
-@paragraph{}
+
 
 When using the @key{Shift}-key, RHIDE will NOT switch to the user screen
 when executing the debuggee.
@@ -1826,10 +1777,10 @@ when executing the debuggee.
 hotkey @ikey{Shift+F8,Step over (No display swap)}may be used.)
 
 @subsection Trace into
-This is the same as Step over (@xref{Step over}), except when there is a
+This is the same as @xref{Step over}, except when there is a
 function call at the current line and for this function debugging
 information is available, RHIDE steps into this function.
-@paragraph{}
+
 
 When using the @key{Shift}-key, RHIDE will NOT switch to the user screen
 when executing the debuggee.
@@ -1842,7 +1793,7 @@ This will execute your program until the execution comes to the line,
 where the cursor is. If the program is stopped at any other place
 by a breakpoint the program will stop there and not at the cursor
 position.
-@paragraph{}
+
 
 When using the @key{Shift}-key, RHIDE will NOT switch to the user screen
 when executing the debuggee.
@@ -1861,39 +1812,39 @@ Here you can define the name of the @code{main} function of
 your program. This is needed at least when debugging programs,
 (like written with GNU Pascal or GNU Fortran), where the function
 of your main program is not @code{main}.
-@paragraph{}
+
 
 But you can use this also to debug your program at locations, which
 are executed normally before @code{main} is called (for instance
 the global constructors).
-@paragraph{}
+
 
 @subsection Arguments
 @cindex Arguments for your program
 @cindex Commandline arguments for your program
 
 Here you can type the arguments, which will be passed to
-your program when you do a @emph{run}. (@xref{Run}) and
-(@xref{Syntax of arguments}).
-@paragraph{}
+your program when you do a @emph{run} @pxref{Run} and
+@pxref{Syntax of arguments}.
+
 
 @section Compile menu
 
 Here are the functions to translate your source files and for updating your
 project.
-@paragraph{}
+
 
 @subsection Compile
 @cindex Compile
 
 Compile the file in the current editor-window or the selected
 entry in the project-window if you are there. The IDE chooses automatically the
-correct compiler, depending on the suffix of the file.
-(@xref{Known suffixes})
-@paragraph{}
+correct compiler, depending on the suffix of the file
+@pxref{Known suffixes}.
+
 
 (@ikey{Alt+F9,Compile}is the hotkey.)
-@paragraph{}
+
 
 @subsection Make
 @cindex Make
@@ -1902,71 +1853,71 @@ This makes your project up to date. It works like MAKE on commandline
 with a makefile. @ikey{F9,Make}is the hotkey. The dependencies are checked
 for each item of the project. These dependencies are automatically generated,
 if you compile a file within the IDE.
-@paragraph{}
+
 
 @subsection Link
 @cindex Link the program
 @cindex Build the library
 
 This function has two different results depending on the type of your
-project. If your project is an executable (@xref{Known suffixes}), the linker
+project. If your project is an executable @pxref{Known suffixes}, the linker
 is started. But if it is a library, all the object files are taken to
 build a library.
-@paragraph{}
+
 
 @subsection Build all
 @cindex Build
 
 This builds the project completely new with compiling and linking
 all of the project-items.
-@paragraph{}
+
 
 @section Debug
 @cindex Debugging with RHIDE
 This menu contains the functions for debugging your program. Most of them
 have hotkeys and they are described in more detail later
-(@xref{Debugging with RHIDE}).
+@pxref{Debugging with RHIDE}.
 
 @subsection Set/Reset Breakpoint
-@xref{Setting a breakpoint}
-@paragraph{}
+@xref{Setting a breakpoint}.
+
 
 (@ikey{Ctrl+F8,Toggle a breakpoint}is the hotkey.)
 
 @subsection Evaluate/Modify
-@xref{Evaluating the contents of variables}
-@paragraph{}
+@xref{Evaluating the contents of variables}.
+
 
 (@ikey{Ctrl+F4,Evaluate/Modify}is the hotkey.)
 
 @subsection Watch an expression
-@xref{Watching the contents of variables}
-@paragraph{}
+@xref{Watching the contents of variables}.
+
 
 (@ikey{Ctrl+F7,Watch an expression}is the hotkey.)
 
 @subsection Breakpoints
-@xref{Modifying and setting a breakpoint}
-@paragraph{}
+@xref{Modifying and setting a breakpoint}.
+
 
 @subsection Disassembler window
 @cindex Disassembler
 This opens a window, where you can see assembler instructions.
 When you are running the debugger, you will see the instructions
 at the current execution point of your program.
-@paragraph{}
 
-You can step @xref{Step over} or trace @xref{Trace into} here in the same way
+
+You can step @pxref{Step over} or trace @pxref{Trace into} here in the same way
 like in an editor window and you can also debug code, which has no
 debugging information.
-@paragraph{}
+
 
 Additionally you can scroll here also forwards or backwards but
 scrolling backwards is very hard to implememnt and so you will get
 when scrolling backwards most of the time wrong output. Sorry for
 this, but until I find more time to implement this better you have to
 live with it.
-@paragraph{}
+
 
 @subsection Call stack
 @cindex Function call stack
@@ -1976,7 +1927,7 @@ execution point in the debugged program is called. If
 you hit @key{Enter} on a function which has line number debugging
 information, you will go to the source line which is shown in the
 window.
-@paragraph{}
+
 
 (@ikey{Ctrl+F3,Call stack}is the hotkey.)
 
@@ -1985,18 +1936,18 @@ This asks first for a regular expression to list only those functions
 of your program, which match that expression. The syntax for such
 a regular expression is a little bit different from the wildcards you are
 probably knowing from MS-DOS.
-@paragraph{}
+
 
 If you want to get a list of all functions you should enter either
 nothing (the default), or ".*", or "?*" (both without the double quotes).
 The expression "*" does NOT mean all function. In fact, your entry will be
 interpreted as a regular expression.
-@paragraph{}
+
 
 After you have typed the expression and pressed @key{Enter}, you will get
 a list of functions that match the regular expression and for
 which debugging information is available.
-@paragraph{}
+
 
 This list is sorted by the name of the function and has three parts:
 
@@ -2007,13 +1958,13 @@ NAME | RETURN VALUE | FILE
 You can walk through the list with the cursor keys or the mouse. If you hit
 @key{Enter} or double click a function, you will go the the source code
 of that function.
-@paragraph{}
+
 
 @node PROJECT
 @section Project
 
 Here you can add or remove items to or from your project
-@paragraph{}
+
 
 @subsection Open project
 @cindex Open a project
@@ -2022,16 +1973,16 @@ Here you can add or remove items to or from your project
 Here is the point to open a project. After selecting this menu
 item, the file open dialog is opened to select a project. You can type
 the name of the project or select one from the list.
-@paragraph{}
+
 
 If you open a project in another directory than the current, RHIDE will
 change the current directory to this directory and then the project
 will be opened.
-@paragraph{}
+
 
 If you type here a name of a project which does not exist, a new one
 is created.
-@paragraph{}
+
 
 If no project was opened
 and you create a new project,
@@ -2039,39 +1990,39 @@ all open desktop files remain open, but they are not added to
 the project.
 If a project was opened, it will be automatically closed before the
 new project is opened.
-@paragraph{}
+
 
 @subsection Close project
 @cindex Close a project
 
 This closes the currently opened project and closes all files, which are
 on the desktop.
-@paragraph{}
+
 
 @subsection Add item
 @cindex Adding a file to the project
 
 A dialog will be opened, from where you can choose your file
 to add to your project. If you are in the project window
-(@xref{Project window})
+@pxref{Project window}
 you can use the @ikey{Ins,Add a project item}key to activate this function
 within the project window.
-@paragraph{}
+
 
 Currently it is impossible to use relative or absolute paths as part
 of a project item. If you have your files in several directories, you
 have to setup either the search path for source files or you have to create
 for each directory a library that can be included in your project.
-@paragraph{}
+
 
 @subsection Delete item
 @cindex Remove a file from the project
 @cindex Delete a file from the project
 
 This will remove the selected item in the project-window
-from your project. If you are in the project window (@xref{Project window})
+from your project. If you are in the project window @pxref{Project window}
 you can use the @ikey{Del,Remove a project item}key to activate this function.
-@paragraph{}
+
 
 @subsection Local options
 @cindex Options for a single file
@@ -2079,11 +2030,11 @@ you can use the @ikey{Del,Remove a project item}key to activate this function.
 
 Here you can give the selected project-item options for
 compiling, which will be in effect only for this item. If you are in the
-project window (@xref{Project window}) you can use
+project window @pxref{Project window} you can use
 @ikey{Ctrl+O,Local options}to activate this function.
 The options you give here are passed to GCC only, when compiling this file.
-For more details see (@xref{Local options for a project item}).
-@paragraph{}
+For more details see @pxref{Local options for a project item}.
+
 
 @subsection Includes
 @cindex Show the includes for a file
@@ -2092,8 +2043,8 @@ For more details see (@xref{Local options for a project item}).
 This shows the dependencies for the selected item in the project
 window. You can use the hotkey
 @ikey{Ctrl+I,Show includes}in the project window.
-(@xref{Project window})
-@paragraph{}
+@pxref{Project window}
+
 
 @subsection Main targetname
 @cindex Building an executable
@@ -2109,14 +2060,14 @@ an executable file or a library. RHIDE selects the type of the main target
 from the suffix of this name. If it has no suffix or the suffix @file{.exe},
 an executable will be built. If it has the suffix @file{.a}, a library will
 be created.
-@paragraph{}
+
 
 @cindex Creating a COFF file
 @cindex COFF file, Creating
 Remember when you give it no suffix, both, the COFF image and the @file{.exe}
 file will created. If it has the @file{.exe} suffix, only the @file{.exe}
 file is created.
-@paragraph{}
+
 
 @subsection Primary file
 @cindex GPC, --automake
@@ -2126,11 +2077,11 @@ Here you can give the primary source file, when you want to use the
 that your program is written in Pascal and does NOT check any dependencies
 of the project, because this is done automatically by GPC with the
 @samp{--automake} option.
-@paragraph{}
+
 
 If you don't want to use the 'automake' feature of GPC, even when building
 a Pascal program, give here an empty name, which is the default.
-@paragraph{}
+
 
 @subsection Clear dependencies
 @cindex Removing the internal dependencies
@@ -2138,13 +2089,13 @@ a Pascal program, give here an empty name, which is the default.
 
 This function removes all internal stored dependencies. The files are not
 removed. This is useful when you want to create a makefile
-(@xref{Write Makefile}) and you do not want to include all the absolute
+@pxref{Write Makefile} and you do not want to include all the absolute
 filenames for the dependencies (mostly the include files).
-@paragraph{}
+
 
 This function is a relict from earlier versions of RHIDE, but I have not
 disabled it.
-@paragraph{}
+
 
 @subsection Delete rebuildable files
 @cindex Make clear
@@ -2152,9 +2103,9 @@ disabled it.
 @cindex Removing all targets
 
 This function includes the function of clearing the dependencies
-(@xref{Clear dependencies}) and removes in addition to it all the
+@pxref{Clear dependencies} and removes in addition to it all the
 files, which can be rebuild within RHIDE.
-@paragraph{}
+
 
 @subsection Write Makefile
 @cindex Creating a makefile
@@ -2165,25 +2116,25 @@ Here you can create a makefile that contains all the rules to build
 the project from the command line without starting RHIDE. For this
 you need the GNU make, because the generated makefile uses the features
 of GNU make very extensively.
-@paragraph{}
+
 
 If you have used environment variables in your search paths
-(@xref{Directories}), these are not expanded in the generated makefile.
+@pxref{Directories}, these are not expanded in the generated makefile.
 But all variables you used will be defined at the beginning of
 the makefile with their current value.
-@paragraph{}
+
 
 @section Options
 
 This menu contains many submenus for anything you can customize.
-@paragraph{}
+
 
 @subsection Directories
 @cindex Changing the search paths for files
 
 Here you can define all of the paths, where RHIDE and the compilers
 finds the needed files and where to store some files.
-@paragraph{}
+
 
 @cindex Environment variables
 All the paths you can define in the several entries have the form
@@ -2191,9 +2142,9 @@ of a semicolon separated list of directories, just like your environment
 variable %PATH%. You can use forward slashes and back slashes, but they
 are all converted to forward slashes by RHIDE. You can also use
 environment variables as part of your paths. The syntax of such a variable
-is that of a GNU makefile. If you want to use the variable @var{%DJDIR%},
-you must type @var{$(DJDIR)}.
-@paragraph{}
+is that of a GNU makefile. If you want to use the variable @samp{%DJDIR%},
+you must type @samp{$(DJDIR)}.
+
 
 @subsubsection Include directories
 @cindex Include files
@@ -2211,7 +2162,7 @@ the directory, where allegro.h is.
 This is the list of directories, where GCC looks for include files and RHIDE
 searches in this directory (after looking in the current directory) for
 header files.
-@paragraph{}
+
 
 @subsubsection Library directories
 @cindex Library search path
@@ -2220,7 +2171,7 @@ header files.
 This is the list of directories, where GCC looks for libraries when linking.
 RHIDE searches in this directories (after looking in the current directory)
 for libraries, if you have included them directly as a project item.
-@paragraph{}
+
 
 @subsubsection Object directories
 @cindex Object files in a different directory
@@ -2230,7 +2181,7 @@ for libraries, if you have included them directly as a project item.
 This is the list of directories where RHIDE looks for object files.
 If you type here only one directory this has also the effect that
 the object files, which are compiled, are stored in this directory.
-@paragraph{}
+
 
 @subsubsection Sources directories
 @cindex Source files in a different directory
@@ -2239,7 +2190,7 @@ the object files, which are compiled, are stored in this directory.
 
 This is the list of directories, where RHIDE looks for the source files
 (after looking in the current directory).
-@paragraph{}
+
 
 It enables you also
 one feature (like I use it mostly at any time), to
@@ -2248,7 +2199,7 @@ and executables in a total different directory. Simply
 Go to any directory, create there your project and then
 add the needed files to your project. Finally specify
 the path to your sources here and RHIDE will find them.
-@paragraph{}
+
 
 @subsubsection Standard headers
 @cindex Standard headers
@@ -2258,14 +2209,14 @@ your standard headers are. Header files found in these
 directories are not added to the list of dependencies which
 is automatically generated when compiling a C/C++ source
 file.
-@paragraph{}
+
 
 @subsection C/C++-Compiler
 
 In this submenu you can change most flags, which have to do when compiling
 C or C++ files or better for the options of all the currently supported
 compilers.
-@paragraph{}
+
 
 @subsubsection Warnings
 @cindex Generating of warnings
@@ -2276,11 +2227,11 @@ compilers.
 This opens a dialog where you can enable or disable most of the
 flags for generating or suppressing warnings when you compile a
 C or C++ file.
-(@xref{How to toggle these flags}).
-@paragraph{}
+@pxref{How to toggle these flags}
+
 
 For a detailed description of the available flags
-@mxref{Warning Options,,,gcc,gcc}.
+see @ref{Warning Options,,,gcc,gcc}.
 
 @subsubsection Optimizations
 @cindex Optimizing the code
@@ -2288,22 +2239,22 @@ For a detailed description of the available flags
 
 This opens a dialog where you can customize how the compiler optimizes
 your code.
-(@xref{How to toggle these flags}).
-@paragraph{}
+@pxref{How to toggle these flags}
+
 
 For a detailed description of the available flags
-@mxref{Optimize Options,,,gcc,gcc}.
+see @ref{Optimize Options,,,gcc,gcc}.
 
 @subsubsection Debugging
 @cindex Debugging info
 
 This opens a dialog where you can customize the amount of debugging information
 the compiler should include in object files.
-(@xref{How to toggle these flags}).
-@paragraph{}
+@pxref{How to toggle these flags}
+
 
 For a detailed description of the available flags
-@mxref{Debugging Options,,,gcc,gcc}.
+see @ref{Debugging Options,,,gcc,gcc}.
 
 @subsubsection C options
 @cindex C language specific flags
@@ -2311,11 +2262,11 @@ For a detailed description of the available flags
 
 This opens a dialog where you can select flags that are only passed
 to GCC when compiling C files.
-(@xref{How to toggle these flags}).
-@paragraph{}
+@pxref{How to toggle these flags}
+
 
 For a detailed description of the available flags
-@mxref{C Dialect Options, , ,gcc,gcc}.
+see @ref{C Dialect Options, , ,gcc,gcc}.
 
 @subsubsection CXX options
 @cindex CXX options
@@ -2324,11 +2275,11 @@ For a detailed description of the available flags
 
 This opens a dialog where you can select flags which are only passed
 to GCC when compiling C++ files.
-(@xref{How to toggle these flags}).
-@paragraph{}
+@pxref{How to toggle these flags}
+
 
 For a detailed description of the available flags
-@mxref{C++ Dialect Options,,,gcc,gcc}.
+see @ref{C++ Dialect Options,,,gcc,gcc}.
 
 @subsubsection Pascal options
 @cindex Pascal options
@@ -2336,12 +2287,12 @@ For a detailed description of the available flags
 
 This opens a dialog where you can select flags which are only passed
 to GPC when compiling Pascal files.
-(@xref{How to toggle these flags}).
-@paragraph{}
+@pxref{How to toggle these flags}
+
 
 For a detailed description of the available flags
-@mxref{Pascal Dialect Options,,,gpc,gpc}.
-@paragraph{}
+see @ref{Pascal Dialect Options,,,gpc,gpc}.
+
 
 @subsubsection Fortran options
 @cindex Fortran options
@@ -2349,12 +2300,12 @@ For a detailed description of the available flags
 
 This opens a dialog where you can select flags which are only passed
 to g77 when compiling Fortran files.
-(@xref{How to toggle these flags}),
-@paragraph{}
+@pxref{How to toggle these flags}
+
 
 For a detailed description of the available flags
-@mxref{Fortran Dialect Options,,,g77,g77}.
-@paragraph{}
+see @ref{Fortran Dialect Options,,,g77,g77}.
+
 
 @subsubsection How to toggle these flags
 
@@ -2366,7 +2317,7 @@ additional value or string, an inputbox will be opened, and you can type them
 there. If the additional value is optional, you can leave this input-box
 by pressing @ikey{ESC,Leaving a dialog}or activating the @emph{Cancel} button
 and no value, or the previous one will be appended to this option.
-@paragraph{}
+
 
 @subsection Libraries
 @cindex Libraries
@@ -2374,8 +2325,8 @@ and no value, or the previous one will be appended to this option.
 Here you can tell the linker which libraries will be
 linked in your program. At this time the number of additional libraries
 is limited to 16. If you need more, you have to type them manually
-(@xref{Linker options}).
-@paragraph{}
+@pxref{Linker options}
+
 
 In the input-fields of the dialog you only have to type the part of your
 library name after @file{lib} and before @file{.a}. Example: If your library
@@ -2387,7 +2338,7 @@ typed your libraries you can activate or disable them by switching the
 checkbox before the name on or off. This is done by pressing @key{Alt} and
 the corresponding digit or letter of the checkbox at the same time or by
 clicking with the mouse.
-@paragraph{}
+
 
 Normally RHIDE checks the types of your source-files and automatically
 adds some standard libraries, corresponding to these source-files.
@@ -2404,7 +2355,7 @@ GCC,
 that means, you must give the linker explicitly all of the standard
 libraries, which you need. This includes the @file{libgcc.a} and
 @file{libc.a} libraries.
-@paragraph{}
+
 
 @subsection Linker options
 @cindex Linker options
@@ -2412,10 +2363,10 @@ libraries, which you need. This includes the @file{libgcc.a} and
 
 Here you can enter a space separated list of
 options that will be passed to GCC when linking your program.
-(@xref{Syntax of arguments})
-@paragraph{}
+@pxref{Syntax of arguments}
 
-(@xref{Syntax of arguments}).
+
+@xref{Syntax of arguments}.
 
 @subsection Compiler options
 @cindex Compiler options
@@ -2425,10 +2376,10 @@ options that will be passed to GCC when linking your program.
 Here you can enter a space separated list of
 additional options that will be passed to GCC every time it is
 called.
-(@xref{Syntax of arguments})
-@paragraph{}
+@pxref{Syntax of arguments}
 
-(@xref{Syntax of arguments}).
+
+@xref{Syntax of arguments}.
 
 @subsection Environment
 
@@ -2436,7 +2387,7 @@ called.
 @cindex Colors
 
 Here you can customize all of the colors of the IDE.
-@paragraph{}
+
 
 @subsubsection Editor options
 @cindex Editor options
@@ -2447,14 +2398,14 @@ Here you can customize all of the colors of the IDE.
 @cindex Automatic indention
 When this is enabled, the editor automatically indents
 the next line by referring to the previous line if you press enter.
-@paragraph{}
+
 
 For more information
-@extref{Autoindent,Documentation for the editor,setedit,SET's editor,setedit.html}
-@paragraph{}
+see @ref{Autoindent,Documentation for the editor,,setedit}
 
-(@xref{Editor options})
-@paragraph{}
+
+@xref{Editor options}.
+
 
 @node Use tabs
 @subsubheading Use tabs
@@ -2463,14 +2414,14 @@ For more information
 When this is enabled, the character @samp{\t} is
 inserted into the text if you press the @key{Tab}-key. Otherwise
 the number of spaces (defined by tabsize) is inserted.
-@paragraph{}
+
 
 For more information see
-@extref{Real Tabs,Documentation for the editor,setedit,SET's editor,setedit.html}
-@paragraph{}
+@ref{Real Tabs,Documentation for the editor,,setedit}.
 
-(@xref{Editor options})
-@paragraph{}
+
+@xref{Editor options}.
+
 
 @node Persistent blocks
 @subsubheading Persistent blocks
@@ -2478,14 +2429,14 @@ For more information see
 Normally, RHIDE uses persistent blocks. This
 means the selected area will not get unselected if you press a key. If you
 like the behavior of earlier versions of RHIDE, disable this option.
-@paragraph{}
+
 
 For more information see
-@extref{Persistent Blocks,Documentation for the editor,setedit,SET's editor,setedit.html}
-@paragraph{}
+@ref{Persistent Blocks,Documentation for the editor,,setedit}.
 
-(@xref{Editor options})
-@paragraph{}
+
+@xref{Editor options}.
+
 
 @node Intelligent C indenting
 @subsubheading Intelligent C indenting
@@ -2495,14 +2446,14 @@ This option enables the so called
 'C intelligent indenting', which is an heuristic for indenting after
 special key words like @code{if} or @code{while} more than the normal
 autoindenting. This works only if @var{autoindent} is enabled.
-@paragraph{}
+
 
 For more information see
-@extref{Intelligent C indent,Documentation for the editor,setedit,SET's editor,setedit.html}
-@paragraph{}
+@ref{Intelligent C indent,Documentation for the editor,,setedit}.
 
-(@xref{Editor options})
-@paragraph{}
+
+@xref{Editor options}.
+
 
 @node Column cursor
 @subsubheading Column cursor
@@ -2511,14 +2462,14 @@ For more information see
 This is a special feature of the builtin editor. If you enable this option
 you will see a vertical special color highlighted column across the whole
 editor window at the cursor column.
-@paragraph{}
+
 
 For more information see
-@extref{Column cursor,Documentation for the editor,setedit,SET's editor,setedit.html}
-@paragraph{}
+@ref{Column cursor,Documentation for the editor,,setedit}.
 
-(@xref{Editor options})
-@paragraph{}
+
+@xref{Editor options}.
+
 
 @node Row cursor
 @subsubheading Row cursor
@@ -2527,14 +2478,14 @@ For more information see
 This is a special feature of the builtin editor. If you enable this option
 you will see a horizontal special color highlighted row across the whole
 editor window at the cursor row.
-@paragraph{}
+
 
 For more information see
-@extref{Row cursor,Documentation for the editor,setedit,SET's editor,setedit.html}
-@paragraph{}
+@ref{Row cursor,Documentation for the editor,,setedit}.
 
-(@xref{Editor options})
-@paragraph{}
+
+@xref{Editor options}.
+
 
 @node Match pair highlight
 @subsubheading Match pair highlight
@@ -2542,33 +2493,33 @@ For more information see
 If this option is enabled, you will see at any time you type a
 bracket, brace or parenthesis the matching highlighted or a message, that
 there was no matching found.
-@paragraph{}
+
 
 For more information see
-@extref{Match pair highlight,Documentation for the editor,setedit,SET's editor,setedit.html}
-@paragraph{}
+@ref{Match pair highlight,Documentation for the editor}.
 
-(@xref{Editor options})
-@paragraph{}
+
+@xref{Editor options}.
+
 
 @node Do not move the cursor on paste
 @subsubheading Do not move the cursor on paste
 Enable this option, when you want to leave the cursor at it's current
 position when you paste some text.
-@paragraph{}
 
-(@xref{Editor options})
-@paragraph{}
+
+@xref{Editor options}.
+
 
 @node Transparent Blocks
 @subsubheading Transparent Blocks
 @cindex Transparent blocks
 When this option is enabled, the syntax highlight is still shown
 in selected blocks.
-@paragraph{}
 
-(@xref{Editor options})
-@paragraph{}
+
+@xref{Editor options}.
+
 
 @node Optimal fill
 @subsubheading Optimal fill
@@ -2576,8 +2527,8 @@ in selected blocks.
 When enabling this option the editor fills the gaps in your text
 with an optimal value of spaces and tabs.
 
-(@xref{Editor options})
-@paragraph{}
+@xref{Editor options}.
+
 
 @node Tabsize
 @subsubheading Tabsize
@@ -2587,10 +2538,10 @@ Additionally you can select here the tabbing size for the editor. This
 value is used as the global setting for all editor windows which
 will be opened after setting this value. The currently opened windows
 will use also this setting.
-@paragraph{}
 
-(@xref{Editor options})
-@paragraph{}
+
+@xref{Editor options}.
+
 
 @c @node overwrite mode
 @c @subsubheading overwrite mode
@@ -2598,14 +2549,14 @@ will use also this setting.
 @c @cindex Insert mode
 @c If you want the editor in overwrite mode,
 @c when opening a new one, then turn this option on
-@c @paragraph{}
+@c
 @c
 @c For more information
-@c @extref{Overwrite,Documentation for the editor,setedit,SET's editor,setedit.html}
-@c @paragraph{}
+@c see @ref{Overwrite,Documentation for the editor,,setedit}.
 @c
-@c (@xref{Editor options})
-@c @paragraph{}
+@c
+@c @xref{Editor options}.
+@c
 @c
 
 @subsubsection Preferences
@@ -2619,14 +2570,14 @@ the following options:
 @cindex Creating a makefile
 @cindex Dependencies in makefile
 When this is enabled, all internally
-stored dependencies for a project item are written to the makefile.
-(@xref{Write Makefile}). You should disable this option, if you want
+stored dependencies for a project item are written to the makefile
+@pxref{Write Makefile}. You should disable this option, if you want
 to give another user the makefile of your project, and (s)he has a
 different directory structure.
-@paragraph{}
 
-(@xref{Preferences})
-@paragraph{}
+
+@xref{Preferences}.
+
 
 @node create backup files
 @subsubheading create backup files
@@ -2635,10 +2586,10 @@ different directory structure.
 Create backup files when saving. When it is enabled, RHIDE creates a backup
 of the file to save under the same name as the editing file, but the suffix
 is replaced with @file{.bak}
-@paragraph{}
 
-(@xref{Preferences})
-@paragraph{}
+
+@xref{Preferences}.
+
 
 @node syntax highlighting
 @subsubheading syntax highlighting
@@ -2648,10 +2599,10 @@ Turn the Syntax highlight on or off. RHIDE automatically checks the suffix
 of the editing file to determine the correct syntax highlighting.
 Currently this is supported only for C, C++, and Pascal source files.
 All other files are not specially highlighted.
-@paragraph{}
 
-(@xref{Preferences})
-@paragraph{}
+
+@xref{Preferences}.
+
 
 @node Use dual display
 @subsubheading Use dual display
@@ -2661,15 +2612,15 @@ Here is an very powerful option. If you have installed on your computer
 a secondary display (monochrome monitor) in addition to your VGA monitor,
 RHIDE can (when this option is enabled) switch to the second monitor
 for it's output and you can see your program on the normal monitor.
-@paragraph{}
+
 
 If this option is enabled and you have not a secondary monitor installed,
 RHIDE will detect this and does not switch to it.
-@paragraph{}
-@paragraph{}
 
-(@xref{Preferences})
-@paragraph{}
+
+
+@xref{Preferences}.
+
 
 @node redirect stderr
 @subsubheading redirect stderr
@@ -2679,10 +2630,10 @@ Turn this on, if you want to redirect the
 output to stderr of your program to a window in the IDE. This is
 also needed, if you want to use the builtin analyzing of a call frame
 traceback, when your program crashes.
-@paragraph{}
 
-(@xref{Preferences})
-@paragraph{}
+
+@xref{Preferences}.
+
 
 @node redirect stdout
 @subsubheading redirect stdout
@@ -2690,22 +2641,22 @@ traceback, when your program crashes.
 @cindex @code{stdout} redirecting
 Turn this option on, if you want to redirect
 the output to stdout from your program to a window in the IDE.
-@paragraph{}
 
-(@xref{Preferences})
-@paragraph{}
+
+@xref{Preferences}.
+
 
 @node show process information
 @subsubheading show process information
 @cindex Show what RHIDE does
 @cindex Debugging RHIDE
 Turn this option on if you want to
-see which files are checked, when you do a make (@xref{Make}), and
+see which files are checked, when you do a make @pxref{Make}, and
 to see the commandlines how the compilers are started by RHIDE.
-@paragraph{}
 
-(@xref{Preferences})
-@paragraph{}
+
+@xref{Preferences}.
+
 
 @node show free memory
 @subsubheading show free memory
@@ -2714,10 +2665,10 @@ to see the commandlines how the compilers are started by RHIDE.
 Turn this option on to show in the upper right
 corner of the screen a readout of the free memory of your system.
 This shows both, the virtual and the physical free memory.
-@paragraph{}
 
-(@xref{Preferences})
-@paragraph{}
+
+@xref{Preferences}.
+
 
 @node No file caching
 @subsubheading No file caching
@@ -2727,10 +2678,10 @@ If this option is enabled, RHIDE does not use
 the internal caching of information about searching files and
 modification times. Use this only if you have problems with the
 automatic checking of dependencies, because this slows down RHIDE.
-@paragraph{}
 
-(@xref{Preferences})
-@paragraph{}
+
+@xref{Preferences}.
+
 
 @node 16 background colors
 @subsubheading 16 background colors
@@ -2744,20 +2695,20 @@ background available. To get blinking foreground colors, you must use a
 little trick. Enable at first this option here. Then change the color
 attribute to highlight background color you want and then
 reset the '16 background colors' option.
-@paragraph{}
 
-(@xref{Preferences})
-@paragraph{}
+
+@xref{Preferences}.
+
 
 @node Show GDB commands
 @subsubheading Show GDB commands
 @cindex Debugging RHIDE
 When this option is enabled you can see in the GDB output window
 which commands are sent to the builtin GDB from RHIDE.
-@paragraph{}
 
-(@xref{Preferences})
-@paragraph{}
+
+@xref{Preferences}.
+
 
 @node Use no shadows
 @subsubheading Use no shadows
@@ -2765,30 +2716,30 @@ which commands are sent to the builtin GDB from RHIDE.
 @cindex Disable shadows
 When this option is enabled RHIDE uses no shadows at all for
 the windows and dialogs and so on.
-@paragraph{}
 
-(@xref{Preferences})
-@paragraph{}
+
+@xref{Preferences}.
+
 
 @node Save text palette
 @subsubheading Save text palette
 When you debug a program, which modifies the palette when in text mode,
 you should enable this option.
-@paragraph{}
+
 
 @node Save project only when closing
 @subsubheading Save project only when closing
 Enable this option only, when you get a system crash after starting your
 program and because of the use of disk cache the project, which RHIDE
 automatically saves before your program is run, is corrupted.
-@paragraph{}
+
 
 @node Show user screen after exit
 @subsubheading Show user screen after exit
 When this option is enabled, RHIDE waits for a keypress after exiting
 your program. It is in general the same like pressing @key{Alt+F5}
 after exiting the user program.
-@paragraph{}
+
 
 @node Only #include "..." in dependencies
 @subsubheading Only #include "..." in dependencies
@@ -2798,22 +2749,22 @@ dependencies for a project item which are included via
 @format
 #include "..."
 @end format
-@paragraph{}
+
 
 @node Directories in project items
 @subsubheading Directories in project items
 When this option is enabled, RHIDE will allow you to include
 project items which are not in the current directory or any of
 the directories specified in the path for source files
-@xref{Sources directories}. If the item is relative to any
+@pxref{Sources directories}. If the item is relative to any
 of these default searched directories only the relative
 subdirectory will be part of the item.
-@paragraph{}
+
 
 An other side effect is, that the resutling object file
 will be placed also in the same directory relative to the
 default output directory.
-@paragraph{}
+
 
 @node Show disassembler window when needed
 @subsubheading Show disassembler window when needed
@@ -2821,17 +2772,17 @@ When you select this option RHIDE will open always the disassembler
 window when the execution stops at a location for which there is
 no line number debugging information available. Default the window
 can be opened only by explicit request.
-@paragraph{}
+
 
 This allows you also to debug functions or code from other libraries
 or the startup code.
-@paragraph{}
+
 
 @node Use RCS
 @subsubheading Use RCS
 Only when this option is enabled, RHIDE will use the builtin knowledge
-about RCS (@xref{RCS and RHIDE}).
-@paragraph{}
+about RCS @pxref{RCS and RHIDE}.
+
 
 @node Screen mode
 @subsubheading Screen mode
@@ -2848,7 +2799,7 @@ at @code{0xB800:0000}. For the numbers of the videomodes refer to
 the documentation of your video card.
 If you type an invalid videomode (RHIDE checks it), the
 80x25-Mode will automatically selected.
-@paragraph{}
+
 
 I have tested all available text modes with my
 et4000-card, and they work. For some modes, (mostly every
@@ -2856,17 +2807,17 @@ high resolution text mode)
 the mouse cursor is shown by my own routine.
 That means that you can use the mouse also in the high resolution text
 modes.
-@paragraph{}
 
-(@xref{Preferences})
-@paragraph{}
+
+@xref{Preferences}.
+
 
 @node Closed windows
 @subsubheading Closed windows
 Define here the number of closed windows which RHIDE should remember.
 If you want to disable this, give here a number 0 and when RHIDE should
 remember any closed window give here -1.
-@paragraph{}
+
 
 
 @subsubsection Mouse options
@@ -2874,7 +2825,7 @@ remember any closed window give here -1.
 @cindex Reverse mouse buttons
 Here you can customize a little bit the speed of the double click
 interval and you can also tell RHIDE to reverse the mouse buttons.
-@paragraph{}
+
 
 @subsubsection Reserved words
 @cindex Reserved words
@@ -2884,7 +2835,7 @@ This opens a dialog, where you can modify the
 list of reserved words the editor knows. If you choose
 the @emph{Default} button in this dialog, the default reserved words
 are generated and any previous words are lost.
-@paragraph{}
+
 
 @subsubsection Pascal reserved words
 @cindex Pascal reserved words
@@ -2894,7 +2845,7 @@ This opens a dialog, where you can modify the
 list of reserved words for Pascal the editor knows. If you choose
 the @emph{Default} button in this dialog, the default reserved words
 are generated and any previous words are lost.
-@paragraph{}
+
 
 @node C-Flags
 @subsubsection C-Flags
@@ -2903,55 +2854,55 @@ are generated and any previous words are lost.
 
 
 Here you can modify the list of C options, which you can
-turn on or off. (@xref{C options})
-@paragraph{}
+turn on or off @pxref{C options}.
 
-(@xref{How to change the list of flags})
+
+@xref{How to change the list of flags}.
 
 @subsubsection CXX-Flags
 @cindex C++ flags, edit them
 @cindex Edit the list of C++ flags
 
 Here you can modify the list of CXX options, which you
-can turn on or off. (@xref{CXX options})
-@paragraph{}
+can turn on or off @pxref{CXX options}.
 
-(@xref{How to change the list of flags})
-@paragraph{}
+
+@xref{How to change the list of flags}.
+
 
 @subsubsection Pascal-Flags
 @cindex Pascal flags, edit them
 @cindex Edit the list of Pascal flags
 
 Here you can modify the list of Pascal options, which you
-can turn on or off. (@xref{Pascal options})
-@paragraph{}
+can turn on or off @pxref{Pascal options}.
 
-(@xref{How to change the list of flags})
-@paragraph{}
+
+@xref{How to change the list of flags}.
+
 
 @subsubsection Fortran-Flags
 @cindex Fortran flags, edit them
 @cindex Edit the list of Fortran flags
 
 Here you can modify the list of Fortran options, which you
-can turn on or off. (@xref{Fortran options})
-@paragraph{}
+can turn on or off @pxref{Fortran options}.
 
-(@xref{How to change the list of flags})
-@paragraph{}
+
+@xref{How to change the list of flags}.
+
 
 @subsubsection Warning-Flags
 @cindex Warnings, edit the flags
 @cindex Edit the list of warning flags
 
 Here you can modify the list of Warning-Flags,
-which you can turn on or off.
-(@xref{Warnings})
-@paragraph{}
+which you can turn on or off
+@pxref{Warnings}.
 
-(@xref{How to change the list of flags})
-@paragraph{}
+
+@xref{How to change the list of flags}.
+
 
 @subsubsection Debugging-Flags
 @cindex Debugging, edit the flags
@@ -2959,12 +2910,12 @@ which you can turn on or off.
 
 
 Here you can modify the list of Debugging-Flags,
-which you can turn on or off.
-(@xref{Debugging})
-@paragraph{}
+which you can turn on or off
+@pxref{Debugging}.
 
-(@xref{How to change the list of flags})
-@paragraph{}
+
+@xref{How to change the list of flags}.
+
 
 @subsubsection Optimization-Flags
 @cindex Optimizations, edit the flags
@@ -2972,12 +2923,12 @@ which you can turn on or off.
 
 
 Here you can modify the list of
-Optimization-Flags, which you can turn on or off.
-(@xref{Optimizations})
-@paragraph{}
+Optimization-Flags, which you can turn on or off
+@pxref{Optimizations}.
 
-(@xref{How to change the list of flags})
-@paragraph{}
+
+@pxref{How to change the list of flags}.
+
 
 @subsubsection User words
 @cindex Define your own reserved words
@@ -2985,8 +2936,8 @@ Optimization-Flags, which you can turn on or off.
 @cindex Edit the list of user defined words
 
 Here you can define your own list of words, which can be specially
-highlighted, when syntax highlighting is enabled. (@xref{Preferences})
-@paragraph{}
+highlighted, when syntax highlighting is enabled @pxref{Preferences}.
+
 
 @node How to change the list of flags
 @subsubheading How to change the list of flags
@@ -2997,66 +2948,66 @@ highlighted, when syntax highlighting is enabled. (@xref{Preferences})
 The syntax of the strings, which you can modify or add with the last
 menu-entries is any string followed by an optional modifier with
 the following meaning:
-@paragraph{}
+
 
 @table @samp
-@titem %d
+@item %d
 if you activate this option, you @emph{must} enter
 an integer there
 
-@titem %d?
+@item %d?
 if you activate this option, you @emph{can} enter
 an integer there
 
-@titem %c
+@item %c
 if you activate this option, you @emph{must} enter
 a character there
 
-@titem %c?
+@item %c?
 if you activate this option, you @emph{can} enter
 a character there
 
-@titem %s
+@item %s
 if you activate this option, you @emph{must} enter
 a string there
 
-@titem %s?
+@item %s?
 if you activate this option, you @emph{can} enter
 a string there
 
-@titem %s(STRING)
+@item %s(STRING)
 if you activate this option, you @emph{must}
 enter a string, which contains only characters defined by
 the string STRING, there
 
-@titem %s?(STRING)
+@item %s?(STRING)
 if you activate this option, you @emph{can}
 enter a string, which contains only characters defined by
 the string STRING, there
 
 @end table
-@paragraph{}
+
 
 As an example: the string for the @samp{-O} option is defined as
-@samp{-O%d?} and the @samp{-d} option (@xref{Debugging}) is
+@samp{-O%d?} and the @samp{-d} option @pxref{Debugging} is
 defined as
 @* @samp{-d%s(MNDyrxjsLtfcSlgRJdkamp)}@*
 which means, the
 string after @samp{-d} must be a combination of the characters in
 @* @samp{MNDyrxjsLtfcSlgRJdkamp}@*
-@paragraph{}
+
 
 If you leave the dialogs for modifying the flag lists with the
 @emph{OK} button or if you activate the @emph{Default} button, all
 flags are disabled
-@paragraph{}
+
 
 @subsection Save options
 @cindex Save options
 Here you can save all the options you currently customized to a file.
 RHIDE restricts this to saving them only to a file with the @file{.gpr}
 suffix (and @file{.gdt} for the desktop file).
-@paragraph{}
+
 
 @subsection Load options
 @cindex Load options
@@ -3067,7 +3018,7 @@ Here you can load the options from any existing project file.
 
 In this menu you get the functions for arranging, resizing and
 switching between the windows on the desktop:
-@paragraph{}
+
 
 @subsection Size/move
 @cindex Window, resizing
@@ -3084,7 +3035,7 @@ For moving, click on the top of the window and hold the left button down. Now
 you can move the window by moving the mouse. To resize it, click on lower right
 corner of the window, hold the button down and resize the window by moving the
 mouse. (This function has the hotkey @ikey{Ctrl+F5,Resize/move a window})
-@paragraph{}
+
 
 @subsection Zoom
 @cindex Window, zoom it
@@ -3093,7 +3044,7 @@ mouse. (This function has the hotkey @ikey{Ctrl+F5,Resize/move a window})
 This brings up the window to maximal size or to previous size.
 (hotkey @ikey{F5,Zoom a window}or click with the mouse at the symbol on the right upper
 corner of the window)
-@paragraph{}
+
 
 @subsection Tile
 @cindex Windows, tile all
@@ -3101,7 +3052,7 @@ corner of the window)
 
 This arranges all the editor-windows on the desktop, to see
 them all simultaneously.
-@paragraph{}
+
 
 @subsection Cascade
 @cindex Windows, cascade them
@@ -3110,7 +3061,7 @@ them all simultaneously.
 This arranges all the editor-windows on the desktop, to see
 the contents of the current editor-window and the top-frame of all the
 others.
-@paragraph{}
+
 
 @subsection Next
 @cindex Next window
@@ -3118,7 +3069,7 @@ others.
 
 Hotkey @ikey{F6,Next window}switches to the next window on the desktop.
 
-@paragraph{}
+
 
 @subsection Previous
 @cindex Previous window
@@ -3126,7 +3077,7 @@ Hotkey @ikey{F6,Next window}switches to the next window on the desktop.
 
 Hotkey @ikey{Shift+F6,Previous window}switches to the previous window
 on the desktop.
-@paragraph{}
+
 
 @subsection Close
 @cindex Window, close it
@@ -3136,7 +3087,7 @@ This closes the current window. If it is an editor-window and
 its contents were modified, you will be prompted to save it. Hotkey
 @ikey{Alt+F3,Close a window}or click with the mouse on the upper-left symbol
 of the frame.
-@paragraph{}
+
 
 @subsection List
 @cindex List of all windows
@@ -3147,15 +3098,15 @@ that are currently on the desktop. You can select one of them and press
 @ikey{ENTER,Select a window}to switch to it. With @ikey{Del,Close a window}you
 can close the selected window.
 
-@paragraph{}
+
 
 @subsection Project
 @cindex Show the project window
 @cindex Select the project window
 
 With this function you can select the project window
-(@xref{Project window}). If it was closed, it will be opened.
-@paragraph{}
+@pxref{Project window}. If it was closed, it will be opened.
+
 
 @subsection UserScreen
 @cindex User screen
@@ -3164,7 +3115,7 @@ With this function you can select the project window
 Hotkey @ikey{Alt+F5,User screen}shows the contents of the DOS-Screen.
 To leave this function, do any event. That means, press any key, or
 click with the mouse.
-@paragraph{}
+
 
 @node Help submenu
 @section Help
@@ -3180,25 +3131,25 @@ use with RHIDE. This was also the most important reason for me to
 write the documentation in Texinfo, because you have now an online help
 available with the produced
 INFO file @file{rhide.info}.
-@paragraph{}
+
 
 Pressing @ikey{F1,Help}invokes the help system from everywhere.
 For help on using the INFO viewer, press
 @ikey{F1,Help about the INFO viewer}within the help window.
 But the above things work only if you have correctly installed the INFO files
 that come with RHIDE.
-@paragraph{}
+
 
 If you have installed the binary archive of RHIDE as described in the
 @file{readme.bin}, the INFO files are in @file{%DJDIR%/info}. If you
 have not modified your @file{djgpp.env} file, this directory is searched
 for the INFO files.
-@paragraph{}
+
 
 But you can put the INFO files in any directory you want, if you add this
 directory to the %INFOPATH% variable in your @file{djgpp.env} file in
 the section for @file{info}.
-@paragraph{}
+
 
 @subsection RHIDE Help index
 This brings up the help window with the main index for getting help
@@ -3208,7 +3159,7 @@ for RHIDE.
 In this submenu you can set the files to be searched for getting
 syntax help and you can also customize the options, how this is
 done.
-@paragraph{}
+
 
 @subsubsection Syntax help
 @cindex Syntax help
@@ -3216,18 +3167,18 @@ done.
 If you are in an editor window, and you press @ikey{Ctrl+F1,Syntax help},
 you get help about the function under or before the cursor.
 But only if this function is documented in the files you have
-given to be searched for. (@xref{Files to search})
+given to be searched for @pxref{Files to search}.
 If there was no help found you will be informed.
 This feature can be used also by clicking with the right mouse button
 on the word.
-@paragraph{}
+
 
 @subsubsection Files to search
 @cindex Files for syntax help
 Give here a space separated list of files (if you give no suffix,
 the standard suffixes are tried) which should be scanned for getting
 help for a word.
-@paragraph{}
+
 
 @subsubsection Options for searching
 @cindex Syntax help, Options
@@ -3243,13 +3194,13 @@ wanted topic.
 @subsubheading Exact
 When this is selected, you will get syntax help only, if in the selected
 files a topic with that exact name was found.
-@paragraph{}
+
 
 @node Substring
 @subsubheading Substring
 When this is selected, you will get syntax help, when the word is a
 substring of any of the nodes in the files to be searched for syntax help.
-@paragraph{}
+
 
 @node Fuzzy
 @subsubheading Fuzzy
@@ -3261,23 +3212,23 @@ want to get syntax help.
 @subsubheading Search options
 These are several options for the textual search:
 @table @samp
-@titem Case sensitive
+@item Case sensitive
 When this is selected, the textual search is case sensitive.
 
 @end table
-@paragraph{}
+
 
 @node Fuzzy value
 Here you can set the bound for the fuzzy search. The range is from
 1 to 1000 where 1 means that mostly every string matches any other
 string and 1000 means the exact match.
-@paragraph{}
+
 
 @subsection Index for syntax help
 @cindex Syntax help, Index
 Here you can get a list of all available topics for the syntax help,
 from where you can choose one (@key{Enter}, @key{Space} or double click).
-@paragraph{}
+
 
 @subsection libc reference
 @cindex Libc reference
@@ -3289,7 +3240,7 @@ is used very often when writing C programs.
 @cindex Help about help
 This brings up a help-window for instructions and available keystrokes
 when using the integrated INFO viewer.
-(@extref{Top,,,infview,INFO Viewer})
+(see @ref{Top,,,infview})
 
 @c @subsection Last help
 @c This shows the last opened help window.
@@ -3306,7 +3257,7 @@ this is right on the top-frame, you can select this window by pressing
 is a single digit).
 Or you click anywhere in the window or on the
 frame of the window with your mouse.
-@paragraph{}
+
 
 @section How the editor works
 @cindex Editor
@@ -3314,7 +3265,7 @@ frame of the window with your mouse.
 
 This section should describe the work of the editor. But because the editor
 is now so complex and, not my own work, there is now separate documentation,
-@extref{Top,Documentation for the editor,setedit,SET's editor,setedit.html}
+see @ref{Top,Documentation for the editor,,setedit}
 for a detailed and better doc. But you
 can read also more from my doc, which describes the most common (for me)
 usage of the editor.
@@ -3322,7 +3273,7 @@ usage of the editor.
 Here I describe most of the editor commands. If there is a key command like
 @kbd{Ctrl+Q+Y}, press @key{Ctrl} and @key{Q} simultaneously and
 after this press @key{Y}.
-@paragraph{}
+
 
 I strongly recommend not to use the technique by holding down the @key{Ctrl}
 key when pressing the second key in such key combinations, because for
@@ -3346,7 +3297,7 @@ of @code{SIGINIT}.
 @item @ikey{Ctrl+T,Delete to the next word}erases from the cursor to the beginning of the next word on this line.
 @item @ikey{Ctrl+Backspace,Delete to the previous word}erases from the cursor to the beginning of the previous word.
 @end itemize
-@paragraph{}
+
 
 @subsection Cursor moving commands
 @cindex Cursor moving
@@ -3366,7 +3317,7 @@ of @code{SIGINIT}.
 @item @ikey{Ctrl+Q+R,Start of file}or @ikey{Ctrl+PgUp,Begin of file}or @kbd{Ctrl+Home} moves the cursor to the beginning of the file.
 @item @ikey{Ctrl+Q+C,End of file}or @ikey{Ctrl+PgDown,Bottom of file}or @kbd{Ctrl+End} moves the cursor to the end of the file.
 @end itemize
-@paragraph{}
+
 
 @subsection Text selecting and searching commands
 @cindex Selecting some text
@@ -3384,7 +3335,7 @@ of @code{SIGINIT}.
 @item @ikey{Ctrl+L,Again find/replace}repeat the last replace or find operation.
 @item @ikey{Ctrl+K+H,Unselect}unselect all.
 @end itemize
-@paragraph{}
+
 
 @subsection Block commands
 @cindex Editor, block commands
@@ -3414,10 +3365,10 @@ of @code{SIGINIT}.
 @item @ikey{Ctrl+J,Jump to a line}Goto line @dots{} (Will be prompted for.)
 @item @ikey{Ctrl+K+?,Set a marker}?, a digit (@key{0} - @key{9}). Set a marker in the text (up to ten different markers).
 @item @ikey{Ctrl+Q+?,Jump to a marker}?, a digit (@key{0} - @key{9}). Jump to a marker, which you have previously set.
-@item @ikey{Shift+Space,Execute a macro}Executes a macro, which can be defined externally by analyzing the last two characters before the cursor.
-(@xref{Defining macros})
+@item @ikey{Shift+Space,Execute a macro}Executes a macro, which can be defined externally by analyzing the last two characters
+before the cursor @pxref{Defining macros}.
 @end itemize
-@paragraph{}
+
 
 If you have set some markers, they will be stored, so you can use them later
 when restarting RHIDE.
@@ -3432,13 +3383,13 @@ To compile only a single file, you don't need to include it in a project.
 You only have to open it and do a compile. If a file is in your project,
 you can compile it, if you are in its editor-window or if you are in the
 project-window and this file is selected.
-@paragraph{}
+
 
 Warnings and errors from compiling a file are listed in the message-window.
 If there are warnings or errors, you can jump to the corresponding source by
 hitting @ikey{ENTER,Select a message}on this message. If this file wasn't
 already opened, it will be opened.
-@paragraph{}
+
 
 @subsection Problems with automatic dependencies
 @cindex Dependencies, problems with it
@@ -3452,7 +3403,7 @@ RHIDE. But if someone modifies one of the files, which are in the cache,
 (this can be another program, when you run RHIDE in a multitasking
 environment, such as Windows) or if you run your project and it modifies some
 of these files, the internal cache is after this not up to date.
-@paragraph{}
+
 
 Here is another situation. Your source files are not in the current
 directory. You have opened a source file for editing and successfully
@@ -3464,19 +3415,19 @@ changes in the file. The previously opened file will be opened automatically
 and you edit it. If you do now a @emph{Make}, RHIDE tells you, that your project
 is up to date, because it searches for source files at first in the current
 directory, and there is the unmodified file.
-@paragraph{}
+
 
 In this chapter I will give you for some special parts a more detailed
 description of what they do.
-@paragraph{}
+
 
 @section Project window
 @cindex Project window
 
 The project window shows you every file, which you have included in your
 project. Most time you work with RHIDE this window should be visible, but
-you can also close it (@xref{Close}).
-@paragraph{}
+you can also close it @pxref{Close}.
+
 
 @subsection Items of your project
 
@@ -3484,7 +3435,7 @@ The items in the project window, and therefore also in your project, are
 sorted in alphabetical order. This has the effect of faster finding
 an item and you can also move the selecting bar to a specified item by
 typing the name of this item.
-@paragraph{}
+
 
 @cindex Order of the project items
 Normally, the alphabetic order of the project items causes no problems because
@@ -3494,12 +3445,12 @@ linker makes sense only for libraries, because they are checked only once
 for unresolved references. That means, if you include libraries in your
 project you must know about the order, where this library is put on
 the command line when linking your program.
-@paragraph{}
+
 
 If you have problems with that order, or if you really want to have one
 object file (or library) before some others, you must rename them, to
 get the right position from the name.
-@paragraph{}
+
 
 @subsection Open a project item
 
@@ -3507,10 +3458,10 @@ To open an editor window with the selected item press either
 @ikey{ENTER,Open a project item}or @key{SPACE}. If there was already
 a window with this file opened on the desktop, this window will be selected.
 This works only if the selected item has a known suffix
-(@xref{Known suffixes}). If the selected item is
+@pxref{Known suffixes}. If the selected item is
 a project file, that project will be opened with the side effect that
 if you close this project, the previous one will be reopened.
-@paragraph{}
+
 
 @subsection Dependencies of project item
 
@@ -3520,7 +3471,7 @@ basename followed by the directory and they are also sorted in alphabetical
 order. From here you can also open an editor window with the selected
 dependency by pressing @key{SPACE} or @ikey{ENTER,Open an include file}on
 that item.
-@paragraph{}
+
 
 @subsection Local options for a project item
 @cindex Local options
@@ -3528,7 +3479,7 @@ that item.
 You can change many options for a project item, which are in effect only
 for this file. To do this, hit @ikey{Ctrl+O,Local options}on the selected
 item and a dialog is shown, where you can change the options.
-@paragraph{}
+
 
 At this time you can change the following options.
 
@@ -3551,7 +3502,7 @@ not already exist. For most project items this is not usefull but
 if you have included in your project other projects which create
 a library this might be usefull, especially if the library has many
 source files and you know, that they change very seldom.
-@paragraph{}
+
 
 @node Name of the output file
 @subsubheading Name of the output file
@@ -3566,32 +3517,32 @@ the compiler, which is used to create your output file. Possible
 values are:
 
 @table @samp
-@titem Auto
+@item Auto
 This is the default and should be used in most cases. When
 this type is selected, RHIDE selects the correct compiler depending
 on the suffixes of your source and output file.
 
-@titem User
+@item User
 If you have any special compiler, which is not known to
 RHIDE, to create your output file, you must select this and give
 RHIDE also the calling syntax of that compiler (see below)
 
-@titem None
+@item None
 If you don't want to compile this item select this.
 
-@titem GNU C compiler
+@item GNU C compiler
 Tell RHIDE to compile this file like a normal
 GNU C source file.
 
-@titem GNU C++ compiler
+@item GNU C++ compiler
 Tell RHIDE to compile this file like a normal
 GNU C++ source file.
 
-@titem GNU assembler
+@item GNU assembler
 Tell RHIDE to compile this file like a normal
 GNU assembler file.
 
-@titem GNU Pascal compiler
+@item GNU Pascal compiler
 Tell RHIDE to compile this file like a normal
 GNU Pascal file.
 
@@ -3602,7 +3553,7 @@ GNU Pascal file.
 @cindex User defined compiler
 If you have selected the User compiler type, you have to put in the next
 input line the specs on how to call the compiler. These specs can use any
-variables that are known to RHIDE (@xref{Builtin variables}) together
+variables that are known to RHIDE @pxref{Builtin variables} together
 with normal text. As an example I show here, how the builtin C compiler
 is defined (the backslashes at the end of the lines are used only here
 to show, that the line is continued, they are NOT part of the specs):
@@ -3621,28 +3572,28 @@ Here you can select how errors or warnings that are
 produced by the compiler, are checked. Possible values are:
 
 @table @samp
-@titem Auto
+@item Auto
 Let RHIDE select the correct way for checking the errors
 
-@titem User
+@item User
 Use your own external program to check the output of the
 compiler to @code{stderr}
 
-@titem None
+@item None
 Do not check any errors, assume that the compiler does
 it's job every time successfully.
 
-@titem builtin C
+@item builtin C
 Check the errors like when compiling a C file
 
-@titem builtin assembler
+@item builtin assembler
 Check the errors like when compiling an
 assembler file
 
-@titem builtin linker
+@item builtin linker
 Check the errors like when linking
 
-@titem return value
+@item return value
 Determine only if the compiling was successful
 or not by checking the return value of the compiler (zero for
 success)
@@ -3663,12 +3614,12 @@ output to stderr from the compiler (Error and warning messages)
 messages in a special format.
 
 @table @samp
-@titem Errors
+@item Errors
 A line that starts with the string "!Error" (without the
 double quotes) optionally followed by "!File" and a filename
 in single quotes and "!Line" followed by a space and a line number
 and "!Column" followed by a space and a coloumn number.
-@paragraph{}
+
 
 If "!Line" and/or "!Column" are not used they dafault to 0.
 The next line contain the error text.
@@ -3684,11 +3635,11 @@ This is a sample error message
 This means, that in file 'test.c' at line 17 an error occurred
 with the description 'This is a sample error message'
 
-@titem Warnings
+@item Warnings
 Warnings have the same format, except that !Error is replaced by
 !Warning.
 
-@titem Any other line
+@item Any other line
 is treated as a simple message optionally preceeded
 by !File and !Line.
 
@@ -3700,106 +3651,106 @@ by !File and !Line.
 WARNING: THE LIST OF VARIABLES AND STRINGFUNCTIONS DESCRIBED BELOW
 MIGHT NOT BE UPTODATE. IF YOU WANT TO GET INFORMATION ABOUT ALL
 FEATURES PLEASE LOOK IN THE SOURCES FOR RHIDE.
-@paragraph{}
+
 
 RHIDE uses for compiling, linking, and the other stages of generating
 a file also specs, like you can change in the local options for a
-project item (@xref{Local options}). Here the specs, which are used
+project item @pxref{Local options}. Here the specs, which are used
 currently:
 
 @table @asis
-@titem $(RHIDE_COMPILE_C)
+@item $(RHIDE_COMPILE_C)
 For compiling C source files
 
-@titem $(RHIDE_COMPILE_CC)
+@item $(RHIDE_COMPILE_CC)
 For compiling C++ source files
 
-@titem $(RHIDE_COMPILE_ASM)
+@item $(RHIDE_COMPILE_ASM)
 For compiling assembler source files
 
-@titem $(RHIDE_COMPILE_PASCAL)
+@item $(RHIDE_COMPILE_PASCAL)
 For compiling Pascal source files
 
-@titem $(RHIDE_COMPILE_OBJC)
+@item $(RHIDE_COMPILE_OBJC)
 For compiling objective C source files
 
-@titem $(RHIDE_COMPILE_LINK)
+@item $(RHIDE_COMPILE_LINK)
 For linking
 
-@titem $(RHIDE_COMPILE_LINK_PASCAL)
+@item $(RHIDE_COMPILE_LINK_PASCAL)
 For linking when the project contain Pascal source files
 
-@titem $(RHIDE_COMPILE_LINK_PASCAL_AUTOMAKE)
-This spec is used only, when you have set the (@xref{Primary file}), to
+@item $(RHIDE_COMPILE_LINK_PASCAL_AUTOMAKE)
+This spec is used only, when you have set the @pxref{Primary file}, to
 tell RHIDE, not to check for dependencies but to use the 'automake'
 feature of GPC.
 
-@titem $(RHIDE_COMPILE_ARCHIVE)
+@item $(RHIDE_COMPILE_ARCHIVE)
 For creating a library
 
-@titem $(RHIDE_FSDB)
+@item $(RHIDE_FSDB)
 For calling FSDB.
 
-@titem $(RHIDE_GDB)
+@item $(RHIDE_GDB)
 For calling GDB.
 
-@titem $(RHIDE_GPROF)
+@item $(RHIDE_GPROF)
 For calling GPROF.
 
-@titem $(RHIDE_GREP)
+@item $(RHIDE_GREP)
 For calling grep.
 
 @end table
-@paragraph{}
+
 
 All of these specs have a default content in RHIDE, but they can be
 overwritten by setting the environment variable with the same name and
 any other contents.
-@paragraph{}
+
 
 @section Builtin variables
 This section describes, which variables can be used within RHIDE to get
 values from some of the configurations, which you have made inside RHIDE.
-@paragraph{}
+
 
 All of these variables are referenced by a name enclosed in parentheses
 preceeded by a dollar sign. Example: @samp{$(RHIDE_GCC)}. You can overwrite any
 of the following variables, if you define in your environment the same
 variable with any contents you want.
-@paragraph{}
+
 
 When RHIDE tries to get the contents of such a variable, it searches at first
 if it is found in it's internal database. If it was not found, the environment
 is checked for such a variable and if that fails, the resulting value is
 the variable itself.
-@paragraph{}
+
 
 In addition to the use of variables, RHIDE has a limited ability of
 using string manipulating functions. I have implemented some of the
 functions, which are available with GNU make. They have the same name
 and should work exactly like the GNU make counterpart.
-@paragraph{}
+
 
 @table @samp
-@titem $(strip arg)
+@item $(strip arg)
 This function removes any leading and trailing whitespace and converts
 all multispaces to single spaces from the (whitespace separated list)
 @samp{arg}.
 
 @ifset html
-@titem $(addsuffix arg1\\\,arg2)
+@item $(addsuffix arg1\\\,arg2)
 @end ifset
 @ifclear html
-@titem $(addsuffix arg1,arg2)
+@item $(addsuffix arg1,arg2)
 @end ifclear
 These functions append on each argument from the whitespace separated list
 @samp{arg2} the string @samp{arg1}.
 
 @ifset html
-@titem $(addprefix arg1\\\,arg2)
+@item $(addprefix arg1\\\,arg2)
 @end ifset
 @ifclear html
-@titem $(addprefix arg1,arg2)
+@item $(addprefix arg1,arg2)
 @end ifclear
 This is the same as
 @ifset html
@@ -3811,65 +3762,65 @@ This is the same as
 except that it puts
 the string @samp{arg1} before each argument from @samp{arg2}.
 
-@titem $(notdir arg)
+@item $(notdir arg)
 This removes any directory part from the argument @samp{arg}.
 
-@titem $(dir)
+@item $(dir)
 This extracts only the directory part from the argument @samp{arg}. If there
 was no directory in @samp{arg}, an empty string is returned. (The directory
 contains also the drive letter, if there was one)
 
 @ifset html
-@titem $(subst arg1\\\,arg2\\\,arg3)
+@item $(subst arg1\\\,arg2\\\,arg3)
 @end ifset
 @ifclear html
-@titem $(subst arg1,arg2,arg3)
+@item $(subst arg1,arg2,arg3)
 @end ifclear
 This replaces every occurrence of @samp{arg1} in @samp{arg3} with
 @samp{arg2}
 @end table
-@paragraph{}
+
 
 The following variables have a special meaning in RHIDE with the default
 contents:
 @table @asis
-@titem $(RHIDE_GCC)
+@item $(RHIDE_GCC)
 GCC
 
-@titem $(RHIDE_AS)
+@item $(RHIDE_AS)
 GCC
 
-@titem $(RHIDE_GXX)
+@item $(RHIDE_GXX)
 GCC
 
-@titem $(RHIDE_GPC)
+@item $(RHIDE_GPC)
 GPC
 
-@titem $(RHIDE_AR)
+@item $(RHIDE_AR)
 ar
 
-@titem $(RHIDE_LD)
+@item $(RHIDE_LD)
 GCC
 
-@titem $(RHIDE_LD_PASCAL)
+@item $(RHIDE_LD_PASCAL)
 GPC
 
-@titem $(RHIDE_ARFLAGS)
+@item $(RHIDE_ARFLAGS)
 rcs
 
-@titem $(RHIDE_INCLUDES)
+@item $(RHIDE_INCLUDES)
 $(SPECIAL_CFLAGS) $(addprefix -I,$(INCLUDE_DIRS))
 
-@titem $(RHIDE_LIBDIRS)
+@item $(RHIDE_LIBDIRS)
 $(addprefix -L,$(LIB_DIRS))
 
-@titem $(RHIDE_LIBS)
+@item $(RHIDE_LIBS)
 $(addprefix -l,$(LIBS))
 
-@titem $(RHIDE_LDFLAGS)
+@item $(RHIDE_LDFLAGS)
 $(SPECIAL_LDFLAGS) $(addprefix -Xlinker ,$(LD_EXTRA_FLAGS))
 
-@titem $(RHIDE_COMPILE_C)
+@item $(RHIDE_COMPILE_C)
 @format
 $(RHIDE_GCC) $(RHIDE_INCLUDES) $(C_DEBUG_FLAGS) \
 $(C_OPT_FLAGS) $(C_WARN_FLAGS) $(C_C_LANG_FLAGS) \
@@ -3877,7 +3828,7 @@ $(C_EXTRA_FLAGS) $(LOCAL_OPT) -c $(SOURCE_NAME) \
 -o $(OUTFILE)
 @end format
 
-@titem $(RHIDE_COMPILE_C_FORCE)
+@item $(RHIDE_COMPILE_C_FORCE)
 @format
 $(RHIDE_GCC) $(RHIDE_INCLUDES) $(C_DEBUG_FLAGS) \
 $(C_OPT_FLAGS) $(C_WARN_FLAGS) $(C_C_LANG_FLAGS) \
@@ -3885,7 +3836,7 @@ $(C_EXTRA_FLAGS) -x c $(LOCAL_OPT) -c $(SOURCE_NAME) \
 -o $(OUTFILE)
 @end format
 
-@titem $(RHIDE_COMPILE_CC)
+@item $(RHIDE_COMPILE_CC)
 @format
 $(RHIDE_GXX) $(RHIDE_INCLUDES) $(C_DEBUG_FLAGS) \
 $(C_OPT_FLAGS) $(C_WARN_FLAGS) $(C_C_LANG_FLAGS) \
@@ -3893,7 +3844,7 @@ $(C_CXX_LANG_FLAGS) $(C_EXTRA_FLAGS) $(LOCAL_OPT) \
 -c $(SOURCE_NAME) -o $(OUTFILE)
 @end format
 
-@titem $(RHIDE_COMPILE_CC_FORCE)
+@item $(RHIDE_COMPILE_CC_FORCE)
 @format
 $(RHIDE_GXX) $(RHIDE_INCLUDES) $(C_DEBUG_FLAGS) \
 $(C_OPT_FLAGS) $(C_WARN_FLAGS) $(C_C_LANG_FLAGS) \
@@ -3901,14 +3852,14 @@ $(C_CXX_LANG_FLAGS) $(C_EXTRA_FLAGS) -c c++ $(LOCAL_OPT) \
 -c $(SOURCE_NAME) -o $(OUTFILE)
 @end format
 
-@titem $(RHIDE_COMPILE_ASM)
+@item $(RHIDE_COMPILE_ASM)
 @format
 $(RHIDE_AS) $(RHIDE_INCLUDES) $(C_DEBUG_FLAGS) \
 $(C_OPT_FLAGS) $(C_WARN_FLAGS) $(C_EXTRA_FLAGS) \
 $(LOCAL_OPT) -c $(SOURCE_NAME) -o $(OUTFILE)
 @end format
 
-@titem $(RHIDE_COMPILE_ASM_FORCE)
+@item $(RHIDE_COMPILE_ASM_FORCE)
 @format
 $(RHIDE_AS) $(RHIDE_INCLUDES) $(C_DEBUG_FLAGS) \
 $(C_OPT_FLAGS) $(C_WARN_FLAGS) $(C_EXTRA_FLAGS) \
@@ -3916,39 +3867,39 @@ $(C_OPT_FLAGS) $(C_WARN_FLAGS) $(C_EXTRA_FLAGS) \
 -o $(OUTFILE)
 @end format
 
-@titem $(RHIDE_GPC_FLAGS)
+@item $(RHIDE_GPC_FLAGS)
 @format
 $(RHIDE_INCLUDES) $(C_DEBUG_FLAGS) $(C_OPT_FLAGS) \
 $(C_WARN_FLAGS) $(C_P_LANG_FLAGS) $(C_EXTRA_FLAGS)
 @end format
 
-@titem $(RHIDE_COMPILE_PASCAL)
+@item $(RHIDE_COMPILE_PASCAL)
 @format
 $(RHIDE_GPC) $(RHIDE_GPC_FLAGS) $(LOCAL_OPT) \
 -c $(SOURCE_NAME) -o $(OUTFILE)
 @end format
 
-@titem $(RHIDE_COMPILE_PASCAL_FORCE)
+@item $(RHIDE_COMPILE_PASCAL_FORCE)
 @format
 $(RHIDE_GPC) $(RHIDE_GPC_FLAGS) -x pascal \
 $(LOCAL_OPT) -c $(SOURCE_NAME) -o $(OUTFILE)
 @end format
 
-@titem $(RHIDE_COMPILE_LINK)
+@item $(RHIDE_COMPILE_LINK)
 @format
 $(RHIDE_LD) $(RHIDE_LIBDIRS) $(C_EXTRA_FLAGS) \
 $(RHIDE_LDFLAGS) -o $(OUTFILE) $(OBJFILES) \
 $(LIBRARIES) $(RHIDE_LIBS)
 @end format
 
-@titem $(RHIDE_COMPILE_LINK_PASCAL)
+@item $(RHIDE_COMPILE_LINK_PASCAL)
 @format
 $(RHIDE_LD_PASCAL) $(RHIDE_LIBDIRS) $(C_EXTRA_FLAGS) \
 $(RHIDE_LDFLAGS) -o $(OUTFILE) $(OBJFILES) \
 $(LIBRARIES) $(RHIDE_LIBS)
 @end format
 
-@titem $(RHIDE_COMPILE_LINK_PASCAL_AUTOMAKE)
+@item $(RHIDE_COMPILE_LINK_PASCAL_AUTOMAKE)
 @format
 $(RHIDE_LD_PASCAL) $(RHIDE_LIBDIRS) $(RHIDE_LDFLAGS) \
 -o $(OUTFILE) \
@@ -3956,27 +3907,27 @@ $(RHIDE_LD_PASCAL) $(RHIDE_LIBDIRS) $(RHIDE_LDFLAGS) \
 $(RHIDE_GPC_FLAGS) $(SOURCE_NAME) $(LIBRARIES) $(RHIDE_LIBS)
 @end format
 
-@titem $(RHIDE_COMPILE_ARCHIVE)
+@item $(RHIDE_COMPILE_ARCHIVE)
 @format
 $(RHIDE_AR) $(RHIDE_ARFLAGS) $(OUTFILE) $(OBJFILES)
 @end format
 
-@titem $(RHIDE_FSDB)
+@item $(RHIDE_FSDB)
 @format
 fsdb $(OUTFILE) $(addprefix -p ,$(SRC_DIRS)) $(PROG_ARGS)
 @end format
 
-@titem $(RHIDE_GDB)
+@item $(RHIDE_GDB)
 @format
 gdb $(OUTFILE) $(addprefix -d ,$(SRC_DIRS))
 @end format
 
-@titem $(RHIDE_GREP)
+@item $(RHIDE_GREP)
 @format
 grep -n $(prompt arguments for GREP)
 @end format
 
-@titem $(RHIDE_GPROF)
+@item $(RHIDE_GPROF)
 @format
 gprof $(OUTFILE)
 @end format
@@ -3988,68 +3939,68 @@ the contents of options from RHIDE. But you can override them also
 by setting them as an environment variable.
 
 @table @asis
-@titem $(INCLUDE_DIRS)
+@item $(INCLUDE_DIRS)
 All the include directories
 
-@titem $(LIB_DIRS)
+@item $(LIB_DIRS)
 All the library directories
 
-@titem $(SOURCE_NAME)
+@item $(SOURCE_NAME)
 The actual compiled source file
 
-@titem $(OUTFILE)
+@item $(OUTFILE)
 The actual created file
 
-@titem $(C_DEBUG_FLAGS)
+@item $(C_DEBUG_FLAGS)
 All the debugging flags
 
-@titem $(C_OPT_FLAGS)
+@item $(C_OPT_FLAGS)
 All the optimization flags
 
-@titem $(C_WARN_FLAGS)
+@item $(C_WARN_FLAGS)
 All the warning flags
 
-@titem $(C_C_LANG_FLAGS)
+@item $(C_C_LANG_FLAGS)
 All the C language flags
 
-@titem $(C_CXX_LANG_FLAGS)
+@item $(C_CXX_LANG_FLAGS)
 All the C++ language flags
 
-@titem $(C_P_LANG_FLAGS)
+@item $(C_P_LANG_FLAGS)
 All the Pascal language flags
 
-@titem $(LIBS)
+@item $(LIBS)
 All the libraries, which are given in the libraries
 options
 
-@titem $(LD_EXTRA_FLAGS)
+@item $(LD_EXTRA_FLAGS)
 All the additional linker options
 
-@titem $(LOCAL_OPT)
+@item $(LOCAL_OPT)
 All the local options for that project item
 
-@titem $(OBJFILES)
+@item $(OBJFILES)
 All the destination files, which are part of
 the project and which are not a library and not excluded from linking
 
-@titem $(LIBRARIES)
+@item $(LIBRARIES)
 All the libraries, which are explicitly included in the
 project and not excluded from linking
 
-@titem $(SPECIAL_CFLAGS)
+@item $(SPECIAL_CFLAGS)
 Some special flags for @file{GCC}. Currently only the @samp{-nostdlib}
 switch.
 
-@titem $(SPECIAL_LDFLAGS)
+@item $(SPECIAL_LDFLAGS)
 Some special flags for @file{GCC} when linking. Currently only the
 switches @samp{-pg} and @samp{-nostdlib}.
 
-@titem $(prompt TITLE)
+@item $(prompt TITLE)
 RHIDE prompts for arguments which get the title @samp{TITLE} and insert
 the parameters here.
 
 @end table
-@paragraph{}
+
 
 @section Change the defaults of RHIDE
 @cindex Other compilers
@@ -4057,12 +4008,12 @@ the parameters here.
 
 If you have special wishes for compiling your source files, you can
 configure for RHIDE mostly everything. For adding support for other
-than the builtin known file types (@xref{Builtin variables}). If you
+than the builtin known file types @pxref{Builtin variables}. If you
 want to change the behavior of RHIDE for compiling all the known
 file types you should know at first really what you do. If you think,
 this is a good idea or if you only want only check if it works you can
 do it.
-@paragraph{}
+
 
 Before RHIDE compiles any file (this includes also linking and building
 a library) it searches the environment for a variable after the following
@@ -4070,7 +4021,7 @@ scheme: When compiling a file with suffix @file{.c} to a file with
 suffix @file{.o} RHIDE checks for the variable $(RHIDE_COMPILE.c.o). If
 this variable is defined the contents of this variable is taken as the
 compile spec.
-@paragraph{}
+
 
 If you want to change the specs for linking you must take as destination
 suffix @file{.exe} or @file{.} and as source suffix the suffix of
@@ -4079,7 +4030,7 @@ your object files. Example:
 @format
 $(RHIDE_COMPILE.o.)
 @end format
-@paragraph{}
+
 
 @section Message window
 @cindex Message window
@@ -4091,11 +4042,11 @@ with a line number. If you press @ikey{ENTER,Jump to the source line}on such
 a message, the corresponding source line in the file will be highlighted
 and the window with this file will be selected. If this file is not already
 on the desktop, it will be opened.
-@paragraph{}
+
 
 If the file, to which the messages refer, is already in the foreground you can
 see the selected source line for your messages directly on the screen.
-@paragraph{}
+
 
 @section Syntax highlighting
 @cindex Syntax highlighting
@@ -4105,12 +4056,12 @@ Syntax highlighting is now supported directly by the editor. It should
 work in mostly every situation for all the supported types. Currently
 (in RHIDE) only the C/C++ style syntax highlight and the Pascal style
 syntax highlight are supported.
-@paragraph{}
+
 
 With which style a file is highlighted is chosen by RHIDE by checking
-the suffix of the file and determining the file type from that suffix.
-(@xref{Known suffixes})
-@paragraph{}
+the suffix of the file and determining the file type from that suffix
+@xref{Known suffixes}.
+
 
 @section Checking the dependencies
 @cindex Checking dependencies
@@ -4121,12 +4072,12 @@ a cache for checking the modification time of a file and for finding
 a file (computing the full name of a file). But sometimes the data in
 the cache isn't valid, especially when running under Windows. If you see
 this, you can clear the cache by leaving RHIDE and starting again.
-@paragraph{}
+
 
 If you didn't do any special things but have problems with it, please
 run RHIDE with the @samp{-df} switch and try to find out, where the
 problem is and post it to me so I can fix it.
-@paragraph{}
+
 
 @section What is Turbo Vision
 @cindex Turbo Vision
@@ -4136,21 +4087,21 @@ this library to use with DJGPP because I think it is the most powerful
 text windowing library, which is available for MS-DOS. With the help of
 this library you can write a front end application which looks very well
 and has an interface that is easy to use.
-@paragraph{}
+
 
 The Turbo Vision library is not only a window based text user interface,
 it is also a very good event handling mechanism. It supports the use of
 the mouse and keyboard with the ability of defining and using of hotkeys.
 That means, you can assign to some key or combinations of keys, which
 function should be executed.
-@paragraph{}
+
 
 The main parts of an application, which is using this library, are the
 desktop, the menu bar and the status line. The menu bar is usually shown
 as the topmost line of the screen. There are shown the main parts of
 the pull down menus, from where you can select the most functions, which
 are implemented in an application.
-@paragraph{}
+
 
 To use the menu you can use the mouse as well the keyboard. With the mouse
 you can click every where on a menu entry and the corresponding function
@@ -4159,7 +4110,7 @@ have. At first some of them, these are, for example, all the entries in the
 menu bar, open a submenu with more menu entries which are related to
 the name of this main entry. And the others, most in such a submenu, execute
 a definite function of the application.
-@paragraph{}
+
 
 With the keyboard you can walk through the menu very simply. Press
 @ikey{F10,Activate menu bar}to activate the menu bar. In the pull down
@@ -4168,12 +4119,12 @@ and with the cursor right and left keys you can switch to next or previous
 menu. With the @ikey{ENTER,Select a menu entry}key you activate the function,
 which corresponds to this entry. If this was a submenu, which is indicated
 with a symbol like a small right arrow, this will be opened.
-@paragraph{}
+
 
 If you walk through the menu with the cursor keys or the mouse (hold the left
 mouse button down and move the mouse) in the status line will be shown for
 each entry a short hint for the function of this menu entry.
-@paragraph{}
+
 
 @section How the dialogs work
 @cindex Using the dialog
@@ -4184,13 +4135,12 @@ or where you can type in some data. At first some general functions. If you
 press @ikey{ESC,Leaving a dialog}the dialog will be closed and nothing will
 be changed. The same can be done with the mouse by clicking on the close
 symbol (this is the small symbol on upper left frame of the dialog).
-@paragraph{}
+
 
 In the next paragraphs I will describe the most used elements of a dialog.
 For selecting each element of a dialog you can use the @key{Tab} key to
 select the next element in the dialog or the @kbd{Shift+Tab} key, to select
 the previous element.
-@paragraph
 
 @cindex Button
 A button is a rectangle with some text on it. If you activate such a button a
@@ -4200,23 +4150,23 @@ key, until the button is specially highlighted and press
 button has a different color. So you can press @key{Alt} plus this character to
 activate the button. With the mouse you can simply click on a button to
 activate it.
-@paragraph{}
+
 
 @cindex Lists
 @cindex Listbox
 A Listbox is a collection of some strings in one or more columns and rows as
-needed. The project window (@xref{Project window}) is such a Listbox with
+needed. The project window @pxref{Project window} is such a Listbox with
 the names of the project items. You can use the cursor keys to move the
 focus bar in the list, or if it is a sorted Listbox, you can also type
 some characters and the focus will move to the item, which starts with
 these characters. To select a item in a list box, press @key{SPACE} or
 @ikey{ENTER,Select a item in a Listbox}or double click with mouse on it.
-@paragraph{}
+
 
 @cindex Input line
 In an input line you can type some text which can be edited with the usual
 editing keys.
-@paragraph{}
+
 
 @cindex Checkbox
 A checkbox is a collection of options, which can be turned on or off.
@@ -4226,20 +4176,20 @@ use the cursor keys to move the focus to the option you want and press
 @ikey{SPACE,Toggle an option}or, if a character in an option string is
 highlighted you can press this key and the option will be turned on or
 off or click with the mouse on the option.
-@paragraph{}
+
 
 @cindex Radiobuttons
 Radiobuttons are similar to Checkboxes, but there you can select only
 one of all the shown options.
-@paragraph{}
+
 
 @section Defining macros
 @cindex Macros
 @cindex Pseudo Macros
 
 Please look for a detailed documentation here:
-@extref{Pseudo Macros,Documentation about Pseudo Macros,setedit,SET's editor,setedit.html}
-@paragraph{}
+@ref{Pseudo Macros,Documentation about Pseudo Macros,,setedit}
+
 
 @section The INFO Viewer
 @cindex Info Viewer
@@ -4249,12 +4199,12 @@ The integrated help system of RHIDE is based on the INFO
 Viewer written by @SET{}. It gives you access to all the INFO
 files which you have installed in the correct directories as is done
 for @file{info.exe}.
-@paragraph{}
+
 
 To get help about the INFO Viewer hit @ikey{F1,Help about the INFO Viewer}when
 the help-window is opened or follow this link to
-@mxref{Top,,,infview,The Info Viewer}.
-@paragraph{}
+@ref{Top,The Info Viewer,,infview}.
+
 
 In addition to getting help with this system you can also copy text
 from the help screen to the clipboard. This is useful if you want
@@ -4263,7 +4213,7 @@ program. This feature is not so powerful as in the editor, but
 it is good enough. To mark some text use the @key{Shift} and
 cursor keys and copy the selected text with @kbd{Ctrl+Ins} to
 the clipboard.
-@paragraph{}
+
 
 @cindex Context help
 In RHIDE you have also the possibility to get help about a specific
@@ -4271,48 +4221,48 @@ function. Currently this works only for functions, which are documented
 in the libc reference. For doing this, move the cursor to the function
 and hit @ikey{Ctrl+F1,Context help}or click with the right button of
 the mouse on that word.
-@paragraph{}
+
 
 @section RCS and RHIDE
 @cindex RCS
 RHIDE knows a little bit about RCS, the Revision Control System. Since
 RCS is available also for DJGPP I enabled now some features to use
 RHIDE also on packages which use RCS.
-@paragraph{}
+
 
 RHIDE can handle RCS files in the way, that it searches for a checked
 in source file if the normal source file was not found. The complicatest
 part here was to determin the correct RCS file name from the source
 name. (Especially under DJGPP this is a problem since under raw DOS
 it is not possible to use names like 'foo.c,v').
-@paragraph{}
+
 
 So I decided to use the external program @file{rlog} which comes with
 the RCS package to determine the actual correct RCS source name. I did
 so because the DJGPP implementation knows enough about the DOS
 limitation and how to solve them.
-@paragraph{}
+
 
 This help here is not ment to be a RCS introduction. If you don't know
 what RCS is or what can be done with it, please look in the
 manuals wich come with RCS.
-@paragraph{}
+
 
 Here now what RHIDE knows about the RCS files. If a source file was
 not found, it's RCS name is computed with the spec @samp{$(RHIDE_RLOG)}
 which defaults to @samp{$(shell rlog -R $(rlog_arg))} where @samp{$(rlog_arg)}
 is substituted at runtime with the actual wanted source file.
-@paragraph{}
+
 
 This spec can be overwritten to speed it up. An example for this can
 be found in the distributed sample environment file @file{rhide_.env}.
-@paragraph{}
+
 
 When RHIDE only wants to compile the file or only to get the modification
 time it is temporary checked out (without locking it) and after the
 needed operation (compiling) it is removed (for checking the modification
 time it is not checked out, but the time form the RCS file is taken).
-@paragraph{}
+
 
 If you want to open that file for editing the same is done but now it is
 checked out with setting a lock and it is not checked in after closing
@@ -4321,14 +4271,14 @@ which can be overwritten also and it defaults to
 @samp{$(shell co -q $(co_arg))} where the switch @samp{-l} is added
 when it is checked out for edititing otherwise @samp{$(co_arg)} is
 substituted at runtime only with the wanted source file.
-@paragraph{}
+
 
 @chapter Debugging with RHIDE
 
 For debugging your programs you need now no external debugger, because
 RHIDE has one integrated. The integrated debugger is not code which
 I have written, but it is GDB 4.16, which is linked in RHIDE.
-@paragraph{}
+
 
 Because RHIDE uses a special method to communicate with GDB it is currently
 not possible to use all of the features, which GDB has. I have implemented
@@ -4336,7 +4286,7 @@ at this time the most important functions, which are needed to debug your
 program. So it is not possible to give GDB the same commands as when
 running GDB stand alone. That means, if you need any very special feature
 of GDB you must run GDB.
-@paragraph{}
+
 
 The integrated debugger is a real source level debugger like GDB. If
 you step through your program you will see every time exactly where
@@ -4344,7 +4294,6 @@ in the sources you are. But to use the ability to debug your
 program needs, that you have compiled your source files with
 debugging information and these symbols must not have been stripped
 from the executable.
-@paragraph
 
 @section Limitations of the integrated debugger
 
@@ -4402,25 +4351,25 @@ RHIDE supports now also to use an installed dual display. This is when
 you have installed in addition to your VGA card a monochrome display
 card together with a monitor. RHIDE checks this by asking the BIOS
 if it is present and if this is true and the option is enabled
-(@xref{Preferences}) then RHIDE switches automatically to
+@pxref{Preferences} then RHIDE switches automatically to
 the secondary display when debugging and your program will run
 on the primary display.
-@paragraph{}
+
 
 With this debugging technique you will get the best debugging results
 especially when debugging graphics programs.
-@paragraph{}
+
 
 To use the dual display with RHGDB use the @samp{-D} switch for
 RHGDB.
-@paragraph{}
+
 
 @section Using the integrated debugger
 
 If you are familiar with Borland's debugger, you will see, that most of
 the functions of that debugger are implemented in the same or in a
 similar way (this includes the key bindings).
-@paragraph{}
+
 
 @subsection Stepping through the source code
 
@@ -4429,14 +4378,14 @@ the Step-function @key{F8}. With this you execute a complete source
 line. If there is a function call at the current execution point, this
 function is called without debugging it. This technique is the same
 like the @samp{next}-command from GDB.
-@paragraph{}
+
 
 The next way is the Trace-function.
 It is like the Step-function, @key{F7}, except that if there is a function
 call at the current execution point, you will go into this function when
 there is debugging information for that function available.
 This technique is the same as the @samp{step}-command from GDB.
-@paragraph{}
+
 
 And the third way is the Goto-Cursor-function. For this, move the cursor
 to the line in your source code and press @key{F4}. Now the execution of
@@ -4444,7 +4393,7 @@ your program is continued until it comes to that line. Sometimes you will
 get an error message, that for the specified line is no code generated.
 This comes from the optimization of your code by GCC. In this case try
 a line below or above.
-@paragraph{}
+
 
 @subsection Evaluating the contents of variables
 
@@ -4456,13 +4405,13 @@ value. If you have pressed this in an editor window, RHIDE tries to find
 the word under the cursor and copies this as default in the
 expression input line. To get the contents of this expression you have
 to press the @emph{Evaluate}-button.
-@paragraph{}
+
 
 If the expression could not be evaluated so it is shown in the result line.
 For the exact syntax of getting the contents of an expression
-@mxref{Expressions,,,gdb,gdb}. You can also show the value of the
-expression in several formats, @mxref{Output Formats,,,gdb,gdb}.
-@paragraph{}
+see @ref{Expressions,,,gdb,gdb}. You can also show the value of the
+expression in several formats @pxref{Output Formats,,,gdb,gdb}.
+
 
 In addition to the functionality of the Borland debuggers, GDB (and
 of course also RHIDE) can evaluate the result of function calls. If
@@ -4480,7 +4429,7 @@ foo(16)
 and you will get as result, what the function would return, if it is
 called with the argument @code{16}. As arguments you can also use
 any known variable or complex expressions.
-@paragraph{}
+
 
 A known limitation is, that the expressions are NOT checked for validity.
 That means, you can produce any exception there, which will terminate
@@ -4489,26 +4438,26 @@ your program. As an example type in the expression input line
 3/0
 @end format
 And, of course, you cannot assign to a function call a new value.
-@paragraph{}
+
 
 @cindex Builtin calculator
 As an special side effect you can use this also as a calculator. You
 can evaluate any trivial or complex expression and this is also available,
 if you haven't started the integrated debugger.
-@paragraph{}
+
 
 @subsection Watching the contents of variables
 In addition to a single look at the contents of a variable, you can
 add the variable to a list which is updated after each debugger
 step and is shown in the watching window. For this function you
 can use the hotkey @kbd{Ctrl+F7}.
-@paragraph{}
+
 
 Within the watch window you can press @key{Enter} on an expression
 to change that expression (NOT the contents of that expression)
 or you can press @ikey{Del,Remove from the watches}to remove the variable
 from the watch window.
-@paragraph{}
+
 
 @section Problems with C++ programs
 Because GDB cannot handle correctly C++ debugging information
@@ -4520,7 +4469,7 @@ of a variable when it is a member of a class. Because GDB does not
 detect, that your program is a C++ program, it sees it as a normal
 C program and so GDB does nothing know about classes and all what
 have to do with it.
-@paragraph{}
+
 
 For accessing the member of a baseclass you must do some tricks. Let me explain
 it on an example:
@@ -4551,7 +4500,7 @@ it with @code{this->A.a} !!! That means: At first you must access
 all members with the implicit @code{this} variable and at second
 you must give all baseclasses until that, where the member was
 declared.
-@paragraph{}
+
 
 @section Using Breakpoints
 Breakpoints are a very useful thing when debugging a program. You
@@ -4567,7 +4516,7 @@ breakpoint set, that this line is shown in another color. If
 you hit @kbd{Ctrl+F8} on a line, which
 has already a breakpoint, the breakpoint at this line
 is removed.
-@paragraph{}
+
 
 @subsection Modifying and setting a breakpoint
 The second way is by setting a breakpoint with the breakpoint dialog
@@ -4577,14 +4526,14 @@ In this dialog you can enable/disable a breakpoint. This is not the
 same as deleting and resetting it. If you disable a breakpoint, it is
 stored internally but it is not used. If you enable it again all the settings
 for that breakpoint, which you have already made, are remembered.
-@paragraph{}
+
 
 In the breakpoint dialog you can also set or delete a breakpoint with
 the given buttons. If you want to set a new breakpoint, use the
 New-Button. Then you will get a dialog which you also get when you
 press the Modify-Button. In this dialog you can change many things of
 the breakpoint.
-@paragraph{}
+
 
 In this dialog is the only point for setting a breakpoint at a
 specified function. For doing this you must set at first the type
@@ -4592,19 +4541,19 @@ of the breakpoint to Function. Then you can type in the function input line
 the name of the function or hit @ikey{Ctrl+F1,List of functions}to
 get a list of functions which are available from where you can select
 one with @key{Enter}.
-@paragraph{}
+
 
 For setting a breakpoint at a specified line, set the breakpoint type
 to Line and type in the filename and the linenumber.
-@paragraph{}
+
 
 The next what you can modify on a breakpoint is a condition. That means
 that the breakpoint should stop your program only, if the condition
 is true. Write the condition in the programming language of your
 source file and you can use any accessible variable and you can call
 also functions of the debugged program. For other information about the
-syntax @mxref{Conditions,,,gdb,gdb}.
-@paragraph{}
+syntax see @ref{Conditions,,,gdb,gdb}.
+
 
 And at last you can give your breakpoints also a count. A breakpoint count
 is a number, how often this breakpoint is ignored. That means, if you type
@@ -4612,7 +4561,7 @@ there, for example, @kbd{10}, then the RHIDE stops the execution of the program
 only, if it comes to that point the tenth time. WARNING: This count is
 set by RHIDE only once. After the breakpoint is really hit, from now on
 the breakpoint stops your program every time, the breakpoint is reached.
-@paragraph{}
+
 
 
 @subsection Problems with breakpoints
@@ -4626,43 +4575,43 @@ line number.
 In addition to RHIDE, which has an integrated debugger, there is also
 a stand-alone debugger called RHGDB. (The name comes from my initials
 and GDB)
-@paragraph{}
+
 
 RHGDB has the same abilities as RHIDE for debugging your program. But
 it has no editor. The source files are shown in read only windows where
 you can move the cursor and other things (except editing) like in RHIDE.
-@paragraph{}
+
 
 The menu tree is analog of RHIDE's but (of course) it has not all the menu
 entries of RHIDE, because RHGDB should be used only for debugging and
 nothing else.
-@paragraph{}
+
 
 I have written it to debug DJGPP programs, for which there is no
 RHIDE project file available but the program has debugging information
 and, if you are short of memory, it is much smaller than RHIDE.
-@paragraph{}
+
 
 The syntax for using RHGDB is very simple. Run it with your program
 as the first argument followed by any argument, which should be passed
 to your program.
-@paragraph{}
+
 
 RHGDB saves and reads the options from files with the suffix @file{.rgd}.
 This is done automatically when you run RHGDB with your program as argument
 by searching a file with the same basename of your program and the suffix
 @file{.rgd} and in this file the options are also automatically stored,
 when you exit RHGDB.
-@paragraph{}
+
 
 Alternatively you can also save/read the options from within RHIDE
 by selecting the corresponding menu entries from the Options menu.
-@paragraph{}
+
 
 @cindex Dual display with RHGDB
 To use the the "Dual display debugging" feature of RHGDB you must
 give on commandline the @samp{-D} switch.
-@paragraph{}
+
 
 @chapter Some FAQs
 
@@ -4673,7 +4622,7 @@ the cursor through that tab, it seems, that RHIDE uses spaces}
 @ans{}This behavior cannot (currently) be changed. Even when you
 have enabled the use of real tabs (characters with the code 9), the
 cursor is moved as if there are spaces.
-@paragraph{}
+
 
 @quest{Are there any sample project files, to show how RHIDE works?}
 @cindex Sample projects
@@ -4682,7 +4631,7 @@ cursor is moved as if there are spaces.
 
 @ans{}The sources of RHIDE include many project files to rebuild
 at least RHIDE with itself and many others.
-@paragraph{}
+
 
 @quest{I have written some libraries. How can I use them in a project?}
 
@@ -4692,17 +4641,17 @@ at least RHIDE with itself and many others.
 @cindex Libraries in a project
 @ans{} There are some different ways to do this. On the one side you can
 include them directly in the project with the
-@emph{Add to project item} function (@xref{Add item}). But if they are
+@emph{Add to project item} function @pxref{Add item}. But if they are
 not in the current directory, you must also set the library search path
-to the directory, where they are. (@xref{Library directories}). The other
-variant is to include them in the list of libraries. (@xref{Libraries})
-@paragraph{}
+to the directory, where they are @pxref{Library directories}. The other
+variant is to include them in the list of libraries @pxref{Libraries}.
+
 
 If this library is created with RHIDE, that means you have a project
 file for building this library you can also simply include that
 project file in your project. For examples, look at the RHIDE sources
 in the project file for RHIDE.
-@paragraph{}
+
 
 @quest{I have a directory, where all my include files are. Can I setup
 RHIDE to have this directory every time in the include search path, when
@@ -4716,7 +4665,7 @@ can turn this mode on by default for all newly created project files?}
 all the options, if it creates a new project. The default project must
 have the same basename as the executable of RHIDE and must be located in
 the same directory.
-@paragraph{}
+
 
 The creation of such a default project file is very simple. Change to the
 directory, where @file{rhide.exe} is located and run there
@@ -4728,7 +4677,7 @@ Now make any changes in the options which you want to have as default for
 all newly created projects. This includes also settings in the various
 search paths. If you are ready, exit RHIDE and this project file will
 be your default project file.
-@paragraph{}
+
 
 @quest{I know, that I can create a default project file. Can I create and use
 more than one?}
@@ -4751,7 +4700,7 @@ now the @file{ln.exe} program to create the link:
 @example
 ln -s rhide.exe myrhide.exe
 @end example
-@paragraph{}
+
 
 @quest{I don't want to type every time I start RHIDE
 the commandline @var{-L de}
@@ -4765,22 +4714,22 @@ language like
 set LANGUAGE=de
 @end example
 and your problem is solved.
-@paragraph{}
+
 
 @quest{I have 4 Mb RAM in my computer and every time, when I compile large
 files with optimizations enabled, my hard disk is working very hard.}
 
 @ans{}Buy more RAM!
-@paragraph{}
+
 
 @quest{I heard something about a newer version RHIDE. From where I can get
 exact information about this?}
 
 @cindex Latest version of RHIDE
 @cindex RHIDE, latest version
-@ans{} See @www{at the RHIDE home page,www.tu-chemnitz.de/~sho/rho/rhide.html}.
+@ans{} See @uref{http://www.tu-chemnitz.de/~sho/rho/rhide.html, at the RHIDE home page}.
 This page contains the latest news and the latest version of RHIDE.
-@paragraph{}
+
 
 @quest{I have a lot of money and don't know what to do with it. Can you
 help me?}
@@ -4794,7 +4743,7 @@ Am Berg 3
 D-09573 Dittmannsdorf
 Germany
 @end display
-@paragraph{}
+
 
 @cindex Creating a project
 @cindex Options, RHIDE forgot them
@@ -4808,7 +4757,7 @@ rhide projfile
 RHIDE needs a place to keep this information.   Then go into
 projects tab and select add then follow the dialog to add the  @file{.c} or
 @file{.cc}  file to the project.
-@paragraph{}
+
 
 @cindex Creating an exe-file
 @quest{I do not generate an @file{.exe} file.}
@@ -4821,14 +4770,14 @@ click project tab
 then add and select your @file{Hello.c} or @file{hello.cc} file.
 Then compile and
 then link or else build all.  There should be a file @file{projname.exe}.
-@paragraph{}
+
 
 @quest{The linker reports multiple @code{int main()} in my object file.}
 
 @ans{} You have more than one @file{.c} or @file{.cc} file in your project with
 @code{int main()}
 and the linker does not know where to start the @file{.exe} file.
-@paragraph{}
+
 
 @cindex Include files, not finding
 @cindex Include paths
@@ -4844,7 +4793,7 @@ $(DJDIR)/contrib/grx/include $(DJDIR)/contrib/here/there etc
 @end example
 This path can also be set in the @file{djgpp.env} file (see the DJGPP
 information).
-@paragraph{}
+
 
 @cindex Windows 95
 @cindex Long filenames
@@ -4854,14 +4803,14 @@ information).
 @example
 rhide -y projname
 @end example
-@paragraph{}
+
 
 @cindex RHIDEOPT
 @cindex Default commandline
 @quest{How do I set rhide to long file names without -y each time?}
 
 @ans{} Add the @var{-y} to your @var{RHIDEOPT} environment variable.
-@paragraph{}
+
 
 @cindex Linker problems
 @cindex Library paths
@@ -4871,7 +4820,7 @@ Graphic User Interface or GRX. Graphic Package.}
 
 @ans{} Click the Options tab then Libraries then mark one of the boxes and
 type in the Library name that you need i.e. @var{grx} for @file{libgrx.a}.
-@paragraph{}
+
 
 @cindex Linker problems
 @cindex Library paths
@@ -4884,7 +4833,7 @@ follows:
 $(DJDIR)/contrib/lib/here/there $(DJDIR)/contrib/grx/lib
 @end example
 This can also be set in the @file{djgpp.env} file (see the DJGPP information).
-@paragraph{}
+
 
 @cindex Documentation for RHIDE
 @quest{Where is the rhide documentation and how do I read it?}
@@ -4895,11 +4844,10 @@ existing @file{dot.inf} files in DIR. It's obvious from the format how to do
 this.  Save and exit from the edit session.  Type "info" take the lesson
 on how to run info and you are fully equipped to run an old world non
 gui browser and are ready to learn all about gnu.
-@paragraph
 
 If you are using RHIDE, simply hit @key{F1} and browse through the
 help, it IS the RHIDE documentation!
-@paragraph{}
+
 
 @cindex Linker problems
 @cindex Memory exhausted
@@ -4910,7 +4858,7 @@ Give dos more memory. Quit rhide and dos.  Select the dos icon or its
 alias (it's in @file{windows/start/programs}) RIGHT click select properties
 then select memory tab then set Protected mode DPMI to maximum 65535 and have
 another go.
-@paragraph{}
+
 
 @cindex Screen size
 @quest{I have a big svga monitor and rhide looks like cga screen.  What can I
@@ -4922,7 +4870,7 @@ Quit rhide and dos.  Select the dos icon or its alias (it's in
 tab then set the type of screen that you require in dos.  Then get into
 RHIDE and select options tab on the top of the screen then Environment
 and then Preferences then set the type of screen to your liking.
-@paragraph{}
+
 
 @cindex Long filenames
 @cindex Windows 95
@@ -4934,7 +4882,7 @@ errors when trying to compile or link. How can I solve this?}
 @ans{} This is a limitation of RHIDE. Theortically it could be
 fixed, but this would need many changes in the RHIDE sources. I`m
 not willing to do. So, simply do not not filenames with spaces.
-@paragraph{}
+
 
 @cindex OS/2
 @quest{How do I setup RHIDE to run under OS/2?}
@@ -4958,76 +4906,63 @@ DOS-Settings:
 @cindex Reporting bugs
 @ans{}At first try for your own to solve the problem by checking the
 documentation.
-@paragraph{}
+
 
 If the bug is releated to the editor (some keys do not work,
 autoindenting is not like you expect, program crash after some
 special editing ...) please send them to @SET{}, because he
 is the author of the in RHIDE integrated editor.
-@paragraph{}
+
 
 See at @RHIDEHOME{}, if this problem was already reported by other
 users. As the next ask the problem in the news group
-@news{comp.os.msdos.djgpp}, because there may be some other people
+@uref{news:comp.os.msdos.djgpp}, because there may be some other people
 with the same problem, and they can give you an answer or I, because
 I read this group also.
-@paragraph{}
+
 
 Linux users should post the problems in the linux group. To make sure
 that I will read it also, please send a CC to me because my time
 doesn`t allow me to read that huge newsgroups.
-@paragraph{}
+
 
 If this don't help you, do the following:
 
 @quotation
 Try to reproduce the error with the smallest possible project or
 source file. Run RHIDE with all debugging options enabled and redirect
-the printed output to a file. (@xref{Debugging RHIDE}) Send me this file
+the printed output to a file @pxref{Debugging RHIDE}. Send me this file
 and a detailed as possible description of the problem and include in
 your report the exact version of RHIDE you are using.
-@paragraph{}
+
 
 The exact version is shown in the About-Dialog and means the version
 number together with the build date.
 
 @end quotation
-@paragraph{}
+
 
 And a last note. If I get bug reports or questions or problems with
 RHIDE which I think that they are of common interest be warned that
 I bounce them simply to the news groups because at this time it is
 impossible for me to answer all the mails I get. So the best is to
 post the questions and/or problems only in the news groups.
-@paragraph{}
+
 
 @chapter Index
-@ifset html
-<p>@*
-<ul>@*
-@include cindex.idx
-@*
-</ul>@*
-@end ifset
 
-@ifclear html
 @printindex cp
-@end ifclear
 
 @chapter Index of key commands
-@ifset html
-<p>@*
-<ul>@*
-@include kindex.idx
-@*
-</ul>@*
-@end ifset
 
-@ifclear html
 @printindex ky
-@end ifclear
 
-@contents
+@c @ifset text
+@c @include contents.idx
+@c @end ifset
+@c @ifclear text
+@c @contents
+@c @end ifclear
 
 @bye
 

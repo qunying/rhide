@@ -420,6 +420,11 @@ void GoToAddress(unsigned long address);
 int register_count();
 
 /*
+  Return the number of known FPU registers.
+*/
+int float_register_count();
+
+/*
   Return the name of the processor register 'num'.
 */
 const char *register_name(int num);
@@ -430,12 +435,22 @@ const char *register_name(int num);
 unsigned long get_register_value(int num);
 
 /*
+  Return the contents of the FPU register 'num'.
+*/
+double get_float_register_value(int num);
+
+/*
   Set processor register 'num' to 'value'.
 */
 void set_register_value(int num, unsigned long value);
 
 /*
-  Return the size of processor register 'num' in bytes.
+  Set FPU register 'num' to 'value'.
+*/
+void set_float_register_value(int num, double value);
+
+/*
+  Return the size of processor/FPU register 'num' in bytes.
 */
 int get_register_size(int num);
 

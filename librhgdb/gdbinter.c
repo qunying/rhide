@@ -205,9 +205,7 @@ do {\
 
 #define NEW_GDB
 #if defined(gdb_stdout)
-#if (gdb_stdout = stdout)
 #undef NEW_GDB
-#endif
 #endif
 
 #ifdef NEW_GDB

@@ -72,17 +72,17 @@ static int
 _rhide_load_environment_file(char *fname, int unload)
 {
   FILE *f;
-  char line[2048];
+  char *line = NULL;
+  int line_size = 0;
   char *variable;
 
   f = fopen(fname, "rt");
   if (!f)
     return 0;
-  while (fgets(line, 2048, f))
+  while (getline(line, line_size, f) != -1)
   {
     if (line[0] == '#')         // comment
       continue;
-    line[strlen(line) - 1] = 0; // remove the last '\n'
     if (line[0] == '.')         // include a file
       /*
          This syntax should not longer be used. Use instead
@@ -156,6 +156,8 @@ _rhide_load_environment_file(char *fname, int unload)
     }
   }
   fclose(f);
+  if (line != NULL)
+    free(line);
   return 1;
 }
 

@@ -59,7 +59,7 @@ void GOTO(int _switch_to_user = 1);
 
 void OpenViewer(char *fname,int line,Boolean from_debugger,Boolean only_focus = False);
 void CenterCursor();
-char *WhereIsCursor(int &line,int &column,char *&bname = NULL);
+char *WhereIsCursor(int &line,int &column,char *&bname);
 void ToggleBreak();
 void DeleteAllBreakpoints();
 void SaveOptions();

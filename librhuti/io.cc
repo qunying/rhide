@@ -21,7 +21,7 @@ static int h_err,h_errbak;
 char *unique_name(char *before,char *retval)
 {
   char *name,*tmp = getenv("TMPDIR");
-  int fd;
+  FILE *f;
   if (!tmp)
     tmp = ".";
   if (retval)
@@ -30,7 +30,7 @@ char *unique_name(char *before,char *retval)
     strcat(retval,"/");
     strcat(retval,before);
     strcat(retval,"XXXXXX");
-    name = retval;
+    name = string_dup(retval);
   }
   else
   {
@@ -39,10 +39,9 @@ char *unique_name(char *before,char *retval)
     string_cat(name,before);
     string_cat(name,"XXXXXX");
   }
-  /* Use mkstemp instead of mktemp to be sure, that no one else use
-     that name (can happen, because it is created later than computed ) */
-  fd = mkstemp(name);
-  close(fd);
+  mktemp(name);
+  f = fopen(name, "w+b");
+  fclose(f);
   return name;
 }
 

@@ -9,6 +9,9 @@ int gdbdummy;
 #ifdef __DJGPP__
 #include <string.h>
 #include <stdio.h>
+#include <fcntl.h>
+#include <unistd.h>
+
 #define NULL 0
 
 char *tilde_expand(char *string)
@@ -140,6 +143,7 @@ D(bfd_get_reloc_code_name)
 D(bfd_default_reloc_type_lookup)
 D(bfd_generic_get_relocated_section_contents)
 D(bfd_reloc_type_lookup)
+D(bfd_generic_gc_sections)
 
 DD(_initialize_maint_cmds)
 
@@ -169,7 +173,6 @@ D(directory_command)
 extern char *current_directory;
 extern char *savestring (const char *, int);
 extern char *concat (const char *, ...);
-extern int open();
 #define DIRNAME_SEPARATOR ';'
 #define SLASH_P(X) ((X)=='/' || (X)=='\\')
 #define SLASH_CHAR '/'
@@ -291,6 +294,24 @@ openp (path, try_cwd_first, string, mode, prot, filename_opened)
     }
 
   return fd;
+}
+
+int
+source_full_path_of (filename, full_pathname)
+  char *  filename;
+  char **  full_pathname;
+{
+  int  fd;
+
+  fd = openp (source_path, 1, filename, O_RDONLY, 0, full_pathname);
+  if (fd < 0)
+    {
+      *full_pathname = NULL;
+      return 0;
+    }
+
+  close (fd);
+  return 1;
 }
 
 #endif

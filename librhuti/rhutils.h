@@ -1,4 +1,4 @@
-/* Copyright (C) 1996-2000 Robert Höhne, see COPYING.RHU for details */
+/* Copyright (C) 1996-2000 Robert H”hne, see COPYING.RHU for details */
 #ifndef __rhutils_h
 #define __rhutils_h
 

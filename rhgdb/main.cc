@@ -545,8 +545,7 @@ static void parse_commandline(int argc,char *argv[])
           use_mouse_handler = 0;
           break;
         case 'K':
-          extern int use_real_keyboard_bios;
-          use_real_keyboard_bios = 1;
+          TGKey::useBIOS = 1;
           break;
         case 'G':
           extern int screen_saving;
@@ -555,8 +554,10 @@ static void parse_commandline(int argc,char *argv[])
           screen_saving = atoi(arg);
           break;
         case 'p':
+#if 0
           extern int convert_num_pad;
           convert_num_pad = 0;
+#endif
           break;
         case 'b':
         {
@@ -648,8 +649,10 @@ void init_rhgdb(int __crt0_argc,char **__crt0_argv)
   setlocale(LC_ALL,"");
   BINDTEXTDOMAIN("rhide",locale_dir);
   TEXTDOMAIN("rhide");
+#if 0
   extern int convert_num_pad;
   convert_num_pad = 1;
+#endif
 #ifdef __DJGPP__
   extern int __crt0_argc;
   extern char **__crt0_argv;

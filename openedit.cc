@@ -5,6 +5,7 @@
 
 #define Uses_TDirList
 #define Uses_tvutilCommands
+#define Uses_tvutilFunctions
 #include <libtvuti.h>
 
 #include <rhutils.h>
@@ -56,6 +57,13 @@ $(wildcard $(dir)/",bname,")))",NULL);
   }
   string_free(sname);
   if (ewindow) ewindow->select();
+}
+
+void OpenEditor(const char *name, Boolean search, TCEditWindow *&ew)
+{
+  ew = OpenEditor(name, search);
+  if (ew)
+    AddReference((TWindow**)&ew);
 }
 
 TCEditWindow *OpenEditor(const char *name,Boolean search)

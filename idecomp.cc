@@ -1,4 +1,4 @@
-/* Copyright (C) 1996-2000 Robert H”hne, see COPYING.RH for details */
+/* Copyright (C) 1996-2000 Robert Höhne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
 #define Uses_MsgBox
 #include "rhide.h"
@@ -205,9 +205,10 @@ check_compile_c_errors(TMsgCollection & errs)
       retval = False;
       continue;
     }
-    if (buffer[0] && buffer[1] == ':')	/*
-	   filename starts with a drive letter 
-	 */
+    if (buffer[0] && buffer[1] == ':')
+    /*
+      filename starts with a drive letter
+    */
     {
       tmp = buffer + 2;
     }
@@ -540,15 +541,39 @@ check_compile_fpc_errors(TMsgCollection & errs)
 }
 
 
-static Boolean
+static bool
 check_link_errors(TMsgCollection & errs)
 {
-  Boolean retval = True;
-
-  if (open_errfile(cpp_errname) == False)
-    return False;
+  bool retval = true;
+  bool last_maybe_error = false;
+  if (open_errfile(cpp_errname) == false)
+    return false;
   while (next_error_line() >= 0)
   {
+    /*
+      the linker produces suche message for functions, which
+      should not be used for instance on GNU/Linux. The
+      messages are stored in the object files in the
+      gnu.warning section and do not include the warning
+      string :-(((
+    */
+    if (strstr(buffer, "the use of `") != NULL)
+    {
+      /*
+        there was already a line parsed out to be an error
+        message, replace it now to be a warning.
+      */
+      if (last_maybe_error)
+      {
+        int last_err = errs.getCount();
+        ((MsgRec *)errs.at(last_err-1))->type = msgWarning;
+        errs.insert(new MsgRec(NULL, buffer, msgWarning));
+        last_maybe_error = false;
+        continue;
+      }
+    }
+    retval &= (!last_maybe_error);
+    last_maybe_error = false;
     char *tmp = strchr(buffer, ' ');
 
     if (tmp && tmp[-1] == ':')
@@ -561,16 +586,12 @@ check_link_errors(TMsgCollection & errs)
         temp--;
       if (*temp != ':')
       {
-#if 0
-        if (strncmp(tmp, ": warning: ", 11) == 0)
-#else
         if (strstr(tmp, ": warning: ") != NULL)
-#endif
           errs.insert(new MsgRec(NULL, buffer, msgWarning));
         else
         {
           errs.insert(new MsgRec(NULL, buffer, msgError));
-          retval = False;
+          last_maybe_error = true;
         }
       }
       else
@@ -604,7 +625,7 @@ check_link_errors(TMsgCollection & errs)
         string_free(full_name);
         errs.insert(new MsgRec(fname, msg, msgError, line));
         string_free(fname);
-        retval = False;
+        last_maybe_error = true;
       }
     }
     else

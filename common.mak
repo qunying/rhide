@@ -26,7 +26,7 @@ PACKAGE=rhide
 # exceed 8 characters, the well known DOS limitation :-(
 PACKAGE_FILE=rhid
 PACKAGE_DIR=rhide
-VERSION=1.4.9
+VERSION=1.5
 RHIDE_MAJOR=$(word 1,$(subst ., ,$(VERSION)))
 RHIDE_MINOR=$(subst $(RHIDE_MAJOR),,$(VERSION))
 # for the DJGPP archives
@@ -266,7 +266,7 @@ endif
 ifneq ($(strip $(gpr2mak)),)
 %.mak: %.gpr $(copyrite.exe)
 	@$(update_gpr_file) $(notdir $<) > /dev/null
-	@$(gpr2mak) -d -r- -o __tmp__.mak $(notdir $<) > /dev/null
+	@$(gpr2mak) -d -r- -o - $(notdir $<) > __tmp__.mak
 	@$(copyrite.exe) __tmp__.mak > /dev/null
 	@$(move-if-change) __tmp__.mak $@ > /dev/null
 	@touch -r $@ $(notdir $<)

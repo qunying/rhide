@@ -50,7 +50,7 @@ void TIDEFileEditor::formatLine( void *DrawBuf,
   if (externalFormatLine &&
       externalFormatLine(this,DrawBuf,LinePtr,Width,Colors,lineLen,
                          Attr,lineNo)) return;
-  FormatLinePtr(DrawBuf,LinePtr,Width,Colors,lineLen,Attr,lineNo);
+  (this->*FormatLinePtr)(DrawBuf,LinePtr,Width,Colors,lineLen,Attr,lineNo);
 }
 
 

@@ -47,6 +47,9 @@ do {\
 
 class TSCollection;
 
+/* module idecheck.cc */
+int CheckIDE();
+
 /* module ideapp.cc */
 void ShowCalculator();
 

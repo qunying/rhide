@@ -6,6 +6,7 @@
 
 int gdbdummy;
 
+#if 1
 #ifdef __DJGPP__
 #include <string.h>
 #include <stdio.h>
@@ -355,4 +356,5 @@ D(load_infrun_state)
 
 #endif /* __DJGPP__ */
 
+#endif /* 0 */
 

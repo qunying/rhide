@@ -14,7 +14,7 @@ po_files=\
 	msgrec.cc tmemstrm.cc cmd.cc commands.cc execdial.cc ihistory.cc
 
 src_files=$(po_files) Makefile libtvuti.gpr libtvuti.mak makefile.src \
-	  rhide.env rhide.var
+	  rhide.env rhide.var configure configure.in config.hin
 
 projects=libtvuti
 cfg_files=
@@ -23,3 +23,4 @@ subdirs=include names stream
 po_subdirs=
 
 include $(RHIDESRC)/common.mak
+

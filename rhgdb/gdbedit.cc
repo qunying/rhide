@@ -1,8 +1,8 @@
 /* Copyright (C) 1996-1998 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
-/*
- $Id$
-*/
+#include <unistd.h>
+#include <string.h>
+
 #define Uses_TEvent
 #define Uses_TWindow
 #define Uses_TProgram
@@ -26,13 +26,8 @@
 #include <libtvuti.h>
 
 #include <rhutils.h>
-
 #include <librhgdb.h>
-
 #include <rhgdb.h>
-
-#include <unistd.h>
-#include <string.h>
 
 #define cNormal   1
 #define cMarked   2
@@ -251,7 +246,7 @@ void TGDBEditor::formatLine( void *DrawBuf,
 {
   if (DebuggerFormatLine(this,DrawBuf,LinePtr,Width,Colors,lineLen,
                          Attr,lineNo)) return;
-  FormatLinePtr(DrawBuf,LinePtr,Width,Colors,lineLen,Attr,lineNo);
+  (this->*FormatLinePtr)(DrawBuf,LinePtr,Width,Colors,lineLen,Attr,lineNo);
 }
 
 

@@ -1941,18 +1941,10 @@ static void dump_environment()
   exit(0);
 }
 
-#ifdef __DJGPP__
-extern int __crt0_argc;
-extern char **__crt0_argv;
-
-static __attribute__ (( __constructor__ ))
-void init_rhide(void)
-#else
 static
 void init_rhide(int _argc, char **_argv)
 #define __crt0_argc _argc
 #define __crt0_argv _argv
-#endif
 {
 #ifdef __DJGPP__
   __system_flags |= __system_allow_multiple_cmds;
@@ -2275,14 +2267,9 @@ setup_title(const char *title)
 #endif
 }
 
-#ifndef __DJGPP__
 int main(int argc, char **argv)
 {
   init_rhide(argc,argv);
-#else
-int main(int ,char **)
-{
-#endif
   if (call_usage)
     usage();
   if (dump_env)

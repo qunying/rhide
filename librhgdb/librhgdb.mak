@@ -1,6 +1,9 @@
 # Copyright (C) 1996-2000 Robert H”hne, see COPYING.RH for details 
 # This file is part of RHIDE. 
 # d:/obj/rhide/gpr2mak.exe -d -r- -o __tmp__.mak librhgdb.gpr
+ifeq ($(strip $(GDB_OBJ)),)
+GDB_OBJ=/dev/o/gnu/gdb-5.0
+endif
 ifeq ($(strip $(RHIDESRC)),)
 RHIDESRC=s:/rho/rhide
 endif
@@ -263,7 +266,8 @@ RHIDE_LIBDIRS=$(addprefix -L,$(dir $(LIBGDB_A)) $(LIB_DIRS))
 PCRE_OBJ=$(subst Linux,linux,$(SETOBJ)/$(RHIDE_OS))
 RHIDE_COMPILE_ARCHIVE=$(RHIDE_COMPILE_LINK)
 INCLUDE_DIRS=$(RHIDESRC)/librhgdb/include ../libgdb
-LIB_DIRS=
+LIB_DIRS=$(GDB_OBJ)/gdb $(GDB_OBJ)/bfd $(GDB_OBJ)/opcodes\
+	$(GDB_OBJ)/libiberty $(GDB_OBJ)/readline
 C_DEBUG_FLAGS=-g
 C_OPT_FLAGS=-O2
 C_WARN_FLAGS=

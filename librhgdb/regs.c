@@ -13,15 +13,13 @@ register_count()
 int
 is_float_reg(int num)
 {
-  return IS_FP_REGNUM(num);
+  return TYPE_CODE(REGISTER_VIRTUAL_TYPE(num)) == TYPE_CODE_FLT;
 }
-
-static char *register_names[] = REGISTER_NAMES;
 
 const char *
 register_name(int num)
 {
-  return register_names[num];
+  return REGISTER_NAME(num);
 }
 
 unsigned long

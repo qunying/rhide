@@ -2466,13 +2466,10 @@ _setup_title(const char *title, int offset, int subfunc)
 #endif
 
 void
-setup_main_title(const char *title)
+setup_main_title()
 {
 #ifdef __DJGPP__
-  _setup_title(title, _NEW_TITLE, 1);
-#else
-  // to make gcc happy
-  if (title) return;
+  _setup_title(IDEVersion, _NEW_TITLE, 1);
 #endif
 }
 
@@ -2482,12 +2479,10 @@ setup_title(const char *title)
 #ifdef __DJGPP__
   _setup_title(title, _NEW_SUBTITLE, 0);
 #else
-  // to make gcc happy
-  if (title) return;
+  if (title)
+    return;
 #endif
 }
-
-
 
 int main(int argc, char **argv)
 {
@@ -2502,20 +2497,8 @@ int main(int argc, char **argv)
   extern int w95_detected;
   if (w95_detected)
   {
-    char *tit;
     _init_title();
-    tit = strchr(IDEVersion, '.');
-    if (tit)
-      tit = strchr(tit+1, '.');
-    if (tit)
-    {
-      tit = (char *)alloca(_TITLE_SIZE);
-      strcpy(tit, IDEVersion);
-      strcat(tit, " (BETA)");
-    }
-    else
-      tit = IDEVersion;
-    setup_main_title(tit);
+    setup_main_title();
   }
 #endif
 #ifdef INTERNAL_DEBUGGER

@@ -32,6 +32,35 @@ init_gpr2mak()
   rhide_load_environment_file("rhide","rhide.env");
 }
 
+static
+void _WriteMake(int all_deps, int argc, char **argv)
+{
+  if (recursive_make && Project.dependencies)
+  {
+    int i;
+    for (i=0;i<Project.dependencies->getCount();i++)
+    {
+      TDependency *_dep = (TDependency *)Project.dependencies->at(i);
+      if (_dep->compile_id == COMPILE_PROJECT)
+      {
+        if (_PushProject(_dep) == True)
+        {
+          AllDeps = all_deps;
+          char *outname = string_dup(project_name);
+          BaseName(outname, 0);
+          string_cat(outname, ".mak");
+          FExpand(outname);
+          fprintf(stdout, _("Writing Makefile : %s\n"), outname);
+          string_free(outname);
+          WriteMake(NULL, argc, argv);
+          _WriteMake(all_deps, argc, argv);
+          _PopProject();
+        }
+      }
+    }
+  }
+}
+
 int main(int argc,char *argv[])
 {
   char *tmp;
@@ -160,22 +189,7 @@ $(wildcard $(path)/$(notdir ",tmp,"))))");
   }
   AllDeps = all_deps;
   WriteMake(outname,argc,argv);
-  if (recursive_make && Project.dependencies)
-  {
-    for (i=0;i<Project.dependencies->getCount();i++)
-    {
-      TDependency *_dep = (TDependency *)Project.dependencies->at(i);
-      if (_dep->compile_id == COMPILE_PROJECT)
-      {
-        if (_PushProject(_dep) == True)
-        {
-          AllDeps = all_deps;
-          WriteMake(outname, argc, argv);
-          _PopProject();
-        }
-      }
-    }
-  }
+  _WriteMake(all_deps, argc, argv);
   chdir(orig_dir);
   return 0;
 }

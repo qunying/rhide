@@ -161,6 +161,10 @@ void put_breakline(FILE *f,int start_len,int max_len,const char *s)
     fprintf(f, "\\\n\t");
     start_len = 8; // tabsize
     s = tmp+1;
+    if (lf)
+    {
+      *lf = '\n';
+    }
   }
 }
 

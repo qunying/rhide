@@ -20,10 +20,10 @@ work after some runtime configuration on RHIDE.
 %prep
 %setup
 %build
-make RHIDESRC=`pwd`
+make RHIDESRC=`pwd` LDFLAGS=-static
 
 %install
-make RHIDESRC=`pwd` install prefix=$RPM_BUILD_ROOT/usr
+make RHIDESRC=`pwd` install prefix=$RPM_BUILD_ROOT/usr LDFLAGS=-static
 
 %files
 /usr/bin/gpr2mak

@@ -979,7 +979,7 @@ public:
 };
 
 TLocalDialog::TLocalDialog() :
-  TDialog(TRect(0,0,69,23),_("local options for project-item")),
+  TDialog(TRect(0,0,69,25),_("local options for project-item")),
   TWindowInit(&TLocalDialog::initFrame)
 {
   TRect r,rr,rrr;

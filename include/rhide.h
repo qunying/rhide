@@ -180,9 +180,9 @@ extern int debug_dependencies;
 extern int debug_commands;
 extern int debug_tempfiles;
 extern int debug_files;
-class ifpstream;
-ifpstream *open_ifpstream(const char *name);
-void close_ifpstream(ifpstream *is);
+class fpstream;
+fpstream *open_ifpstream(const char *name);
+void close_ifpstream(fpstream *is);
 void ExpandFileNames(TProject *prj);
 
 /* module idemsg.cc */

@@ -1,6 +1,7 @@
 /* Copyright (C) 1996-1998 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
 #define Uses_ifpstream
+#define Uses_fpstream
 #define Uses_ofpstream
 #define Uses_MsgBox
 #define Uses_TProject
@@ -17,6 +18,8 @@
 
 #include <rhutils.h>
 
+#include <edprint.h>
+
 #include <rhide.h>
 #include <stdlib.h>
 #include <string.h>
@@ -29,11 +32,11 @@ char *project_directory = NULL;
 char *project_name = NULL;
 int recursive_make = 0;
 
-unsigned short ProjectVersion = 0;
+unsigned short ProjectVersion = 1;
 
 TProject *ReadProject(const char *prjname, Boolean from_ide)
 {
-  ifpstream *ifile;
+  fpstream *ifile;
   char *magic;
   unsigned short version;
   TProject *_project;
@@ -84,6 +87,10 @@ _("This project was created with a newer RHIDE version and could not be used."))
     if (!_GPCReservedWords(_project)) DefaultGPCReservedWords(_project);
     if (!_FPCReservedWords(_project)) DefaultFPCReservedWords(_project);
     if (!_RHIDEUserWords(_project)) DefaultUserWords(_project);
+    if (version > 0)
+      LoadPrintSetUp(*ifile);
+    else
+      PrintSetDefaults();
     close_ifpstream(ifile);
     if (project_directory) string_free(project_directory);
     project_directory = getcwd(NULL,512);

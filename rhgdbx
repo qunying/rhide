@@ -1,0 +1,2 @@
+#!/bin/bash
+Eterm --title "RHGDB in Eterm" --report-as-keysyms --term-name eterm-rhide --scrollbar off -e rhgdb $* &

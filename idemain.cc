@@ -2043,7 +2043,7 @@ void init_rhide(int _argc, char **_argv)
   global_argc = __crt0_argc;
   setup_argv0();
 
-  rhide_load_environment_file("rhide","rhide.env");
+  push_environment();
   set_tmpdir();
   char *locale_dir = expand_spec("$(LOCALEDIR)",NULL);
 #ifndef __DJGPP__
@@ -2399,6 +2399,7 @@ int main(int argc, char **argv)
     }
 #endif
     {
+      pop_environment();
       OpenProject(PRJNAME);
       if (!PRJNAME)
       {

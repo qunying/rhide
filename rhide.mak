@@ -8,16 +8,16 @@ ifeq ($(strip $(RHIDESRC)),)
 RHIDESRC=s:/rho/rhide
 endif
 ifeq ($(strip $(SETOBJ)),)
-SETOBJ=g:/djgpp/lib
+SETOBJ=g:/DJGPP/lib
 endif
 ifeq ($(strip $(SETSRC)),)
-SETSRC=g:/djgpp/include/libset
+SETSRC=g:/DJGPP/include/libset
 endif
 ifeq ($(strip $(TVOBJ)),)
-TVOBJ=g:/djgpp/lib
+TVOBJ=g:/DJGPP/lib
 endif
 ifeq ($(strip $(TVSRC)),)
-TVSRC=g:/djgpp/include/rhtvision
+TVSRC=g:/DJGPP/include/rhtvision
 endif
 vpath_src=$(RHIDESRC) o:/djgpp/contrib/tvision_/classes o:/djgpp/contrib/setedit/mainsrc s:/rho/rhide/libide
 vpath %.c $(vpath_src)
@@ -133,9 +133,8 @@ RHIDE_COMPILE_LINK_GPC=$(RHIDE_LD_PASCAL) $(RHIDE_LIBDIRS) $(C_EXTRA_FLAGS)\
 	-o $(OUTFILE)  $(OBJFILES) $(LIBRARIES) $(RHIDE_LDFLAGS) $(LDFLAGS)\
 	$(RHIDE_LIBS)
 RHIDE_COMPILE_LINK_GPC_AUTOMAKE=$(RHIDE_LD_PASCAL) $(RHIDE_LIBDIRS)  -o\
-	$(OUTFILE) --automake="$(strip $(RHIDE_GPC_FLAGS))"\
-	$(RHIDE_GPC_FLAGS)  $(SOURCE_NAME) $(LIBRARIES) $(LDFLAGS)\
-	$(RHIDE_LDFLAGS) $(RHIDE_LIBS)
+	$(OUTFILE) --automake $(RHIDE_GPC_FLAGS)  $(SOURCE_NAME)\
+	$(LIBRARIES) $(LDFLAGS) $(RHIDE_LDFLAGS) $(RHIDE_LIBS)
 RHIDE_COMPILE_PASCAL=$(RHIDE_COMPILE_$(PASCAL_TYPE))
 RHIDE_COMPILE_PASCAL_FORCE=$(RHIDE_COMPILE_$(PASCAL_TYPE)_FORCE)
 RHIDE_COMPILE_LINK_PASCAL_AUTOMAKE=$(RHIDE_COMPILE_LINK_$(PASCAL_TYPE)_AUTOMAKE)
@@ -309,7 +308,7 @@ C_FPC_LANG_FLAGS=
 C_F_LANG_FLAGS=
 C_ADA_LANG_FLAGS=
 LIBS=ide rhuti set rhuti tvdem tvuti tvgdb rhtv rhgdb gdb z pcre
-LD_EXTRA_FLAGS=
+LD_EXTRA_FLAGS=-Map rhide.map
 C_EXTRA_FLAGS=-DRHIDE -DINTERNAL_DEBUGGER -DFOR_LIBSET
 LOCAL_OPT=$(subst ___~~~___, ,$(subst $(notdir $<)___,,$(filter $(notdir\
 	$<)___%,$(LOCAL_OPTIONS))))
@@ -341,7 +340,7 @@ SOURCE_NAME=$<
 OUTFILE=$@
 SPECIAL_CFLAGS=
 SPECIAL_LDFLAGS=
-PROG_ARGS=d:/tmp/i/contrib/lbinstdj/lbinstdj.gpr
+PROG_ARGS=h:/pho_Pascal/hello
 SRC_DIRS=$(RHIDESRC) o:/djgpp/contrib/tvision_/classes\
 	o:/djgpp/contrib/setedit/mainsrc s:/rho/rhide/libide
 WUC=
@@ -667,9 +666,9 @@ DEPS_17=idehints.cc $(RHIDESRC)/include/ideconst.h\
 	$(RHIDESRC)/libtvuti/include/libtvuti.h
 debobj/idehints.o:: $(DEPS_17)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_18=idemain.cc $(RHIDESRC)/include/ideapp.h\
-	$(RHIDESRC)/include/ideconst.h $(RHIDESRC)/include/rhide.h\
-	$(RHIDESRC)/include/rhidehis.h\
+DEPS_18=idemain.cc g:/djgpp/include/sys/version.h\
+	$(RHIDESRC)/include/ideapp.h $(RHIDESRC)/include/ideconst.h\
+	$(RHIDESRC)/include/rhide.h $(RHIDESRC)/include/rhidehis.h\
 	$(RHIDESRC)/libide/include/idecomma.h\
 	$(RHIDESRC)/libide/include/ideenums.h\
 	$(RHIDESRC)/libide/include/idefunct.h\

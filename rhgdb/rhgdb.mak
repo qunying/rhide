@@ -8,16 +8,16 @@ ifeq ($(strip $(RHIDESRC)),)
 RHIDESRC=s:/rho/rhide
 endif
 ifeq ($(strip $(SETOBJ)),)
-SETOBJ=g:/djgpp/lib
+SETOBJ=g:/DJGPP/lib
 endif
 ifeq ($(strip $(SETSRC)),)
-SETSRC=g:/djgpp/include/libset
+SETSRC=g:/DJGPP/include/libset
 endif
 ifeq ($(strip $(TVOBJ)),)
-TVOBJ=g:/djgpp/lib
+TVOBJ=g:/DJGPP/lib
 endif
 ifeq ($(strip $(TVSRC)),)
-TVSRC=g:/djgpp/include/rhtvision
+TVSRC=g:/DJGPP/include/rhtvision
 endif
 vpath_src=$(RHIDESRC)/rhgdb
 vpath %.c $(vpath_src)
@@ -131,9 +131,8 @@ RHIDE_COMPILE_LINK_GPC=$(RHIDE_LD_PASCAL) $(RHIDE_LIBDIRS) $(C_EXTRA_FLAGS)\
 	-o $(OUTFILE)  $(OBJFILES) $(LIBRARIES) $(RHIDE_LDFLAGS) $(LDFLAGS)\
 	$(RHIDE_LIBS)
 RHIDE_COMPILE_LINK_GPC_AUTOMAKE=$(RHIDE_LD_PASCAL) $(RHIDE_LIBDIRS)  -o\
-	$(OUTFILE) --automake="$(strip $(RHIDE_GPC_FLAGS))"\
-	$(RHIDE_GPC_FLAGS)  $(SOURCE_NAME) $(LIBRARIES) $(LDFLAGS)\
-	$(RHIDE_LDFLAGS) $(RHIDE_LIBS)
+	$(OUTFILE) --automake $(RHIDE_GPC_FLAGS)  $(SOURCE_NAME)\
+	$(LIBRARIES) $(LDFLAGS) $(RHIDE_LDFLAGS) $(RHIDE_LIBS)
 RHIDE_COMPILE_PASCAL=$(RHIDE_COMPILE_$(PASCAL_TYPE))
 RHIDE_COMPILE_PASCAL_FORCE=$(RHIDE_COMPILE_$(PASCAL_TYPE)_FORCE)
 RHIDE_COMPILE_LINK_PASCAL_AUTOMAKE=$(RHIDE_COMPILE_LINK_$(PASCAL_TYPE)_AUTOMAKE)

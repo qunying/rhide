@@ -116,9 +116,8 @@ RHIDE_COMPILE_LINK_GPC=$(RHIDE_LD_PASCAL) $(RHIDE_LIBDIRS) $(C_EXTRA_FLAGS)\
 	-o $(OUTFILE)  $(OBJFILES) $(LIBRARIES) $(RHIDE_LDFLAGS) $(LDFLAGS)\
 	$(RHIDE_LIBS)
 RHIDE_COMPILE_LINK_GPC_AUTOMAKE=$(RHIDE_LD_PASCAL) $(RHIDE_LIBDIRS)  -o\
-	$(OUTFILE) --automake="$(strip $(RHIDE_GPC_FLAGS))"\
-	$(RHIDE_GPC_FLAGS)  $(SOURCE_NAME) $(LIBRARIES) $(LDFLAGS)\
-	$(RHIDE_LDFLAGS) $(RHIDE_LIBS)
+	$(OUTFILE) --automake $(RHIDE_GPC_FLAGS)  $(SOURCE_NAME)\
+	$(LIBRARIES) $(LDFLAGS) $(RHIDE_LDFLAGS) $(RHIDE_LIBS)
 RHIDE_COMPILE_PASCAL=$(RHIDE_COMPILE_$(PASCAL_TYPE))
 RHIDE_COMPILE_PASCAL_FORCE=$(RHIDE_COMPILE_$(PASCAL_TYPE)_FORCE)
 RHIDE_COMPILE_LINK_PASCAL_AUTOMAKE=$(RHIDE_COMPILE_LINK_$(PASCAL_TYPE)_AUTOMAKE)
@@ -280,8 +279,8 @@ LOCAL_OPT=$(subst ___~~~___, ,$(subst $(notdir $<)___,,$(filter $(notdir\
 
 OBJFILES=listfunc.o
 ALL_OBJFILES=../annotate.o ../breakpoi.o ../defaults.o ../dis.o ../frame.o\
-	../gdbcontr.o ../gdbdummy.o ../gdbinter.o ../listfunc.o ../regs.o\
-	../symify.o ../watches.o listfunc.o
+	../gdbcontr.o ../gdbinter.o ../listfunc.o ../regs.o ../symify.o\
+	../watches.o listfunc.o
 LIBRARIES=../librhgdb.a
 SOURCE_NAME=$<
 OUTFILE=$@

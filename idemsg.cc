@@ -218,4 +218,13 @@ ClearMessages(int what)
   }
 }
 
+void show_message(const char *msg, const char *file,
+                  int line, int column, int msg_type)
+{
+  TMsgCollection *msgs;
+  msgs = new TMsgCollection();
+  msgs->insert(new MsgRec(file, msg, (msgType)msg_type, line, column));
+  ShowMessages(msgs, False, 0, False);
+  destroy(msgs);
+}
 

@@ -68,7 +68,7 @@ __link ( RIDEEditWindow )
 TProjectWindow *project_window;
 static char *dskname;
 
-static ushort DeskTop_Version = 23;
+static ushort DeskTop_Version = 24;
 static ushort BreakPoint_Version = 0;
 
 static void SetGlobalOptions();
@@ -88,7 +88,11 @@ static void writeView(TView *p, void *strm)
   if (event.what == evNothing)
   {
     if (((TIDEEditWindow*)p)->editor->isClipboard() == False)
+    {
       *os << p;
+      short number = ((TIDEEditWindow*)p)->number;
+      *os << number;
+    }
     return;
   }
   event.what = evBroadcast;
@@ -277,7 +281,6 @@ void LoadDesktop(ipstream & is,Boolean load_windows = True)
 {
   int i;
   ushort n;
-  TView *view;
   uchar len;
   char *pal;
   char *magic;
@@ -420,29 +423,35 @@ void LoadDesktop(ipstream & is,Boolean load_windows = True)
     project_window->liste->focusItem(tmp);
 
   {
-    TView *first=NULL;
     is >> n;
-    for (i=0;i<n;i++)
+    struct
     {
-      is >> view;
-      if (load_windows == True)
+      short number;
+      TView *view;
+    } V[n];
+    for (i=0; i<n; i++)
+    {
+      is >> V[i].view;
+      V[i].number = 0;
+      if (version >= 24)
+        is >> V[i].number;
+    }
+    if ((load_windows == True) && (n > 0))
+    {
+      for (i=n-1; i>=0; i--)
       {
-        AddWindow((TWindow *)view,NULL,True,True);
+        AddWindow((TWindow *)V[i].view,NULL,False,True,True,V[i].number);
         {
           TEvent event;
           event.what = evBroadcast;
           event.message.command = cmEditorAnswer;
-          view->handleEvent(event);
+          V[i].view->handleEvent(event);
           if (event.what == evNothing)
             /* Remove the file from the filetime hash */
-            TimeOfFile(((TCEditWindow *)view)->editor->fileName,True);
+            TimeOfFile(((TCEditWindow *)V[i].view)->editor->fileName,True);
         }
-        if (!i)
-           first=view;
       }
     }
-    if (first)
-       first->select();
   }
 
   {

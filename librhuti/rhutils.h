@@ -1,4 +1,4 @@
-/* Copyright (C) 1996-2000 Robert H”hne, see COPYING.RHU for details */
+/* Copyright (C) 1996-2003 Robert Höhne, see COPYING.RHU for details */
 #ifndef __rhutils_h
 #define __rhutils_h
 
@@ -141,7 +141,7 @@ char *string_cat(char *&dest, const char *src);
 
 /* The same as above, but with variable count of arguments.
    _NOTE_: The last argument must be NULL!!!! */
-char *string_cat(char *&, const char *src, const char *src, ...);
+char *string_cat(char *&, const char *src, const char *src1, ...);
 
 /* Free 'str' and set it to NULL */
 void string_free(char *&str);
@@ -225,7 +225,7 @@ char *unique_name(char *before, char *retval = (char *) 0);
 */
 
 int AbsToRelPath(const char *ref_path, char *&ret, const char *subst = 0,
-                 int allow_prevdirs = 1, int max_up_count = 3);
+                 int allow_prevdirs = 0, int max_up_count = 0);
 
 
 /*
@@ -233,7 +233,7 @@ int AbsToRelPath(const char *ref_path, char *&ret, const char *subst = 0,
   terminate the line. It returns the number of chars in the
   read line. It returns -1 in case of EOF when calling getline
 */
-int getline(char *&line, int &buf_count, FILE *f);
+int getline(char *&line, int &buf_count, std::FILE *f);
 
 /*
   This macros declares a function to be called before main.

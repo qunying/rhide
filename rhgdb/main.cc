@@ -1137,10 +1137,13 @@ static int ReadWatches()
 static void SaveOptions(char *fname)
 {
   opt_file = fopen(fname,"w+");
-  WriteBreakPoints();
-  WriteWatches();
-  WriteIDEOptions();
-  fclose(opt_file);
+  if (opt_file)
+  {
+    WriteBreakPoints();
+    WriteWatches();
+    WriteIDEOptions();
+    fclose(opt_file);
+  }
 }
 
 static void ReadOptions(char *fname)
@@ -1247,4 +1250,7 @@ void InsertEnviromentVar(char *variable,char *contents)
   insert_variable(variable, contents);
 }
 
+void RunExternalProgram(const char *, int, int)
+{
+}
 

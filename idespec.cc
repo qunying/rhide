@@ -107,10 +107,10 @@ static char *default_variables[] = {
  "$(RHIDE_TYPED_LIBS_FPC)",
 
  "RHIDE_TYPED_LIBS_$(RHIDE_OS).cc",
- "stdc++",
+ "stdc++ m",
 
  "RHIDE_TYPED_LIBS_DJGPP.cc",
- "stdcxx",
+ "stdcxx m",
 
  "RHIDE_TYPED_LIBS.cc",
  "$(RHIDE_TYPED_LIBS_$(RHIDE_OS).cc)",

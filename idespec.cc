@@ -132,8 +132,11 @@ static char *default_variables[] = {
  "RHIDE_TYPED_LIBS.adb",
  "gnat",
 
+ "RHIDE_TYPED_LIBS_SUFFIXES",
+ "$(sort $(foreach item,$(PROJECT_ITEMS),$(suffix $(item))))",
+
  "RHIDE_TYPED_LIBS",
- "$(foreach suff,$(sort $(suffix $(PROJECT_ITEMS))),$(RHIDE_TYPED_LIBS$(suff)))",
+ "$(foreach suff,$(RHIDE_TYPED_LIBS_SUFFIXES),$(RHIDE_TYPED_LIBS$(suff)))",
 
  "RHIDE_INCLUDES",
  "$(SPECIAL_CFLAGS) $(addprefix -I,$(INCLUDE_DIRS))",

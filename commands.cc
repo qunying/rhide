@@ -116,7 +116,7 @@ CONSTRUCTOR_FUNCTION(init_rhide_commands)
   __CM(StopMacro,90)\
   __CM(PlayMacro,91)\
   __CM(SetGlobalOptions,92)\
-  __CM(SaveAsUNIX,93)\
+  __CM(SaveAsConvertEOL,93)\
   __CM(CopyBlock,94)\
   __CM(SelRectStart,95)\
   __CM(SelRectEnd,96)\

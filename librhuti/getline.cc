@@ -31,7 +31,8 @@ int getline(char *&line, int &buf_count, FILE *f)
   }
   while (!feof(f))
   {
-    fread(&c, 1, 1, f);
+    if (fread(&c, 1, 1, f) != 1)
+      break;
     if (c == '\r')
       continue;
     if (c == '\n')

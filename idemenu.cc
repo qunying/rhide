@@ -118,6 +118,18 @@ TMenuBar *IDE::initMenuBar( TRect r )
     +*new _TMenuItem( __("~G~enerate Code"), cmcGenCodeForMacro, kbNoKey, hcGenCodeForMacro)
   ;
 
+  TMenuItem& rectangle_sub = *new TSubMenu( _("Recta~n~gle"), kbAlN , hcRectangle)
+    +*new _TMenuItem( __("~S~tart"), cmcSelRectStart, kbNoKey , hcSelRectStart , "Ctrl-K-Shift-B")
+    +*new _TMenuItem( __("~E~nd"),   cmcSelRectEnd,   kbNoKey , hcSelRectEnd   , "Ctrl-K-Shift-K")
+    +*new _TMenuItem( __("~H~ide"),  cmcSelRectHide,  kbNoKey , hcSelRectHide  , "Ctrl-K-Shift-H")
+    +     newLine()
+    +*new _TMenuItem( __("~C~opy"),  cmcSelRectCopy,  kbNoKey , hcSelRectCopy  , "Ctrl-K-Shift-C")
+    +*new _TMenuItem( __("~P~aste"), cmcSelRectPaste, kbNoKey , hcSelRectPaste , "Ctrl-K-Shift-P")
+    +*new _TMenuItem( __("Cu~t~"),   cmcSelRectCut,   kbNoKey , hcSelRectCut   , "Ctrl-K-Shift-T")
+    +*new _TMenuItem( __("C~l~ear"), cmcSelRectDel,   kbNoKey , hcSelRectDel   , "Ctrl-K-Shift-L")
+    +*new _TMenuItem( __("~M~ove"),  cmcSelRectMove,  kbNoKey , hcSelRectMove  , "Ctrl-K-Shift-M")
+  ;
+
   TSubMenu& edit_menu = *new TSubMenu( _("~E~dit"), kbAlE, hcEdit )
     +*new _TMenuItem( __("~U~ndo"), cmcUndo, kbAlBackSpace, hcUndo, "Alt+Backspace" )
     +*new _TMenuItem( __("~R~edo"), cmcRedo, kbNoKey, hcRedo )
@@ -128,6 +140,8 @@ TMenuBar *IDE::initMenuBar( TRect r )
     +*new _TMenuItem( __("~S~how clipboard"), cmShowClip, kbNoKey, hcShowClip )
     +     newLine()
     +*new _TMenuItem( __("C~l~ear"), cmcClear, kbCtDelete, hcClear, "Ctrl+Del" )
+    +     newLine()
+    +     rectangle_sub
     +     newLine()
 #ifdef __DJGPP__
     +*new _TMenuItem( __("Cop~y~ to Windows Clipboard"), cmcCopyClipWin, kbNoKey, hcCopyClipWin)

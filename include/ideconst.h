@@ -312,7 +312,16 @@
   __HC(PrintSetup,304)\
   __HC(Inspect,305)\
   __HC(AddDataWindow,306)\
-  __HC(ShowStackWindow,307)
+  __HC(ShowStackWindow,307)\
+  __HC(Rectangle,308)\
+  __HC(SelRectStart,309)\
+  __HC(SelRectEnd,310)\
+  __HC(SelRectHide,311)\
+  __HC(SelRectCopy,312)\
+  __HC(SelRectPaste,313)\
+  __HC(SelRectCut,314)\
+  __HC(SelRectDel,315)\
+  __HC(SelRectMove,316)
 
 __RHIDE_COMMAND_CODES__
 __RHIDE_HELP_CODES__

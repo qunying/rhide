@@ -102,6 +102,33 @@ _("shows the clipboard")
 h(Clear,
 _("delete the selected text ")
 )
+h(Rectangle,
+_("Submenu for handling with rectangular blocks")
+)
+h(SelRectStart,
+_("Start selecting rectangular block")
+)
+h(SelRectEnd,
+_("End selecting rectangular block")
+)
+h(SelRectHide,
+_("Hide selected rectangular block")
+)
+h(SelRectCopy,
+_("Copy selected rectangular block")
+)
+h(SelRectPaste,
+_("Paste selected rectangular block")
+)
+h(SelRectCut,
+_("Cut selected rectangular block")
+)
+h(SelRectDel,
+_("Clear selected rectangular block")
+)
+h(SelRectMove,
+_("Move selected rectangular block")
+)
 h(CopyClipWin,
 _("Copy the selected text to the Windows clipboard")
 )

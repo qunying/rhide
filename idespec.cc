@@ -83,7 +83,7 @@ static char *default_variables[] = {
  "rcs",
 
  "RHIDE_TYPED_LIBS.f",
- "m f2c",
+ "g2c m",
 
 #define SAME_LIBS(x,y)\
  "RHIDE_TYPED_LIBS."#x,\
@@ -94,7 +94,7 @@ static char *default_variables[] = {
  SAME_LIBS(fpp,f),
 
  "RHIDE_TYPED_LIBS_GPC",
- "m gpc",
+ "gpc m",
 
  "RHIDE_TYPED_LIBS_FPC",
  "fpc",

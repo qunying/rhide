@@ -18,6 +18,7 @@ public:
   virtual void update(void);
   virtual void fileOpen();
   virtual void idle();
+  virtual void changeBounds (const TRect & bounds);
   void createClipBoard(void);
 protected:
   virtual void DosShell();

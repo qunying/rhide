@@ -123,13 +123,20 @@ char **global_argv = NULL;
 
 TIDEMemInfo *mem_info = NULL;
 
+#define MemInfoWidth 10
+
 static void start_mem_info()
 {
   TRect r = TProgram::menuBar->getExtent();
-  r.a.x = r.b.x - 8;
+  int  start = r.a.x;
+  r.a.x = r.b.x - MemInfoWidth;
   mem_info = new TIDEMemInfo(r);
   mem_info->growMode = gfGrowLoX;
   TProgram::application->insert(mem_info);
+  // Reduce the menubar
+  r.b.x=r.a.x;
+  r.a.x=start;
+  TProgram::menuBar->changeBounds(r);
 }
 
 static void end_mem_info()
@@ -137,6 +144,10 @@ static void end_mem_info()
   TProgram::application->remove(mem_info);
   destroy(mem_info);
   mem_info = NULL;
+  // Enlarge the menuBar again
+  TRect r = TProgram::menuBar->getExtent();
+  r.b.x += MemInfoWidth;
+  TProgram::menuBar->changeBounds(r);
 }
 
 void update_mem(int force = 0)
@@ -154,6 +165,17 @@ void update_mem(int force = 0)
     }
     mem_info->update(force);
   }
+}
+
+
+void IDE::changeBounds(const TRect & bounds)
+{
+   TApplication::changeBounds (bounds);
+   if (mem_info)
+   {
+     end_mem_info ();
+     start_mem_info ();
+   }
 }
 
 static void update_words()
@@ -448,6 +470,8 @@ void IDE::update()
     D(cmFunctionList);
     D(cmCallStack);
     D(cmInspect);
+    D(cmAddDataWindow);
+    D(cmShowStackWindow);
   }
   else
   {
@@ -457,6 +481,15 @@ void IDE::update()
       E(cmGoto);
       E(cmGotoNo);
       E(cmcProfileEditor);
+      /* Rectangular block commands  */
+      E(cmcSelRectStart);
+      E(cmcSelRectEnd);
+      E(cmcSelRectHide);
+      E(cmcSelRectCopy);
+      E(cmcSelRectPaste);
+      E(cmcSelRectCut);
+      E(cmcSelRectDel);
+      E(cmcSelRectMove);
     }
     else
     {
@@ -464,6 +497,16 @@ void IDE::update()
       D(cmGoto);
       D(cmGotoNo);
       D(cmcProfileEditor);
+
+      /* Rectangular block commands  */
+      D(cmcSelRectStart);
+      D(cmcSelRectEnd);
+      D(cmcSelRectHide);
+      D(cmcSelRectCopy);
+      D(cmcSelRectPaste);
+      D(cmcSelRectCut);
+      D(cmcSelRectDel);
+      D(cmcSelRectMove);
     }
     if (!has_project && !has_editors)
     {
@@ -783,7 +826,7 @@ static void About()
 #ifdef __linux__
        _("for developing Linux apps"),
 #endif
-       _("Copyright (C) by Robert H”hne, 1996-1998"),
+       _("Copyright (C) by Robert H”hne, 1996-2000"),
        _("Language: "), _("English"),
        _("Translated by: "), _("Nobody"),
        _("last updated: "), _("1998-11-29"));
@@ -1530,8 +1573,16 @@ void IDE::handleEvent(TEvent & event)
          do
          {
            idle();
+#ifndef __DJGPP__
+           timeout (1);
+#endif
            clearEvent(event);
            event.getKeyEvent();
+#ifdef __DJGPP__
+           __dpmi_yield();
+#else
+           timeout (0);
+#endif
          } while (event.what == evNothing);
          clearEvent(event);
 #ifdef __DJGPP__
@@ -1902,10 +1953,12 @@ static void find_project()
 }
 
 static char *tmpdir = NULL;
+static void remove_tmpdir();
 
 static
 void set_tmpdir()
 {
+  int mktmpdir_ret=-1;
   char temp_mask[256] = "RHXXXXXX";
 #ifndef __DJGPP__
   char buf[256];
@@ -1936,19 +1989,23 @@ void set_tmpdir()
 #endif
   }
   BackslashToSlash(tmpdir);
-  if (tmpdir[strlen(tmpdir)-1] != '/') string_cat(tmpdir,"/");
+  if (tmpdir[strlen(tmpdir)-1] != '/'
+#ifdef __DJGPP__
+       && tmpdir[strlen(tmpdir)-1] != '\\'
+#endif
+     ) string_cat(tmpdir,"/");
   string_cat(tmpdir,temp_mask);
 #ifdef __DJGPP__
   mktemp(tmpdir);
 #endif
-  if (mkdir(tmpdir,0755) != 0)
+  if ((mktmpdir_ret = mkdir(tmpdir,0755)) != 0)
   {
     string_free(tmpdir);
     tmpdir = getcwd(NULL,PATH_MAX);
     string_cat(tmpdir,"/");
     string_cat(tmpdir,temp_mask);
     mktemp(tmpdir);
-    mkdir(tmpdir,0755);
+    mktmpdir_ret = mkdir(tmpdir,0755);
   }
   char *tempdir = string_dup("TMPDIR=");
   string_cat(tempdir,tmpdir);
@@ -1957,12 +2014,40 @@ void set_tmpdir()
   {
     fprintf(stderr,_("using %s as temp directory\n"),tmpdir);
   }
+  /* Only if temp directory successfully created before  */
+  if (mktmpdir_ret == 0)
+    atexit(remove_tmpdir);
 }
 
-static __attribute__ (( __destructor__ ))
+static
 void remove_tmpdir()
 {
-  if (!debug_tempfiles && tmpdir) rmdir(tmpdir);
+  if (!debug_tempfiles && tmpdir)
+  {
+#if 0
+    /* Removing temporary directory with force. Perhaps it's better  */
+    /* not to do that as use program may leave temporary files there */
+    /* and user may want to inspect them later  */
+    DIR * dir = opendir(tmpdir);
+    if (dir)
+    {
+      dirent * entry;
+      while ((entry=readdir(dir))!=0)
+      {
+        if (   strcmp(entry->d_name, ".") == 0
+            || strcmp(entry->d_name, "..") ==0) continue;
+        char fName[FILENAME_MAX];
+        strcpy(fName, tmpdir);
+        strcat(fName, "/");
+        strcat(fName, entry->d_name);
+        fprintf(stderr, _("warning: temporary file %s deleted\n"), fName);
+        unlink(fName);
+      }
+      closedir(dir);
+    }
+#endif
+    rmdir(tmpdir);
+  }
 }
 
 static void setup_argv0()
@@ -2086,7 +2171,7 @@ void init_rhide(int _argc, char **_argv)
 #endif
   parse_commandline(__crt0_argc,__crt0_argv);
   TScreen::suspend();
-  fprintf(stderr,_("This is %s. Copyright (c) 1996-1998 by Robert H”hne\n"),IDEVersion);
+  fprintf(stderr,_("This is %s. Copyright (c) 1996-1990 by Robert H”hne\n"),IDEVersion);
   fprintf(stderr,"             (%s %s)\n",build_date,build_time);
   TScreen::resume();
   PrintSetDefaults();

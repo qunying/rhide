@@ -100,7 +100,7 @@ int FileNameCollection::compare(void *key1,void *key2)
 
 void FileNameCollection::freeItem(void *item)
 {
-  delete (FileEntry *)item;
+  ::delete (FileEntry *)item;
 }
 
 char *FileNameCollection::addName(char *name)

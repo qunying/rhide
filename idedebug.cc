@@ -46,6 +46,7 @@ uint32 CPULine;
 
 #define Uses_TWatchListBox
 #define Uses_TDisassemblerWindow
+#define Uses_TDataWindow
 #include <libtvgdb.h>
 
 TDisassemblerWindow *dis_win;
@@ -80,6 +81,7 @@ static void select_source_line(char *fname,int line)
     return;
   int select_dis_win = dis_win && TProgram::deskTop->current == dis_win;
   char *full_name = NULL;
+  static char * lastSkippedName = 0;
   TProgram::deskTop->lock();
   // remove at first the last CPU line
   if (current_editor)
@@ -100,6 +102,19 @@ static void select_source_line(char *fname,int line)
     current_editor = is_on_desktop(fname,False);
     if (!current_editor && FindFile(fname,full_name) == False)
     {
+      if (lastSkippedName)
+      {
+        if (strcmp(lastSkippedName,fname) == 0)
+        {
+          OpenDisWin(force_disassembler_window);
+          goto end;
+        }
+        else
+        {
+          string_free(lastSkippedName);
+          lastSkippedName = 0;
+        }
+      }
       ushort result;
       char *bname;
       BaseName(fname,bname);
@@ -109,6 +124,8 @@ static void select_source_line(char *fname,int line)
       string_free(full_name);
       TFileDialog *dialog;
       InitHistoryID(RHIDE_History_source_file);
+      string_cat(bname,"*"); /* Let's add wildcard not let TFileDialog  */
+                              /* to exit when simply enter is pressed  */
       dialog = new TFileDialog(bname,_("Open a file"),
                         _("~N~ame"),fdOpenButton,RHIDE_History_source_file);
       result = TProgram::deskTop->execView(dialog);
@@ -133,10 +150,20 @@ static void select_source_line(char *fname,int line)
         }
         TProgram::deskTop->lock();
         string_free(dir);
+        if (lastSkippedName)
+        {
+          string_free(lastSkippedName);
+          lastSkippedName = NULL;
+        }
       }
       else
       {
         current_editor = NULL;
+        if (AutomaticOpenDisass)
+        {
+          lastSkippedName = strdup(fname);
+          OpenDisWin(force_disassembler_window);
+        }
         goto end;
       }
     }

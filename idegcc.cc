@@ -54,6 +54,10 @@
 #include <librhgdb.h>
 #endif
 
+#ifndef __DJGPP__
+#include <termios.h>
+#endif
+
 int project_index(const char *name)
 {
   ccIndex index;
@@ -73,6 +77,10 @@ int RunProgram(const char *cmd,
                Boolean redir_stderr,Boolean redir_stdout,
                Boolean SwitchToUser)
 {
+#ifndef __DJGPP__
+  int vintr = 0;
+  struct termios term;
+#endif
   int retval;
   if (ExecDialog)
   {
@@ -92,10 +100,29 @@ int RunProgram(const char *cmd,
     TProgram::deskTop->setState(sfVisible,False);
     TProgram::application->suspend();
   }
+#ifndef __DJGPP__
+  else
+  {
+    tcgetattr (fileno(stdin),&term);
+    vintr = term.c_cc[VINTR];
+    term.c_cc[VINTR] = 3;
+    tcsetattr (fileno(stdin), TCSANOW, &term);
+  }
+#endif
+
 #ifdef __DJGPP__
   __djgpp_exception_toggle();
 #endif
   retval = system(cmd);
+
+#ifndef __DJGPP__
+  if (SwitchToUser==false)
+  {
+    term.c_cc[VINTR] = 0;
+    tcsetattr (fileno(stdin), TCSANOW, &term);
+  }
+#endif
+
   external_program_executed = 1;
 #ifdef __DJGPP__
   __djgpp_exception_toggle();

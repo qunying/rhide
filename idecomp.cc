@@ -727,25 +727,25 @@ static Boolean compile_c_to_obj(TDependency *dep,char *spec)
       temp = strchr(x,':');
       if (temp)
       {
-	temp++;
-	while (*temp == ' ') temp++;
-	temp = strchr(temp,' ');
-	do
-	{
-	  while (temp)
-	  {
-	    while (*temp == ' ') temp++;
-	    tmp = temp;
-	    if (*temp=='\n' || *temp == '\\' && temp[1] == '\n') temp = NULL;
-	    else
-	    {
-	      char c;
-	      TDependency *tmp_dep;
-	      while (*temp != ' ' && *temp != '\n') temp++;
-	      c = *temp;
-	      *temp = 0;
-	      strcpy(depfile,tmp);
-	      *temp = c;
+        temp++;
+        while (*temp == ' ') temp++;
+        temp = strchr(temp,' ');
+        do
+        {
+          while (temp)
+          {
+            while (*temp == ' ') temp++;
+            tmp = temp;
+            if (*temp=='\n' || *temp == '\\' && temp[1] == '\n') temp = NULL;
+            else
+            {
+              char c;
+              TDependency *tmp_dep;
+              while (*temp != ' ' && *temp != '\n') temp++;
+              c = *temp;
+              *temp = 0;
+              strcpy(depfile,tmp);
+              *temp = c;
               if (!isStandardHeader(depfile))
               {
                 tmp_dep = new TDependency();
@@ -757,9 +757,9 @@ static Boolean compile_c_to_obj(TDependency *dep,char *spec)
                 if (!dep->dependencies) dep->dependencies = new TDepCollection(7,8);
                 dep->dependencies->insert(tmp_dep);
               }
-	    }
-	  }
-	} while ((temp = fgets(x,255,f)));
+            }
+          }
+        } while ((temp = fgets(x,255,f)));
       }
       fclose(f);
     }

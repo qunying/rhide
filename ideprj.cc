@@ -23,7 +23,6 @@
 #define Uses_TParamList
 #define Uses_IDEConst
 #define Uses_TIDEEditWindow
-#define Uses_TFileEditor
 #define Uses_editCommands
 #define Uses_TIDEFileEditor
 #define Uses_TStringCollection
@@ -90,7 +89,7 @@ static void writeView(TView *p, void *strm)
     if (((TIDEEditWindow*)p)->editor->isClipboard() == False)
     {
       *os << p;
-      short number = ((TIDEEditWindow*)p)->number;
+      short number = ((TWindow*)p)->number;
       *os << number;
     }
     return;
@@ -101,6 +100,8 @@ static void writeView(TView *p, void *strm)
   if (event.what == evNothing)
   {
     *os << p;
+    short number = ((TWindow*)p)->number;
+    *os << number;
     return;
   }
 }

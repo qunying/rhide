@@ -31,9 +31,11 @@ s/comment ---    @end menu converted to @end_menu      ---/&/
     s/^\* /@mitem{/
     s/,/\\,/g
     s/::/,/
-    s/^[ 	]\+/&/
+    s/^[ 	][ 	]*/&/
     s/^$//
-    s/^\@\(mitem\|end_menu\)/}\
+    s/^\@\(mitem\)/}\
+@\1/
+    s/^\@\(end_menu\)/}\
 @\1/
     s/^\(@menu\)!!!!!\* /\1\
 @mitem{/

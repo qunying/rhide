@@ -457,7 +457,13 @@ static Boolean check_link_errors(TMsgCollection &errs)
       while (rh_isdigit(*temp)) temp--;
       if (*temp != ':')
       {
-        errs.insert(new MsgRec(NULL,buffer,msgError));
+        if (strncmp(tmp, ": warning: ", 11) == 0)
+          errs.insert(new MsgRec(NULL,buffer,msgWarning));
+        else
+        {
+          errs.insert(new MsgRec(NULL,buffer,msgError));
+          retval = False;
+        }
       }
       else
       {
@@ -485,8 +491,8 @@ static Boolean check_link_errors(TMsgCollection &errs)
         string_free(full_name);
         errs.insert(new MsgRec(fname,msg,msgError,line));
         string_free(fname);
+        retval = False;
       }
-      retval = False;
     }
     else
     {

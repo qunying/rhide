@@ -155,6 +155,8 @@ void update_mem(int force = 0)
 static void update_words()
 {
   int i,count,repaint=0;
+  if (!project)
+    return;
   if (c_words_changed)
   {
     if (ReservedWords) destroy(ReservedWords);
@@ -1486,27 +1488,10 @@ void IDE::handleEvent(TEvent & event)
          break;
        case cmOpenProject:
        {
-         ushort result;
-         TFileDialog *dialog;
-         char *fileName = NULL,*dir;
-         InitHistoryID(RHIDE_History_project_file);
-         dialog = new TFileDialog("*"PROJECT_EXT,_("Select a project"),
-                       _("~N~ame"),fdOpenButton,RHIDE_History_project_file);
-         TProgram::deskTop->insert(dialog);
-         dialog->setState(sfModal,True);
-         result = dialog->execute();
-         if( result != cmCancel )
-         {
-           string_dup(fileName,dialog->fileName->data);
-           string_dup(dir,dialog->directory);
-         }
-         TProgram::deskTop->remove(dialog);
-         destroy(dialog);
-         if (result != cmCancel )
+         char *fileName = select_project(_("Select a project"));
+         if (fileName)
          {
            CloseProject();
-           chdir(dir);
-           string_free(dir);
            OpenProject(fileName);
            string_free(fileName);
          }
@@ -1895,8 +1880,9 @@ static void find_project()
   glob("*"PROJECT_EXT,0,NULL,&found);
   if (found.gl_pathc == 1)  // only one was found
     string_dup(PRJNAME,found.gl_pathv[0]);
+  else if (found.gl_pathc > 1)
+    PRJNAME = select_project(_("Select a project"));
   globfree(&found);
-  if (!PRJNAME) return;
 }
 
 static char *tmpdir = NULL;
@@ -2372,7 +2358,6 @@ int main(int argc, char **argv)
   App = new IDE();
   init_signals();
   if (!PRJNAME) find_project();
-  OpenProject(PRJNAME);
   if (CheckIDE() != 1)
   {
 #ifdef __DJGPP__
@@ -2387,6 +2372,7 @@ int main(int argc, char **argv)
     }
 #endif
     {
+      OpenProject(PRJNAME);
       if (!PRJNAME)
       {
         if (!EDITNAME) About();

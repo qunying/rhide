@@ -9,7 +9,7 @@ project=libtvgdb
 po_files=\
 	breakdia.cc funcsel.cc tbreakli.cc tfuncinp.cc tfunctio.cc \
 	tgdbwind.cc twatchdi.cc twatchli.cc watches.cc userwarn.cc \
-	gdbdummy.c callstac.cc tregwin.cc tdiswin.cc \
+	callstac.cc tregwin.cc tdiswin.cc \
 	commands.cc tdatawin.cc inspect.cc inspectl.cc tvgdb.cc
 
 src_files=$(po_files) Makefile libtvgdb.gpr libtvgdb.mak makefile.src \

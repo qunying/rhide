@@ -186,6 +186,25 @@ char *unique_name(char *before,char *retval = (char *)0);
 
 int AbsToRelPath(char *ref_path,char * & ret, const char *subst = 0);
 
-#endif /* __rhutils_h */
+/*
+  The following macros are used to cast the arguments of the ctype
+  functions to the proper type without getting negative arguments */
 
+#define rh_isalnum(a)  isalnum((int)(unsigned char)(a))
+#define rh_isalpha(a)  isalpha((int)(unsigned char)(a))
+#define rh_isascii(a)  isascii((int)(unsigned char)(a))
+#define rh_iscntrl(a)  iscntrl((int)(unsigned char)(a))
+#define rh_isdigit(a)  isdigit((int)(unsigned char)(a))
+#define rh_isgraph(a)  isgraph((int)(unsigned char)(a))
+#define rh_islower(a)  islower((int)(unsigned char)(a))
+#define rh_isprint(a)  isprint((int)(unsigned char)(a))
+#define rh_ispunct(a)  ispunct((int)(unsigned char)(a))
+#define rh_isspace(a)  isspace((int)(unsigned char)(a))
+#define rh_isupper(a)  isupper((int)(unsigned char)(a))
+#define rh_isxdigit(a) isxdigit((int)(unsigned char)(a))
+#define rh_toascii(a)  toascii((int)(unsigned char)(a))
+#define rh_tolower(a)  tolower((int)(unsigned char)(a))
+#define rh_toupper(a)  toupper((int)(unsigned char)(a))
+
+#endif /* __rhutils_h */
 

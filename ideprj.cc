@@ -1352,7 +1352,7 @@ void AddProjectItem(void)
           count = Options.SrcDirs->getCount();
           split_fname_fmt(fname, "%D", tmp);
           if (   !(*tmp == '/' && !tmp[1])
-              && !(isalpha(*tmp) && tmp[1] == ':' && tmp[2] == '/' && !tmp[3]))
+              && !(rh_isalpha(*tmp) && tmp[1] == ':' && tmp[2] == '/' && !tmp[3]))
             /* remove the last slash, but only when not the
                root directory */
             tmp[strlen(tmp)-1] = 0;

@@ -50,7 +50,7 @@ void ConvertName(TFileName *&_name, TStringCollection *vars)
   char *name = NULL;
   const char *Name = FName(_name);
   if (*Name && ((*Name == '/') ||
-               (isalpha((int)(unsigned char)*Name) && (Name[1] == ':'))))
+               (rh_isalpha(*Name) && (Name[1] == ':'))))
   {
     name = string_dup(Name);
     _AbsToRelPath(name, vars);

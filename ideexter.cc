@@ -110,7 +110,7 @@ static void CheckGrepMsg(const char *fname,const char *errname,TMsgCollection *m
       msgs->insert(new MsgRec(NULL,buffer));
       continue;
     }
-    if (!isdigit(line[1])) line = strchr(line+1,':');
+    if (!rh_isdigit(line[1])) line = strchr(line+1,':');
     if (!line)
     {
       msgs->insert(new MsgRec(NULL,buffer));

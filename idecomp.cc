@@ -239,7 +239,7 @@ static Boolean check_compile_c_errors(TMsgCollection &errs)
           fname = buffer;
           tmp++;
           temp = tmp;
-          while (isdigit(*tmp)) tmp++;
+          while (rh_isdigit(*tmp)) tmp++;
           if (*tmp == ':')
           {
             *tmp = 0;
@@ -386,7 +386,7 @@ static Boolean check_compile_fpc_errors(TMsgCollection &errs)
           fname = buffer;
           tmp++;
           temp = tmp;
-          while (isdigit(*tmp)) tmp++;
+          while (rh_isdigit(*tmp)) tmp++;
           if (*tmp == ':')
           {
             *tmp = 0;
@@ -454,7 +454,7 @@ static Boolean check_link_errors(TMsgCollection &errs)
       char *temp;
       tmp--;
       temp = tmp-1;
-      while (isdigit(*temp)) temp--;
+      while (rh_isdigit(*temp)) temp--;
       if (*temp != ':')
       {
         errs.insert(new MsgRec(NULL,buffer,msgError));

@@ -426,7 +426,7 @@ typedef struct
 #define FPCReservedWords (_FPCReservedWords(project))
 #define RHIDEUserWords (_RHIDEUserWords(project))
 
-#define IsRooted(x) (x[0] == '/' || (isalpha(x[0]) && x[1] == ':'))
+#define IsRooted(x) (x[0] == '/' || (rh_isalpha(x[0]) && x[1] == ':'))
 
 #include <intl.h>
 

@@ -84,7 +84,7 @@ static char *ScanBuffer()
     {
       tmp += 6;
       char *end = tmp,c;
-      while (isdigit(*end)) end++;
+      while (rh_isdigit(*end)) end++;
       if (end == tmp) continue;
       c = *end;
       *end = 0;
@@ -97,7 +97,7 @@ static char *ScanBuffer()
     {
       tmp += 8;
       char *end = tmp,c;
-      while (isdigit(*end)) end++;
+      while (rh_isdigit(*end)) end++;
       if (end == tmp) continue;
       c = *end;
       *end = 0;

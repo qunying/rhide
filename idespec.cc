@@ -1166,7 +1166,7 @@ char *_handle_rhide_token(const char *_token,token_func expand_tokens)
   char *token = (char *)alloca(name_len+1);
   strncpy(token,_token+2,name_len);
   token[name_len] = 0;
-  if (islower(*token))
+  if (rh_islower(*token))
     return _handle_rhide_function(token, expand_tokens);
   int i=0;
   while (rhide_tokens[i].name)

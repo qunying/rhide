@@ -4,22 +4,25 @@
 #include <stdlib.h>
 #include <stdarg.h>
 
-char *string_cat(char * &dest,const char *src)
+char *
+string_cat(char *&dest, const char *src)
 {
   if (!dest)
   {
-    string_dup(dest,src);
+    string_dup(dest, src);
     return dest;
   }
   if (!src)
     return dest;
   int l1 = strlen(dest), l2 = strlen(src);
-  dest = (char *)realloc(dest,l1+l2+1);
-  memcpy(dest+l1,src,l2+1);
+
+  dest = (char *) realloc(dest, l1 + l2 + 1);
+  memcpy(dest + l1, src, l2 + 1);
   return dest;
 }
 
-static void string_cat(char *&dest, va_list va)
+static void
+string_cat(char *&dest, va_list va)
 {
   const char *arg;
   while ((arg = va_arg(va, const char *)) != NULL)
@@ -28,9 +31,11 @@ static void string_cat(char *&dest, va_list va)
   }
 }
 
-char *string_cat(char *&dest, const char *src, const char *src1...)
+char *
+string_cat(char *&dest, const char *src, const char *src1 ...)
 {
   va_list va;
+
   va_start(va, src1);
   string_cat(dest, src);
   string_cat(dest, src1);
@@ -38,7 +43,3 @@ char *string_cat(char *&dest, const char *src, const char *src1...)
   va_end(va);
   return dest;
 }
-
-
-
-

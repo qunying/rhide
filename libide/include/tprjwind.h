@@ -6,11 +6,11 @@
 class TProjectListBox;
 class TDepCollection;
 
-class TProjectWindow : public TDialog
+class TProjectWindow:public TDialog
 {
 public:
-  TProjectListBox *liste;
-  TProjectWindow(const TRect &,TDepCollection *,const char *);
+  TProjectListBox * liste;
+  TProjectWindow(const TRect &, TDepCollection *, const char *);
 };
 
 #endif

@@ -3,17 +3,19 @@
 #if !defined( __TEnterRadioButtons )
 #define __TEnterRadioButtons
 
-class TEnterRadioButtons : public TRadioButtons
+class TEnterRadioButtons:public TRadioButtons
 {
 public:
-  TEnterRadioButtons(const TRect& bounds, TSItem *aStrings,
-                     int _big_radio = 0) :
-    TRadioButtons(bounds,aStrings),
-    big_radio(_big_radio) {}
+  TEnterRadioButtons(const TRect & bounds, TSItem * aStrings,
+                     int _big_radio = 0):TRadioButtons(bounds, aStrings),
+    big_radio(_big_radio)
+  {
+  }
   virtual void handleEvent(TEvent &);
   virtual void press(int);
   virtual void movedTo(int);
   virtual uint32 dataSize();
+
 protected:
   int big_radio;
 };

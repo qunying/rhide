@@ -5,30 +5,35 @@
 
 class TSIndicator;
 
-class TIDEFileEditor : public TCFileEditor
+class TIDEFileEditor:public TCFileEditor
 {
 public:
-  TIDEFileEditor(const TRect &,TScrollBar *,TScrollBar *,TSIndicator *,const char *);
+  TIDEFileEditor(const TRect &, TScrollBar *, TScrollBar *, TSIndicator *,
+                 const char *);
   ~TIDEFileEditor();
-  static TStreamable * build();
-  static const char * const name;
+  static TStreamable *build();
+  static const char *const name;
   virtual void handleEvent(TEvent &);
   virtual Boolean valid(ushort);
-  static int (*externalFormatLine)(TCEditor *,void *, unsigned, int,
-                                   unsigned short, unsigned, uint32,
-                                   unsigned );
-  void formatLine(void *, unsigned, int, unsigned short, unsigned, uint32, unsigned );
+  static int (*externalFormatLine) (TCEditor *, void *, unsigned, int,
+                                    unsigned short, unsigned, uint32,
+                                    unsigned);
+  void formatLine(void *, unsigned, int, unsigned short, unsigned, uint32,
+                  unsigned);
   void setFormatLine();
-  void (TCEditor::*FormatLinePtr)(void *, unsigned, int, unsigned short, unsigned,
-                                  uint32, unsigned );
+  void (TCEditor::*FormatLinePtr) (void *, unsigned, int, unsigned short,
+                                   unsigned, uint32, unsigned);
 private:
-  virtual const char * streamableName() const { return name; }
+    virtual const char *streamableName() const
+  {
+    return name;
+  }
 
 protected:
 
-  TIDEFileEditor(StreamableInit);
-  virtual void * read(ipstream &);
-  virtual void write( opstream& );
+    TIDEFileEditor(StreamableInit);
+  virtual void *read(ipstream &);
+  virtual void write(opstream &);
 
 public:
   unsigned long edittime;
@@ -36,14 +41,24 @@ public:
   static int use_syntax;
 };
 
-inline ipstream& operator >> ( ipstream& is, TIDEFileEditor& cl )
-    { return is >> (TStreamable&)cl; }
-inline ipstream& operator >> ( ipstream& is, TIDEFileEditor*& cl )
-    { return is >> (void *&)cl; }
+inline ipstream & operator >> (ipstream & is, TIDEFileEditor & cl)
+{
+  return is >> (TStreamable &) cl;
+}
 
-inline opstream& operator << ( opstream& os, TIDEFileEditor& cl )
-    { return os << (TStreamable&)cl; }
-inline opstream& operator << ( opstream& os, TIDEFileEditor* cl )
-    { return os << (TStreamable *)cl; }
+inline ipstream & operator >> (ipstream & is, TIDEFileEditor * &cl)
+{
+  return is >> (void *&) cl;
+}
+
+inline opstream & operator << (opstream & os, TIDEFileEditor & cl)
+{
+  return os << (TStreamable &) cl;
+}
+
+inline opstream & operator << (opstream & os, TIDEFileEditor * cl)
+{
+  return os << (TStreamable *) cl;
+}
 
 #endif

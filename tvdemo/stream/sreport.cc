@@ -4,8 +4,4 @@
 
 #include "ascii.h"
 
-TStreamableClass RReport( TReport::name,
-			  TReport::build,
-			  __DELTA(TReport)
-			);
-
+TStreamableClass RReport(TReport::name, TReport::build, __DELTA(TReport));

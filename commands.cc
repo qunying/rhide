@@ -17,9 +17,10 @@
 
 CONSTRUCTOR_FUNCTION(init_rhide_commands)
 {
-  __RHIDE_COMMAND_CODES__
-  __RHIDE_HELP_CODES__
-  /* Now the commands for the editor */
+  __RHIDE_COMMAND_CODES__ __RHIDE_HELP_CODES__
+    /*
+       Now the commands for the editor 
+     */
 #undef __BASE
 #define __BASE 600
 #define __RHIDE_EDITOR_COMMANDS__\
@@ -150,6 +151,4 @@ CONSTRUCTOR_FUNCTION(init_rhide_commands)
   __CM(UpdateCodePage,125)
 #undef __CM
 #define __CM(x,y) add_command_constant("cmc"#x,cmc##x);
-  __RHIDE_EDITOR_COMMANDS__
-}
-
+__RHIDE_EDITOR_COMMANDS__}

@@ -100,7 +100,7 @@ protected:\
 private:\
     virtual const char *streamableName() const\
 	{ return name; }
-    
+
 #define STREAMINLINES(CLASS)\
 inline ipstream& operator >> ( ipstream& is, CLASS& cl )\
     { return is >> (TStreamable&)cl; }\
@@ -199,4 +199,3 @@ TStreamable * CLASS::build()\
 #if defined( _INC_TMEMORYSTREAM )
 #include <tmemstrm.h>
 #endif
-

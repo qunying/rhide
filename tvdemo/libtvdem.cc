@@ -15,28 +15,33 @@ TWindow *PuzzleWindow = NULL;
 TWindow *CalendarWindow = NULL;
 TWindow *AsciiWindow = NULL;
 
-void Puzzle()
+void
+Puzzle()
 {
   if (!PuzzleWindow)
     PuzzleWindow = new TPuzzleWindow();
 }
 
-void Calendar()
+void
+Calendar()
 {
   if (!CalendarWindow)
     CalendarWindow = new TCalendarWindow();
 }
 
-void Ascii()
+void
+Ascii()
 {
   if (!AsciiWindow)
     AsciiWindow = new TAsciiChart();
 }
 
-void MouseDlg()
+void
+MouseDlg()
 {
   unsigned short reverse = 0;
   TMouseDialog *mouseDlg = new TMouseDialog();
+
   if (TEventQueue::mouseReverse == True)
     reverse = 1;
   mouseDlg->setData(&reverse);
@@ -45,6 +50,5 @@ void MouseDlg()
     mouseDlg->getData(&reverse);
     TEventQueue::mouseReverse = reverse ? True : False;
   }
-  destroy( mouseDlg );
+  destroy(mouseDlg);
 }
-

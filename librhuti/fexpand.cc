@@ -8,18 +8,18 @@
 #define _fixpath __fixpath
 #endif
 
-void FExpand(char * & name,int new_alloc)
+void
+FExpand(char *&name, int new_alloc)
 {
   char _static_buffer[PATH_MAX];
   char *fname = _static_buffer;
-  _fixpath(name,fname);
+
+  _fixpath(name, fname);
   if (new_alloc)
   {
     string_free(name);
-    string_dup(name,fname);
+    string_dup(name, fname);
   }
-  else strcpy(name,fname);
+  else
+    strcpy(name, fname);
 }
-
-
-

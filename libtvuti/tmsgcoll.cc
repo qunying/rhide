@@ -4,8 +4,8 @@
 #define Uses_MsgRec
 #include <libtvuti.h>
 
-void TMsgCollection::freeItem(void *item)
+void
+TMsgCollection::freeItem(void *item)
 {
-  delete((MsgRec *)item);
+  delete((MsgRec *) item);
 }
-

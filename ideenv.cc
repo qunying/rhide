@@ -13,18 +13,19 @@
 
 static int _rhide_load_environment_file(char *fname, int unload);
 
-void rhide_load_environment_file(char *,char *name,int only_current,
-                                 int unload)
+void
+rhide_load_environment_file(char *, char *name, int only_current, int unload)
 {
   char *files;
+
   if (only_current)
     files = string_dup(name);
   else
   {
     char *spec = NULL;
-    string_cat(spec,"$(strip $(foreach file,$(addsuffix /",name,
-                    ",$(RHIDE_CONFIG_DIRS)),$(wildcard $(file))))"
-                    ,NULL);
+
+    string_cat(spec, "$(strip $(foreach file,$(addsuffix /", name,
+               ",$(RHIDE_CONFIG_DIRS)),$(wildcard $(file))))", NULL);
     files = expand_rhide_spec(spec);
     string_free(spec);
   }
@@ -32,12 +33,13 @@ void rhide_load_environment_file(char *,char *name,int only_current,
   while (*files)
   {
     char *space = files + strlen(files) - 1;
+
     while ((space > files) && (*space != ' '))
       space--;
     if (space > files)
-      _rhide_load_environment_file(space+1,unload);
+      _rhide_load_environment_file(space + 1, unload);
     else
-      _rhide_load_environment_file(space,unload);
+      _rhide_load_environment_file(space, unload);
     *space = 0;
   }
   string_free(files);
@@ -70,31 +72,37 @@ _rhide_load_environment_file(char *fname, int unload)
   FILE *f;
   char line[2048];
   char *variable;
-  f = fopen(fname,"rt");
-  if (!f) return 0;
-  while (fgets(line,2048,f))
+
+  f = fopen(fname, "rt");
+  if (!f)
+    return 0;
+  while (fgets(line, 2048, f))
   {
-    if (line[0] == '#') // comment
+    if (line[0] == '#')         // comment
       continue;
-    line[strlen(line)-1] = 0; // remove the last '\n'
-    if (line[0] == '.') // include a file
-    /*
-      This syntax should not longer be used. Use instead
-      the "include" keyword like in GNU make */
+    line[strlen(line) - 1] = 0; // remove the last '\n'
+    if (line[0] == '.')         // include a file
+      /*
+         This syntax should not longer be used. Use instead
+         the "include" keyword like in GNU make 
+       */
     {
-      char *_fname = expand_spec(line+1,NULL);
+      char *_fname = expand_spec(line + 1, NULL);
+
       _rhide_load_environment_file(_fname, unload);
       string_free(_fname);
       continue;
     }
     if (strncmp(line, "include ", 8) == 0)
     {
-      char *_fname = expand_spec(line+8,NULL);
+      char *_fname = expand_spec(line + 8, NULL);
+
       _rhide_load_environment_file(_fname, unload);
       string_free(_fname);
       continue;
     }
     int _putenv = 0;
+
     variable = line;
     if (line[0] == '!')
     {
@@ -106,32 +114,38 @@ _rhide_load_environment_file(char *fname, int unload)
       _putenv = 1;
       variable += 7;
     }
-    char *equal = strchr(line,'=');
+    char *equal = strchr(line, '=');
+
     if (equal)
     {
       *equal = 0;
       char *_variable = expand_rhide_spec(variable);
-      insert_variable(variable, unload ? NULL : equal+1);
+
+      insert_variable(variable, unload ? NULL : equal + 1);
       if (strcmp(variable, _variable) != 0)
       {
-        insert_variable(_variable, unload ? NULL : equal+1);
+        insert_variable(_variable, unload ? NULL : equal + 1);
       }
 #ifdef __linux__
 /* That's now a special case, when running under linux
   using ncurses. There is this variable used, but only
   at startup, which is already done */
-      if (strcmp(_variable,"ESCDELAY") == 0)
+      if (strcmp(_variable, "ESCDELAY") == 0)
       {
         extern int ESCDELAY;
-        ESCDELAY = atoi(equal+1);
+
+        ESCDELAY = atoi(equal + 1);
       }
 #endif
       if (_putenv)
       {
-        if (!unload) *equal = '=';
-        /* not all systems allocate the memory for the
+        if (!unload)
+          *equal = '=';
+        /*
+           not all systems allocate the memory for the
            variable, so better waste some memory than a
-           sigsegv later :-( */
+           sigsegv later :-( 
+         */
         putenv(string_dup(_variable));
       }
       string_free(_variable);
@@ -141,14 +155,14 @@ _rhide_load_environment_file(char *fname, int unload)
   return 1;
 }
 
-void push_environment()
+void
+push_environment()
 {
   _rhide_load_environment_file("rhide.env", 0);
 }
 
-void pop_environment()
+void
+pop_environment()
 {
   _rhide_load_environment_file("rhide.env", 1);
 }
-
-

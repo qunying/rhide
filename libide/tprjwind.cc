@@ -11,16 +11,15 @@
 #define COLS (3)
 
 TProjectWindow::TProjectWindow(const TRect & rect,
-                               TDepCollection *deps,
-                               const char *tit) : 
-        TDialog(rect,tit),
-	TWindowInit(TProjectWindow::initFrame)
+                               TDepCollection * deps, const char *tit):
+TDialog(rect, tit), TWindowInit(TProjectWindow::initFrame)
 {
   TRect r = getExtent();
   TScrollBar *scrollbar;
-  r.grow(-1,-1);
+
+  r.grow(-1, -1);
   scrollbar = standardScrollBar(sbVertical | sbHandleKeyboard);
-  liste = new TProjectListBox(r,COLS,scrollbar);
+  liste = new TProjectListBox(r, COLS, scrollbar);
   growMode = gfGrowLoY | gfGrowHiX | gfGrowHiY;
   liste->growMode = gfGrowHiX | gfGrowHiY;
   liste->newList(deps);
@@ -29,4 +28,3 @@ TProjectWindow::TProjectWindow(const TRect & rect,
   helpCtx = hcProjectWindow;
   options |= ofFirstClick;
 }
-

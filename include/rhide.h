@@ -64,7 +64,7 @@ extern char *RHIDE_EXT;
 extern int external_program_executed;
 void Repaint();
 class TProject;
-void SetMainTargetName(const char *,TProject *_prj = NULL);
+void SetMainTargetName(const char *, TProject * _prj = NULL);
 int SaveAll();
 extern unsigned long hasmodified;
 extern int c_words_changed;
@@ -81,9 +81,9 @@ class TDependency;
 class TParamList;
 
 void InitOptions();
-void EditDirList(TDirList *dirlist,const char *title,int hist_id);
-ushort EditParamList(TParamList *paramlist,const char *title,int hist_id);
-void AddArg(const char * option);
+void EditDirList(TDirList * dirlist, const char *title, int hist_id);
+ushort EditParamList(TParamList * paramlist, const char *title, int hist_id);
+void AddArg(const char *option);
 
 void OptimizationFlags();
 void DebugFlags();
@@ -113,21 +113,22 @@ void EditFortranFlags();
 void EditAdaFlags();
 
 /* module idegcc.cc */
-long TimeOfFile(const char *fname,Boolean do_update,
+long TimeOfFile(const char *fname, Boolean do_update,
+
                 Boolean is_full_name = False);
 Boolean Make(Boolean force_messages = True);
 Boolean Build(void);
 Boolean RunMainTarget(void);
 class TDependency;
-Boolean Compile(TDependency *_dep = NULL);
+Boolean Compile(TDependency * _dep = NULL);
 int RunProgram(const char *cmd,
-                   Boolean redir_stderr,Boolean redir_stdout,
-		   Boolean SwitchToUser = False);
+               Boolean redir_stderr, Boolean redir_stdout,
+               Boolean SwitchToUser = False);
 void ClearFileHash();
-void CheckStderr(bool erase=true);
-void CheckStdout(bool erase=true);
-void RemoveStdout (void);
-void RemoveStderr (void);
+void CheckStderr(bool erase = true);
+void CheckStdout(bool erase = true);
+void RemoveStdout(void);
+void RemoveStderr(void);
 
 /* module idecomp.cc */
 class TDependency;
@@ -153,7 +154,7 @@ void DelProjectItem(void);
 extern TProjectWindow *project_window;
 void LocalOptions();
 void ShowIncludes();
-Boolean PushProject(const char *directory,const char *prjname);
+Boolean PushProject(const char *directory, const char *prjname);
 void PopProject(Boolean Save = True);
 void ResetProjectStack();
 void ClearDependencies();
@@ -172,14 +173,15 @@ void EnableShadows();
 void DisableShadows();
 class TFileDialog;
 char *select_project(char *title);
-TFileDialog *FileOpenDialog(char *init_val,char *title,char *input_label,
-                            ushort aOptions,int hist,char *init_dir);
+TFileDialog *FileOpenDialog(char *init_val, char *title, char *input_label,
+                            ushort aOptions, int hist, char *init_dir);
 extern char *default_directory;
 
 /* module ideutil.cc */
-Boolean FindFile(const char * name,TDirList * list,char * & full_name,Boolean uselist=True);
-Boolean FindFile(const char * name, char *& rel_name, TDirList * list);
-Boolean FindFile(const char * name,char * & full_name);
+Boolean FindFile(const char *name, TDirList * list, char *&full_name,
+                 Boolean uselist = True);
+Boolean FindFile(const char *name, char *&rel_name, TDirList * list);
+Boolean FindFile(const char *name, char *&full_name);
 void ClearFindCache();
 extern int debug_dependencies;
 extern int debug_commands;
@@ -187,23 +189,24 @@ extern int debug_tempfiles;
 extern int debug_files;
 class ifpstream;
 ifpstream *open_ifpstream(const char *name);
-void close_ifpstream(ifpstream *is);
-void ExpandFileNames(TProject *prj);
+void close_ifpstream(ifpstream * is);
+void ExpandFileNames(TProject * prj);
 
 /* module idemsg.cc */
 class TMsgCollection;
 class TDialog;
-TCEditWindow * is_on_desktop(const char *,Boolean is_full_name = False,
-                             Boolean check_inode = True);
-void ShowMessages(TMsgCollection *msgs,Boolean remove_old,
-                  int select_first_err = -1,
-                  Boolean select_it = False);
+TCEditWindow *is_on_desktop(const char *, Boolean is_full_name = False,
+                            Boolean check_inode = True);
+void ShowMessages(TMsgCollection * msgs, Boolean remove_old,
+                  int select_first_err = -1, Boolean select_it = False);
 void ClearMessages(int what = -1);
+
 #define ClearMessage() ClearMessages(0)
 extern TDialog *msg_window;
 class TMsgListBox;
 extern TMsgListBox *msg_list;
 void show_message(const char *msg, const char *file,
+
                   int line, int column, int msg_type);
 
 /* module idedefault.cc */
@@ -215,10 +218,10 @@ void DefaultCXXFlags();
 void DefaultCFlags();
 void DefaultPascalFlags();
 void DefaultFpcFlags();
-void DefaultReservedWords(TProject *p = NULL);
-void DefaultGPCReservedWords(TProject *p = NULL);
-void DefaultFPCReservedWords(TProject *p = NULL);
-void DefaultUserWords(TProject *p = NULL);
+void DefaultReservedWords(TProject * p = NULL);
+void DefaultGPCReservedWords(TProject * p = NULL);
+void DefaultFPCReservedWords(TProject * p = NULL);
+void DefaultUserWords(TProject * p = NULL);
 void DefaultFortranFlags();
 void DefaultAdaFlags();
 
@@ -226,25 +229,27 @@ void DefaultAdaFlags();
 void Colors();
 
 /* module idehints.cc */
-const char * IDEHint(unsigned short);
+const char *IDEHint(unsigned short);
 
 /*module ideformatline.cc */
 class TCEditor;
-void SyntaxFormatLine_C(TCEditor *,void *,uint32,int,ushort,uint32);
-void SyntaxFormatLine_Pascal(TCEditor *,void *,uint32,int,ushort,uint32);
+void SyntaxFormatLine_C(TCEditor *, void *, uint32, int, ushort, uint32);
+void SyntaxFormatLine_Pascal(TCEditor *, void *, uint32, int, ushort, uint32);
 
 /* module IDEExtern.cc */
 void FSDB();
 void GREP();
 void GDB();
-void RunExternalProgram(const char *program, int show_stderr, int show_stdout);
+void RunExternalProgram(const char *program, int show_stderr,
+
+                        int show_stdout);
 
 /* module IDEHelp.cc */
 void Help();
 void Help(ushort);
 void HelpIndex();
 void ContextHelp(ushort);
-void SyntaxHelp(const char *,const char *fname = "libc.inf");
+void SyntaxHelp(const char *, const char *fname = "libc.inf");
 class TRect;
 extern TRect InfRec;
 class opstream;
@@ -269,38 +274,42 @@ void OpenDisWin(int force_open = 0);
 /* module idemak.cc */
 class TProject;
 TProject *ReadProject(const char *, bool from_ide = true);
-void WriteMake(char *outname=NULL,int argc=0,char *arg[]=NULL);
-void put_breakline(FILE *f,int start_len,int max_len,const char *s);
+void WriteMake(char *outname = NULL, int argc = 0, char *arg[] = NULL);
+void put_breakline(FILE * f, int start_len, int max_len, const char *s);
 extern TProject *project;
+
 #define Project (*project)
 extern char *project_directory;
 extern char *project_name;
 extern int recursive_make;
 extern unsigned short ProjectVersion;
 
-typedef struct {
+typedef struct
+{
   TProject *project;
   char *pname;
   char *dname;
-} project_stack;
+}
+project_stack;
 
 extern project_stack *PROJECT_STACK;
 extern int stack_count;
-Boolean _PushProject(const char *directory,const char *prjname);
+Boolean _PushProject(const char *directory, const char *prjname);
 class TDependency;
-Boolean _PushProject(TDependency *dep);
+Boolean _PushProject(TDependency * dep);
 void _PopProject();
 class TStringCollection;
-void _AbsToRelPath(char *&dname, TStringCollection *vars,
+void _AbsToRelPath(char *&dname, TStringCollection * vars,
+
                    bool use_rel = true);
-void check_vars(TStringCollection *vars,TDirList *dirs);
+void check_vars(TStringCollection * vars, TDirList * dirs);
 
 /* module idespec.cc */
 class TDependency;
-char *BuildCompiler(TDependency *dep,const char *spec);
-char *GetCompilerSpec(TDependency *dep,Boolean & is_user);
+char *BuildCompiler(TDependency * dep, const char *spec);
+char *GetCompilerSpec(TDependency * dep, Boolean & is_user);
 void WriteSpecData(FILE *);
-void dump_rhide_environment(FILE *f);
+void dump_rhide_environment(FILE * f);
 char *expand_rhide_spec(const char *spec);
 
 
@@ -314,26 +323,26 @@ extern char *create_bug_report(int);
 
 /* openedit.cc */
 void OpenFileFromEditor(char *name);
-TCEditWindow *OpenEditor(const char *name,Boolean search);
-void OpenEditor(const char *name, Boolean search, TCEditWindow *&ew);
+TCEditWindow *OpenEditor(const char *name, Boolean search);
+void OpenEditor(const char *name, Boolean search, TCEditWindow * &ew);
 
 /* idesynta.cc */
 void SyntaxOptions();
-void syntaxhelp(const char *,int create_index = 0);
+void syntaxhelp(const char *, int create_index = 0);
 void SyntaxIndex();
 
 /* ideenv.cc */
-void rhide_load_environment_file(char *appname,char *basename,
+void rhide_load_environment_file(char *appname, char *basename,
                                  int only_current = 0, int unload = 0);
 void push_environment();
 void pop_environment();
 
 /* idercs.cc */
 Boolean FindRCSFile(const char *name, char *&fname, char *&sname);
-void CheckoutRCSFile(const char *sname, const char *fname, int rw=0);
+void CheckoutRCSFile(const char *sname, const char *fname, int rw = 0);
 
 /* idedail.cc */
-unsigned IDEdoEditDialog(int , ... );
+unsigned IDEdoEditDialog(int, ...);
 
 
 #ifdef Uses_IDEConst
@@ -341,7 +350,8 @@ unsigned IDEdoEditDialog(int , ... );
 #include <ideconst.h>
 #endif
 
-typedef struct {
+typedef struct
+{
   unsigned all_deps:1;
   unsigned create_backup_files:1;
   unsigned show_syntax:1;
@@ -358,7 +368,8 @@ typedef struct {
   unsigned no_stdinc:1;
   unsigned no_stdlib:1;
   unsigned for_profile:1;
-} ide_options;
+}
+ide_options;
 
 #define IDE_OPTIONS (*((ide_options*)&(Options.debug_level)))
 #define AllDeps (IDE_OPTIONS.all_deps)
@@ -397,7 +408,8 @@ typedef struct
   unsigned save_messages:1;
   unsigned dont_show_exit_code:1;
   unsigned dummy:8;
-} ide_options1;
+}
+ide_options1;
 
 #define IDE_OPTIONS1 (*((ide_options1*)&(Project.options1)))
 #define NoPersistentBlocks (IDE_OPTIONS1.no_persistent_blocks)

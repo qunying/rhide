@@ -9,16 +9,16 @@ class TDisassemblerViewer;
 class TRegisters;
 class TPalette;
 
-typedef int (*check_func)(unsigned long);
+typedef int (*check_func) (unsigned long);
 
-class TDisassemblerWindow : public TDialog
+class TDisassemblerWindow:public TDialog
 {
 public:
   TDisassemblerWindow(const TRect &, const char *aTitle,
                       check_func is_bp = NULL);
   void update(unsigned long address);
-  virtual TPalette &getPalette() const;
-  virtual void sizeLimits( TPoint& min, TPoint& max );
+  virtual TPalette & getPalette() const;
+  virtual void sizeLimits(TPoint & min, TPoint & max);
   unsigned long focused_address();
 
   TDisassemblerViewer *viewer;
@@ -26,4 +26,3 @@ public:
 };
 
 #endif
-

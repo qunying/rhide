@@ -9,28 +9,28 @@
 #if !defined( __CALENDAR_H )
 #define __CALENDAR_H
 
-class TCalendarView : public TView
+class TCalendarView:public TView
 {
 
 public:
 
-    TCalendarView(TRect & r);
-    virtual void handleEvent(TEvent& event);
-    virtual void draw();
+  TCalendarView(TRect & r);
+  virtual void handleEvent(TEvent & event);
+  virtual void draw();
 
 private:
 
-    unsigned days, month, year;
-    unsigned curDay, curMonth, curYear;
+  unsigned days, month, year;
+  unsigned curDay, curMonth, curYear;
 };
 
-class TCalendarWindow : public TWindow
+class TCalendarWindow:public TWindow
 {
 
 public:
 
-    TCalendarWindow();
+  TCalendarWindow();
 
 };
 
-#endif      // __CALENDAR_H
+#endif // __CALENDAR_H

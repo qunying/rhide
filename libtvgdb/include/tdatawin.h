@@ -8,17 +8,17 @@ class TEvent;
 class TDataViewer;
 class TPalette;
 
-class TDataWindow : public TDialog
+class TDataWindow:public TDialog
 {
   TDataViewer *viewer;
   TDataWindow *next;
   static TDataWindow *windowlist;
-  
+
 public:
-  TDataWindow(const TRect &,const char *aTitle);
-  ~TDataWindow();
-  virtual TPalette &getPalette() const;
-  virtual void sizeLimits(TPoint& min,TPoint& max);
+    TDataWindow(const TRect &, const char *aTitle);
+   ~TDataWindow();
+  virtual TPalette & getPalette() const;
+  virtual void sizeLimits(TPoint & min, TPoint & max);
 
   static TDataWindow *createNew(const char *naddr = NULL);
   static TDataWindow *stackWindow();
@@ -26,7 +26,6 @@ public:
 };
 
 /* Force update all TDataWindow windows  */
-void    UpdateDataWindows (void);
+void UpdateDataWindows(void);
 
 #endif
-

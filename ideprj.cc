@@ -71,53 +71,57 @@
   gpr2mak, beause it is needed only, when reading
   the desktop file and not when only reading the
   project file */
-__link ( RIDEEditWindow )
-
+__link(RIDEEditWindow)
 /*
   For old desktop files I need special TSTreamableClass
   Variables.
 */
-TStreamableClass _RSIndicator("TSIndicator",
-                              TSIndicator::build,
-                              __DELTA(TSIndicator));
-TStreamableClass _RNoCaseStringCollection("TNoCaseStringCollection",
-                              TNoCaseStringCollection::build,
-                              __DELTA(TNoCaseStringCollection));
-TStreamableClass _RStringCollectionW("TStringCollectionW",
-                              TStringCollectionW::build,
-                              __DELTA(TStringCollectionW));
+     TStreamableClass _RSIndicator("TSIndicator",
+
+                                   TSIndicator::build, __DELTA(TSIndicator));
+     TStreamableClass _RNoCaseStringCollection("TNoCaseStringCollection",
+                                               TNoCaseStringCollection::build,
+                                               __DELTA
+
+                                               (TNoCaseStringCollection));
+     TStreamableClass _RStringCollectionW("TStringCollectionW",
+                                          TStringCollectionW::build,
+
+                                          __DELTA(TStringCollectionW));
 #ifdef __DJGPP__
 #define RHIDE_OPTIONS_NAME "rh_opt"
 #else
 #define RHIDE_OPTIONS_NAME ".rh_opt"
 #endif
 
-TProjectWindow *project_window;
-static char *dskname;
+     TProjectWindow *project_window;
+     static char *dskname;
 
-static ushort DeskTop_Version = 25;
-static ushort BreakPoint_Version = 0;
+     static ushort DeskTop_Version = 25;
+     static ushort BreakPoint_Version = 0;
 
-static void SetGlobalOptions();
+     static void SetGlobalOptions();
 
-TRect ProjectWindowRect(-1,-1,-1,-1);
-extern TRect MsgWindowRect;
+     TRect ProjectWindowRect(-1, -1, -1, -1);
+     extern TRect MsgWindowRect;
 
-char *default_directory;
+     char *default_directory;
 
-static void writeView(TView *p, void *strm)
+     static void writeView(TView * p, void *strm)
 {
   TEvent event;
-  opstream *os = (opstream *)strm;
+  opstream *os = (opstream *) strm;
+
   event.what = evBroadcast;
   event.message.command = cmEditorAnswer;
   p->handleEvent(event);
   if (event.what == evNothing)
   {
-    if (((TIDEEditWindow*)p)->editor->isClipboard() == False)
+    if (((TIDEEditWindow *) p)->editor->isClipboard() == False)
     {
       *os << p;
-      short number = ((TWindow*)p)->number;
+      short number = ((TWindow *) p)->number;
+
       *os << number;
     }
     return;
@@ -128,7 +132,8 @@ static void writeView(TView *p, void *strm)
   if (event.what == evNothing)
   {
     *os << p;
-    short number = ((TWindow*)p)->number;
+    short number = ((TWindow *) p)->number;
+
     *os << number;
     return;
   }
@@ -138,42 +143,52 @@ static void writeView(TView *p, void *strm)
    0x00 at first byte, which could not be happen with the old format.
 */
 
-static
-void SaveDesktop(opstream & os,Boolean save_windows = True)
+static void
+SaveDesktop(opstream & os, Boolean save_windows = True)
 {
-  int n,i;
+  int n, i;
   ushort w;
   TEvent event;
   uchar len = 0x00;
+
   os << len;
   os.writeString(DESKTOP_IDENT);
   os << DeskTop_Version;
   int save_pal = TProgram::appPalette;
+
   TProgram::appPalette = apColor;
   TPalette *palette = &TProgram::application->getPalette();
+
   len = palette->data[0];
   os << len;
-  os.writeBytes(&palette->data[1],len);
-  if (project_window) len = 1; else len = 0;
+  os.writeBytes(&palette->data[1], len);
+  if (project_window)
+    len = 1;
+  else
+    len = 0;
   os << len;
-  if (windows) n=windows->getCount();
-  else n=0;
+  if (windows)
+    n = windows->getCount();
+  else
+    n = 0;
   w = n;
   if (save_windows == True)
   {
     // count the editor windows on the desktop
-    for (i=0;i<n;i++)
+    for (i = 0; i < n; i++)
     {
       event.what = evBroadcast;
       event.message.command = cmEditorAnswer;
       DESKTOPWINDOW(i)->handleEvent(event);
-      if (event.what == evNothing) continue;
+      if (event.what == evNothing)
+        continue;
       else
       {
         event.what = evBroadcast;
         event.message.command = cmInfoAnswer;
         DESKTOPWINDOW(i)->handleEvent(event);
-        if (event.what == evNothing) continue;
+        if (event.what == evNothing)
+          continue;
       }
       w--;
     }
@@ -186,17 +201,18 @@ void SaveDesktop(opstream & os,Boolean save_windows = True)
   {
     int tmp_len;
     char *tmp;
+
     if (save_windows == False)
       n = 0;
     else
       n = Watches.getCount();
     os << n;
-    for (i=0;i<n;i++)
+    for (i = 0; i < n; i++)
     {
-      tmp = (char *)Watches.at(i);
+      tmp = (char *) Watches.at(i);
       tmp_len = strlen(tmp);
       os << tmp_len;
-      os.writeBytes(tmp,tmp_len);
+      os.writeBytes(tmp, tmp_len);
     }
   }
 #else
@@ -207,26 +223,32 @@ void SaveDesktop(opstream & os,Boolean save_windows = True)
   if (!project_window)
   {
     ccIndex tmp = -1;
+
     os << tmp;
   }
   else
   {
     ccIndex tmp;
-    if (project_window->liste->list()->getCount() == 0) tmp = -1;
-    else tmp = project_window->liste->focused;
+
+    if (project_window->liste->list()->getCount() == 0)
+      tmp = -1;
+    else
+      tmp = project_window->liste->focused;
     os << tmp;
   }
   os << BreakPoint_Version;
 #ifdef INTERNAL_DEBUGGER
   int breakcount;
+
   if (save_windows == False)
     breakcount = 0;
   else
     breakcount = BreakPointCount();
   os << breakcount;
-  for (i=0;i<breakcount;i++)
+  for (i = 0; i < breakcount; i++)
   {
     struct BreakPoint *bp = GetBreakPoint(i);
+
     os << bp->type;
     os << bp->address;
     os.writeString(bp->filename);
@@ -237,6 +259,7 @@ void SaveDesktop(opstream & os,Boolean save_windows = True)
   }
 #else
   int breakcount = 0;
+
   os << breakcount;
 #endif
 
@@ -244,22 +267,23 @@ void SaveDesktop(opstream & os,Boolean save_windows = True)
 
   os << w;
   if (w > 0)
-    TProgram::deskTop->forEach(::writeView,&os);
+    TProgram::deskTop->forEach(::writeView, &os);
 
   TProgram::appPalette = apMonochrome;
   palette = &TProgram::application->getPalette();
   len = palette->data[0];
   os << len;
-  os.writeBytes(&palette->data[1],len);
+  os.writeBytes(&palette->data[1], len);
   TProgram::appPalette = apBlackWhite;
   palette = &TProgram::application->getPalette();
   len = palette->data[0];
   os << len;
-  os.writeBytes(&palette->data[1],len);
+  os.writeBytes(&palette->data[1], len);
   {
     GlobalOptionsRect temp;
+
     TCEditor::CompactGlobalOptions(&temp);
-    os.writeBytes(&temp,sizeof(temp));
+    os.writeBytes(&temp, sizeof(temp));
   }
   TProgram::appPalette = save_pal;
 
@@ -268,7 +292,8 @@ void SaveDesktop(opstream & os,Boolean save_windows = True)
   os << CallStackWindowRect;
 #else
   {
-    TRect r(-1,-1,-1,-1);
+    TRect r(-1, -1, -1, -1);
+
     os << r;
     os << r;
   }
@@ -276,6 +301,7 @@ void SaveDesktop(opstream & os,Boolean save_windows = True)
 
   {
     unsigned char us = TEventQueue::mouseReverse == True ? 1 : 0;
+
     os << us;
     os << TEventQueue::doubleDelay;
   }
@@ -297,16 +323,19 @@ void SaveDesktop(opstream & os,Boolean save_windows = True)
 void setBlinkState(void);
 void setIntenseState(void);
 
-void SetProjectScreenMode()
+void
+SetProjectScreenMode()
 {
   if (TScreen::screenMode != Project.screen_mode)
     TProgram::application->setScreenMode(Project.screen_mode);
-  if (IntenseMode) setIntenseState();
-  else setBlinkState();
+  if (IntenseMode)
+    setIntenseState();
+  else
+    setBlinkState();
 }
 
-static
-void LoadDesktop(ipstream & is,Boolean load_windows = True)
+static void
+LoadDesktop(ipstream & is, Boolean load_windows = True)
 {
   int i;
   ushort n;
@@ -314,6 +343,7 @@ void LoadDesktop(ipstream & is,Boolean load_windows = True)
   char *pal;
   char *magic;
   ushort version;
+
 #ifdef INTERNAL_DEBUGGER
   if (load_windows == True)
   {
@@ -321,79 +351,87 @@ void LoadDesktop(ipstream & is,Boolean load_windows = True)
     DeleteAllBreakPoints();
   }
 #endif
-  ProjectWindowRect = TRect(-1,-1,-1,-1);
-  MsgWindowRect = TRect(-1,-1,-1,-1);
+  ProjectWindowRect = TRect(-1, -1, -1, -1);
+  MsgWindowRect = TRect(-1, -1, -1, -1);
 #ifdef INTERNAL_DEBUGGER
-  WatchWindowRect = TRect(-1,-1,-1,-1);
-  CallStackWindowRect = TRect(-1,-1,-1,-1);
+  WatchWindowRect = TRect(-1, -1, -1, -1);
+  CallStackWindowRect = TRect(-1, -1, -1, -1);
 #endif
   is >> len;
-  if (len != 0) // it is an old desktop-file. Simply ignore it
+  if (len != 0)                 // it is an old desktop-file. Simply ignore it
   {
     messageBox(_("The desktop file cannot be used, because of a new format"),
-              mfWarning | mfOKButton);
+               mfWarning | mfOKButton);
     // but show the project window, if it is a real project
-    if (project_name && load_windows == True) ShowProject();
+    if (project_name && load_windows == True)
+      ShowProject();
     return;
   }
-  magic=is.readString();
+  magic = is.readString();
   if (!is.good())
     return;
-  if (strcmp(magic,DESKTOP_IDENT))
+  if (strcmp(magic, DESKTOP_IDENT))
     return;
   is >> version;
-  if (version < 19) // applied editor v 0.34
+  if (version < 19)             // applied editor v 0.34
   {
     messageBox(_("The desktop file cannot be used, because of a new format"),
-              mfWarning | mfOKButton);
+               mfWarning | mfOKButton);
     // but show the project window, if it is a real project
-    if (project_name && load_windows == True) ShowProject();
+    if (project_name && load_windows == True)
+      ShowProject();
     return;
   }
   if (version > DeskTop_Version)
   {
     messageBox(_("The desktop file cannot be used, because it was created "
-                 "by a newer version of RHIDE"),
-              mfWarning | mfOKButton);
+                 "by a newer version of RHIDE"), mfWarning | mfOKButton);
     // but show the project window, if it is a real project
-    if (project_name && load_windows == True) ShowProject();
+    if (project_name && load_windows == True)
+      ShowProject();
     return;
   }
   int save_pal = TProgram::appPalette;
+
   TProgram::appPalette = apColor;
   is >> len;
-  pal = new char[len+1];
-  is.readBytes(pal,len);
+  pal = new char[len + 1];
+
+  is.readBytes(pal, len);
   if (len < TProgram::application->getPalette()[0])
   {
     uchar _len = TProgram::application->getPalette()[0];
-    char *_pal = new char[_len+1];
-    memcpy(_pal,pal,len);
-    memcpy(_pal+len,&(TProgram::application->getPalette()[len+1]),_len-len);
+    char *_pal = new char[_len + 1];
+
+    memcpy(_pal, pal, len);
+    memcpy(_pal + len, &(TProgram::application->getPalette()[len + 1]),
+           _len - len);
     delete(pal);
     len = _len;
     pal = _pal;
   }
-  TPalette pa(pal,len);
+  TPalette pa(pal, len);
+
   TProgram::application->getPalette() = pa;
   delete(pal);
   TProgram::appPalette = save_pal;
   SetProjectScreenMode();
   is >> len;
   {
-    char *tmp=NULL;
+    char *tmp = NULL;
     int tmp_len;
-    int tmp_size=0;
+    int tmp_size = 0;
     int count;
+
     is >> count;
-    for (i=0;i<count;i++)
+    for (i = 0; i < count; i++)
     {
       is >> tmp_len;
       if (tmp_len > 0)
       {
         if (tmp_len >= tmp_size)
-          tmp = (char *)realloc(tmp,(tmp_size = tmp_len+1));
-        is.readBytes(tmp,tmp_len);
+          tmp = (char *) realloc(tmp, (tmp_size = tmp_len + 1));
+        is.readBytes(tmp, tmp_len);
         tmp[tmp_len] = 0;
 #ifdef INTERNAL_DEBUGGER
         if (load_windows == True)
@@ -401,21 +439,25 @@ void LoadDesktop(ipstream & is,Boolean load_windows = True)
 #endif
       }
     }
-    if (tmp) free(tmp);
+    if (tmp)
+      free(tmp);
   }
   is >> InfRec;
   ccIndex tmp;
+
   is >> tmp;
 
   {
     int breakcount;
     ushort b_version;
+
     is >> b_version;
     is >> breakcount;
-    for (i=0;i<breakcount;i++)
+    for (i = 0; i < breakcount; i++)
     {
 #ifdef INTERNAL_DEBUGGER
       struct BreakPoint bp;
+
       is >> bp.type;
       is >> bp.address;
       bp.filename = is.readString();
@@ -424,20 +466,30 @@ void LoadDesktop(ipstream & is,Boolean load_windows = True)
       is >> bp.count;
       is >> bp.line_number;
       if (load_windows)
-        EditBreakPoint(&bp,-1);
-      if (bp.filename) free(bp.filename);
-      if (bp.condition) free(bp.condition);
-      if (bp.function) free(bp.function);
+        EditBreakPoint(&bp, -1);
+      if (bp.filename)
+        free(bp.filename);
+      if (bp.condition)
+        free(bp.condition);
+      if (bp.function)
+        free(bp.function);
 #else
       ushort _ushort;
       int _int;
       unsigned _ulong;
       char *tmp;
+
       is >> _ushort;
       is >> _ulong;
-      tmp = is.readString(); if (tmp) free(tmp);
-      tmp = is.readString(); if (tmp) free(tmp);
-      tmp = is.readString(); if (tmp) free(tmp);
+      tmp = is.readString();
+      if (tmp)
+        free(tmp);
+      tmp = is.readString();
+      if (tmp)
+        free(tmp);
+      tmp = is.readString();
+      if (tmp)
+        free(tmp);
       is >> _int;
       is >> _int;
 #endif
@@ -447,7 +499,7 @@ void LoadDesktop(ipstream & is,Boolean load_windows = True)
   LoadHistoryIDs(is);
 
   if (len != 0 && project_name && load_windows == True)
-    ShowProject(); // do not show without a project
+    ShowProject();              // do not show without a project
   if (tmp >= 0 && project_window && load_windows == True)
     project_window->liste->focusItem(tmp);
 
@@ -457,8 +509,10 @@ void LoadDesktop(ipstream & is,Boolean load_windows = True)
     {
       short number;
       TView *view;
-    } V[n];
-    for (i=0; i<n; i++)
+    }
+    V[n];
+
+    for (i = 0; i < n; i++)
     {
       is >> V[i].view;
       V[i].number = 0;
@@ -467,17 +521,21 @@ void LoadDesktop(ipstream & is,Boolean load_windows = True)
     }
     if ((load_windows == True) && (n > 0))
     {
-      for (i=n-1; i>=0; i--)
+      for (i = n - 1; i >= 0; i--)
       {
-        AddWindow((TWindow *)V[i].view,NULL,False,True,True,V[i].number);
+        AddWindow((TWindow *) V[i].view, NULL, False, True, True,
+                  V[i].number);
         {
           TEvent event;
+
           event.what = evBroadcast;
           event.message.command = cmEditorAnswer;
           V[i].view->handleEvent(event);
           if (event.what == evNothing)
-            /* Remove the file from the filetime hash */
-            TimeOfFile(((TCEditWindow *)V[i].view)->editor->fileName,True);
+            /*
+               Remove the file from the filetime hash 
+             */
+            TimeOfFile(((TCEditWindow *) V[i].view)->editor->fileName, True);
         }
       }
     }
@@ -486,37 +544,43 @@ void LoadDesktop(ipstream & is,Boolean load_windows = True)
   {
     TProgram::appPalette = apMonochrome;
     is >> len;
-    pal = new char[len+1];
-    is.readBytes(pal,len);
+    pal = new char[len + 1];
+
+    is.readBytes(pal, len);
     if (len < TProgram::application->getPalette()[0])
     {
       uchar _len = TProgram::application->getPalette()[0];
-      char *_pal = new char[_len+1];
-      memcpy(_pal,pal,len);
-      memcpy(_pal+len,&(TProgram::application->getPalette()[len+1]),_len-len);
+      char *_pal = new char[_len + 1];
+
+      memcpy(_pal, pal, len);
+      memcpy(_pal + len, &(TProgram::application->getPalette()[len + 1]),
+             _len - len);
       delete(pal);
       len = _len;
       pal = _pal;
     }
-    pa = TPalette(pal,len);
+    pa = TPalette(pal, len);
     TProgram::application->getPalette() = pa;
     delete(pal);
 
     TProgram::appPalette = apBlackWhite;
     is >> len;
-    pal = new char[len+1];
-    is.readBytes(pal,len);
+    pal = new char[len + 1];
+
+    is.readBytes(pal, len);
     if (len < TProgram::application->getPalette()[0])
     {
       uchar _len = TProgram::application->getPalette()[0];
-      char *_pal = new char[_len+1];
-      memcpy(_pal,pal,len);
-      memcpy(_pal+len,&(TProgram::application->getPalette()[len+1]),_len-len);
+      char *_pal = new char[_len + 1];
+
+      memcpy(_pal, pal, len);
+      memcpy(_pal + len, &(TProgram::application->getPalette()[len + 1]),
+             _len - len);
       delete(pal);
       len = _len;
       pal = _pal;
     }
-    pa = TPalette(pal,len);
+    pa = TPalette(pal, len);
     TProgram::application->getPalette() = pa;
     delete(pal);
 
@@ -527,20 +591,26 @@ void LoadDesktop(ipstream & is,Boolean load_windows = True)
   TCEditor::colorsCached = 0;
 
   {
-    union {
-       struct {
+    union
+    {
+      struct
+      {
         uint16 t1;
         char tab[3];
-       } before_0413;
-       struct
-       {
-         uint16 t1;
-         char tab[3];
-         char wcol[3];
-       } before_0417;
-       GlobalOptionsRect opt;
-    } temp;
-    if (version < 22) // applied editor 0.4.13
+      }
+      before_0413;
+      struct
+      {
+        uint16 t1;
+        char tab[3];
+        char wcol[3];
+      }
+      before_0417;
+      GlobalOptionsRect opt;
+    }
+    temp;
+
+    if (version < 22)           // applied editor 0.4.13
     {
       is.readBytes(&temp, sizeof(temp.before_0413));
       temp.opt.wcol[0] = '6';
@@ -548,17 +618,18 @@ void LoadDesktop(ipstream & is,Boolean load_windows = True)
       temp.opt.wcol[2] = 0;
       temp.opt.wcol[3] = 0;
     }
-    else if (version < 23) // applied editor 0.4.17
+    else if (version < 23)      // applied editor 0.4.17
     {
       is.readBytes(&temp, sizeof(temp.before_0417));
       temp.opt.wcol[3] = 0;
     }
     else
-      is.readBytes(&temp,sizeof(temp));
+      is.readBytes(&temp, sizeof(temp));
     TCEditor::ExpandGlobalOptions(&temp.opt);
   }
 
   TRect dsk_rect = TProgram::deskTop->getExtent();
+
 #define RectVisible(r) (dsk_rect.a.x < r.b.x && dsk_rect.b.x > r.a.x && \
                         dsk_rect.a.y < r.b.y && dsk_rect.b.y > r.a.y)
 #define CheckRect(r) if (!RectVisible(r)) r = TRect(-1,-1,-1,-1)
@@ -575,6 +646,7 @@ void LoadDesktop(ipstream & is,Boolean load_windows = True)
       CallStackWindow->locate(CallStackWindowRect);
 #else
     TRect r;
+
     is >> r;
     is >> r;
 #endif
@@ -582,6 +654,7 @@ void LoadDesktop(ipstream & is,Boolean load_windows = True)
 
   {
     unsigned char us;
+
     is >> us;
     is >> TEventQueue::doubleDelay;
     TEventQueue::mouseReverse = us ? True : False;
@@ -608,10 +681,11 @@ void LoadDesktop(ipstream & is,Boolean load_windows = True)
     LoadClosedWindows(is);
 }
 
-static
-void SaveProject(TProject *_project, const char *_project_name)
+static void
+SaveProject(TProject * _project, const char *_project_name)
 {
   ofpstream *file = new ofpstream(_project_name);
+
   file->writeString(PROJECT_IDENT);
   *file << ProjectVersion;
   *file << _project;
@@ -619,33 +693,34 @@ void SaveProject(TProject *_project, const char *_project_name)
   delete(file);
 }
 
-static
-void LoadOptions(char *_name)
+static void
+LoadOptions(char *_name)
 {
-  char *dir,*name,*ext,*pname,*dname,*__name;
+  char *dir, *name, *ext, *pname, *dname, *__name;
   ifpstream *ifile;
   TProject *_project;
-  split_fname(_name,dir,name,ext);
+
+  split_fname(_name, dir, name, ext);
   string_free(ext);
-  string_dup(__name,dir);
-  string_cat(__name,name);
-  string_cat(__name,PROJECT_EXT);
-  pname = (char *)alloca(strlen(__name)+1);
-  strcpy(pname,__name);
+  string_dup(__name, dir);
+  string_cat(__name, name);
+  string_cat(__name, PROJECT_EXT);
+  pname = (char *) alloca(strlen(__name) + 1);
+  strcpy(pname, __name);
   string_free(__name);
-  string_dup(__name,dir);
-  string_cat(__name,name);
-  string_cat(__name,DESKTOP_EXT);
-  dname = (char *)alloca(strlen(__name)+1);
-  strcpy(dname,__name);
+  string_dup(__name, dir);
+  string_cat(__name, name);
+  string_cat(__name, DESKTOP_EXT);
+  dname = (char *) alloca(strlen(__name) + 1);
+  strcpy(dname, __name);
   string_free(__name);
   string_free(dir);
   string_free(name);
   _project = ReadProject(pname);
   if (!_project)
   {
-    messageBox(mfError | mfOKButton,_("Invalid project-file %s(%s)"),
-               pname," :-( ");
+    messageBox(mfError | mfOKButton, _("Invalid project-file %s(%s)"),
+               pname, " :-( ");
     return;
   }
   *project = *_project;
@@ -653,69 +728,76 @@ void LoadOptions(char *_name)
   ClearFindCache();
   ifile = open_ifpstream(dname);
   if (ifile && ifile->good())
-    LoadDesktop(*ifile,False);
+    LoadDesktop(*ifile, False);
   if (ifile)
     close_ifpstream(ifile);
 }
 
-static
-void SaveOptions(char *_name)
+static void
+SaveOptions(char *_name)
 {
-  char *dir,*name,*ext,*pname,*dname,*__name;
+  char *dir, *name, *ext, *pname, *dname, *__name;
   ofpstream *ofile;
   TProject *_project;
-  split_fname(_name,dir,name,ext);
+
+  split_fname(_name, dir, name, ext);
   string_free(ext);
-  string_dup(__name,dir);
-  string_cat(__name,name);
-  string_cat(__name,PROJECT_EXT);
-  pname = (char *)alloca(strlen(__name)+1);
-  strcpy(pname,__name);
+  string_dup(__name, dir);
+  string_cat(__name, name);
+  string_cat(__name, PROJECT_EXT);
+  pname = (char *) alloca(strlen(__name) + 1);
+  strcpy(pname, __name);
   string_free(__name);
-  string_dup(__name,dir);
-  string_cat(__name,name);
-  string_cat(__name,DESKTOP_EXT);
-  dname = (char *)alloca(strlen(__name)+1);
-  strcpy(dname,__name);
+  string_dup(__name, dir);
+  string_cat(__name, name);
+  string_cat(__name, DESKTOP_EXT);
+  dname = (char *) alloca(strlen(__name) + 1);
+  strcpy(dname, __name);
   string_free(__name);
   string_free(dir);
   string_free(name);
   _project = new TProject();
   *_project = *project;
-  SetMainTargetName("a.exe",_project);
+  SetMainTargetName("a.exe", _project);
   SaveProject(_project, pname);
   destroy(_project);
   ofile = new ofpstream(dname);
   if (ofile->good())
-    SaveDesktop(*ofile,False);
+    SaveDesktop(*ofile, False);
   delete(ofile);
 }
 
-char *select_project(char *title)
+char *
+select_project(char *title)
 {
   ushort result;
   TFileDialog *dialog;
   char *fileName = NULL;
+
   InitHistoryID(RHIDE_History_project_file);
-  dialog = new TFileDialog("*"PROJECT_EXT,title,
-                _("~N~ame"),fdOpenButton,RHIDE_History_project_file);
+  dialog = new TFileDialog("*" PROJECT_EXT, title,
+                           _("~N~ame"), fdOpenButton,
+                           RHIDE_History_project_file);
   TProgram::deskTop->insert(dialog);
-  dialog->setState(sfModal,True);
+  dialog->setState(sfModal, True);
   result = dialog->execute();
-  if( result != cmCancel )
+  if (result != cmCancel)
   {
     char fname[512];
+
     dialog->getData(fname);
-    string_dup(fileName,fname);
+    string_dup(fileName, fname);
   }
   TProgram::deskTop->remove(dialog);
   destroy(dialog);
   return fileName;
 }
 
-void SaveOptions()
+void
+SaveOptions()
 {
   char *name = select_project(_("Save options to a project"));
+
   if (name)
   {
     SaveOptions(name);
@@ -723,9 +805,11 @@ void SaveOptions()
   }
 }
 
-void LoadOptions()
+void
+LoadOptions()
 {
   char *name = select_project(_("Read options from project"));
+
   if (name)
   {
     LoadOptions(name);
@@ -734,14 +818,17 @@ void LoadOptions()
   SetGlobalOptions();
 }
 
-static bool ClearDeskTop(Boolean remove_msg = True)
+static bool
+ClearDeskTop(Boolean remove_msg = True)
 {
   if (windows)
   {
     int delta = 0;
-    while (windows->getCount()>delta)
+
+    while (windows->getCount() > delta)
     {
       TWindow *window = DESKTOPWINDOW(delta);
+
       if (window != msg_window || remove_msg == True)
       {
         if (window->valid(cmClose) == True)
@@ -763,54 +850,88 @@ static bool ClearDeskTop(Boolean remove_msg = True)
   return true;
 }
 
-void SetGlobalEditorOptions(TCEditWindow *ew)
+void
+SetGlobalEditorOptions(TCEditWindow * ew)
 {
-  if (OverWrite) ew->editor->overwrite = True;
-  else ew->editor->overwrite = False;
-  if (AutoIndent) ew->editor->autoIndent = True;
-  else ew->editor->autoIndent = False;
-  if (CAutoIndent) ew->editor->intelIndent = True;
-  else ew->editor->intelIndent = False;
-  if (UseRealTabs) ew->editor->UseTabs = True;
-  else ew->editor->UseTabs = False;
-  if (NoPersistentBlocks) ew->editor->PersistentBlocks = False;
-  else ew->editor->PersistentBlocks = True;
-  if (ShowColumnCursor) ew->editor->CrossCursorInCol = True;
-  else ew->editor->CrossCursorInCol = False;
-  if (ShowRowCursor) ew->editor->CrossCursorInRow = True;
-  else ew->editor->CrossCursorInRow = False;
-  if (TransparentBlocks) ew->editor->TransparentSel = True;
-  else ew->editor->TransparentSel = False;
+  if (OverWrite)
+    ew->editor->overwrite = True;
+  else
+    ew->editor->overwrite = False;
+  if (AutoIndent)
+    ew->editor->autoIndent = True;
+  else
+    ew->editor->autoIndent = False;
+  if (CAutoIndent)
+    ew->editor->intelIndent = True;
+  else
+    ew->editor->intelIndent = False;
+  if (UseRealTabs)
+    ew->editor->UseTabs = True;
+  else
+    ew->editor->UseTabs = False;
+  if (NoPersistentBlocks)
+    ew->editor->PersistentBlocks = False;
+  else
+    ew->editor->PersistentBlocks = True;
+  if (ShowColumnCursor)
+    ew->editor->CrossCursorInCol = True;
+  else
+    ew->editor->CrossCursorInCol = False;
+  if (ShowRowCursor)
+    ew->editor->CrossCursorInRow = True;
+  else
+    ew->editor->CrossCursorInRow = False;
+  if (TransparentBlocks)
+    ew->editor->TransparentSel = True;
+  else
+    ew->editor->TransparentSel = False;
 }
 
-void SetGlobalEditorOptions()
+void
+SetGlobalEditorOptions()
 {
-  if (AutoIndent) TCEditor::staticAutoIndent = True;
-  else TCEditor::staticAutoIndent = False;
-  if (CAutoIndent) TCEditor::staticIntelIndent = True;
-  else TCEditor::staticIntelIndent = False;
-  if (UseRealTabs) TCEditor::staticUseTabs = True;
-  else TCEditor::staticUseTabs = False;
-  if (NoPersistentBlocks) TCEditor::staticPersistentBlocks = False;
-  else TCEditor::staticPersistentBlocks = True;
-  if (ShowColumnCursor) TCEditor::staticCrossCursorInCol = True;
-  else TCEditor::staticCrossCursorInCol = False;
-  if (ShowRowCursor) TCEditor::staticCrossCursorInRow = True;
-  else TCEditor::staticCrossCursorInRow = False;
-  if (TransparentBlocks) TCEditor::staticTransparentSel = True;
-  else TCEditor::staticTransparentSel = False;
+  if (AutoIndent)
+    TCEditor::staticAutoIndent = True;
+  else
+    TCEditor::staticAutoIndent = False;
+  if (CAutoIndent)
+    TCEditor::staticIntelIndent = True;
+  else
+    TCEditor::staticIntelIndent = False;
+  if (UseRealTabs)
+    TCEditor::staticUseTabs = True;
+  else
+    TCEditor::staticUseTabs = False;
+  if (NoPersistentBlocks)
+    TCEditor::staticPersistentBlocks = False;
+  else
+    TCEditor::staticPersistentBlocks = True;
+  if (ShowColumnCursor)
+    TCEditor::staticCrossCursorInCol = True;
+  else
+    TCEditor::staticCrossCursorInCol = False;
+  if (ShowRowCursor)
+    TCEditor::staticCrossCursorInRow = True;
+  else
+    TCEditor::staticCrossCursorInRow = False;
+  if (TransparentBlocks)
+    TCEditor::staticTransparentSel = True;
+  else
+    TCEditor::staticTransparentSel = False;
   if (CreateBackupFiles)
     TCEditor::editorFlags |= efBackupFiles;
   else
     TCEditor::editorFlags &= ~efBackupFiles;
-#if 1 // Apply all the options also to the currently opened
+#if 1                           // Apply all the options also to the currently opened
   if (windows != NULL)
   {
-    int count = windows->getCount(),i;
-    for (i=0;i<count;i++)
+    int count = windows->getCount(), i;
+
+    for (i = 0; i < count; i++)
     {
-      TCEditWindow * ew = (TCEditWindow *)DESKTOPWINDOW(i);
+      TCEditWindow *ew = (TCEditWindow *) DESKTOPWINDOW(i);
       TEvent event;
+
       event.what = evBroadcast;
       event.message.command = cmEditorAnswer;
       ew->handleEvent(event);
@@ -823,26 +944,28 @@ void SetGlobalEditorOptions()
 #endif
 }
 
-static void SetGlobalOptions()
+static void
+SetGlobalOptions()
 {
   if (CreateBackupFiles)
     TCEditor::editorFlags |= efBackupFiles;
   else
     TCEditor::editorFlags &= ~efBackupFiles;
   c_words_changed =
-  gpc_words_changed =
-  fpc_words_changed =
-  user_words_changed = 1;
+    gpc_words_changed = fpc_words_changed = user_words_changed = 1;
   if (ShowSyntax)
-    message(TProgram::application,evBroadcast,cmTurnSyntaxOn,NULL);
+    message(TProgram::application, evBroadcast, cmTurnSyntaxOn, NULL);
   else
-    message(TProgram::application,evBroadcast,cmTurnSyntaxOff,NULL);
+    message(TProgram::application, evBroadcast, cmTurnSyntaxOff, NULL);
   Repaint();
 #ifdef INTERNAL_DEBUGGER
-  if (VerboseGDB) verbose_gdb_commands = 1;
-  else verbose_gdb_commands = 0;
+  if (VerboseGDB)
+    verbose_gdb_commands = 1;
+  else
+    verbose_gdb_commands = 0;
 #endif
   extern int save_text_palette;
+
   if (SaveTextPalette)
     save_text_palette = 1;
   else
@@ -850,8 +973,9 @@ static void SetGlobalOptions()
   max_closed = Project.max_closed_windows;
 }
 
-static int TryStandardProject(const char *dir,const char *name,
-                              char *& desktopname,char *&projectname)
+static int
+TryStandardProject(const char *dir, const char *name,
+                   char *&desktopname, char *&projectname)
 {
   string_free(desktopname);
   string_free(projectname);
@@ -862,9 +986,11 @@ static int TryStandardProject(const char *dir,const char *name,
 
 static char *standard_project_name = NULL;
 
-static Boolean OpenStandardProject(const char *prjname,Boolean with_desktop = True)
+static Boolean
+OpenStandardProject(const char *prjname, Boolean with_desktop = True)
 {
   char *dir = NULL, *tmp = NULL;
+
 #ifdef INTERNAL_DEBUGGER
   DeleteAllWatches();
   DeleteAllBreakPoints();
@@ -873,6 +999,7 @@ static Boolean OpenStandardProject(const char *prjname,Boolean with_desktop = Tr
   char *try_dir;
   char *try_dirs = expand_rhide_spec("$(RHIDE_CONFIG_DIRS)");
   char *try_dirs_p = try_dirs;
+
   try_dir = try_dirs;
   while (!found)
   {
@@ -895,12 +1022,15 @@ static Boolean OpenStandardProject(const char *prjname,Boolean with_desktop = Tr
     if (with_desktop == True)
     {
       ifpstream *idfile;
+
       idfile = open_ifpstream(tmp);
-      if (idfile && idfile->good()) LoadDesktop(*idfile);
+      if (idfile && idfile->good())
+        LoadDesktop(*idfile);
       else
       {
         SetProjectScreenMode();
-        if (project_name) ShowProject();
+        if (project_name)
+          ShowProject();
       }
       if (idfile)
         close_ifpstream(idfile);
@@ -908,29 +1038,35 @@ static Boolean OpenStandardProject(const char *prjname,Boolean with_desktop = Tr
     else
     {
       SetProjectScreenMode();
-      if (project_name) ShowProject();
+      if (project_name)
+        ShowProject();
     }
     string_free(tmp);
-    /* Check for an invalid project name. We come here, when
+    /*
+       Check for an invalid project name. We come here, when
        it is already checked, that the project file does not
        exist, so I can try to create an empty file to see, if
-       it is possible to create the project */
+       it is possible to create the project 
+     */
     {
       ofpstream *of = new ofpstream(prjname);
+
       if (!of->good())
       {
         delete of;
-        SetMainTargetName("aout"STANDARD_EXE_SUFFIX);
+
+        SetMainTargetName("aout" STANDARD_EXE_SUFFIX);
         string_free(project_name);
-        messageBox(mfError | mfOKButton,_("Couldn't open %s"),prjname);
+        messageBox(mfError | mfOKButton, _("Couldn't open %s"), prjname);
         string_free(dir);
-        return True; // The standard project was opened
+        return True;            // The standard project was opened
       }
       delete of;
+
       remove(prjname);
     }
-    BaseName(prjname,tmp,False);
-    string_cat(tmp,STANDARD_EXE_SUFFIX);
+    BaseName(prjname, tmp, False);
+    string_cat(tmp, STANDARD_EXE_SUFFIX);
     SetMainTargetName(tmp);
     string_free(tmp);
     string_free(dir);
@@ -942,9 +1078,9 @@ static Boolean OpenStandardProject(const char *prjname,Boolean with_desktop = Tr
   {
     try_dir = expand_rhide_spec("$(GET_HOME)");
     struct stat s;
+
     if ((stat(try_dir, &s) == 0) &&
-        S_ISDIR(s.st_mode) &&
-        (s.st_mode & S_IWUSR))
+        S_ISDIR(s.st_mode) && (s.st_mode & S_IWUSR))
     {
       TryStandardProject(try_dir, RHIDE_OPTIONS_NAME,
                          dskname, standard_project_name);
@@ -961,30 +1097,38 @@ static Boolean OpenStandardProject(const char *prjname,Boolean with_desktop = Tr
   return False;
 }
 
-static void LoadDesktop()
+static void
+LoadDesktop()
 {
-  char *dir,*ext;
+  char *dir, *ext;
   ifpstream *idfile;
-  if (dskname) string_free(dskname);
-  split_fname(project_name,dir,dskname,ext);
-  string_cat(dskname,DESKTOP_EXT);
+
+  if (dskname)
+    string_free(dskname);
+  split_fname(project_name, dir, dskname, ext);
+  string_cat(dskname, DESKTOP_EXT);
   string_free(dir);
   string_free(ext);
   idfile = open_ifpstream(dskname);
-  if (idfile && idfile->good()) LoadDesktop(*idfile);
-  else ShowProject();
+  if (idfile && idfile->good())
+    LoadDesktop(*idfile);
+  else
+    ShowProject();
   if (idfile)
     close_ifpstream(idfile);
 }
 
-Boolean OpenProject(const char * prjname)
+Boolean
+OpenProject(const char *prjname)
 {
   ifpstream *idfile;
   ofpstream *ofile;
   char ori_dir[256];
-  getcwd(ori_dir,255);
+
+  getcwd(ori_dir, 255);
 #ifdef INTERNAL_DEBUGGER
-  if (DEBUGGER_STARTED()) RESET();
+  if (DEBUGGER_STARTED())
+    RESET();
   ClearSymbols();
 #endif
   if (project != NULL)
@@ -997,36 +1141,39 @@ Boolean OpenProject(const char * prjname)
   already_maked = 0;
   if (!prjname)
   {
-    OpenStandardProject("aout"STANDARD_EXE_SUFFIX);
+    OpenStandardProject("aout" STANDARD_EXE_SUFFIX);
     if (!project)
     {
       project = new TProject();
       InitOptions();
       SetProjectScreenMode();
     }
-    SetMainTargetName("aout"STANDARD_EXE_SUFFIX);
+    SetMainTargetName("aout" STANDARD_EXE_SUFFIX);
     SetGlobalOptions();
-    if (project_directory) string_free(project_directory);
-    project_directory = getcwd(NULL,512);
+    if (project_directory)
+      string_free(project_directory);
+    project_directory = getcwd(NULL, 512);
     setup_title(_("No project"));
     push_environment();
     return True;
   }
   {
-    char *name,*ext;
+    char *name, *ext;
     char *tmp;
-    string_dup(tmp,prjname);
+
+    string_dup(tmp, prjname);
     FExpand(tmp);
-    split_fname(tmp,project_name,name,ext);
+    split_fname(tmp, project_name, name, ext);
     string_free(tmp);
-    if (project_name[1] && (project_name[1] != ':' || strlen(project_name) != 3))
-      project_name[strlen(project_name)-1] = 0;
+    if (project_name[1]
+        && (project_name[1] != ':' || strlen(project_name) != 3))
+      project_name[strlen(project_name) - 1] = 0;
     chdir(project_name);
     string_free(project_name);
-    string_dup(project_name,name);
-    string_dup(dskname,project_name);
-    string_cat(dskname,DESKTOP_EXT);
-    string_cat(project_name,PROJECT_EXT);
+    string_dup(project_name, name);
+    string_dup(dskname, project_name);
+    string_cat(dskname, DESKTOP_EXT);
+    string_cat(project_name, PROJECT_EXT);
     string_free(name);
     string_free(ext);
   }
@@ -1034,7 +1181,8 @@ Boolean OpenProject(const char * prjname)
   {
     ClearDeskTop();
     idfile = open_ifpstream(dskname);
-    if (idfile && idfile->good()) LoadDesktop(*idfile);
+    if (idfile && idfile->good())
+      LoadDesktop(*idfile);
     else
     {
       SetProjectScreenMode();
@@ -1051,10 +1199,12 @@ Boolean OpenProject(const char * prjname)
       if (project_window)
       {
         TWindow *w = project_window;
+
         RemoveWindow(project_window, False);
         w->close();
       }
       TProject *_project = project;
+
       project = new TProject();
       *project = *_project;
       SetMainTargetName(FName(_project->dest_name));
@@ -1063,19 +1213,25 @@ Boolean OpenProject(const char * prjname)
       ShowProject();
       string_free(dskname);
       char *spec = NULL;
+
       string_cat(spec, "$(subst .gpr,.gdt,", project_name, ")", NULL);
       dskname = expand_rhide_spec(spec);
       string_free(spec);
     }
   }
-  if (project_directory) string_free(project_directory);
-  project_directory = getcwd(NULL,512);
+  if (project_directory)
+    string_free(project_directory);
+  project_directory = getcwd(NULL, 512);
   if (project)
   {
-    if (!CReservedWords) DefaultReservedWords();
-    if (!GPCReservedWords) DefaultGPCReservedWords();
-    if (!FPCReservedWords) DefaultFPCReservedWords();
-    if (!RHIDEUserWords) DefaultUserWords();
+    if (!CReservedWords)
+      DefaultReservedWords();
+    if (!GPCReservedWords)
+      DefaultGPCReservedWords();
+    if (!FPCReservedWords)
+      DefaultFPCReservedWords();
+    if (!RHIDEUserWords)
+      DefaultUserWords();
     SetGlobalOptions();
     setup_title(project_name);
     push_environment();
@@ -1084,12 +1240,13 @@ Boolean OpenProject(const char * prjname)
   ofile = new ofpstream(project_name);
   if (ofile->good())
   {
-    char *dir,*name,*ext;
+    char *dir, *name, *ext;
+
     delete(ofile);
     remove(project_name);
     project = new TProject();
-    split_fname(project_name,dir,name,ext);
-    string_cat(name,STANDARD_EXE_SUFFIX);
+    split_fname(project_name, dir, name, ext);
+    string_cat(name, STANDARD_EXE_SUFFIX);
     SetMainTargetName(name);
     string_free(dir);
     string_free(ext);
@@ -1107,9 +1264,9 @@ Boolean OpenProject(const char * prjname)
   // in RHIDE to have one
   project = new TProject();
   InitOptions();
-  SetMainTargetName("aout"STANDARD_EXE_SUFFIX);
+  SetMainTargetName("aout" STANDARD_EXE_SUFFIX);
   SetGlobalOptions();
-  messageBox(mfError | mfOKButton,_("Couldn't open %s"),prjname);
+  messageBox(mfError | mfOKButton, _("Couldn't open %s"), prjname);
   string_free(project_name);
   setup_title(_("No project"));
   push_environment();
@@ -1125,76 +1282,95 @@ struct PSTACK
 PSTACK *PRJSTACK = NULL;
 int PRJSTACKCOUNT = 0;
 
-void AddToStack()
+void
+AddToStack()
 {
   char tmp[256];
-  if (!project_name) return;
+
+  if (!project_name)
+    return;
   PRJSTACKCOUNT++;
-  PRJSTACK = (PSTACK *)realloc(PRJSTACK,PRJSTACKCOUNT*sizeof(PSTACK));
-  PSTACK *ps = PRJSTACK + (PRJSTACKCOUNT-1);
-  getcwd(tmp,255);
-  string_dup(ps->dir,tmp);
-  string_dup(ps->name,project_name);
+  PRJSTACK = (PSTACK *) realloc(PRJSTACK, PRJSTACKCOUNT * sizeof(PSTACK));
+  PSTACK *ps = PRJSTACK + (PRJSTACKCOUNT - 1);
+
+  getcwd(tmp, 255);
+  string_dup(ps->dir, tmp);
+  string_dup(ps->name, project_name);
 }
 
-int OpenFromStack()
+int
+OpenFromStack()
 {
-  if (!PRJSTACKCOUNT) return 0;
-  PSTACK *ps = PRJSTACK + (PRJSTACKCOUNT-1);
+  if (!PRJSTACKCOUNT)
+    return 0;
+  PSTACK *ps = PRJSTACK + (PRJSTACKCOUNT - 1);
+
   chdir(ps->dir);
   OpenProject(ps->name);
   string_free(ps->dir);
   string_free(ps->name);
   PRJSTACKCOUNT--;
-  PRJSTACK = (PSTACK *)realloc(PRJSTACK,PRJSTACKCOUNT*sizeof(PSTACK));
+  PRJSTACK = (PSTACK *) realloc(PRJSTACK, PRJSTACKCOUNT * sizeof(PSTACK));
   return 1;
 }
 
-void RemoveFromStack()
+void
+RemoveFromStack()
 {
-  if (!PRJSTACKCOUNT) return;
-  PSTACK *ps = PRJSTACK + (PRJSTACKCOUNT-1);
+  if (!PRJSTACKCOUNT)
+    return;
+  PSTACK *ps = PRJSTACK + (PRJSTACKCOUNT - 1);
+
   string_free(ps->dir);
   string_free(ps->name);
   PRJSTACKCOUNT--;
-  PRJSTACK = (PSTACK *)realloc(PRJSTACK,PRJSTACKCOUNT*sizeof(PSTACK));
+  PRJSTACK = (PSTACK *) realloc(PRJSTACK, PRJSTACKCOUNT * sizeof(PSTACK));
 }
-  
-Boolean PushProject(const char *directory,const char *prjname)
+
+Boolean
+PushProject(const char *directory, const char *prjname)
 {
-  if (!SaveProjectOnlyWhenClosing) SaveProject();
+  if (!SaveProjectOnlyWhenClosing)
+    SaveProject();
   Boolean retval = _PushProject(directory, prjname);
+
   if (retval == True && (debug_commands || debug_files))
   {
-    fprintf(stderr,_("changing cwd to %s\n"),directory);
-    fprintf(stderr,_("temporary opening project %s\n"),prjname);
+    fprintf(stderr, _("changing cwd to %s\n"), directory);
+    fprintf(stderr, _("temporary opening project %s\n"), prjname);
     setup_title(project_name);
   }
   return retval;
 }
 
-void PopProject(Boolean Save)
+void
+PopProject(Boolean Save)
 {
-  if (stack_count == 0) return;
-  if (Save == True) SaveProject();
+  if (stack_count == 0)
+    return;
+  if (Save == True)
+    SaveProject();
   if (debug_commands || debug_files)
   {
-    fprintf(stderr,_("closing temporary opened project project %s\n"),project_name);
+    fprintf(stderr, _("closing temporary opened project project %s\n"),
+            project_name);
   }
   _PopProject();
   setup_title(project_name);
   if (debug_commands || debug_files)
   {
-    fprintf(stderr,_("changing cwd to %s\n"),project_directory);
+    fprintf(stderr, _("changing cwd to %s\n"), project_directory);
   }
 }
 
-void ResetProjectStack()
+void
+ResetProjectStack()
 {
   project_stack *ps;
+
   while (stack_count > 0)
   {
-    ps = PROJECT_STACK + (stack_count-1);
+    ps = PROJECT_STACK + (stack_count - 1);
     string_free(ps->dname);
     stack_count--;
   }
@@ -1204,13 +1380,15 @@ void ResetProjectStack()
   LoadDesktop();
   if (debug_commands || debug_files)
   {
-    fprintf(stderr,_("finaly opening project %s\n"),project_name);
+    fprintf(stderr, _("finaly opening project %s\n"), project_name);
   }
   SetGlobalOptions();
-  if (msg_window) msg_window->select();
+  if (msg_window)
+    msg_window->select();
 }
 
-void SaveProject()
+void
+SaveProject()
 {
   if (!project_name)
   {
@@ -1223,19 +1401,22 @@ void SaveProject()
   if (stack_count == 0)
   {
     ofpstream *dfile;
+
     dfile = new ofpstream(dskname);
     SaveDesktop(*dfile);
     delete(dfile);
   }
 }
 
-bool CloseProject()
+bool
+CloseProject()
 {
-  if (DEBUGGER_STARTED()) RESET();
+  if (DEBUGGER_STARTED())
+    RESET();
   SaveProject();
   if (dskname)
   {
-    if (!ClearDeskTop()) // must be done before delete project
+    if (!ClearDeskTop())        // must be done before delete project
       return false;
   }
   destroy(project);
@@ -1249,24 +1430,26 @@ bool CloseProject()
   return true;
 }
 
-class TIDEProjectWindow : public TProjectWindow
+class TIDEProjectWindow:public TProjectWindow
 {
 public:
-  TIDEProjectWindow(const TRect &b,TDepCollection *dc,const char *c) :
-    TProjectWindow(b,dc,c),
+  TIDEProjectWindow(const TRect & b, TDepCollection * dc,
+                    const char *c):TProjectWindow(b, dc, c),
     TWindowInit(TIDEProjectWindow::initFrame)
   {
   }
   virtual void changeBounds(const TRect &);
 };
 
-void TIDEProjectWindow::changeBounds(const TRect & r)
+void
+TIDEProjectWindow::changeBounds(const TRect & r)
 {
   TProjectWindow::changeBounds(r);
   ProjectWindowRect = r;
 }
 
-void ShowProject(void)
+void
+ShowProject(void)
 {
   if (!project_window)
   {
@@ -1276,37 +1459,44 @@ void ShowProject(void)
       ProjectWindowRect.a.y = ProjectWindowRect.b.y - 7;
     }
     project_window = new TIDEProjectWindow(ProjectWindowRect,
-                                 Project.dependencies,_("Project Window"));
-    AddWindow(project_window,(TWindow **)&project_window);
+                                           Project.dependencies,
+                                           _("Project Window"));
+    AddWindow(project_window, (TWindow **) & project_window);
   }
   project_window->select();
 }
 
-ccIndex AddProjectItem(const char *name)
+ccIndex
+AddProjectItem(const char *name)
 {
-  char *dir,*_name,*ext,*fname=NULL;
+  char *dir, *_name, *ext, *fname = NULL;
   ccIndex index;
   TDependency *dep;
-  split_fname(name,dir,_name,ext);
+
+  split_fname(name, dir, _name, ext);
   if (AllowDirectories)
   {
-    /* Try to find the name in a deeper directory from the current
+    /*
+       Try to find the name in a deeper directory from the current
        or any from the source paths. Do not accept relative paths,
        which start with .. (on unix you can make mostly any filename
-       relative to an other path) */
-    string_dup(fname,name);
-    AbsToRelPath(project_directory,fname);
+       relative to an other path) 
+     */
+    string_dup(fname, name);
+    AbsToRelPath(project_directory, fname);
     if (IsRooted(fname) || fname[0] == '.')
     {
-      int i,count = Options.SrcDirs->getCount();
+      int i, count = Options.SrcDirs->getCount();
+
       string_free(fname);
-      for (i=0;i<count;i++)
+      for (i = 0; i < count; i++)
       {
-        char *dname = expand_rhide_spec((char *)Options.SrcDirs->at(i));
+        char *dname = expand_rhide_spec((char *) Options.SrcDirs->at(i));
+
         // AbsToRelpath expects this
         FExpand(dname);
-        string_dup(fname,name);
-        AbsToRelPath(dname,fname);
+        string_dup(fname, name);
+        AbsToRelPath(dname, fname);
         string_free(dname);
         if (!IsRooted(fname) && fname[0] != '.')
           break;
@@ -1324,13 +1514,13 @@ ccIndex AddProjectItem(const char *name)
     }
     else
     {
-      string_dup(fname,_name);
-      string_cat(fname,ext);
+      string_dup(fname, _name);
+      string_cat(fname, ext);
     }
   }
   if (!Project.dependencies)
-    Project.dependencies = new TDepCollection(15,16);
-  if (Project.dependencies->search(fname,index) == True)
+    Project.dependencies = new TDepCollection(15, 16);
+  if (Project.dependencies->search(fname, index) == True)
   {
     string_free(fname);
     string_free(_name);
@@ -1339,33 +1529,35 @@ ccIndex AddProjectItem(const char *name)
     return -1;
   }
   dep = new TDependency();
-  InitFName(dep->source_name,fname);
+  InitFName(dep->source_name, fname);
   dep->source_file_type = get_file_type(FName(dep->source_name));
   if (dep->source_file_type == FILE_LIBRARY)
   {
-    InitFName(dep->dest_name,FName(dep->source_name));
+    InitFName(dep->dest_name, FName(dep->source_name));
   }
   else if (dep->source_file_type == FILE_PROJECT)
   {
     char *dname;
-    string_dup(dname,dir);
-    string_cat(dname,_name);
-    string_cat(dname,".a");
-    AbsToRelPath(project_directory,dname);
-    InitFName(dep->dest_name,dname);
+
+    string_dup(dname, dir);
+    string_cat(dname, _name);
+    string_cat(dname, ".a");
+    AbsToRelPath(project_directory, dname);
+    InitFName(dep->dest_name, dname);
     string_free(dname);
   }
   else
   {
-    char *dot=strrchr(fname,'.');
+    char *dot = strrchr(fname, '.');
     char *dname;
+
     if (dot)
       *dot = 0;
-    string_dup(dname,fname);
+    string_dup(dname, fname);
     if (dot)
       *dot = '.';
-    string_cat(dname,STANDARD_OBJECT_SUFFIX);
-    InitFName(dep->dest_name,dname);
+    string_cat(dname, STANDARD_OBJECT_SUFFIX);
+    InitFName(dep->dest_name, dname);
     string_free(dname);
   }
   dep->dest_file_type = get_file_type(FName(dep->dest_name));
@@ -1375,92 +1567,108 @@ ccIndex AddProjectItem(const char *name)
   string_free(fname);
   string_free(ext);
   string_free(_name);
-  Project.dependencies->atInsert(index,dep);
+  Project.dependencies->atInsert(index, dep);
   return index;
 }
 
-TFileDialog *FileOpenDialog(char *init_val,char *title,char *input_label,
-                            ushort aOptions,int hist,char *init_dir)
+TFileDialog *
+FileOpenDialog(char *init_val, char *title, char *input_label,
+               ushort aOptions, int hist, char *init_dir)
 {
   TFileDialog *dialog;
+
   if (!init_dir || !*init_dir)
   {
-    dialog = new TFileDialog(init_val,title,input_label,aOptions,hist);
+    dialog = new TFileDialog(init_val, title, input_label, aOptions, hist);
     return dialog;
   }
-  dialog = new TFileDialog(init_val,title,input_label,aOptions|fdNoLoadDir,hist);
+  dialog =
+    new TFileDialog(init_val, title, input_label, aOptions | fdNoLoadDir,
+                    hist);
   if (dialog->directory)
-    delete (char *)dialog->directory;
-  if (access(init_dir,X_OK) == 0)
+    delete(char *) dialog->directory;
+
+  if (access(init_dir, X_OK) == 0)
     dialog->directory = strdup(init_dir);
   else
   {
     char *dname = string_dup(project_directory);
-    string_cat(dname,"/");
+
+    string_cat(dname, "/");
     dialog->directory = dname;
   }
   dialog->valid(cmFileInit);
   return dialog;
 }
 
-void AddProjectItem(void)
+void
+AddProjectItem(void)
 {
   TFileDialog *dialog;
   int result;
+
   InitHistoryID(RHIDE_History_source_file);
   dialog = FileOpenDialog(Project.defaultprojectmask,
-                          _("Add Item"),_("~N~ame"),fdOKButton,
-                          RHIDE_History_source_file,
-                          default_directory);
+                          _("Add Item"), _("~N~ame"), fdOKButton,
+                          RHIDE_History_source_file, default_directory);
   TProgram::deskTop->insert(dialog);
   do
   {
-    dialog->setState(sfModal,True);
+    dialog->setState(sfModal, True);
     result = dialog->execute();
     if (result != cmCancel)
     {
       char fname[512];
       ccIndex index;
+
       string_free(Project.defaultprojectmask);
       string_free(default_directory);
-      string_dup(default_directory,dialog->directory);
-      string_dup(Project.defaultprojectmask,dialog->wildCard);
+      string_dup(default_directory, dialog->directory);
+      string_dup(Project.defaultprojectmask, dialog->wildCard);
       dialog->getData(fname);
       index = AddProjectItem(fname);
       if (index < 0)
       {
-        messageBox(mfError | mfOKButton,_("The item '%s' is already in your project"),fname);
+        messageBox(mfError | mfOKButton,
+                   _("The item '%s' is already in your project"), fname);
       }
       else
       {
         char *find_name = NULL;
-        if (((TDependency *)Project.dependencies->at(index))->source_file_type
-               != FILE_PROJECT
-            && FindFile(
-          FName(((TDependency *)Project.dependencies->at(index))->source_name),
-          find_name)
-          == False)
+
+        if (((TDependency *) Project.dependencies->at(index))->
+            source_file_type != FILE_PROJECT
+            &&
+            FindFile(FName
+                     (((TDependency *) Project.dependencies->at(index))->
+                      source_name), find_name) == False)
         {
-          int i,count,found=0;
-          char *tmp = (char *)malloc(strlen(fname)+1);
+          int i, count, found = 0;
+          char *tmp = (char *) malloc(strlen(fname) + 1);
+
           count = Options.SrcDirs->getCount();
           split_fname_fmt(fname, "%D", tmp);
-          if (   !(*tmp == '/' && !tmp[1])
-              && !(rh_isalpha(*tmp) && tmp[1] == ':' && tmp[2] == '/' && !tmp[3]))
-            /* remove the last slash, but only when not the
-               root directory */
-            tmp[strlen(tmp)-1] = 0;
-          AbsToRelPath(project_directory,tmp);
+          if (!(*tmp == '/' && !tmp[1])
+              && !(rh_isalpha(*tmp) && tmp[1] == ':' && tmp[2] == '/'
+                   && !tmp[3]))
+            /*
+               remove the last slash, but only when not the
+               root directory 
+             */
+            tmp[strlen(tmp) - 1] = 0;
+          AbsToRelPath(project_directory, tmp);
           if (*tmp)
           {
-            for (i=0;i<count;i++)
+            for (i = 0; i < count; i++)
             {
-              char *_tmp = expand_rhide_spec((char *)Options.SrcDirs->at(i));
-              AbsToRelPath(project_directory,_tmp);
-              if (strcmp(tmp,_tmp) == 0)
+              char *_tmp = expand_rhide_spec((char *) Options.SrcDirs->at(i));
+
+              AbsToRelPath(project_directory, _tmp);
+              if (strcmp(tmp, _tmp) == 0)
                 found = 1;
               string_free(_tmp);
-              if (found) break;
+              if (found)
+                break;
             }
           }
           else
@@ -1468,9 +1676,10 @@ void AddProjectItem(void)
             // the current directory is found at any time
             found = 1;
           }
-          if (!found && messageBox(mfConfirmation|mfYesButton|mfNoButton,
-                         _("Add '%s' to the search path for source files"),
-                         tmp) == cmYes)
+          if (!found && messageBox(mfConfirmation | mfYesButton | mfNoButton,
+                                   _
+                                   ("Add '%s' to the search path for source files"),
+                                   tmp) == cmYes)
           {
             Options.SrcDirs->insert(strdup(tmp));
           }
@@ -1485,25 +1694,32 @@ void AddProjectItem(void)
         }
       }
       {
-        int foc = dialog->fileList->focused+1;
+        int foc = dialog->fileList->focused + 1;
+
         if (foc < dialog->fileList->range)
           dialog->fileList->focusItemNum(foc);
       }
     }
-  } while (result != cmCancel);
+  }
+  while (result != cmCancel);
   TProgram::deskTop->remove(dialog);
   destroy(dialog);
 }
 
-void DelProjectItem(void)
+void
+DelProjectItem(void)
 {
-  if (!project_window) return;
-  if (Project.dependencies->getCount()>0)
+  if (!project_window)
+    return;
+  if (Project.dependencies->getCount() > 0)
   {
     int i = project_window->liste->focused;
-    TDependency *dep = (TDependency *)Project.dependencies->at(i);
-    if (messageBox(mfYesNoCancel,_("Remove '%s' from the project"),
-                   FName(dep->source_name) ? FName(dep->source_name) : FName(dep->dest_name))
+    TDependency *dep = (TDependency *) Project.dependencies->at(i);
+
+    if (messageBox(mfYesNoCancel, _("Remove '%s' from the project"),
+                   FName(dep->source_name) ? FName(dep->
+                                                   source_name) : FName(dep->
+                                                                        dest_name))
         == cmYes)
     {
       Project.dependencies->atRemove(i);
@@ -1514,22 +1730,27 @@ void DelProjectItem(void)
   }
 }
 
-class TIncListBox : public TSortedListBox
+class TIncListBox:public TSortedListBox
 {
 public:
-  TIncListBox(const TRect &r,int cols,TScrollBar *bar) :
-    TSortedListBox(r,cols,bar) {}
+  TIncListBox(const TRect & r, int cols, TScrollBar * bar):TSortedListBox(r,
+                                                                          cols,
+                                                                          bar)
+  {
+  }
   virtual void handleEvent(TEvent &);
   virtual void selectItem(ccIndex);
 };
 
-void TIncListBox::selectItem(ccIndex item)
+void
+TIncListBox::selectItem(ccIndex item)
 {
   TSortedListBox::selectItem(item);
   endModal(cmOK);
 }
 
-void TIncListBox::handleEvent(TEvent &event)
+void
+TIncListBox::handleEvent(TEvent & event)
 {
   TSortedListBox::handleEvent(event);
   switch (event.what)
@@ -1538,7 +1759,8 @@ void TIncListBox::handleEvent(TEvent &event)
       switch (event.keyDown.keyCode)
       {
         case kbEnter:
-          if (range > 0) selectItem(focused);
+          if (range > 0)
+            selectItem(focused);
           clearEvent(event);
           break;
         default:
@@ -1549,22 +1771,24 @@ void TIncListBox::handleEvent(TEvent &event)
   }
 }
 
-class TIncCollection : public TStringCollection
+class TIncCollection:public TStringCollection
 {
 public:
-  TIncCollection() : TStringCollection(15,16)
+  TIncCollection():TStringCollection(15, 16)
   {
     duplicates = True;
   }
-  virtual int compare(void *,void *);
+  virtual int compare(void *, void *);
 };
 
-int TIncCollection::compare(void *key1,void *key2)
+int
+TIncCollection::compare(void *key1, void *key2)
 {
-  return strcasecmp((char *)key1,(char *)key2);
+  return strcasecmp((char *) key1, (char *) key2);
 }
 
-void ShowIncludes()
+void
+ShowIncludes()
 {
   TDependency *dep;
   char *tmp;
@@ -1573,36 +1797,45 @@ void ShowIncludes()
   TRect r;
   TDialog *dialog;
   int i;
-  if (!project_window) return;
-  if (project->dependencies->getCount() == 0) return;
-  dep = (TDependency *)(project->dependencies->at(project_window->liste->focused));
+
+  if (!project_window)
+    return;
+  if (project->dependencies->getCount() == 0)
+    return;
+  dep =
+    (TDependency *) (project->dependencies->
+                     at(project_window->liste->focused));
   list = new TIncCollection();
   r = TProgram::deskTop->getExtent();
   r.b.y -= 7;
-  string_dup(tmp,_("Include files for "));
-  string_cat(tmp,dep->source_name?FName(dep->source_name):FName(dep->dest_name));
-  dialog = new TDialog(r,tmp);
+  string_dup(tmp, _("Include files for "));
+  string_cat(tmp,
+             dep->source_name ? FName(dep->source_name) : FName(dep->
+                                                                dest_name));
+  dialog = new TDialog(r, tmp);
   r = dialog->getExtent();
-  r.grow(-1,-1);
-  box = new TIncListBox(r,1,dialog->standardScrollBar(sbVertical));
+  r.grow(-1, -1);
+  box = new TIncListBox(r, 1, dialog->standardScrollBar(sbVertical));
   if (dep->dependencies)
   {
-    for (i=0;i<dep->dependencies->getCount();i++)
+    for (i = 0; i < dep->dependencies->getCount(); i++)
     {
-      TDependency *d = (TDependency *)(dep->dependencies->at(i));
+      TDependency *d = (TDependency *) (dep->dependencies->at(i));
+
       if (d->dest_name)
       {
-        char *dir,*name,*ext;
+        char *dir, *name, *ext;
         char buffer[100];
-        split_fname(FName(d->dest_name),dir,name,ext);
-        string_cat(name,ext);
-        sprintf(buffer,"%-20s",name);
+
+        split_fname(FName(d->dest_name), dir, name, ext);
+        string_cat(name, ext);
+        sprintf(buffer, "%-20s", name);
         string_free(name);
         string_free(ext);
-        string_dup(name,buffer);
-        string_cat(name,"(");
-        string_cat(name,dir);
-        string_cat(name,")");
+        string_dup(name, buffer);
+        string_cat(name, "(");
+        string_cat(name, dir);
+        string_cat(name, ")");
         string_free(dir);
         list->insert(name);
       }
@@ -1612,54 +1845,65 @@ void ShowIncludes()
   dialog->insert(box);
   if (TProgram::deskTop->execView(dialog) == cmOK)
   {
-    char *name,*dir,_tmp[256],*tmp=_tmp,fname[256];
-    strcpy(tmp,(char *)list->at(box->focused));
+    char *name, *dir, _tmp[256], *tmp = _tmp, fname[256];
+
+    strcpy(tmp, (char *) list->at(box->focused));
     name = tmp;
-    while (*tmp != ' ') tmp++;
+    while (*tmp != ' ')
+      tmp++;
     *tmp = 0;
     tmp++;
-    while (*tmp != '(') tmp++;
+    while (*tmp != '(')
+      tmp++;
     tmp++;
     dir = tmp;
-    while (*tmp != ')') tmp++;
+    while (*tmp != ')')
+      tmp++;
     *tmp = 0;
-    strcpy(fname,dir);
-    strcat(fname,name);
-    OpenEditor(fname,False);
+    strcpy(fname, dir);
+    strcat(fname, name);
+    OpenEditor(fname, False);
   }
   destroy(dialog);
   destroy(list);
 }
 
-static void clear_deps(TDependency *dep,Boolean remove_files = False)
+static void
+clear_deps(TDependency * dep, Boolean remove_files = False)
 {
   if (debug_dependencies)
   {
-    fprintf(stderr,_("clearing dependencies for %s\n"),FName(dep->dest_name));
+    fprintf(stderr, _("clearing dependencies for %s\n"),
+            FName(dep->dest_name));
   }
   if (remove_files == True &&
-      dep->dest_name && 
+      dep->dest_name &&
       dep->compile_id != COMPILE_NONE &&
       dep->compile_id != COMPILE_PROJECT &&
       dep->compile_id != COMPILE_UNKNOWN)
   {
     char *dname;
-    FindFile(FName(dep->dest_name),dname);
+
+    FindFile(FName(dep->dest_name), dname);
     if (debug_dependencies)
     {
-      fprintf(stderr,_("removing %s\n"),dname);
+      fprintf(stderr, _("removing %s\n"), dname);
     }
     remove(dname);
   }
   if (dep->dependencies)
   {
     int i = 0;
+
     while (i < dep->dependencies->getCount())
     {
-      TDependency * _dep = (TDependency *)dep->dependencies->at(i);
-      clear_deps(_dep,remove_files);
-      if (!_dep->source_name && !_dep->dependencies) dep->dependencies->atFree(i);
-      else i++;
+      TDependency *_dep = (TDependency *) dep->dependencies->at(i);
+
+      clear_deps(_dep, remove_files);
+      if (!_dep->source_name && !_dep->dependencies)
+        dep->dependencies->atFree(i);
+      else
+        i++;
     }
     if (dep->dependencies->getCount() == 0)
     {
@@ -1669,21 +1913,24 @@ static void clear_deps(TDependency *dep,Boolean remove_files = False)
   }
 }
 
-void ClearDependencies()
+void
+ClearDependencies()
 {
   if (Project.dependencies)
   {
-    int i,count=Project.dependencies->getCount();
-    for (i=0;i<count;i++)
-      clear_deps((TDependency *)Project.dependencies->at(i));
+    int i, count = Project.dependencies->getCount();
+
+    for (i = 0; i < count; i++)
+      clear_deps((TDependency *) Project.dependencies->at(i));
   }
   ClearFileHash();
   ClearFindCache();
 }
 
-void MakeClear()
+void
+MakeClear()
 {
-  clear_deps(&Project,True);
+  clear_deps(&Project, True);
   ClearFileHash();
   ClearFindCache();
 }

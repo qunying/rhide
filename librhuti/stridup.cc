@@ -8,21 +8,23 @@
    always an allocated string.
    You can call it with an empty string or NULL
 */
-char *string_dup(const char *src)
+char *
+string_dup(const char *src)
 {
   char *dest;
+
   if (!src || !*src)
   {
-    dest = (char *)malloc(1);
+    dest = (char *) malloc(1);
     *dest = 0;
   }
-  else dest = strdup(src);
+  else
+    dest = strdup(src);
   return dest;
 }
 
-char *string_dup(char *&dest, const char *src)
+char *
+string_dup(char *&dest, const char *src)
 {
   return (dest = string_dup(src));
 }
-
-

@@ -8,22 +8,26 @@
 #define Uses_tvutilCommands
 #include <libtvuti.h>
 
-void TEnterCheckBoxes::press(int item)
+void
+TEnterCheckBoxes::press(int item)
 {
   TCheckBoxes::press(item);
-  message(owner,evBroadcast,cmCheckBoxItemSelected,this);
+  message(owner, evBroadcast, cmCheckBoxItemSelected, this);
 }
 
-void TEnterCheckBoxes::movedTo(int item)
+void
+TEnterCheckBoxes::movedTo(int item)
 {
   TCheckBoxes::movedTo(item);
-  message(owner,evBroadcast,cmCheckBoxItemSelected,this);
+  message(owner, evBroadcast, cmCheckBoxItemSelected, this);
 }
 
-void TEnterCheckBoxes::handleEvent(TEvent &event)
+void
+TEnterCheckBoxes::handleEvent(TEvent & event)
 {
   TCheckBoxes::handleEvent(event);
-  if (!(state & sfSelected)) return;
+  if (!(state & sfSelected))
+    return;
   switch (event.what)
   {
     case evKeyDown:
@@ -41,8 +45,8 @@ void TEnterCheckBoxes::handleEvent(TEvent &event)
   }
 }
 
-uint32 TEnterCheckBoxes::dataSize()
+uint32
+TEnterCheckBoxes::dataSize()
 {
   return big_check ? sizeof(uint32) : sizeof(ushort);
 }
-

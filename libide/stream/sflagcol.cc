@@ -4,6 +4,4 @@
 #define Uses_TStreamableClass
 #include <libide.h>
 
-__link( RFlagEntry )
-
-s(FlagCollection)
+__link(RFlagEntry) s(FlagCollection)

@@ -7,4 +7,3 @@ void Puzzle();
 void Calendar();
 void Ascii();
 void MouseDlg();
-

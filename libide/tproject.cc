@@ -22,11 +22,11 @@ expand_function expand_filenames = NULL;
 
 static ushort TProject_Version = 8;
 
-TProject::TProject() : TDependency()
+TProject::TProject():TDependency()
 {
   options = new TOptions();
-  string_dup(defaultprojectmask,"*.[acfghimnops]*");
-  dependencies = new TDepCollection(5,5);
+  string_dup(defaultprojectmask, "*.[acfghimnops]*");
+  dependencies = new TDepCollection(5, 5);
   screen_mode = 3;
   options2 = 0;
   options1 = 0;
@@ -40,15 +40,15 @@ TProject::TProject() : TDependency()
   info_search_mode = INFO_MODE_FUZZY;
   info_search_options = 0;
   fuzzy_value = 600;
-  string_dup(main_function,"main");
+  string_dup(main_function, "main");
   max_closed_windows = 16;
 }
 
-TProject & TProject::operator = ( const TProject& prj)
+TProject & TProject::operator = (const TProject & prj)
 {
   *options = *prj.options;
   string_free(defaultprojectmask);
-  string_dup(defaultprojectmask,prj.defaultprojectmask);
+  string_dup(defaultprojectmask, prj.defaultprojectmask);
   screen_mode = prj.screen_mode;
   options2 = prj.options2;
   options1 = prj.options1;
@@ -58,7 +58,7 @@ TProject & TProject::operator = ( const TProject& prj)
   info_search_options = prj.info_search_options;
   fuzzy_value = prj.fuzzy_value;
   string_free(main_function);
-  string_dup(main_function,prj.main_function);
+  string_dup(main_function, prj.main_function);
   max_closed_windows = prj.max_closed_windows;
   return *this;
 }
@@ -71,14 +71,17 @@ TProject::~TProject()
   string_free(main_function);
 }
 
-TStreamable *TProject::build()
+TStreamable *
+TProject::build()
 {
-  return new TProject( streamableInit );
+  return new TProject(streamableInit);
 }
 
-void * TProject::read(ipstream & is)
+void *
+TProject::read(ipstream & is)
 {
   ushort version;
+
   is >> version;
   TDependency::read(is);
   is >> options;
@@ -119,7 +122,7 @@ void * TProject::read(ipstream & is)
 
   if (version < 5)
   {
-    string_dup(main_function,"main");
+    string_dup(main_function, "main");
   }
   else
   {
@@ -153,7 +156,8 @@ void * TProject::read(ipstream & is)
   return this;
 }
 
-void TProject::write(opstream & os)
+void
+TProject::write(opstream & os)
 {
   os << TProject_Version;
   TDependency::write(os);
@@ -170,5 +174,3 @@ void TProject::write(opstream & os)
   os << max_closed_windows;
   os << private_options;
 }
-
-

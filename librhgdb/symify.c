@@ -4,7 +4,8 @@
 #include <unistd.h>
 #include <librhgdb.h>
 
-void symify(const char *s,char **function,char **file,int * line,int _diff)
+void
+symify(const char *s, char **function, char **file, int *line, int _diff)
 {
   struct minimal_symbol *msymbol = NULL;
   struct symtab_and_line sal;
@@ -16,38 +17,39 @@ void symify(const char *s,char **function,char **file,int * line,int _diff)
   char *tmp = alloca(100);
   int sl;
   char diff_string[100];
+
   *function = NULL;
   *file = NULL;
-  sscanf(s,"%lx",&core);
+  sscanf(s, "%lx", &core);
   core += _diff;
-  sprintf(tmp,"*%ld",core);
-  sals = decode_line_1(&tmp,0,0,0,0);
+  sprintf(tmp, "*%ld", core);
+  sals = decode_line_1(&tmp, 0, 0, 0, 0);
   if (!sals.sals[0].symtab)
   {
-      msymbol = lookup_minimal_symbol_by_pc(core);
-      if (!msymbol)
-      {
-        *line = 0;
-        return;
-      }
-      diff = core - SYMBOL_VALUE_ADDRESS(msymbol);
-      sl = strlen(SYMBOL_NAME(msymbol));
-      sprintf(diff_string, "%+ld", diff);
-      sl += strlen(diff_string);
-      *function = (char *)malloc(sl+1);
-      strcpy(*function, SYMBOL_NAME(msymbol));
-      strcat(*function, diff_string);
+    msymbol = lookup_minimal_symbol_by_pc(core);
+    if (!msymbol)
+    {
       *line = 0;
       return;
+    }
+    diff = core - SYMBOL_VALUE_ADDRESS(msymbol);
+    sl = strlen(SYMBOL_NAME(msymbol));
+    sprintf(diff_string, "%+ld", diff);
+    sl += strlen(diff_string);
+    *function = (char *) malloc(sl + 1);
+    strcpy(*function, SYMBOL_NAME(msymbol));
+    strcat(*function, diff_string);
+    *line = 0;
+    return;
   }
-  sal = find_pc_line(core,1);
+  sal = find_pc_line(core, 1);
   symbol = find_pc_function(core);
   symtab = sal.symtab;
   sl = strlen(SYMBOL_SOURCE_NAME(symbol));
-  *function = (char *)malloc(sl+1);
+  *function = (char *) malloc(sl + 1);
   strcpy(*function, SYMBOL_SOURCE_NAME(symbol));
   sl = strlen(symtab->filename);
-  *file = (char *)malloc(sl+1);
+  *file = (char *) malloc(sl + 1);
   strcpy(*file, symtab->filename);
   *line = sal.line;
 }
@@ -55,7 +57,8 @@ void symify(const char *s,char **function,char **file,int * line,int _diff)
 #ifdef TEST
 char *progname;
 
-static char *GetProgName()
+static char *
+GetProgName()
 {
   return progname;
 }
@@ -68,7 +71,8 @@ static char *GetProgName()
 #define SC(r,c) (*(char *)(sc + (r)*ScreenCols() + (c)))
 #define SW(r,c) (*(sc + (r)*ScreenCols() + (c)))
 
-int main(int argc,char *argv[])
+int
+main(int argc, char *argv[])
 {
   char *function, *file;
   int lineno;
@@ -76,15 +80,17 @@ int main(int argc,char *argv[])
   short *sc;
   char buf[1024];
   int i;
-  int diff=0;
+  int diff = 0;
   unsigned v;
-  FILE *ofile=0;
-  FILE *ifile=0;
+  FILE *ofile = 0;
+  FILE *ifile = 0;
 
   if (argc < 2)
   {
-    fprintf(stderr, "Usage: gsymify [-o <outfile>] [-i <tracefile>] [-a <adjust>] <program>\n");
-    fprintf(stderr, "This program adds debug information to DJGPP program call frame tracebacks\n");
+    fprintf(stderr,
+            "Usage: gsymify [-o <outfile>] [-i <tracefile>] [-a <adjust>] <program>\n");
+    fprintf(stderr,
+            "This program adds debug information to DJGPP program call frame tracebacks\n");
     return 1;
   }
   while (argv[1][0] == '-')
@@ -125,14 +131,15 @@ int main(int argc,char *argv[])
   if (ifile)
   {
     char line[1000];
+
     if (ofile == 0)
       ofile = stdout;
     while (fgets(line, 1000, ifile))
     {
       if (strncmp(line, "  0x", 4) == 0)
       {
-        sscanf(line+4, "%x", &v);
-        symify(line+4, &function, &file, &lineno, diff);
+        sscanf(line + 4, "%x", &v);
+        symify(line + 4, &function, &file, &lineno, diff);
         fprintf(ofile, "  0x%08x", v);
         if (function)
         {
@@ -144,7 +151,7 @@ int main(int argc,char *argv[])
             free(file);
           }
         }
-        fprintf(ofile,"\n");
+        fprintf(ofile, "\n");
       }
       else
         fputs(line, ofile);
@@ -154,49 +161,50 @@ int main(int argc,char *argv[])
     return 0;
   }
 
-  sc = (short *)malloc(ScreenRows() * ScreenCols() * 2);
+  sc = (short *) malloc(ScreenRows() * ScreenCols() * 2);
 
   ScreenRetrieve(sc);
 
-  for (r=0; r<ScreenRows(); r++)
+  for (r = 0; r < ScreenRows(); r++)
   {
-    if (SC(r,0) == ' ' && SC(r,1) == ' ' && SC(r,2) == '0' && SC(r,3) == 'x')
+    if (SC(r, 0) == ' ' && SC(r, 1) == ' ' && SC(r, 2) == '0'
+        && SC(r, 3) == 'x')
     {
       buf[8] = 0;
-      for (i=0; i<8; i++)
-        buf[i] = SC(r, i+4);
+      for (i = 0; i < 8; i++)
+        buf[i] = SC(r, i + 4);
       sscanf(buf, "%x", &v);
       symify(buf, &function, &file, &lineno, diff);
 
       buf[0] = 0;
       if (function)
       {
-	     strcpy(buf, function);
+        strcpy(buf, function);
         free(function);
       }
       if (file)
       {
         if (buf[0])
           strcat(buf, ", ");
-        sprintf(buf+strlen(buf), "line %d of %s", lineno, file);
+        sprintf(buf + strlen(buf), "line %d of %s", lineno, file);
         free(file);
       }
       if (buf[0])
-        for (i=0; buf[i]; i++)
-          SW(r, 15+i) = 0x0f00 + buf[i];
+        for (i = 0; buf[i]; i++)
+          SW(r, 15 + i) = 0x0f00 + buf[i];
     }
   }
 
   if (ofile)
   {
-    for (r=0; r<ScreenRows(); r++)
+    for (r = 0; r < ScreenRows(); r++)
     {
       c = 0;
-      for (i=0; i<ScreenCols(); i++)
+      for (i = 0; i < ScreenCols(); i++)
         if (SC(r, i) != ' ')
           c = i;
-      for (i=0; i<=c; i++)
-        fputc(SC(r,i), ofile);
+      for (i = 0; i <= c; i++)
+        fputc(SC(r, i), ofile);
       fputc('\n', ofile);
     }
     fclose(ofile);
@@ -207,4 +215,3 @@ int main(int argc,char *argv[])
 }
 
 #endif
-

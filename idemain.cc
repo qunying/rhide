@@ -119,18 +119,19 @@ static int keep_temp_dir = 0;
 
 #define DELTA(x) (*((long *)(x)))
 
-static
-void IDEPrintEditor(TCEditor *e)
+static void
+IDEPrintEditor(TCEditor * e)
 {
   if (e->IslineInEdition)
-     e->MakeEfectiveLineInEdition();
-  e->buffer[e->bufLen]=0;
-  char *s=strrchr(e->fileName,'/');
+    e->MakeEfectiveLineInEdition();
+  e->buffer[e->bufLen] = 0;
+  char *s = strrchr(e->fileName, '/');
+
   if (!s)
-     s=e->fileName;
+    s = e->fileName;
   else
-     s++;
-  PrintSource(e->buffer,s, e->tabSize);
+    s++;
+  PrintSource(e->buffer, s, e->tabSize);
 }
 
 int global_argc = 0;
@@ -140,34 +141,40 @@ TIDEMemInfo *mem_info = NULL;
 
 #define MemInfoWidth 10
 
-static void start_mem_info()
+static void
+start_mem_info()
 {
   TRect r = TProgram::menuBar->getExtent();
-  int  start = r.a.x;
+  int start = r.a.x;
+
   r.a.x = r.b.x - MemInfoWidth;
   mem_info = new TIDEMemInfo(r);
   mem_info->growMode = gfGrowLoX;
   TProgram::application->insert(mem_info);
   // Reduce the menubar
-  r.b.x=r.a.x;
-  r.a.x=start;
+  r.b.x = r.a.x;
+  r.a.x = start;
   TProgram::menuBar->changeBounds(r);
 }
 
-static void end_mem_info()
+static void
+end_mem_info()
 {
   TProgram::application->remove(mem_info);
   destroy(mem_info);
   mem_info = NULL;
   // Enlarge the menuBar again
   TRect r = TProgram::menuBar->getExtent();
+
   r.b.x += MemInfoWidth;
   TProgram::menuBar->changeBounds(r);
 }
 
-void update_mem(int force = 0)
+void
+update_mem(int force = 0)
 {
-  if (!project) return;
+  if (!project)
+    return;
   if (!ShowMem && mem_info)
   {
     end_mem_info();
@@ -183,93 +190,104 @@ void update_mem(int force = 0)
 }
 
 
-void IDE::changeBounds(const TRect & bounds)
+void
+IDE::changeBounds(const TRect & bounds)
 {
-   TApplication::changeBounds (bounds);
-   if (mem_info)
-   {
-     end_mem_info ();
-     start_mem_info ();
-   }
+  TApplication::changeBounds(bounds);
+  if (mem_info)
+  {
+    end_mem_info();
+    start_mem_info();
+  }
 }
 
-static void update_words()
+static void
+update_words()
 {
-  int i,count,repaint=0;
+  int i, count, repaint = 0;
+
   if (!project)
     return;
   if (c_words_changed)
   {
-    if (ReservedWords) destroy(ReservedWords);
+    if (ReservedWords)
+      destroy(ReservedWords);
     count = CReservedWords->getCount();
-    ReservedWords = new TStringCollection(count,1);
-    for (i=0;i<count;i++)
+    ReservedWords = new TStringCollection(count, 1);
+    for (i = 0; i < count; i++)
     {
-      ReservedWords->insert(strdup((char *)CReservedWords->at(i)));
+      ReservedWords->insert(strdup((char *) CReservedWords->at(i)));
     }
-    repaint = 1; 
+    repaint = 1;
   }
   if ((gpc_words_changed) && (!UseFPC))
   {
-    if (PascalRWords) destroy(PascalRWords);
+    if (PascalRWords)
+      destroy(PascalRWords);
     count = GPCReservedWords->getCount();
-    PascalRWords = new TStringCollection(count,1);
-    for (i=0;i<count;i++)
+    PascalRWords = new TStringCollection(count, 1);
+    for (i = 0; i < count; i++)
     {
-      char *tmp = strdup((char *)GPCReservedWords->at(i));
+      char *tmp = strdup((char *) GPCReservedWords->at(i));
+
       string_down(tmp);
       PascalRWords->insert(tmp);
     }
-    repaint = 1; 
+    repaint = 1;
   }
   if ((fpc_words_changed) && (UseFPC))
   {
-    if (PascalRWords) destroy(PascalRWords);
+    if (PascalRWords)
+      destroy(PascalRWords);
     count = FPCReservedWords->getCount();
-    PascalRWords = new TStringCollection(count,1);
-    for (i=0;i<count;i++)
+    PascalRWords = new TStringCollection(count, 1);
+    for (i = 0; i < count; i++)
     {
-      char *tmp = strdup((char *)FPCReservedWords->at(i));
+      char *tmp = strdup((char *) FPCReservedWords->at(i));
+
       string_down(tmp);
       PascalRWords->insert(tmp);
     }
-    repaint = 1; 
+    repaint = 1;
   }
   if (user_words_changed)
   {
-    if (UserWords) destroy(UserWords);
+    if (UserWords)
+      destroy(UserWords);
     count = RHIDEUserWords->getCount();
-    UserWords = new TStringCollection(count,1);
-    for (i=0;i<count;i++)
+    UserWords = new TStringCollection(count, 1);
+    for (i = 0; i < count; i++)
     {
-      UserWords->insert(strdup((char *)RHIDEUserWords->at(i)));
-    } 
-    repaint = 1; 
+      UserWords->insert(strdup((char *) RHIDEUserWords->at(i)));
+    }
+    repaint = 1;
   }
   if (c_words_changed || gpc_words_changed ||
-     fpc_words_changed || user_words_changed)
+      fpc_words_changed || user_words_changed)
   {
     CreateSHShortCutTables();
   }
   c_words_changed =
-  gpc_words_changed =
-  fpc_words_changed =
-  user_words_changed = 0;
-  if (repaint) Repaint();
+    gpc_words_changed = fpc_words_changed = user_words_changed = 0;
+  if (repaint)
+    Repaint();
 }
 
 int external_program_executed = 0;
 
-void check_for_external_modifications()
+void
+check_for_external_modifications()
 {
   if (windows)
   {
     int count = windows->getCount();
     int i;
     TWindow *window;
-    for (i=0;i<count;i++)
+
+    for (i = 0; i < count; i++)
     {
       TEvent event;
+
       window = DESKTOPWINDOW(i);
       event.what = evBroadcast;
       event.message.command = cmEditorAnswer;
@@ -277,13 +295,14 @@ void check_for_external_modifications()
       if (event.what == evNothing)
       {
         unsigned long ft;
+
 #define IE ((TIDEFileEditor *)(((TCEditWindow *)window)->editor))
         ft = time_of_file(IE->fileName);
         if (ft > IE->edittime)
         {
           if (messageBox(mfYesNoCancel | mfInformation,
-              _("%s has been modified! Reload it?"),
-              IE->fileName) == cmYes)
+                         _("%s has been modified! Reload it?"),
+                         IE->fileName) == cmYes)
           {
             IE->lock();
             IE->loadFile();
@@ -306,10 +325,12 @@ static int should_update = 1;
 static unsigned long last_clock;
 static int last_diff = 1;
 
-void IDE::update()
+void
+IDE::update()
 {
   unsigned i;
-  struct {
+  struct
+  {
     unsigned _has_editors:1;
     unsigned _has_project:1;
     unsigned _current_is_editor:1;
@@ -320,8 +341,10 @@ void IDE::update()
     unsigned _current_is_help:1;
     unsigned _has_primary_file:1;
     unsigned _dummy:23;
-  } _flags;
-  *((uint32 *)&_flags) = 0;
+  }
+  _flags;
+
+  *((uint32 *) & _flags) = 0;
 #define has_editors _flags._has_editors
 #define has_project _flags._has_project
 #define current_is_editor _flags._current_is_editor
@@ -331,14 +354,15 @@ void IDE::update()
 #define target_is_exec _flags._target_is_exec
 #define current_is_help _flags._current_is_help
 #define has_primary_file _flags._has_primary_file
-  unsigned project_count=0;
-  unsigned has_windows=0;
-  unsigned has_closed_windows=0;
+  unsigned project_count = 0;
+  unsigned has_windows = 0;
+  unsigned has_closed_windows = 0;
   TEvent event;
   unsigned long _clock = time(NULL);
+
   if (!should_update)
   {
-    if (difftime(_clock,last_clock) > last_diff)
+    if (difftime(_clock, last_clock) > last_diff)
     {
       update_mem();
       last_clock = _clock;
@@ -357,11 +381,13 @@ void IDE::update()
 
   has_primary_file = project ? Project.source_name != NULL : 0;
 
-  if (windows) has_windows = windows->getCount();
-  if (closed_windows) has_closed_windows = closed_windows->getCount();
+  if (windows)
+    has_windows = windows->getCount();
+  if (closed_windows)
+    has_closed_windows = closed_windows->getCount();
   if (has_windows)
   {
-    for (i=0;i<has_windows;i++)
+    for (i = 0; i < has_windows; i++)
     {
       event.what = evBroadcast;
       event.message.command = cmEditorAnswer;
@@ -372,37 +398,38 @@ void IDE::update()
       }
     }
     // clipwindow ???
-    if ((TView *)TProgram::deskTop->current == (TView *)clipWindow)
+    if ((TView *) TProgram::deskTop->current == (TView *) clipWindow)
       current_is_clip = 1;
-    else
-    if ((TView *)TProgram::deskTop->current == (TView *)project_window)
+    else if ((TView *) TProgram::deskTop->current == (TView *) project_window)
       current_is_project = 1;
     else
     {
       event.what = evBroadcast;
       event.message.command = cmEditorAnswer;
       TProgram::deskTop->current->handleEvent(event);
-      if (event.what == evNothing) current_is_editor = 1;
+      if (event.what == evNothing)
+        current_is_editor = 1;
       else
       {
         event.what = evBroadcast;
         event.message.command = cmFileViewAnswer;
         TProgram::deskTop->current->handleEvent(event);
-        if (event.what == evNothing) current_is_fileview = 1;
+        if (event.what == evNothing)
+          current_is_fileview = 1;
         else
         {
           event.what = evBroadcast;
           event.message.command = cmInfoAnswer;
           TProgram::deskTop->current->handleEvent(event);
-          if (event.what == evNothing) current_is_help = 1;
+          if (event.what == evNothing)
+            current_is_help = 1;
         }
       }
     }
   }
   if (project)
     if (Project.dest_file_type == FILE_COFF ||
-        Project.dest_file_type == FILE_EXE ||
-        has_primary_file)
+        Project.dest_file_type == FILE_EXE || has_primary_file)
       target_is_exec = 1;
   if (project_name)
   {
@@ -496,7 +523,9 @@ void IDE::update()
       E(cmGoto);
       E(cmGotoNo);
       E(cmcProfileEditor);
-      /* Rectangular block commands  */
+      /*
+         Rectangular block commands  
+       */
       E(cmcSelRectStart);
       E(cmcSelRectEnd);
       E(cmcSelRectHide);
@@ -513,7 +542,9 @@ void IDE::update()
       D(cmGotoNo);
       D(cmcProfileEditor);
 
-      /* Rectangular block commands  */
+      /*
+         Rectangular block commands  
+       */
       D(cmcSelRectStart);
       D(cmcSelRectEnd);
       D(cmcSelRectHide);
@@ -565,8 +596,7 @@ void IDE::update()
   }
 
   if (!has_primary_file &&
-      ((!has_project && !has_editors) || (has_project && !project_count))
-     )
+      ((!has_project && !has_editors) || (has_project && !project_count)))
   {
     D(cmMake);
     D(cmBuild);
@@ -594,7 +624,7 @@ void IDE::update()
     }
   }
 
-  if (current_is_editor )
+  if (current_is_editor)
   {
     E(cmSaveEditor);
     E(cmJumpToFunction);
@@ -628,7 +658,7 @@ void IDE::update()
     {
       D(cmcPaste);
     }
-    if (((TCEditWindow *)TProgram::deskTop->current)->editor->hasSelection())
+    if (((TCEditWindow *) TProgram::deskTop->current)->editor->hasSelection())
     {
       E(cmcCut);
       E(cmcCopy);
@@ -664,8 +694,7 @@ void IDE::update()
   {
 #define IW (((TInfWindow *)TProgram::deskTop->current)->viewer)
     if (IW->selRowEnd > IW->selRowStart ||
-        (IW->selRowEnd == IW->selRowStart &&
-         IW->selColEnd >  IW->selColStart))
+        (IW->selRowEnd == IW->selRowStart && IW->selColEnd > IW->selColStart))
 #undef IW
     {
       E(cmcCopy);
@@ -742,7 +771,8 @@ void IDE::update()
 
 int update_flag = 1;
 
-void IDE::idle()
+void
+IDE::idle()
 {
   TApplication::idle();
 #ifdef __DJGPP__
@@ -751,17 +781,21 @@ void IDE::idle()
   if (inIdleTime > 10)
     usleep(1);
 #endif
-  if (update_flag > 0) update();
+  if (update_flag > 0)
+    update();
 }
 
-void SetMainTargetName(const char *name,TProject *_prj)
+void
+SetMainTargetName(const char *name, TProject * _prj)
 {
   TProject *prj = _prj ? _prj : project;
-  if ((!_prj) && (!prj->dest_name || strcmp(name,FName(prj->dest_name))))
+
+  if ((!_prj) && (!prj->dest_name || strcmp(name, FName(prj->dest_name))))
     already_maked = 0;
   if (prj->dest_name)
     delete prj->dest_name;
-  InitFName(prj->dest_name,name);
+
+  InitFName(prj->dest_name, name);
   prj->dest_file_type = get_file_type(name);
   if (prj->source_name)
   {
@@ -771,85 +805,93 @@ void SetMainTargetName(const char *name,TProject *_prj)
     return;
   }
   prj->source_file_type = FILE_UNKNOWN;
-  prj->compile_id = how_to_compile(FILE_OBJECT,
-                                   prj->dest_file_type);
+  prj->compile_id = how_to_compile(FILE_OBJECT, prj->dest_file_type);
 }
 
-void TargetName()
+void
+TargetName()
 {
   char buffer[PATH_MAX];
+
   buffer[0] = 0;
   if (Project.dest_name)
-    strcpy(buffer,FName(Project.dest_name));
-  if (HistinputBox(_("Name of the main target"),_("~N~ame"),
-      buffer,255,RHIDE_History_main_targetname) == cmOK)
+    strcpy(buffer, FName(Project.dest_name));
+  if (HistinputBox(_("Name of the main target"), _("~N~ame"),
+                   buffer, 255, RHIDE_History_main_targetname) == cmOK)
   {
     BackslashToSlash(buffer);
     SetMainTargetName(buffer);
   }
 }
 
-static void GotoLine(TIDEFileEditor *editor)
+static void
+GotoLine(TIDEFileEditor * editor)
 {
-  int line=editor->curPos.y+1;
+  int line = editor->curPos.y + 1;
   char temp[10];
+
   if (editor->IslineInEdition)
     editor->MakeEfectiveLineInEdition();
-  sprintf(temp,"%d",line);
-  if (ValidInputBox(_("Goto the line"),_("line ~n~umber"),
-                 temp,10
-                 ,new TRangeValidator(1,editor->limit.y == 0?
-                      1:editor->limit.y)) == cmOK)
+  sprintf(temp, "%d", line);
+  if (ValidInputBox(_("Goto the line"), _("line ~n~umber"),
+                    temp, 10, new TRangeValidator(1, editor->limit.y == 0 ?
+                                                  1 : editor->limit.y)) ==
+      cmOK)
   {
-    sscanf(temp,"%d",&line);
-    goto_line(editor,line);
+    sscanf(temp, "%d", &line);
+    goto_line(editor, line);
   }
 }
 
-void Repaint()
+void
+Repaint()
 {
-  if (NoShadows) DisableShadows();
-  else EnableShadows();
+  if (NoShadows)
+    DisableShadows();
+  else
+    EnableShadows();
   TProgram::deskTop->redraw();
   TProgram::application->Redraw();
-  message(TProgram::application,evBroadcast,cmRedraw,NULL);
+  message(TProgram::application, evBroadcast, cmRedraw, NULL);
   update_mem(1);
 }
 
-static void About()
+static void
+About()
 {
   TDialog *dialog;
   TStaticText *text;
   char buffer[1000];
-  dialog = new TDialog(TRect(0,0,60,19),_("About RHIDE"));
+
+  dialog = new TDialog(TRect(0, 0, 60, 19), _("About RHIDE"));
   dialog->options |= ofCentered;
-  sprintf(buffer,"\003%s\n"
-                 "\003(%s)\n"
-       "\003\n"
-       "\003%s\n"
-       "\003%s\n\003\n"
-       "\003%s\n"
-       "\003\n%s%s\n"
-       "%s%s\n"
-       "%s%s\n",
-       IDEVersion,
-                 build_date,
-       _("RHIDE is an Integrated Development Environment"),
+  sprintf(buffer, "\003%s\n"
+          "\003(%s)\n"
+          "\003\n"
+          "\003%s\n"
+          "\003%s\n\003\n"
+          "\003%s\n"
+          "\003\n%s%s\n"
+          "%s%s\n"
+          "%s%s\n",
+          IDEVersion,
+          build_date, _("RHIDE is an Integrated Development Environment"),
 #ifdef __DJGPP__
-       _("for developing DJGPP apps"),
+          _("for developing DJGPP apps"),
 #endif
 #ifdef __linux__
-       _("for developing Linux apps"),
+          _("for developing Linux apps"),
 #endif
-       _("Copyright (C) by Robert H”hne, 1996-2000"),
-       _("Language: "), _("English"),
-       _("Translated by: "), _("Nobody"),
-       _("last updated: "), _("1998-11-29"));
-  text = new TStaticText(TRect(0,0,58,11),buffer);
+          _("Copyright (C) by Robert H”hne, 1996-2000"),
+          _("Language: "), _("English"),
+          _("Translated by: "), _("Nobody"),
+          _("last updated: "), _("1998-11-29"));
+  text = new TStaticText(TRect(0, 0, 58, 11), buffer);
   text->options |= ofCentered;
   dialog->insert(text);
-  TRect r(25, dialog->size.y-3, 35, dialog->size.y-1);
-  dialog->insert(new TButton(r,_("~O~K"),cmOK,bfDefault));
+  TRect r(25, dialog->size.y - 3, 35, dialog->size.y - 1);
+
+  dialog->insert(new TButton(r, _("~O~K"), cmOK, bfDefault));
   TProgram::deskTop->execView(dialog);
   destroy(dialog);
 }
@@ -857,7 +899,8 @@ static void About()
 static int help_request = 0;
 static ushort help_ctx;
 
-void IDE::getEvent(TEvent & event)
+void
+IDE::getEvent(TEvent & event)
 {
   TApplication::getEvent(event);
   if (help_request && event.what == evNothing)
@@ -896,8 +939,7 @@ void IDE::getEvent(TEvent & event)
     default:
       break;
   }
-  if (event.what != evNothing &&
-      event.what != evMouseMove)
+  if (event.what != evNothing && event.what != evMouseMove)
     should_update = 1;
 }
 
@@ -923,25 +965,30 @@ void IDE::getEvent(TEvent & event)
 Return NULL or an allocated string.
 */
 
-char *WUC()
+char *
+WUC()
 {
   char *word;
   TEvent event;
-  if (!TProgram::deskTop->current) return NULL;
+
+  if (!TProgram::deskTop->current)
+    return NULL;
   event.what = evBroadcast;
   event.message.command = cmEditorAnswer;
   TProgram::deskTop->current->handleEvent(event);
-  if (event.what != evNothing) return NULL;
+  if (event.what != evNothing)
+    return NULL;
 #define E ((TCEditWindow *)TProgram::deskTop->current)->editor
   word = E->WordUnderCursor();
-  if (!word) // try to get the word before the cursor
+  if (!word)                    // try to get the word before the cursor
   {
     int x = E->curPos.x;
+
     if (x > 0)
     {
-      E->MoveCursorTo(x-1,E->curPos.y);
+      E->MoveCursorTo(x - 1, E->curPos.y);
       word = E->WordUnderCursor();
-      E->MoveCursorTo(x,E->curPos.y);
+      E->MoveCursorTo(x, E->curPos.y);
     }
   }
 #undef E
@@ -950,16 +997,19 @@ char *WUC()
 
 unsigned long hasmodified = 0;
 
-int SaveAll()
+int
+SaveAll()
 {
   int i;
   int failed = 0;
   TEvent event;
-  if (hasmodified && windows) 
+
+  if (hasmodified && windows)
   {
     int count = windows->getCount();
     TWindow *window;
-    for (i=0;i<count;i++)
+
+    for (i = 0; i < count; i++)
     {
       window = DESKTOPWINDOW(i);
       event.what = evBroadcast;
@@ -970,8 +1020,8 @@ int SaveAll()
         event.what = evCommand;
         event.message.command = cmSaveEditor;
         window->handleEvent(event);
-        if (((TCEditWindow *)window)->editor->modified == True)
-        // it was not saved
+        if (((TCEditWindow *) window)->editor->modified == True)
+          // it was not saved
           failed++;
       }
     }
@@ -989,22 +1039,26 @@ int SaveAll()
     return 1;
 }
 
-static void ShowEditor(char *name,int line,Boolean only_focus,char *msg,int column)
+static void
+ShowEditor(char *name, int line, Boolean only_focus, char *msg, int column)
 {
   TCEditWindow *ewindow;
-  ewindow = is_on_desktop(name,False);
-  if (!ewindow && only_focus == True) return;
+
+  ewindow = is_on_desktop(name, False);
+  if (!ewindow && only_focus == True)
+    return;
   if (!ewindow)
   {
-    ewindow = OpenEditor(name,True);
+    ewindow = OpenEditor(name, True);
   }
   TProgram::deskTop->lock();
   TView *c = TProgram::deskTop->current;
+
   ewindow->select();
   if (only_focus == True)
     c->select();
   TProgram::deskTop->unlock();
-  goto_line((TIDEFileEditor *)ewindow->editor,line,column);
+  goto_line((TIDEFileEditor *) ewindow->editor, line, column);
   if (only_focus == False && msg)
   {
     ewindow->editor->setStatusLine(msg);
@@ -1012,20 +1066,23 @@ static void ShowEditor(char *name,int line,Boolean only_focus,char *msg,int colu
 }
 
 #ifdef __DJGPP__
-static char *nl2crlf(char *t)
+static char *
+nl2crlf(char *t)
 {
   int nl_count = 0;
-  char *s=t;
-  while ((s = strchr(s,'\n')) != NULL)
+  char *s = t;
+
+  while ((s = strchr(s, '\n')) != NULL)
   {
     s++;
     nl_count++;
   }
   if (!nl_count)
     return t;
-  s = (char *)malloc(strlen(t)+nl_count+1);
+  s = (char *) malloc(strlen(t) + nl_count + 1);
   char *tt = t;
   char *ss = s;
+
   while (*tt)
   {
     if (*tt == '\n')
@@ -1038,19 +1095,22 @@ static char *nl2crlf(char *t)
 }
 #endif
 
-static void BugReport(int full=1)
+static void
+BugReport(int full = 1)
 {
-  TCheckDialog *d = new TCheckDialog(TRect(10,5,40,10),_("Please wait"));
+  TCheckDialog *d = new TCheckDialog(TRect(10, 5, 40, 10), _("Please wait"));
+
   TProgram::deskTop->insert(d);
   d->update(_("Creating the Bug report"));
   TProgram::deskTop->lock();
   TCEditWindow *ew = App->openEditor(NULL, True);
   TCEditor *e = ew->editor;
   char *_text = create_bug_report(full);
+
 #ifdef __DJGPP__
   _text = nl2crlf(_text);
 #endif
-  e->insertText(_text,strlen(_text),False);
+  e->insertText(_text, strlen(_text), False);
   string_free(_text);
   e->trackCursor(True);
   TProgram::deskTop->unlock();
@@ -1058,25 +1118,30 @@ static void BugReport(int full=1)
 }
 
 #ifdef INTERNAL_DEBUGGER
-static void MainFunction()
+static void
+MainFunction()
 {
   char buffer[256];
-  if (Project.main_function) strcpy(buffer,Project.main_function);
-  else buffer[0] = 0;
-  if (inputBox(_("Name of the main function"),_("~N~ame"),
-      buffer,255) == cmOK)
+
+  if (Project.main_function)
+    strcpy(buffer, Project.main_function);
+  else
+    buffer[0] = 0;
+  if (inputBox(_("Name of the main function"), _("~N~ame"),
+               buffer, 255) == cmOK)
   {
     string_free(Project.main_function);
-    string_dup(Project.main_function,buffer);
+    string_dup(Project.main_function, buffer);
   }
 }
 #endif
 
 #ifdef INTERNAL_DEBUGGER
-static
-void AddInspect(const char *expr)
+static void
+AddInspect(const char *expr)
 {
   char buf[1000];
+
   buf[0] = 0;
   if (expr)
     strcpy(buf, expr);
@@ -1084,17 +1149,20 @@ void AddInspect(const char *expr)
                    buf, 999, RHIDE_History_Inspect) == cmOK)
   {
     TInspector *w = new TInspector(TProgram::deskTop->getExtent(), buf);
+
     w->update(buf);
-    AddWindow(w, (TWindow **)&w);
+    AddWindow(w, (TWindow **) & w);
   }
 }
 #endif
 
-void IDE::handleEvent(TEvent & event)
+void
+IDE::handleEvent(TEvent & event)
 {
   static char *callstack_name = NULL;
   static char *WindowMsg = NULL;
   static Boolean Focus;
+
   switch (event.what)
   {
     case evMouseDown:
@@ -1106,6 +1174,7 @@ void IDE::handleEvent(TEvent & event)
           if (TProgram::deskTop->current)
           {
             TEvent ev;
+
             ev.what = evBroadcast;
             ev.message.command = cmInfoAnswer;
             TProgram::deskTop->current->handleEvent(ev);
@@ -1140,28 +1209,32 @@ void IDE::handleEvent(TEvent & event)
       {
         case cmWindowOpened:
         {
-          const char *name = (const char *)event.message.infoPtr;
+          const char *name = (const char *) event.message.infoPtr;
+
           if (__file_exists(name))
-            TimeOfFile(name, True); // this removes the file from the hashtable
+            TimeOfFile(name, True);	// this removes the file from the hashtable
           clearEvent(event);
           break;
         }
         case cmFocusWindow:
           Focus = True;
         case cmOpenWindow:
-          string_dup(callstack_name,(char *)event.message.infoPtr);
+          string_dup(callstack_name, (char *) event.message.infoPtr);
           clearEvent(event);
           break;
         case cmShowWindowMsg:
-          string_dup(WindowMsg,(char *)event.message.infoPtr);
+          string_dup(WindowMsg, (char *) event.message.infoPtr);
           clearEvent(event);
           break;
         case cmGotoWindowLineColumn:
         {
           MsgRec *rec;
-          if (!callstack_name) break;
-          rec = (MsgRec *)event.message.infoPtr;
-          ShowEditor(callstack_name,rec->lineno,Focus,WindowMsg,rec->column);
+
+          if (!callstack_name)
+            break;
+          rec = (MsgRec *) event.message.infoPtr;
+          ShowEditor(callstack_name, rec->lineno, Focus, WindowMsg,
+                     rec->column);
           string_free(callstack_name);
           string_free(WindowMsg);
           Focus = False;
@@ -1169,8 +1242,10 @@ void IDE::handleEvent(TEvent & event)
           break;
         }
         case cmGotoWindowLine:
-          if (!callstack_name) break;
-          ShowEditor(callstack_name,event.message.infoLong,Focus,WindowMsg,1);
+          if (!callstack_name)
+            break;
+          ShowEditor(callstack_name, event.message.infoLong, Focus, WindowMsg,
+                     1);
           string_free(callstack_name);
           string_free(WindowMsg);
           Focus = False;
@@ -1178,14 +1253,15 @@ void IDE::handleEvent(TEvent & event)
           break;
         case cmEditorFilenameChanged:
         {
-          TIDEFileEditor *e = (TIDEFileEditor *)event.message.infoPtr;
-          UpdateWindow((TWindow *)e->owner); // update the windowlist
-          TimeOfFile(e->fileName,True);
+          TIDEFileEditor *e = (TIDEFileEditor *) event.message.infoPtr;
+
+          UpdateWindow((TWindow *) e->owner);	// update the windowlist
+          TimeOfFile(e->fileName, True);
           clearEvent(event);
           break;
         }
         case cmEditorModified:
-          hasmodified = (unsigned long)event.message.infoLong;
+          hasmodified = (unsigned long) event.message.infoLong;
           clearEvent(event);
           break;
         default:
@@ -1214,7 +1290,8 @@ void IDE::handleEvent(TEvent & event)
       switch (event.message.command)
       {
         case cmQUIT:
-          if (DEBUGGER_STARTED()) RESET();
+          if (DEBUGGER_STARTED())
+            RESET();
           if (CloseProject())
             endModal(cmQuit);
           clearEvent(event);
@@ -1224,19 +1301,23 @@ void IDE::handleEvent(TEvent & event)
           clearEvent(event);
           break;
         case cmPrint:
-          IDEPrintEditor(((TCEditWindow*)TProgram::deskTop->current)->editor);
+          IDEPrintEditor(((TCEditWindow *) TProgram::deskTop->current)->
+                         editor);
           clearEvent(event);
           break;
         case cmJumpToFunction:
         {
           TView *ew = TProgram::deskTop->current;
+
           if (ew != NULL)
           {
-            TIDEFileEditor *editor = (TIDEFileEditor *)((TCEditWindow *)ew)->editor;
+            TIDEFileEditor *editor =
+
+              (TIDEFileEditor *) ((TCEditWindow *) ew)->editor;
             if (editor)
             {
-               event.message.command = cmcJumpToFunction;
-               editor->handleEvent(event);
+              event.message.command = cmcJumpToFunction;
+              editor->handleEvent(event);
             }
           }
           clearEvent(event);
@@ -1250,7 +1331,7 @@ void IDE::handleEvent(TEvent & event)
           if (!AsciiWindow)
           {
             Ascii();
-            AddWindow(AsciiWindow,&AsciiWindow);
+            AddWindow(AsciiWindow, &AsciiWindow);
           }
           AsciiWindow->select();
           clearEvent(event);
@@ -1259,7 +1340,7 @@ void IDE::handleEvent(TEvent & event)
           if (!PuzzleWindow)
           {
             Puzzle();
-            AddWindow(PuzzleWindow,&PuzzleWindow);
+            AddWindow(PuzzleWindow, &PuzzleWindow);
           }
           PuzzleWindow->select();
           clearEvent(event);
@@ -1268,82 +1349,82 @@ void IDE::handleEvent(TEvent & event)
           if (!CalendarWindow)
           {
             Calendar();
-            AddWindow(CalendarWindow,&CalendarWindow);
+            AddWindow(CalendarWindow, &CalendarWindow);
           }
           CalendarWindow->select();
           clearEvent(event);
           break;
-        SC(LastHelp);
-        SC(SyntaxIndex);
-        SC(SyntaxOptions);
-        SC(BugReport);
+          SC(LastHelp);
+          SC(SyntaxIndex);
+          SC(SyntaxOptions);
+          SC(BugReport);
         case cmBugReportSmall:
           BugReport(0);
           clearEvent(event);
           break;
-        SC(MouseDlg);
-        SC(SaveOptions);
-        SC(LoadOptions);
-        SC(FSDB);
-        SC(GDB);
-        SC(EditReserved);
-        SC(EditGPCReserved);
-        SC(About);
-        SC(EditCFlags);
-        SC(EditCXXFlags);
-        SC(EditPascalFlags);
-        SC(EditFortranFlags);
-        SC(EditAdaFlags);
-        SC(EditOptFlags);
-        SC(EditWarnFlags);
-        SC(EditDebugFlags);
-        SC(Preferences);
-        SC(GREP);
-        SC(Repaint);
-        SC(Colors);
-        SC(WriteMake);
-        SC(Libraries);
-        SC(WarningFlags);
-        SC(OptimizationFlags);
-        SC(DebugFlags);
-        SC(CFlags);
-        SC(CXXFlags);
-        SC(PascalFlags);
-        SC(FortranFlags);
-        SC(AdaFlags);
-        SC(AddProjectItem);
-        SC(DelProjectItem);
-        SC(ShowProject);
-        SC(TargetName);
-        SC(ShowIncludes);
-        SC(LocalOptions);
-        SC(LinkerOptions);
-        SC(CompilerOptions);
-        SC(Make);
-        SC(Build);
-        SC(EditUserWords);
-        SC(ClearDependencies);
-        SC(CreateDependencies);
-        SC(MakeClear);
-        SC(HelpIndex);
-        SC(SaveAll);
-        SC2(OpenEditor,fileOpen);
-        SC2(NewEditor,fileNew);
-        SC(DosShell);
-        SC(ShowClip);
-        SC(Tile);
-        SC(Cascade);
-        SC(ShowCalculator);
-        SC(ClearMessages);
-        SC(ClearMessage);
+          SC(MouseDlg);
+          SC(SaveOptions);
+          SC(LoadOptions);
+          SC(FSDB);
+          SC(GDB);
+          SC(EditReserved);
+          SC(EditGPCReserved);
+          SC(About);
+          SC(EditCFlags);
+          SC(EditCXXFlags);
+          SC(EditPascalFlags);
+          SC(EditFortranFlags);
+          SC(EditAdaFlags);
+          SC(EditOptFlags);
+          SC(EditWarnFlags);
+          SC(EditDebugFlags);
+          SC(Preferences);
+          SC(GREP);
+          SC(Repaint);
+          SC(Colors);
+          SC(WriteMake);
+          SC(Libraries);
+          SC(WarningFlags);
+          SC(OptimizationFlags);
+          SC(DebugFlags);
+          SC(CFlags);
+          SC(CXXFlags);
+          SC(PascalFlags);
+          SC(FortranFlags);
+          SC(AdaFlags);
+          SC(AddProjectItem);
+          SC(DelProjectItem);
+          SC(ShowProject);
+          SC(TargetName);
+          SC(ShowIncludes);
+          SC(LocalOptions);
+          SC(LinkerOptions);
+          SC(CompilerOptions);
+          SC(Make);
+          SC(Build);
+          SC(EditUserWords);
+          SC(ClearDependencies);
+          SC(CreateDependencies);
+          SC(MakeClear);
+          SC(HelpIndex);
+          SC(SaveAll);
+          SC2(OpenEditor, fileOpen);
+          SC2(NewEditor, fileNew);
+          SC(DosShell);
+          SC(ShowClip);
+          SC(Tile);
+          SC(Cascade);
+          SC(ShowCalculator);
+          SC(ClearMessages);
+          SC(ClearMessage);
         case cmShowMessages:
           ShowMessages(NULL, False, False, True);
           clearEvent(event);
           break;
 #ifdef INTERNAL_DEBUGGER
-        SC(AddDataWindow);
-        SC(ShowStackWindow);
-        SC2(ShowWatchWindow, OpenWatchWindow);
+          SC(AddDataWindow);
+          SC(ShowStackWindow);
+          SC2(ShowWatchWindow, OpenWatchWindow);
         case cmDisWindow:
           OpenDisWin(1);
           clearEvent(event);
@@ -1352,20 +1433,20 @@ void IDE::handleEvent(TEvent & event)
           ShowCallStackWindow();
           clearEvent(event);
           break;
-        SC2(Trace,TRACE);
-        SC2(Step,STEP);
-        SC2(Goto,GOTO);
-        SC3(TraceNo,TRACE(0));
-        SC3(StepNo,STEP(0));
-        SC3(GotoNo,GOTO(0));
-        SC2(Finish,FINISH);
-        SC2(Reset,RESET);
-        SC(MainFunction);
+          SC2(Trace, TRACE);
+          SC2(Step, STEP);
+          SC2(Goto, GOTO);
+          SC3(TraceNo, TRACE(0));
+          SC3(StepNo, STEP(0));
+          SC3(GotoNo, GOTO(0));
+          SC2(Finish, FINISH);
+          SC2(Reset, RESET);
+          SC(MainFunction);
         case cmBreakPoints:
           BreakDialog();
           Repaint();
           break;
-        SC(ToggleBreak);
+          SC(ToggleBreak);
         case cmEvaluate:
           Evaluate(WUC());
           clearEvent(event);
@@ -1376,12 +1457,18 @@ void IDE::handleEvent(TEvent & event)
           break;
         case cmAddWatchEntry:
           if ((TProgram::deskTop->current) &&
-             ((get_file_type(((TIDEFileEditor *)((TCEditWindow *)(TProgram::deskTop->current))->editor)->fileName)
-               == FILE_PASCAL_SOURCE) ||
-             (get_file_type(((TIDEFileEditor *)((TCEditWindow *)(TProgram::deskTop->current))->editor)->fileName)
-               == FILE_PASCAL_SOURCE)))
+              ((get_file_type
+                (((TIDEFileEditor
+                   *) ((TCEditWindow *) (TProgram::deskTop->current))->
+                  editor)->fileName) == FILE_PASCAL_SOURCE)
+               ||
+               (get_file_type
+                (((TIDEFileEditor
+                   *) ((TCEditWindow *) (TProgram::deskTop->current))->
+                  editor)->fileName) == FILE_PASCAL_SOURCE)))
           {
             char *tmp = string_dup(WUC());
+
             string_up(tmp);
             AddWatchEntry(tmp);
             string_free(tmp);
@@ -1394,43 +1481,51 @@ void IDE::handleEvent(TEvent & event)
         {
           char regex[256];
           function_entry *func;
+
           regex[0] = 0;
           if (HistinputBox(_("Regular expression to list functions"),
-                 _("~E~xpression"),regex,255,tvgdb_History_Break_Function)
-                       == cmOK)
+                           _("~E~xpression"), regex, 255,
+                           tvgdb_History_Break_Function) == cmOK)
           {
-            if (SelectFunction(_("List of functions"),regex,NULL,NULL,&func)
-                                      == cmOK)
+            if (SelectFunction
+                (_("List of functions"), regex, NULL, NULL, &func) == cmOK)
             {
               TCEditWindow *ew = is_on_desktop(func->file_name);
+
               if (!ew)
               {
                 char *full_name;
-                if (FindFile(func->file_name,full_name) == False)
+
+                if (FindFile(func->file_name, full_name) == False)
                 {
                   messageBox(mfError | mfOKButton,
-                    _("Could not find the source file %s."),func->file_name);
+                             _("Could not find the source file %s."),
+                             func->file_name);
                   string_free(full_name);
-                  full_name = (char *)malloc(PATH_MAX);
+                  full_name = (char *) malloc(PATH_MAX);
                   TFileDialog *dialog;
+
                   InitHistoryID(RHIDE_History_source_file);
-                  dialog = new TFileDialog(func->file_name,_("Open a file"),
-                         _("~N~ame"),fdOpenButton,RHIDE_History_source_file);
+                  dialog = new TFileDialog(func->file_name, _("Open a file"),
+                                           _("~N~ame"), fdOpenButton,
+                                           RHIDE_History_source_file);
                   if (TProgram::deskTop->execView(dialog) != cmCancel)
                   {
                     dialog->getData(full_name);
                     FExpand(full_name);
                   }
-                  else full_name = NULL;
+                  else
+                    full_name = NULL;
                 }
-                if (full_name) ew = OpenEditor(full_name,False);
+                if (full_name)
+                  ew = OpenEditor(full_name, False);
               }
               if (ew)
               {
-                goto_line((TIDEFileEditor *)ew->editor,func->line_number);
+                goto_line((TIDEFileEditor *) ew->editor, func->line_number);
                 ew->select();
               }
-            } 
+            }
           }
           clearEvent(event);
           break;
@@ -1442,8 +1537,9 @@ void IDE::handleEvent(TEvent & event)
           break;
         case cmSelectProject:
         {
-          TDependency *dep = (TDependency *)event.message.infoPtr;
+          TDependency *dep = (TDependency *) event.message.infoPtr;
           char *pname = string_dup(FName(dep->source_name));
+
           AddToStack();
           if (!CloseProject())
             RemoveFromStack();
@@ -1456,119 +1552,130 @@ void IDE::handleEvent(TEvent & event)
         case cmSyntaxHelp:
         {
           char *word = WUC();
-          if (word) SyntaxHelp(word,NULL);
-          else SyntaxHelp("",NULL);
-          if (word) string_free(word);
+
+          if (word)
+            SyntaxHelp(word, NULL);
+          else
+            SyntaxHelp("", NULL);
+          if (word)
+            string_free(word);
           clearEvent(event);
           break;
         }
         case cmGotoLine:
         {
           TView *ew = TProgram::deskTop->current;
+
           event.what = evBroadcast;
           event.message.command = cmEditorAnswer;
           if (ew != NULL)
           {
             ew->handleEvent(event);
             if (event.what == evNothing)
-              GotoLine((TIDEFileEditor *)((TCEditWindow *)ew)->editor);
+              GotoLine((TIDEFileEditor *) ((TCEditWindow *) ew)->editor);
           }
           clearEvent(event);
           break;
         }
         case cmNextMessage:
           event.message.command = cmNextMsg;
-          if (msg_window) msg_window->handleEvent(event);
+          if (msg_window)
+            msg_window->handleEvent(event);
           break;
         case cmPrevMessage:
           event.message.command = cmPrevMsg;
-          if (msg_window) msg_window->handleEvent(event);
+          if (msg_window)
+            msg_window->handleEvent(event);
           break;
         case cmRun:
-        if (DEBUGGER_STARTED())
-        {
-          CONTINUE();
-          clearEvent(event);
-          break;
-        }
-        else
-        {
-          TView *lasteditor = NULL;
-               TView *v = TProgram::deskTop->current;
-               if (v)
-               {
-            event.what = evBroadcast;
-               event.message.command = cmEditorAnswer;
-            v->handleEvent(event);
-            if (event.what == evNothing)
-            {
-              if (v->state & sfSelected)
-              {
-                lasteditor = TProgram::deskTop->current;
-              }
-                 }
-          }
-          ShowMessages(NULL,True);
-          if (Make(False) == True)
+          if (DEBUGGER_STARTED())
           {
-                 RunMainTarget();
-                 if (!DEBUGGER_STARTED() && lasteditor != NULL &&
-                     !ShowStderr && !ShowStdout)
-                   lasteditor->select();
+            CONTINUE();
+            clearEvent(event);
+            break;
           }
-          clearEvent(event);
-          break;
-        }
+          else
+          {
+            TView *lasteditor = NULL;
+            TView *v = TProgram::deskTop->current;
+
+            if (v)
+            {
+              event.what = evBroadcast;
+              event.message.command = cmEditorAnswer;
+              v->handleEvent(event);
+              if (event.what == evNothing)
+              {
+                if (v->state & sfSelected)
+                {
+                  lasteditor = TProgram::deskTop->current;
+                }
+              }
+            }
+            ShowMessages(NULL, True);
+            if (Make(False) == True)
+            {
+              RunMainTarget();
+              if (!DEBUGGER_STARTED() && lasteditor != NULL &&
+                  !ShowStderr && !ShowStdout)
+                lasteditor->select();
+            }
+            clearEvent(event);
+            break;
+          }
         case cmCompile:
-          if (DEBUGGER_STARTED()) RESET();
-          ShowMessages(NULL,True);
+          if (DEBUGGER_STARTED())
+            RESET();
+          ShowMessages(NULL, True);
           Compile();
           clearEvent(event);
           break;
         case cmLink:
-          if (DEBUGGER_STARTED()) RESET();
-          ShowMessages(NULL,True);
+          if (DEBUGGER_STARTED())
+            RESET();
+          ShowMessages(NULL, True);
           Compile(project);
           clearEvent(event);
           break;
         case cmStandardIncludeDir:
-          EditDirList(Options.StdInc,_("Standard Include Directories"),
-                           RHIDE_History_standard_include_directories);
+          EditDirList(Options.StdInc, _("Standard Include Directories"),
+                      RHIDE_History_standard_include_directories);
           clearEvent(event);
           break;
         case cmIncludeDir:
-          EditDirList(Options.include_path,_("Include Directories"),
-                           RHIDE_History_include_directories);
+          EditDirList(Options.include_path, _("Include Directories"),
+                      RHIDE_History_include_directories);
           clearEvent(event);
           break;
         case cmLibDir:
-          EditDirList(Options.library_path,_("Library Directories"),
-                           RHIDE_History_library_directories);
+          EditDirList(Options.library_path, _("Library Directories"),
+                      RHIDE_History_library_directories);
           clearEvent(event);
           break;
         case cmObjDir:
-          EditDirList(Options.ObjDirs,_("Object Directories"),
-                           RHIDE_History_object_directories);
+          EditDirList(Options.ObjDirs, _("Object Directories"),
+                      RHIDE_History_object_directories);
           clearEvent(event);
           break;
         case cmSrcDir:
-          EditDirList(Options.SrcDirs,_("Source Directories"),
-                           RHIDE_History_source_directories);
+          EditDirList(Options.SrcDirs, _("Source Directories"),
+                      RHIDE_History_source_directories);
           clearEvent(event);
           break;
-             case cmSyntaxFiles:
-          EditParamList(Project.info_files,_("INFO files for syntaxhelp"),
-                             RHIDE_History_info_files);
+        case cmSyntaxFiles:
+          EditParamList(Project.info_files, _("INFO files for syntaxhelp"),
+                        RHIDE_History_info_files);
           clearEvent(event);
           break;
         case cmProgArgs:
-          EditParamList(Options.ProgArgs,_("Program arguments"),
-                             RHIDE_History_arguments);
+          EditParamList(Options.ProgArgs, _("Program arguments"),
+                        RHIDE_History_arguments);
           clearEvent(event);
           break;
         case cmOpenProject:
         {
           char *fileName = select_project(_("Select a project"));
+
           if (fileName)
           {
             if (CloseProject())
@@ -1581,13 +1688,15 @@ void IDE::handleEvent(TEvent & event)
         case cmCloseProject:
           if (CloseProject())
           {
-            if (!OpenFromStack()) OpenProject(NULL);
+            if (!OpenFromStack())
+              OpenProject(NULL);
           }
           clearEvent(event);
           break;
         case cmUserScreen:
         {
           int old_flag = update_flag;
+
           TMouse::suspend();
           update_flag = 0;
 #ifdef __linux__
@@ -1610,7 +1719,8 @@ void IDE::handleEvent(TEvent & event)
             timeout(0);
 #endif
 #endif
-          } while (event.what == evNothing);
+          }
+          while (event.what == evNothing);
           clearEvent(event);
 #ifndef __linux__
           TScreen::resume();
@@ -1621,45 +1731,50 @@ void IDE::handleEvent(TEvent & event)
           break;
         }
         case cmLibcHelp:
-          SyntaxHelp("Top","libc");
+          SyntaxHelp("Top", "libc");
           clearEvent(event);
           break;
         case cmHelpHelp:
-          SyntaxHelp("Top","infview");
+          SyntaxHelp("Top", "infview");
           clearEvent(event);
           break;
         case cmPrimaryFile:
         {
           char buffer[256];
-          if (Project.source_name) strcpy(buffer,FName(Project.source_name));
-          else buffer[0] = 0;
-          if (inputBox(_("Name of the main target"),_("~N~ame"),
-              buffer,255) == cmOK)
+
+          if (Project.source_name)
+            strcpy(buffer, FName(Project.source_name));
+          else
+            buffer[0] = 0;
+          if (inputBox(_("Name of the main target"), _("~N~ame"),
+                       buffer, 255) == cmOK)
           {
             if ((strlen(buffer) > 0) &&
                 (get_file_type(buffer) != FILE_PASCAL_SOURCE) &&
                 (get_file_type(buffer) != FILE_FPC_SOURCE) &&
                 (get_file_type(buffer) != FILE_TEX_SOURCE))
             {
-              messageBox(mfError|mfOKButton, "%s %s",
-                           _("You can give here only a valid "
+              messageBox(mfError | mfOKButton, "%s %s",
+                         _("You can give here only a valid "
                            "filename for a Pascal source file"),
-                           _("or a TeX source file"));
+                         _("or a TeX source file"));
             }
             else
             {
               if (!Project.source_name && strlen(buffer) > 0 ||
-                  Project.source_name && strcmp(FName(Project.source_name),buffer))
+                  Project.source_name
+                  && strcmp(FName(Project.source_name), buffer))
                 already_maked = 0;
               if (Project.source_name)
               {
                 delete Project.source_name;
+
                 Project.source_name = NULL;
               }
               if (strlen(buffer) > 0)
               {
                 BackslashToSlash(buffer);
-                InitFName(Project.source_name,buffer);
+                InitFName(Project.source_name, buffer);
               }
               SetMainTargetName(FName(Project.dest_name));
             }
@@ -1668,20 +1783,23 @@ void IDE::handleEvent(TEvent & event)
           break;
         case cmEditKeyBind:
           if (KeyBindEdit())
-            SaveKeyBind(ExpandFileNameToThePointWhereTheProgramWasLoaded(KeyBindFName));
+            SaveKeyBind(ExpandFileNameToThePointWhereTheProgramWasLoaded
+                        (KeyBindFName));
           clearEvent(event);
           break;
         case cmSetUpAltKeys:
           if (AltKeysSetUp())
-            SaveKeyBind(ExpandFileNameToThePointWhereTheProgramWasLoaded(KeyBindFName));
+            SaveKeyBind(ExpandFileNameToThePointWhereTheProgramWasLoaded
+                        (KeyBindFName));
           clearEvent(event);
           break;
         case cmKbBackDefault:
           if (KeyBackToDefault())
-            SaveKeyBind(ExpandFileNameToThePointWhereTheProgramWasLoaded(KeyBindFName));
+            SaveKeyBind(ExpandFileNameToThePointWhereTheProgramWasLoaded
+                        (KeyBindFName));
           clearEvent(event);
           break;
- 
+
         }
         default:
           break;
@@ -1692,53 +1810,66 @@ void IDE::handleEvent(TEvent & event)
 
 IDE *App;
 
-static char * PRJNAME = NULL;
-static char * EDITNAME = NULL;
+static char *PRJNAME = NULL;
+static char *EDITNAME = NULL;
 
-static void usage() __attribute__((noreturn));
-static void usage()
+static void usage() __attribute__ ((noreturn));
+static void
+usage()
 {
   TEventQueue::suspend();
   TScreen::suspend();
-  fprintf(stderr,_("usage: %s [options] [project-file] [edit-file]\n"),RHIDE_NAME);
-  fprintf(stderr,_("options:    -d[actdf]\n"));
+  fprintf(stderr, _("usage: %s [options] [project-file] [edit-file]\n"),
+          RHIDE_NAME);
+  fprintf(stderr, _("options:    -d[actdf]\n"));
 #ifdef __DJGPP__
-  fprintf(stderr,_("            -c : show filename exactly (no case conversion)\n"));
-  fprintf(stderr,_("            -y : force to use long filenames (Windows 95)\n"));
-  fprintf(stderr,_("            -n : do not use long filenames (Windows 95)\n"));
-  fprintf(stderr,_("            -b : use BIOS calls for toggle the blinkstate\n"));
-  fprintf(stderr,_("            -p : do not convert the numpad keys\n"));
-  fprintf(stderr,_("            -G num : Use methode <num> for screen swapping\n"));
-  fprintf(stderr,_("            -K : Use the BIOS for keyboard input\n"));
-  fprintf(stderr,_("            -M : Do not install the mouse handler\n"));
-  fprintf(stderr,_("            -S : use slower (safer) screen output\n"));
+  fprintf(stderr,
+          _("            -c : show filename exactly (no case conversion)\n"));
+  fprintf(stderr,
+          _("            -y : force to use long filenames (Windows 95)\n"));
+  fprintf(stderr,
+          _("            -n : do not use long filenames (Windows 95)\n"));
+  fprintf(stderr,
+          _("            -b : use BIOS calls for toggle the blinkstate\n"));
+  fprintf(stderr, _("            -p : do not convert the numpad keys\n"));
+  fprintf(stderr,
+          _("            -G num : Use methode <num> for screen swapping\n"));
+  fprintf(stderr, _("            -K : Use the BIOS for keyboard input\n"));
+  fprintf(stderr, _("            -M : Do not install the mouse handler\n"));
+  fprintf(stderr, _("            -S : use slower (safer) screen output\n"));
 #endif
 #ifdef __linux__
-  fprintf(stderr,_("            -K : Do not patch the keytable\n"));
-  fprintf(stderr,_("            -H : Do not install console switch handler\n"));
+  fprintf(stderr, _("            -K : Do not patch the keytable\n"));
+  fprintf(stderr,
+          _("            -H : Do not install console switch handler\n"));
 #endif
-  fprintf(stderr,_("            -L LANGUAGE : use language LANGUAGE\n"));
-  fprintf(stderr,_("            -h : show this help\n"));
-  fprintf(stderr,_("            -k KEY_FILE : use KEY_FILE for key bindings\n"));
-  fprintf(stderr,_("            -E : Output all env. variables and exit\n"));
-  fprintf(stderr,_("            -C : Disable SIGINT handling\n"));
+  fprintf(stderr, _("            -L LANGUAGE : use language LANGUAGE\n"));
+  fprintf(stderr, _("            -h : show this help\n"));
+  fprintf(stderr,
+          _("            -k KEY_FILE : use KEY_FILE for key bindings\n"));
+  fprintf(stderr, _("            -E : Output all env. variables and exit\n"));
+  fprintf(stderr, _("            -C : Disable SIGINT handling\n"));
 #ifdef __DJGPP__
-  fprintf(stderr,_("            -T : Disable the DOS-box title feature\n"));
+  fprintf(stderr, _("            -T : Disable the DOS-box title feature\n"));
 #endif
-  fprintf(stderr,_("            -P : don`t remove temp files when exiting\n"));
+  fprintf(stderr,
+          _("            -P : don`t remove temp files when exiting\n"));
   fflush(stderr);
   exit(-1);
 }
 
-static char *keybindings=NULL;
+static char *keybindings = NULL;
 
-static char *next_option(char *&option,char *option_end,int &current_argc,
-                         int argc,char *argv[])
+static char *
+next_option(char *&option, char *option_end, int &current_argc,
+            int argc, char *argv[])
 {
   static char arg[256];
+
   if (option && *option && option <= option_end)
   {
     char *tmp = arg;
+
     while (option <= option_end && *option != ' ')
     {
       *tmp++ = *option++;
@@ -1747,49 +1878,58 @@ static char *next_option(char *&option,char *option_end,int &current_argc,
     option++;
     return arg;
   }
-  if (current_argc >= argc) return NULL;
+  if (current_argc >= argc)
+    return NULL;
   current_argc++;
-  return argv[current_argc-1];
+  return argv[current_argc - 1];
 }
 
 static int call_usage = 0;
 static int dump_env = 0;
 static int no_sigint = 0;
+
 #ifdef __DJGPP__
 static int no_title = 0;
 #endif
 
 #define Usage() do { call_usage = 1; return; } while (0)
 
-static void parse_commandline(int argc,char *argv[])
+static void
+parse_commandline(int argc, char *argv[])
 {
-  /* At first look for an environment variable $(RHIDEOPT) and
+  /*
+     At first look for an environment variable $(RHIDEOPT) and
      use the options from that variable as they were put at the
-     beginning of the commandline, so they can be overwritten */
+     beginning of the commandline, so they can be overwritten 
+   */
   char *_rhide_opt = expand_rhide_spec("$(RHIDEOPT)");
   char *rhide_opt = NULL;
+
   if (*_rhide_opt)
   {
-    rhide_opt = (char *)alloca(strlen(_rhide_opt));
-    strcpy(rhide_opt,_rhide_opt);
+    rhide_opt = (char *) alloca(strlen(_rhide_opt));
+    strcpy(rhide_opt, _rhide_opt);
   }
   string_free(_rhide_opt);
-  char *rhide_opt_end=NULL;
-  int i=1;
-  char *tmp,*a="a";
+  char *rhide_opt_end = NULL;
+  int i = 1;
+  char *tmp, *a = "a";
   char *arg;
+
   if (rhide_opt && *rhide_opt)
   {
     // strip leading whitespaces
-    while (*rhide_opt == ' ') rhide_opt++;
+    while (*rhide_opt == ' ')
+      rhide_opt++;
     if (*rhide_opt)
     {
       // skip trailing whitespaces
       rhide_opt_end = rhide_opt + strlen(rhide_opt) - 1;
-      while (*rhide_opt_end == ' ') rhide_opt_end--;
+      while (*rhide_opt_end == ' ')
+        rhide_opt_end--;
     }
   }
-  while ((arg = next_option(rhide_opt,rhide_opt_end,i,argc,argv)) != NULL)
+  while ((arg = next_option(rhide_opt, rhide_opt_end, i, argc, argv)) != NULL)
   {
     if (arg[0] == '-')
     {
@@ -1809,12 +1949,14 @@ static void parse_commandline(int argc,char *argv[])
         case 'H':
 #ifdef __linux__
           extern int install_console_sigs;
+
           install_console_sigs = 0;
 #endif
           break;
         case 'S':
 #ifdef __DJGPP__
           extern int slow_screen;
+
           slow_screen = 1;
 #endif
           break;
@@ -1824,6 +1966,7 @@ static void parse_commandline(int argc,char *argv[])
         case 'M':
 #ifdef __DJGPP__
           extern int use_mouse_handler;
+
           use_mouse_handler = 0;
 #endif
           break;
@@ -1831,10 +1974,12 @@ static void parse_commandline(int argc,char *argv[])
           TGKey::useBIOS = 1;
           break;
         case 'G':
-          arg = next_option(rhide_opt,rhide_opt_end,i,argc,argv);
+          arg = next_option(rhide_opt, rhide_opt_end, i, argc, argv);
 #ifdef __DJGPP__
           extern int screen_saving;
-          if (!arg) Usage();
+
+          if (!arg)
+            Usage();
           screen_saving = atoi(arg);
 #endif
           break;
@@ -1842,14 +1987,15 @@ static void parse_commandline(int argc,char *argv[])
           TGKey::translateKeyPad = 0;
           break;
         case 'k':
-          arg = next_option(rhide_opt,rhide_opt_end,i,argc,argv);
-          if (!arg) Usage();
-          keybindings =
-            ExpandFileNameToThePointWhereTheProgramWasLoaded(arg);
+          arg = next_option(rhide_opt, rhide_opt_end, i, argc, argv);
+          if (!arg)
+            Usage();
+          keybindings = ExpandFileNameToThePointWhereTheProgramWasLoaded(arg);
           break;
         case 'b':
         {
           extern int blink_use_bios;
+
           blink_use_bios = 1;
           break;
         }
@@ -1872,10 +2018,12 @@ static void parse_commandline(int argc,char *argv[])
         case 'L':
         {
           static char language[256];
-          arg = next_option(rhide_opt,rhide_opt_end,i,argc,argv);
-          if (!arg) Usage();
-          strcpy(language,"LANGUAGE=");
-          strcat(language,arg);
+
+          arg = next_option(rhide_opt, rhide_opt_end, i, argc, argv);
+          if (!arg)
+            Usage();
+          strcpy(language, "LANGUAGE=");
+          strcat(language, arg);
           putenv(language);
           break;
         }
@@ -1884,8 +2032,11 @@ static void parse_commandline(int argc,char *argv[])
         case 'd':
         {
           int enable = 1;
-          if (!arg[2]) tmp = a;
-          else tmp = &arg[2];
+
+          if (!arg[2])
+            tmp = a;
+          else
+            tmp = &arg[2];
           while (*tmp)
           {
             switch (*tmp)
@@ -1931,19 +2082,20 @@ static void parse_commandline(int argc,char *argv[])
     }
     else
     {
-      char *dir,*file,*ext;
-      string_dup(PRJNAME,arg);
-      split_fname(PRJNAME,dir,file,ext);
+      char *dir, *file, *ext;
+
+      string_dup(PRJNAME, arg);
+      split_fname(PRJNAME, dir, file, ext);
       string_free(PRJNAME);
-      if (!ext || !*ext || strcasecmp(ext,PROJECT_EXT) == 0)
+      if (!ext || !*ext || strcasecmp(ext, PROJECT_EXT) == 0)
       {
-        string_dup(PRJNAME,dir);
-        string_cat(PRJNAME,file);
-        string_cat(PRJNAME,PROJECT_EXT);
+        string_dup(PRJNAME, dir);
+        string_cat(PRJNAME, file);
+        string_cat(PRJNAME, PROJECT_EXT);
       }
       else
       {
-        string_dup(EDITNAME,arg);
+        string_dup(EDITNAME, arg);
         FExpand(EDITNAME);
       }
       string_free(dir);
@@ -1955,29 +2107,34 @@ static void parse_commandline(int argc,char *argv[])
 /* Select some switches on NT, because it is buggy and cannot
    handle correct some standard tricks */
   extern int nt_detected;
+
   if (nt_detected)
   {
     extern int use_mouse_handler;
+
     use_mouse_handler = 0;
     extern int slow_screen;
+
     TGKey::useBIOS = 1;
     slow_screen = 1;
   }
 #endif
 }
 
-static void find_project()
+static void
+find_project()
 {
 // I can assume, that PRJNAME == NULL, when calling this
   glob_t found;
+
   // I must initialize that, because I call glob NOT with GLOB_NOCHECK
   // and so glob can return without finding any. But globfree assumes,
   // that gl_pathv == NULL, if there is nothing found
   found.gl_pathv = NULL;
   found.gl_pathc = 0;
-  glob("*"PROJECT_EXT,0,NULL,&found);
-  if (found.gl_pathc == 1)  // only one was found
-    string_dup(PRJNAME,found.gl_pathv[0]);
+  glob("*" PROJECT_EXT, 0, NULL, &found);
+  if (found.gl_pathc == 1)      // only one was found
+    string_dup(PRJNAME, found.gl_pathv[0]);
   else if (found.gl_pathc > 1)
     PRJNAME = select_project(_("Select a project"));
   globfree(&found);
@@ -1986,17 +2143,19 @@ static void find_project()
 static char *tmpdir = NULL;
 static void remove_tmpdir();
 
-static
-void set_tmpdir()
+static void
+set_tmpdir()
 {
-  int mktmpdir_ret=-1;
+  int mktmpdir_ret = -1;
   char temp_mask[256] = "RHXXXXXX";
+
 #ifndef __DJGPP__
   char buf[256];
   time_t curtime;
+
   time(&curtime);
-  strftime(buf,256,"%Y%m%d%H%M%S",localtime(&curtime));
-  sprintf(temp_mask,"RHIDE.%s.%d",buf,getpid());
+  strftime(buf, 256, "%Y%m%d%H%M%S", localtime(&curtime));
+  sprintf(temp_mask, "RHIDE.%s.%d", buf, getpid());
 #endif
   tmpdir = expand_rhide_spec("$(TMPDIR)");
   if (!*tmpdir)
@@ -2014,59 +2173,68 @@ void set_tmpdir()
     string_free(tmpdir);
 #ifdef __DJGPP__
     tmpdir = NULL;
-    tmpdir = getcwd(NULL,PATH_MAX);
+    tmpdir = getcwd(NULL, PATH_MAX);
 #else
-    string_dup(tmpdir,"/tmp");
+    string_dup(tmpdir, "/tmp");
 #endif
   }
   BackslashToSlash(tmpdir);
-  if (tmpdir[strlen(tmpdir)-1] != '/'
+  if (tmpdir[strlen(tmpdir) - 1] != '/'
 #ifdef __DJGPP__
-       && tmpdir[strlen(tmpdir)-1] != '\\'
+      && tmpdir[strlen(tmpdir) - 1] != '\\'
 #endif
-     ) string_cat(tmpdir,"/");
-  string_cat(tmpdir,temp_mask);
+    )
+    string_cat(tmpdir, "/");
+  string_cat(tmpdir, temp_mask);
 #ifdef __DJGPP__
   mktemp(tmpdir);
 #endif
-  if ((mktmpdir_ret = mkdir(tmpdir,0755)) != 0)
+  if ((mktmpdir_ret = mkdir(tmpdir, 0755)) != 0)
   {
     string_free(tmpdir);
-    tmpdir = getcwd(NULL,PATH_MAX);
-    string_cat(tmpdir,"/");
-    string_cat(tmpdir,temp_mask);
+    tmpdir = getcwd(NULL, PATH_MAX);
+    string_cat(tmpdir, "/");
+    string_cat(tmpdir, temp_mask);
     mktemp(tmpdir);
-    mktmpdir_ret = mkdir(tmpdir,0755);
+    mktmpdir_ret = mkdir(tmpdir, 0755);
   }
   char *tempdir = string_dup("TMPDIR=");
-  string_cat(tempdir,tmpdir);
+
+  string_cat(tempdir, tmpdir);
   putenv(tempdir);
   if (debug_tempfiles)
   {
-    fprintf(stderr,_("using %s as temp directory\n"),tmpdir);
+    fprintf(stderr, _("using %s as temp directory\n"), tmpdir);
   }
-  /* Only if temp directory successfully created before  */
+  /*
+     Only if temp directory successfully created before  
+   */
   if (mktmpdir_ret == 0)
     atexit(remove_tmpdir);
 }
 
-static
-void remove_tmpdir()
+static void
+remove_tmpdir()
 {
   if (!debug_tempfiles && tmpdir && !keep_temp_dir)
   {
-    /* Removing temporary directory with force. Perhaps it's better
-     not to do that as use program may leave temporary files there
-    and user may want to inspect them later  */
-    DIR * dir = opendir(tmpdir);
+    /*
+       Removing temporary directory with force. Perhaps it's better
+       not to do that as use program may leave temporary files there
+       and user may want to inspect them later  
+     */
+    DIR *dir = opendir(tmpdir);
+
     if (dir)
     {
-      dirent * entry;
-      while ((entry=readdir(dir))!=0)
+      dirent *entry;
+
+      while ((entry = readdir(dir)) != 0)
       {
-        if (   strcmp(entry->d_name, ".") == 0
-            || strcmp(entry->d_name, "..") ==0) continue;
+        if (strcmp(entry->d_name, ".") == 0
+            || strcmp(entry->d_name, "..") == 0) continue;
         char fName[FILENAME_MAX];
+
         strcpy(fName, tmpdir);
         strcat(fName, "/");
         strcat(fName, entry->d_name);
@@ -2079,18 +2247,22 @@ void remove_tmpdir()
   }
 }
 
-static void setup_argv0()
+static void
+setup_argv0()
 {
   char *tmp;
-  string_dup(tmp,global_argv[0]);
+
+  string_dup(tmp, global_argv[0]);
   if (!__file_exists(tmp))
   {
     // it was found on PATH
     char *spec = NULL;
-    string_cat(spec,"\
+
+    string_cat(spec, "\
 $(word 1,$(foreach path,$(subst $(RHIDE_PATH_SEPARATOR), ,$(PATH)),\
-$(wildcard $(path)/$(notdir ",tmp,"))))", NULL);
+$(wildcard $(path)/$(notdir ", tmp, "))))", NULL);
     char *path = expand_rhide_spec(spec);
+
     string_free(spec);
     if (*path)
     {
@@ -2101,68 +2273,71 @@ $(wildcard $(path)/$(notdir ",tmp,"))))", NULL);
       string_free(path);
   }
   FExpand(tmp);
-  split_fname(tmp,RHIDE_DIR,RHIDE_NAME,RHIDE_EXT);
+  split_fname(tmp, RHIDE_DIR, RHIDE_NAME, RHIDE_EXT);
 }
 
 static char startup_directory[256];
 
-int DebuggerFormatLine(TCEditor *editor,
+int DebuggerFormatLine(TCEditor * editor,
                        void *DrawBuf,
+
                        unsigned LinePtr,
                        int Width,
                        unsigned short Colors,
-                       unsigned lineLen,
-                       uint32 Attr,
-                       unsigned LineNo);
+                       unsigned lineLen, uint32 Attr, unsigned LineNo);
 
 #ifdef __DJGPP__
 extern char **environ;
 #endif
 
-static void dump_environment() __attribute__((noreturn));
-static void dump_environment()
+static void dump_environment() __attribute__ ((noreturn));
+static void
+dump_environment()
 {
   TMouse::suspend();
   TScreen::suspend();
   char **env = environ;
+
   dump_rhide_environment(stderr);
   while (*env)
   {
-    fprintf(stderr,"%s\n",*env);
+    fprintf(stderr, "%s\n", *env);
     env++;
   }
   exit(0);
 }
 
 /* Init the history saving for the editor related history ID`s */
-static
-void __InitHistoryIDs()
+static void
+__InitHistoryIDs()
 {
   int i;
-  for (i=hID_Start;i<hID_Start+hID_Cant;i++)
+
+  for (i = hID_Start; i < hID_Start + hID_Cant; i++)
     InitHistoryID(i);
-  InitHistoryID(100); // Read/Write block
+  InitHistoryID(100);           // Read/Write block
 }
 
 
 
-static TInputLine * rhideCreateInputLine (const TRect & rect, int aMaxLen)
+static TInputLine *
+rhideCreateInputLine(const TRect & rect, int aMaxLen)
 {
-  return new TInputLinePiped (rect, aMaxLen);
+  return new TInputLinePiped(rect, aMaxLen);
 }
 
 
-static
-void init_rhide(int _argc, char **_argv)
+static void
+init_rhide(int _argc, char **_argv)
 #define __crt0_argc _argc
 #define __crt0_argv _argv
 {
 #ifdef __DJGPP__
   __system_flags |= __system_allow_multiple_cmds;
-  __crt0_load_environment_file("rhide"); // when the exe has an other name
-                                         // than rhide force to load the
-                                         // variables for RHIDE
-  __crt0_load_environment_file("info");  // To get the INFO-path for bug-report
+  __crt0_load_environment_file("rhide");	// when the exe has an other name
+  // than rhide force to load the
+  // variables for RHIDE
+  __crt0_load_environment_file("info");	// To get the INFO-path for bug-report
 #endif
 
   global_argv = __crt0_argv;
@@ -2171,22 +2346,25 @@ void init_rhide(int _argc, char **_argv)
 
   CreateInputLine = &rhideCreateInputLine;
 
-  char *spec = string_dup(
-"INFOPATH=$(subst $(RHIDE_SPACE),$(RHIDE_PATH_SEPARATOR),\
+  char *spec =
+    string_dup("INFOPATH=$(subst $(RHIDE_SPACE),$(RHIDE_PATH_SEPARATOR),\
 $(strip $(RHIDE_CONFIG_DIRS) $(INFOPATH)))");
   char *tmp = expand_rhide_spec(spec);
+
   string_free(spec);
   putenv(tmp);
 
   push_environment();
   set_tmpdir();
   char *locale_dir = expand_rhide_spec("$(LOCALEDIR)");
+
 #ifndef __DJGPP__
   if (!*locale_dir)
   {
     string_free(locale_dir);
     // get the system default localedir
-    char *_locale_dir = BINDTEXTDOMAIN("rhide",NULL);
+    char *_locale_dir = BINDTEXTDOMAIN("rhide", NULL);
+
     if (_locale_dir)
       locale_dir = string_dup(_locale_dir);
     else
@@ -2199,7 +2377,7 @@ $(strip $(RHIDE_CONFIG_DIRS) $(INFOPATH)))");
     locale_dir = expand_rhide_spec("$(DJDIR)");
     if (*locale_dir)
     {
-      string_cat(locale_dir,"/share/locale");
+      string_cat(locale_dir, "/share/locale");
     }
     else
     {
@@ -2207,23 +2385,25 @@ $(strip $(RHIDE_CONFIG_DIRS) $(INFOPATH)))");
       locale_dir = string_dup("/usr/local/share/locale");
     }
   }
-  setlocale(LC_ALL,"");
-  BINDTEXTDOMAIN("rhide",locale_dir);
+  setlocale(LC_ALL, "");
+  BINDTEXTDOMAIN("rhide", locale_dir);
   string_free(locale_dir);
   TEXTDOMAIN("rhide");
 #if 0
   extern int convert_num_pad;
+
   convert_num_pad = 1;
 #endif
-  parse_commandline(__crt0_argc,__crt0_argv);
+  parse_commandline(__crt0_argc, __crt0_argv);
   TScreen::suspend();
-  fprintf(stderr,_("This is %s. Copyright (c) 1996-2000 by Robert H”hne\n"),IDEVersion);
-  fprintf(stderr,"             (%s %s)\n",build_date,build_time);
+  fprintf(stderr, _("This is %s. Copyright (c) 1996-2000 by Robert H”hne\n"),
+          IDEVersion);
+  fprintf(stderr, "             (%s %s)\n", build_date, build_time);
   TScreen::resume();
   PrintSetDefaults();
   InitHistoryIDs = __InitHistoryIDs;
   expand_filenames = ExpandFileNames;
-  TFileCollection::sortOptions=fcolAlphabetical | fcolCaseInsensitive;
+  TFileCollection::sortOptions = fcolAlphabetical | fcolCaseInsensitive;
 }
 
 /*
@@ -2232,29 +2412,32 @@ $(strip $(RHIDE_CONFIG_DIRS) $(INFOPATH)))");
 */
 
 const char msg[] =
-"RHIDE internal error. Please send a description of this situation\r\n"
-"as most as possible detailed to the author together with the version\r\n"
-"you are using."
+  "RHIDE internal error. Please send a description of this situation\r\n"
+  "as most as possible detailed to the author together with the version\r\n"
+  "you are using."
 #ifdef __DJGPP__
-" AND VERY IMPORTANT IS THE NEXT TRACEBACK!!!!"
+  " AND VERY IMPORTANT IS THE NEXT TRACEBACK!!!!"
 #endif
-"\r\n\r\n";
+  "\r\n\r\n";
 
 static jmp_buf abort_jmp;
+
 #ifdef __DJGPP__
 static void free_title_seg();
 #endif
 
-extern "C" __attribute__ (( __noreturn__ ))
-void abort()
+extern "C" __attribute__ ((__noreturn__))
+     void
+     abort()
 {
   char *bug;
+
   // call at least TEventQueue::resume() to clear the mouse hook
   TEventQueue::suspend();
   TScreen::suspend();
   bug = create_bug_report(0);
   write(STDERR_FILENO, bug, strlen(bug));
-  write(STDERR_FILENO, msg, sizeof(msg)-1);
+  write(STDERR_FILENO, msg, sizeof(msg) - 1);
   setjmp(abort_jmp);
 #ifdef __DJGPP__
   __djgpp_exception_state_ptr = &abort_jmp;
@@ -2266,24 +2449,28 @@ void abort()
 
 extern int LoadKeysForTCEditor(char *file);
 
-static void LoadKeys()
+static void
+LoadKeys()
 {
-  LoadKeysForTCEditor(
-    ExpandFileNameToThePointWhereTheProgramWasLoaded(KeyBindFName));
-  SLPInterfaceInit(
-    ExpandFileNameToThePointWhereTheProgramWasLoaded("macros.slp"));
+  LoadKeysForTCEditor(ExpandFileNameToThePointWhereTheProgramWasLoaded
+                      (KeyBindFName));
+  SLPInterfaceInit(ExpandFileNameToThePointWhereTheProgramWasLoaded
+                   ("macros.slp"));
 
   char *syntax_file;
-  TCEditor::SHLGenList=new TNoCaseStringCollection(5,5);
+
+  TCEditor::SHLGenList = new TNoCaseStringCollection(5, 5);
   syntax_file = ExpandFileNameToThePointWhereTheProgramWasLoaded(SHLFile);
-  if (LoadSyntaxHighLightFile(syntax_file,TCEditor::SHLArray,
-                              TCEditor::SHLGenList,
-                              TCEditor::SHLCant) != 0)
+  if (LoadSyntaxHighLightFile(syntax_file, TCEditor::SHLArray,
+                              TCEditor::SHLGenList, TCEditor::SHLCant) != 0)
   {
-  /* should be in the 8.3 DOS scheme */
+    /*
+       should be in the 8.3 DOS scheme 
+     */
     syntax_file = "__syntax";
-    FILE *f = fopen(syntax_file,"w+t");
-    fprintf(f,"\n\
+    FILE *f = fopen(syntax_file, "w+t");
+
+    fprintf(f, "\n\
 Name=C/C++\n\
 Files=C,c,cpp,cxx,cc,h,hpp,i,ii\n\
 UseInternal=1\n\
@@ -2294,17 +2481,18 @@ UseInternal=2\n\
 End\n\
 ");
     fclose(f);
-    LoadSyntaxHighLightFile(syntax_file,TCEditor::SHLArray,
-                            TCEditor::SHLGenList,
-                            TCEditor::SHLCant);
+    LoadSyntaxHighLightFile(syntax_file, TCEditor::SHLArray,
+                            TCEditor::SHLGenList, TCEditor::SHLCant);
     unlink(syntax_file);
   }
- 
+
 }
 
-static void rhide_sig(int signo)
+static void
+rhide_sig(int signo)
 {
   static int intr_in_progress = 0;
+
   switch (signo)
   {
     case SIGINT:
@@ -2312,7 +2500,7 @@ static void rhide_sig(int signo)
         return;
       intr_in_progress = 1;
       if (messageBox(_("Do you really want to interrupt RHIDE?"),
-             mfConfirmation|mfYesButton|mfNoButton) == cmYes)
+                     mfConfirmation | mfYesButton | mfNoButton) == cmYes)
       {
         destroy(App);
         chdir(startup_directory);
@@ -2320,23 +2508,28 @@ static void rhide_sig(int signo)
       }
       intr_in_progress = 0;
 #ifdef __DJGPP__
-      if (kbhit()) getch();
+      if (kbhit())
+        getch();
 #endif
-      signal(SIGINT,rhide_sig);
+      signal(SIGINT, rhide_sig);
       break;
 #ifndef __DJGPP__
     case SIGWINCH:
-      signal(SIGWINCH,rhide_sig);
+      signal(SIGWINCH, rhide_sig);
       TProgram::application->setScreenMode(TScreen::screenMode);
       Repaint();
       break;
 #endif
 #ifndef __DJGPP__
     case SIGSEGV:
-      signal(SIGSEGV,SIG_DFL);
-      /* Try to save all opened editors */
+      signal(SIGSEGV, SIG_DFL);
+      /*
+         Try to save all opened editors 
+       */
       SaveAll();
-      /* Try to save the project */
+      /*
+         Try to save the project 
+       */
       SaveProject();
       // Try the best to restore all to default (keyboard, screen, mouse )
       destroy(App);
@@ -2348,8 +2541,8 @@ static void rhide_sig(int signo)
 #ifndef __DJGPP__
     case SIGTSTP:
       TProgram::application->suspend();
-      signal(SIGTSTP,SIG_DFL);
-      signal(SIGCONT,rhide_sig);
+      signal(SIGTSTP, SIG_DFL);
+      signal(SIGCONT, rhide_sig);
       raise(signo);
       break;
     case SIGCONT:
@@ -2360,8 +2553,8 @@ static void rhide_sig(int signo)
       ClearFileHash();
       ClearFindCache();
       already_maked = 0;
-      signal(SIGCONT,SIG_DFL);
-      signal(SIGTSTP,rhide_sig);
+      signal(SIGCONT, SIG_DFL);
+      signal(SIGTSTP, rhide_sig);
       raise(signo);
       break;
 #endif
@@ -2370,22 +2563,24 @@ static void rhide_sig(int signo)
   }
 }
 
-static void init_signals()
+static void
+init_signals()
 {
   if (!no_sigint)
-    signal(SIGINT,rhide_sig);
+    signal(SIGINT, rhide_sig);
   else
     signal(SIGINT, SIG_IGN);
-  signal(SIGSEGV,rhide_sig);
+  signal(SIGSEGV, rhide_sig);
 #ifndef __DJGPP__
-  signal(SIGTSTP,rhide_sig);
-  signal(SIGTTOU,SIG_IGN);
-  signal(SIGWINCH,rhide_sig);
+  signal(SIGTSTP, rhide_sig);
+  signal(SIGTTOU, SIG_IGN);
+  signal(SIGWINCH, rhide_sig);
 #endif
 }
 
 #ifdef __DJGPP__
-static int _title_seg=-1, _title_selector=0;
+static int _title_seg = -1, _title_selector = 0;
+
 #define _TITLE_SIZE 80
 #define _OLD_TITLE 0
 #define _NEW_TITLE _OLD_TITLE+_TITLE_SIZE
@@ -2397,10 +2592,13 @@ static void
 free_title_seg()
 {
   __dpmi_regs r;
+
   if (_title_seg == -1)
     return;
 
-  /* Restore the old virtual machine title */
+  /*
+     Restore the old virtual machine title 
+   */
   r.x.ax = 0x168E;
   r.x.dx = 1;
   r.x.es = _title_seg;
@@ -2408,7 +2606,9 @@ free_title_seg()
   r.x.cx = _TITLE_SIZE;
   __dpmi_int(0x2f, &r);
 
-  /* Save the old application title */
+  /*
+     Save the old application title 
+   */
   r.x.ax = 0x168E;
   r.x.dx = 0;
   r.x.es = _title_seg;
@@ -2424,13 +2624,16 @@ static void
 _init_title()
 {
   __dpmi_regs r;
+
   if (no_title)
     return;
   _title_seg = __dpmi_allocate_dos_memory(TITLE_SIZE / 16, &_title_selector);
   if (_title_seg == -1)
     return;
 
-  /* Save the old virtual machine title */
+  /*
+     Save the old virtual machine title 
+   */
   r.x.ax = 0x168E;
   r.x.dx = 3;
   r.x.es = _title_seg;
@@ -2438,7 +2641,9 @@ _init_title()
   r.x.cx = _TITLE_SIZE;
   __dpmi_int(0x2f, &r);
 
-  /* Save the old application title */
+  /*
+     Save the old application title 
+   */
   r.x.ax = 0x168E;
   r.x.dx = 2;
   r.x.es = _title_seg;
@@ -2453,9 +2658,10 @@ static void
 _setup_title(const char *title, int offset, int subfunc)
 {
   __dpmi_regs r;
+
   if (_title_seg == -1)
     return;
-  movedata(_my_ds(), (unsigned)title, _title_selector, offset, _TITLE_SIZE);
+  movedata(_my_ds(), (unsigned) title, _title_selector, offset, _TITLE_SIZE);
   _farpokeb(_title_selector, offset + _TITLE_SIZE, 0);
   r.x.ax = 0x168E;
   r.x.dx = subfunc;
@@ -2485,17 +2691,19 @@ setup_title(const char *title)
 #endif
 }
 
-int main(int argc, char **argv)
+int
+main(int argc, char **argv)
 {
-  init_rhide(argc,argv);
+  init_rhide(argc, argv);
   if (call_usage)
     usage();
   if (dump_env)
     dump_environment();
   LoadKeys();
-  getcwd(startup_directory,255);
+  getcwd(startup_directory, 255);
 #ifdef __DJGPP__
   extern int w95_detected;
+
   if (w95_detected)
   {
     _init_title();
@@ -2508,18 +2716,20 @@ int main(int argc, char **argv)
 #endif
   App = new IDE();
   init_signals();
-  if (!PRJNAME) find_project();
+  if (!PRJNAME)
+    find_project();
   if (CheckIDE() != 1)
   {
 #ifdef __DJGPP__
     if (getenv("DJDIR") == NULL)
     {
       BigmessageBox(mfError | mfOKButton,
-       _("RHIDE has detected, that the environment variable 'DJDIR' "
-         "has not been set. This means, you haven't installed DJGPP correct. "
-         "Please read the file README.1ST from the DJGPP distribution how to "
-         "install DJGPP. If you continue now, you will get probably many "
-         "errors."));
+                    _
+                    ("RHIDE has detected, that the environment variable 'DJDIR' "
+                     "has not been set. This means, you haven't installed DJGPP correct. "
+                     "Please read the file README.1ST from the DJGPP distribution how to "
+                     "install DJGPP. If you continue now, you will get probably many "
+                     "errors."));
     }
 #endif
     {
@@ -2527,17 +2737,19 @@ int main(int argc, char **argv)
       OpenProject(PRJNAME);
       if (!PRJNAME)
       {
-        if (!EDITNAME) About();
-        if (EDITNAME) App->openEditor(EDITNAME,True);
+        if (!EDITNAME)
+          About();
+        if (EDITNAME)
+          App->openEditor(EDITNAME, True);
       }
       should_update = 1;
       App->update();
       App->run();
     }
 #ifndef __DJGPP__
-    signal(SIGSTOP,SIG_DFL);
-    signal(SIGINT,SIG_DFL);
-    signal(SIGWINCH,SIG_DFL);
+    signal(SIGSTOP, SIG_DFL);
+    signal(SIGINT, SIG_DFL);
+    signal(SIGWINCH, SIG_DFL);
 #endif
   }
   destroy(App);
@@ -2545,32 +2757,37 @@ int main(int argc, char **argv)
   return 0;
 }
 
-void IDE::fileOpen()
+void
+IDE::fileOpen()
 {
   ushort result;
   TFileDialog *dialog;
+
   InitHistoryID(RHIDE_History_source_file);
   dialog = FileOpenDialog(Project.defaultprojectmask,
-                          _("Open a file"),_("~N~ame"),fdOpenButton|fdHelpButton,
-                          RHIDE_History_source_file,default_directory);
+                          _("Open a file"), _("~N~ame"),
+                          fdOpenButton | fdHelpButton,
+                          RHIDE_History_source_file, default_directory);
   dialog->helpCtx = hcOpenEditor;
   TProgram::deskTop->insert(dialog);
-  dialog->setState(sfModal,True);
+  dialog->setState(sfModal, True);
   result = dialog->execute();
-  if( result != cmCancel )
+  if (result != cmCancel)
   {
     char fileName[PATH_MAX];
+
     string_free(Project.defaultprojectmask);
     string_free(default_directory);
-    string_dup(default_directory,dialog->directory);
-    string_dup(Project.defaultprojectmask,dialog->wildCard);
+    string_dup(default_directory, dialog->directory);
+    string_dup(Project.defaultprojectmask, dialog->wildCard);
     dialog->getData(fileName);
     TCEditWindow *win = is_on_desktop(fileName);
-    if (win != NULL) win->select();
-    else openEditor(fileName,True);
+
+    if (win != NULL)
+      win->select();
+    else
+      openEditor(fileName, True);
   }
   TProgram::deskTop->remove(dialog);
   destroy(dialog);
 }
-
-

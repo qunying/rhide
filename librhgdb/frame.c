@@ -5,7 +5,8 @@
 #include <librhgdb.h>
 #include <stdlib.h>
 
-static void init_frame_entry(frame_entry *fe)
+static void
+init_frame_entry(frame_entry * fe)
 {
   fe->file_name = NULL;
   fe->function_name = NULL;
@@ -14,18 +15,24 @@ static void init_frame_entry(frame_entry *fe)
   fe->address = 0;
 }
 
-static void clear_frame_entry(frame_entry *fe)
+static void
+clear_frame_entry(frame_entry * fe)
 {
-  if (fe->file_name) free(fe->file_name);
-  if (fe->function_name) free(fe->function_name);
-  if (fe->args) free(fe->args);
+  if (fe->file_name)
+    free(fe->file_name);
+  if (fe->function_name)
+    free(fe->function_name);
+  if (fe->args)
+    free(fe->args);
   init_frame_entry(fe);
 }
 
-static frame_entry *new_frame_entry()
+static frame_entry *
+new_frame_entry()
 {
   frame_entry *fe;
-  fe = (frame_entry *)malloc(sizeof(frame_entry));
+
+  fe = (frame_entry *) malloc(sizeof(frame_entry));
   init_frame_entry(fe);
   return fe;
 }
@@ -34,28 +41,34 @@ frame_entry **frames = NULL;
 int frame_count = 0;
 static int frame_size = 0;
 
-static void resize_frames()
+static void
+resize_frames()
 {
   if (frame_count >= frame_size)
   {
     int i;
+
     frame_size = frame_count + 1;
-    frames = (frame_entry **)realloc(frames,frame_size*sizeof(frame_entry *));
-    for (i=frame_count;i<frame_size;i++)
+    frames =
+      (frame_entry **) realloc(frames, frame_size * sizeof(frame_entry *));
+    for (i = frame_count; i < frame_size; i++)
       frames[i] = new_frame_entry();
   }
 }
 
-static frame_entry *add_frame_entry()
+static frame_entry *
+add_frame_entry()
 {
   resize_frames();
   return frames[frame_count++];
 }
 
-static void clear_frames()
+static void
+clear_frames()
 {
   int i;
-  for (i=0;i<frame_count;i++)
+
+  for (i = 0; i < frame_count; i++)
     clear_frame_entry(frames[i]);
   frame_count = 0;
 }
@@ -74,7 +87,7 @@ static int line_start;
 static int line_end;
 
 void
-_rhgdb_annotate_frame_begin (int level __attribute__((unused)), CORE_ADDR pc)
+_rhgdb_annotate_frame_begin(int level __attribute__ ((unused)), CORE_ADDR pc)
 {
   frame_begin_seen = 1;
   current_address = pc;
@@ -90,56 +103,61 @@ _rhgdb_annotate_frame_begin (int level __attribute__((unused)), CORE_ADDR pc)
 }
 
 void
-_rhgdb_annotate_frame_function_name ()
+_rhgdb_annotate_frame_function_name()
 {
-  /* remember the start of the function name */
+  /*
+     remember the start of the function name 
+   */
   function_start = get_gdb_output_buffer();
 }
 
 void
-_rhgdb_annotate_frame_args ()
+_rhgdb_annotate_frame_args()
 {
-  function_end =
-  args_start = get_gdb_output_buffer();
+  function_end = args_start = get_gdb_output_buffer();
 }
 
 void
-_rhgdb_annotate_frame_source_begin ()
+_rhgdb_annotate_frame_source_begin()
 {
   args_end = get_gdb_output_buffer();
 }
 
 void
-_rhgdb_annotate_frame_source_file ()
+_rhgdb_annotate_frame_source_file()
 {
   file_start = get_gdb_output_buffer();
 }
 
 void
-_rhgdb_annotate_frame_source_file_end ()
+_rhgdb_annotate_frame_source_file_end()
 {
   file_end = get_gdb_output_buffer();
 }
 
 void
-_rhgdb_annotate_frame_source_line ()
+_rhgdb_annotate_frame_source_line()
 {
   line_start = get_gdb_output_buffer();
 }
 
 void
-_rhgdb_annotate_frame_source_end ()
+_rhgdb_annotate_frame_source_end()
 {
   line_end = get_gdb_output_buffer();
 }
 
 void
-_rhgdb_annotate_frame_end ()
+_rhgdb_annotate_frame_end()
 {
   frame_entry *fe;
   char c;
-  if (!record_frames || !frame_begin_seen) return;
-  /* This can happen, when the function has no debugging information */
+
+  if (!record_frames || !frame_begin_seen)
+    return;
+  /*
+     This can happen, when the function has no debugging information 
+   */
   if (args_start >= 0 && args_end < 0)
     args_end = get_gdb_output_buffer();
   frame_begin_seen = 0;
@@ -149,54 +167,57 @@ _rhgdb_annotate_frame_end ()
   {
     c = gdb_output_buffer[function_end];
     gdb_output_buffer[function_end] = 0;
-    fe->function_name = strdup(gdb_output_buffer+function_start);
+    fe->function_name = strdup(gdb_output_buffer + function_start);
     gdb_output_buffer[function_end] = c;
   }
   if (file_start >= 0)
-  if (function_start >= 0)
-  {
-    c = gdb_output_buffer[file_end];
-    gdb_output_buffer[file_end] = 0;
-    fe->file_name = strdup(gdb_output_buffer+file_start);
-    gdb_output_buffer[file_end] = c;
-  }
+    if (function_start >= 0)
+    {
+      c = gdb_output_buffer[file_end];
+      gdb_output_buffer[file_end] = 0;
+      fe->file_name = strdup(gdb_output_buffer + file_start);
+      gdb_output_buffer[file_end] = c;
+    }
   if (args_start >= 0)
   {
-    if (gdb_output_buffer[args_end-1] == '\n') args_end--;
+    if (gdb_output_buffer[args_end - 1] == '\n')
+      args_end--;
     c = gdb_output_buffer[args_end];
     gdb_output_buffer[args_end] = 0;
-    fe->args = strdup(gdb_output_buffer+args_start);
+    fe->args = strdup(gdb_output_buffer + args_start);
     gdb_output_buffer[args_end] = c;
   }
   if (line_start >= 0)
   {
     c = gdb_output_buffer[line_end];
     gdb_output_buffer[line_end] = 0;
-    sscanf(gdb_output_buffer+line_start,"%d",&fe->line_number);
+    sscanf(gdb_output_buffer + line_start, "%d", &fe->line_number);
     gdb_output_buffer[line_end] = c;
   }
 }
 
-void BackTrace()
+void
+BackTrace()
 {
   clear_frames();
   record_frames = 1;
   frame_begin_seen = 0;
-  Command("backtrace",0);
+  Command("backtrace", 0);
   record_frames = 0;
 }
 
-void Finish()
+void
+Finish()
 {
-  Command("finish",0);
+  Command("finish", 0);
 }
 
-void SetFrame(level)
-  int level;
+void
+SetFrame(level)
+     int level;
 {
   char command[256];
-  sprintf(command,"f %d",level);
-  Command(command,0);
+
+  sprintf(command, "f %d", level);
+  Command(command, 0);
 }
-
-

@@ -34,6 +34,7 @@ int already_maked = 0;
 
 static char *DEPFILE_NAME = NULL;
 static char DEP_ENV[PATH_MAX];
+
 #ifndef __DJGPP__
 /* DJGPP allocates the memory for the string when doing
    putenv, but at least the putenv from the standard
@@ -89,21 +90,24 @@ do {\
     DEL_ALL_DEP();\
 } while (0)
 
-static char *buffer=NULL;
-static int bufsize=0,bufpos;
+static char *buffer = NULL;
+static int bufsize = 0, bufpos;
 static FILE *errfile;
 
 char *cpp_outname;
 char *cpp_errname;
 
-static Boolean open_errfile(char *errname)
+static Boolean
+open_errfile(char *errname)
 {
-  errfile = fopen(errname,"rt");
-  if (!errfile) return False;
+  errfile = fopen(errname, "rt");
+  if (!errfile)
+    return False;
   return True;
 }
 
-static void close_errfile()
+static void
+close_errfile()
 {
   fclose(errfile);
 }
@@ -112,23 +116,25 @@ static void close_errfile()
   Reads the next line from the error file and returns
   the length of the line or -1 for EOF
 */
-static int next_error_line()
+static int
+next_error_line()
 {
   int c;
+
   bufpos = 0;
   while ((c = fgetc(errfile)) != EOF && c != '\n')
   {
     if (bufpos == bufsize)
     {
       bufsize += 512;
-      buffer = (char *)realloc(buffer,bufsize);
+      buffer = (char *) realloc(buffer, bufsize);
     }
     buffer[bufpos++] = c;
   }
   if (bufpos == bufsize)
   {
     bufsize += 512;
-    buffer = (char *)realloc(buffer,bufsize);
+    buffer = (char *) realloc(buffer, bufsize);
   }
   buffer[bufpos] = 0;
   if (c == EOF && bufpos == 0)
@@ -136,17 +142,19 @@ static int next_error_line()
   return bufpos;
 }
 
-static Boolean check_user_messages(TMsgCollection &errs)
+static Boolean
+check_user_messages(TMsgCollection & errs)
 {
   int is_first;
+
   if (open_errfile(cpp_outname))
   {
     is_first = 1;
     while (next_error_line() >= 0)
     {
       if (is_first)
-        errs.insert(new MsgRec(NULL,_("Messages to stdout:")));
-      errs.insert(new MsgRec(NULL,buffer));
+        errs.insert(new MsgRec(NULL, _("Messages to stdout:")));
+      errs.insert(new MsgRec(NULL, buffer));
       is_first = 0;
     }
     close_errfile();
@@ -157,8 +165,8 @@ static Boolean check_user_messages(TMsgCollection &errs)
     while (next_error_line() >= 0)
     {
       if (is_first)
-        errs.insert(new MsgRec(NULL,_("Messages to stderr:")));
-      errs.insert(new MsgRec(NULL,buffer));
+        errs.insert(new MsgRec(NULL, _("Messages to stderr:")));
+      errs.insert(new MsgRec(NULL, buffer));
       is_first = 0;
     }
     close_errfile();
@@ -169,13 +177,15 @@ static Boolean check_user_messages(TMsgCollection &errs)
 
 #define ASSEMBLER_MESSAGES "Assembler messages:"
 
-static Boolean check_compile_c_errors(TMsgCollection &errs)
+static Boolean
+check_compile_c_errors(TMsgCollection & errs)
 {
   Boolean retval = True;
   static char _buffer[512];
-  char *tmp,*fname,*temp;
+  char *tmp, *fname, *temp;
   int lineno;
   msgType error;
+
   if (open_errfile(cpp_errname) == False)
     return False;
 /* Scan the file for messages. Each message is of the form:
@@ -189,13 +199,15 @@ static Boolean check_compile_c_errors(TMsgCollection &errs)
   while (next_error_line() >= 0)
   {
     error = msgError;
-    if (strncmp(buffer,"Control-Break Pressed",21) == 0)
+    if (strncmp(buffer, "Control-Break Pressed", 21) == 0)
     {
-      errs.insert(new MsgRec(NULL,_("Control-Break Pressed"),msgError));
+      errs.insert(new MsgRec(NULL, _("Control-Break Pressed"), msgError));
       retval = False;
       continue;
     }
-    if (buffer[0] && buffer[1] == ':') /* filename starts with a drive letter */
+    if (buffer[0] && buffer[1] == ':')	/*
+	   filename starts with a drive letter 
+	 */
     {
       tmp = buffer + 2;
     }
@@ -203,23 +215,26 @@ static Boolean check_compile_c_errors(TMsgCollection &errs)
     {
       tmp = buffer;
     }
-    /* The special case "In file included from FILE:LINE" or
-                        "                 from FILE:LINE" */
-    if (strncmp(buffer,"In file included from ",   22) == 0 ||
-        strncmp(buffer,"                 from ",   22) == 0 ||
-        strncmp(buffer,"In instantiation of ",     20) == 0 ||
-        strncmp(buffer,"  instantiated from ",     20) == 0 ||
-        strncmp(buffer,"  instantiated from here", 24) == 0)
+    /*
+       The special case "In file included from FILE:LINE" or
+       "                 from FILE:LINE" 
+     */
+    if (strncmp(buffer, "In file included from ", 22) == 0 ||
+        strncmp(buffer, "                 from ", 22) == 0 ||
+        strncmp(buffer, "In instantiation of ", 20) == 0 ||
+        strncmp(buffer, "  instantiated from ", 20) == 0 ||
+        strncmp(buffer, "  instantiated from here", 24) == 0)
     {
-      char *last,_last,*l;
-      fname = buffer+22;
-      last = buffer + strlen(buffer)-1;
+      char *last, _last, *l;
+
+      fname = buffer + 22;
+      last = buffer + strlen(buffer) - 1;
       _last = *last;
       *last = 0;
-      l = strrchr(buffer,':'); // the ':' before the line
+      l = strrchr(buffer, ':'); // the ':' before the line
       *l = 0;
-      sscanf(l+1,"%d",&lineno);
-      strcpy(_buffer,fname);
+      sscanf(l + 1, "%d", &lineno);
+      strcpy(_buffer, fname);
       fname = _buffer;
       *l = ':';
       *last = _last;
@@ -228,11 +243,13 @@ static Boolean check_compile_c_errors(TMsgCollection &errs)
     }
     else
     {
-      if (buffer[0] != ' ') tmp = strchr(tmp,':');
-      else tmp = NULL;
+      if (buffer[0] != ' ')
+        tmp = strchr(tmp, ':');
+      else
+        tmp = NULL;
       if (tmp)
       {
-        temp = strchr(buffer,' ');
+        temp = strchr(buffer, ' ');
         if (temp && temp < tmp)
         {
           temp = buffer;
@@ -245,12 +262,13 @@ static Boolean check_compile_c_errors(TMsgCollection &errs)
           fname = buffer;
           tmp++;
           temp = tmp;
-          while (rh_isdigit(*tmp)) tmp++;
+          while (rh_isdigit(*tmp))
+            tmp++;
           if (*tmp == ':')
           {
             *tmp = 0;
-            sscanf(temp,"%d",&lineno);
-            temp = tmp+1;
+            sscanf(temp, "%d", &lineno);
+            temp = tmp + 1;
           }
           else
           {
@@ -265,16 +283,19 @@ static Boolean check_compile_c_errors(TMsgCollection &errs)
         lineno = 0;
       }
     }
-    /* Now points fname to the filename or NULL and lineno is set correct.
-       temp points to the message, if there is one */
+    /*
+       Now points fname to the filename or NULL and lineno is set correct.
+       temp points to the message, if there is one 
+     */
     if (fname)
     {
 #if 0
-      char *bname,*full_name;
-      BaseName(fname,bname);
-      if (FindFile(bname,full_name) == True)
+      char *bname, *full_name;
+
+      BaseName(fname, bname);
+      if (FindFile(bname, full_name) == True)
       {
-        strcpy(_buffer,bname);
+        strcpy(_buffer, bname);
         fname = _buffer;
       }
       string_free(bname);
@@ -283,67 +304,93 @@ static Boolean check_compile_c_errors(TMsgCollection &errs)
     }
     else
     {
-      /* if no filename was found, make all to a normal message */
-      char *tmp=buffer;
-      while (*tmp == ' ' || *tmp == '\t') tmp++;
-      if (!*tmp) continue; // empty message
-      errs.insert(new MsgRec(NULL,buffer,msgMessage));
+      /*
+         if no filename was found, make all to a normal message 
+       */
+      char *tmp = buffer;
+
+      while (*tmp == ' ' || *tmp == '\t')
+        tmp++;
+      if (!*tmp)
+        continue;               // empty message
+      errs.insert(new MsgRec(NULL, buffer, msgMessage));
       continue;
     }
-    /* error == msgError I should check it if it is a warning */
+    /*
+       error == msgError I should check it if it is a warning 
+     */
     if (error == msgError)
     {
-      /* Is this message a warning? */
-      /* GCC says "warning:" here, but GAS - "Warning:". Therefore
-         compare ignoring symbol case  */
-      while (*temp && *temp == ' ') temp++;
+      /*
+         Is this message a warning? 
+       */
+      /*
+         GCC says "warning:" here, but GAS - "Warning:". Therefore
+         compare ignoring symbol case  
+       */
+      while (*temp && *temp == ' ')
+        temp++;
       if (strncasecmp(temp, "warning:", 8) == 0)
       {
         error = msgWarning;
         temp += 8;
-        /* skip whitespaces */
-        while (*temp && *temp == ' ') temp++;
-        if (*temp) temp--;
+        /*
+           skip whitespaces 
+         */
+        while (*temp && *temp == ' ')
+          temp++;
+        if (*temp)
+          temp--;
       }
-      /* We should also test for template instantiation messages
-         and assembler messages title line  */
-      else if (strncmp(temp,ASSEMBLER_MESSAGES,sizeof(ASSEMBLER_MESSAGES)) == 0)
+      /*
+         We should also test for template instantiation messages
+         and assembler messages title line  
+       */
+      else if (strncmp(temp, ASSEMBLER_MESSAGES, sizeof(ASSEMBLER_MESSAGES))
+               == 0)
       {
         error = msgMessage;
-        while (*--temp==' ');
+        while (*--temp == ' ');
         temp++;
         temp++;
       }
-      else if (strncmp(temp,"instantiated from here",22) == 0)
+      else if (strncmp(temp, "instantiated from here", 22) == 0)
       {
         error = msgMessage;
-        while (*--temp==' ');
+        while (*--temp == ' ');
         temp++;
-        *temp=':';
+        *temp = ':';
       }
     }
-    /* if there was no lineno found, assume it is only a message, not an error */
-    if (lineno == 0 && error == msgError) error = msgMessage;
-    errs.insert(new MsgRec(fname,temp,error,lineno));
-    if (error == msgError) retval = False;
+    /*
+       if there was no lineno found, assume it is only a message, not an error 
+     */
+    if (lineno == 0 && error == msgError)
+      error = msgMessage;
+    errs.insert(new MsgRec(fname, temp, error, lineno));
+    if (error == msgError)
+      retval = False;
   }
   close_errfile();
   return retval;
 }
 
-static Boolean check_compile_pascal_errors(TMsgCollection &errs)
+static Boolean
+check_compile_pascal_errors(TMsgCollection & errs)
 {
   return check_compile_c_errors(errs);
 }
 
 /* must be modified */
-static Boolean check_compile_fpc_errors(TMsgCollection &errs)
+static Boolean
+check_compile_fpc_errors(TMsgCollection & errs)
 {
   Boolean retval = True;
   static char _buffer[512];
-  char *tmp,*fname,*temp;
+  char *tmp, *fname, *temp;
   int lineno;
   msgType error;
+
   if (open_errfile(cpp_errname) == False)
     return False;
 /* Scan the file for messages. Each message is of the form:
@@ -357,13 +404,15 @@ static Boolean check_compile_fpc_errors(TMsgCollection &errs)
   while (next_error_line() >= 0)
   {
     error = msgError;
-    if (strncmp(buffer,"Control-Break Pressed",21) == 0)
+    if (strncmp(buffer, "Control-Break Pressed", 21) == 0)
     {
-      errs.insert(new MsgRec(NULL,_("Control-Break Pressed"),msgError));
+      errs.insert(new MsgRec(NULL, _("Control-Break Pressed"), msgError));
       retval = False;
       continue;
     }
-    if (buffer[0] && buffer[1] == ':') /* filename starts with a drive letter */
+    if (buffer[0] && buffer[1] == ':')	/*
+	   filename starts with a drive letter 
+	 */
     {
       tmp = buffer + 2;
     }
@@ -371,20 +420,23 @@ static Boolean check_compile_fpc_errors(TMsgCollection &errs)
     {
       tmp = buffer;
     }
-    /* The special case "In file included from FILE:LINE" or
-                        "                 from FILE:LINE" */
-    if (strncmp(buffer,"In file included from ",22) == 0 ||
-        strncmp(buffer,"                 from ",22) == 0)
+    /*
+       The special case "In file included from FILE:LINE" or
+       "                 from FILE:LINE" 
+     */
+    if (strncmp(buffer, "In file included from ", 22) == 0 ||
+        strncmp(buffer, "                 from ", 22) == 0)
     {
-      char *last,_last,*l;
-      fname = buffer+22;
-      last = buffer + strlen(buffer)-1;
+      char *last, _last, *l;
+
+      fname = buffer + 22;
+      last = buffer + strlen(buffer) - 1;
       _last = *last;
       *last = 0;
-      l = strrchr(buffer,':'); // the ':' before the line
+      l = strrchr(buffer, ':'); // the ':' before the line
       *l = 0;
-      sscanf(l+1,"%d",&lineno);
-      strcpy(_buffer,fname);
+      sscanf(l + 1, "%d", &lineno);
+      strcpy(_buffer, fname);
       fname = _buffer;
       *l = ':';
       *last = _last;
@@ -393,11 +445,13 @@ static Boolean check_compile_fpc_errors(TMsgCollection &errs)
     }
     else
     {
-      if (buffer[0] != ' ') tmp = strchr(tmp,':');
-      else tmp = NULL;
+      if (buffer[0] != ' ')
+        tmp = strchr(tmp, ':');
+      else
+        tmp = NULL;
       if (tmp)
       {
-        temp = strchr(buffer,' ');
+        temp = strchr(buffer, ' ');
         if (temp && temp < tmp)
         {
           temp = buffer;
@@ -410,12 +464,13 @@ static Boolean check_compile_fpc_errors(TMsgCollection &errs)
           fname = buffer;
           tmp++;
           temp = tmp;
-          while (rh_isdigit(*tmp)) tmp++;
+          while (rh_isdigit(*tmp))
+            tmp++;
           if (*tmp == ':')
           {
             *tmp = 0;
-            sscanf(temp,"%d",&lineno);
-            temp = tmp+1;
+            sscanf(temp, "%d", &lineno);
+            temp = tmp + 1;
           }
           else
           {
@@ -430,55 +485,80 @@ static Boolean check_compile_fpc_errors(TMsgCollection &errs)
         lineno = 0;
       }
     }
-    /* Now points fname to the filename or NULL and lineno is set correct.
-       temp points to the message, if there is one */
+    /*
+       Now points fname to the filename or NULL and lineno is set correct.
+       temp points to the message, if there is one 
+     */
     if (!fname)
     {
-      /* if no filename was found, make all to a normal message */
-      char *tmp=buffer;
-      while (*tmp == ' ' || *tmp == '\t') tmp++;
-      if (!*tmp) continue; // empty message
-      errs.insert(new MsgRec(NULL,buffer,msgMessage));
+      /*
+         if no filename was found, make all to a normal message 
+       */
+      char *tmp = buffer;
+
+      while (*tmp == ' ' || *tmp == '\t')
+        tmp++;
+      if (!*tmp)
+        continue;               // empty message
+      errs.insert(new MsgRec(NULL, buffer, msgMessage));
       continue;
     }
-    /* error == msgError I should check it if it is a warning */
+    /*
+       error == msgError I should check it if it is a warning 
+     */
     if (error == msgError)
     {
-      /* Is this message a warning? */
-      while (*temp && *temp == ' ') temp++;
-      if (strncmp(temp,"warning:",8) == 0)
+      /*
+         Is this message a warning? 
+       */
+      while (*temp && *temp == ' ')
+        temp++;
+      if (strncmp(temp, "warning:", 8) == 0)
       {
         error = msgWarning;
         temp += 8;
-        /* skip whitespaces */
-        while (*temp && *temp == ' ') temp++;
-        if (*temp) temp--;
+        /*
+           skip whitespaces 
+         */
+        while (*temp && *temp == ' ')
+          temp++;
+        if (*temp)
+          temp--;
       }
     }
-    /* if there was no lineno found, assume it is only a message, not an error */
-    if (lineno == 0 && error == msgError) error = msgMessage;
-    errs.insert(new MsgRec(fname,temp,error,lineno));
-    if (error == msgError) retval = False;
+    /*
+       if there was no lineno found, assume it is only a message, not an error 
+     */
+    if (lineno == 0 && error == msgError)
+      error = msgMessage;
+    errs.insert(new MsgRec(fname, temp, error, lineno));
+    if (error == msgError)
+      retval = False;
   }
   close_errfile();
   return retval;
 }
 
 
-static Boolean check_link_errors(TMsgCollection &errs)
+static Boolean
+check_link_errors(TMsgCollection & errs)
 {
   Boolean retval = True;
+
   if (open_errfile(cpp_errname) == False)
     return False;
   while (next_error_line() >= 0)
   {
-    char *tmp = strchr(buffer,' ');
+    char *tmp = strchr(buffer, ' ');
+
     if (tmp && tmp[-1] == ':')
     {
       char *temp;
+
       tmp--;
-      temp = tmp-1;
-      while (rh_isdigit(*temp)) temp--;
+      temp = tmp - 1;
+      while (rh_isdigit(*temp))
+        temp--;
       if (*temp != ':')
       {
 #if 0
@@ -486,10 +566,10 @@ static Boolean check_link_errors(TMsgCollection &errs)
 #else
         if (strstr(tmp, ": warning: ") != NULL)
 #endif
-          errs.insert(new MsgRec(NULL,buffer,msgWarning));
+          errs.insert(new MsgRec(NULL, buffer, msgWarning));
         else
         {
-          errs.insert(new MsgRec(NULL,buffer,msgError));
+          errs.insert(new MsgRec(NULL, buffer, msgError));
           retval = False;
         }
       }
@@ -498,42 +578,49 @@ static Boolean check_link_errors(TMsgCollection &errs)
         *tmp = 0;
         int line;
         char *msg;
-        sscanf(temp+1,"%d",&line);
+
+        sscanf(temp + 1, "%d", &line);
         *tmp = ':';
-        msg = tmp+2;
+        msg = tmp + 2;
         *temp = 0;
         temp--;
-        /* I scan back for the filename, because when using stabs debugging,
+        /*
+           I scan back for the filename, because when using stabs debugging,
            the linker puts out a line like:
            o:/rhide/s:rhide/idemain.cc:345: ...
-        */
-        while (temp > buffer && *temp != ':') temp--;
-        if (*temp == ':') temp--;
-        char *fname,*full_name;
-        BaseName(temp,fname);
-        if (FindFile(fname,full_name) == False)
+         */
+        while (temp > buffer && *temp != ':')
+          temp--;
+        if (*temp == ':')
+          temp--;
+        char *fname, *full_name;
+
+        BaseName(temp, fname);
+        if (FindFile(fname, full_name) == False)
         {
           string_free(fname);
-          string_dup(fname,temp);
+          string_dup(fname, temp);
         }
         string_free(full_name);
-        errs.insert(new MsgRec(fname,msg,msgError,line));
+        errs.insert(new MsgRec(fname, msg, msgError, line));
         string_free(fname);
         retval = False;
       }
     }
     else
     {
-      errs.insert(new MsgRec(NULL,buffer));
+      errs.insert(new MsgRec(NULL, buffer));
     }
   }
   close_errfile();
   return retval;
 }
 
-static Boolean check_ar_errors(TMsgCollection & errs)
+static Boolean
+check_ar_errors(TMsgCollection & errs)
 {
   Boolean retval = True;
+
   if (open_errfile(cpp_errname) == False)
     return False;
   while (next_error_line() >= 0)
@@ -542,90 +629,102 @@ static Boolean check_ar_errors(TMsgCollection & errs)
     // "...: creating ..." (after checking the sources for
     // ar this is the only message printed to stderr which
     // is not an error)
-    if (strstr(buffer,": creating ") != NULL)
+    if (strstr(buffer, ": creating ") != NULL)
     {
-      errs.insert(new MsgRec(NULL,buffer,msgMessage));
+      errs.insert(new MsgRec(NULL, buffer, msgMessage));
     }
     else
     {
       /*
-        If the line contains a `warning` somewhere, treat it
-        not as an error. This can happen for instance, if the
-        user has overwritten the spec for the archive to run
-        the linker.
-      */
+         If the line contains a `warning` somewhere, treat it
+         not as an error. This can happen for instance, if the
+         user has overwritten the spec for the archive to run
+         the linker.
+       */
       if (strstr(buffer, "warning:") == NULL)
       {
-        errs.insert(new MsgRec(NULL,buffer,msgError));
+        errs.insert(new MsgRec(NULL, buffer, msgError));
         retval = False;
       }
       else
-        errs.insert(new MsgRec(NULL,buffer,msgMessage));
+        errs.insert(new MsgRec(NULL, buffer, msgMessage));
     }
   }
   close_errfile();
   return retval;
 }
 
-static int RunCompiler(char *cmd,const char *source_name,const char *dest_name)
+static int
+RunCompiler(char *cmd, const char *source_name, const char *dest_name)
 {
   TMsgCollection *errs = new TMsgCollection();
-  char *tmp,*dname;
+  char *tmp, *dname;
+
   if (source_name)
   {
-    string_dup(tmp,_("Compiling: "));
-    string_cat(tmp,source_name);
+    string_dup(tmp, _("Compiling: "));
+    string_cat(tmp, source_name);
   }
   else
   {
-    string_dup(tmp,_("Creating: "));
-    string_cat(tmp,dest_name);
+    string_dup(tmp, _("Creating: "));
+    string_cat(tmp, dest_name);
   }
-  errs->insert(new MsgRec(NULL,tmp));
+  errs->insert(new MsgRec(NULL, tmp));
   string_free(tmp);
-  ShowMessages(errs,False);
-  FindFile(dest_name,dname);
+  ShowMessages(errs, False);
+  FindFile(dest_name, dname);
   remove(dname);
-  int run_ret = RunProgram(cmd,True,True);
-  if (run_ret != 0) remove(dname);
-  TimeOfFile(dname,True); // update the file-time-table
+  int run_ret = RunProgram(cmd, True, True);
+
+  if (run_ret != 0)
+    remove(dname);
+  TimeOfFile(dname, True);      // update the file-time-table
   string_free(dname);
   return run_ret;
 }
 
-Boolean user_check_errors(TDependency *dep,TMsgCollection &args);
+Boolean user_check_errors(TDependency * dep, TMsgCollection & args);
 static void check_c_deps(TDependency *);
 
-static int CompileDep(TDependency *dep,char *spec_name)
+static int
+CompileDep(TDependency * dep, char *spec_name)
 {
-  char *compiler = BuildCompiler(dep,spec_name);
-  int run_ret = RunCompiler(compiler,FName(dep->source_name),FName(dep->dest_name));
+  char *compiler = BuildCompiler(dep, spec_name);
+  int run_ret =
+
+    RunCompiler(compiler, FName(dep->source_name), FName(dep->dest_name));
   string_free(compiler);
   return run_ret;
 }
 
-static Boolean compile_user(TDependency *dep,char *spec)
+static Boolean
+compile_user(TDependency * dep, char *spec)
 {
   int run_ret;
   Boolean retval;
-  if (!dep) return False;
+
+  if (!dep)
+    return False;
   ERROR_TYPE error = dep->error_type;
+
   if (error == ERROR_BUILTIN_C)
   {
     SET_DEPFILE_NAME();
     SET_DEP();
   }
-  run_ret = CompileDep(dep,spec);
+  run_ret = CompileDep(dep, spec);
   if (error == ERROR_BUILTIN_C)
   {
     DEL_DEP();
     check_c_deps(dep);
   }
   TMsgCollection *errs = new TMsgCollection();
+
   switch (error)
   {
     case ERROR_AUTO:
-      switch (how_to_compile(dep->source_file_type,dep->dest_file_type))
+      switch (how_to_compile(dep->source_file_type, dep->dest_file_type))
       {
         case COMPILE_C:
         case COMPILE_C_LIKE:
@@ -657,7 +756,7 @@ static Boolean compile_user(TDependency *dep,char *spec)
   switch (error)
   {
     case ERROR_USER:
-      retval = user_check_errors(dep,*errs);
+      retval = user_check_errors(dep, *errs);
       break;
     case ERROR_BUILTIN_C:
       retval = check_compile_c_errors(*errs);
@@ -670,36 +769,42 @@ static Boolean compile_user(TDependency *dep,char *spec)
       retval = True;
       break;
   }
-  ShowMessages(errs,False);
+  ShowMessages(errs, False);
   if (!debug_tempfiles)
   {
     remove(cpp_errname);
     remove(cpp_outname);
   }
-  if (run_ret != 0) retval = False;
+  if (run_ret != 0)
+    retval = False;
   return retval;
 }
 
-static Boolean compile_s_to_obj(TDependency *dep,char *spec)
+static Boolean
+compile_s_to_obj(TDependency * dep, char *spec)
 {
-  int run_ret = CompileDep(dep,spec);
+  int run_ret = CompileDep(dep, spec);
   TMsgCollection *errs = new TMsgCollection();
   Boolean retval = check_compile_c_errors(*errs);
-  ShowMessages(errs,False);
+
+  ShowMessages(errs, False);
   if (!debug_tempfiles)
   {
     remove(cpp_errname);
     remove(cpp_outname);
   }
-  if (run_ret != 0) retval = False;
+  if (run_ret != 0)
+    retval = False;
   return retval;
 }
 
-static Boolean compile_link(TDependency *dep,char *spec)
+static Boolean
+compile_link(TDependency * dep, char *spec)
 {
-  int run_ret = CompileDep(dep,spec);
+  int run_ret = CompileDep(dep, spec);
   TMsgCollection *errs = new TMsgCollection();
   Boolean retval;
+
   if (dep->compile_id == COMPILE_LINK_PASCAL_AUTOMAKE)
   {
     if (UseFPC)
@@ -707,8 +812,7 @@ static Boolean compile_link(TDependency *dep,char *spec)
     else
       retval = check_compile_pascal_errors(*errs);
   }
-  else
-  if (dep->compile_id == COMPILE_LINK_FPC_AUTOMAKE)
+  else if (dep->compile_id == COMPILE_LINK_FPC_AUTOMAKE)
     retval = check_compile_fpc_errors(*errs);
   else
     retval = check_link_errors(*errs);
@@ -717,41 +821,54 @@ static Boolean compile_link(TDependency *dep,char *spec)
     remove(cpp_errname);
     remove(cpp_outname);
   }
-  ShowMessages(errs,False);
-  if (run_ret != 0) retval = False;
+  ShowMessages(errs, False);
+  if (run_ret != 0)
+    retval = False;
   return retval;
 }
 
-static Boolean compile_archive(TDependency *dep,char *spec)
+static Boolean
+compile_archive(TDependency * dep, char *spec)
 {
-  int run_ret = CompileDep(dep,spec);
+  int run_ret = CompileDep(dep, spec);
   TMsgCollection *errs = new TMsgCollection();
   Boolean retval = check_ar_errors(*errs);
+
   if (!debug_tempfiles)
   {
     remove(cpp_errname);
     remove(cpp_outname);
   }
-  ShowMessages(errs,False);
-  if (run_ret != 0) retval = False;
+  ShowMessages(errs, False);
+  if (run_ret != 0)
+    retval = False;
   return retval;
 }
 
-static int isStandardHeader(const char *depfile)
+static int
+isStandardHeader(const char *depfile)
 {
-  int i,count=Options.StdInc->getCount();
-  for (i=0;i<count;i++)
+  int i, count = Options.StdInc->getCount();
+
+  for (i = 0; i < count; i++)
   {
-    char *dir = expand_rhide_spec((char *)Options.StdInc->at(i));
+    char *dir = expand_rhide_spec((char *) Options.StdInc->at(i));
+
     if (!*dir)
       continue;
     char *tok, *res = NULL;
-    /* dir may be more than one directory */
-    /* it fails of course, if the directoy has spaces as part of the name :-( */
-    for (tok = strtok(dir, " "); tok; tok=strtok(NULL, " "))
+
+    /*
+       dir may be more than one directory 
+     */
+    /*
+       it fails of course, if the directoy has spaces as part of the name :-( 
+     */
+    for (tok = strtok(dir, " "); tok; tok = strtok(NULL, " "))
     {
       res = strstr(depfile, tok);
-      if (res == depfile) break;
+      if (res == depfile)
+        break;
     }
     string_free(dir);
     if (res == depfile)
@@ -760,40 +877,50 @@ static int isStandardHeader(const char *depfile)
   return 0;
 }
 
-static void check_c_deps(TDependency *dep)
+static void
+check_c_deps(TDependency * dep)
 {
   FILE *f;
-  char x[256],depfile[PATH_MAX],*temp;
-  if (dep->dependencies) destroy(dep->dependencies);
+  char x[256], depfile[PATH_MAX], *temp;
+
+  if (dep->dependencies)
+    destroy(dep->dependencies);
   dep->dependencies = NULL;
-  f = fopen(DEPFILE_NAME,"r");
+  f = fopen(DEPFILE_NAME, "r");
   if (f)
   {
     char *tmp;
-    fgets(x,255,f);
-    temp = strchr(x,':');
+
+    fgets(x, 255, f);
+    temp = strchr(x, ':');
     if (temp)
     {
       temp++;
-      while (*temp == ' ') temp++;
-      temp = strchr(temp,' ');
+      while (*temp == ' ')
+        temp++;
+      temp = strchr(temp, ' ');
       do
       {
         while (temp)
         {
-          while (*temp == ' ') temp++;
+          while (*temp == ' ')
+            temp++;
           tmp = temp;
-          if (*temp=='\n' || *temp == '\\' && temp[1] == '\n') temp = NULL;
+          if (*temp == '\n' || *temp == '\\' && temp[1] == '\n')
+            temp = NULL;
           else
           {
             char c;
             TDependency *tmp_dep;
-            while (*temp != ' ' && *temp != '\n') temp++;
+
+            while (*temp != ' ' && *temp != '\n')
+              temp++;
             c = *temp;
             *temp = 0;
-            strcpy(depfile,tmp);
+            strcpy(depfile, tmp);
             *temp = c;
             char *_depfile = string_dup(depfile);
+
             FExpand(_depfile);
             if (!isStandardHeader(depfile) && !isStandardHeader(_depfile))
             {
@@ -803,50 +930,57 @@ static void check_c_deps(TDependency *dep)
               tmp_dep->source_file_type = FILE_UNKNOWN;
               tmp_dep->dest_file_type = FILE_HEADER;
               tmp_dep->compile_id = COMPILE_NONE;
-              if (!dep->dependencies) dep->dependencies = new TDepCollection(7,8);
+              if (!dep->dependencies)
+                dep->dependencies = new TDepCollection(7, 8);
               dep->dependencies->insert(tmp_dep);
             }
             string_free(_depfile);
           }
         }
-      } while ((temp = fgets(x,255,f)));
+      }
+      while ((temp = fgets(x, 255, f)));
     }
     fclose(f);
   }
 }
 
-static Boolean compile_c_to_obj(TDependency *dep,char *spec)
+static Boolean
+compile_c_to_obj(TDependency * dep, char *spec)
 {
   SET_DEPFILE_NAME();
   SET_DEP();
-  int run_ret = CompileDep(dep,spec);
+  int run_ret = CompileDep(dep, spec);
+
   DEL_DEP();
   check_c_deps(dep);
   TMsgCollection *errs = new TMsgCollection();
   Boolean retval = check_compile_c_errors(*errs);
-  ShowMessages(errs,False);
+
+  ShowMessages(errs, False);
   if (!debug_tempfiles)
   {
     remove(DEPFILE_NAME);
     remove(cpp_errname);
     remove(cpp_outname);
   }
-  if (run_ret != 0) retval = False;
+  if (run_ret != 0)
+    retval = False;
   return retval;
 }
 
-static
-Boolean check_compile_ada_errors(TMsgCollection &errs)
+static Boolean
+check_compile_ada_errors(TMsgCollection & errs)
 {
   int is_first;
+
   if (open_errfile(cpp_outname))
   {
     is_first = 1;
     while (next_error_line() >= 0)
     {
       if (is_first)
-        errs.insert(new MsgRec(NULL,_("Messages to stdout:")));
-      errs.insert(new MsgRec(NULL,buffer));
+        errs.insert(new MsgRec(NULL, _("Messages to stdout:")));
+      errs.insert(new MsgRec(NULL, buffer));
       is_first = 0;
     }
     close_errfile();
@@ -856,25 +990,31 @@ Boolean check_compile_ada_errors(TMsgCollection &errs)
     while (next_error_line() >= 0)
     {
       int handled = 0;
-      char *_line = strchr(buffer,':');
+      char *_line = strchr(buffer, ':');
+
       if (_line)
       {
-        char *_column = strchr(_line+1,':');
+        char *_column = strchr(_line + 1, ':');
+
         if (_column)
         {
-          int line,column;
-          char *msg = strchr(_column+1,':');
+          int line, column;
+          char *msg = strchr(_column + 1, ':');
+
           if (msg)
           {
             msgType error = msgError;
+
             msg++;
-            while (*msg == ' ' || *msg == '\t') msg++;
+            while (*msg == ' ' || *msg == '\t')
+              msg++;
             *_line = 0;
-            sscanf(_line+1,"%d:%d",&line,&column);
+            sscanf(_line + 1, "%d:%d", &line, &column);
             if (strncmp(msg, "warning: ", 10) == 0)
             {
               msg += 10;
-              while (*msg == ' ' || *msg == '\t') msg++;
+              while (*msg == ' ' || *msg == '\t')
+                msg++;
               error = msgWarning;
             }
             errs.insert(new MsgRec(buffer, msg, error, line, column));
@@ -883,43 +1023,49 @@ Boolean check_compile_ada_errors(TMsgCollection &errs)
         }
       }
       if (!handled)
-        errs.insert(new MsgRec(NULL,buffer));
+        errs.insert(new MsgRec(NULL, buffer));
     }
     close_errfile();
   }
   return True;
 }
 
-static
-Boolean compile_ada_to_obj(TDependency *dep,char *spec)
+static Boolean
+compile_ada_to_obj(TDependency * dep, char *spec)
 {
-  int run_ret = CompileDep(dep,spec);
+  int run_ret = CompileDep(dep, spec);
   char *ali_name;
-  BaseName(FName(dep->dest_name),ali_name,0);
-  string_cat(ali_name,".ali");
+
+  BaseName(FName(dep->dest_name), ali_name, 0);
+  string_cat(ali_name, ".ali");
   if (open_errfile(ali_name) == True)
   {
-    if (dep->dependencies) destroy(dep->dependencies);
+    if (dep->dependencies)
+      destroy(dep->dependencies);
     dep->dependencies = NULL;
     while (next_error_line() >= 0)
     {
-      if (strncmp(buffer,"D ",2) == 0)
+      if (strncmp(buffer, "D ", 2) == 0)
       {
-        char *space = strchr(buffer+2,' ');
+        char *space = strchr(buffer + 2, ' ');
+
         if (!space)
-          space = strchr(buffer+2,'\t');
+          space = strchr(buffer + 2, '\t');
         if (space)
         {
           *space = 0;
           char *depfile;
-          FindFile(buffer+2, depfile);
+
+          FindFile(buffer + 2, depfile);
           TDependency *tmp_dep = new TDependency();
-          InitFName(tmp_dep->dest_name,depfile);
+
+          InitFName(tmp_dep->dest_name, depfile);
           tmp_dep->source_name = NULL;
           tmp_dep->source_file_type = FILE_UNKNOWN;
           tmp_dep->dest_file_type = get_file_type(depfile);
           tmp_dep->compile_id = COMPILE_NONE;
-          if (!dep->dependencies) dep->dependencies = new TDepCollection(7,8);
+          if (!dep->dependencies)
+            dep->dependencies = new TDepCollection(7, 8);
           dep->dependencies->insert(tmp_dep);
         }
       }
@@ -929,91 +1075,108 @@ Boolean compile_ada_to_obj(TDependency *dep,char *spec)
   string_free(ali_name);
   TMsgCollection *errs = new TMsgCollection();
   Boolean retval = check_compile_ada_errors(*errs);
-  ShowMessages(errs,False);
+
+  ShowMessages(errs, False);
   if (!debug_tempfiles)
   {
     remove(cpp_errname);
     remove(cpp_outname);
   }
-  if (run_ret != 0) retval = False;
+  if (run_ret != 0)
+    retval = False;
   return retval;
 }
 
-void CreateDependencies()
+void
+CreateDependencies()
 {
   char *spec = expand_rhide_spec("gcc -v -E -o /dev/null $(strip \
 $(RHIDE_INCLUDES) \
 $(foreach item,$(PROJECT_ITEMS),\
 $(subst $(RHIDE_INCLUDES),,\
 $(subst gcc,,$(subst -o $(outfile $(item)),,$(compilespec $(item)))))))");
-fprintf(stderr,"%s\n",spec);
+
+  fprintf(stderr, "%s\n", spec);
   SET_DEPFILE_NAME();
   SET_DEP();
-  RunProgram(spec,True,True);
+  RunProgram(spec, True, True);
   DEL_DEP();
   string_free(spec);
 }
 
-static Boolean compile_cc_to_obj(TDependency *dep,char *spec)
+static Boolean
+compile_cc_to_obj(TDependency * dep, char *spec)
 {
-  return compile_c_to_obj(dep,spec);
+  return compile_c_to_obj(dep, spec);
 }
 
-static Boolean compile_pascal_to_obj(TDependency *dep,char *spec)
+static Boolean
+compile_pascal_to_obj(TDependency * dep, char *spec)
 {
-  return compile_c_to_obj(dep,spec);
+  return compile_c_to_obj(dep, spec);
 }
 
 /* must be changed */
-static Boolean compile_fpc_to_obj(TDependency *dep,char *spec)
+static Boolean
+compile_fpc_to_obj(TDependency * dep, char *spec)
 {
-  return compile_c_to_obj(dep,spec);
+  return compile_c_to_obj(dep, spec);
 }
 
-static Boolean compile_objc_to_obj(TDependency *dep,char *spec)
+static Boolean
+compile_objc_to_obj(TDependency * dep, char *spec)
 {
-  return compile_c_to_obj(dep,spec);
+  return compile_c_to_obj(dep, spec);
 }
 
-static Boolean compile_f_to_obj(TDependency *dep,char *spec)
+static Boolean
+compile_f_to_obj(TDependency * dep, char *spec)
 {
-  return compile_c_to_obj(dep,spec);
+  return compile_c_to_obj(dep, spec);
 }
 
-static Boolean compile_nsm_to_obj(TDependency *dep,char *spec)
+static Boolean
+compile_nsm_to_obj(TDependency * dep, char *spec)
 {
-  return compile_c_to_obj(dep,spec);
+  return compile_c_to_obj(dep, spec);
 }
 
-Boolean compile_dep(TDependency *dep)
+Boolean
+compile_dep(TDependency * dep)
 {
   Boolean retval;
   int old_msg_count = -1;
+
   if (msg_list && msg_list->range > 0)
     old_msg_count = msg_list->list()->getCount();
-  char *sname = NULL,*dname = NULL;
-  if (dep->compile_id == COMPILE_NONE) return True;
+  char *sname = NULL, *dname = NULL;
+
+  if (dep->compile_id == COMPILE_NONE)
+    return True;
   Boolean user_spec;
-  Boolean was_found=True,is_rcs_file = False;
-  char *spec = GetCompilerSpec(dep,user_spec);
+  Boolean was_found = True, is_rcs_file = False;
+  char *spec = GetCompilerSpec(dep, user_spec);
+
   if (!spec || dep->compile_id == COMPILE_UNKNOWN && user_spec == False)
   {
     BigmessageBox(mfError | mfOKButton,
-      _("Don't know how to build %s from %s"),
-      FName(dep->dest_name),FName(dep->source_name));
+                  _("Don't know how to build %s from %s"),
+                  FName(dep->dest_name), FName(dep->source_name));
     return False;
   }
   if (UseRCS)
   {
     if (dep->source_name
-        && (was_found = FindFile(FName(dep->source_name),sname)) == False)
+        && (was_found = FindFile(FName(dep->source_name), sname)) == False)
     {
-      char *rcs_name=NULL;
+      char *rcs_name = NULL;
+
       string_free(sname);
-      is_rcs_file = was_found = FindRCSFile(FName(dep->source_name),rcs_name,sname);
+      is_rcs_file = was_found =
+        FindRCSFile(FName(dep->source_name), rcs_name, sname);
       if (was_found)
       {
-        CheckoutRCSFile(rcs_name,sname,0);
+        CheckoutRCSFile(rcs_name, sname, 0);
         string_free(rcs_name);
       }
     }
@@ -1021,27 +1184,29 @@ Boolean compile_dep(TDependency *dep)
   else
   {
     if (dep->source_name)
-      was_found = FindFile(FName(dep->source_name),sname);
+      was_found = FindFile(FName(dep->source_name), sname);
   }
   if (dep->source_name && was_found == False)
   {
-    BigmessageBox(mfError | mfOKButton,_("Could not find the source file "
-                                      "'%s'. Make sure, that the file "
-                                      "exist or check the settings in "
-                                      "'Options/Directories' for the "
-                                      "correct paths."),FName(dep->source_name));
+    BigmessageBox(mfError | mfOKButton, _("Could not find the source file "
+                                          "'%s'. Make sure, that the file "
+                                          "exist or check the settings in "
+                                          "'Options/Directories' for the "
+                                          "correct paths."),
+                  FName(dep->source_name));
     string_free(sname);
     return False;
   }
-  FindFile(FName(dep->dest_name),dname);
+  FindFile(FName(dep->dest_name), dname);
   already_maked = 0;
 #ifdef INTERNAL_DEBUGGER
-  if (DEBUGGER_STARTED()) RESET();
+  if (DEBUGGER_STARTED())
+    RESET();
   ClearSymbols();
 #endif
   if (user_spec == True)
   {
-    retval = compile_user(dep,spec);
+    retval = compile_user(dep, spec);
   }
   else
   {
@@ -1051,42 +1216,42 @@ Boolean compile_dep(TDependency *dep)
         retval = compile_ada_to_obj(dep, spec);
         break;
       case COMPILE_ASM:
-        retval = compile_s_to_obj(dep,spec);
+        retval = compile_s_to_obj(dep, spec);
         break;
       case COMPILE_PASCAL:
-        retval = compile_pascal_to_obj(dep,spec);
+        retval = compile_pascal_to_obj(dep, spec);
         break;
       case COMPILE_FPC:
-        retval = compile_fpc_to_obj(dep,spec);
+        retval = compile_fpc_to_obj(dep, spec);
         break;
       case COMPILE_C:
       case COMPILE_C_LIKE:
-        retval = compile_c_to_obj(dep,spec);
+        retval = compile_c_to_obj(dep, spec);
         break;
       case COMPILE_CC:
       case COMPILE_CC_LIKE:
-        retval = compile_cc_to_obj(dep,spec);
+        retval = compile_cc_to_obj(dep, spec);
         break;
       case COMPILE_OBJC:
-        retval = compile_objc_to_obj(dep,spec);
+        retval = compile_objc_to_obj(dep, spec);
         break;
       case COMPILE_NASM:
-        retval = compile_nsm_to_obj(dep,spec);
+        retval = compile_nsm_to_obj(dep, spec);
         break;
       case COMPILE_FORTRAN:
-        retval = compile_f_to_obj(dep,spec);
+        retval = compile_f_to_obj(dep, spec);
         break;
       case COMPILE_LINK:
       case COMPILE_LINK_PASCAL_AUTOMAKE:
       case COMPILE_LINK_FPC_AUTOMAKE:
-        retval = compile_link(dep,spec);
+        retval = compile_link(dep, spec);
         break;
       case COMPILE_ARCHIVE:
-        retval = compile_archive(dep,spec);
+        retval = compile_archive(dep, spec);
         break;
       default:
         if (spec)
-          retval = compile_user(dep,spec);
+          retval = compile_user(dep, spec);
         else
           retval = False;
         break;
@@ -1095,8 +1260,8 @@ Boolean compile_dep(TDependency *dep)
   if (retval == True)
   {
     TMsgCollection *errs = new TMsgCollection();;
-    errs->insert((new MsgRec(NULL,_("no errors"))));
-    ShowMessages(errs,False);
+    errs->insert((new MsgRec(NULL, _("no errors"))));
+    ShowMessages(errs, False);
     if (PRJSTACKCOUNT == 0 &&
         (dep->compile_id == COMPILE_ARCHIVE ||
          dep->compile_id == COMPILE_LINK))
@@ -1107,8 +1272,8 @@ Boolean compile_dep(TDependency *dep)
   else
   {
     TMsgCollection *errs = new TMsgCollection();;
-    errs->insert((new MsgRec(NULL,_("There were some errors"))));
-    ShowMessages(errs,False,old_msg_count);
+    errs->insert((new MsgRec(NULL, _("There were some errors"))));
+    ShowMessages(errs, False, old_msg_count);
     remove(dname);
   }
   if (UseRCS && is_rcs_file)
@@ -1120,4 +1285,3 @@ Boolean compile_dep(TDependency *dep)
   string_free(spec);
   return retval;
 }
-

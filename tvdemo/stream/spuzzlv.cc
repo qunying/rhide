@@ -4,8 +4,6 @@
 
 #include "puzzle.h"
 
-TStreamableClass RPuzzleView( TPuzzleView::name,
-                              TPuzzleView::build,
-                              __DELTA(TPuzzleView)
-                            );
+TStreamableClass RPuzzleView(TPuzzleView::name,
 
+                             TPuzzleView::build, __DELTA(TPuzzleView));

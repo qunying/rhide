@@ -46,19 +46,22 @@
 #ifdef __DJGPP__
 #include <conio.h>
 
-static void NORM()
+static void
+NORM()
 {
   textcolor(7);
   textbackground(0);
 }
 
-static void LIGHT()
+static void
+LIGHT()
 {
   textcolor(0);
   textbackground(7);
 }
 
-static void CLEAR_SCREEN()
+static void
+CLEAR_SCREEN()
 {
   clrscr();
 }
@@ -70,21 +73,24 @@ static void CLEAR_SCREEN()
 
 #include <curses.h>
 
-static void NORM()
+static void
+NORM()
 {
 #if 1
 //  attr_set(A_NORMAL);
 #endif
 }
 
-static void LIGHT()
+static void
+LIGHT()
 {
 #if 1
 //  attr_set(A_REVERSE);
 #endif
 }
 
-static void CLEAR_SCREEN()
+static void
+CLEAR_SCREEN()
 {
 }
 
@@ -97,16 +103,17 @@ static void CLEAR_SCREEN()
 
 #include <unistd.h>
 
-static int __file_exists(const char *fname)
+static int
+__file_exists(const char *fname)
 {
-  return (access(fname,R_OK) == 0);
+  return (access(fname, R_OK) == 0);
 }
 
 #endif
 
 #include <unistd.h>
 
-extern "C" double fstrcmp(const char *,const char *);
+extern "C" double fstrcmp(const char *, const char *);
 
 struct msg
 {
@@ -123,12 +130,12 @@ static int only_similar = 0;
 static int write_all = 0;
 static char MSG[4000];
 static char ID[4000];
-static FILE *fi,*fo;
+static FILE *fi, *fo;
 static char LINE[4000];
 static char line[4000];
 static int line_count = 0;
-static char *COMMENT=NULL;
-static char *SOURCE_FILE=NULL;
+static char *COMMENT = NULL;
+static char *SOURCE_FILE = NULL;
 static int SOURCE_LINE;
 static char *base_dir = ".";
 
@@ -136,12 +143,14 @@ static char *last_fname = NULL;
 static char **last_source = NULL;
 static int last_lines_count = 0;
 static int last_lines_size = 0;
+
 #define line_diff 5
 
-static
-int read_line(char *buf, int max_size, FILE *f)
+static int
+read_line(char *buf, int max_size, FILE * f)
 {
   char *p = buf;
+
   max_size--;
   while (!feof(f))
   {
@@ -152,7 +161,7 @@ int read_line(char *buf, int max_size, FILE *f)
       *p = 0;
       return 1;
     }
-    if (p-buf < max_size)
+    if (p - buf < max_size)
       p++;
   }
   *p++ = '\n';
@@ -170,27 +179,33 @@ read_source_file(char *fname)
   string_free(last_fname);
   last_fname = string_dup(fname);
   int i;
-  for (i=0; i<last_lines_count; i++)
+
+  for (i = 0; i < last_lines_count; i++)
   {
     string_free(last_source[i]);
   }
   last_lines_count = 0;
   char *_fname = NULL;
+
   if (__file_exists(fname))
     string_cat(_fname, fname);
   else
     string_cat(_fname, base_dir, "/", fname, NULL);
   FILE *f = fopen(_fname, "rt");
+
   string_free(_fname);
   if (!f)
     return 0;
   char buf[80];
+
   while (read_line(buf, 79, f))
   {
     if (last_lines_count == last_lines_size)
     {
       last_lines_size += 128;
-      last_source = (char**)realloc(last_source, last_lines_size*sizeof(char*));
+      last_source =
+
+        (char **) realloc(last_source, last_lines_size * sizeof(char *));
     }
     last_source[last_lines_count++] = string_dup(buf);
   }
@@ -204,9 +219,11 @@ write_source_lines(char *fname, int line_no)
   if (!read_source_file(fname))
     return;
   int start_line = line_no - 1 - line_diff;
+
   if (start_line < 0)
     start_line = 0;
   int end_line = line_no + line_diff;
+
   if (end_line >= last_lines_count)
     end_line = last_lines_count;
   CLEAR_SCREEN();
@@ -215,7 +232,7 @@ write_source_lines(char *fname, int line_no)
   NORM();
   while (start_line <= end_line)
   {
-    if (start_line+1 == line_no)
+    if (start_line + 1 == line_no)
       LIGHT();
     else
       NORM();
@@ -229,19 +246,22 @@ write_source_lines(char *fname, int line_no)
    special case in TV programs, so if I change the hotkey for a string
    there is no need to retranslate the string.
 */
-char *similar(char *msg)
+char *
+similar(char *msg)
 {
   char *buffer;
-  char *t1,*t2;
+  char *t1, *t2;
+
   buffer = string_dup(msg);
-  t1 = strchr(buffer,'~');
+  t1 = strchr(buffer, '~');
   while (t1)
   {
-    t2 = strchr(t1+1,'~');
-    if (!t2) break;
-    strcpy(t1,t1+1);
-    strcpy(t2-1,t2);
-    t1 = strchr(buffer,'~');
+    t2 = strchr(t1 + 1, '~');
+    if (!t2)
+      break;
+    strcpy(t1, t1 + 1);
+    strcpy(t2 - 1, t2);
+    t1 = strchr(buffer, '~');
   }
   return buffer;
 }
@@ -249,7 +269,7 @@ char *similar(char *msg)
 static int
 cmp_msg(const void *m1, const void *m2)
 {
-  return strcmp(((struct msg *)m1)->id, ((struct msg *)m2)->id);
+  return strcmp(((struct msg *) m1)->id, ((struct msg *) m2)->id);
 }
 
 static void
@@ -258,19 +278,24 @@ sort_msgs()
   qsort(msgs, msg_count, sizeof(struct msg), cmp_msg);
 }
 
-static struct msg *find_msg(char *id)
+static struct msg *
+find_msg(char *id)
 {
   int i;
-  for (i=0;i<msg_count;i++)
+
+  for (i = 0; i < msg_count; i++)
   {
-    if (strcmp(msgs[i].id,id) == 0) return &msgs[i];
+    if (strcmp(msgs[i].id, id) == 0)
+      return &msgs[i];
   }
   return NULL;
 }
 
-void add_msg(char *id,char *msg)
+void
+add_msg(char *id, char *msg)
 {
   struct msg *_msg = find_msg(id);
+
   if (_msg)
   {
     string_free(_msg->Msg);
@@ -279,7 +304,8 @@ void add_msg(char *id,char *msg)
     _msg->comment = COMMENT ? string_dup(COMMENT) : NULL;
     return;
   }
-  msgs = (struct msg *)realloc(msgs,sizeof(struct msg)*(msg_count+1));
+  msgs = (struct msg *) realloc(msgs, sizeof(struct msg) * (msg_count + 1));
+
   msgs[msg_count].id = string_dup(id);
   msgs[msg_count].Msg = string_dup(msg);
   msgs[msg_count].id_ = similar(id);
@@ -287,25 +313,29 @@ void add_msg(char *id,char *msg)
   msg_count++;
 }
 
-static char *read_line()
+static char *
+read_line()
 {
-  line_count ++;
-  return fgets(LINE,4000,fi);
+  line_count++;
+  return fgets(LINE, 4000, fi);
 }
 
-int read_id(int write_it)
+int
+read_id(int write_it)
 {
   int started = 0;
   int file_seen = 0;
-  char *start,*end;
+  char *start, *end;
+
   ID[0] = 0;
   string_free(COMMENT);
   string_free(SOURCE_FILE);
   while (read_line())
   {
-    if (!started && strncmp(LINE,"msgid ",6) != 0)
+    if (!started && strncmp(LINE, "msgid ", 6) != 0)
     {
-      if (write_it && write_all) fprintf(fo,"%s",LINE);
+      if (write_it && write_all)
+        fprintf(fo, "%s", LINE);
       if (strncmp(LINE, "# ", 2) == 0)
       {
         string_cat(COMMENT, LINE);
@@ -313,11 +343,13 @@ int read_id(int write_it)
       if (!file_seen && strncmp(LINE, "#: ", 3) == 0)
       {
         file_seen = 1;
-        char *a = LINE+3;
-        char *b=a;
+        char *a = LINE + 3;
+        char *b = a;
+
         while (*b)
         {
-          if ((*b == ':') && isdigit(b[1])) break;
+          if ((*b == ':') && isdigit(b[1]))
+            break;
           b++;
         }
         *b = 0;
@@ -327,131 +359,157 @@ int read_id(int write_it)
       }
       continue;
     }
-    if (started && LINE[0] != '\"') return 1;
+    if (started && LINE[0] != '\"')
+      return 1;
     if (!started && write_it)
       fprintf(fo, "msgid  ");
-    start = strchr(LINE,'\"');
-    if (!start) return 0;
+    start = strchr(LINE, '\"');
+    if (!start)
+      return 0;
     start++;
-    end = strrchr(LINE,'\"');
-    if (!end) return 0;
+    end = strrchr(LINE, '\"');
+    if (!end)
+      return 0;
     *end = 0;
     if (write_it)
       fprintf(fo, "\"%s\"\n", start);
-    strcat(ID,start);
+    strcat(ID, start);
     started = 1;
   }
   return 0;
 }
 
-int read_msg()
+int
+read_msg()
 {
   int started = 0;
-  char *start,*end;
+  char *start, *end;
   char *xline;
 
   MSG[0] = 0;
   do
   {
-    xline=LINE;
-    /* Cut spaces on the beginning */
-    while (*xline==' ' || *xline=='\t')
+    xline = LINE;
+    /*
+       Cut spaces on the beginning 
+     */
+    while (*xline == ' ' || *xline == '\t')
       xline++;
 
 /* fprintf(stderr,"%s\n",LINE); */
-    if (!started && (strncmp(xline,"msgstr ",7) != 0))
+    if (!started && (strncmp(xline, "msgstr ", 7) != 0))
     {
-      fprintf(stderr,"Error: No 'msgstr' keyword found. (line %d)\n",line_count);
+      fprintf(stderr, "Error: No 'msgstr' keyword found. (line %d)\n",
+              line_count);
     }
-    if (started && xline[0] != '\"') return 1;
+    if (started && xline[0] != '\"')
+      return 1;
     started = 1;
-    start = strchr(xline,'\"')+1;
-    end = strrchr(xline,'\"');
+    start = strchr(xline, '\"') + 1;
+    end = strrchr(xline, '\"');
     *end = 0;
-    strcat(MSG,start);
-  } while (read_line());
+    strcat(MSG, start);
+  }
+  while (read_line());
   return 0;
 }
 
-static
-void put_breakline(FILE *f,int start_len,int max_len,char *s)
+static void
+put_breakline(FILE * f, int start_len, int max_len, char *s)
 {
   int len;
+
   while (1)
   {
     char *tmp;
+
     len = strlen(s);
-    if (len+start_len <= max_len)
+    if (len + start_len <= max_len)
     {
-      fprintf(f,"\"%s\"\n",s);
+      fprintf(f, "\"%s\"\n", s);
       return;
     }
-    tmp = s + max_len-start_len;
-    while (tmp > s && *tmp != ' ') tmp--;
+    tmp = s + max_len - start_len;
+    while (tmp > s && *tmp != ' ')
+      tmp--;
     if (tmp == s)
     {
-      fprintf(f,"\"%s\"\n",s);
+      fprintf(f, "\"%s\"\n", s);
       return;
     }
     *tmp = 0;
-    fprintf(f,"\"%s \"\n",s);
+    fprintf(f, "\"%s \"\n", s);
     *tmp = ' ';
     start_len = 0;
-    s = tmp+1;
+    s = tmp + 1;
   }
 }
 
-void write_id(char *msg, char *comment)
+void
+write_id(char *msg, char *comment)
 {
   char *tmp;
   char *start = msg;
   int started = 7;
+
   if (comment)
     fprintf(fo, "%s\n", comment);
-  while ((tmp = strstr(start,"\\n")) != NULL)
+  while ((tmp = strstr(start, "\\n")) != NULL)
   {
     char c = tmp[2];
+
     tmp += 2;
     *tmp = 0;
-    if (started) fprintf(fo,"msgid  ");
+    if (started)
+      fprintf(fo, "msgid  ");
     put_breakline(fo, started, 75, start);
     started = 0;
     *tmp = c;
     start = tmp;
   }
-  if (started) fprintf(fo,"msgid  ");
-  if (started || *start) put_breakline(fo, started, 75, start);
+  if (started)
+    fprintf(fo, "msgid  ");
+  if (started || *start)
+    put_breakline(fo, started, 75, start);
   fflush(fo);
 }
 
-void write_msg(char *msg)
+void
+write_msg(char *msg)
 {
   char *tmp;
   char *start = msg;
   int started = 7;
-  while ((tmp = strstr(start,"\\n")) != NULL)
+
+  while ((tmp = strstr(start, "\\n")) != NULL)
   {
     char c = tmp[2];
+
     tmp += 2;
     *tmp = 0;
-    if (started) fprintf(fo,"msgstr ");
+    if (started)
+      fprintf(fo, "msgstr ");
     put_breakline(fo, started, 75, start);
     started = 0;
     *tmp = c;
     start = tmp;
   }
-  if (started) fprintf(fo,"msgstr ");
-  if (started || *start) put_breakline(fo, started, 75, start);
+  if (started)
+    fprintf(fo, "msgstr ");
+  if (started || *start)
+    put_breakline(fo, started, 75, start);
   fprintf(fo, "\n");
   fflush(fo);
 }
 
-static void convert(char *s)
+static void
+convert(char *s)
 {
   char *b;
-  while ((b = strchr(s,'\b')) != NULL)
+
+  while ((b = strchr(s, '\b')) != NULL)
   {
-    strcpy(b-1,b+1);
+    strcpy(b - 1, b + 1);
   }
 }
 
@@ -462,17 +520,19 @@ static void convert(char *s)
            -3 empty
 */
 
-int fuzzy_search(char *id,char *idd)
+int
+fuzzy_search(char *id, char *idd)
 {
   int i;
   char c;
   double best_weight;
   int best = -1;
   double weight;
+
   best_weight = 0.6;
-  for (i=0;i<msg_count;i++)
+  for (i = 0; i < msg_count; i++)
   {
-    weight = fstrcmp(id,msgs[i].id_);
+    weight = fstrcmp(id, msgs[i].id_);
     if (weight > best_weight)
     {
       best_weight = weight;
@@ -481,16 +541,17 @@ int fuzzy_search(char *id,char *idd)
   }
   while (best == -1)
   {
-    if (only_similar) return -3;
+    if (only_similar)
+      return -3;
     NORM();
-    cprintf("Please translate:"CRLF"  ");
+    cprintf("Please translate:" CRLF "  ");
     LIGHT();
-    cprintf("%s",idd);
+    cprintf("%s", idd);
     NORM();
-    cprintf(CRLF"Enter the string: ");
+    cprintf(CRLF "Enter the string: ");
     LIGHT();
     line[0] = 0;
-    cscanf("%[^"CR"]",line);
+    cscanf("%[^" CR "]", line);
     convert(line);
     NORM();
     cprintf("\nAccept ? (y)es/(n)o/(c)ancel/(e)nd/(q)uit ");
@@ -505,30 +566,32 @@ int fuzzy_search(char *id,char *idd)
         case 'e':
           return -1;
       }
-    } while (c != 'y' && c != 'n' && c != 'c');
+    }
+    while (c != 'y' && c != 'n' && c != 'c');
     NORM();
-    cprintf("%c"CRLF,c);
+    cprintf("%c" CRLF, c);
     if (c == 'y')
     {
-      add_msg(idd,line);
-      return msg_count-1;
+      add_msg(idd, line);
+      return msg_count - 1;
     }
-    if (c == 'c') return -3;
+    if (c == 'c')
+      return -3;
   }
   NORM();
-  cprintf("translate:"CRLF"  ");
+  cprintf("translate:" CRLF "  ");
   LIGHT();
-  cprintf("%s",idd);
+  cprintf("%s", idd);
   NORM();
-  cprintf(CRLF"from"CRLF"  ");
+  cprintf(CRLF "from" CRLF "  ");
   LIGHT();
-  cprintf("%s",msgs[best].id);
+  cprintf("%s", msgs[best].id);
   NORM();
-  cprintf(CRLF"to"CRLF"             ");
+  cprintf(CRLF "to" CRLF "             ");
   LIGHT();
-  cprintf("%s",msgs[best].Msg);
+  cprintf("%s", msgs[best].Msg);
   NORM();
-  cprintf(CRLF"??? (y)es/(n)o/(c)hange/(e)nd/(q)uit ");
+  cprintf(CRLF "??? (y)es/(n)o/(c)hange/(e)nd/(q)uit ");
   do
   {
     c = tolower(getch());
@@ -539,15 +602,16 @@ int fuzzy_search(char *id,char *idd)
       case 'e':
         return -1;
     }
-  } while (c != 'y' && c != 'n' && c != 'c');
+  }
+  while (c != 'y' && c != 'n' && c != 'c');
   NORM();
-  cprintf("%c"CRLF,c);
+  cprintf("%c" CRLF, c);
   if (c == 'y')
   {
-    strcpy(MSG,msgs[best].Msg);
-    strcpy(MSG+strlen(MSG),"\\0# FUZZY");
-    add_msg(idd,MSG);
-    return msg_count-1;
+    strcpy(MSG, msgs[best].Msg);
+    strcpy(MSG + strlen(MSG), "\\0# FUZZY");
+    add_msg(idd, MSG);
+    return msg_count - 1;
 /*  return best; */
   }
   while (c == 'c')
@@ -556,7 +620,7 @@ int fuzzy_search(char *id,char *idd)
     cprintf("Translation: ");
     LIGHT();
     line[0] = 0;
-    cscanf("%[^"CR"]",line);
+    cscanf("%[^" CR "]", line);
     convert(line);
     NORM();
     c = tolower(getch());
@@ -571,13 +635,15 @@ int fuzzy_search(char *id,char *idd)
         case 'e':
           return -1;
       }
-    } while (c != 'y' && c != 'n' && c != 'c');
+    }
+    while (c != 'y' && c != 'n' && c != 'c');
     NORM();
-    cprintf("%c"CRLF,c);
+    cprintf("%c" CRLF, c);
   }
-  if (c == 'n') return -3;
-  add_msg(idd,line);
-  return msg_count-1;
+  if (c == 'n')
+    return -3;
+  add_msg(idd, line);
+  return msg_count - 1;
 }
 
 /*
@@ -586,18 +652,20 @@ int fuzzy_search(char *id,char *idd)
          2 for quit
 */
 
-int translate()
+int
+translate()
 {
   int i;
   char *id_;
+
 /*  if (ID[0] == 0)
     {
       write_msg("");
       return;
     } */
-  for (i=0;i<msg_count;i++)
+  for (i = 0; i < msg_count; i++)
   {
-    if (strcmp(msgs[i].id,ID) == 0)
+    if (strcmp(msgs[i].id, ID) == 0)
     {
       write_id(msgs[i].id, msgs[i].comment);
       write_msg(msgs[i].Msg);
@@ -611,26 +679,27 @@ int translate()
     return 0;
   }
   id_ = similar(ID);
-  for (i=0;i<msg_count;i++)
+  for (i = 0; i < msg_count; i++)
   {
-    if (strcmp(msgs[i].id_,id_) == 0) // do it not silently
+    if (strcmp(msgs[i].id_, id_) == 0)	// do it not silently
     {
       char c;
+
       write_source_lines(SOURCE_FILE, SOURCE_LINE);
       NORM();
-      cprintf("translate:"CRLF"  ");
+      cprintf("translate:" CRLF "  ");
       LIGHT();
-      cprintf("%s",ID);
+      cprintf("%s", ID);
       NORM();
-      cprintf(CRLF"from"CRLF"  ");
+      cprintf(CRLF "from" CRLF "  ");
       LIGHT();
-      cprintf("%s",msgs[i].id);
+      cprintf("%s", msgs[i].id);
       NORM();
-      cprintf(CRLF"to"CRLF"             ");
+      cprintf(CRLF "to" CRLF "             ");
       LIGHT();
-      cprintf("%s",msgs[i].Msg);
+      cprintf("%s", msgs[i].Msg);
       NORM();
-      cprintf(CRLF"??? (y)es/(n)o/(c)hange/(e)nd/(q)uit ");
+      cprintf(CRLF "??? (y)es/(n)o/(c)hange/(e)nd/(q)uit ");
       do
       {
         c = tolower(getch());
@@ -641,12 +710,13 @@ int translate()
           case 'e':
             return 1;
         }
-      } while (c != 'y' && c != 'n' && c != 'c');
+      }
+      while (c != 'y' && c != 'n' && c != 'c');
       NORM();
-      cprintf("%c"CRLF,c);
+      cprintf("%c" CRLF, c);
       if (c == 'y')
       {
-        add_msg(ID,msgs[i].Msg);
+        add_msg(ID, msgs[i].Msg);
         write_msg(msgs[i].Msg);
         return 0;
       }
@@ -656,7 +726,7 @@ int translate()
         cprintf("Translation: ");
         LIGHT();
         line[0] = 0;
-        cscanf("%[^"CR"]",line);
+        cscanf("%[^" CR "]", line);
         convert(line);
         NORM();
         c = tolower(getch());
@@ -671,20 +741,21 @@ int translate()
             case 'e':
               return 1;
           }
-        } while (c != 'y' && c != 'n' && c != 'c');
+        }
+        while (c != 'y' && c != 'n' && c != 'c');
         NORM();
-        cprintf("%c"CRLF,c);
+        cprintf("%c" CRLF, c);
       }
       if (c != 'n')
       {
-        add_msg(ID,line);
+        add_msg(ID, line);
         write_msg(line);
         return 0;
       }
     }
   }
   write_source_lines(SOURCE_FILE, SOURCE_LINE);
-  i = fuzzy_search(id_,ID);
+  i = fuzzy_search(id_, ID);
   write_id(ID, NULL);
   if (i > -1)
     write_msg(msgs[i].Msg);
@@ -699,7 +770,8 @@ int translate()
 
 char **potable;
 int PotableItems;
-int main(int argc,char *argv[])
+int
+main(int argc, char *argv[])
 {
   char *catfile;
   char *ocatfile;
@@ -707,24 +779,26 @@ int main(int argc,char *argv[])
   char *potfile;
 
   int i;
+
 #ifdef __linux__
   initscr();
 #endif
 
   catfile = NULL;
   ocatfile = NULL;
-  outputfile=NULL;
+  outputfile = NULL;
   potfile = NULL;
 
 
-  potable=(char**)malloc(sizeof(char *));
-  PotableItems=0;
-  *potable=NULL;
+  potable = (char **) malloc(sizeof(char *));
+
+  PotableItems = 0;
+  *potable = NULL;
 
 /* Parse Arguments */
   while (argc > 1)
   {
-    if (strcmp(argv[1],"-l") == 0)
+    if (strcmp(argv[1], "-l") == 0)
     {
       write_all = 1;
       argc--;
@@ -732,29 +806,28 @@ int main(int argc,char *argv[])
       continue;
     }
 
-    if (strcmp(argv[1],"--help") == 0 || strcmp(argv[1],"-?") == 0 )
+    if (strcmp(argv[1], "--help") == 0 || strcmp(argv[1], "-?") == 0)
     {
-      printf(
- "\n>>>>msgcat<<<\n"
- "This program can be used to translate the strings in a more friendly\n"
- "way. It knows about the special char '~' in keywords, so there is\n"
- "no necessary at all all, to retranslate the string, if the hotkey\n"
- "in the key has changed. It can read also any previous translated\n"
- "files to get possible translations from those files.\n"
- "\n   The usage is:\n"
- " msgcat [-l] [-s] [--only-similar] [-cat cat-file ] [-ocat cat-file]\n"
- "oldest-file any-newer-file potfile output-file\n"
- "\n"
- "where old-file(s) are the files, with existing translations in descending\n"
- "   order by time, because if a file contains a translation,\n"
- "   which was already found, the new one is taken.\n"
- "The file cat-file can be used to read from and to store in all the\n"
- "   translations. This file can contain also translations, which are\n"
- "   currently not used by the potfile.");
-      return(0);
+      printf("\n>>>>msgcat<<<\n"
+             "This program can be used to translate the strings in a more friendly\n"
+             "way. It knows about the special char '~' in keywords, so there is\n"
+             "no necessary at all all, to retranslate the string, if the hotkey\n"
+             "in the key has changed. It can read also any previous translated\n"
+             "files to get possible translations from those files.\n"
+             "\n   The usage is:\n"
+             " msgcat [-l] [-s] [--only-similar] [-cat cat-file ] [-ocat cat-file]\n"
+             "oldest-file any-newer-file potfile output-file\n"
+             "\n"
+             "where old-file(s) are the files, with existing translations in descending\n"
+             "   order by time, because if a file contains a translation,\n"
+             "   which was already found, the new one is taken.\n"
+             "The file cat-file can be used to read from and to store in all the\n"
+             "   translations. This file can contain also translations, which are\n"
+             "   currently not used by the potfile.");
+      return (0);
     }
 
-    if (strcmp(argv[1],"--only-similar") == 0)
+    if (strcmp(argv[1], "--only-similar") == 0)
     {
       only_similar = 1;
       argc--;
@@ -762,7 +835,7 @@ int main(int argc,char *argv[])
       continue;
     }
 
-    if (strcmp(argv[1],"-s")==0 || strcmp(argv[1],"--silent") == 0)
+    if (strcmp(argv[1], "-s") == 0 || strcmp(argv[1], "--silent") == 0)
     {
       silent = 1;
       argc--;
@@ -770,7 +843,7 @@ int main(int argc,char *argv[])
       continue;
     }
 
-    if (argc > 1 && strcmp(argv[1],"-directory") == 0)
+    if (argc > 1 && strcmp(argv[1], "-directory") == 0)
     {
       base_dir = argv[2];
       argc -= 2;
@@ -778,7 +851,7 @@ int main(int argc,char *argv[])
       continue;
     }
 
-    if (argc > 1 && strcmp(argv[1],"-cat") == 0)
+    if (argc > 1 && strcmp(argv[1], "-cat") == 0)
     {
       catfile = argv[2];
       ocatfile = argv[2];
@@ -787,7 +860,7 @@ int main(int argc,char *argv[])
       continue;
     }
 
-    if (argc > 1 && strcmp(argv[1],"-ocat") == 0)
+    if (argc > 1 && strcmp(argv[1], "-ocat") == 0)
     {
       ocatfile = argv[2];
       argc -= 2;
@@ -795,7 +868,7 @@ int main(int argc,char *argv[])
       continue;
     }
 
-    if (strcmp(argv[1],"-o") == 0)
+    if (strcmp(argv[1], "-o") == 0)
     {
       outputfile = argv[2];
       argc -= 2;
@@ -803,7 +876,7 @@ int main(int argc,char *argv[])
       continue;
     }
 
-    if (strcmp(argv[1],"-po") == 0)
+    if (strcmp(argv[1], "-po") == 0)
     {
       potfile = argv[2];
       argc -= 2;
@@ -813,8 +886,10 @@ int main(int argc,char *argv[])
 
     if (argv[1])
     {
-      potable=(char**)realloc(potable,(PotableItems+1) * sizeof(char *));
-      potable[PotableItems]=argv[1];
+      potable =
+
+        (char **) realloc(potable, (PotableItems + 1) * sizeof(char *));
+      potable[PotableItems] = argv[1];
       PotableItems++;
     }
     argc--;
@@ -823,47 +898,50 @@ int main(int argc,char *argv[])
 /* End of reading arguments */
 
 
-  if (PotableItems<2 && outputfile==NULL)
+  if (PotableItems < 2 && outputfile == NULL)
   {
     puts("Error: The output file is unknown!");
-    return(-1);
+    return (-1);
   }
-  if (outputfile==NULL)
+  if (outputfile == NULL)
   {
     PotableItems--;
-    outputfile=potable[PotableItems];
+    outputfile = potable[PotableItems];
   }
 
-  if (PotableItems<2 && potfile==NULL)
+  if (PotableItems < 2 && potfile == NULL)
   {
     puts("Error: The pot file is unknown!");
-    return(-2);
+    return (-2);
   }
-  if (potfile==NULL)
+  if (potfile == NULL)
   {
     PotableItems--;
-    potfile=potable[PotableItems];
+    potfile = potable[PotableItems];
   }
 
-  /* Read the catfile first, before the .po files */
+  /*
+     Read the catfile first, before the .po files 
+   */
   if (catfile && __file_exists(catfile))
   {
-    fi = fopen(catfile,"r");
+    fi = fopen(catfile, "r");
     line_count = 0;
     while (read_id(0))
     {
       read_msg();
-      if (strlen(MSG) > 0) add_msg(ID,MSG);
+      if (strlen(MSG) > 0)
+        add_msg(ID, MSG);
     }
     fclose(fi);
   }
 
 /* Read the .po files */
-  for (i=0;i<PotableItems;i++)
+  for (i = 0; i < PotableItems; i++)
   {
-    if ((fi = fopen(potable[i],"r"))==NULL)
+    if ((fi = fopen(potable[i], "r")) == NULL)
     {
-      printf("Error: Cannot open a file %s\n!",potable[i]);
+      printf("Error: Cannot open a file %s\n!", potable[i]);
       continue;
     }
 
@@ -871,36 +949,41 @@ int main(int argc,char *argv[])
     while (read_id(0))
     {
       read_msg();
-      if (strlen(MSG) > 0) add_msg(ID,MSG);
+      if (strlen(MSG) > 0)
+        add_msg(ID, MSG);
     }
     fclose(fi);
   }
 
 /* Write output po file to the disk */
   char *wd = getcwd(NULL, 100);
-  printf("%s\n",wd);
-  if ((fi = fopen(potfile,"r"))==NULL)
+
+  printf("%s\n", wd);
+  if ((fi = fopen(potfile, "r")) == NULL)
   {
     perror(potfile);
     printf("Error: Cannot open pot file!");
-    return(-3);
+    return (-3);
   }
   char _outputfile[9];
+
   strcpy(_outputfile, "poXXXXXX");
   mktemp(_outputfile);
-  if ((fo = fopen(_outputfile,"w"))==NULL)
+  if ((fo = fopen(_outputfile, "w")) == NULL)
   {
     printf("Error: Cannot open temp. output file!");
-    return(-3);
+    return (-3);
   }
   line_count = 0;
   struct msg *_msg = find_msg("");
+
   if (_msg)
   {
     write_id(_msg->id, _msg->comment);
     write_msg(_msg->Msg);
   }
   int trans_ret = 0;
+
   while (read_id(0))
   {
     read_msg();
@@ -928,8 +1011,8 @@ int main(int argc,char *argv[])
   if (ocatfile)
   {
     sort_msgs();
-    fo = fopen(ocatfile,"w+");
-    for (i=0;i<msg_count;i++)
+    fo = fopen(ocatfile, "w+");
+    for (i = 0; i < msg_count; i++)
     {
       write_id(msgs[i].id, NULL);
       write_msg(msgs[i].Msg);
@@ -942,4 +1025,3 @@ int main(int argc,char *argv[])
 #endif
   return 0;
 }
-

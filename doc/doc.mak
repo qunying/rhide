@@ -28,7 +28,7 @@ ifeq ($(strip $(RHIDE_OS)),)
 ifneq ($(strip $(DJDIR)),)
 RHIDE_OS_:=DJGPP
 else
-RHIDE_OS_:=$(shell uname)
+RHIDE_OS_:=$(patsubst CYGWIN%,CYGWIN,$(shell uname))
 endif
 endif
 

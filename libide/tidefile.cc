@@ -27,111 +27,114 @@
 
 #include <rhutils.h>
 
-extern int SHLSelect(TCEditor &e, char *buffer, int buf_len);
+extern int SHLSelect(TCEditor & e, char *buffer, int buf_len);
 
 TIDEFileEditor::~TIDEFileEditor()
 {
   string_free(bname);
 }
 
-int TIDEFileEditor::use_syntax = 1;
+int
+  TIDEFileEditor::use_syntax = 1;
 
-int (*TIDEFileEditor::externalFormatLine)(TCEditor *,void *, unsigned, int,
-                                   unsigned short, unsigned, uint32,
-                                   unsigned ) = NULL;
+int (*TIDEFileEditor::externalFormatLine) (TCEditor *, void *, unsigned, int,
+                                           unsigned short, unsigned, uint32,
+                                           unsigned) =
+  NULL;
 
-void TIDEFileEditor::formatLine( void *DrawBuf,
-			  unsigned LinePtr,
-			  int Width,
-			  unsigned short Colors,
-                          unsigned lineLen,
-                          uint32 Attr,
-                          unsigned lineNo // needed for RHIDE
-			)
+void
+TIDEFileEditor::formatLine(void *DrawBuf,
+                           unsigned LinePtr, int Width, unsigned short Colors, unsigned lineLen, uint32 Attr, unsigned lineNo	// needed for RHIDE
+  )
 {
   if (externalFormatLine &&
-      externalFormatLine(this,DrawBuf,LinePtr,Width,Colors,lineLen,
-                         Attr,lineNo)) return;
-  (this->*FormatLinePtr)(DrawBuf,LinePtr,Width,Colors,lineLen,Attr,lineNo);
+      externalFormatLine(this, DrawBuf, LinePtr, Width, Colors, lineLen,
+                         Attr, lineNo)) return;
+  (this->*FormatLinePtr) (DrawBuf, LinePtr, Width, Colors, lineLen, Attr, lineNo);
 }
 
 
-void TIDEFileEditor::setFormatLine()
+void
+TIDEFileEditor::setFormatLine()
 {
-  if (bname) string_free(bname);
-  BaseName(fileName,bname);
+  if (bname)
+    string_free(bname);
+  BaseName(fileName, bname);
   if (!use_syntax)
     SetHighlightTo(shlNoSyntax);
   else
     SHLSelect(*this, buffer, bufLen);
   FormatLinePtr = formatLinePtr;
   formatLinePtr = (void (TCEditor::*)
-                  (void *, unsigned, int, unsigned short, unsigned,
-                   uint32, unsigned ))&TIDEFileEditor::formatLine;
+                   (void *, unsigned, int, unsigned short, unsigned,
+                    uint32, unsigned)) &TIDEFileEditor::formatLine;
   update(ufView);
 }
 
-TIDEFileEditor::TIDEFileEditor(const TRect & rect,TScrollBar *ahscrollbar,
-				TScrollBar *avscrollbar,TSIndicator *aindicator,
-				const char *aFileName) :
-  TCFileEditor(rect,ahscrollbar,avscrollbar,aindicator,aFileName)
+TIDEFileEditor::TIDEFileEditor(const TRect & rect, TScrollBar * ahscrollbar,
+                               TScrollBar * avscrollbar,
+                               TSIndicator * aindicator,
+                               const char *aFileName):
+TCFileEditor(rect, ahscrollbar, avscrollbar, aindicator, aFileName)
 {
   struct stat st;
-  FormatLinePtr=formatLinePtr; // is set by TCEditor::TCEditor
-  if( aFileName == 0 )
-      fileName[0] = EOS;
+
+  FormatLinePtr = formatLinePtr;	// is set by TCEditor::TCEditor
+  if (aFileName == 0)
+    fileName[0] = EOS;
   else
   {
-    strcpy( fileName, aFileName );
-    if( isValid )
+    strcpy(fileName, aFileName);
+    if (isValid)
       isValid = loadFile();
   }
-  if (*fileName && stat(fileName,&st) == 0)
+  if (*fileName && stat(fileName, &st) == 0)
   {
     edittime = st.st_mtime;
 #if 0
     if (!(st.st_mode & S_IWUSR))
 #else
-    if (access(fileName,W_OK) != 0)
+    if (access(fileName, W_OK) != 0)
 #endif
     {
-      messageBox(mfWarning|mfOKButton,
-        _("Warning: %s is write protected"),fileName);
+      messageBox(mfWarning | mfOKButton,
+                 _("Warning: %s is write protected"), fileName);
     }
   }
   else
   {
     struct timeb tb;
+
     ftime(&tb);
 #ifdef __DJGPP__
-    edittime = tb.time & ~(1UL); //round up to a 2 sec boundary
+    edittime = tb.time & ~(1UL);	//round up to a 2 sec boundary
 #endif
   }
   helpCtx = hcIDEFileEditor;
-  BaseName(fileName,bname);
+  BaseName(fileName, bname);
   setFormatLine();
 }
 
-TStreamable *TIDEFileEditor::build()
+TStreamable *
+TIDEFileEditor::build()
 {
   return new TIDEFileEditor(streamableInit);
 }
 
-TIDEFileEditor::TIDEFileEditor(StreamableInit) :
-  TCFileEditor(streamableInit),
-  bname(NULL)
+TIDEFileEditor::TIDEFileEditor(StreamableInit):
+TCFileEditor(streamableInit), bname(NULL)
 {
 }
 
-void TIDEFileEditor::handleEvent(TEvent & event)
+void
+TIDEFileEditor::handleEvent(TEvent & event)
 {
   int savecmd = 0;
   int save_as = 0;
   Boolean old_modified = modified;
 
   if (event.what == evCommand &&
-      event.message.command == cmSaveEditor &&
-      modified == False)
+      event.message.command == cmSaveEditor && modified == False)
   {
     clearEvent(event);
     return;
@@ -149,9 +152,10 @@ void TIDEFileEditor::handleEvent(TEvent & event)
 //  lock();
   if (savecmd && event.message.command == cmSaveEditor)
     event.message.command = cmcSave;
-  if (!savecmd) modified = False; // when not saving, check for new modification
+  if (!savecmd)
+    modified = False;           // when not saving, check for new modification
   TCFileEditor::handleEvent(event);
-  if (event.what == evCommand) // the event was not handled
+  if (event.what == evCommand)  // the event was not handled
   {
     if (!savecmd)
     {
@@ -171,11 +175,11 @@ void TIDEFileEditor::handleEvent(TEvent & event)
         case cmTurnSyntaxOff:
           use_syntax = 0;
           setFormatLine();
-          break; // do not clear the event
+          break;                // do not clear the event
         case cmTurnSyntaxOn:
           use_syntax = 1;
           setFormatLine();
-          break; // do not clear the event
+          break;                // do not clear the event
         default:
           break;
       }
@@ -183,22 +187,27 @@ void TIDEFileEditor::handleEvent(TEvent & event)
     default:
       break;
   }
-  if (savecmd) setFormatLine(); // may be the name has changed
-  if (savecmd && modified == False)  // saving was successfull
+  if (savecmd)
+    setFormatLine();            // may be the name has changed
+  if (savecmd && modified == False)	// saving was successfull
   {
     struct utimbuf ut;
+
     ut.modtime = edittime;
-    utime(fileName,&ut);
-    if (save_as) // send a message, that the filename has changed
-      message(TProgram::application,evBroadcast,cmEditorFilenameChanged,this);
+    utime(fileName, &ut);
+    if (save_as)                // send a message, that the filename has changed
+      message(TProgram::application, evBroadcast, cmEditorFilenameChanged,
+              this);
     // clear all undo information ???
   }
-  if (modified == True && !savecmd) // it was a real modification
+  if (modified == True && !savecmd)	// it was a real modification
   {
     struct timeb tb;
+
     ftime(&tb);
-    edittime = tb.time & ~(1UL); //round up to a 2 sec boundary
-    message(TProgram::application,evBroadcast,cmEditorModified,(void *)edittime);
+    edittime = tb.time & ~(1UL);	//round up to a 2 sec boundary
+    message(TProgram::application, evBroadcast, cmEditorModified,
+            (void *) edittime);
   }
   if (!savecmd && old_modified == True && modified == False)
   {
@@ -207,15 +216,18 @@ void TIDEFileEditor::handleEvent(TEvent & event)
   }
   if (event.what == evBroadcast && event.message.command == cmRedraw)
   {
-    if (exposed()) update(ufView);
+    if (exposed())
+      update(ufView);
   }
 //  unlock();
 }
 
-Boolean TIDEFileEditor::valid( ushort command )
+Boolean
+TIDEFileEditor::valid(ushort command)
 {
   Boolean retval;
   struct utimbuf ut;
+
   if (command == cmValid)
     return isValid;
   if (command != cmClose)
@@ -223,12 +235,13 @@ Boolean TIDEFileEditor::valid( ushort command )
   if (modified == True)
   {
     int d;
+
     if (*fileName == EOS)
       d = edSaveUntitled;
     else
       d = edSaveModify;
 
-    switch (editorDialog(d, fileName ))
+    switch (editorDialog(d, fileName))
     {
       case cmYes:
         retval = save();
@@ -248,56 +261,59 @@ Boolean TIDEFileEditor::valid( ushort command )
   return True;
 }
 
-void goto_line(TIDEFileEditor *editor,int line, int column)
+void
+goto_line(TIDEFileEditor * editor, int line, int column)
 {
   if (line < 1)
     return;
   if (column < 1)
     column = 1;
-  editor->MoveCursorTo(column-1,line-1);
+  editor->MoveCursorTo(column - 1, line - 1);
   editor->trackCursor(True);
   editor->GoAndSelectLine(line);
-  editor->MoveCursorTo(column-1,line-1);
+  editor->MoveCursorTo(column - 1, line - 1);
 }
 
 static ushort TIDEFileEditor_Version = 0;
 
-void TIDEFileEditor::write( opstream& os )
+void
+TIDEFileEditor::write(opstream & os)
 {
-    TCFileEditor::write( os );
-    os << TIDEFileEditor_Version;
+  TCFileEditor::write(os);
+  os << TIDEFileEditor_Version;
 }
 
-void * TIDEFileEditor::read(ipstream & is)
+void *
+TIDEFileEditor::read(ipstream & is)
 {
   struct stat st;
   ushort version;
-  TCFileEditor::read( is );
+
+  TCFileEditor::read(is);
   is >> version;
-  if (stat(fileName,&st) == 0)
+  if (stat(fileName, &st) == 0)
   {
     edittime = st.st_mtime;
 #if 0
     if (!(st.st_mode & S_IWUSR))
 #else
-    if (access(fileName,W_OK) != 0)
+    if (access(fileName, W_OK) != 0)
 #endif
     {
-      messageBox(mfWarning|mfOKButton,
-        _("Warning: %s is write protected"),fileName);
+      messageBox(mfWarning | mfOKButton,
+                 _("Warning: %s is write protected"), fileName);
     }
   }
   else
   {
     struct timeb tb;
+
     ftime(&tb);
-    edittime = tb.time & ~(1UL); //round up to a 2 sec boundary
+    edittime = tb.time & ~(1UL);	//round up to a 2 sec boundary
   }
-  BaseName(fileName,bname);
-  FormatLinePtr=formatLinePtr; // is set by TCFileEditor::read
+  BaseName(fileName, bname);
+  FormatLinePtr = formatLinePtr;	// is set by TCFileEditor::read
   setFormatLine();
   helpCtx = hcIDEFileEditor;
   return this;
 }
-
-

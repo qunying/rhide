@@ -7,35 +7,43 @@
 
 #include <rhutils.h>
 
-void * TFlagCollection::readItem(ipstream & is)
+void *
+TFlagCollection::readItem(ipstream & is)
 {
-  TFlagEntry * flag;
+  TFlagEntry *flag;
+
   is >> flag;
   return flag;
 }
 
-void TFlagCollection::writeItem(void * flag,opstream & os)
+void
+TFlagCollection::writeItem(void *flag, opstream & os)
 {
-  os << ((TFlagEntry *)flag);
+  os << ((TFlagEntry *) flag);
 }
 
-TStreamable * TFlagCollection::build()
+TStreamable *
+TFlagCollection::build()
 {
   return new TFlagCollection(streamableInit);
 }
 
-void TFlagCollection::ToString(char *& retval,const char *sep)
+void
+TFlagCollection::ToString(char *&retval, const char *sep)
 {
   int i;
+
   retval = NULL;
-  for (i=0;i<count;i++)
+  for (i = 0; i < count; i++)
   {
     char *flag;
-    flag = ((TFlagEntry *)at(i))->GetValue();
+
+    flag = ((TFlagEntry *) at(i))->GetValue();
     if (flag)
     {
-      if (retval) string_cat(retval,sep);
-      string_cat(retval,flag);
+      if (retval)
+        string_cat(retval, sep);
+      string_cat(retval, flag);
       string_free(flag);
     }
   }
@@ -43,17 +51,19 @@ void TFlagCollection::ToString(char *& retval,const char *sep)
 
 TFlagCollection & TFlagCollection::operator = (const TFlagCollection & fc)
 {
-  int i;
+  int
+    i;
+
   freeAll();
-  for (i=0;i<fc.count;i++)
+  for (i = 0; i < fc.count; i++)
   {
-    insert(new TFlagEntry((TFlagEntry *)fc.items[i]));
+    insert(new TFlagEntry((TFlagEntry *) fc.items[i]));
   }
   return *this;
 }
 
-void TFlagCollection::freeItem( void *item )
+void
+TFlagCollection::freeItem(void *item)
 {
-  destroy((TFlagEntry *)item);
+  destroy((TFlagEntry *) item);
 }
-

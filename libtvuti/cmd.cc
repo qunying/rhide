@@ -19,13 +19,13 @@ static const_rec *helps = NULL;
 static unsigned short helps_count = 0;
 
 static void
-add_const_rec(const_rec *& cmds, unsigned short &count,
+add_const_rec(const_rec * &cmds, unsigned short &count,
               const char *name, unsigned short constant)
 {
   count++;
-  cmds = (const_rec *)realloc(cmds, count*sizeof(const_rec));
-  cmds[count-1].name = string_dup(name);
-  cmds[count-1].val = constant;
+  cmds = (const_rec *) realloc(cmds, count * sizeof(const_rec));
+  cmds[count - 1].name = string_dup(name);
+  cmds[count - 1].val = constant;
 }
 
 void
@@ -39,5 +39,3 @@ add_help_constant(const char *name, unsigned short value)
 {
   add_const_rec(helps, helps_count, name, value);
 }
-
-

@@ -6,22 +6,24 @@
 class TRect;
 class TStatusDef;
 
-class THintStatusLine : public TStatusLine
+class THintStatusLine:public TStatusLine
 {
 public:
-  const char * (*HintFunction)(ushort);
-  THintStatusLine(const TRect & r,TStatusDef & def,
-                  const char * (*hintfunction)(ushort) = NULL) :
-    TStatusLine(r,def),
-    HintFunction(hintfunction) {}
-  virtual const char * hint(ushort);
+  const char *(*HintFunction) (ushort);
+    THintStatusLine(const TRect & r, TStatusDef & def,
+                    const char *(*hintfunction) (ushort) =
+                    NULL):TStatusLine(r, def), HintFunction(hintfunction)
+  {
+  }
+  virtual const char *hint(ushort);
 };
 
-inline const char * THintStatusLine::hint(ushort ctx)
+inline const char *
+THintStatusLine::hint(ushort ctx)
 {
-  if (!HintFunction) return "";
+  if (!HintFunction)
+    return "";
   return HintFunction(ctx);
 }
 
 #endif
-

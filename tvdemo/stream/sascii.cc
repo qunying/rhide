@@ -4,10 +4,6 @@
 
 #include "ascii.h"
 
-__link( RReport )
-__link( RTable )
-
-TStreamableClass RAsciiChart( TAsciiChart::name,
-                              TAsciiChart::build,
-                              __DELTA(TAsciiChart)
-                            );
+__link(RReport) __link(RTable)
+     TStreamableClass
+     RAsciiChart(TAsciiChart::name, TAsciiChart::build, __DELTA(TAsciiChart));

@@ -6,7 +6,7 @@
 class TRect;
 class TEvent;
 
-class TRegisterWindow : public TWindow
+class TRegisterWindow:public TWindow
 {
 public:
   TRegisterWindow(const TRect &);
@@ -15,4 +15,3 @@ public:
 };
 
 #endif
-

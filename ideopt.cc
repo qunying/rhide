@@ -65,16 +65,19 @@
 #include <librhgdb.h>
 #endif
 
-void InitOptions()
+void
+InitOptions()
 {
   DefaultOptFlags();
   DefaultDebugFlags();
   {
-    int i,count=Options.debug_flags->getCount();
-    for (i=0;i<count;i++)
+    int i, count = Options.debug_flags->getCount();
+
+    for (i = 0; i < count; i++)
     {
-      TFlagEntry *f = (TFlagEntry *)Options.debug_flags->at(i);
-      if (strcmp(f->GetControlString(),"-g%d?") == 0)
+      TFlagEntry *f = (TFlagEntry *) Options.debug_flags->at(i);
+
+      if (strcmp(f->GetControlString(), "-g%d?") == 0)
       {
         f->activated = True;
         break;
@@ -120,43 +123,47 @@ void InitOptions()
   SaveTextPalette = 0;
 }
 
-ushort EditParamList(TParamList *paramlist,const char * title,int hist_id)
+ushort
+EditParamList(TParamList * paramlist, const char *title, int hist_id)
 {
-  return editParamList(paramlist,title,hist_id);
+  return editParamList(paramlist, title, hist_id);
 }
 
-void EditDirList(TDirList *dirlist,const char * title,int hist_id)
+void
+EditDirList(TDirList * dirlist, const char *title, int hist_id)
 {
-  editDirList(dirlist,title,hist_id);
+  editDirList(dirlist, title, hist_id);
 }
 
-static void Flags(const char *title,TFlagCollection * & coll,ushort ctx)
+static void
+Flags(const char *title, TFlagCollection * &coll, ushort ctx)
 {
   TDialog *dialog;
   TFlagListBox *liste;
-  TFlagCollection * _coll;
+  TFlagCollection *_coll;
   TScrollBar *scrollbar;
   int i;
   ushort control;
   TRect r;
-  dialog = new TDialog(TRect(0,0,70,20),title);
+
+  dialog = new TDialog(TRect(0, 0, 70, 20), title);
   dialog->options |= ofCentered;
   dialog->helpCtx = ctx;
-  scrollbar = new TScrollBar(TRect(69,1,70,16));
-  liste = new TFlagListBox(TRect(1,1,69,16),1,scrollbar);
+  scrollbar = new TScrollBar(TRect(69, 1, 70, 16));
+  liste = new TFlagListBox(TRect(1, 1, 69, 16), 1, scrollbar);
 
   liste->helpCtx = 0;
 
   dialog->insert(scrollbar);
   _coll = new TFlagCollection();
-  for (i=0;i<coll->getCount();i++)
+  for (i = 0; i < coll->getCount(); i++)
   {
-    _coll->insert(new TFlagEntry((TFlagEntry *)coll->at(i)));
+    _coll->insert(new TFlagEntry((TFlagEntry *) coll->at(i)));
   }
   liste->newList(_coll);
   dialog->insert(liste);
-  r = TRect(5,17,15,19);
-  dialog->insert(new TLButton(r,_("~O~K"),cmOK,bfDefault));
+  r = TRect(5, 17, 15, 19);
+  dialog->insert(new TLButton(r, _("~O~K"), cmOK, bfDefault));
   liste->select();
   control = TProgram::deskTop->execView(dialog);
   if (control == cmOK)
@@ -164,67 +171,82 @@ static void Flags(const char *title,TFlagCollection * & coll,ushort ctx)
     destroy(coll);
     coll = _coll;
   }
-  else destroy(_coll);
+  else
+    destroy(_coll);
   destroy(dialog);
-}    
-
-void OptimizationFlags()
-{
-  Flags(_("Optimization Flags"),Options.opt_flags,hcOptFlagList);
 }
 
-void WarningFlags(void)
+void
+OptimizationFlags()
 {
-  Flags(_("Warning Flags"),Options.warn_flags,hcWarnFlagList);
+  Flags(_("Optimization Flags"), Options.opt_flags, hcOptFlagList);
 }
 
-void DebugFlags(void)
+void
+WarningFlags(void)
 {
-  Flags(_("Debugging Flags"),Options.debug_flags,hcDebFlagList);
+  Flags(_("Warning Flags"), Options.warn_flags, hcWarnFlagList);
 }
 
-void CXXFlags(void)
+void
+DebugFlags(void)
 {
-  Flags(_("C++ Flags"),Options.cxx_flags,hcCXXFlagList);
+  Flags(_("Debugging Flags"), Options.debug_flags, hcDebFlagList);
 }
 
-void CFlags(void)
+void
+CXXFlags(void)
 {
-  Flags(_("C Flags"),Options.c_flags,hcCFlagList);
+  Flags(_("C++ Flags"), Options.cxx_flags, hcCXXFlagList);
 }
 
-void PascalFlags(void)
+void
+CFlags(void)
+{
+  Flags(_("C Flags"), Options.c_flags, hcCFlagList);
+}
+
+void
+PascalFlags(void)
 {
   if (UseFPC)
-    {
-    Flags(_("Pascal Flags"),Options.fpc_flags,hcPascalFlagList);
-    }
+  {
+    Flags(_("Pascal Flags"), Options.fpc_flags, hcPascalFlagList);
+  }
   else
-    {
-    Flags(_("Pascal Flags"),Options.pascal_flags,hcPascalFlagList);
-    }
+  {
+    Flags(_("Pascal Flags"), Options.pascal_flags, hcPascalFlagList);
+  }
 }
 
-void FortranFlags(void)
+void
+FortranFlags(void)
 {
-  Flags(_("Fortran Flags"),Options.fortran_flags,hcFortranFlagList);
+  Flags(_("Fortran Flags"), Options.fortran_flags, hcFortranFlagList);
 }
 
-void AdaFlags(void)
+void
+AdaFlags(void)
 {
-  Flags(_("Ada Flags"),Options.ada_flags,hcAdaFlagList);
+  Flags(_("Ada Flags"), Options.ada_flags, hcAdaFlagList);
 }
 
-class TArrowInputLine : public TInputLine
+class TArrowInputLine:public TInputLine
 {
 public:
-  int up,down;
-  TArrowInputLine(const TRect & rect,int alimit,int allowup=0,int allowdown=0) :
-    TInputLine(rect,alimit), up(allowup), down(allowdown) {}
+  int up, down;
+  
+    
+    TArrowInputLine(const TRect & rect, int alimit, int allowup =
+                    0, int allowdown =
+                    0):TInputLine(rect, alimit), up(allowup), down(allowdown)
+  {
+  }
   virtual void handleEvent(TEvent &);
 };
 
-void TArrowInputLine::handleEvent(TEvent & event)
+void
+TArrowInputLine::handleEvent(TEvent & event)
 {
   TInputLine::handleEvent(event);
   switch (event.what)
@@ -254,83 +276,117 @@ void TArrowInputLine::handleEvent(TEvent & event)
   }
 }
 
-void Libraries(void)
+void
+Libraries(void)
 {
   TDialog *dialog;
-  TRect r(0,0,40,23);
-  TCheckBoxes *chk,*chk1;
-  ushort control,flags,stdlibs;
+  TRect r(0, 0, 40, 23);
+  TCheckBoxes *chk, *chk1;
+  ushort control, flags, stdlibs;
   char data[28];
-  int i,libcount=Options.user_libs->getCount();
+  int i, libcount = Options.user_libs->getCount();
   TInputLine *libs[16];
-  dialog = new TDialog(r,_("Libraries"));
+
+  dialog = new TDialog(r, _("Libraries"));
   dialog->options |= ofCentered;
-  r = TRect(2,1,8,17);
-  chk = new TCheckBoxes(r,new TSItem("~0~",
-			  new TSItem("~1~",
-			  new TSItem("~2~",
-			  new TSItem("~3~",
-			  new TSItem("~4~",
-			  new TSItem("~5~",
-			  new TSItem("~6~",
-			  new TSItem("~7~",
-			  new TSItem("~8~",
-			  new TSItem("~9~",
-			  new TSItem("~A~",
-			  new TSItem("~B~",
-			  new TSItem("~C~",
-			  new TSItem("~D~",
-			  new TSItem("~E~",
-			  new TSItem("~F~",NULL)))))))))))))))));
+  r = TRect(2, 1, 8, 17);
+  chk = new TCheckBoxes(r, new TSItem("~0~",
+                                      new TSItem("~1~",
+                                                 new TSItem("~2~",
+                                                            new TSItem("~3~",
+                                                                       new
+                                                                       TSItem
+                                                                       ("~4~",
+                                                                        new
+                                                                        TSItem
+                                                                        ("~5~",
+                                                                         new
+                                                                         TSItem
+                                                                         ("~6~",
+                                                                          new
+                                                                          TSItem
+                                                                          ("~7~",
+                                                                           new
+                                                                           TSItem
+                                                                           ("~8~",
+                                                                            new
+                                                                            TSItem
+                                                                            ("~9~",
+                                                                             new
+                                                                             TSItem
+                                                                             ("~A~",
+                                                                              new
+                                                                              TSItem
+                                                                              ("~B~",
+                                                                               new
+                                                                               TSItem
+                                                                               ("~C~",
+                                                                                new
+                                                                                TSItem
+                                                                                ("~D~",
+                                                                                 new
+                                                                                 TSItem
+                                                                                 ("~E~",
+                                                                                  new
+                                                                                  TSItem
+                                                                                  ("~F~",
+                                                                                   NULL)))))))))))))))));
   flags = Options.libs;
   chk->setData(&flags);
   dialog->insert(chk);
-  r.a.x=r.b.x;
-  r.b.x=r.a.x+29;
-  r.b.y=r.a.y+1;
-  for (i=0;i<16;i++)
+  r.a.x = r.b.x;
+  r.b.x = r.a.x + 29;
+  r.b.y = r.a.y + 1;
+  for (i = 0; i < 16; i++)
   {
-    libs[i] = new TArrowInputLine(r,27,(i == 0 ? 0 : 1),(i == 15 ? 0 : 1));
-    if (libcount>i)
+    libs[i] = new TArrowInputLine(r, 27, (i == 0 ? 0 : 1), (i == 15 ? 0 : 1));
+    if (libcount > i)
     {
-      strncpy(data,(char *)(Options.user_libs->at(i)),27);
+      strncpy(data, (char *) (Options.user_libs->at(i)), 27);
       data[27] = EOS;
       libs[i]->setData(data);
     }
     dialog->insert(libs[i]);
-    r.move(0,1);
+    r.move(0, 1);
   }
 
   r.a.x = 2;
   r.b.x = r.a.x + 35;
   r.b.y = r.a.y + 2;
-  chk1 = new TCheckBoxes(r,new TSItem(_("Use ~s~tandard libraries"),
-                           new TSItem(_("link for ~p~rofiling"),NULL)));
+  chk1 = new TCheckBoxes(r, new TSItem(_("Use ~s~tandard libraries"),
+                                       new TSItem(_("link for ~p~rofiling"),
+                                                  NULL)));
   stdlibs = NoStdLib ? 0 : 1;
-  if (ForProfile) stdlibs |= 2;
+  if (ForProfile)
+    stdlibs |= 2;
   chk1->setData(&stdlibs);
   dialog->insert(chk1);
-  
-  r.move(0,3);
+
+  r.move(0, 3);
   r.a.x = 2;
-  r.b.x = r.a.x+14;
-  r.b.y = r.a.y+2;
-  dialog->insert(new TLButton(r,_("~O~K"),cmOK,bfDefault));
+  r.b.x = r.a.x + 14;
+  r.b.y = r.a.y + 2;
+  dialog->insert(new TLButton(r, _("~O~K"), cmOK, bfDefault));
   libs[0]->select();
   control = TProgram::deskTop->execView(dialog);
   if (control == cmOK)
   {
     char *tmp;
+
     chk1->getData(&stdlibs);
-    if (stdlibs & 1) NoStdLib = 0;
-    else NoStdLib = 1;
-    if (stdlibs & 2) ForProfile = 1;
-    else ForProfile = 0;
+    if (stdlibs & 1)
+      NoStdLib = 0;
+    else
+      NoStdLib = 1;
+    if (stdlibs & 2)
+      ForProfile = 1;
+    else
+      ForProfile = 0;
     Options.user_libs->freeAll();
-    for (i=0;i<16;i++)
+    for (i = 0; i < 16; i++)
     {
       libs[i]->getData(data);
-      string_dup(tmp,data);
+      string_dup(tmp, data);
       Options.user_libs->insert(tmp);
     }
     chk->getData(&flags);
@@ -339,19 +395,21 @@ void Libraries(void)
   destroy(dialog);
 }
 
-void LinkerOptions()
+void
+LinkerOptions()
 {
-  EditParamList(Options.link_opt,_("Additional linker options"),
+  EditParamList(Options.link_opt, _("Additional linker options"),
                 RHIDE_History_linker_options);
 }
 
-void CompilerOptions()
+void
+CompilerOptions()
 {
-  EditParamList(Options.comp_opt,_("Additional compiler options"),
+  EditParamList(Options.comp_opt, _("Additional compiler options"),
                 RHIDE_History_compiler_options);
 }
 
-class TEnvironmentDialog : public TDialog
+class TEnvironmentDialog:public TDialog
 {
 public:
   TEnvironmentDialog();
@@ -396,49 +454,71 @@ const ushort cmMoreOptions = 9999;
     S(SaveMessages,0);\
     S(DontShowExitCode,1);
 
-TEnvironmentDialog::TEnvironmentDialog()
-   : TDialog(TRect(0,0,76,23),_("Environment options")),
-     TWindowInit(TEnvironmentDialog::initFrame)
+TEnvironmentDialog::TEnvironmentDialog():
+TDialog(TRect(0, 0, 76, 23), _("Environment options")),
+TWindowInit(TEnvironmentDialog::initFrame)
 {
-  TRect r,r1,r2;
-  char *tmp;
-#ifdef __DJGPP__
-  char tabstring[10];
-  ushort radiodata,oldmode;
-#endif
-  uint32 global_options[max_cluster];
-  r1 = TRect(3,2,49,2+20);
+  TRect
+    r, r1, r2;
+  char *
+    tmp;
 
-  r1.b.y = r1.a.y+2;
-  cluster[1] = new TEnterCheckBoxes(r1,
-                new TSItem(_("~R~emember old messages"),                 // r
-                new TSItem(_("~D~on`t show exit code"),                  // d
-                NULL)),1);
+#ifdef __DJGPP__
+  char
+    tabstring[10];
+  ushort
+    radiodata, oldmode;
+#endif
+  uint32
+    global_options[max_cluster];
+
+  r1 = TRect(3, 2, 49, 2 + 20);
+
+  r1.b.y = r1.a.y + 2;
+  cluster[1] = new TEnterCheckBoxes(r1, new TSItem(_("~R~emember old messages"),	// r
+                                                   new
+                                                   TSItem(_("~D~on`t show exit code"),	// d
+                                                          NULL)), 1);
   cluster[1]->helpCtx = hcPreferenceCheckbox1;
 
-  r1.b.y = r1.a.y+20;
+  r1.b.y = r1.a.y + 20;
   cluster[0] = new TEnterCheckBoxes(r1,
-                new TSItem(_("all dependencies in ~m~akefile"),          // m
-                new TSItem(_("create ~b~ackupfiles"),                    // b
-                new TSItem(_("syntax ~h~ighlighting"),                   // h
-                new TSItem(_("U~s~e dual display"),                      // s
-                new TSItem(_("redirect 'stde~r~r'"),                     // r
-                new TSItem(_("redirect 'stdou~t~'"),                     // t
-                new TSItem(_("show ~p~rocess information"),              // p
-                new TSItem(_("show free memor~y~"),                      // y
-                new TSItem(_("No file cachin~g~"),                       // g
-                new TSItem(_("1~6~ background colors"),                  // 6
-                new TSItem(_("Show G~D~B commands"),                     // d
-                new TSItem(_("~U~se no shadows"),                        // u
-                new TSItem(_("Save te~x~t palette"),                     // x
-                new TSItem(_("Save pro~j~ect only when closing"),        // j
-                new TSItem(_("Sho~w~ user screen after exit"),           // w
-                new TSItem(_("Only #~i~nclude \"...\" as dependencies"), // i
-                new TSItem(_("Directories in project items"),            //
-                new TSItem(_("Show Disassemb~l~er Window when needed"),  // l
-                new TSItem(_("Use RCS"),                                 //
-                new TSItem(_("Use ~F~PC pascal compiler"),               // f
-                NULL)))))))))))))))))))),1);
+                                    new TSItem(_("all dependencies in ~m~akefile"),	// m
+                                               new
+                                               TSItem(_("create ~b~ackupfiles"),	// b
+                                                      new
+                                                      TSItem(_("syntax ~h~ighlighting"),	// h
+                                                             new
+                                                             TSItem(_("U~s~e dual display"),	// s
+                                                                    new
+                                                                    TSItem(_
+                                                                           ("redirect 'stde~r~r'"),	// r
+new TSItem(_("redirect 'stdou~t~'"),	// t
+           new TSItem(_("show ~p~rocess information"),	// p
+                      new TSItem(_("show free memor~y~"),	// y
+                                 new TSItem(_("No file cachin~g~"),	// g
+                                            new
+                                            TSItem(_("1~6~ background colors"),	// 6
+                                                   new
+                                                   TSItem(_("Show G~D~B commands"),	// d
+                                                          new
+                                                          TSItem(_("~U~se no shadows"),	// u
+                                                                 new
+                                                                 TSItem(_("Save te~x~t palette"),	// x
+                                                                        new
+                                                                        TSItem
+                                                                        (_
+                                                                         ("Save pro~j~ect only when closing"),	// j
+new TSItem(_("Sho~w~ user screen after exit"),	// w
+           new TSItem(_("Only #~i~nclude \"...\" as dependencies"),	// i
+                      new TSItem(_("Directories in project items"),	//
+                                 new
+                                 TSItem(_("Show Disassemb~l~er Window when needed"),	// l
+                                        new TSItem(_("Use RCS"),	//
+                                                   new
+                                                   TSItem(_("Use ~F~PC pascal compiler"),	// f
+                                                          NULL)))))))))))))))))))),
+                                    1);
   cluster[0]->helpCtx = hcPreferenceCheckbox;
   memset(global_options, 0, sizeof(global_options));
 #define S(x,y) if (x) global_options[0] |= (1 << (y))
@@ -448,8 +528,9 @@ TEnvironmentDialog::TEnvironmentDialog()
   SetGetOptions1();
 #undef S
   tmp = _("O~p~tions");
-  options_label = new TLabel(
-    TRect(r1.a.x,r1.a.y-1,r1.a.x+cstrlen(tmp)+1,r1.a.y),tmp,cluster[0]);
+  options_label =
+    new TLabel(TRect(r1.a.x, r1.a.y - 1, r1.a.x + cstrlen(tmp) + 1, r1.a.y),
+               tmp, cluster[0]);
   insert(options_label);
   insert(cluster[0]);
   current_cluster = 0;
@@ -461,49 +542,85 @@ TEnvironmentDialog::TEnvironmentDialog()
   r2.a.y = r1.a.y;
   r2.b.y = r2.a.y + 13;
 #ifdef __DJGPP__
-  radio = new TEnterRadioButtons(r2,new TSItem(("8~0~x25"),
-  					     new TSItem(("80x~2~8"),
-  					     new TSItem(("~8~0x35"),
-  					     new TSItem(("80x~4~0"),
-  					     new TSItem(("80x4~3~"),
-  					     new TSItem(("80x~5~0"),
-  					     new TSItem(_("other"),
-  					     new TSItem(("80x30"),
-  					     new TSItem(("80x34"),
-  					     new TSItem(("90x30"),
-  					     new TSItem(("90x34"),
-  					     new TSItem(("94x30"),
-  					     new TSItem(("94x34"),
-  					     NULL))))))))))))));
+  radio = new TEnterRadioButtons(r2, new TSItem(("8~0~x25"),
+                                                new TSItem(("80x~2~8"),
+                                                           new
+                                                           TSItem(("~8~0x35"),
+                                                                  new
+                                                                  TSItem(
+                                                                         ("80x~4~0"),
+                                                                         new
+                                                                         TSItem
+                                                                         (
+                                                                          ("80x4~3~"),
+                                                                          new
+                                                                          TSItem
+                                                                          (
+                                                                           ("80x~5~0"),
+                                                                           new
+                                                                           TSItem
+                                                                           (_
+                                                                            ("other"),
+                                                                            new
+                                                                            TSItem
+                                                                            (
+                                                                             ("80x30"),
+                                                                             new
+                                                                             TSItem
+                                                                             (
+                                                                              ("80x34"),
+                                                                              new
+                                                                              TSItem
+                                                                              (
+                                                                               ("90x30"),
+                                                                               new
+                                                                               TSItem
+                                                                               (
+                                                                                ("90x34"),
+                                                                                new
+                                                                                TSItem
+                                                                                (
+                                                                                 ("94x30"),
+                                                                                 new
+                                                                                 TSItem
+                                                                                 (
+                                                                                  ("94x34"),
+                                                                                  NULL))))))))))))));
   tmp = _("~S~creen mode");
-  insert(new TLabel(
-    TRect(r2.a.x,r2.a.y-1,r2.a.x+cstrlen(tmp)+1,r2.a.y),tmp,radio));
+  insert(new
+         TLabel(TRect(r2.a.x, r2.a.y - 1, r2.a.x + cstrlen(tmp) + 1, r2.a.y),
+                tmp, radio));
   insert(radio);
 #endif
   r2.a.y = r2.b.y;
   r2.b.y = r2.a.y + 1;
   r2.b.x = r2.a.x + 10;
 #ifdef __DJGPP__
-  usermode = new TEnterInputLine(r2,6);
+  usermode = new TEnterInputLine(r2, 6);
   insert(usermode);
   radiodata = 0;
   oldmode = TScreen::screenMode;
-  if ((oldmode & 0xFF) == 3) radiodata += (oldmode >> 8);
-  else radiodata = 6;
-  sprintf(tabstring,"0x%x",oldmode);
+  if ((oldmode & 0xFF) == 3)
+    radiodata += (oldmode >> 8);
+  else
+    radiodata = 6;
+  sprintf(tabstring, "0x%x", oldmode);
   radio->setData(&radiodata);
   radio->helpCtx = hcPreferenceVideomode;
   usermode->setData(tabstring);
-  if (radiodata == 6) usermode->options |= ofSelectable;
-  else usermode->options &= ~ofSelectable;
+  if (radiodata == 6)
+    usermode->options |= ofSelectable;
+  else
+    usermode->options &= ~ofSelectable;
 #endif
 
-  r2.move(0,2);
-  r2.b.x = r2.a.x+10;
-  closed = new TIntInputLine(r2,7);
+  r2.move(0, 2);
+  r2.b.x = r2.a.x + 10;
+  closed = new TIntInputLine(r2, 7);
   tmp = _("Closed ~W~indows");
-  insert(new TLabel(
-    TRect(r2.a.x,r2.a.y-1,r2.a.x+cstrlen(tmp)+1,r2.a.y),tmp,closed));
+  insert(new
+         TLabel(TRect(r2.a.x, r2.a.y - 1, r2.a.x + cstrlen(tmp) + 1, r2.a.y),
+                tmp, closed));
   insert(closed);
   closed->setData(&Project.max_closed_windows);
   closed->helpCtx = hcClosedWindows;
@@ -512,10 +629,10 @@ TEnvironmentDialog::TEnvironmentDialog()
   r.b.x = r.a.x + 10;
   r.a.y = r2.b.y + 0;
   r.b.y = r.a.y + 2;
-  insert(new TLButton(r,_("~O~K"),cmOK,bfNormal));
+  insert(new TLButton(r, _("~O~K"), cmOK, bfNormal));
   r.a.x = r.b.x + 3;
   r.b.x = r.a.x + 10;
-  insert(new TLButton(r,_("Cancel"),cmCancel,bfNormal));
+  insert(new TLButton(r, _("Cancel"), cmCancel, bfNormal));
   r.a.x = r2.a.x;
   r.b.x = r.a.x + 23;
   r.a.y += 2;
@@ -526,18 +643,21 @@ TEnvironmentDialog::TEnvironmentDialog()
   cluster[0]->select();
 }
 
-void TEnvironmentDialog::shutDown()
+void
+TEnvironmentDialog::shutDown()
 {
   int i;
+
   remove(cluster[current_cluster]);
-  for (i=0; i<max_cluster; i++)
+  for (i = 0; i < max_cluster; i++)
   {
     destroy(cluster[i]);
   }
   TDialog::shutDown();
 }
 
-void TEnvironmentDialog::handleEvent(TEvent &event)
+void
+TEnvironmentDialog::handleEvent(TEvent & event)
 {
   TDialog::handleEvent(event);
   switch (event.what)
@@ -550,9 +670,12 @@ void TEnvironmentDialog::handleEvent(TEvent &event)
           if (radio == event.message.infoPtr)
           {
             ushort d;
-            ((TRadioButtons *)event.message.infoPtr)->getData(&d);
-            if (d == 6) usermode->options |= ofSelectable;
-            else usermode->options &= ~ofSelectable;
+
+            ((TRadioButtons *) event.message.infoPtr)->getData(&d);
+            if (d == 6)
+              usermode->options |= ofSelectable;
+            else
+              usermode->options &= ~ofSelectable;
             clearEvent(event);
           }
           break;
@@ -584,26 +707,31 @@ void TEnvironmentDialog::handleEvent(TEvent &event)
 
 extern TPoint shadowSize;
 
-void EnableShadows()
+void
+EnableShadows()
 {
-  if (TScreen::screenMode == TDisplay::smMono) return;
+  if (TScreen::screenMode == TDisplay::smMono)
+    return;
   shadowSize.y = 1;
   shadowSize.x = 1;
-  if (2*TScreen::screenWidth >= 5*TScreen::screenHeight)
+  if (2 * TScreen::screenWidth >= 5 * TScreen::screenHeight)
     shadowSize.x++;
 }
 
-void DisableShadows()
+void
+DisableShadows()
 {
   shadowSize.x = 0;
   shadowSize.y = 0;
 }
 
-void Preferences()
+void
+Preferences()
 {
   uint32 global_options[max_cluster];
   TEnvironmentDialog *dialog;
   int do_it = 1;
+
 #ifdef __DJGPP__
   ushort oldmode = TScreen::screenMode;
 #endif
@@ -611,24 +739,31 @@ void Preferences()
   while (do_it && TProgram::deskTop->execView(dialog) == cmOK)
   {
     int syntax = ShowSyntax;
+
     do_it = 0;
 #ifdef __DJGPP__
     char tabstring[10];
     ushort rdata;
     ushort radiodata;
+
     dialog->radio->getData(&rdata);
     radiodata = 0x003;
     if (rdata == 6)
     {
       int mode;
+
       dialog->usermode->getData(tabstring);
-      sscanf(tabstring,"%d",&mode);
-      if (mode == 0) sscanf(tabstring,"0x%x",&mode);
-      if (mode == 0) sscanf(tabstring,"0x%X",&mode);
-      if (mode == 0) mode = oldmode;
+      sscanf(tabstring, "%d", &mode);
+      if (mode == 0)
+        sscanf(tabstring, "0x%x", &mode);
+      if (mode == 0)
+        sscanf(tabstring, "0x%X", &mode);
+      if (mode == 0)
+        mode = oldmode;
       radiodata = mode;
     }
-    else radiodata += (rdata << 8);
+    else
+      radiodata += (rdata << 8);
     Project.screen_mode = radiodata;
 #endif
     dialog->cluster[0]->getData(&global_options[0]);
@@ -644,14 +779,17 @@ void Preferences()
     SetGetOptions1();
 #undef S
     extern int save_text_palette;
+
     if (SaveTextPalette)
       save_text_palette = 1;
     else
       save_text_palette = 0;
 
 #ifdef INTERNAL_DEBUGGER
-    if (VerboseGDB) verbose_gdb_commands = 1;
-    else verbose_gdb_commands = 0;
+    if (VerboseGDB)
+      verbose_gdb_commands = 1;
+    else
+      verbose_gdb_commands = 0;
 #endif
 
     if (syntax && !ShowSyntax || !syntax && ShowSyntax)
@@ -659,12 +797,12 @@ void Preferences()
       if (ShowSyntax)
       {
         TIDEFileEditor::use_syntax = 1;
-        message(TProgram::application,evBroadcast,cmTurnSyntaxOn,NULL);
+        message(TProgram::application, evBroadcast, cmTurnSyntaxOn, NULL);
       }
       else
       {
         TIDEFileEditor::use_syntax = 0;
-        message(TProgram::application,evBroadcast,cmTurnSyntaxOff,NULL);
+        message(TProgram::application, evBroadcast, cmTurnSyntaxOff, NULL);
       }
     }
 #ifdef __DJGPP__
@@ -676,7 +814,7 @@ void Preferences()
     {
       messageBox(mfError | mfOKButton,
                  _("This video mode (0x%03x) is not supported by the "
-                 "Turbo Vision library"),radiodata);
+                   "Turbo Vision library"), radiodata);
       do_it = 1;
       dialog->usermode->select();
     }
@@ -685,51 +823,51 @@ void Preferences()
   destroy(dialog);
 }
 
-class MyDialog : public TDialog
+class MyDialog:public TDialog
 {
 public:
-  MyDialog(const char *,Boolean);
+  MyDialog(const char *, Boolean);
   virtual void handleEvent(TEvent &);
 };
 
 const ushort
   cmAddEntry = 9999,
   cmDelEntry = 9998,
-  cmEditEntry = 9997,
-  cmDefaultEntry = 9996,
-  cmFileEntry = 9995;
 
-MyDialog::MyDialog(const char *tit,Boolean with_default) :
-  TDialog(TRect(0,0,60,21),tit),
-  TWindowInit(MyDialog::initFrame)
+  cmEditEntry = 9997, cmDefaultEntry = 9996, cmFileEntry = 9995;
+
+MyDialog::MyDialog(const char *tit, Boolean with_default):
+TDialog(TRect(0, 0, 60, 21), tit), TWindowInit(MyDialog::initFrame)
 {
   TRect r;
+
   options |= ofCentered;
   r = getExtent();
   r.a.x += 3;
   r.b.x = r.a.x + 10;
   r.b.y -= 3;
   r.a.y = r.b.y - 2;
-  insert(new TLButton(r,_("~O~K"),cmOK,bfNormal));
+  insert(new TLButton(r, _("~O~K"), cmOK, bfNormal));
   r.a.x = r.b.x + 1;
-  insert(new TLButton(r,_("~A~dd"),cmAddEntry,bfNormal));
+  insert(new TLButton(r, _("~A~dd"), cmAddEntry, bfNormal));
   r.a.x = r.b.x + 1;
-  insert(new TLButton(r,_("~D~elete"),cmDelEntry,bfNormal));
+  insert(new TLButton(r, _("~D~elete"), cmDelEntry, bfNormal));
   r.a.x = r.b.x + 1;
-  insert(new TLButton(r,_("~E~dit"),cmEditEntry,bfDefault));
+  insert(new TLButton(r, _("~E~dit"), cmEditEntry, bfDefault));
   r.a.x = r.b.x + 1;
-  insert(new TLButton(r,_("Cancel"),cmCancel,bfNormal));
-  r.move(0,2);
+  insert(new TLButton(r, _("Cancel"), cmCancel, bfNormal));
+  r.move(0, 2);
   r.a.x = size.x / 2 - 15;
   r.b.x = r.a.x + 10;
   if (with_default == True)
-    insert(new TLButton(r,_("Defa~u~lt"),cmDefaultEntry,bfNormal));
-  r.move(15,0);
+    insert(new TLButton(r, _("Defa~u~lt"), cmDefaultEntry, bfNormal));
+  r.move(15, 0);
   r.b.x = r.a.x + 10;
-  insert(new TLButton(r,_("~F~ile"),cmFileEntry,bfNormal));
+  insert(new TLButton(r, _("~F~ile"), cmFileEntry, bfNormal));
 }
 
-void MyDialog::handleEvent(TEvent &event)
+void
+MyDialog::handleEvent(TEvent & event)
 {
   TDialog::handleEvent(event);
   if (event.what == evCommand)
@@ -750,14 +888,17 @@ void MyDialog::handleEvent(TEvent &event)
   }
 }
 
-static void UpdateListBox(TListBox *box,TCollection *list)
+static void
+UpdateListBox(TListBox * box, TCollection * list)
 {
   ccIndex Count;
+
   Count = list->getCount();
   box->setRange(Count);
   if (box->focused >= Count)
   {
-    if (Count > 0) box->focusItem(Count-1);
+    if (Count > 0)
+      box->focusItem(Count - 1);
   }
   else
   {
@@ -766,8 +907,9 @@ static void UpdateListBox(TListBox *box,TCollection *list)
   box->drawView();
 }
 
-static ushort EditStringList(const char *title,TSCollection *list,
-				Boolean with_default = True)
+static ushort
+EditStringList(const char *title, TSCollection * list,
+               Boolean with_default = True)
 {
   MyDialog *dialog;
   TListBox *box;
@@ -775,82 +917,91 @@ static ushort EditStringList(const char *title,TSCollection *list,
   TRect r;
   ushort result;
   char buffer[256];
-  dialog = new MyDialog(title,with_default);
+
+  dialog = new MyDialog(title, with_default);
   r = dialog->getExtent();
-  r.a.x = r.b.x-1;
+  r.a.x = r.b.x - 1;
   r.a.y++;
   r.b.y -= 6;
   scrollbar = new TScrollBar(r);
   r = dialog->getExtent();
-  r.grow(-1,-1);
+  r.grow(-1, -1);
   r.b.y -= 5;
-  box = new TListBox(r,1,scrollbar);
+  box = new TListBox(r, 1, scrollbar);
   box->newList(list);
   dialog->insert(scrollbar);
   dialog->insert(box);
   TProgram::deskTop->insert(dialog);
   do
   {
-    dialog->setState(sfModal,True);
+    dialog->setState(sfModal, True);
     result = dialog->execute();
     switch (result)
     {
       case cmDelEntry:
-        if (list->getCount() == 0) break;
+        if (list->getCount() == 0)
+          break;
         list->atFree(box->focused);
-        UpdateListBox(box,list);
+        UpdateListBox(box, list);
         break;
       case cmAddEntry:
         buffer[0] = 0;
-        if (inputBox(_("New value"),_("~V~alue"),buffer,255) == cmOK)
+        if (inputBox(_("New value"), _("~V~alue"), buffer, 255) == cmOK)
         {
-          if (list->getCount() == 0) list->insert(newStr(buffer));
-          else list->atInsert(box->focused,newStr(buffer));
-          UpdateListBox(box,list);
+          if (list->getCount() == 0)
+            list->insert(newStr(buffer));
+          else
+            list->atInsert(box->focused, newStr(buffer));
+          UpdateListBox(box, list);
         }
         break;
       case cmEditEntry:
-        if (list->getCount() == 0) break;
-        strcpy(buffer,(char *)(list->at(box->focused)));
-        if (inputBox(_("New value"),_("~V~alue"),buffer,255) == cmOK)
+        if (list->getCount() == 0)
+          break;
+        strcpy(buffer, (char *) (list->at(box->focused)));
+        if (inputBox(_("New value"), _("~V~alue"), buffer, 255) == cmOK)
         {
           int foc = box->focused;
+
           list->atFree(foc);
-          list->atInsert(foc,newStr(buffer)); 
-          UpdateListBox(box,list);
+          list->atInsert(foc, newStr(buffer));
+          UpdateListBox(box, list);
         }
         break;
       default:
         break;
     }
-  } while (result != cmCancel && result != cmOK && result != cmDefaultEntry
-           && result != cmFileEntry);
+  }
+  while (result != cmCancel && result != cmOK && result != cmDefaultEntry
+         && result != cmFileEntry);
   TProgram::deskTop->remove(dialog);
   destroy(dialog);
   return result;
 }
 
-static void EditWords(TStringCollection *Words,int &words_changed,
-                      Boolean with_default,const char *title,
-                      void (*DefaultWords)(TProject *))
+static void
+EditWords(TStringCollection * Words, int &words_changed,
+          Boolean with_default, const char *title,
+          void (*DefaultWords) (TProject *))
 {
   TSCollection *list;
   int i;
   ushort result;
+
   do
   {
     list = new TSCollection();
-    for (i=0;i<Words->getCount();i++)
+    for (i = 0; i < Words->getCount(); i++)
     {
-      list->insert(newStr((char *)(Words->at(i))));
+      list->insert(newStr((char *) (Words->at(i))));
     }
-    result = EditStringList(title,list,with_default);
+    result = EditStringList(title, list, with_default);
     if (result == cmOK)
     {
       Words->freeAll();
-      for (i=0;i<list->getCount();i++)
+      for (i = 0; i < list->getCount(); i++)
       {
-        Words->insert(newStr((char *)(list->at(i))));
+        Words->insert(newStr((char *) (list->at(i))));
       }
       words_changed = 1;
     }
@@ -858,33 +1009,38 @@ static void EditWords(TStringCollection *Words,int &words_changed,
     switch (result)
     {
       case cmDefaultEntry:
-        if (DefaultWords) DefaultWords(NULL);
+        if (DefaultWords)
+          DefaultWords(NULL);
         break;
       case cmFileEntry:
       {
         TFileDialog *d;
         char name[256];
+
         InitHistoryID(RHIDE_History_reserved_words);
-        d = new TFileDialog("*.*", _("Read words from file"),_("~N~ame"),
-            fdOpenButton, RHIDE_History_reserved_words);
+        d = new TFileDialog("*.*", _("Read words from file"), _("~N~ame"),
+                            fdOpenButton, RHIDE_History_reserved_words);
         if (TProgram::deskTop->execView(d) != cmCancel)
         {
           d->getData(name);
-          int handle = open(name,O_RDONLY);
+          int handle = open(name, O_RDONLY);
+
           if (handle > 0)
           {
             char *buffer;
             long len = filelength(handle);
-            buffer = (char *)malloc(len+1);
-            len = ::read(handle,buffer,len);
+
+            buffer = (char *) malloc(len + 1);
+            len =::read(handle, buffer, len);
             if (len < 0)
               len = 0;
             buffer[len] = 0;
             close(handle);
             Words->freeAll();
             char *tok;
-            for (tok = strtok(buffer," \t\r\n");tok;
-                 tok = strtok(NULL," \t\r\n"))
+
+            for (tok = strtok(buffer, " \t\r\n"); tok;
+                 tok = strtok(NULL, " \t\r\n"))
             {
               Words->insert(strdup(tok));
             }
@@ -892,7 +1048,8 @@ static void EditWords(TStringCollection *Words,int &words_changed,
           }
           else
           {
-            messageBox(mfError|mfOKButton,_("Couldn't open file %s"),name);
+            messageBox(mfError | mfOKButton, _("Couldn't open file %s"),
+                       name);
           }
         }
         break;
@@ -900,126 +1057,146 @@ static void EditWords(TStringCollection *Words,int &words_changed,
       default:
         break;
     }
-  } while (result == cmDefaultEntry || result == cmFileEntry);
+  }
+  while (result == cmDefaultEntry || result == cmFileEntry);
 }
 
-void EditReserved()
+void
+EditReserved()
 {
-  EditWords(CReservedWords,c_words_changed,True,_("Reserved words"),
+  EditWords(CReservedWords, c_words_changed, True, _("Reserved words"),
             DefaultReservedWords);
 }
 
-void EditGPCReserved()
+void
+EditGPCReserved()
 {
   if (!UseFPC)
   {
-    EditWords(GPCReservedWords,gpc_words_changed,True,_("GPC Reserved words"),
-              DefaultGPCReservedWords);
+    EditWords(GPCReservedWords, gpc_words_changed, True,
+              _("GPC Reserved words"), DefaultGPCReservedWords);
   }
   else
   {
-    EditWords(FPCReservedWords,fpc_words_changed,True,_("FPC Reserved words"),
-              DefaultFPCReservedWords);
+    EditWords(FPCReservedWords, fpc_words_changed, True,
+              _("FPC Reserved words"), DefaultFPCReservedWords);
   }
 }
 
-void EditUserWords()
+void
+EditUserWords()
 {
-  EditWords(RHIDEUserWords,user_words_changed,True,_("User Reserved words"),
-            NULL);
+  EditWords(RHIDEUserWords, user_words_changed, True,
+            _("User Reserved words"), NULL);
 }
 
-static TSCollection *BuildStringList(TFlagCollection &coll)
+static TSCollection *
+BuildStringList(TFlagCollection & coll)
 {
   int i;
   TSCollection *list;
+
   list = new TSCollection();
-  for (i=0;i<coll.getCount();i++)
+  for (i = 0; i < coll.getCount(); i++)
   {
-    list->insert(((TFlagEntry *)(coll.at(i)))->GetControlString());
+    list->insert(((TFlagEntry *) (coll.at(i)))->GetControlString());
   }
   return list;
 }
 
-static void BuildFlagList(TFlagCollection &coll,TSCollection *list)
+static void
+BuildFlagList(TFlagCollection & coll, TSCollection * list)
 {
   int i;
+
   coll.freeAll();
-  for (i=0;i<list->getCount();i++)
+  for (i = 0; i < list->getCount(); i++)
   {
-    coll.insert(new TFlagEntry((char *)(list->at(i))));
+    coll.insert(new TFlagEntry((char *) (list->at(i))));
   }
 }
 
-static void EditFlags(const char *title,TFlagCollection & coll,
-               void (*default_function)())
+static void
+EditFlags(const char *title, TFlagCollection & coll,
+          void (*default_function) ())
 {
   TSCollection *list;
   ushort result;
+
   do
   {
     list = BuildStringList(coll);
-    result = EditStringList(title,list);
+    result = EditStringList(title, list);
     if (result == cmOK)
     {
-      BuildFlagList(coll,list);
+      BuildFlagList(coll, list);
     }
     destroy(list);
     if (result == cmDefaultEntry)
     {
       default_function();
     }
-  } while (result == cmDefaultEntry);
+  }
+  while (result == cmDefaultEntry);
 }
 
-void EditCFlags()
+void
+EditCFlags()
 {
-  EditFlags(_("C Flags"),*(Options.c_flags),DefaultCFlags);
+  EditFlags(_("C Flags"), *(Options.c_flags), DefaultCFlags);
 }
 
-void EditCXXFlags()
+void
+EditCXXFlags()
 {
-  EditFlags(_("C++ Flags"),*(Options.cxx_flags),DefaultCXXFlags);
+  EditFlags(_("C++ Flags"), *(Options.cxx_flags), DefaultCXXFlags);
 }
 
-void EditDebugFlags()
+void
+EditDebugFlags()
 {
-  EditFlags(_("Debugging Flags"),*(Options.debug_flags),DefaultDebugFlags);
+  EditFlags(_("Debugging Flags"), *(Options.debug_flags), DefaultDebugFlags);
 }
 
-void EditWarnFlags()
+void
+EditWarnFlags()
 {
-  EditFlags(_("Warning Flags"),*(Options.warn_flags),DefaultWarnFlags);
+  EditFlags(_("Warning Flags"), *(Options.warn_flags), DefaultWarnFlags);
 }
 
-void EditOptFlags()
+void
+EditOptFlags()
 {
-  EditFlags(_("Optimization Flags"),*(Options.opt_flags),DefaultOptFlags);
+  EditFlags(_("Optimization Flags"), *(Options.opt_flags), DefaultOptFlags);
 }
 
-void EditPascalFlags()
+void
+EditPascalFlags()
 {
   if (UseFPC)
-    {
-    EditFlags(_("Pascal Flags"),*(Options.fpc_flags),DefaultFpcFlags);
-    }
+  {
+    EditFlags(_("Pascal Flags"), *(Options.fpc_flags), DefaultFpcFlags);
+  }
   else
-    {
-    EditFlags(_("Pascal Flags"),*(Options.pascal_flags),DefaultPascalFlags);
-    }
+  {
+    EditFlags(_("Pascal Flags"), *(Options.pascal_flags), DefaultPascalFlags);
+  }
 }
 
-void EditFortranFlags()
+void
+EditFortranFlags()
 {
-  EditFlags(_("Fortran Flags"),*(Options.fortran_flags),DefaultFortranFlags);
+  EditFlags(_("Fortran Flags"), *(Options.fortran_flags),
+            DefaultFortranFlags);
 }
 
-void EditAdaFlags()
+void
+EditAdaFlags()
 {
-  EditFlags(_("Ada Flags"),*(Options.ada_flags),DefaultAdaFlags);
+  EditFlags(_("Ada Flags"), *(Options.ada_flags), DefaultAdaFlags);
 }
 
-class TLocalDialog : public TDialog
+class TLocalDialog:public TDialog
 {
 public:
   TLocalDialog();
@@ -1034,96 +1211,105 @@ public:
   TEnterCheckBoxes *others;
 };
 
-TLocalDialog::TLocalDialog() :
-  TDialog(TRect(0,0,69,25),_("local options for project-item")),
-  TWindowInit(&TLocalDialog::initFrame)
+TLocalDialog::TLocalDialog():
+TDialog(TRect(0, 0, 69, 25), _("local options for project-item")),
+TWindowInit(&TLocalDialog::initFrame)
 {
-  TRect r,rr,rrr;
+  TRect r, rr, rrr;
   char *tmp;
-  r = TRect(2,2,32,3);
-  cmdline = new TEnterInputLine(r,255);
-  insert(new THistory(TRect(r.b.x,r.a.y,r.b.x+3,r.b.y), cmdline,
+
+  r = TRect(2, 2, 32, 3);
+  cmdline = new TEnterInputLine(r, 255);
+  insert(new THistory(TRect(r.b.x, r.a.y, r.b.x + 3, r.b.y), cmdline,
                       RHIDE_History_local_defines));
-  r.move(0,-1);
+  r.move(0, -1);
   tmp = _("local ~c~ommandline options");
-  r.b.x = r.a.x + cstrlen(tmp)+1;
-  insert(new TLabel(r,tmp,cmdline));
+  r.b.x = r.a.x + cstrlen(tmp) + 1;
+  insert(new TLabel(r, tmp, cmdline));
   cmdline->helpCtx = hcLocalCommandline;
   insert(cmdline);
-  r.move(0,3);
+  r.move(0, 3);
   r.b.x = r.a.x + 30;
-  output_name = new TEnterInputLine(r,255);
-  insert(new THistory(TRect(r.b.x,r.a.y,r.b.x+3,r.b.y), output_name,
+  output_name = new TEnterInputLine(r, 255);
+  insert(new THistory(TRect(r.b.x, r.a.y, r.b.x + 3, r.b.y), output_name,
                       RHIDE_History_local_outfile));
-  r.move(0,-1);
+  r.move(0, -1);
   tmp = _("~N~ame of the output file");
-  r.b.x = r.a.x + cstrlen(tmp)+1;
-  insert(new TLabel(r,tmp,output_name));
+  r.b.x = r.a.x + cstrlen(tmp) + 1;
+  insert(new TLabel(r, tmp, output_name));
   output_name->helpCtx = hcLocalOutputname;
   insert(output_name);
   rrr = r;
-  r = TRect(35,2,65,2+9);
-  compiler_id = new TEnterRadioButtons(r,new TSItem(_("Auto"),
-                                         new TSItem(_("User"),
-                                         new TSItem(_("None"),
-                                         new TSItem(_("GNU C compiler"),
-                                         new TSItem(_("GNU C++ compiler"),
-                                         new TSItem(_("GNU assembler"),
-                                         new TSItem(_("GNU Pascal compiler"),
-                                         new TSItem(_("GNU Fortran compiler"),
-                                         new TSItem(_("Free Pascal compiler"),
-                                         NULL))))))))));
+  r = TRect(35, 2, 65, 2 + 9);
+  compiler_id = new TEnterRadioButtons(r, new TSItem(_("Auto"),
+                                                     new TSItem(_("User"),
+                                                                new
+                                                                TSItem(_
+                                                                       ("None"),
+                                                                       new
+TSItem(_("GNU C compiler"),
+       new TSItem(_("GNU C++ compiler"),
+                  new TSItem(_("GNU assembler"),
+                             new TSItem(_("GNU Pascal compiler"),
+                                        new TSItem(_("GNU Fortran compiler"),
+                                                   new
+                                                   TSItem(_
+                                                          ("Free Pascal compiler"),
+                                                          NULL))))))))));
   rr = r;
   r.a.y--;
   r.b.y = r.a.y + 1;
   tmp = _("Comp~i~ler type");
   r.b.x = r.a.x + cstrlen(tmp) + 1;
-  insert(new TLabel(r,tmp,compiler_id));
+  insert(new TLabel(r, tmp, compiler_id));
   compiler_id->helpCtx = hcLocalCompilertype;
   insert(compiler_id);
   rr.a.y = rr.b.y + 1;
   rr.b.y = rr.a.y + 1;
   rr.b.x = rr.a.x + 30;
-  compiler = new TEnterInputLine(rr,255);
-  insert(new THistory(TRect(rr.b.x,rr.a.y,rr.b.x+3,rr.b.y), compiler,
+  compiler = new TEnterInputLine(rr, 255);
+  insert(new THistory(TRect(rr.b.x, rr.a.y, rr.b.x + 3, rr.b.y), compiler,
                       RHIDE_History_local_compiler_prog));
-  rr.move(0,-1);
+  rr.move(0, -1);
   tmp = _("Com~p~iler");
   rr.b.x = rr.a.x + cstrlen(tmp) + 1;
-  insert(new TLabel(rr,tmp,compiler));
+  insert(new TLabel(rr, tmp, compiler));
   compiler->helpCtx = hcLocalCompiler;
   insert(compiler);
   r.a.x = rr.a.x;
   r.a.y = rr.b.y + 2;
   r.b.y = r.a.y + 8;
   r.b.x = r.a.x + 30;
-  error_type = new TEnterRadioButtons(r,new TSItem(_("Auto"),
-                                        new TSItem(_("User"),
-                                        new TSItem(_("None"),
-                                        new TSItem(_("builtin C"),
-                                        new TSItem(_("builtin assembler"),
-                                        new TSItem(_("builtin linker"),
-                                        new TSItem(_("return value"),
+  error_type = new TEnterRadioButtons(r, new TSItem(_("Auto"),
+                                                    new TSItem(_("User"),
+                                                               new
+                                                               TSItem(_
+                                                                      ("None"),
+                                                                      new
+TSItem(_("builtin C"),
+       new TSItem(_("builtin assembler"),
+                  new TSItem(_("builtin linker"),
+                             new TSItem(_("return value"),
                                         new TSItem(_("builtin FPC"),
-                                        NULL)))))))));
+                                                   NULL)))))))));
   rr = r;
-  r.move(0,-1);
+  r.move(0, -1);
   tmp = _("~E~rror checking");
   r.b.x = r.a.x + cstrlen(tmp) + 1;
   r.b.y = r.a.y + 1;
-  insert(new TLabel(r,tmp,error_type));
+  insert(new TLabel(r, tmp, error_type));
   error_type->helpCtx = hcLocalErrortype;
   insert(error_type);
   r.a.y = rr.b.y + 1;
   r.b.y = r.a.y + 1;
   r.b.x = r.a.x + 30;
-  error_prog = new TEnterInputLine(r,255);
-  insert(new THistory(TRect(r.b.x,r.a.y,r.b.x+3,r.b.y), error_prog,
+  error_prog = new TEnterInputLine(r, 255);
+  insert(new THistory(TRect(r.b.x, r.a.y, r.b.x + 3, r.b.y), error_prog,
                       RHIDE_History_local_error_prog));
-  r.move(0,-1);
+  r.move(0, -1);
   tmp = _("E~r~ror program");
   r.b.x = r.a.x + cstrlen(tmp) + 1;
-  insert(new TLabel(r,tmp,error_prog));
+  insert(new TLabel(r, tmp, error_prog));
   error_prog->helpCtx = hcLocalErrorprogram;
   insert(error_prog);
 
@@ -1131,13 +1317,13 @@ TLocalDialog::TLocalDialog() :
   r.b.y = r.a.y + 2;
   r.a.x = rrr.a.x;
   r.b.x = r.a.x + 30;
-  others = new TEnterCheckBoxes(r,new TSItem(_("exclude from link"),
-                                  new TSItem(_("rebuild seldom"),
-                                              NULL)));
-  r.move(0,-1);
+  others = new TEnterCheckBoxes(r, new TSItem(_("exclude from link"),
+                                              new TSItem(_("rebuild seldom"),
+                                                         NULL)));
+  r.move(0, -1);
   tmp = _("o~t~her options");
   r.b.x = r.a.x + cstrlen(tmp) + 1;
-  insert(new TLabel(r,tmp,others));
+  insert(new TLabel(r, tmp, others));
   others->helpCtx = hcLocalOtheroptions;
   insert(others);
 
@@ -1146,17 +1332,19 @@ TLocalDialog::TLocalDialog() :
   r.b.y = r.a.y + 2;
   r.a.x = 3;
   r.b.x = r.a.x + 10;
-  insert(new TLButton(r,_("~O~K"),cmOK,bfNormal));
+  insert(new TLButton(r, _("~O~K"), cmOK, bfNormal));
   r.a.x = r.b.x + 3;
   r.b.x = r.a.x + 10;
-  insert(new TLButton(r,_("Cancel"),cmCancel,bfNormal));
+  insert(new TLButton(r, _("Cancel"), cmCancel, bfNormal));
   options |= ofCentered;
   cmdline->select();
 }
 
-void TLocalDialog::handleEvent(TEvent &event)
+void
+TLocalDialog::handleEvent(TEvent & event)
 {
   TRadioButtons *radio;
+
   TDialog::handleEvent(event);
   switch (event.what)
   {
@@ -1164,13 +1352,16 @@ void TLocalDialog::handleEvent(TEvent &event)
       switch (event.message.command)
       {
         case cmRadioItemSelected:
-          radio = (TRadioButtons *)event.message.infoPtr;
+          radio = (TRadioButtons *) event.message.infoPtr;
           ushort data;
+
           radio->getData(&data);
           if (radio == error_type)
           {
-            if (data == 1) error_prog->options |= ofSelectable;
-            else error_prog->options &= ~ofSelectable;
+            if (data == 1)
+              error_prog->options |= ofSelectable;
+            else
+              error_prog->options &= ~ofSelectable;
             clearEvent(event);
             break;
           }
@@ -1197,21 +1388,25 @@ void TLocalDialog::handleEvent(TEvent &event)
   }
 }
 
-static void SetOptions(TLocalDialog *dialog,TDependency *dep)
+static void
+SetOptions(TLocalDialog * dialog, TDependency * dep)
 {
   char *tmp;
+
   dep->local_options->ToString(tmp);
   dialog->cmdline->setData(tmp);
   string_free(tmp);
-  dialog->output_name->setData((char *)FName(dep->dest_name));
+  dialog->output_name->setData((char *) FName(dep->dest_name));
   dialog->compiler_id->setData(&dep->compiler_type);
-  if (dep->compiler) dialog->compiler->setData(dep->compiler);
+  if (dep->compiler)
+    dialog->compiler->setData(dep->compiler);
   if (dep->compiler_type == COMPILER_USER)
     dialog->compiler->options |= ofSelectable;
   else
     dialog->compiler->options &= ~ofSelectable;
   dialog->error_type->setData(&dep->error_type);
-  if (dep->error_check) dialog->error_prog->setData(dep->error_check);
+  if (dep->error_check)
+    dialog->error_prog->setData(dep->error_check);
   if (dep->error_type == ERROR_USER)
     dialog->error_prog->options |= ofSelectable;
   else
@@ -1221,20 +1416,25 @@ static void SetOptions(TLocalDialog *dialog,TDependency *dep)
     dialog->output_name->options &= ~ofSelectable;
 }
 
-static Boolean GetOptions(TLocalDialog *dialog,TDependency *dep)
+static Boolean
+GetOptions(TLocalDialog * dialog, TDependency * dep)
 {
   Boolean retval;
   TParamList *pl = new TParamList();
+
   retval = pl->FromString(dialog->cmdline->data);
   destroy(pl);
-  if (retval == False) return False;
+  if (retval == False)
+    return False;
   dep->local_options->FromString(dialog->cmdline->data);
   if (dep->compile_id != COMPILE_PROJECT)
   {
-    if (dep->dest_name) delete dep->dest_name;
+    if (dep->dest_name)
+      delete dep->dest_name;
     char *tmp;
-    BaseName(dialog->output_name->data,tmp);
-    InitFName(dep->dest_name,tmp);
+
+    BaseName(dialog->output_name->data, tmp);
+    InitFName(dep->dest_name, tmp);
     string_free(tmp);
     dep->dest_file_type = get_file_type(FName(dep->dest_name));
   }
@@ -1242,7 +1442,8 @@ static Boolean GetOptions(TLocalDialog *dialog,TDependency *dep)
   switch (dep->compiler_type)
   {
     case COMPILER_AUTO:
-      dep->compile_id = how_to_compile(FName(dep->source_name),FName(dep->dest_name));
+      dep->compile_id =
+        how_to_compile(FName(dep->source_name), FName(dep->dest_name));
       break;
     case COMPILE_NONE:
       dep->compile_id = COMPILE_NONE;
@@ -1272,36 +1473,43 @@ static Boolean GetOptions(TLocalDialog *dialog,TDependency *dep)
       dep->compile_id = COMPILE_UNKNOWN;
   }
   string_free(dep->compiler);
-  string_dup(dep->compiler,dialog->compiler->data);
+  string_dup(dep->compiler, dialog->compiler->data);
   string_free(dep->error_check);
-  string_dup(dep->error_check,dialog->error_prog->data);
+  string_dup(dep->error_check, dialog->error_prog->data);
   dialog->error_type->getData(&dep->error_type);
   dialog->others->getData(&dep->flags);
   return True;
 }
 
-void LocalOptions()
+void
+LocalOptions()
 {
   TDependency *dep;
   ushort result;
   Boolean retval;
-  if (!project_window) return;
-  if (project->dependencies->getCount() == 0) return;
-  dep = (TDependency *)(project->dependencies->at(project_window->liste->focused));
+
+  if (!project_window)
+    return;
+  if (project->dependencies->getCount() == 0)
+    return;
+  dep =
+    (TDependency *) (project->dependencies->
+                     at(project_window->liste->focused));
   TLocalDialog *dialog = new TLocalDialog();
-  SetOptions(dialog,dep);
+
+  SetOptions(dialog, dep);
   do
   {
     result = TProgram::deskTop->execView(dialog);
     if (result == cmOK)
     {
-      retval = GetOptions(dialog,dep);
+      retval = GetOptions(dialog, dep);
     }
     else
     {
       retval = False;
     }
-  } while (result == cmOK && retval == False);
+  }
+  while (result == cmOK && retval == False);
   destroy(dialog);
 }
-

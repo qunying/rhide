@@ -14,7 +14,4 @@
 
 CONSTRUCTOR_FUNCTION(init_ide_commands)
 {
-  __IDE_COMMAND_CODES__
-  __IDE_HELP_CODES__
-}
-
+__IDE_COMMAND_CODES__ __IDE_HELP_CODES__}

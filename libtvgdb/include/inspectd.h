@@ -6,7 +6,7 @@
 class TRect;
 class TInputLine;
 
-class TInspectDialog : public TDialog
+class TInspectDialog:public TDialog
 {
 public:
   TInspectDialog(const TRect & bounds, char *Title, char *StartVal = NULL);

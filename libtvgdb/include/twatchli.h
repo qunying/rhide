@@ -7,20 +7,20 @@ class TRect;
 class TScrollBar;
 class TEvent;
 
-class TWatchListBox : public TEnterListBox
+class TWatchListBox:public TEnterListBox
 {
 public:
-  TWatchListBox(const TRect & bounds,int numCols,TScrollBar *vbar,
-                TScrollBar *hbar = NULL);
-  ~TWatchListBox();
+  TWatchListBox(const TRect & bounds, int numCols, TScrollBar * vbar,
+                TScrollBar * hbar = NULL);
+   ~TWatchListBox();
   virtual void selectItem(ccIndex item);
   virtual void handleEvent(TEvent & event);
   void update();
-  void GetVariable(ccIndex item,char *buffer,int maxlen);
-  void SetVariable(ccIndex item,char *buffer);
+  void GetVariable(ccIndex item, char *buffer, int maxlen);
+  void SetVariable(ccIndex item, char *buffer);
   void AddVariable(char *var);
   void RemoveVariable(ccIndex item);
-  virtual void getText(char *dest,ccIndex index,short maxlen);
+  virtual void getText(char *dest, ccIndex index, short maxlen);
 };
 
 #endif

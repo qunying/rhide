@@ -7,11 +7,13 @@ class TFileName
 {
 public:
   TFileName(const char *name);
-  virtual ~TFileName();
-  const char * const Name() { return NAME; }
+    virtual ~ TFileName();
+  const char *const Name()
+  {
+    return NAME;
+  }
 protected:
   char *NAME;
 };
 
 #endif
-

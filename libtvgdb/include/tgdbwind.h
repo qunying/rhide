@@ -5,13 +5,13 @@
 
 class TFileViewer;
 
-class TGDBWindow : public TWindow
+class TGDBWindow:public TWindow
 {
 
 public:
 
-    TGDBWindow( const char *fileName );
-    TFileViewer *viewer;
+  TGDBWindow(const char *fileName);
+  TFileViewer *viewer;
 };
 
 #endif

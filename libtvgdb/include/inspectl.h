@@ -3,12 +3,11 @@
 #if !defined( __TInspectList )
 #define __TInspectList
 
-class TInspectList : public TListBox
+class TInspectList:public TListBox
 {
 public:
-  TInspectList(const TRect &bounds);
+  TInspectList(const TRect & bounds);
   void update(const char *expr);
 };
 
 #endif
-

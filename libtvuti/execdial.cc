@@ -8,20 +8,22 @@
 #define Uses_tvutilFunctions
 #include <libtvuti.h>
 
-ushort execDialog( TDialog *d, void *data )
+ushort
+execDialog(TDialog * d, void *data)
 {
- TView *p=TProgram::application->validView( d );
- if (p==0)
+  TView *p = TProgram::application->validView(d);
+
+  if (p == 0)
     return cmCancel;
- else
+  else
   {
-   if (data!=0)
+    if (data != 0)
       p->setData(data);
-   ushort result=TProgram::deskTop->execView(p);
-   if (result!=cmCancel && data!=0)
+    ushort result = TProgram::deskTop->execView(p);
+
+    if (result != cmCancel && data != 0)
       p->getData(data);
-   destroy(p);
-   return result;
+    destroy(p);
+    return result;
   }
 }
-

@@ -11,13 +11,14 @@
 #define Uses_tvgdbFunctions
 #include <libtvgdb.h>
 
-TFunctionInputLine::TFunctionInputLine( const TRect& bounds, int aMaxLen ) :
-  TEnterInputLine(bounds,aMaxLen)
+TFunctionInputLine::TFunctionInputLine(const TRect & bounds, int aMaxLen):
+TEnterInputLine(bounds, aMaxLen)
 {
   helpCtx = hcFunctionInputLine;
 }
 
-void TFunctionInputLine::handleEvent(TEvent &event)
+void
+TFunctionInputLine::handleEvent(TEvent & event)
 {
   TEnterInputLine::handleEvent(event);
   switch (event.what)
@@ -30,15 +31,17 @@ void TFunctionInputLine::handleEvent(TEvent &event)
           static char regex[256];
           static char GDB_name[256];
           function_entry *func;
+
           regex[0] = 0;
           if (inputBox(_("Regular expression to list functions"),
-                       _("~E~xpression"),regex,255) == cmOK)
+                       _("~E~xpression"), regex, 255) == cmOK)
           {
-            if (SelectFunction(_("Select a function"),regex,NULL,GDB_name,&func)
-                == cmOK)
+            if (SelectFunction
+                (_("Select a function"), regex, NULL, GDB_name,
+                 &func) == cmOK)
             {
               setData(GDB_name);
-              message(owner,evBroadcast,cmFunctionChanged,func);
+              message(owner, evBroadcast, cmFunctionChanged, func);
             }
           }
           clearEvent(event);
@@ -52,5 +55,3 @@ void TFunctionInputLine::handleEvent(TEvent &event)
       break;
   }
 }
-
-

@@ -37,10 +37,8 @@ const ushort
   cmEditorAnswer = 329,
   cmDisWindow = 330,
   cmShowWatchWindow = 331,
-  cmDataWindow = 332,
-  cmStackWindow = 333,
-  cmInspectData = 334;
-  
+  cmDataWindow = 332, cmStackWindow = 333, cmInspectData = 334;
+
 extern char *progname;
 extern char **files_on_desktop;
 extern int files_on_desktop_count;
@@ -51,16 +49,17 @@ extern TDirList *src_dirs;
 class TDisassemblerWindow;
 extern TDisassemblerWindow *dis_win;
 class TDataWindow;
-  
+
 void STEP(int _switch_to_user = 1);
 void TRACE(int _switch_to_user = 1);
 void RUN();
 void RESET();
 void GOTO(int _switch_to_user = 1);
 
-Boolean OpenViewer(char *fname,int line,Boolean from_debugger,Boolean only_focus = False);
+Boolean OpenViewer(char *fname, int line, Boolean from_debugger,
+                   Boolean only_focus = False);
 void CenterCursor();
-char *WhereIsCursor(int &line,int &column,char *&bname);
+char *WhereIsCursor(int &line, int &column, char *&bname);
 void ToggleBreak();
 void DeleteAllBreakpoints();
 void SaveOptions();
@@ -71,6 +70,6 @@ void repaint();
 void Preferences();
 char *RHGDBWordUnderCursor(void);
 void init_syntax();
-void ClearCPULine (void);
+void ClearCPULine(void);
 
 #endif

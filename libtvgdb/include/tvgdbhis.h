@@ -15,8 +15,6 @@ const int
   tvgdb_History_Data_Entry = 48,
   tvgdb_History_Data_Search = 49,
   tvgdb_History_Data_Block = 50,
-  tvgdb_History_Inspect_Expression = 51,
-
-  tvgdb_History_last = 59;
+  tvgdb_History_Inspect_Expression = 51, tvgdb_History_last = 59;
 
 #endif

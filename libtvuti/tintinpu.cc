@@ -9,8 +9,9 @@
 #include <string.h>
 #include <stdio.h>
 
-TIntInputLine::TIntInputLine(const TRect &bounds,int aMaxlen, int _unsigned)
-  : TEnterInputLine(bounds,aMaxlen)
+TIntInputLine::TIntInputLine(const TRect & bounds, int aMaxlen,
+                             int _unsigned):
+TEnterInputLine(bounds, aMaxlen)
 {
   if (_unsigned)
     SetValidator(new TRangeValidator(0, UINT_MAX));
@@ -18,21 +19,25 @@ TIntInputLine::TIntInputLine(const TRect &bounds,int aMaxlen, int _unsigned)
     SetValidator(new TRangeValidator(INT_MIN, INT_MAX));
 }
 
-void TIntInputLine::setData(void *rec)
+void
+TIntInputLine::setData(void *rec)
 {
-  int i = *((int *)rec);
+  int i = *((int *) rec);
   char tmp[256];
-  sprintf(tmp,"%d",i);
-  strncpy(data,tmp,maxLen-1);
-  data[maxLen-1] = 0;
+
+  sprintf(tmp, "%d", i);
+  strncpy(data, tmp, maxLen - 1);
+  data[maxLen - 1] = 0;
 }
 
-void TIntInputLine::getData(void *rec)
+void
+TIntInputLine::getData(void *rec)
 {
-  sscanf(data,"%d",(int *)rec);
+  sscanf(data, "%d", (int *) rec);
 }
 
-uint32 TIntInputLine::dataSize()
+uint32
+TIntInputLine::dataSize()
 {
   return sizeof(int);
 }

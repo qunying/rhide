@@ -8,19 +8,19 @@
 
 #include <rhutils.h>
 
-void editDirList(TDirList *dirlist,
-                 const char *title,int hist_id)
+void
+editDirList(TDirList * dirlist, const char *title, int hist_id)
 {
   ushort result;
-  char *tmp,temp[1000];
+  char *tmp, temp[1000];
+
   dirlist->ToString(tmp);
-  strcpy(temp,tmp);
+  strcpy(temp, tmp);
   string_free(tmp);
-  result = HistinputBox(title,_("~P~athlist"),temp,999,hist_id);
+  result = HistinputBox(title, _("~P~athlist"), temp, 999, hist_id);
   if (result == cmOK)
   {
     BackslashToSlash(temp);
     dirlist->FromString(temp);
   }
 }
-

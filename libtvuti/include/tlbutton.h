@@ -5,10 +5,11 @@
 
 class TRect;
 
-class TLButton : public TButton
+class TLButton:public TButton
 {
 public:
-  TLButton(TRect& bounds,const char *aTitle,ushort aCommand,ushort aFlags);
+  TLButton(TRect & bounds, const char *aTitle, ushort aCommand,
+           ushort aFlags);
 };
 
 #endif

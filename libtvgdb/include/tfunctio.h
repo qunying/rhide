@@ -3,13 +3,13 @@
 #if !defined( __TFunctionListBox )
 #define __TFunctionListBox
 
-class TFunctionListBox : public TSortedListBox
+class TFunctionListBox:public TSortedListBox
 {
 public:
-  TFunctionListBox(const TRect &bounds,ushort aNumCols,
-                   TScrollBar *aScrollBar,const char *regex);
-  virtual void getText(char *,ccIndex,short);
-  virtual void handleEvent(TEvent &event);
+  TFunctionListBox(const TRect & bounds, ushort aNumCols,
+                   TScrollBar * aScrollBar, const char *regex);
+  virtual void getText(char *, ccIndex, short);
+  virtual void handleEvent(TEvent & event);
   virtual void selectItem(ccIndex item);
 };
 

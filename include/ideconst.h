@@ -324,7 +324,5 @@
   __HC(SelRectDel,315)\
   __HC(SelRectMove,316)
 
-__RHIDE_COMMAND_CODES__
-__RHIDE_HELP_CODES__
-
+__RHIDE_COMMAND_CODES__ __RHIDE_HELP_CODES__
 #endif

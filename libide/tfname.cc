@@ -23,100 +23,113 @@ struct FileEntry
 #ifdef REMOVE_FILENAMES
   int alloc_count;
 #endif
-  FileEntry() :
-    name(NULL)
+    FileEntry():name(NULL)
 #ifdef USE_SLASH
-    , slash(NULL)
+   , slash(NULL)
 #endif
   {
   }
-  ~FileEntry()
+   ~FileEntry()
   {
     if (name != NULL)
       delete name;
   }
 };
 
-class FileNameCollection : TNSSortedCollection
+class FileNameCollection:TNSSortedCollection
 {
 public:
-  FileNameCollection(ccIndex aLimit,ccIndex aDelta) :
-    TNSSortedCollection(aLimit,aDelta) {}
+  FileNameCollection(ccIndex aLimit,
+                     ccIndex aDelta):TNSSortedCollection(aLimit, aDelta)
+  {
+  }
 #ifndef USE_SLASH
-  virtual void *keyOf( void *item );
+  virtual void *keyOf(void *item);
 #endif
   char *addName(char *name);
+
 #ifdef USE_SLASH
-  Boolean Search(const char *,ccIndex &);
+  Boolean Search(const char *, ccIndex &);
 #else
-  Boolean Search(const char *name,ccIndex & aIndex)
-    { return search(name,aIndex); }
+  Boolean Search(const char *name, ccIndex & aIndex)
+  {
+    return search(name, aIndex);
+  }
 #endif
 #ifdef REMOVE_FILENAMES
   void removeName(char *name);
 #endif
 private:
-  virtual void freeItem( void *item );
-  virtual int compare( void *key1, void *key2 );
+  virtual void freeItem(void *item);
+  virtual int compare(void *key1, void *key2);
 };
 
 #ifndef USE_SLASH
-void *FileNameCollection::keyOf(void *item)
+void *
+FileNameCollection::keyOf(void *item)
 {
-  return ((FileEntry *)item)->name;
+  return ((FileEntry *) item)->name;
 }
 #endif
 
 #ifdef USE_SLASH
-Boolean FileNameCollection::Search(const char *name,ccIndex &index)
+Boolean
+FileNameCollection::Search(const char *name, ccIndex & index)
 {
   FileEntry fe;
-  fe.name = (char *)name;
-  fe.slash = strrchr(name,'/');
+
+  fe.name = (char *) name;
+  fe.slash = strrchr(name, '/');
   if (!fe.slash)
     fe.slash = fe.name;
   else
     fe.slash++;
-  Boolean ret = search(&fe,index);
+  Boolean ret = search(&fe, index);
+
   fe.name = NULL;
   return ret;
 }
 #endif
 
-int FileNameCollection::compare(void *key1,void *key2)
+int
+FileNameCollection::compare(void *key1, void *key2)
 {
 #ifndef USE_SLASH
-  return strcmp((char *)key1,(char *)key2);
+  return strcmp((char *) key1, (char *) key2);
 #else
   int ret;
-  FileEntry *k1 = (FileEntry *)key1;
-  FileEntry *k2 = (FileEntry *)key2;
-  ret = strcmp(k1->slash,k2->slash);
+  FileEntry *k1 = (FileEntry *) key1;
+  FileEntry *k2 = (FileEntry *) key2;
+
+  ret = strcmp(k1->slash, k2->slash);
   if (!ret)
-    ret = strcmp(k1->name,k2->name);
+    ret = strcmp(k1->name, k2->name);
   return ret;
 #endif
 }
 
-void FileNameCollection::freeItem(void *item)
+void
+FileNameCollection::freeItem(void *item)
 {
-  ::delete (FileEntry *)item;
+  ::delete(FileEntry *) item;
 }
 
-char *FileNameCollection::addName(char *name)
+char *
+FileNameCollection::addName(char *name)
 {
   ccIndex index;
   FileEntry *fe;
-  if (Search(name,index) == True)
+
+  if (Search(name, index) == True)
   {
-    fe = (FileEntry *)at(index);
+    fe = (FileEntry *) at(index);
   }
   else
   {
     fe = new FileEntry;
     fe->name = string_dup(name);
 #ifdef USE_SLASH
-    fe->slash = strrchr(fe->name,'/');
+    fe->slash = strrchr(fe->name, '/');
     if (!fe->slash)
       fe->slash = fe->name;
     else
@@ -125,7 +138,7 @@ char *FileNameCollection::addName(char *name)
 #ifdef REMOVE_FILENAMES
     fe->alloc_count = 0;
 #endif
-    atInsert(index,fe);
+    atInsert(index, fe);
   }
 #ifdef REMOVE_FILENAMES
   fe->alloc_count++;
@@ -134,12 +147,15 @@ char *FileNameCollection::addName(char *name)
 }
 
 #ifdef REMOVE_FILENAMES
-void FileNameCollection::removeName(char *name)
+void
+FileNameCollection::removeName(char *name)
 {
   ccIndex index;
-  if (Search(name,index) == True)
+
+  if (Search(name, index) == True)
   {
-    FileEntry *fe = (FileEntry *)at(index);
+    FileEntry *fe = (FileEntry *) at(index);
+
     fe->alloc_count--;
     if (!fe->alloc_count)
     {
@@ -149,11 +165,11 @@ void FileNameCollection::removeName(char *name)
 }
 #endif
 
-static FileNameCollection Names(127,128);
+static FileNameCollection Names(127, 128);
 
 TFileName::TFileName(const char *name)
 {
-  NAME = Names.addName((char *)name);
+  NAME = Names.addName((char *) name);
 }
 
 TFileName::~TFileName()
@@ -162,4 +178,3 @@ TFileName::~TFileName()
   Names.removeName(NAME);
 #endif
 }
-

@@ -4,4 +4,3 @@
 char RHGDBVersion[] = "RHGDB Version 1.4.8";
 char build_date[] = __DATE__;
 char build_time[] = __TIME__;
-

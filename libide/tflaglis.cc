@@ -10,24 +10,26 @@
 #include <string.h>
 #include <stdio.h>
 
-TFlagListBox::TFlagListBox(const TRect& bounds, ushort aNumCols, 
-                           TScrollBar *aScrollBar) :
-    TListBox(bounds,aNumCols,aScrollBar)
+TFlagListBox::TFlagListBox(const TRect & bounds, ushort aNumCols,
+TScrollBar * aScrollBar):
+TListBox(bounds, aNumCols, aScrollBar)
 {
   helpCtx = hcFlagListBox;
 }
 
-void TFlagListBox::getText(char *dest,ccIndex item,short maxlen)
+void
+TFlagListBox::getText(char *dest, ccIndex item, short maxlen)
 {
-  char *tmp = ((TFlagEntry *)list()->at(item))->GetText();
-  strncpy(dest,tmp,maxlen);
+  char *tmp = ((TFlagEntry *) list()->at(item))->GetText();
+
+  strncpy(dest, tmp, maxlen);
   string_free(tmp);
 }
 
-void TFlagListBox::selectItem(ccIndex item)
+void
+TFlagListBox::selectItem(ccIndex item)
 {
   TListBox::selectItem(item);
-  ((TFlagEntry *)list()->at(item))->ToggleActive();
+  ((TFlagEntry *) list()->at(item))->ToggleActive();
   drawView();
 }
-

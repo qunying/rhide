@@ -13,21 +13,24 @@
 
 ***************************************************************************/
 
-void BaseName(char *name, int with_suffix)
+void
+BaseName(char *name, int with_suffix)
 {
-  char *_name = strrchr(name,'/');
+  char *_name = strrchr(name, '/');
+
   if (!_name)
     _name = name;
   else
     _name++;
   if (!with_suffix)
   {
-    char *ext = strrchr(_name,'.');
+    char *ext = strrchr(_name, '.');
+
     if (ext)
       *ext = 0;
   }
   if (_name != name)
-    strcpy(name,_name);
+    strcpy(name, _name);
 }
 
 /**[txh]********************************************************************
@@ -39,25 +42,27 @@ void BaseName(char *name, int with_suffix)
 
 ***************************************************************************/
 
-void BaseName(const char *name, char *&bname, int with_suffix)
+void
+BaseName(const char *name, char *&bname, int with_suffix)
 {
-  const char *_name = strrchr(name,'/');
+  const char *_name = strrchr(name, '/');
+
   if (!_name)
     _name = name;
   else
     _name++;
   const char *ext = _name + strlen(_name);
+
   if (!with_suffix)
   {
-    const char *_ext = strrchr(_name,'.');
+    const char *_ext = strrchr(_name, '.');
+
     if (_ext)
       ext = _ext;
   }
   int len = ext - _name;
-  bname = (char *)malloc(len+1);
+
+  bname = (char *) malloc(len + 1);
   memcpy(bname, _name, len);
   bname[len] = 0;
 }
-
-
-

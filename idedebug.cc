@@ -53,25 +53,29 @@ static void RemoveSessionTempFiles(void);
 
 TDisassemblerWindow *dis_win;
 
-static void UserScreen()
+static void
+UserScreen()
 {
   TProgram::application->suspend();
 }
 
-static void DebuggerScreen()
+static void
+DebuggerScreen()
 {
   TProgram::application->resume();
   Repaint();
 }
 
-void OpenDisWin(int force_open)
+void
+OpenDisWin(int force_open)
 {
   if (!dis_win && (force_open || AutomaticOpenDisass))
   {
     extern unsigned long stop_pc;
-    TRect r(1,1,79,23);
+    TRect r(1, 1, 79, 23);
+
     dis_win = new TDisassemblerWindow(r, _("Disassembler window"));
-    AddWindow(dis_win,(TWindow **)&dis_win);
+    AddWindow(dis_win, (TWindow **) & dis_win);
     if (debugger_started)
       dis_win->update(stop_pc);
   }
@@ -82,18 +86,20 @@ void OpenDisWin(int force_open)
     }
 }
 
-static void select_source_line(char *fname,int line)
+static void
+select_source_line(char *fname, int line)
 {
   if (!debugger_started)
     return;
   int select_dis_win = dis_win && TProgram::deskTop->current == dis_win;
   char *full_name = NULL;
-  static char * lastSkippedName = 0;
+  static char *lastSkippedName = 0;
+
   TProgram::deskTop->lock();
   // remove at first the last CPU line
   if (current_editor)
   {
-    CPULine = (uint32)-1;
+    CPULine = (uint32) - 1;
     current_editor->editor->update(ufView);
   }
   if (!fname)
@@ -106,12 +112,12 @@ static void select_source_line(char *fname,int line)
   }
   else
   {
-    current_editor = is_on_desktop(fname,False);
-    if (!current_editor && FindFile(fname,full_name) == False)
+    current_editor = is_on_desktop(fname, False);
+    if (!current_editor && FindFile(fname, full_name) == False)
     {
       if (lastSkippedName)
       {
-        if (strcmp(lastSkippedName,fname) == 0)
+        if (strcmp(lastSkippedName, fname) == 0)
         {
           OpenDisWin(force_disassembler_window);
           goto end;
@@ -124,30 +130,39 @@ static void select_source_line(char *fname,int line)
       }
       ushort result;
       char *bname;
-      BaseName(fname,bname);
+
+      BaseName(fname, bname);
       TProgram::deskTop->unlock();
-      messageBox(mfError | mfOKButton,_("Could not find the source "
-                                        "file %s."),bname);
+      messageBox(mfError | mfOKButton, _("Could not find the source "
+                                         "file %s."), bname);
       string_free(full_name);
       TFileDialog *dialog;
+
       InitHistoryID(RHIDE_History_source_file);
-      string_cat(bname,"*"); /* Let's add wildcard not let TFileDialog  */
-                              /* to exit when simply enter is pressed  */
-      dialog = new TFileDialog(bname,_("Open a file"),
-                        _("~N~ame"),fdOpenButton,RHIDE_History_source_file);
+      string_cat(bname, "*");   /*
+                                   Let's add wildcard not let TFileDialog  
+                                 */
+      /*
+         to exit when simply enter is pressed  
+       */
+      dialog = new TFileDialog(bname, _("Open a file"),
+                               _("~N~ame"), fdOpenButton,
+                               RHIDE_History_source_file);
       result = TProgram::deskTop->execView(dialog);
       TProgram::deskTop->lock();
       string_free(bname);
       if (result != cmCancel)
       {
-        full_name = (char *)malloc(PATH_MAX);
+        full_name = (char *) malloc(PATH_MAX);
         dialog->getData(full_name);
         FExpand(full_name);
-        char *dir,*name,*ext;
-        split_fname(full_name,dir,name,ext);
+        char *dir, *name, *ext;
+
+        split_fname(full_name, dir, name, ext);
         string_free(name);
         string_free(ext);
-        if (*dir) dir[strlen(dir)-1] = 0;
+        if (*dir)
+          dir[strlen(dir) - 1] = 0;
         TProgram::deskTop->unlock();
         if (messageBox(mfConfirmation | mfYesNoCancel,
                        _("Add '%s' to the search path for source files"),
@@ -174,17 +189,21 @@ static void select_source_line(char *fname,int line)
         goto end;
       }
     }
-    if (!current_editor) OpenEditor(full_name, True, current_editor);
+    if (!current_editor)
+      OpenEditor(full_name, True, current_editor);
     current_editor->select();
     string_free(full_name);
-    CPULine = line-1;
-    current_editor->editor->MoveCursorTo(0,CPULine);
+    CPULine = line - 1;
+    current_editor->editor->MoveCursorTo(0, CPULine);
     current_editor->editor->trackCursor(False);
-    /* If the line is at the first or last screen line, try to
-       center it */
+    /*
+       If the line is at the first or last screen line, try to
+       center it 
+     */
     current_editor->editor->update(ufView);
     if (current_editor->editor->cursor.y == 0 ||
-        current_editor->editor->cursor.y == current_editor->editor->size.y-1)
+        current_editor->editor->cursor.y ==
+        current_editor->editor->size.y - 1)
     {
       current_editor->editor->trackCursor(True);
       current_editor->editor->update(ufView);
@@ -194,6 +213,7 @@ end:
   if (dis_win)
   {
     extern unsigned long stop_pc;
+
     dis_win->update(stop_pc);
   }
   if (select_dis_win)
@@ -201,64 +221,80 @@ end:
   TProgram::deskTop->unlock();
 }
 
-const char *WhereIsCursor(int &line,int &column,char *&bname,TCEditWindow *&ew)
+const char *
+WhereIsCursor(int &line, int &column, char *&bname, TCEditWindow * &ew)
 {
   const char *file;
-  ew = (TCEditWindow *)TProgram::deskTop->current;
-  if (!ew) return NULL;
+
+  ew = (TCEditWindow *) TProgram::deskTop->current;
+  if (!ew)
+    return NULL;
   TEvent event;
+
   event.what = evBroadcast;
   event.message.command = cmEditorAnswer;
   ew->handleEvent(event);
-  if (event.what != evNothing) return NULL;
+  if (event.what != evNothing)
+    return NULL;
   file = ew->editor->fileName;
-  BaseName(file?file:_("Untitled"),bname);
-  line = ew->editor->curPos.y+1;
-  column = ew->editor->curPos.x+1;
+  BaseName(file ? file : _("Untitled"), bname);
+  line = ew->editor->curPos.y + 1;
+  column = ew->editor->curPos.x + 1;
   return file;
 }
 
-void GOTO(int _switch_to_user)
+void
+GOTO(int _switch_to_user)
 {
-  int line,column;
+  int line, column;
   const char *file;
   char *bname;
   TCEditWindow *ew;
+
   if (dis_win && TProgram::deskTop->current == dis_win)
   {
     unsigned long address = dis_win->focused_address();
+
     switch_to_user = _switch_to_user;
     GoToAddress(address);
   }
   else
   {
-    file = WhereIsCursor(line,column,bname,ew);
-    if (!file) return;
+    file = WhereIsCursor(line, column, bname, ew);
+    if (!file)
+      return;
     switch_to_user = _switch_to_user;
-    GoToLine(bname,line);
+    GoToLine(bname, line);
   }
-}  
-    
-void RESET()
+}
+
+void
+RESET()
 {
   ResetDebugger();
 
-  if (ShowStdout) close_stdout();
-  if (ShowStderr) close_stderr();
+  if (ShowStdout)
+    close_stdout();
+  if (ShowStderr)
+    close_stderr();
   RemoveSessionTempFiles();
-  
-  if (project_directory) chdir(project_directory);
+
+  if (project_directory)
+    chdir(project_directory);
   Repaint();
 }
 
-int DEBUGGER_STARTED()
+int
+DEBUGGER_STARTED()
 {
   return debugger_started;
 }
 
-void TRACE(int _switch_to_user)
+void
+TRACE(int _switch_to_user)
 {
-  TWindow *w = (TWindow *)TProgram::deskTop->current;
+  TWindow *w = (TWindow *) TProgram::deskTop->current;
+
   switch_to_user = _switch_to_user;
   if (dis_win && TProgram::deskTop->current == dis_win)
   {
@@ -270,9 +306,11 @@ void TRACE(int _switch_to_user)
     watchwindow->select();
 }
 
-void STEP(int _switch_to_user)
+void
+STEP(int _switch_to_user)
 {
-  TWindow *w = (TWindow *)TProgram::deskTop->current;
+  TWindow *w = (TWindow *) TProgram::deskTop->current;
+
   switch_to_user = _switch_to_user;
   if (dis_win && TProgram::deskTop->current == dis_win)
   {
@@ -284,13 +322,15 @@ void STEP(int _switch_to_user)
     watchwindow->select();
 }
 
-void CONTINUE()
+void
+CONTINUE()
 {
   switch_to_user = 1;
   Continue();
 }
 
-void FINISH()
+void
+FINISH()
 {
   switch_to_user = 1;
   Finish();
@@ -298,7 +338,8 @@ void FINISH()
 
 static unsigned long last_modified = 0;
 
-static int DoMake()
+static int
+DoMake()
 {
   if (debugger_started)
   {
@@ -310,9 +351,11 @@ static int DoMake()
     if (already_maked && hasmodified)
     {
       ushort retval;
-      if (last_modified == hasmodified) return 1;
+
+      if (last_modified == hasmodified)
+        return 1;
       retval = messageBox(_("Source has been modified. Rebuild it?"),
-                     mfWarning|mfYesButton|mfNoButton);
+                          mfWarning | mfYesButton | mfNoButton);
       if (retval == cmNo)
       {
         last_modified = hasmodified;
@@ -325,46 +368,55 @@ static int DoMake()
     }
   }
   last_modified = 0;
-  ShowMessages(NULL,True);
+  ShowMessages(NULL, True);
   return (Make(False) == False) ? 0 : 1;
 }
 
-static char *GetProgName()
+static char *
+GetProgName()
 {
-  return (char *)FName(Project.dest_name);
+  return (char *) FName(Project.dest_name);
 }
 
-static char **GetSourceDirectories(int *count)
+static char **
+GetSourceDirectories(int *count)
 {
   *count = 0;
   return NULL;
 }
 
-static char **args = NULL; 
+static char **args = NULL;
 
-static char **GetProgramArguments(int *count)
+static char **
+GetProgramArguments(int *count)
 {
   int i;
+
   *count = Options.ProgArgs->getCount();
-  if (*count == 0) return NULL;
-  args = (char **)realloc(args,*count * sizeof(char *));
-  for (i=0;i<*count;i++)
+  if (*count == 0)
+    return NULL;
+  args = (char **) realloc(args, *count * sizeof(char *));
+
+  for (i = 0; i < *count; i++)
   {
-    args[i] = (char *)Options.ProgArgs->at(i);
+    args[i] = (char *) Options.ProgArgs->at(i);
   }
   return args;
 }
 
-static void UPDATE_WATCH()
+static void
+UPDATE_WATCH()
 {
-  if (watchwindow) watches->update();
+  if (watchwindow)
+    watches->update();
   UpdateCallStackWindow();
   UpdateDataWindows();
 }
 
 int dual_display_supported();
 
-static void StartSession()
+static void
+StartSession()
 {
   if (!dual_display && UseDualDisplay && dual_display_supported())
   {
@@ -375,18 +427,23 @@ static void StartSession()
     TMouse::resume();
     TProgram::application->setScreenMode(Project.screen_mode);
   }
-  if (ShowStdout) cpp_outname = open_stdout();
-  if (ShowStderr) cpp_errname = open_stderr();
-  if (watchwindow) watchwindow->select();
+  if (ShowStdout)
+    cpp_outname = open_stdout();
+  if (ShowStderr)
+    cpp_errname = open_stderr();
+  if (watchwindow)
+    watchwindow->select();
 }
 
-static void RemoveSessionTempFiles (void)
+static void
+RemoveSessionTempFiles(void)
 {
-  RemoveStdout ();
-  RemoveStderr ();
+  RemoveStdout();
+  RemoveStderr();
 }
 
-static void EndSession(int exit_code)
+static void
+EndSession(int exit_code)
 {
   if (dual_display && UseDualDisplay)
   {
@@ -407,12 +464,13 @@ static void EndSession(int exit_code)
     close_stderr();
   }
   if (!DontShowExitCode)
-    messageBox(mfInformation|mfOKButton,
-      _("Program exit code: %d (0x%04x)"),exit_code,exit_code);
+    messageBox(mfInformation | mfOKButton,
+               _("Program exit code: %d (0x%04x)"), exit_code, exit_code);
 
   if (ShowUserAfterExit)
   {
     TEvent event;
+
     event.what = evCommand;
     event.message.command = cmUserScreen;
     TProgram::application->handleEvent(event);
@@ -433,7 +491,8 @@ static void EndSession(int exit_code)
     chdir(project_directory);
 }
 
-static void BreakSession()
+static void
+BreakSession()
 {
   if (dual_display && UseDualDisplay)
   {
@@ -458,12 +517,14 @@ static void BreakSession()
   external_program_executed = 1;
 }
 
-static char *GetMainFunction()
+static char *
+GetMainFunction()
 {
   return Project.main_function;
 }
 
-void InitDebuggerInterface()
+void
+InitDebuggerInterface()
 {
   _select_source_line = select_source_line;
   _UserWarning = UserWarning;
@@ -482,30 +543,56 @@ void InitDebuggerInterface()
   post_command_hook = UPDATE_WATCH;
 }
 
-void ToggleBreak()
+void
+ToggleBreak()
 {
   const char *fname;
   char *bname;
-  int break_number,line,column;
+  int break_number, line, column;
   TCEditWindow *ew;
-  if ((fname = WhereIsCursor(line,column,bname,ew)) == NULL) return;
-  break_number = IsBreakPointLine(bname,line);
+
+  if ((fname = WhereIsCursor(line, column, bname, ew)) == NULL)
+    return;
+  break_number = IsBreakPointLine(bname, line);
   if (break_number >= 0)
     RemoveBreakPoint(break_number);
   else
-    AddBreakPointLine(bname,line);
+    AddBreakPointLine(bname, line);
   Repaint();
-}  
+}
 
 #else
-void GOTO(int) {}
-void STEP(int) {}
-void TRACE(int) {}
-void RESET()
+void
+GOTO(int)
 {
-  if (project_directory) chdir(project_directory);
 }
-void CONTINUE() {}
-void FINISH() {}
-int DEBUGGER_STARTED() { return 0; }
+
+void
+STEP(int)
+{
+}
+void
+TRACE(int)
+{
+}
+void
+RESET()
+{
+  if (project_directory)
+    chdir(project_directory);
+}
+
+void
+CONTINUE()
+{
+}
+void
+FINISH()
+{
+}
+int
+DEBUGGER_STARTED()
+{
+  return 0;
+}
 #endif

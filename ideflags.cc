@@ -16,7 +16,8 @@
 
 #include <rhide.h>
 
-void AddLibraries(char *& retval)
+void
+AddLibraries(char *&retval)
 {
 #if 0
   int iostr_flag = 0;
@@ -28,20 +29,23 @@ void AddLibraries(char *& retval)
   int f2c_flag = 0;
 #endif
   int i;
+
   retval = NULL;
-  for (i=0;i<Options.user_libs->getCount();i++)
+  for (i = 0; i < Options.user_libs->getCount(); i++)
   {
-    if (Options.libs & (1<<i))
+    if (Options.libs & (1 << i))
     {
-      if (retval) string_cat(retval," ");
-      string_cat(retval,(char *)(Options.user_libs->at(i)));
+      if (retval)
+        string_cat(retval, " ");
+      string_cat(retval, (char *) (Options.user_libs->at(i)));
     }
   }
 #if 0
-  if (NoStdLib) return;
-  for (i=0;i<Project.dependencies->getCount();i++)
+  if (NoStdLib)
+    return;
+  for (i = 0; i < Project.dependencies->getCount(); i++)
   {
-    switch (((TDependency *)Project.dependencies->at(i))->compile_id)
+    switch (((TDependency *) Project.dependencies->at(i))->compile_id)
     {
       case COMPILE_FORTRAN:
         m_flag = 1;
@@ -52,14 +56,14 @@ void AddLibraries(char *& retval)
         m_flag = 1;
         break;
       case COMPILE_CC:
-	iostr_flag = 1;
-	break;
+        iostr_flag = 1;
+        break;
       case COMPILE_BISON:
-	bison_flag = 1;
-	break;
+        bison_flag = 1;
+        break;
       case COMPILE_FLEX:
-	flex_flag = 1;
-	break;
+        flex_flag = 1;
+        break;
       case COMPILE_OBJC:
         objc_flag = 1;
       default:
@@ -68,48 +72,53 @@ void AddLibraries(char *& retval)
   }
   if (objc_flag)
   {
-    if (retval) string_cat(retval," ");
-    string_cat(retval,"objc");
+    if (retval)
+      string_cat(retval, " ");
+    string_cat(retval, "objc");
   }
   if (bison_flag)
   {
-    if (retval) string_cat(retval," ");
-    string_cat(retval,"bison");
+    if (retval)
+      string_cat(retval, " ");
+    string_cat(retval, "bison");
   }
   if (flex_flag)
   {
-    if (retval) string_cat(retval," ");
-    string_cat(retval,"fl");
+    if (retval)
+      string_cat(retval, " ");
+    string_cat(retval, "fl");
   }
   if (gpc_flag)
   {
-    if (retval) string_cat(retval," ");
-    string_cat(retval,"gpc");
+    if (retval)
+      string_cat(retval, " ");
+    string_cat(retval, "gpc");
   }
   if (iostr_flag)
   {
-    if (retval) string_cat(retval," ");
+    if (retval)
+      string_cat(retval, " ");
 #ifdef __DJGPP__
-    string_cat(retval,"iostr");
+    string_cat(retval, "iostr");
 #else
 #if 0
-    string_cat(retval,"g++");
+    string_cat(retval, "g++");
 #else
-    string_cat(retval,"stdc++");
+    string_cat(retval, "stdc++");
 #endif
 #endif
   }
   if (f2c_flag)
   {
-    if (retval) string_cat(retval," ");
-    string_cat(retval,"f2c");
+    if (retval)
+      string_cat(retval, " ");
+    string_cat(retval, "f2c");
   }
   if (m_flag)
   {
-    if (retval) string_cat(retval," ");
-    string_cat(retval,"m");
+    if (retval)
+      string_cat(retval, " ");
+    string_cat(retval, "m");
   }
 #endif
 }
-
-

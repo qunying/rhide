@@ -18,26 +18,32 @@
 
 #include <string.h>
 
-TProjectListBox::TProjectListBox(const TRect& bounds, ushort aNumCols, 
-                                 TScrollBar *aScrollBar) :
-    TSortedListBox(bounds,aNumCols,aScrollBar)
+TProjectListBox::TProjectListBox(const TRect & bounds, ushort aNumCols,
+TScrollBar * aScrollBar):
+TSortedListBox(bounds, aNumCols, aScrollBar)
 {
   helpCtx = hcProjectListBox;
 }
 
-void TProjectListBox::getText(char *dest,ccIndex item,short maxlen)
+void
+TProjectListBox::getText(char *dest, ccIndex item, short maxlen)
 {
-  strncpy(dest,FName(((TDependency *)list()->at(item))->source_name),maxlen);
+  strncpy(dest, FName(((TDependency *) list()->at(item))->source_name),
+          maxlen);
   dest[maxlen] = EOS;
 }
 
-void TProjectListBox::selectItem(ccIndex item)
+void
+TProjectListBox::selectItem(ccIndex item)
 {
-  TDependency * rec;
-  if (!list()) return;
-  message( owner, evBroadcast, cmListItemSelected, list() );
-  rec = (TDependency *)list()->at(item);
-  if (!rec->source_name) return;
+  TDependency *rec;
+
+  if (!list())
+    return;
+  message(owner, evBroadcast, cmListItemSelected, list());
+  rec = (TDependency *) list()->at(item);
+  if (!rec->source_name)
+    return;
   switch (rec->source_file_type)
   {
     case FILE_OBJECT:
@@ -48,6 +54,7 @@ void TProjectListBox::selectItem(ccIndex item)
     case FILE_PROJECT:
     {
       TEvent event;
+
       event.what = evCommand;
       event.message.command = cmSelectProject;
       event.message.infoPtr = rec;
@@ -55,15 +62,19 @@ void TProjectListBox::selectItem(ccIndex item)
       break;
     }
     default:
-      if (message(TProgram::application,evBroadcast,cmOpenWindow,(void *)FName(rec->source_name)))
+      if (message
+          (TProgram::application, evBroadcast, cmOpenWindow,
+           (void *) FName(rec->source_name)))
       {
-        message(TProgram::application,evBroadcast,cmGotoWindowLine,(void *)0);
+        message(TProgram::application, evBroadcast, cmGotoWindowLine,
+                (void *) 0);
       }
       break;
   }
 }
 
-void TProjectListBox::handleEvent(TEvent &event)
+void
+TProjectListBox::handleEvent(TEvent & event)
 {
   TSortedListBox::handleEvent(event);
   if (event.what == evKeyDown)
@@ -71,11 +82,11 @@ void TProjectListBox::handleEvent(TEvent &event)
     switch (event.keyDown.keyCode)
     {
       case kbEnter:
-        if (!list() || list()->getCount() == 0) break;
+        if (!list() || list()->getCount() == 0)
+          break;
         selectItem(focused);
         clearEvent(event);
         break;
     }
   }
 }
-

@@ -3,12 +3,13 @@
 #if defined( Uses_TMsgCollection ) && !defined( __TMsgCollection__ )
 #define __TMsgCollection__
 
-class TMsgCollection : public TNSCollection
+class TMsgCollection:public TNSCollection
 {
 public:
-  TMsgCollection(void) : TNSCollection(5,5) {}
+  TMsgCollection(void):TNSCollection(5, 5)
+  {
+  }
   virtual void freeItem(void *item);
 };
 
 #endif
-

@@ -12,25 +12,28 @@
 #include <librhgdb.h>
 #include <rhutils.h>
 
-TInspectList::TInspectList(const TRect &bounds)
-  : TListBox(bounds, 1, NULL)
+TInspectList::TInspectList(const TRect & bounds):
+TListBox(bounds, 1, NULL)
 {
 }
 
-static
-char *left_adjust(int left_space, const char *val)
+static char *
+left_adjust(int left_space, const char *val)
 {
   int len = strlen(val);
-  char *ret = (char*)malloc(left_space+len+1);
+  char *ret = (char *) malloc(left_space + len + 1);
+
   memset(ret, ' ', left_space);
-  memcpy(ret+left_space, val, len+1);
+  memcpy(ret + left_space, val, len + 1);
   return ret;
 }
 
-void TInspectList::update(const char *expr)
+void
+TInspectList::update(const char *expr)
 {
   newList(NULL);
   char *res = string_dup(EvaluateWatch(expr, 0));
+
   if (*res)
   {
     int left = 0;
@@ -38,6 +41,7 @@ void TInspectList::update(const char *expr)
     char *end = start;
     int in_string1 = 0, in_string2 = 0, in_brace = 0;
     TSCollection *coll = new TSCollection();
+
     while (*end)
     {
       switch (*end)
@@ -63,8 +67,10 @@ void TInspectList::update(const char *expr)
           if (!in_brace && !in_string1 && !in_string2)
           {
             char c = *end;
+
             *end = 0;
             char *val = left_adjust(left, start);
+
             coll->insert(val);
             *end = c;
             left--;
@@ -76,16 +82,19 @@ void TInspectList::update(const char *expr)
           if (!in_brace && !in_string1 && !in_string2)
           {
             char c = end[1];
+
             end[1] = 0;
             char *val = left_adjust(left, start);
+
             coll->insert(val);
             end[1] = c;
             if (*end == '{')
               left++;
             end++;
-            while (*end == ' ') end++;
+            while (*end == ' ')
+              end++;
             end--;
-            start = end+1;
+            start = end + 1;
           }
           break;
       }
@@ -96,4 +105,3 @@ void TInspectList::update(const char *expr)
     newList(coll);
   }
 }
-

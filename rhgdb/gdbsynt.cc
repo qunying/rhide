@@ -30,6 +30,7 @@ static void
 init_pascal_reserved_words()
 {
   char *tmp;
+
 #define F(x) tmp = strdup(x); string_down(tmp); PascalRWords->insert(tmp);
 #include "../include/flags/gpcreser.h"
 #undef F
@@ -39,19 +40,21 @@ void
 init_syntax()
 {
   char *syntax_file;
+
 //  TCEditor::SHLSOStack=new SOStack;
 //  TCEditor::SHLGenList=new TNoCaseSOSStringCollection(5,5,TCEditor::SHLSOStack);
-  SOStack * SHLSOStack=new SOStack;
-  TCEditor::SHLGenList=new TNoCaseSOSStringCollection(5,5,SHLSOStack);
+  SOStack *SHLSOStack = new SOStack;
+
+  TCEditor::SHLGenList = new TNoCaseSOSStringCollection(5, 5, SHLSOStack);
   syntax_file = ExpandFileNameToThePointWhereTheProgramWasLoaded(SHLFile);
-  if (LoadSyntaxHighLightFile(syntax_file,TCEditor::SHLArray,
+  if (LoadSyntaxHighLightFile(syntax_file, TCEditor::SHLArray,
 //                              *TCEditor::SHLSOStack,TCEditor::SHLGenList,
-                              TCEditor::SHLGenList,
-                              TCEditor::SHLCant) != 0)
+                              TCEditor::SHLGenList, TCEditor::SHLCant) != 0)
   {
     syntax_file = "__syntax__";
-    FILE *f = fopen(syntax_file,"w+t");
-    fprintf(f,"\n\
+    FILE *f = fopen(syntax_file, "w+t");
+
+    fprintf(f, "\n\
 Name=C/C++\n\
 Files=C,c,cpp,cxx,cc,h,hpp,i,ii\n\
 UseInternal=1\n\
@@ -62,20 +65,17 @@ UseInternal=2\n\
 End\n\
 ");
     fclose(f);
-    LoadSyntaxHighLightFile(syntax_file,TCEditor::SHLArray,
+    LoadSyntaxHighLightFile(syntax_file, TCEditor::SHLArray,
 //                            *TCEditor::SHLSOStack,TCEditor::SHLGenList,
-                            TCEditor::SHLGenList,
-                            TCEditor::SHLCant);
+                            TCEditor::SHLGenList, TCEditor::SHLCant);
     unlink(syntax_file);
   }
- 
-  ReservedWords = new TStringCollection(15,16);
-  PascalRWords = new TStringCollection(15,16);
+
+  ReservedWords = new TStringCollection(15, 16);
+  PascalRWords = new TStringCollection(15, 16);
 
   init_c_reserved_words();
   init_pascal_reserved_words();
 
   CreateSHShortCutTables();
 }
-
-

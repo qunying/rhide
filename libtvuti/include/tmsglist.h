@@ -3,11 +3,11 @@
 #if defined( Uses_TMsgListBox ) && !defined( __TMsgListBox__ )
 #define __TMsgListBox__
 
-class TMsgListBox : public TEnterListBox
+class TMsgListBox:public TEnterListBox
 {
 public:
-  TMsgListBox(const TRect& bounds, ushort aNumCols, TScrollBar *aScrollBar);
-  virtual void handleEvent(TEvent &event);
+  TMsgListBox(const TRect & bounds, ushort aNumCols, TScrollBar * aScrollBar);
+  virtual void handleEvent(TEvent & event);
   virtual void getText(char *dest, ccIndex item, short maxLen);
   const char *getText(ccIndex item);
   virtual void focusItem(ccIndex item);

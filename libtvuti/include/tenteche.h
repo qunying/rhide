@@ -3,16 +3,18 @@
 #if !defined( __TEnterRadioButtons )
 #define __TEnterRadioButtons
 
-class TEnterRadioButtons : public TRadioButtons
+class TEnterRadioButtons:public TRadioButtons
 {
 public:
-  TEnterRadioButtons(const TRect& bounds, TSItem *aStrings ) :
-    TRadioButtons(bounds,aStrings) {}
+  TEnterRadioButtons(const TRect & bounds,
+                     TSItem * aStrings):TRadioButtons(bounds, aStrings)
+  {
+  }
   virtual void handleEvent(TEvent &);
   virtual void movedTo(int);
+
   STREAMIO(TEnterRadioButtons);
 };
 
 STREAMINLINES(TEnterRadioButtons)
-
 #endif

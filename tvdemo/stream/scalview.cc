@@ -4,8 +4,5 @@
 
 #include "calendar.h"
 
-TStreamableClass RCalendarView( TCalendarView::name,
-                                TCalendarView::build,
-                                __DELTA(TCalendarView)
-                              );
-
+TStreamableClass RCalendarView(TCalendarView::name,
+                               TCalendarView::build, __DELTA(TCalendarView));

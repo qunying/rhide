@@ -6,11 +6,11 @@
 class TRect;
 class TInputLine;
 
-class TWatchDialog : public TDialog
+class TWatchDialog:public TDialog
 {
 public:
-  TWatchDialog(const TRect & bounds, const char *Title, const char *StartVal = NULL,
-               int evaluate = 1);
+  TWatchDialog(const TRect & bounds, const char *Title, const char *StartVal =
+               NULL, int evaluate = 1);
   virtual void handleEvent(TEvent &);
   TInputLine *input;
   TInputLine *result;

@@ -59,9 +59,10 @@
   know what you do!!
 */
 
-Boolean FindRCSFile(const char *name, char *&fname, char *&sname)
+Boolean
+FindRCSFile(const char *name, char *&fname, char *&sname)
 {
-  insert_variable("rlog_arg",name);
+  insert_variable("rlog_arg", name);
   fname = expand_rhide_spec("$(RHIDE_RLOG)");
   if (*fname)
   {
@@ -69,10 +70,11 @@ Boolean FindRCSFile(const char *name, char *&fname, char *&sname)
     return True;
   }
   string_free(fname);
-  int i,count=Options.SrcDirs->getCount();
-  for (i=0;i<count;i++)
+  int i, count = Options.SrcDirs->getCount();
+
+  for (i = 0; i < count; i++)
   {
-    sname = expand_rhide_spec((char *)Options.SrcDirs->at(i));
+    sname = expand_rhide_spec((char *) Options.SrcDirs->at(i));
     string_cat(sname, "/", name, NULL);
     insert_variable("rlog_arg", sname);
     fname = expand_rhide_spec("$(RHIDE_RLOG)");
@@ -84,13 +86,14 @@ Boolean FindRCSFile(const char *name, char *&fname, char *&sname)
   return False;
 }
 
-void CheckoutRCSFile(const char *sname,const char *fname,int rw)
+void
+CheckoutRCSFile(const char *sname, const char *fname, int rw)
 {
   char *arg = NULL;
-  string_cat(arg,rw?"-l ":"",sname," ",fname,NULL);
-  insert_variable("co_arg",arg);
+
+  string_cat(arg, rw ? "-l " : "", sname, " ", fname, NULL);
+  insert_variable("co_arg", arg);
   string_free(arg);
   arg = expand_rhide_spec("$(RHIDE_CO)");
   string_free(arg);
 }
-

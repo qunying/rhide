@@ -33,7 +33,5 @@
   __HC(InspectDialog,8)\
   __HC(Inspector,9)
 
-__TVGDB_COMMAND_CODES__
-__TVGDB_HELP_CODES__
-
+__TVGDB_COMMAND_CODES__ __TVGDB_HELP_CODES__
 #endif

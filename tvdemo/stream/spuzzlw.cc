@@ -4,10 +4,8 @@
 
 #include "puzzle.h"
 
-__link( __RPuzzleView )
+__link(__RPuzzleView)
+     TStreamableClass RPuzzleWindow(TPuzzleWindow::name,
+                                    TPuzzleWindow::build,
 
-TStreamableClass RPuzzleWindow( TPuzzleWindow::name,
-                                TPuzzleWindow::build,
-                                __DELTA(TPuzzleWindow)
-                              );
-
+                                    __DELTA(TPuzzleWindow));

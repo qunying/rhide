@@ -17,31 +17,36 @@
 
 static TGDBWindow *GDBOUTWIN = NULL;
 
-TGDBWindow::TGDBWindow(const char *fileName) :
-    TWindow( TProgram::deskTop->getExtent(), fileName, 0 ),
-    TWindowInit( &TGDBWindow::initFrame )
+TGDBWindow::TGDBWindow(const char *fileName):
+TWindow(TProgram::deskTop->getExtent(), fileName, 0),
+TWindowInit(&TGDBWindow::initFrame)
 {
-    options |= ofTileable;
-    TRect r( getExtent() );
-    r.grow(-1, -1);
-    viewer = new TFileViewer( r,
-                            standardScrollBar(sbHorizontal | sbHandleKeyboard),
-                            standardScrollBar(sbVertical | sbHandleKeyboard),
-                            fileName);
-    insert(viewer);
-    viewer->growMode = gfGrowHiX | gfGrowHiY;
-    growMode = gfGrowLoY | gfGrowHiX | gfGrowHiY;
-    flags |= wfGrow | wfZoom;
+  options |= ofTileable;
+  TRect r(getExtent());
+
+  r.grow(-1, -1);
+  viewer = new TFileViewer(r,
+                           standardScrollBar(sbHorizontal | sbHandleKeyboard),
+                           standardScrollBar(sbVertical | sbHandleKeyboard),
+                           fileName);
+  insert(viewer);
+  viewer->growMode = gfGrowHiX | gfGrowHiY;
+  growMode = gfGrowLoY | gfGrowHiX | gfGrowHiY;
+  flags |= wfGrow | wfZoom;
 }
 
-void UpdateGDBOutWin(char *buffer)
+void
+UpdateGDBOutWin(char *buffer)
 {
   char *tmp;
-  if (!GDBOUTWIN) return;
-  if (!buffer || !*buffer) return;
+
+  if (!GDBOUTWIN)
+    return;
+  if (!buffer || !*buffer)
+    return;
   while (buffer && *buffer)
   {
-    tmp = strchr(buffer,'\n');
+    tmp = strchr(buffer, '\n');
     if (!tmp)
     {
       VIEWER->insertLine(strdup(buffer));
@@ -50,32 +55,39 @@ void UpdateGDBOutWin(char *buffer)
     else
     {
       char c = *tmp;
+
       *tmp = 0;
       VIEWER->insertLine(strdup(buffer));
       *tmp = c;
-      buffer = tmp+1;
+      buffer = tmp + 1;
     }
   }
   int count = VIEWER->Count();
-  if (count>0) VIEWER->scrollTo(0,count-1);
-  else return;
+
+  if (count > 0)
+    VIEWER->scrollTo(0, count - 1);
+  else
+    return;
   VIEWER->drawView();
   VIEWER->show();
 }
 
-void InitGDBOutWin()
+void
+InitGDBOutWin()
 {
   TGDBWindow *window;
-  if (GDBOUTWIN) return;
+
+  if (GDBOUTWIN)
+    return;
   TRect rect = TProgram::deskTop->getExtent();
-  rect.a.y = rect.b.y-7;
+
+  rect.a.y = rect.b.y - 7;
   window = new TGDBWindow("/dev/null");
-  delete (char *)(window->title);
-  (char *&)window->title = strdup(_("Output from GDB"));
+  delete(char *) (window->title);
+  (char *&) window->title = strdup(_("Output from GDB"));
   window->palette = wpGrayWindow;
   window->locate(rect);
   GDBOUTWIN = window;
   window->hide();
-  AddWindow(window,(TWindow **)&GDBOUTWIN);
+  AddWindow(window, (TWindow **) & GDBOUTWIN);
 }
-

@@ -4,10 +4,12 @@
 #define Uses_TLButton
 #include <libtvuti.h>
 
-TLButton::TLButton(TRect& bounds,const char *aTitle,ushort aCommand,ushort aFlags)
-  : TButton(bounds,aTitle,aCommand,aFlags)
+TLButton::TLButton(TRect & bounds, const char *aTitle, ushort aCommand,
+                   ushort aFlags):
+TButton(bounds, aTitle, aCommand, aFlags)
 {
   int len = cstrlen(aTitle);
+
   if (len > size.x - 2)
   {
     bounds.b.x = bounds.a.x + len + 3;

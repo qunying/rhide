@@ -2,10 +2,10 @@
 #include <rhutils.h>
 #include <stdlib.h>
 
-void string_free(char * &dest)
+void
+string_free(char *&dest)
 {
-  if (dest) free(dest);
+  if (dest)
+    free(dest);
   dest = NULL;
 }
-
-

@@ -165,6 +165,9 @@ msgstr ""
 msgid  "Output to stdout:"
 msgstr ""
 
+msgid  "No project"
+msgstr "Bez projektu"
+
 msgid  "return value: %d\n"
 msgstr "n vratov  hodnota: %d\n"
 
@@ -1612,9 +1615,6 @@ msgstr "Na‡¡st nastaven¡ z projektu"
 msgid  "Couldn't open %s"
 msgstr "%s nelze otev©¡t"
 
-msgid  "No project"
-msgstr "Bez projektu"
-
 msgid  "changing cwd to %s\n"
 msgstr "zmˆna cwd na %s\n"
 
@@ -2988,6 +2988,9 @@ msgstr ""
 msgid  "Change register value"
 msgstr "Zmˆnit hodnotu registru"
 
+msgid  "~I~nspect"
+msgstr ""
+
 msgid  "Write block to file"
 msgstr ""
 
@@ -3060,6 +3063,9 @@ msgstr "kolem RH~G~DB"
 msgid  "~Q~uit"
 msgstr "~K~onec"
 
+msgid  "~I~nspect data"
+msgstr ""
+
 msgid  "~D~irectories for sources"
 msgstr "~A~dres ©e ke zdrojov˜m soubor–m"
 
@@ -3123,9 +3129,6 @@ msgstr "            -D : Pou‘¡v n¡ dvou obrazovek pro ladˆn¡\n"
 msgid  "            -i INI_FILE : Use INI_FILE as config file\n"
 msgstr "            -i INI_SOUBOR : Pou‘ije INI_SOUBOR jako konfigura‡n¡ "
 "soubor\n"
-
-msgid  "This is %s. Copyright (c) 1996-1998 by Robert H”hne\n"
-msgstr "Toto je %s. V¨echna pr va vyhrazena (c) Robert H”hne, 1996-1998\n"
 
 msgid  "Do you really want to interrupt RHGDB?"
 msgstr "Skute‡nˆ chcete p©eru¨it RHGDB?"

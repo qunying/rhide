@@ -20,8 +20,8 @@ void UpdateGDBOutWin(char *buffer);
 void InitGDBOutWin();
 void UserWarning(int number, ...);
 struct function_entry;
-ushort SelectFunction(const char *title,const char *regex,char *full_name,
-                      char *GDB_name,function_entry **func = NULL);
+ushort SelectFunction(const char *title, const char *regex, char *full_name,
+                      char *GDB_name, function_entry ** func = NULL);
 
 void ShowCallStackWindow();
 void UpdateCallStackWindow();

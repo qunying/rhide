@@ -10,44 +10,44 @@
 #define __ASCII_H
 
 const int cmAsciiTableCmdBase = 590;
-const int cmCharFocused       =   0;
+const int cmCharFocused = 0;
 
 
-class TTable : public TView
+class TTable:public TView
 {
 
 public:
 
-    TTable( TRect& r );
-    virtual void draw();
-    virtual void handleEvent( TEvent& event );
-    void charFocused();
+  TTable(TRect & r);
+  virtual void draw();
+  virtual void handleEvent(TEvent & event);
+  void charFocused();
 
 };
 
 
-class TReport : public TView
+class TReport:public TView
 {
 
 public:
 
-    TReport( TRect& r );
-    virtual void draw();
-    virtual void handleEvent( TEvent& event );
+  TReport(TRect & r);
+  virtual void draw();
+  virtual void handleEvent(TEvent & event);
 
 private:
 
-    unsigned char asciiChar;
+  unsigned char asciiChar;
 
 };
 
-class TAsciiChart : public TWindow
+class TAsciiChart:public TWindow
 {
 
 public:
 
-    TAsciiChart();
+  TAsciiChart();
 
 };
 
-#endif      // __ASCII_H
+#endif // __ASCII_H

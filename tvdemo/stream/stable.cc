@@ -4,8 +4,4 @@
 
 #include "ascii.h"
 
-TStreamableClass RTable( TTable::name,
-			 TTable::build,
-			 __DELTA(TTable)
-		       );
-
+TStreamableClass RTable(TTable::name, TTable::build, __DELTA(TTable));

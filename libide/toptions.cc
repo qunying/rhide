@@ -13,9 +13,11 @@
 
 static ushort TOptions_Version = 8;
 
-void * TOptions::read(ipstream & is)
+void *
+TOptions::read(ipstream & is)
 {
   ushort version;
+
   is >> version;
   is >> include_path;
   is >> library_path;
@@ -32,14 +34,18 @@ void * TOptions::read(ipstream & is)
   is >> cxx_flags;
   is >> c_flags;
   is >> ProgArgs;
-  if (version < 2) reserved = NULL;
-  else is >> reserved;
-  if (version < 3) user_words = new TStringCollection(4,4);
-  else is >> user_words;
+  if (version < 2)
+    reserved = NULL;
+  else
+    is >> reserved;
+  if (version < 3)
+    user_words = new TStringCollection(4, 4);
+  else
+    is >> user_words;
   if (version < 4)
   {
     pascal_flags = new TFlagCollection();
-    gpc_reserved = new TStringCollection(4,4);
+    gpc_reserved = new TStringCollection(4, 4);
   }
   else
   {
@@ -73,7 +79,7 @@ void * TOptions::read(ipstream & is)
   if (version < 8)
   {
     fpc_flags = new TFlagCollection();
-    fpc_reserved = new TStringCollection(4,4);
+    fpc_reserved = new TStringCollection(4, 4);
   }
   else
   {
@@ -83,7 +89,8 @@ void * TOptions::read(ipstream & is)
   return this;
 }
 
-void TOptions::write(opstream & os)
+void
+TOptions::write(opstream & os)
 {
   os << TOptions_Version;
   os << include_path;
@@ -129,18 +136,18 @@ TOptions::TOptions()
   cxx_flags = new TFlagCollection();
   c_flags = new TFlagCollection();
   ProgArgs = new TParamList();
-  reserved = new TStringCollection(4,4);
-  user_words = new TStringCollection(4,4);
+  reserved = new TStringCollection(4, 4);
+  user_words = new TStringCollection(4, 4);
   pascal_flags = new TFlagCollection();
-  gpc_reserved = new TStringCollection(4,4);
+  gpc_reserved = new TStringCollection(4, 4);
   fpc_flags = new TFlagCollection();
-  fpc_reserved = new TStringCollection(4,4);
+  fpc_reserved = new TStringCollection(4, 4);
   fortran_flags = new TFlagCollection();
   StdInc = new TDirList();
   ada_flags = new TFlagCollection();
 }
 
-TOptions & TOptions::operator = ( const TOptions& opt)
+TOptions & TOptions::operator = (const TOptions & opt)
 {
 #define D(x) *x = *opt.x
   D(include_path);
@@ -170,9 +177,10 @@ TOptions & TOptions::operator = ( const TOptions& opt)
   return *this;
 }
 
-TStreamable *TOptions::build()
+TStreamable *
+TOptions::build()
 {
-  return new TOptions( streamableInit );
+  return new TOptions(streamableInit);
 }
 
 TOptions::~TOptions()
@@ -200,5 +208,3 @@ TOptions::~TOptions()
   destroy(fpc_flags);
   destroy(fpc_reserved);
 }
-
-

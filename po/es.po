@@ -151,6 +151,9 @@ msgstr ""
 msgid  "Output to stdout:"
 msgstr ""
 
+msgid  "No project"
+msgstr "Sin proyecto"
+
 msgid  "return value: %d\n"
 msgstr "valor retornado: %d\n"
 
@@ -1598,9 +1601,6 @@ msgstr "Leer las opciones desde un proyecto"
 msgid  "Couldn't open %s"
 msgstr "No puedo abrir %s"
 
-msgid  "No project"
-msgstr "Sin proyecto"
-
 msgid  "changing cwd to %s\n"
 msgstr "cambiando cwd a %s\n"
 
@@ -2982,6 +2982,9 @@ msgstr ""
 msgid  "Change register value"
 msgstr "Cambiar el valor de un registro"
 
+msgid  "~I~nspect"
+msgstr ""
+
 msgid  "Write block to file"
 msgstr ""
 
@@ -3054,6 +3057,9 @@ msgstr "~a~cerca de RHGDB"
 msgid  "~Q~uit"
 msgstr "A~b~andonar"
 
+msgid  "~I~nspect data"
+msgstr ""
+
 msgid  "~D~irectories for sources"
 msgstr "~D~irectorio de recursos"
 
@@ -3116,9 +3122,6 @@ msgstr "            -D : Usar dos monitores\n"
 
 msgid  "            -i INI_FILE : Use INI_FILE as config file\n"
 msgstr "           -i INI : Usar INI como archivo de configuraci¢n\n"
-
-msgid  "This is %s. Copyright (c) 1996-1998 by Robert H”hne\n"
-msgstr "Esto es %s. Copyright (c) 1996-1998 por Robert H”hne\n"
 
 msgid  "Do you really want to interrupt RHGDB?"
 msgstr "¨Est  seguro que desea detener RHGDB?"

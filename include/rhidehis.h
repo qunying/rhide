@@ -25,10 +25,6 @@ const int
   RHIDE_History_find = 18,
   RHIDE_History_replace = 19,
   RHIDE_History_Calculator = 20,
-  RHIDE_History_Inspect = 21,
-
-
-  RHIDE_History_last = 39; // reserving the first 40 id's for RHIDE itself
+  RHIDE_History_Inspect = 21, RHIDE_History_last = 39;	// reserving the first 40 id's for RHIDE itself
 
 #endif
-

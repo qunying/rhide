@@ -6,7 +6,8 @@
 class TWindow;
 class TSCollection;
 
-typedef struct {
+typedef struct
+{
   TWindow *window;
   TWindow **ref;
   char *full_name;
@@ -15,7 +16,8 @@ typedef struct {
   int inode;
   Boolean remember_closed;
   Boolean is_removable;
-} DeskTopWindow;
+}
+DeskTopWindow;
 
 struct closed_window
 {
@@ -25,15 +27,15 @@ struct closed_window
   Boolean is_removable;
 };
 
-class TWindowList : public TEnterListBox
+class TWindowList:public TEnterListBox
 {
 public:
-  TWindowList(const TRect& bounds, ushort aNumCols, TScrollBar *aScrollBar,
-              TSCollection *_open_windows, TSCollection *_closed_windows);
-  virtual void handleEvent(TEvent &event);
-  virtual void getText(char *,ccIndex,short);
+  TWindowList(const TRect & bounds, ushort aNumCols, TScrollBar * aScrollBar,
+              TSCollection * _open_windows, TSCollection * _closed_windows);
+  virtual void handleEvent(TEvent & event);
+  virtual void getText(char *, ccIndex, short);
   virtual void selectItem(ccIndex item);
-  void update(TSCollection *_open_windows, TSCollection *_closed_windows);
+  void update(TSCollection * _open_windows, TSCollection * _closed_windows);
 
   TSCollection *ow, *cw;
   ccIndex open_count, closed_count;

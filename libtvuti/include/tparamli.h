@@ -3,18 +3,22 @@
 #if defined( Uses_TParamList ) && !defined( __TParamList__ )
 #define __TParamList__
 
-class TParamList : public TCollection
+class TParamList:public TCollection
 {
 public:
-  TParamList(void) : TCollection(10,1) {}
+  TParamList(void):TCollection(10, 1)
+  {
+  }
   TParamList(const char *);
   Boolean FromString(const char *);
-  void ToString(char * &);
+  void ToString(char *&);
+
   TParamList & operator = (const TParamList &);
 #if !defined( NO_STREAM )
 private:
-  virtual void *readItem( ipstream& );
-  virtual void writeItem( void *, opstream& );
+  virtual void *readItem(ipstream &);
+  virtual void writeItem(void *, opstream &);
+
   STREAMIO(TParamList)
 #endif // NO_STREAM
 };
@@ -22,5 +26,4 @@ private:
 #if !defined( NO_STREAM )
 STREAMINLINES(TParamList)
 #endif // NO_STREAM
-
 #endif

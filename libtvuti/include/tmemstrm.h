@@ -3,7 +3,7 @@
 #if !defined( __TMemoriStream )
 #define __TMemoryStream
 
-class TMemoryStream : public iopstream
+class TMemoryStream:public iopstream
 {
 public:
   TMemoryStream();
@@ -13,4 +13,3 @@ public:
 };
 
 #endif
-

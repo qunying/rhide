@@ -19,68 +19,84 @@
 
 #include <stdio.h>
 
-class TCallStackListBox : public TEnterListBox
+class TCallStackListBox:public TEnterListBox
 {
 public:
-  TCallStackListBox(const TRect &bounds,ushort numcols,TScrollBar *vbar) :
-    TEnterListBox(bounds,numcols,vbar) {}
+  TCallStackListBox(const TRect & bounds, ushort numcols,
+                    TScrollBar * vbar):TEnterListBox(bounds, numcols, vbar)
+  {
+  }
   virtual void selectItem(ccIndex item);
   virtual void focusItem(ccIndex item);
-  virtual void getText( char *dest, ccIndex item, short maxLen );
+  virtual void getText(char *dest, ccIndex item, short maxLen);
   void update();
 };
 
 static int in_select = 0;
 static int in_focus = 0;
 
-void TCallStackListBox::selectItem(ccIndex item)
+void
+TCallStackListBox::selectItem(ccIndex item)
 {
   frame_entry *fe;
-  if (item >= frame_count) return;
+
+  if (item >= frame_count)
+    return;
   SetFrame(item);
   in_select++;
   TEnterListBox::focusItem(item);
   TEnterListBox::selectItem(item);
   in_select--;
-  if (in_select) return;
+  if (in_select)
+    return;
   fe = frames[item];
-  if (!fe->file_name) return;
-  if (message(TProgram::application,evBroadcast,cmOpenWindow,fe->file_name))
+  if (!fe->file_name)
+    return;
+  if (message
+      (TProgram::application, evBroadcast, cmOpenWindow, fe->file_name))
   {
     if (fe->line_number >= 0)
     {
-      message(TProgram::application,evBroadcast,cmGotoWindowLine,
-              (void *)fe->line_number);
+      message(TProgram::application, evBroadcast, cmGotoWindowLine,
+              (void *) fe->line_number);
     }
   }
 }
 
-void TCallStackListBox::focusItem(ccIndex item)
+void
+TCallStackListBox::focusItem(ccIndex item)
 {
   frame_entry *fe;
-  if (item >= frame_count) return;
+
+  if (item >= frame_count)
+    return;
   SetFrame(item);
   in_focus++;
   TEnterListBox::focusItem(item);
   in_focus--;
-  if (in_focus || in_select) return;
+  if (in_focus || in_select)
+    return;
   fe = frames[item];
-  if (!fe->file_name) return;
-  if (message(TProgram::application,evBroadcast,cmFocusWindow,fe->file_name))
+  if (!fe->file_name)
+    return;
+  if (message
+      (TProgram::application, evBroadcast, cmFocusWindow, fe->file_name))
   {
     if (fe->line_number >= 0)
     {
-      message(TProgram::application,evBroadcast,cmGotoWindowLine,
-              (void *)fe->line_number);
+      message(TProgram::application, evBroadcast, cmGotoWindowLine,
+              (void *) fe->line_number);
     }
   }
 }
 
-void TCallStackListBox::getText(char *dest, ccIndex item, short maxlen)
+void
+TCallStackListBox::getText(char *dest, ccIndex item, short maxlen)
 {
   int len = 0;
   char *tmp;
   frame_entry *fe;
+
   if (item >= frame_count)
   {
     *dest = 0;
@@ -90,18 +106,21 @@ void TCallStackListBox::getText(char *dest, ccIndex item, short maxlen)
   if (fe->file_name)
   {
     char *bname;
-    BaseName(fe->file_name,bname);
+
+    BaseName(fe->file_name, bname);
     if (fe->line_number >= 0)
     {
       char temp[16];
-      sprintf(temp,":%d: ",fe->line_number);
-      string_cat(bname,temp);
+
+      sprintf(temp, ":%d: ", fe->line_number);
+      string_cat(bname, temp);
     }
     else
     {
       char temp[16];
-      sprintf(temp,":0x%08lx: ",fe->address);
-      string_cat(bname,temp);
+
+      sprintf(temp, ":0x%08lx: ", fe->address);
+      string_cat(bname, temp);
     }
     tmp = bname;
     while (*tmp && len < maxlen)
@@ -114,7 +133,8 @@ void TCallStackListBox::getText(char *dest, ccIndex item, short maxlen)
   else
   {
     char temp[16];
-    sprintf(temp,"0x%08lx: ",fe->address);
+
+    sprintf(temp, "0x%08lx: ", fe->address);
     tmp = temp;
     while (*tmp && len < maxlen)
     {
@@ -142,7 +162,8 @@ void TCallStackListBox::getText(char *dest, ccIndex item, short maxlen)
   }
 }
 
-void TCallStackListBox::update()
+void
+TCallStackListBox::update()
 {
   BackTrace();
 // should we do  SetFrame(0);
@@ -152,7 +173,7 @@ void TCallStackListBox::update()
   drawView();
 }
 
-class TCallStackWindow : public TDialog
+class TCallStackWindow:public TDialog
 {
 public:
   TCallStackWindow(const TRect &);
@@ -160,15 +181,15 @@ public:
   virtual void changeBounds(const TRect &);
 };
 
-TCallStackWindow::TCallStackWindow(const TRect & r) :
-  TDialog(r,_("Function call stack")),
-  TWindowInit(TCallStackWindow::initFrame)
+TCallStackWindow::TCallStackWindow(const TRect & r):
+TDialog(r, _("Function call stack")), TWindowInit(TCallStackWindow::initFrame)
 {
   TRect rr = getExtent();
   TScrollBar *bar;
-  rr.grow(-1,-1);
-  bar = standardScrollBar(sbVertical|sbHandleKeyboard);
-  list = new TCallStackListBox(rr,1,bar);
+
+  rr.grow(-1, -1);
+  bar = standardScrollBar(sbVertical | sbHandleKeyboard);
+  list = new TCallStackListBox(rr, 1, bar);
   insert(list);
   growMode = gfGrowLoY | gfGrowHiX | gfGrowHiY;
   list->growMode = gfGrowHiX | gfGrowHiY;
@@ -176,33 +197,36 @@ TCallStackWindow::TCallStackWindow(const TRect & r) :
 }
 
 TDialog *CallStackWindow = NULL;
-TRect CallStackWindowRect(-1,-1,-1,-1);
+TRect CallStackWindowRect(-1, -1, -1, -1);
 
-void TCallStackWindow::changeBounds(const TRect &r)
+void
+TCallStackWindow::changeBounds(const TRect & r)
 {
   TDialog::changeBounds(r);
   CallStackWindowRect = r;
 }
 
-void ShowCallStackWindow()
+void
+ShowCallStackWindow()
 {
   if (!CallStackWindow)
   {
     if (CallStackWindowRect.a.x == -1)
     {
       CallStackWindowRect = TProgram::deskTop->getExtent();
-      CallStackWindowRect.a.y = CallStackWindowRect.b.y-7;
+      CallStackWindowRect.a.y = CallStackWindowRect.b.y - 7;
     }
     CallStackWindow = new TCallStackWindow(CallStackWindowRect);
-    AddWindow(CallStackWindow,(TWindow **)&CallStackWindow);
+    AddWindow(CallStackWindow, (TWindow **) & CallStackWindow);
   }
   UpdateCallStackWindow();
   CallStackWindow->select();
 }
 
-void UpdateCallStackWindow()
+void
+UpdateCallStackWindow()
 {
-  if (!CallStackWindow) return;
-  ((TCallStackWindow *)CallStackWindow)->list->update();
+  if (!CallStackWindow)
+    return;
+  ((TCallStackWindow *) CallStackWindow)->list->update();
 }
-

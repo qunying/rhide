@@ -5,16 +5,18 @@
 #include <ctype.h>
 #include <stdarg.h>
 
-void split_fname(const char *fname, char &drive, char *&dir, 
-                 char *&name,char *&ext)
+void
+split_fname(const char *fname, char &drive, char *&dir,
+            char *&name, char *&ext)
 {
   const char *slash;
   const char *dot = NULL;
-  const char *filename=fname;
+  const char *filename = fname;
+
   if (rh_isalpha(fname[0]) && fname[1] == ':')
   {
     drive = fname[0];
-    filename = fname+2;
+    filename = fname + 2;
   }
   else
     drive = 0;
@@ -25,8 +27,9 @@ void split_fname(const char *fname, char &drive, char *&dir,
     dot = strrchr(filename, '.');
   if (slash)
   {
-    int dirlen = (slash-filename)+1;
-    dir = (char *)malloc(dirlen+1);
+    int dirlen = (slash - filename) + 1;
+
+    dir = (char *) malloc(dirlen + 1);
     strncpy(dir, filename, dirlen);
     dir[dirlen] = 0;
   }
@@ -39,7 +42,8 @@ void split_fname(const char *fname, char &drive, char *&dir,
     else
       slash++;
     int namelen = (dot - slash);
-    name = (char *)malloc(namelen+1);
+
+    name = (char *) malloc(namelen + 1);
     strncpy(name, slash, namelen);
     name[namelen] = 0;
     ext = string_dup(dot);
@@ -63,12 +67,14 @@ void split_fname(const char *fname, char &drive, char *&dir,
   %e - suffix
 */
 
-void split_fname_fmt(const char *filename, const char *fmt, ...)
+void
+split_fname_fmt(const char *filename, const char *fmt, ...)
 {
-  char drive,*dir,*name,*ext,c,*arg=NULL;
+  char drive, *dir, *name, *ext, c, *arg = NULL;
   va_list va;
+
   va_start(va, fmt);
-  split_fname(filename,drive,dir,name,ext);
+  split_fname(filename, drive, dir, name, ext);
   if (*fmt != '%')
     goto end;
   while ((c = *fmt++))
@@ -77,6 +83,7 @@ void split_fname_fmt(const char *filename, const char *fmt, ...)
     {
       case '%':
         arg = va_arg(va, char *);
+
         if (!arg)
           goto end;
         *arg = 0;
@@ -90,15 +97,15 @@ void split_fname_fmt(const char *filename, const char *fmt, ...)
           arg[2] = 0;
         }
       case 'd':
-        strcat(arg,dir);
+        strcat(arg, dir);
         break;
       case 'F':
-        strcat(arg,name);
+        strcat(arg, name);
         break;
       case 'f':
-        strcat(arg,name);
+        strcat(arg, name);
       case 'e':
-        strcat(arg,ext);
+        strcat(arg, ext);
         break;
       default:
         break;
@@ -111,21 +118,19 @@ end:
   string_free(ext);
 }
 
-void split_fname(const char *fname,char *&dir,char *&name,char *&ext)
+void
+split_fname(const char *fname, char *&dir, char *&name, char *&ext)
 {
   char drive;
-  split_fname(fname,drive,dir,name,ext);
+
+  split_fname(fname, drive, dir, name, ext);
   if (drive)
   {
-    char dr[2] = {drive,0};
+    char dr[2] = { drive, 0 };
     char *_dir = string_dup(dr);
-    string_cat(_dir,":",dir,NULL);
+
+    string_cat(_dir, ":", dir, NULL);
     string_free(dir);
     dir = _dir;
   }
 }
-
-
-
-
-

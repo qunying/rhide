@@ -3,16 +3,22 @@
 #if defined( Uses_TSCollection ) && !defined( __TSCollection__ )
 #define __TSCollection__
 
-class TSCollection : public TCollection
+class TSCollection:public TCollection
 {
 public:
-    TSCollection(void) : TCollection(10,10) {}
+  TSCollection(void):TCollection(10, 10)
+  {
+  }
 private:
 
-    virtual void *readItem( ipstream& ) { return 0; }
-    virtual void writeItem( void *, opstream& ) {};
+    virtual void *readItem(ipstream &)
+  {
+    return 0;
+  }
+  virtual void writeItem(void *, opstream &)
+  {
+  };
 
 };
 
 #endif
-

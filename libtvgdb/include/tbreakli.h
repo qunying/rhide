@@ -3,11 +3,11 @@
 #if !defined( __TBreakListBox )
 #define __TBreakListBox
 
-class TBreakListBox : public TEnterListBox
+class TBreakListBox:public TEnterListBox
 {
 public:
-  TBreakListBox(const TRect &,TScrollBar *);
-  virtual void getText(char *dest,ccIndex item,short maxLen);
+  TBreakListBox(const TRect &, TScrollBar *);
+  virtual void getText(char *dest, ccIndex item, short maxLen);
   void update();
   int filesize;
   int linesize;

@@ -9,52 +9,59 @@
 #define Uses_tvutilCommands
 #include <libtvuti.h>
 
-void TEnterListBox::newList( TNSCollection *aList )
+void
+TEnterListBox::newList(TNSCollection * aList)
 {
-    destroy( items );
-    items = aList;
-    if( aList != 0 )
-        setRange( aList->getCount() );
-    else
-        setRange(0);
-    if( range > 0 )
-        focusItem(0);
-    drawView();
+  destroy(items);
+  items = aList;
+  if (aList != 0)
+    setRange(aList->getCount());
+  else
+    setRange(0);
+  if (range > 0)
+    focusItem(0);
+  drawView();
 }
 
 
-TNSCollection * TEnterListBox::swapList( TNSCollection *aList )
+TNSCollection *
+TEnterListBox::swapList(TNSCollection * aList)
 {
-    TNSCollection * tmp = items;
-    items = aList;
-    if( aList != 0 )
-        setRange( aList->getCount() );
-    else
-        setRange(0);
-    if( range > 0 )
-        focusItem(0);
-    drawView();
-    return tmp;
+  TNSCollection *tmp = items;
+
+  items = aList;
+  if (aList != 0)
+    setRange(aList->getCount());
+  else
+    setRange(0);
+  if (range > 0)
+    focusItem(0);
+  drawView();
+  return tmp;
 }
 
 
-void TEnterListBox::focusItem(ccIndex item)
+void
+TEnterListBox::focusItem(ccIndex item)
 {
   TListViewer::focusItem(item);
-  message(owner,evBroadcast,cmListItemFocused,this);
+  message(owner, evBroadcast, cmListItemFocused, this);
 }
 
-void TEnterListBox::handleEvent(TEvent &event)
+void
+TEnterListBox::handleEvent(TEvent & event)
 {
   TListViewer::handleEvent(event);
-  if (!(state & sfSelected)) return;
+  if (!(state & sfSelected))
+    return;
   switch (event.what)
   {
     case evKeyDown:
       switch (event.keyDown.keyCode)
       {
         case kbEnter:
-          if (range > 0) selectItem(focused);
+          if (range > 0)
+            selectItem(focused);
           clearEvent(event);
           break;
         default:

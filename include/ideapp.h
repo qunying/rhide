@@ -5,23 +5,23 @@
 
 class TPalette;
 
-class IDE : public TApplication
+class IDE:public TApplication
 {
 public:
   IDE();
-  virtual TCEditWindow *openEditor( char *fileName, Boolean visible );
+  virtual TCEditWindow *openEditor(char *fileName, Boolean visible);
   virtual TPalette & getPalette() const;
-  static TMenuBar * initMenuBar(TRect );
-  static TStatusLine * initStatusLine(TRect );
+  static TMenuBar *initMenuBar(TRect);
+  static TStatusLine *initStatusLine(TRect);
   virtual void handleEvent(TEvent &);
   virtual void getEvent(TEvent &);
   virtual void update(void);
   virtual void fileOpen();
   virtual void idle();
-  virtual void changeBounds (const TRect & bounds);
+  virtual void changeBounds(const TRect & bounds);
   void createClipBoard(void);
 protected:
-  virtual void DosShell();
+    virtual void DosShell();
   virtual void resume();
   void fileNew();
   void ShowClip();
@@ -29,7 +29,7 @@ protected:
   void Cascade();
 };
 
-unsigned doEditDialog( int dialog, ... );
+unsigned doEditDialog(int dialog, ...);
 extern TCEditWindow *clipWindow;
 
 #endif

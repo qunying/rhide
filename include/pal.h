@@ -472,5 +472,3 @@
 
 
 #define cpIDEBlackWhite cpIDEColor
-
-

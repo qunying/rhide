@@ -4,6 +4,4 @@
 #define Uses_TStreamableClass
 #include <libide.h>
 
-__link( RDepCollection )
-
-s(Dependency)
+__link(RDepCollection) s(Dependency)

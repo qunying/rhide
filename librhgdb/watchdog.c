@@ -5,4 +5,3 @@
   because the is a little bug with checking the above define there
 */
 int watchdog;
-

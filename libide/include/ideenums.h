@@ -3,7 +3,8 @@
 #if !defined( ideEnums__ )
 #define ideEnums__
 
-typedef enum {
+typedef enum
+{
   COMPILE_C,
   COMPILE_CC,
   COMPILE_ASM,
@@ -31,37 +32,41 @@ typedef enum {
   COMPILE_FPC,
   COMPILE_LINK_FPC_AUTOMAKE,
   COMPILE_TEX
-} COMPILE_ID;
+}
+COMPILE_ID;
 
-typedef enum {
-  FILE_C_SOURCE, // *.c
-  FILE_CC_SOURCE, // *.cc *.cpp *.cxx *.C
-  FILE_FLEX_SOURCE, // *.l
-  FILE_BISON_SOURCE, // *.y
-  FILE_ASM_SOURCE, // *.s *.S
-  FILE_OBJECT, // *.o
-  FILE_LIBRARY, // *.a
-  FILE_COFF, // *.
-  FILE_HEADER, // *.h *.hpp
-  FILE_UNKNOWN, // any other not mentioned here
-  FILE_EXE, // *.exe
-  FILE_OBJC_SOURCE, // *.m
-  FILE_PROJECT, // *.gpr
-  FILE_PASCAL_SOURCE, // *.p *.pas
-  FILE_C_SOURCE_I, // *.i
-  FILE_CC_SOURCE_II, // *.ii
-  FILE_FORTRAN_SOURCE, // *.f *.for
-  FILE_FORTRAN_SOURCE_PRE, // *.F *.fpp
-  FILE_NASM_SOURCE, // *.asm *.nsm
-  FILE_NOTHING, // empty filenames
+typedef enum
+{
+  FILE_C_SOURCE,                // *.c
+  FILE_CC_SOURCE,               // *.cc *.cpp *.cxx *.C
+  FILE_FLEX_SOURCE,             // *.l
+  FILE_BISON_SOURCE,            // *.y
+  FILE_ASM_SOURCE,              // *.s *.S
+  FILE_OBJECT,                  // *.o
+  FILE_LIBRARY,                 // *.a
+  FILE_COFF,                    // *.
+  FILE_HEADER,                  // *.h *.hpp
+  FILE_UNKNOWN,                 // any other not mentioned here
+  FILE_EXE,                     // *.exe
+  FILE_OBJC_SOURCE,             // *.m
+  FILE_PROJECT,                 // *.gpr
+  FILE_PASCAL_SOURCE,           // *.p *.pas
+  FILE_C_SOURCE_I,              // *.i
+  FILE_CC_SOURCE_II,            // *.ii
+  FILE_FORTRAN_SOURCE,          // *.f *.for
+  FILE_FORTRAN_SOURCE_PRE,      // *.F *.fpp
+  FILE_NASM_SOURCE,             // *.asm *.nsm
+  FILE_NOTHING,                 // empty filenames
   FILE_ADA_SOURCE,
   FILE_ADA_SPEC,
-  FILE_FPC_SOURCE, // *.pp *.pas *.pas depends on use_fpc flag
+  FILE_FPC_SOURCE,              // *.pp *.pas *.pas depends on use_fpc flag
   FILE_TEX_SOURCE,
   FILE_DVI
-} FILE_TYPE;
+}
+FILE_TYPE;
 
-typedef enum {
+typedef enum
+{
   COMPILER_AUTO,
   COMPILER_USER,
   COMPILER_NONE,
@@ -72,9 +77,11 @@ typedef enum {
   COMPILER_FORTRAN,
   COMPILER_NASM,
   COMPILER_FPC
-} COMPILER_TYPE;
+}
+COMPILER_TYPE;
 
-typedef enum {
+typedef enum
+{
   ERROR_AUTO,
   ERROR_USER,
   ERROR_NONE,
@@ -83,7 +90,7 @@ typedef enum {
   ERROR_BUILTIN_LINK,
   ERROR_RETVAL,
   ERROR_BUILTIN_FPC
-} ERROR_TYPE;
+}
+ERROR_TYPE;
 
 #endif
-

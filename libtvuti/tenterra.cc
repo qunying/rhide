@@ -8,22 +8,26 @@
 #define Uses_tvutilCommands
 #include <libtvuti.h>
 
-void TEnterRadioButtons::press(int item)
+void
+TEnterRadioButtons::press(int item)
 {
   TRadioButtons::press(item);
-  message(owner,evBroadcast,cmRadioItemSelected,this);
+  message(owner, evBroadcast, cmRadioItemSelected, this);
 }
 
-void TEnterRadioButtons::movedTo(int item)
+void
+TEnterRadioButtons::movedTo(int item)
 {
   TRadioButtons::movedTo(item);
-  message(owner,evBroadcast,cmRadioItemSelected,this);
+  message(owner, evBroadcast, cmRadioItemSelected, this);
 }
 
-void TEnterRadioButtons::handleEvent(TEvent &event)
+void
+TEnterRadioButtons::handleEvent(TEvent & event)
 {
   TRadioButtons::handleEvent(event);
-  if (!(state & sfSelected)) return;
+  if (!(state & sfSelected))
+    return;
   switch (event.what)
   {
     case evKeyDown:
@@ -41,8 +45,8 @@ void TEnterRadioButtons::handleEvent(TEvent &event)
   }
 }
 
-uint32 TEnterRadioButtons::dataSize()
+uint32
+TEnterRadioButtons::dataSize()
 {
   return big_radio ? sizeof(uint32) : sizeof(ushort);
 }
-

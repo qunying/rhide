@@ -4,9 +4,6 @@
 #define Uses_TStreamableClass
 #include <libide.h>
 
-__link( RDirList )
-__link( RParamList )
-__link( RFlagCollection )
-__link( RStringCollection )
-
-s(Options)
+__link(RDirList)
+__link(RParamList)
+__link(RFlagCollection) __link(RStringCollection) s(Options)

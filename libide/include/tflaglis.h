@@ -3,12 +3,13 @@
 #if defined( Uses_TFlagListBox ) && !defined( __TFlagListBox__ )
 #define __TFlagListBox__
 
-class TFlagListBox : public TListBox
+class TFlagListBox:public TListBox
 {
 public:
-  TFlagListBox(const TRect& bounds, ushort aNumCols, TScrollBar *aScrollBar);
+  TFlagListBox(const TRect & bounds, ushort aNumCols,
+               TScrollBar * aScrollBar);
   virtual void selectItem(ccIndex);
-  virtual void getText(char *,ccIndex,short);
+  virtual void getText(char *, ccIndex, short);
 };
 
 #endif

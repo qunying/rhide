@@ -13,30 +13,32 @@
 
 static char *errname = NULL;
 static char *outname = NULL;
-static int h_out,h_outbak;
-static int h_err,h_errbak;
+static int h_out, h_outbak;
+static int h_err, h_errbak;
 
 /* returns a malloced unique tempname in $TMPDIR */
-char *unique_name(char *before,char *retval)
+char *
+unique_name(char *before, char *retval)
 {
-  char *name,*tmp = getenv("TMPDIR");
+  char *name, *tmp = getenv("TMPDIR");
   FILE *f;
+
   if (!tmp)
     tmp = ".";
   if (retval)
   {
-    strcpy(retval,tmp);
-    strcat(retval,"/");
-    strcat(retval,before);
-    strcat(retval,"XXXXXX");
+    strcpy(retval, tmp);
+    strcat(retval, "/");
+    strcat(retval, before);
+    strcat(retval, "XXXXXX");
     name = string_dup(retval);
   }
   else
   {
-    string_dup(name,tmp);
-    string_cat(name,"/");
-    string_cat(name,before);
-    string_cat(name,"XXXXXX");
+    string_dup(name, tmp);
+    string_cat(name, "/");
+    string_cat(name, before);
+    string_cat(name, "XXXXXX");
   }
   mktemp(name);
   f = fopen(name, "w+b");
@@ -44,50 +46,58 @@ char *unique_name(char *before,char *retval)
   return name;
 }
 
-char *open_stderr(void)
+char *
+open_stderr(void)
 {
-  if (errname) free(errname);
+  if (errname)
+    free(errname);
   errname = unique_name("er");
 #ifdef O_BINARY
-  h_err = open (errname,O_WRONLY | O_BINARY | O_CREAT | O_TRUNC,
-                        S_IREAD | S_IWRITE);
+  h_err = open(errname, O_WRONLY | O_BINARY | O_CREAT | O_TRUNC,
+               S_IREAD | S_IWRITE);
 #else
-  h_err = open (errname,O_WRONLY | O_CREAT | O_TRUNC,
-                        S_IREAD | S_IWRITE);
+  h_err = open(errname, O_WRONLY | O_CREAT | O_TRUNC, S_IREAD | S_IWRITE);
 #endif
-  h_errbak = dup (STDERR);
-  fflush(stderr);  /* so any buffered chars will be written out */
-  dup2 (h_err, STDERR);
+  h_errbak = dup(STDERR);
+  fflush(stderr);               /*
+                                   so any buffered chars will be written out 
+                                 */
+  dup2(h_err, STDERR);
   return errname;
 }
 
-void close_stderr(void)
+void
+close_stderr(void)
 {
-  dup2 (h_errbak, STDERR);
-  close (h_err);
-  close (h_errbak);
+  dup2(h_errbak, STDERR);
+  close(h_err);
+  close(h_errbak);
 }
 
-char *open_stdout(void)
+char *
+open_stdout(void)
 {
-  if (outname) free(outname);
+  if (outname)
+    free(outname);
   outname = unique_name("ou");
 #ifdef O_BINARY
-  h_out = open (outname,O_WRONLY | O_BINARY | O_CREAT | O_TRUNC,
-                        S_IREAD | S_IWRITE);
+  h_out = open(outname, O_WRONLY | O_BINARY | O_CREAT | O_TRUNC,
+               S_IREAD | S_IWRITE);
 #else
-  h_out = open (outname,O_WRONLY | O_CREAT | O_TRUNC,
-                        S_IREAD | S_IWRITE);
+  h_out = open(outname, O_WRONLY | O_CREAT | O_TRUNC, S_IREAD | S_IWRITE);
 #endif
-  h_outbak = dup (STDOUT);
-  fflush(stdout);  /* so any buffered chars will be written out */
-  dup2 (h_out, STDOUT);
+  h_outbak = dup(STDOUT);
+  fflush(stdout);               /*
+                                   so any buffered chars will be written out 
+                                 */
+  dup2(h_out, STDOUT);
   return outname;
 }
 
-void close_stdout(void)
+void
+close_stdout(void)
 {
-  dup2 (h_outbak, STDOUT);
-  close (h_out);
-  close (h_outbak);
+  dup2(h_outbak, STDOUT);
+  close(h_out);
+  close(h_outbak);
 }

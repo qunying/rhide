@@ -26,9 +26,7 @@
   __HC(WindowList,1)\
   __HC(MsgListBox,2)
 
-__TVUTIL_COMMAND_CODES__
-__TVUTIL_HELP_CODES__
-
+__TVUTIL_COMMAND_CODES__ __TVUTIL_HELP_CODES__
 /*
   Description of some commands:
     cmFocusWindow
@@ -54,5 +52,4 @@ __TVUTIL_HELP_CODES__
       broadcasts, then the message in infoPtr should be
       shown.
 */
-
 #endif

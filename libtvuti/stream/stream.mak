@@ -37,7 +37,7 @@ ifeq ($(strip $(RHIDE_OS)),)
 ifneq ($(strip $(DJDIR)),)
 RHIDE_OS_:=DJGPP
 else
-RHIDE_OS_:=$(shell uname)
+RHIDE_OS_:=$(patsubst CYGWIN%,CYGWIN,$(shell uname))
 endif
 endif
 
@@ -280,8 +280,11 @@ RHIDE_TYPED_LIBS_DJGPP.cxx=stdcxx
 RHIDE_TYPED_LIBS_DJGPP.cpp=stdcxx
 RHIDE_TYPED_LIBS_DJGPP.f=g2c m
 RHIDE_STDINC_C_$(RHIDE_OS)=/usr/include /usr/local/include
+RHIDE_STDINC_C_DJGPP=/usr/include /usr/local/include
 RHIDE_STDINC_CXX_$(RHIDE_OS)=/usr/include/g++ /usr/local/include/g++
+RHIDE_STDINC_CXX_DJGPP=/usr/include/g++ /usr/local/include/g++
 RHIDE_STDINC_GCC_$(RHIDE_OS)=/usr/lib/gcc-lib /usr/local/lib/gcc-lib
+RHIDE_STDINC_GCC_DJGPP=/usr/lib/gcc-lib /usr/local/lib/gcc-lib
 RHIDE_STDINC_C_DJGPP=$(DJDIR)/include
 RHIDE_STDINC_CXX_DJGPP=$(DJDIR)/lang/cxx 
 RHIDE_STDINC_GCC_DJGPP=$(DJDIR)/lib
@@ -293,11 +296,16 @@ RHIDE_STDINC=$(RHIDE_STDINC_C) $(RHIDE_STDINC_CXX) $(RHIDE_STDINC_GCC)\
 RHIDE_OS_CFLAGS=$(RHIDE_OS_CFLAGS_$(RHIDE_OS)) $(RH_WARN)
 RHIDE_OS_CXXFLAGS=$(RHIDE_OS_CXXFLAGS_$(RHIDE_OS)) $(RH_WARN)\
 	-fno-exceptions -fno-rtti
+RHIDE_OS_CFLAGS_Linux=-D_GNU_SOURCE
+RHIDE_OS_CXXFLAGS_Linux=-D_GNU_SOURCE
 RHIDE_LIBDIRS=$(addprefix -L,$(dir $(LIBGDB_A)) $(LIB_DIRS))
 PCRE_OBJ=$(subst Linux,linux,$(SETOBJ)/$(RHIDE_OS))
 RHIDE_STDINC_C_$(RHIDE_OS)=/usr/include /usr/local/include
+RHIDE_STDINC_C_DJGPP=/usr/include /usr/local/include
 RHIDE_STDINC_CXX_$(RHIDE_OS)=/usr/include/g++ /usr/local/include/g++
+RHIDE_STDINC_CXX_DJGPP=/usr/include/g++ /usr/local/include/g++
 RHIDE_STDINC_GCC_$(RHIDE_OS)=/usr/lib/gcc-lib /usr/local/lib/gcc-lib
+RHIDE_STDINC_GCC_DJGPP=/usr/lib/gcc-lib /usr/local/lib/gcc-lib
 RHIDE_STDINC_C_DJGPP=$(DJDIR)/include
 RHIDE_STDINC_CXX_DJGPP=$(DJDIR)/lang/cxx 
 RHIDE_STDINC_GCC_DJGPP=$(DJDIR)/lib
@@ -309,6 +317,8 @@ RHIDE_STDINC=$(RHIDE_STDINC_C) $(RHIDE_STDINC_CXX) $(RHIDE_STDINC_GCC)\
 RHIDE_OS_CFLAGS=$(RHIDE_OS_CFLAGS_$(RHIDE_OS)) $(RH_WARN)
 RHIDE_OS_CXXFLAGS=$(RHIDE_OS_CXXFLAGS_$(RHIDE_OS)) $(RH_WARN)\
 	-fno-exceptions -fno-rtti
+RHIDE_OS_CFLAGS_Linux=-D_GNU_SOURCE
+RHIDE_OS_CXXFLAGS_Linux=-D_GNU_SOURCE
 RHIDE_LIBDIRS=$(addprefix -L,$(dir $(LIBGDB_A)) $(LIB_DIRS))
 PCRE_OBJ=$(subst Linux,linux,$(SETOBJ)/$(RHIDE_OS))
 %.o: %.c

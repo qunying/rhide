@@ -151,6 +151,9 @@ msgstr ""
 msgid  "Output to stdout:"
 msgstr ""
 
+msgid  "No project"
+msgstr ""
+
 msgid  "return value: %d\n"
 msgstr "returv„rde: %d\n"
 
@@ -1591,9 +1594,6 @@ msgstr ""
 msgid  "Couldn't open %s"
 msgstr "Kunde inte ”ppna %s"
 
-msgid  "No project"
-msgstr ""
-
 msgid  "changing cwd to %s\n"
 msgstr "byter cwd till %s\n"
 
@@ -2962,6 +2962,9 @@ msgstr ""
 msgid  "Change register value"
 msgstr ""
 
+msgid  "~I~nspect"
+msgstr ""
+
 msgid  "Write block to file"
 msgstr ""
 
@@ -3034,6 +3037,9 @@ msgstr ""
 msgid  "~Q~uit"
 msgstr "~A~vsluta"
 
+msgid  "~I~nspect data"
+msgstr ""
+
 msgid  "~D~irectories for sources"
 msgstr "~K~ataloger f”r k„llkod"
 
@@ -3096,9 +3102,6 @@ msgstr ""
 
 msgid  "            -i INI_FILE : Use INI_FILE as config file\n"
 msgstr ""
-
-msgid  "This is %s. Copyright (c) 1996-1998 by Robert H”hne\n"
-msgstr "Detta „r %s. Copyright (c) 1996-1998 Robert H”hne\n"
 
 msgid  "Do you really want to interrupt RHGDB?"
 msgstr ""

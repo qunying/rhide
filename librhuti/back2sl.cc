@@ -2,12 +2,13 @@
 #include <rhutils.h>
 #include <string.h>
 
-void BackslashToSlash(char * name)
+void
+BackslashToSlash(char *name)
 {
   char *tmp;
-  if (!name || !*name) return;
-  while ((tmp = strchr(name,'\\')) != NULL) *tmp = '/';
+
+  if (!name || !*name)
+    return;
+  while ((tmp = strchr(name, '\\')) != NULL)
+    *tmp = '/';
 }
-
-
-

@@ -7,24 +7,27 @@ class TRect;
 class TScrollBar;
 class TNSCollection;
 
-class TEnterListBox : public TListViewer
+class TEnterListBox:public TListViewer
 {
 public:
-  TEnterListBox(const TRect &bounds,ushort numcols,TScrollBar *bar) :
-    TListViewer(bounds,numcols,NULL,bar), items(NULL) {}
+  TEnterListBox(const TRect & bounds, ushort numcols,
+                TScrollBar * bar):TListViewer(bounds, numcols, NULL, bar),
+    items(NULL)
+  {
+  }
   virtual void handleEvent(TEvent &);
   virtual void focusItem(ccIndex);
-  virtual void newList(TNSCollection *aList);
-  virtual TNSCollection *swapList(TNSCollection *aList);
+  virtual void newList(TNSCollection * aList);
+  virtual TNSCollection *swapList(TNSCollection * aList);
 
   TNSCollection *list()
   {
-      return items;
+    return items;
   }
 
 private:
 
-  TNSCollection *items;
+    TNSCollection * items;
 
 };
 

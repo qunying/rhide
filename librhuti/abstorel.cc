@@ -8,15 +8,18 @@
   optionally have a slash appended
 */
 
-int AbsToRelPath(const char *ref_path,char *& ret_path, const char *subst,
-                 int allow_prevdirs)
+int
+AbsToRelPath(const char *ref_path, char *&ret_path, const char *subst,
+             int allow_prevdirs)
 {
   const char *ref = ref_path;
   const char *ret;
   char *ret_val;
+
   // Just in case, that ret_pat is not absolute, make it now absolute
   // relative to the current directory
-  if (!ref_path || !*ref_path) return 0;
+  if (!ref_path || !*ref_path)
+    return 0;
   ret = ret_path;
   while (*ret && *ret == *ref)
   {
@@ -36,21 +39,24 @@ int AbsToRelPath(const char *ref_path,char *& ret_path, const char *subst,
       if (subst)
         string_dup(ret_path, subst);
       else
-        string_dup(ret_path,"");
+        string_dup(ret_path, "");
       return 1;
     }
     // ref is completely a directory part of ret
-    if (*ret == '/' || ref[-1] == '/' /* ref had a slash as last char */)
+    if (*ret == '/' || ref[-1] == '/'	/*
+	   ref had a slash as last char 
+	 */ )
     {
       // do no copy the slash
-      if (*ret == '/') ret++;
+      if (*ret == '/')
+        ret++;
       if (subst)
       {
         string_dup(ret_val, subst);
         string_cat(ret_val, "/", ret, NULL);
       }
       else
-        string_dup(ret_val,ret);
+        string_dup(ret_val, ret);
       string_free(ret_path);
       ret_path = ret_val;
       return 1;
@@ -73,11 +79,11 @@ int AbsToRelPath(const char *ref_path,char *& ret_path, const char *subst,
     if (*ref == '/')
     {
       ref++;
-      string_dup(ret_val,"..");
-      while ((ref = strchr(ref,'/')) != NULL)
+      string_dup(ret_val, "..");
+      while ((ref = strchr(ref, '/')) != NULL)
       {
         ref++;
-        string_cat(ret_val,"/..");
+        string_cat(ret_val, "/..");
       }
       string_free(ret_path);
       ret_path = ret_val;
@@ -99,16 +105,16 @@ int AbsToRelPath(const char *ref_path,char *& ret_path, const char *subst,
   }
   ref++;
   ret++;
-  string_dup(ret_val,"..");
-  while ((ref = strchr(ref,'/')) != NULL)
+  string_dup(ret_val, "..");
+  while ((ref = strchr(ref, '/')) != NULL)
   {
-    string_cat(ret_val,"/..");
+    string_cat(ret_val, "/..");
     ref++;
   }
   if (*ret)
   {
-    string_cat(ret_val,"/");
-    string_cat(ret_val,ret);
+    string_cat(ret_val, "/");
+    string_cat(ret_val, ret);
   }
   string_free(ret_path);
   ret_path = ret_val;
@@ -120,18 +126,20 @@ int AbsToRelPath(const char *ref_path,char *& ret_path, const char *subst,
 
 #include <stdio.h>
 
-int main(int argc,char *argv[])
+int
+main(int argc, char *argv[])
 {
   char *ref;
   char *ret;
-  if (argc < 3) return -1;
-  string_dup(ref,argv[1]);
-  string_dup(ret,argv[2]);
-  fprintf(stderr, "%s relative to %s is ",ret,ref);
-  AbsToRelPath(ref,ret,ret);
-  fprintf(stderr, "%s\n",ret);
+
+  if (argc < 3)
+    return -1;
+  string_dup(ref, argv[1]);
+  string_dup(ret, argv[2]);
+  fprintf(stderr, "%s relative to %s is ", ret, ref);
+  AbsToRelPath(ref, ret, ret);
+  fprintf(stderr, "%s\n", ret);
   return 0;
 }
 
 #endif
-

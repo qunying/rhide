@@ -2,5 +2,3 @@
 /* This file is part of RHIDE. */
 #define Uses_TRegisterWindow
 #include <libtvgdb.h>
-
-

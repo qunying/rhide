@@ -6,12 +6,14 @@
 #define Uses_TEnterInputLine
 #include <libtvuti.h>
 
-void TEnterInputLine::handleEvent(TEvent &event)
+void
+TEnterInputLine::handleEvent(TEvent & event)
 {
   TInputLine::handleEvent(event);
   if (!handle_enter)
     return;
-  if (!(state & sfSelected)) return;
+  if (!(state & sfSelected))
+    return;
   switch (event.what)
   {
     case evKeyDown:

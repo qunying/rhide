@@ -3,9 +3,9 @@
 #define Uses_tvutilFunctions
 #include <libtvuti.h>
 
-static
-void __InitHistoryIDs()
+static void
+__InitHistoryIDs()
 {
 }
 
-void (*InitHistoryIDs)() = __InitHistoryIDs;
+void (*InitHistoryIDs) () = __InitHistoryIDs;

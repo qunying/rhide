@@ -32,43 +32,43 @@
 extern uint32 CPULine;
 extern TCEditWindow *current_editor;
 
-int DebuggerFormatLine(TCEditor *editor,
-                       void *DrawBuf,
-                       unsigned LinePtr,
-                       int Width,
-                       unsigned short Colors,
-                       unsigned lineLen,
-                       uint32 Attr,
-                       unsigned LineNo)
+int
+DebuggerFormatLine(TCEditor * editor,
+                   void *DrawBuf,
+                   unsigned LinePtr,
+                   int Width,
+                   unsigned short Colors,
+                   unsigned lineLen, uint32 Attr, unsigned LineNo)
 {
 #define drawbuf ((ushort *)DrawBuf)
   uint32 offset = 0;
   ushort color;
+
   if (DEBUGGER_STARTED() && current_editor &&
-      editor == current_editor->editor &&
-      CPULine == LineNo)
+      editor == current_editor->editor && CPULine == LineNo)
   {
-     editor->formatLine(DrawBuf,LinePtr,Width,Colors,lineLen,Attr,LineNo);
-     color = editor->getColor(cCPU) << 8;
-     while (Width--)
-     {
-       drawbuf[offset] &= 0x00FF;
-       drawbuf[offset++] |= color;
-     }
-     return 1;
+    editor->formatLine(DrawBuf, LinePtr, Width, Colors, lineLen, Attr,
+                       LineNo);
+    color = editor->getColor(cCPU) << 8;
+    while (Width--)
+    {
+      drawbuf[offset] &= 0x00FF;
+      drawbuf[offset++] |= color;
+    }
+    return 1;
   }
-  if (IsBreakPointLine(((TIDEFileEditor *)editor)->bname,LineNo+1) >= 0)
+  if (IsBreakPointLine(((TIDEFileEditor *) editor)->bname, LineNo + 1) >= 0)
   {
-     editor->formatLine(DrawBuf,LinePtr,Width,Colors,lineLen,Attr,LineNo);
-     color = editor->getColor(cBreak) << 8;
-     while (Width--)
-     {
-       drawbuf[offset] &= 0x00FF;
-       drawbuf[offset++] |= color;
-     }
-     return 1;
+    editor->formatLine(DrawBuf, LinePtr, Width, Colors, lineLen, Attr,
+                       LineNo);
+    color = editor->getColor(cBreak) << 8;
+    while (Width--)
+    {
+      drawbuf[offset] &= 0x00FF;
+      drawbuf[offset++] |= color;
+    }
+    return 1;
   }
   return 0;
 }
 #endif
-

@@ -7,33 +7,35 @@
 #define Uses_tvgdbCommands
 #include <libtvgdb.h>
 
-TInspector::TInspector(const TRect &bounds, const char *Title)
-  : TDialog(bounds, Title),
-    TWindowInit(TInspector::initFrame)
+TInspector::TInspector(const TRect & bounds, const char *Title):TDialog(bounds, Title),
+TWindowInit(TInspector::initFrame)
 {
-  TRect r = bounds;
+  TRect
+    r = bounds;
+
   r.grow(-1, -1);
   list = new TInspectList(r);
   //list->helpCtx = hcInspector;
   insert(list);
-  list->hScrollBar = standardScrollBar(sbHorizontal|sbHandleKeyboard);
-  list->vScrollBar = standardScrollBar(sbVertical|sbHandleKeyboard);
+  list->hScrollBar = standardScrollBar(sbHorizontal | sbHandleKeyboard);
+  list->vScrollBar = standardScrollBar(sbVertical | sbHandleKeyboard);
 
   flags |= wfGrow;
 }
 
-void TInspector::update(const char *expr)
+void
+TInspector::update(const char *expr)
 {
   list->update(expr);
 }
 
-void TInspector::changeBounds (const TRect& bounds)
+void
+TInspector::changeBounds(const TRect & bounds)
 {
-  TDialog::changeBounds (bounds);
-  TRect r = getExtent ();
-  r.move (-r.a.x, -r.a.y);
-  r.grow (-1, -1);
-  list->changeBounds (r);
+  TDialog::changeBounds(bounds);
+  TRect r = getExtent();
+
+  r.move(-r.a.x, -r.a.y);
+  r.grow(-1, -1);
+  list->changeBounds(r);
 }
-
-

@@ -5,13 +5,13 @@
 
 class MyStaticText;
 
-class TCheckDialog : public TDialog
+class TCheckDialog:public TDialog
 {
 public:
-  TCheckDialog(const TRect &,const char *);
+  TCheckDialog(const TRect &, const char *);
   void update(const char *);
 private:
-  MyStaticText *text;
+    MyStaticText * text;
 };
 
 #endif

@@ -27,8 +27,5 @@
   __CM(EditorFilenameChanged,8)\
   __CM(SaveEditor,9)
 
-__IDE_COMMAND_CODES__
-__IDE_HELP_CODES__
-
+__IDE_COMMAND_CODES__ __IDE_HELP_CODES__
 #endif
-

@@ -9,35 +9,35 @@
 #if !defined( __PUZZLE_H )
 #define __PUZZLE_H
 
-class TPuzzleView : public TView
+class TPuzzleView:public TView
 {
 
 public:
 
-    TPuzzleView(TRect& r);
-    virtual TPalette& getPalette() const;
-    virtual void handleEvent(TEvent& event);
-    virtual void draw();
-    void moveKey(int key);
-    void moveTile(TPoint point);
-    void scramble();
-    void winCheck();
+  TPuzzleView(TRect & r);
+  virtual TPalette & getPalette() const;
+  virtual void handleEvent(TEvent & event);
+  virtual void draw();
+  void moveKey(int key);
+  void moveTile(TPoint point);
+  void scramble();
+  void winCheck();
 
 private:
 
-    char board[6][6];
-    int moves;
-    char solved;
+  char board[6][6];
+  int moves;
+  char solved;
 
 };
 
-class TPuzzleWindow : public TWindow
+class TPuzzleWindow:public TWindow
 {
 
 public:
 
-    TPuzzleWindow();
+  TPuzzleWindow();
 
 };
 
-#endif      // __PUZZLE_H
+#endif // __PUZZLE_H

@@ -5,11 +5,11 @@
 
 class TEvent;
 
-class TFunctionInputLine : public TEnterInputLine
+class TFunctionInputLine:public TEnterInputLine
 {
 public:
-  TFunctionInputLine( const TRect& bounds, int aMaxLen );
-  virtual void handleEvent(TEvent &event);
+  TFunctionInputLine(const TRect & bounds, int aMaxLen);
+  virtual void handleEvent(TEvent & event);
 };
 
 #endif

@@ -56,26 +56,28 @@ TStringCollection *UserWords;
 TStringCollection *PascalRWords;
 TStringCollection *ClipperRWords;
 
-class TGDBEditor : public TCEditor
+class TGDBEditor:public TCEditor
 {
 public:
-  TGDBEditor(const TRect &,TScrollBar *,TScrollBar *,TSIndicator *,const char *);
-  virtual void handleEvent(TEvent &event);
-  static int (*externalFormatLine)(TCEditor *,void *, unsigned, int,
-                                   unsigned short, unsigned, unsigned,
-                                   unsigned );
-  void formatLine(void *, unsigned, int, unsigned short, unsigned, unsigned, unsigned );
+  TGDBEditor(const TRect &, TScrollBar *, TScrollBar *, TSIndicator *,
+             const char *);
+  virtual void handleEvent(TEvent & event);
+  static int (*externalFormatLine) (TCEditor *, void *, unsigned, int,
+                                    unsigned short, unsigned, unsigned,
+                                    unsigned);
+  void formatLine(void *, unsigned, int, unsigned short, unsigned, unsigned,
+                  unsigned);
   void setFormatLine();
-  void (TCEditor::*FormatLinePtr)(void *, unsigned, int, unsigned short, unsigned,
-                                  unsigned, unsigned );
-  ~TGDBEditor();
+  void (TCEditor::*FormatLinePtr) (void *, unsigned, int, unsigned short,
+                                   unsigned, unsigned, unsigned);
+   ~TGDBEditor();
   char *bname;
 };
 
-class TGDBEditWindow : public TCEditWindow
+class TGDBEditWindow:public TCEditWindow
 {
 public:
-  TGDBEditWindow(const TRect &,const char *,int);
+  TGDBEditWindow(const TRect &, const char *, int);
   virtual TPalette & getPalette() const;
 };
 
@@ -94,30 +96,35 @@ public:
 
 TPalette & TGDBEditWindow::getPalette() const
 {
-  static TPalette blue(cpBlueEditWindow,sizeof(cpBlueEditWindow)-1);
-  static TPalette cyan(cpCyanEditWindow,sizeof(cpCyanEditWindow)-1);
-  static TPalette gray(cpGrayEditWindow,sizeof(cpGrayEditWindow)-1);
-  static TPalette * palettes[] =
-  {
+  static TPalette
+  blue(cpBlueEditWindow, sizeof(cpBlueEditWindow) - 1);
+  static TPalette
+  cyan(cpCyanEditWindow, sizeof(cpCyanEditWindow) - 1);
+  static TPalette
+  gray(cpGrayEditWindow, sizeof(cpGrayEditWindow) - 1);
+  static TPalette *
+    palettes[] = {
     &blue,
     &cyan,
     &gray
   };
+
   return *(palettes[palette]);
 }
 
-TGDBEditWindow::TGDBEditWindow( const TRect& bounds,
-                          const char *fileName,
-                          int aNumber
-                        ) :
-    TCEditWindow( bounds, (const char *)NULL, aNumber ),
-    TWindowInit( &TGDBEditWindow::initFrame )
+TGDBEditWindow::TGDBEditWindow(const TRect & bounds,
+const char *fileName, int aNumber):
+TCEditWindow(bounds, (const char *) NULL, aNumber),
+TWindowInit(&TGDBEditWindow::initFrame)
 {
-  TRect r(editor->origin.x,editor->origin.y,
-  editor->origin.x+editor->size.x,editor->origin.y+editor->size.y);
-  TScrollBar * hScrollBar = editor->hScrollBar;
-  TScrollBar * vScrollBar = editor->vScrollBar;
-  TSIndicator * indicator = editor->indicator;
+  TRect r(editor->origin.x, editor->origin.y,
+          editor->origin.x + editor->size.x,
+
+          editor->origin.y + editor->size.y);
+  TScrollBar *hScrollBar = editor->hScrollBar;
+  TScrollBar *vScrollBar = editor->vScrollBar;
+  TSIndicator *indicator = editor->indicator;
+
   editor->hScrollBar = NULL;
   editor->vScrollBar = NULL;
   editor->indicator = NULL;
@@ -125,18 +132,18 @@ TGDBEditWindow::TGDBEditWindow( const TRect& bounds,
   destroy(editor);
 //  hScrollBar->options |= ofPreProcess;
 //  vScrollBar->options |= ofPreProcess;
-  editor = new TGDBEditor( r, hScrollBar, vScrollBar, indicator, fileName );
+  editor = new TGDBEditor(r, hScrollBar, vScrollBar, indicator, fileName);
   insert(editor);
 //  helpCtx = hcIDEEditWindow;
   options |= ofFirstClick;
 }
 
-TGDBEditor::TGDBEditor(const TRect & rect,TScrollBar *ahscrollbar,
-				TScrollBar *avscrollbar,TSIndicator *aindicator,
-				const char *aFileName) :
-  TCEditor(rect,ahscrollbar,avscrollbar,aindicator,aFileName)
+TGDBEditor::TGDBEditor(const TRect & rect, TScrollBar * ahscrollbar,
+                       TScrollBar * avscrollbar, TSIndicator * aindicator,
+                       const char *aFileName):
+TCEditor(rect, ahscrollbar, avscrollbar, aindicator, aFileName)
 {
-  BaseName(fileName,bname);
+  BaseName(fileName, bname);
   setFormatLine();
 }
 
@@ -145,7 +152,8 @@ TGDBEditor::~TGDBEditor()
   string_free(bname);
 }
 
-void TGDBEditor::handleEvent(TEvent &event)
+void
+TGDBEditor::handleEvent(TEvent & event)
 {
   switch (event.what)
   {
@@ -192,189 +200,210 @@ void TGDBEditor::handleEvent(TEvent &event)
   TCEditor::handleEvent(event);
 }
 
-static
-int DebuggerFormatLine(TCEditor *editor,
-                       void *DrawBuf,
-                       unsigned LinePtr,
-                       int Width,
-                       unsigned short Colors,
-                       unsigned lineLen,
-                       unsigned Attr,
-                       unsigned LineNo)
+static int
+DebuggerFormatLine(TCEditor * editor,
+                   void *DrawBuf,
+                   unsigned LinePtr,
+                   int Width,
+                   unsigned short Colors,
+                   unsigned lineLen, unsigned Attr, unsigned LineNo)
 {
 #define drawbuf ((ushort *)DrawBuf)
   uint32 offset = 0;
   ushort color;
-  if (debugger_started && editor == current_editor &&
-      CPULine == LineNo)
+
+  if (debugger_started && editor == current_editor && CPULine == LineNo)
   {
-     editor->formatLine(DrawBuf,LinePtr,Width,Colors,lineLen,Attr,LineNo);
-     color = editor->getColor(cCPU) << 8;
-     while (Width--)
-     {
-       drawbuf[offset] &= 0x00FF;
-       drawbuf[offset++] |= color;
-     }
-     return 1;
+    editor->formatLine(DrawBuf, LinePtr, Width, Colors, lineLen, Attr,
+                       LineNo);
+    color = editor->getColor(cCPU) << 8;
+    while (Width--)
+    {
+      drawbuf[offset] &= 0x00FF;
+      drawbuf[offset++] |= color;
+    }
+    return 1;
   }
-  if (IsBreakPointLine(((TGDBEditor *)editor)->bname,LineNo+1) >= 0)
+  if (IsBreakPointLine(((TGDBEditor *) editor)->bname, LineNo + 1) >= 0)
   {
-     editor->formatLine(DrawBuf,LinePtr,Width,Colors,lineLen,Attr,LineNo);
-     color = editor->getColor(cBreak) << 8;
-     while (Width--)
-     {
-       drawbuf[offset] &= 0x00FF;
-       drawbuf[offset++] |= color;
-     }
-     return 1;
+    editor->formatLine(DrawBuf, LinePtr, Width, Colors, lineLen, Attr,
+                       LineNo);
+    color = editor->getColor(cBreak) << 8;
+    while (Width--)
+    {
+      drawbuf[offset] &= 0x00FF;
+      drawbuf[offset++] |= color;
+    }
+    return 1;
   }
   return 0;
 }
 
-int (*TGDBEditor::externalFormatLine)(TCEditor *,void *, unsigned, int,
-                                   unsigned short, unsigned, unsigned,
-                                   unsigned ) = NULL;
+int (*TGDBEditor::externalFormatLine) (TCEditor *, void *, unsigned, int,
+                                       unsigned short, unsigned, unsigned,
+                                       unsigned) = NULL;
 
-void TGDBEditor::formatLine( void *DrawBuf,
-			  unsigned LinePtr,
-			  int Width,
-			  unsigned short Colors,
-                          unsigned lineLen,
-                          unsigned Attr,
-                          unsigned lineNo // needed for RHIDE
-			)
+void
+TGDBEditor::formatLine(void *DrawBuf, unsigned LinePtr, int Width, unsigned short Colors, unsigned lineLen, unsigned Attr, unsigned lineNo	// needed for RHIDE
+  )
 {
-  if (DebuggerFormatLine(this,DrawBuf,LinePtr,Width,Colors,lineLen,
-                         Attr,lineNo)) return;
-  (this->*FormatLinePtr)(DrawBuf,LinePtr,Width,Colors,lineLen,Attr,lineNo);
+  if (DebuggerFormatLine(this, DrawBuf, LinePtr, Width, Colors, lineLen,
+                         Attr, lineNo)) return;
+  (this->*FormatLinePtr) (DrawBuf, LinePtr, Width, Colors, lineLen, Attr, lineNo);
 }
 
-extern int SHLSelect(TCEditor &e, char *buffer, int buf_len);
+extern int SHLSelect(TCEditor & e, char *buffer, int buf_len);
 
-void TGDBEditor::setFormatLine()
+void
+TGDBEditor::setFormatLine()
 {
   SHLSelect(*this, buffer, bufLen);
   FormatLinePtr = formatLinePtr;
   formatLinePtr = (void (TCEditor::*)
-                  (void *, unsigned, int, unsigned short, unsigned,
-                   unsigned, unsigned ))&TGDBEditor::formatLine;
+                   (void *, unsigned, int, unsigned short, unsigned,
+                    unsigned, unsigned)) &TGDBEditor::formatLine;
   update(ufView);
 }
 
-void open_editor(const char *fname)
+void
+open_editor(const char *fname)
 {
-  TGDBEditWindow *window = new TGDBEditWindow(TRect(1,1,79,20),fname,0);
+  TGDBEditWindow *window = new TGDBEditWindow(TRect(1, 1, 79, 20), fname, 0);
+
   AddWindow(window);
 }
 
 
-char *ExpandFileNameToThePointWhereTheProgramWasLoaded(const char *s)
+char *
+ExpandFileNameToThePointWhereTheProgramWasLoaded(const char *s)
 {
   static char buffer[PATH_MAX];
+
   if (__file_exists(s))
   {
-    strcpy(buffer,s);
+    strcpy(buffer, s);
     return buffer;
   }
 #ifndef __DJGPP__
   // now try the home directory
   char *home = getenv("HOME");
+
   if (home)
   {
-    strcpy(buffer,home);
-    strcat(buffer,"/");
-    strcat(buffer,s);
-    if (__file_exists(buffer)) return buffer;
+    strcpy(buffer, home);
+    strcat(buffer, "/");
+    strcat(buffer, s);
+    if (__file_exists(buffer))
+      return buffer;
   }
   // now try in some standard places
-  strcpy(buffer,"/usr/local/share/rhide/");
-  strcat(buffer,s);
-  if (__file_exists(buffer)) return buffer;
-  strcpy(buffer,"/usr/share/rhide/");
-  strcat(buffer,s);
-  if (__file_exists(buffer)) return buffer;
-  strcpy(buffer,"/local/share/rhide/");
-  strcat(buffer,s);
-  if (__file_exists(buffer)) return buffer;
-  strcpy(buffer,"/share/rhide/");
-  strcat(buffer,s);
-  if (__file_exists(buffer)) return buffer;
+  strcpy(buffer, "/usr/local/share/rhide/");
+  strcat(buffer, s);
+  if (__file_exists(buffer))
+    return buffer;
+  strcpy(buffer, "/usr/share/rhide/");
+  strcat(buffer, s);
+  if (__file_exists(buffer))
+    return buffer;
+  strcpy(buffer, "/local/share/rhide/");
+  strcat(buffer, s);
+  if (__file_exists(buffer))
+    return buffer;
+  strcpy(buffer, "/share/rhide/");
+  strcat(buffer, s);
+  if (__file_exists(buffer))
+    return buffer;
 #else
   char *dj = getenv("DJDIR");
+
   if (dj)
   {
-    strcpy(buffer,dj);
-    strcat(buffer,"/share/rhide/");
-    strcat(buffer,s);
-    if (__file_exists(buffer)) return buffer;
+    strcpy(buffer, dj);
+    strcat(buffer, "/share/rhide/");
+    strcat(buffer, s);
+    if (__file_exists(buffer))
+      return buffer;
   }
 #endif
 #if 0
-  strcpy(buffer,RHIDE_DIR);
-  strcat(buffer,s);
+  strcpy(buffer, RHIDE_DIR);
+  strcat(buffer, s);
 #else
-  strcpy(buffer,s);
+  strcpy(buffer, s);
 #endif
   return buffer;
 }
 
 static char *find_buffer = NULL;
 
-static char *find_file(const char *fname,char * & bname,Boolean & found)
+static char *
+find_file(const char *fname, char *&bname, Boolean & found)
 {
-  int i,count;
+  int i, count;
+
   string_free(find_buffer);
-  string_dup(find_buffer,fname);
+  string_dup(find_buffer, fname);
   found = True;
-  BaseName(fname,bname);
-  if (__file_exists(find_buffer)) return find_buffer;
+  BaseName(fname, bname);
+  if (__file_exists(find_buffer))
+    return find_buffer;
   count = src_dirs->getCount();
-  for (i=0;i<count;i++)
+  for (i = 0; i < count; i++)
   {
     string_free(find_buffer);
-    find_buffer = expand_spec((const char *)src_dirs->at(i),NULL);
-    string_cat(find_buffer,"/");
-    string_cat(find_buffer,bname);
-    if (__file_exists(find_buffer)) return find_buffer;
+    find_buffer = expand_spec((const char *) src_dirs->at(i), NULL);
+    string_cat(find_buffer, "/");
+    string_cat(find_buffer, bname);
+    if (__file_exists(find_buffer))
+      return find_buffer;
   }
   string_free(find_buffer);
-  string_dup(find_buffer,fname);
+  string_dup(find_buffer, fname);
   found = False;
   return find_buffer;
-}    
-  
-int FindFile(const char *name,char *&retval)
+}
+
+int
+FindFile(const char *name, char *&retval)
 {
   Boolean dummy;
-  find_file(name,retval,dummy);
+
+  find_file(name, retval, dummy);
   return dummy == True;
 }
 
-Boolean OpenViewer(char *_fname,int line,Boolean from_debugger,
-                   Boolean only_focus)
+Boolean
+OpenViewer(char *_fname, int line, Boolean from_debugger, Boolean only_focus)
 {
-  int i,count;
+  int i, count;
   Boolean found;
-  char *_bname,*bname;
-  char *fname = find_file(_fname,_bname,found);
+  char *_bname, *bname;
+  char *fname = find_file(_fname, _bname, found);
   char full_name[512];
   TCEditor *editor;
+
   //bname = (char *)alloca(strlen(_bname)+1);
-  bname = new char [strlen(_bname)+1];
-  strcpy(bname,_bname);
+  bname = new char[strlen(_bname) + 1];
+
+  strcpy(bname, _bname);
   string_free(_bname);
   TWindow *window = NULL;
-  static char * lastSkippedName = 0; /* This name will be non NULL if user will
-                                        cancel file open dialog below  */
+  static char *lastSkippedName = 0;	/*
+
+	   This name will be non NULL if user will
+	   cancel file open dialog below  
+	 */
   TView *v = TProgram::deskTop->current;
+
   if (windows)
   {
     count = windows->getCount();
-    for (i=0;i<count;i++)
+    for (i = 0; i < count; i++)
     {
-      DeskTopWindow *w = (DeskTopWindow *)windows->at(i);
-      if (strcmp(w->full_name,fname) == 0 ||
-          strcmp(w->base_name,bname) == 0)
+      DeskTopWindow *w = (DeskTopWindow *) windows->at(i);
+
+      if (strcmp(w->full_name, fname) == 0 ||
+          strcmp(w->base_name, bname) == 0)
       {
         window = DESKTOPWINDOW(i);
         found = True;
@@ -385,39 +414,48 @@ Boolean OpenViewer(char *_fname,int line,Boolean from_debugger,
   if (found == False)
   {
     ushort result;
-    if (only_focus == True) return True;
+
+    if (only_focus == True)
+      return True;
     if (lastSkippedName)
     {
-      if (strcmp(lastSkippedName,_fname)==0)
+      if (strcmp(lastSkippedName, _fname) == 0)
       {
-        delete [] bname;
-        return False;   /* Don't ask for the same name once more  */
+        delete[]bname;
+        return False;           /*
+                                   Don't ask for the same name once more  
+                                 */
       }
       else
       {
-        string_free (lastSkippedName);
-        lastSkippedName = 0;  /* File name changed. So ask again...  */
+        string_free(lastSkippedName);
+        lastSkippedName = 0;    /*
+                                   File name changed. So ask again...  
+                                 */
       }
     }
-    messageBox(mfError | mfOKButton,_("Could not find the source "
-                                      "file %s."),bname);
+    messageBox(mfError | mfOKButton, _("Could not find the source "
+                                       "file %s."), bname);
     TFileDialog *dialog;
-    string_cat (bname,"*");
-    dialog = new TFileDialog(bname,_("Open a file"),
-                           _("~N~ame"),fdOpenButton,0);
+
+    string_cat(bname, "*");
+    dialog = new TFileDialog(bname, _("Open a file"),
+                             _("~N~ame"), fdOpenButton, 0);
     result = TProgram::deskTop->execView(dialog);
     if (result != cmCancel)
     {
-      string_free (lastSkippedName);
-      lastSkippedName=0;
+      string_free(lastSkippedName);
+      lastSkippedName = 0;
       dialog->getData(full_name);
       fname = full_name;
-      FExpand(fname,False);
-      char *dir,*name,*ext;
-      split_fname(fname,dir,name,ext);
+      FExpand(fname, False);
+      char *dir, *name, *ext;
+
+      split_fname(fname, dir, name, ext);
       string_free(name);
       string_free(ext);
-      if (*dir) dir[strlen(dir)-1] = 0;
+      if (*dir)
+        dir[strlen(dir) - 1] = 0;
       if (messageBox(mfConfirmation | mfYesNoCancel,
                      _("Add '%s' to the search path for source files"),
                      dir) == cmYes)
@@ -428,108 +466,124 @@ Boolean OpenViewer(char *_fname,int line,Boolean from_debugger,
     }
     else
     {
-      if (lastSkippedName) string_free (lastSkippedName);
-      lastSkippedName=strdup(_fname);
-      delete [] bname;
+      if (lastSkippedName)
+        string_free(lastSkippedName);
+      lastSkippedName = strdup(_fname);
+      delete[]bname;
       return False;
     }
   }
   if (!window)
   {
     TRect r = TProgram::deskTop->getExtent();
+
     r.b.y -= 7;
-    window = new TGDBEditWindow(r,fname,0);
+    window = new TGDBEditWindow(r, fname, 0);
     AddWindow(window);
   }
-  editor = ((TGDBEditWindow *)window)->editor;
+  editor = ((TGDBEditWindow *) window)->editor;
   if (from_debugger == True)
   {
     current_editor = editor;
-    CPULine = line-1;
+    CPULine = line - 1;
   }
   TProgram::deskTop->lock();
-  editor->MoveCursorTo(0,line-1);
+  editor->MoveCursorTo(0, line - 1);
   editor->GoAndSelectLine(line);
   editor->trackCursor(False);
-  if (editor->cursor.y == 0 ||
-      editor->cursor.y == editor->size.y-1)
+  if (editor->cursor.y == 0 || editor->cursor.y == editor->size.y - 1)
     editor->trackCursor(True);
   editor->update(ufView);
   window->select();
   if (only_focus == True)
-    if (v) v->select();
+    if (v)
+      v->select();
   TProgram::deskTop->unlock();
-  delete [] bname;
+  delete[]bname;
   return True;
 }
 
-void CenterCursor()
+void
+CenterCursor()
 {
   TEvent event;
-  if (!TProgram::deskTop->current) return;
+
+  if (!TProgram::deskTop->current)
+    return;
   event.what = evBroadcast;
   event.message.command = cmEditorAnswer;
   TProgram::deskTop->current->handleEvent(event);
-  if (event.what != evNothing) return;
+  if (event.what != evNothing)
+    return;
 #define E ((TCEditWindow *)TProgram::deskTop->current)->editor
   E->trackCursor(True);
 #undef E
 }
 
-char *RHGDBWordUnderCursor(void)
+char *
+RHGDBWordUnderCursor(void)
 {
   char *word;
   TEvent event;
-  if (!TProgram::deskTop->current) return NULL;
+
+  if (!TProgram::deskTop->current)
+    return NULL;
   event.what = evBroadcast;
   event.message.command = cmEditorAnswer;
   TProgram::deskTop->current->handleEvent(event);
-  if (event.what != evNothing) return NULL;
+  if (event.what != evNothing)
+    return NULL;
 #define E ((TCEditWindow *)TProgram::deskTop->current)->editor
   word = E->WordUnderCursor();
-  if (!word) // try to get the word before the cursor
+  if (!word)                    // try to get the word before the cursor
   {
     int x = E->curPos.x;
+
     if (x > 0)
     {
-      E->MoveCursorTo(x-1,E->curPos.y);
+      E->MoveCursorTo(x - 1, E->curPos.y);
       word = E->WordUnderCursor();
-      E->MoveCursorTo(x,E->curPos.y);
+      E->MoveCursorTo(x, E->curPos.y);
     }
   }
 #undef E
   return word;
 }
 
-char *WhereIsCursor(int &line,int &column,char *&bname)
+char *
+WhereIsCursor(int &line, int &column, char *&bname)
 {
   TEvent event;
-  if (!TProgram::deskTop->current) return NULL;
+
+  if (!TProgram::deskTop->current)
+    return NULL;
   event.what = evBroadcast;
   event.message.command = cmEditorAnswer;
   TProgram::deskTop->current->handleEvent(event);
-  if (event.what != evNothing) return NULL;
+  if (event.what != evNothing)
+    return NULL;
 #define E ((TCEditWindow *)TProgram::deskTop->current)->editor
-  line = E->curPos.y+1;
-  column = E->curPos.x+1;
-  bname = ((TGDBEditor *)E)->bname;
+  line = E->curPos.y + 1;
+  column = E->curPos.x + 1;
+  bname = ((TGDBEditor *) E)->bname;
   return bname;
 #undef E
 }
 
-void OpenFileFromEditor(char *fullName)
+void
+OpenFileFromEditor(char *fullName)
 {
   open_editor(fullName);
 }
 
 
-void ClearCPULine (void)
+void
+ClearCPULine(void)
 {
   if (current_editor)
     if (TProgram::application->deskTop->indexOf(current_editor->owner))
-      {
-         CPULine = (uint32)-1;
-         current_editor->update(ufView);
-      }
+    {
+      CPULine = (uint32) - 1;
+      current_editor->update(ufView);
+    }
 }
-

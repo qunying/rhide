@@ -28,15 +28,19 @@
 
 TPalette & TIDEEditWindow::getPalette() const
 {
-  static TPalette blue(cpBlueEditWindow,sizeof(cpBlueEditWindow)-1);
-  static TPalette cyan(cpCyanEditWindow,sizeof(cpCyanEditWindow)-1);
-  static TPalette gray(cpGrayEditWindow,sizeof(cpGrayEditWindow)-1);
-  static TPalette * palettes[] =
-  {
+  static TPalette
+  blue(cpBlueEditWindow, sizeof(cpBlueEditWindow) - 1);
+  static TPalette
+  cyan(cpCyanEditWindow, sizeof(cpCyanEditWindow) - 1);
+  static TPalette
+  gray(cpGrayEditWindow, sizeof(cpGrayEditWindow) - 1);
+  static TPalette *
+    palettes[] = {
     &blue,
     &cyan,
     &gray
   };
+
   return *(palettes[palette]);
 }
 
@@ -45,7 +49,8 @@ TIDEEditWindow::~TIDEEditWindow()
   string_free(wtitle);
 }
 
-const char *TIDEEditWindow::getTitle(short maxval)
+const char *
+TIDEEditWindow::getTitle(short maxval)
 {
   string_free(wtitle);
   if (editor->modified)
@@ -54,43 +59,43 @@ const char *TIDEEditWindow::getTitle(short maxval)
   return wtitle;
 }
 
-TIDEEditWindow::TIDEEditWindow( const TRect& bounds,
-                          const char *fileName,
-                          int aNumber
-                        ) :
-    TCEditWindow( bounds, (const char *)NULL, aNumber ),
-    TWindowInit( &TIDEEditWindow::initFrame ),
-    wtitle(NULL)
+TIDEEditWindow::TIDEEditWindow(const TRect & bounds,
+const char *fileName, int aNumber):
+TCEditWindow(bounds, (const char *) NULL, aNumber),
+TWindowInit(&TIDEEditWindow::initFrame), wtitle(NULL)
 {
-  TRect r(editor->origin.x,editor->origin.y,
-  editor->origin.x+editor->size.x,editor->origin.y+editor->size.y);
-  TScrollBar * hScrollBar = editor->hScrollBar;
-  TScrollBar * vScrollBar = editor->vScrollBar;
-  TSIndicator * indicator = editor->indicator;
+  TRect r(editor->origin.x, editor->origin.y,
+          editor->origin.x + editor->size.x,
+
+          editor->origin.y + editor->size.y);
+  TScrollBar *hScrollBar = editor->hScrollBar;
+  TScrollBar *vScrollBar = editor->vScrollBar;
+  TSIndicator *indicator = editor->indicator;
+
   editor->hScrollBar = NULL;
   editor->vScrollBar = NULL;
   editor->indicator = NULL;
   remove(editor);
   destroy(editor);
-  editor = new TIDEFileEditor( r, hScrollBar, vScrollBar, indicator, fileName );
+  editor = new TIDEFileEditor(r, hScrollBar, vScrollBar, indicator, fileName);
   insert(editor);
   helpCtx = hcIDEEditWindow;
   options |= ofFirstClick;
 }
 
-TStreamable * TIDEEditWindow::build()
+TStreamable *
+TIDEEditWindow::build()
 {
-  return new TIDEEditWindow( streamableInit );
+  return new TIDEEditWindow(streamableInit);
 }
 
-TIDEEditWindow::TIDEEditWindow(StreamableInit) :
-  TCEditWindow( streamableInit ) ,
-  TWindowInit( NULL ),
-  wtitle(NULL)
+TIDEEditWindow::TIDEEditWindow(StreamableInit):
+TCEditWindow(streamableInit), TWindowInit(NULL), wtitle(NULL)
 {
 }
 
-void TIDEEditWindow::handleEvent( TEvent& event )
+void
+TIDEEditWindow::handleEvent(TEvent & event)
 {
   switch (event.what)
   {
@@ -107,7 +112,6 @@ void TIDEEditWindow::handleEvent( TEvent& event )
     default:
       break;
   }
-  if (event.what != evNothing) TCEditWindow::handleEvent(event);
+  if (event.what != evNothing)
+    TCEditWindow::handleEvent(event);
 }
-
-

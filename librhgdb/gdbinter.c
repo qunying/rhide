@@ -34,56 +34,59 @@ static int signal_start;
 static int signal_end;
 
 void
-annotate_signalled ()
+annotate_signalled()
 {
-DEBUG("|signalled|");
+  DEBUG("|signalled|");
 }
 
 void
-annotate_signal_name ()
+annotate_signal_name()
 {
-DEBUG("|signal_name|");
+  DEBUG("|signal_name|");
   signal_start = get_gdb_output_buffer();
 }
 
 void
-annotate_signal_name_end ()
+annotate_signal_name_end()
 {
-DEBUG("|signal_name_end|");
+  DEBUG("|signal_name_end|");
 }
 
 void
-annotate_signal_string ()
+annotate_signal_string()
 {
-DEBUG("|signal_string|");
+  DEBUG("|signal_string|");
 }
 
 void
-annotate_signal_string_end ()
+annotate_signal_string_end()
 {
   char *signal;
-DEBUG("|signal_string_end|");
+
+  DEBUG("|signal_string_end|");
   signal_end = get_gdb_output_buffer();
-  signal = (char *)alloca(signal_end-signal_start+1);
-  strncpy(signal,gdb_output_buffer+signal_start,signal_end-signal_start);
-  signal[signal_end-signal_start] = 0;
+  signal = (char *) alloca(signal_end - signal_start + 1);
+  strncpy(signal, gdb_output_buffer + signal_start,
+          signal_end - signal_start);
+  signal[signal_end - signal_start] = 0;
   if (user_screen_shown)
   {
     ShowDebuggerScreen();
-    _UserWarning(WARN_SIGNALED,signal);
+    _UserWarning(WARN_SIGNALED, signal);
     ShowUserScreen();
   }
   else
-    _UserWarning(WARN_SIGNALED,signal);
+    _UserWarning(WARN_SIGNALED, signal);
   // An attempt to recover after SIGINT and other signals
 
-  if ( 1  || /* Why this ? */
-           strncmp(signal,"SIGINT," ,7) == 0
-        || strncmp(signal,"SIGFPE," ,7) == 0
-        || strncmp(signal,"SIGABRT,",8) == 0
-        || strncmp(signal,"SIGSEGV,",8) == 0
-        || strncmp(signal,"SIGILL,",8)  == 0
-     )
+  if (1 ||                      /*
+                                   Why this ? 
+                                 */
+      strncmp(signal, "SIGINT,", 7) == 0
+      || strncmp(signal, "SIGFPE,", 7) == 0
+      || strncmp(signal, "SIGABRT,", 8) == 0
+      || strncmp(signal, "SIGSEGV,", 8) == 0
+      || strncmp(signal, "SIGILL,", 8) == 0)
   {
     force_disassembler_window = 1;
   }
@@ -94,9 +97,9 @@ DEBUG("|signal_string_end|");
 }
 
 void
-annotate_signal ()
+annotate_signal()
 {
-DEBUG("|signal|");
+  DEBUG("|signal|");
 }
 
 #ifdef __DJGPP__
@@ -104,13 +107,15 @@ DEBUG("|signal|");
 #endif
 
 void
-annotate_exited (int exitstatus)
+annotate_exited(int exitstatus)
 {
-  _DEBUG("|exited(%d)|",exitstatus);
+  _DEBUG("|exited(%d)|", exitstatus);
 #ifdef __DJGPP__
- /* this is very important. The exit code of a djgpp program
-   disables interrupts and after this there is no other interrupt
-   called, which enables interrupts with the iret. */
+  /*
+     this is very important. The exit code of a djgpp program
+     disables interrupts and after this there is no other interrupt
+     called, which enables interrupts with the iret. 
+   */
   __dpmi_get_and_enable_virtual_interrupt_state();
 #endif
   ShowDebuggerScreen();
@@ -119,22 +124,28 @@ annotate_exited (int exitstatus)
 }
 
 void
-annotate_error ()
+annotate_error()
 {
-_DEBUG("|error|");
-  /* gdb_error = 1; */
+  _DEBUG("|error|");
+  /*
+     gdb_error = 1; 
+   */
 }
 
 void
-annotate_error_begin ()
+annotate_error_begin()
 {
-_DEBUG("a_error_begin\n");
-  /* error_start = gdb_output_buffer + strlen(gdb_output_buffer); */
+  _DEBUG("a_error_begin\n");
+  /*
+     error_start = gdb_output_buffer + strlen(gdb_output_buffer); 
+   */
 }
 
-void CreateBreakPointHook(struct breakpoint *b)
+void
+CreateBreakPointHook(struct breakpoint *b)
 {
-  struct symtab_and_line s = find_pc_line(b->address,0);
+  struct symtab_and_line s = find_pc_line(b->address, 0);
+
   last_breakpoint_number = b->number;
   invalid_line = (b->line_number != s.line);
   last_breakpoint_address = b->address;
@@ -142,7 +153,7 @@ void CreateBreakPointHook(struct breakpoint *b)
   if (s.symtab)
     last_breakpoint_file = s.symtab->filename;
   else
-    last_breakpoint_file = NULL; 
+    last_breakpoint_file = NULL;
 }
 
 #ifdef OLD_GDB
@@ -155,26 +166,28 @@ static int top_level_val;
 #endif
 
 void
-annotate_starting ()
+annotate_starting()
 {
-DEBUG("|starting|");
+  DEBUG("|starting|");
   ShowUserScreen();
 }
 
-void annotate_stopped ()
+void
+annotate_stopped()
 {
   struct symtab_and_line s;
   char *fname = NULL;
-DEBUG("|stopped|");
+
+  DEBUG("|stopped|");
   ShowDebuggerScreen();
   debugger_started = inferior_pid;
   if (!reset_command)
   {
-    s = find_pc_line(stop_pc,0);
+    s = find_pc_line(stop_pc, 0);
     fname = s.symtab ? s.symtab->filename : NULL;
-    _select_source_line(fname,s.line);
+    _select_source_line(fname, s.line);
   }
-  _DEBUG("a_stopped(%s,%d)\n",fname,s.line);
+  _DEBUG("a_stopped(%s,%d)\n", fname, s.line);
 }
 
 char *gdb_output_buffer = NULL;
@@ -226,20 +239,24 @@ RH_GDB_FILE *gdb_stderr;
 RH_GDB_FILE *gdb_stdlog;
 RH_GDB_FILE *gdb_stdtarg;
 
-int get_gdb_output_buffer (void)
+int
+get_gdb_output_buffer(void)
 {
 #ifndef OLD_GDB
-  if (gdb_output_buffer) free (gdb_output_buffer);
-  gdb_output_buffer = ui_file_xstrdup (gdb_stdout, &gdb_output_pos);
+  if (gdb_output_buffer)
+    free(gdb_output_buffer);
+  gdb_output_buffer = ui_file_xstrdup(gdb_stdout, &gdb_output_pos);
 #endif
   return gdb_output_pos;
 }
 
-int get_gdb_error_buffer (void)
+int
+get_gdb_error_buffer(void)
 {
 #ifndef OLD_GDB
-  if (gdb_error_buffer) free (gdb_error_buffer);
-  gdb_error_buffer = ui_file_xstrdup (gdb_stderr, &gdb_error_pos);
+  if (gdb_error_buffer)
+    free(gdb_error_buffer);
+  gdb_error_buffer = ui_file_xstrdup(gdb_stderr, &gdb_error_pos);
 #endif
   return gdb_error_pos;
 }
@@ -258,19 +275,28 @@ int get_gdb_error_buffer (void)
 
 #include <dpmi.h>
 
-extern int win31; /* in librhgdb */
+extern int win31;               /*
+
+                                   in librhgdb 
+                                 */
 static struct target_ops *_go32_ops;
 
-static int _win31_memory_insert_breakpoint(CORE_ADDR addr,
-                                    char *shadow __attribute__((unused)))
+static int
+_win31_memory_insert_breakpoint(CORE_ADDR addr,
+                                char *shadow __attribute__ ((unused)))
 {
-  return go32_insert_hw_breakpoint(addr,0 /* this is not used */);
+  return go32_insert_hw_breakpoint(addr, 0	/*
+	   this is not used 
+	 */ );
 }
 
-static int _win31_memory_remove_breakpoint(CORE_ADDR addr,
-                                    char *shadow __attribute__((unused)))
+static int
+_win31_memory_remove_breakpoint(CORE_ADDR addr,
+                                char *shadow __attribute__ ((unused)))
 {
-  return go32_remove_hw_breakpoint(addr,0 /* this is not used */);
+  return go32_remove_hw_breakpoint(addr, 0	/*
+	   this is not used 
+	 */ );
 }
 
 /* Pointer to array of target architecture structures; the size of the
@@ -284,13 +310,17 @@ __win31_hack()
 {
   __dpmi_regs r;
   unsigned i;
+
   _go32_ops = NULL;
   r.x.ax = 0x160a;
-  __dpmi_int(0x2f,&r);
-  if (r.x.ax == 0 && r.h.bh == 3) win31 = 1;
-  else win31 = 0;
-  if (!win31) return;
-  for (i=0; i<target_struct_size; i++)
+  __dpmi_int(0x2f, &r);
+  if (r.x.ax == 0 && r.h.bh == 3)
+    win31 = 1;
+  else
+    win31 = 0;
+  if (!win31)
+    return;
+  for (i = 0; i < target_struct_size; i++)
   {
     if ((target_structs[i]->to_shortname) &&
         (strcmp(target_structs[i]->to_shortname, "djgpp") == 0))
@@ -305,23 +335,25 @@ __win31_hack()
   _go32_ops->to_remove_breakpoint = _win31_memory_remove_breakpoint;
 }
 
-#endif /* __DJGPP__ */
+#endif /*
+          __DJGPP__ 
+        */
 
-static void __attribute__((constructor))
-_init_librhgdb()
+static void __attribute__ ((constructor)) _init_librhgdb()
 {
   char command[256];
-  void (*oldINT)(int);
-  oldINT = signal(SIGINT,SIG_DFL);
+  void (*oldINT) (int);
+
+  oldINT = signal(SIGINT, SIG_DFL);
 
 #ifdef OLD_GDB
-  gdb_stdout = (GDB_FILE *)malloc (sizeof(GDB_FILE));
+  gdb_stdout = (GDB_FILE *) malloc(sizeof(GDB_FILE));
   gdb_stdout->ts_streamtype = afile;
   gdb_stdout->ts_filestream = stdout;
   gdb_stdout->ts_strbuf = NULL;
   gdb_stdout->ts_buflen = 0;
 
-  gdb_stderr = (GDB_FILE *)malloc (sizeof(GDB_FILE));
+  gdb_stderr = (GDB_FILE *) malloc(sizeof(GDB_FILE));
   gdb_stderr->ts_streamtype = afile;
   gdb_stderr->ts_filestream = stderr;
   gdb_stderr->ts_strbuf = NULL;
@@ -329,111 +361,143 @@ _init_librhgdb()
   gdb_init("rhide");
 #else
 
-  /* fragment from gdb/main.c  */
+  /*
+     fragment from gdb/main.c  
+   */
 
-  gdb_stdout = mem_fileopen (); // stdio_fileopen (stdout);
-  gdb_stderr = mem_fileopen (); // stdio_fileopen (stderr);
-  gdb_stdlog = gdb_stderr;	/* for moment */
-  gdb_stdtarg = gdb_stderr;	/* for moment */
+  gdb_stdout = mem_fileopen();  // stdio_fileopen (stdout);
+  gdb_stderr = mem_fileopen();  // stdio_fileopen (stderr);
+  gdb_stdlog = gdb_stderr;      /*
+                                   for moment 
+                                 */
+  gdb_stdtarg = gdb_stderr;     /*
+                                   for moment 
+                                 */
   error_init();
 
-  /* end of fragment from gdb/main.c  */
+  /*
+     end of fragment from gdb/main.c  
+   */
 
   gdb_init("rhide");
 #endif
 #ifdef __DJGPP__
   __win31_hack();
 #endif
-  signal(SIGINT,oldINT);
+  signal(SIGINT, oldINT);
   {
     extern int rh_annotate;
-    rh_annotate = 0; /* This is used only to force to have annotate.o
-                        known to the linker, otherwise you have to
-                        link your program with this lib here like
-                        -lrhgdb -lgdb -lrhgdb
-                     */
+
+    rh_annotate = 0;            /*
+                                   This is used only to force to have annotate.o
+                                   known to the linker, otherwise you have to
+                                   link your program with this lib here like
+                                   -lrhgdb -lgdb -lrhgdb
+                                 */
   }
-  sprintf(command,"set width %u",UINT_MAX);
-  Command(command,0);
-  sprintf(command,"set height %u",UINT_MAX);
-  Command(command,0);
-  Command("set print null-stop",0);
+  sprintf(command, "set width %u", UINT_MAX);
+  Command(command, 0);
+  sprintf(command, "set height %u", UINT_MAX);
+  Command(command, 0);
+  Command("set print null-stop", 0);
 #if 0
   Command("set print object on", 0);
 #endif
   Command("set print vtbl on", 0);
 }
 
-void init_gdb(char *fname __attribute__((unused)))
+void
+init_gdb(char *fname __attribute__ ((unused)))
 {
   reset_gdb_output();
   reset_gdb_error();
   create_breakpoint_hook = CreateBreakPointHook;
 }
 
-void done_gdb()
+void
+done_gdb()
 {
   target_kill();
   target_close(1);
   create_breakpoint_hook = NULL;
 }
 
-void handle_gdb_command(char *command)
+void
+handle_gdb_command(char *command)
 {
-  /* Strings may not be writtable. Therefore let's make local copy  */
-  char * copy_of_command = strdup (command);
+  /*
+     Strings may not be writtable. Therefore let's make local copy  
+   */
+  char *copy_of_command = strdup(command);
+
 #ifdef OLD_GDB
-  jmp_buf old_quit_return,old_error_return;
-  /* Save the old jmp_buf's, because we may be
-     called nested */
-  memcpy(old_quit_return,quit_return,sizeof(jmp_buf));
-  memcpy(old_error_return,error_return,sizeof(jmp_buf));
+  jmp_buf old_quit_return, old_error_return;
+
+  /*
+     Save the old jmp_buf's, because we may be
+     called nested 
+   */
+  memcpy(old_quit_return, quit_return, sizeof(jmp_buf));
+  memcpy(old_error_return, error_return, sizeof(jmp_buf));
   gdb_error = 0;
-  _DEBUG("start of handle_gdb_command(%s)\n",command);
+  _DEBUG("start of handle_gdb_command(%s)\n", command);
   if (!SET_TOP_LEVEL())
   {
     execute_command(copy_of_command, 0);
   }
-  _DEBUG("end of handle_gdb_command(%s)\n",command);
-  /* Restore the old jmp_buf's */
-  memcpy(quit_return,old_quit_return,sizeof(jmp_buf));
-  memcpy(error_return,old_error_return,sizeof(jmp_buf));
+  _DEBUG("end of handle_gdb_command(%s)\n", command);
+  /*
+     Restore the old jmp_buf's 
+   */
+  memcpy(quit_return, old_quit_return, sizeof(jmp_buf));
+  memcpy(error_return, old_error_return, sizeof(jmp_buf));
 #else
-  /* (GDB-5.0 is removing white space at end of string. So it's     */
-  /* modifying it  */
-  catch_command_errors (execute_command, copy_of_command, 0, RETURN_MASK_ALL);
+  /*
+     (GDB-5.0 is removing white space at end of string. So it's     
+   */
+  /*
+     modifying it  
+   */
+  catch_command_errors(execute_command, copy_of_command, 0, RETURN_MASK_ALL);
 #endif
-  free (copy_of_command);
+  free(copy_of_command);
 }
 
 #ifdef OLD_GDB
 void
-fputs_unfiltered(const char *linebuffer, GDB_FILE *stream __attribute__((unused)))
+fputs_unfiltered(const char *linebuffer, GDB_FILE * stream
+                 __attribute__ ((unused)))
 {
-  _DEBUG("fputs_unfiltered(%s)\n",linebuffer);
-  APPEND(gdb_output,linebuffer);
+  _DEBUG("fputs_unfiltered(%s)\n", linebuffer);
+  APPEND(gdb_output, linebuffer);
 }
 #endif
 
-void reset_gdb_output()
+void
+reset_gdb_output()
 {
 #ifdef OLD_GDB
-  if (!gdb_output_buffer) RESIZE(gdb_output);
+  if (!gdb_output_buffer)
+    RESIZE(gdb_output);
   RESET(gdb_output);
 #else
-  ui_file_rewind (gdb_stdout);
-  if (gdb_output_buffer) *gdb_output_buffer=0;
+  ui_file_rewind(gdb_stdout);
+  if (gdb_output_buffer)
+    *gdb_output_buffer = 0;
 #endif
 }
 
-void reset_gdb_error()
+void
+reset_gdb_error()
 {
 #ifdef OLD_GDB
-  if (!gdb_error_buffer) RESIZE(gdb_error);
+  if (!gdb_error_buffer)
+    RESIZE(gdb_error);
   RESET(gdb_error);
 #else
-  ui_file_rewind (gdb_stderr);
-  if (gdb_error_buffer) *gdb_error_buffer=0;
+  ui_file_rewind(gdb_stderr);
+  if (gdb_error_buffer)
+    *gdb_error_buffer = 0;
 #endif
 }
 
@@ -445,20 +509,24 @@ int display_time;
 
 int display_space;
 
-void init_proc()
+void
+init_proc()
 {
 }
 
-char *SourceForMain(int *line)
+char *
+SourceForMain(int *line)
 {
   struct symbol *sym;
   struct symtab *symtab;
+
   *line = 0;
   sym = lookup_symbol(_GetMainFunction(), NULL, VAR_NAMESPACE, NULL, &symtab);
   if (!sym)
   {
     struct minimal_symbol *msymbol =
-      lookup_minimal_symbol (_GetMainFunction(), NULL, NULL);
+      lookup_minimal_symbol(_GetMainFunction(), NULL, NULL);
+
     if (msymbol)
       *line = SYMBOL_VALUE_ADDRESS(msymbol);
     return NULL;
@@ -471,7 +539,8 @@ char *SourceForMain(int *line)
   if (symtab->linetable)
   {
     int i;
-    for (i=0;i<symtab->linetable->nitems;i++)
+
+    for (i = 0; i < symtab->linetable->nitems; i++)
     {
       if (symtab->linetable->item[i].pc
           == BLOCK_START(SYMBOL_BLOCK_VALUE(sym)))
@@ -486,17 +555,20 @@ char *SourceForMain(int *line)
   return symtab->filename;
 }
 
-void __StartSession()
+void
+__StartSession()
 {
   _StartSession();
 }
 
-void __BreakSession()
+void
+__BreakSession()
 {
   _BreakSession();
 }
 
-void __EndSession(int exit_code)
+void
+__EndSession(int exit_code)
 {
   debugger_started = 0;
 #ifdef __DJGPP__
@@ -505,9 +577,10 @@ void __EndSession(int exit_code)
   _EndSession(exit_code);
 }
 
-void ShowDebuggerScreen()
+void
+ShowDebuggerScreen()
 {
-DEBUG("|DebuggerScreen|");
+  DEBUG("|DebuggerScreen|");
   if (user_screen_shown)
   {
     _DebuggerScreen();
@@ -515,9 +588,10 @@ DEBUG("|DebuggerScreen|");
   }
 }
 
-void ShowUserScreen()
+void
+ShowUserScreen()
 {
-DEBUG("|UserScreen|");
+  DEBUG("|UserScreen|");
   if (switch_to_user)
   {
     if (!user_screen_shown)
@@ -525,6 +599,3 @@ DEBUG("|UserScreen|");
     user_screen_shown = 1;
   }
 }
-
-
-

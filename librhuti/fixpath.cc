@@ -35,53 +35,75 @@ is_term(int c)
 void
 __fixpath(const char *in, char *out)
 {
-  const char	*ip = in;
-  char		*op = out;
+  const char *ip = in;
+  char *op = out;
 
-  /* Convert relative path to absolute */
+  /*
+     Convert relative path to absolute 
+   */
   if (!is_slash(*ip))
   {
     getcwd(op, PATH_MAX);
     op += strlen(op);
   }
 
-  /* Step through the input path */
+  /*
+     Step through the input path 
+   */
   while (*ip)
   {
-    /* Skip input slashes */
+    /*
+       Skip input slashes 
+     */
     if (is_slash(*ip))
     {
       ip++;
       continue;
     }
 
-    /* Skip "." and output nothing */
+    /*
+       Skip "." and output nothing 
+     */
     if (*ip == '.' && is_term(*(ip + 1)))
     {
       ip++;
       continue;
     }
 
-    /* Skip ".." and remove previous output directory */
+    /*
+       Skip ".." and remove previous output directory 
+     */
     if (*ip == '.' && *(ip + 1) == '.' && is_term(*(ip + 2)))
     {
       ip += 2;
-      /* Don't back up over root '/' */
-      if (op > out )
-      /* This requires "/" to follow drive spec */
-	while (!is_slash(*--op));
+      /*
+         Don't back up over root '/' 
+       */
+      if (op > out)
+        /*
+           This requires "/" to follow drive spec 
+         */
+        while (!is_slash(*--op));
       continue;
     }
 
-    /* Copy path component from in to out */
+    /*
+       Copy path component from in to out 
+     */
     *op++ = '/';
-    while (!is_term(*ip)) *op++ = *ip++;
+    while (!is_term(*ip))
+      *op++ = *ip++;
   }
 
-  /* If root directory, insert trailing slash */
-  if (op == out) *op++ = '/';
+  /*
+     If root directory, insert trailing slash 
+   */
+  if (op == out)
+    *op++ = '/';
 
-  /* Null terminate the output */
+  /*
+     Null terminate the output 
+   */
   *op = '\0';
 
 }
@@ -90,5 +112,3 @@ __fixpath(const char *in, char *out)
   End of modified code from DJGPP's libc 'fixpath.c'
 */
 #endif
-
-

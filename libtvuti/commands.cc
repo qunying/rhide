@@ -9,10 +9,6 @@
 #define __CM(x,y) add_command_constant("cm"#x,cm##x);
 #define __HC(x,y) add_help_constant("hc"#x,hc##x);
 
-static void __attribute__ (( __constructor__ ))
-init_tvutil_commands()
+static void __attribute__ ((__constructor__)) init_tvutil_commands()
 {
-  __TVUTIL_COMMAND_CODES__
-  __TVUTIL_HELP_CODES__
-}
-
+__TVUTIL_COMMAND_CODES__ __TVUTIL_HELP_CODES__}

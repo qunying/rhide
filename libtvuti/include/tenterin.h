@@ -5,11 +5,14 @@
 
 class TRect;
 
-class TEnterInputLine : public TInputLine
+class TEnterInputLine:public TInputLine
 {
 public:
-  TEnterInputLine(const TRect &bounds,int aMaxlen) :
-    TInputLine(bounds,aMaxlen), handle_enter(true) {}
+  TEnterInputLine(const TRect & bounds, int aMaxlen):TInputLine(bounds,
+                                                                aMaxlen),
+    handle_enter(true)
+  {
+  }
   virtual void handleEvent(TEvent &);
   bool handle_enter;
 };

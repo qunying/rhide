@@ -33,11 +33,14 @@
 #include <ctype.h>
 #include <sys/utsname.h>
 
-#if 0
-#define A(n) __attribute__ (( regparm(n) ))
-#else
-#define A(n)
-#endif
+/* *INDENT-OFF* */
+#define SAME_LIBS(x,y)\
+ "RHIDE_TYPED_LIBS."#x,\
+ "$(RHIDE_TYPED_LIBS."#y")"
+
+#define SAME_COMPILE(from,to,ref) \
+ "RHIDE_COMPILE."#from"."#to,\
+ "$(RHIDE_COMPILE."#ref"."#to")"
 
 static char *default_variables[] = {
  "RHIDE_GCC",
@@ -84,10 +87,6 @@ static char *default_variables[] = {
 
  "RHIDE_TYPED_LIBS.f",
  "g2c m",
-
-#define SAME_LIBS(x,y)\
- "RHIDE_TYPED_LIBS."#x,\
- "$(RHIDE_TYPED_LIBS."#y")"
 
  SAME_LIBS(for,f),
  SAME_LIBS(F,f),
@@ -304,10 +303,6 @@ static char *default_variables[] = {
   $(setsuffix .ali,$(OUTFILE)) $(LIBRARIES) $(LDFLAGS)\
   $(RHIDE_LDFLAGS) $(RHIDE_LIBS)",
 
-#define SAME_COMPILE(from,to,ref) \
- "RHIDE_COMPILE."#from"."#to,\
- "$(RHIDE_COMPILE."#ref"."#to")"
-
  "RHIDE_COMPILE.c.o",
  "$(RHIDE_COMPILE_C)",
 
@@ -446,13 +441,16 @@ static char *default_variables[] = {
  0,
  0
 };
+/* *INDENT-ON* */
 
-void dump_rhide_environment(FILE *f)
+void
+dump_rhide_environment(FILE * f)
 {
   int i;
-  for (i=0;i<var_count;i++)
+
+  for (i = 0; i < var_count; i++)
   {
-    fprintf(f,"%s=%s\n",vars[i*2],vars[i*2+1]);
+    fprintf(f, "%s=%s\n", vars[i * 2], vars[i * 2 + 1]);
   }
 }
 
@@ -463,9 +461,9 @@ extern char **environ;
 
 static int variables_inited = 0;
 static
-char *_handle_rhide_token(const char *_token,token_func expand_tokens);
-static
-char *ExpandSpec(const char *spec);
+
+  char *_handle_rhide_token(const char *_token, token_func expand_tokens);
+static char *ExpandSpec(const char *spec);
 
 static void
 init_variables(void)
@@ -473,57 +471,67 @@ init_variables(void)
   if (variables_inited)
     return;
   variables_inited = 1;
-  int i=0;
+  int i = 0;
+
   while (default_variables[i])
   {
-    char *variable,*contents, *_variable;
+    char *variable, *contents, *_variable;
+
     _variable = default_variables[i];
     variable = ExpandSpec(_variable);
     contents = getenv(_variable);
-    if (!contents) contents = default_variables[i+1];
+    if (!contents)
+      contents = default_variables[i + 1];
     insert_variable(_variable, contents);
     if (strcmp(variable, _variable) != 0)
     {
       contents = getenv(variable);
-      if (!contents) contents = default_variables[i+1];
+      if (!contents)
+        contents = default_variables[i + 1];
       insert_variable(variable, contents);
     }
     string_free(variable);
     i += 2;
   }
   // Now check the env for any RHIDE_ variable
-  for (i=0;environ[i];i++)
+  for (i = 0; environ[i]; i++)
   {
-    if (strncmp(environ[i],"RHIDE_",6) == 0)
+    if (strncmp(environ[i], "RHIDE_", 6) == 0)
     {
-      char *contents = strchr(environ[i],'=');
-      if (!contents) continue;
+      char *contents = strchr(environ[i], '=');
+
+      if (!contents)
+        continue;
       contents++;
       char var[256];
-      memcpy(var,environ[i],(int)(contents-environ[i])-1);
-      var[(int)(contents-environ[i])-1] = 0;
+
+      memcpy(var, environ[i], (int) (contents - environ[i]) - 1);
+      var[(int) (contents - environ[i]) - 1] = 0;
       insert_variable(var, contents);
     }
   }
   variables_inited = 1;
 }
 
-static char *ExpandSpec(const char *spec)
+static char *
+ExpandSpec(const char *spec)
 {
   if (!variables_inited)
     init_variables();
-  return expand_spec(spec,_handle_rhide_token);
+  return expand_spec(spec, _handle_rhide_token);
 }
 
-char *build_command(char *program,char *args)
+char *
+build_command(char *program, char *args)
 {
   char *spec;
   char *command;
-  string_dup(spec,"$(strip ");
-  string_cat(spec,program);
-  string_cat(spec," ");
-  string_cat(spec,args);
-  string_cat(spec,")");
+
+  string_dup(spec, "$(strip ");
+  string_cat(spec, program);
+  string_cat(spec, " ");
+  string_cat(spec, args);
+  string_cat(spec, ")");
   command = ExpandSpec(spec);
   string_free(spec);
   return command;
@@ -535,9 +543,10 @@ typedef struct
 {
   char *name;
   int name_len;
-  char *(*func)();
-  char *(*make_func)();
-} _rhide_tokens;
+  char *(*func) ();
+  char *(*make_func) ();
+}
+_rhide_tokens;
 
 #define TF(x) static char *rhide_token_##x()
 TF(INCLUDE_DIRS);
@@ -581,43 +590,42 @@ TF(PASCAL_TYPE);
 TF(GET_HOME);
 TF(make_GET_HOME);
 
-static _rhide_tokens rhide_tokens[] =
-{
+static _rhide_tokens rhide_tokens[] = {
 #define SF(x,y) {#x,sizeof(#x)-1,rhide_token_##x,y}
-  SF(RHIDE_OS,rhide_token_make_RHIDE_OS),
-  SF(INCLUDE_DIRS,NULL),
-  SF(LIB_DIRS,NULL),
-  SF(C_DEBUG_FLAGS,NULL),
-  SF(C_OPT_FLAGS,NULL),
-  SF(C_WARN_FLAGS,NULL),
-  SF(C_C_LANG_FLAGS,NULL),
-  SF(C_CXX_LANG_FLAGS,NULL),
-  SF(C_P_LANG_FLAGS,NULL),
-  SF(C_FPC_LANG_FLAGS,NULL),
-  SF(C_F_LANG_FLAGS,NULL),
-  SF(C_ADA_LANG_FLAGS,NULL),
-  SF(LIBS,NULL),
-  SF(LD_EXTRA_FLAGS,NULL),
-  SF(C_EXTRA_FLAGS,NULL),
-  SF(LOCAL_OPT,rhide_token_make_LOCAL_OPT),
-  SF(OBJFILES,NULL),
-  SF(ALL_OBJFILES,NULL),
-  SF(LIBRARIES,NULL),
-  SF(SOURCE_NAME,rhide_token_make_SOURCE_NAME),
-  SF(OUTFILE,rhide_token_make_OUTFILE),
-  SF(SPECIAL_CFLAGS,NULL),
-  SF(SPECIAL_LDFLAGS,NULL),
-  SF(PROG_ARGS,NULL),
-  SF(SRC_DIRS,NULL),
-  SF(WUC,rhide_token_make_WUC),
-  SF(EDITORS,rhide_token_make_EDITORS),
-  SF(MAIN_TARGET,NULL),
-  SF(PROJECT_ITEMS,NULL),
-  SF(DEFAULT_MASK,NULL),
-  SF(RHIDE_BIN_DIR,NULL),
-  SF(PASCAL_TYPE,NULL),
-  SF(GET_HOME,rhide_token_make_GET_HOME),
-  {NULL,0,NULL,NULL}
+  SF(RHIDE_OS, rhide_token_make_RHIDE_OS),
+  SF(INCLUDE_DIRS, NULL),
+  SF(LIB_DIRS, NULL),
+  SF(C_DEBUG_FLAGS, NULL),
+  SF(C_OPT_FLAGS, NULL),
+  SF(C_WARN_FLAGS, NULL),
+  SF(C_C_LANG_FLAGS, NULL),
+  SF(C_CXX_LANG_FLAGS, NULL),
+  SF(C_P_LANG_FLAGS, NULL),
+  SF(C_FPC_LANG_FLAGS, NULL),
+  SF(C_F_LANG_FLAGS, NULL),
+  SF(C_ADA_LANG_FLAGS, NULL),
+  SF(LIBS, NULL),
+  SF(LD_EXTRA_FLAGS, NULL),
+  SF(C_EXTRA_FLAGS, NULL),
+  SF(LOCAL_OPT, rhide_token_make_LOCAL_OPT),
+  SF(OBJFILES, NULL),
+  SF(ALL_OBJFILES, NULL),
+  SF(LIBRARIES, NULL),
+  SF(SOURCE_NAME, rhide_token_make_SOURCE_NAME),
+  SF(OUTFILE, rhide_token_make_OUTFILE),
+  SF(SPECIAL_CFLAGS, NULL),
+  SF(SPECIAL_LDFLAGS, NULL),
+  SF(PROG_ARGS, NULL),
+  SF(SRC_DIRS, NULL),
+  SF(WUC, rhide_token_make_WUC),
+  SF(EDITORS, rhide_token_make_EDITORS),
+  SF(MAIN_TARGET, NULL),
+  SF(PROJECT_ITEMS, NULL),
+  SF(DEFAULT_MASK, NULL),
+  SF(RHIDE_BIN_DIR, NULL),
+  SF(PASCAL_TYPE, NULL),
+  SF(GET_HOME, rhide_token_make_GET_HOME),
+  {NULL, 0, NULL, NULL}
 #undef SF
 };
 
@@ -630,8 +638,9 @@ TF(GET_HOME)
 {
   char *tmp = ExpandSpec("$(HOME)");
   char *c = NULL;
+
   if (*tmp)
-    c = tmp+strlen(tmp)-1;
+    c = tmp + strlen(tmp) - 1;
   if (c && ((*c == '/') || (*c == '\\')))
     *c = 0;
   return tmp;
@@ -648,9 +657,10 @@ TF(PASCAL_TYPE)
 TF(RHIDE_BIN_DIR)
 {
   char *retval = string_dup(RHIDE_DIR);
+
   // RHIDE_DIR has ever the last slash
   if (*retval)
-    retval[strlen(retval)-1] = 0;
+    retval[strlen(retval) - 1] = 0;
   return retval;
 }
 
@@ -662,7 +672,8 @@ TF(DEFAULT_MASK)
 TF(WUC)
 {
   char *tmp;
-  return (tmp = WUC()) ? tmp : string_dup("");
+
+  return (tmp = WUC())? tmp : string_dup("");
 }
 
 TF(make_WUC)
@@ -673,12 +684,16 @@ TF(make_WUC)
 TF(PROJECT_ITEMS)
 {
   char *retval = NULL;
-  int i,count = Project.dependencies->getCount();
-  for (i=0;i<count;i++)
+  int i, count = Project.dependencies->getCount();
+
+  for (i = 0; i < count; i++)
   {
     if (retval)
-      string_cat(retval," ");
-    string_cat(retval,FName(((TDependency *)Project.dependencies->at(i))->source_name));
+      string_cat(retval, " ");
+    string_cat(retval,
+               FName(
+                     ((TDependency *) Project.dependencies->
+                      at(i))->source_name));
   }
   if (!retval)
     retval = string_dup("");
@@ -692,7 +707,7 @@ TF(MAIN_TARGET)
 
 TF(make_RHIDE_OS)
 {
-return string_dup("$(RHIDE_OS_)\n\
+  return string_dup("$(RHIDE_OS_)\n\
 ifeq ($(strip $(RHIDE_OS)),)\n\
 ifneq ($(strip $(DJDIR)),)\n\
 RHIDE_OS_:=DJGPP\n\
@@ -708,6 +723,7 @@ TF(RHIDE_OS)
   if (getenv("DJDIR"))
     return string_dup("DJGPP");
   struct utsname u;
+
   uname(&u);
   if (strncmp(u.sysname, "CYGWIN", 6) == 0)
     return string_dup("CYGWIN");
@@ -723,20 +739,24 @@ TF(make_EDITORS)
 TF(EDITORS)
 {
   char *retval = NULL;
+
   if (windows)
   {
-    int i,count = windows->getCount();
-    for (i=0;i<count;i++)
+    int i, count = windows->getCount();
+
+    for (i = 0; i < count; i++)
     {
       TEvent event;
-      DeskTopWindow *w = (DeskTopWindow *)windows->at(i);
+      DeskTopWindow *w = (DeskTopWindow *) windows->at(i);
+
       event.what = evBroadcast;
       event.message.command = cmEditorAnswer;
       w->window->handleEvent(event);
       if (event.what == evNothing)
       {
-        if (retval) string_cat(retval," ");
-        string_cat(retval,w->full_name);
+        if (retval)
+          string_cat(retval, " ");
+        string_cat(retval, w->full_name);
       }
     }
   }
@@ -746,7 +766,7 @@ TF(EDITORS)
 TF(make_LOCAL_OPT)
 {
   return string_dup("$(subst ___~~~___, ,$(subst $(notdir $<)___,,"
-             "$(filter $(notdir $<)___%,$(LOCAL_OPTIONS))))\n");
+                    "$(filter $(notdir $<)___%,$(LOCAL_OPTIONS))))\n");
 }
 
 TF(make_SOURCE_NAME)
@@ -759,11 +779,12 @@ TF(make_OUTFILE)
   return string_dup("$@");
 }
 
-static A(1)
-char *_dirs(TDirList *list)
+static char *
+_dirs(TDirList * list)
 {
   char *retval;
-  list->ToString(retval," ");
+
+  list->ToString(retval, " ");
   return retval;
 }
 
@@ -782,11 +803,12 @@ TF(LIB_DIRS)
   return _dirs(Options.library_path);
 }
 
-static A(1)
-char *_flags(TFlagCollection *flags)
+static char *
+_flags(TFlagCollection * flags)
 {
   char *retval;
-  flags->ToString(retval," ");
+
+  flags->ToString(retval, " ");
   return retval;
 }
 
@@ -835,10 +857,11 @@ TF(C_ADA_LANG_FLAGS)
   return _flags(Options.ada_flags);
 }
 
-static A(1)
-char *_params(TParamList *params)
+static char *
+_params(TParamList * params)
 {
   char *retval;
+
   params->ToString(retval);
   return retval;
 }
@@ -856,14 +879,16 @@ TF(LD_EXTRA_FLAGS)
 TF(SPECIAL_LDFLAGS)
 {
   char *retval = NULL;
+
   if (NoStdLib)
   {
-    string_dup(retval,"-nostdlib");
+    string_dup(retval, "-nostdlib");
   }
   if (ForProfile)
   {
-    if (retval) string_cat(retval," ");
-    string_cat(retval,"-pg");
+    if (retval)
+      string_cat(retval, " ");
+    string_cat(retval, "-pg");
   }
   return retval;
 }
@@ -871,10 +896,12 @@ TF(SPECIAL_LDFLAGS)
 TF(SPECIAL_CFLAGS)
 {
   char *retval = NULL;
+
   if (NoStdInc)
   {
-    if (retval) string_cat(retval," ");
-    string_cat(retval,"-nostdinc");
+    if (retval)
+      string_cat(retval, " ");
+    string_cat(retval, "-nostdinc");
   }
   return retval;
 }
@@ -892,47 +919,56 @@ TF(LOCAL_OPT)
 TF(SOURCE_NAME)
 {
   char *retval;
-  FindFile(FName(_token_dep->source_name),retval);
-  AbsToRelPath(project_directory,retval);
+
+  FindFile(FName(_token_dep->source_name), retval);
+  AbsToRelPath(project_directory, retval);
   return retval;
 }
 
 TF(OUTFILE)
 {
   char *retval;
-  FindFile(FName(_token_dep->dest_name),retval);
-  AbsToRelPath(project_directory,retval);
+
+  FindFile(FName(_token_dep->dest_name), retval);
+  AbsToRelPath(project_directory, retval);
   return retval;
 }
 
-static
-char *_libraries(int check_exclude)
+static char *
+_libraries(int check_exclude)
 {
   char *retval = NULL;
   char *tmp;
-  int i,count=0;
+  int i, count = 0;
+
   if (_token_dep->dependencies)
     count = _token_dep->dependencies->getCount();
-  for (i=0;i<count;i++)
+  for (i = 0; i < count; i++)
   {
-    TDependency *dep = (TDependency *)_token_dep->dependencies->at(i);
-    if (dep->dest_file_type != FILE_LIBRARY) continue;
-    if ((check_exclude == 1) && dep->exclude_from_link) continue;
-    if ((check_exclude == 2) && !dep->exclude_from_link) continue;
+    TDependency *dep = (TDependency *) _token_dep->dependencies->at(i);
+
+    if (dep->dest_file_type != FILE_LIBRARY)
+      continue;
+    if ((check_exclude == 1) && dep->exclude_from_link)
+      continue;
+    if ((check_exclude == 2) && !dep->exclude_from_link)
+      continue;
     if (dep->dest_file_type == FILE_LIBRARY)
     {
-      FindFile(FName(dep->dest_name),tmp);
-      AbsToRelPath(project_directory,tmp);
-      if (retval) string_cat(retval," ");
-      string_cat(retval,tmp);
+      FindFile(FName(dep->dest_name), tmp);
+      AbsToRelPath(project_directory, tmp);
+      if (retval)
+        string_cat(retval, " ");
+      string_cat(retval, tmp);
       string_free(tmp);
     }
     else
     {
-      string_dup(tmp,FName(dep->dest_name));
-      AbsToRelPath(project_directory,tmp);
-      if (retval) string_cat(retval," ");
-      string_cat(retval,tmp);
+      string_dup(tmp, FName(dep->dest_name));
+      AbsToRelPath(project_directory, tmp);
+      if (retval)
+        string_cat(retval, " ");
+      string_cat(retval, tmp);
       string_free(tmp);
     }
   }
@@ -947,34 +983,38 @@ TF(LIBRARIES)
 static char *recur_directory = NULL;
 
 static void
-recursive_object_files(TDependency *_dep,
-                      char * & retval, int check_exclude)
+recursive_object_files(TDependency * _dep, char *&retval, int check_exclude)
 {
   AddToStack();
   if (_PushProject(_dep) == True)
   {
-    int i,count=0;
+    int i, count = 0;
     char *tmp;
+
     if (project->dependencies)
       count = project->dependencies->getCount();
-    for (i=0;i<count;i++)
+    for (i = 0; i < count; i++)
     {
-      TDependency *dep = (TDependency *)project->dependencies->at(i);
-      if ((check_exclude == 1) && dep->exclude_from_link) continue;
-      if ((check_exclude == 2) && !dep->exclude_from_link) continue;
+      TDependency *dep = (TDependency *) project->dependencies->at(i);
+
+      if ((check_exclude == 1) && dep->exclude_from_link)
+        continue;
+      if ((check_exclude == 2) && !dep->exclude_from_link)
+        continue;
       if (dep->source_file_type == FILE_PROJECT &&
           dep->dest_file_type != FILE_LIBRARY)
       {
         recursive_object_files(dep, retval, check_exclude);
         continue;
       }
-      if (dep->dest_file_type != FILE_OBJECT &&
-          dep->dest_file_type != FILE_UNKNOWN) // unknown files also
+      if (dep->dest_file_type != FILE_OBJECT
+          && dep->dest_file_type != FILE_UNKNOWN)
         continue;
-      FindFile(FName(dep->dest_name),tmp);
-      AbsToRelPath(recur_directory,tmp);
-      if (retval) string_cat(retval," ");
-      string_cat(retval,tmp);
+      FindFile(FName(dep->dest_name), tmp);
+      AbsToRelPath(recur_directory, tmp);
+      if (retval)
+        string_cat(retval, " ");
+      string_cat(retval, tmp);
       string_free(tmp);
     }
     _PopProject();
@@ -982,18 +1022,22 @@ recursive_object_files(TDependency *_dep,
   RemoveFromStack();
 }
 
-static
-char *_objfiles(int check_exclude, int use_all_obj)
+static char *
+_objfiles(int check_exclude, int use_all_obj)
 {
-  char *retval=NULL,*tmp;
-  int i,count=0;
+  char *retval = NULL, *tmp;
+  int i, count = 0;
+
   if (_token_dep->dependencies)
     count = _token_dep->dependencies->getCount();
-  for (i=0;i<count;i++)
+  for (i = 0; i < count; i++)
   {
-    TDependency *dep = (TDependency *)_token_dep->dependencies->at(i);
-    if ((check_exclude == 1) && dep->exclude_from_link) continue;
-    if ((check_exclude == 2) && !dep->exclude_from_link) continue;
+    TDependency *dep = (TDependency *) _token_dep->dependencies->at(i);
+
+    if ((check_exclude == 1) && dep->exclude_from_link)
+      continue;
+    if ((check_exclude == 2) && !dep->exclude_from_link)
+      continue;
     if (dep->source_file_type == FILE_PROJECT &&
         (use_all_obj || dep->dest_file_type != FILE_LIBRARY))
     {
@@ -1002,13 +1046,13 @@ char *_objfiles(int check_exclude, int use_all_obj)
       string_free(recur_directory);
       continue;
     }
-    if (dep->dest_file_type != FILE_OBJECT &&
-        dep->dest_file_type != FILE_UNKNOWN) // unknown files also
+    if (dep->dest_file_type != FILE_OBJECT && dep->dest_file_type != FILE_UNKNOWN)	// unknown files also
       continue;
-    FindFile(FName(dep->dest_name),tmp);
-    AbsToRelPath(project_directory,tmp);
-    if (retval) string_cat(retval," ");
-    string_cat(retval,tmp);
+    FindFile(FName(dep->dest_name), tmp);
+    AbsToRelPath(project_directory, tmp);
+    if (retval)
+      string_cat(retval, " ");
+    string_cat(retval, tmp);
     string_free(tmp);
   }
   if (!retval)
@@ -1029,6 +1073,7 @@ TF(ALL_OBJFILES)
 TF(LIBS)
 {
   char *retval;
+
   AddLibraries(retval);
   return retval;
 }
@@ -1037,10 +1082,11 @@ typedef struct
 {
   char *name;
   int name_len;
-  char *(*func)(char *);
-} _rhide_function;
+  char *(*func) (char *);
+}
+_rhide_function;
 
-#define FF(x) static A(1) char *rhide_function_##x(char *_arg)
+#define FF(x) static char *rhide_function_##x(char *_arg)
 FF(compilespec);
 FF(outfile);
 FF(prompt);
@@ -1048,9 +1094,7 @@ FF(objfiles);
 FF(libraries);
 FF(targets);
 
-static
-_rhide_function rhide_functions[] =
-{
+static _rhide_function rhide_functions[] = {
 #define _FF(x) {#x,sizeof(#x)-1,rhide_function_##x}
   _FF(compilespec),
   _FF(outfile),
@@ -1058,7 +1102,7 @@ _rhide_function rhide_functions[] =
   _FF(objfiles),
   _FF(libraries),
   _FF(targets),
-  {NULL,0,NULL}
+  {NULL, 0, NULL}
 };
 
 static token_func _expand_tokens;
@@ -1066,6 +1110,7 @@ static token_func _expand_tokens;
 FF(objfiles)
 {
   int check_exclusive;
+
   if (sscanf(_arg, "%d", &check_exclusive) == 1)
     return _objfiles(check_exclusive, 0);
   else
@@ -1075,6 +1120,7 @@ FF(objfiles)
 FF(libraries)
 {
   int check_exclusive;
+
   if (sscanf(_arg, "%d", &check_exclusive) == 1)
     return _libraries(check_exclusive);
   else
@@ -1085,10 +1131,12 @@ FF(targets)
 {
   int check_exclusive;
   char *retval;
+
   if (sscanf(_arg, "%d", &check_exclusive) == 1)
   {
     retval = _objfiles(check_exclusive, 0);
-    if (*retval) string_cat(retval, " ");
+    if (*retval)
+      string_cat(retval, " ");
     string_cat(retval, _libraries(check_exclusive));
   }
   else
@@ -1101,15 +1149,17 @@ FF(compilespec)
   char *arg = expand_rhide_spec(_arg);
   char *retval = NULL;
   ccIndex index;
-  if (Project.dependencies->search(arg,index) == False)
+
+  if (Project.dependencies->search(arg, index) == False)
   {
     retval = string_dup("");
   }
   else
   {
     Boolean is_user;
-    TDependency *dep = (TDependency *)Project.dependencies->at(index);
+    TDependency *dep = (TDependency *) Project.dependencies->at(index);
     char *_spec = GetCompilerSpec(dep, is_user);
+
     retval = BuildCompiler(dep, _spec);
     string_free(_spec);
   }
@@ -1122,13 +1172,14 @@ FF(outfile)
   char *arg = expand_rhide_spec(_arg);
   char *retval = NULL;
   ccIndex index;
-  if (Project.dependencies->search(arg,index) == False)
+
+  if (Project.dependencies->search(arg, index) == False)
   {
     retval = string_dup("");
   }
   else
   {
-    retval = BuildCompiler((TDependency *)Project.dependencies->at(index),
+    retval = BuildCompiler((TDependency *) Project.dependencies->at(index),
                            "$(OUTFILE)");
   }
   string_free(arg);
@@ -1139,6 +1190,7 @@ FF(prompt)
 {
   char *init_val;
   char *retval;
+
   init_val = find_next_comma(_arg);
   if (!init_val)
     retval = expand_rhide_spec(_arg);
@@ -1147,20 +1199,20 @@ FF(prompt)
     *init_val = 0;
     retval = expand_rhide_spec(_arg);
     *init_val = ',';
-    init_val = expand_rhide_spec(init_val+1);
+    init_val = expand_rhide_spec(init_val + 1);
   }
   TParamList *params = new TParamList();
+
   if (init_val)
   {
     params->FromString(init_val);
     string_free(init_val);
   }
-  if (editParamList(params,_(retval),
-      RHIDE_History_prompt) != cmOK)
+  if (editParamList(params, _(retval), RHIDE_History_prompt) != cmOK)
   {
     destroy(params);
     string_free(retval);
-    string_dup(retval,"");
+    string_dup(retval, "");
     return retval;
   }
   string_free(retval);
@@ -1171,23 +1223,26 @@ FF(prompt)
   return retval;
 }
 
-static
-char *_handle_rhide_function(char *token,
-                                    token_func expand_tokens)
+static char *
+_handle_rhide_function(char *token, token_func expand_tokens)
 {
-  int i=0;
+  int i = 0;
   char *retval = NULL;
   token_func __expand_tokens = _expand_tokens;
+
   _expand_tokens = expand_tokens;
   while (rhide_functions[i].name)
   {
     int name_len = rhide_functions[i].name_len;
-    if (strncmp(token,rhide_functions[i].name,name_len) == 0
+
+    if (strncmp(token, rhide_functions[i].name, name_len) == 0
         && token[name_len] == ' ')
     {
       char *tok;
-      tok = rhide_functions[i].func(token+name_len+1);
-      if (!tok) tok = string_dup("");
+
+      tok = rhide_functions[i].func(token + name_len + 1);
+      if (!tok)
+        tok = string_dup("");
       if (!expand_tokens)
       {
         retval = tok;
@@ -1203,26 +1258,31 @@ char *_handle_rhide_function(char *token,
   return retval;
 }
 
-static
-char *_handle_rhide_token(const char *_token,token_func expand_tokens)
+static char *
+_handle_rhide_token(const char *_token, token_func expand_tokens)
 {
-  int name_len = strlen(_token)-3;
-  char *token = (char *)alloca(name_len+1);
-  strncpy(token,_token+2,name_len);
+  int name_len = strlen(_token) - 3;
+  char *token = (char *) alloca(name_len + 1);
+
+  strncpy(token, _token + 2, name_len);
   token[name_len] = 0;
   if (rh_islower(*token))
     return _handle_rhide_function(token, expand_tokens);
-  int i=0;
+  int i = 0;
+
   while (rhide_tokens[i].name)
   {
-    if (strcmp(token,rhide_tokens[i].name) == 0)
+    if (strcmp(token, rhide_tokens[i].name) == 0)
     {
       char *tok;
+
       tok = rhide_tokens[i].func();
       if (!tok)
         return string_dup("");
-      if (!expand_tokens) return tok;
+      if (!expand_tokens)
+        return tok;
       char *retval = expand_tokens(tok);
+
       string_free(tok);
       return retval;
     }
@@ -1231,107 +1291,121 @@ char *_handle_rhide_token(const char *_token,token_func expand_tokens)
   return NULL;
 }
 
-static void WriteRule(FILE *f,char *from,char *to)
+static void
+WriteRule(FILE * f, char *from, char *to)
 {
   TDependency *dep;
+
   dep = new TDependency();
-  InitFName(dep->source_name,from);
-  InitFName(dep->dest_name,to);
+  InitFName(dep->source_name, from);
+  InitFName(dep->dest_name, to);
   dep->source_file_type = get_file_type(from);
   dep->dest_file_type = get_file_type(to);
   dep->compile_id = how_to_compile(dep->source_file_type,
                                    dep->dest_file_type);
   Boolean is_user;
-  char *spec = GetCompilerSpec(dep,is_user);
+  char *spec = GetCompilerSpec(dep, is_user);
+
   destroy(dep);
-  if (!spec) return;
-  fprintf(f,"%c%s: %c%s\n\t%s\n",'%',to,'%',from,spec);
+  if (!spec)
+    return;
+  fprintf(f, "%c%s: %c%s\n\t%s\n", '%', to, '%', from, spec);
   string_free(spec);
 }
 
-static void WriteRules(FILE *f)
+static void
+WriteRules(FILE * f)
 {
 #define WR(from,to) WriteRule(f,"."#from,"."#to)
-  WR(c,o);
-  WR(i,o);
-  WR(cc,o);
-  WR(cpp,o);
-  WR(cxx,o);
-  WR(C,o);
-  WR(ii,o);
-  WR(s,o);
-  WR(S,o);
-  WR(c,s);
-  WR(i,s);
-  WR(cc,s);
-  WR(cpp,s);
-  WR(cxx,s);
-  WR(C,s);
-  WR(pas,o);
-  WR(p,o);
-  WR(pp,o);
-  WR(pas,s);
-  WR(p,s);
-  WR(m,o);
-  WR(m,s);
-  WR(f,o);
-  WR(for,o);
-  WR(F,o);
-  WR(fpp,o);
-  WR(asm,o);
-  WR(nsm,o);
-  WR(adb,o);
-  WR(c,i);
-  WR(c,s);
-  WR(cc,ii);
-  WR(cc,s);
-  WR(cpp,ii);
-  WR(cpp,s);
-  WR(cxx,ii);
-  WR(cxx,s);
-  WR(C,ii);
-  WR(C,s);
+  WR(c, o);
+  WR(i, o);
+  WR(cc, o);
+  WR(cpp, o);
+  WR(cxx, o);
+  WR(C, o);
+  WR(ii, o);
+  WR(s, o);
+  WR(S, o);
+  WR(c, s);
+  WR(i, s);
+  WR(cc, s);
+  WR(cpp, s);
+  WR(cxx, s);
+  WR(C, s);
+  WR(pas, o);
+  WR(p, o);
+  WR(pp, o);
+  WR(pas, s);
+  WR(p, s);
+  WR(m, o);
+  WR(m, s);
+  WR(f, o);
+  WR(for, o);
+  WR(F, o);
+  WR(fpp, o);
+  WR(asm, o);
+  WR(nsm, o);
+  WR(adb, o);
+  WR(c, i);
+  WR(c, s);
+  WR(cc, ii);
+  WR(cc, s);
+  WR(cpp, ii);
+  WR(cpp, s);
+  WR(cxx, ii);
+  WR(cxx, s);
+  WR(C, ii);
+  WR(C, s);
 #undef WR
 }
 
-void WriteSpecData(FILE *f)
+void
+WriteSpecData(FILE * f)
 {
   int i;
-  i=0;
+
+  i = 0;
   _token_dep = project;
   while (rhide_tokens[i].name)
   {
     char *token;
     char *name;
-    if (rhide_tokens[i].make_func) token = rhide_tokens[i].make_func();
-    else token = rhide_tokens[i].func();
-    string_dup(name,rhide_tokens[i].name);
-    fprintf(f,"%s=",name);
-    put_breakline(f,strlen(name)+1,75,token?token:"");
+
+    if (rhide_tokens[i].make_func)
+      token = rhide_tokens[i].make_func();
+    else
+      token = rhide_tokens[i].func();
+    string_dup(name, rhide_tokens[i].name);
+    fprintf(f, "%s=", name);
+    put_breakline(f, strlen(name) + 1, 75, token ? token : "");
     string_free(token);
     string_free(name);
     i++;
   }
-  for (i=0;i<var_count;i++)
+  for (i = 0; i < var_count; i++)
   {
-    fprintf(f,"%s=",vars[i*2]);
-    put_breakline(f,strlen(vars[i*2]),75,vars[i*2+1]);
+    fprintf(f, "%s=", vars[i * 2]);
+    put_breakline(f, strlen(vars[i * 2]), 75, vars[i * 2 + 1]);
   }
   WriteRules(f);
 }
 
-char *BuildCompiler(TDependency *dep,const char *spec)
+char *
+BuildCompiler(TDependency * dep, const char *spec)
 {
   TDependency *_dep = _token_dep;
+
   _token_dep = dep;
   char *retval = ExpandSpec(spec);
+
   _token_dep = _dep;
   return retval;
 }
 
-char *expand_rhide_spec(const char *spec)
+char *
+expand_rhide_spec(const char *spec)
 {
-  return BuildCompiler(project,spec);
+  return BuildCompiler(project, spec);
 }
 
 /*
@@ -1350,28 +1424,32 @@ char *expand_rhide_spec(const char *spec)
   NULL is returned.
 */
 
-static char *GetUserCompileSpec(const char *from,const char *to)
+static char *
+GetUserCompileSpec(const char *from, const char *to)
 {
   char *var;
-  string_dup(var,"RHIDE_COMPILE");
+
+  string_dup(var, "RHIDE_COMPILE");
   if (!from)
-    string_cat(var,".");
+    string_cat(var, ".");
   else
   {
-    char *dir,*name,*ext;
-    split_fname(from,dir,name,ext);
-    string_cat(var,ext);
+    char *dir, *name, *ext;
+
+    split_fname(from, dir, name, ext);
+    string_cat(var, ext);
     string_free(dir);
     string_free(name);
     string_free(ext);
   }
   if (!to)
-    string_cat(var,".");
+    string_cat(var, ".");
   else
   {
-    char *dir,*name,*ext;
-    split_fname(to,dir,name,ext);
-    string_cat(var,ext);
+    char *dir, *name, *ext;
+
+    split_fname(to, dir, name, ext);
+    string_cat(var, ext);
     string_free(dir);
     string_free(name);
     string_free(ext);
@@ -1382,17 +1460,20 @@ static char *GetUserCompileSpec(const char *from,const char *to)
     return NULL;
   }
   char *_var;
-  string_dup(_var,"$(");
-  string_cat(_var,var);
-  string_cat(_var,")");
+
+  string_dup(_var, "$(");
+  string_cat(_var, var);
+  string_cat(_var, ")");
   string_free(var);
   return _var;
 }
 
-char *GetCompilerSpec(TDependency *dep,Boolean & is_user)
+char *
+GetCompilerSpec(TDependency * dep, Boolean & is_user)
 {
   is_user = False;
   char *user_spec = NULL;
+
   switch (dep->compiler_type)
   {
     case COMPILER_NASM:
@@ -1412,7 +1493,8 @@ char *GetCompilerSpec(TDependency *dep,Boolean & is_user)
     case COMPILER_NONE:
       return NULL;
     case COMPILER_AUTO:
-      user_spec = GetUserCompileSpec(FName(dep->source_name),FName(dep->dest_name));
+      user_spec =
+        GetUserCompileSpec(FName(dep->source_name), FName(dep->dest_name));
       if (user_spec)
       {
         if (dep->compile_id == COMPILE_UNKNOWN)
@@ -1423,30 +1505,36 @@ char *GetCompilerSpec(TDependency *dep,Boolean & is_user)
       switch (dep->compile_id)
       {
 #       define C(x) case x: return string_dup("$(RHIDE_"#x")");
-        C(COMPILE_C);
-        C(COMPILE_CC);
-        C(COMPILE_PASCAL);
-        C(COMPILE_FPC);
-        C(COMPILE_ARCHIVE);
-        C(COMPILE_ASM);
-        C(COMPILE_OBJC);
+          C(COMPILE_C);
+          C(COMPILE_CC);
+          C(COMPILE_PASCAL);
+          C(COMPILE_FPC);
+          C(COMPILE_ARCHIVE);
+          C(COMPILE_ASM);
+          C(COMPILE_OBJC);
         case COMPILE_LINK_PASCAL_AUTOMAKE:
-          if (!UseFPC) return string_dup("$(RHIDE_COMPILE_LINK_PASCAL_AUTOMAKE)");
-          else return string_dup("$(RHIDE_COMPILE_LINK_FPC_AUTOMAKE)");
-        C(COMPILE_LINK_FPC_AUTOMAKE);
-        C(COMPILE_FORTRAN);
-        C(COMPILE_NASM);
+          if (!UseFPC)
+            return string_dup("$(RHIDE_COMPILE_LINK_PASCAL_AUTOMAKE)");
+          else
+            return string_dup("$(RHIDE_COMPILE_LINK_FPC_AUTOMAKE)");
+          C(COMPILE_LINK_FPC_AUTOMAKE);
+          C(COMPILE_FORTRAN);
+          C(COMPILE_NASM);
 #       undef C
         default:
           break;
       }
       if (dep->compile_id == COMPILE_LINK)
       {
-        int i,count = 0;
-        if (dep->dependencies) count = dep->dependencies->getCount();
-        for (i=0;i<count;i++)
+        int i, count = 0;
+
+        if (dep->dependencies)
+          count = dep->dependencies->getCount();
+        for (i = 0; i < count; i++)
         {
-          FILE_TYPE sft = ((TDependency *)dep->dependencies->at(i))->source_file_type;
+          FILE_TYPE sft =
+
+            ((TDependency *) dep->dependencies->at(i))->source_file_type;
           if (sft == FILE_PASCAL_SOURCE)
           {
             if (!UseFPC)
@@ -1470,13 +1558,15 @@ char *GetCompilerSpec(TDependency *dep,Boolean & is_user)
         is_user = True;
         return string_dup(dep->compiler);
       }
-      return GetUserCompileSpec(FName(dep->source_name),FName(dep->dest_name));
+      return GetUserCompileSpec(FName(dep->source_name),
+                                FName(dep->dest_name));
       break;
   }
   return NULL;
 }
 
-void InsertEnviromentVar(char *variable,char *contents)
+void
+InsertEnviromentVar(char *variable, char *contents)
 {
   insert_variable(variable, contents);
 }
@@ -1484,19 +1574,29 @@ void InsertEnviromentVar(char *variable,char *contents)
 #ifdef TEST
 
 TProject *project;
-char *WUC() { return NULL; }
-void AddLibraries(char *&) {}
+char *
+WUC()
+{
+  return NULL;
+}
+
+void
+AddLibraries(char *&)
+{
+}
 char *project_directory = NULL;
 
-int main()
+int
+main()
 {
   int i = 0;
+
   while (default_variables[i])
   {
-    fprintf(stdout,"%s=%s\n",default_variables[i],default_variables[i+1]);
+    fprintf(stdout, "%s=%s\n", default_variables[i],
+            default_variables[i + 1]);
     i += 2;
   }
 }
 
 #endif
-

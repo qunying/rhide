@@ -5,15 +5,14 @@
 
 class TInspectList;
 
-class TInspector : public TDialog
+class TInspector:public TDialog
 {
 public:
   TInspector(const TRect & bounds, const char *Title);
   void update(const char *expr);
-  virtual void changeBounds (const TRect& bounds);
+  virtual void changeBounds(const TRect & bounds);
 protected:
-  TInspectList *list;
+    TInspectList * list;
 };
 
 #endif
-

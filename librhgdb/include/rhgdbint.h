@@ -32,7 +32,8 @@
 #endif
 
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif
 
 #define OLD_GDB
@@ -47,16 +48,16 @@ extern "C" {
 #define RH_GDB_FILE struct ui_file
 #endif
 
-void handle_gdb_command(char *);
-void reset_gdb_output();
-void reset_gdb_error();
-void init_gdb(char *);
-void done_gdb();
-void SetBreakPoints();
-void DeleteBreakPoints();
-extern void (*select_source_line)(char *fname,int line);
-void Command(char *,int call_hook);
-char *Bname(char *);
+  void handle_gdb_command(char *);
+  void reset_gdb_output();
+  void reset_gdb_error();
+  void init_gdb(char *);
+  void done_gdb();
+  void SetBreakPoints();
+  void DeleteBreakPoints();
+  extern void (*select_source_line) (char *fname, int line);
+  void Command(char *, int call_hook);
+  char *Bname(char *);
 #define COMMAND(x) Command(x,1)
 
 #ifdef __cplusplus
@@ -84,4 +85,3 @@ void reset_debugger();
 extern int call_reset;
 
 #endif
-

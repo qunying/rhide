@@ -796,7 +796,7 @@ msgid  "Do you really want to interrupt RHIDE?"
 msgstr ""
 
 msgid  ""
-"RHIDE has detected, that the environment variable %DJDIR% has not been set. "
+"RHIDE has detected, that the environment variable 'DJDIR' has not been set. "
 "This means, you haven't installed DJGPP correct. Please read the file "
 "README.1ST from the DJGPP distribution how to install DJGPP. If you continue "
 "now, you will get probably many errors."
@@ -1881,6 +1881,19 @@ msgstr ""
 msgid  "Focused register"
 msgstr ""
 
+msgid  ""
+"RHIDE has detected, that the environment variable DJDIR has not been set (or "
+"not correct). This is a fatal mistake. For information about fixing this, "
+"please read the File README.1ST from the DJGPP distribution. (about setting "
+"the DJGPP environment variable!!!) Should I continue?"
+msgstr ""
+
+msgid  ""
+"RHIDE could not access the direcory '%s', where it searches for language "
+"specifc strings. Please read the file 'RHIDE.BIN' how to install RHIDE "
+"correct. Should I continue?"
+msgstr ""
+
 msgid  "You must type a value here"
 msgstr ""
 
@@ -2215,10 +2228,10 @@ msgstr "Invers‚"
 msgid  "~Alt-X~ Exit"
 msgstr "~Alt-Q~ Quitter"
 
-msgid  "Value not in the range %uld to %uld"
+msgid  "Value not in the range %U to %U"
 msgstr ""
 
-msgid  "Value not in the range %ld to %ld"
+msgid  "Value not in the range %D to %D"
 msgstr ""
 
 msgid  "about RH~G~DB"
@@ -2406,12 +2419,6 @@ msgstr ""
 msgid  "Unhandled redo"
 msgstr ""
 
-msgid  "Read from file"
-msgstr ""
-
-msgid  "Write to file"
-msgstr ""
-
 msgid  "File %s exist. Overwrite ?"
 msgstr ""
 
@@ -2520,6 +2527,197 @@ msgstr ""
 msgid  "~M~acros"
 msgstr ""
 
+msgid  "Regular Expressions Options"
+msgstr ""
+
+msgid  "RegEx style"
+msgstr ""
+
+msgid  "~B~asic POSIX"
+msgstr ""
+
+msgid  "~E~xtended POSIX"
+msgstr ""
+
+msgid  "~P~erl Compatible"
+msgstr ""
+
+msgid  "Replace text"
+msgstr ""
+
+msgid  "~N~ormal text"
+msgstr ""
+
+msgid  "~D~olar tags"
+msgstr ""
+
+msgid  "Optimize"
+msgstr ""
+
+msgid  "~T~ry to use normal search"
+msgstr ""
+
+msgid  "E~v~er use RegEx"
+msgstr ""
+
+msgid  "Find"
+msgstr ""
+
+msgid  "~T~ext to find"
+msgstr ""
+
+msgid  "~W~hole words only"
+msgstr ""
+
+msgid  "Re~g~ular expressions"
+msgstr ""
+
+msgid  "Options"
+msgstr ""
+
+msgid  "~G~lobal"
+msgstr ""
+
+msgid  "~S~elected text"
+msgstr ""
+
+msgid  "Scope"
+msgstr ""
+
+msgid  "~F~rom cursor"
+msgstr ""
+
+msgid  "~E~ntire scope"
+msgstr ""
+
+msgid  "Origin"
+msgstr ""
+
+msgid  "RegEx Ops"
+msgstr ""
+
+msgid  "Replace"
+msgstr ""
+
+msgid  "~P~rompt on replace"
+msgstr ""
+
+msgid  "~R~eplace all"
+msgstr ""
+
+msgid  "Replace ~A~ll"
+msgstr ""
+
+msgid  "Goto Line"
+msgstr "Aller … la ligne"
+
+msgid  "Local Options"
+msgstr "Options locales"
+
+msgid  "~O~verwrite"
+msgstr ""
+
+msgid  "~A~utoindent"
+msgstr "~a~utoindentation"
+
+msgid  "~U~se tabs"
+msgstr ""
+
+msgid  "~P~ersistent blocks"
+msgstr ""
+
+msgid  "~I~ntelligent C indent"
+msgstr ""
+
+msgid  "~C~olumn cursor"
+msgstr ""
+
+msgid  "~R~ow cursor"
+msgstr ""
+
+msgid  "~M~atch pair highlight"
+msgstr ""
+
+msgid  "Tra~n~sparent Blocks"
+msgstr ""
+
+msgid  "Optimal ~F~ill"
+msgstr ""
+
+msgid  "~W~rap words"
+msgstr ""
+
+msgid  "O~f~f"
+msgstr ""
+
+msgid  "~C~++ style"
+msgstr ""
+
+msgid  "Pa~s~cal style"
+msgstr ""
+
+msgid  "C~l~ipper style"
+msgstr ""
+
+msgid  "U~s~er defined"
+msgstr ""
+
+msgid  "Syntax ~H~ighlight"
+msgstr "coloration ~s~yntaxique"
+
+msgid  "~T~ab size"
+msgstr "Taille ~T~abulation"
+
+msgid  "Wrap column"
+msgstr ""
+
+msgid  "Global Options"
+msgstr ""
+
+msgid  "~D~on't move the cursor on Paste"
+msgstr ""
+
+msgid  "~S~croll Lock centers"
+msgstr ""
+
+msgid  "T~o~ all"
+msgstr ""
+
+msgid  "Search hit"
+msgstr ""
+
+msgid  "~A~ll"
+msgstr ""
+
+msgid  "Write to file"
+msgstr ""
+
+msgid  "Read from file"
+msgstr ""
+
+msgid  " bytes selected"
+msgstr ""
+
+msgid  "This file isn't in disk!"
+msgstr ""
+
+msgid  "The file is read-only, try to revert it?"
+msgstr ""
+
+msgid  ""
+"Failed to revert the read-only status, you won't be able to overwrite this "
+"file"
+msgstr ""
+
+msgid  "This action doesn't have undo, are you sure?"
+msgstr ""
+
+msgid  "Regular expression error: %s"
+msgstr ""
+
+msgid  "PCRE Exec error"
+msgstr ""
+
 msgid  "InfView - File: %s - Node: %s"
 msgstr ""
 
@@ -2557,12 +2755,6 @@ msgid  "Hi~s~tory"
 msgstr ""
 
 msgid  "Inf Find"
-msgstr ""
-
-msgid  "~T~ext to find"
-msgstr ""
-
-msgid  "~W~hole words only"
 msgstr ""
 
 msgid  "In current ~t~opic"
@@ -2618,144 +2810,18 @@ msgstr ""
 msgid  "Attention can't open the help file '%s'."
 msgstr ""
 
+msgid  "You must install gzip to browse compressed files!"
+msgstr ""
+
 msgid  ""
 "\n"
 " Sorry I can't find this link (press ALT-F1).\n"
 msgstr ""
 
-msgid  "Find"
-msgstr ""
-
-msgid  "~R~egular expressions"
-msgstr ""
-
-msgid  "E~x~tended regex"
-msgstr ""
-
-msgid  "~G~lobal"
-msgstr ""
-
-msgid  "~S~elected text"
-msgstr ""
-
-msgid  "~F~rom cursor"
-msgstr ""
-
-msgid  "~E~ntire scope"
-msgstr ""
-
-msgid  "Scope"
-msgstr ""
-
-msgid  "Origin"
-msgstr ""
-
-msgid  "Replace"
-msgstr ""
-
-msgid  "~N~ew text"
-msgstr ""
-
-msgid  "Re~g~ular expressions"
-msgstr ""
-
-msgid  "~P~rompt on replace"
-msgstr ""
-
-msgid  "~R~eplace all"
-msgstr ""
-
-msgid  "Options"
-msgstr ""
-
-msgid  "Replace ~A~ll"
-msgstr ""
-
-msgid  "Goto Line"
-msgstr "Aller … la ligne"
-
-msgid  "Line number"
-msgstr "Ligne num‚ro"
-
-msgid  "Local Options"
-msgstr "Options locales"
-
-msgid  "~O~verwrite"
-msgstr ""
-
-msgid  "~A~utoindent"
-msgstr "~a~utoindentation"
-
-msgid  "~U~se tabs"
-msgstr ""
-
-msgid  "~P~ersistent blocks"
-msgstr ""
-
-msgid  "~I~ntelligent C indent"
-msgstr ""
-
-msgid  "~C~olumn cursor"
-msgstr ""
-
-msgid  "~R~ow cursor"
-msgstr ""
-
-msgid  "~M~atch pair highligth"
-msgstr ""
-
-msgid  "Tra~n~sparent Blocks"
-msgstr ""
-
-msgid  "Optimal ~F~ill"
-msgstr ""
-
-msgid  "~W~rap words"
-msgstr ""
-
-msgid  "O~f~f"
-msgstr ""
-
-msgid  "~C~++ style"
-msgstr ""
-
-msgid  "Pa~s~cal style"
-msgstr ""
-
-msgid  "C~l~ipper style"
-msgstr ""
-
-msgid  "U~s~er defined"
-msgstr ""
-
-msgid  "Syntax ~H~ighlight"
-msgstr "coloration ~s~yntaxique"
-
-msgid  "~T~ab size"
-msgstr "Taille ~T~abulation"
-
-msgid  "Wrap column"
-msgstr ""
-
-msgid  "Global Options"
-msgstr ""
-
-msgid  "~D~on't move the cursor on Paste"
-msgstr ""
-
-msgid  "~S~croll Lock centers"
-msgstr ""
-
-msgid  "~W~rap column"
-msgstr ""
-
-msgid  "T~o~ all"
-msgstr ""
-
 msgid  "About"
 msgstr ""
 
-msgid  "That's SET's Editor v%X.%X.%X, (c) 1996-1998"
+msgid  "That's SET's Editor v%lX.%lX.%lX, (c) 1996-1998"
 msgstr ""
 
 msgid  "by Salvador Eduardo Tropea"
@@ -2765,5 +2831,107 @@ msgid  "A text editor specially designed for programmers."
 msgstr ""
 
 msgid  "Don't show it next time"
+msgstr ""
+
+msgid  "SET's Editor v%lX.%lX.%lX, (c) 1996-1998"
+msgstr ""
+
+msgid  "Made in Argentina"
+msgstr ""
+
+msgid  "Thanks to:"
+msgstr ""
+
+msgid  "The FSF and GNU people for such a good tools"
+msgstr ""
+
+msgid  "DJ Delorie and colaborators for porting it to DOS"
+msgstr ""
+
+msgid  "Robert H”hne for porting TVision and making RHIDE"
+msgstr ""
+
+msgid  "The University of California, Berkeley and its contributors"
+msgstr ""
+
+msgid  "The University of Cambridge for the PCRE package"
+msgstr ""
+
+msgid  "Shawn Hargreaves for Allegro, used as sound engine"
+msgstr ""
+
+msgid  "Tomislav Uzelac for AMP, the MP3 engine"
+msgstr ""
+
+msgid  "Ove Kaaven for LibAmp, the Allegro adaptation of AMP"
+msgstr ""
+
+msgid  "All my friends that support my project (Laszlo, Marek, etc)"
+msgstr ""
+
+msgid  "Ho~m~e"
+msgstr ""
+
+msgid  "E~x~tended regex"
+msgstr ""
+
+msgid  "You are expanding a MP3 file, do you really want to quit?"
+msgstr ""
+
+msgid  "Player status"
+msgstr ""
+
+msgid  "MP3 Player"
+msgstr ""
+
+msgid  "MP3 support not linked"
+msgstr ""
+
+msgid  "MP3 Open"
+msgstr ""
+
+msgid  "Output WAV file"
+msgstr ""
+
+msgid  "First select a file"
+msgstr ""
+
+msgid  "The MP3 routined aren't linked in the editor"
+msgstr ""
+
+msgid  "Select a file"
+msgstr ""
+
+msgid  "Save files list"
+msgstr ""
+
+msgid  "Load list of files"
+msgstr ""
+
+msgid  "Could not create the list file."
+msgstr ""
+
+msgid  "Could not open the list file"
+msgstr ""
+
+msgid  "Wrong file type."
+msgstr ""
+
+msgid  "Error reading the file list"
+msgstr ""
+
+msgid  "Play List"
+msgstr ""
+
+msgid  "List of files"
+msgstr ""
+
+msgid  "~I~nsert"
+msgstr ""
+
+msgid  "~L~oad"
+msgstr ""
+
+msgid  "~O~k"
 msgstr ""
 

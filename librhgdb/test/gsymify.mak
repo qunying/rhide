@@ -264,12 +264,12 @@ C_P_LANG_FLAGS=
 C_FPC_LANG_FLAGS=
 C_F_LANG_FLAGS=
 C_ADA_LANG_FLAGS=
-LIBS=gdb rhgdb
+LIBS=gdb
 LD_EXTRA_FLAGS=
 C_EXTRA_FLAGS=
 LOCAL_OPT=$(subst ___~~~___, ,$(subst $(notdir $<)___,,$(filter $(notdir\
 	$<)___%,$(LOCAL_OPTIONS))))
-OBJFILES=gdbdummy.o symify.o
+OBJFILES=frame.o gdbdummy.o symify.o
 LIBRARIES=../librhgdb.a
 SOURCE_NAME=$<
 OUTFILE=$@
@@ -289,8 +289,8 @@ endif
 endif
 
 MAIN_TARGET=gsymify.exe
-PROJECT_ITEMS=../librhgdb.gpr gdbdummy.c symify.c
-DEFAULT_MASK=*.gpr
+PROJECT_ITEMS=../librhgdb.gpr frame.c gdbdummy.c symify.c
+DEFAULT_MASK=*
 RHIDE_BIN_DIR=c:/obj/rhide
 PASCAL_TYPE=GPC
 %.o: %.c
@@ -368,7 +368,7 @@ PASCAL_TYPE=GPC
 %.s: %.C
 	$(RHIDE_COMPILE.C.s)
 all::
-DEPS_0= gdbdummy.o symify.o ../librhgdb.a
+DEPS_0= frame.o gdbdummy.o symify.o ../librhgdb.a
 NO_LINK=
 LINK_FILES=$(filter-out $(NO_LINK),$(DEPS_0))
 gsymify.exe:: $(DEPS_0)
@@ -378,18 +378,23 @@ DEPS_1=
 all:: ../librhgdb.gpr.force
 ../librhgdb.gpr.force:
 	$(MAKE) -C ../ -f librhgdb.mak
-DEPS_2=gdbdummy.c
-gdbdummy.o:: $(DEPS_2)
+DEPS_2=frame.c ../../libgdb/libgdb.h\
+	$(RHIDESRC)/librhgdb/include/librhgdb.h\
+	$(RHIDESRC)/librhgdb/include/rhgdbint.h
+frame.o:: $(DEPS_2)
 	$(RHIDE_COMPILE.c.o)
-DEPS_3=symify.c ../../libgdb/libgdb.h\
+DEPS_3=gdbdummy.c
+gdbdummy.o:: $(DEPS_3)
+	$(RHIDE_COMPILE.c.o)
+DEPS_4=symify.c ../../libgdb/libgdb.h\
 	$(RHIDESRC)/librhgdb/include/librhgdb.h
-symify.o:: $(DEPS_3)
+symify.o:: $(DEPS_4)
 	$(RHIDE_COMPILE.c.o)
-LOCAL_3=\
+LOCAL_4=\
 	symify.c___-DTEST\
 	symify.c___-U__GNUC_MINOR__\
 	symify.c___-UDJGPP_MINOR\
 	symify.c___-U__DJGPP_MINOR\
 	symify.c___-U__DJGPP_MINOR__
-LOCAL_OPTIONS += $(LOCAL_3)
+LOCAL_OPTIONS += $(LOCAL_4)
 all:: gsymify.exe

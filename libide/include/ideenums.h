@@ -32,7 +32,8 @@ typedef enum {
   COMPILE_ADA,
   COMPILE_LINK_ADA,
   COMPILE_FPC,
-  COMPILE_LINK_FPC_AUTOMAKE
+  COMPILE_LINK_FPC_AUTOMAKE,
+  COMPILE_TEX
 } COMPILE_ID;
 
 typedef enum {
@@ -59,6 +60,8 @@ typedef enum {
   FILE_ADA_SOURCE,
   FILE_ADA_SPEC,
   FILE_FPC_SOURCE, // *.pp *.pas *.pas depends on use_fpc flag
+  FILE_TEX_SOURCE,
+  FILE_DVI
 } FILE_TYPE;
 
 typedef enum {

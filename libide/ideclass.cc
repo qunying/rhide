@@ -1,8 +1,5 @@
 /* Copyright (C) 1996-1998 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
-/*
- $Id$
-*/
 #include <libtvuti.h>
 
 #define Uses_ideFunctions
@@ -66,6 +63,8 @@ FILE_TYPE get_file_type(const char * _ext)
   if (!strcmp(ext,".")) return FILE_COFF;
   if (!strcmp(ext,".adb")) return FILE_ADA_SOURCE;
   if (!strcmp(ext,".ads")) return FILE_ADA_SPEC;
+  if (!strcmp(ext,".tex")) return FILE_TEX_SOURCE;
+  if (!strcmp(ext,".dvi")) return FILE_DVI;
   return FILE_UNKNOWN;
 }
 
@@ -74,6 +73,14 @@ COMPILE_ID how_to_compile(FILE_TYPE from,FILE_TYPE to)
   if (from == to && from != FILE_UNKNOWN) return COMPILE_NONE;
   switch (from)
   {
+    case FILE_TEX_SOURCE:
+      switch (to)
+      {
+        case FILE_DVI:
+          return COMPILE_TEX;
+        default:
+          break;
+      }
     case FILE_ADA_SOURCE:
       switch (to)
       {

@@ -2,6 +2,5 @@
 # This file is part of RHIDE. 
 #
 
-include $(RHIDESRC)/common.var
 include $(RHIDESRC)/rhide.env
 

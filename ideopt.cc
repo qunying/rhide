@@ -26,7 +26,6 @@
 #define Uses_TStringCollection
 #define Uses_TScreen
 #define Uses_TKeys
-#define Uses_LangTexte
 #define Uses_IDEConst
 #define Uses_TProjectWindow
 #define Uses_TProjectListBox

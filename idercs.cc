@@ -12,9 +12,6 @@
 
 #include <rhutils.h>
 
-#define Uses_TCEditWindow
-#include <ceditor.h>
-
 /*
   This functions tries to find the RCS filename for 'name'.
   In 'fname' it stores a newly allocated string with the

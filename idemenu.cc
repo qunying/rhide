@@ -23,7 +23,7 @@
 #define Uses_TCEditor_External
 #include <ceditor.h>
 
-// This is ony a little trick to reduce the size
+// This is a little trick to reduce the size
 
 class _TMenuItem : public TMenuItem
 {

@@ -28,7 +28,6 @@
 #include <rhide.h>
 
 #define Uses_TStringCollection
-// #define Uses_TSortedListBox
 #include <inf.h>
 #include <ctype.h>
 
@@ -38,7 +37,6 @@
 
 __link( RNoCaseStringCollection )
 
-class TCEditWindow;
 extern TCEditWindow *clipWindow;
 static char *last_title = NULL;
 
@@ -109,10 +107,10 @@ TStreamable *TIDEInfWindow::build()
 __link( RInfViewer )
 __link( RFrame )
 
-TStreamableClass RWindow( TIDEInfWindow::name,
-                          TIDEInfWindow::build,
-                          __DELTA(TIDEInfWindow)
-                        );
+TStreamableClass RIDEInfWindow( TIDEInfWindow::name,
+                                TIDEInfWindow::build,
+                                __DELTA(TIDEInfWindow)
+                              );
 
 void TIDEInfWindow::write(opstream &os)
 {
@@ -200,8 +198,6 @@ TPalette & TIDEInfWindow::getPalette() const
 }
 
 static TWindow *InfWindow = NULL;
-
-void Help(ushort);
 
 void Help()
 {

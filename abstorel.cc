@@ -1,6 +1,5 @@
 /* Copyright (C) 1996-1998 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
-#include <rhide.h>
 #include <rhutils.h>
 #include <string.h>
 
@@ -18,11 +17,6 @@ int AbsToRelPath(char *ref_path,char *& ret_path, const char *subst)
   // Just in case, that ret_pat is not absolute, make it now absolute
   // relative to the current directory
   if (!ref_path || !*ref_path) return 0;
-#if 0
-/* I hope, I can assume that this is called only with an absolute
-   name ret_path */
-  FExpand(ret_path);
-#endif
   ret = ret_path;
   while (*ret && *ret == *ref)
   {
@@ -122,6 +116,8 @@ int AbsToRelPath(char *ref_path,char *& ret_path, const char *subst)
 
 #ifdef TEST
 
+#include <stdio.h>
+
 int main(int argc,char *argv[])
 {
   char *ref;
@@ -130,7 +126,7 @@ int main(int argc,char *argv[])
   string_dup(ref,argv[1]);
   string_dup(ret,argv[2]);
   fprintf(stderr, "%s relative to %s is ",ret,ref);
-  AbsToRelPath(ref,ret);
+  AbsToRelPath(ref,ret,ret);
   fprintf(stderr, "%s\n",ret);
   return 0;
 }

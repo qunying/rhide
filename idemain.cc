@@ -92,6 +92,13 @@
 #include <inf.h>
 #include <time.h>
 #include <glob.h>
+#ifndef __DJGPP__
+//FIXME: on my Linux the symbol ERR is already defined
+// in sys/ucontext.h, but since curses.h is needed only
+// for timeout(), I think I can live with it.
+#undef ERR
+#include <curses.h>
+#endif
 
 #include <slpinter.h>
 #include <loadkbin.h>

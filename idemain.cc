@@ -1,8 +1,5 @@
 /* Copyright (C) 1996-1998 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
-/*
- $Id$
-*/
 #define Uses_TApplication
 #define Uses_TMenuBar
 #define Uses_TStaticText
@@ -1498,11 +1495,13 @@ void IDE::handleEvent(TEvent & event)
          {
            if ((strlen(buffer) > 0) &&
                (get_file_type(buffer) != FILE_PASCAL_SOURCE) &&
-               (get_file_type(buffer) != FILE_FPC_SOURCE))
+               (get_file_type(buffer) != FILE_FPC_SOURCE) &&
+               (get_file_type(buffer) != FILE_TEX_SOURCE))
            {
-             messageBox(_("You can give here only a valid "
+             messageBox(mfError|mfOKButton, "%s %s",
+                          _("You can give here only a valid "
                           "filename for a Pascal source file"),
-                        mfError|mfOKButton);
+                          _("or a TeX source file"));
            }
            else
            {

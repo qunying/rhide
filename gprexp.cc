@@ -274,7 +274,6 @@ WriteGPR(char *outname)
   {
     string_dup(name, outname);
   }
-  ofpstream *file;
 
   check_vars(vars, Options.SrcDirs);
   check_vars(vars, Options.ObjDirs);
@@ -283,13 +282,9 @@ WriteGPR(char *outname)
   TProject *tmp = ConvertProject(project, vars);
 
   if (strcmp(name, "-") == 0)
-    file = new ofpstream("");
+    SaveProject(tmp, "");
   else
-    file = new ofpstream(name);
-  file->writeString(PROJECT_IDENT);
-  *file << ProjectVersion;
-  *file << tmp;
-  delete(file);
+    SaveProject(tmp, name);
   delete tmp;
 
   string_free(name);
@@ -308,3 +303,4 @@ RunProgram(const char *, bool, bool, bool)
 {
   return -1;
 }
+

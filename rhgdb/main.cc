@@ -42,7 +42,7 @@
 
 #include <librhgdb.h>
 #include <stdio.h>
-#include "rhgdb.h"
+#include <rhgdb.h>
 #include <string.h>
 #include <stdlib.h>
 #include <locale.h>
@@ -87,7 +87,7 @@ public:
 RHGDBApp *app;
 
 
-#include "../pal.c"
+#include <pal.h>
 #define cpRHGDBColor cpIDEColor
 #define cpRHGDBBlackWhite cpIDEBlackWhite
 #define cpRHGDBMono cpIDEMono

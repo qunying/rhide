@@ -269,7 +269,7 @@ static char *default_variables[] = {
  "$(RHIDE_FPC_LINK_FLAGS_$(RHIDE_OS))",
 
  "RHIDE_COMPILE_LINK_FPC",
- "echo 'separate linking for FPK is not supported.Please define"
+ "echo 'separate linking for FPK is not supported. Please define"
  " a main source file in Project/Primary file.' 1>&2",
 
  "RHIDE_COMPILE_LINK_FPC_AUTOMAKE",
@@ -413,14 +413,19 @@ static char *default_variables[] = {
  "$(RHIDE_STANDARD_INCLUDES_$(RHIDE_OS))",
 
  "RHIDE_CONFIG_DIRS_DJGPP",
- ". $(RHIDE_SHARE) $(GET_HOME) $(DJDIR)/share/rhide",
+ "$(DJDIR)/share/rhide",
 
  "RHIDE_CONFIG_DIRS_Linux",
- ". $(RHIDE_SHARE) $(GET_HOME) /usr/local/share/rhide /usr/share/rhide\
+ "/usr/local/share/rhide /usr/share/rhide\
   /local/share/rhide /share/rhide",
 
+ "RHIDE_CONFIG_DIRS_COMMON",
+ "$(RHIDE_CONFIG_DIRS_$(RHIDE_OS)) $(RHIDE_BIN_DIR)/../share/rhide",
+
  "RHIDE_CONFIG_DIRS",
- "$(RHIDE_CONFIG_DIRS_$(RHIDE_OS)) $(RHIDE_BIN_DIR)/../share/rhide\
+ ". $(RHIDE_SHARE) $(GET_HOME) \
+  $(RHIDE_CONFIG_DIRS_COMMON)\
+  $(addsuffix /SET,$(RHIDE_CONFIG_DIRS_COMMON))\
   $(SET_FILES)",
 
  "RHIDE_PATH_SEPARATOR_DJGPP",
@@ -431,6 +436,12 @@ static char *default_variables[] = {
 
  "RHIDE_PATH_SEPARATOR",
  "$(RHIDE_PATH_SEPARATOR_$(RHIDE_OS))",
+
+ "RHIDE_EMPTY",
+ "",
+
+ "RHIDE_SPACE",
+ "$(RHIDE_EMPTY) $(RHIDE_EMPTY)",
 
  0,
  0

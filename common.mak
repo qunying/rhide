@@ -66,14 +66,16 @@ endif
 EXEC_MODE=-m $(SETMODE)755
 DATA_MODE=-m 0644
 
-
 ifneq ($(strip $(DJDIR)),)
 export rhide_OS:=DJGPP
 INSTALL_DIR=ginstall -d -m 0755
 INSTALL_DATA=ginstall $(DATA_MODE)
 INSTALL_PROGRAM=ginstall -s $(EXEC_MODE) $(SETUID) $(SETGID)
-DJP=djp
+DJP=upx
 use_djp=yes
+LN_SF=cp -fp
+else
+LN_SF=ln -sf
 endif
 
 ifeq ($(strip $(rhide_OS)),)
@@ -264,27 +266,28 @@ endif
 ifneq ($(strip $(gpr2mak)),)
 %.mak: %.gpr $(copyrite.exe)
 	@$(update_gpr_file) $(notdir $<) > /dev/null
-ifeq ($(rhide_OS),DJGPP)
-	@$(gpr2mak) -d -r- -o - $(notdir $<) \
-	  | sed -e 's,	$(DJDIR),	$$(DJDIR),g' \
-	        -e '/^		$$(DJDIR).*\\$$/d' \
-	        -e 's,^		$$(DJDIR)[^\\]*$$,,' \
-	        -e 's,	$(RHIDESRC),	$$(RHIDESRC),g' \
-		-e 's,^		$(obj_dir)/,		,' \
-		-e 's,	$(top_obj_dir),	$$(top_obj_dir),g' \
-	  $(USER_GPR2MAK_SEDS) > __tmp__.mak
-else
-	@$(gpr2mak) -d -r- -o - $(notdir $<) \
-	  | sed -e 's,	$(RHIDESRC),	$$(RHIDESRC),g' \
-	        -e 's,\([ 	]\)$(_top_dir)../../src/rhide,\1$$(RHIDESRC),g' \
-	        -e 's,\([ 	]\)*[\./]*[^ ]*i486-pc-linux-[^ \\]*,\1$$(USRINC),g' \
-	        -e 's,	/usr/lib/gcc-lib,	$$(USRINC),g' \
-	        -e '/^[ 	]*$$(USRINC).*\\$$/d' \
-	        -e 's,\([ 	]*\)$$(USRINC),\1,g' \
-		-e 's,^		$(obj_dir)/,		,' \
-		-e 's,	$(top_obj_dir),	$$(top_obj_dir),g' \
-	  $(USER_GPR2MAK_SEDS) > __tmp__.mak
-endif
+#ifeq ($(rhide_OS),DJGPP)
+#	@$(gpr2mak) -d -r- -o - $(notdir $<) \
+#	  | sed -e 's,	$(DJDIR),	$$(DJDIR),g' \
+#	        -e '/^		$$(DJDIR).*\\$$/d' \
+#	        -e 's,^		$$(DJDIR)[^\\]*$$,,' \
+#	        -e 's,	$(RHIDESRC),	$$(RHIDESRC),g' \
+#		-e 's,^		$(obj_dir)/,		,' \
+#		-e 's,	$(top_obj_dir),	$$(top_obj_dir),g' \
+#	  $(USER_GPR2MAK_SEDS) > __tmp__.mak
+#else
+#	@$(gpr2mak) -d -r- -o - $(notdir $<) \
+#	  | sed -e 's,	$(RHIDESRC),	$$(RHIDESRC),g' \
+#	        -e 's,\([ 	]\)$(_top_dir)../../src/rhide,\1$$(RHIDESRC),g' \
+#	        -e 's,\([ 	]\)*[\./]*[^ ]*i486-pc-linux-[^ \\]*,\1$$(USRINC),g' \
+#	        -e 's,	/usr/lib/gcc-lib,	$$(USRINC),g' \
+#	        -e '/^[ 	]*$$(USRINC).*\\$$/d' \
+#	        -e 's,\([ 	]*\)$$(USRINC),\1,g' \
+#		-e 's,^		$(obj_dir)/,		,' \
+#		-e 's,	$(top_obj_dir),	$$(top_obj_dir),g' \
+#	  $(USER_GPR2MAK_SEDS) > __tmp__.mak
+#endif
+	@$(gpr2mak) -d -r- -o __tmp__.mak $(notdir $<) > /dev/null
 	@$(copyrite.exe) __tmp__.mak > /dev/null
 	@$(move-if-change) __tmp__.mak $@ > /dev/null
 	@touch -r $@ $(notdir $<)
@@ -348,14 +351,13 @@ install.doc:: $(install_doc_files)
 endif
 
 ifneq ($(strip $(install_bin_files)),)
-INSTALL_BIN_FILES=$(addsuffix $(exe),$(install_bin_files))
-install.bin:: $(INSTALL_BIN_FILES)
+install.bin:: $(install_bin_files)
 	$(INSTALL_DIR) $(prefix)/$(install_bindir)
 	$(INSTALL_PROGRAM) $^ $(prefix)/$(install_bindir)
 ifeq ($(use_djp),yes)
-	$(DJP) $(addprefix $(prefix)/$(install_bindir)/,$(INSTALL_BIN_FILES))
+	$(DJP) $(addprefix $(prefix)/$(install_bindir)/,$(install_bin_files))
 endif
-	@echo $(addprefix $(install_bindir)/,$(INSTALL_BIN_FILES)) >> $(logfile)
+	@echo $(addprefix $(install_bindir)/,$(install_bin_files)) >> $(logfile)
 endif
 
 ifneq ($(SUBDIR_TARGET),)
@@ -366,3 +368,4 @@ install:: install.data install.info install.doc install.bin
 
 $(copyrite.exe): $(RHIDESRC)/copyrite.c
 	gcc -o $@ -s -O $<
+

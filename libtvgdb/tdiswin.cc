@@ -313,16 +313,7 @@ void Register::Format(char *ret, int max_len)
     int reg_name_len = strlen(name);
     value_width = 16;
     space_width = max_len-reg_name_len-value_width;
-#if 1
     sprintf(buf, "%s%*c%*.9LG", name, space_width, ' ', value_width, dvalue);
-#else
-    int i;
-    for (i=0;i<10;i++)
-    {
-      sprintf(buf+i*2, "%02x", ((unsigned char *)&dvalue)[i]);
-    }
-    buf[20] = 0;
-#endif
   }
   strncpy(ret, buf, max_len);
 }

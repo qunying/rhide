@@ -11,7 +11,7 @@ int register_count()
 
 int is_float_reg(int num)
 {
-  return REGISTER_VIRTUAL_TYPE(num) != builtin_type_int;
+  return IS_FP_REGNUM(num);
 }
 
 static char *register_names[] = REGISTER_NAMES;
@@ -23,23 +23,34 @@ const char *register_name(int num)
 
 unsigned long get_register_value(int num)
 {
+  char d[sizeof(unsigned long)];
+  char buf[MAX_REGISTER_RAW_SIZE];
   if (!debugger_started)
     return 0;
-  return read_register(num);
+  read_register_gen(num, buf);
+  memset(d, 0, sizeof(d));
+  if (REGISTER_CONVERTIBLE(num))
+  {
+    REGISTER_CONVERT_TO_VIRTUAL(num, REGISTER_VIRTUAL_TYPE(num), buf, d);
+  }
+  else
+    memcpy(d, buf, REGISTER_RAW_SIZE(num));
+  return *(unsigned long *)d;
 }
 
 long double get_float_register_value(int num)
 {
   char d[sizeof(long double)];
-  char buf[20];
+  char buf[MAX_REGISTER_RAW_SIZE];
   if (!debugger_started)
     return 0;
   read_register_gen(num, buf);
-#ifdef REGISTER_CONVERT_TO_VIRTUAL
-  REGISTER_CONVERT_TO_VIRTUAL(num, REGISTER_VIRTUAL_TYPE(num), buf, d);
-#else
-  floatformat_to_double(&floatformat_i387_ext, buf, d);
-#endif
+  if (REGISTER_CONVERTIBLE(num))
+  {
+    REGISTER_CONVERT_TO_VIRTUAL(num, REGISTER_VIRTUAL_TYPE(num), buf, d);
+  }
+  else
+    memcpy(d, buf, REGISTER_RAW_SIZE(num));
   return *((long double *)d)+0.0;
 }
 

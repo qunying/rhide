@@ -142,17 +142,20 @@ static
 int read_line(char *buf, int max_size, FILE *f)
 {
   char *p = buf;
+  max_size--;
   while (!feof(f))
   {
     *p = fgetc(f);
     if (*p == '\n')
     {
+      p++;
       *p = 0;
       return 1;
     }
     if (p-buf < max_size)
       p++;
   }
+  *p++ = '\n';
   *p = 0;
   return 0;
 }
@@ -174,7 +177,7 @@ read_source_file(char *fname)
   last_lines_count = 0;
   char *_fname = NULL;
   if (__file_exists(fname))
-    string_cat(_fname, fname, NULL);
+    string_cat(_fname, fname);
   else
     string_cat(_fname, base_dir, "/", fname, NULL);
   FILE *f = fopen(_fname, "rt");
@@ -182,7 +185,7 @@ read_source_file(char *fname)
   if (!f)
     return 0;
   char buf[80];
-  while (read_line(buf, 80, f))
+  while (read_line(buf, 79, f))
   {
     if (last_lines_count == last_lines_size)
     {

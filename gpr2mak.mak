@@ -1,6 +1,6 @@
 # Copyright (C) 1996-2000 Robert H”hne, see COPYING.RH for details 
 # This file is part of RHIDE. 
-# d:/obj/rhide/gpr2mak.exe -d -r- -o - gpr2mak.gpr
+# d:/obj/rhide/gpr2mak.exe -d -r- -o  gpr2mak.gpr
 ifeq ($(strip $(PCRE_OBJ)),)
 PCRE_OBJ=
 endif
@@ -154,9 +154,8 @@ RHIDE_FPC_LINK_FLAGS_DJGPP=-O coff-go32-exe $(RHIDE_LIBDIRS) $(addprefix\
 RHIDE_FPC_LINK_FLAGS_Linux=$(RHIDE_LIBDIRS) $(addprefix\
 	-L,$(RHIDE_FPC_LIBDIRS))
 RHIDE_FPC_LINK_FLAGS=$(RHIDE_FPC_LINK_FLAGS_$(RHIDE_OS))
-RHIDE_COMPILE_LINK_FPC=echo 'separate linking for FPK is not\
-	supported.Please define a main source file in Project/Primary\
-	file.' 1>&2
+RHIDE_COMPILE_LINK_FPC=echo 'separate linking for FPK is not supported.\
+	Please define a main source file in Project/Primary file.' 1>&2
 RHIDE_COMPILE_LINK_FPC_AUTOMAKE=$(RHIDE_FPC) -o$(OUTFILE) $(SOURCE_NAME)\
 	$(RHIDE_FPC_FLAGS) -E+
 RHIDE_COMPILE_ARCHIVE=$(RHIDE_AR) $(RHIDE_ARFLAGS) $(OUTFILE)\
@@ -226,14 +225,18 @@ RHIDE_STANDARD_INCLUDES_DJGPP=$(addprefix $(DJDIR)/,include include/sys\
 RHIDE_STANDARD_INCLUDES_Linux=$(addprefix /usr/,include include/sys\
 	include/g++ include/g++/std)
 RHIDE_STANDARD_INCLUDES=$(RHIDE_STANDARD_INCLUDES_$(RHIDE_OS))
-RHIDE_CONFIG_DIRS_DJGPP=. $(RHIDE_SHARE) $(GET_HOME) $(DJDIR)/share/rhide
-RHIDE_CONFIG_DIRS_Linux=. $(RHIDE_SHARE) $(GET_HOME) /usr/local/share/rhide\
-	/usr/share/rhide  /local/share/rhide /share/rhide
-RHIDE_CONFIG_DIRS=$(RHIDE_CONFIG_DIRS_$(RHIDE_OS))\
-	$(RHIDE_BIN_DIR)/../share/rhide  $(SET_FILES)
+RHIDE_CONFIG_DIRS_DJGPP=$(DJDIR)/share/rhide
+RHIDE_CONFIG_DIRS_Linux=/usr/local/share/rhide /usr/share/rhide \
+	/local/share/rhide /share/rhide
+RHIDE_CONFIG_DIRS_COMMON=$(RHIDE_CONFIG_DIRS_$(RHIDE_OS))\
+	$(RHIDE_BIN_DIR)/../share/rhide
+RHIDE_CONFIG_DIRS=. $(RHIDE_SHARE) $(GET_HOME)   $(RHIDE_CONFIG_DIRS_COMMON)\
+	 $(addsuffix /SET,$(RHIDE_CONFIG_DIRS_COMMON))  $(SET_FILES)
 RHIDE_PATH_SEPARATOR_DJGPP=;
 RHIDE_PATH_SEPARATOR_Linux=:
 RHIDE_PATH_SEPARATOR=$(RHIDE_PATH_SEPARATOR_$(RHIDE_OS))
+RHIDE_EMPTY=
+RHIDE_SPACE=$(RHIDE_EMPTY) $(RHIDE_EMPTY)
 RHIDE_TYPED_LIBS_DJGPP.cc=stdcxx
 RHIDE_TYPED_LIBS_DJGPP.cxx=stdcxx
 RHIDE_TYPED_LIBS_DJGPP.cpp=stdcxx
@@ -432,33 +435,33 @@ NO_LINK=libide/libide.a librhuti/librhuti.a libtvuti/libtvuti.a
 LINK_FILES=$(filter-out $(NO_LINK),$(DEPS_0))
 gpr2mak.exe:: $(DEPS_0)
 	$(RHIDE_COMPILE_LINK)
-DEPS_1=gpr2mak.cc ideenums.h libide.h rhide.h rhutils.h tdepende.h tfname.h\
-	toptions.h tproject.h
+DEPS_1=gpr2mak.cc rhide.h ideenums.h libide.h tdepende.h tfname.h\
+	toptions.h tproject.h rhutils.h
 nodebobj/gpr2mak.o:: $(DEPS_1)
 	$(RHIDE_COMPILE.cc.o)
 DEPS_2=idedefau.cc flags/ada_opt.h flags/c_opt.h flags/cxx_opt.h\
 	flags/deb_opt.h flags/f_opt.h flags/fpc_opt.h flags/fpcreser.h\
 	flags/gpcreser.h flags/opt_opt.h flags/pas_opt.h flags/reserved.h\
-	flags/warn_opt.h ideenums.h libide.h rhide.h tdepende.h tflagcol.h\
+	flags/warn_opt.h rhide.h ideenums.h libide.h tdepende.h tflagcol.h\
 	tflagent.h tfname.h toptions.h tproject.h
 nodebobj/idedefau.o:: $(DEPS_2)
 	$(RHIDE_COMPILE.cc.o)
 DEPS_3=ideenv.cc rhide.h rhutils.h
 nodebobj/ideenv.o:: $(DEPS_3)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_4=ideflags.cc ideenums.h libide.h libtvuti.h rhide.h rhutils.h\
-	tdepende.h tdirlist.h tflagcol.h tflagent.h tfname.h toptions.h\
-	tparamli.h tproject.h tscollec.h
+DEPS_4=ideflags.cc rhide.h ideenums.h libide.h tdepende.h tflagcol.h\
+	tflagent.h tfname.h toptions.h tproject.h rhutils.h libtvuti.h\
+	tdirlist.h tparamli.h tscollec.h
 nodebobj/ideflags.o:: $(DEPS_4)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_5=idemak.cc ideenums.h idefunct.h libide.h libtvuti.h rhide.h\
-	rhutils.h tdepende.h tdirlist.h tfname.h toptions.h tparamli.h\
-	tproject.h tscollec.h
+DEPS_5=idemak.cc rhide.h ideenums.h idefunct.h libide.h tdepende.h tfname.h\
+	toptions.h tproject.h rhutils.h libtvuti.h tdirlist.h tparamli.h\
+	tscollec.h
 nodebobj/idemak.o:: $(DEPS_5)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_6=idespec.cc idecomma.h ideenums.h idefunct.h libide.h libtvuti.h\
-	rhide.h rhidehis.h rhutils.h tdepende.h tdirlist.h tenterli.h\
-	tflagcol.h tfname.h toptions.h tparamli.h tproject.h tscollec.h\
+DEPS_6=idespec.cc rhide.h rhidehis.h idecomma.h ideenums.h idefunct.h\
+	libide.h tdepende.h tflagcol.h tfname.h toptions.h tproject.h\
+	rhutils.h libtvuti.h tdirlist.h tenterli.h tparamli.h tscollec.h\
 	tvutilfu.h twindowl.h
 nodebobj/idespec.o:: $(DEPS_6)
 	$(RHIDE_COMPILE.cc.o)
@@ -468,8 +471,8 @@ nodebobj/idestrm.o:: $(DEPS_7)
 DEPS_8=idesupp.cc rhide.h rhutils.h
 nodebobj/idesupp.o:: $(DEPS_8)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_9=ideutil.cc ideenums.h idefunct.h libide.h libtvuti.h rhide.h\
-	rhutils.h tdepende.h tdirlist.h tfname.h toptions.h tproject.h\
+DEPS_9=ideutil.cc rhide.h ideenums.h idefunct.h libide.h tdepende.h\
+	tfname.h toptions.h tproject.h rhutils.h libtvuti.h tdirlist.h\
 	tvutilfu.h
 nodebobj/ideutil.o:: $(DEPS_9)
 	$(RHIDE_COMPILE.cc.o)

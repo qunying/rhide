@@ -169,24 +169,25 @@ void put_breakline(FILE *f,int start_len,int max_len,const char *s)
   }
 }
 
-void _AbsToRelPath(char *&dname, TStringCollection *vars)
+void _AbsToRelPath(char *&dname, TStringCollection *vars, bool use_rel)
 {
   int i, count;
   char *dir, *_dir;
   if (!dname || !*dname) return;
-
-  FILE_TYPE t = get_file_type(dname);
-  if (t == FILE_HEADER)
+  if (use_rel)
   {
-    char *rel;
-    if (FindFile(dname, rel, Options.include_path))
+    FILE_TYPE t = get_file_type(dname);
+    if (t == FILE_HEADER)
     {
-      string_free(dname);
-      dname = rel;
-      return;
+      char *rel;
+      if (FindFile(dname, rel, Options.include_path))
+      {
+        string_free(dname);
+        dname = rel;
+        return;
+      }
     }
   }
-  
   if (AbsToRelPath(project_directory, dname, NULL))
     return;
   count = vars->getCount();

@@ -126,7 +126,8 @@
   __CM(PrintSetup,116)\
   __CM(Inspect,117)\
   __CM(AddDataWindow,118)\
-  __CM(ShowStackWindow,119)
+  __CM(ShowStackWindow,119)\
+  __CM(QUIT,120)
 
 #define __RHIDE_HELP_CODES__\
   __HC(Compile,1)\
@@ -181,7 +182,7 @@
   __HC(Undo,50)\
   __HC(Find,51)\
   __HC(DosShell,52)\
-  __HC(Quit,53)\
+  __HC(QUIT,53)\
   __HC(Cut,54)\
   __HC(Copy,55)\
   __HC(Paste,56)\

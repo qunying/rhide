@@ -1,6 +1,6 @@
 # Copyright (C) 1996-2000 Robert H”hne, see COPYING.RH for details 
 # This file is part of RHIDE. 
-# d:/obj/rhide/gpr2mak.exe -d -r- -o - rhgdb.gpr
+# d:/obj/rhide/gpr2mak.exe -d -r- -o lÖ rhgdb.gpr
 ifeq ($(strip $(PCRE_OBJ)),)
 PCRE_OBJ=
 endif
@@ -153,9 +153,8 @@ RHIDE_FPC_LINK_FLAGS_DJGPP=-O coff-go32-exe $(RHIDE_LIBDIRS) $(addprefix\
 RHIDE_FPC_LINK_FLAGS_Linux=$(RHIDE_LIBDIRS) $(addprefix\
 	-L,$(RHIDE_FPC_LIBDIRS))
 RHIDE_FPC_LINK_FLAGS=$(RHIDE_FPC_LINK_FLAGS_$(RHIDE_OS))
-RHIDE_COMPILE_LINK_FPC=echo 'separate linking for FPK is not\
-	supported.Please define a main source file in Project/Primary\
-	file.' 1>&2
+RHIDE_COMPILE_LINK_FPC=echo 'separate linking for FPK is not supported.\
+	Please define a main source file in Project/Primary file.' 1>&2
 RHIDE_COMPILE_LINK_FPC_AUTOMAKE=$(RHIDE_FPC) -o$(OUTFILE) $(SOURCE_NAME)\
 	$(RHIDE_FPC_FLAGS) -E+
 RHIDE_COMPILE_ARCHIVE=$(RHIDE_AR) $(RHIDE_ARFLAGS) $(OUTFILE)\
@@ -225,14 +224,18 @@ RHIDE_STANDARD_INCLUDES_DJGPP=$(addprefix $(DJDIR)/,include include/sys\
 RHIDE_STANDARD_INCLUDES_Linux=$(addprefix /usr/,include include/sys\
 	include/g++ include/g++/std)
 RHIDE_STANDARD_INCLUDES=$(RHIDE_STANDARD_INCLUDES_$(RHIDE_OS))
-RHIDE_CONFIG_DIRS_DJGPP=. $(RHIDE_SHARE) $(GET_HOME) $(DJDIR)/share/rhide
-RHIDE_CONFIG_DIRS_Linux=. $(RHIDE_SHARE) $(GET_HOME) /usr/local/share/rhide\
-	/usr/share/rhide  /local/share/rhide /share/rhide
-RHIDE_CONFIG_DIRS=$(RHIDE_CONFIG_DIRS_$(RHIDE_OS))\
-	$(RHIDE_BIN_DIR)/../share/rhide  $(SET_FILES)
+RHIDE_CONFIG_DIRS_DJGPP=$(DJDIR)/share/rhide
+RHIDE_CONFIG_DIRS_Linux=/usr/local/share/rhide /usr/share/rhide \
+	/local/share/rhide /share/rhide
+RHIDE_CONFIG_DIRS_COMMON=$(RHIDE_CONFIG_DIRS_$(RHIDE_OS))\
+	$(RHIDE_BIN_DIR)/../share/rhide
+RHIDE_CONFIG_DIRS=. $(RHIDE_SHARE) $(GET_HOME)   $(RHIDE_CONFIG_DIRS_COMMON)\
+	 $(addsuffix /SET,$(RHIDE_CONFIG_DIRS_COMMON))  $(SET_FILES)
 RHIDE_PATH_SEPARATOR_DJGPP=;
 RHIDE_PATH_SEPARATOR_Linux=:
 RHIDE_PATH_SEPARATOR=$(RHIDE_PATH_SEPARATOR_$(RHIDE_OS))
+RHIDE_EMPTY=
+RHIDE_SPACE=$(RHIDE_EMPTY) $(RHIDE_EMPTY)
 RHIDE_TYPED_LIBS_DJGPP.cc=stdcxx
 RHIDE_TYPED_LIBS_DJGPP.cxx=stdcxx
 RHIDE_TYPED_LIBS_DJGPP.cpp=stdcxx
@@ -484,21 +487,21 @@ DEPS_4=
 all:: ../libtvuti/libtvuti.gpr.force
 ../libtvuti/libtvuti.gpr.force:
 	$(MAKE) -C ../libtvuti/ -f libtvuti.mak
-DEPS_5=gdbedit.cc librhgdb.h libtvuti.h rhgdb.h rhutils.h tdirlist.h\
-	tenterli.h tscollec.h tvutilfu.h twindowl.h
+DEPS_5=gdbedit.cc librhgdb.h rhutils.h libtvuti.h tdirlist.h tenterli.h\
+	tscollec.h tvutilfu.h twindowl.h rhgdb.h
 gdbedit.o:: $(DEPS_5)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_6=gdbsynt.cc flags/gpcreser.h flags/reserved.h libtvuti.h rhgdb.h\
-	rhutils.h tdirlist.h
+DEPS_6=gdbsynt.cc flags/gpcreser.h flags/reserved.h rhutils.h libtvuti.h\
+	tdirlist.h rhgdb.h
 gdbsynt.o:: $(DEPS_6)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_7=main.cc librhgdb.h libtvgdb.h libtvuti.h pal.h rhgdb.h rhutils.h\
-	tdirlist.h tdiswin.h tenterli.h tparamli.h tscollec.h tvgdbcom.h\
-	tvgdbfun.h tvutilco.h tvutilfu.h twatchli.h twindowl.h
+DEPS_7=main.cc pal.h librhgdb.h rhutils.h libtvgdb.h tdiswin.h tvgdbcom.h\
+	tvgdbfun.h twatchli.h libtvuti.h tdirlist.h tenterli.h tparamli.h\
+	tscollec.h tvutilco.h tvutilfu.h twindowl.h rhgdb.h
 main.o:: $(DEPS_7)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_8=options.cc librhgdb.h libtvuti.h rhgdb.h tenterch.h tenterin.h\
-	tenterra.h tlbutton.h tvutilco.h
+DEPS_8=options.cc librhgdb.h libtvuti.h tenterch.h tenterin.h tenterra.h\
+	tlbutton.h tvutilco.h rhgdb.h
 options.o:: $(DEPS_8)
 	$(RHIDE_COMPILE.cc.o)
 DEPS_9=version.cc

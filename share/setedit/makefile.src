@@ -11,10 +11,27 @@ src_files=Makefile makefile.src \
 po_files=
 cfg_files=
 update_files=
-install_data_files=clippmac.pmc cpmacros.pmc htmlmac.pmc perlmac.pmc \
+_install_data_files=clippmac.pmc cpmacros.pmc htmlmac.pmc perlmac.pmc \
 	           pmacros.pmc syntaxhl.shl macros.slp
-install_info_files=infview.inf setedit.inf
+_install_info_files=infview.inf setedit.inf
 subdirs=
 po_subdirs=
 
 include $(RHIDESRC)/common.mak
+
+ifneq ($(_install_data_files),)
+install.data::
+	$(MAKE) $(FLAGS_TO_PASS) \
+	  install_datadir=$(install_datadir)/SET \
+	  install_data_files="$(_install_data_files)" \
+	  install.data _install_data_files=
+endif
+
+ifneq ($(_install_info_files),)
+install.info::
+	$(MAKE) $(FLAGS_TO_PASS) \
+	  install_info=$(install_datadir)/SET \
+	  install_info_files="$(_install_info_files)" \
+	  install.info _install_info_files=
+endif
+

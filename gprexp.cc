@@ -25,8 +25,6 @@
 
 void AddToStack() {}
 void RemoveFromStack() {}
-void check_vars(TStringCollection *vars,TDirList *dirs);
-void _AbsToRelPath(char *&dname, TStringCollection *vars);
 
 static
 void WriteGPR(char *outname);
@@ -53,7 +51,7 @@ void ConvertName(TFileName *&_name, TStringCollection *vars)
                (rh_isalpha(*Name) && (Name[1] == ':'))))
   {
     name = string_dup(Name);
-    _AbsToRelPath(name, vars);
+    _AbsToRelPath(name, vars, false);
     InitFName(_name, name);
   }
   string_free(name);

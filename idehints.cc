@@ -74,7 +74,7 @@ h(DosShell,
 _("switch to a shell (call of $SHELL or /bin/sh, return with exit)")
 )
 #endif
-h(Quit,
+h(QUIT,
 _("quits the IDE")
 )
 // Edit

@@ -138,7 +138,7 @@ class TProjectWindow;
 class TListBox;
 Boolean OpenProject(const char *);
 void SaveProject();
-void CloseProject();
+bool CloseProject();
 void SaveOptions();
 void LoadOptions();
 void ShowProject(void);
@@ -286,7 +286,10 @@ Boolean _PushProject(const char *directory,const char *prjname);
 class TDependency;
 Boolean _PushProject(TDependency *dep);
 void _PopProject();
-
+class TStringCollection;
+void _AbsToRelPath(char *&dname, TStringCollection *vars,
+                   bool use_rel = true);
+void check_vars(TStringCollection *vars,TDirList *dirs);
 
 /* module idespec.cc */
 class TDependency;

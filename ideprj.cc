@@ -734,7 +734,7 @@ void LoadOptions()
   SetGlobalOptions();
 }
 
-static void ClearDeskTop(Boolean remove_msg = True)
+static bool ClearDeskTop(Boolean remove_msg = True)
 {
   if (windows)
   {
@@ -750,7 +750,7 @@ static void ClearDeskTop(Boolean remove_msg = True)
           window->close();
         }
         else
-          delta++;
+          return false;
       }
       else
       {
@@ -760,6 +760,7 @@ static void ClearDeskTop(Boolean remove_msg = True)
   }
   ClearHelpDesktop();
   ClearWindowList();
+  return true;
 }
 
 void SetGlobalEditorOptions(TCEditWindow *ew)
@@ -988,7 +989,11 @@ Boolean OpenProject(const char * prjname)
   if (DEBUGGER_STARTED()) RESET();
   ClearSymbols();
 #endif
-  if (project != NULL) CloseProject();
+  if (project != NULL)
+  {
+    if (!CloseProject())
+      return false;
+  }
   project = NULL;
   project_name = NULL;
   already_maked = 0;
@@ -1226,11 +1231,15 @@ void SaveProject()
   }
 }
 
-void CloseProject()
+bool CloseProject()
 {
   if (DEBUGGER_STARTED()) RESET();
   SaveProject();
-  if (project_name) ClearDeskTop(); // must be done before delete project
+  if (dskname)
+  {
+    if (!ClearDeskTop()) // must be done before delete project
+      return false;
+  }
   destroy(project);
   project = NULL;
   if (project_name)
@@ -1239,6 +1248,7 @@ void CloseProject()
     string_free(dskname);
   }
   pop_environment();
+  return true;
 }
 
 class TIDEProjectWindow : public TProjectWindow

@@ -241,7 +241,7 @@ static CtxInfoRec known_contexts[] = {
   HH(SaveAs,"Save as"),
   HH(SaveAll,"Save all"),
   HH(DosShell,"DOS Shell"),
-  HH(Quit,"Exit"),
+  HH(QUIT,"Exit"),
   H(Edit),
   H(Undo),
   H(Redo),

@@ -15,9 +15,9 @@ cfg_files=
 subdirs=include
 po_subdirs=
 
-install_bin_files=rhgdb
+install_bin_files=rhgdb$(exe)
 
 include $(RHIDESRC)/common.mak
 
 rhgdb:: rhgdb.exe
-	ln -sf $< $@
+	$(LN_SF) $< $@

@@ -11,6 +11,19 @@
 #include <crt0.h>
 #include <conio.h>
 #endif
+#include <dirent.h>
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <signal.h>
+#include <setjmp.h>
+#include <sys/stat.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <locale.h>
+#include <inf.h>
+#include <time.h>
+#include <glob.h>
 
 #define Uses_TApplication
 #define Uses_TMenuBar
@@ -80,18 +93,6 @@
 #include <libtvdem.h>
 
 #include <ideapp.h>
-#include <string.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <signal.h>
-#include <setjmp.h>
-#include <sys/stat.h>
-#include <unistd.h>
-#include <fcntl.h>
-#include <locale.h>
-#include <inf.h>
-#include <time.h>
-#include <glob.h>
 #ifndef __DJGPP__
 //FIXME: on my Linux the symbol ERR is already defined
 // in sys/ucontext.h, but since curses.h is needed only
@@ -108,6 +109,7 @@
 
 void SaveScreen();
 void RestoreScreen();
+static int keep_temp_dir = 0;
 
 #define DELTA(x) (*((long *)(x)))
 
@@ -1205,6 +1207,12 @@ void IDE::handleEvent(TEvent & event)
     case evCommand:
       switch (event.message.command)
       {
+        case cmQUIT:
+          if (DEBUGGER_STARTED()) RESET();
+          if (CloseProject())
+            endModal(cmQuit);
+          clearEvent(event);
+          break;
         case cmPrintSetup:
           PrintSetup();
           clearEvent(event);
@@ -1431,8 +1439,10 @@ void IDE::handleEvent(TEvent & event)
           TDependency *dep = (TDependency *)event.message.infoPtr;
           char *pname = string_dup(FName(dep->source_name));
           AddToStack();
-          CloseProject();
-          OpenProject(pname);
+          if (!CloseProject())
+            RemoveFromStack();
+          else
+            OpenProject(pname);
           string_free(pname);
           clearEvent(event);
           break;
@@ -1504,169 +1514,171 @@ void IDE::handleEvent(TEvent & event)
           break;
         }
         case cmCompile:
-         if (DEBUGGER_STARTED()) RESET();
-         ShowMessages(NULL,True);
-         Compile();
-         clearEvent(event);
-         break;
-       case cmLink:
-         if (DEBUGGER_STARTED()) RESET();
-         ShowMessages(NULL,True);
-         Compile(project);
-         clearEvent(event);
-         break;
-       case cmStandardIncludeDir:
-         EditDirList(Options.StdInc,_("Standard Include Directories"),
-                          RHIDE_History_standard_include_directories);
-         clearEvent(event);
-         break;
-       case cmIncludeDir:
-         EditDirList(Options.include_path,_("Include Directories"),
-                          RHIDE_History_include_directories);
-         clearEvent(event);
-         break;
-       case cmLibDir:
-         EditDirList(Options.library_path,_("Library Directories"),
-                          RHIDE_History_library_directories);
-         clearEvent(event);
-         break;
-       case cmObjDir:
-         EditDirList(Options.ObjDirs,_("Object Directories"),
-                          RHIDE_History_object_directories);
-         clearEvent(event);
-         break;
-       case cmSrcDir:
-         EditDirList(Options.SrcDirs,_("Source Directories"),
-                          RHIDE_History_source_directories);
-         clearEvent(event);
-         break;
-            case cmSyntaxFiles:
-         EditParamList(Project.info_files,_("INFO files for syntaxhelp"),
-                            RHIDE_History_info_files);
-         clearEvent(event);
-         break;
-       case cmProgArgs:
-         EditParamList(Options.ProgArgs,_("Program arguments"),
-                            RHIDE_History_arguments);
-         clearEvent(event);
-         break;
-       case cmOpenProject:
-       {
-         char *fileName = select_project(_("Select a project"));
-         if (fileName)
-         {
-           CloseProject();
-           OpenProject(fileName);
-           string_free(fileName);
-         }
-         clearEvent(event);
-         break;
-       }
-       case cmCloseProject:
-         CloseProject();
-         if (!OpenFromStack()) OpenProject(NULL);
-         clearEvent(event);
-         break;
-       case cmUserScreen:
-       {
-         int old_flag = update_flag;
-         TMouse::suspend();
-         update_flag = 0;
+          if (DEBUGGER_STARTED()) RESET();
+          ShowMessages(NULL,True);
+          Compile();
+          clearEvent(event);
+          break;
+        case cmLink:
+          if (DEBUGGER_STARTED()) RESET();
+          ShowMessages(NULL,True);
+          Compile(project);
+          clearEvent(event);
+          break;
+        case cmStandardIncludeDir:
+          EditDirList(Options.StdInc,_("Standard Include Directories"),
+                           RHIDE_History_standard_include_directories);
+          clearEvent(event);
+          break;
+        case cmIncludeDir:
+          EditDirList(Options.include_path,_("Include Directories"),
+                           RHIDE_History_include_directories);
+          clearEvent(event);
+          break;
+        case cmLibDir:
+          EditDirList(Options.library_path,_("Library Directories"),
+                           RHIDE_History_library_directories);
+          clearEvent(event);
+          break;
+        case cmObjDir:
+          EditDirList(Options.ObjDirs,_("Object Directories"),
+                           RHIDE_History_object_directories);
+          clearEvent(event);
+          break;
+        case cmSrcDir:
+          EditDirList(Options.SrcDirs,_("Source Directories"),
+                           RHIDE_History_source_directories);
+          clearEvent(event);
+          break;
+             case cmSyntaxFiles:
+          EditParamList(Project.info_files,_("INFO files for syntaxhelp"),
+                             RHIDE_History_info_files);
+          clearEvent(event);
+          break;
+        case cmProgArgs:
+          EditParamList(Options.ProgArgs,_("Program arguments"),
+                             RHIDE_History_arguments);
+          clearEvent(event);
+          break;
+        case cmOpenProject:
+        {
+          char *fileName = select_project(_("Select a project"));
+          if (fileName)
+          {
+            if (CloseProject())
+              OpenProject(fileName);
+            string_free(fileName);
+          }
+          clearEvent(event);
+          break;
+        }
+        case cmCloseProject:
+          if (CloseProject())
+          {
+            if (!OpenFromStack()) OpenProject(NULL);
+          }
+          clearEvent(event);
+          break;
+        case cmUserScreen:
+        {
+          int old_flag = update_flag;
+          TMouse::suspend();
+          update_flag = 0;
 #ifdef __DJGPP__
-         TScreen::suspend();
+          TScreen::suspend();
 #else
-         RestoreScreen();
+          RestoreScreen();
 #endif
-         do
-         {
-           idle();
+          do
+          {
+            idle();
 #ifndef __DJGPP__
-           timeout (1);
+            timeout (1);
 #endif
-           clearEvent(event);
-           event.getKeyEvent();
+            clearEvent(event);
+            event.getKeyEvent();
 #ifdef __DJGPP__
-           __dpmi_yield();
+            __dpmi_yield();
 #else
-           timeout (0);
+            timeout (0);
 #endif
-         } while (event.what == evNothing);
-         clearEvent(event);
+          } while (event.what == evNothing);
+          clearEvent(event);
 #ifdef __DJGPP__
-         TScreen::resume();
+          TScreen::resume();
 #endif
-         update_flag = old_flag;
-         TMouse::resume();
-         Repaint();
-         break;
-       }
-       case cmLibcHelp:
-         SyntaxHelp("Top","libc");
-         clearEvent(event);
-         break;
-       case cmHelpHelp:
-         SyntaxHelp("Top","infview");
-         clearEvent(event);
-         break;
-       case cmPrimaryFile:
-       {
-         char buffer[256];
-         if (Project.source_name) strcpy(buffer,FName(Project.source_name));
-         else buffer[0] = 0;
-         if (inputBox(_("Name of the main target"),_("~N~ame"),
-             buffer,255) == cmOK)
-         {
-           if ((strlen(buffer) > 0) &&
-               (get_file_type(buffer) != FILE_PASCAL_SOURCE) &&
-               (get_file_type(buffer) != FILE_FPC_SOURCE) &&
-               (get_file_type(buffer) != FILE_TEX_SOURCE))
-           {
-             messageBox(mfError|mfOKButton, "%s %s",
-                          _("You can give here only a valid "
-                          "filename for a Pascal source file"),
-                          _("or a TeX source file"));
-           }
-           else
-           {
-             if (!Project.source_name && strlen(buffer) > 0 ||
-                 Project.source_name && strcmp(FName(Project.source_name),buffer))
-               already_maked = 0;
-             if (Project.source_name)
-             {
-               delete Project.source_name;
-               Project.source_name = NULL;
-             }
-             if (strlen(buffer) > 0)
-             {
-               BackslashToSlash(buffer);
-               InitFName(Project.source_name,buffer);
-             }
-             SetMainTargetName(FName(Project.dest_name));
-           }
-         }
-         clearEvent(event);
-         break;
-       case cmEditKeyBind:
-         if (KeyBindEdit())
-           SaveKeyBind(ExpandFileNameToThePointWhereTheProgramWasLoaded(KeyBindFName));
-         clearEvent(event);
-         break;
-       case cmSetUpAltKeys:
-         if (AltKeysSetUp())
-           SaveKeyBind(ExpandFileNameToThePointWhereTheProgramWasLoaded(KeyBindFName));
-         clearEvent(event);
-         break;
-       case cmKbBackDefault:
-         if (KeyBackToDefault())
-           SaveKeyBind(ExpandFileNameToThePointWhereTheProgramWasLoaded(KeyBindFName));
-         clearEvent(event);
-         break;
-
-       }
-       default:
-         break;
-     }
-     break;
+          update_flag = old_flag;
+          TMouse::resume();
+          Repaint();
+          break;
+        }
+        case cmLibcHelp:
+          SyntaxHelp("Top","libc");
+          clearEvent(event);
+          break;
+        case cmHelpHelp:
+          SyntaxHelp("Top","infview");
+          clearEvent(event);
+          break;
+        case cmPrimaryFile:
+        {
+          char buffer[256];
+          if (Project.source_name) strcpy(buffer,FName(Project.source_name));
+          else buffer[0] = 0;
+          if (inputBox(_("Name of the main target"),_("~N~ame"),
+              buffer,255) == cmOK)
+          {
+            if ((strlen(buffer) > 0) &&
+                (get_file_type(buffer) != FILE_PASCAL_SOURCE) &&
+                (get_file_type(buffer) != FILE_FPC_SOURCE) &&
+                (get_file_type(buffer) != FILE_TEX_SOURCE))
+            {
+              messageBox(mfError|mfOKButton, "%s %s",
+                           _("You can give here only a valid "
+                           "filename for a Pascal source file"),
+                           _("or a TeX source file"));
+            }
+            else
+            {
+              if (!Project.source_name && strlen(buffer) > 0 ||
+                  Project.source_name && strcmp(FName(Project.source_name),buffer))
+                already_maked = 0;
+              if (Project.source_name)
+              {
+                delete Project.source_name;
+                Project.source_name = NULL;
+              }
+              if (strlen(buffer) > 0)
+              {
+                BackslashToSlash(buffer);
+                InitFName(Project.source_name,buffer);
+              }
+              SetMainTargetName(FName(Project.dest_name));
+            }
+          }
+          clearEvent(event);
+          break;
+        case cmEditKeyBind:
+          if (KeyBindEdit())
+            SaveKeyBind(ExpandFileNameToThePointWhereTheProgramWasLoaded(KeyBindFName));
+          clearEvent(event);
+          break;
+        case cmSetUpAltKeys:
+          if (AltKeysSetUp())
+            SaveKeyBind(ExpandFileNameToThePointWhereTheProgramWasLoaded(KeyBindFName));
+          clearEvent(event);
+          break;
+        case cmKbBackDefault:
+          if (KeyBackToDefault())
+            SaveKeyBind(ExpandFileNameToThePointWhereTheProgramWasLoaded(KeyBindFName));
+          clearEvent(event);
+          break;
+ 
+        }
+        default:
+          break;
+      }
+      break;
   }
 }
 
@@ -1705,6 +1717,7 @@ static void usage()
 #ifdef __DJGPP__
   fprintf(stderr,_("            -T : Disable the DOS-box title feature\n"));
 #endif
+  fprintf(stderr,_("            -P : don`t remove temp files when exiting\n"));
   fflush(stderr);
   exit(-1);
 }
@@ -1774,6 +1787,9 @@ static void parse_commandline(int argc,char *argv[])
     {
       switch (arg[1])
       {
+        case 'P':
+          keep_temp_dir = 1;
+          break;
         case 'T':
 #ifdef __DJGPP__
           no_title = 1;
@@ -2029,9 +2045,8 @@ void set_tmpdir()
 static
 void remove_tmpdir()
 {
-  if (!debug_tempfiles && tmpdir)
+  if (!debug_tempfiles && tmpdir && !keep_temp_dir)
   {
-#if 0
     /* Removing temporary directory with force. Perhaps it's better  */
     /* not to do that as use program may leave temporary files there */
     /* and user may want to inspect them later  */
@@ -2052,7 +2067,6 @@ void remove_tmpdir()
       }
       closedir(dir);
     }
-#endif
     rmdir(tmpdir);
   }
 }
@@ -2138,6 +2152,13 @@ void init_rhide(int _argc, char **_argv)
   global_argv = __crt0_argv;
   global_argc = __crt0_argc;
   setup_argv0();
+
+  char *spec = string_dup(
+"INFOPATH=$(subst $(RHIDE_SPACE),$(RHIDE_PATH_SEPARATOR),\
+$(strip $(RHIDE_CONFIG_DIRS) $(INFOPATH)))");
+  char *tmp = expand_rhide_spec(spec);
+  string_free(spec);
+  putenv(tmp);
 
   push_environment();
   set_tmpdir();
@@ -2293,7 +2314,6 @@ static void rhide_sig(int signo)
       Repaint();
       break;
     case SIGSEGV:
-      remove_tmpdir();
       signal(SIGSEGV,SIG_DFL);
       /* Try to save all opened editors */
       SaveAll();
@@ -2302,6 +2322,7 @@ static void rhide_sig(int signo)
       // Try the best to restore all to default (keyboard, screen, mouse )
       destroy(App);
       chdir(startup_directory);
+      remove_tmpdir();
       raise(signo);
       break;
     case SIGTSTP:
@@ -2506,7 +2527,6 @@ int main(int argc, char **argv)
       should_update = 1;
       App->update();
       App->run();
-      CloseProject();
     }
 #ifndef __DJGPP__
     signal(SIGSTOP,SIG_DFL);

@@ -30,8 +30,8 @@ project=msgcat
 po_files=
 src_files=$(po_files) msgcat.cc msgcat.gpr msgcat.mak Makefile \
 	$(addsuffix .po,$(LANGUAGES)) \
-	readme.lan makefile.src rhide.env rhide.var
-#	$(addsuffix .cat,$(LANGUAGES))
+	readme.lan makefile.src rhide.env rhide.var \
+	$(addsuffix .cat,$(LANGUAGES))
 
 projects=msgcat
 cfg_files=

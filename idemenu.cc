@@ -105,7 +105,7 @@ TMenuBar *IDE::initMenuBar( TRect r )
 #else
     +*new _TMenuItem( __("S~h~ell"), cmDosShell, kbNoKey, hcDosShell )
 #endif
-    +*new _TMenuItem( __("E~x~it"), cmQuit, kbAlX, hcQuit, "Alt+X" )
+    +*new _TMenuItem( __("E~x~it"), cmQUIT, kbAlX, hcQUIT, "Alt+X" )
   ;
 
   TMenuItem& macro_sub = *new TSubMenu( _("~M~acro"), kbAlM, hcMacro )

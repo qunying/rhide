@@ -119,6 +119,7 @@ void SaveScreen();
 void RestoreScreen();
 static int keep_temp_dir = 0;
 int running_child = 0;	/* Set to no zero when invoking compilers, etc  */
+pid_t rhide_pid=0;
 
 #define DELTA(x) (*((long *)(x)))
 
@@ -2298,6 +2299,12 @@ set_tmpdir()
 static void
 remove_tmpdir()
 {
+  /*
+     Simply return when cleanup function is called from
+     forked process
+   */          
+  if (getpid()!=rhide_pid) return;
+
   if (!debug_tempfiles && tmpdir && !keep_temp_dir)
   {
     /*
@@ -2424,6 +2431,8 @@ init_rhide(int _argc, char **_argv)
   // variables for RHIDE
   __crt0_load_environment_file("info");	// To get the INFO-path for bug-report
 #endif
+
+  rhide_pid = getpid();
 
   global_argv = __crt0_argv;
   global_argc = __crt0_argc;

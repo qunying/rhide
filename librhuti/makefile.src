@@ -1,5 +1,4 @@
-# Copyright (C) 1996-1998 Robert H”hne, see COPYING.RH for details 
-# This file is part of RHIDE. 
+# Copyright (C) 1996-1998 Robert H”hne, see COPYING.RHU for details
 #
 
 srcdir=$(RHIDESRC)/librhuti
@@ -11,7 +10,7 @@ po_files=\
 	back2sl.cc basename.cc expvar.cc fexpand.cc specs.cc splitfn.cc\
 	stricat.cc stridown.cc stridup.cc strifree.cc fixpath.cc io.cc
 src_files=$(po_files) Makefile makefile.src librhuti.gpr librhuti.mak \
-	rhutils.h rhide.env rhide.var
+	rhutils.h rhide.env rhide.var COPYING.RHU
 cfg_files=
 update_files=
 

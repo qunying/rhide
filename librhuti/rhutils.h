@@ -1,5 +1,4 @@
-/* Copyright (C) 1996-1998 Robert H”hne, see COPYING.RH for details */
-/* This file is part of RHIDE. */
+/* Copyright (C) 1996-1998 Robert H”hne, see COPYING.RHU for details */
 #ifndef __rhutils_h
 #define __rhutils_h
 

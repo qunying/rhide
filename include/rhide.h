@@ -308,6 +308,7 @@ extern char *create_bug_report(int);
 /* openedit.cc */
 void OpenFileFromEditor(char *name);
 TCEditWindow *OpenEditor(const char *name,Boolean search);
+void OpenEditor(const char *name, Boolean search, TCEditWindow *&ew);
 
 /* idesynta.cc */
 void SyntaxOptions();

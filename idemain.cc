@@ -1,4 +1,4 @@
-/* Copyright (C) 1996-2000 Robert Höhne, see COPYING.RH for details */
+/* Copyright (C) 1996-2000 Robert H÷hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
 #ifdef __DJGPP__
 #include <go32.h>
@@ -890,7 +890,7 @@ About()
 #ifdef __linux__
           _("for developing Linux apps"),
 #endif
-          _("Copyright (C) by Robert Höhne, 1996-2000"),
+          _("Copyright (C) by Robert H÷hne, 1996-2000"),
           _("Language: "), _("English"),
           _("Translated by: "), _("Nobody"),
           _("last updated: "), _("1998-11-29")
@@ -2367,7 +2367,8 @@ init_rhide(int _argc, char **_argv)
 
   char *spec =
     string_dup("INFOPATH=$(subst $(RHIDE_SPACE),$(RHIDE_PATH_SEPARATOR),\
-$(strip $(RHIDE_CONFIG_DIRS) $(INFOPATH)))");
+$(strip $(RHIDE_CONFIG_DIRS) $(INFOPATH) /usr/share/info /usr/info \
+/usr/local/share/info /usr/local/info))");
   char *tmp = expand_rhide_spec(spec);
 
   string_free(spec);
@@ -2415,7 +2416,7 @@ $(strip $(RHIDE_CONFIG_DIRS) $(INFOPATH)))");
 #endif
   parse_commandline(__crt0_argc, __crt0_argv);
   TScreen::suspend();
-  fprintf(stderr, _("This is %s. Copyright (c) 1996-2000 by Robert Höhne\n"),
+  fprintf(stderr, _("This is %s. Copyright (c) 1996-2001 by Robert Höhne\n"),
           IDEVersion);
   fprintf(stderr, "             (%s %s)\n", build_date, build_time);
   TScreen::resume();

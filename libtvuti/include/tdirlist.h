@@ -1,8 +1,5 @@
 /* Copyright (C) 1996-1998 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
-/*
- $Id$
-*/
 #if defined( Uses_TDirList ) && !defined( __TDirList__ )
 #define __TDirList__
 

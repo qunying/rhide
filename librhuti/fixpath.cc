@@ -1,8 +1,5 @@
 /* Copyright (C) 1996 DJ Delorie, see COPYING.DJ for details */
 /* Copyright (C) 1995 DJ Delorie, see COPYING.DJ for details */
-/*
- $Id$
-*/
 #ifndef __DJGPP__
 
 #include <unistd.h>

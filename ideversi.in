@@ -1,12 +1,6 @@
 /* Copyright (C) 1996-1998 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
 /* WARN */
-/*
- $Id$
-*/
-
-static __attribute__((unused)) const char * Id =
-  "$Id$";
 
 char IDEVersion[] = "RHIDE Version @version@";
 char build_date[] = __DATE__;

@@ -1,8 +1,5 @@
 /* Copyright (C) 1996-1998 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
-/*
- $Id$
-*/
 /* This is a very simple program to show how to use the
    librhgdb.a library.
    It can be used as a debugger, which debugs the program argv[1]

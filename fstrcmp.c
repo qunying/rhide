@@ -1,8 +1,5 @@
 /* Copyright (C) 1996-1998 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
-/*
- $Id$
-*/
 
 /* Functions to make fuzzy comparisons between strings
    Copyright (C) 1988, 1989, 1992, 1993, 1995 Free Software Foundation, Inc.

@@ -1,8 +1,5 @@
 /* Copyright (C) 1994 DJ Delorie, see COPYING.DJ for details */
 /* Modified by RH, to call abort() instead of raise(SIGABRT) */
-/*
- $Id$
-*/
 #include <assert.h>
 #include <stdio.h>
 #include <signal.h>

@@ -2,9 +2,6 @@
 /* This file is part of RHIDE. */
 /* Copyright (C) 1997 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
-/*
- $Id$
-*/
 #define Uses_tvutilFunctions
 #include <libtvuti.h>
 

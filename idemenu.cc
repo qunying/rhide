@@ -128,7 +128,7 @@ TMenuBar *IDE::initMenuBar( TRect r )
     +     newLine()
 #ifdef __DJGPP__
     +*new _TMenuItem( __("Cop~y~ to Windows Clipboard"), cmcCopyClipWin, kbNoKey, hcCopyClipWin)
-    +*new _TMenuItem( __("Pas~t~e from Windows Clipboard"), cmcPasteClipWin, kbNoKey, hcPasteClipWin)
+    +*new _TMenuItem( __("Paste from ~W~indows Clipboard"), cmcPasteClipWin, kbNoKey, hcPasteClipWin)
     +     newLine()
 #endif
     +*new _TMenuItem( __("E~x~pand all tabs"), cmcExpandAllTabs, kbNoKey, hcExpandAllTabs )

@@ -292,6 +292,7 @@ endif
 	@touch -r $@ $(notdir $<)
 	@rm -f __tmp__.mak
 	@$(update_src_file) $@ $(srcdir)/$(notdir $@) > /dev/null
+	@$(update_src_file) $< $(srcdir)/$(notdir $<) > /dev/null
 endif
 
 ifneq ($(strip $(project)),)

@@ -34,11 +34,11 @@ ADD_SUBDIRS=
 endif
 
 subdirs=libide librhgdb libtvgdb libtvuti include doc libgdb \
-	rhgdb debobj nodebobj po tvdemo libset librhuti \
+	rhgdb debobj nodebobj po tvdemo librhuti \
 	$(ADD_SUBDIRS)
 my_subdirs=libide librhgdb libtvgdb include doc libgdb rhgdb po libtvuti \
 	   debobj nodebobj librhuti
-po_subdirs=libide librhgdb libtvgdb libtvuti rhgdb tvdemo libset
+po_subdirs=libide librhgdb libtvgdb libtvuti rhgdb tvdemo
 
 install_bin_files=gpr2mak rhide
 install_doc_files=readme.key COPYING COPYING.RH README.IDE RHIDE.BIN\
@@ -229,15 +229,11 @@ endif
 	echo $(install_bindir)/$(INSTALLED_RHIDE) \
 	  $(install_bindir)/$(INSTALLED_GPR2MAK) >> $(logfile)
 
-install.keyboard:
-	$(MAKE) -C libset/keydefs logfile=../../editor.log \
-	  install.cfg_files prefix=$(prefix)
-
 install.start:
 	rm -f $(logfile)
 
 
-_install: install.start install.programs install.languages install.doc install.keyboard
+_install: install.start install.programs install.languages install.doc
 	cat languages.log doc.log rhgdb.log editor.log >> $(logfile)
 	rm -f languages.log doc.log rhgdb.log editor.log
 

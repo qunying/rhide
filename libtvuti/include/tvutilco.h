@@ -9,7 +9,7 @@
 #define __TVUTIL_COMMAND_CODES__\
   __CM(SelectWindow,1)\
   __CM(DeleteWindow,2)\
-  __CM(ListItemFocused,3)\
+  __CM(WindowOpened,3)\
   __CM(RadioItemSelected,4)\
   __CM(CheckBoxItemSelected,5)\
   __CM(FocusWindow,6)\
@@ -20,8 +20,7 @@
   __CM(NextMsg,11)\
   __CM(PrevMsg,12)\
   __CM(SelectClosedWindow,13)\
-  __CM(DeleteClosedWindow,14)\
-  __CM(WindowOpened,15)
+  __CM(DeleteClosedWindow,14)
 
 #define __TVUTIL_HELP_CODES__\
   __HC(WindowList,1)\

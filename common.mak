@@ -343,10 +343,15 @@ ifneq ($(txt_conv),)
 endif
 endif
 
-ifneq ($(strip $(install_bin_files)),)
-install.bin:: $(install_bin_files)
+$(prefix)/$(install_bindir)/%.install: %
 	$(INSTALL_DIR) $(prefix)/$(install_bindir)
-	$(INSTALL_PROGRAM) $^ $(prefix)/$(install_bindir)
+	-$(INSTALL_PROGRAM) $(subst .install,,$^) $(prefix)/$(install_bindir)
+	chmod 755 $(prefix)/$(install_bindir)/$(subst .install,,$^)
+
+ifneq ($(strip $(install_bin_files)),)
+install.bin:: $(addsuffix .install,$(addprefix $(prefix)/$(install_bindir)/,$(install_bin_files)))
+#	$(INSTALL_DIR) $(prefix)/$(install_bindir)
+#	$(INSTALL_PROGRAM) $^ $(prefix)/$(install_bindir)
 ifeq ($(use_upx),yes)
 	-$(UPX) $(addprefix $(prefix)/$(install_bindir)/,$(install_bin_files))
 endif

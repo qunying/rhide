@@ -118,7 +118,10 @@
   __CM(Finish,108)\
   __CM(ShowMessages,109)\
   __CM(ClearMessages,110)\
-  __CM(ClearMessage,111)
+  __CM(ClearMessage,111)\
+  __CM(EditKeyBind,112)\
+  __CM(SetUpAltKeys,113)\
+  __CM(KbBackDefault,114)
 
 #define __RHIDE_HELP_CODES__\
   __HC(Compile,1)\
@@ -292,7 +295,11 @@
   __HC(ShowWatchWindow,261)\
   __HC(Finish,262)\
   __HC(PreferenceCheckbox1,263)\
-  __HC(ShowMessages,263+32)
+  __HC(ShowMessages,263+32)\
+  __HC(EditKeyBind,296)\
+  __HC(SetUpAltKeys,297)\
+  __HC(KbBackDefault,298)\
+  __HC(Editor,299)
 
 __RHIDE_COMMAND_CODES__
 __RHIDE_HELP_CODES__

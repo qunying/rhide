@@ -28,8 +28,13 @@ fi
 $1="$rh_cv_path_$1"
 AC_MSG_RESULT([$]$1)
 if test "[$]$1" = no; then
-  AC_MSG_ERROR([Could not find $4.
-  Please give me a hint by setting the variable $1])
+  if test "x$5" = x; then
+    AC_MSG_ERROR([Could not find $4.
+    Please give me a hint by setting the variable $1])
+  else
+    AC_MSG_WARN([Could not find $4.
+    $5])
+  fi
 fi
 AC_SUBST($1)dnl
 ])

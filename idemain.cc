@@ -21,6 +21,7 @@
 #define Uses_TSortedListBox
 #define Uses_TStringCollection
 #define Uses_TGKey
+#define Uses_TFileCollection
 
 #define Uses_TProject
 #define Uses_TOptions
@@ -2088,6 +2089,7 @@ void init_rhide(int _argc, char **_argv)
   PrintSetDefaults();
   InitHistoryIDs = __InitHistoryIDs;
   expand_filenames = ExpandFileNames;
+  TFileCollection::sortOptions=fcolAlphabetical | fcolCaseInsensitive;
 }
 
 /*

@@ -191,6 +191,8 @@ TCEditWindow * is_on_desktop(const char *,Boolean is_full_name = False);
 void ShowMessages(TMsgCollection *msgs,Boolean remove_old,
                   Boolean select_first_err = False,
                   Boolean select_it = False);
+void ClearMessages(int what = -1);
+#define ClearMessage() ClearMessages(0)
 extern TDialog *msg_window;
 
 /* module idedefault.cc */

@@ -146,7 +146,7 @@ endif
 
 install_datadir=share/$(PACKAGE)
 install_docdir=doc/$(PACKAGE)
-install_infodir=info
+install_infodir=share/info
 install_bindir=bin
 install_localedir=share/locale
 
@@ -243,6 +243,9 @@ po_list:: $(po_sub_files)
 	@rm $(po_sub_files)
 endif
 endif
+
+%.cln: Makefile
+	@$(MAKE) -f $*.mak $(FLAGS_TO_PASS) clean
 
 %.pst: Makefile
 	@$(MAKE) -C $* $(FLAGS_TO_PASS) po_list=../$@ \
@@ -344,7 +347,7 @@ install.bin:: $(install_bin_files)
 	$(INSTALL_DIR) $(prefix)/$(install_bindir)
 	$(INSTALL_PROGRAM) $^ $(prefix)/$(install_bindir)
 ifeq ($(use_upx),yes)
-	$(UPX) $(addprefix $(prefix)/$(install_bindir)/,$(install_bin_files))
+	-$(UPX) $(addprefix $(prefix)/$(install_bindir)/,$(install_bin_files))
 endif
 	@echo $(addprefix $(install_bindir)/,$(install_bin_files)) >> $(logfile)
 endif
@@ -358,3 +361,6 @@ install:: all install.data install.info install.doc install.bin
 $(copyrite.exe):: $(RHIDESRC)/copyrite.c
 	gcc -o $@ -s -O $<
 
+ifneq ($(projects),)
+clean:: $(addsuffix .cln, $(projects))
+endif

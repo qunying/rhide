@@ -22,7 +22,7 @@ po_files=\
 src_files=$(po_files) Makefile common.mak README.IDE RHIDE.BIN RHIDE.SRC \
 	COPYING.RH COPYING wrong.c copyrite.c makefile.src \
 	gpr2mak.gpr rhide_.gpr rhide.gpr gpr2mak.mak rhide_.mak rhide.mak \
-	rhide_ch.log edit_ch.log todo pal.c zipcomm.bin zipcomm.src rhide.env \
+	rhide_ch.log todo pal.c zipcomm.bin zipcomm.src rhide.env \
 	LINUX.TXT rhide.var INSTALL.LINUX INSTALL.MAK VCSA.SH common.var \
 	ideversi.in ideversi.cc readme.key rhide_.env \
 	rhide.terminfo move-if-change
@@ -33,12 +33,12 @@ else
 ADD_SUBDIRS=
 endif
 
-subdirs=libide librhgdb libtvgdb libtvuti include doc libgdb tvision \
+subdirs=libide librhgdb libtvgdb libtvuti include doc libgdb \
 	rhgdb debobj nodebobj po tvdemo libset librhuti \
 	$(ADD_SUBDIRS)
 my_subdirs=libide librhgdb libtvgdb include doc libgdb rhgdb po libtvuti \
 	   debobj nodebobj librhuti
-po_subdirs=libide librhgdb libtvgdb libtvuti tvision rhgdb tvdemo libset
+po_subdirs=libide librhgdb libtvgdb libtvuti rhgdb tvdemo libset
 
 install_bin_files=gpr2mak rhide
 install_doc_files=readme.key COPYING COPYING.RH README.IDE RHIDE.BIN\
@@ -60,9 +60,7 @@ gpr2mak: gpr2mak.exe
 
 programs=gpr2mak.exe idegc.exe rhgdb/rhgdb.exe
 
-all:: libgdb/libgdb.h $(RHIDESRC)/tvision/include/tv.h $(programs)
-
-$(programs):: $(RHIDESRC)/tvision/include/tv.h
+all:: libgdb/libgdb.h $(programs)
 
 idegc.exe rhgdb/rhgdb.exe:: libgdb/libgdb.a
 
@@ -70,8 +68,7 @@ idegc.exe rhgdb/rhgdb.exe:: libgdb/libgdb.a
 
 .PHONY: needed touch_gprs
 
-needed: libgdb/libgdb.h libgdb/libgdb.a \
-	  $(RHIDESRC)/tvision/include/tv.h
+needed: libgdb/libgdb.h libgdb/libgdb.a 
 
 libgdb/libgdb.a libgdb/libgdb.h:
 	$(MAKE) -C libgdb $(FLAGS_TO_PASS) $(notdir $@)
@@ -327,3 +324,110 @@ update_srcdir:
 	$(MAKE) SUBDIR_TARGET=update__srcdir update__srcdir $(FLAGS_TO_PASS)
 
 
+tv_po_files=bc.cc \
+	classes/fpbase.cc \
+	classes/fpstream.cc \
+	classes/ifpstrea.cc \
+	classes/iopstrea.cc \
+	classes/ipstream.cc \
+	classes/ofpstrea.cc \
+	classes/opstream.cc \
+	classes/pstream.cc \
+	classes/tapplica.cc \
+	classes/tbackgro.cc \
+	classes/tbutton.cc \
+	classes/tchdirdi.cc \
+	classes/tcheckbo.cc \
+	classes/tclrdisp.cc \
+	classes/tcluster.cc \
+	classes/tcollect.cc \
+	classes/tcolordi.cc \
+	classes/tcolorgr.cc \
+	classes/tcolorit.cc \
+	classes/tcolorse.cc \
+	classes/tcommand.cc \
+	classes/tdesktop.cc \
+	classes/tdialog.cc \
+	classes/tdircoll.cc \
+	classes/tdirlist.cc \
+	classes/tdisplay.cc \
+	classes/tdrawbuf.cc \
+	classes/tevent.cc \
+	classes/tfilecol.cc \
+	classes/tfiledia.cc \
+	classes/tfileinf.cc \
+	classes/tfileinp.cc \
+	classes/tfilelis.cc \
+	classes/tfilterv.cc \
+	classes/tfont.cc \
+	classes/tframe.cc \
+	classes/tgroup.cc \
+	classes/thistory.cc \
+	classes/thistvie.cc \
+	classes/thistwin.cc \
+	classes/thwmouse.cc \
+	classes/tindicat.cc \
+	classes/tinputli.cc \
+	classes/tlabel.cc \
+	classes/tlistbox.cc \
+	classes/tlistvie.cc \
+	classes/tmenubar.cc \
+	classes/tmenubox.cc \
+	classes/tmenuvie.cc \
+	classes/tmonosel.cc \
+	classes/tmouse.cc \
+	classes/tnscolle.cc \
+	classes/tnssorte.cc \
+	classes/tobject.cc \
+	classes/tpalette.cc \
+	classes/tparamte.cc \
+	classes/tpoint.cc \
+	classes/tprogini.cc \
+	classes/tprogram.cc \
+	classes/tpwobj.cc \
+	classes/tpwreado.cc \
+	classes/tpwritte.cc \
+	classes/tradiobu.cc \
+	classes/trangeva.cc \
+	classes/trescoll.cc \
+	classes/tresfile.cc \
+	classes/tscreen.cc \
+	classes/tscrollb.cc \
+	classes/tscrolle.cc \
+	classes/tsortedc.cc \
+	classes/tsortedl.cc \
+	classes/tstatict.cc \
+	classes/tstatusd.cc \
+	classes/tstatusl.cc \
+	classes/tstrinde.cc \
+	classes/tstringc.cc \
+	classes/tstringl.cc \
+	classes/tstrlist.cc \
+	classes/tstrmcla.cc \
+	classes/tstrmtyp.cc \
+	classes/tsubmenu.cc \
+	classes/ttermina.cc \
+	classes/ttextdev.cc \
+	classes/tvalidat.cc \
+	classes/tview.cc \
+	classes/tvtext1.cc \
+	classes/tvtext2.cc \
+	classes/twindow.cc \
+	drivers2.cc \
+	dual.cc \
+	fileview.cc \
+	gkey.cc \
+	histlist.cc \
+	misc.cc \
+	mouse.cc \
+	msgbox.cc \
+	newstr.cc \
+	rhscreen.cc \
+	screen.cc \
+	sescreen.cc \
+	ticks.cc \
+	tweaked.c \
+	vesa.cc \
+	vga.cc
+
+additional_po_files=$(addprefix tvision/,$(tv_po_files))

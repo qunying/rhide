@@ -276,7 +276,7 @@ static char *default_variables[] = {
  "$(RHIDE_FPC) -o$(OUTFILE) $(SOURCE_NAME) $(RHIDE_FPC_FLAGS) -E+",
 
  "RHIDE_COMPILE_ARCHIVE",
- "$(RHIDE_AR) $(RHIDE_ARFLAGS) $(OUTFILE) $(OBJFILES)",
+ "$(RHIDE_AR) $(RHIDE_ARFLAGS) $(OUTFILE) $(ALL_OBJFILES)",
 
  "RHIDE_COMPILE_ADA",
  "$(RHIDE_GCC) $(RHIDE_INCLUDES) $(C_DEBUG_FLAGS) $(C_OPT_FLAGS)\
@@ -534,6 +534,7 @@ TF(LD_EXTRA_FLAGS);
 TF(C_EXTRA_FLAGS);
 TF(LOCAL_OPT);
 TF(OBJFILES);
+TF(ALL_OBJFILES);
 TF(LIBRARIES);
 TF(SOURCE_NAME);
 TF(OUTFILE);
@@ -575,6 +576,7 @@ static _rhide_tokens rhide_tokens[] =
   SF(C_EXTRA_FLAGS,NULL),
   SF(LOCAL_OPT,rhide_token_make_LOCAL_OPT),
   SF(OBJFILES,NULL),
+  SF(ALL_OBJFILES,NULL),
   SF(LIBRARIES,NULL),
   SF(SOURCE_NAME,rhide_token_make_SOURCE_NAME),
   SF(OUTFILE,rhide_token_make_OUTFILE),
@@ -937,7 +939,7 @@ recursive_object_files(TDependency *_dep,
 }
 
 static
-char *_objfiles(int check_exclude)
+char *_objfiles(int check_exclude, int use_all_obj)
 {
   char *retval=NULL,*tmp;
   int i,count=0;
@@ -949,7 +951,7 @@ char *_objfiles(int check_exclude)
     if ((check_exclude == 1) && dep->exclude_from_link) continue;
     if ((check_exclude == 2) && !dep->exclude_from_link) continue;
     if (dep->source_file_type == FILE_PROJECT &&
-        dep->dest_file_type != FILE_LIBRARY)
+        (use_all_obj || dep->dest_file_type != FILE_LIBRARY))
     {
       string_dup(recur_directory, project_directory);
       recursive_object_files(dep, retval, check_exclude);
@@ -972,7 +974,12 @@ char *_objfiles(int check_exclude)
 
 TF(OBJFILES)
 {
-  return _objfiles(1);
+  return _objfiles(1, 0);
+}
+
+TF(ALL_OBJFILES)
+{
+  return _objfiles(1, 1);
 }
 
 TF(LIBS)
@@ -1016,7 +1023,7 @@ FF(objfiles)
 {
   int check_exclusive;
   if (sscanf(_arg, "%d", &check_exclusive) == 1)
-    return _objfiles(check_exclusive);
+    return _objfiles(check_exclusive, 0);
   else
     return string_dup("");
 }
@@ -1036,7 +1043,7 @@ FF(targets)
   char *retval;
   if (sscanf(_arg, "%d", &check_exclusive) == 1)
   {
-    retval = _objfiles(check_exclusive);
+    retval = _objfiles(check_exclusive, 0);
     if (*retval) string_cat(retval, " ");
     string_cat(retval, _libraries(check_exclusive));
   }

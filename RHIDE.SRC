@@ -7,17 +7,17 @@ system see the chapter below additionally)
 Other sources are required to build RHIDE. These are the editor
 sources from Salvador Eduardo Tropea (setedit) and the Turbo Vision
 library also maintained by Salvador. And of course you need the
-gdb sources. For RHIDE 1.5 you can use ONLY GDB 4.18 and no other
-version!!!! 
+gdb sources. For RHIDE 1.5 you can use ONLY GDB 5.0. No other version
+is really tested and proved to work!
 
 For DJGPP you can use the source archives found on any simtelnet
 mirror:
 
 for the editor          v2apps/edi0439s.zip
 for the TV sources      v2tk/tv109s.zip
-for the gdb sources     v2gnu/gdb418s.zip
+for the gdb sources     v2gnu/gdb50s.zip
 
-For GNU/Linux please use for the gdb sources the official GDB 4.18
+For GNU/Linux please use for the gdb sources the official GDB 5.0
 sources and for the other sources maintained by Salvador please
 get them from SET's web-site
 
@@ -40,9 +40,7 @@ If you want to recompile RHIDE you need the following things:
 
 - many free disk space
 
-- DJGPP Version 2.02 or higher. I haven't tested any other version.
-  Currently the binaries of RHIDE are build with the latest sources
-  of DJGPP (pre 2.03) from the DJGPP cvs source tree.
+- DJGPP Version 2.03 or higher.
 
 - GNU bash
 - GNU make
@@ -89,10 +87,10 @@ $SETOBJ         this variable should point to the directory, where you have
 		DEFAULT for DJGPP:     $DJDIR/contrib/setedit/makes
 		DEFAULT for GNU/Linux: $RHIDESRC/../setedit/makes
 		
-$TVINC          this variable should point to the directory of the Turbo Vision
+$TVSRC          this variable should point to the directory of the Turbo Vision
                 include files.
-		DEFAULT for DJGPP:     $DJDIR/contrib/tvision/include
-		DEFAULT for GNU/Linux: $RHIDESRC/../tvision/include
+		DEFAULT for DJGPP:     $DJDIR/contrib/tvision
+		DEFAULT for GNU/Linux: $RHIDESRC/../tvision
 		
 $TVOBJ          this variable should point the directory where you have build
                 the librhtv library.
@@ -100,14 +98,14 @@ $TVOBJ          this variable should point the directory where you have build
 		DEFAULT for GNU/Linux: $RHIDESRC/../tvision/linux
 		
 $GDB_SRC        this variable should point to the source directory of GDB
-                DEFAULT for DJGPP:     $DJDIR/gnu/gdb-4.18
-		DEFAULT for GNU/Linux: $RHIDESRC/../gdb-4.18
+                DEFAULT for DJGPP:     $DJDIR/gnu/gdb-5.0
+		DEFAULT for GNU/Linux: $RHIDESRC/../gdb-5.0
 		
 $GDB_OBJ        this should point to the directory where you have built gdb
                 DEFAULT for DJGPP and GNU/Linux: $GDB_SRC
 		
 If you have already build libgdb.a (and with it libgdb.h) the you can set
-the tou variables
+the two variables
 $
 
 The above mentioned variables does not imply that you really need the sources
@@ -119,14 +117,14 @@ the TV port (from tv109b.zip) then you should set the TV variables to
 
 TVSRC=$DJDIR/include/tvision
 		
-		- GNU debugger 4.18. You have to install the sources for gdb 4.18.
+		- GNU debugger 5.0. You have to install the sources for gdb 5.0.
   If you do not install them in the directories like distributed
-  with DJGPP ( %DJDIR%/gnu/gdb-4.16 ), you have to add to your DJGPP.ENV
-  file the line, if I assume, that they are installed in s:/gnu/gdb-4.16:
+  with DJGPP ( %DJDIR%/gnu/gdb-5.0 ), you have to add to your DJGPP.ENV
+  file the line, if I assume, that they are installed in s:/gnu/gdb-5.0:
 
-GDB_SRC=s:/gnu/gdb-4.16
+GDB_SRC=s:/gnu/gdb-5.0
 
-  If you have setup gdb 4.16, to compile in an other directory than
+  If you have setup gdb 5.0, to compile in an other directory than
   the source directory (see in that package, how this can be done),
   you must also set in your DJGPP.ENV the variable GDB_OBJ to point
   to that directory.
@@ -143,32 +141,7 @@ GDB_SRC=s:/gnu/gdb-4.16
   you have to configure the GDB sources at first on Linux. (DJGPP
   sources come already configured!)
 
-[???]
-- The original sources for the Turbo Vision libraray version 2.0 from
-  Borland. Because of the copying conditions of Borland I cannot distribute
-  the full modified sources for that lib but only diffs against them.
-  But you can get the sources from Borland's public FTP-site
-
-  ftp://ftp.borland.com/pub/borlandcpp/devsupport/archive/turbovision/tv.zip
-[???]
 - And some time.
-
-=======================================================================
-                       WARNING (only for DJGPP)
-=======================================================================
-Because GDB was ported, before gawk and fileutils, it uses echo.exe
-from the base DJGPP distribution and awk.exe which was not available
-at this time as official port to DJGPP. If you have installed gawk.exe
-the problem with awk.exe can be solved by creating a symbolic link with
-
-ln -s gawk awk
-
-in the DJGPP bin-directory. gawk.exe is found in the archive gwk300b.zip.
-The problem with echo.exe can be solved only by overwriting the the
-echo.exe from the shell utils with the echo.exe from the base DJGPP,
-because the GNU echo.exe does not understand the switches -o, -i and -s.
-If you want to use also the GNU echo.exe, you should rename it to
-gecho.exe (and reinstall of course the echo.exe from the djdev???.zip)
 
 ========================================================================
 
@@ -181,69 +154,24 @@ if you have the sources for RHIDE installed on a readonly filesystem
 like a CD or in a network where you haven't write access to the
 RHIDE source directory.
 
-For doing this, you have to change to the root RHIDE source directory
-(normally %DJDIR%/contrib/rhide-?.?/src) and type there
+For doing this, create the directory, wher you want to compile RHIDE.
+Change to this directory and call THERE the configure script from
+the RHIDE sources:
 
-make config objdir=THE_WANTED_ROOT_DIRECTORY
+$(RHIDESRC)/configure
 
-[but be warned, this is not tested by me for a long time]
+(for DJGPP users:
 
-where THE_WANTED_ROOT_DIRECTORY is the directory, where you want to compile
-RHIDE. This can be a relative or absolute path.
+sh $(RHIDESRC)/configure
 
-When you are ready, you can change to THE_WANTED_ROOT_DIRECTORY and
-build RHIDE there without modifying anything in the RHIDE source
-directory.
+)
 
-And as the last thing, you have to set in the environment
-variable RHIDESRC, to point to the directory, where the sources for
-RHIDE are installed. For DJGPP you can do this in your autoexec.bat
-by adding a line
+Now you are ready to build RHIDE. Simply type
 
-SET RHIDESRC=c:/djgpp/contrib/rhide-1.5/src
+make
 
-(if you DJGPP base directory is different replace c:/djppp with the
-correct one) or add a line to you djgpp.env file near the top like:
-
-RHIDESRC=%DJDIR%/contrib/rhide-1.5/src
-
-For linux when using bash you can do it like
-
-export RHIDESRC=/usr/src/rhide-1.5/src
-
-BTW: If you run make only from the top RHIDE source directory,
-then you don't need to set this variable, because it is examined
-by the makefile.
-
-Now change the makefiles in the libgdb directory to assign
-to the GDB_SRC variable the correct directory of the installed
-GDB 4.16 sources and in the 'tv2' directory the variable
-TV2_SRC to the directory, where you have placed the original sources
-for the Turbo Vision library.
-
-Now you are ready to build RHIDE. At first there must be build some
-things, which can be done only with GNU make. For this change to
-the RHIDESRC directory and run
-
-make needed
-
-If this was successfull, you have now two ways to build RHIDE:
-
-1) Build it with GNU make and the makefiles. In this case go to the
-   RHIDESRC directory and run make.
-
-2) Build it with the help of RHIDE. In this case you need at least
-   a version of RHIDE, which is not lower than the version you want
-   to build. Run now RHIDE with the project RHIDE.GPR and make the
-   program (F9). The generated program will be IDEGC.EXE and not
-   RHIDE.EXE.
-
-
-For all of you, who don't want to use the integrated debugger of RHIDE
-(are there realy some??), there is a project file RHIDE_.GPR, which 
-will build the program IDE.EXE, which is RHIDE without the integrated
-debugger.
-
+and anything should build fine if you have followed the
+instructions above correct.
 Installing the new build RHIDE
 ==============================
 
@@ -251,12 +179,10 @@ If you have compiled RHIDE successfull, type
 
 make install
 
-to install RHIDE in %DJDIR%/bin together with the docs and the language
-files. If you want to install only parts of RHIDE, see at the makefile,
-how this can be done.
+If you want to install to an other directory than the default
+give the directory on the make command:
 
-On Linux DO NOT USE THE INSTALL.LINUX script!! This script should be
-used only for the binary distribution!
+make install prefix=YOUR_INSTALL_DIRECTORY
 
 
 Please do not expect too much from a look at the source files. I haven't

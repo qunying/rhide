@@ -396,7 +396,7 @@ extern char *(*_GetMainFunction)(void);
   an array of strings with 'line_count' lines.
   Set 'mark_start' to nonzero, if you want to get symbolic markers
   for the begin of a function on a single line.
-  Set 'with_source' tp nonzero (meaningless when 'mark_start' is
+  Set 'with_source' to nonzero (meaningless when 'mark_start' is
   zero) to include in the marks also the source file and line number
   if available.
   In 'next_address' the next address is returned

@@ -6,21 +6,19 @@ VPATH=$(srcdir)
 
 src_files=\
 	  infeng.txi infger.txi infspa.txi \
-	  rhidemac.txi rhidemac.htm rhidemac.txt \
-	  chapxref.sed htmlctx.sed htmlidx.sed htmlprep.sed idxref.sed \
-	  indices.sed enum.c html2ctx.c	Makefile rhide.tx tx2txi.c \
-	  htmlspl.cc checkmki.txi makeinfo.dif makefile.src rhide.env \
-	  rhide.var doc.gpr doc.mak toc.sed htmlspl.gpr htmlspl.mak \
+	  enum.c html2ctx.c Makefile rhide.tx tx2txi.c \
+	  makefile.src rhide.env \
+	  rhide.var doc.gpr doc.mak \
 	  tx2txi.gpr tx2txi.mak
 po_files=
 cfg_files=
 update_files=
-projects=doc htmlspl tx2txi
+projects=doc tx2txi
 
 subdirs=
 po_subdirs=
 install_info_files=rhide.inf
-install_doc_files=rhide.txt rhide.html
+install_doc_files=rhide.txt
 
 include $(RHIDESRC)/common.mak
 
@@ -28,9 +26,9 @@ MAKEINFO=makeinfo -I $(srcdir)
 
 all:: doc
 
-TARGETS=rhide.inf rhide.html rhide.txt
+TARGETS=rhide.inf rhide.txt
 
-ALL_TARGETS=$(TARGETS) rhide.dvi rhide.pdf rhide.ps
+ALL_TARGETS=$(TARGETS) rhide.html rhide.dvi rhide.pdf rhide.ps
 
 doc: $(TARGETS) $(INFVIEW)
 
@@ -41,7 +39,7 @@ info: rhide.inf
 tx2txi tx2txi.exe: tx2txi.c
 	gcc -o $@ -O -s $<
 
-rhide.txi: rhide.tx tx2txi rhidemac.txi rhidemac.htm rhidemac.txt
+rhide.txi: rhide.tx tx2txi
 
 %.txi: %.tx
 	./tx2txi $< $@
@@ -63,53 +61,21 @@ rhide.inf: rhide.txi
 %.inf: %.txi
 	$(MAKEINFO) --no-split --number-sections --fill-column 75 -o $@ $<
 
-html2ctx html2ctx.exe: html2ctx.c
-	gcc -Wall -O2 -s -o $@ $<
-
 %.ps: %.dvi
 	dvips -o $@ $<
 
 rhide.dvi: rhide.txi
-	bash -c "export MAKEINFO='$(MAKEINFO)'; texi2dvi $<"
+	texi2dvi $<
 
 rhide.pdf: rhide.txi
-	bash -c "export MAKEINFO='$(MAKEINFO)'; texi2dvi -p $<"
-
-htmlref.tmp: htmlctx.tmp Makefile
-	sed -e \
-	  's/^[^{]*{\([^}]*\)}{\([0-9]\)[0-9\.][0-9\.]*}/s|"#\1"|"chap\2.html#\1"|/' \
-	  $< > $@
-
-split.tmp: rhide.html htmlref.tmp
-	sed -f htmlref.tmp rhide.html > $@
-
-htmlspl htmlspl.exe: htmlspl.c
-	gcc -Wall -O2 -s -o $@ $<
-
-htmlsplit: rhide.txi
-	$(MAKEINFO) --html --number-sections --no-headers -o $@ $<
-
-rhide.ctx: rhide.num cindex.idx kindex.idx html2ctx
-	sed -f $(srcdir)/htmlprep.sed $< | \
-	  sed -n -f $(srcdir)/htmlctx.sed | \
-	 ./html2ctx > rhide.ctx
+	texi2pdf $<
 
 rhide.html: rhide.txi
-	$(MAKEINFO) --html --no-split --number-sections -o $@ $<
+	texi2html $<
 
 rhide.htm: rhide.html
 
-cindex.tmp kindex.tmp: indices.sed rhide_.inf
-	sed -n -f $^
-
-cindex.idx kindex.idx: htmlidx.sed cindex.tmp kindex.tmp
-	sed -f $< cindex.tmp > cindex.idx
-	sed -f $< kindex.tmp > kindex.idx
-
-contents.idx: rhide.dvi Makefile
-	sed -n -f $(srcdir)/toc.sed rhide.toc > $@
-
-rhide.txt: rhide.txi contents.idx
+rhide.txt: rhide.txi
 	$(MAKEINFO) --no-split --no-headers --no-validate --fill-column 78 \
 	  --number-sections -Dtext rhide.txi -o $@
 	  

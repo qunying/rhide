@@ -36,6 +36,14 @@ DIR_VERSION_Linux=-$(VERSION)
 DIR_VERSION_DJGPP=-$(RHIDE_MAJOR).$(subst .,,$(RHIDE_MINOR))
 DIR_VERSION=$(DIR_VERSION_$(rhide_OS))
 
+ifeq ($(REAL_TVSRC),)
+export REAL_TVSRC := $(TVSRC)
+endif
+
+ifeq ($REAL_SETSRC),)
+export REAL_SETSRC:=$(SETSRC)
+endif
+
 DJP=
 use_djp=no
 
@@ -216,7 +224,7 @@ ifneq ($(SRC_FILES),)
 endif
 
 po_list:: $(po_files)
-	@echo $(addprefix $(po_prefix),$(po_files) $(additional_po_files)) \
+	@echo $(addprefix $(po_prefix),$(po_files)) $(additional_po_files) \
 	 > $(po_list)
 ifneq ($(strip $(po_subdirs)),)
 # special case for po_subdirs=..

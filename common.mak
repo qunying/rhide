@@ -212,9 +212,9 @@ check_src_files:: $(SRC_FILES)
 copy_src_files:: $(SRC_FILES)
 ifneq ($(SRC_FILES),)
 	@echo Copying files from $(srcdir)
-	$(INSTALL_DIR) $(prefix)
-	cp -p $(SRC_FILES) $(prefix)
-	echo $(addprefix $(list_prefix),$(sort $(src_files))) >> $(list_file)
+	@$(INSTALL_DIR) $(prefix)
+	@cp -p $(SRC_FILES) $(prefix)
+	@echo $(addprefix $(list_prefix),$(sort $(src_files))) >> $(list_file)
 endif
 
 ifneq ($(strip $(subdirs)),)
@@ -250,13 +250,13 @@ endif
 	  po_prefix=$(po_prefix)$*/ po_list
 
 %.cpy: Makefile
-	-mkdir -p $(prefix)/$*
-	-rm -f $*/$(list_file)
-	$(MAKE) -C $* $(FLAGS_TO_PASS) prefix=$(prefix)/$* \
+	@-mkdir -p $(prefix)/$*
+	@-rm -f $*/$(list_file)
+	@$(MAKE) -C $* $(FLAGS_TO_PASS) prefix=$(prefix)/$* \
 	  list_file=$(list_file) list_prefix=$(list_prefix)$*/ copy_src_files \
-	  --print-directory
-	cat $*/$(list_file) >> $(list_file)
-	-rm -f $*/$(list_file)
+	  --no-print-directory
+	@cat $*/$(list_file) >> $(list_file)
+	@-rm -f $*/$(list_file)
 
 %.chk: Makefile
 	@echo Checking in $(obj_dir)/$*

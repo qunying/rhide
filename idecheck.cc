@@ -2,6 +2,8 @@
 /* This file is part of RHIDE. */
 #ifdef __DJGPP__
 #include <stdlib.h>
+#include <unistd.h>
+#include <crt0.h>
 #include <sys/stat.h>
 
 #define Uses_MsgBox
@@ -15,6 +17,35 @@
 
 int CheckIDE()
 {
+  char *djgpp = expand_spec("$(DJGPP)", NULL);
+  int djgpp_auto = 0;
+  if (!*djgpp || !__file_exists(djgpp))
+  {
+    char * tmp =
+    expand_spec("$(word 1,$(foreach file,$(addsuffix /../djgpp.env"
+                ",$(subst ;, ,$(PATH))),$(wildcard $(file))))", NULL);
+    if (*tmp)
+    {
+      FExpand(tmp);
+      string_free(djgpp);
+      string_cat(djgpp, "DJGPP=", tmp, NULL);
+      putenv(djgpp);
+      djgpp = NULL;
+      __crt0_load_environment_file("rhide");
+      djgpp_auto = 1;
+    }
+    string_free(tmp);
+  }
+  string_free(djgpp);
+  if (djgpp_auto)
+  {
+    BigmessageBox(mfWarning|mfOKButton,
+      _("RHIDE has detected that your DJGPP environment variable "
+        "was not set. It is set now automatically. If RHIDE did "
+        "the right choice, please modify your autoexec.bat by adding "
+        "the following line to fix this problem:"
+        "\n\nSET DJGPP=%s\n"), getenv("DJGPP"));
+  }
   char *djdir = expand_spec("$(DJDIR)", NULL);
   char *language = expand_spec("$(LANGUAGE)", NULL);
   char *localedir = expand_spec("$(LOCALEDIR)", NULL);

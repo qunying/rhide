@@ -11,7 +11,7 @@ src_files=$(po_files) Makefile libtvdem.gpr \
 	libtvdem.mak makefile.src rhide.env rhide.var
 
 cfg_files=
-update_files=libtvdem.gpr libtvdem.mak
+projects=libtvdem
 
 subdirs=include
 po_subdirs=

@@ -4,19 +4,17 @@
 srcdir=$(RHIDESRC)/doc
 VPATH=$(srcdir)
 
-# I need this for building rhide.dvi
-SHELL=bash
-
 src_files=\
 	  infeng.txi infger.txi infspa.txi \
 	  rhidemac.txi rhidemac.htm rhidemac.txt \
 	  chapxref.sed htmlctx.sed htmlidx.sed htmlprep.sed idxref.sed \
 	  indices.sed enum.c html2ctx.c	Makefile rhide.tx tx2txi.c \
 	  htmlspl.c checkmki.txi makeinfo.dif makefile.src rhide.env \
-	  rhide.var
+	  rhide.var doc.gpr doc.mak
 po_files=
 cfg_files=
 update_files=
+projects=doc
 
 subdirs=
 po_subdirs=

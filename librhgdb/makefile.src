@@ -14,7 +14,7 @@ po_files=\
 src_files=$(po_files) Makefile librhgdb.gpr librhgdb.mak makefile.src \
 	  rhide.env rhide.var
 
-update_files=librhgdb.gpr librhgdb.mak
+projects=librhgdb
 cfg_files=
 
 subdirs=include test

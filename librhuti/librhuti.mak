@@ -35,7 +35,7 @@ RHIDE_LD=gcc
 RHIDE_G77=g77
 RHIDE_NASM=nasm
 RHIDE_LD_PASCAL=gpc
-RHIDE_LD_FPC=ld
+RHIDE_LD_FPC=$(RHIDE_FPC) -E+
 RHIDE_GNATBIND=gnatbind
 RHIDE_RM=rm
 RHIDE_ARFLAGS=rcs
@@ -133,8 +133,9 @@ RHIDE_FPC_LINK_FLAGS_DJGPP=-O coff-go32-exe $(RHIDE_LIBDIRS) $(addprefix\
 RHIDE_FPC_LINK_FLAGS_Linux=$(RHIDE_LIBDIRS) $(addprefix\
 	-L,$(RHIDE_FPC_LIBDIRS))
 RHIDE_FPC_LINK_FLAGS=$(RHIDE_FPC_LINK_FLAGS_$(RHIDE_OS))
-RHIDE_COMPILE_LINK_FPC=$(RHIDE_LD_FPC) -o $(OUTFILE) $(OBJFILES)\
-	$(RHIDE_FPC_LINK_FLAGS)   $(LIBRARIES) $(RHIDE_LIBS)
+RHIDE_COMPILE_LINK_FPC=echo 'separate linking for FPK is not\
+	supported.Please define a main source file in Project/Primary\
+	file.' 1>&2
 RHIDE_COMPILE_LINK_FPC_AUTOMAKE=$(RHIDE_FPC) -o$(OUTFILE) $(SOURCE_NAME)\
 	$(RHIDE_FPC_FLAGS) -E+
 RHIDE_COMPILE_ARCHIVE=$(RHIDE_AR) $(RHIDE_ARFLAGS) $(OUTFILE)\
@@ -399,9 +400,6 @@ io.o:: $(DEPS_6)
 DEPS_7=specs.cc $(RHIDESRC)/librhuti/rhutils.h
 specs.o:: $(DEPS_7)
 	$(RHIDE_COMPILE.cc.o)
-LOCAL_7=\
-	specs.cc___-save-temps
-LOCAL_OPTIONS += $(LOCAL_7)
 DEPS_8=splitfn.cc $(RHIDESRC)/librhuti/rhutils.h
 splitfn.o:: $(DEPS_8)
 	$(RHIDE_COMPILE.cc.o)

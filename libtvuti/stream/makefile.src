@@ -12,7 +12,7 @@ po_files=
 src_files=$(po_files) makefile.src \
 	sdirlist.cc sparamli.cc Makefile stream.gpr stream.mak
 cfg_files=
-update_files=
+projects=stream
 
 subdirs=
 po_subdirs=

@@ -16,7 +16,7 @@ po_files=\
 src_files=$(po_files) Makefile libtvuti.gpr libtvuti.mak makefile.src \
 	  rhide.env rhide.var
 
-update_files=libtvuti.gpr libtvuti.mak
+projects=libtvuti
 cfg_files=
 
 subdirs=include names stream

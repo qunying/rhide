@@ -12,10 +12,8 @@ src_files=$(po_files) Makefile gsymify.gpr gsymify.mak \
 	  listfunc.gpr listfunc.mak mygdb.c mygdb.mak mygdb.gpr \
 	  makefile.src rhide.env rhide.var
 
-update_files=gsymify.gpr gsymify.mak listfunc.gpr listfunc.mak \
-	mygdb.mak mygdb.gpr
-cfg_files=gsymify.gpr gsymify.mak listfunc.gpr listfunc.mak \
-	mygdb.mak mygdb.gpr
+projects=gsymify listfunc mygdb gsymify
+cfg_files=
 
 subdirs=
 po_subdirs=

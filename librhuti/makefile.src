@@ -13,7 +13,7 @@ po_files=\
 src_files=$(po_files) Makefile makefile.src librhuti.gpr librhuti.mak \
 	rhutils.h rhide.env rhide.var COPYING.RHU
 cfg_files=
-update_files=
+projects=librhuti
 
 subdirs=
 po_subdirs=

@@ -1,0 +1,4 @@
+#!/bin/sh
+BASE_DIR_REL=`dirname $0`
+BASE_DIR=`cd $BASE_DIR_REL && pwd`
+make -f $BASE_DIR/Makefile config

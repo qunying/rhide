@@ -16,7 +16,6 @@ src_files=$(po_files) makefile.src \
 	tmsglist.h msgrec.h tmemstrm.h
 
 cfg_files=
-update_files=
 
 subdirs=
 po_subdirs=

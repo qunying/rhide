@@ -158,6 +158,12 @@ FLAGS_TO_PASS=\
 	CFLAGS="$(CFLAGS)" \
 	LDFLAGS="$(LDFLAGS)" \
 	RHIDESRC="$(RHIDESRC)" \
+	TVSRC="$(TVSRC)" \
+	TVOBJ="$(TVOBJ)" \
+	SETSRC="$(SETSRC)" \
+	SETOBJ="$(SETOBJ)" \
+	GDB_SRC="$(GDB_SRC)" \
+	GDB_OBJ="$(GDB_OBJ)" \
 	rhide_OS="$(rhide_OS)" \
 	top_obj_dir="$(top_obj_dir)" \
 	install_datadir=$(install_datadir) \
@@ -233,17 +239,6 @@ endif
 	@$(MAKE) -C $* $(FLAGS_TO_PASS) po_list=../$@ \
 	  po_prefix=$(po_prefix)$*/ po_list
 
-update__srcdir:: $(update_files)
-ifeq ($(strip $(update_files)),)
-	@echo Nothing to do for updating $(srcdir)
-else
-ifeq ($(obj_dir),$(srcdir))
-	@echo Nothing to do for updating $(srcdir)
-else
-	cp -fp $(update_files) $(srcdir)
-endif
-endif
-
 %.cpy: Makefile
 	@-mkdir -p $(prefix)/$*
 	@-rm -f $*/$(list_file)
@@ -294,53 +289,25 @@ ifneq ($(strip $(project)),)
 -include $(addsuffix .mak,$(project))
 endif
 
-ifeq ($(strip $(objdir)),)
-check.objdir:
-	@echo ERROR: You must set the variable objdir
-	@redir -e nul -o nul
-else
-# make objdir absolute
-ifeq ($(strip $(rhide_OS)),DJGPP)
-override objdir:=$(strip $(subst \,/,$(shell truename $(subst /,\,$(objdir)))))
-else
-override objdir:=`mkdir -p $(objdir); cd $(objdir); pwd`
-endif
-
-check.objdir:
-	@echo Using `$(objdir)\' as object directory
-
-#ifeq ($(word 2,$(subst :, ,$(objdir))),)
-#	@echo ERROR: You must set the variable $$(objdir) to an absolute directory
-#	@redir -e nul -o nul
-#endif
-endif
-
-create.objdir::
-	@echo Configuring $(objdir) ..
-	-mkdir $(objdir)
-
 %.cfo: Makefile
-	$(MAKE) -C $* $(FLAGS_TO_PASS) objdir=$(objdir)/$* config
+	@-mkdir $*
+	@$(MAKE) --no-print-directory -C $* -f $(srcdir)/$*/Makefile \
+	         $(FLAGS_TO_PASS) config
 
 .PHONY: config
 
-ifeq ($(wildcard $(top_dir)/rhide.src),)
 config::
-	@echo ERROR: The target 'config.objdir' is valid only in the source tree
-	@redir -e nul -o nul
-else
-config:: check.objdir create.objdir
-	update $(srcdir)/Makefile $(objdir)/Makefile
+	@echo Configuring $(obj_dir) ...
+	@cp -fp $(srcdir)/Makefile $(wildcard $(srcdir)/rhide.env) $(obj_dir)
 ifneq ($(cfg_files),)
-	cp -fp $(addprefix $(srcdir)/,$(cfg_files)) $(objdir)
+	@cp -fp $(addprefix $(srcdir)/,$(cfg_files)) $(obj_dir)
 endif
-ifneq ($(project),)
-	cp -fp $(addprefix $(srcdir)/,$(addsuffix .gpr,$(project))) $(objdir)
-	cp -fp $(addprefix $(srcdir)/,$(addsuffix .mak,$(project))) $(objdir)
+ifneq ($(projects),)
+	@cp -fp $(addprefix $(srcdir)/,$(addsuffix .gpr,$(projects))) $(obj_dir)
+	@cp -fp $(addprefix $(srcdir)/,$(addsuffix .mak,$(projects))) $(obj_dir)
 endif
 ifneq ($(subdirs),)
 config:: $(addsuffix .cfo,$(subdirs))
-endif
 endif
 
 install.data::

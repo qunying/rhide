@@ -26,15 +26,15 @@ ADDITIONAL_LANG_es=$(SETSRC)/internac/es.po
 srcdir=$(RHIDESRC)/po
 VPATH=$(srcdir)
 
-project=
+project=msgcat
 po_files=
 src_files=$(po_files) msgcat.cc msgcat.gpr msgcat.mak Makefile \
 	$(addsuffix .po,$(LANGUAGES)) \
 	readme.lan makefile.src rhide.env rhide.var
 #	$(addsuffix .cat,$(LANGUAGES))
 
-update_files=msgcat.gpr msgcat.mak
-cfg_files=msgcat.gpr msgcat.mak
+projects=msgcat
+cfg_files=
 
 subdirs=
 po_subdirs=..
@@ -103,8 +103,6 @@ install.languages: languages install.languages.start \
 	  $(addsuffix .ins,$(LANGUAGES))
 
 install:: install.languages
-
-include msgcat.mak
 
 %.zip: %.po
 	rm -f $@

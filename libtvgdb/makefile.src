@@ -15,7 +15,7 @@ po_files=\
 src_files=$(po_files) Makefile libtvgdb.gpr libtvgdb.mak makefile.src \
 	  rhide.env rhide.var
 
-update_files=libtvgdb.gpr libtvgdb.mak
+projects=libtvgdb
 cfg_files=
 
 subdirs=include

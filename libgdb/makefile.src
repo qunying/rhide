@@ -2,8 +2,6 @@
 # This file is part of RHIDE. 
 #
 
-SHELL=/bin/sh
-
 srcdir=$(RHIDESRC)/libgdb
 VPATH=$(srcdir)
 
@@ -12,7 +10,6 @@ project=
 src_files=Makefile makefile.src
 po_files=
 cfg_files=
-update_files=
 
 subdirs=
 po_subdirs=

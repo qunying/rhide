@@ -14,7 +14,7 @@ src_files=$(po_files) rhide.env rhide.var\
 	sideedit.cc sidefile.cc soptions.cc sproject.cc \
 	Makefile makefile.src stream.gpr stream.mak
 cfg_files=
-update_files=
+projects=stream
 
 subdirs=
 po_subdirs=

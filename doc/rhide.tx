@@ -311,18 +311,24 @@ source files.
   along with this program; if not, write to the Free Software
   Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
-Additional conditions:
+Additional permission:
 
-If you make any modifications on RHIDE, you have to leave the original
-copyright notice intact and add an comment about your modifications.
+ As a special additional permission, the library librhuti which is
+ in the source tree of the RHIDE sources in the librhuti/
+ subdirectory can be distributed alone freely without any
+ restrictions.  It is not limited to use under the terms of the GPL
+ or LGPL.  For more information see the file COPYING.RHU in that
+ subdirectory.
 
-If you distribute the binaries for RHIDE from modified sources, then
-you have to add a notification which is printed at startup of RHIDE
-and in the about box to tell the user that you have made modifications
-and that it is not the binary from the original sources distributed by me.
 
-If you want to include RHIDE (binaries and/or sources) in a commercial
-product (on a CD-ROM for a book or something else) contact me first.
+Non-binding request
+===================
+
+If you distribute RHIDE together with other products it would be nice,
+if you could give me a note about it so I'll be informed. Of course
+you can send me a copy of the distribution medium but this is not
+required.
+
 
 For contacting the author send electronic mail to
 
@@ -358,26 +364,26 @@ This is a RPM package with the sources of RHIDE for Linux.
 @end table
 
 NOTE: The sources for the Linux and DJGPP versions are of course
-in its core the same, there are only differences in the text-file
-formats (CR or CR/LF) and the project files differ and the DJGPP
-sources contain some additional patches for the libc library to
-fix some known bugs there. But in general both archives can be used
-on both systems (after some cosmetic changes).
+in its core the same, there are only differences in the directory
+structure and myabe in some preconfigured files. But in general
+both archives can be used on both systems (after some cosmetic changes).
 @paragraph{}
 
 where @file{??} in the above filenames stand for the digits of the actual
-version of RHIDE.
+version of RHIDE which is as of writing this version 1.5 which leads to
+@file{15}.
 
 @paragraph{}
 
 These archives can be found at
 @www{The RHIDE home page, www.tu-chemnitz.de/~sho/rho/rhide.html}
-(valid until at least 30. Sepetember 1997)
-or at any ftp site, which mirrors DJGPP.
+or at any ftp site, which mirrors DJGPP. On that DJGPP mirrors are of
+course only the DJGPP archives available.
 @paragraph{}
 
 The RPM packackes can be found at sunsite mirrors and/or also
-in some Linux distributions.
+in some Linux distributions. (At least I hope so when I`m ready
+to upload them there)
 @paragraph{}
 
 To install these archives, unzip them in the DJGPP-root
@@ -389,6 +395,7 @@ program (most Linux distributions allow to install RPM packages)
 or install it with the Redhat package manager itself.
 @paragraph{}
 
+@ignore
 @subsection Configuring RHIDE
 @cindex Configuring RHIDE
 
@@ -437,7 +444,7 @@ the file @file{de.txt} (but the default @file{keybind.txt}).
 For configuring RHIDE on Linux (especially when running under X)
 @xref{Running under Linux}
 @paragraph{}
-
+@end ignore
 
 @section What is RHIDE?
 
@@ -499,7 +506,7 @@ You can define another compiler to compile your source files.
 @paragraph{}
 
 In addition to RHIDE I have included a stand-alone debugger
-(called @file{rhgdb.exe}), which is GDB 4.16 with a Turbo Vision user
+(called @file{rhgdb.exe}), which is GDB 4.18 with a Turbo Vision user
 interface.
 @paragraph{}
 
@@ -601,6 +608,7 @@ Use BIOS calls for setting and resetting the behavior of the
 7th bit in a color attribute (blinking or 16 background colors) instead of
 direct outputs to the VGA registers.
 
+@ignore
 @titem -k KEY_FILE
 The editor in RHIDE is now configurable also for the keyboard.
 The file, where the key bindings are stored, is searched at
@@ -608,6 +616,7 @@ first in the current directory; then in the directory
 @file{%DJDIR%/data}; and then in the directory where the
 executable is. If all this fails default values are taken.
 @paragraph{}
+@end ignore
 
 With this switch you can override the default name of @file{keybind.txt}
 to whatever you want.
@@ -643,20 +652,11 @@ enabled (@xref{Preferences}).
 @paragraph{}
 
 If you try to open a project, which does not exist, RHIDE will create a
-new one.
-The way for creating a new project is done by RHIDE as follows.
-If there exist in the directory of RHIDE (usually in %DJDIR%/bin) a
-project file with the root name of the executable and the suffix @file{.gpr},
-this file is copied as your new project file with all customizations, which
-you have done in it. If this standard project file doesn't exist, a new
-project file is created with the hardcoded defaults.
-@paragraph{}
-
-To create such a standard project file, change to the directory where the
-executable is and call the exe-file with the argument of its name without
-the suffix @file{.exe}. After leaving the program, the standard project file
-is created.
-@paragraph{}
+new one. For the default setting in the newly created project, RHIDE
+will look first in some directories if there exists an options file
+for RHIDE called @file{rh_opt.gpr}. If this file is found, the options
+from that file are used for the new project, otherwise the in RHIDE
+hardcoded defaults are used.
 
 @subsection Supported languages
 @cindex Languages
@@ -670,52 +670,8 @@ There are two ways for selecting the language. Either you set the environment
 variable @var{LANGUAGE} to the language you want or give it as a commandline
 argument to RHIDE. The normal way is by setting @var{LANGUAGE}. If you
 have installed RHIDE as described in the @file{readme}, you should
-specify the language with a two character shortcut. Here is the list of
-the current supported languages together with the two character code:
-
-@table @samp
-
-@titem da
-Danish maintained by @DANISH
-
-@titem de
-German maintained by @GERMAN
-
-@titem es
-Spanish maintained by @SPANISH
-
-@titem fi
-Finnish maintained by @FINNISH
-
-@titem fr
-French maintained by @FRENCH
-
-@titem it
-Italian maintained by @ITALIAN
-
-@titem nl
-Dutch maintained by @DUTCH
-
-@titem no
-Norwegian maintained by @NORWEGIAN
-
-@ignore
-@titem pl
-Polish maintained by @POLISH
-@end ignore
-
-@titem pt
-Portuguese maintained by @PORTUGUESE
-
-@ignore
-@titem ru
-Russian maintained by @RUSSIAN
-@end ignore
-
-@titem sv
-Swedish maintained by @SWEDISH
-
-@end table
+specify the language with a two character shortcut. Because of my limited
+time, the translations to are not synronized with RHIDE.
 
 When you want to specify the language on the commandline, use the following
 syntax:
@@ -791,7 +747,7 @@ this variable is used before the the real commandline is parsed.
 That means you can overwrite the switches from the environment variable.
 @paragraph{}
 
-@section The program GPR2MAK.EXE
+@section The program GPR2MAK
 @cindex Creating a makefile
 This program can be used to create a makefile from your project-file.
 It does exactly the same as the function which is selectable from
@@ -800,12 +756,12 @@ the RHIDE menu (@xref{Write Makefile}).
 
 In RHIDE you have only the possibility to say, if in the generated
 makefile all dependencies should be included or not. With
-@file{gpr2mak.exe} you can tell also to create recursively all the
+@file{gpr2mak} you can tell also to create recursively all the
 needed makefiles. This makes sense only if you have included other
 projects in your project.
 @paragraph{}
 
-Here are the possible commandline options for @file{gpr2mak.exe}.
+Here are the possible commandline options for @file{gpr2mak}.
 @table @samp
 @titem -d
 Include all dependencies in the makefile
@@ -815,11 +771,11 @@ Include only the needed dependencies to create the final program or
 library.
 
 @titem -r
-Call @file{gpr2mak.exe} recursively, if there are other projects part
+Call @file{gpr2mak} recursively, if there are other projects part
 of the project.
 
 @titem -r-
-Do not call @file{gpr2mak.exe} recursively.
+Do not call @file{gpr2mak} recursively.
 
 @titem -o OUTFILE
 Use @samp{OUTFILE} instead of the project name (with the suffix @file{.mak})
@@ -828,16 +784,30 @@ use @samp{-} as @samp{OUTFILE}.
 
 @end table
 
-And the complete syntax for calling @file{gpr2mak.exe} is also:
+And the complete syntax for calling @file{gpr2mak} is also:
 
 @example
-gpr2mak.exe [-d[-]] [-r[-]] [-o OUTFILE] project-file
+gpr2mak [-d[-]] [-r[-]] [-o OUTFILE] project-file
 @end example
 @paragraph{}
 
-If you give no options, (the project-file must be given), @file{gpr2mak.exe}
+If you give no options, (the project-file must be given), @file{gpr2mak}
 assumes the flags @samp{-d- -r-} as default.
 @paragraph{}
+
+@section The program GPREXP
+@cindex Exporting the RHIDE project files
+The main reason for this program was the need for me to have
+project files which should work on different computers and also
+on different systems (like DJGPP and GNU/Linux). The task for this
+program is to convert as most as possible absolute filenames stored
+in the project file to use variables so the project can be used by
+simply changing some variables outside RHIDE.
+@paragraph{}
+
+GPREXP replaces all directories, which are used also in the dialogs
+like the directory customizations for include file searches, by the
+variables if they are known there.
 
 @section First steps with RHIDE
 

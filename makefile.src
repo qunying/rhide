@@ -4,10 +4,9 @@
 
 srcdir=$(RHIDESRC)
 VPATH=$(srcdir)
-projects=gpr2mak rhide_ rhide
+projects=gpr2mak rhide_ rhide gprexp
 project=
-cfg_files=gpr2mak.gpr gpr2mak.mak rhide_.gpr rhide_.mak
-update_files=gpr2mak.gpr gpr2mak.mak rhide_.gpr rhide_.mak rhide.gpr rhide.mak
+cfg_files=
 
 
 po_files=\
@@ -278,7 +277,7 @@ bin_src_data_files_Linux=LINUX.TXT
 bin_src_data_files=RHIDE.BIN README.IDE COPYING.RH COPYING rhide_ch.log \
 		$(bin_src_data_files_$(rhide_OS))
 bin_src_bin_files_DJGPP=
-bin_src_bin_files_Linux=VCSA.SH
+bin_src_bin_files_Linux=VCSA.SH configure
 bin_src_bin_files=$(bin_src_bin_files_$(rhide_OS))
 bin_src_files=$(bin_src_data_files) $(bin_src_bin_files)
 bin_src_prefix_DJGPP=$(install_prefix_src)/
@@ -331,10 +330,6 @@ else
 	tar -C $(copy_dir) -cvf - `ls $(copy_dir) | sed 's,$(copy_dir)/,,g'` \
 	  | gzip -9c > $(obj_dir)/$(PACKAGE)$(DIR_VERSION).bin.`uname -sr | sed 's/ /-/g'`.tar.gz
 endif
-
-update_srcdir:
-	$(MAKE) SUBDIR_TARGET=update__srcdir update__srcdir $(FLAGS_TO_PASS)
-
 
 additional_po_files:=$(wildcard $(TVSRC)/*.cc)\
 	$(wildcard $(TVSRC)/classes/*.cc)\

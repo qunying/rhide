@@ -13,7 +13,6 @@ src_files=$(po_files) Makefile makefile.src \
 	twatchdi.h twatchli.h tvgdbfun.h tvgdbhis.h tregwin.h tdiswin.h \
 	tdatawin.h inspect.h inspectl.h
 cfg_files=
-update_files=
 
 subdirs=
 po_subdirs=

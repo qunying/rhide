@@ -12,7 +12,6 @@ src_files=\
 	  Makefile rhidehis.h makefile.src
 po_files=
 cfg_files=
-update_files=
 
 subdirs=flags
 po_subdirs=

@@ -16,7 +16,6 @@ src_files=$(po_files)\
 	Makefile makefile.src tfname.h
 
 cfg_files=
-update_files=
 
 subdirs=
 po_subdirs=

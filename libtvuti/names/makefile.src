@@ -12,7 +12,7 @@ po_files=
 src_files=$(po_files) makefile.src \
 	ndirlist.cc nparamli.cc Makefile names.gpr names.mak
 cfg_files=
-update_files=
+projects=names
 
 subdirs=
 po_subdirs=

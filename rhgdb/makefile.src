@@ -9,7 +9,7 @@ project=rhgdb
 po_files=gdbedit.cc main.cc options.cc gdbsynt.cc
 src_files=$(po_files) Makefile rhgdb.gpr rhgdb.mak makefile.src \
 	  rhide.env rhide.var version.in version.cc
-update_files=rhgdb.gpr rhgdb.mak
+projects=rhgdb
 cfg_files=
 
 subdirs=include

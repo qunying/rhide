@@ -12,7 +12,6 @@ src_files=$(po_files)\
 	libtvdem.h ascii.h puzzle.h calendar.h mousedlg.h \
 	Makefile makefile.src
 cfg_files=
-update_files=
 
 subdirs=
 po_subdirs=

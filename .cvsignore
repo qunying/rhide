@@ -1,0 +1,9 @@
+.tcedit.dst
+*.dst
+*.epr
+config.env
+config.log
+config.status
+gdb_obj
+ideversi.cc
+rhide.gdt

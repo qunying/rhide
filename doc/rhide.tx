@@ -66,12 +66,11 @@ END-INFO-DIR-ENTRY
 @end ifinfo
 
 @macro RH{}
-@mail{@value{rh},Robert.Hoehne@@Mathematik.TU-Chemnitz.DE} (valid until
-at least 30. September 1997)
+@mail{@value{rh},robert.hoehne@@gmx.net}
 @end macro
 
 @macro SET{}
-@mail{Salvador Eduardo Tropea (SET),ice@@inti.edu.ar}
+@mail{Salvador Eduardo Tropea (SET),salvador@@inti.gov.ar}
 @end macro
 
 @macro SPANISH{}
@@ -156,7 +155,7 @@ at least 30. September 1997)
 @end ifset
 
 @macro RHIDEHOME
-@www{the RHIDE home page,www.tu-chemnitz.de/~rho/rhide.html}
+@www{the RHIDE home page,www.tu-chemnitz.de/~sho/rho/rhide.html}
 (valid until at least 30. September 1997)
 @end macro
 
@@ -208,7 +207,7 @@ notice identical to this one.
 People, who helped me, to develop RHIDE:
 
 @itemize @bullet
-  @item @sc{Salvador Eduardo Tropea (SET)} <ice@@inti.edu.ar>
+  @item @sc{Salvador Eduardo Tropea (SET)} <salvador@@inti.gov.ar>
     (translating to Spanish and the great Info Viewer and the editor)
 
   @item @sc{Christian Domp} by getting me the code for the additional
@@ -327,9 +326,7 @@ product (on a CD-ROM for a book or something else) contact me first.
 
 For contacting the author send electronic mail to
 
-Robert.Hoehne@@Mathematik.TU-Chemnitz.DE
-
-(valid until at least 30. September 1997)
+robert.hoehne@@gmx.net
 
 or paper mail to
 
@@ -374,7 +371,7 @@ version of RHIDE.
 @paragraph{}
 
 These archives can be found at
-@www{The RHIDE home page, www.tu-chemnitz.de/~rho/rhide.html}
+@www{The RHIDE home page, www.tu-chemnitz.de/~sho/rho/rhide.html}
 (valid until at least 30. Sepetember 1997)
 or at any ftp site, which mirrors DJGPP.
 @paragraph{}
@@ -4792,8 +4789,7 @@ exact information about this?}
 
 @cindex Latest version of RHIDE
 @cindex RHIDE, latest version
-@ans{} See @www{at the RHIDE home page,www.tu-chemnitz.de/~rho/rhide.html}.
-(valid until at least 30. Sepetember 1997)
+@ans{} See @www{at the RHIDE home page,www.tu-chemnitz.de/~sho/rho/rhide.html}.
 This page contains the latest news and the latest version of RHIDE.
 @paragraph{}
 

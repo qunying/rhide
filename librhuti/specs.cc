@@ -6,12 +6,6 @@
 #include <sys/utsname.h>
 #include <glob.h>
 
-#ifdef USE_REGPARM
-#define A(n) __attribute__ (( regparm(n) ))
-#else
-#define A(n)
-#endif
-
 static void _handle_newline();
 void (*handle_newline) () = _handle_newline;
 int expand_variable_names = 1;
@@ -194,66 +188,63 @@ GetVariable(const char *variable, int use_env)
 extern char **environ;
 #endif
 
-typedef
-A(1)
-     char *(*string_function) (char *);
+typedef char *(*string_function) (char *);
 
-     typedef struct
-     {
-       char *name;
-       int name_len;
-       string_function function;
-     }
-string_function_rec;
+typedef struct
+{
+  char *name;
+  int name_len;
+  string_function function;
+} string_function_rec;
 
-     static A(1)
-     char *string_function_strip(char *);
-     static A(1)
-     char *string_function_addsuffix(char *);
-     static A(1)
-     char *string_function_addprefix(char *);
-     static A(1)
-     char *string_function_notdir(char *);
-     static A(1)
-     char *string_function_dir(char *);
-     static A(1)
-     char *string_function_subst(char *);
-     static A(1)
-     char *string_function_suffix(char *);
-     static A(1)
-     char *string_function_nosuffix(char *);
-     static A(1)
-     char *string_function_setsuffix(char *);
-     static A(1)
-     char *string_function_sort(char *);
-     static A(1)
-     char *string_function_foreach(char *);
-     static A(1)
-     char *string_function_shell(char *);
-     static A(1)
-     char *string_function_wildcard(char *);
-     static A(1)
-     char *string_function_word(char *);
+static
+char *string_function_strip(char *);
+static
+char *string_function_addsuffix(char *);
+static
+char *string_function_addprefix(char *);
+static
+char *string_function_notdir(char *);
+static
+char *string_function_dir(char *);
+static
+char *string_function_subst(char *);
+static
+char *string_function_suffix(char *);
+static
+char *string_function_nosuffix(char *);
+static
+char *string_function_setsuffix(char *);
+static
+char *string_function_sort(char *);
+static
+char *string_function_foreach(char *);
+static
+char *string_function_shell(char *);
+static
+char *string_function_wildcard(char *);
+static
+char *string_function_word(char *);
 
-     static string_function_rec string_function_list[] = {
+static string_function_rec string_function_list[] = {
 #define SF(x) {#x,sizeof(#x)-1,string_function_##x}
-       SF(strip),
-       SF(addsuffix),
-       SF(addprefix),
-       SF(notdir),
-       SF(dir),
-       SF(subst),
-       SF(suffix),
-       SF(nosuffix),
-       SF(setsuffix),
-       SF(sort),
-       SF(foreach),
-       SF(shell),
-       SF(wildcard),
-       SF(word),
-       {NULL, 0, NULL}
+  SF(strip),
+  SF(addsuffix),
+  SF(addprefix),
+  SF(notdir),
+  SF(dir),
+  SF(subst),
+  SF(suffix),
+  SF(nosuffix),
+  SF(setsuffix),
+  SF(sort),
+  SF(foreach),
+  SF(shell),
+  SF(wildcard),
+  SF(word),
+  {NULL, 0, NULL}
 #undef SF
-     };
+};
 
 char *
 find_close_brace(char *open_brace)
@@ -305,11 +296,10 @@ find_next_comma(char *arg)
 static external_token_func external_expand_token;
 
 static
-A(1)
-     char *expand_tokens(char *tokens);
+char *expand_tokens(char *tokens);
 
-     static A(1)
-     char *expand_variable(char *__token)
+static
+char *expand_variable(char *__token)
 {
   char *token;
 
@@ -364,8 +354,7 @@ END:
 }
 
 static
-A(1)
-     char *check_for_string_function(char *token)
+char *check_for_string_function(char *token)
 {
   int i = 0;
 
@@ -406,8 +395,7 @@ A(1)
 static int _call_extern_first = 0;
 
 static
-A(1)
-     char *expand_token(char *token)
+char *expand_token(char *token)
 {
   char *retval = NULL;
 
@@ -429,8 +417,7 @@ A(1)
 }
 
 static
-A(1)
-     char *expand_tokens(char *__tokens)
+char *expand_tokens(char *__tokens)
 {
   char *start;
   char *end, c;
@@ -504,8 +491,7 @@ expand_spec(const char *spec, external_token_func ext_func,
 }
 
 static
-A(1)
-     char *string_function_shell(char *_arg)
+char *string_function_shell(char *_arg)
 {
   char *arg = expand_tokens(_arg);
   char *retval = NULL;
@@ -548,8 +534,7 @@ A(1)
 }
 
 static
-A(1)
-     char *string_function_foreach(char *arg)
+char *string_function_foreach(char *arg)
 {
   char *arg1;
   char *arg2;
@@ -609,8 +594,7 @@ A(1)
 }
 
 static
-A(1)
-     char *string_function_strip(char *arg)
+char *string_function_strip(char *arg)
 {
   char *retval;
   char *tmp;
@@ -698,8 +682,7 @@ add_string(char **&strings, int &strings_count, char *string)
 }
 
 static
-A(1)
-     char *string_function_sort(char *_arg)
+char *string_function_sort(char *_arg)
 {
   char *arg = expand_tokens(_arg);
   char *retval = NULL;
@@ -728,8 +711,7 @@ A(1)
 }
 
 static
-A(1)
-     char *string_function_suffix(char *_arg)
+char *string_function_suffix(char *_arg)
 {
   char *retval = NULL;
   char *arg = expand_tokens(_arg);
@@ -752,8 +734,7 @@ A(1)
 }
 
 static
-A(1)
-     char *string_function_nosuffix(char *_arg)
+char *string_function_nosuffix(char *_arg)
 {
   char *retval = NULL;
   char *arg = expand_tokens(_arg);
@@ -772,8 +753,7 @@ A(1)
 }
 
 static
-A(1)
-     char *string_function_setsuffix(char *arg)
+char *string_function_setsuffix(char *arg)
 {
   char *retval = NULL;
   char *arg1, *arg2, *dot, *tmp;
@@ -800,8 +780,7 @@ A(1)
 }
 
 static
-A(2)
-     char *string_function_add_pre_or_suffix(char *arg, int prefix)
+char *string_function_add_pre_or_suffix(char *arg, int prefix)
 {
   char *retval = NULL;
   char *tmp;
@@ -841,22 +820,19 @@ A(2)
 }
 
 static
-A(1)
-     char *string_function_addprefix(char *arg)
+char *string_function_addprefix(char *arg)
 {
   return string_function_add_pre_or_suffix(arg, 1);
 }
 
 static
-A(1)
-     char *string_function_addsuffix(char *arg)
+char *string_function_addsuffix(char *arg)
 {
   return string_function_add_pre_or_suffix(arg, 0);
 }
 
 static
-A(1)
-     char *string_function_notdir(char *_arg)
+char *string_function_notdir(char *_arg)
 {
   char *retval;
   char *arg = expand_tokens(_arg);
@@ -867,8 +843,7 @@ A(1)
 }
 
 static
-A(1)
-     char *string_function_dir(char *_arg)
+char *string_function_dir(char *_arg)
 {
   char *dir, *name, *ext, *arg = expand_tokens(_arg);
 
@@ -880,8 +855,7 @@ A(1)
 }
 
 static
-A(1)
-     char *string_function_subst(char *arg)
+char *string_function_subst(char *arg)
 {
   char *arg1, *arg2, *arg3;
   char *retval = NULL;
@@ -928,8 +902,7 @@ A(1)
 #endif
 
 static
-A(1)
-     char *string_function_wildcard(char *arg)
+char *string_function_wildcard(char *arg)
 {
   size_t cnt, i, first = 1;
   glob_t glob_results;
@@ -965,8 +938,7 @@ A(1)
 }
 
 static
-A(1)
-     char *string_function_word(char *_arg)
+char *string_function_word(char *_arg)
 {
   int nr;
   char *arg = expand_tokens(_arg);

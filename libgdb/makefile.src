@@ -41,13 +41,15 @@ MMALLOC_LIB=
 MMALLOC_LIB_DIR=
 OS_FLAGS+=MMALLOC=$(MMALLOC) MMALLOC_CFLAGS="$(MMALLOC_CFLAGS)"
 CHECKS=check_echo check_awk
+EXCLUDE_REGEX=
 endif
 
 ifeq ($(strip $(rhide_OS)),Linux)
-OS_CFLAGS=-DMAINTENANCE_CMDS=0 -DHAVE_CONFIG_H -O2 -g -DNO_MMALLOC
+OS_CFLAGS=-DMAINTENANCE_CMDS=0 -DHAVE_CONFIG_H -O2 -DNO_MMALLOC
 #MMALLOC=../mmalloc/libmmalloc.a
 #MMALLOC_INC=o_gdb/mmalloc s_gdb/mmalloc
 CHECKS=
+EXCLUDE_REGEX=| sed -e '/.*gnu-regex.*/d'
 endif
 
 MMALLOC_LIB=$(subst ..,$(GDB_OBJ),$(MMALLOC))
@@ -110,7 +112,7 @@ libgdb.h: $(GDB_OBJ)/bfd/bfd.h libgdb.c
 endif
 
 gdb.t: $(GDB_OBJ)/gdb/libgdb-files
-	printf "%s\n" $(shell cat $<) | sed -n -e 's,^.*\.o,$(dir $<)&,p' > $@
+	printf "%s\n" $(shell cat $<) | sed -n -e 's,^.*\.o,$(dir $<)&,p' $(EXCLUDE_REGEX) > $@
 
 %.t: %.a
 	ar t $< | sed -e 's,^.*\.o,$(dir $<)&,' > $@
@@ -142,7 +144,7 @@ else
 libgdb.a: $(CHECKS) list
 	rm -f libgdb.a
 # do not use any xmalloc.o, because it is defined in utils.o
-	ar rcs $@ $(shell cat $(T_FILES) | sed '/.*xmalloc.*/d')
+	ar rcs $@ $(shell cat $(T_FILES) | sed -e '/.*xmalloc.*/d')
 	rm -f $(T_FILES)
 endif
 

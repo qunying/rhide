@@ -105,6 +105,8 @@ ifeq ($(top_obj_dir),)
 export top_obj_dir:=$(shell cd $(top_dir); pwd; cd $(obj_dir))
 endif
 
+move-if-change=$(RHIDESRC)/move-if-change
+
 gpr2mak:=$(wildcard $(top_dir)/gpr2mak.exe)
 
 ifeq ($(strip $(gpr2mak)),)

@@ -102,4 +102,4 @@ create_config:
 	@echo GDB_SRC=$(GDB_SRC) >> $(config_file)
 	@echo TVOBJ=$(TVOBJ) >> $(config_file)
 	@echo SETOBJ=$(SETOBJ) >> $(config_file)
-	@echo RHIDE_LIBS+=$(SET_LIBS) >> $(config_file)
+	@echo SET_LIBS=$(SET_LIBS) >> $(config_file)

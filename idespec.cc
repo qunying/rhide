@@ -1229,6 +1229,16 @@ static void WriteRules(FILE *f)
   WR(asm,o);
   WR(nsm,o);
   WR(adb,o);
+  WR(c,i);
+  WR(c,s);
+  WR(cc,ii);
+  WR(cc,s);
+  WR(cpp,ii);
+  WR(cpp,s);
+  WR(cxx,ii);
+  WR(cxx,s);
+  WR(C,ii);
+  WR(C,s);
 #undef WR
 }
 

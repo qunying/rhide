@@ -26,7 +26,7 @@
 
 #include <unistd.h>
 
-#include "pal.c"
+#include <pal.h>
 
 #ifdef __DJGPP__
 #include <sys/exceptn.h>

@@ -1,4 +1,4 @@
-export RHIDE_OS=@RHIDE_OS@
+export rhide_OS=@rhide_OS@
 export RHIDESRC=@orig_srcdir@
 export TV_INC=@TV_INC@
 export SETSRC=@SETSRC@

@@ -6,12 +6,12 @@ AC_PROG_CC
 AC_CANONICAL_HOST
 
 case "$host" in
-  i?86-*-linux*) RHIDE_OS=Linux ;;
-  i?86-pc-msdosdjgpp) RHIDE_OS=DJGPP ;;
-  *-pc-cygwin) RHIDE_OS=CYGWIN ;;
+  i?86-*-linux*) rhide_OS=Linux ;;
+  i?86-pc-msdosdjgpp) rhide_OS=DJGPP ;;
+  *-pc-cygwin) rhide_OS=CYGWIN ;;
   *) AC_MSG_ERROR([$host is not supported (yet). Sorry.]) ;;
 esac
-AC_SUBST(RHIDE_OS)
+AC_SUBST(rhide_OS)
 
 dnl This fixes the annoing bug in autoconf which
 dnl does not handle correct drive letters in diretories
@@ -22,7 +22,7 @@ dnl of srcdir
 
 orig_srcdir=$srcdir
 changequote(, )dnl
-if test "$RHIDE_OS" = DJGPP; then
+if test "$rhide_OS" = DJGPP; then
   srcdir=`echo $srcdir | sed "s,^\([a-zA-Z]\):,/dev/\1,g"`
 fi
 changequote([, ])dnl
@@ -56,7 +56,7 @@ $DJDIR/include/rhtvision \
 /usr/include/rhtvision"
 RH_CHECK_FILE_LIST(TV_INC, tv.h, $TV_INC_SEARCH,[Turbo Vision header files])
 
-TV_OBJ_SEARCH="$TV_INC/../`echo $RHIDE_OS | sed s,Linux,linux,g` \
+TV_OBJ_SEARCH="$TV_INC/../`echo $rhide_OS | sed s,Linux,linux,g` \
 $TV_INC/../../lib"
 RH_CHECK_FILE_LIST(TVOBJ, librhtv.a, $TV_OBJ_SEARCH,[Turbo Vision libraray])
 

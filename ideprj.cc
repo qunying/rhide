@@ -1032,6 +1032,7 @@ Boolean OpenProject(const char * prjname)
       TProject *_project = project;
       project = new TProject();
       *project = *_project;
+      SetMainTargetName(FName(_project->dest_name));
       destroy(_project);
       ClearFindCache();
       ShowProject();

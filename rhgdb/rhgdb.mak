@@ -241,7 +241,7 @@ RHIDE_OS_CFLAGS=$(RHIDE_OS_CFLAGS_$(RHIDE_OS)) $(RH_WARN)
 RHIDE_OS_CXXFLAGS_Linux=-D_GNU_SOURCE
 RHIDE_OS_CXXFLAGS_DJGPP=
 RHIDE_OS_CXXFLAGS=$(RHIDE_OS_CXXFLAGS_$(RHIDE_OS)) $(RH_WARN)\
-	-fno-exceptions -fno-rtti -funsigned-char
+	-fno-exceptions -fno-rtti
 RHIDE_OS_LIBS_Linux=intl ncurses gpm
 RHIDE_OS_LIBS_DJGPP=intl dbg
 RHIDE_OS_LIBS=$(RHIDE_OS_LIBS_$(RHIDE_OS))
@@ -262,7 +262,7 @@ RHIDE_OS_CFLAGS=$(RHIDE_OS_CFLAGS_$(RHIDE_OS)) $(RH_WARN)
 RHIDE_OS_CXXFLAGS_Linux=-D_GNU_SOURCE
 RHIDE_OS_CXXFLAGS_DJGPP=
 RHIDE_OS_CXXFLAGS=$(RHIDE_OS_CXXFLAGS_$(RHIDE_OS)) $(RH_WARN)\
-	-fno-exceptions -fno-rtti -funsigned-char
+	-fno-exceptions -fno-rtti
 RHIDE_OS_LIBS_Linux=intl ncurses gpm
 RHIDE_OS_LIBS_DJGPP=intl dbg
 RHIDE_OS_LIBS=$(RHIDE_OS_LIBS_$(RHIDE_OS))

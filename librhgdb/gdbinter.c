@@ -145,12 +145,14 @@ void CreateBreakPointHook(struct breakpoint *b)
     last_breakpoint_file = NULL; 
 }
 
+#ifdef OLD_GDB
 static int top_level_val;
 
 #define SET_TOP_LEVEL() \
   (((top_level_val = setjmp (error_return)) \
     ? (PTR) 0 : (PTR) memcpy (quit_return, error_return, sizeof (jmp_buf))) \
    , top_level_val)
+#endif
 
 void
 annotate_starting ()
@@ -226,22 +228,20 @@ RH_GDB_FILE *gdb_stdtarg;
 
 int get_gdb_output_buffer (void)
 {
-#ifdef OLD_GDB
-  return gdb_output_pos;
-#else
+#ifndef OLD_GDB
   if (gdb_output_buffer) free (gdb_output_buffer);
   gdb_output_buffer = ui_file_xstrdup (gdb_stdout, &gdb_output_pos);
 #endif
+  return gdb_output_pos;
 }
 
 int get_gdb_error_buffer (void)
 {
-#ifdef OLD_GDB
-  return gdb_error_pos;
-#else
+#ifndef OLD_GDB
   if (gdb_error_buffer) free (gdb_error_buffer);
   gdb_error_buffer = ui_file_xstrdup (gdb_stderr, &gdb_error_pos);
 #endif
+  return gdb_error_pos;
 }
 
 #ifdef __DJGPP__
@@ -260,8 +260,6 @@ int get_gdb_error_buffer (void)
 
 extern int win31; /* in librhgdb */
 static struct target_ops *_go32_ops;
-int go32_insert_hw_breakpoint(CORE_ADDR,CORE_ADDR);
-int go32_remove_hw_breakpoint(CORE_ADDR,CORE_ADDR);
 
 static int _win31_memory_insert_breakpoint(CORE_ADDR addr,
                                     char *shadow __attribute__((unused)))

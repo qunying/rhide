@@ -203,6 +203,14 @@ do {\
   x##_pos = 0;\
 } while (0)
 
+#define NEW_GDB
+#if defined(gdb_stdout)
+#if (gdb_stdout = stdout)
+#undef NEW_GDB
+#endif
+#endif
+
+#ifdef NEW_GDB
 /* Whether this is the command line version or not */
 int tui_version = 0;
 
@@ -214,6 +222,7 @@ int dbx_commands = 0;
 
 GDB_FILE *gdb_stdout;
 GDB_FILE *gdb_stderr;
+#endif
 
 #ifdef __DJGPP__
 
@@ -230,7 +239,7 @@ GDB_FILE *gdb_stderr;
 #include <dpmi.h>
 
 extern int win31; /* in librhgdb */
-static struct target_ops *go32_ops;
+static struct target_ops *_go32_ops;
 int go32_insert_hw_breakpoint(CORE_ADDR,CORE_ADDR);
 int go32_remove_hw_breakpoint(CORE_ADDR,CORE_ADDR);
 
@@ -257,7 +266,7 @@ __win31_hack()
 {
   __dpmi_regs r;
   unsigned i;
-  go32_ops = NULL;
+  _go32_ops = NULL;
   r.x.ax = 0x160a;
   __dpmi_int(0x2f,&r);
   if (r.x.ax == 0 && r.h.bh == 3) win31 = 1;
@@ -268,14 +277,14 @@ __win31_hack()
     if ((target_structs[i]->to_shortname) &&
         (strcmp(target_structs[i]->to_shortname, "djgpp") == 0))
     {
-      go32_ops = target_structs[i];
+      _go32_ops = target_structs[i];
       break;
     }
   }
-  if (!go32_ops)
+  if (!_go32_ops)
     return;
-  go32_ops->to_insert_breakpoint = _win31_memory_insert_breakpoint;
-  go32_ops->to_remove_breakpoint = _win31_memory_remove_breakpoint;
+  _go32_ops->to_insert_breakpoint = _win31_memory_insert_breakpoint;
+  _go32_ops->to_remove_breakpoint = _win31_memory_remove_breakpoint;
 }
 
 #endif /* __DJGPP__ */
@@ -286,6 +295,7 @@ _init_librhgdb()
   char command[256];
   void (*oldINT)(int);
   oldINT = signal(SIGINT,SIG_DFL);
+#ifdef NEW_GDB
   gdb_stdout = (GDB_FILE *)malloc (sizeof(GDB_FILE));
   gdb_stdout->ts_streamtype = afile;
   gdb_stdout->ts_filestream = stdout;
@@ -297,6 +307,7 @@ _init_librhgdb()
   gdb_stderr->ts_filestream = stderr;
   gdb_stderr->ts_strbuf = NULL;
   gdb_stderr->ts_buflen = 0;
+#endif
 
   gdb_init();
 #ifdef __DJGPP__

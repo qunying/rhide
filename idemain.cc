@@ -20,6 +20,7 @@
 #define Uses_TFileViewer
 #define Uses_TSortedListBox
 #define Uses_TStringCollection
+#define Uses_TGKey
 
 #define Uses_TProject
 #define Uses_TOptions

@@ -20,6 +20,7 @@
 #define Uses_TStaticText
 #define Uses_TButton
 #define Uses_TFileViewer
+#define Uses_TGKey
 
 #define Uses_TDirList
 #define Uses_TParamList

@@ -408,21 +408,7 @@ static Boolean check_compile_fpc_errors(TMsgCollection &errs)
     }
     /* Now points fname to the filename or NULL and lineno is set correct.
        temp points to the message, if there is one */
-    if (fname)
-    {
-#if 0
-      char *bname,*full_name;
-      BaseName(fname,bname);
-      if (FindFile(bname,full_name) == True)
-      {
-        strcpy(_buffer,bname);
-        fname = _buffer;
-      }
-      string_free(bname);
-      string_free(full_name);
-#endif
-    }
-    else
+    if (!fname)
     {
       /* if no filename was found, make all to a normal message */
       char *tmp=buffer;

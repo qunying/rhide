@@ -73,7 +73,12 @@ MSGCAT_OPTIONS=-s
 CURRENT_LANG=$(subst .po,,$(notdir $@))
 ADDITIONAL_LANG=$(ADDITIONAL_LANG_$(CURRENT_LANG))
 
-$(addsuffix .po,$(LANGUAGES)): potfiles.po $(MSGCAT)
+po_deps=
+ifeq ($(update_po_files),yes)
+po_deps=potfiles.po $(MSGCAT)
+endif
+
+$(addsuffix .po,$(LANGUAGES)): $(po_deps)
 	echo updating $@
 	-cp -f $@ $(subst .po,.bak,$@)
 	$(MSGCAT) $(MSGCAT_OPTIONS) -directory $(RHIDESRC) \

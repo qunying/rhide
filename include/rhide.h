@@ -438,4 +438,7 @@ typedef struct
 
 #include <intl.h>
 
+void setup_title(const char *);
+void setup_main_title();
+
 #endif

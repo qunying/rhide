@@ -977,8 +977,6 @@ static void LoadDesktop()
     close_ifpstream(idfile);
 }
 
-void setup_title(const char *); // idemain.cc
-
 Boolean OpenProject(const char * prjname)
 {
   ifpstream *idfile;

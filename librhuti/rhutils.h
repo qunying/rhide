@@ -128,9 +128,15 @@ void BaseName(char *name, int with_suffix = 1);
 void BaseName(const char *name, char *&bname, int with_suffix = 1);
 /* Convert any '\' to '/' in 'name' */
 void BackslashToSlash(char * name);
-/* call internally split_fname_fmt to return the results in the malloced
-   arguments */
+/* split the given filename 'fname' in its components and return them
+   malloc'd. If the filename contained a drive letter and colon, it will
+   be part of 'dir'. */
 void split_fname(const char *fname, char *&dir, char *&name, char *&ext);
+/* The same as above, except that the drive letter is stored in 'drive'.
+   If there is no drive letter, 'drive' will be zero. 'dir' will contain
+   only the directory and not (if any) drive and colon. */
+void split_fname(const char *fname, char &drive, char *&dir, char *&name,
+                 char *&ext);
 /* Expands an given name 'name' to an absolute filename relative to the
    current directory. If it was
    already absolute nothing is done. If 'new_alloc==0' the 'name' is

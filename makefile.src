@@ -117,9 +117,6 @@ ver.src:
 	echo $(rhides) Version $(VERSION) \(sources\) \
 	  > $(copy_dir)/manifest/$(rhides).ver
 
-copyrite.exe: copyrite.c
-	gcc -o $@ -s -O $<
-
 copyrite_srcdir=$(srcdir)
 
 mark_dirs=$(my_subdirs)
@@ -138,8 +135,8 @@ Markfiles=$(shell find $(addprefix $(copyrite_srcdir)/,$(mark_dirs)) -not -type 
 	   -o -name "$(name)") -print)
 endif
 
-mark.copyright: copyrite.exe
-	./copyrite.exe $(Markfiles)
+mark.copyright: $(copyrite.exe)
+	$(copyrite.exe) $(Markfiles)
 
 _languages.src: $(addsuffix .po,$(LANGUAGES))
 

@@ -1124,6 +1124,7 @@ GOTO(int _switch_to_user)
 void
 repaint()
 {
+  TProgram::deskTop->redraw();
   TProgram::application->Redraw();
 }
 
@@ -1674,3 +1675,4 @@ void
 RunExternalProgram(char *, unsigned int, char *)
 {
 }
+

@@ -2297,7 +2297,7 @@ int main(int argc, char **argv)
       tit = strchr(tit+1, '.');
     if (tit)
     {
-      tit = (char *)alloca(strlen(IDEVersion) + 8);
+      tit = (char *)alloca(_TITLE_SIZE);
       strcpy(tit, IDEVersion);
       strcat(tit, " (BETA)");
     }

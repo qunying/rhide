@@ -2013,20 +2013,12 @@ void init_rhide(int _argc, char **_argv)
   convert_num_pad = 1;
 #endif
   parse_commandline(__crt0_argc,__crt0_argv);
-#ifndef __DJGPP__
-#if 1
   TEventQueue::suspend();
   TScreen::suspend();
-#endif
-#endif
   fprintf(stderr,_("This is %s. Copyright (c) 1996-1998 by Robert H”hne\n"),IDEVersion);
   fprintf(stderr,"             (%s %s)\n",build_date,build_time);
-#ifndef __DJGPP__
-#if 1
   TScreen::resume();
   TEventQueue::resume();
-#endif
-#endif
 }
 
 /*

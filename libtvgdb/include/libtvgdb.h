@@ -1,5 +1,15 @@
 /* Copyright (C) 1996-1998 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
+#if defined( Uses_TInspector )
+#define Uses_TDialog
+#define _INC_TINSPECTOR
+#endif
+
+#if defined( Uses_TInspectList )
+#define Uses_TListBox
+#define _INC_TINSPECTLIST
+#endif
+
 #if defined( Uses_TDisassemblerWindow )
 #define Uses_TDialog
 #define _INC_TDISASSEMBLERWINDOW
@@ -113,4 +123,11 @@
 #include <tdatawin.h>
 #endif
 
+#if defined( _INC_TINSPECTLIST )
+#include <inspectl.h>
+#endif
+
+#if defined( _INC_TINSPECTOR )
+#include <inspect.h>
+#endif
 

@@ -44,6 +44,7 @@
 
 #define Uses_tvgdbFunctions
 #define Uses_tvgdbCommands
+#define Uses_TInspector
 #include <libtvgdb.h>
 #include <tvgdbhis.h>
 #endif
@@ -439,6 +440,7 @@ void IDE::update()
     D(cmBreakPoints);
     D(cmFunctionList);
     D(cmCallStack);
+    D(cmInspect);
   }
   else
   {
@@ -471,6 +473,7 @@ void IDE::update()
       D(cmReset);
       D(cmProgArgs);
       D(cmFunctionList);
+      D(cmInspect);
     }
     else
     {
@@ -488,6 +491,7 @@ void IDE::update()
       E(cmProgArgs);
       E(cmFunctionList);
       E(cmCallStack);
+      E(cmInspect);
     }
   }
 
@@ -986,6 +990,21 @@ static void MainFunction()
 }
 #endif
 
+#ifdef INTERNAL_DEBUGGER
+static
+void AddInspect(const char *expr)
+{
+  char buf[1000];
+  strcpy(buf, expr);
+  if (inputBox(_("Expression to inspect"), _("~E~xpression"), buf, 999) == cmOK)
+  {
+    TInspector *w = new TInspector(TProgram::deskTop->getExtent(), buf);
+    w->update(buf);
+    AddWindow(w, (TWindow **)&w);
+  }
+}
+#endif
+
 void IDE::handleEvent(TEvent & event)
 {
   static char *callstack_name = NULL;
@@ -1258,6 +1277,10 @@ void IDE::handleEvent(TEvent & event)
         SC(ToggleBreak);
         case cmEvaluate:
           Evaluate(WUC());
+          clearEvent(event);
+          break;
+        case cmInspect:
+          AddInspect(WUC());
           clearEvent(event);
           break;
         case cmAddWatchEntry:

@@ -113,7 +113,7 @@ void IDEPrintEditor(TCEditor *e)
      s=e->fileName;
   else
      s++;
-  PrintSource(e->buffer,s);
+  PrintSource(e->buffer,s, e->tabSize);
 }
 
 int global_argc = 0;
@@ -2135,11 +2135,10 @@ static void LoadKeys()
     ExpandFileNameToThePointWhereTheProgramWasLoaded("macros.slp"));
 
   char *syntax_file;
-  TCEditor::SHLSOStack=new SOStack;
-  TCEditor::SHLGenList=new TNoCaseSOSStringCollection(5,5,TCEditor::SHLSOStack);
+  TCEditor::SHLGenList=new TNoCaseStringCollection(5,5);
   syntax_file = ExpandFileNameToThePointWhereTheProgramWasLoaded(SHLFile);
   if (LoadSyntaxHighLightFile(syntax_file,TCEditor::SHLArray,
-                              *TCEditor::SHLSOStack,TCEditor::SHLGenList,
+                              TCEditor::SHLGenList,
                               TCEditor::SHLCant) != 0)
   {
   /* should be in the 8.3 DOS scheme */
@@ -2158,7 +2157,7 @@ End\n\
 ");
     fclose(f);
     LoadSyntaxHighLightFile(syntax_file,TCEditor::SHLArray,
-                            *TCEditor::SHLSOStack,TCEditor::SHLGenList,
+                            TCEditor::SHLGenList,
                             TCEditor::SHLCant);
     unlink(syntax_file);
   }

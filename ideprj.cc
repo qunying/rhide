@@ -510,7 +510,7 @@ void LoadDesktop(ipstream & is,Boolean load_windows = True)
       temp.opt.wcol[2] = 0;
       temp.opt.wcol[3] = 0;
     }
-    if (version < 23) // applied editor 0.4.17
+    else if (version < 23) // applied editor 0.4.17
     {
       is.readBytes(&temp, sizeof(temp.before_0417));
       temp.opt.wcol[3] = 0;

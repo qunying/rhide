@@ -1742,9 +1742,9 @@ static void parse_commandline(int argc,char *argv[])
           TGKey::useBIOS = 1;
           break;
         case 'G':
+          arg = next_option(rhide_opt,rhide_opt_end,i,argc,argv);
 #ifdef __DJGPP__
           extern int screen_saving;
-          arg = next_option(rhide_opt,rhide_opt_end,i,argc,argv);
           if (!arg) Usage();
           screen_saving = atoi(arg);
 #endif

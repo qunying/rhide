@@ -17,9 +17,9 @@ include $(RHIDESRC)/common.mak
 
 ifeq ($(GDB_SRC),)
 ifeq ($(rhide_OS),DJGPP)
-GDB_SRC=$(DJDIR)/gnu/gdb-5.0
+GDB_SRC=$(DJDIR)/gnu/gdb-5.3
 else
-GDB_SRC=/usr/src/packages/BUILD/gdb-5.0
+GDB_SRC=/usr/src/packages/BUILD/gdb-5.3
 endif
 endif
 
@@ -71,6 +71,8 @@ all:: libgdbrh.h
 
 ifeq ($(LIBGDB_A),)
 all:: libgdbrh.a
+else
+libgdbrh.a: $(LIBGDB_A)
 endif
 
 libgdbrh.c: Makefile
@@ -119,7 +121,7 @@ $(GDB_OBJ)/bfd/bfd.h: $(GDB_OBJ)/Makefile
 
 ifneq ($(LIBGDB_H),)
 libgdbrh.h: $(LIBGDB_H)
-	echo "#include <$(LIBGDB_H)>" > libgdbrh.h
+	cat $(LIBGDB_H) > libgdbrh.h
 else
 libgdbrh.h: $(GDB_OBJ)/bfd/bfd.h libgdbrh.c gdb_ver.txt
 	gcc -E $(INC_PATH) $(CFLAGS) $(MMALLOC_CFLAGS) \

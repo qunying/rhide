@@ -57,9 +57,9 @@ all:: libgdb/libgdbrh.h $(programs)
 
 .PHONY: needed touch_gprs
 
-needed: libgdb/libgdbrh.h
+needed: libgdb/libgdbrh.h libgdb/libgdbrh.a
 
-libgdb/libgdbrh.h:
+libgdb/libgdbrh.h libgdb/libgdbrh.a:
 	$(MAKE) -C libgdb $(FLAGS_TO_PASS) $(notdir $@)
 
 rhgdb/rhgdb.exe::

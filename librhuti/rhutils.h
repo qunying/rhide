@@ -28,7 +28,7 @@ char *string_up(char *str);
    is called before any builtin function, otherwise it is called
    last.
    */
-typedef char *(*token_func)(const char *);
+typedef char *(*token_func)(char *);
 typedef char *(*external_token_func)(const char *, token_func);
 /* This returns a malloced string ever!!
    Currently it knows about the following string_functions. (For

@@ -985,7 +985,7 @@ typedef struct
 {
   char *name;
   int name_len;
-  char *(*func)(const char *);
+  char *(*func)(char *);
 } _rhide_function;
 
 #define FF(x) static A(1) char *rhide_function_##x(char *_arg)

@@ -366,8 +366,9 @@ public:
   TIntInputLine *closed;
   TLabel *options_label;
   int current_cluster;
-  const ushort cmMoreOptions = 9999;
 };
+
+const ushort cmMoreOptions = 9999;
 
 #define SetGetOptions()       \
     S(AllDeps,0);             \

@@ -76,7 +76,7 @@ _DEBUG("a_value_end\n");
 char *EvaluateWatch(char *watch)
 {
   char *ret,*end;
-#if 0
+#if 1
   if (!debugger_started) return NULL;
 #endif
   sprintf(command,"print %s",watch);

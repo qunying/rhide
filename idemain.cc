@@ -2384,11 +2384,30 @@ $(strip $(RHIDE_CONFIG_DIRS) $(INFOPATH) /usr/share/info /usr/info \
     string_free(locale_dir);
     // get the system default localedir
     char *_locale_dir = BINDTEXTDOMAIN("rhide", NULL);
-
     if (_locale_dir)
       locale_dir = string_dup(_locale_dir);
     else
       locale_dir = string_dup("");
+
+    char *spec = NULL;
+
+    string_cat(spec, "$(subst /de/LC_MESSAGES/rhide.mo,,",
+               "$(strip $(word 1,$(foreach file,$(addsuffix ",
+               "/de/LC_MESSAGES/rhide.mo",
+               ",",
+               locale_dir, " ",
+               "/usr/local/share/locale ",
+               "/usr/share/locale",
+               "),$(wildcard $(file))))))", NULL);
+    char *file = expand_rhide_spec(spec);
+    string_free(spec);
+    if (*file)
+    {
+      string_free(locale_dir);
+      locale_dir = file;
+    }
+    else
+      string_free(file);
   }
 #endif
   if (!*locale_dir)

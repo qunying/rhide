@@ -16,32 +16,32 @@ endif
 endif
 override RHIDE_OS:=$(RHIDE_OS_)
 
-RHIDE_SRC_=$(RHIDE_SRC)
-ifeq ($(strip $(RHIDE_SRC_)),)
-override RHIDE_SRC_:=$(shell pwd)
+RHIDESRC_=$(RHIDESRC)
+ifeq ($(strip $(RHIDESRC_)),)
+override RHIDESRC_:=$(shell pwd)
 endif
-override RHIDE_SRC:=$(RHIDE_SRC_)
+override RHIDESRC:=$(RHIDESRC_)
 
 SEARCH_TVSRC_DJGPP=$(DJDIR)/contrib/tvision \
-	$(RHIDE_SRC)/../tvision
+	$(RHIDESRC)/../tvision
 
 SEARCH_TVSRC_Linux=/usr/local/src/tvision \
 	/usr/src/tvision \
-	$(RHIDE_SRC)/../tvision
+	$(RHIDESRC)/../tvision
 
 SEARCH_SETSRC_DJGPP=$(DJDIR)/contrib/setedit \
-	$(RHIDE_SRC)/../setedit
+	$(RHIDESRC)/../setedit
 
 SEARCH_SETSRC_Linux=/usr/local/src/setedit \
 	/usr/src/setedit \
-	$(RHIDE_SRC)/../setedit
+	$(RHIDESRC)/../setedit
 
 SEARCH_GDBSRC_DJGPP=$(DJDIR)/gnu/gdb-5.0 \
-	$(RHIDE_SRC)/../gdb-5.0
+	$(RHIDESRC)/../gdb-5.0
 
 SEARCH_SETSRC_Linux=/usr/local/src/gdb-5.0 \
 	/usr/src/gdb-5.0 \
-	$(RHIDE_SRC)/../gdb-5.0
+	$(RHIDESRC)/../gdb-5.0
 
 TVSRC_=$(TVSRC)
 ifeq ($(strip $(TVSRC_)),)
@@ -78,19 +78,28 @@ override SETOBJ:=$(SETOBJ_)
 
 config_file=config.env
 
+ifeq ($(wildcard $(SETOBJ)/libeasyd.a),$(SETOBJ)/libeasyd.a)
+SET_LIBS=-leasyd -lsettv -lbz2
+else
+SET_LIBS=$(SETOBJ)/easydiag.a
+endif
+SET_LIBS+=-lrhtv
+
 echo_vars:
 	@echo RHIDE_OS=$(RHIDE_OS)
-	@echo RHIDE_SRC=$(RHIDE_SRC)
+	@echo RHIDESRC=$(RHIDESRC)
 	@echo TVSRC=$(TVSRC)
 	@echo SETSRC=$(SETSRC)
 	@echo GDB_SRC=$(GDB_SRC)
 	@echo TVOBJ=$(TVOBJ)
 	@echo SETOBJ=$(SETOBJ)
+	@echo SET_LIBS=$(SET_LIBS)
 
 create_config:
-	@echo RHIDE_SRC=$(RHIDE_SRC) > $(config_file)
+	@echo RHIDESRC=$(RHIDESRC) > $(config_file)
 	@echo TVSRC=$(TVSRC) >> $(config_file)
 	@echo SETSRC=$(SETSRC) >> $(config_file)
 	@echo GDB_SRC=$(GDB_SRC) >> $(config_file)
 	@echo TVOBJ=$(TVOBJ) >> $(config_file)
 	@echo SETOBJ=$(SETOBJ) >> $(config_file)
+	@echo RHIDE_LIBS+=$(SET_LIBS) >> $(config_file)

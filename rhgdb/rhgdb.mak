@@ -417,17 +417,14 @@ DEPS_4=
 all:: ../libtvuti/libtvuti.gpr.force
 ../libtvuti/libtvuti.gpr.force:
 	$(MAKE) -C ../libtvuti/ -f libtvuti.mak
-DEPS_5=gdbedit.cc c:/djgpp/contrib/setedit/include/ced_clas.h\
-	c:/djgpp/contrib/setedit/include/ced_exte.h\
-	c:/djgpp/contrib/setedit/include/ceditor.h\
-	c:/djgpp/contrib/setedit/include/pmcoll.h\
-	c:/djgpp/contrib/setedit/include/sindicat.h\
-	c:/djgpp/contrib/setedit/include/tvsetuti.h\
-	c:/djgpp/contrib/setedit/settvuti/include/sarray.h\
-	c:/djgpp/contrib/setedit/settvuti/include/setstack.h\
-	c:/djgpp/contrib/setedit/settvuti/include/settvuti.h\
-	c:/djgpp/contrib/setedit/settvuti/include/tnocastc.h\
-	c:/djgpp/contrib/setedit/settvuti/include/viewplus.h\
+DEPS_5=gdbedit.cc $(SETSRC)/include/ced_clas.h $(SETSRC)/include/ced_exte.h\
+	$(SETSRC)/include/ceditor.h $(SETSRC)/include/pmcoll.h\
+	$(SETSRC)/include/sindicat.h $(SETSRC)/include/tvsetuti.h\
+	$(SETSRC)/settvuti/include/sarray.h\
+	$(SETSRC)/settvuti/include/setstack.h\
+	$(SETSRC)/settvuti/include/settvuti.h\
+	$(SETSRC)/settvuti/include/tnocastc.h\
+	$(SETSRC)/settvuti/include/viewplus.h\
 	$(RHIDESRC)/librhgdb/include/librhgdb.h\
 	$(RHIDESRC)/librhuti/rhutils.h\
 	$(RHIDESRC)/libtvuti/include/libtvuti.h\
@@ -439,18 +436,14 @@ DEPS_5=gdbedit.cc c:/djgpp/contrib/setedit/include/ced_clas.h\
 	$(RHIDESRC)/rhgdb/include/rhgdb.h
 gdbedit.o:: $(DEPS_5)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_6=gdbsynt.cc c:/djgpp/contrib/setedit/include/ced_clas.h\
-	c:/djgpp/contrib/setedit/include/ced_exte.h\
-	c:/djgpp/contrib/setedit/include/ced_inte.h\
-	c:/djgpp/contrib/setedit/include/ceditor.h\
-	c:/djgpp/contrib/setedit/include/pmcoll.h\
-	c:/djgpp/contrib/setedit/include/sindicat.h\
-	c:/djgpp/contrib/setedit/include/tvsetuti.h\
-	c:/djgpp/contrib/setedit/settvuti/include/sarray.h\
-	c:/djgpp/contrib/setedit/settvuti/include/setstack.h\
-	c:/djgpp/contrib/setedit/settvuti/include/settvuti.h\
-	c:/djgpp/contrib/setedit/settvuti/include/tnocastc.h\
-	c:/djgpp/contrib/setedit/settvuti/include/viewplus.h\
+DEPS_6=gdbsynt.cc $(SETSRC)/include/ced_clas.h $(SETSRC)/include/ced_exte.h\
+	$(SETSRC)/include/ced_inte.h $(SETSRC)/include/ceditor.h\
+	$(SETSRC)/include/pmcoll.h $(SETSRC)/include/sindicat.h\
+	$(SETSRC)/include/tvsetuti.h $(SETSRC)/settvuti/include/sarray.h\
+	$(SETSRC)/settvuti/include/setstack.h\
+	$(SETSRC)/settvuti/include/settvuti.h\
+	$(SETSRC)/settvuti/include/tnocastc.h\
+	$(SETSRC)/settvuti/include/viewplus.h\
 	$(RHIDESRC)/librhuti/rhutils.h\
 	$(RHIDESRC)/libtvuti/include/libtvuti.h\
 	$(RHIDESRC)/libtvuti/include/tdirlist.h\
@@ -459,17 +452,14 @@ DEPS_6=gdbsynt.cc c:/djgpp/contrib/setedit/include/ced_clas.h\
 	$(RHIDESRC)/rhgdb/include/rhgdb.h
 gdbsynt.o:: $(DEPS_6)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_7=main.cc c:/djgpp/contrib/setedit/include/ced_clas.h\
-	c:/djgpp/contrib/setedit/include/ced_exte.h\
-	c:/djgpp/contrib/setedit/include/ceditor.h\
-	c:/djgpp/contrib/setedit/include/pmcoll.h\
-	c:/djgpp/contrib/setedit/include/sindicat.h\
-	c:/djgpp/contrib/setedit/include/tvsetuti.h\
-	c:/djgpp/contrib/setedit/settvuti/include/sarray.h\
-	c:/djgpp/contrib/setedit/settvuti/include/setstack.h\
-	c:/djgpp/contrib/setedit/settvuti/include/settvuti.h\
-	c:/djgpp/contrib/setedit/settvuti/include/tnocastc.h\
-	c:/djgpp/contrib/setedit/settvuti/include/viewplus.h\
+DEPS_7=main.cc $(SETSRC)/include/ced_clas.h $(SETSRC)/include/ced_exte.h\
+	$(SETSRC)/include/ceditor.h $(SETSRC)/include/pmcoll.h\
+	$(SETSRC)/include/sindicat.h $(SETSRC)/include/tvsetuti.h\
+	$(SETSRC)/settvuti/include/sarray.h\
+	$(SETSRC)/settvuti/include/setstack.h\
+	$(SETSRC)/settvuti/include/settvuti.h\
+	$(SETSRC)/settvuti/include/tnocastc.h\
+	$(SETSRC)/settvuti/include/viewplus.h\
 	$(RHIDESRC)/librhgdb/include/librhgdb.h\
 	$(RHIDESRC)/librhuti/rhutils.h\
 	$(RHIDESRC)/libtvgdb/include/libtvgdb.h\

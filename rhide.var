@@ -3,7 +3,7 @@
 #
 
 include $(RHIDESRC)/common.var
-RHIDE_OS_LIBS_Linux=ncurses gpm m
+RHIDE_OS_LIBS_Linux=ncurses gpm m dl
 RHIDE_OS_LIBS_DJGPP_idegc.exe=dbg
 RHIDE_OS_LIBS_DJGPP_rhgdb.exe=dbg
 RHIDE_OS_LIBS_DJGPP=intl $(RHIDE_OS_LIBS_DJGPP_$(MAIN_TARGET))

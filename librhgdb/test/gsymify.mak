@@ -277,7 +277,7 @@ C_P_LANG_FLAGS=
 C_FPC_LANG_FLAGS=
 C_F_LANG_FLAGS=
 C_ADA_LANG_FLAGS=
-LIBS=gdb
+LIBS=gdbrh
 LD_EXTRA_FLAGS=
 C_EXTRA_FLAGS=
 LOCAL_OPT=$(subst ___~~~___, ,$(subst $(notdir $<)___,,$(filter $(notdir\
@@ -397,7 +397,7 @@ DEPS_1=
 all:: ../librhgdb.gpr.force
 ../librhgdb.gpr.force:
 	$(MAKE) -C ../ -f librhgdb.mak
-DEPS_2=symify.c ../../libgdb/libgdb.h librhgdb.h
+DEPS_2=symify.c ../../libgdb/libgdbrh.h librhgdb.h
 symify.o:: $(DEPS_2)
 	$(RHIDE_COMPILE.c.o)
 LOCAL_2=\

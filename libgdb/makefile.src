@@ -63,36 +63,36 @@ INCS=$(subst s_gdb,$(GDB_SRC),$(subst o_gdb,$(GDB_OBJ),$(_INCS)))
 
 INC_PATH=$(addprefix -I,$(INCS))
 
-all:: libgdb.h
+all:: libgdbrh.h
 
 ifeq ($(LIBGDB_A),)
-all:: libgdb.a
+all:: libgdbrh.a
 endif
 
-libgdb.c: Makefile
-	echo '#include <defs.h>' > libgdb.c
-	echo '#include <breakpoint.h>' >> libgdb.c
-	echo '#include <symtab.h>' >> libgdb.c
-	echo '#include <symfile.h>' >> libgdb.c
-	echo '#include <objfiles.h>' >> libgdb.c
-	echo '#include <inferior.h>' >> libgdb.c
-	echo '#include <gnu-regex.h>' >> libgdb.c
-	echo '#include <expression.h>' >> libgdb.c
-	echo '#include <language.h>' >> libgdb.c
-	echo '#include <complaints.h>' >> libgdb.c
-	echo '#include <coff/internal.h>' >> libgdb.c
-	echo '#include <libcoff.h>' >> libgdb.c
-	echo '#include <ctype.h>' >> libgdb.c
-	echo '#include <string.h>' >> libgdb.c
-	echo '#include <buildsym.h>' >> libgdb.c
-	echo '#include <gdb-stabs.h>' >> libgdb.c
-	echo '#include <stabsread.h>' >> libgdb.c
-	echo '#include <gdbcmd.h>' >> libgdb.c
-	echo '#include <setjmp.h>' >> libgdb.c
-	echo '#include <demangle.h>' >> libgdb.c
-	echo '#include <annotate.h>' >> libgdb.c
-	echo '#include <top.h>' >> libgdb.c
-	echo '#include <floatformat.h>' >> libgdb.c
+libgdbrh.c: Makefile
+	echo '#include <defs.h>' > libgdbrh.c
+	echo '#include <breakpoint.h>' >> libgdbrh.c
+	echo '#include <symtab.h>' >> libgdbrh.c
+	echo '#include <symfile.h>' >> libgdbrh.c
+	echo '#include <objfiles.h>' >> libgdbrh.c
+	echo '#include <inferior.h>' >> libgdbrh.c
+	echo '#include <gnu-regex.h>' >> libgdbrh.c
+	echo '#include <expression.h>' >> libgdbrh.c
+	echo '#include <language.h>' >> libgdbrh.c
+	echo '#include <complaints.h>' >> libgdbrh.c
+	echo '#include <coff/internal.h>' >> libgdbrh.c
+	echo '#include <libcoff.h>' >> libgdbrh.c
+	echo '#include <ctype.h>' >> libgdbrh.c
+	echo '#include <string.h>' >> libgdbrh.c
+	echo '#include <buildsym.h>' >> libgdbrh.c
+	echo '#include <gdb-stabs.h>' >> libgdbrh.c
+	echo '#include <stabsread.h>' >> libgdbrh.c
+	echo '#include <gdbcmd.h>' >> libgdbrh.c
+	echo '#include <setjmp.h>' >> libgdbrh.c
+	echo '#include <demangle.h>' >> libgdbrh.c
+	echo '#include <annotate.h>' >> libgdbrh.c
+	echo '#include <top.h>' >> libgdbrh.c
+	echo '#include <floatformat.h>' >> libgdbrh.c
 
 LIBGDB_FLAGS+=$(OS_FLAGS)
 override CFLAGS+=$(OS_CFLAGS)
@@ -104,14 +104,14 @@ $(GDB_OBJ)/bfd/bfd.h: $(GDB_OBJ)/Makefile
 	$(MAKE) -C $(dir $@) $(notdir $@)
 
 ifneq ($(LIBGDB_H),)
-libgdb.h: $(LIBGDB_H)
-	echo "#include <$(LIBGDB_H)>" > libgdb.h
+libgdbrh.h: $(LIBGDB_H)
+	echo "#include <$(LIBGDB_H)>" > libgdbrh.h
 else
-libgdb.h: $(GDB_OBJ)/bfd/bfd.h libgdb.c
-	gcc -E -P $(INC_PATH) $(CFLAGS) $(MMALLOC_CFLAGS) libgdb.c \
-	  | sed -e '/^[ 	]*$$/d' > libgdb.h
-	gcc -E -P -dM $(INC_PATH) $(CFLAGS) $(MMALLOC_CFLAGS) libgdb.c \
-	  | sed -e '/^[ 	]*$$/d' >> libgdb.h
+libgdbrh.h: $(GDB_OBJ)/bfd/bfd.h libgdbrh.c
+	gcc -E -P $(INC_PATH) $(CFLAGS) $(MMALLOC_CFLAGS) libgdbrh.c \
+	  | sed -e '/^[ 	]*$$/d' > libgdbrh.h
+	gcc -E -P -dM $(INC_PATH) $(CFLAGS) $(MMALLOC_CFLAGS) libgdbrh.c \
+	  | sed -e '/^[ 	]*$$/d' >> libgdbrh.h
 endif
 
 gdb.t: libgdb-files
@@ -139,8 +139,8 @@ T_FILES=libbfd.t libiberty.t libopcodes.t libreadline.t $(notdir $(subst .a,.t,$
 list: $(T_FILES)
 
 ifeq ($(LIBGDB_A),)
-libgdb.a: $(CHECKS) libgdb.h list
-	rm -f libgdb.a
+libgdbrh.a: $(CHECKS) libgdbrh.h list
+	rm -f libgdbrh.a
 # do not use any xmalloc.o, because it is defined in utils.o
 	ar rcs $@ $(shell cat $(T_FILES) | sed -e '/.*xmalloc.*/d')
 	rm -f $(T_FILES) libgdb-files

@@ -278,7 +278,7 @@ RHIDE_OS_CXXFLAGS=$(RHIDE_OS_CXXFLAGS_$(RHIDE_OS)) $(RH_WARN)\
 	-fno-exceptions -fno-rtti
 RHIDE_LIBDIRS=$(addprefix -L,$(dir $(LIBGDB_A)) $(LIB_DIRS))
 PCRE_OBJ=$(subst Linux,linux,$(SETOBJ)/$(RHIDE_OS))
-RHIDE_OS_LIBS_Linux=ncurses gpm m
+RHIDE_OS_LIBS_Linux=ncurses gpm m dl
 RHIDE_OS_LIBS_DJGPP_idegc.exe=dbg
 RHIDE_OS_LIBS_DJGPP_rhgdb.exe=dbg
 RHIDE_OS_LIBS_DJGPP=intl $(RHIDE_OS_LIBS_DJGPP_$(MAIN_TARGET))
@@ -325,7 +325,7 @@ RHIDE_OS_CXXFLAGS=$(RHIDE_OS_CXXFLAGS_$(RHIDE_OS)) $(RH_WARN)\
 	-fno-exceptions -fno-rtti
 RHIDE_LIBDIRS=$(addprefix -L,$(dir $(LIBGDB_A)) $(LIB_DIRS))
 PCRE_OBJ=$(subst Linux,linux,$(SETOBJ)/$(RHIDE_OS))
-RHIDE_OS_LIBS_Linux=ncurses gpm m
+RHIDE_OS_LIBS_Linux=ncurses gpm m dl
 RHIDE_OS_LIBS_DJGPP_idegc.exe=dbg
 RHIDE_OS_LIBS_DJGPP_rhgdb.exe=dbg
 RHIDE_OS_LIBS_DJGPP=intl $(RHIDE_OS_LIBS_DJGPP_$(MAIN_TARGET))
@@ -349,7 +349,7 @@ C_P_LANG_FLAGS=
 C_FPC_LANG_FLAGS=
 C_F_LANG_FLAGS=
 C_ADA_LANG_FLAGS=
-LIBS=tvgdb rhgdb rhuti set tvuti rhuti rhtv gdb z pcre
+LIBS=tvgdb rhgdb rhuti set tvuti rhuti rhtv gdbrh z pcre
 LD_EXTRA_FLAGS=
 C_EXTRA_FLAGS=-DFOR_LIBSET
 LOCAL_OPT=$(subst ___~~~___, ,$(subst $(notdir $<)___,,$(filter $(notdir\

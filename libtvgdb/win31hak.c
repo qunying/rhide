@@ -2,7 +2,7 @@
 /* This file is part of RHIDE. */
 #ifdef __DJGPP__
 
-#include <libgdb.h>
+#include <libgdbrh.h>
 
 /* Here comes the hack for Windows 3.1x.
    The case for setting breakpoints s handled in librhgdb by allowing

@@ -51,17 +51,17 @@ include $(RHIDESRC)/common.mak
 
 programs=gpr2mak.exe idegc.exe rhgdb/rhgdb.exe
 
-all:: libgdb/libgdb.h $(programs)
+all:: libgdb/libgdbrh.h $(programs)
 
-idegc.exe rhgdb/rhgdb.exe:: libgdb/libgdb.a
+idegc.exe rhgdb/rhgdb.exe:: libgdb/libgdbrh.a
 
 # these are the targets, which cannot build with RHIDE
 
 .PHONY: needed touch_gprs
 
-needed: libgdb/libgdb.h libgdb/libgdb.a 
+needed: libgdb/libgdbrh.h libgdb/libgdbrh.a 
 
-libgdb/libgdb.a libgdb/libgdb.h:
+libgdb/libgdbrh.a libgdb/libgdbrh.h:
 	$(MAKE) -C libgdb $(FLAGS_TO_PASS)
 
 rhgdb/rhgdb.exe::

@@ -271,7 +271,7 @@ C_P_LANG_FLAGS=
 C_FPC_LANG_FLAGS=
 C_F_LANG_FLAGS=
 C_ADA_LANG_FLAGS=
-LIBS=tv
+LIBS=
 LD_EXTRA_FLAGS=
 C_EXTRA_FLAGS=-U__GNUC_MINOR__ -UDJGPP_MINOR -U__DJGPP_MINOR\
 	-U__DJGPP_MINOR__
@@ -389,40 +389,40 @@ NO_LINK=watchdog.o
 LINK_FILES=$(filter-out $(NO_LINK),$(DEPS_0))
 librhgdb.a:: $(DEPS_0)
 	$(RHIDE_COMPILE_ARCHIVE)
-DEPS_1=annotate.c ../libgdb/libgdb.h rhgdbint.h
+DEPS_1=annotate.c ../libgdb/libgdbrh.h rhgdbint.h
 annotate.o:: $(DEPS_1)
 	$(RHIDE_COMPILE.c.o)
-DEPS_2=breakpoi.c ../libgdb/libgdb.h librhgdb.h rhgdbint.h
+DEPS_2=breakpoi.c ../libgdb/libgdbrh.h librhgdb.h rhgdbint.h
 breakpoi.o:: $(DEPS_2)
 	$(RHIDE_COMPILE.c.o)
 DEPS_3=defaults.c librhgdb.h
 defaults.o:: $(DEPS_3)
 	$(RHIDE_COMPILE.c.o)
-DEPS_4=dis.c ../libgdb/libgdb.h librhgdb.h rhgdbint.h
+DEPS_4=dis.c ../libgdb/libgdbrh.h librhgdb.h rhgdbint.h
 dis.o:: $(DEPS_4)
 	$(RHIDE_COMPILE.c.o)
-DEPS_5=frame.c ../libgdb/libgdb.h librhgdb.h rhgdbint.h
+DEPS_5=frame.c ../libgdb/libgdbrh.h librhgdb.h rhgdbint.h
 frame.o:: $(DEPS_5)
 	$(RHIDE_COMPILE.c.o)
-DEPS_6=gdbcontr.c ../libgdb/libgdb.h librhgdb.h rhgdbint.h
+DEPS_6=gdbcontr.c ../libgdb/libgdbrh.h librhgdb.h rhgdbint.h
 gdbcontr.o:: $(DEPS_6)
 	$(RHIDE_COMPILE.c.o)
-DEPS_7=gdbinter.c ../libgdb/libgdb.h librhgdb.h rhgdbint.h
+DEPS_7=gdbinter.c ../libgdb/libgdbrh.h librhgdb.h rhgdbint.h
 gdbinter.o:: $(DEPS_7)
 	$(RHIDE_COMPILE.c.o)
-DEPS_8=listfunc.c ../libgdb/libgdb.h librhgdb.h rhgdbint.h
+DEPS_8=listfunc.c ../libgdb/libgdbrh.h librhgdb.h rhgdbint.h
 listfunc.o:: $(DEPS_8)
 	$(RHIDE_COMPILE.c.o)
-DEPS_9=regs.c ../libgdb/libgdb.h librhgdb.h
+DEPS_9=regs.c ../libgdb/libgdbrh.h librhgdb.h
 regs.o:: $(DEPS_9)
 	$(RHIDE_COMPILE.c.o)
-DEPS_10=symify.c ../libgdb/libgdb.h librhgdb.h
+DEPS_10=symify.c ../libgdb/libgdbrh.h librhgdb.h
 symify.o:: $(DEPS_10)
 	$(RHIDE_COMPILE.c.o)
 DEPS_11=watchdog.c
 watchdog.o:: $(DEPS_11)
 	$(RHIDE_COMPILE.c.o)
-DEPS_12=watches.c ../libgdb/libgdb.h librhgdb.h rhgdbint.h
+DEPS_12=watches.c ../libgdb/libgdbrh.h librhgdb.h rhgdbint.h
 watches.o:: $(DEPS_12)
 	$(RHIDE_COMPILE.c.o)
 all:: librhgdb.a

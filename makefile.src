@@ -8,7 +8,7 @@ endif
 
 srcdir=$(RHIDESRC)
 VPATH=$(srcdir)
-projects=gpr2mak rhide_ rhide gprexp rh tolf tocrlf
+projects=gpr2mak rhide_ rhide gprexp rh tolf tocrlf copyrite
 project=
 cfg_files=
 txt_conv_DJGPP=tocrlf.exe
@@ -30,7 +30,8 @@ src_files=$(po_files) Makefile common.mak README.IDE RHIDE.BIN RHIDE.SRC \
 	LINUX.TXT rhide.var VCSA.SH common.var configure \
 	ideversi.in ideversi.cc readme.key rhide_.env \
 	moveifch gprexp.gpr gprexp.mak rh.gpr rh.mak config.mak \
-	tolf.cc tolf.gpr tolf.mak tocrlf.gpr tocrlf.mak
+	tolf.cc tolf.gpr tolf.mak tocrlf.gpr tocrlf.mak \
+	copyrite.gpr copyrite.mak
 
 subdirs=libide librhgdb libtvgdb libtvuti include doc libgdb \
 	rhgdb debobj nodebobj po tvdemo librhuti share\
@@ -252,7 +253,7 @@ rhgdb/version.cc: rhgdb/version.in common.mak
 	@$(move-if-change) _vers_ $@
 	-rm -f _vers_
 
-distrib.src: init.version touch_gprs
+distrib.src: check_perms init.version touch_gprs
 	$(MAKE) $(FLAGS_TO_PASS) gpr2mak.exe
 	$(MAKE) $(FLAGS_TO_PASS) \
 	  prefix=$(copy_dir)/$(install_prefix_src) \
@@ -373,7 +374,7 @@ distrib.bin_: $(notdir $(txt_conv)) install.all install.bin_src_files $(MANIFEST
 distrib.dynamic:
 	$(MAKE) link_type=dynamic archive_id=.dynamic distrib.bin 
 
-distrib.bin: init.version touch_gprs
+distrib.bin: check_perms init.version touch_gprs
 	rm -rf $(copy_dir)
 	rm -f $(main_executables)
 # make at first gpr2mak
@@ -436,3 +437,13 @@ _additional_po_files:=$(wildcard $(REAL_TVSRC)/*.cc)\
 config::
 	$(MAKE) -f config.mak config_file=$(config_dir)/config.env \
 	  create_config
+
+check_perms:
+	find $(srcdir) -not -type d | xargs chmod 644
+	find $(srcdir) -type d | xargs chmod 755
+	chmod 755 $(srcdir)/configure
+
+distrib.rpm: distrib.src
+ifneq ($(rhide_OS),DJGPP)
+	rpm -ba --clean $(srcdir)/rhide.spec
+endif

@@ -42,7 +42,7 @@ void ClearHistoryIDs()
   hist_id_count = 0;
   free(hist_ids);
   hist_ids = NULL;
-  InitHistoryID(100); // Read/Write block
+  InitHistoryIDs();
 }
 
 static void SaveHistoryID(opstream & os,int id)

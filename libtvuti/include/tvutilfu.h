@@ -58,4 +58,6 @@ void add_help_constant(const char *name, unsigned short value);
 
 class TDialog;
 ushort execDialog( TDialog *d, void *data );
+
+extern void (*InitHistoryIDs)();
 #endif

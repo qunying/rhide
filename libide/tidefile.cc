@@ -19,6 +19,9 @@
 #define Uses_ideCommands
 #define Uses_ideFunctions
 #include <libide.h>
+
+#define Uses_TCEditor_Commands
+#include <ceditor.h>
 #include <utime.h>
 #include <sys/stat.h>
 #include <sys/timeb.h>
@@ -137,17 +140,17 @@ void TIDEFileEditor::handleEvent(TEvent & event)
   }
   if (event.what == evCommand &&
       (event.message.command == cmSaveEditor ||
-       event.message.command == cmSaveAs))
+       event.message.command == cmcSaveAs))
   {
     savecmd = 1;
-    if (event.message.command == cmSaveAs || !*fileName)
+    if (event.message.command == cmcSaveAs || !*fileName)
       save_as = 1;
   }
   else
     savecmd = 0;
 //  lock();
   if (savecmd && event.message.command == cmSaveEditor)
-    event.message.command = cmSave;
+    event.message.command = cmcSave;
   if (!savecmd) modified = False; // when not saving, check for new modification
   TCFileEditor::handleEvent(event);
   if (event.what == evCommand) // the event was not handled

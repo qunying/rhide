@@ -285,7 +285,7 @@ LD_EXTRA_FLAGS=
 C_EXTRA_FLAGS=-DFOR_LIBSET
 LOCAL_OPT=$(subst ___~~~___, ,$(subst $(notdir $<)___,,$(filter $(notdir\
 	$<)___%,$(LOCAL_OPTIONS))))
-OBJFILES=gdbedit.o gdbsynt.o main.o ../librhuti.a version.o
+OBJFILES=gdbedit.o gdbsynt.o main.o options.o version.o
 LIBRARIES=
 SOURCE_NAME=$<
 OUTFILE=$@
@@ -307,7 +307,7 @@ endif
 MAIN_TARGET=rhgdb.exe
 PROJECT_ITEMS=../librhgdb/librhgdb.gpr ../librhuti/librhuti.gpr\
 	../libtvgdb/libtvgdb.gpr ../libtvuti/libtvuti.gpr gdbedit.cc\
-	gdbsynt.cc main.cc ../../../twatchli.h version.cc
+	gdbsynt.cc main.cc options.cc version.cc
 DEFAULT_MASK=*.[cghiompst]*
 RHIDE_BIN_DIR=c:/obj/rhide
 PASCAL_TYPE=GPC
@@ -386,7 +386,7 @@ PASCAL_TYPE=GPC
 %.s: %.C
 	$(RHIDE_COMPILE.C.s)
 all::
-DEPS_0= gdbedit.o gdbsynt.o main.o ../librhuti.a version.o\
+DEPS_0= gdbedit.o gdbsynt.o main.o options.o version.o\
 	../librhgdb/librhgdb.a ../librhuti/librhuti.a\
 	../libtvgdb/libtvgdb.a ../libtvuti/libtvuti.a
 NO_LINK=../librhgdb/librhgdb.a ../librhuti/librhuti.a\
@@ -460,7 +460,6 @@ DEPS_7=main.cc $(SETSRC)/include/ced_clas.h $(SETSRC)/include/ced_exte.h\
 	$(RHIDESRC)/librhgdb/include/librhgdb.h\
 	$(RHIDESRC)/librhuti/rhutils.h\
 	$(RHIDESRC)/libtvgdb/include/libtvgdb.h\
-	$(RHIDESRC)/libtvgdb/include/tdatawin.h\
 	$(RHIDESRC)/libtvgdb/include/tdiswin.h\
 	$(RHIDESRC)/libtvgdb/include/tvgdbcom.h\
 	$(RHIDESRC)/libtvgdb/include/tvgdbfun.h\
@@ -476,7 +475,7 @@ DEPS_7=main.cc $(SETSRC)/include/ced_clas.h $(SETSRC)/include/ced_exte.h\
 	$(RHIDESRC)/rhgdb/include/rhgdb.h
 main.o:: $(DEPS_7)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_8=../../../twatchli.h $(RHIDESRC)/librhgdb/include/librhgdb.h\
+DEPS_8=options.cc $(RHIDESRC)/librhgdb/include/librhgdb.h\
 	$(RHIDESRC)/libtvuti/include/libtvuti.h\
 	$(RHIDESRC)/libtvuti/include/tenterch.h\
 	$(RHIDESRC)/libtvuti/include/tenterin.h\
@@ -484,8 +483,8 @@ DEPS_8=../../../twatchli.h $(RHIDESRC)/librhgdb/include/librhgdb.h\
 	$(RHIDESRC)/libtvuti/include/tlbutton.h\
 	$(RHIDESRC)/libtvuti/include/tvutilco.h\
 	$(RHIDESRC)/rhgdb/include/rhgdb.h
-../librhuti.a:: $(DEPS_8)
-	$(RHIDE_COMPILE_CC)
+options.o:: $(DEPS_8)
+	$(RHIDE_COMPILE.cc.o)
 DEPS_9=version.cc
 version.o:: $(DEPS_9)
 	$(RHIDE_COMPILE.cc.o)

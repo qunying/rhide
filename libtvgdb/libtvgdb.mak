@@ -273,8 +273,8 @@ LOCAL_OPT=$(subst ___~~~___, ,$(subst $(notdir $<)___,,$(filter $(notdir\
 	$<)___%,$(LOCAL_OPTIONS))))
 OBJFILES=breakdia.o callstac.o commands.o funcsel.o gdbdummy.o inspect.o\
 	inspectl.o tbreakli.o tdatawin.o tdiswin.o tfuncinp.o tfunctio.o\
-	tgdbwind.o tregwin.o twatchdi.o twatchli.o userwarn.o watches.o\
-	win31hak.o
+	tgdbwind.o tregwin.o tvgdb.o twatchdi.o twatchli.o userwarn.o\
+	watches.o
 LIBRARIES=
 SOURCE_NAME=$<
 OUTFILE=$@
@@ -296,8 +296,8 @@ endif
 MAIN_TARGET=libtvgdb.a
 PROJECT_ITEMS=breakdia.cc callstac.cc commands.cc funcsel.cc gdbdummy.c\
 	inspect.cc inspectl.cc tbreakli.cc tdatawin.cc tdiswin.cc\
-	tfuncinp.cc tfunctio.cc tgdbwind.cc tregwin.cc twatchdi.cc\
-	twatchli.cc userwarn.cc watches.cc win31hak.c
+	tfuncinp.cc tfunctio.cc tgdbwind.cc tregwin.cc tvgdb.cc twatchdi.cc\
+	twatchli.cc userwarn.cc watches.cc
 DEFAULT_MASK=*.[chmpoisg]*
 RHIDE_BIN_DIR=c:/obj/rhide
 PASCAL_TYPE=GPC
@@ -378,8 +378,8 @@ PASCAL_TYPE=GPC
 all::
 DEPS_0= breakdia.o callstac.o commands.o funcsel.o gdbdummy.o inspect.o\
 	inspectl.o tbreakli.o tdatawin.o tdiswin.o tfuncinp.o tfunctio.o\
-	tgdbwind.o tregwin.o twatchdi.o twatchli.o userwarn.o watches.o\
-	win31hak.o 
+	tgdbwind.o tregwin.o tvgdb.o twatchdi.o twatchli.o userwarn.o\
+	watches.o 
 NO_LINK=
 LINK_FILES=$(filter-out $(NO_LINK),$(DEPS_0))
 libtvgdb.a:: $(DEPS_0)
@@ -494,7 +494,13 @@ DEPS_14=tregwin.cc $(RHIDESRC)/libtvgdb/include/libtvgdb.h\
 	$(RHIDESRC)/libtvgdb/include/tregwin.h
 tregwin.o:: $(DEPS_14)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_15=twatchdi.cc $(SETSRC)/settvuti/include/settvuti.h\
+DEPS_15=tvgdb.cc $(RHIDESRC)/libtvgdb/include/libtvgdb.h\
+	$(RHIDESRC)/libtvgdb/include/tdatawin.h\
+	$(RHIDESRC)/libtvuti/include/libtvuti.h\
+	$(RHIDESRC)/libtvuti/include/tvutilfu.h
+tvgdb.o:: $(DEPS_15)
+	$(RHIDE_COMPILE.cc.o)
+DEPS_16=twatchdi.cc $(SETSRC)/settvuti/include/settvuti.h\
 	$(SETSRC)/settvuti/include/tinppipe.h\
 	$(RHIDESRC)/librhgdb/include/librhgdb.h\
 	$(RHIDESRC)/libtvgdb/include/libtvgdb.h\
@@ -504,9 +510,9 @@ DEPS_15=twatchdi.cc $(SETSRC)/settvuti/include/settvuti.h\
 	$(RHIDESRC)/libtvuti/include/libtvuti.h\
 	$(RHIDESRC)/libtvuti/include/tlbutton.h\
 	$(RHIDESRC)/libtvuti/include/tvutilfu.h
-twatchdi.o:: $(DEPS_15)
+twatchdi.o:: $(DEPS_16)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_16=twatchli.cc $(RHIDESRC)/librhgdb/include/librhgdb.h\
+DEPS_17=twatchli.cc $(RHIDESRC)/librhgdb/include/librhgdb.h\
 	$(RHIDESRC)/libtvgdb/include/libtvgdb.h\
 	$(RHIDESRC)/libtvgdb/include/tvgdbcom.h\
 	$(RHIDESRC)/libtvgdb/include/tvgdbfun.h\
@@ -516,16 +522,16 @@ DEPS_16=twatchli.cc $(RHIDESRC)/librhgdb/include/librhgdb.h\
 	$(RHIDESRC)/libtvuti/include/tenterli.h\
 	$(RHIDESRC)/libtvuti/include/tscollec.h\
 	$(RHIDESRC)/libtvuti/include/tvutilfu.h
-twatchli.o:: $(DEPS_16)
+twatchli.o:: $(DEPS_17)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_17=userwarn.cc $(RHIDESRC)/librhgdb/include/librhgdb.h\
+DEPS_18=userwarn.cc $(RHIDESRC)/librhgdb/include/librhgdb.h\
 	$(RHIDESRC)/libtvgdb/include/libtvgdb.h\
 	$(RHIDESRC)/libtvgdb/include/tvgdbfun.h\
 	$(RHIDESRC)/libtvuti/include/libtvuti.h\
 	$(RHIDESRC)/libtvuti/include/tvutilfu.h
-userwarn.o:: $(DEPS_17)
+userwarn.o:: $(DEPS_18)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_18=watches.cc $(RHIDESRC)/librhgdb/include/librhgdb.h\
+DEPS_19=watches.cc $(RHIDESRC)/librhgdb/include/librhgdb.h\
 	$(RHIDESRC)/libtvgdb/include/libtvgdb.h\
 	$(RHIDESRC)/libtvgdb/include/tvgdbfun.h\
 	$(RHIDESRC)/libtvgdb/include/tvgdbhis.h\
@@ -535,17 +541,6 @@ DEPS_18=watches.cc $(RHIDESRC)/librhgdb/include/librhgdb.h\
 	$(RHIDESRC)/libtvuti/include/tenterli.h\
 	$(RHIDESRC)/libtvuti/include/tscollec.h\
 	$(RHIDESRC)/libtvuti/include/tvutilfu.h
-watches.o:: $(DEPS_18)
+watches.o:: $(DEPS_19)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_19=win31hak.c ../libgdb/libgdb.h
-win31hak.o:: $(DEPS_19)
-	$(RHIDE_COMPILE.c.o)
-LOCAL_19=\
-	win31hak.c___-DWIN31_HACK\
-	win31hak.c___-g0\
-	win31hak.c___-U__GNUC_MINOR__\
-	win31hak.c___-UDJGPP_MINOR\
-	win31hak.c___-U__DJGPP_MINOR\
-	win31hak.c___-U__DJGPP_MINOR__
-LOCAL_OPTIONS += $(LOCAL_19)
 all:: libtvgdb.a

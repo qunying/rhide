@@ -15,7 +15,7 @@ src_files=\
 po_files=
 cfg_files=
 update_files=
-projects=doc
+projects=doc htmlspl tx2txi
 
 subdirs=
 po_subdirs=

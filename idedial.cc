@@ -31,18 +31,16 @@
 #include <string.h>
 #include <errno.h>
 
-int dialog_handled;
+unsigned doEditDialog( int dialog, va_list first );
 
-extern unsigned doEditDialog(int, va_list arg);
-
-static unsigned IDEdoEditDialog(int /* dialog */, va_list )
+unsigned IDEdoEditDialog(int dialog, ... )
 {
-  dialog_handled = 0;
-  return 0;
+  va_list args;
+  va_start(args, dialog);
+  unsigned ret = doEditDialog(dialog, args);
+  va_end(args);
+  return ret;
 }
-
-unsigned (*dial_ori)(int, va_list arg) = doEditDialog;
-unsigned (*dial_new)(int, va_list arg) = IDEdoEditDialog;
 
 extern "C" int eval(char *mit,char **out);
 

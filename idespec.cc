@@ -324,7 +324,7 @@ static char *default_variables[] = {
  "$(RHIDE_COMPILE_FPC)",
 
  "RHIDE_COMPILE.pas.s.GPC",
- "$(subst -c,-S,$(RHIDE_COMPILE_GPC))",
+ "$(subst -c $(SOURCE_NAME),-S $(SOURCE_NAME),$(RHIDE_COMPILE_GPC))",
 
  "RHIDE_COMPILE.pas.s.FPC",
  "$(RHIDE_COMPILE_FPC) -a -s",
@@ -342,19 +342,19 @@ static char *default_variables[] = {
  "$(RHIDE_COMPILE_ASM)",
 
  "RHIDE_COMPILE.c.s",
- "$(subst -c,-S,$(RHIDE_COMPILE_C))",
+ "$(subst -c $(SOURCE_NAME),-S $(SOURCE_NAME),$(RHIDE_COMPILE_C))",
 
  "RHIDE_COMPILE.c.i",
- "$(subst -c,-E,$(RHIDE_COMPILE_C))",
+ "$(subst -c $(SOURCE_NAME),-E $(SOURCE_NAME),$(RHIDE_COMPILE_C))",
 
  "RHIDE_COMPILE.i.s",
  "$(RHIDE_COMPILE.c.s)",
 
  "RHIDE_COMPILE.cc.s",
- "$(subst -c,-S,$(RHIDE_COMPILE_CC))",
+ "$(subst -c $(SOURCE_NAME),-S $(SOURCE_NAME),$(RHIDE_COMPILE_CC))",
 
  "RHIDE_COMPILE.cc.ii",
- "$(subst -c,-E,$(RHIDE_COMPILE_CC))",
+ "$(subst -c $(SOURCE_NAME),-E $(SOURCE_NAME),$(RHIDE_COMPILE_CC))",
 
  "RHIDE_COMPILE.ii.s",
  "$(RHIDE_COMPILE.cc.s)",

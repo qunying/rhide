@@ -165,6 +165,9 @@ char * open_stdout(void);
 void close_stderr(void);
 /* the same for stdout */
 void close_stdout(void);
+/* SET: that's for stderr and stdout redirected to the same file */
+char *open_stderr_out(void);
+void close_stderr_out(void);
 
 /* Return an unique filename in $TMPDIR which starts with 'before'.
    Store the result also in 'retval' if it is != NULL. This function

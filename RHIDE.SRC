@@ -1,28 +1,29 @@
-RHIDE is Copyright (C) 1996-2003 by Robert Hoehne, see COPYING.RH for details
+RHIDE is Copyright (C) 1996-2004 by Robert Hoehne, see COPYING.RH for details
 
 This is the source distribution of RHIDE. (for notes to the GNU/Linux
 system see the chapter below additionally)
+
+IMPORTANT!!!! This is the RHIDE.SRC file for the for_tvision_2 CVS
+branch. It have some modifications about which versions of the
+components are recommended.
 
 ******************************************
 Other sources are required to build RHIDE. These are the editor
 sources from Salvador Eduardo Tropea (setedit) and the Turbo Vision
 library also maintained by Salvador. And of course you need the
-gdb sources. For RHIDE 1.5 you can use GDB 5.3. GDB 5.[0-2] should work
-also, but not longer heavily tested.
+gdb sources. For RHIDE 1.5 you can use GDB 5.3 or 6.1.1. GDB 5.[0-2]
+should work also, but not longer heavily tested.
 
-For DJGPP you can use the source archives found on any simtelnet
-mirror:
+You'll need the following components:
 
-for the editor 0.4.57       v2apps/edi0457s.zip
-for the TV sources 1.1.4    v2tk/tv114s.zip
-for the gdb sources         v2gnu/gdb531s.zip
-
-For GNU/Linux please use for the gdb sources the official GDB 5.1.1
-sources and for the other sources maintained by Salvador please
-get them from SET's web-site
-
-for the editor          http://setedit.sourceforge.net
-for the TV sources      http://tvision.sourceforge.net
+SETEdit (the editor     Last CVS snapshot.
+and help system)        http://setedit.sourceforge.net/snap.html
+                        
+Turbo Vision (TUI)      Last CVS snapshot.
+                        http://tvision.sourceforge.net/snap.html
+                        
+GDB (debugger)          We tested the code using 5.3 and 6.1.1
+                        releases.
 
 *********************************************
 
@@ -68,7 +69,7 @@ Recompiling RHIDE
 
 At first you will have to build the TV library and the libset library
 contained in the the sources for setedit. To do this, please follow
-the instructions contained on thos packages and remember, when configuring
+the instructions contained on those packages and remember, when configuring
 setedit to provide the '--libset' switch. When compiling libset do the
 following two make calls in the setedit directory after configuring:
 

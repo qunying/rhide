@@ -35,7 +35,6 @@
 #define Uses_tvgdbCommands
 #define Uses_tvgdbFunctions
 #define Uses_TDisassemblerWindow
-#define Uses_TDataWindow
 #include <libtvgdb.h>
 
 #define Uses_TCEditor
@@ -268,8 +267,6 @@ static void OpenDisWin()
   }
 }
 
-static TDataWindow *stack_win = NULL;
-
 void RHGDBApp::handleEvent(TEvent & event)
 {
   static char *callstack_name = NULL;
@@ -313,19 +310,11 @@ void RHGDBApp::handleEvent(TEvent & event)
           clearEvent(event);
           break;
         case cmDataWindow:
-          TDataWindow *data_win;
-          if ((data_win = TDataWindow::createNew()))
-            AddWindow(data_win);
+          AddDataWindow();
           clearEvent(event);
           break;
         case cmStackWindow:
-          if (!stack_win)
-          {
-            if ((stack_win = TDataWindow::stackWindow()))
-              AddWindow(stack_win,(TWindow **) &stack_win);
-          }
-          else
-            stack_win->select();
+          ShowStackWindow();
           clearEvent(event);
           break;
         case cmMainFunction:
@@ -471,7 +460,7 @@ static void UPDATE_WATCH()
 {
   if (watchwindow) watches->update();
   UpdateCallStackWindow();
-  TDataWindow::updateAll();
+  UpdateDataWindows();
   if (dis_win) dis_win->update(stop_pc);
 }
 

@@ -49,7 +49,6 @@ class TDirList;
 extern TDirList *src_dirs;
 class TDisassemblerWindow;
 extern TDisassemblerWindow *dis_win;
-class TDataWindow;
   
 void STEP(int _switch_to_user = 1);
 void TRACE(int _switch_to_user = 1);

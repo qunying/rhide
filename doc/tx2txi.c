@@ -243,6 +243,22 @@ void scan_file()
   while (!feof(inf))
   {
     readln();
+    if (strncmp(Line, "@include {", 10) == 0)
+    {
+      char *fstart = Line+10, *fend;
+      fend = fstart;
+      while (*fend && *fend != '}') fend++;
+      if (*fend)
+      {
+        FILE *ifile = inf;
+        *fend = 0;
+        inf = fopen(fstart, "rt");
+        scan_file();
+        fclose(inf);
+        inf = ifile;
+        continue;
+      }
+    }
     handle_line();
   }
   if (current_node) InsertCurrentNode();

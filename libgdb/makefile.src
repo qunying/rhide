@@ -103,7 +103,11 @@ LIBGDB_FLAGS+=$(OS_FLAGS)
 override CFLAGS+=$(OS_CFLAGS)
 
 $(GDB_OBJ)/Makefile:
+ifneq ($(strip $(rhide_OS)),DJGPP)
 	sh -c "cd $(GDB_OBJ) && CC=gcc $(GDB_SRC)/configure"
+else
+	sh -c "cd $(GDB_OBJ) && sh $(GDB_SRC)/gdb/config/djgpp/djconfig.sh $(GDB_SRC)"
+endif
 
 $(GDB_OBJ)/bfd/bfd.h: $(GDB_OBJ)/Makefile
 	$(MAKE) -C $(dir $@) $(notdir $@)

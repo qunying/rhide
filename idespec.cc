@@ -71,7 +71,7 @@ static char *default_variables[] = {
  "gpc",
 
  "RHIDE_LD_FPC",
- "ld",
+ "$(RHIDE_FPC) -E+",
 
  "RHIDE_GNATBIND",
  "gnatbind",
@@ -269,8 +269,10 @@ static char *default_variables[] = {
  "$(RHIDE_FPC_LINK_FLAGS_$(RHIDE_OS))",
 
  "RHIDE_COMPILE_LINK_FPC",
- "$(RHIDE_LD_FPC) -o $(OUTFILE) $(OBJFILES) $(RHIDE_FPC_LINK_FLAGS) \
-  $(LIBRARIES) $(RHIDE_LIBS)",
+ "echo 'separate linking for FPK is not supported.\nPlease define"
+ " a main source file in Project/Primary file.\n' 1>&2",
+// "$(RHIDE_LD_FPC) -o$(OUTFILE) $(OBJFILES) $(RHIDE_FPC_LINK_FLAGS) \
+//  $(LIBRARIES) $(RHIDE_LIBS)",
 
  "RHIDE_COMPILE_LINK_FPC_AUTOMAKE",
  "$(RHIDE_FPC) -o$(OUTFILE) $(SOURCE_NAME) $(RHIDE_FPC_FLAGS) -E+",

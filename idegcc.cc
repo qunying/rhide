@@ -78,7 +78,7 @@ int
 RunProgram(const char *cmd,
            Boolean redir_stderr, Boolean redir_stdout, Boolean SwitchToUser)
 {
-#ifndef __DJGPP__
+#ifdef __linux__
   int vintr = 0;
   struct termios term;
 #endif
@@ -1132,3 +1132,5 @@ static __attribute__ ((__destructor__))
   }
 }
 #endif
+
+

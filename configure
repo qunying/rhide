@@ -799,58 +799,103 @@ esac
 
 
 
-orig_srcdir=$srcdir
+abs_srcdir=`cd $srcdir && pwd`
 if test "$rhide_OS" = DJGPP; then
   srcdir=`echo $srcdir | sed "s,^\([a-zA-Z]\):,/dev/\1,g"`
+  abs_srcdir=`echo $srcdir | sed "s,^/dev/\([a-zA-Z]\)/,\1:/,g"`
 fi
 
 
-echo $ac_n "checking needed libs for gettext""... $ac_c" 1>&6
-echo "configure:810: checking needed libs for gettext" >&5
-rh_save_LIBS="$LIBS"
-LIBS="-lintl $LIBS"
+echo $ac_n "checking for bindtextdomain in -lc""... $ac_c" 1>&6
+echo "configure:811: checking for bindtextdomain in -lc" >&5
+ac_lib_var=`echo c'_'bindtextdomain | sed 'y%./+-%__p_%'`
+if eval "test \"`echo '$''{'ac_cv_lib_$ac_lib_var'+set}'`\" = set"; then
+  echo $ac_n "(cached) $ac_c" 1>&6
+else
+  ac_save_LIBS="$LIBS"
+LIBS="-lc  $LIBS"
 cat > conftest.$ac_ext <<EOF
-#line 814 "configure"
+#line 819 "configure"
+#include "confdefs.h"
+/* Override any gcc2 internal prototype to avoid an error.  */
+/* We use char because int might match the return type of a gcc2
+    builtin and then its argument prototype would still apply.  */
+char bindtextdomain();
+
+int main() {
+bindtextdomain()
+; return 0; }
+EOF
+if { (eval echo configure:830: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest${ac_exeext}; then
+  rm -rf conftest*
+  eval "ac_cv_lib_$ac_lib_var=yes"
+else
+  echo "configure: failed program was:" >&5
+  cat conftest.$ac_ext >&5
+  rm -rf conftest*
+  eval "ac_cv_lib_$ac_lib_var=no"
+fi
+rm -f conftest*
+LIBS="$ac_save_LIBS"
+
+fi
+if eval "test \"`echo '$ac_cv_lib_'$ac_lib_var`\" = yes"; then
+  echo "$ac_t""yes" 1>&6
+  LIB_INTL=
+else
+  echo "$ac_t""no" 1>&6
+LIB_INTL=no
+fi
+
+
+if test "x$LIB_INTL" = xno; then
+  echo $ac_n "checking needed libs for gettext""... $ac_c" 1>&6
+echo "configure:854: checking needed libs for gettext" >&5
+  rh_save_LIBS="$LIBS"
+  LIBS="-lintl $LIBS"
+  cat > conftest.$ac_ext <<EOF
+#line 858 "configure"
 #include "confdefs.h"
 #include <libintl.h>
-#include <stdio.h>
+  #include <stdio.h>
 int main() {
 printf(gettext("test"))
 ; return 0; }
 EOF
-if { (eval echo configure:822: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest${ac_exeext}; then
+if { (eval echo configure:866: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest${ac_exeext}; then
   rm -rf conftest*
   LIB_INTL=intl
 else
   echo "configure: failed program was:" >&5
   cat conftest.$ac_ext >&5
 fi
-rm -f conftest*LIBS="$rh_save_LIBS"
-if test "x$LIB_INTL" = x; then
-  rh_save_LIBS="$LIBS"
-  LIBS="-lintl -liconv $LIBS"
-  cat > conftest.$ac_ext <<EOF
-#line 834 "configure"
+rm -f conftest*  LIBS="$rh_save_LIBS"
+  if test "x$LIB_INTL" = x; then
+    rh_save_LIBS="$LIBS"
+    LIBS="-lintl -liconv $LIBS"
+    cat > conftest.$ac_ext <<EOF
+#line 878 "configure"
 #include "confdefs.h"
 #include <libintl.h>
-#include <stdio.h>
+  #include <stdio.h>
 int main() {
 printf(gettext("test"))
 ; return 0; }
 EOF
-if { (eval echo configure:842: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest${ac_exeext}; then
+if { (eval echo configure:886: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest${ac_exeext}; then
   rm -rf conftest*
   LIB_INTL="intl iconv"
 else
   echo "configure: failed program was:" >&5
   cat conftest.$ac_ext >&5
 fi
-rm -f conftest*  LIBS="$rh_save_LIBS"
+rm -f conftest*    LIBS="$rh_save_LIBS"
+  fi
+  echo "$ac_t""$LIB_INTL" 1>&6
 fi
-echo "$ac_t""$LIB_INTL" 1>&6
 
 
-TV_INC_SEARCH="$srcdir/../tvision/include \
+TV_INC_SEARCH="$abs_srcdir/../tvision/include \
 $DJDIR/contrib/tvision/include \
 $DJDIR/include/rhtvision \
 /usr/local/src/tvision/include \
@@ -859,7 +904,7 @@ $DJDIR/include/rhtvision \
 /usr/include/rhtvision"
 
 echo $ac_n "checking for Turbo Vision header files""... $ac_c" 1>&6
-echo "configure:863: checking for Turbo Vision header files" >&5
+echo "configure:908: checking for Turbo Vision header files" >&5
 if eval "test \"`echo '$''{'rh_cv_path_TV_INC'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
@@ -899,7 +944,7 @@ TV_OBJ_SEARCH="$TV_INC/../`echo $rhide_OS | sed s,Linux,linux,g` \
 $TV_INC/../../lib"
 
 echo $ac_n "checking for Turbo Vision libraray""... $ac_c" 1>&6
-echo "configure:903: checking for Turbo Vision libraray" >&5
+echo "configure:948: checking for Turbo Vision libraray" >&5
 if eval "test \"`echo '$''{'rh_cv_path_TVOBJ'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
@@ -935,13 +980,13 @@ if test "$TVOBJ" = no; then
 fi
 
 
-SETSRC_SEARCH="$srcdir/../setedit \
+SETSRC_SEARCH="$abs_srcdir/../setedit \
 $DJDIR/contrib/setedit \
 /usr/local/src/setedit \
 /usr/src/setedit"
 
 echo $ac_n "checking for SET's editor sources""... $ac_c" 1>&6
-echo "configure:945: checking for SET's editor sources" >&5
+echo "configure:990: checking for SET's editor sources" >&5
 if eval "test \"`echo '$''{'rh_cv_path_SETSRC'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
@@ -979,7 +1024,7 @@ fi
 
 
 echo $ac_n "checking for SET's editor libraries""... $ac_c" 1>&6
-echo "configure:983: checking for SET's editor libraries" >&5
+echo "configure:1028: checking for SET's editor libraries" >&5
 if eval "test \"`echo '$''{'rh_cv_path_SETOBJ'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
@@ -1017,13 +1062,13 @@ fi
 
 gdb_version="gdb-5.1"
 
-GDB_SRC_SEARCH="$srcdir/../$gdb_version \
+GDB_SRC_SEARCH="$abs_srcdir/../$gdb_version \
 $DJDIR/gnu/$gdb_version \
 /usr/local/src/$gdb_version \
 /usr/src/$gdb_version"
 
 echo $ac_n "checking for GDB sources""... $ac_c" 1>&6
-echo "configure:1027: checking for GDB sources" >&5
+echo "configure:1072: checking for GDB sources" >&5
 if eval "test \"`echo '$''{'rh_cv_path_GDB_SRC'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
@@ -1060,7 +1105,7 @@ fi
 
 
 echo $ac_n "checking GDB objects""... $ac_c" 1>&6
-echo "configure:1064: checking GDB objects" >&5
+echo "configure:1109: checking GDB objects" >&5
 if eval "test \"`echo '$''{'GDB_OBJ'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
@@ -1082,7 +1127,7 @@ else
 fi
 
 echo $ac_n "checking for BZ2_bzlibVersion in -lbz2""... $ac_c" 1>&6
-echo "configure:1086: checking for BZ2_bzlibVersion in -lbz2" >&5
+echo "configure:1131: checking for BZ2_bzlibVersion in -lbz2" >&5
 ac_lib_var=`echo bz2'_'BZ2_bzlibVersion | sed 'y%./+-%__p_%'`
 if eval "test \"`echo '$''{'ac_cv_lib_$ac_lib_var'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
@@ -1090,7 +1135,7 @@ else
   ac_save_LIBS="$LIBS"
 LIBS="-lbz2  $LIBS"
 cat > conftest.$ac_ext <<EOF
-#line 1094 "configure"
+#line 1139 "configure"
 #include "confdefs.h"
 /* Override any gcc2 internal prototype to avoid an error.  */
 /* We use char because int might match the return type of a gcc2
@@ -1101,7 +1146,7 @@ int main() {
 BZ2_bzlibVersion()
 ; return 0; }
 EOF
-if { (eval echo configure:1105: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest${ac_exeext}; then
+if { (eval echo configure:1150: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest${ac_exeext}; then
   rm -rf conftest*
   eval "ac_cv_lib_$ac_lib_var=yes"
 else
@@ -1131,7 +1176,7 @@ fi
 
 
 echo $ac_n "checking for zlibVersion in -lz""... $ac_c" 1>&6
-echo "configure:1135: checking for zlibVersion in -lz" >&5
+echo "configure:1180: checking for zlibVersion in -lz" >&5
 ac_lib_var=`echo z'_'zlibVersion | sed 'y%./+-%__p_%'`
 if eval "test \"`echo '$''{'ac_cv_lib_$ac_lib_var'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
@@ -1139,7 +1184,7 @@ else
   ac_save_LIBS="$LIBS"
 LIBS="-lz  $LIBS"
 cat > conftest.$ac_ext <<EOF
-#line 1143 "configure"
+#line 1188 "configure"
 #include "confdefs.h"
 /* Override any gcc2 internal prototype to avoid an error.  */
 /* We use char because int might match the return type of a gcc2
@@ -1150,7 +1195,7 @@ int main() {
 zlibVersion()
 ; return 0; }
 EOF
-if { (eval echo configure:1154: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest${ac_exeext}; then
+if { (eval echo configure:1199: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest${ac_exeext}; then
   rm -rf conftest*
   eval "ac_cv_lib_$ac_lib_var=yes"
 else
@@ -1180,7 +1225,7 @@ fi
 
 
 echo $ac_n "checking for pcre_version in -lpcre""... $ac_c" 1>&6
-echo "configure:1184: checking for pcre_version in -lpcre" >&5
+echo "configure:1229: checking for pcre_version in -lpcre" >&5
 ac_lib_var=`echo pcre'_'pcre_version | sed 'y%./+-%__p_%'`
 if eval "test \"`echo '$''{'ac_cv_lib_$ac_lib_var'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
@@ -1188,7 +1233,7 @@ else
   ac_save_LIBS="$LIBS"
 LIBS="-lpcre  $LIBS"
 cat > conftest.$ac_ext <<EOF
-#line 1192 "configure"
+#line 1237 "configure"
 #include "confdefs.h"
 /* Override any gcc2 internal prototype to avoid an error.  */
 /* We use char because int might match the return type of a gcc2
@@ -1199,7 +1244,7 @@ int main() {
 pcre_version()
 ; return 0; }
 EOF
-if { (eval echo configure:1203: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest${ac_exeext}; then
+if { (eval echo configure:1248: \"$ac_link\") 1>&5; (eval $ac_link) 2>&5; } && test -s conftest${ac_exeext}; then
   rm -rf conftest*
   eval "ac_cv_lib_$ac_lib_var=yes"
 else
@@ -1227,6 +1272,8 @@ else
 SET_SPECIAL_LDFLAGS="$SET_SPECIAL_LDFLAGS -L$SETOBJ/../libpcre"
 fi
 
+
+SET_LIBS="$SET_LIBS rhtv"
 
 
 
@@ -1382,7 +1429,7 @@ s%@host_cpu@%$host_cpu%g
 s%@host_vendor@%$host_vendor%g
 s%@host_os@%$host_os%g
 s%@rhide_OS@%$rhide_OS%g
-s%@orig_srcdir@%$orig_srcdir%g
+s%@abs_srcdir@%$abs_srcdir%g
 s%@LIB_INTL@%$LIB_INTL%g
 s%@TV_INC@%$TV_INC%g
 s%@TVOBJ@%$TVOBJ%g
@@ -1500,5 +1547,5 @@ rm -fr confdefs* $ac_clean_files
 test "$no_create" = yes || ${CONFIG_SHELL-/bin/sh} $CONFIG_STATUS || exit 1
 
 
-$srcdir/configure.sub $orig_srcdir
+$abs_srcdir/configure.sub $abs_srcdir
 

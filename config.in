@@ -1,5 +1,5 @@
 export rhide_OS=@rhide_OS@
-export RHIDESRC=@orig_srcdir@
+export RHIDESRC=@abs_srcdir@
 export TV_INC=@TV_INC@
 export SETSRC=@SETSRC@
 export GDB_SRC=@GDB_SRC@

@@ -17,37 +17,44 @@ dnl This fixes the annoing bug in autoconf which
 dnl does not handle correct drive letters in diretories
 dnl I save at first the original srcdir and translate
 dnl it then to the /dev/drive_letter syntax. In the
-dnl config files I should refere then orig_srcdir instead
+dnl config files I should refere then abs_srcdir instead
 dnl of srcdir
 
-orig_srcdir=$srcdir
+abs_srcdir=`cd $srcdir && pwd`
 changequote(, )dnl
 if test "$rhide_OS" = DJGPP; then
   srcdir=`echo $srcdir | sed "s,^\([a-zA-Z]\):,/dev/\1,g"`
+  abs_srcdir=`echo $srcdir | sed "s,^/dev/\([a-zA-Z]\)/,\1:/,g"`
 fi
 changequote([, ])dnl
-AC_SUBST(orig_srcdir)
+AC_SUBST(abs_srcdir)
 
-AC_MSG_CHECKING([needed libs for gettext])
-rh_save_LIBS="$LIBS"
-LIBS="-lintl $LIBS"
-AC_TRY_LINK([#include <libintl.h>
-#include <stdio.h>],printf(gettext("test")),
-[LIB_INTL=intl])dnl
-LIBS="$rh_save_LIBS"
-if test "x$LIB_INTL" = x; then
+AC_CHECK_LIB(c,bindtextdomain,
+[LIB_INTL=],
+[LIB_INTL=no])
+
+if test "x$LIB_INTL" = xno; then
+  AC_MSG_CHECKING([needed libs for gettext])
   rh_save_LIBS="$LIBS"
-  LIBS="-lintl -liconv $LIBS"
+  LIBS="-lintl $LIBS"
   AC_TRY_LINK([#include <libintl.h>
-#include <stdio.h>],
-printf(gettext("test")),
-[LIB_INTL="intl iconv"])dnl
+  #include <stdio.h>],printf(gettext("test")),
+  [LIB_INTL=intl])dnl
   LIBS="$rh_save_LIBS"
+  if test "x$LIB_INTL" = x; then
+    rh_save_LIBS="$LIBS"
+    LIBS="-lintl -liconv $LIBS"
+    AC_TRY_LINK([#include <libintl.h>
+  #include <stdio.h>],
+  printf(gettext("test")),
+  [LIB_INTL="intl iconv"])dnl
+    LIBS="$rh_save_LIBS"
+  fi
+  AC_MSG_RESULT([$LIB_INTL])
 fi
-AC_MSG_RESULT([$LIB_INTL])
 AC_SUBST(LIB_INTL)
 
-TV_INC_SEARCH="$srcdir/../tvision/include \
+TV_INC_SEARCH="$abs_srcdir/../tvision/include \
 $DJDIR/contrib/tvision/include \
 $DJDIR/include/rhtvision \
 /usr/local/src/tvision/include \
@@ -60,7 +67,7 @@ TV_OBJ_SEARCH="$TV_INC/../`echo $rhide_OS | sed s,Linux,linux,g` \
 $TV_INC/../../lib"
 RH_CHECK_FILE_LIST(TVOBJ, librhtv.a, $TV_OBJ_SEARCH,[Turbo Vision libraray])
 
-SETSRC_SEARCH="$srcdir/../setedit \
+SETSRC_SEARCH="$abs_srcdir/../setedit \
 $DJDIR/contrib/setedit \
 /usr/local/src/setedit \
 /usr/src/setedit"
@@ -70,7 +77,7 @@ RH_CHECK_FILE_LIST(SETOBJ,libset.a,$SETSRC/makes,[SET's editor libraries])
 
 gdb_version="gdb-5.1"
 
-GDB_SRC_SEARCH="$srcdir/../$gdb_version \
+GDB_SRC_SEARCH="$abs_srcdir/../$gdb_version \
 $DJDIR/gnu/$gdb_version \
 /usr/local/src/$gdb_version \
 /usr/src/$gdb_version"
@@ -103,8 +110,10 @@ AC_CHECK_LIB(pcre,pcre_version,
 [],
 [SET_SPECIAL_LDFLAGS="$SET_SPECIAL_LDFLAGS -L$SETOBJ/../libpcre"])
 
+SET_LIBS="$SET_LIBS rhtv"
+
 AC_SUBST(SET_SPECIAL_LDFLAGS)
 AC_SUBST(SET_LIBS)
 
 AC_OUTPUT(config.env:config.in)
-AC_OUTPUT_COMMANDS([$srcdir/configure.sub $orig_srcdir])
+AC_OUTPUT_COMMANDS([$abs_srcdir/configure.sub $abs_srcdir])

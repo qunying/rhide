@@ -19,7 +19,6 @@
 #define Uses_TStaticText
 #define Uses_TIDEFileEditor
 #define Uses_TFileViewer
-#define Uses_LangTexte
 #define Uses_TWindowList
 #define Uses_MsgBox
 

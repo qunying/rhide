@@ -19,6 +19,7 @@ work after some runtime configuration on RHIDE.
 
 %prep
 %setup
+./configure
 %build
 make RHIDESRC=`pwd` LDFLAGS=-static
 

@@ -1,10 +1,10 @@
 Summary: IDE for developing like the old known Borland 3.1 IDE
 Name: rhide
-Version: 1.4.9
+Version: 1.5
 Release: 1
 Copyright: GPL
 Group: Development/Debuggers
-Source: rhide-1.4.9.tar.gz
+Source: rhide-1.5.tar.gz
 Packager: Robert Hoehne <robert.hoehne@gmx.net>
 Vendor: Robert Hoehne <robert.hoehne@gmx.net>
 Buildroot: /usr/src/packages/BUILD
@@ -25,24 +25,27 @@ make RHIDESRC=`pwd` LDFLAGS=-static
 
 %install
 make RHIDESRC=`pwd` install prefix=$RPM_BUILD_ROOT/usr LDFLAGS=-static
+tic $RPM_BUILD_ROOT/usr/share/rhide/eterm-rhide
 
 %files
 /usr/bin/gpr2mak
 /usr/bin/gprexp
 /usr/bin/rhgdb
 /usr/bin/rhide
-%doc /usr/doc/rhide/COPYING
-%doc /usr/doc/rhide/COPYING.RH
-%doc /usr/doc/rhide/LINUX.TXT
-%doc /usr/doc/rhide/README.IDE
-%doc /usr/doc/rhide/RHIDE.BIN
-%doc /usr/doc/rhide/VCSA.SH
-%doc /usr/doc/rhide/readme.key
-%doc /usr/doc/rhide/rhide.html
-%doc /usr/doc/rhide/rhide.txt
-/usr/info/infview.inf
-/usr/info/rhide.inf
-/usr/info/setedit.inf
+/usr/bin/rhidex
+/usr/bin/rhgdbx
+%doc /usr/share/doc/rhide/COPYING
+%doc /usr/share/doc/rhide/COPYING.RH
+%doc /usr/share/doc/rhide/LINUX.TXT
+%doc /usr/share/doc/rhide/README.IDE
+%doc /usr/share/doc/rhide/RHIDE.BIN
+%doc /usr/share/doc/rhide/VCSA.SH
+%doc /usr/share/doc/rhide/readme.key
+%doc /usr/share/doc/rhide/rhide.html
+%doc /usr/share/doc/rhide/rhide.txt
+/usr/share/info/infview.inf
+/usr/share/info/rhide.inf
+/usr/share/info/setedit.inf
 /usr/share/locale/cs/LC_MESSAGES/rhide.mo
 /usr/share/locale/da/LC_MESSAGES/rhide.mo
 /usr/share/locale/de/LC_MESSAGES/rhide.mo
@@ -63,3 +66,4 @@ make RHIDESRC=`pwd` install prefix=$RPM_BUILD_ROOT/usr LDFLAGS=-static
 %config /usr/share/rhide/SET/perlmac.pmc
 %config /usr/share/rhide/SET/pmacros.pmc
 %config /usr/share/rhide/SET/syntaxhl.shl
+%config /usr/share/rhide/eterm-rhide

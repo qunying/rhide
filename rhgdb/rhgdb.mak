@@ -40,8 +40,8 @@ vpath %.asm $(vpath_src)
 vpath %.nsm $(vpath_src)
 vpath_header=$(RHIDESRC)/rhgdb/include $(RHIDESRC)/librhgdb/include\
 	$(RHIDESRC)/libtvgdb/include $(RHIDESRC)/libtvuti/include\
-	$(RHIDESRC)/librhuti $(TVSRC)/include $(TVSRC) $(SETSRC)/include\
-	$(SETSRC)/settvuti/include $(SETSRC)
+	$(RHIDESRC)/librhuti $(RHIDESRC)/include $(TVSRC)/include $(TVSRC)\
+	$(SETSRC)/include $(SETSRC)/settvuti/include $(SETSRC)
 vpath %.h $(vpath_header)
 vpath %.hpp $(vpath_header)
 vpath %.ha $(vpath_header)
@@ -333,8 +333,8 @@ RHIDE_COMPILE_LINK=$(RHIDE_LD) $(RHIDE_LIBDIRS) $(C_EXTRA_FLAGS) -o\
 SET_FILES=$(DJDIR)/share/setedit
 INCLUDE_DIRS=$(RHIDESRC)/rhgdb/include $(RHIDESRC)/librhgdb/include\
 	$(RHIDESRC)/libtvgdb/include $(RHIDESRC)/libtvuti/include\
-	$(RHIDESRC)/librhuti $(TVSRC)/include $(TVSRC) $(SETSRC)/include\
-	$(SETSRC)/settvuti/include $(SETSRC)
+	$(RHIDESRC)/librhuti $(RHIDESRC)/include $(TVSRC)/include $(TVSRC)\
+	$(SETSRC)/include $(SETSRC)/settvuti/include $(SETSRC)
 LIB_DIRS=../librhgdb ../libtvgdb ../libtvuti ../librhuti ../libgdb $(TVOBJ)\
 	$(SETOBJ) $(PCRE_OBJ)
 C_DEBUG_FLAGS=-g
@@ -488,15 +488,13 @@ DEPS_5=gdbedit.cc librhgdb.h libtvuti.h rhgdb.h rhutils.h tdirlist.h\
 	tenterli.h tscollec.h tvutilfu.h twindowl.h
 gdbedit.o:: $(DEPS_5)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_6=gdbsynt.cc libtvuti.h rhgdb.h rhutils.h\
-	$(RHIDESRC)/include/flags/gpcreser.h\
-	$(RHIDESRC)/include/flags/reserved.h tdirlist.h
+DEPS_6=gdbsynt.cc flags/gpcreser.h flags/reserved.h libtvuti.h rhgdb.h\
+	rhutils.h tdirlist.h
 gdbsynt.o:: $(DEPS_6)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_7=main.cc librhgdb.h libtvgdb.h libtvuti.h rhgdb.h rhutils.h\
-	$(RHIDESRC)/pal.c tdirlist.h tdiswin.h tenterli.h tparamli.h\
-	tscollec.h tvgdbcom.h tvgdbfun.h tvutilco.h tvutilfu.h twatchli.h\
-	twindowl.h
+DEPS_7=main.cc librhgdb.h libtvgdb.h libtvuti.h pal.h rhgdb.h rhutils.h\
+	tdirlist.h tdiswin.h tenterli.h tparamli.h tscollec.h tvgdbcom.h\
+	tvgdbfun.h tvutilco.h tvutilfu.h twatchli.h twindowl.h
 main.o:: $(DEPS_7)
 	$(RHIDE_COMPILE.cc.o)
 DEPS_8=options.cc librhgdb.h libtvuti.h rhgdb.h tenterch.h tenterin.h\

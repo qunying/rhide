@@ -475,8 +475,8 @@ debobj/commands.o:: $(DEPS_1)
 DEPS_2=fstrcmp.c
 debobj/fstrcmp.o:: $(DEPS_2)
 	$(RHIDE_COMPILE.c.o)
-DEPS_3=ideapp.cc ideapp.h pal.h rhide.h ideenums.h libide.h tdepende.h\
-	tfname.h tideedit.h tproject.h rhutils.h libtvuti.h tvutilfu.h
+DEPS_3=ideapp.cc ideapp.h ideenums.h libide.h libtvuti.h pal.h rhide.h\
+	rhutils.h tdepende.h tfname.h tideedit.h tproject.h tvutilfu.h
 debobj/ideapp.o:: $(DEPS_3)
 	$(RHIDE_COMPILE.cc.o)
 DEPS_4=idebug.cc rhide.h rhutils.h
@@ -485,7 +485,7 @@ debobj/idebug.o:: $(DEPS_4)
 DEPS_5=idecheck.cc libtvuti.h rhide.h rhutils.h tvutilfu.h
 debobj/idecheck.o:: $(DEPS_5)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_6=idecolor.cc pal.h rhide.h libide.h tidefile.h
+DEPS_6=idecolor.cc libide.h pal.h rhide.h tidefile.h
 debobj/idecolor.o:: $(DEPS_6)
 	$(RHIDE_COMPILE.cc.o)
 DEPS_7=idecomp.cc ideenums.h idefunct.h libide.h librhgdb.h libtvuti.h\

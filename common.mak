@@ -130,14 +130,6 @@ endif
 
 gpr2mak:=$(wildcard $(top_dir)/gpr2mak.exe)
 
-ifeq ($(strip $(gpr2mak)),)
-ifneq ($(rhide_OS),DJGPP)
-gpr2mak:=$(shell which gpr2mak)
-else
-gpr2mak:=$(wildcard $(DJDIR)/bin/gpr2mak.exe)
-endif
-endif
-
 ifeq ($(strip $(prefix)),)
 ifeq ($(rhide_OS),DJGPP)
 prefix=$(DJDIR)

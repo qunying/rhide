@@ -11,6 +11,8 @@
 #define Uses_ideCommands
 #include <libide.h>
 
+#include <rhutils.h>
+
 #define cpBlueEditWindow "\x40\x41\x42\x43\x44\x45\x46\x47"\
                          "\x48\x49\x4A\x4B\x4C\x4D\x4E\x4F"\
                          "\x50\x51\x52\x53\x54\x55\x56\x57"\
@@ -38,12 +40,27 @@ TPalette & TIDEEditWindow::getPalette() const
   return *(palettes[palette]);
 }
 
+TIDEEditWindow::~TIDEEditWindow()
+{
+  string_free(wtitle);
+}
+
+const char *TIDEEditWindow::getTitle(short maxval)
+{
+  string_free(wtitle);
+  if (editor->modified)
+    string_cat(wtitle, "*");
+  string_cat(wtitle, TCEditWindow::getTitle(maxval));
+  return wtitle;
+}
+
 TIDEEditWindow::TIDEEditWindow( const TRect& bounds,
                           const char *fileName,
                           int aNumber
                         ) :
     TCEditWindow( bounds, (const char *)NULL, aNumber ),
-    TWindowInit( &TIDEEditWindow::initFrame )
+    TWindowInit( &TIDEEditWindow::initFrame ),
+    wtitle(NULL)
 {
   TRect r(editor->origin.x,editor->origin.y,
   editor->origin.x+editor->size.x,editor->origin.y+editor->size.y);
@@ -68,7 +85,8 @@ TStreamable * TIDEEditWindow::build()
 
 TIDEEditWindow::TIDEEditWindow(StreamableInit) :
   TCEditWindow( streamableInit ) ,
-  TWindowInit( NULL )
+  TWindowInit( NULL ),
+  wtitle(NULL)
 {
 }
 

@@ -9,12 +9,15 @@ class TIDEEditWindow : public TCEditWindow
 {
 public:
   TIDEEditWindow(const TRect &,const char *,int);
+  ~TIDEEditWindow();
   static TStreamable * build();
   static const char * const name;
   virtual TPalette & getPalette() const;
   virtual void handleEvent(TEvent &);
+  const char *getTitle(short);
 private:
   virtual const char * streamableName() const { return name; }
+  char *wtitle;
 protected:
   TIDEEditWindow(StreamableInit);
 };

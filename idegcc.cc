@@ -848,9 +848,9 @@ void CheckStderr()
       for (i=0;i<count;i++)
       {
         window = (TIDEFileWindow *)DESKTOPWINDOW(i);
-        if (strcmp(tmp, window->title) == 0)
+        if (window->title && (strcmp(tmp, window->title) == 0))
         {
-	    window->close();
+          window->close();
           RemoveWindow(window);
           break;
         }
@@ -889,9 +889,9 @@ void CheckStdout()
       for (i=0;i<count;i++)
       {
         window = (TIDEFileWindow *)DESKTOPWINDOW(i);
-        if (strcmp(tmp, window->title) == 0)
+        if (window->title && (strcmp(tmp, window->title) == 0))
         {
-	    window->close();
+          window->close();
           RemoveWindow(window);
           break;
         }

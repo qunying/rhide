@@ -741,8 +741,12 @@ IDE::update()
     D(cmCompile);
   }
 
-  if (TDisplay::dual_display)
+  // SET: Gray out the user screen and shell fo drivers where it have no sense
+  int noUserScr=TScreen::noUserScreen();
+  if (TDisplay::dual_display || noUserScr)
   {
+    if (noUserScr)
+       D(cmDosShell);
     D(cmUserScreen);
   }
   else
@@ -2712,12 +2716,16 @@ void
 setup_title(const char *title)
 {
   char *str0=IDEVersion;
-  int len=strlen(str0)+strlen(title)+4;
+  int len=strlen(str0)+(title ? strlen(title) : 0)+4;
  
   char *s=(char *)alloca(len);
   strcpy(s,str0);
-  strcat(s," - ");
-  strcat(s,title);
+  // SET: Only if specified.
+  if (title)
+    {
+     strcat(s," - ");
+     strcat(s,title);
+    }
 
   setup_title_low(s);
 }

@@ -2,6 +2,10 @@
 # This file is part of RHIDE. 
 #
 
+ifeq ($(strip $(RHIDESRC)),)
+export RHIDESRC:=$(shell pwd)
+endif
+
 srcdir=$(RHIDESRC)
 VPATH=$(srcdir)
 projects=gpr2mak rhide_ rhide gprexp
@@ -42,6 +46,35 @@ install_data_files_Linux=
 install_data_files=$(install_data_files_common) $(install_data_files_$(rhide_OS))
 
 include $(RHIDESRC)/common.mak
+
+ifeq ($(strip $(SETSRC)),)
+ifeq ($(rhide_OS),DJGPP)
+export SETSRC:=$(DJDIR)/contrib/setedit
+else
+export SETSRC:=$(RHIDESRC)/../setedit-0.4.39
+endif
+export SETOBJ:=$(SETSRC)/makes
+endif
+
+ifeq ($(strip $(TVSRC)),)
+ifeq ($(rhide_OS),DJGPP)
+export TVSRC:=$(DJDIR)/contrib/tvision
+export TVOBJ:=$(TVSRC)/djgpp
+else
+export TVSRC:=$(RHIDESRC)/../librhtv-1.0.9
+export TVOBJ:=$(TVSRC)/linux
+endif
+endif
+
+ifeq ($(strip $(GDB_SRC)),)
+ifeq ($(rhide_OS),DJGPP)
+export GDB_SRC:=$(DJDIR)/gnu/gdb-4.18
+export GDB_OBJ:=$(GDB_SRC)
+else
+export GDB_SRC:=$(RHIDESRC)/../gdb-4.18
+export GDB_OBJ:=$(GDB_SRC)
+endif
+endif
 
 programs=gpr2mak.exe idegc.exe rhgdb/rhgdb.exe
 

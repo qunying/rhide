@@ -204,23 +204,25 @@ _S_SRC_FILES=$(subst $(srcdir)/,,$(S_SRC_FILES))
 _SRC_FILES=$(filter-out $(_O_SRC_FILES) $(_S_SRC_FILES),$(sort $(src_files)))
 SRC_FILES=$(O_SRC_FILES) $(S_SRC_FILES) $(_SRC_FILES)
 
+check_src_files:: $(SRC_FILES)
+	@echo > /dev/null
+
+.PHONY: copy_src_files
+
+copy_src_files:: $(SRC_FILES)
+ifneq ($(SRC_FILES),)
+	@echo Copying files from $(srcdir)
+	$(INSTALL_DIR) $(prefix)
+	cp -p $(SRC_FILES) $(prefix)
+	echo $(addprefix $(list_prefix),$(sort $(src_files))) >> $(list_file)
+endif
+
 ifneq ($(strip $(subdirs)),)
 copy_src_files:: $(addsuffix .cpy,$(sort $(subdirs)))
 
 check_src_files:: $(addsuffix .chk,$(sort $(subdirs)))
 
 update__srcdir:: $(addsuffix .sub,$(subdirs))
-endif
-
-check_src_files:: $(SRC_FILES)
-	@echo > /dev/null
-
-copy_src_files:: $(SRC_FILES)
-ifneq ($(SRC_FILES),)
-	@echo Copying files from $(srcdir)
-	@$(INSTALL_DIR) $(prefix)
-	@cp -p $(SRC_FILES) $(prefix)
-	@echo $(addprefix $(list_prefix),$(sort $(src_files))) >> $(list_file)
 endif
 
 po_list:: $(po_files)
@@ -248,13 +250,13 @@ endif
 	  po_prefix=$(po_prefix)$*/ po_list
 
 %.cpy: Makefile
-	@-mkdir -p $(prefix)/$*
-	@-rm -f $*/$(list_file)
-	@$(MAKE) -C $* $(FLAGS_TO_PASS) prefix=$(prefix)/$* \
-	  --no-print-directory \
-	  list_file=$(list_file) list_prefix=$(list_prefix)$*/ copy_src_files
-	@cat $*/$(list_file) >> $(list_file)
-	@-rm -f $*/$(list_file)
+	-mkdir -p $(prefix)/$*
+	-rm -f $*/$(list_file)
+	$(MAKE) -C $* $(FLAGS_TO_PASS) prefix=$(prefix)/$* \
+	  list_file=$(list_file) list_prefix=$(list_prefix)$*/ copy_src_files \
+	  --print-directory
+	cat $*/$(list_file) >> $(list_file)
+	-rm -f $*/$(list_file)
 
 %.chk: Makefile
 	@echo Checking in $(obj_dir)/$*
@@ -347,3 +349,4 @@ install:: install.data install.info install.doc install.bin
 $(copyrite.exe):: $(RHIDESRC)/copyrite.c
 	gcc -o $@ -s -O $<
 
+^

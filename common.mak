@@ -26,7 +26,7 @@ PACKAGE=rhide
 # exceed 8 characters, the well known DOS limitation :-(
 PACKAGE_FILE=rhid
 PACKAGE_DIR=rhide
-VERSION=1.4.7
+VERSION=1.4.7x
 RHIDE_MAJOR=$(word 1,$(subst ., ,$(VERSION)))
 RHIDE_MINOR=$(subst $(RHIDE_MAJOR),,$(VERSION))
 # for the DJGPP archives
@@ -216,7 +216,8 @@ ifneq ($(SRC_FILES),)
 endif
 
 po_list:: $(po_files)
-	@echo $(addprefix $(po_prefix),$(po_files)) > $(po_list)
+	@echo $(addprefix $(po_prefix),$(po_files) $(additional_po_files)) \
+	 > $(po_list)
 ifneq ($(strip $(po_subdirs)),)
 # special case for po_subdirs=..
 ifeq ($(strip $(po_subdirs)),..)

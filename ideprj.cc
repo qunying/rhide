@@ -662,7 +662,7 @@ void SaveOptions(char *_name)
   delete(ofile);
 }
 
-static char *select_project(char *title)
+char *select_project(char *title)
 {
   ushort result;
   TFileDialog *dialog;

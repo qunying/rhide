@@ -86,6 +86,10 @@
 #include <conio.h>
 #endif
 
+#include <slpinter.h>
+#include <loadkbin.h>
+#define KeyBindFName "rhide.key"
+
 void SaveScreen();
 void RestoreScreen();
 
@@ -1521,7 +1525,24 @@ void IDE::handleEvent(TEvent & event)
              SetMainTargetName(FName(Project.dest_name));
            }
          }
+         clearEvent(event);
          break;
+       case cmEditKeyBind:
+         if (KeyBindEdit())
+           SaveKeyBind(ExpandFileNameToThePointWhereTheProgramWasLoaded(KeyBindFName));
+         clearEvent(event);
+         break;
+       case cmSetUpAltKeys:
+         if (AltKeysSetUp())
+           SaveKeyBind(ExpandFileNameToThePointWhereTheProgramWasLoaded(KeyBindFName));
+         clearEvent(event);
+         break;
+       case cmKbBackDefault:
+         if (KeyBackToDefault())
+           SaveKeyBind(ExpandFileNameToThePointWhereTheProgramWasLoaded(KeyBindFName));
+         clearEvent(event);
+         break;
+
        }
        default:
          break;
@@ -2053,10 +2074,11 @@ extern int LoadKeysForTCEditor(char *file);
 
 static void LoadKeys()
 {
-  if (!keybindings) keybindings =
-    ExpandFileNameToThePointWhereTheProgramWasLoaded("keybind.txt");
-  LoadKeysForTCEditor(keybindings);
- 
+  LoadKeysForTCEditor(
+    ExpandFileNameToThePointWhereTheProgramWasLoaded(KeyBindFName));
+  SLPInterfaceInit(
+    ExpandFileNameToThePointWhereTheProgramWasLoaded("macros.slp"));
+
   char *syntax_file;
   TCEditor::SHLSOStack=new SOStack;
   TCEditor::SHLGenList=new TNoCaseSOSStringCollection(5,5,TCEditor::SHLSOStack);
@@ -2307,7 +2329,7 @@ int main(int argc, char **argv)
   if (getenv("DJDIR") == NULL)
   {
     BigmessageBox(mfError | mfOKButton,
-        _("RHIDE has detected, that the environment variable \
+        _("RHIDE has detected, that the environment variable %DJDIR% \
 has not been set. This means, you haven't installed DJGPP correct. \
 Please read the file README.1ST from the DJGPP distribution how to \
 install DJGPP. If you continue now, you will get probably many \

@@ -206,9 +206,16 @@ TMenuBar *IDE::initMenuBar( TRect r )
     +*new _TMenuItem( __("A~d~a-Flags"), cmAdaFlags, kbNoKey, hcAdaFlags)
   ;
 
+  TMenuItem &edi_opt = *new TSubMenu(_("~E~ditor"), kbNoKey, hcEditor)
+    +*new _TMenuItem( __("~E~ditor options"), cmSetGlobalOptions, kbNoKey, hcSetGlobalOptions)
+    +*new _TMenuItem( __("E~d~it key assignment"), cmEditKeyBind, kbNoKey, hcEditKeyBind)
+    +*new _TMenuItem( __("~A~lt-Keys settings"), cmSetUpAltKeys, kbNoKey, hcSetUpAltKeys)
+    +*new _TMenuItem( __("~R~estore default editor keys"), cmKbBackDefault, kbNoKey, hcKbBackDefault)
+  ;
+  
   TMenuItem &envi = *new TSubMenu(_("~E~nvironment"), kbNoKey, hcEnvironment)
     +*new _TMenuItem( __("~C~olors"), cmColors, kbNoKey, hcColors )
-    +*new _TMenuItem( __("~E~ditor options"), cmSetGlobalOptions, kbNoKey, hcSetGlobalOptions)
+    +edi_opt
     +*new _TMenuItem( __("~P~references"), cmPreferences, kbNoKey, hcPreferences)
     +*new _TMenuItem( __("~M~ouse options"), cmMouseDlg, kbNoKey, hcMouseDlg)
     +*new _TMenuItem( __("~R~eserved words"), cmEditReserved, kbNoKey, hcEditReserved)

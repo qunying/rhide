@@ -33,8 +33,7 @@ static void __attribute__ (( __constructor__ ))
 _init_win_check()
 {
   win_version = _get_win_version();
-  _get_dos_version(1);
-  nt_detected = (win_version == 0) && (_osmajor == 0x05) && (_osminor == 0x32);
+  nt_detected = (win_version == 0) && (_get_dos_version(1) == 0x0532);
   w95_detected = win_version >= 0x0400;
 }
 

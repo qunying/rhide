@@ -1,6 +1,6 @@
 dnl Process this file with autoconf to produce a configure script.
 
-AC_PREREQ(2.52)
+AC_PREREQ(2.50)
 AC_INIT(idemain.cc)
 AC_PROG_CC
 AC_CANONICAL_HOST
@@ -26,7 +26,7 @@ dnl of srcdir
 abs_srcdir=`cd $srcdir && pwd`
 changequote(, )dnl
 if test "$rhide_OS" = DJGPP; then
-  srcdir=`echo $srcdir | sed "s,^\([a-zA-Z]\):,/dev/\1,g"`
+  srcdir=`echo $abs_srcdir | sed "s,^\([a-zA-Z]\):,/dev/\1,g"`
   abs_srcdir=`echo $srcdir | sed "s,^/dev/\([a-zA-Z]\)/,\1:/,g"`
 fi
 changequote([, ])dnl
@@ -133,8 +133,12 @@ fi
 
 AC_CACHE_CHECK([GDB objects],GDB_OBJ,
 [
+if test "$rhide_OS" = DJGPP; then
+  GDB_OBJ=$GDB_SRC
+else
 mkdir gdb_obj
 GDB_OBJ=`pwd`/gdb_obj
+fi
 AC_SUBST(GDB_OBJ)
 ])
 
@@ -168,6 +172,8 @@ AC_SUBST(SET_LIBS)
 
 AC_OUTPUT(config.env:config.in)
 $abs_srcdir/configure.sub $abs_srcdir
+
+
 
 
 

@@ -12,6 +12,9 @@ const int
   tvgdb_History_Watch_Expression = 45,
   tvgdb_History_Watch_Newvalue = 46,
   tvgdb_History_Watch_Entry = 47,
+  tvgdb_History_Data_Entry = 48,
+  tvgdb_History_Data_Search = 49,
+  tvgdb_History_Data_Block = 50,
 
   tvgdb_History_last = 59;
 

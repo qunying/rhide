@@ -5,6 +5,11 @@
 #define _INC_TDISASSEMBLERWINDOW
 #endif
 
+#if defined( Uses_TDataWindow )
+#define Uses_TDialog
+#define _INC_TDATAWINDOW
+#endif
+
 #if defined( Uses_TRegisterWindow )
 #define Uses_TWindow
 #define _INC_TREGISTERWINDOW
@@ -102,6 +107,10 @@
 
 #if defined( Uses_tvgdbFunctions )
 #include <tvgdbfun.h>
+#endif
+
+#if defined( _INC_TDATAWINDOW )
+#include <tdatawin.h>
 #endif
 
 

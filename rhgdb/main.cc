@@ -34,6 +34,7 @@
 #define Uses_tvgdbCommands
 #define Uses_tvgdbFunctions
 #define Uses_TDisassemblerWindow
+#define Uses_TDataWindow
 #include <libtvgdb.h>
 
 #define Uses_TCEditor
@@ -69,6 +70,7 @@ int tabsize = 8;
 int use_dual_display = 0;
 
 TDisassemblerWindow *dis_win = NULL;
+TDataWindow *data_win = NULL;
 
 static void ReadOptions(char *);
 static void SaveOptions(char *);
@@ -154,6 +156,7 @@ TMenuBar *RHGDBApp::initMenuBar(TRect r)
       *new TMenuItem(_("~B~reakpoints"),cmBreakPoints,kbNoKey,hcNoContext,"") +
       newLine() +
       *new TMenuItem(_("~D~isassembler window"),cmDisWindow,kbNoKey,hcNoContext,"") +
+      *new TMenuItem(_("D~a~ta window"),cmDataWindow,kbNoKey,hcNoContext,"") +
       *new TMenuItem(_("~C~all stack"),cmCallStack,kbCtrlF3,hcNoContext,"Ctrl+F3") +
       *new TMenuItem(_("List of ~F~unctions"), cmFunctionList, kbNoKey, hcNoContext, "") +
     *new TSubMenu(_("~O~ptions"),kbAltO) +
@@ -306,6 +309,12 @@ void RHGDBApp::handleEvent(TEvent & event)
             dis_win->update(stop_pc);
           clearEvent(event);
           break;
+        case cmDataWindow:
+          TDataWindow *data_win;
+          if ((data_win = TDataWindow::createNew()))
+            AddWindow(data_win);
+          clearEvent(event);
+          break;
         case cmMainFunction:
           MainFunction();
           clearEvent(event);
@@ -449,6 +458,7 @@ static void UPDATE_WATCH()
 {
   if (watchwindow) watches->update();
   UpdateCallStackWindow();
+  TDataWindow::updateAll();
 }
 
 static void InitDebuggerInterface();

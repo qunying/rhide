@@ -196,6 +196,8 @@ void ClearMessages(int what = -1);
 extern TDialog *msg_window;
 class TMsgListBox;
 extern TMsgListBox *msg_list;
+void show_message(const char *msg, const char *file,
+                  int line, int column, int msg_type);
 
 /* module idedefault.cc */
 class TProject;
@@ -228,6 +230,7 @@ void SyntaxFormatLine_Pascal(TCEditor *,void *,uint32,int,ushort,uint32);
 void FSDB();
 void GREP();
 void GDB();
+void RunExternalProgram(const char *program, int show_stderr, int show_stdout);
 
 /* module IDEHelp.cc */
 void Help();

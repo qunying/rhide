@@ -106,12 +106,14 @@ endif
 touch_gprs:
 	@touch $(shell find -name "*.gpr" -print)
 
-check.files: init.version gpr2mak.exe gprexp.exe touch_gprs
+check.files.internal: init.version gpr2mak.exe gprexp.exe touch_gprs
 	@echo Checking in $(obj_dir)
 	@$(MAKE) --no-print-directory check_src_files \
 	  update_src_file="cp -p" \
-	  update_gpr_file=$(top_obj_dir)/gprexp.exe \
-	  LFN=y FNCASE=y
+	  update_gpr_file=$(top_obj_dir)/gprexp.exe
+
+check.files:
+	$(MAKE) check.files.internal LFN=y FNCASE=y
 
 copy.files:
 	@-rm -f $(list_file)

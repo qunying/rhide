@@ -201,6 +201,16 @@ _AbsToRelPath(char *&dname, TStringCollection * vars, bool use_rel)
   {
     FILE_TYPE t = get_file_type(dname);
 
+    /*
+      projects live normaly relative to the build
+      directory
+    */
+    if ((t == FILE_PROJECT) || (t == FILE_LIBRARY) || (t == FILE_DLL))
+    {
+      if (AbsToRelPath(project_directory, dname, NULL, 1))
+        return;
+    }
+    else
     if (t == FILE_HEADER)
     {
       char *rel;
@@ -212,14 +222,21 @@ _AbsToRelPath(char *&dname, TStringCollection * vars, bool use_rel)
         return;
       }
     }
-    /*
-      projects live normaly relative to the build
-      directory
-    */
-    if ((t == FILE_PROJECT) || (t == FILE_LIBRARY))
+    else
     {
-      if (AbsToRelPath(project_directory, dname, NULL, 1))
+      char *rel;
+
+      /*
+        SET: I have .gpr files where my sources get absolute paths.
+             Adding it the sources are fixed.
+        Note that since vpath contains it this should be done.
+      */
+      if (FindFile(dname, rel, Options.SrcDirs))
+      {
+        string_free(dname);
+        dname = rel;
         return;
+      }
     }
   }
   if (AbsToRelPath(project_directory, dname, NULL))

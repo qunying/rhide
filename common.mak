@@ -284,7 +284,7 @@ endif
 
 %.cfo: Makefile
 ifneq ($(srcdir),$(config_dir))
-	@-mkdir $(config_dir)/$*
+	@-mkdir -p $(config_dir)/$*
 endif
 	@$(MAKE) --no-print-directory -C $* -f $(srcdir)/$*/Makefile \
 	         $(FLAGS_TO_PASS) \

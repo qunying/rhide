@@ -17,6 +17,7 @@
 #undef ERR
 #include <curses.h>
 #endif
+#define Uses_snprintf
 #define Uses_TEventQueue
 #define Uses_TApplication
 #define Uses_TScreen
@@ -360,31 +361,33 @@ RHGDBApp::initStatusLine(TRect r)
 
 TParamList *ProgArgs = NULL;
 
+const int lenBufAbout=1000;
+
 static void
 About()
 {
   TDialog *dialog;
   TStaticText *text;
-  char buffer[1000];
-  extern char *version;         // gdb version
+  char buffer[lenBufAbout];
+  extern const char version[];         // gdb version
 
   dialog = new TDialog(TRect(0, 0, 60, 17), _("About RHGDB"));
   dialog->options |= ofCentered;
-  sprintf(buffer, "\003%s\n"
-          "\003(%s)\n"
-          "\003\n"
-          "\003%s\n"
-          "\003%s\n"
-          "\003(%s%s)\n"
-          "\003\n"
-          "\003%s, %d-%d\n",
-          RHGDBVersion,
-          build_date,
-          _("RHGDB is a source level debugger"),
-          _("with Turbo Vision interface"),
-          _("based on GDB "), version,
-          _("Copyright (C) by Robert H”hne"),
-          1996,2001);
+  CLY_snprintf(buffer, lenBufAbout, "\003%s\n"
+               "\003(%s)\n"
+               "\003\n"
+               "\003%s\n"
+               "\003%s\n"
+               "\003(%s%s)\n"
+               "\003\n"
+               "\003%s, %d-%d\n",
+               RHGDBVersion,
+               build_date,
+               _("RHGDB is a source level debugger"),
+               _("with Turbo Vision interface"),
+               _("based on GDB "), version,
+               _("Copyright (C) by Robert H”hne"),
+               1996,2001);
   text = new TStaticText(TRect(0, 0, 50, 9), buffer);
   text->options |= ofCentered;
   dialog->insert(text);

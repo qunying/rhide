@@ -125,7 +125,7 @@ GDB_SRC_SEARCH=
 
 for gdb_ver in 5.0 5.1 5.2 5.2.1 5.3 6.0 6.1 6.1.1; do
     if test "$rhide_OS" = DJGPP ; then
-	gdb_ver=`echo $1 | sed -e 's#\.##2g'`
+	gdb_ver=`echo $gdb_ver | sed -e 's#\.##2g'`
     fi
     for dprefix in $GDB_SRC_PREF_LIST ; do
         GDB_SRC_SEARCH="$dprefix/gdb-$gdb_ver $GDB_SRC_SEARCH"

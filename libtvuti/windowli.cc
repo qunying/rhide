@@ -164,6 +164,23 @@ void UpdateWindow(TWindow *window)
   }
 }
 
+void AddReference(TWindow **window)
+{
+  int i,count;
+  if (!windows) return;
+  if (!window) return;
+  count = windows->getCount();
+  for (i=0;i<count;i++)
+  {
+    DeskTopWindow *w = (DeskTopWindow *)windows->at(i);
+    if (w->window == *window)
+    {
+      w->ref = window;
+      break;
+    }
+  }
+}
+
 static void
 RemoveClosedWindow(int nr)
 {

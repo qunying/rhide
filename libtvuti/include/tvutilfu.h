@@ -4,6 +4,7 @@
 #define tvutilFunctions__
 
 class TWindow;
+void AddReference(TWindow **window);
 void AddWindow(TWindow *,TWindow **ref = NULL,Boolean before = False,
                Boolean remember_closed = False, Boolean is_removable = True,
                int old_number = 0);

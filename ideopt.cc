@@ -1,8 +1,5 @@
 /* Copyright (C) 1996-1998 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
-/*
- $Id$
-*/
 #define Uses_TDirList
 #define Uses_TParamList
 #define Uses_TOptions
@@ -1180,14 +1177,10 @@ void TLocalDialog::handleEvent(TEvent &event)
             if (data == 1)
             {
               compiler->options |= ofSelectable;
-              error_type->options |= ofSelectable;
-              error_prog->options |= ofSelectable;
             }
             else
             {
               compiler->options &= ~ofSelectable;
-              error_type->options &= ~ofSelectable;
-              error_prog->options &= ~ofSelectable;
             }
             clearEvent(event);
             break;

@@ -123,12 +123,31 @@ _rhide_load_environment_file(char *fname, int unload)
     if (equal)
     {
       *equal = 0;
-      char *_variable = expand_rhide_spec(variable);
-
-      insert_variable(variable, unload ? NULL : equal + 1);
-      if (strcmp(variable, _variable) != 0)
+      bool add = false;
+      if ((equal > line) && (equal[-1] == '+'))
       {
-        insert_variable(_variable, unload ? NULL : equal + 1);
+        add = true;
+        equal[-1] = 0;
+      }
+      char *_variable = expand_rhide_spec(variable);
+      if (add)
+      {
+        char *content = string_dup(GetVariable(_variable));
+        string_cat(content, " ", equal+1, NULL);
+        insert_user_variable(variable, unload ? NULL : content);
+        if (strcmp(variable, _variable) != 0)
+        {
+          insert_user_variable(_variable, unload ? NULL : content);
+        }
+        string_free(content);
+      }
+      else
+      {
+        insert_user_variable(variable, unload ? NULL : equal + 1);
+        if (strcmp(variable, _variable) != 0)
+        {
+          insert_user_variable(_variable, unload ? NULL : equal + 1);
+        }
       }
 #ifdef __linux__
 /* That's now a special case, when running under linux

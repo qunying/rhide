@@ -1,4 +1,4 @@
-# Copyright (C) 1996-2001 Robert H”hne, see COPYING.RH for details 
+# Copyright (C) 1996-2002 Robert H”hne, see COPYING.RH for details 
 # This file is part of RHIDE. 
 # gpr2mak -d -r- -o - rhide_.gpr
 vpath_src=$(RHIDESRC)
@@ -110,12 +110,12 @@ PASCAL_TYPE=GPC
 GET_HOME=$(HOME)
 CLEAN_FILES=$(MAIN_TARGET) $(OBJFILES)
 RHIDE_GCC=gcc
-RHIDE_AS=gcc
-RHIDE_GXX=gcc
+RHIDE_AS=$(RHIDE_GCC)
+RHIDE_GXX=$(RHIDE_GCC)
 RHIDE_GPC=gpc
 RHIDE_FPC=ppc386
 RHIDE_AR=ar
-RHIDE_LD=gcc
+RHIDE_LD=$(RHIDE_GCC)
 RHIDE_G77=g77
 RHIDE_NASM=nasm
 RHIDE_LD_PASCAL=gpc
@@ -195,8 +195,15 @@ RHIDE_COMPILE_GPC_FORCE=$(RHIDE_GPC) $(RHIDE_GPC_FLAGS) -x pascal\
 RHIDE_FPC_FLAGS=$(C_FPC_LANG_FLAGS) $(LOCAL_OPT) $(addprefix\
 	-Up,$(INCLUDE_DIRS))  $(C_EXTRA_FLAGS)
 RHIDE_COMPILE_FPC=$(RHIDE_FPC) $(RHIDE_FPC_FLAGS) -E- $(SOURCE_NAME)
+RHIDE_SHARED_LDFLAGS_$(RHIDE_OS)=
+RHIDE_SHARED_LDFLAGS_DJGPP=
+RHIDE_SHARED_LDFLAGS_Linux=-shared
+RHIDE_SHARED_LDFLAGS=$(RHIDE_SHARED_LDFLAGS_$(RHIDE_OS))
 RHIDE_COMPILE_FPC_FORCE=$(RHIDE_FPC) $(RHIDE_FPC_FLAGS) -B -E-\
 	$(SOURCE_NAME)
+RHIDE_COMPILE_LINK_DLL=$(RHIDE_LD) $(RHIDE_LIBDIRS) $(C_EXTRA_FLAGS) -o\
+	$(OUTFILE)  $(OBJFILES) $(LIBRARIES) $(LDFLAGS) $(RHIDE_LDFLAGS)  \
+	$(RHIDE_SHARED_LDFLAGS) $(RHIDE_LIBS)
 RHIDE_COMPILE_LINK=$(RHIDE_LD) $(RHIDE_LIBDIRS) $(C_EXTRA_FLAGS) -o\
 	$(OUTFILE)  $(OBJFILES) $(LIBRARIES) $(LDFLAGS) $(RHIDE_LDFLAGS)\
 	$(RHIDE_LIBS)
@@ -421,7 +428,7 @@ nodebobj/idebug.o:: $(DEPS_4)
 DEPS_5=idecheck.cc rhide.h rhutils.h libtvuti.h tvutilfu.h
 nodebobj/idecheck.o:: $(DEPS_5)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_6=idecolor.cc pal.h rhide.h libide.h tidefile.h libtvuti.h
+DEPS_6=idecolor.cc pal.h rhide.h libide.h tidefile.h rhutils.h libtvuti.h
 nodebobj/idecolor.o:: $(DEPS_6)
 	$(RHIDE_COMPILE.cc.o)
 DEPS_7=idecomp.cc rhide.h ideenums.h idefunct.h libide.h tdepende.h\
@@ -439,7 +446,7 @@ DEPS_9=idedefau.cc flags/ada_opt.h flags/c_opt.h flags/cxx_opt.h\
 	flags/deb_opt.h flags/f_opt.h flags/fpc_opt.h flags/fpcreser.h\
 	flags/gpcreser.h flags/opt_opt.h flags/pas_opt.h flags/reserved.h\
 	flags/warn_opt.h rhide.h ideenums.h libide.h tdepende.h tflagcol.h\
-	tflagent.h tfname.h toptions.h tproject.h
+	tflagent.h tfname.h toptions.h tproject.h rhutils.h libtvuti.h
 nodebobj/idedefau.o:: $(DEPS_9)
 	$(RHIDE_COMPILE.cc.o)
 DEPS_10=idedial.cc ideconst.h rhide.h rhidehis.h ideenums.h libide.h\
@@ -471,7 +478,8 @@ DEPS_15=idehelp.cc ideconst.h rhide.h idecomma.h libide.h tideedit.h\
 	tidefile.h rhutils.h libtvuti.h tvutilco.h tvutilfu.h
 nodebobj/idehelp.o:: $(DEPS_15)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_16=idehints.cc ideconst.h rhide.h idecomma.h libide.h libtvuti.h
+DEPS_16=idehints.cc ideconst.h rhide.h idecomma.h libide.h rhutils.h\
+	libtvuti.h
 nodebobj/idehints.o:: $(DEPS_16)
 	$(RHIDE_COMPILE.cc.o)
 DEPS_17=idemain.cc ideapp.h ideconst.h rhide.h rhidehis.h idecomma.h\
@@ -487,7 +495,7 @@ DEPS_18=idemak.cc rhide.h ideenums.h idefunct.h libide.h tdepende.h\
 nodebobj/idemak.o:: $(DEPS_18)
 	$(RHIDE_COMPILE.cc.o)
 DEPS_19=idemenu.cc ideapp.h ideconst.h rhide.h idecomma.h libide.h\
-	libtvuti.h
+	rhutils.h libtvuti.h
 nodebobj/idemenu.o:: $(DEPS_19)
 	$(RHIDE_COMPILE.cc.o)
 DEPS_20=idemsg.cc rhide.h ideenums.h libide.h tdepende.h tfname.h\
@@ -519,7 +527,7 @@ DEPS_24=idespec.cc rhide.h rhidehis.h idecomma.h ideenums.h idefunct.h\
 nodebobj/idespec.o:: $(DEPS_24)
 	$(RHIDE_COMPILE.cc.o)
 DEPS_25=idestatu.cc ideapp.h ideconst.h rhide.h idecomma.h libide.h\
-	libtvuti.h thintsta.h tscollec.h tvutilco.h
+	rhutils.h libtvuti.h thintsta.h tscollec.h tvutilco.h
 nodebobj/idestatu.o:: $(DEPS_25)
 	$(RHIDE_COMPILE.cc.o)
 DEPS_26=idestrm.cc

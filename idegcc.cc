@@ -108,6 +108,11 @@ int RunProgram(const char *cmd,
 #endif
 
   retval = system(cmd);
+  setup_main_title();
+  if (project)
+    setup_title(project_name);
+  else
+    setup_title(_("No project"));
 
 #ifndef __DJGPP__
   if (SwitchToUser==false)

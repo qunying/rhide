@@ -6,6 +6,8 @@
 #error You can use these functions only in C++ programs!!
 #endif
 
+#include <cstdio>
+
 /* return a malloced string 'src'. When scr=NULL return malloced "" */
 char *string_dup(const char *src);
 
@@ -209,6 +211,14 @@ char *unique_name(char *before, char *retval = (char *) 0);
 
 int AbsToRelPath(const char *ref_path, char *&ret, const char *subst = 0,
                  int allow_prevdirs = 1, int max_up_count = 3);
+
+
+/*
+  Read a line of text from a file. CR's are ignored, LF and EOF
+  terminate the line. It returns the number of chars in the
+  read line. It returns -1 in case of EOF when calling getline
+*/
+int getline(char *&line, int &buf_count, FILE *f);
 
 /*
   This macros declares a function to be called before main.

@@ -53,10 +53,10 @@ C_EXTRA_FLAGS=
 LOCAL_OPT=$(subst ___~~~___, ,$(subst $(notdir $<)___,,$(filter $(notdir\
 	$<)___%,$(LOCAL_OPTIONS))))
 
-OBJFILES=abstorel.o back2sl.o basename.o fexpand.o fixpath.o io.o specs.o\
-	splitfn.o stricat.o stridown.o stridup.o strifree.o
-ALL_OBJFILES=abstorel.o back2sl.o basename.o fexpand.o fixpath.o io.o\
+OBJFILES=abstorel.o back2sl.o basename.o fexpand.o fixpath.o getline.o io.o\
 	specs.o splitfn.o stricat.o stridown.o stridup.o strifree.o
+ALL_OBJFILES=abstorel.o back2sl.o basename.o fexpand.o fixpath.o getline.o\
+	io.o specs.o splitfn.o stricat.o stridown.o stridup.o strifree.o
 LIBRARIES=
 SOURCE_NAME=$<
 OUTFILE=$@
@@ -68,8 +68,8 @@ WUC=
 EDITORS=
 MAIN_TARGET=librhuti.a
 PROJECT_ITEMS=abstorel.cc back2sl.cc basename.cc fexpand.cc fixpath.cc\
-	io.cc specs.cc splitfn.cc stricat.cc stridown.cc stridup.cc\
-	strifree.cc
+	getline.cc io.cc specs.cc splitfn.cc stricat.cc stridown.cc\
+	stridup.cc strifree.cc
 DEFAULT_MASK=*.[chs]*
 RHIDE_BIN_DIR=c:/obj/rhide
 PASCAL_TYPE=GPC
@@ -395,8 +395,8 @@ include rhide.env
 all::
 clean::
 	rm -f $(CLEAN_FILES)
-DEPS_0= abstorel.o back2sl.o basename.o fexpand.o fixpath.o io.o specs.o\
-	splitfn.o stricat.o stridown.o stridup.o strifree.o 
+DEPS_0= abstorel.o back2sl.o basename.o fexpand.o fixpath.o getline.o io.o\
+	specs.o splitfn.o stricat.o stridown.o stridup.o strifree.o 
 NO_LINK=
 LINK_FILES=$(filter-out $(NO_LINK),$(DEPS_0))
 librhuti.a:: $(DEPS_0)
@@ -416,25 +416,28 @@ fexpand.o:: $(DEPS_4)
 DEPS_5=fixpath.cc
 fixpath.o:: $(DEPS_5)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_6=io.cc rhutils.h
-io.o:: $(DEPS_6)
+DEPS_6=getline.cc rhutils.h
+getline.o:: $(DEPS_6)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_7=specs.cc rhutils.h
-specs.o:: $(DEPS_7)
+DEPS_7=io.cc rhutils.h
+io.o:: $(DEPS_7)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_8=splitfn.cc rhutils.h
-splitfn.o:: $(DEPS_8)
+DEPS_8=specs.cc rhutils.h
+specs.o:: $(DEPS_8)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_9=stricat.cc rhutils.h
-stricat.o:: $(DEPS_9)
+DEPS_9=splitfn.cc rhutils.h
+splitfn.o:: $(DEPS_9)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_10=stridown.cc rhutils.h
-stridown.o:: $(DEPS_10)
+DEPS_10=stricat.cc rhutils.h
+stricat.o:: $(DEPS_10)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_11=stridup.cc rhutils.h
-stridup.o:: $(DEPS_11)
+DEPS_11=stridown.cc rhutils.h
+stridown.o:: $(DEPS_11)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_12=strifree.cc rhutils.h
-strifree.o:: $(DEPS_12)
+DEPS_12=stridup.cc rhutils.h
+stridup.o:: $(DEPS_12)
+	$(RHIDE_COMPILE.cc.o)
+DEPS_13=strifree.cc rhutils.h
+strifree.o:: $(DEPS_13)
 	$(RHIDE_COMPILE.cc.o)
 all:: librhuti.a

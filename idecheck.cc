@@ -104,6 +104,35 @@ int CheckIDE()
       goto end;
     }
   }
+
+  {
+    char *tmp = string_dup(djdir);
+    string_cat(tmp, "/lang/cxx/stdiostream.h");
+    if (!__file_exists(tmp))
+    {
+      string_free(tmp);
+      string_cat(tmp, djdir, "/lang/cxx/stdios~1.h", NULL);
+      if (__file_exists(tmp))
+      {
+        if (BigmessageBox(mfWarning|mfYesButton|mfNoButton,
+          _("RHIDE has detected, that you are running on a System "
+            "where long filenames might be supported "
+            "and you have installed the C++ compiler. Are you "
+            "sure, you have read the DJGPP FAQ and the installing "
+            "instructions for gcc when running under such a system? "
+            "(like Windows 95/Windows NT) "
+            "There might "
+            "be a problem with the standard C++ include files because "
+            "of a LFN-conflict. Should I continue?")) == cmNo)
+        {
+          ret = 1;
+          string_free(tmp);
+          goto end;
+        }
+      }
+      string_free(tmp);
+    }
+  }
       
 end:
   string_free(djdir);

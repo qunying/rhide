@@ -44,6 +44,20 @@ EvaluateWatch(const char *watch, int force)
   return ret;
 }
 
+static
+const char * get_assign_string()
+{
+  const struct op_print *op_tab = current_language->la_op_print_tab;
+  int i = 0;
+  while (op_tab[i].string != NULL)
+  {
+    if (op_tab[i].opcode == BINOP_ASSIGN)
+      return op_tab[i].string;
+    i++;
+  }
+  return "=";
+}
+
 char *
 SetValue(char *var, char *expr)
 {
@@ -53,7 +67,7 @@ SetValue(char *var, char *expr)
   if (!ret)
     return NULL;
   tmp = strdup(ret);
-  sprintf(command, "set variable %s=%s", var, expr);
+  sprintf(command, "set variable %s %s %s", var, get_assign_string(), expr);
   reset_command++;
   Command(command, 0);
   reset_command--;

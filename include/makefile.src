@@ -18,12 +18,13 @@ po_subdirs=
 
 include $(RHIDESRC)/common.mak
 
-$(srcdir)/pal.hxx: $(srcdir)/pal.h
-	@gecho "#include <pal.h>\n#undef S\n#define S(x,y,z,name,comment...) __(#name)\n"\
-	  "#undef S_\n #define S_(x,y,z,name,group,comment...)  __(#name) __(#group)\ncpIDEColor" |\
+pal.hxx: pal.h
+	gecho "#include \"pal.h\"\n"\
+	  "#undef S\n#define S(x,y,z,name,comment...) __(#name)\n"\
+	  "#undef S_\n #define S_(x,y,z,name,group,comment...) "\
+	  " __(#name) __(#group)\ncpIDEColor" |\
 		gcc -E -I$(srcdir) - | sed -e '/^[	 ]*$$/d' \
 	  -e '/^#.*$$/d' > __.hh
-	@$(move-if-change) __.hh $@
-#	@-rm -f __.hh
+	$(move-if-change) __.hh $@
 
 

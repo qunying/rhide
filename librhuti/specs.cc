@@ -18,6 +18,9 @@ int expand_variable_names = 1;
 char **vars = NULL;
 int var_count = 0;
 static int var_size = 0;
+char **user_vars = NULL;
+int user_var_count = 0;
+static int user_var_size = 0;
 
 /* set this nonzero to print to stderr, how the specs
    are expanded */
@@ -115,6 +118,18 @@ set_variable(const char *variable, const char *contents)
   _set_variable(vars, var_count, variable, contents);
 }
 
+void
+insert_user_variable(const char *variable, const char *contents)
+{
+  _add_variable(user_vars, user_var_count, user_var_size, variable, contents);
+}
+
+void
+set_user_variable(const char *variable, const char *contents)
+{
+  _set_variable(user_vars, user_var_count, variable, contents);
+}
+
 static int internal_var_count = 0;
 static int internal_var_size = 0;
 static char **internal_vars = NULL;
@@ -161,7 +176,9 @@ GetVariable(const char *variable, int use_env)
 
   if (!ival)
   {
-    ival = _get_variable(vars, var_count, variable);
+    ival = _get_variable(user_vars, user_var_count, variable);
+    if (!ival)
+      ival = _get_variable(vars, var_count, variable);
     if (!ival && use_env)
       ival = getenv(variable);
   }

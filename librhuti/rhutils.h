@@ -1,4 +1,4 @@
-/* Copyright (C) 1996-2000 Robert H”hne, see COPYING.RHU for details */
+/* Copyright (C) 1996-2000 Robert Höhne, see COPYING.RHU for details */
 #ifndef __rhutils_h
 #define __rhutils_h
 
@@ -79,6 +79,7 @@ extern int expand_variable_names;
 const char *GetVariable(const char *variable);
 const char *GetVariable(const char *variable, int use_env);
 void set_variable(const char *variable, const char *contents);
+void set_user_variable(const char *variable, const char *contents);
 
 /* Array of strings with the internal variables with the organization
    vars[i]   - variable name
@@ -90,6 +91,16 @@ extern char **vars;
    _NOT_ the string count in 'vars') */
 extern int var_count;
 
+/* Array of strings with the user defined variables with the organization
+   user_vars[i]   - variable name
+   user_vars[i+1] - variable contents
+*/
+extern char **user_vars;
+
+/* The count of the user defined variables (Note that this is the variable
+   count and  _NOT_ the string count in 'user_vars') */
+extern int user_var_count;
+
 /* set this to nonzero to print to stderr debug information about expanding
    the specs */
 extern int debug_specs;
@@ -97,6 +108,10 @@ extern int debug_specs;
 /* Add a variable 'variable' with contents 'contents'. If 'contents==NULL',
    then the variable is removed. */
 void insert_variable(const char *variable, const char *contents);
+
+/* Add a variable 'variable' with contents 'contents' to the user defined
+   variables. If 'contents==NULL', then the variable is removed. */
+void insert_user_variable(const char *variable, const char *contents);
 
 /* Some helper functions: 'open_brace' points to an opening brace
    or parenthesis and return the matching closing character or

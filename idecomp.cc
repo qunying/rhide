@@ -559,6 +559,7 @@ static int RunCompiler(char *cmd,const char *source_name,const char *dest_name)
 }
 
 Boolean user_check_errors(TDependency *dep,TMsgCollection &args);
+static void check_c_deps(TDependency *);
 
 static int CompileDep(TDependency *dep,char *spec_name)
 {
@@ -573,9 +574,19 @@ static Boolean compile_user(TDependency *dep,char *spec)
   int run_ret;
   Boolean retval;
   if (!dep) return False;
-  run_ret = CompileDep(dep,spec);
-  TMsgCollection *errs = new TMsgCollection();
   ERROR_TYPE error = dep->error_type;
+  if (error == ERROR_BUILTIN_C)
+  {
+    SET_DEPFILE_NAME();
+    SET_DEP();
+  }
+  run_ret = CompileDep(dep,spec);
+  if (error == ERROR_BUILTIN_C)
+  {
+    DEL_DEP();
+    check_c_deps(dep);
+  }
+  TMsgCollection *errs = new TMsgCollection();
   switch (error)
   {
     case ERROR_AUTO:
@@ -713,62 +724,65 @@ static int isStandardHeader(const char *depfile)
   return 0;
 }
 
+static void check_c_deps(TDependency *dep)
+{
+  FILE *f;
+  char x[256],depfile[PATH_MAX],*temp;
+  if (dep->dependencies) destroy(dep->dependencies);
+  dep->dependencies = NULL;
+  f = fopen(DEPFILE_NAME,"r");
+  if (f)
+  {
+    char *tmp;
+    fgets(x,255,f);
+    temp = strchr(x,':');
+    if (temp)
+    {
+      temp++;
+      while (*temp == ' ') temp++;
+      temp = strchr(temp,' ');
+      do
+      {
+        while (temp)
+        {
+          while (*temp == ' ') temp++;
+          tmp = temp;
+          if (*temp=='\n' || *temp == '\\' && temp[1] == '\n') temp = NULL;
+          else
+          {
+            char c;
+            TDependency *tmp_dep;
+            while (*temp != ' ' && *temp != '\n') temp++;
+            c = *temp;
+            *temp = 0;
+            strcpy(depfile,tmp);
+            *temp = c;
+            if (!isStandardHeader(depfile))
+            {
+              tmp_dep = new TDependency();
+              InitFName(tmp_dep->dest_name,depfile);
+              tmp_dep->source_name = NULL;
+              tmp_dep->source_file_type = FILE_UNKNOWN;
+              tmp_dep->dest_file_type = FILE_HEADER;
+              tmp_dep->compile_id = COMPILE_NONE;
+              if (!dep->dependencies) dep->dependencies = new TDepCollection(7,8);
+              dep->dependencies->insert(tmp_dep);
+            }
+          }
+        }
+      } while ((temp = fgets(x,255,f)));
+    }
+    fclose(f);
+  }
+}
+
 static Boolean compile_c_to_obj(TDependency *dep,char *spec)
 {
   SET_DEPFILE_NAME();
   SET_DEP();
   int run_ret = CompileDep(dep,spec);
   DEL_DEP();
-  {
-    FILE *f;
-    char x[256],depfile[PATH_MAX],*temp;
-    if (dep->dependencies) destroy(dep->dependencies);
-    dep->dependencies = NULL;
-    f = fopen(DEPFILE_NAME,"r");
-    if (f)
-    {
-      char *tmp;
-      fgets(x,255,f);
-      temp = strchr(x,':');
-      if (temp)
-      {
-        temp++;
-        while (*temp == ' ') temp++;
-        temp = strchr(temp,' ');
-        do
-        {
-          while (temp)
-          {
-            while (*temp == ' ') temp++;
-            tmp = temp;
-            if (*temp=='\n' || *temp == '\\' && temp[1] == '\n') temp = NULL;
-            else
-            {
-              char c;
-              TDependency *tmp_dep;
-              while (*temp != ' ' && *temp != '\n') temp++;
-              c = *temp;
-              *temp = 0;
-              strcpy(depfile,tmp);
-              *temp = c;
-              if (!isStandardHeader(depfile))
-              {
-                tmp_dep = new TDependency();
-                InitFName(tmp_dep->dest_name,depfile);
-                tmp_dep->source_name = NULL;
-                tmp_dep->source_file_type = FILE_UNKNOWN;
-                tmp_dep->dest_file_type = FILE_HEADER;
-                tmp_dep->compile_id = COMPILE_NONE;
-                if (!dep->dependencies) dep->dependencies = new TDepCollection(7,8);
-                dep->dependencies->insert(tmp_dep);
-              }
-            }
-          }
-        } while ((temp = fgets(x,255,f)));
-      }
-      fclose(f);
-    }
-  }
+  check_c_deps(dep);
   TMsgCollection *errs = new TMsgCollection();
   Boolean retval = check_compile_c_errors(*errs);
   ShowMessages(errs,False);

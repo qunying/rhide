@@ -93,7 +93,7 @@ static void addItem(TColorGroup *&group,int index, const char *name, const char 
   *group = *group + *new TColorItem(_(name), index);
 }
 
-#include "pal.c"
+#include <pal.h>
 #undef S
 #undef S_
 #define S(index,foreground,background,name,comment...) \

@@ -1683,7 +1683,7 @@ static void parse_commandline(int argc,char *argv[])
   /* At first look for an environment variable $(RHIDEOPT) and
      use the options from that variable as they were put at the
      beginning of the commandline, so they can be overwritten */
-  char *_rhide_opt = expand_spec("$(RHIDEOPT)",NULL);
+  char *_rhide_opt = expand_rhide_spec("$(RHIDEOPT)");
   char *rhide_opt = NULL;
   if (*_rhide_opt)
   {
@@ -1910,16 +1910,16 @@ void set_tmpdir()
   strftime(buf,256,"%Y%m%d%H%M%S",localtime(&curtime));
   sprintf(temp_mask,"RHIDE.%s.%d",buf,getpid());
 #endif
-  tmpdir = expand_spec("$(TMPDIR)",NULL);
+  tmpdir = expand_rhide_spec("$(TMPDIR)");
   if (!*tmpdir)
   {
     string_free(tmpdir);
-    tmpdir = expand_spec("$(TEMP)",NULL);
+    tmpdir = expand_rhide_spec("$(TEMP)");
   }
   if (!*tmpdir)
   {
     string_free(tmpdir);
-    tmpdir = expand_spec("$(TMP)",NULL);
+    tmpdir = expand_rhide_spec("$(TMP)");
   }
   if (!*tmpdir)
   {
@@ -2045,7 +2045,7 @@ void init_rhide(int _argc, char **_argv)
 
   push_environment();
   set_tmpdir();
-  char *locale_dir = expand_spec("$(LOCALEDIR)",NULL);
+  char *locale_dir = expand_rhide_spec("$(LOCALEDIR)");
 #ifndef __DJGPP__
   if (!*locale_dir)
   {
@@ -2061,7 +2061,7 @@ void init_rhide(int _argc, char **_argv)
   if (!*locale_dir)
   {
     string_free(locale_dir);
-    locale_dir = expand_spec("$(DJDIR)",NULL);
+    locale_dir = expand_rhide_spec("$(DJDIR)");
     if (*locale_dir)
     {
       string_cat(locale_dir,"/share/locale");

@@ -1696,10 +1696,7 @@ static void parse_commandline(int argc,char *argv[])
 #endif
           break;
         case 'p':
-#if 0
-          extern int convert_num_pad;
-          convert_num_pad = 0;
-#endif
+          TGKey::translateKeyPad = 0;
           break;
         case 'k':
           arg = next_option(rhide_opt,rhide_opt_end,i,argc,argv);

@@ -58,7 +58,7 @@ $(srcdir)/pal.cp: $(srcdir)/pal.c
 gpr2mak: gpr2mak.exe
 	ln -sf $< $@
 
-programs=gpr2mak.exe idegc.exe
+programs=gpr2mak.exe idegc.exe rhgdb/rhgdb.exe
 
 all:: libgdb/libgdb.h $(RHIDESRC)/tvision/include/tv.h $(programs)
 

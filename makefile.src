@@ -51,9 +51,11 @@ install_data_files=$(install_data_files_common) $(install_data_files_$(rhide_OS)
 include $(RHIDESRC)/common.mak
 
 $(srcdir)/pal.cp: $(srcdir)/pal.c
-	gecho "#include <pal.c>\n#undef S\n#define S(x,y,z,name,comment...) __(#name)\n"\
+	@gecho "#include <pal.c>\n#undef S\n#define S(x,y,z,name,comment...) __(#name)\n"\
 	  "#undef SS\n #define SS(x,y,z,name,group,comment...)  __(#name) __(#group)\ncpIDEColor" |\
-	gcc -E -I$(srcdir) - > $@
+	@gcc -E -I$(srcdir) - > __.cp
+	@$(move-if-change) __.cp $@
+	@-rm -f __.cp
 
 gpr2mak: gpr2mak.exe
 	ln -sf $< $@
@@ -187,17 +189,17 @@ endif
 init.version: ideversi.cc rhgdb/version.cc
 
 ideversi.cc: ideversi.in common.mak
-	sed -e s,@version@,$(VERSION),g \
+	@sed -e s,@version@,$(VERSION),g \
 	    -e "s/WARN/This file is generated automatically, do not edit!/g" \
           $(srcdir)/ideversi.in > _vers_
-	$(move-if-change) _vers_ $@
-	-rm -f _vers_
+	@$(move-if-change) _vers_ $@
+	@-rm -f _vers_
 
 rhgdb/version.cc: rhgdb/version.in common.mak
-	sed -e s,@version@,$(VERSION),g \
+	@sed -e s,@version@,$(VERSION),g \
 	    -e "s/WARN/This file is generated automatically, do not edit!/g" \
           $(srcdir)/rhgdb/version.in > _vers_
-	$(move-if-change) _vers_ $@
+	@$(move-if-change) _vers_ $@
 	-rm -f _vers_
 
 distrib.src: init.version touch_gprs

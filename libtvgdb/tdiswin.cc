@@ -7,6 +7,7 @@
 #define Uses_TPalette
 #define Uses_TKeys
 #define Uses_TRangeValidator
+#define Uses_MsgBox
 
 #define Uses_TDisassemblerWindow
 #define Uses_tvgdbCommands
@@ -28,7 +29,12 @@ struct Register
   char *name;
   int size;
   int has_changed;
-  unsigned long value;
+  union
+  {
+    unsigned long value;
+    double dvalue;
+  };
+  void Format(char *buf, int max_len);
 };
 
 /*
@@ -42,19 +48,78 @@ struct Register
 class TRegisters : public TView
 {
 public:
-  TRegisters(const TRect &bounds);
+  TRegisters(const TRect &bounds, int ofs = 0);
   ~TRegisters();
   void getText(char *dest, int reg_num);
   void update();
-  void editRegister(int num);
+  virtual void editRegister(int num);
   virtual void draw();
   virtual TPalette& getPalette() const;
   virtual void setState(ushort aState, Boolean enable);
   virtual void handleEvent(TEvent &event);
+  virtual void update_value(int num);
 
   int selected;
+  int max_size;
   Register *Registers;
 };
+
+class TFRegisters : public TRegisters
+{
+public:
+  TFRegisters(const TRect &bounds)
+    : TRegisters(bounds, register_count())
+  {
+  }
+  virtual void editRegister(int num);
+  virtual void update_value(int num);
+
+  int selected;
+};
+
+class TFloatValidator : public TFilterValidator
+{
+public:
+  TFloatValidator() : TFilterValidator("+-.0123456789eE") {}
+  virtual void Error()
+  {
+    messageBox(mfError|mfOKButton,_("invalid number"));
+  }
+  virtual Boolean IsValid(const char *buf)
+  {
+    double d;
+    if (sscanf(buf, "%lg", &d) == 1)
+      return True;
+    return False;
+  }
+  virtual void Format(char *buf)
+  {
+    double d;
+    sscanf(buf, "%lg", &d);
+    sprintf(buf, "%.9G", d);
+  }
+};
+
+void TFRegisters::editRegister(int num)
+{
+  double val;
+  char buf[256];
+  TFloatValidator *valid;
+  sprintf(buf,"%.9g",Registers[num].dvalue);
+  valid = new TFloatValidator();
+  if (ValidInputBox( _("Change register value"), _("~V~alue"),
+                     buf, 255, valid) == cmOK)
+  {
+    sscanf(buf, "%lg", &val);
+    if (Registers[num].dvalue != val)
+    {
+      Registers[num].dvalue = val;
+      Registers[num].has_changed = 1;
+      set_float_register_value(num, val);
+      drawView();
+    }
+  }
+}
 
 void TRegisters::editRegister(int num)
 {
@@ -108,6 +173,26 @@ void TRegisters::handleEvent(TEvent & event)
   {
     default:
       break;
+    case evMouseDown:
+    case evMouseAuto:
+      switch (event.mouse.buttons)
+      {
+        default:
+          break;
+        case 1:
+        case 2:
+        case 3:
+        {
+          TPoint mpoint = makeLocal(event.mouse.where);
+          selected = mpoint.y;
+          drawView();
+          break;
+        }
+      }
+      if (event.mouse.doubleClick)
+        editRegister(selected);
+      clearEvent(event);
+      break;
     case evCommand:
       switch (event.message.command)
       {
@@ -115,7 +200,9 @@ void TRegisters::handleEvent(TEvent & event)
           break;
         case cmModifyRegister:
           if (debugger_started)
+          {
             editRegister(selected);
+          }
           clearEvent(event);
           break;
       }
@@ -161,7 +248,7 @@ TPalette &TRegisters::getPalette() const
   return pal;
 }
 
-TRegisters::TRegisters(const TRect & bounds)
+TRegisters::TRegisters(const TRect & bounds, int ofs)
  : TView(bounds)
 {
   int i;
@@ -172,12 +259,13 @@ TRegisters::TRegisters(const TRect & bounds)
   Registers = (Register *)malloc(size.y*sizeof(Register));
   for (i=0;i<size.y;i++)
   {
-    Registers[i].name = string_dup(register_name(i));
-    Registers[i].size = get_register_size(i);
+    Registers[i].name = string_dup(register_name(i+ofs));
+    Registers[i].size = get_register_size(i+ofs);
     Registers[i].value = 0;
     Registers[i].has_changed = 0;
   }
   selected = 0;
+  max_size = size.y;
 }
 
 TRegisters::~TRegisters()
@@ -190,16 +278,33 @@ TRegisters::~TRegisters()
   free(Registers);
 }
 
+void Register::Format(char *buf, int max_len)
+{
+  if (size <= 4)
+  {
+    char fmt[32];
+    int space_width;
+    int value_width;
+    int reg_name_len = strlen(name);
+    value_width = size*2;
+    space_width = max_len-reg_name_len-value_width;
+    sprintf(fmt,"%%s%%%dc%%0%dlx",space_width,value_width);
+    sprintf(buf, fmt, name, ' ', value);
+  }
+  else
+  {
+    int space_width;
+    int value_width;
+    int reg_name_len = strlen(name);
+    value_width = 16;
+    space_width = max_len-reg_name_len-value_width;
+    sprintf(buf, "%s%*c%*.9G", name, space_width, ' ', value_width, dvalue);
+  }
+}
+
 void TRegisters::getText(char *retval, int reg_num)
 {
-  char fmt[32];
-  int space_width;
-  int value_width;
-  int reg_name_len = strlen(Registers[reg_num].name);
-  value_width = Registers[reg_num].size*2;
-  space_width = size.x-reg_name_len-value_width;
-  sprintf(fmt,"%%s%%%dc%%0%dlx",space_width,value_width);
-  sprintf(retval, fmt, Registers[reg_num].name, ' ', Registers[reg_num].value);
+  Registers[reg_num].Format(retval, size.x);
 }
 
 void TRegisters::draw()
@@ -210,6 +315,19 @@ void TRegisters::draw()
   uchar focused_color = getColor(3);
   int i;
   char buf[size.x+1];
+  TPoint loc;
+  loc.x = loc.y = 0;
+  loc = owner->makeLocal(makeGlobal(loc));
+  int my = owner->size.y-loc.y-1;
+  if (my < 0)
+    my = 0;
+  if (my > max_size)
+    my = max_size;
+  if (my != size.y)
+  {
+    TRect r(origin.x, origin.y, origin.x+size.x, origin.y+my);
+    locate(r);
+  }
   for (i=0;i<size.y;i++)
   {
     uchar color;
@@ -229,20 +347,38 @@ void TRegisters::draw()
   }
 }
 
-void TRegisters::update()
+void TFRegisters::update_value(int i)
+{
+  double val;
+  val = get_float_register_value(i);
+  if (val != Registers[i].dvalue)
+  {
+    Registers[i].dvalue = val;
+    Registers[i].has_changed = 1;
+  }
+  else
+    Registers[i].has_changed = 0;
+}
+
+void TRegisters::update_value(int i)
 {
   unsigned long val;
+  val = get_register_value(i);
+  if (val != Registers[i].value)
+  {
+    Registers[i].value = val;
+    Registers[i].has_changed = 1;
+  }
+  else
+    Registers[i].has_changed = 0;
+}
+
+void TRegisters::update()
+{
   int i;
   for (i=0;i<size.y;i++)
   {
-    val = get_register_value(i);
-    if (val != Registers[i].value)
-    {
-      Registers[i].value = val;
-      Registers[i].has_changed = 1;
-    }
-    else
-      Registers[i].has_changed = 0;
+    update_value(i);
   }
   drawView();
 }
@@ -605,6 +741,7 @@ TDisassemblerWindow::TDisassemblerWindow(const TRect &bounds,
   TWindowInit( TDisassemblerWindow::initFrame)
 {
   int RegisterCount = register_count();
+  int FRegisterCount = float_register_count();
   int max_reg_len = 0;
   TScrollBar *vs,*hs;
   int i,l;
@@ -616,7 +753,7 @@ TDisassemblerWindow::TDisassemblerWindow(const TRect &bounds,
       max_reg_len = l;
   }
   r.grow(-1,-1);
-  r.b.x -= max_reg_len+1+8;
+  r.b.x -= max_reg_len+1+8+8;
   vs = new TScrollBar(TRect(r.b.x-1,r.a.y,r.b.x,r.b.y));
   insert(vs);
 
@@ -637,6 +774,12 @@ TDisassemblerWindow::TDisassemblerWindow(const TRect &bounds,
   registers = new TRegisters(r);
   insert(registers);
 
+  r.a.y = r.b.y;
+  r.b.y = r.a.y + FRegisterCount;
+  fregisters = new TFRegisters(r);
+  insert(fregisters);
+  
+
   viewer->select();
   if (debugger_started)
     update(stop_pc);
@@ -646,6 +789,7 @@ void TDisassemblerWindow::update(unsigned long address)
 {
   viewer->update(address);
   registers->update();
+  fregisters->update();
 }
 
 unsigned long TDisassemblerWindow::focused_address()
@@ -657,8 +801,8 @@ unsigned long TDisassemblerWindow::focused_address()
 void TDisassemblerWindow::sizeLimits( TPoint& min, TPoint& max )
 {
   TWindow::sizeLimits(min, max);
-  int minx = registers->size.x + 10 + 2;
-  int miny = registers->size.y + 2;
+  int minx = registers->size.x + 18;
+  int miny = 12;
   min.x = minx > min.x ? minx : min.x;
   min.y = miny > min.y ? miny : min.y;
 }

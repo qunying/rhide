@@ -66,7 +66,7 @@ main(int argc, char *argv[])
     
     if (stat(argv[i], &st) < 0)
       continue;
-#if 0
+#if 1
     tm = localtime(&st.st_mtime);
     y = tm->tm_year;
     if (y<80) y += 2000;

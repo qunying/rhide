@@ -226,7 +226,7 @@ RHIDE_STDINC_C_Linux=/usr/include /usr/local/include
 RHIDE_STDINC_CXX_Linux=/usr/include/g++ /usr/local/include/g++
 RHIDE_STDINC_GCC_Linux=/usr/lib/gcc-lib /usr/local/lib/gcc-lib
 RHIDE_STDINC_C=$(RHIDE_STDINC_C_$(RHIDE_OS))
-RHIDE_STDINC_CXX=$(RHIDE_STDINC_CXX_$(RHIDE_OS)) $(TVSRC)/include
+RHIDE_STDINC_CXX=$(RHIDE_STDINC_CXX_$(RHIDE_OS)) $(TVSRC)/include $(SETSRC)
 RHIDE_STDINC_GCC=$(RHIDE_STDINC_GCC_$(RHIDE_OS))
 RHIDE_STDINC=$(RHIDE_STDINC_C) $(RHIDE_STDINC_CXX) $(RHIDE_STDINC_GCC)\
 	$(RHIDE_STDINC_EXTRA)
@@ -245,7 +245,7 @@ RHIDE_STDINC_C_Linux=/usr/include /usr/local/include
 RHIDE_STDINC_CXX_Linux=/usr/include/g++ /usr/local/include/g++
 RHIDE_STDINC_GCC_Linux=/usr/lib/gcc-lib /usr/local/lib/gcc-lib
 RHIDE_STDINC_C=$(RHIDE_STDINC_C_$(RHIDE_OS))
-RHIDE_STDINC_CXX=$(RHIDE_STDINC_CXX_$(RHIDE_OS)) $(TVSRC)/include
+RHIDE_STDINC_CXX=$(RHIDE_STDINC_CXX_$(RHIDE_OS)) $(TVSRC)/include $(SETSRC)
 RHIDE_STDINC_GCC=$(RHIDE_STDINC_GCC_$(RHIDE_OS))
 RHIDE_STDINC=$(RHIDE_STDINC_C) $(RHIDE_STDINC_CXX) $(RHIDE_STDINC_GCC)\
 	$(RHIDE_STDINC_EXTRA)
@@ -504,9 +504,7 @@ DEPS_14=tvgdb.cc $(RHIDESRC)/libtvgdb/include/libtvgdb.h\
 	$(RHIDESRC)/libtvuti/include/tvutilfu.h
 tvgdb.o:: $(DEPS_14)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_15=twatchdi.cc $(SETSRC)/settvuti/include/settvuti.h\
-	$(SETSRC)/settvuti/include/tinppipe.h\
-	$(RHIDESRC)/librhgdb/include/librhgdb.h\
+DEPS_15=twatchdi.cc $(RHIDESRC)/librhgdb/include/librhgdb.h\
 	$(RHIDESRC)/librhuti/rhutils.h\
 	$(RHIDESRC)/libtvgdb/include/libtvgdb.h\
 	$(RHIDESRC)/libtvgdb/include/tvgdbcom.h\

@@ -235,7 +235,7 @@ RHIDE_STDINC_C_Linux=/usr/include /usr/local/include
 RHIDE_STDINC_CXX_Linux=/usr/include/g++ /usr/local/include/g++
 RHIDE_STDINC_GCC_Linux=/usr/lib/gcc-lib /usr/local/lib/gcc-lib
 RHIDE_STDINC_C=$(RHIDE_STDINC_C_$(RHIDE_OS))
-RHIDE_STDINC_CXX=$(RHIDE_STDINC_CXX_$(RHIDE_OS)) $(TVSRC)/include
+RHIDE_STDINC_CXX=$(RHIDE_STDINC_CXX_$(RHIDE_OS)) $(TVSRC)/include $(SETSRC)
 RHIDE_STDINC_GCC=$(RHIDE_STDINC_GCC_$(RHIDE_OS))
 RHIDE_STDINC=$(RHIDE_STDINC_C) $(RHIDE_STDINC_CXX) $(RHIDE_STDINC_GCC)\
 	$(RHIDE_STDINC_EXTRA)
@@ -260,7 +260,7 @@ RHIDE_STDINC_C_Linux=/usr/include /usr/local/include
 RHIDE_STDINC_CXX_Linux=/usr/include/g++ /usr/local/include/g++
 RHIDE_STDINC_GCC_Linux=/usr/lib/gcc-lib /usr/local/lib/gcc-lib
 RHIDE_STDINC_C=$(RHIDE_STDINC_C_$(RHIDE_OS))
-RHIDE_STDINC_CXX=$(RHIDE_STDINC_CXX_$(RHIDE_OS)) $(TVSRC)/include
+RHIDE_STDINC_CXX=$(RHIDE_STDINC_CXX_$(RHIDE_OS)) $(TVSRC)/include $(SETSRC)
 RHIDE_STDINC_GCC=$(RHIDE_STDINC_GCC_$(RHIDE_OS))
 RHIDE_STDINC=$(RHIDE_STDINC_C) $(RHIDE_STDINC_CXX) $(RHIDE_STDINC_GCC)\
 	$(RHIDE_STDINC_EXTRA)
@@ -429,16 +429,7 @@ DEPS_4=
 all:: ../libtvuti/libtvuti.gpr.force
 ../libtvuti/libtvuti.gpr.force:
 	$(MAKE) -C ../libtvuti/ -f libtvuti.mak
-DEPS_5=gdbedit.cc $(SETSRC)/include/ced_clas.h $(SETSRC)/include/ced_exte.h\
-	$(SETSRC)/include/ceditor.h $(SETSRC)/include/pmcoll.h\
-	$(SETSRC)/include/sindicat.h $(SETSRC)/include/tvsetuti.h\
-	$(SETSRC)/settvuti/include/sarray.h\
-	$(SETSRC)/settvuti/include/setstack.h\
-	$(SETSRC)/settvuti/include/settvuti.h\
-	$(SETSRC)/settvuti/include/tnocastc.h\
-	$(SETSRC)/settvuti/include/tstringa.h\
-	$(SETSRC)/settvuti/include/viewplus.h\
-	$(RHIDESRC)/librhgdb/include/librhgdb.h\
+DEPS_5=gdbedit.cc $(RHIDESRC)/librhgdb/include/librhgdb.h\
 	$(RHIDESRC)/librhuti/rhutils.h\
 	$(RHIDESRC)/libtvuti/include/libtvuti.h\
 	$(RHIDESRC)/libtvuti/include/tdirlist.h\
@@ -449,32 +440,14 @@ DEPS_5=gdbedit.cc $(SETSRC)/include/ced_clas.h $(SETSRC)/include/ced_exte.h\
 	$(RHIDESRC)/rhgdb/include/rhgdb.h
 gdbedit.o:: $(DEPS_5)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_6=gdbsynt.cc $(SETSRC)/include/ced_clas.h $(SETSRC)/include/ced_exte.h\
-	$(SETSRC)/include/ced_inte.h $(SETSRC)/include/ceditor.h\
-	$(SETSRC)/include/pmcoll.h $(SETSRC)/include/sindicat.h\
-	$(SETSRC)/include/tvsetuti.h $(SETSRC)/settvuti/include/sarray.h\
-	$(SETSRC)/settvuti/include/setstack.h\
-	$(SETSRC)/settvuti/include/settvuti.h\
-	$(SETSRC)/settvuti/include/tnocastc.h\
-	$(SETSRC)/settvuti/include/tstringa.h\
-	$(SETSRC)/settvuti/include/viewplus.h\
-	$(RHIDESRC)/include/flags/gpcreser.h\
+DEPS_6=gdbsynt.cc $(RHIDESRC)/include/flags/gpcreser.h\
 	$(RHIDESRC)/include/flags/reserved.h $(RHIDESRC)/librhuti/rhutils.h\
 	$(RHIDESRC)/libtvuti/include/libtvuti.h\
 	$(RHIDESRC)/libtvuti/include/tdirlist.h\
 	$(RHIDESRC)/rhgdb/include/rhgdb.h
 gdbsynt.o:: $(DEPS_6)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_7=main.cc $(SETSRC)/include/ced_clas.h $(SETSRC)/include/ced_exte.h\
-	$(SETSRC)/include/ceditor.h $(SETSRC)/include/pmcoll.h\
-	$(SETSRC)/include/sindicat.h $(SETSRC)/include/tvsetuti.h\
-	$(SETSRC)/settvuti/include/sarray.h\
-	$(SETSRC)/settvuti/include/setstack.h\
-	$(SETSRC)/settvuti/include/settvuti.h\
-	$(SETSRC)/settvuti/include/tnocastc.h\
-	$(SETSRC)/settvuti/include/tstringa.h\
-	$(SETSRC)/settvuti/include/viewplus.h\
-	$(RHIDESRC)/librhgdb/include/librhgdb.h\
+DEPS_7=main.cc $(RHIDESRC)/librhgdb/include/librhgdb.h\
 	$(RHIDESRC)/librhuti/rhutils.h\
 	$(RHIDESRC)/libtvgdb/include/libtvgdb.h\
 	$(RHIDESRC)/libtvgdb/include/tdiswin.h\

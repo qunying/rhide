@@ -237,7 +237,7 @@ RHIDE_STDINC_C_Linux=/usr/include /usr/local/include
 RHIDE_STDINC_CXX_Linux=/usr/include/g++ /usr/local/include/g++
 RHIDE_STDINC_GCC_Linux=/usr/lib/gcc-lib /usr/local/lib/gcc-lib
 RHIDE_STDINC_C=$(RHIDE_STDINC_C_$(RHIDE_OS))
-RHIDE_STDINC_CXX=$(RHIDE_STDINC_CXX_$(RHIDE_OS)) $(TVSRC)/include
+RHIDE_STDINC_CXX=$(RHIDE_STDINC_CXX_$(RHIDE_OS)) $(TVSRC)/include $(SETSRC)
 RHIDE_STDINC_GCC=$(RHIDE_STDINC_GCC_$(RHIDE_OS))
 RHIDE_STDINC=$(RHIDE_STDINC_C) $(RHIDE_STDINC_CXX) $(RHIDE_STDINC_GCC)\
 	$(RHIDE_STDINC_EXTRA)
@@ -264,7 +264,7 @@ RHIDE_STDINC_C_Linux=/usr/include /usr/local/include
 RHIDE_STDINC_CXX_Linux=/usr/include/g++ /usr/local/include/g++
 RHIDE_STDINC_GCC_Linux=/usr/lib/gcc-lib /usr/local/lib/gcc-lib
 RHIDE_STDINC_C=$(RHIDE_STDINC_C_$(RHIDE_OS))
-RHIDE_STDINC_CXX=$(RHIDE_STDINC_CXX_$(RHIDE_OS)) $(TVSRC)/include
+RHIDE_STDINC_CXX=$(RHIDE_STDINC_CXX_$(RHIDE_OS)) $(TVSRC)/include $(SETSRC)
 RHIDE_STDINC_GCC=$(RHIDE_STDINC_GCC_$(RHIDE_OS))
 RHIDE_STDINC=$(RHIDE_STDINC_C) $(RHIDE_STDINC_CXX) $(RHIDE_STDINC_GCC)\
 	$(RHIDE_STDINC_EXTRA)
@@ -471,8 +471,8 @@ DEPS_4=ideflags.cc $(RHIDESRC)/include/rhide.h\
 	$(RHIDESRC)/libtvuti/include/tscollec.h
 nodebobj/ideflags.o:: $(DEPS_4)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_5=idemak.cc $(SETSRC)/setedit/include/edprint.h\
-	$(RHIDESRC)/include/rhide.h $(RHIDESRC)/libide/include/ideenums.h\
+DEPS_5=idemak.cc $(RHIDESRC)/include/rhide.h\
+	$(RHIDESRC)/libide/include/ideenums.h\
 	$(RHIDESRC)/libide/include/libide.h\
 	$(RHIDESRC)/libide/include/tdepende.h\
 	$(RHIDESRC)/libide/include/tfname.h\

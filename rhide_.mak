@@ -237,7 +237,7 @@ RHIDE_STDINC_C_Linux=/usr/include /usr/local/include
 RHIDE_STDINC_CXX_Linux=/usr/include/g++ /usr/local/include/g++
 RHIDE_STDINC_GCC_Linux=/usr/lib/gcc-lib /usr/local/lib/gcc-lib
 RHIDE_STDINC_C=$(RHIDE_STDINC_C_$(RHIDE_OS))
-RHIDE_STDINC_CXX=$(RHIDE_STDINC_CXX_$(RHIDE_OS)) $(TVSRC)/include
+RHIDE_STDINC_CXX=$(RHIDE_STDINC_CXX_$(RHIDE_OS)) $(TVSRC)/include $(SETSRC)
 RHIDE_STDINC_GCC=$(RHIDE_STDINC_GCC_$(RHIDE_OS))
 RHIDE_STDINC=$(RHIDE_STDINC_C) $(RHIDE_STDINC_CXX) $(RHIDE_STDINC_GCC)\
 	$(RHIDE_STDINC_EXTRA)
@@ -264,7 +264,7 @@ RHIDE_STDINC_C_Linux=/usr/include /usr/local/include
 RHIDE_STDINC_CXX_Linux=/usr/include/g++ /usr/local/include/g++
 RHIDE_STDINC_GCC_Linux=/usr/lib/gcc-lib /usr/local/lib/gcc-lib
 RHIDE_STDINC_C=$(RHIDE_STDINC_C_$(RHIDE_OS))
-RHIDE_STDINC_CXX=$(RHIDE_STDINC_CXX_$(RHIDE_OS)) $(TVSRC)/include
+RHIDE_STDINC_CXX=$(RHIDE_STDINC_CXX_$(RHIDE_OS)) $(TVSRC)/include $(SETSRC)
 RHIDE_STDINC_GCC=$(RHIDE_STDINC_GCC_$(RHIDE_OS))
 RHIDE_STDINC=$(RHIDE_STDINC_C) $(RHIDE_STDINC_CXX) $(RHIDE_STDINC_GCC)\
 	$(RHIDE_STDINC_EXTRA)
@@ -450,26 +450,16 @@ NO_LINK=libide/libide.a librhuti/librhuti.a libtvuti/libtvuti.a\
 LINK_FILES=$(filter-out $(NO_LINK),$(DEPS_0))
 ide.exe:: $(DEPS_0)
 	$(RHIDE_COMPILE_LINK)
-DEPS_1=commands.cc $(SETSRC)/include/ced_coma.h $(SETSRC)/include/ceditor.h\
-	$(SETSRC)/settvuti/include/settvuti.h\
-	$(RHIDESRC)/include/ideconst.h $(RHIDESRC)/include/rhide.h\
-	$(RHIDESRC)/libtvuti/include/libtvuti.h\
+DEPS_1=commands.cc $(RHIDESRC)/include/ideconst.h\
+	$(RHIDESRC)/include/rhide.h $(RHIDESRC)/libtvuti/include/libtvuti.h\
 	$(RHIDESRC)/libtvuti/include/tvutilfu.h
 nodebobj/commands.o:: $(DEPS_1)
 	$(RHIDE_COMPILE.cc.o)
 DEPS_2=fstrcmp.c
 nodebobj/fstrcmp.o:: $(DEPS_2)
 	$(RHIDE_COMPILE.c.o)
-DEPS_3=ideapp.cc $(SETSRC)/include/ced_clas.h $(SETSRC)/include/ced_coma.h\
-	$(SETSRC)/include/ced_exte.h $(SETSRC)/include/ceditor.h\
-	$(SETSRC)/include/pmcoll.h $(SETSRC)/include/sindicat.h\
-	$(SETSRC)/include/tvsetuti.h $(SETSRC)/settvuti/include/sarray.h\
-	$(SETSRC)/settvuti/include/setstack.h\
-	$(SETSRC)/settvuti/include/settvuti.h\
-	$(SETSRC)/settvuti/include/tnocastc.h\
-	$(SETSRC)/settvuti/include/tstringa.h\
-	$(SETSRC)/settvuti/include/viewplus.h $(RHIDESRC)/include/ideapp.h\
-	$(RHIDESRC)/include/rhide.h $(RHIDESRC)/libide/include/ideenums.h\
+DEPS_3=ideapp.cc $(RHIDESRC)/include/ideapp.h $(RHIDESRC)/include/rhide.h\
+	$(RHIDESRC)/libide/include/ideenums.h\
 	$(RHIDESRC)/libide/include/libide.h\
 	$(RHIDESRC)/libide/include/tdepende.h\
 	$(RHIDESRC)/libide/include/tfname.h\
@@ -489,15 +479,7 @@ DEPS_5=idecheck.cc $(RHIDESRC)/include/rhide.h\
 	$(RHIDESRC)/libtvuti/include/tvutilfu.h
 nodebobj/idecheck.o:: $(DEPS_5)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_6=idecolor.cc $(SETSRC)/include/ced_clas.h\
-	$(SETSRC)/include/ced_exte.h $(SETSRC)/include/ceditor.h\
-	$(SETSRC)/include/pmcoll.h $(SETSRC)/include/sindicat.h\
-	$(SETSRC)/include/tvsetuti.h $(SETSRC)/settvuti/include/sarray.h\
-	$(SETSRC)/settvuti/include/setstack.h\
-	$(SETSRC)/settvuti/include/settvuti.h\
-	$(SETSRC)/settvuti/include/tnocastc.h\
-	$(SETSRC)/settvuti/include/tstringa.h\
-	$(SETSRC)/settvuti/include/viewplus.h $(RHIDESRC)/include/rhide.h\
+DEPS_6=idecolor.cc $(RHIDESRC)/include/rhide.h\
 	$(RHIDESRC)/libide/include/libide.h\
 	$(RHIDESRC)/libide/include/tidefile.h $(RHIDESRC)/pal.c
 nodebobj/idecolor.o:: $(DEPS_6)
@@ -521,17 +503,8 @@ DEPS_7=idecomp.cc $(RHIDESRC)/include/rhide.h\
 	$(RHIDESRC)/libtvuti/include/tvutilfu.h
 nodebobj/idecomp.o:: $(DEPS_7)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_8=idedebug.cc $(SETSRC)/include/ced_clas.h\
-	$(SETSRC)/include/ced_exte.h $(SETSRC)/include/ceditor.h\
-	$(SETSRC)/include/pmcoll.h $(SETSRC)/include/sindicat.h\
-	$(SETSRC)/include/tvsetuti.h $(SETSRC)/settvuti/include/sarray.h\
-	$(SETSRC)/settvuti/include/setstack.h\
-	$(SETSRC)/settvuti/include/settvuti.h\
-	$(SETSRC)/settvuti/include/tnocastc.h\
-	$(SETSRC)/settvuti/include/tstringa.h\
-	$(SETSRC)/settvuti/include/viewplus.h\
-	$(RHIDESRC)/include/ideconst.h $(RHIDESRC)/include/rhide.h\
-	$(RHIDESRC)/include/rhidehis.h\
+DEPS_8=idedebug.cc $(RHIDESRC)/include/ideconst.h\
+	$(RHIDESRC)/include/rhide.h $(RHIDESRC)/include/rhidehis.h\
 	$(RHIDESRC)/libide/include/idecomma.h\
 	$(RHIDESRC)/libide/include/ideenums.h\
 	$(RHIDESRC)/libide/include/idefunct.h\
@@ -572,16 +545,8 @@ DEPS_9=idedefau.cc $(RHIDESRC)/include/flags/ada_opt.h\
 	$(RHIDESRC)/libide/include/tproject.h
 nodebobj/idedefau.o:: $(DEPS_9)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_10=idedial.cc $(SETSRC)/calcu/calcu.h $(SETSRC)/include/ced_coma.h\
-	$(SETSRC)/include/ced_exte.h $(SETSRC)/include/ceditor.h\
-	$(SETSRC)/setedit/include/editcoma.h\
-	$(SETSRC)/settvuti/include/edhists.h\
-	$(SETSRC)/settvuti/include/setstack.h\
-	$(SETSRC)/settvuti/include/settvuti.h\
-	$(SETSRC)/settvuti/include/tinppipe.h\
-	$(SETSRC)/settvuti/include/tnocastc.h\
-	$(RHIDESRC)/include/ideconst.h $(RHIDESRC)/include/rhide.h\
-	$(RHIDESRC)/include/rhidehis.h\
+DEPS_10=idedial.cc $(RHIDESRC)/include/ideconst.h\
+	$(RHIDESRC)/include/rhide.h $(RHIDESRC)/include/rhidehis.h\
 	$(RHIDESRC)/libide/include/ideenums.h\
 	$(RHIDESRC)/libide/include/libide.h\
 	$(RHIDESRC)/libide/include/tdepende.h\
@@ -630,17 +595,8 @@ DEPS_13=ideflags.cc $(RHIDESRC)/include/rhide.h\
 	$(RHIDESRC)/libtvuti/include/tscollec.h
 nodebobj/ideflags.o:: $(DEPS_13)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_14=idegcc.cc $(SETSRC)/include/ced_clas.h $(SETSRC)/include/ced_exte.h\
-	$(SETSRC)/include/ceditor.h $(SETSRC)/include/pmcoll.h\
-	$(SETSRC)/include/sindicat.h $(SETSRC)/include/tvsetuti.h\
-	$(SETSRC)/settvuti/include/sarray.h\
-	$(SETSRC)/settvuti/include/setstack.h\
-	$(SETSRC)/settvuti/include/settvuti.h\
-	$(SETSRC)/settvuti/include/tnocastc.h\
-	$(SETSRC)/settvuti/include/tstringa.h\
-	$(SETSRC)/settvuti/include/viewplus.h\
-	$(RHIDESRC)/include/ideconst.h $(RHIDESRC)/include/rhide.h\
-	$(RHIDESRC)/libide/include/idecomma.h\
+DEPS_14=idegcc.cc $(RHIDESRC)/include/ideconst.h\
+	$(RHIDESRC)/include/rhide.h $(RHIDESRC)/libide/include/idecomma.h\
 	$(RHIDESRC)/libide/include/ideenums.h\
 	$(RHIDESRC)/libide/include/idefunct.h\
 	$(RHIDESRC)/libide/include/libide.h\
@@ -665,19 +621,8 @@ DEPS_14=idegcc.cc $(SETSRC)/include/ced_clas.h $(SETSRC)/include/ced_exte.h\
 	$(RHIDESRC)/libtvuti/include/twindowl.h
 nodebobj/idegcc.o:: $(DEPS_14)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_15=idehelp.cc $(SETSRC)/include/ced_clas.h\
-	$(SETSRC)/include/ced_exte.h $(SETSRC)/include/ceditor.h\
-	$(SETSRC)/include/pmcoll.h $(SETSRC)/include/sindicat.h\
-	$(SETSRC)/include/tvsetuti.h $(SETSRC)/infview/include/inf.h\
-	$(SETSRC)/infview/include/infbase.h\
-	$(SETSRC)/settvuti/include/sarray.h\
-	$(SETSRC)/settvuti/include/setstack.h\
-	$(SETSRC)/settvuti/include/settvuti.h\
-	$(SETSRC)/settvuti/include/tnocastc.h\
-	$(SETSRC)/settvuti/include/tstringa.h\
-	$(SETSRC)/settvuti/include/viewplus.h\
-	$(RHIDESRC)/include/ideconst.h $(RHIDESRC)/include/rhide.h\
-	$(RHIDESRC)/libide/include/idecomma.h\
+DEPS_15=idehelp.cc $(RHIDESRC)/include/ideconst.h\
+	$(RHIDESRC)/include/rhide.h $(RHIDESRC)/libide/include/idecomma.h\
 	$(RHIDESRC)/libide/include/libide.h\
 	$(RHIDESRC)/libide/include/tideedit.h\
 	$(RHIDESRC)/libide/include/tidefile.h\
@@ -693,21 +638,7 @@ DEPS_16=idehints.cc $(RHIDESRC)/include/ideconst.h\
 	$(RHIDESRC)/libtvuti/include/libtvuti.h
 nodebobj/idehints.o:: $(DEPS_16)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_17=idemain.cc $(SETSRC)/include/ced_clas.h\
-	$(SETSRC)/include/ced_coma.h $(SETSRC)/include/ced_exte.h\
-	$(SETSRC)/include/ced_inte.h $(SETSRC)/include/ceditor.h\
-	$(SETSRC)/include/loadkbin.h $(SETSRC)/include/pmcoll.h\
-	$(SETSRC)/include/sindicat.h $(SETSRC)/include/slpinter.h\
-	$(SETSRC)/include/tvsetuti.h $(SETSRC)/infview/include/inf.h\
-	$(SETSRC)/infview/include/infbase.h\
-	$(SETSRC)/setedit/include/edprint.h\
-	$(SETSRC)/settvuti/include/edhists.h\
-	$(SETSRC)/settvuti/include/sarray.h\
-	$(SETSRC)/settvuti/include/setstack.h\
-	$(SETSRC)/settvuti/include/settvuti.h\
-	$(SETSRC)/settvuti/include/tnocastc.h\
-	$(SETSRC)/settvuti/include/tstringa.h\
-	$(SETSRC)/settvuti/include/viewplus.h $(RHIDESRC)/include/ideapp.h\
+DEPS_17=idemain.cc $(RHIDESRC)/include/ideapp.h\
 	$(RHIDESRC)/include/ideconst.h $(RHIDESRC)/include/rhide.h\
 	$(RHIDESRC)/include/rhidehis.h\
 	$(RHIDESRC)/libide/include/idecomma.h\
@@ -736,8 +667,8 @@ DEPS_17=idemain.cc $(SETSRC)/include/ced_clas.h\
 	$(RHIDESRC)/tvdemo/include/libtvdem.h
 nodebobj/idemain.o:: $(DEPS_17)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_18=idemak.cc $(SETSRC)/setedit/include/edprint.h\
-	$(RHIDESRC)/include/rhide.h $(RHIDESRC)/libide/include/ideenums.h\
+DEPS_18=idemak.cc $(RHIDESRC)/include/rhide.h\
+	$(RHIDESRC)/libide/include/ideenums.h\
 	$(RHIDESRC)/libide/include/libide.h\
 	$(RHIDESRC)/libide/include/tdepende.h\
 	$(RHIDESRC)/libide/include/tfname.h\
@@ -750,28 +681,14 @@ DEPS_18=idemak.cc $(SETSRC)/setedit/include/edprint.h\
 	$(RHIDESRC)/libtvuti/include/tscollec.h
 nodebobj/idemak.o:: $(DEPS_18)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_19=idemenu.cc $(SETSRC)/include/ced_coma.h\
-	$(SETSRC)/include/ced_exte.h $(SETSRC)/include/ceditor.h\
-	$(SETSRC)/include/tvsetuti.h $(SETSRC)/infview/include/inf.h\
-	$(SETSRC)/infview/include/infbase.h\
-	$(SETSRC)/settvuti/include/setstack.h\
-	$(SETSRC)/settvuti/include/settvuti.h\
-	$(SETSRC)/settvuti/include/tnocastc.h $(RHIDESRC)/include/ideapp.h\
+DEPS_19=idemenu.cc $(RHIDESRC)/include/ideapp.h\
 	$(RHIDESRC)/include/ideconst.h $(RHIDESRC)/include/rhide.h\
 	$(RHIDESRC)/libide/include/idecomma.h\
 	$(RHIDESRC)/libide/include/libide.h\
 	$(RHIDESRC)/libtvuti/include/libtvuti.h
 nodebobj/idemenu.o:: $(DEPS_19)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_20=idemsg.cc $(SETSRC)/include/ced_clas.h $(SETSRC)/include/ced_exte.h\
-	$(SETSRC)/include/ceditor.h $(SETSRC)/include/pmcoll.h\
-	$(SETSRC)/include/sindicat.h $(SETSRC)/include/tvsetuti.h\
-	$(SETSRC)/settvuti/include/sarray.h\
-	$(SETSRC)/settvuti/include/setstack.h\
-	$(SETSRC)/settvuti/include/settvuti.h\
-	$(SETSRC)/settvuti/include/tnocastc.h\
-	$(SETSRC)/settvuti/include/tstringa.h\
-	$(SETSRC)/settvuti/include/viewplus.h $(RHIDESRC)/include/rhide.h\
+DEPS_20=idemsg.cc $(RHIDESRC)/include/rhide.h\
 	$(RHIDESRC)/libide/include/ideenums.h\
 	$(RHIDESRC)/libide/include/libide.h\
 	$(RHIDESRC)/libide/include/tdepende.h\
@@ -789,17 +706,8 @@ DEPS_20=idemsg.cc $(SETSRC)/include/ced_clas.h $(SETSRC)/include/ced_exte.h\
 	$(RHIDESRC)/libtvuti/include/twindowl.h
 nodebobj/idemsg.o:: $(DEPS_20)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_21=ideopt.cc $(SETSRC)/include/ced_clas.h $(SETSRC)/include/ced_exte.h\
-	$(SETSRC)/include/ceditor.h $(SETSRC)/include/pmcoll.h\
-	$(SETSRC)/include/sindicat.h $(SETSRC)/include/tvsetuti.h\
-	$(SETSRC)/settvuti/include/sarray.h\
-	$(SETSRC)/settvuti/include/setstack.h\
-	$(SETSRC)/settvuti/include/settvuti.h\
-	$(SETSRC)/settvuti/include/tnocastc.h\
-	$(SETSRC)/settvuti/include/tstringa.h\
-	$(SETSRC)/settvuti/include/viewplus.h\
-	$(RHIDESRC)/include/ideconst.h $(RHIDESRC)/include/rhide.h\
-	$(RHIDESRC)/include/rhidehis.h\
+DEPS_21=ideopt.cc $(RHIDESRC)/include/ideconst.h\
+	$(RHIDESRC)/include/rhide.h $(RHIDESRC)/include/rhidehis.h\
 	$(RHIDESRC)/libide/include/idecomma.h\
 	$(RHIDESRC)/libide/include/ideenums.h\
 	$(RHIDESRC)/libide/include/idefunct.h\
@@ -828,18 +736,8 @@ DEPS_21=ideopt.cc $(SETSRC)/include/ced_clas.h $(SETSRC)/include/ced_exte.h\
 	$(RHIDESRC)/libtvuti/include/tvutilfu.h
 nodebobj/ideopt.o:: $(DEPS_21)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_22=ideprj.cc $(SETSRC)/include/ced_clas.h $(SETSRC)/include/ced_exte.h\
-	$(SETSRC)/include/ceditor.h $(SETSRC)/include/pmcoll.h\
-	$(SETSRC)/include/sindicat.h $(SETSRC)/include/tvsetuti.h\
-	$(SETSRC)/setedit/include/edprint.h\
-	$(SETSRC)/settvuti/include/sarray.h\
-	$(SETSRC)/settvuti/include/setstack.h\
-	$(SETSRC)/settvuti/include/settvuti.h\
-	$(SETSRC)/settvuti/include/tnocastc.h\
-	$(SETSRC)/settvuti/include/tstringa.h\
-	$(SETSRC)/settvuti/include/viewplus.h\
-	$(RHIDESRC)/include/ideconst.h $(RHIDESRC)/include/rhide.h\
-	$(RHIDESRC)/include/rhidehis.h\
+DEPS_22=ideprj.cc $(RHIDESRC)/include/ideconst.h\
+	$(RHIDESRC)/include/rhide.h $(RHIDESRC)/include/rhidehis.h\
 	$(RHIDESRC)/libide/include/idecomma.h\
 	$(RHIDESRC)/libide/include/ideenums.h\
 	$(RHIDESRC)/libide/include/idefunct.h\
@@ -896,13 +794,7 @@ DEPS_24=idespec.cc $(RHIDESRC)/include/rhide.h\
 	$(RHIDESRC)/libtvuti/include/twindowl.h
 nodebobj/idespec.o:: $(DEPS_24)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_25=idestatu.cc $(SETSRC)/include/ced_coma.h\
-	$(SETSRC)/include/ced_exte.h $(SETSRC)/include/ceditor.h\
-	$(SETSRC)/include/tvsetuti.h $(SETSRC)/infview/include/inf.h\
-	$(SETSRC)/infview/include/infbase.h\
-	$(SETSRC)/settvuti/include/setstack.h\
-	$(SETSRC)/settvuti/include/settvuti.h\
-	$(SETSRC)/settvuti/include/tnocastc.h $(RHIDESRC)/include/ideapp.h\
+DEPS_25=idestatu.cc $(RHIDESRC)/include/ideapp.h\
 	$(RHIDESRC)/include/ideconst.h $(RHIDESRC)/include/rhide.h\
 	$(RHIDESRC)/libide/include/idecomma.h\
 	$(RHIDESRC)/libide/include/libide.h\
@@ -919,10 +811,7 @@ DEPS_27=idesupp.cc $(RHIDESRC)/include/rhide.h\
 	$(RHIDESRC)/librhuti/rhutils.h
 nodebobj/idesupp.o:: $(DEPS_27)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_28=idesynta.cc $(SETSRC)/infview/include/infbase.h\
-	$(SETSRC)/settvuti/include/setstack.h\
-	$(SETSRC)/settvuti/include/settvuti.h\
-	$(SETSRC)/settvuti/include/tnocastc.h $(RHIDESRC)/include/rhide.h\
+DEPS_28=idesynta.cc $(RHIDESRC)/include/rhide.h\
 	$(RHIDESRC)/libide/include/ideenums.h\
 	$(RHIDESRC)/libide/include/libide.h\
 	$(RHIDESRC)/libide/include/tdepende.h\
@@ -978,15 +867,7 @@ DEPS_34=
 all:: libtvuti/libtvuti.gpr.force
 libtvuti/libtvuti.gpr.force:
 	$(MAKE) -C libtvuti/ -f libtvuti.mak
-DEPS_35=openedit.cc $(SETSRC)/include/ced_clas.h\
-	$(SETSRC)/include/ced_exte.h $(SETSRC)/include/ceditor.h\
-	$(SETSRC)/include/pmcoll.h $(SETSRC)/include/sindicat.h\
-	$(SETSRC)/include/tvsetuti.h $(SETSRC)/settvuti/include/sarray.h\
-	$(SETSRC)/settvuti/include/setstack.h\
-	$(SETSRC)/settvuti/include/settvuti.h\
-	$(SETSRC)/settvuti/include/tnocastc.h\
-	$(SETSRC)/settvuti/include/tstringa.h\
-	$(SETSRC)/settvuti/include/viewplus.h $(RHIDESRC)/include/ideapp.h\
+DEPS_35=openedit.cc $(RHIDESRC)/include/ideapp.h\
 	$(RHIDESRC)/include/rhide.h $(RHIDESRC)/libide/include/ideenums.h\
 	$(RHIDESRC)/libide/include/idefunct.h\
 	$(RHIDESRC)/libide/include/libide.h\

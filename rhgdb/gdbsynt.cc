@@ -19,6 +19,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <errno.h>
 
 static void
 init_c_reserved_words()
@@ -53,24 +54,28 @@ init_syntax()
 //                              *TCEditor::SHLSOStack,TCEditor::SHLGenList,
                               TCEditor::SHLGenList, TCEditor::SHLCant) != 0)
   {
-    syntax_file = "__syntax__";
+    syntax_file = unique_name("sh");
     FILE *f = fopen(syntax_file, "w+t");
 
-    fprintf(f, "\n\
-Name=C/C++\n\
-Files=C,c,cpp,cxx,cc,h,hpp,i,ii\n\
-UseInternal=1\n\
-End\n\
-Name=Pascal\n\
-Files=pas,inc,p\n\
-UseInternal=2\n\
-End\n\
-");
-    fclose(f);
-    LoadSyntaxHighLightFile(syntax_file, TCEditor::SHLArray,
+    if (!f)
+      fprintf(stderr, "%s: %s\n", syntax_file, strerror(errno));
+    else {
+      fprintf(f, "\n"
+	      "Name=C/C++\n"
+	      "Files=C,c,cpp,cxx,cc,h,hpp,i,ii\n"
+	      "UseInternal=1\n"
+	      "End\n"
+	      "Name=Pascal\n"
+	      "Files=pas,inc,p\n"
+	      "UseInternal=2\n"
+	      "End\n");
+      fclose(f);
+      LoadSyntaxHighLightFile(syntax_file, TCEditor::SHLArray,
 //                            *TCEditor::SHLSOStack,TCEditor::SHLGenList,
-                            TCEditor::SHLGenList, TCEditor::SHLCant);
-    unlink(syntax_file);
+			      TCEditor::SHLGenList, TCEditor::SHLCant);
+      unlink(syntax_file);
+      string_free(syntax_file);
+    }
   }
 
   ReservedWords = new TStringCollection(15, 16);

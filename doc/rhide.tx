@@ -6,8 +6,8 @@
 
 @setfilename rhide.inf
 @set version 1.5
-@set update-date 27 July 2000
-@set update-month September 2000
+@set update-date 10 Januar 2001
+@set update-month Januar 2001
 @c I'm using a4 paper
 @afourpaper
 
@@ -21,7 +21,7 @@
 @strong{Answer}:
 @end macro
 
-@set rh Robert H@"ohne
+@set rh Robert Hoehne
 @settitle RHIDE Version @value{version}
 @footnotestyle separate
 @paragraphindent asis
@@ -30,7 +30,7 @@
 
 @dircategory Integrated Environment
 @direntry
-* RHIDE: (rhide).   Documentation about RHIDE, an IDE for DJGPP or Linux.
+* RHIDE: (rhide).   Documentation about RHIDE, an IDE for DJGPP or GNU/Linux.
 @end direntry
 
 @macro RH{}
@@ -183,7 +183,7 @@ Copyright @copyright{} 1996-2000 @value{rh}
 This is the documentation for the Integrated Development
 Environment RHIDE.
 
-Copyright @copyright{} 1996-2000 @value{rh}
+Copyright @copyright{} 1996-2001 @value{rh}
 
 
 This documentation may be freely distributed with the RHIDE package or any
@@ -278,17 +278,17 @@ This contains the executables and the documentation for RHIDE
 running on DJGPP
 
 @item rhide-?.?-1.i386.rpm
-This is a RPM package with the binaries of RHIDE for Linux.
+This is a RPM package with the binaries of RHIDE for GNU/Linux.
 
 @item rhide??s.zip
 This contains the sources of RHIDE for DJGPP.
 
 @item rhide-?.?-1.src.rpm
-This is a RPM package with the sources of RHIDE for Linux.
+This is a RPM package with the sources of RHIDE for GNU/Linux.
 
 @end table
 
-NOTE: The sources for the Linux and DJGPP versions are of course
+NOTE: The sources for the GNU/Linux and DJGPP versions are of course
 in its core the same, there are only differences in the directory
 structure and myabe in some preconfigured files. But in general
 both archives can be used on both systems (after some cosmetic changes).
@@ -300,19 +300,19 @@ version of RHIDE which is as of writing this version 1.5 which leads to
 
 These archives can be found at
 @*
-@uref{http://ww.tu-chemnitz.de/~sho/rho/rhide.html, The RHIDE home page}
+@uref{http://www.rhide.com, The RHIDE home page}
 @*
 or at any ftp site, which mirrors DJGPP. On that DJGPP mirrors are of
 course only the DJGPP archives available.
 
 The RPM packackes can be found at sunsite mirrors and/or also
-in some Linux distributions. (At least I hope so when I`m ready
+in some GNU/Linux distributions. (At least I hope so when I`m ready
 to upload them there)
 
 To install these archives, unzip them in the DJGPP-root
 directory, like any other DJGPP package.
 
-To install the Linux RPM packages, use your favorite install
+To install the GNU/Linux RPM packages, use your favorite install
 program (most Linux distributions allow to install RPM packages)
 or install it with the Redhat package manager itself.
 
@@ -340,7 +340,7 @@ see @ref{Keyboard,Documentation about the keyboard,,setedit,SETs Editor}.
 
 The binary archive of RHIDE includes already the config files for
 the US keyboard layout (@file{us.txt}) and many others, which are based
-on the Linux keytables. If you have problems with the keyboard layout
+on the GNU/Linux keytables. If you have problems with the keyboard layout
 try to copy one of the files to @file{keybind.txt} (probably the one,
 which has a name similar to your country).
 
@@ -360,8 +360,8 @@ of the keys (@file{keyb.com} does that NOT) you will probably not need
 the file @file{de.txt} (but the default @file{keybind.txt}).
 
 
-For configuring RHIDE on Linux (especially when running under X)
-@pxref{Running under Linux}.
+For configuring RHIDE on GNU/Linux (especially when running under X)
+@pxref{Running under GNU/Linux}.
 
 @end ignore
 
@@ -425,7 +425,7 @@ You can define another compiler to compile your source files.
 
 
 In addition to RHIDE I have included a stand-alone debugger
-(called @file{rhgdb.exe}), which is GDB 4.18 with a Turbo Vision user
+(called @file{rhgdb.exe}), which is GDB 5.0 with a Turbo Vision user
 interface.
 
 
@@ -440,6 +440,9 @@ need either a memory-manager, which give you DPMI-services (I think QEMM is
 it, EMM386 has no DPMI-support), or you use CWSDPMI, the free DPMI-server
 from Charles W.@: Sandmann, which you can find on SimTel-ftp-sites. I use it
 and it works fine for me.
+
+Running RHIDE under Windows NT or Windows 2000 is very limited since of
+the poor support there for DOS programs.
 
 
 The builtin editor uses a simple heuristic to check, if a file
@@ -496,7 +499,7 @@ Other options are:
 @item -H
 Do not install the console switch handler, which saves/restores
 the modified keyboard layout. This options works only when running
-under Linux.
+under GNU/Linux.
 
 @item -S
 Tells RHIDE to use only 16bit access to the video memory under
@@ -650,6 +653,11 @@ command, to redirect the stderr to a file like
 redir -e err rhide -da project
 @end example
 which will redirect stderr to the file @file{err}.
+
+Under GNU/Linux use the following command:
+@example
+rhide -da project 2>err
+@end example
 
 
 Each of the letters above (after @samp{-d}) can be prefixed by
@@ -815,13 +823,13 @@ are used by the in RHIDE linked libraries. These are:
 @item $(LOCALEDIR)
 This should point to the directory, where your locale files are
 stored. If it is not set, RHIDE tries to get the system default
-value, which is for Linux @file{/usr/share/locale} and for
+value, which is for GNU/Linux @file{/usr/share/locale} and for
 DJGPP @file{$(DJDIR)/share/locale}.
 
 @item $(INFOPATH)
 This is a pathlist of directories, where your INFO files are
 stored. If not set, RHIDE tries the standard directory, which
-should for Linux @file{/usr/info} and for DJGPP @file{$(DJDIR)/info}.
+should for GNU/Linux @file{/usr/info} and for DJGPP @file{$(DJDIR)/info}.
 
 @item $(RHIDEOPT)
 This variable can be used, to define global RHIDE commandline
@@ -830,7 +838,7 @@ are given on commandline before any of the real commandline
 options. Which means, they can be overwritten on the commandline.
 
 @item $(ESCDELAY)
-This variable is used @emph{ONLY} in the Linux version, where it
+This variable is used @emph{ONLY} in the GNU/Linux version, where it
 defines the delay after pressing @key{ESC} to wait for another
 keypress to simulate an @key{Alt} keycode. The value is given in
 milliseconds and defaults to 1000.
@@ -912,7 +920,7 @@ in RHIDE depending on the operating system where RHIDE is built.
 An other example is distributed with RHIDE in it's binary archives
 as @file{rhide_.env} which is commented and should be in a directory
 @file{.../share/rhide/} where the @file{...} stand for a different
-directory on different OS's. (on DJGPP it is %DJDIR% and on Linux it
+directory on different OS's. (on DJGPP it is %DJDIR% and on GNU/Linux it
 is /usr/local )
 
 
@@ -932,7 +940,7 @@ RHIDE_OS_LIBS=$(RHIDE_OS_LIBS_$(RHIDE_OS))
 
 The RHIDE builtin linker spec @pxref{Builtin compiler specs}
 includes also $(RHIDE_OS_LIBS) when linking. Since RHIDE
-can be built on DJGPP and Linux and on these different operating
+can be built on DJGPP and GNU/Linux and on these different operating
 systems I have to link different libraries.
 
 
@@ -951,7 +959,7 @@ $(RHIDE_OS_LIBS_DJGPP_$(MAIN_TARGET)) ->  $(RHIDE_OS_LIBS_DJGPP_idegc.exe)
 $(RHIDE_OS_LIBS_DJGPP_idegc.exe       ->  dbg
 @end format
 
-In a similar way it expands on Linux to
+In a similar way it expands on GNU/Linux to
 
 @format
 $(RHIDE_OS_LIBS) -> ncurses gpm m
@@ -964,7 +972,7 @@ included files).
 
 
 At first it searches for a global file in @file{/usr/local/share/rhide}
-(on Linux) or @file{$(DJDIR)/share/rhide}. Then it searches in
+(on GNU/Linux) or @file{$(DJDIR)/share/rhide}. Then it searches in
 @file{$(HOME)} and at last in the current directory.
 
 
@@ -1210,9 +1218,9 @@ must be the exclusive mouse access to the DOS window disabled.
 
 @section Running under Windows NT
 
-@section Running under Linux
-@cindex Linux
-Since RHIDE is now available also for Linux here some hints. In general
+@section Running under GNU/Linux
+@cindex GNU/Linux
+Since RHIDE is now available also for GNU/Linux here some hints. In general
 you will get the best results when you have installed RHIDE as a setuid
 root program. I know, this might be a security problem but I have tried
 to make it as secure as possible. After getting acces to the screen and
@@ -2908,6 +2916,9 @@ highlighted, when syntax highlighting is enabled @pxref{Preferences}.
 
 
 @node How to change the list of flags
+@iftex
+@anchor{How to change the list of flags}
+@end iftex
 @subsubheading How to change the list of flags
 @iftex
 @anchor How to change the list of flags
@@ -4697,7 +4708,7 @@ exact information about this?}
 @cindex RHIDE, latest version
 @ans{} See
 @*
-@uref{http://www.tu-chemnitz.de/~sho/rho/rhide.html, at the RHIDE home page}.
+@uref{http://www.rhide.com, at the RHIDE home page}.
 @*
 This page contains the latest news and the latest version of RHIDE.
 
@@ -4886,7 +4897,7 @@ is the author of the in RHIDE integrated editor.
 
 
 See at
-@uref{http://www.tu-chemnitz.de/~sho/rho/rhide.html,the RHIDE home page},
+@uref{http://www.rhide.com,the RHIDE home page},
 if this problem was already reported by other
 users. As the next ask the problem in the news group
 @uref{news:comp.os.msdos.djgpp}, because there may be some other people
@@ -4894,7 +4905,7 @@ with the same problem, and they can give you an answer or I, because
 I read this group also.
 
 
-Linux users should post the problems in the linux group. To make sure
+GNU/Linux users should post the problems in the linux group. To make sure
 that I will read it also, please send a CC to me because my time
 doesn`t allow me to read that huge newsgroups.
 

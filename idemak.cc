@@ -212,6 +212,15 @@ _AbsToRelPath(char *&dname, TStringCollection * vars, bool use_rel)
         return;
       }
     }
+    /*
+      projects live normaly relative to the build
+      directory
+    */
+    if ((t == FILE_PROJECT) || (t == FILE_LIBRARY))
+    {
+      if (AbsToRelPath(project_directory, dname, NULL, 1))
+        return;
+    }
   }
   if (AbsToRelPath(project_directory, dname, NULL))
     return;
@@ -749,5 +758,4 @@ SaveProject(TProject * _project, const char *_project_name)
   SavePrintSetUp(file);
   delete(file);
 }
-
 

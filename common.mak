@@ -26,7 +26,7 @@ PACKAGE=rhide
 # exceed 8 characters, the well known DOS limitation :-(
 PACKAGE_FILE=rhid
 PACKAGE_DIR=rhide
-VERSION=1.4.6
+VERSION=1.4.6x
 RHIDE_MAJOR=$(word 1,$(subst ., ,$(VERSION)))
 RHIDE_MINOR=$(subst $(RHIDE_MAJOR),,$(VERSION))
 # for the DJGPP archives
@@ -107,6 +107,10 @@ export top_obj_dir:=$(shell cd $(top_dir); pwd; cd $(obj_dir))
 else
 export top_obj_dir:=`cd $(top_dir); pwd; cd $(obj_dir)`
 endif
+endif
+
+ifeq ($(copyrite.exe),)
+copyrite.exe:=$(top_obj_dir)/copyrite.exe
 endif
 
 ifeq ($(strip $(rhide_OS)),Linux)
@@ -241,7 +245,7 @@ endif
 	@-rm -f $*/$(list_file)
 
 ifneq ($(strip $(gpr2mak)),)
-%.mak: %.gpr
+%.mak: %.gpr $(copyrite.exe)
 	@echo Creating '$@'
 ifeq ($(rhide_OS),DJGPP)
 	@$(gpr2mak) -d -r- -o - $< \
@@ -251,7 +255,7 @@ ifeq ($(rhide_OS),DJGPP)
 	        -e 's,	$(RHIDESRC),	$$(RHIDESRC),g' \
 		-e 's,^		$(obj_dir)/,		,' \
 		-e 's,	$(top_obj_dir),	$$(top_obj_dir),g' \
-	  $(USER_GPR2MAK_SEDS) > $@
+	  $(USER_GPR2MAK_SEDS) > __tmp__.mak
 else
 	@$(gpr2mak) -d -r- -o - $< \
 	  | sed -e 's,	$(RHIDESRC),	$$(RHIDESRC),g' \
@@ -261,8 +265,12 @@ else
 	        -e 's,^		$$(USRINC)[^\\]*$$,,' \
 		-e 's,^		$(obj_dir)/,		,' \
 		-e 's,	$(top_obj_dir),	$$(top_obj_dir),g' \
-	  $(USER_GPR2MAK_SEDS) > $@
+	  $(USER_GPR2MAK_SEDS) > __tmp__.mak
 endif
+	@$(copyrite.exe) __tmp__.mak
+	@$(move-if-change) __tmp__.mak $@
+	@rm -f __tmp__.mak
+	@cp -p $@ $(srcdir)/$@
 endif
 
 ifneq ($(strip $(project)),)
@@ -366,3 +374,6 @@ install:: $(addsuffix .sub,$(subdirs))
 endif
 
 install:: install.data install.info install.doc install.bin
+
+$(copyrite.exe): $(RHIDESRC)/copyrite.c
+	gcc -o $@ -s -O $<

@@ -16,7 +16,6 @@ public:                                   \
                                           \
 const char * const CLASS::name = #S;
 
-
 N(TProject,\x01)
 N(TDependency,\x02)
 N(TDepCollection,\x03)
@@ -33,6 +32,6 @@ N(TParamList,\x0D)
 N(TStringCollection,\x0E)
 N(TNoCaseStringCollection,\x0F)
 N(TInfViewer,\x10)
-N(TSIndicator,\x11)
-// N(TIDEInfWindow,\x11) // defined in idehelp.cc for now
+//N(TIDEInfWindow,\x11) // defined in idehelp.cc for now
+N(TSIndicator,\x12)
 

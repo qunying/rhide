@@ -26,7 +26,11 @@ char *ExpandFileNameToThePointWhereTheProgramWasLoaded(const char *s)
   if (*buffer)
     return buffer;
   string_free(buffer);
-  buffer = string_dup(s);
+  string_cat(spec,"$(word 1,$(addsuffix /", s, ",$(RHIDE_CONFIG_DIRS) .))", NULL);
+  buffer = expand_rhide_spec(spec);
+  string_free(spec);
+  if (!*buffer)
+    string_cat(buffer, s);
   return buffer;
 }
 

@@ -51,14 +51,15 @@ endif
 MSGCAT=./msgcat.exe
 
 _po_list: po_list
-	sed -e 's,^../,,' -e 's, ../, ,g' po_list > _po_list
+	@sed -e 's,^../,,' -e 's, ../, ,g' po_list > _po_list
 
 potfiles.po: _po_list
-	$(xgettext) --default-domain=potfiles --add-comments --keyword=_ \
+	@echo $(xgettext) ....
+	@$(xgettext) --default-domain=potfiles --add-comments --keyword=_ \
 	  --keyword=__ --directory=$(RHIDESRC) --omit-header \
 	  --add-location $(shell cat _po_list)
-	touch $@
-	rm -f _po_list
+	@touch $@
+	@rm -f _po_list
 
 T=$(subst /,\,$@)
 
@@ -69,15 +70,17 @@ T=$(subst /,\,$@)
 MSGCAT_OPTIONS=-s
 
 $(addsuffix .po,$(LANGUAGES)): potfiles.po $(MSGCAT)
-	-cp -f $@ $(subst .po,.bak,$@)
-	$(MSGCAT) $(MSGCAT_OPTIONS) -cat $(subst .po,.cat,$@) \
+	@echo updating $@
+	@-cp -f $@ $(subst .po,.bak,$@)
+	@$(MSGCAT) $(MSGCAT_OPTIONS) -cat $(subst .po,.cat,$@) \
 	  -ocat __cat__ $(wildcard $@) $< __po__
-	$(move-if-change) __cat__ $(subst .po,.cat,$@)
-	$(move-if-change) __po__ $@
+	@$(move-if-change) __cat__ $(subst .po,.cat,$@)
+	@$(move-if-change) __po__ $@
 	
 %.mo: %.po
-	-$(msgfmt) -o $@ $<
-	touch $@
+	@echo creating $@
+	@-$(msgfmt) -o $@ $<
+	@touch $@
 
 languages: $(addsuffix .mo,$(LANGUAGES))
 

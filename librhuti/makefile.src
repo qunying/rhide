@@ -7,7 +7,7 @@ VPATH=$(srcdir)
 project=librhuti
 
 po_files=\
-	back2sl.cc basename.cc expvar.cc fexpand.cc specs.cc splitfn.cc\
+	back2sl.cc basename.cc fexpand.cc specs.cc splitfn.cc\
 	stricat.cc stridown.cc stridup.cc strifree.cc fixpath.cc io.cc\
 	abstorel.cc getline.cc
 src_files=$(po_files) Makefile makefile.src librhuti.gpr librhuti.mak \

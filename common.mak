@@ -24,12 +24,18 @@ endif
 
 locale_dir=$(prefix)/share/locale
 PACKAGE=rhide
+# for the DJGPP archives $(PACKAGE_FILE)$(FILE_VERSION) must not
+# exceed 8 characters, the well known DOS limitation :-(
 PACKAGE_FILE=rhid
 PACKAGE_DIR=rhide
-VERSION=1.4.3
-FILE_VERSION=143
-DIR_VERSION_Linux=-1.4.3
-DIR_VERSION_DJGPP=-1.43
+VERSION=1.4.3.x
+RHIDE_MAJOR=$(word 1,$(subst ., ,$(VERSION)))
+RHIDE_MINOR=$(subst $(RHIDE_MAJOR),,$(VERSION))
+# for the DJGPP archives
+FILE_VERSION=$(subst .,,$(VERSION))
+DIR_VERSION_Linux=-$(VERSION)
+# for the DJGPP directories
+DIR_VERSION_DJGPP=-$(RHIDE_MAJOR).$(subst .,,$(RHIDE_MINOR))
 DIR_VERSION=$(DIR_VERSION_$(RHIDE_OS))
 
 DJP=

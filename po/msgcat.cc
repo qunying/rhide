@@ -108,7 +108,7 @@ struct msg
 {
   char *id;
   char *id_;
-  char *msg;
+  char *Msg;
   char *comment;
 };
 
@@ -247,15 +247,15 @@ void add_msg(char *id,char *msg)
   struct msg *_msg = find_msg(id);
   if (_msg)
   {
-    string_free(_msg->msg);
-    _msg->msg = string_dup(msg);
+    string_free(_msg->Msg);
+    _msg->Msg = string_dup(msg);
     string_free(_msg->comment);
     _msg->comment = COMMENT ? string_dup(COMMENT) : NULL;
     return;
   }
   msgs = (struct msg *)realloc(msgs,sizeof(struct msg)*(msg_count+1));
   msgs[msg_count].id = string_dup(id);
-  msgs[msg_count].msg = string_dup(msg);
+  msgs[msg_count].Msg = string_dup(msg);
   msgs[msg_count].id_ = similar(id);
   msgs[msg_count].comment = COMMENT ? string_dup(COMMENT) : NULL;
   msg_count++;
@@ -486,7 +486,7 @@ int fuzzy_search(char *id,char *idd)
   NORM();
   cprintf(CRLF"to"CRLF"             ");
   LIGHT();
-  cprintf("%s",msgs[best].msg);
+  cprintf("%s",msgs[best].Msg);
   NORM();
   cprintf(CRLF"??? (y)es/(n)o/(c)hange ");
   do
@@ -497,7 +497,7 @@ int fuzzy_search(char *id,char *idd)
   cprintf("%c"CRLF,c);
   if (c == 'y')
   {
-    strcpy(MSG,msgs[best].msg);
+    strcpy(MSG,msgs[best].Msg);
     strcpy(MSG+strlen(MSG),"\\0# FUZZY");
     add_msg(idd,MSG);
     return msg_count-1;
@@ -540,7 +540,7 @@ void translate()
     if (strcmp(msgs[i].id,ID) == 0)
     {
       write_id(msgs[i].id, msgs[i].comment);
-      write_msg(msgs[i].msg);
+      write_msg(msgs[i].Msg);
       return;
     }
   }
@@ -568,7 +568,7 @@ void translate()
       NORM();
       cprintf(CRLF"to"CRLF"             ");
       LIGHT();
-      cprintf("%s",msgs[i].msg);
+      cprintf("%s",msgs[i].Msg);
       NORM();
       cprintf(CRLF"??? (y)es/(n)o/(c)hange ");
       do
@@ -579,8 +579,8 @@ void translate()
       cprintf("%c"CRLF,c);
       if (c == 'y')
       {
-        add_msg(ID,msgs[i].msg);
-        write_msg(msgs[i].msg);
+        add_msg(ID,msgs[i].Msg);
+        write_msg(msgs[i].Msg);
         return;
       }
       while (c == 'c')
@@ -613,7 +613,7 @@ void translate()
   i = fuzzy_search(id_,ID);
   write_id(ID, NULL);
   if (i != -1)
-    write_msg(msgs[i].msg);
+    write_msg(msgs[i].Msg);
   else
     write_msg("");
 }
@@ -813,7 +813,7 @@ int main(int argc,char *argv[])
   if (_msg)
   {
     write_id(_msg->id, _msg->comment);
-    write_msg(_msg->msg);
+    write_msg(_msg->Msg);
   }
   while (read_id(0))
   {
@@ -831,7 +831,7 @@ int main(int argc,char *argv[])
     for (i=0;i<msg_count;i++)
     {
       write_id(msgs[i].id, NULL);
-      write_msg(msgs[i].msg);
+      write_msg(msgs[i].Msg);
     }
     fclose(fo);
   }

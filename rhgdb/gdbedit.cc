@@ -258,7 +258,7 @@ void TGDBEditor::setFormatLine()
   FormatLinePtr = formatLinePtr;
   formatLinePtr = (void (TCEditor::*)
                   (void *, unsigned, int, unsigned short, unsigned,
-                   uint32, unsigned ))&formatLine;
+                   uint32, unsigned ))&TGDBEditor::formatLine;
   update(ufView);
 }
 

@@ -4,7 +4,7 @@
 
 srcdir=$(RHIDESRC)/librhgdb/test
 VPATH=$(srcdir)
-project=
+project=gsymify
 
 po_files=
 
@@ -19,4 +19,5 @@ subdirs=
 po_subdirs=
 
 include $(RHIDESRC)/common.mak
+
 

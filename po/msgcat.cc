@@ -73,14 +73,14 @@ static void CLEAR_SCREEN()
 static void NORM()
 {
 #if 1
-  attr_set(A_NORMAL);
+//  attr_set(A_NORMAL);
 #endif
 }
 
 static void LIGHT()
 {
 #if 1
-  attr_set(A_REVERSE);
+//  attr_set(A_REVERSE);
 #endif
 }
 

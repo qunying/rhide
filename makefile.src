@@ -108,6 +108,9 @@ clean::
 gpr2mak: gpr2mak.exe
 	$(LN_SF) $< $@
 
+gprexp: gprexp.exe
+	$(LN_SF) $< $@
+
 clean::
 	rm -f gpr2mak
 
@@ -423,6 +426,15 @@ check_perms:
 	-chmod 755 $(srcdir)/configure $(srcdir)/rhidex $(srcdir)/rhgdbx \
 	$(srcdir)/config.guess $(srcdir)/config.sub \
 	$(srcdir)/configure.sub $(srcdir)/install.sh
+
+distrib.deb: distrib.src
+ifneq ($(rhide_OS),DJGPP)
+	rm -rf $(copy_dir)
+	mkdir -p $(copy_dir)
+	tar -C $(copy_dir) -xzvf $(obj_dir)/$(PACKAGE)$(DIR_VERSION).tar.gz
+	cd $(copy_dir)/$(PACKAGE)$(DIR_VERSION); echo s | deb-make
+	cd $(copy_dir)/$(PACKAGE)$(DIR_VERSION); fakeroot debian/rules binary
+endif
 
 distrib.rpm: distrib.src
 ifneq ($(rhide_OS),DJGPP)

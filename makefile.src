@@ -16,7 +16,7 @@ po_files=\
 	gpr2mak.cc idecolor.cc idedebug.cc idedefau.cc ideexter.cc \
 	ideflags.cc ideforma.cc idegcc.cc idehelp.cc idehints.cc \
 	idemain.cc idemak.cc idemenu.cc idemsg.cc ideopt.cc ideprj.cc \
-	idestatu.cc idestrm.cc ideutil.cc ideversi.cc openedit.cc \
+	idestatu.cc idestrm.cc ideutil.cc openedit.cc \
 	ideuser.cc idecomp.cc idespec.cc idesupp.cc idebug.cc idesynta.cc \
 	abstorel.cc rhassert.c ideenv.cc fstrcmp.c ideapp.cc idedial.cc \
 	pal.cp idercs.cc commands.cc
@@ -26,7 +26,7 @@ src_files=$(po_files) makefile common.mak README.IDE RHIDE.BIN RHIDE.SRC \
 	gpr2mak.gpr rhide_.gpr rhide.gpr gpr2mak.mak rhide_.mak rhide.mak \
 	rhide_ch.log edit_ch.log todo pal.c zipcomm.bin zipcomm.src rhide.env \
 	LINUX.TXT rhide.var INSTALL.LINUX INSTALL.MAK VCSA.SH common.var \
-	ideversi.in readme.key rhide_.env \
+	ideversi.in ideversi.cc readme.key rhide_.env \
 	rhide.terminfo
 
 ifeq ($(rhide_OS),DJGPP)

@@ -246,9 +246,9 @@ endif
 
 ifneq ($(strip $(gpr2mak)),)
 %.mak: %.gpr $(copyrite.exe)
-	@echo Creating '$@'
+	@echo Checking '$(notdir $@)'
 ifeq ($(rhide_OS),DJGPP)
-	@$(gpr2mak) -d -r- -o - $< \
+	@$(gpr2mak) -d -r- -o - $(notdir $<) \
 	  | sed -e 's,	$(DJDIR),	$$(DJDIR),g' \
 	        -e '/^		$$(DJDIR).*\\$$/d' \
 	        -e 's,^		$$(DJDIR)[^\\]*$$,,' \
@@ -257,7 +257,7 @@ ifeq ($(rhide_OS),DJGPP)
 		-e 's,	$(top_obj_dir),	$$(top_obj_dir),g' \
 	  $(USER_GPR2MAK_SEDS) > __tmp__.mak
 else
-	@$(gpr2mak) -d -r- -o - $< \
+	@$(gpr2mak) -d -r- -o - $(notdir $<) \
 	  | sed -e 's,	$(RHIDESRC),	$$(RHIDESRC),g' \
 	        -e 's,	/usr/include,	$$(USRINC),g' \
 	        -e 's,	/usr/lib/gcc-lib,	$$(USRINC),g' \
@@ -270,7 +270,7 @@ endif
 	@$(copyrite.exe) __tmp__.mak
 	@$(move-if-change) __tmp__.mak $@
 	@rm -f __tmp__.mak
-	@cp -p $@ $(srcdir)/$@
+	@cp -p $@ $(srcdir)/$(notdir $@)
 endif
 
 ifneq ($(strip $(project)),)

@@ -223,6 +223,7 @@ _AbsToRelPath(char *&dname, TStringCollection * vars, bool use_rel)
       }
     }
     else
+    if (t != FILE_EXE)
     {
       char *rel;
 

@@ -21,7 +21,6 @@ char *
 unique_name(char *before, char *retval)
 {
   char *name, *tmp = getenv("TMPDIR");
-  FILE *f;
 
   if (!tmp)
     tmp = ".";

@@ -2641,7 +2641,7 @@ echo "${ECHO_T}$GDB_OBJ" >&6
 
 SET_LIBS="pcre bz2 z"
 if test -f $SETOBJ/libeasyd.a; then
-  SET_LIBS="$SET_LIBS easyd settv"
+  SET_LIBS="$SET_LIBS settv easyd"
 else
   SET_SPECIAL_LDFLAGS="$SET_SPECIAL_LDFLAGS $SET_OBJ/easydiag.a"
 fi

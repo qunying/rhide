@@ -245,7 +245,7 @@ RHIDE_OS_CXXFLAGS_Linux=-D_GNU_SOURCE
 RHIDE_OS_CXXFLAGS_DJGPP=
 RHIDE_OS_CXXFLAGS=$(RHIDE_OS_CXXFLAGS_$(RHIDE_OS)) $(RH_WARN)\
 	-fno-exceptions -fno-rtti
-RHIDE_OS_LIBS_Linux=intl ncurses gpm m
+RHIDE_OS_LIBS_Linux=ncurses gpm m
 RHIDE_OS_LIBS_DJGPP_idegc.exe=dbg
 RHIDE_OS_LIBS_DJGPP=intl $(RHIDE_OS_LIBS_DJGPP_$(MAIN_TARGET))
 RHIDE_OS_LIBS=$(RHIDE_OS_LIBS_$(RHIDE_OS))
@@ -268,7 +268,7 @@ RHIDE_OS_CXXFLAGS_Linux=-D_GNU_SOURCE
 RHIDE_OS_CXXFLAGS_DJGPP=
 RHIDE_OS_CXXFLAGS=$(RHIDE_OS_CXXFLAGS_$(RHIDE_OS)) $(RH_WARN)\
 	-fno-exceptions -fno-rtti
-RHIDE_OS_LIBS_Linux=intl ncurses gpm m
+RHIDE_OS_LIBS_Linux=ncurses gpm m
 RHIDE_OS_LIBS_DJGPP_idegc.exe=dbg
 RHIDE_OS_LIBS_DJGPP=intl $(RHIDE_OS_LIBS_DJGPP_$(MAIN_TARGET))
 RHIDE_OS_LIBS=$(RHIDE_OS_LIBS_$(RHIDE_OS))
@@ -291,7 +291,7 @@ C_FPC_LANG_FLAGS=
 C_F_LANG_FLAGS=
 C_ADA_LANG_FLAGS=
 LIBS=ide rhuti set rhuti tvdem tvuti tvgdb rhtv rhgdb gdb z
-LD_EXTRA_FLAGS=-Map rhide.map
+LD_EXTRA_FLAGS=
 C_EXTRA_FLAGS=-DRHIDE -DINTERNAL_DEBUGGER -DFOR_LIBSET
 LOCAL_OPT=$(subst ___~~~___, ,$(subst $(notdir $<)___,,$(filter $(notdir\
 	$<)___%,$(LOCAL_OPTIONS))))

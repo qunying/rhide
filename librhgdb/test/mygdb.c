@@ -53,11 +53,16 @@ static void Disass()
   unsigned long pc = stop_pc;
   char *arg = _line+7;
   const char * const *lines;
+  int line_count;
   sscanf(arg,"%d",&count);
-  lines = disassemble(pc,count,1,1);
-  for (i=0;i<count;i++)
+  while (count > 0)
   {
-    fprintf(stdout,"%s\n",lines[i]);
+    lines = disassemble(pc, &line_count, 1, 1, &pc);
+    for (i=0;i<line_count;i++)
+    {
+      fprintf(stdout,"%s\n",lines[i]);
+      count--;
+    }
   }
 }
 

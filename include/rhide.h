@@ -273,6 +273,7 @@ void RESET();
 void FINISH();
 void CONTINUE();
 int DEBUGGER_STARTED();
+void CLEARSYMBOLS();
 void InitDebuggerInterface();
 void ToggleBreak();
 void OpenDisWin(int force_open = 0);

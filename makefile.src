@@ -8,7 +8,7 @@ endif
 
 srcdir=$(RHIDESRC)
 VPATH=$(srcdir)
-projects=gpr2mak rhide_ rhide gprexp
+projects=gpr2mak rhide_ rhide gprexp rh
 project=
 cfg_files=
 
@@ -28,7 +28,7 @@ src_files=$(po_files) Makefile common.mak README.IDE RHIDE.BIN RHIDE.SRC \
 	rhide_ch.log todo zipcomm.bin zipcomm.src rhide.env \
 	LINUX.TXT rhide.var VCSA.SH common.var \
 	ideversi.in ideversi.cc readme.key rhide_.env \
-	moveifch gprexp.gpr gprexp.mak rh.gpr rh.mak
+	moveifch gprexp.gpr gprexp.mak rh.gpr rh.mak config.mak
 
 subdirs=libide librhgdb libtvgdb libtvuti include doc libgdb \
 	rhgdb debobj nodebobj po tvdemo librhuti share\
@@ -416,3 +416,6 @@ _additional_po_files:=$(wildcard $(REAL_TVSRC)/*.cc)\
 	$(wildcard $(REAL_SETSRC)/setedit/*.cc)\
 	$(wildcard $(REAL_SETSRC)/settvuti/*.cc)
 
+config::
+	$(MAKE) -f config.mak config_file=$(config_dir)/config.env \
+	  create_config

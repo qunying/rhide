@@ -9,7 +9,7 @@ project=names
 
 po_files=
 
-src_files=$(po_files) \
+src_files=$(po_files) rhide.env rhide.var\
 	ndepcoll.cc ndepende.cc nflagcol.cc nflagent.cc \
 	nideedit.cc nidefile.cc noptions.cc nproject.cc \
 	Makefile makefile.src names.gpr names.mak

@@ -1946,7 +1946,7 @@ static void setup_argv0()
     char *spec = NULL;
     string_cat(spec,"\
 $(word 1,$(foreach path,$(subst $(RHIDE_PATH_SEPARATOR), ,$(PATH)),\
-$(wildcard $(path)/$(notdir ",tmp,"))))");
+$(wildcard $(path)/$(notdir ",tmp,"))))", NULL);
     char *path = expand_rhide_spec(spec);
     string_free(spec);
     if (*path)

@@ -1,11 +1,11 @@
-% Copyright (C) 1996-2000 Robert H”hne, see COPYING.RH for details 
+% Copyright (C) 1996-2001 Robert H”hne, see COPYING.RH for details
 % This file is part of RHIDE. 
 \input texinfo  @c -*-texinfo-*-
 
 @comment %**start of header
 
 @setfilename rhide.inf
-@set version 1.5
+@set version 1.4.9
 @set update-date 10 Januar 2001
 @set update-month Januar 2001
 @c I'm using a4 paper

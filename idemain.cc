@@ -2055,9 +2055,9 @@ void remove_tmpdir()
 {
   if (!debug_tempfiles && tmpdir && !keep_temp_dir)
   {
-    /* Removing temporary directory with force. Perhaps it's better  */
-    /* not to do that as use program may leave temporary files there */
-    /* and user may want to inspect them later  */
+    /* Removing temporary directory with force. Perhaps it's better
+     not to do that as use program may leave temporary files there
+    and user may want to inspect them later  */
     DIR * dir = opendir(tmpdir);
     if (dir)
     {
@@ -2281,7 +2281,6 @@ static void LoadKeys()
                               TCEditor::SHLCant) != 0)
   {
   /* should be in the 8.3 DOS scheme */
-    /* syntax_file = "__syntax__"; */
     syntax_file = "__syntax";
     FILE *f = fopen(syntax_file,"w+t");
     fprintf(f,"\n\

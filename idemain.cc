@@ -1327,20 +1327,10 @@ void IDE::handleEvent(TEvent & event)
           break;
         case cmSelectProject:
         {
-          char *dir,*name,*ext,*prj;
           TDependency *dep = (TDependency *)event.message.infoPtr;
-          split_fname(FName(dep->dest_name),dir,name,ext);
-          string_dup(prj,FName(dep->source_name));
-          if (*dir)
-            dir[strlen(dir)-1] = 0;
           AddToStack();
           CloseProject();
-          chdir(dir);
-          string_free(dir);
-          string_free(name);
-          string_free(ext);
-          OpenProject(prj);
-          string_free(prj);
+          OpenProject(FName(dep->source_name));
           clearEvent(event);
           break;
         }

@@ -87,7 +87,7 @@ OpenDisWin(int force_open)
 }
 
 static void
-select_source_line(char *fname, int line, char *fullname, char *dirname)
+select_source_line(char *fname, int line, char *dirname, char *fullname)
 {
   if (!debugger_started)
     return;
@@ -121,8 +121,9 @@ select_source_line(char *fname, int line, char *fullname, char *dirname)
     if (!found && dirname)
     {
       char *tmp = string_dup(dirname);
-      string_cat(dirname, "/", fname, NULL);
+      string_cat(tmp, fname);
       found = FindFile(tmp, full_name);
+      string_free(tmp);
       if (!found)
         string_free(full_name);
     }

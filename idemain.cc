@@ -687,6 +687,9 @@ void IDE::idle()
   TApplication::idle();
 #ifdef __DJGPP__
   __dpmi_yield();
+#else
+  if (inIdleTime > 10)
+    usleep(1);
 #endif
   if (update_flag > 0) update();
 }

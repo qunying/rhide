@@ -6,8 +6,8 @@
 #include <ctype.h>
 #include <stdarg.h>
 
-static
-void split_fname(const char *fname,char &drive,char *&dir,char *&name,char *&ext)
+void split_fname(const char *fname, char &drive, char *&dir, 
+                 char *&name,char *&ext)
 {
   const char *slash;
   const char *dot = NULL;

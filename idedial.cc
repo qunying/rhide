@@ -7,8 +7,8 @@
 #define Uses_THistory
 #define Uses_TDialog
 #define Uses_IDEConst
-#include <rhide.h>
-#include <rhidehis.h>
+#include "rhide.h"
+#include "rhidehis.h"
 
 #define Uses_TProject
 #include <libide.h>

@@ -56,8 +56,8 @@
 #include <librhgdb.h>
 #endif
 
-#include <rhide.h>
-#include <rhidehis.h>
+#include "rhide.h"
+#include "rhidehis.h"
 
 #include <stdlib.h>
 #include <string.h>

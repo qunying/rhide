@@ -14,7 +14,7 @@
 #define Uses_TDepCollection
 #include <libide.h>
 
-#include <rhide.h>
+#include "rhide.h"
 
 void
 AddLibraries(char *&retval)

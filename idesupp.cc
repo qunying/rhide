@@ -1,6 +1,6 @@
 /* Copyright (C) 1996-2000 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
-#include <rhide.h>
+#include "rhide.h"
 #include <string.h>
 #include <stdlib.h>
 #include <unistd.h>

@@ -6,7 +6,7 @@
 #define Uses_TPalette
 #define Uses_TDeskTop
 #define Uses_TStringCollection
-#include <rhide.h>
+#include "rhide.h"
 
 #define Uses_TIDEEditWindow
 #define Uses_TProject
@@ -22,11 +22,11 @@
 #define Uses_TCEditor_Commands
 #include <ceditor.h>
 
-#include <ideapp.h>
+#include "ideapp.h"
 
 #include <unistd.h>
 
-#include <pal.h>
+#include "pal.h"
 
 #ifdef __DJGPP__
 #include <sys/exceptn.h>

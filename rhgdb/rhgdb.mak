@@ -97,6 +97,7 @@ DEFAULT_MASK=*
 RHIDE_BIN_DIR=d:/obj/rhide
 PASCAL_TYPE=GPC
 GET_HOME=$(HOME)
+CLEAN_FILES=$(MAIN_TARGET) $(OBJFILES)
 RHIDE_GCC=gcc
 RHIDE_AS=gcc
 RHIDE_GXX=gcc
@@ -121,7 +122,7 @@ RHIDE_TYPED_LIBS.p=$(RHIDE_TYPED_LIBS_$(PASCAL_TYPE))
 RHIDE_TYPED_LIBS.pas=$(RHIDE_TYPED_LIBS.p)
 RHIDE_TYPED_LIBS.pp=$(RHIDE_TYPED_LIBS_FPC)
 RHIDE_TYPED_LIBS_$(RHIDE_OS).cc=stdc++
-RHIDE_TYPED_LIBS_DJGPP.cc=stdcxx
+RHIDE_TYPED_LIBS_DJGPP.cc=stdc++
 RHIDE_TYPED_LIBS_DJGPP.cc=stdcxx
 RHIDE_TYPED_LIBS.cc=$(RHIDE_TYPED_LIBS_$(RHIDE_OS).cc)
 RHIDE_TYPED_LIBS.cpp=$(RHIDE_TYPED_LIBS.cc)
@@ -297,10 +298,6 @@ RHIDE_PATH_SEPARATOR_DJGPP=;
 RHIDE_PATH_SEPARATOR=$(RHIDE_PATH_SEPARATOR_$(RHIDE_OS))
 RHIDE_EMPTY=
 RHIDE_SPACE=$(RHIDE_EMPTY) $(RHIDE_EMPTY)
-RHIDE_TYPED_LIBS_DJGPP.cc=stdcxx
-RHIDE_TYPED_LIBS_DJGPP.cxx=stdcxx
-RHIDE_TYPED_LIBS_DJGPP.cpp=stdcxx
-RHIDE_TYPED_LIBS_DJGPP.f=g2c m
 RHIDE_STDINC_C_$(RHIDE_OS)=/usr/include /usr/local/include
 RHIDE_STDINC_C_DJGPP=/usr/include /usr/local/include
 RHIDE_STDINC_CXX_$(RHIDE_OS)=/usr/include/g++ /usr/local/include/g++
@@ -455,6 +452,8 @@ SET_FILES=$(DJDIR)/share/setedit
 	$(RHIDE_COMPILE.C.s)
 include rhide.env
 all::
+clean::
+	rm -f $(CLEAN_FILES)
 DEPS_0= gdbedit.o gdbsynt.o main.o options.o version.o\
 	../librhgdb/librhgdb.a ../librhuti/librhuti.a\
 	../libtvgdb/libtvgdb.a ../libtvuti/libtvuti.a
@@ -468,21 +467,29 @@ DEPS_1=
 all:: ../librhgdb/librhgdb.gpr.force
 ../librhgdb/librhgdb.gpr.force:
 	$(MAKE) -C ../librhgdb/ -f librhgdb.mak $(FLAGS_FOR_SUBPROJECTS)
+clean::
+	$(MAKE) -C ../librhgdb/ -f librhgdb.mak $(FLAGS_FOR_SUBPROJECTS) clean
 DEPS_2=
 .PHONY: ../librhuti/librhuti.gpr.force
 all:: ../librhuti/librhuti.gpr.force
 ../librhuti/librhuti.gpr.force:
 	$(MAKE) -C ../librhuti/ -f librhuti.mak $(FLAGS_FOR_SUBPROJECTS)
+clean::
+	$(MAKE) -C ../librhuti/ -f librhuti.mak $(FLAGS_FOR_SUBPROJECTS) clean
 DEPS_3=
 .PHONY: ../libtvgdb/libtvgdb.gpr.force
 all:: ../libtvgdb/libtvgdb.gpr.force
 ../libtvgdb/libtvgdb.gpr.force:
 	$(MAKE) -C ../libtvgdb/ -f libtvgdb.mak $(FLAGS_FOR_SUBPROJECTS)
+clean::
+	$(MAKE) -C ../libtvgdb/ -f libtvgdb.mak $(FLAGS_FOR_SUBPROJECTS) clean
 DEPS_4=
 .PHONY: ../libtvuti/libtvuti.gpr.force
 all:: ../libtvuti/libtvuti.gpr.force
 ../libtvuti/libtvuti.gpr.force:
 	$(MAKE) -C ../libtvuti/ -f libtvuti.mak $(FLAGS_FOR_SUBPROJECTS)
+clean::
+	$(MAKE) -C ../libtvuti/ -f libtvuti.mak $(FLAGS_FOR_SUBPROJECTS) clean
 DEPS_5=gdbedit.cc librhgdb.h rhutils.h libtvuti.h tdirlist.h tenterli.h\
 	tscollec.h tvutilfu.h twindowl.h rhgdb.h
 gdbedit.o:: $(DEPS_5)

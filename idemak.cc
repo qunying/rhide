@@ -20,7 +20,7 @@
 
 #include <edprint.h>
 
-#include <rhide.h>
+#include "rhide.h"
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>

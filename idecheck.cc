@@ -13,7 +13,7 @@
 #define Uses_tvutilFunctions
 #include <libtvuti.h>
 
-#include <rhide.h>
+#include "rhide.h"
 #include <rhutils.h>
 
 int

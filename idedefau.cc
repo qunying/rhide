@@ -6,7 +6,7 @@
 #define Uses_TFlagEntry
 #define Uses_TFlagCollection
 #include <libide.h>
-#include <rhide.h>
+#include "rhide.h"
 
 #define F(x) x,
 static char *c_flags[] = {

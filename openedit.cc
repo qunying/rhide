@@ -15,8 +15,8 @@
 #define Uses_TOptions
 #define Uses_ideFunctions
 #include <libide.h>
-#include <rhide.h>
-#include <ideapp.h>
+#include "rhide.h"
+#include "ideapp.h"
 
 #include <unistd.h>
 

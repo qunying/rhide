@@ -22,7 +22,7 @@
 
 #include <rhutils.h>
 
-#include <rhide.h>
+#include "rhide.h"
 
 #define Uses_TStringCollection
 #include <inf.h>

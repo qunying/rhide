@@ -14,7 +14,7 @@
 #define Uses_TRangeValidator
 #define Uses_TKeys
 
-#include <rhide.h>
+#include "rhide.h"
 #include <rhutils.h>
 
 #define Uses_TParamList

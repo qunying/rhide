@@ -21,7 +21,7 @@
 
 #include <rhutils.h>
 
-#include <rhide.h>
+#include "rhide.h"
 #include <string.h>
 #include <stdio.h>
 

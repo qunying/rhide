@@ -8,7 +8,7 @@
 #define Uses_TProgram
 #define Uses_TDeskTop
 
-#include <rhide.h>
+#include "rhide.h"
 
 #define Uses_TIDEFileEditor
 #include <libide.h>

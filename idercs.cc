@@ -1,6 +1,6 @@
 /* Copyright (C) 1996-1998 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
-#include <rhide.h>
+#include "rhide.h"
 
 #define Uses_TProject
 #define Uses_TOptions

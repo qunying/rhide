@@ -3,7 +3,7 @@
 #define Uses_TIDEEditWindow
 #define Uses_TIDEFileEditor
 #include <libide.h>
-#include <rhide.h>
+#include "rhide.h"
 
 #ifdef INTERNAL_DEBUGGER
 #include <librhgdb.h>

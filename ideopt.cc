@@ -51,8 +51,8 @@
 #include <rhutils.h>
 
 #define Uses_IDEConst
-#include <rhide.h>
-#include <rhidehis.h>
+#include "rhide.h"
+#include "rhidehis.h"
 
 #include <string.h>
 #include <stdlib.h>

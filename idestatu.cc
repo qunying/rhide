@@ -21,8 +21,8 @@
 #include <libtvuti.h>
 
 #define Uses_IDEConst
-#include <rhide.h>
-#include <ideapp.h>
+#include "rhide.h"
+#include "ideapp.h"
 
 #ifdef INTERNAL_DEBUGGER
 #define Uses_tvgdbCommands

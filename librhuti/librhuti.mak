@@ -77,6 +77,7 @@ DEFAULT_MASK=*.[chs]*
 RHIDE_BIN_DIR=d:/obj/rhide
 PASCAL_TYPE=GPC
 GET_HOME=$(HOME)
+CLEAN_FILES=$(MAIN_TARGET) $(OBJFILES)
 RHIDE_GCC=gcc
 RHIDE_AS=gcc
 RHIDE_GXX=gcc
@@ -101,7 +102,7 @@ RHIDE_TYPED_LIBS.p=$(RHIDE_TYPED_LIBS_$(PASCAL_TYPE))
 RHIDE_TYPED_LIBS.pas=$(RHIDE_TYPED_LIBS.p)
 RHIDE_TYPED_LIBS.pp=$(RHIDE_TYPED_LIBS_FPC)
 RHIDE_TYPED_LIBS_$(RHIDE_OS).cc=stdc++
-RHIDE_TYPED_LIBS_DJGPP.cc=stdcxx
+RHIDE_TYPED_LIBS_DJGPP.cc=stdc++
 RHIDE_TYPED_LIBS_DJGPP.cc=stdcxx
 RHIDE_TYPED_LIBS.cc=$(RHIDE_TYPED_LIBS_$(RHIDE_OS).cc)
 RHIDE_TYPED_LIBS.cpp=$(RHIDE_TYPED_LIBS.cc)
@@ -277,10 +278,6 @@ RHIDE_PATH_SEPARATOR_DJGPP=;
 RHIDE_PATH_SEPARATOR=$(RHIDE_PATH_SEPARATOR_$(RHIDE_OS))
 RHIDE_EMPTY=
 RHIDE_SPACE=$(RHIDE_EMPTY) $(RHIDE_EMPTY)
-RHIDE_TYPED_LIBS_DJGPP.cc=stdcxx
-RHIDE_TYPED_LIBS_DJGPP.cxx=stdcxx
-RHIDE_TYPED_LIBS_DJGPP.cpp=stdcxx
-RHIDE_TYPED_LIBS_DJGPP.f=g2c m
 RHIDE_STDINC_C_$(RHIDE_OS)=/usr/include /usr/local/include
 RHIDE_STDINC_C_DJGPP=/usr/include /usr/local/include
 RHIDE_STDINC_CXX_$(RHIDE_OS)=/usr/include/g++ /usr/local/include/g++
@@ -399,6 +396,8 @@ PCRE_OBJ=$(subst Linux,linux,$(SETOBJ)/$(RHIDE_OS))
 	$(RHIDE_COMPILE.C.s)
 include rhide.env
 all::
+clean::
+	rm -f $(CLEAN_FILES)
 DEPS_0= abstorel.o back2sl.o basename.o fexpand.o fixpath.o io.o specs.o\
 	splitfn.o stricat.o stridown.o stridup.o strifree.o 
 NO_LINK=

@@ -15,8 +15,8 @@
 #define Uses_ideCommands
 #include <libide.h>
 
-#include <rhide.h>
-#include <ideapp.h>
+#include "rhide.h"
+#include "ideapp.h"
 #include <string.h>
 #include <inf.h>
 

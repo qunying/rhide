@@ -1,7 +1,7 @@
 /* Copyright (C) 1996-2000 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
-#include <libgdbrh.h>
-#include <rhgdbint.h>
+#include "libgdbrh.h"
+#include "rhgdbint.h"
 
 /* This is a dummy function, which is called, by a file from
     libgdb.a but it is defined in main.c from gdb which does

@@ -113,7 +113,7 @@ SOURCE_NAME=$<
 OUTFILE=$@
 SPECIAL_CFLAGS=
 SPECIAL_LDFLAGS=
-PROG_ARGS=rhide_
+PROG_ARGS=rh
 SRC_DIRS=$(RHIDESRC)
 WUC=
 EDITORS=
@@ -130,6 +130,7 @@ DEFAULT_MASK=*
 RHIDE_BIN_DIR=d:/obj/rhide
 PASCAL_TYPE=GPC
 GET_HOME=$(HOME)
+CLEAN_FILES=$(MAIN_TARGET) $(OBJFILES)
 RHIDE_GCC=gcc
 RHIDE_AS=gcc
 RHIDE_GXX=gcc
@@ -154,7 +155,7 @@ RHIDE_TYPED_LIBS.p=$(RHIDE_TYPED_LIBS_$(PASCAL_TYPE))
 RHIDE_TYPED_LIBS.pas=$(RHIDE_TYPED_LIBS.p)
 RHIDE_TYPED_LIBS.pp=$(RHIDE_TYPED_LIBS_FPC)
 RHIDE_TYPED_LIBS_$(RHIDE_OS).cc=stdc++
-RHIDE_TYPED_LIBS_DJGPP.cc=stdcxx
+RHIDE_TYPED_LIBS_DJGPP.cc=stdc++
 RHIDE_TYPED_LIBS_DJGPP.cc=stdcxx
 RHIDE_TYPED_LIBS.cc=$(RHIDE_TYPED_LIBS_$(RHIDE_OS).cc)
 RHIDE_TYPED_LIBS.cpp=$(RHIDE_TYPED_LIBS.cc)
@@ -330,10 +331,6 @@ RHIDE_PATH_SEPARATOR_DJGPP=;
 RHIDE_PATH_SEPARATOR=$(RHIDE_PATH_SEPARATOR_$(RHIDE_OS))
 RHIDE_EMPTY=
 RHIDE_SPACE=$(RHIDE_EMPTY) $(RHIDE_EMPTY)
-RHIDE_TYPED_LIBS_DJGPP.cc=stdcxx
-RHIDE_TYPED_LIBS_DJGPP.cxx=stdcxx
-RHIDE_TYPED_LIBS_DJGPP.cpp=stdcxx
-RHIDE_TYPED_LIBS_DJGPP.f=g2c m
 RHIDE_STDINC_C_$(RHIDE_OS)=/usr/include /usr/local/include
 RHIDE_STDINC_C_DJGPP=/usr/include /usr/local/include
 RHIDE_STDINC_CXX_$(RHIDE_OS)=/usr/include/g++ /usr/local/include/g++
@@ -488,6 +485,8 @@ SET_FILES=$(DJDIR)/share/setedit
 	$(RHIDE_COMPILE.C.s)
 include rhide.env
 all::
+clean::
+	rm -f $(CLEAN_FILES)
 DEPS_0= debobj/commands.o debobj/fstrcmp.o debobj/ideapp.o debobj/idebug.o\
 	debobj/idecheck.o debobj/idecolor.o debobj/idecomp.o\
 	debobj/idedebug.o debobj/idedefau.o debobj/idedial.o\
@@ -660,26 +659,36 @@ DEPS_33=
 all:: libide/libide.gpr.force
 libide/libide.gpr.force:
 	$(MAKE) -C libide/ -f libide.mak $(FLAGS_FOR_SUBPROJECTS)
+clean::
+	$(MAKE) -C libide/ -f libide.mak $(FLAGS_FOR_SUBPROJECTS) clean
 DEPS_34=
 .PHONY: librhgdb/librhgdb.gpr.force
 all:: librhgdb/librhgdb.gpr.force
 librhgdb/librhgdb.gpr.force:
 	$(MAKE) -C librhgdb/ -f librhgdb.mak $(FLAGS_FOR_SUBPROJECTS)
+clean::
+	$(MAKE) -C librhgdb/ -f librhgdb.mak $(FLAGS_FOR_SUBPROJECTS) clean
 DEPS_35=
 .PHONY: librhuti/librhuti.gpr.force
 all:: librhuti/librhuti.gpr.force
 librhuti/librhuti.gpr.force:
 	$(MAKE) -C librhuti/ -f librhuti.mak $(FLAGS_FOR_SUBPROJECTS)
+clean::
+	$(MAKE) -C librhuti/ -f librhuti.mak $(FLAGS_FOR_SUBPROJECTS) clean
 DEPS_36=
 .PHONY: libtvgdb/libtvgdb.gpr.force
 all:: libtvgdb/libtvgdb.gpr.force
 libtvgdb/libtvgdb.gpr.force:
 	$(MAKE) -C libtvgdb/ -f libtvgdb.mak $(FLAGS_FOR_SUBPROJECTS)
+clean::
+	$(MAKE) -C libtvgdb/ -f libtvgdb.mak $(FLAGS_FOR_SUBPROJECTS) clean
 DEPS_37=
 .PHONY: libtvuti/libtvuti.gpr.force
 all:: libtvuti/libtvuti.gpr.force
 libtvuti/libtvuti.gpr.force:
 	$(MAKE) -C libtvuti/ -f libtvuti.mak $(FLAGS_FOR_SUBPROJECTS)
+clean::
+	$(MAKE) -C libtvuti/ -f libtvuti.mak $(FLAGS_FOR_SUBPROJECTS) clean
 DEPS_38=openedit.cc ideapp.h rhide.h ideenums.h idefunct.h libide.h\
 	tdepende.h tfname.h tideedit.h toptions.h tproject.h rhutils.h\
 	libtvuti.h tdirlist.h tvutilco.h tvutilfu.h
@@ -693,4 +702,6 @@ DEPS_40=
 all:: tvdemo/libtvdem.gpr.force
 tvdemo/libtvdem.gpr.force:
 	$(MAKE) -C tvdemo/ -f libtvdem.mak $(FLAGS_FOR_SUBPROJECTS)
+clean::
+	$(MAKE) -C tvdemo/ -f libtvdem.mak $(FLAGS_FOR_SUBPROJECTS) clean
 all:: idegc.exe

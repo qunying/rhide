@@ -29,8 +29,8 @@
 #include <rhutils.h>
 
 #define Uses_IDEConst
-#include <rhide.h>
-#include <rhidehis.h>
+#include "rhide.h"
+#include "rhidehis.h"
 
 #include <stdio.h>
 #include <stdlib.h>

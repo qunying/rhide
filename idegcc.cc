@@ -38,7 +38,7 @@
 
 #include <rhutils.h>
 
-#include <rhide.h>
+#include "rhide.h"
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>

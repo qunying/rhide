@@ -93,6 +93,7 @@ DEFAULT_MASK=*.[cgh]*
 RHIDE_BIN_DIR=d:/obj/rhide
 PASCAL_TYPE=GPC
 GET_HOME=$(HOME)
+CLEAN_FILES=$(MAIN_TARGET) $(OBJFILES)
 RHIDE_GCC=gcc
 RHIDE_AS=gcc
 RHIDE_GXX=gcc
@@ -117,7 +118,7 @@ RHIDE_TYPED_LIBS.p=$(RHIDE_TYPED_LIBS_$(PASCAL_TYPE))
 RHIDE_TYPED_LIBS.pas=$(RHIDE_TYPED_LIBS.p)
 RHIDE_TYPED_LIBS.pp=$(RHIDE_TYPED_LIBS_FPC)
 RHIDE_TYPED_LIBS_$(RHIDE_OS).cc=stdc++
-RHIDE_TYPED_LIBS_DJGPP.cc=stdcxx
+RHIDE_TYPED_LIBS_DJGPP.cc=stdc++
 RHIDE_TYPED_LIBS_DJGPP.cc=stdcxx
 RHIDE_TYPED_LIBS.cc=$(RHIDE_TYPED_LIBS_$(RHIDE_OS).cc)
 RHIDE_TYPED_LIBS.cpp=$(RHIDE_TYPED_LIBS.cc)
@@ -293,10 +294,6 @@ RHIDE_PATH_SEPARATOR_DJGPP=;
 RHIDE_PATH_SEPARATOR=$(RHIDE_PATH_SEPARATOR_$(RHIDE_OS))
 RHIDE_EMPTY=
 RHIDE_SPACE=$(RHIDE_EMPTY) $(RHIDE_EMPTY)
-RHIDE_TYPED_LIBS_DJGPP.cc=stdcxx
-RHIDE_TYPED_LIBS_DJGPP.cxx=stdcxx
-RHIDE_TYPED_LIBS_DJGPP.cpp=stdcxx
-RHIDE_TYPED_LIBS_DJGPP.f=g2c m
 RHIDE_STDINC_C_$(RHIDE_OS)=/usr/include /usr/local/include
 RHIDE_STDINC_C_DJGPP=/usr/include /usr/local/include
 RHIDE_STDINC_CXX_$(RHIDE_OS)=/usr/include/g++ /usr/local/include/g++
@@ -415,6 +412,8 @@ PCRE_OBJ=$(subst Linux,linux,$(SETOBJ)/$(RHIDE_OS))
 	$(RHIDE_COMPILE.C.s)
 include rhide.env
 all::
+clean::
+	rm -f $(CLEAN_FILES)
 DEPS_0= bigmessa.o cmd.o commands.o editdirl.o editpara.o execdial.o\
 	history.o ihistory.o msgrec.o names/ndirlist.o names/nparamli.o\
 	stream/sdirlist.o stream/sparamli.o tcheckdi.o tdirlist.o\
@@ -457,11 +456,15 @@ DEPS_10=
 all:: names/names.gpr.force
 names/names.gpr.force:
 	$(MAKE) -C names/ -f names.mak $(FLAGS_FOR_SUBPROJECTS)
+clean::
+	$(MAKE) -C names/ -f names.mak $(FLAGS_FOR_SUBPROJECTS) clean
 DEPS_11=
 .PHONY: stream/stream.gpr.force
 all:: stream/stream.gpr.force
 stream/stream.gpr.force:
 	$(MAKE) -C stream/ -f stream.mak $(FLAGS_FOR_SUBPROJECTS)
+clean::
+	$(MAKE) -C stream/ -f stream.mak $(FLAGS_FOR_SUBPROJECTS) clean
 DEPS_12=tcheckdi.cc libtvuti.h tcheckdi.h
 tcheckdi.o:: $(DEPS_12)
 	$(RHIDE_COMPILE.cc.o)

@@ -22,7 +22,7 @@
 #define Uses_ideFunctions
 #define Uses_TDepCollection
 #include <libide.h>
-#include <rhide.h>
+#include "rhide.h"
 
 int debug_dependencies = 0;
 int debug_commands = 0;

@@ -10,8 +10,8 @@
 #define Uses_TDepCollection
 #define Uses_TFlagCollection
 
-#include <rhide.h>
-#include <rhidehis.h>
+#include "rhide.h"
+#include "rhidehis.h"
 
 #define Uses_TWindowList
 #define Uses_TSCollection

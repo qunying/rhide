@@ -14,8 +14,8 @@
 
 #include <rhutils.h>
 
-#include <rhide.h>
-#include <rhidehis.h>
+#include "rhide.h"
+#include "rhidehis.h"
 
 #ifdef INTERNAL_DEBUGGER
 #include <librhgdb.h>

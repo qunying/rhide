@@ -93,12 +93,12 @@
 
 #include <rhutils.h>
 
-#include <rhide.h>
-#include <rhidehis.h>
+#include "rhide.h"
+#include "rhidehis.h"
 
 #include <libtvdem.h>
 
-#include <ideapp.h>
+#include "ideapp.h"
 #ifdef __linux__
 //FIXME: on my Linux the symbol ERR is already defined
 // in sys/ucontext.h, but since curses.h is needed only

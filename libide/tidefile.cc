@@ -193,7 +193,7 @@ TIDEFileEditor::handleEvent(TEvent & event)
   {
     struct utimbuf ut;
 
-    ut.modtime = edittime;
+    ut.actime = ut.modtime = edittime;
     utime(fileName, &ut);
     if (save_as)                // send a message, that the filename has changed
       message(TProgram::application, evBroadcast, cmEditorFilenameChanged,
@@ -247,7 +247,7 @@ TIDEFileEditor::valid(ushort command)
         retval = save();
         if (retval == True)
         {
-          ut.modtime = edittime;
+          ut.actime = ut.modtime = edittime;
           utime(fileName, &ut);
         }
         return retval;

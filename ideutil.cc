@@ -352,7 +352,9 @@ open_ifpstream(const char *name)
   }
   return new ifpstream(handle);
 #else
-  return new ifpstream(name);
+  ifpstream *ret = new ifpstream();
+  ret->open(name);
+  return ret;
 #endif
 }
 
@@ -402,3 +404,4 @@ ExpandFileNames(TProject * prj)
   ConvertDep(project);
   project = old;
 }
+

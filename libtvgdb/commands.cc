@@ -1,6 +1,5 @@
 /* Copyright (C) 1996-1998 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
-#if 0
 #define Uses_tvgdbCommands
 #include <libtvgdb.h>
 
@@ -16,6 +15,4 @@ init_tvgdb_commands()
   __TVGDB_COMMAND_CODES__
   __TVGDB_HELP_CODES__
 }
-
-#endif
 

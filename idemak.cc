@@ -509,6 +509,7 @@ Boolean _PushProject(const char *directory,const char *prjname)
   if ((project = ReadProject(prjname)) != NULL)
   {
     string_dup(project_name,prjname);
+    push_environment();
     return True;
   }
   stack_count--;
@@ -553,6 +554,7 @@ void _PopProject()
   stack_count--;
   project_stack * ps = PROJECT_STACK + stack_count;
   destroy(project);
+  pop_environment();
   chdir(ps->dname);
   string_free(project_name);
   project_name = ps->pname;

@@ -48,23 +48,9 @@ IDE::IDE() :
              ),
     TApplication()
 {
-
-    TCommandSet ts;
-    ts.enableCmd( cmcSave );
-    ts.enableCmd( cmcSaveAs );
-    ts.enableCmd( cmcCut );
-    ts.enableCmd( cmcCopy );
-    ts.enableCmd( cmcPaste );
-    ts.enableCmd( cmcClear );
-    ts.enableCmd( cmcUndo );
-    ts.enableCmd( cmcRedo );
-    ts.enableCmd( cmcFind );
-    ts.enableCmd( cmcReplace );
-    ts.enableCmd( cmcSearchAgain );
-    disableCommands( ts );
-
     TCEditor::editorDialog = IDEdoEditDialog;
     createClipBoard();
+    update();
 }
 
 static const char *_cpIDEColor = cpIDEColor;

@@ -2,4 +2,5 @@
 # This file is part of RHIDE. 
 include $(RHIDESRC)/common.var
 RHIDE_OS_LIBS_Linux=ncurses
+RHIDE_OS_LIBS_CYGWIN=ncurses
 RHIDE_OS_LIBS=$(RHIDE_OS_LIBS_$(RHIDE_OS))

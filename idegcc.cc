@@ -46,9 +46,6 @@
 #include <sys/stat.h>
 #include <setjmp.h>
 #include <ctype.h>
-#ifdef __DJGPP__
-#include <sys/exceptn.h>
-#endif
 
 #ifdef INTERNAL_DEBUGGER
 #include <librhgdb.h>

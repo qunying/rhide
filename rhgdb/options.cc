@@ -38,8 +38,8 @@ public:
 };
 
 TEnvironmentDialog::TEnvironmentDialog():
-TDialog(TRect(0, 0, 65, 17), _("Environment options")),
-TWindowInit(TEnvironmentDialog::initFrame)
+TWindowInit(TEnvironmentDialog::initFrame),
+TDialog(TRect(0, 0, 65, 17), _("Environment options"))
 {
   TRect
     r;

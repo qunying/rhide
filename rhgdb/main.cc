@@ -169,9 +169,9 @@ TPalette & RHGDBApp::getPalette() const
 }
 
 RHGDBApp::RHGDBApp():
-TApplication(),
 TProgInit(RHGDBApp::initStatusLine,
-          RHGDBApp::initMenuBar, RHGDBApp::initDeskTop)
+          RHGDBApp::initMenuBar, RHGDBApp::initDeskTop),
+TApplication()
 {
 }
 

@@ -124,8 +124,8 @@ TPalette & TGDBEditWindow::getPalette() const
 
 TGDBEditWindow::TGDBEditWindow(const TRect & bounds,
 const char *fileName, int aNumber):
-TCEditWindow(bounds, (const char *) NULL, aNumber),
-TWindowInit(&TGDBEditWindow::initFrame)
+TWindowInit(&TGDBEditWindow::initFrame),
+TCEditWindow(bounds, (const char *) NULL, aNumber)
 {
   TRect r(editor->origin.x, editor->origin.y,
           editor->origin.x + editor->size.x,

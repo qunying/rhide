@@ -30,7 +30,7 @@ GDB_OBJ=$(GDB_SRC)
 endif
 
 ifeq ($(strip $(rhide_OS)),DJGPP)
-OS_CFLAGS=-DMAINTENANCE_CMDS=0 -DHAVE_CONFIG_H -O2 -DHAVE_LONG_DOUBLE=1 \
+OS_CFLAGS=-DHAVE_CONFIG_H -O2 -DHAVE_LONG_DOUBLE=1 \
 	  -DPRINTF_HAS_LONG_DOUBLE=1
 OS_FLAGS=
 MMALLOC_INC=
@@ -43,7 +43,7 @@ EXCLUDE_REGEX=
 endif
 
 ifeq ($(strip $(rhide_OS)),Linux)
-OS_CFLAGS=-DMAINTENANCE_CMDS=0 -DHAVE_CONFIG_H -O2 -DNO_MMALLOC
+OS_CFLAGS=-DHAVE_CONFIG_H -O2 -DNO_MMALLOC
 #MMALLOC=../mmalloc/libmmalloc.a
 #MMALLOC_INC=o_gdb/mmalloc s_gdb/mmalloc
 CHECKS=
@@ -91,6 +91,7 @@ libgdb.c: Makefile
 	echo '#include <demangle.h>' >> libgdb.c
 	echo '#include <annotate.h>' >> libgdb.c
 	echo '#include <top.h>' >> libgdb.c
+	echo '#include <floatformat.h>' >> libgdb.c
 
 LIBGDB_FLAGS+=$(OS_FLAGS)
 CFLAGS+=$(OS_CFLAGS)

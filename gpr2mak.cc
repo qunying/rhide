@@ -198,3 +198,15 @@ char *WUC()
   return NULL;
 }
 
+/* The following functions are provided here only to make the
+   linker happy, since they are refernced by libset */
+void show_message(const char *, const char *,
+                  int , int , int )
+{
+}
+
+int RunProgram(const char *, bool, bool, bool)
+{
+  return -1;
+}
+

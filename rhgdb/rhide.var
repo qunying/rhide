@@ -5,6 +5,6 @@
 #
 
 .$(RHIDESRC)/common.var
-RHIDE_OS_LIBS_Linux=ncurses gpm
-RHIDE_OS_LIBS_DJGPP=dbg
+RHIDE_OS_LIBS_Linux=intl ncurses gpm
+RHIDE_OS_LIBS_DJGPP=intl dbg
 RHIDE_OS_LIBS=$(RHIDE_OS_LIBS_$(RHIDE_OS))

@@ -5,7 +5,7 @@
 srcdir=$(RHIDESRC)
 VPATH=$(srcdir)
 projects=gpr2mak rhide_ rhide
-project=rhide
+project=
 cfg_files=gpr2mak.gpr gpr2mak.mak rhide_.gpr rhide_.mak
 update_files=gpr2mak.gpr gpr2mak.mak rhide_.gpr rhide_.mak rhide.gpr rhide.mak
 
@@ -71,16 +71,19 @@ idegc.exe rhgdb/rhgdb.exe:: libgdb/libgdb.a
 needed: libgdb/libgdb.h libgdb/libgdb.a 
 
 libgdb/libgdb.a libgdb/libgdb.h:
-	$(MAKE) -C libgdb $(FLAGS_TO_PASS) $(notdir $@)
+	$(MAKE) -C libgdb $(FLAGS_TO_PASS)
 
 rhgdb/rhgdb.exe::
-	$(MAKE) -C rhgdb $(FLAGS_TO_PASS) $(notdir $@)
+	$(MAKE) -C rhgdb $(FLAGS_TO_PASS)
 
 gpr2mak.exe:: gpr2mak.mak
-	$(MAKE) -f gpr2mak.mak $(FLAGS_TO_PASS) $@
+	$(MAKE) -f gpr2mak.mak $(FLAGS_TO_PASS)
 
 ide.exe:: rhide_.mak
-	$(MAKE) -f rhide_.mak $(FLAGS_TO_PASS) $@
+	$(MAKE) -f rhide_.mak $(FLAGS_TO_PASS)
+	
+idegc.exe:: rhide.mak
+	$(MAKE) -f rhide.mak $(FLAGS_TO_PASS)
 
 rhide$(exe):: idegc.exe
 	cp $< $@

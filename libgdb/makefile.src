@@ -80,7 +80,7 @@ libgdbrh.c: Makefile
 	echo '#include <symfile.h>' >> libgdbrh.c
 	echo '#include <objfiles.h>' >> libgdbrh.c
 	echo '#include <inferior.h>' >> libgdbrh.c
-	echo '#include <gnu-regex.h>' >> libgdbrh.c
+	echo '#include <gdb_regex.h>' >> libgdbrh.c
 	echo '#include <expression.h>' >> libgdbrh.c
 	echo '#include <language.h>' >> libgdbrh.c
 	echo '#include <complaints.h>' >> libgdbrh.c
@@ -99,16 +99,20 @@ libgdbrh.c: Makefile
 	echo '#include <floatformat.h>' >> libgdbrh.c
 	echo '#include <version.h>' >> libgdbrh.c
 	echo '#include <parser-defs.h>' >> libgdbrh.c
+	-sh -c "test -f $(GDB_SRC)/gdb/regcache.h && echo '#include <regcache.h>' >> libgdbrh.c"
 
 LIBGDB_FLAGS+=$(OS_FLAGS)
 override CFLAGS+=$(OS_CFLAGS)
 
+gdbsrc=$(shell echo $(GDB_SRC) | sed "s,^\([a-zA-Z]\):,/dev/\1,g")
+
+GDB_CONFIG_$(rhide_OS)=CC=gcc $(GDB_SRC)/configure
+GDB_CONFIG_DJGPP=sh $(GDB_SRC)/gdb/config/djgpp/djconfig.sh $(gdbsrc)
+#GDB_CONFIG_CYGWIN=CC=gcc gt_cv_func_gettext_libintl='yes' $(GDB_SRC)/configure --without-included-gettext
+GDB_CONFIG_CYGWIN=CC=gcc $(GDB_SRC)/configure --disable-nls
+
 $(GDB_OBJ)/Makefile:
-ifneq ($(strip $(rhide_OS)),DJGPP)
-	sh -c "cd $(GDB_OBJ) && CC=gcc $(GDB_SRC)/configure"
-else
-	sh -c "cd $(GDB_OBJ) && sh $(GDB_SRC)/gdb/config/djgpp/djconfig.sh $(GDB_SRC)"
-endif
+	sh -c "cd $(GDB_OBJ) && $(GDB_CONFIG_$(rhide_OS))"
 
 $(GDB_OBJ)/bfd/bfd.h: $(GDB_OBJ)/Makefile
 	$(MAKE) -C $(dir $@) $(notdir $@)
@@ -118,10 +122,12 @@ libgdbrh.h: $(LIBGDB_H)
 	echo "#include <$(LIBGDB_H)>" > libgdbrh.h
 else
 libgdbrh.h: $(GDB_OBJ)/bfd/bfd.h libgdbrh.c gdb_ver.txt
-	gcc -E -P $(INC_PATH) $(CFLAGS) $(MMALLOC_CFLAGS) libgdbrh.c \
-	  | sed -e '/^[ 	]*$$/d' > libgdbrh.h
+	gcc -E $(INC_PATH) $(CFLAGS) $(MMALLOC_CFLAGS) \
+	  $(shell sed -n 's,^REGEX_CFLAGS = \(.*\),\1,p' $(GDB_OBJ)/gdb/Makefile) \
+	  libgdbrh.c \
+	  | sed -e '/^[ 	]*$$/d' -e '/^#define __STDC.*$$/d' > libgdbrh.h
 	gcc -E -P -dM $(INC_PATH) $(CFLAGS) $(MMALLOC_CFLAGS) libgdbrh.c \
-	  | sed -e '/^[ 	]*$$/d' >> libgdbrh.h
+	  | sed -e '/^[ 	]*$$/d' -e '/^#define __STDC.*$$/d' >> libgdbrh.h
 	cat gdb_ver.txt >> libgdbrh.h
 endif
 
@@ -150,7 +156,8 @@ $(GDB_OBJ)/%.a:
 	$(MAKE) -C $(dir $@) CFLAGS="$(CFLAGS)" $(LIBGDB_FLAGS)
 
 libgdb-files: force
-	$(MAKE) -C $(GDB_OBJ)/gdb CFLAGS="$(CFLAGS)" $(LIBGDB_FLAGS)
+#	$(MAKE) -C $(GDB_OBJ)/gdb CFLAGS="$(CFLAGS)" $(LIBGDB_FLAGS)
+	$(MAKE) -C $(GDB_OBJ) CFLAGS="$(CFLAGS)" $(LIBGDB_FLAGS)
 	ls $(GDB_OBJ)/gdb/*.o | sed s,$(GDB_OBJ)/gdb/,,g > $@
 
 T_FILES=libbfd.t libiberty.t libopcodes.t libreadline.t \
@@ -181,4 +188,5 @@ gdb_ver.txt: echo_ver.exe
 	
 
 force:
+
 

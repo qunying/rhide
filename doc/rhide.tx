@@ -384,7 +384,7 @@ To install these archives, unzip them in the DJGPP-root
 directory, like any other DJGPP package.
 @paragraph{}
 
-To install the Linux RPM packages, use your favotite install
+To install the Linux RPM packages, use your favorite install
 program (most Linux distributions allow to install RPM packages)
 or install it with the Redhat package manager itself.
 @paragraph{}
@@ -2835,14 +2835,14 @@ dependencies for a project item which are included via
 When this option is enabled, RHIDE will allow you to include
 project items which are not in the current directory or any of
 the directories specified in the path for source files
-@xref{Sources directories}. If the item is releative to any
+@xref{Sources directories}. If the item is relative to any
 of these default searched directories only the relative
 subdirectory will be part of the item.
 @paragraph{}
 
 An other side effect is, that the resutling object file
-will be placed also in the same directory realative to the
-deafault output directory.
+will be placed also in the same directory relative to the
+default output directory.
 @paragraph{}
 
 @node Show disassembler window when needed
@@ -2859,7 +2859,7 @@ or the startup code.
 
 @node Use RCS
 @subsubheading Use RCS
-Only when this option is enabled, RHIDE will use the builtin knowlage
+Only when this option is enabled, RHIDE will use the builtin knowledge
 about RCS (@xref{RCS and RHIDE}).
 @paragraph{}
 
@@ -4991,8 +4991,8 @@ documentation.
 @paragraph{}
 
 If the bug is releated to the editor (some keys do not work,
-autoindenting is not like you expect, program creash after some
-special editing ....) please send them to @SET{}, because he
+autoindenting is not like you expect, program crash after some
+special editing ...) please send them to @SET{}, because he
 is the author of the in RHIDE integrated editor.
 @paragraph{}
 
@@ -5005,7 +5005,7 @@ I read this group also.
 
 Linux users should post the problems in the linux group. To make sure
 that I will read it also, please send a CC to me because my time
-dosn`t allow me to read that huge newsgroups.
+doesn`t allow me to read that huge newsgroups.
 @paragraph{}
 
 If this don't help you, do the following:

@@ -319,7 +319,6 @@ static void InitExecDialog()
   ExecDialog = new TCheckDialog(r,_("executing: "));
   TProgram::deskTop->lock();
   TProgram::deskTop->insert(ExecDialog);
-  ExecDialog->hide();
   TProgram::deskTop->unlock();
   r.a.y = 5;
   r.b.y = r.a.y + 4;
@@ -373,7 +372,6 @@ Boolean Compile(TDependency *_dep)
   {
     InitExecDialog();
     CheckDialog->hide();
-    ExecDialog->show();
   }
   if (!dep) 
   {
@@ -616,9 +614,7 @@ Boolean time_of_dep(TDependency *dep,long &target_time,Boolean build,
     fprintf(stderr,"%s %s\n",_("must rebuild"),dest_name);
   }
   if (CheckDialog) CheckDialog->hide();
-  if (ExecDialog) ExecDialog->show();
   retval = compile_dep(dep);
-  if (ExecDialog) ExecDialog->hide();
   if (CheckDialog) CheckDialog->show();
   if (debug_dependencies)
   {

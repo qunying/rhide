@@ -102,10 +102,10 @@ endif
 
 obj_dir:=$(shell pwd)
 ifeq ($(top_obj_dir),)
-ifneq ($(strip $(rhide_OS)),DJGPP)
-export top_obj_dir:=$(shell cd $(top_dir) && pwd && cd $(obj_dir))
-else
+ifeq ($(strip $(rhide_OS)),DJGPP)
 export top_obj_dir:=$(shell cd $(top_dir); pwd; cd $(obj_dir))
+else
+export top_obj_dir:=`cd $(top_dir); pwd; cd $(obj_dir)`
 endif
 endif
 

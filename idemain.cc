@@ -9,13 +9,7 @@
 #include <sys/exceptn.h>
 #include <sys/movedata.h>
 #include <crt0.h>
-// I have seen broken versions of DJGPP port of gettext which defines
-// gettext and a result we're getting compiler error.
-// However better cure would be extracting 'if (kbhit()) getch()' in
-// some procedure in another file to hide conio.h away. (AP, 13.6.2000)
-#undef gettext
-#include <conio.h>
-#endif
+#endif // __DJGPP__
 #include <dirent.h>
 #include <string.h>
 #include <stdio.h>
@@ -904,9 +898,10 @@ About()
           _("RHIDE is an Integrated Development Environment"),
 #ifdef __DJGPP__
           _("for developing DJGPP apps"),
-#endif
-#ifdef __linux__
+#elif __linux__
           _("for developing Linux apps"),
+#else
+          _("for developing apps"),
 #endif
           _("Copyright (C) by Robert H”hne"),
           1996, 2002,
@@ -2078,14 +2073,14 @@ parse_commandline(int argc, char *argv[])
             setlocale failed.
           */
             
-          if (setlocale(LC_MESSAGES, arg) == NULL)
+          if (setlocale(LC_ALL, arg) == NULL)
           {
             char *new_arg = string_dup(arg);
             string_up(new_arg);
             char *temp_arg = string_dup(arg);
             string_cat(temp_arg, "_", new_arg, NULL);
             string_free(new_arg);
-            char *res = setlocale(LC_MESSAGES, temp_arg);
+            char *res = setlocale(LC_ALL, temp_arg);
             string_free(temp_arg);
             if (res == NULL)
             {
@@ -2430,6 +2425,7 @@ init_rhide(int _argc, char **_argv)
   setup_argv0();
 
   CreateInputLine = &rhideCreateInputLine;
+  parse_commandline(__crt0_argc, __crt0_argv);
 
   char *spec =
     string_dup("INFOPATH=$(subst $(RHIDE_SPACE),$(RHIDE_PATH_SEPARATOR),\
@@ -2490,7 +2486,7 @@ $(strip $(RHIDE_CONFIG_DIRS) $(INFOPATH) /usr/share/info /usr/info \
       locale_dir = string_dup("/usr/local/share/locale");
     }
   }
-  setlocale(LC_MESSAGES, "");
+  setlocale(LC_ALL, "");
   BINDTEXTDOMAIN("rhide", locale_dir);
   string_free(locale_dir);
   TEXTDOMAIN("rhide");
@@ -2499,7 +2495,6 @@ $(strip $(RHIDE_CONFIG_DIRS) $(INFOPATH) /usr/share/info /usr/info \
 
   convert_num_pad = 1;
 #endif
-  parse_commandline(__crt0_argc, __crt0_argv);
   TScreen::suspend();
   fprintf(stderr, _("This is %s. Copyright (c) 1996-2002 by Robert H”hne\n"),
           IDEVersion);
@@ -2614,7 +2609,7 @@ rhide_sig(int signo)
       intr_in_progress = 0;
 #ifdef __DJGPP__
       if (kbhit())
-        getch();
+        getkey();
 #endif
       signal(SIGINT, rhide_sig);
       break;
@@ -2896,4 +2891,5 @@ IDE::fileOpen()
   TProgram::deskTop->remove(dialog);
   destroy(dialog);
 }
+
 

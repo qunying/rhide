@@ -43,6 +43,7 @@
 #define Uses_TInputLinePiped
 #define Uses_TCEditor
 #include <ceditor.h>
+#include <ced_inte.h>
 
 #include <librhgdb.h>
 #include <stdio.h>
@@ -1612,7 +1613,11 @@ show_message(const char *, const char *, int, int, int)
 }
 
 void
+#if (TCEDITOR_VERSION >= 0x000447UL)
+InsertEnviromentVar(const char *variable, const char *contents)
+#else
 InsertEnviromentVar(char *variable, char *contents)
+#endif
 {
   insert_variable(variable, contents);
 }

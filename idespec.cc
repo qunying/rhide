@@ -1579,8 +1579,14 @@ GetCompilerSpec(TDependency * dep, Boolean & is_user)
   return NULL;
 }
 
+#include <include/ced_inte.h> // for TCEDITOR_VERSION
+
 void
+#if (TCEDITOR_VERSION >= 0x000447UL)
+InsertEnviromentVar(const char *variable, const char *contents)
+#else
 InsertEnviromentVar(char *variable, char *contents)
+#endif
 {
   insert_variable(variable, contents);
 }

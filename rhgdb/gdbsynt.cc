@@ -6,6 +6,9 @@
 #define Uses_TCEditor
 #define Uses_TCEditor_Internal
 #include <ceditor.h>
+#if (TCEDITOR_VERSION >= 0x000447UL)
+#include <loadshl.h>
+#endif
 
 #define Uses_TDirList
 #include <libtvuti.h>

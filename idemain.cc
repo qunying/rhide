@@ -70,6 +70,9 @@
 #define Uses_TCEditor
 #include <ceditor.h>
 #include <edprint.h>
+#if (TCEDITOR_VERSION >= 0x000447UL)
+#include <loadshl.h>
+#endif
 
 #ifdef INTERNAL_DEBUGGER
 #include <librhgdb.h>

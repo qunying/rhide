@@ -163,8 +163,24 @@ void ClearFindCache()
   FindCache = NULL;
 }
 
+Boolean FindFile(const char *name, char * & rel_name, TDirList * list)
+{
+  rel_name = NULL;
+  for (int i=0; i<list->getCount(); i++)
+  {
+    string_dup(rel_name, name);
+    char *dir = expand_rhide_spec((const char *)list->at(i));
+    Boolean found = AbsToRelPath(dir, rel_name, NULL, 0);
+    string_free(dir);
+    if (found)
+      return True;
+    string_free(rel_name);
+  }
+  return False;
+}
+
 Boolean FindFile(const char * name,TDirList * list,
-                            char * & full_name,Boolean uselist)
+                 char * & full_name,Boolean uselist)
 {
   int i;
   FileFind *ff = NULL;

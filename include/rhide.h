@@ -174,6 +174,7 @@ extern char *default_directory;
 
 /* module ideutil.cc */
 Boolean FindFile(const char * name,TDirList * list,char * & full_name,Boolean uselist=True);
+Boolean FindFile(const char * name, char *& rel_name, TDirList * list);
 Boolean FindFile(const char * name,char * & full_name);
 void ClearFindCache();
 extern int debug_dependencies;

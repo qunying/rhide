@@ -7,7 +7,6 @@ class TRect;
 class TEvent;
 class TDisassemblerViewer;
 class TRegisters;
-class TFRegisters;
 class TPalette;
 
 typedef int (*check_func)(unsigned long);
@@ -24,7 +23,6 @@ public:
 
   TDisassemblerViewer *viewer;
   TRegisters *registers;
-  TFRegisters *fregisters;
 };
 
 #endif

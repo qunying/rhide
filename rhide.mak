@@ -19,7 +19,7 @@ endif
 ifeq ($(strip $(TVSRC)),)
 TVSRC=d:/djgpp/contrib/tvision
 endif
-vpath_src=$(RHIDESRC) c:/djgpp/contrib/tvision/classes
+vpath_src=$(RHIDESRC)
 vpath %.c $(vpath_src)
 vpath %.cc $(vpath_src)
 vpath %.cpp $(vpath_src)
@@ -278,7 +278,8 @@ INCLUDE_DIRS=$(RHIDESRC)/include $(RHIDESRC)/libtvuti/include\
 	$(RHIDESRC)/librhgdb/include $(RHIDESRC)/libtvgdb/include\
 	$(TVSRC)/include $(RHIDESRC)/tvdemo/include $(SETSRC)/include\
 	$(SETSRC)/settvuti/include $(SETSRC)/infview/include\
-	$(SETSRC)/calcu $(SETSRC)/setedit/include $(TVSRC)
+	$(SETSRC)/calcu $(SETSRC)/setedit/include $(SETSRC)/easydiag\
+	$(TVSRC)
 LIB_DIRS=libide libtvuti tvdemo librhuti libgdb libtvgdb librhgdb $(TVOBJ)\
 	$(SETOBJ)
 C_DEBUG_FLAGS=-g
@@ -291,7 +292,7 @@ C_FPC_LANG_FLAGS=
 C_F_LANG_FLAGS=
 C_ADA_LANG_FLAGS=
 LIBS=ide rhuti set rhuti tvdem tvuti tvgdb rhtv rhgdb gdb z
-LD_EXTRA_FLAGS=
+LD_EXTRA_FLAGS=-Map rhide.map
 C_EXTRA_FLAGS=-DRHIDE -DINTERNAL_DEBUGGER -DFOR_LIBSET
 LOCAL_OPT=$(subst ___~~~___, ,$(subst $(notdir $<)___,,$(filter $(notdir\
 	$<)___%,$(LOCAL_OPTIONS))))
@@ -323,7 +324,7 @@ OUTFILE=$@
 SPECIAL_CFLAGS=
 SPECIAL_LDFLAGS=
 PROG_ARGS=gpr2mak
-SRC_DIRS=$(RHIDESRC) c:/djgpp/contrib/tvision/classes
+SRC_DIRS=$(RHIDESRC)
 WUC=
 EDITORS=
 RHIDE_OS=$(RHIDE_OS_)
@@ -750,8 +751,8 @@ DEPS_18=idemain.cc $(SETSRC)/include/ced_clas.h\
 	$(RHIDESRC)/tvdemo/include/libtvdem.h
 debobj/idemain.o:: $(DEPS_18)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_19=idemak.cc $(RHIDESRC)/include/rhide.h\
-	$(RHIDESRC)/libide/include/ideenums.h\
+DEPS_19=idemak.cc $(SETSRC)/setedit/include/edprint.h\
+	$(RHIDESRC)/include/rhide.h $(RHIDESRC)/libide/include/ideenums.h\
 	$(RHIDESRC)/libide/include/libide.h\
 	$(RHIDESRC)/libide/include/tdepende.h\
 	$(RHIDESRC)/libide/include/tfname.h\
@@ -844,6 +845,7 @@ debobj/ideopt.o:: $(DEPS_22)
 DEPS_23=ideprj.cc $(SETSRC)/include/ced_clas.h $(SETSRC)/include/ced_exte.h\
 	$(SETSRC)/include/ceditor.h $(SETSRC)/include/pmcoll.h\
 	$(SETSRC)/include/sindicat.h $(SETSRC)/include/tvsetuti.h\
+	$(SETSRC)/setedit/include/edprint.h\
 	$(SETSRC)/settvuti/include/sarray.h\
 	$(SETSRC)/settvuti/include/setstack.h\
 	$(SETSRC)/settvuti/include/settvuti.h\

@@ -445,11 +445,10 @@ DEPS_6=gdbsynt.cc $(SETSRC)/include/ced_clas.h $(SETSRC)/include/ced_exte.h\
 	$(SETSRC)/settvuti/include/settvuti.h\
 	$(SETSRC)/settvuti/include/tnocastc.h\
 	$(SETSRC)/settvuti/include/viewplus.h\
-	$(RHIDESRC)/librhuti/rhutils.h\
+	$(RHIDESRC)/include/flags/gpcreser.h\
+	$(RHIDESRC)/include/flags/reserved.h $(RHIDESRC)/librhuti/rhutils.h\
 	$(RHIDESRC)/libtvuti/include/libtvuti.h\
 	$(RHIDESRC)/libtvuti/include/tdirlist.h\
-	$(RHIDESRC)/include/flags/gpcreser.h\
-	$(RHIDESRC)/include/flags/reserved.h\
 	$(RHIDESRC)/rhgdb/include/rhgdb.h
 gdbsynt.o:: $(DEPS_6)
 	$(RHIDE_COMPILE.cc.o)

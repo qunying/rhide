@@ -505,6 +505,7 @@ tvgdb.o:: $(DEPS_14)
 DEPS_15=twatchdi.cc $(SETSRC)/settvuti/include/settvuti.h\
 	$(SETSRC)/settvuti/include/tinppipe.h\
 	$(RHIDESRC)/librhgdb/include/librhgdb.h\
+	$(RHIDESRC)/librhuti/rhutils.h\
 	$(RHIDESRC)/libtvgdb/include/libtvgdb.h\
 	$(RHIDESRC)/libtvgdb/include/tvgdbcom.h\
 	$(RHIDESRC)/libtvgdb/include/tvgdbhis.h\

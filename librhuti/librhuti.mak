@@ -397,6 +397,9 @@ io.o:: $(DEPS_6)
 DEPS_7=specs.cc $(RHIDESRC)/librhuti/rhutils.h
 specs.o:: $(DEPS_7)
 	$(RHIDE_COMPILE.cc.o)
+LOCAL_7=\
+	specs.cc___-save-temps
+LOCAL_OPTIONS += $(LOCAL_7)
 DEPS_8=splitfn.cc $(RHIDESRC)/librhuti/rhutils.h
 splitfn.o:: $(DEPS_8)
 	$(RHIDE_COMPILE.cc.o)

@@ -7,6 +7,12 @@ include rhide.env
 ifeq ($(strip $(RHIDESRC)),)
 RHIDESRC=s:/rho/rhide
 endif
+ifeq ($(strip $(SETOBJ)),)
+SETOBJ=d:/djgpp/contrib/setedit/makes
+endif
+ifeq ($(strip $(SETSRC)),)
+SETSRC=d:/djgpp/contrib/setedit
+endif
 ifeq ($(strip $(TVOBJ)),)
 TVOBJ=d:/djgpp/contrib/tvision/djgpp
 endif
@@ -268,8 +274,9 @@ RHIDE_OS_LIBS_DJGPP=intl $(RHIDE_OS_LIBS_DJGPP_$(MAIN_TARGET))
 RHIDE_OS_LIBS=$(RHIDE_OS_LIBS_$(RHIDE_OS))
 SET_FILES=$(DJDIR)/share/setedit
 INCLUDE_DIRS=$(RHIDESRC)/include $(RHIDESRC)/libtvuti/include\
-	$(RHIDESRC)/librhuti $(RHIDESRC)/libide/include $(TVSRC)/include
-LIB_DIRS=libide libtvuti librhuti $(TVOBJ)
+	$(RHIDESRC)/librhuti $(RHIDESRC)/libide/include\
+	$(SETSRC)/setedit/include $(TVSRC)/include
+LIB_DIRS=libide libtvuti librhuti $(TVOBJ) $(SETOBJ)
 C_DEBUG_FLAGS=-g
 C_OPT_FLAGS=-O2
 C_WARN_FLAGS=
@@ -279,7 +286,7 @@ C_P_LANG_FLAGS=
 C_FPC_LANG_FLAGS=
 C_F_LANG_FLAGS=
 C_ADA_LANG_FLAGS=
-LIBS=ide tvuti rhuti rhtv
+LIBS=ide tvuti rhuti set rhtv
 LD_EXTRA_FLAGS=
 C_EXTRA_FLAGS=-DFOR_LIBSET
 LOCAL_OPT=$(subst ___~~~___, ,$(subst $(notdir $<)___,,$(filter $(notdir\
@@ -453,8 +460,8 @@ DEPS_4=ideflags.cc $(RHIDESRC)/include/rhide.h\
 	$(RHIDESRC)/libtvuti/include/tscollec.h
 nodebobj/ideflags.o:: $(DEPS_4)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_5=idemak.cc $(RHIDESRC)/include/rhide.h\
-	$(RHIDESRC)/libide/include/ideenums.h\
+DEPS_5=idemak.cc $(SETSRC)/setedit/include/edprint.h\
+	$(RHIDESRC)/include/rhide.h $(RHIDESRC)/libide/include/ideenums.h\
 	$(RHIDESRC)/libide/include/libide.h\
 	$(RHIDESRC)/libide/include/tdepende.h\
 	$(RHIDESRC)/libide/include/tfname.h\

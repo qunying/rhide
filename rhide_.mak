@@ -719,8 +719,8 @@ DEPS_17=idemain.cc $(SETSRC)/include/ced_clas.h\
 	$(RHIDESRC)/tvdemo/include/libtvdem.h
 nodebobj/idemain.o:: $(DEPS_17)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_18=idemak.cc $(RHIDESRC)/include/rhide.h\
-	$(RHIDESRC)/libide/include/ideenums.h\
+DEPS_18=idemak.cc $(SETSRC)/setedit/include/edprint.h\
+	$(RHIDESRC)/include/rhide.h $(RHIDESRC)/libide/include/ideenums.h\
 	$(RHIDESRC)/libide/include/libide.h\
 	$(RHIDESRC)/libide/include/tdepende.h\
 	$(RHIDESRC)/libide/include/tfname.h\
@@ -812,6 +812,7 @@ nodebobj/ideopt.o:: $(DEPS_21)
 DEPS_22=ideprj.cc $(SETSRC)/include/ced_clas.h $(SETSRC)/include/ced_exte.h\
 	$(SETSRC)/include/ceditor.h $(SETSRC)/include/pmcoll.h\
 	$(SETSRC)/include/sindicat.h $(SETSRC)/include/tvsetuti.h\
+	$(SETSRC)/setedit/include/edprint.h\
 	$(SETSRC)/settvuti/include/sarray.h\
 	$(SETSRC)/settvuti/include/setstack.h\
 	$(SETSRC)/settvuti/include/settvuti.h\

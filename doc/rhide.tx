@@ -505,7 +505,7 @@ interface.
 
 @section Requirements
 
-RHIDE works under and is compiled with DJGPP V2.01.
+RHIDE works under and is compiled with DJGPP V2.
 To compile your programs you need
 a working GCC-configuration, that means, GCC must be found in your
 path. Because DJGPP works only under DPMI you need a DPMI-Server.
@@ -4807,6 +4807,162 @@ Germany
 @end display
 @paragraph{}
 
+@cindex Creating a project
+@cindex Options, RHIDE forgot them
+@quest{RHIDE does all sorts of unpredictable and silly things.  I.e. does not
+remember the paths and other settings that I give it.}
+
+@ans{} Did you start RHIDE with a project file i.e. invoke rhide with
+@example
+rhide projfile
+@end example
+RHIDE needs a place to keep this information.   Then go into
+projects tab and select add then follow the dialog to add the  @file{.c} or
+@file{.cc}  file to the project.
+@paragraph{}
+
+@cindex Creating an exe-file
+@quest{I do not generate an @file{.exe} file.}
+
+@ans{} Enter RHIDE from the dos prompt by
+@example
+rhide projname
+@end example
+click project tab
+then add and select your @file{Hello.c} or @file{hello.cc} file.
+Then compile and
+then link or else build all.  There should be a file @file{projname.exe}.
+@paragraph{}
+
+@quest{The linker reports multiple @code{int main()} in my object file.}
+
+@ans{} You have more than one @file{.c} or @file{.cc} file in your project with
+@code{int main()}
+and the linker does not know where to start the @file{.exe} file.
+@paragraph{}
+
+@cindex Include files, not finding
+@cindex Include paths
+@quest{It is not finding the include files @file{*.h}.}
+
+@ans{} You are not referring to the djgpp distribution @file{*.h} files that
+are part of the DJGPP standard distribution.  If so see DJGPP FAQ.  In RHIDE
+click the Options tab on top of RHIDE window, then Directories, then
+Include, then add the path to the @file{dot.h} files in the text box as
+follows:
+@example
+$(DJDIR)/contrib/grx/include $(DJDIR)/contrib/here/there etc
+@end example
+This path can also be set in the @file{djgpp.env} file (see the DJGPP
+information).
+@paragraph{}
+
+@cindex Windows 95
+@cindex Long filenames
+@quest{It's still not finding the @file{dot.h} files.}
+
+@ans{} Invoke Win95 long file names at the command line via
+@example
+rhide -y projname
+@end example
+@paragraph{}
+
+@cindex RHIDEOPT
+@cindex Default commandline
+@quest{How do I set rhide to long file names without -y each time?}
+
+@ans{} Add the @var{-y} to your @var{RHIDEOPT} environment variable.
+@paragraph{}
+
+@cindex Linker problems
+@cindex Library paths
+@quest{The linker is not finding various library functions that are in an
+extension to DJGPP.  For example functions that are part of SWORD
+Graphic User Interface or GRX. Graphic Package.}
+
+@ans{} Click the Options tab then Libraries then mark one of the boxes and
+type in the Library name that you need i.e. @var{grx} for @file{libgrx.a}.
+@paragraph{}
+
+@cindex Linker problems
+@cindex Library paths
+@quest{It's still not finding the library functions.}
+
+@ans{} Go into Options tab on top of the RHIDE window then Directories then
+Libraries, then add the path to the @file{libdot.a} files in the text box as
+follows:
+@example
+$(DJDIR)/contrib/lib/here/there $(DJDIR)/contrib/grx/lib
+@end example
+This can also be set in the @file{djgpp.env} file (see the DJGPP information).
+@paragraph{}
+
+@cindex Documentation for RHIDE
+@quest{Where is the rhide documentation and how do I read it?}
+
+@ans{}Get the file txixxxb.zip and unzip it.  Go into dir info and edit the file DIR.  Add
+@file{rhide.inf} or any other @file{dot.inf} to DIR.  Use the same format as the
+existing @file{dot.inf} files in DIR. It's obvious from the format how to do
+this.  Save and exit from the edit session.  Type "info" take the lesson
+on how to run info and you are fully equipped to run an old world non
+gui browser and are ready to learn all about gnu.
+@paragraph
+
+If you are using RHIDE, simply hit @key{F1} and browse through the
+help, it IS the RHIDE documentation!
+@paragraph{}
+
+@cindex Linker problems
+@cindex Memory exhausted
+@quest{The linker reports out of memory when linking many @file{*.o} files.}
+
+@ans{} This should occour only on Windows 95 users (or W98).
+Give dos more memory. Quit rhide and dos.  Select the dos icon or its
+alias (it's in @file{windows/start/programs}) RIGHT click select properties
+then select memory tab then set Protected mode DPMI to maximum 65535 and have
+another go.
+@paragraph{}
+
+@cindex Screen size
+@quest{I have a big svga monitor and rhide looks like cga screen.  What can I
+do to take advantage of my monitor?}
+
+@ans{}Set the dos and rhide screens to suite your taste.
+Quit rhide and dos.  Select the dos icon or its alias (it's in
+@file{windows/start/programs}) RIGHT click select properties then select screen
+tab then set the type of screen that you require in dos.  Then get into
+RHIDE and select options tab on the top of the screen then Environment
+and then Preferences then set the type of screen to your liking.
+@paragraph{}
+
+@cindex Long filenames
+@cindex Windows 95
+@cindex Spaces in filenames
+@quest{I`m running under W95/98 with long filenames and have some
+source files ond/or directory names with spaces in it. I get many
+errors when trying to compile or link. How can I solve this?}
+
+@ans{} This is a limitation of RHIDE. Theortically it could be
+fixed, but this would need many changes in the RHIDE sources. I`m
+not willing to do. So, simply do not not filenames with spaces.
+@paragraph{}
+
+@cindex OS/2
+@quest{How do I setup RHIDE to run under OS/2?}
+
+@ans{} OS/2 (WARP3 and above) Users have to pay attention to the following
+DOS-Settings:
+@example
+- DPMI_DOS_API must be set to "Enabled"
+- DPMI_MEMORY_LIMIT should be set above 8MB (better >10)
+- DOS_HIGH must be set to OFF
+- DOS_UMB must be set to OFF
+- DOS_FILES should be set fairly higher than 20 (>60)
+- DOS_BREAK "ON" might be useful sometimes :-)
+- MOUSE_EXCLUSIVE_ACCESS should be set to off
+- You can use RHIDE with or without the "-M" option
+@end example
+
 @quest{I think, I found a bug in RHIDE. How can I report it?}
 
 @cindex Bug, reporting it
@@ -4828,14 +4984,9 @@ with the same problem, and they can give you an answer or I, because
 I read this group also.
 @paragraph{}
 
-Linux users should post thier problems in the linux group. To make sure
-that I will read it there also, please include in the subject anywhere
-the word RHIDE so I will find it, because I do not read any article
-there because the group is too heavily used. Currently I do only
-a subject search for the word RHIDE and if not found I mark the
-group as readed by me. Sorry for this, but compared with the very
-good comp.os.msdos.djgpp group the linux groups are too large for
-seriously diskussion (at least for me).
+Linux users should post the problems in the linux group. To make sure
+that I will read it also, please send a CC to me because my time
+dosn`t allow me to read that huge newsgroups.
 @paragraph{}
 
 If this don't help you, do the following:

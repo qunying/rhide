@@ -1,19 +1,25 @@
 /* Copyright (C) 1996-1998 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
-/*
- $Id$
-*/
 F("-g%d?")
-F("-a")
-F("-d%s(MNDyrxjsLtfcSlgRJdkamp)")
-F("-fpretend-float")
-F("-gcoff%d?")
-F("-gdwarf%d?")
-F("-gdwarf+")
 F("-ggdb%d?")
 F("-gstabs%d?")
 F("-gstabs+")
+F("-gcoff%d?")
 F("-gxcoff%d?")
+F("-gdwarf%d?")
+F("-gdwarf+")
+F("-gdwarf-2%d?")
 F("-p")
 F("-pg")
+F("-a")
+F("-ax")
+F("-fprofile-arcs")
+F("-ftest-coverage")
+F("-Q")
+F("-d%s(MNDyrxjsLtbfcSlgRJdkampA)")
+F("-fpretend-float")
 F("-save-temps")
+F("-print-prog-name=%s")
+F("-print-libgcc-file-name")
+F("-print-search-dirs")
+

@@ -1,8 +1,5 @@
-/* Copyright (C) 1996-1998 Robert H"hne, see COPYING.RH for details */
+/* Copyright (C) 1996-1998 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
-/*
-  $Id$
-*/
 /* List from FPK scanner.pas
     CVS version scanner.pas,v 1.12 1997/12/12 13:28:41
 

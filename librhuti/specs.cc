@@ -65,6 +65,14 @@ _add_variable(char **&_vars, int &_var_count, int &_var_size,
   /*
      Special case when contents==NULL, remove that variable 
    */
+  if (debug_specs)
+  {
+    if (contents)
+       fprintf(stderr, "Add Variable %s ==> %s", variable, contents);
+    else
+       fprintf(stderr, "Remove Variable %s", variable);
+    fprintf(stderr," | From pool 0x%p with %d vars\n",_vars,_var_count);
+  }
   int var_index;
   bool found = _find_var(_vars, _var_count, variable, var_index);
   if (!contents)
@@ -85,29 +93,22 @@ _add_variable(char **&_vars, int &_var_count, int &_var_size,
     return;
   }
 
-  if (found)
+  /* SET: Lets duplicate the variable if already exists.
+     It will be added before the old one and will removed first. */
+  if (_var_count == _var_size)
   {
-     int j = var_index * 2;
-     string_free(_vars[j + 1]);
-     string_dup(_vars[var_index * 2 + 1], contents);
+    _var_size += 16;
+    _vars = (char **) realloc(_vars, _var_size * 2 * sizeof(char *));
   }
-  else
+  if (var_index < _var_count)
   {
-     if (_var_count == _var_size)
-     {
-       _var_size += 16;
-       _vars = (char **) realloc(_vars, _var_size * 2 * sizeof(char *));
-     }
-     if (var_index < _var_count)
-     {
-       memmove(_vars + var_index * 2 + 2,
-               _vars + var_index * 2,
-               (_var_count - var_index) * 2 * sizeof(char *));
-     }
-     _var_count++;
-     string_dup(_vars[var_index * 2], variable);
-     string_dup(_vars[var_index * 2 + 1], contents);
+    memmove(_vars + var_index * 2 + 2,
+            _vars + var_index * 2,
+            (_var_count - var_index) * 2 * sizeof(char *));
   }
+  _var_count++;
+  string_dup(_vars[var_index * 2], variable);
+  string_dup(_vars[var_index * 2 + 1], contents);
 }
 
 static void
@@ -148,6 +149,7 @@ set_variable(const char *variable, const char *contents)
 void
 insert_user_variable(const char *variable, const char *contents)
 {
+  //printf("Variable: %s %s\n",variable,contents);
   _add_variable(user_vars, user_var_count, user_var_size, variable, contents);
 }
 
@@ -1008,5 +1010,29 @@ char *string_function_word(char *_arg)
 end:
   string_free(arg);
   return retval;
+}
+
+// SET: Not needed, but I leave them just in case
+void push_user_vars_state(st_user_vars_state *st)
+{// Remmember the current state
+ st->user_vars=user_vars;
+ st->user_var_count=user_var_count;
+ st->user_var_size=user_var_size;
+ // Clean it
+ user_vars=NULL;
+ user_var_count=0;
+ user_var_size=0;
+ // Inherit the variables
+ for (int i=0; i<st->user_var_count; i++)
+     insert_user_variable(st->user_vars[i*2],st->user_vars[i*2+1]);
+}
+
+void pop_user_vars_state(st_user_vars_state *st)
+{// Delete current state
+ free(user_vars);
+ // Restore previous
+ user_vars=st->user_vars;
+ user_var_count=st->user_var_count;
+ user_var_size=st->user_var_size;
 }
 

@@ -1161,7 +1161,7 @@ void IDE::handleEvent(TEvent & event)
             if (editor)
             {
 #if (TCEDITOR_VERSION >= 0x000422)
-               editor->editorDialog(edJumpToFunction);
+               TCEditor::editorDialog(edJumpToFunction);
 #else
               int line;
                char *word=editor->WordUnderCursor(80);

@@ -188,7 +188,8 @@ void close_ifpstream(ifpstream *is);
 /* module idemsg.cc */
 class TMsgCollection;
 class TDialog;
-TCEditWindow * is_on_desktop(const char *,Boolean is_full_name = False);
+TCEditWindow * is_on_desktop(const char *,Boolean is_full_name = False,
+                             Boolean check_inode = True);
 void ShowMessages(TMsgCollection *msgs,Boolean remove_old,
                   int select_first_err = -1,
                   Boolean select_it = False);
@@ -322,6 +323,10 @@ void pop_environment();
 Boolean FindRCSFile(const char *name, char *&fname, char *&sname);
 void CheckoutRCSFile(const char *sname, const char *fname, int rw=0);
 
+/* idedail.cc */
+unsigned IDEdoEditDialog(int , ... );
+
+
 #ifdef Uses_IDEConst
 #include <libtvuti.h>
 #include <ideconst.h>
@@ -381,7 +386,8 @@ typedef struct
   unsigned use_rcs:1;
   unsigned use_fpc:1;
   unsigned save_messages:1;
-  unsigned dummy:9;
+  unsigned dont_show_exit_code:1;
+  unsigned dummy:8;
 } ide_options1;
 
 #define IDE_OPTIONS1 (*((ide_options1*)&(Project.options1)))
@@ -403,6 +409,7 @@ typedef struct
 #define UseRCS (IDE_OPTIONS1.use_rcs)
 #define UseFPC (IDE_OPTIONS1.use_fpc)
 #define SaveMessages (IDE_OPTIONS1.save_messages)
+#define DontShowExitCode (IDE_OPTIONS1.dont_show_exit_code)
 
 #define NoStdInc (IDE_OPTIONS.no_stdinc)
 #define NoStdLib (IDE_OPTIONS.no_stdlib)

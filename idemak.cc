@@ -163,16 +163,51 @@ void _AbsToRelPath(char *&dname, TStringCollection *vars)
   if (AbsToRelPath(project_directory, dname, NULL))
     return;
   count = vars->getCount();
+  char *_dname = string_dup(dname);
+  char *last_found = NULL;
+  int last_dir_len = 0;
   for (i=0; i<count; i++)
   {
-    int retval;
+    int retval, dir_len;
     dir = string_dup("$(");
     string_cat(dir, (char *)vars->at(i), ")", NULL);
     _dir = expand_rhide_spec(dir);
+    dir_len = strlen(_dir);
     retval = AbsToRelPath(_dir, dname, dir);
     string_free(_dir);
     string_free(dir);
-    if (retval) return;
+    if (retval)
+    {
+      if (*dname != '.')
+      {
+        if (dir_len > last_dir_len)
+        {
+          string_free(last_found);
+          last_found = dname;
+          last_dir_len = dir_len;
+        }
+        else
+        {
+          string_free(dname);
+        }
+        dname = string_dup(_dname);
+      }
+      else
+      {
+        string_free(dname);
+        dname = string_dup(_dname);
+      }
+    }
+  }
+  string_free(dname);
+  if (!last_found)
+  {
+    dname = _dname;
+  }
+  else
+  {
+    dname = last_found;
+    string_free(_dname);
   }
 }
 

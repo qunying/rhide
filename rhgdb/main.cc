@@ -459,8 +459,8 @@ static char *prog_name = NULL;
 static __attribute__((noreturn))
 void usage()
 {
-  TScreen::suspend();
   TEventQueue::suspend();
+  TScreen::suspend();
   fprintf(stderr,_("usage: %s [options] exe-file [[arg1 [arg2 ...]]]\n"),prog_name);
   fprintf(stderr,_("options:\n"));
   fprintf(stderr,_("            -c : show filename exactly (no case conversion)\n"));
@@ -660,7 +660,7 @@ void init_rhgdb(int __crt0_argc,char **__crt0_argv)
 
 #ifndef __DJGPP__
 #if 1
-  TMouse::suspend();
+  TEventQueue::suspend();
   TScreen::suspend();
 #endif
 #endif
@@ -669,7 +669,7 @@ void init_rhgdb(int __crt0_argc,char **__crt0_argv)
 #ifndef __DJGPP__
 #if 1
   TScreen::resume();
-  TMouse::resume();
+  TEventQueue::resume();
 #endif
 #endif
 }

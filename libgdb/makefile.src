@@ -40,8 +40,8 @@ MMALLOC_CFLAGS=-DNO_MMALLOC -DNO_MMALLOC_CHECK
 MMALLOC_LIB=
 MMALLOC_LIB_DIR=
 OS_FLAGS+=MMALLOC=$(MMALLOC) MMALLOC_CFLAGS="$(MMALLOC_CFLAGS)"
-CHECKS=check_echo check_awk
-EXCLUDE_REGEX=
+CHECKS=
+EXCLUDE_REGEX=| sed -e '/main.o/d'
 endif
 
 ifeq ($(strip $(rhide_OS)),Linux)
@@ -49,7 +49,7 @@ OS_CFLAGS=-DHAVE_CONFIG_H -O2 -DNO_MMALLOC
 #MMALLOC=../mmalloc/libmmalloc.a
 #MMALLOC_INC=o_gdb/mmalloc s_gdb/mmalloc
 CHECKS=
-EXCLUDE_REGEX=| sed -e '/.*gnu-regex.*/d'
+EXCLUDE_REGEX=| sed -e '/.*gnu-regex.*/d' -e '/main.o/d'
 endif
 
 MMALLOC_LIB=$(subst ..,$(GDB_OBJ),$(MMALLOC))
@@ -115,8 +115,8 @@ libgdb.h: $(GDB_OBJ)/bfd/bfd.h libgdb.c
 	  | sed -e '/^[ 	]*$$/d' >> libgdb.h
 endif
 
-gdb.t: $(GDB_OBJ)/gdb/libgdb-files
-	printf "%s\n" $(shell cat $<) | sed -n -e 's,^.*\.o,$(dir $<)&,p' $(EXCLUDE_REGEX) > $@
+gdb.t: libgdb-files
+	printf "%s\n" $(shell cat $<) | sed -n -e 's,^.*\.o,$(GDB_OBJ)/gdb/&,p' $(EXCLUDE_REGEX) > $@
 
 %.t: %.a
 	ar t $< | sed -e 's,^.*\.o,$(dir $<)&,' > $@
@@ -131,11 +131,8 @@ $(GDB_OBJ)/%.a:
 #	$(MAKE) -C $(dir $@) $(notdir $@) CFLAGS="$(CFLAGS)" $(LIBGDB_FLAGS)
 	$(MAKE) -C $(dir $@) CFLAGS="$(CFLAGS)" $(LIBGDB_FLAGS)
 
-$(GDB_OBJ)/gdb/libgdb-files: force
-# this is needed, because the file is part of the src distrib, but
-# the object files not (at least in DJGPP)
-	rm -f $@
-	$(MAKE) -C $(dir $@) $(notdir $@) CFLAGS="$(CFLAGS)" $(LIBGDB_FLAGS)
+libgdb-files: force
+	ls $(GDB_OBJ)/gdb/*.o | sed s,$(GDB_OBJ)/gdb/,,g > $@
 
 T_FILES=libbfd.t libiberty.t libopcodes.t libreadline.t $(notdir $(subst .a,.t,$(MMALLOC_LIB))) gdb.t
 

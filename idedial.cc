@@ -42,7 +42,7 @@
 
 #define Uses_SETAppDialogs
 #include <../setedit/include/setapp.h>
-int SelectFunctionToJump(char *b, unsigned l);
+int SelectFunctionToJump(char *b, unsigned l,char*);
 
 static void ApplyBroadcast(TView *p, void *e)
 {
@@ -111,7 +111,8 @@ unsigned doEditDialog( int dialog, ... )
         case edFind:
             {
             va_start( arg, dialog );
-            return execDialog( createFindDialog(), va_arg(arg, char *));
+            void *arg1 = va_arg(arg, void *);
+            return execDialog( createFindDialog(va_arg(arg, void *)), arg1);
             }
 
         case edSearchFailed:
@@ -120,7 +121,8 @@ unsigned doEditDialog( int dialog, ... )
         case edReplace:
             {
             va_start(arg, dialog);
-            return execDialog(createReplaceDialog(), va_arg(arg, char *));
+            void *arg1 = va_arg(arg, void *);
+            return execDialog(createReplaceDialog(va_arg(arg, void *)), arg1);
             }
 
         case edReplacePrompt:
@@ -142,15 +144,13 @@ unsigned doEditDialog( int dialog, ... )
         case edJumpToFunction:
             {
              int *p;
-             char *bu;
-             unsigned l;
 
              va_start( arg, dialog );
              p=va_arg(arg,int *);
-             bu=va_arg(arg,char *);
-             l=va_arg(arg,unsigned);
 
-             *p=SelectFunctionToJump(bu,l);
+             *p=SelectFunctionToJump(va_arg(arg, char*),
+                                     va_arg(arg, unsigned),
+                                     va_arg(arg, char*));
 
              return (*p!=-1);
             }

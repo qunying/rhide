@@ -10,7 +10,7 @@ project=
 
 po_files=
 
-src_files=$(po_files) makefile gsymify.gpr gsymify.mak \
+src_files=$(po_files) Makefile gsymify.gpr gsymify.mak \
 	  listfunc.gpr listfunc.mak mygdb.c mygdb.mak mygdb.gpr \
 	  makefile.src rhide.env rhide.var
 

@@ -11,7 +11,7 @@ po_files=
 src_files=$(po_files) \
 	nascii.cc ncalview.cc ncalwind.cc npuzzlv.cc npuzzlw.cc \
 	nreport.cc ntable.cc \
-	makefile makefile.src
+	Makefile makefile.src
 
 cfg_files=
 update_files=

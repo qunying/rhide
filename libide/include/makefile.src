@@ -14,7 +14,7 @@ src_files=$(po_files)\
 	libide.h rawkeys.h tdepende.h tflagcol.h tflagent.h tflaglis.h \
 	tideedit.h tidefile.h toptions.h \
 	tprjlist.h tprjwind.h tproject.h idecomma.h idefunct.h ideenums.h \
-	makefile makefile.src tfname.h
+	Makefile makefile.src tfname.h
 
 cfg_files=
 update_files=

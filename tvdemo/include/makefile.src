@@ -10,7 +10,7 @@ po_files=
 
 src_files=$(po_files)\
 	libtvdem.h ascii.h puzzle.h calendar.h mousedlg.h \
-	makefile makefile.src
+	Makefile makefile.src
 cfg_files=
 update_files=
 

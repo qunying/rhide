@@ -7,7 +7,7 @@ VPATH=$(srcdir)
 project=libtvdem
 
 po_files=libtvdem.cc ascii.cc calendar.cc puzzle.cc mousedlg.cc
-src_files=$(po_files) makefile libtvdem.gpr \
+src_files=$(po_files) Makefile libtvdem.gpr \
 	libtvdem.mak makefile.src rhide.env rhide.var
 
 cfg_files=

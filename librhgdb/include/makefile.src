@@ -10,7 +10,7 @@ VPATH=$(srcdir)
 project=
 
 po_files=
-src_files=$(po_files) librhgdb.h rhgdbint.h makefile makefile.src
+src_files=$(po_files) librhgdb.h rhgdbint.h Makefile makefile.src
 cfg_files=
 update_files=
 

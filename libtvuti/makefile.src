@@ -15,7 +15,7 @@ po_files=\
 	tenterch.cc history.cc tcheckdi.cc tmsgcoll.cc tmsglist.cc \
 	msgrec.cc tmemstrm.cc cmd.cc commands.cc
 
-src_files=$(po_files) makefile libtvuti.gpr libtvuti.mak makefile.src \
+src_files=$(po_files) Makefile libtvuti.gpr libtvuti.mak makefile.src \
 	  rhide.env rhide.var
 
 update_files=libtvuti.gpr libtvuti.mak

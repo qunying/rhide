@@ -13,7 +13,7 @@ po_files=\
 	listfunc.c symify.c watches.c watchdog.c frame.c dis.c \
 	regs.c
 
-src_files=$(po_files) makefile librhgdb.gpr librhgdb.mak makefile.src \
+src_files=$(po_files) Makefile librhgdb.gpr librhgdb.mak makefile.src \
 	  rhide.env rhide.var
 
 update_files=librhgdb.gpr librhgdb.mak

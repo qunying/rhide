@@ -14,7 +14,7 @@ po_files=
 src_files=$(po_files) \
 	sdepcoll.cc sdepende.cc sflagcol.cc sflagent.cc \
 	sideedit.cc sidefile.cc soptions.cc sproject.cc \
-	makefile makefile.src stream.gpr stream.mak
+	Makefile makefile.src stream.gpr stream.mak
 cfg_files=
 update_files=
 

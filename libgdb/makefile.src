@@ -9,7 +9,7 @@ VPATH=$(srcdir)
 
 project=
 
-src_files=makefile makefile.src
+src_files=Makefile makefile.src
 po_files=
 cfg_files=
 update_files=
@@ -70,7 +70,7 @@ INC_PATH=$(addprefix -I,$(INCS))
 
 all:: libgdb.a
 
-libgdb.c: makefile
+libgdb.c: Makefile
 	echo '#include <defs.h>' > libgdb.c
 	echo '#include <breakpoint.h>' >> libgdb.c
 	echo '#include <symtab.h>' >> libgdb.c

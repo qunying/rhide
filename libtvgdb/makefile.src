@@ -14,7 +14,7 @@ po_files=\
 	gdbdummy.c win31hak.c callstac.cc tregwin.cc tdiswin.cc \
 	commands.cc
 
-src_files=$(po_files) makefile libtvgdb.gpr libtvgdb.mak makefile.src \
+src_files=$(po_files) Makefile libtvgdb.gpr libtvgdb.mak makefile.src \
 	  rhide.env rhide.var
 
 update_files=libtvgdb.gpr libtvgdb.mak

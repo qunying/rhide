@@ -12,7 +12,7 @@ project=librhuti
 po_files=\
 	back2sl.cc basename.cc expvar.cc fexpand.cc specs.cc splitfn.cc\
 	stricat.cc stridown.cc stridup.cc strifree.cc fixpath.cc io.cc
-src_files=$(po_files) makefile makefile.src librhuti.gpr librhuti.mak \
+src_files=$(po_files) Makefile makefile.src librhuti.gpr librhuti.mak \
 	rhutils.h rhide.env rhide.var
 cfg_files=
 update_files=

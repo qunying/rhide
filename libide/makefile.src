@@ -13,7 +13,7 @@ po_files=\
 	tideedit.cc tidefile.cc toptions.cc tprjlist.cc tprjwind.cc \
 	tproject.cc tfname.cc commands.cc
 
-src_files=$(po_files) makefile libide.gpr libide.mak makefile.src \
+src_files=$(po_files) Makefile libide.gpr libide.mak makefile.src \
 	  rhide.env rhide.var
 
 update_files=libide.gpr libide.mak

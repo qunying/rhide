@@ -11,7 +11,7 @@ po_files=
 src_files=$(po_files) \
 	sascii.cc scalview.cc scalwind.cc spuzzlv.cc \
 	spuzzlw.cc sreport.cc stable.cc \
-	makefile makefile.src
+	Makefile makefile.src
 cfg_files=
 update_files=
 

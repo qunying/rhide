@@ -11,7 +11,7 @@ project=
 
 src_files=\
 	  ideapp.h ideconst.h rhide.h \
-	  makefile rhidehis.h makefile.src
+	  Makefile rhidehis.h makefile.src
 po_files=
 cfg_files=
 update_files=

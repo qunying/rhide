@@ -3,7 +3,7 @@
 srcdir=$(RHIDESRC)/debobj
 VPATH=$(srcdir)
 
-src_files=makefile makefile.src
+src_files=Makefile makefile.src
 po_files=
 cfg_files=
 update_files=

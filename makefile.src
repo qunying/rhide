@@ -21,7 +21,7 @@ po_files=\
 	abstorel.cc rhassert.c ideenv.cc fstrcmp.c ideapp.cc idedial.cc \
 	pal.cp idercs.cc commands.cc
 
-src_files=$(po_files) makefile common.mak README.IDE RHIDE.BIN RHIDE.SRC \
+src_files=$(po_files) Makefile common.mak README.IDE RHIDE.BIN RHIDE.SRC \
 	COPYING.RH COPYING wrong.c copyrite.c makefile.src \
 	gpr2mak.gpr rhide_.gpr rhide.gpr gpr2mak.mak rhide_.mak rhide.mak \
 	rhide_ch.log edit_ch.log todo pal.c zipcomm.bin zipcomm.src rhide.env \
@@ -126,7 +126,7 @@ copyrite_srcdir=$(srcdir)
 
 mark_dirs=$(my_subdirs)
 mark_files=$(src_files)
-mark_find_files=rhide.env rhide.var makefile makefile.src *.mak
+mark_find_files=rhide.env rhide.var Makefile makefile.src *.mak
 
 ifeq ($(rhide_OS),DJGPP)
 Markfiles=$(addsuffix /.../*,$(addprefix $(copyrite_srcdir)/,$(mark_dirs))) \
@@ -170,10 +170,14 @@ else
 	  | gzip -9c > $(obj_dir)/$(PACKAGE)$(DIR_VERSION).tar.gz
 endif
 
-init.version:
+init.version: ideversi.cc rhgdb/version.cc
+
+ideversi.cc: ideversi.in common.mak
 	sed -e s,@version@,$(VERSION),g \
 	    -e "s/WARN/This file is generated automatically, do not edit!/g" \
           $(srcdir)/ideversi.in > ideversi.cc
+
+rhgdb/version.cc: rhgdb/version.in common.mak
 	sed -e s,@version@,$(VERSION),g \
 	    -e "s/WARN/This file is generated automatically, do not edit!/g" \
           $(srcdir)/rhgdb/version.in > rhgdb/version.cc
@@ -183,7 +187,7 @@ distrib.src: init.version
 	touch $(shell find -name "*.gpr" -print)
 	$(MAKE) $(FLAGS_TO_PASS) \
 	  prefix=$(copy_dir)/$(install_prefix_src) distrib.src_ \
-	  LFN=y
+	  LFN=n
 
 doc info dvi:
 	$(MAKE) -C doc $@

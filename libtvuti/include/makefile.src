@@ -14,7 +14,7 @@ po_files=
 src_files=$(po_files) makefile.src \
 	libtvuti.h tdirlist.h tenterin.h tenterli.h tenterra.h tintinpu.h \
 	tlbutton.h tmeminfo.h tparamli.h tscollec.h tvutilco.h twindowl.h \
-	tvutilfu.h makefile tenterch.h tcheckdi.h thintsta.h tmsgcoll.h \
+	tvutilfu.h Makefile tenterch.h tcheckdi.h thintsta.h tmsgcoll.h \
 	tmsglist.h msgrec.h tmemstrm.h
 
 cfg_files=

@@ -13,7 +13,7 @@ po_files=
 src_files=$(po_files) \
 	ndepcoll.cc ndepende.cc nflagcol.cc nflagent.cc \
 	nideedit.cc nidefile.cc noptions.cc nproject.cc \
-	makefile makefile.src names.gpr names.mak
+	Makefile makefile.src names.gpr names.mak
 
 cfg_files=
 update_files=

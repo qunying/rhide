@@ -165,7 +165,7 @@ FLAGS_TO_PASS=\
 	CFLAGS="$(CFLAGS)" \
 	LDFLAGS="$(LDFLAGS)" \
 	RHIDESRC="$(RHIDESRC)" \
-	TVSRC="$(TVSRC)" \
+	TV_INC="$(TV_INC)" \
 	TVOBJ="$(TVOBJ)" \
 	SETSRC="$(SETSRC)" \
 	SETOBJ="$(SETOBJ)" \
@@ -346,7 +346,7 @@ endif
 $(prefix)/$(install_bindir)/%.install: %
 	$(INSTALL_DIR) $(prefix)/$(install_bindir)
 	-$(INSTALL_PROGRAM) $(subst .install,,$^) $(prefix)/$(install_bindir)
-	chmod 755 $(prefix)/$(install_bindir)/$(subst .install,,$^)
+	chmod 755 $(prefix)/$(install_bindir)/$(notdir $(subst .install,,$^))
 
 ifneq ($(strip $(install_bin_files)),)
 install.bin:: $(addsuffix .install,$(addprefix $(prefix)/$(install_bindir)/,$(install_bin_files)))
@@ -370,3 +370,4 @@ $(copyrite.exe):: $(RHIDESRC)/copyrite.c
 ifneq ($(projects),)
 clean:: $(addsuffix .cln, $(projects))
 endif
+

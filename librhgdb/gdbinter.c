@@ -31,8 +31,7 @@ int switch_to_user = 1;
 static int user_screen_shown = 0;
 
 #if GDB_6
- struct ui_out * rhgdb_ui_out = 0;
- struct ui_file * rhgdb_ui_file = 0;
+struct ui_out * rhgdb_ui_out = 0;
 #endif
 
 static int signal_start;
@@ -492,14 +491,10 @@ handle_gdb_command(char *command)
   /*
      modifying it  
    */
-  #if GDB_6
-  struct ui_out * saved_ui_out = uiout;
-  uiout = rhgdb_ui_out;
+  Save_ui_out;
+  RHGDB_ui_out;
   catch_command_errors(execute_command, copy_of_command, 0, RETURN_MASK_ALL);
-  uiout = saved_ui_out;
-  #else
-  catch_command_errors(execute_command, copy_of_command, 0, RETURN_MASK_ALL);
-  #endif
+  Restore_ui_out;
 #endif
   free(copy_of_command);
 }

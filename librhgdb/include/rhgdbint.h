@@ -106,6 +106,9 @@ int _inferior_pid();
  #define All_Block_Symbols() ALL_BLOCK_SYMBOLS (b, iter, sym)
  #define Register_Type(a) register_type(current_gdbarch,a)
  #define Register_Size(a) register_size(current_gdbarch,a)
+ #define Save_ui_out    struct ui_out * saved_ui_out = uiout
+ #define RHGDB_ui_out   uiout = rhgdb_ui_out
+ #define Restore_ui_out uiout = saved_ui_out
  #define GDB_6 1
 #else
  #define Symbol_Printable_Name(a) SYMBOL_SOURCE_NAME(a)
@@ -119,6 +122,9 @@ int _inferior_pid();
  #define All_Block_Symbols() ALL_BLOCK_SYMBOLS (b, j, sym)
  #define Register_Type(a) REGISTER_VIRTUAL_TYPE(a)
  #define Register_Size(a) REGISTER_RAW_SIZE(a)
+ #define Save_ui_out
+ #define RHGDB_ui_out
+ #define Restore_ui_out
  #define GDB_6 0
 #endif
 

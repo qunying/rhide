@@ -8,10 +8,11 @@
 
 #if GDB_6
 struct ui_file * frame_out = 0;
-FILE * frame_debug = 0;
 
 static void debugf (const char * fmt, ...)
 {
+  static FILE * frame_debug = 0;
+  
   if (!frame_debug)
     frame_debug = fopen ("frame.dbg", "w");
   if (frame_debug)

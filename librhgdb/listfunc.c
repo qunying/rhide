@@ -322,9 +322,7 @@ sort_functions()
 void
 ListFunctions(const char *regex, struct function_entry **list, int *count)
 {
-  #if GDB_6
-  struct ui_out * saved_ui_out = uiout;
-  #endif
+  Save_ui_out;
   free_functions();
   if (!debugger_started)
   {
@@ -335,13 +333,11 @@ ListFunctions(const char *regex, struct function_entry **list, int *count)
       return;
     }
   }
-  #if GDB_6
-  uiout = rhgdb_ui_out;
-  #endif
+  
+  RHGDB_ui_out;
   list_symbols((char *) regex);
-  #if GDB_6
-  uiout = saved_ui_out;
-  #endif
+  Restore_ui_out;
+  
   if (function_count > 0)
     sort_functions();
   *count = function_count;

@@ -162,7 +162,7 @@ my_print_address_symbolic(CORE_ADDR addr, int only_exact,
 
 #if GDB_VERSION_1 >= 6
 static int
-print_insn(CORE_ADDR memaddr, struct ui_file * stream)
+print_insn(CORE_ADDR memaddr, void *stream __attribute__((unused)))
 {
   long length;
   struct ui_file * disasm_out = mem_fileopen ();
@@ -186,9 +186,7 @@ my_print_address(bfd_vma addr,
 }
 
 static int
-print_insn(memaddr, stream)
-     CORE_ADDR memaddr;
-     RH_GDB_FILE *stream;
+print_insn(CORE_ADDR memaddr, void *stream)
 {
   disassemble_info info;
   int retval;

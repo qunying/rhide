@@ -95,7 +95,7 @@ rhide.ctx: rhide.num cindex.idx kindex.idx html2ctx
 	 ./html2ctx > rhide.ctx
 
 rhide.html: rhide.txi
-	$(MAKEINFO) --html --number-sections --no-headers -o $@ $<
+	$(MAKEINFO) --html --no-split --number-sections -o $@ $<
 
 rhide.htm: rhide.html
 

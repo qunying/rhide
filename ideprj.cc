@@ -716,8 +716,13 @@ static void ClearDeskTop(Boolean remove_msg = True)
       TWindow *window = DESKTOPWINDOW(delta);
       if (window != msg_window || remove_msg == True)
       {
-        RemoveWindow(window, False);
-        window->close();
+        if (window->valid(cmClose) == True)
+        {
+          RemoveWindow(window, False);
+          window->close();
+        }
+        else
+          delta++;
       }
       else
       {

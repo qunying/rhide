@@ -1264,8 +1264,9 @@ void InsertEnviromentVar(char *variable,char *contents)
   insert_variable(variable, contents);
 }
 
-void RunProgram(const char *, bool, bool, bool)
+int RunProgram(const char *, bool, bool, bool)
 {
+  return -1;
 }
 
 

@@ -16,7 +16,7 @@ if test -z $rh_cv_path_$1; then
   else
     for dir in $3; do
       if test -r $dir/$2; then
-        eval "rh_cv_path_$1=$dir"
+        eval "rh_cv_path_$1=`(cd $dir && pwd)`"
         break;
        else
         eval "rh_cv_path_$1=no"

@@ -49,7 +49,7 @@ $DJDIR/include/rhtvision \
 RH_CHECK_FILE_LIST(TV_INC, tv.h, $TV_INC_SEARCH,[Turbo Vision header files])
 
 TV_OBJ_SEARCH="$TV_INC/../makes $TV_INC/../../lib"
-RH_CHECK_FILE_LIST(TVOBJ, librhtv.a, $TV_OBJ_SEARCH,[Turbo Vision libraray])
+RH_CHECK_FILE_LIST(TVOBJ, librhtv.a, $TV_OBJ_SEARCH,[Turbo Vision library])
 
 SETSRC_SEARCH="$abs_srcdir/../setedit \
 $DJDIR/contrib/setedit \
@@ -111,24 +111,28 @@ if test "x$LIB_INTL" = xno; then
 fi
 AC_SUBST(LIB_INTL)
 
-gdb_version="gdb-5.3"
+if test "$rhide_OS" = DJGPP ; then
+    GDB_SRC_PREF_LIST="$abs_srcdir/.. \
+	                 $abs_srcdir/../gnu \
+			 $DJDIR/gnu"
+else    			 
+    GDB_SRC_PREF_LIST="$abs_srcdir/.. \
+		         /usr/local/src \
+			 /usr/src"
+fi			 
 
-GDB_SRC_SEARCH="$abs_srcdir/../$gdb_version \
-$DJDIR/gnu/$gdb_version \
-/usr/local/src/$gdb_version \
-/usr/src/$gdb_version"
-RH_CHECK_FILE_LIST(GDB_SRC,gdb/main.c,$GDB_SRC_SEARCH,[GDB sources],[trying older version])
+GDB_SRC_SEARCH=
 
-if test "$GDB_SRC" = no; then
-  gdb_version="gdb-5.0"
+for gdb_ver in 5.0 5.1 5.2 5.2.1 5.3 6.0 6.1 6.1.1; do
+    if test "$rhide_OS" = DJGPP ; then
+	gdb_ver=`echo $1 | sed -e 's#\.##2g'`
+    fi
+    for dprefix in $GDB_SRC_PREF_LIST ; do
+        GDB_SRC_SEARCH="$dprefix/gdb-$gdb_ver $GDB_SRC_SEARCH"
+    done	   
+done
 
-  GDB_SRC_SEARCH="$abs_srcdir/../$gdb_version \
-  $DJDIR/gnu/$gdb_version \
-  /usr/local/src/$gdb_version \
-  /usr/src/$gdb_version"
-  RH_CHECK_FILE_LIST(GDB_SRC_OLD,gdb/main.c,$GDB_SRC_SEARCH,[GDB sources])
-  GDB_SRC="$GDB_SRC_OLD"
-fi
+RH_CHECK_FILE_LIST(GDB_SRC,gdb/main.c,$GDB_SRC_SEARCH,[GDB sources],[])
 
 AC_CACHE_CHECK([GDB objects],GDB_OBJ,
 [

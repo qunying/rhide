@@ -16,7 +16,11 @@ public:
   }
   void *Buffer()
   {
+#if 0
     return base();
+#else
+    return eback();
+#endif
   }
 };
 

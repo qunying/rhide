@@ -78,6 +78,9 @@ _rhide_load_environment_file(char *fname, int unload)
       continue;
     line[strlen(line)-1] = 0; // remove the last '\n'
     if (line[0] == '.') // include a file
+    /*
+      This syntax should not longer be used. Use instead
+      the "include" keyword like in GNU make */
     {
       char *_fname = expand_spec(line+1,NULL);
       _rhide_load_environment_file(_fname, unload);
@@ -107,12 +110,17 @@ _rhide_load_environment_file(char *fname, int unload)
     if (equal)
     {
       *equal = 0;
-      insert_variable(variable,unload ? NULL : equal+1);
+      char *_variable = expand_rhide_spec(variable);
+      insert_variable(variable, unload ? NULL : equal+1);
+      if (strcmp(variable, _variable) != 0)
+      {
+        insert_variable(_variable, unload ? NULL : equal+1);
+      }
 #ifdef __linux__
 /* That's now a special case, when running under linux
   using ncurses. There is this variable used, but only
   at startup, which is already done */
-      if (strcmp(variable,"ESCDELAY") == 0)
+      if (strcmp(_variable,"ESCDELAY") == 0)
       {
         extern int ESCDELAY;
         ESCDELAY = atoi(equal+1);
@@ -124,8 +132,9 @@ _rhide_load_environment_file(char *fname, int unload)
         /* not all systems allocate the memory for the
            variable, so better waste some memory than a
            sigsegv later :-( */
-        putenv(string_dup(variable));
+        putenv(string_dup(_variable));
       }
+      string_free(_variable);
     }
   }
   fclose(f);

@@ -314,7 +314,7 @@ void IDE::update()
   update_mem();
   update_words();
 
-  has_primary_file = Project.source_name != NULL;
+  has_primary_file = project ? Project.source_name != NULL : 0;
 
   if (windows) has_windows = windows->getCount();
   if (closed_windows) has_closed_windows = closed_windows->getCount();
@@ -358,10 +358,11 @@ void IDE::update()
       }
     }
   }
-  if (Project.dest_file_type == FILE_COFF ||
-      Project.dest_file_type == FILE_EXE ||
-      has_primary_file)
-    target_is_exec = 1;
+  if (project)
+    if (Project.dest_file_type == FILE_COFF ||
+        Project.dest_file_type == FILE_EXE ||
+        has_primary_file)
+      target_is_exec = 1;
   if (project_name)
   {
     has_project = 1;
@@ -2378,6 +2379,7 @@ int main(int argc, char **argv)
         if (!EDITNAME) About();
         if (EDITNAME) App->openEditor(EDITNAME,True);
       }
+      should_update = 1;
       App->update();
       App->run();
       CloseProject();

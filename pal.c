@@ -193,7 +193,7 @@
         S(99,Lightred,Lightgray,parens matching) \
         S(9A,White,Magenta,rectangle block) \
         S(9B,White,Black,Odd tab) \
-        S(9C,LightGray,Black,Even tab) \
+        S(9C,Lightgray,Black,Even tab) \
         \
         S(9D,Black,Black,reserved) \
         S(9E,Black,Black,reserved) \

@@ -1,10 +1,5 @@
-/* Copyright (C) 1996-1998 Robert H”hne, see COPYING.RH for details */
+/* Copyright (C) 1999 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
-#define Uses_TProject
-#define Uses_TOptions
-#define Uses_TDependency
-#define Uses_TDepCollection
-#include <libide.h>
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
@@ -14,14 +9,30 @@
 #include <crt0.h>
 #endif
 
+#define Uses_TStringCollection
+#define Uses_ofpstream
+#include <tv.h>
+
+#define Uses_TProject
+#define Uses_TOptions
+#define Uses_TDependency
+#define Uses_TDepCollection
+#include <libide.h>
+
 #include <rhutils.h>
 #include <rhide.h>
 
 void AddToStack() {}
 void RemoveFromStack() {}
+void check_vars(TStringCollection *vars,TDirList *dirs);
+void _AbsToRelPath(char *&dname, TStringCollection *vars);
+
+static
+void WriteGPR(char *outname);
+
 
 static void
-init_gpr2mak()
+init_gprexp()
 {
 #ifdef __DJGPP__
   __crt0_load_environment_file("rhide");
@@ -31,7 +42,44 @@ init_gpr2mak()
 }
 
 static
-void _WriteMake(int all_deps, int argc, char **argv)
+void ConvertName(TFileName *&_name, TStringCollection *vars)
+{
+  if (!_name)
+    return;
+  char *name = string_dup(FName(_name));
+  _AbsToRelPath(name, vars);
+  InitFName(_name, name);
+  string_free(name);
+}
+
+static
+void ConvertDep(TDependency *dep, TStringCollection *vars)
+{
+  ConvertName(dep->source_name, vars);
+  ConvertName(dep->dest_name, vars);
+  int i;
+  if (dep->dependencies)
+  {
+    for (i=0; i<dep->dependencies->getCount(); i++)
+    {
+      ConvertDep((TDependency *)dep->dependencies->at(i), vars);
+    }
+  }
+}
+
+static
+TProject *ConvertProject(TProject *prj, TStringCollection *vars)
+{
+  TProject *ret = new TProject();
+  *ret = *prj;
+  *(TDependency *)ret = *(TDependency *)prj;
+  ConvertDep(ret, vars);
+  ret->pr.pr_VarFilenames = 1;
+  return ret;
+}
+
+static
+void _WriteGPR(int argc, char **argv)
 {
   if (recursive_make && Project.dependencies)
   {
@@ -43,15 +91,12 @@ void _WriteMake(int all_deps, int argc, char **argv)
       {
         if (_PushProject(_dep) == True)
         {
-          AllDeps = all_deps;
           char *outname = string_dup(project_name);
-          BaseName(outname, 0);
-          string_cat(outname, ".mak");
           FExpand(outname);
-          fprintf(stdout, _("Writing Makefile : %s\n"), outname);
+          fprintf(stdout, _("Converting Projectfile : %s\n"), outname);
           string_free(outname);
-          WriteMake(NULL, argc, argv);
-          _WriteMake(all_deps, argc, argv);
+          WriteGPR(NULL);
+          _WriteGPR(argc, argv);
           _PopProject();
         }
       }
@@ -85,10 +130,10 @@ $(wildcard $(path)/$(notdir ",tmp,"))))");
   FExpand(tmp);
   split_fname(tmp,RHIDE_DIR,RHIDE_NAME,RHIDE_EXT);
   string_free(tmp);
-  init_gpr2mak();
+  init_gprexp();
   char *outname = NULL;
   char *pname = NULL;
-  int i,all_deps=1;
+  int i;
   char *locale_dir = expand_spec("$(LOCALEDIR)",NULL);
 #ifndef __DJGPP__
   if (!*locale_dir)
@@ -129,14 +174,6 @@ $(wildcard $(path)/$(notdir ",tmp,"))))");
     if (strcmp(argv[i],"-r-") == 0)
     {
       recursive_make = 0;
-    }
-    else if (strcmp(argv[i],"-d") == 0)
-    {
-      all_deps=1;
-    }
-    else if (strcmp(argv[i],"-d-") == 0)
-    {
-      all_deps=0;
     }
     else if (strcmp(argv[i],"-o") == 0)
     {
@@ -179,6 +216,8 @@ $(wildcard $(path)/$(notdir ",tmp,"))))");
     chdir(pdir);
     string_free(pdir);
   }
+  if (!outname)
+    outname = string_dup(pname);
   if ((project = ReadProject(project_name, False)) == NULL)
   {
     fprintf(stderr,_("error reading projectfile %s\n"),project_name);
@@ -186,9 +225,8 @@ $(wildcard $(path)/$(notdir ",tmp,"))))");
     return -3;
   }
   push_environment();
-  AllDeps = all_deps;
-  WriteMake(outname,argc,argv);
-  _WriteMake(all_deps, argc, argv);
+  WriteGPR(outname);
+  _WriteGPR(argc, argv);
   chdir(orig_dir);
   return 0;
 }
@@ -197,4 +235,37 @@ char *WUC()
 {
   return NULL;
 }
+
+static
+void WriteGPR(char *outname)
+{
+  char *name=NULL;
+  TStringCollection *vars = new TStringCollection(10,10);
+  if (!outname)
+  {
+    name = string_dup("__!!!!__.gpr");
+  }
+  else
+  {
+    string_dup(name,outname);
+  }
+  ofpstream *file;
+  if (strcmp(name,"-") == 0)
+    file = new ofpstream("");
+  else
+    file = new ofpstream(name);
+  check_vars(vars,Options.SrcDirs);
+  check_vars(vars,Options.ObjDirs);
+  check_vars(vars,Options.include_path);
+  check_vars(vars,Options.library_path);
+  TProject *tmp = ConvertProject(project, vars);
+  file->writeString(PROJECT_IDENT);
+  *file << ProjectVersion;
+  *file << tmp;
+  delete(file);
+  delete tmp;
+  string_free(name);
+  destroy(vars);
+}
+
 

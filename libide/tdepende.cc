@@ -192,3 +192,49 @@ void TDepCollection::freeItem(void *item)
   destroy((TDependency *)item);
 }
 
+TDependency & TDependency::operator = ( const TDependency & d)
+{
+  if (d.source_name)
+    InitFName(source_name, FName(d.source_name));
+  if (d.dest_name)
+    InitFName(dest_name, FName(d.dest_name));
+  compiler = string_dup(d.compiler);
+  error_check = string_dup(d.compiler);
+  source_file_type = d.source_file_type;
+  dest_file_type = d.dest_file_type;
+  compile_id = d.compile_id;
+  error_type = d.error_type;
+  compiler_type = d.compiler_type;
+  if (dependencies)
+  {
+    destroy(dependencies);
+    dependencies = NULL;
+  }
+  if (d.dependencies)
+  {
+    dependencies = new TDepCollection(5,5);
+    *dependencies = *d.dependencies;
+  }
+  if (d.local_options);
+  *local_options = *d.local_options;
+  flags = d.flags;
+  return *this;
+}
+
+TDepCollection & TDepCollection::operator = ( const TDepCollection & d)
+{
+  freeAll();
+  shouldDelete = d.shouldDelete;
+  duplicates = d.duplicates;
+  delta = d.delta;
+  setLimit(d.limit);
+  int i;
+  for (i=0; i<d.count; i++)
+  {
+    TDependency *dep = new TDependency();
+    *dep = *(TDependency *)d.items[i];
+    insert(dep);
+  }
+  return *this;
+}
+  

@@ -20,6 +20,7 @@
 #define Uses_TProject
 #define Uses_TOptions
 #define Uses_ideFunctions
+#define Uses_TDepCollection
 #include <libide.h>
 #include <rhide.h>
 
@@ -315,4 +316,39 @@ void close_ifpstream(ifpstream *is)
 #endif
   delete is;
 }
+
+static
+void ConvertName(TFileName *&_name)
+{
+  if (!_name)
+    return;
+  char *name = expand_rhide_spec(FName(_name));
+  delete _name;
+  InitFName(_name, name);
+  string_free(name);
+}
+
+static
+void ConvertDep(TDependency *dep)
+{
+  ConvertName(dep->source_name);
+  ConvertName(dep->dest_name);
+  int i;
+  if (dep->dependencies)
+  {
+    for (i=0; i<dep->dependencies->getCount(); i++)
+    {
+      ConvertDep((TDependency *)dep->dependencies->at(i));
+    }
+  }
+}
+
+void ExpandFileNames(TProject *prj)
+{
+  TProject *old = project;
+  project = prj;
+  ConvertDep(project);
+  project = old;
+}
+
 

@@ -8,8 +8,7 @@ class TDepCollection : public TSortedCollection
 public:
   TDepCollection(ccIndex aLimit,ccIndex aDelta) : TSortedCollection(aLimit,aDelta) {}
 private:
-    virtual const char *streamableName() const
-	{ return name; }
+    virtual const char *streamableName() const { return name; }
     virtual void *readItem( ipstream& );
     virtual void writeItem( void *, opstream& );
     virtual void *keyOf(void *);
@@ -22,6 +21,7 @@ protected:
 public:
     static const char * const near name;
     static TStreamable *build();
+    TDepCollection & operator = ( const TDepCollection& );
 };
 
 inline ipstream& operator >> ( ipstream& is, TDepCollection& cl )
@@ -42,25 +42,15 @@ inline opstream& operator << ( opstream& os, TDepCollection* cl )
 class TDepCollection;
 class TParamList;
 
-#undef OLD_TDEP
-#ifndef OLD_TDEP
 class TFileName;
-#endif
 
 class TDependency : public TObject, public TStreamable
 {
 public:
-#ifdef OLD_TDEP
-  char * source_name;
-  char * dest_name;
-#define FName(x) x
-#define InitFName(x,y) x = string_dup(y)
-#else
   TFileName *source_name;
   TFileName *dest_name;
 #define FName(x) ((x)?(x)->Name():(const char *)NULL)
 #define InitFName(x,y) (x) = new TFileName((y)?(y):"")
-#endif
   char * compiler;
   char * error_check;
   FILE_TYPE source_file_type;
@@ -85,8 +75,7 @@ public:
   TDependency(void);
   ~TDependency();
 private:
-    virtual const char *streamableName() const
-	{ return name; }
+    virtual const char *streamableName() const { return name; }
 protected:
     TDependency( StreamableInit ) {}
     virtual void write( opstream& );
@@ -94,6 +83,7 @@ protected:
 public:
     static const char * const near name;
     static TStreamable *build();
+    TDependency & operator = ( const TDependency& );
 };
 
 inline ipstream& operator >> ( ipstream& is, TDependency& cl )

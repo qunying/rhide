@@ -70,8 +70,8 @@ static TCheckDialog *CheckDialog = NULL;
 static TCheckDialog *ExecDialog = NULL;
 
 int RunProgram(const char *cmd,
-                   Boolean redir_stderr,Boolean redir_stdout,
-		   Boolean SwitchToUser)
+               Boolean redir_stderr,Boolean redir_stdout,
+               Boolean SwitchToUser)
 {
   int retval;
   if (ExecDialog)

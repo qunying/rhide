@@ -17,7 +17,7 @@ po_files=\
 	idestatu.cc idestrm.cc ideutil.cc openedit.cc \
 	ideuser.cc idecomp.cc idespec.cc idesupp.cc idebug.cc idesynta.cc \
 	abstorel.cc rhassert.c ideenv.cc fstrcmp.c ideapp.cc idedial.cc \
-	pal.cp idercs.cc commands.cc idecheck.cc
+	pal.cp idercs.cc commands.cc idecheck.cc gprexp.cc
 
 src_files=$(po_files) Makefile common.mak README.IDE RHIDE.BIN RHIDE.SRC \
 	COPYING.RH COPYING wrong.c copyrite.c makefile.src \
@@ -25,7 +25,7 @@ src_files=$(po_files) Makefile common.mak README.IDE RHIDE.BIN RHIDE.SRC \
 	rhide_ch.log todo pal.c zipcomm.bin zipcomm.src rhide.env \
 	LINUX.TXT rhide.var INSTALL.LINUX INSTALL.MAK VCSA.SH common.var \
 	ideversi.in ideversi.cc readme.key rhide_.env \
-	rhide.terminfo moveifch
+	rhide.terminfo moveifch gprexp.gpr gprexp.mak
 
 ifeq ($(rhide_OS),DJGPP)
 ADD_SUBDIRS=
@@ -40,7 +40,7 @@ my_subdirs=libide librhgdb libtvgdb include doc libgdb rhgdb po libtvuti \
 	   debobj nodebobj librhuti
 po_subdirs=libide librhgdb libtvgdb libtvuti rhgdb tvdemo
 
-install_bin_files=gpr2mak rhide
+install_bin_files=gpr2mak gprexp rhide
 install_doc_files=readme.key COPYING COPYING.RH README.IDE RHIDE.BIN\
 	LINUX.TXT VCSA.SH
 
@@ -56,6 +56,9 @@ $(srcdir)/pal.cp: $(srcdir)/pal.c
 	gcc -E -I$(srcdir) - > $@
 
 gpr2mak: gpr2mak.exe
+	ln -sf $< $@
+
+gprexp: gprexp.exe
 	ln -sf $< $@
 
 programs=gpr2mak.exe idegc.exe rhgdb/rhgdb.exe
@@ -75,6 +78,9 @@ libgdb/libgdb.a libgdb/libgdb.h:
 
 rhgdb/rhgdb.exe::
 	$(MAKE) -C rhgdb $(FLAGS_TO_PASS)
+
+gprexp.exe:: gprexp.mak
+	$(MAKE) -f gprexp.mak $(FLAGS_TO_PASS)
 
 gpr2mak.exe:: gpr2mak.mak
 	$(MAKE) -f gpr2mak.mak $(FLAGS_TO_PASS)
@@ -100,11 +106,12 @@ endif
 touch_gprs:
 	@touch $(shell find -name "*.gpr" -print)
 
-check.files: init.version gpr2mak.exe touch_gprs
-	@touch $(shell find -name "*.gpr" -print)
+check.files: init.version gpr2mak.exe gprexp.exe touch_gprs
 	@echo Checking in $(obj_dir)
 	@$(MAKE) --no-print-directory check_src_files \
-	  update_src_file="cp -p"
+	  update_src_file="cp -p" \
+	  update_gpr_file=$(top_obj_dir)/gprexp.exe \
+	  LFN=y FNCASE=y
 
 copy.files:
 	@-rm -f $(list_file)
@@ -195,7 +202,7 @@ distrib.src: init.version touch_gprs
 	$(MAKE) $(FLAGS_TO_PASS) gpr2mak.exe
 	$(MAKE) $(FLAGS_TO_PASS) \
 	  prefix=$(copy_dir)/$(install_prefix_src) distrib.src_ \
-	  LFN=n
+	  LFN=y FNCASE=y
 
 doc info dvi:
 	$(MAKE) -C doc $@

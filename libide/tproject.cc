@@ -18,7 +18,9 @@
 
 #include <string.h>
 
-static ushort TProject_Version = 7;
+expand_function expand_filenames = NULL;
+
+static ushort TProject_Version = 8;
 
 TProject::TProject() : TDependency()
 {
@@ -28,6 +30,7 @@ TProject::TProject() : TDependency()
   screen_mode = 3;
   options2 = 0;
   options1 = 0;
+  private_options = 0;
   info_files = new TParamList();
 #ifdef __linux__
   info_files->insert(strdup("(libc)Function Index"));
@@ -49,6 +52,7 @@ TProject & TProject::operator = ( const TProject& prj)
   screen_mode = prj.screen_mode;
   options2 = prj.options2;
   options1 = prj.options1;
+  private_options = prj.private_options;
   *info_files = *prj.info_files;
   info_search_mode = prj.info_search_mode;
   info_search_options = prj.info_search_options;
@@ -131,6 +135,21 @@ void * TProject::read(ipstream & is)
     is >> max_closed_windows;
   }
 
+  if (version < 8)
+  {
+    private_options = 0;
+  }
+  else
+  {
+    is >> private_options;
+  }
+
+  if (pr.pr_VarFilenames && expand_filenames)
+  {
+    expand_filenames(this);
+    pr.pr_VarFilenames = 0;
+  }
+
   return this;
 }
 
@@ -149,6 +168,7 @@ void TProject::write(opstream & os)
   os << fuzzy_value;
   os.writeString(main_function);
   os << max_closed_windows;
+  os << private_options;
 }
 
 

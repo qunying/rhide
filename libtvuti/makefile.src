@@ -11,7 +11,7 @@ po_files=\
 	tenterin.cc tenterli.cc tenterra.cc tintinpu.cc tlbutton.cc \
 	tmeminfo.cc tparamli.cc tscollec.cc twindowl.cc windowli.cc \
 	tenterch.cc history.cc tcheckdi.cc tmsgcoll.cc tmsglist.cc \
-	msgrec.cc tmemstrm.cc cmd.cc commands.cc execdial.cc
+	msgrec.cc tmemstrm.cc cmd.cc commands.cc execdial.cc ihistory.cc
 
 src_files=$(po_files) Makefile libtvuti.gpr libtvuti.mak makefile.src \
 	  rhide.env rhide.var

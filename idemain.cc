@@ -2085,6 +2085,7 @@ void init_rhide(int _argc, char **_argv)
   TScreen::resume();
   PrintSetDefaults();
   InitHistoryIDs = __InitHistoryIDs;
+  expand_filenames = ExpandFileNames;
 }
 
 /*

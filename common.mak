@@ -116,6 +116,7 @@ endif
 endif
 
 update_src_file=echo
+update_gpr_file=echo
 
 ifeq ($(copyrite.exe),)
 export copyrite.exe:=$(top_obj_dir)/copyrite.exe
@@ -156,9 +157,9 @@ rhides=$(PACKAGE_FILE)$(FILE_VERSION)s
 rhide=$(PACKAGE_DIR)$(DIR_VERSION)
 
 ifeq ($(rhide_OS),DJGPP)
-copy_dir=d:/_
+copy_dir=/_
 else
-copy_dir=/usr/tmp/_
+copy_dir=/tmp/_
 endif
 
 FLAGS_TO_PASS=\
@@ -177,7 +178,8 @@ FLAGS_TO_PASS=\
 	SETUID="$(SETUID)" \
 	SETGID="$(SETGID)" \
 	prefix=$(prefix) \
-	update_src_file="$(update_src_file)"
+	update_src_file="$(update_src_file)" \
+	update_gpr_file="$(update_gpr_file)"
 
 %.sub: Makefile
 	@$(MAKE) -C $* $(FLAGS_TO_PASS) SUBDIR_TARGET=$(SUBDIR_TARGET) \
@@ -266,6 +268,7 @@ endif
 
 ifneq ($(strip $(gpr2mak)),)
 %.mak: %.gpr $(copyrite.exe)
+	@$(update_gpr_file) $(notdir $<) > /dev/null
 ifeq ($(rhide_OS),DJGPP)
 	@$(gpr2mak) -d -r- -o - $(notdir $<) \
 	  | sed -e 's,	$(DJDIR),	$$(DJDIR),g' \

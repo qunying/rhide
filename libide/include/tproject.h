@@ -14,6 +14,15 @@ public:
   ushort screen_mode;
   uint32 options2;
   uint32 options1;
+  union
+  {
+    uint32 private_options;
+    struct
+    {
+      unsigned pr_VarFilenames:1;
+      unsigned pr_dummy:31;
+    } pr;
+  };
   TParamList *info_files;
   char *main_function;
   ushort info_search_mode;
@@ -54,5 +63,9 @@ inline opstream& operator << ( opstream& os, TProject& cl )
     { return os << (TStreamable&)cl; }
 inline opstream& operator << ( opstream& os, TProject* cl )
     { return os << (TStreamable *)cl; }
+
+typedef void (*expand_function)(TProject *);
+extern expand_function expand_filenames;
+
 
 #endif

@@ -154,7 +154,6 @@ void put_breakline(FILE *f,int start_len,int max_len,char *s)
   }
 }
 
-static
 void _AbsToRelPath(char *&dname, TStringCollection *vars)
 {
   int i, count;
@@ -394,7 +393,6 @@ void WriteTargets(FILE *f, TStringCollection *vars)
   destroy(targets);
 }
 
-static
 void check_vars(TStringCollection *vars,TDirList *dirs)
 {
   int i;

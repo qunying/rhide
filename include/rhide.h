@@ -184,6 +184,7 @@ extern int debug_files;
 class ifpstream;
 ifpstream *open_ifpstream(const char *name);
 void close_ifpstream(ifpstream *is);
+void ExpandFileNames(TProject *prj);
 
 /* module idemsg.cc */
 class TMsgCollection;

@@ -53,9 +53,10 @@ include $(RHIDESRC)/common.mak
 $(srcdir)/pal.cp: $(srcdir)/pal.c
 	@gecho "#include <pal.c>\n#undef S\n#define S(x,y,z,name,comment...) __(#name)\n"\
 	  "#undef SS\n #define SS(x,y,z,name,group,comment...)  __(#name) __(#group)\ncpIDEColor" |\
-	@gcc -E -I$(srcdir) - > __.cp
+		gcc -E -I$(srcdir) - | sed -e '/^[	 ]*$$/d' \
+	  -e '/^#.*$$/d' > __.cp
 	@$(move-if-change) __.cp $@
-	@-rm -f __.cp
+#	@-rm -f __.cp
 
 gpr2mak: gpr2mak.exe
 	ln -sf $< $@

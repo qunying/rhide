@@ -607,13 +607,8 @@ static void parse_commandline(int argc,char *argv[])
   if (!progname) Usage();
 }
 
-#ifdef __DJGPP__
-static __attribute__ (( __constructor__ ))
-void init_rhgdb(void)
-#else
 static
 void init_rhgdb(int __crt0_argc,char **__crt0_argv)
-#endif
 {
 #ifdef __DJGPP__
   __crt0_load_environment_file("rhgdb"); // when the exe has an other name
@@ -658,20 +653,12 @@ void init_rhgdb(int __crt0_argc,char **__crt0_argv)
   prog_name = __crt0_argv[0];
   parse_commandline(__crt0_argc,__crt0_argv);
 
-#ifndef __DJGPP__
-#if 1
   TEventQueue::suspend();
   TScreen::suspend();
-#endif
-#endif
   fprintf(stderr,_("This is %s. Copyright (c) 1996-1998 by Robert H”hne\n"),RHGDBVersion);
   fprintf(stderr,"             (%s %s)\n",build_date,build_time);
-#ifndef __DJGPP__
-#if 1
   TScreen::resume();
   TEventQueue::resume();
-#endif
-#endif
 }
 
 static void rhgdb_sig(int signo)
@@ -706,18 +693,12 @@ static void rhgdb_sig(int signo)
   }
 }
 
-#ifdef __DJGPP__
-int main(int ,char **)
-#else
 int main(int argc,char **argv)
-#endif
 {
   char *main_source = NULL;
   int main_line;
   char initname[256];
-#ifndef __DJGPP__
   init_rhgdb(argc,argv);
-#endif
   if (show_usage)
     usage();
   string_dup(main_function,"main");

@@ -1,10 +1,8 @@
 /* Copyright (C) 1996-1998 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
-/* DataWindow v0.02 */
+/* DataWindow v0.10 */
 /* Copyright (C) 1998 Laszlo Molnar */
 /* This program is free software, see COPYING for details */
-
-/* this stuff was inspired by data dump window in turbo debugger */
 
 #define Uses_TListViewer
 #define Uses_TScrollBar
@@ -14,8 +12,14 @@
 #define Uses_MsgBox
 #define Uses_TIndicator
 
+#define Uses_TFileDialog
+#define Uses_TProgram // desktop
+#define Uses_TDeskTop // execview
+
 #define Uses_TDataWindow
+#define Uses_TProgram
 #define Uses_tvgdbCommands
+//#define Uses_TKeys_Extended
 #include <libtvgdb.h>
 #include <tvgdbhis.h>
 
@@ -31,6 +35,11 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+//FIXME: I should uncomment this stuff someday
+//extern "C" {
+//#include <libgdb.h>
+//}
+
 /*
  01 Normal text (active)
  02 Normal text (not active)
@@ -38,8 +47,7 @@
  04 Selected text
  05 reserved
  06 reserved
-*/
-#define cpDataViewer "\x06\x07\x08\x09\x0A\x0B"
+ */
 
 #define NONACCESS  0x1
 #define EDITED     0x2
@@ -51,7 +59,7 @@ class TDIndicator : public TIndicator
 {
     char thestate[10];
 public:
-    enum IndiType {iChanged=1, iEndian, iRadix};
+    enum IndiType {iChanged=1, iEndian, iRadix, iAutofollow, iBaseAddress};
     TDIndicator(const TRect& bounds);
     virtual void draw();
     virtual void changeState(IndiType,int);
@@ -67,7 +75,7 @@ public:
     virtual void setState(ushort aState, Boolean enable);
     virtual void draw();
     virtual void handleEvent(TEvent& event);
-    void update(unsigned long address);
+    void update(unsigned long address,Boolean external = False);
     void getLine(char *buf,char *cols,int row);
     void cursorHoriz(int);
     void adjustWindow();
@@ -90,11 +98,18 @@ public:
     unsigned char endian;
 
     static signed char targetEndian;
+    
+    Boolean autofollow;
+    Boolean address_changed;
+    unsigned long base_address;
+
+    TScrollBar *vs;
+    unsigned long mem_min;
+    unsigned long mem_max;
+    void UpdateScroll();
 };
 
-signed char TDataViewer::targetEndian = -1;
-
-static int isvalid_address (char *taddr,unsigned long *addr)
+static Boolean isvalid_address (const char *taddr,unsigned long *addr)
 {
     char buf[300], *p1;
     sprintf(buf,"x/1xb %s",taddr);
@@ -106,14 +121,16 @@ static int isvalid_address (char *taddr,unsigned long *addr)
         && strlen(p1)<ADDRCHARS)
     {
         sscanf(gdb_output_buffer,"%lx",addr);
-        return 1;
+        return True;
     }
-    return 0;
+    return False;
 }
+
+//\\//\\//\\//\\//\\//\\ Memory handling
 
 extern "C" int target_read_memory (unsigned long,char *,int);
 extern "C" int target_write_memory (unsigned long,char *,int);
-// the following 2 functions should not be in this file
+// the following functions should not be in this file
 static void readbytes(unsigned long addr,char *memo,unsigned len,unsigned clen)
 {
     if (target_read_memory(addr,memo,len)==0)
@@ -139,17 +156,124 @@ static void writebytes(unsigned long addr,char *memo, unsigned len, unsigned cle
     target_write_memory(addr+jc,memo+jc,ic-jc);
 }
 
-void TDataViewer::update(unsigned long addr)
+static void target_fill_mem(unsigned long from, unsigned long len, unsigned value)
+{
+    // FIXME: handle smaller chunks here
+    char *mem = (char*)malloc(len);
+    memset(mem,value,len);
+    target_write_memory(from,mem,len);
+    free(mem);
+}
+
+static void target_move_mem(unsigned long from,unsigned long to,unsigned len)
+{
+    // FIXME: handle smaller chunks here
+    char *mem = (char*)malloc(len);
+    target_read_memory(from,mem,len);
+    target_write_memory(to,mem,len);
+    free(mem);
+}
+
+static unsigned readFile(FILE *f1,unsigned long to,unsigned len)
+{
+    // FIXME: handle smaller chunks here
+    char *mem = (char*)malloc(len);
+    len = fread(mem,1,len,f1);
+    target_write_memory(to,mem,len);
+    free(mem);
+    return len;
+}
+
+static unsigned writeFile(FILE *f1,unsigned long from,unsigned len)
+{
+    // FIXME: handle smaller chunks here
+    char *mem = (char*)malloc(len);
+    target_read_memory(from,mem,len);
+    len = fwrite(mem,1,len,f1);
+    free(mem);
+    return len;
+}
+
+//\\//\\//\\//\\//\\//\\ TDataViewer
+
+signed char TDataViewer::targetEndian = -1;
+
+TDataViewer::TDataViewer(const TRect& bounds, TScrollBar *aVScrollBar, const char *taddr) :
+    TView (bounds), mem_start(0), memo(0), bytesperline(16), dispmode(dmBytes),
+    radix(rxHex), autofollow(False), address_changed(False), base_address(0)
+{
+    //helpCtx = hcDataViewer;
+    eventMask = evMouseDown | evKeyDown | evCommand | evBroadcast;
+    if (targetEndian<0)
+    {
+        reset_command++;
+        Command("show endian",0);
+        reset_command--;
+        if (strstr(gdb_output_buffer,"little"))
+            targetEndian=0;
+        else if (strstr(gdb_output_buffer,"big"))
+            targetEndian=1;
+        else
+            targetEndian=0;
+    }
+    endian = targetEndian;
+    indi->changeState(TDIndicator::iEndian, "eE"[endian]);
+    orig_addr_txt=string_dup(taddr);
+    isvalid_address(orig_addr_txt,&orig_addr);
+    setCursor(ADDRCHARS,0);
+    showCursor();
+    vs=aVScrollBar;
+    mem_min=0xFFFFFFFF;
+    mem_max=0;
+}
+
+TDataViewer::~TDataViewer()
+{
+    string_free(orig_addr_txt);
+    free(memo);
+}
+
+void TDataViewer::update(unsigned long addr,Boolean external)
 {
     if (!memo)
     {
         mem_len = bytesperline*size.y;
         memo = (unsigned char*) malloc (mem_len*2);
     }
-    
+
+    indi->changeState(TDIndicator::iChanged, ' ');
+    if (external && autofollow)
+    {
+        addr = 0;
+        address_changed = False;
+        if (isvalid_address(orig_addr_txt,&addr))
+        {
+             address_changed = orig_addr != addr;
+             orig_addr = addr;
+        }
+    }
     mem_start = addr;
     readbytes(addr,(char*)memo,size.y*bytesperline,mem_len);
     drawView();
+    UpdateScroll();
+}
+
+void TDataViewer::UpdateScroll()
+{
+    unsigned long mmax;
+    if (mem_start<mem_min)
+       mem_min=mem_start;
+    mmax=mem_start+bytesperline*(size.y-1);
+    if (mmax>mem_max)
+       mem_max=mmax;
+    vs->setParams(mem_start,mem_min,mem_max,(size.y-1)*bytesperline,
+                  bytesperline);
+#if 0
+    char b[200];
+    sprintf(b,"%lX %lX %lX %X %X",mem_start,mem_min,mem_max,(size.y-1)*bytesperline,
+                  bytesperline);
+    messageBox(b,mfError|mfOKButton);
+#endif
 }
 
 static const char * const notaccess = "----------- ";
@@ -270,22 +394,27 @@ void TDataViewer::draw()
     unsigned bpl = bytesperline;
     
     int ic,jc;
-    char buf[/*size.x+1*/ 256],cols[256];
+    char buf[ADDRCHARS+bpl*4+1],cols[ADDRCHARS+bpl*4+1]; // should be enough
     for (ic=0; ic<size.y; ic++)
     {
         uchar color;
         memset(cols,0,size.x);
-        sprintf(buf,"%08lX: ",ic*bpl+mem_start);
+        sprintf(buf,"%08lX: ",ic*bpl+mem_start-base_address);
         getLine(buf+ADDRCHARS,cols,ic);
 
         color = normal_color;
         b.moveChar(0, ' ', color, size.x);
         b.moveCStr(0, buf, color);
+
+        if (address_changed && orig_addr == mem_start+ic*bpl)
+            for (jc=0; jc<ADDRCHARS-2; jc++)
+                b.putAttribute(jc,changed_color);
         
         for (jc=ADDRCHARS; jc<size.x; jc++)
             if (cols[jc-ADDRCHARS])
                 b.putAttribute(jc,changed_color);
 
+        // colorize the "home" address
         if (mem_start+ic*bpl<=orig_addr && mem_start+ic*bpl+bpl>orig_addr)
         {
             int fl,pos;
@@ -301,46 +430,21 @@ void TDataViewer::draw()
     }
 }
 
-void TDataViewer::setState(ushort aState, Boolean enable)
+void TDataViewer::setState(ushort aState,Boolean enable)
 {
-    TView::setState(aState, enable);
+    TView::setState(aState,enable);
+    if (aState == sfActive)
+       vs->setState(sfVisible,enable);
     if (aState & sfFocused)
         drawView();
 }
 
+#define cpDataViewer "\x06\x07\x08\x09\x0A\x0B"
+
 TPalette &TDataViewer::getPalette() const
 {
-    static TPalette pal( cpDataViewer, sizeof( cpDataViewer )-1 );
+    static TPalette pal(cpDataViewer,sizeof(cpDataViewer) - 1);
     return pal;
-}
-
-TDataViewer::TDataViewer(const TRect& bounds, TScrollBar *aVScrollBar, const char *taddr) :
-    TView (bounds), mem_start(0), memo(0), bytesperline(16), dispmode(dmBytes), radix(rxHex)
-{
-    //helpCtx = hcDataViewer;
-    if (targetEndian<0)
-    {
-        reset_command++;
-        Command("show endian",0);
-        reset_command--;
-        if (strstr(gdb_output_buffer,"little"))
-            targetEndian=0;
-        else if (strstr(gdb_output_buffer,"big"))
-            targetEndian=1;
-        else
-            targetEndian=0;
-    }
-    endian = targetEndian;
-    orig_addr_txt=string_dup(taddr);
-    isvalid_address(orig_addr_txt,&orig_addr);
-    setCursor(ADDRCHARS,0);
-    showCursor();
-}
-
-TDataViewer::~TDataViewer()
-{
-    string_free(orig_addr_txt);
-    free(memo);
 }
 
 void TDataViewer::cursorHoriz(int delta)
@@ -376,53 +480,45 @@ unsigned char * TDataViewer::curs2memo()
         * fieldbytes[dispmode];
 }
 
-static void target_fill_mem (unsigned long from, unsigned long len, unsigned value)
+static int getParam(char **buf,unsigned long *l1)
 {
-    // FIXME: handle smaller chunks instead
-    char *mem = (char*)malloc(len);
-    memset(mem,value,len);
-    target_write_memory(from,mem,len);
-    free(mem);
+    char *p1;
+
+    for (p1 = *buf; *p1 && *p1 != ','; p1++)
+        ;
+    *p1 = 0;
+
+    char buf2[20 + p1 - *buf];
+    strcpy(buf2,"printf \"%#x\", ");
+    strcat(buf2,*buf);
+    reset_command++;
+    Command(buf2,0);
+    reset_command--;
+    if (gdb_output_buffer[0] != '0')
+        return 0;
+    *buf = p1 + 1;
+    return sscanf(gdb_output_buffer,"%lx",l1);
+}
+#ifdef __MSDOS__
+#define STARDOTSTAR "*.*"
+#else
+#define STARDOTSTAR "*"
+#endif
+
+static int getFilename(char *buf,int typ)
+{
+    TFileDialog *tf;
+    tf = new TFileDialog(STARDOTSTAR, typ ? _("Write block to file") : _("Read block from file"),
+                         _("~N~ame"), fdOpenButton, 0);
+    unsigned ret = TProgram::deskTop->execView(tf);
+    tf->getData(buf);
+    destroy(tf);
+    return ret != cmCancel;
 }
 
-static void target_move_mem(unsigned long from,unsigned long to,unsigned len)
+void TDataViewer::handleEvent(TEvent& event)
 {
-    // FIXME: handle smaller chunks instead
-    char *mem = (char*)malloc(len);
-    target_read_memory(from,mem,len);
-    target_write_memory(to,mem,len);
-    free(mem);
-}
-
-static int getParams (char *buf, unsigned long *l1, unsigned long *l2, unsigned long *l3)
-{
-    char *tp,*p1=buf;
-    *l1 = strtoul(buf,&tp,0);
-    if (tp == buf)
-        return 1;
-    while (*tp && *tp != ',')
-        tp++;
-    if (*tp)
-        p1 = ++tp;
-    *l2 = strtoul(p1,&tp,0);
-    if (tp == p1)
-        return 1;
-    if (l3)
-    {
-        while (*tp && *tp != ',')
-            tp++;
-        if (*tp)
-            p1 = ++tp;
-        *l3 = strtoul(p1 = tp,&tp,0);
-        if (tp == p1)
-            return 1;
-    }
-    return 0;
-}
-
-void TDataViewer::handleEvent (TEvent& event)
-{
-    char buf[256];
+    char buf[1024];
     TView::handleEvent(event);
 
     unsigned long newaddr = mem_start;
@@ -471,13 +567,89 @@ void TDataViewer::handleEvent (TEvent& event)
         case kbCtrlHome:
             setCursor(cursor.x,0);
             break;
-#if 0
-        case kbxxxx: // go to the current "orig_addr" address
-            newaddr = orig_addr;
-            setCursor(ADDRCHARS,0);
+        case kbCtrlEnd:
+            setCursor(cursor.x,size.y-1);
             break;
-#endif
-        case kbCtrlH: // reevalute the original address then go to there
+        case kbEnd:
+            cursorHoriz(size.x);
+            break;
+             // end of cursor movement
+        case kbGrayMinus:               // decrease bytes/line
+            if (bytesperline > fieldbytes[dispmode])
+            {
+                bytesperline -= fieldbytes[dispmode];
+                update(mem_start);
+                adjustWindow();
+                setCursor(ADDRCHARS, cursor.y);
+            }
+            break;
+        case kbGrayPlus:                // increase bytes/line
+            bytesperline += fieldbytes[dispmode];
+            free(memo);
+            memo = NULL;
+            update(mem_start);
+            adjustWindow();
+            break;
+        case kbEnter:                   // update changes
+            writebytes(mem_start, (char*)memo, bytesperline * size.y, mem_len);
+            post_command_hook();
+            break;
+        case kbCtrlA:                   // toggle auto follow mode
+            autofollow ^= 1;
+            indi->changeState(TDIndicator::iAutofollow," A"[autofollow]);
+            break;
+        case kbCtrlB:                   // set new base address
+            sprintf(buf,"%#lx", curs2memo() - memo + mem_start);
+            if (HistinputBox(_("Base Address"),_("~N~ew value"),buf,255,tvgdb_History_Data_Entry) == cmOK)
+            {
+                unsigned long baddr;
+                char *p1 = buf;
+                if (!getParam(&p1,&baddr))
+                {
+                    messageBox(_("Parameter Error!"),mfError|mfOKButton);
+                    break;
+                }
+                base_address = baddr;
+                indi->changeState(TDIndicator::iBaseAddress,baddr ? 'B' : ' ');
+                drawView();
+            }
+            break;
+        case kbCtrlD:                   // change display mode
+            dispmode = (dispmode + 1) % dmMAX;
+            bytesperline &= ~(fieldbytes[dispmode] - 1);
+            update(mem_start);
+            adjustWindow();
+            setCursor(ADDRCHARS, cursor.y);
+            break;
+        case kbCtrlE:                   // change endianness
+            endian ^= 1;
+            indi->changeState(TDIndicator::iEndian, "eE"[endian]);
+            if (fieldbytes[dispmode] > 1)
+                update(mem_start);
+            break;
+        case kbCtrlF:                   // follow pointer
+            sprintf(buf,"*%#lx", curs2memo() - memo + mem_start);
+            goto checkaddress;
+        case kbCtrlG:                   // goto to a new address
+            strcpy(buf, orig_addr_txt);
+            if (HistinputBox(_("Data window"),_("~E~xpression"),buf,255,tvgdb_History_Data_Entry) == cmOK)
+            {
+checkaddress:
+                if (isvalid_address(buf,&newaddr))
+                {
+                    orig_addr = newaddr;
+                    setCursor(ADDRCHARS,0);
+                    address_changed = True;
+                }
+                else
+                {
+                    clearEvent(event);
+                    messageBox(gdb_output_buffer,mfError|mfOKButton);
+                    return;
+                }
+            }
+            break;
+        case kbCtrlH:                   // reevalute the original address then go to there
             if (isvalid_address(orig_addr_txt,&newaddr))
             {
                 orig_addr = newaddr;
@@ -490,99 +662,14 @@ void TDataViewer::handleEvent (TEvent& event)
                 return;
             }
             break;
-        case kbCtrlEnd:
-            setCursor(cursor.x,size.y-1);
-            break;
-        case kbEnd:
-            cursorHoriz(size.x);
-            break;
-#ifdef __i386__
-        case kbCtrlT:
-            strcpy(buf,"$esp");
-            goto checkaddress;
-#endif
-        case kbCtrlF: // follow pointer
-            sprintf(buf,"%#lx", curs2memo() - memo + mem_start);
-            goto checkaddress;
-        case kbCtrlG: // goto to a new address
-            strcpy(buf, orig_addr_txt);
-            if (HistinputBox(_("Data window"),_("~E~xpression"),buf,255,tvgdb_History_Data_Entry) == cmOK)
-            {
-checkaddress:
-                if (isvalid_address(buf,&newaddr))
-                {
-                    orig_addr = newaddr;
-                    setCursor(ADDRCHARS,0);
-                }
-                else
-                {
-                    clearEvent(event);
-                    messageBox(gdb_output_buffer,mfError|mfOKButton);
-                    return;
-                }
-            }
-            break;
-        case kbCtrlD: // change display mode
-            dispmode = (dispmode + 1) % dmMAX;
-            bytesperline &= ~(fieldbytes[dispmode] - 1);
-            update(mem_start);
-            adjustWindow();
-            setCursor(ADDRCHARS, cursor.y);
-            break;
-        case kbCtrlE: // change endianness
-            endian ^= 1;
-            indi->changeState(TDIndicator::iEndian, "eE"[endian]);
-            if (fieldbytes[dispmode] > 1)
-                update(mem_start);
-            break;
-        case kbCtrlX: // change radix
-            radix = (radix + 1) % rxMAX;
-            indi->changeState(TDIndicator::iRadix, "XD"[radix]);
-            update(mem_start);
-            adjustWindow();
-            setCursor(ADDRCHARS, cursor.y);
-            break;
-        case kbGrayMinus: // decrease bytes/line
-            if (bytesperline > fieldbytes[dispmode])
-            {
-                bytesperline -= fieldbytes[dispmode];
-                update(mem_start);
-                adjustWindow();
-                setCursor(ADDRCHARS, cursor.y);
-            }
-            break;
-        case kbGrayPlus: // increase bytes/line
-            bytesperline += fieldbytes[dispmode];
-            free(memo);
-            memo = NULL;
-            update(mem_start);
-            adjustWindow();
-            break;
-        case kbEnter: // update changes
-            indi->changeState(TDIndicator::iChanged, ' ');
-            writebytes(mem_start, (char*)memo, bytesperline * size.y, mem_len);
-            post_command_hook();
-            break;
-        case kbCtrlL: // clear
-            sprintf(buf,"%#lx,", curs2memo() - memo + mem_start);
-            if (HistinputBox(_("Clear Block"),_("~F~rom, length"),buf,255,tvgdb_History_Data_Entry) == cmOK)
-            {
-                unsigned long from,len;
-                if (getParams(buf,&from,&len,NULL) || len > 0x100000)
-                {
-                    messageBox(_("Parameter Error!"),mfError|mfOKButton);
-                    break;
-                }
-                target_fill_mem(from,len,0);
-                post_command_hook();
-            }
-            break;
-        case kbCtrlI: // fill
+        case kbCtrlI:                   // fill block
             sprintf(buf,"%#lx,,", curs2memo() - memo + mem_start);
             if (HistinputBox(_("Fill Block"),_("~F~rom, length, value"),buf,255,tvgdb_History_Data_Entry) == cmOK)
             {
                 unsigned long from,len,value;
-                if (getParams(buf,&from,&len,&value) || len > 0x100000)
+                char *p1 = buf;
+                if (!getParam(&p1,&from) || !getParam(&p1,&len)
+                    || !getParam(&p1,&value) || len > 0x100000)
                 {
                     messageBox(_("Parameter Error!"),mfError|mfOKButton);
                     break;
@@ -591,16 +678,30 @@ checkaddress:
                 post_command_hook();
             }
             break;
-        case kbCtrlR: // read
+        case kbCtrlL:                   // clear block
+            sprintf(buf,"%#lx,", curs2memo() - memo + mem_start);
+            if (HistinputBox(_("Clear Block"),_("~F~rom, length"),buf,255,tvgdb_History_Data_Entry) == cmOK)
+            {
+                unsigned long from,len;
+                char *p1 = buf;
+                if (!getParam(&p1,&from) || !getParam(&p1,&len) || len > 0x100000)
+                {
+                    messageBox(_("Parameter Error!"),mfError|mfOKButton);
+                    break;
+                }
+                //fprintf(stderr,"%lx %lx\n",from,len);
+                target_fill_mem(from,len,0);
+                post_command_hook();
+            }
             break;
-        case kbCtrlW: // write
-            break;
-        case kbCtrlM: // move
+        case kbCtrlM:                   // move block
             sprintf(buf,"%#lx,,", curs2memo() - memo + mem_start);
             if (HistinputBox(_("Move Block"),_("~F~rom, to, length"),buf,255,tvgdb_History_Data_Entry) == cmOK)
             {
                 unsigned long from,to,len;
-                if (getParams(buf,&from,&to,&len) || len > 0x100000)
+                char *p1 = buf;
+                if (!getParam(&p1,&from) || !getParam(&p1,&to)
+                    || !getParam(&p1,&len) || len > 0x100000)
                 {
                     messageBox(_("Parameter Error!"),mfError|mfOKButton);
                     break;
@@ -609,10 +710,63 @@ checkaddress:
                 post_command_hook();
             }
             break;
+        case kbCtrlO:                   // follow pointer & open new window
+            TDataWindow *dw;
+            sprintf(buf,"*%#lx", curs2memo() - memo + mem_start);
+            if ((dw = TDataWindow::createNew(buf)) != NULL)
+                AddWindow(dw);
+            break;
+        case kbCtrlR:                   // read block
+            FILE *f1;
+            if (getFilename(buf,0) && (f1=fopen(buf,"rb"))!=NULL)
+            {
+                sprintf(buf,"%#lx,", curs2memo() - memo + mem_start);
+                if (HistinputBox(_("Read Block"),_("~T~o, length"),buf,255,tvgdb_History_Data_Entry) == cmOK)
+                {
+                    unsigned long from,len;
+                    char *p1 = buf;
+                    if (!getParam(&p1,&from) || !getParam(&p1,&len) || len > 0x100000)
+                        messageBox(_("Parameter Error!"),mfError|mfOKButton);
+                    else
+                    {
+                        sprintf(buf,_("%u bytes read."),readFile(f1,from,len));
+                        post_command_hook();
+                        messageBox(buf,mfOKButton);
+                    }
+                }
+                fclose(f1);
+            }
+            break;
+        case kbCtrlW:                   // write block
+            if (getFilename(buf,1) && (f1=fopen(buf,"wb"))!=NULL)
+            {
+                sprintf(buf,"%#lx,", curs2memo() - memo + mem_start);
+                if (HistinputBox(_("Write Block"),_("~F~rom, length"),buf,255,tvgdb_History_Data_Entry) == cmOK)
+                {
+                    unsigned long from,len;
+                    char *p1 = buf;
+                    if (!getParam(&p1,&from) || !getParam(&p1,&len) || len > 0x100000)
+                        messageBox(_("Parameter Error!"),mfError|mfOKButton);
+                    else
+                    {
+                        sprintf(buf,_("%u bytes written."),writeFile(f1,from,len));
+                        messageBox(buf,mfOKButton);
+                    }
+                }
+                fclose(f1);
+            }
+            break;
+        case kbCtrlX:                   // change radix
+            radix = (radix + 1) % rxMAX;
+            indi->changeState(TDIndicator::iRadix, "XD"[radix]);
+            update(mem_start);
+            adjustWindow();
+            setCursor(ADDRCHARS, cursor.y);
+            break;
         default:
             unsigned kc = event.keyDown.charScan.charCode;
             //fprintf(stderr,"%c",kc);
-            if (dispmode == dmChars) // characters only
+            if (dispmode == dmChars)    // characters only
             {
                 memo[cursor.y*bytesperline+cursor.x-ADDRCHARS] = kc;
                 memo[cursor.y*bytesperline+cursor.x-ADDRCHARS+mem_len] |= EDITED; // mark changed
@@ -660,25 +814,16 @@ checkaddress:
             update(newaddr);
         clearEvent(event);
     }
-    else if( event.what == evBroadcast )
-    {/*
-        if( (options & ofSelectable) != 0 )
+    else if (event.what == evBroadcast)
+    {
+        if (event.message.command == cmScrollBarChanged)
         {
-            if( event.message.command == cmScrollBarClicked &&
-                ( event.message.infoPtr == hScrollBar || 
-                  event.message.infoPtr == vScrollBar ) )
-                select();
-            else if( event.message.command == cmScrollBarChanged )
+            if (vs == event.message.infoPtr && (unsigned)vs->value != mem_start)
             {
-                if( vScrollBar == event.message.infoPtr )
-                {
-                    focusItemNum( vScrollBar->value );
-                    drawView();
-                }
-                else if( hScrollBar == event.message.infoPtr )
-                    drawView();
+                update(vs->value);
+                clearEvent(event);
             }
-        }*/
+        }
     }
 }
 
@@ -694,14 +839,7 @@ void TDataViewer::changeBounds(const TRect &bounds)
     drawView();
 }
 
-/*
- 01 Frame disabled
- 02 Frame
- 03 Frame icons
- 04 Scroll bar page
- 05 Scroll bar icons
- 06-0A TDataViewer
-*/
+//\\//\\//\\//\\//\\//\\ TDataWindow
 
 #define cpDataWindow "\xC0\xC1\xC2\xC3\xC4\xC5\xC6\xC7"\
                      "\xC8\xC9\xCA"
@@ -732,7 +870,7 @@ TDataWindow::TDataWindow(const TRect &bounds, const char *aTitle) :
     growMode = gfGrowLoY | gfGrowHiX | gfGrowHiY;
     flags |= wfGrow|wfZoom;
 
-    viewer->indi = new TDIndicator(TRect(2,size.y-1,8,size.y));
+    viewer->indi = new TDIndicator(TRect(2,size.y-1,12,size.y));
     insert(viewer->indi);
     
     viewer->select();
@@ -754,7 +892,7 @@ TDataWindow::~TDataWindow()
 void TDataWindow::updateAll()
 {
     for (TDataWindow *wp = windowlist; wp; wp = wp->next)
-        wp->viewer->update(wp->viewer->mem_start);
+        wp->viewer->update(wp->viewer->mem_start,True);
 }
 
 void TDataWindow::sizeLimits(TPoint& min, TPoint& max)
@@ -762,18 +900,22 @@ void TDataWindow::sizeLimits(TPoint& min, TPoint& max)
     TWindow::sizeLimits(min, max);
 }
 
-TDataWindow *TDataWindow::createNew()
+TDataWindow *TDataWindow::createNew(const char *naddr)
 {
+    static int winpos = 0;
+    
     char buf[256];
     buf[0] = 0;
-    if (HistinputBox(_("Data window"),_("~E~xpression"),buf,255,tvgdb_History_Data_Entry) == cmOK)
+    if (naddr || HistinputBox(_("Data window"),_("~E~xpression"),buf,255,tvgdb_History_Data_Entry) == cmOK)
     {
         unsigned long addr;
-        if (isvalid_address(buf,&addr))
+        if (isvalid_address(naddr ? naddr : buf,&addr))
         {
-            TRect r(0,5,79,20);
-            TDataWindow *dw=new TDataWindow(r,buf);
+            TRect r(winpos,5+winpos,70,15+winpos);
+            winpos = (winpos+1) % 10;
+            TDataWindow *dw=new TDataWindow(r,naddr ? naddr : buf);
             dw->viewer->update(addr);
+            dw->viewer->adjustWindow();
             return dw;
         }
         messageBox(gdb_output_buffer,mfError|mfOKButton);
@@ -781,10 +923,27 @@ TDataWindow *TDataWindow::createNew()
     return NULL;
 }
 
+TDataWindow *TDataWindow::stackWindow()
+{
+    // FIXME: this is i386 specific
+    TDataWindow *dw = createNew("$esp");
+    if (dw)
+    {
+        dw->viewer->bytesperline = 4;
+        dw->viewer->dispmode = TDataViewer::dm4Bytes;
+        dw->viewer->autofollow = 1;
+        dw->viewer->indi->changeState(TDIndicator::iAutofollow, 'A');
+        dw->viewer->adjustWindow();
+    }
+    return dw;
+}
+
+//\\//\\//\\//\\//\\//\\ TIndicator
+
 TDIndicator::TDIndicator (const TRect& bounds) :
     TIndicator (bounds)
 {
-    strcpy(thestate,"  eX ");
+    strcpy(thestate,"  eX  ");
 }
 
 void TDIndicator::draw()
@@ -818,9 +977,10 @@ void TDIndicator::changeState (IndiType snum,int value)
 /*
  todo:
  -----
- - block(+clear ^L,+fill ^I,-read ^R,-write ^W,-move ^M)
+ + block(clear ^L,fill ^I,read ^R,write ^W,move ^M)
  + goto   ^G
  + follow ^F
+ + follow and open new window ^O
  + display(byte->half word->word->chars->float?->double?) ^D
  + radix 16-10?  ^X
  + endian? ^E
@@ -831,14 +991,19 @@ void TDIndicator::changeState (IndiType snum,int value)
  + auto adjust window size
  - bookmarks?
  - data breakpoints
- + goto stack  ^T
+ + base address mode ^B
+ + autofollow ^A
 
- - add mouse & scrollbar handling
+ + add mouse & scrollbar handling
  + remove magic constants
  / cleanup the code
  - comments
  - try to fix 32-bit dependencies
+ - fix FIXMEs
+ - popup menus?
+ - change address types to correct types using libgdb.h
  
- - disassembler window: support intel syntax too
+ - disassembler window
+     -support intel syntax too
  */
 

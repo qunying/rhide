@@ -241,8 +241,8 @@
         S(C3,Blue,Cyan,Scroll bar page) \
         S(C4,Blue,Cyan,Scroll bar icons) \
         S(C5,Black,Cyan,Normal Text(active)) \
-        S(C6,White,Green,Normal Text(inactive)) \
-        S(C7,Yellow,Cyan,Focused Text) \
+        S(C6,White,Cyan,Normal Text(inactive)) \
+        S(C7,White,Blue,Focused Text) \
         S(C8,Black,Magenta,Selected Text) \
         S(C9,Black,Red,reserved) \
         S(CA,Black,Cyan,reserved)

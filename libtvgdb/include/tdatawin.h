@@ -15,12 +15,13 @@ class TDataWindow : public TDialog
   static TDataWindow *windowlist;
   
 public:
-  TDataWindow(const TRect &, const char *aTitle);
+  TDataWindow(const TRect &,const char *aTitle);
   ~TDataWindow();
   virtual TPalette &getPalette() const;
-  virtual void sizeLimits( TPoint& min, TPoint& max );
+  virtual void sizeLimits(TPoint& min,TPoint& max);
 
-  static TDataWindow *createNew();
+  static TDataWindow *createNew(const char *naddr = NULL);
+  static TDataWindow *stackWindow();
   static void updateAll();
 };
 

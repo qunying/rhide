@@ -157,6 +157,7 @@ TMenuBar *RHGDBApp::initMenuBar(TRect r)
       newLine() +
       *new TMenuItem(_("~D~isassembler window"),cmDisWindow,kbNoKey,hcNoContext,"") +
       *new TMenuItem(_("D~a~ta window"),cmDataWindow,kbNoKey,hcNoContext,"") +
+      *new TMenuItem(_("S~t~ack window"),cmStackWindow,kbNoKey,hcNoContext,"") +
       *new TMenuItem(_("~C~all stack"),cmCallStack,kbCtrlF3,hcNoContext,"Ctrl+F3") +
       *new TMenuItem(_("List of ~F~unctions"), cmFunctionList, kbNoKey, hcNoContext, "") +
     *new TSubMenu(_("~O~ptions"),kbAltO) +
@@ -267,6 +268,8 @@ static void OpenDisWin()
   }
 }
 
+static TDataWindow *stack_win = NULL;
+
 void RHGDBApp::handleEvent(TEvent & event)
 {
   static char *callstack_name = NULL;
@@ -313,6 +316,16 @@ void RHGDBApp::handleEvent(TEvent & event)
           TDataWindow *data_win;
           if ((data_win = TDataWindow::createNew()))
             AddWindow(data_win);
+          clearEvent(event);
+          break;
+        case cmStackWindow:
+          if (!stack_win)
+          {
+            if ((stack_win = TDataWindow::stackWindow()))
+              AddWindow(stack_win,(TWindow **) &stack_win);
+          }
+          else
+            stack_win->select();
           clearEvent(event);
           break;
         case cmMainFunction:
@@ -459,6 +472,7 @@ static void UPDATE_WATCH()
   if (watchwindow) watches->update();
   UpdateCallStackWindow();
   TDataWindow::updateAll();
+  if (dis_win) dis_win->update(stop_pc);
 }
 
 static void InitDebuggerInterface();

@@ -37,7 +37,8 @@ const ushort
   cmEditorAnswer = 329,
   cmDisWindow = 330,
   cmShowWatchWindow = 331,
-  cmDataWindow = 332;
+  cmDataWindow = 332,
+  cmStackWindow = 333;
   
 extern char *progname;
 extern char **files_on_desktop;
@@ -49,7 +50,6 @@ extern TDirList *src_dirs;
 class TDisassemblerWindow;
 extern TDisassemblerWindow *dis_win;
 class TDataWindow;
-//extern TDataWindow *data_win;
   
 void STEP(int _switch_to_user = 1);
 void TRACE(int _switch_to_user = 1);

@@ -1,4 +1,4 @@
-/* Copyright (C) 1996-2000 Robert H”hne, see COPYING.RH for details */
+/* Copyright (C) 1996-2003 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
 #include "rhide.h"
 
@@ -133,7 +133,7 @@ user_check_errors(TDependency * dep, TMsgCollection & args)
   string_dup(tmp, dep->error_check);
   string_cat(tmp, " ");
   string_cat(tmp, cpp_errname);
-  inf = popen(tmp, "rt");
+  inf = popen(tmp, "r");
   if (!inf)
   {
     string_dup(tmp, _("An error has occoured when running the program "));

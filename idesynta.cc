@@ -266,6 +266,7 @@ TNodeCollection::TNodeCollection(int _ignore_case) :
     STRCMP = strcasecmp;
   else
     STRCMP = strcmp;
+  duplicates = True;
 }
 
 void *TNodeCollection::keyOf(void *item)

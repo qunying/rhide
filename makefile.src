@@ -108,9 +108,6 @@ clean::
 gpr2mak: gpr2mak.exe
 	$(LN_SF) $< $@
 
-gprexp: gprexp.exe
-	$(LN_SF) $< $@
-
 clean::
 	rm -f gpr2mak
 

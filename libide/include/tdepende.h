@@ -29,7 +29,7 @@ TDepCollection(StreamableInit):TSortedCollection(streamableInit)
   virtual void *read(ipstream &);
 
 public:
-  static const char *const near name;
+  static const char *const name;
   static TStreamable *build();
 
   TDepCollection & operator = (const TDepCollection &);
@@ -111,7 +111,7 @@ protected:
   virtual void *read(ipstream &);
 
 public:
-  static const char *const near name;
+  static const char *const name;
   static TStreamable *build();
 
   TDependency & operator = (const TDependency &);

@@ -51,7 +51,7 @@ protected:
   virtual void *read(ipstream &);
 
 public:
-  static const char *const near name;
+  static const char *const name;
   static TStreamable *build();
 
   TOptions & operator = (const TOptions &);

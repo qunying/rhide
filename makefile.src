@@ -45,6 +45,8 @@ install_data_files_common=rhide_.env
 install_data_files_Linux=
 install_data_files=$(install_data_files_common) $(install_data_files_$(rhide_OS))
 
+main_executables=gpr2mak.exe gprexp.exe idegc.exe rhgdb/rhgdb.exe
+
 include $(RHIDESRC)/common.mak
 
 ifeq ($(strip $(SETSRC)),)
@@ -76,7 +78,7 @@ export GDB_OBJ:=$(GDB_SRC)
 endif
 endif
 
-programs=gpr2mak.exe idegc.exe rhgdb/rhgdb.exe
+programs=gpr2mak.exe idegc.exe rhgdb/rhgdb.exe gprexp.exe
 
 all:: libgdb/libgdbrh.h $(programs)
 
@@ -314,10 +316,17 @@ ifneq ($(bin_src_bin_files),)
 endif
 	echo $(addprefix $(bin_src_prefix),$(bin_src_files)) >> $(logfile)
 
+ifneq ($(link_type),dynamic)
 DISTRIB_BIN_FLAGS=\
 	"LDFLAGS=$(LDFLAGS) -s -static" \
 	LFN=Y \
 	FNCASE=Y
+else
+DISTRIB_BIN_FLAGS=\
+	"LDFLAGS=$(LDFLAGS) -s -dynamic" \
+	LFN=Y \
+	FNCASE=Y
+endif
 
 ifeq ($(rhide_OS),DJGPP)
 install_prefix_bin=
@@ -333,8 +342,12 @@ install.all:
 
 distrib.bin_: install.all install.bin_src_files $(MANIFEST)
 
+distrib.dynamic:
+	$(MAKE) link_type=dynamic archive_id=.dynamic distrib.bin 
+
 distrib.bin: init.version touch_gprs
 	rm -rf $(copy_dir)
+	rm -f $(main_executables)
 # make at first gpr2mak
 	$(MAKE) $(FLAGS_TO_PASS) $(DISTRIB_BIN_FLAGS) gpr2mak.exe
 	$(MAKE)  $(FLAGS_TO_PASS) prefix=$(copy_dir)$(install_prefix_bin) \
@@ -349,7 +362,7 @@ ifeq ($(rhide_OS),DJGPP)
 	cat $(srcdir)/zipcomm.bin | zip -z $(rhideb).zip
 else
 	tar -C $(copy_dir) -cvf - `ls $(copy_dir) | sed 's,$(copy_dir)/,,g'` \
-	  | gzip -9c > $(obj_dir)/$(PACKAGE)$(DIR_VERSION).bin.`uname -sr | sed 's/ /-/g'`.tar.gz
+	  | gzip -9c > $(obj_dir)/$(PACKAGE)$(DIR_VERSION).bin$(archive_id).`uname -sr | sed 's/ /-/g'`.tar.gz
 endif
 
 RAW_TV_SRC=$(sort $(subst .o,.cc,$(shell ar t $(TVOBJ)/librhtv.a)))

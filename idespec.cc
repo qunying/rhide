@@ -47,10 +47,10 @@ static char *default_variables[] = {
  "gcc",
 
  "RHIDE_AS",
- "gcc",
+ "$(RHIDE_GCC)",
 
  "RHIDE_GXX",
- "gcc",
+ "$(RHIDE_GCC)",
 
  "RHIDE_GPC",
  "gpc",
@@ -62,7 +62,7 @@ static char *default_variables[] = {
  "ar",
 
  "RHIDE_LD",
- "gcc",
+ "$(RHIDE_GCC)",
 
  "RHIDE_G77",
  "g77",

@@ -121,6 +121,9 @@ msgstr "~N~ame"
 msgid  "Add '%s' to the search path for source files"
 msgstr "'%s' zum Suchpfad fÅr Quelldateien hinzufÅgen?"
 
+msgid  "Untitled"
+msgstr "Namenlos"
+
 msgid  "Source has been modified. Rebuild it?"
 msgstr "Quelltext wurde verÑndert. Neu erzeugen?"
 
@@ -143,10 +146,10 @@ msgid  "executing: "
 msgstr "fÅhre aus: "
 
 msgid  "Output to stderr:"
-msgstr ""
+msgstr "Ausgabe zu stderr:"
 
 msgid  "Output to stdout:"
-msgstr ""
+msgstr "Ausgabe zu stdout:"
 
 msgid  "return value: %d\n"
 msgstr "RÅckgabewert: %d\n"
@@ -172,9 +175,8 @@ msgstr ",Zeit: %08lx\n"
 msgid  "checking"
 msgstr "ÅberprÅfe"
 
-msgid  ""
-"Could not find the source file '%s'. Make sure, that the file exist or check "
-"the settings in 'Options/Directories' for the correct paths."
+msgid  "Could not find the source file '%s'. Make sure, that the file exist "
+"or check the settings in 'Options/Directories' for the correct paths."
 msgstr "Konnte die Quelldatei '%s' nicht finden, Stelle sicher, da· "
 "sieexistiert oder ÅberprÅfe die Einstellungen in 'Optionen/Verzeichnisse' "
 "aufkorrekte Pfade"
@@ -685,6 +687,24 @@ msgstr "zur Entwicklung von Linux Applikationen"
 msgid  "Copyright (C) by Robert Hîhne, 1996-1998"
 msgstr "Alle Rechte bei Robert Hîhne, 1996-1998"
 
+msgid  "Language: "
+msgstr "Sprache: "
+
+msgid  "English"
+msgstr "Deutsch"
+
+msgid  "Translated by: "
+msgstr "öbersetzt durch: "
+
+msgid  "Nobody"
+msgstr "Robert Hîhne <robert.hoehne@gmx.net>"
+
+msgid  "last updated: "
+msgstr "zuletzt aktualisiert: "
+
+msgid  "1998-11-29"
+msgstr "29.11.1998"
+
 msgid  "~O~K"
 msgstr "~O~K"
 
@@ -698,7 +718,7 @@ msgid  "Name of the main function"
 msgstr "Name der 'main'-Funktion"
 
 msgid  "Expression to inspect"
-msgstr ""
+msgstr "Ausdruck zum inspizieren"
 
 msgid  "~E~xpression"
 msgstr "~A~usdruck"
@@ -812,18 +832,21 @@ msgstr "Dies ist %s. Alle Rechte bei Robert Hîhne, 1996-1998\n"
 msgid  "Do you really want to interrupt RHIDE?"
 msgstr "Mîchtest Du wirklich RHIDE unterbrechen?"
 
-msgid  ""
-"RHIDE has detected, that the environment variable 'DJDIR' has not been set. "
-"This means, you haven't installed DJGPP correct. Please read the file "
-"README.1ST from the DJGPP distribution how to install DJGPP. If you continue "
-"now, you will get probably many errors."
-msgstr ""
+msgid  "RHIDE has detected, that the environment variable 'DJDIR' has not "
+"been set. This means, you haven't installed DJGPP correct. Please read the "
+"file README.1ST from the DJGPP distribution how to install DJGPP. If you "
+"continue now, you will get probably many errors."
+msgstr "RHIDE hat festgestellt, da· die Umgebungsvariable 'DJDIR' nicht "
+"gesetzt ist. Dies bedeutet, da· Du DJGPP nicht korrekt installiert hast. "
+"Bitte lese die Datei README.1ST von der DJGPP Distribution wie DJGPP zu "
+"installieren ist. Wenn Du jetzt weiter machts, wirst Du wahrscheinlich "
+"viele Fehler bekommen."
 
 msgid  "Invalid project-file %s(%s)"
 msgstr "UngÅltige Projektdatei %s(%s)"
 
-msgid  ""
-"This project was created with a newer RHIDE version and could not be used."
+msgid  "This project was created with a newer RHIDE version and could not be "
+"used."
 msgstr "Dieses Projekt wurde mit einer neueren Version von RHIDE erzeugt und "
 "konnte nicht genutzt werden."
 
@@ -873,10 +896,10 @@ msgid  "Save a~l~l"
 msgstr "A~l~le speichern"
 
 msgid  "~P~rint"
-msgstr ""
+msgstr "D~r~ucken"
 
 msgid  "Printer set~u~p"
-msgstr ""
+msgstr "Drucker e~i~nrichten"
 
 msgid  "~D~OS shell"
 msgstr "~D~OS shell"
@@ -900,13 +923,13 @@ msgid  "~P~lay"
 msgstr "A~b~spielen"
 
 msgid  "~C~hoose"
-msgstr ""
+msgstr "~W~Ñhlen"
 
 msgid  "R~e~peat"
-msgstr ""
+msgstr "W~i~ederholen"
 
 msgid  "~G~enerate Code"
-msgstr ""
+msgstr "Er~z~euge Code"
 
 msgid  "~E~dit"
 msgstr "~E~dit"
@@ -936,7 +959,7 @@ msgid  "Cop~y~ to Windows Clipboard"
 msgstr "Kopiere zur ~W~indows Zwischenablage"
 
 msgid  "Paste from ~W~indows Clipboard"
-msgstr ""
+msgstr "Kopiere ~v~on der Windows Zwischenablage"
 
 msgid  "E~x~pand all tabs"
 msgstr "Alle Tabs e~x~pandieren"
@@ -1257,7 +1280,7 @@ msgid  "~W~atch an expression"
 msgstr "öber~w~ache Ausdruck"
 
 msgid  "~I~nspect an expression"
-msgstr ""
+msgstr "~I~nspizieren eines Ausdrucks"
 
 msgid  "~B~reakpoints"
 msgstr "~H~altepunkte"
@@ -1397,7 +1420,8 @@ msgstr "Abbruch"
 msgid  "Mor~e~ options"
 msgstr "W~e~itere Optionen"
 
-msgid  "This video mode (0x%03x) is not supported by the Turbo Vision library"
+msgid  "This video mode (0x%03x) is not supported by the Turbo Vision "
+"library"
 msgstr "Dieser Videomodus (0x%03x) wird nicht von der Turbo Vision "
 "BibliothekunterstÅtzt"
 
@@ -1510,9 +1534,8 @@ msgid  "The desktop file cannot be used, because of a new format"
 msgstr "Die Desktopdatei kann aufgrund eines neuen Formates nicht "
 "verwendetwerden"
 
-msgid  ""
-"The desktop file cannot be used, because it was created by a newer version "
-"of RHIDE"
+msgid  "The desktop file cannot be used, because it was created by a newer "
+"version of RHIDE"
 msgstr "Die Desktopdatei kann nicht benutzt werden, da sie durch eine "
 "neuereVersion von RHIDE erzeugt wurde"
 
@@ -1699,9 +1722,8 @@ msgstr "Da waren einige Fehler"
 msgid  "Select a topic"
 msgstr "WÑhle ein Thema"
 
-msgid  ""
-"Error creating the indices for %s (or nothing found). Remove that file from "
-"the list?"
+msgid  "Error creating the indices for %s (or nothing found). Remove that "
+"file from the list?"
 msgstr "Fehler beim Erzeugen der Indizes fÅr %s (oder nichts gefunden). "
 "DieseDatei aus der Liste streichen?"
 
@@ -1747,35 +1769,201 @@ msgstr "~B~erechnen"
 msgid  "Error in expression (%d)"
 msgstr "Fehler in Ausdruck (%d)"
 
-msgid  ""
-"RHIDE has detected that your DJGPP environment variable was not set. It is "
-"set now automatically. If RHIDE did the right choice, please modify your "
-"autoexec.bat by adding the following line to fix this problem:\n"
+msgid  "RHIDE has detected that your DJGPP environment variable was not set. "
+"It is set now automatically. If RHIDE did the right choice, please modify "
+"your autoexec.bat by adding the following line to fix this problem:\n"
 "\n"
 "SET DJGPP=%s\n"
-msgstr ""
+msgstr "RHIDE hat festgestellt, da· die Umgebungsvariable DJGPP nicht "
+"gesetzt war. Sie ist nun automatisch gesetzt worden. Wenn RHIDE die "
+"richtige Wahl getroffen hat, modifiziere bitte Deine autoexec.bat durch "
+"HinzufÅgen der folgenden Zeile um das Problem zu beheben:\n"
+"\n"
+"SET DJGPP=%s\n"
 
-msgid  ""
-"RHIDE has detected, that the environment variable DJDIR has not been set (or "
-"not correct). This is a fatal mistake. For information about fixing this, "
-"please read the File README.1ST from the DJGPP distribution. (about setting "
-"the DJGPP environment variable!!!) Should I continue?"
-msgstr ""
+msgid  "RHIDE has detected, that the environment variable DJDIR has not been "
+"set (or not correct). This is a fatal mistake. For information about fixing "
+"this, please read the File README.1ST from the DJGPP distribution. (about "
+"setting the DJGPP environment variable!!!) Should I continue?"
+msgstr "RHIDE hat festgestellt, da· die Umgebungsvariable DJDIR nicht (oder "
+"nicht korrekt) gesetzt war. Dies ist ein schwerer Fehler. Zu Informationen "
+"die Korrektur dessen, lese bitte die Datei README.1ST der "
+"DJGPP-Distribution. (öber das Setzen der DJGPP-Umgebungsvariable!!!) Soll "
+"ich weitermachen?"
 
-msgid  ""
-"RHIDE could not access the direcory '%s', where it searches for language "
-"specifc strings. Please read the file 'RHIDE.BIN' how to install RHIDE "
-"correct. Should I continue?"
-msgstr ""
+msgid  "RHIDE could not access the direcory '%s', where it searches for "
+"language specific strings. Please read the file 'RHIDE.BIN' how to install "
+"RHIDE correct. Should I continue?"
+msgstr "RHIDE konnte nicht auf das Verzeichnis '%s' zugreifen, wo die "
+"sprachspezifischen Texte gesucht werden. Lese bitte die Datei 'RHIDE.BIN' "
+"wie RHIDE korrkt zu installieren ist. Soll ich weitermachen?"
 
-msgid  ""
-"RHIDE has detected, that you are running on a System where long filenames "
-"might be supported and you have installed the C++ compiler. Are you sure, "
-"you have read the DJGPP FAQ and the installing instructions for gcc when "
-"running under such a system? (like Windows 95/Windows NT) There might be a "
-"problem with the standard C++ libraries and the standard C++ include files "
-"because of a LFN-conflict. Should I continue?"
-msgstr ""
+msgid  "RHIDE has detected, that you are running on a System where long "
+"filenames might be supported and you have installed the C++ compiler. Are "
+"you sure, you have read the DJGPP FAQ and the installing instructions for "
+"gcc when running under such a system? (like Windows 95/Windows NT) There "
+"might be a problem with the standard C++ libraries and the standard C++ "
+"include files because of a LFN-conflict. Should I continue?"
+msgstr "RHIDE hat festgestellt, da· Du unter einem System arbeitest, wo "
+"lange Dateinamen wahrscheinlich unterstÅtzt werden und Du hast den "
+"C++-Compiler installiert. Bist Du sicher, da· Du die "
+"Installationsanweisungen der DJGPP FAQ fÅr solch ein System gelesen hast? "
+"(wie Windows 95/Windows NT) Es kînnten Probleme mit den "
+"Standard-C++-Bibliotheken und Include-Dateien auftreten durch einen "
+"LFN-Konflikt. Soll ich weitermachen?"
+
+msgid  "type not registered: %s\n"
+msgstr "Typ nicht registriert: %s\n"
+
+msgid  "Change Directory"
+msgstr "Wechsle Verzeichnis"
+
+msgid  "Directory ~n~ame"
+msgstr "Verzeichnis ~N~ame"
+
+msgid  "Directory ~t~ree"
+msgstr "Verzeichnis ~B~aum"
+
+msgid  "~C~hdir"
+msgstr "~W~echsle"
+
+msgid  "~R~evert"
+msgstr "~R~evert"
+
+msgid  "Help"
+msgstr "~H~ilfe"
+
+msgid  "Drives"
+msgstr "Laufwerke"
+
+msgid  "Invalid directory"
+msgstr "UngÅltiges Verzeichnis"
+
+msgid  "Colors"
+msgstr "Farben"
+
+msgid  "~G~roup"
+msgstr "~G~ruppe"
+
+msgid  "~I~tem"
+msgstr "~E~lement"
+
+msgid  "~F~oreground"
+msgstr "~V~ordergrund"
+
+msgid  "~B~ackground"
+msgstr "~H~intergrund"
+
+msgid  "Text "
+msgstr "Text "
+
+msgid  "Color"
+msgstr "Farbe"
+
+msgid  "~F~iles"
+msgstr "~D~ateien"
+
+msgid  "~R~eplace"
+msgstr "Ersetzen"
+
+msgid  "~C~lear"
+msgstr "~L~îschen"
+
+msgid  "Invalid drive or directory"
+msgstr "UngÅltiges Verzeichnis oder Laufwerk."
+
+msgid  "Invalid file name."
+msgstr "UngÅltiger Dateiname."
+
+msgid  "Jan"
+msgstr "Jan"
+
+msgid  "Feb"
+msgstr "Feb"
+
+msgid  "Mar"
+msgstr "MÑr"
+
+msgid  "Apr"
+msgstr "Apr"
+
+msgid  "May"
+msgstr "Mai"
+
+msgid  "Jun"
+msgstr "Jun"
+
+msgid  "Jul"
+msgstr "Jul"
+
+msgid  "Aug"
+msgstr "Aug"
+
+msgid  "Sep"
+msgstr "Sep"
+
+msgid  "Oct"
+msgstr "Okt"
+
+msgid  "Nov"
+msgstr "Nov"
+
+msgid  "Dec"
+msgstr "Dez"
+
+msgid  "Invalid character in input"
+msgstr "UngÅltiges Zeichen in der Eingabe"
+
+msgid  "<empty>"
+msgstr "<leer>"
+
+msgid  "Normal"
+msgstr "Normal"
+
+msgid  "Highlight"
+msgstr "Hervorgehoben"
+
+msgid  "Underline"
+msgstr "Unterstrichen"
+
+msgid  "Inverse"
+msgstr "Invertiert"
+
+msgid  "~Alt-X~ Exit"
+msgstr "~Alt-X~ Ende"
+
+msgid  "Value not in the range %U to %U"
+msgstr "Wert ist nicht im Bereich von %U bis %U"
+
+msgid  "Value not in the range %D to %D"
+msgstr "Wert ist nicht im Bereich von %D bis %D"
+
+msgid  "Could not open '%s' for reading"
+msgstr "Konnte '%s' nicht zum Lesen îffnen"
+
+msgid  "Save to file"
+msgstr "Speichere in Datei"
+
+msgid  "~Y~es"
+msgstr "~J~a"
+
+msgid  "~N~o"
+msgstr "~N~ein"
+
+msgid  "Warning"
+msgstr "Warnung"
+
+msgid  "Error"
+msgstr "Fehler"
+
+msgid  "Information"
+msgstr "Information"
+
+msgid  "Confirm"
+msgstr "EinverstÑndnis"
+
+msgid  "Don't warn you next time"
+msgstr "Das nÑchste mal nicht warnen"
 
 msgid  "You must type a value here"
 msgstr "Du mu·t hier einen Wert eingeben"
@@ -1897,16 +2085,14 @@ msgstr "Berechnen und éndern"
 msgid  "Add to watch list"
 msgstr "FÅge zu den Åberwachten AusdrÅcken hinzu"
 
-msgid  ""
-"%s\n"
+msgid  "%s\n"
 "\n"
 "(Breakpoint at function '%s' in file %s)"
 msgstr "%s\n"
 "\n"
 "(Haltepunkt in Funktion '%s' in Datei %s)"
 
-msgid  ""
-"%s\n"
+msgid  "%s\n"
 "\n"
 "(Breakpoint at line %d in file %s)"
 msgstr "%s\n"
@@ -1919,34 +2105,29 @@ msgstr "Das Program erhielt das Signal: "
 msgid  "For this line is no code generated"
 msgstr "FÅr diese Zeile ist kein Code erzeugt"
 
-msgid  ""
-"Could not find the program. You must build at first the program to use this "
-"function, because the symbols are taken from that file."
+msgid  "Could not find the program. You must build at first the program to "
+"use this function, because the symbols are taken from that file."
 msgstr "Konnte das Programm nicht finden. Du mu·t zuerst das Programm "
 "erzeugen,da die Symbole von dieser Datei genommen werden."
 
-msgid  ""
-"The selected breakpoint is invalid, probably this file is not compiled with "
-"debugging information or for this line is no code generated."
+msgid  "The selected breakpoint is invalid, probably this file is not "
+"compiled with debugging information or for this line is no code generated."
 msgstr "Der gewÑhlte Haltepunkt ist ungÅltig, wahrscheinlich ist die "
 "Dateinicht mit Debuginformationen Åbersetzt worden oder fÅr die Zeile wurde "
 "keinCode erzeugt"
 
-msgid  ""
-"This program has no usable debugging information. Try to compile it with the "
-"-g switch."
+msgid  "This program has no usable debugging information. Try to compile it "
+"with the -g switch."
 msgstr "Dieses Programm hat keine nutzbaren Debuginformation. Versuche es "
 "mitdem -g Switch."
 
-msgid  ""
-"This breakpoint could not enabled, because you are running under Windows "
-"3.1x and there the number of breakpoints is limited to 3"
+msgid  "This breakpoint could not enabled, because you are running under "
+"Windows 3.1x and there the number of breakpoints is limited to 3"
 msgstr "Dieser Haltepunkt konnte nicht aktiviert werden, da das program "
 "unterWindows 3.1x lÑuft (max 3 Haltepunkte)"
 
-msgid  ""
-"You have already 3 breakpoints set and under Windows 3.1x the number of "
-"breakpoints is limited to 3"
+msgid  "You have already 3 breakpoints set and under Windows 3.1x the number "
+"of breakpoints is limited to 3"
 msgstr "Du hast schon 3 Haltepunkte gesetzt und unter Windows 3.1x sind "
 "nurmaximal 3 erlaubt"
 
@@ -1956,56 +2137,53 @@ msgstr "Funktionsaufrufstapel"
 msgid  "Change register value"
 msgstr "VerÑnder Registerwert"
 
-msgid  "<empty>"
-msgstr "<leer>"
-
 msgid  "Write block to file"
-msgstr ""
+msgstr "Schreibe Block in Datei"
 
 msgid  "Read block from file"
-msgstr ""
+msgstr "Lese Block aus Datei"
 
 msgid  "Base Address"
-msgstr ""
+msgstr "Basisadresse"
 
 msgid  "Parameter Error!"
-msgstr ""
+msgstr "Parameterfehler"
 
 msgid  "Data window"
-msgstr ""
+msgstr "Daten Fenster"
 
 msgid  "Fill Block"
-msgstr ""
+msgstr "FÅlle Block"
 
 msgid  "~F~rom, length, value"
-msgstr ""
+msgstr "~V~on, LÑnge, Wert"
 
 msgid  "Clear Block"
-msgstr ""
+msgstr "Lîsche Block"
 
 msgid  "~F~rom, length"
-msgstr ""
+msgstr "~V~on, LÑnge"
 
 msgid  "Move Block"
-msgstr ""
+msgstr "Verschiebe Block"
 
 msgid  "~F~rom, to, length"
-msgstr ""
+msgstr "~V~on, bis, LÑnge"
 
 msgid  "Read Block"
-msgstr ""
+msgstr "Lese Block"
 
 msgid  "~T~o, length"
-msgstr ""
+msgstr "~B~is, LÑnge"
 
 msgid  "%u bytes read."
-msgstr ""
+msgstr "%u Bytes gelesen."
 
 msgid  "Write Block"
-msgstr ""
+msgstr "Schreibe Block"
 
 msgid  "%u bytes written."
-msgstr ""
+msgstr "%u Bytes geschrieben"
 
 msgid  "~P~athlist"
 msgstr "~P~fadliste"
@@ -2019,167 +2197,11 @@ msgstr "Die Anzahl der Appostrophe ist nicht korrekt"
 msgid  "Closed"
 msgstr "Geschlossen"
 
-msgid  "Untitled"
-msgstr "Namenlos"
-
 msgid  "Error: "
 msgstr "Fehler: "
 
 msgid  "Warning: "
 msgstr "Warnung: "
-
-msgid  "Could not open '%s' for reading"
-msgstr "Konnte '%s' nicht zum Lesen îffnen"
-
-msgid  "Save to file"
-msgstr "Speichere in Datei"
-
-msgid  "~Y~es"
-msgstr "~J~a"
-
-msgid  "~N~o"
-msgstr "~N~ein"
-
-msgid  "Warning"
-msgstr "Warnung"
-
-msgid  "Error"
-msgstr "Fehler"
-
-msgid  "Information"
-msgstr "Information"
-
-msgid  "Confirm"
-msgstr "EinverstÑndnis"
-
-msgid  "Don't warn you next time"
-msgstr "Das nÑchste mal nicht warnen"
-
-msgid  "type not registered: %s\n"
-msgstr "Typ nicht registriert: %s\n"
-
-msgid  "Change Directory"
-msgstr "Wechsle Verzeichnis"
-
-msgid  "Directory ~n~ame"
-msgstr "Verzeichnis ~N~ame"
-
-msgid  "Directory ~t~ree"
-msgstr "Verzeichnis ~B~aum"
-
-msgid  "~C~hdir"
-msgstr "~W~echsle"
-
-msgid  "~R~evert"
-msgstr "~R~evert"
-
-msgid  "Help"
-msgstr "~H~ilfe"
-
-msgid  "Drives"
-msgstr "Laufwerke"
-
-msgid  "Invalid directory"
-msgstr "UngÅltiges Verzeichnis"
-
-msgid  "Colors"
-msgstr "Farben"
-
-msgid  "~G~roup"
-msgstr "~G~ruppe"
-
-msgid  "~I~tem"
-msgstr "~E~lement"
-
-msgid  "~F~oreground"
-msgstr "~V~ordergrund"
-
-msgid  "~B~ackground"
-msgstr "~H~intergrund"
-
-msgid  "Text "
-msgstr "Text "
-
-msgid  "Color"
-msgstr "Farbe"
-
-msgid  "~F~iles"
-msgstr "~D~ateien"
-
-msgid  "~R~eplace"
-msgstr "Ersetzen"
-
-msgid  "~C~lear"
-msgstr "~L~îschen"
-
-msgid  "Invalid drive or directory"
-msgstr "UngÅltiges Verzeichnis oder Laufwerk."
-
-msgid  "Invalid file name."
-msgstr "UngÅltiger Dateiname."
-
-msgid  ""
-msgstr ""
-
-msgid  "Jan"
-msgstr "Jan"
-
-msgid  "Feb"
-msgstr "Feb"
-
-msgid  "Mar"
-msgstr "MÑr"
-
-msgid  "Apr"
-msgstr "Apr"
-
-msgid  "May"
-msgstr "Mai"
-
-msgid  "Jun"
-msgstr "Jun"
-
-msgid  "Jul"
-msgstr "Jul"
-
-msgid  "Aug"
-msgstr "Aug"
-
-msgid  "Sep"
-msgstr "Sep"
-
-msgid  "Oct"
-msgstr "Okt"
-
-msgid  "Nov"
-msgstr "Nov"
-
-msgid  "Dec"
-msgstr "Dez"
-
-msgid  "Invalid character in input"
-msgstr "UngÅltiges Zeichen in der Eingabe"
-
-msgid  "Normal"
-msgstr "Normal"
-
-msgid  "Highlight"
-msgstr "Hervorgehoben"
-
-msgid  "Underline"
-msgstr "Unterstrichen"
-
-msgid  "Inverse"
-msgstr "Invertiert"
-
-msgid  "~Alt-X~ Exit"
-msgstr "~Alt-X~ Ende"
-
-msgid  "Value not in the range %U to %U"
-msgstr ""
-
-msgid  "Value not in the range %D to %D"
-msgstr ""
 
 msgid  "about RH~G~DB"
 msgstr "öber RH~G~DB"
@@ -2188,10 +2210,10 @@ msgid  "~Q~uit"
 msgstr "~E~nde"
 
 msgid  "D~a~ta window"
-msgstr ""
+msgstr "D~a~ten Fenster"
 
 msgid  "S~t~ack window"
-msgstr ""
+msgstr "S~t~ack Fenster"
 
 msgid  "~D~irectories for sources"
 msgstr "~V~erzeichnisse fÅr Quelldateien"
@@ -2358,9 +2380,8 @@ msgstr "Keine öbereinstimmung gefunden"
 msgid  "Match found at line %d column %d."
 msgstr "öbereinstimmung in Zeile %d Spalte %d gefunden"
 
-msgid  ""
-"This file contains ASCII 0 values, all the characters after it in this line "
-"becomes invisible. Be careful."
+msgid  "This file contains ASCII 0 values, all the characters after it in "
+"this line becomes invisible. Be careful."
 msgstr "Diese Datei enthÑlt ASCII 0 Werte, alle Zeichen danach in der "
 "Zeilewerden unsichtbar, sei vorsichtig"
 
@@ -2416,7 +2437,7 @@ msgid  "~F~ormat file (.frt)"
 msgstr "~F~ormatdatei (.frt)"
 
 msgid  "~I~ntermediate file"
-msgstr ""
+msgstr "~Z~wischendatei"
 
 msgid  "~B~ase output (no extentions)"
 msgstr "~B~asis Ausgabe (keine Endung)"
@@ -2425,7 +2446,7 @@ msgid  "~D~irectory of formats"
 msgstr "~V~erzeichnisse der Formate"
 
 msgid  "~K~eep intermediate"
-msgstr ""
+msgstr "~B~ehalte Zwischenatei"
 
 msgid  "O~K~"
 msgstr "~O~K"
@@ -2482,37 +2503,37 @@ msgid  "~M~acros"
 msgstr "~M~akros"
 
 msgid  "Regular Expressions Options"
-msgstr ""
+msgstr "Optionen fÅr die Regularen AusdrÅcke"
 
 msgid  "RegEx style"
-msgstr ""
+msgstr "RegEx Stil"
 
 msgid  "~B~asic POSIX"
-msgstr ""
+msgstr "~G~rundlegend POSIX"
 
 msgid  "~E~xtended POSIX"
-msgstr ""
+msgstr "Er~w~eitert POSIX"
 
 msgid  "~P~erl Compatible"
-msgstr ""
+msgstr "~P~erl kompatibel"
 
 msgid  "Replace text"
-msgstr ""
+msgstr "Ersetze Text"
 
 msgid  "~N~ormal text"
-msgstr ""
+msgstr "~N~ormaler Text"
 
 msgid  "~D~olar tags"
-msgstr ""
+msgstr "~D~ollar Tags"
 
 msgid  "Optimize"
-msgstr ""
+msgstr "Optimiere"
 
 msgid  "~T~ry to use normal search"
-msgstr ""
+msgstr "~V~ersuche normale Suche"
 
 msgid  "E~v~er use RegEx"
-msgstr ""
+msgstr "~I~mmer RegEx benutzen"
 
 msgid  "Find"
 msgstr "Finde"
@@ -2548,10 +2569,13 @@ msgid  "Origin"
 msgstr "Start"
 
 msgid  "RegEx Ops"
-msgstr ""
+msgstr "RegEx Opt."
 
 msgid  "Replace"
 msgstr "Ersetzen"
+
+msgid  "~N~ew text"
+msgstr "~N~euer Text"
 
 msgid  "~P~rompt on replace"
 msgstr "~F~ragen vor ersetzen"
@@ -2638,13 +2662,13 @@ msgid  "T~o~ all"
 msgstr "~F~År alle"
 
 msgid  "Search hit"
-msgstr ""
+msgstr "Suchtreffer"
 
 msgid  "Replace this occurence?"
 msgstr "Dieses Vorkommen ersetzen?"
 
 msgid  "~A~ll"
-msgstr ""
+msgstr "~A~lle"
 
 msgid  "Not enough memory for this operation"
 msgstr "Nicht genÅgend Speicher fÅr diese Operation"
@@ -2683,24 +2707,24 @@ msgid  "Line too long, cut it?"
 msgstr "Zeile zu lang, kÅrzen ?"
 
 msgid  "This file isn't in disk!"
-msgstr ""
+msgstr "Diese Datei ist nicht auf der Platte!"
 
 msgid  "The file is read-only, try to revert it?"
-msgstr ""
+msgstr "Die Datei ist schreibgeschÅtz, versuchen zu Ñndern?"
 
-msgid  ""
-"Failed to revert the read-only status, you won't be able to overwrite this "
-"file"
-msgstr ""
+msgid  "Failed to revert the read-only status, you won't be able to "
+"overwrite this file"
+msgstr "Fehler beim zurÅcksetzen des Schreibschutzstatus, Du wirst diese "
+"Datei nicht Åberschreiben kînnen"
 
 msgid  "This action doesn't have undo, are you sure?"
-msgstr ""
+msgstr "Diese Aktion hat kein Undo, bist Du sicher?"
 
 msgid  "Regular expression error: %s"
-msgstr ""
+msgstr "RegulÑrer-Ausdruck-Fehler: %s"
 
 msgid  "PCRE Exec error"
-msgstr ""
+msgstr "PCRE AusfÅhrungs-Fehler"
 
 msgid  "InfView - File: %s - Node: %s"
 msgstr "InfView - Datei: %s - Knoten: %s"
@@ -2780,9 +2804,8 @@ msgstr "~G~ehe zu"
 msgid  "~M~arks"
 msgstr "~M~arkieren"
 
-msgid  ""
-"Attention !! this file is in DOS format, Do you want convert it?, Make a "
-"backup first !!"
+msgid  "Attention !! this file is in DOS format, Do you want convert it?, "
+"Make a backup first !!"
 msgstr "Achtung !! Diese Datei is im DOS format. Wills Du sie "
 "konvertieren?Mache zuerst eine Sicherungskopie !!"
 
@@ -2796,67 +2819,139 @@ msgid  "Attention can't open the help file '%s'."
 msgstr "Achtung! Konnte die Hilfedatei '%s' nicht îffnen."
 
 msgid  "You must install gzip to browse compressed files!"
-msgstr ""
+msgstr "Du mu·t gzip installieren um die komprimierten Dateien anzusehen!"
 
-msgid  ""
-"\n"
+msgid  "\n"
 " Sorry I can't find this link (press ALT-F1).\n"
 msgstr "\n"
 " Sorry. Konnte diesen Link nicht finden (drÅcke ALT-F1).\n"
 
-msgid  "About"
-msgstr "öber"
+msgid  "~I~nsert"
+msgstr "E~i~nfÅgen"
 
-msgid  "That's SET's Editor v%lX.%lX.%lX, (c) 1996-1998"
-msgstr ""
+msgid  "~O~k"
+msgstr "~O~k"
 
-msgid  "by Salvador Eduardo Tropea"
-msgstr "von Salvador Eduardo Tropea"
+msgid  "~C~ancel"
+msgstr "Abbru~c~h"
 
-msgid  "A text editor specially designed for programmers."
-msgstr "Ein Text-Editor speziell fÅr Programmierer entwickelt."
+msgid  "Key assigment"
+msgstr "Tastenzuweisung"
 
-msgid  "Don't show it next time"
-msgstr "Zeige dies das nÑchste mal nicht"
+msgid  "Command~s~"
+msgstr "Kommando~s~"
 
-msgid  "SET's Editor v%lX.%lX.%lX, (c) 1996-1998"
-msgstr ""
+msgid  "Assigmen~t~"
+msgstr "~Z~uweisung"
 
-msgid  "Made in Argentina"
-msgstr ""
+msgid  "Accepting that you'll change the SET's editor behavior"
+msgstr "Diesem zustimmend, wirst Du die Arbeitsweise von SET's Editor Ñndern"
 
-msgid  "Thanks to:"
-msgstr ""
+msgid  "Do you really want to discard the changes?"
+msgstr "Mîchtest Du wirklich die énderungen verwerfen?"
 
-msgid  "The FSF and GNU people for such a good tools"
-msgstr ""
+msgid  "Sequence of keys"
+msgstr "Tastenfolge"
 
-msgid  "DJ Delorie and colaborators for porting it to DOS"
-msgstr ""
+msgid  "This key is allready in use, do you want to replace it?"
+msgstr "Diese Taste ist schon benutzt, mîchtest Du sie ersetzen?"
 
-msgid  "Robert Hîhne for porting TVision and making RHIDE"
-msgstr ""
+msgid  "This sequence is used for more than one key, delete these assigments "
+"first"
+msgstr "Diese Folge ist fÅr mehr als eine Taste benutzt, lîsche diese "
+"Zuweisungen zuerst"
 
-msgid  "The University of California, Berkeley and its contributors"
-msgstr ""
+msgid  "Press a key"
+msgstr "DrÅcke eine Taste"
 
-msgid  "The University of Cambridge for the PCRE package"
-msgstr ""
+msgid  "Key selector"
+msgstr "Tastenauswahl"
 
-msgid  "Shawn Hargreaves for Allegro, used as sound engine"
-msgstr ""
+msgid  "Macros"
+msgstr "Makros"
 
-msgid  "Tomislav Uzelac for AMP, the MP3 engine"
-msgstr ""
+msgid  "Commands"
+msgstr "Kommandos"
 
-msgid  "Ove Kaaven for LibAmp, the Allegro adaptation of AMP"
-msgstr ""
+msgid  "A command"
+msgstr "Ein Kommando"
 
-msgid  "All my friends that support my project (Laszlo, Marek, etc)"
-msgstr ""
+msgid  "Scan Viewer"
+msgstr "Scan-Betrachter"
+
+msgid  "Alt keys settings"
+msgstr "Alt-Tasten Einstellungen"
+
+msgid  "~L~eft Alt"
+msgstr "~L~inks Alt"
+
+msgid  "~R~ight Alt"
+msgstr "~R~echts Alt"
+
+msgid  "~B~oth Alt"
+msgstr "~B~eide Alt"
+
+msgid  "~K~eys used by the menues, etc."
+msgstr "~T~asten die von MenÅs usw. benutzt werden"
+
+msgid  "Key Pad behavior"
+msgstr "Verhalten der numerischen Tastatur"
+
+msgid  "Mantain the ~B~IOS default"
+msgstr "Benutze den BIOS-Standard"
+
+msgid  "Ever interpret shift+arrow as ~m~ovement"
+msgstr "Interpretiere immer Shift-Pfeil als ~B~ewegung"
+
+msgid  "Behavior"
+msgstr "Funktionsweise"
+
+msgid  "Page: %d Lines: %d to %d  Date: %s  Time: %s\r\f"
+msgstr "Seite: %d Zeilen: %d bis %d  Datum: %s  Zeit: %s\r\f"
+
+msgid  "* Source: %s * Title: %s * Author: %s\n"
+"\n"
+msgstr "* Quelle: %s * Titel: %s * Autor: %s\n"
+"\n"
+
+msgid  "Starting printing module"
+msgstr "Starte das Druck-Modul"
+
+msgid  "Can't open output file for printing"
+msgstr "Konnte die Ausgabedatei nicht zum Drucken îffnen"
+
+msgid  "The header is too large, reduce the title and/or author lengths"
+msgstr "Der Kopf ist zu gro·, reduziere die Titel und/oder die Autor-LÑnge"
+
+msgid  "Header length: %d Columns: %d"
+msgstr "KopflÑnge: %d Spalten: %d"
+
+msgid  "Processed: %d lines, total printed: %d lines"
+msgstr "Verarbeited: %d Zeilen, total gedruckt: %d Zeilen"
+
+msgid  "Printer Setup"
+msgstr "Druckereinrichtung"
+
+msgid  "Total ~l~ines per page:"
+msgstr "Anzahl Zei~l~en pro Seite (total):"
+
+msgid  "Columns ~w~/o margin:"
+msgstr "Spalten ~o~hne Rand"
+
+msgid  "Left ~m~argin:"
+msgstr "Linker ~R~and"
+
+msgid  "Print line numbers"
+msgstr "Drucke Zeilennummern"
+
+msgid  "~T~ime format:"
+msgstr "~Z~eitformat:"
+
+msgid  "~D~ate format:"
+msgstr "~D~atumsformat"
 
 msgid  "Ho~m~e"
-msgstr ""
+msgstr "Ho~m~e"
 
 msgid  "E~x~tended regex"
 msgstr "Er~w~eiterter Reg. Ausdr."

@@ -28,11 +28,14 @@ msgstr "            -M : Ikke installer mushÜndterer\n"
 msgid "            -S : use slower (safer) screen output\n"
 msgstr "            -S : bruk sakte (sikrere) skjermskriving\n"
 
+msgid "            -T : Disable the DOS-box title feature\n"
+msgstr "            -T : SlÜ av tittelen til et DOS-vindu\n"
+
 msgid "            -b : use BIOS calls for toggle the blinkstate\n"
 msgstr "            -b : Bruk BIOS-kall for Ü bytte blinktilstand\n"
 
 msgid "            -c : show filename exactly (no case conversion)\n"
-msgstr "            -c : vise filnavn eksakt (ingen case konvertering)\n"
+msgstr "            -c : vise filnavn eksakt (ingen casekonvertering)\n"
 
 msgid "            -h : show this help\n"
 msgstr "            -h : Vise denne hjelpen\n"
@@ -64,8 +67,11 @@ msgstr " Hex: "
 msgid " allowed chars "
 msgstr " tillatte tegn "
 
+msgid " bytes selected"
+msgstr " bytes valgt"
+
 msgid " has been modified. Save?"
-msgstr " har blitt endret. Lagre ?"
+msgstr " har blitt endret. Lagre?"
 
 msgid "%s has been modified! Reload it?"
 msgstr "%s har blitt endret! Lese inn pÜ nytt?"
@@ -76,11 +82,20 @@ msgstr "%s\n\n(Avbruddspunkt ved funksjonen '%s' i filen %s)"
 msgid "%s\n\n(Breakpoint at line %d in file %s)"
 msgstr "%s\n\n(Avbruddspunkt ved linjen %d i filen %s)"
 
+msgid "%u bytes read."
+msgstr "%u byter lest."
+
+msgid "%u bytes written."
+msgstr "%u byter lest"
+
 msgid "(%d) %s in line %d"
 msgstr "(%d) %s i linje %d"
 
 msgid ",time: %08lx\n"
 msgstr ", tid: %08lx\n"
+
+msgid "-o and -r are not allowed together"
+msgstr "-o og -r kan ikke brukes samtidig"
 
 msgid "-o needs an argument\n"
 msgstr "-o trenger et argument\n"
@@ -100,8 +115,14 @@ msgstr "En enkel kalender"
 msgid "A table with all the ASCII characters"
 msgstr "En tabell med alle ASCII-karakterene"
 
+msgid "A text editor specially designed for programmers."
+msgstr "En teksteditor spesielt designed for programmerere."
+
 msgid "ASCII Chart"
 msgstr "ASCII-tabell"
+
+msgid "About"
+msgstr "Om"
 
 msgid "About RHGDB"
 msgstr "Om RHGDB"
@@ -133,8 +154,14 @@ msgstr "Ekstra kompilatorbrytere"
 msgid "Additional linker options"
 msgstr "Ekstra lenkebrytere"
 
+msgid "All my friends that support my project (Laszlo, Marek, etc)"
+msgstr "Alle vennene mine som stõtter mitt prosjekt (Laszlo, Marek, etc)"
+
 msgid "All windows on the desktop"
 msgstr "Alle vinduer pÜ skrivebordet"
+
+msgid "Alt keys settings"
+msgstr "Alt-tast-innstillinger"
 
 msgid "An error has occoured when running the program "
 msgstr "En feil oppsto under kjõring av programmet "
@@ -144,6 +171,9 @@ msgstr "Apr"
 
 msgid "April"
 msgstr "April"
+
+msgid "Assigmen~t~"
+msgstr "~T~ilordninger"
 
 msgid "Attention !! this file is in DOS format,"
 msgstr "Viktig !! Denne filen er i DOS-format,"
@@ -168,6 +198,9 @@ msgstr "Auto"
 
 msgid "A~d~a-Flags"
 msgstr "A~d~a-brytere"
+
+msgid "Base Address"
+msgstr "Startadresse"
 
 msgid "Blue Editor"
 msgstr "BlÜ editor"
@@ -244,6 +277,9 @@ msgstr "Endret register"
 msgid "Check the speed of the editor"
 msgstr "Sjekke hastigheten til editoren"
 
+msgid "Clear Block"
+msgstr "Tõm blokk"
+
 msgid "Clea~r~ dependencies"
 msgstr "N~u~llstill avhengigheter"
 
@@ -276,6 +312,9 @@ msgstr "Farger"
 
 msgid "Command out of range"
 msgstr "Kommando utenfor gyldig intervall"
+
+msgid "Command~s~"
+msgstr "~K~ommandoer"
 
 msgid "Compiler ~O~ptions"
 msgstr "Kom~p~ilatorbrytere..."
@@ -365,7 +404,7 @@ msgid "Cyan Editor"
 msgstr "LyseblÜ editor"
 
 msgid "Cyan Windows"
-msgstr "Turkise vinduer"
+msgstr "LyseblÜ vinduer"
 
 msgid "C~X~X-Flags"
 msgstr "C~X~X-brytere..."
@@ -382,6 +421,15 @@ msgstr "C~l~ipper-stil"
 msgid "C~o~mpact text"
 msgstr "K~o~mprimere tekst"
 
+msgid "DJ Delorie and colaborators for porting it to DOS"
+msgstr "DJ Delorie og bidragsytere for Ü porte den til DOS"
+
+msgid "Data window"
+msgstr "Datavindu"
+
+msgid "DataWindow"
+msgstr "Datavindu"
+
 msgid "Debugging Flags"
 msgstr "Avlusningsbrytere"
 
@@ -390,6 +438,9 @@ msgstr "Des"
 
 msgid "December"
 msgstr "Desember"
+
+msgid "Defa~u~lt"
+msgstr "~S~tandard"
 
 msgid "Define, where your standard headers are"
 msgstr "Definer hvor dine standardheaders ligger"
@@ -405,6 +456,9 @@ msgstr "~S~tandard"
 
 msgid "Dialogs"
 msgstr "Dialoger"
+
+msgid "Directories in project items"
+msgstr "Kataloger i prosjektmedlemmer"
 
 msgid "Directories in pr~o~ject items"
 msgstr "Kataloger i delfiler"
@@ -433,8 +487,17 @@ msgstr "Vil du virkelig avbryte RHIDE?"
 msgid "Don't know how to build %s from %s"
 msgstr "Vet ikke hvordan jeg lager %s fra %s"
 
+msgid "Don't show it next time"
+msgstr "Ikke vise det neste gang"
+
+msgid "Don't warn you next time"
+msgstr "Ikke advare deg neste gang"
+
 msgid "Drives"
 msgstr "Disker"
+
+msgid "D~a~ta window"
+msgstr "D~a~tavindu"
 
 msgid "D~e~lete item"
 msgstr "~F~jerne fil"
@@ -463,6 +526,9 @@ msgstr "Tom pseudomakro"
 msgid "End of SDG"
 msgstr "Slutt pÜ SDG"
 
+msgid "End of SLP"
+msgstr "Slutt pÜ SLP"
+
 msgid "Enter the name of the 'main'-function"
 msgstr "Oppgi navnet pÜ 'main()'-funksjonen"
 
@@ -481,6 +547,9 @@ msgstr "Feil under laging av eksponenter for %s (eller ingenting funnet). Fjerne
 msgid "Error in expression (%d)"
 msgstr "Feil i uttrykket (%d)"
 
+msgid "Error in sLisp interpreter:"
+msgstr "Feil i sLisp-tolkeren:"
+
 msgid "Error of type: %s"
 msgstr "Feiltype: %s"
 
@@ -489,6 +558,12 @@ msgstr "Feil ved lesing av fil "
 
 msgid "Error while %s:"
 msgstr "Feil under %s:"
+
+msgid "Error while loading the keyboard binding"
+msgstr "Feil under innlasting av tastaturbindinger"
+
+msgid "Error while reading"
+msgstr "Feil under lesing"
 
 msgid "Error writing file "
 msgstr "Feil ved skriving av fil "
@@ -511,14 +586,26 @@ msgstr "Utfõrer Çn instruksjon, fõlger funksjonskall"
 msgid "Execute one instruction (No display swap)"
 msgstr "Utfõrer Çn instruksjon (bytter ikke skjermside)"
 
+msgid "Execute until end of function"
+msgstr "Utfõr til slutten av funksjonen"
+
 msgid "Expand all tabs to spaces"
 msgstr "Utvide alle tabulatorer til mellomrom"
+
+msgid "Expression to inspect"
+msgstr "Uttrykk som skal inspiseres"
+
+msgid "E~d~it key assignment"
+msgstr "~R~edigere tastetilordninger..."
 
 msgid "E~r~ror program"
 msgstr "FeilhÜndteringsp~r~ogram"
 
 msgid "E~v~al"
 msgstr "E~v~aluere"
+
+msgid "E~v~er use RegEx"
+msgstr "Alltid bruke ~R~egEx"
 
 msgid "E~x~act"
 msgstr "E~k~sakt"
@@ -528,6 +615,15 @@ msgstr "A~v~slutt"
 
 msgid "E~x~pand all tabs"
 msgstr "~U~tvide tabulatorer"
+
+msgid "E~x~tended regex"
+msgstr "~U~tvidet regex"
+
+msgid "FPC Reserved words"
+msgstr "FPC-reserverte ord"
+
+msgid "Failed to revert the read-only status, you won't be able to overwrite this file"
+msgstr "Klarte ikke Ü endre read-only-statusen, du kan ikke overskrive denne filen"
 
 msgid "Fast       Medium      Slow"
 msgstr "Rask       Middels     Treg"
@@ -550,6 +646,9 @@ msgstr "F~i~l/linje"
 msgid "Files to be searched for syntax help"
 msgstr "Filer som skal inngÜ i syntakshjelp"
 
+msgid "Fill Block"
+msgstr "Fyll blokk"
+
 msgid "Find"
 msgstr "Sõk"
 
@@ -561,6 +660,9 @@ msgstr "Brytere bare for kompilering av Fortran-filer"
 
 msgid "Flags only when compiling Pascal files"
 msgstr "Brytere bare for kompilering av Pascal-filer"
+
+msgid "Focused Text"
+msgstr "Fokusert tekst"
 
 msgid "Focused register"
 msgstr "Aktivt register"
@@ -585,6 +687,9 @@ msgstr "Ikoner i ramme"
 
 msgid "Frame/background"
 msgstr "Ramme/bakgrunn"
+
+msgid "Free Pascal compiler"
+msgstr "Free Pascal-kompilator"
 
 msgid "Function call stack"
 msgstr "Funksjonskallstakk"
@@ -631,6 +736,9 @@ msgstr "GÜ til"
 msgid "Go to cursor (No display swap)"
 msgstr "GÜ t~i~l markõr (uten Ü bytte skjermside)"
 
+msgid "Goto Line"
+msgstr "GÜ til linje"
+
 msgid "Goto the line"
 msgstr "GÜ til linje"
 
@@ -658,6 +766,9 @@ msgstr "Hjelp ~o~m hjelp"
 msgid "Hide '*~N~ode' word"
 msgstr "Skjule '*~N~ode'-ordet"
 
+msgid "Hide '*~N~ote' word"
+msgstr "Skjule '*~N~ote'-ord"
+
 msgid "Hide real ~l~ink name"
 msgstr "Skjule virkelig ~l~inknavn"
 
@@ -681,6 +792,12 @@ msgstr "Hi~s~torie"
 
 msgid "Hmmm ... I can't find any function, are you sure?"
 msgstr "Hmmm ... jeg kan ikke finne noen funksjoner, er du sikker?"
+
+msgid "How many closed windows should I remember"
+msgstr "Hvor mange lukkede vinduer skal jeg huske"
+
+msgid "Ho~m~e"
+msgstr "Hje~m~"
 
 msgid "H~i~de"
 msgstr "~S~kjul"
@@ -781,6 +898,9 @@ msgstr "Jun"
 msgid "June"
 msgstr "Juni"
 
+msgid "Key assigment"
+msgstr "Tastetilordninger"
+
 msgid "Label normal"
 msgstr "Normal etikett"
 
@@ -838,6 +958,9 @@ msgstr "Makrodefinisjon starter ikke med Trigger"
 msgid "Macro definition without mode keyword"
 msgstr "Makrodefinisjon uten mode-nõkkelord"
 
+msgid "Made in Argentina"
+msgstr "Laget i Argentina"
+
 msgid "Mar"
 msgstr "Mar"
 
@@ -877,17 +1000,26 @@ msgstr "Ingen slutt i pseudomakro"
 msgid "Missing start in pseudo macro"
 msgstr "Ingen start i pseudomakro"
 
+msgid "Mor~e~ options"
+msgstr "Fl~e~re valg"
+
 msgid "Mouse options"
 msgstr "Musinnstillinger"
 
 msgid "Move"
 msgstr "Flytte"
 
+msgid "Move Block"
+msgstr "Flytte blokk"
+
 msgid "Name of the main function"
 msgstr "Navnet til main()-funksjonen"
 
 msgid "Name of the main target"
-msgstr "MÜlnavn"
+msgstr "MÜlnavnet"
+
+msgid "New Breakpoint"
+msgstr "Nytt avbruddspunkt"
 
 msgid "New value"
 msgstr "Ny verdi"
@@ -898,17 +1030,29 @@ msgstr "Ingen Infofiler for syntakshjelp definert"
 msgid "No file cachin~g~"
 msgstr "Ingen fil~c~aching"
 
+msgid "No macros defined"
+msgstr "Ingen makroer definert"
+
 msgid "No match found"
 msgstr "Ingen match funnet"
 
 msgid "No project"
 msgstr "Ingen prosjekt"
 
+msgid "Nodes ~L~ist"
+msgstr "No~d~eliste"
+
 msgid "None"
 msgstr "Ingen"
 
 msgid "Normal"
 msgstr "Normal"
+
+msgid "Normal Text(active)"
+msgstr "Normal tekst(aktiv)"
+
+msgid "Normal Text(inactive)"
+msgstr "Normal tekst(inaktiv)"
 
 msgid "Not enough memory for this operation"
 msgstr "Ikke nok minne for denne operasjonen"
@@ -931,6 +1075,9 @@ msgstr "Oktober"
 msgid "Only #~i~nclude \"...\" as dependencies"
 msgstr "Bare #~i~nclude \"...\" som avhengigheter"
 
+msgid "Open Info"
+msgstr "èpne Info"
+
 msgid "Open a file"
 msgstr "èpne en fil"
 
@@ -940,11 +1087,17 @@ msgstr "èpne filen %s"
 msgid "Open ~p~roject"
 msgstr "è~p~ne prosjekt..."
 
+msgid "Opens the window with watches"
+msgstr "èpner overvÜkningsvinduet"
+
 msgid "Optimal ~F~ill"
 msgstr "O~p~timal-fyll"
 
 msgid "Optimization Flags"
 msgstr "Optimaliseringsbrytere"
+
+msgid "Optimize"
+msgstr "Optimaliser"
 
 msgid "Options"
 msgstr "Alternativ:"
@@ -961,6 +1114,15 @@ msgstr "Startpunkt:"
 msgid "Output from GDB"
 msgstr "Utdata fra GDB"
 
+msgid "Output to stderr:"
+msgstr "Meldinger til stderr:"
+
+msgid "Output to stdout:"
+msgstr "Meldinger til stdout:"
+
+msgid "Ove Kaaven for LibAmp, the Allegro adaptation of AMP"
+msgstr "Ove Kaaven for LibAmp, Allegro-tilpasning av AMP"
+
 msgid "O~K~"
 msgstr "~O~K"
 
@@ -970,8 +1132,17 @@ msgstr "~A~v"
 msgid "O~p~tions"
 msgstr "~I~nnstillinger"
 
+msgid "PCRE Exec error"
+msgstr "PCRE Exec error"
+
+msgid "Parameter Error!"
+msgstr "Parameterfeil!"
+
 msgid "Pascal Flags"
 msgstr "Pascal-brytere"
+
+msgid "Paste from ~W~indows Clipboard"
+msgstr "Lime i~n~n fra Windows' utklippstavle"
 
 msgid "Paste text from the Windows clipboard"
 msgstr "Lime tekst fra Windows' utklippstavle"
@@ -986,7 +1157,7 @@ msgid "Pa~s~cal style"
 msgstr "~P~ascal-stil"
 
 msgid "Please wait"
-msgstr "Vennligst vent"
+msgstr "Vennligst vent."
 
 msgid "Powerful builtin calculator"
 msgstr "Kraftig innebygd kalkulator"
@@ -1000,8 +1171,11 @@ msgstr "~F~orrige melding"
 msgid "Primary ~f~ile"
 msgstr "P~r~imërfil..."
 
+msgid "Printer set~u~p"
+msgstr "Skriver~o~ppsett..."
+
 msgid "Profile Editor"
-msgstr "~P~rofilere editoren"
+msgstr "~P~rofilere editoren..."
 
 msgid "Program arguments"
 msgstr "Programargumenter"
@@ -1033,8 +1207,29 @@ msgstr "RHGDB er en debugger pÜ kildekodenivÜ"
 msgid "RHIDE Help ~i~ndex"
 msgstr "~R~HIDE hjelpindeks"
 
+msgid "RHIDE could not access the direcory '%s', where it searches for language specifc strings. Please read the file 'RHIDE.BIN' how to install RHIDE correct. Should I continue?"
+msgstr "RHIDE kunne ikke finne katalogen '%s', hvor den sõker etter sprÜkspesifikke strenger. Vennligst les filen 'RHIDE.BIN' for hvordan installere RHIDE korrekt. Skal jeg fortsette?"
+
+msgid "RHIDE has detected that your DJGPP environment variable was not set. It is set now automatically. If RHIDE did the right choice, please modify your autoexec.bat by adding the following line to fix this problem:\n\nSET DJGPP=%s\n"
+msgstr "RHIDE har oppdaget at din DJGPP-miljõvariabel ikke var satt. Den er nÜ satt automatisk. Dersom RHIDE gjorde dette riktig, vennligst endre din autoexec.bat-fil ved Ü legge til fõlgende linje for Ü korrigere problemet:\n\nSET DJGPP=%s\n"
+
+msgid "RHIDE has detected, that the environment variable 'DJDIR' has not been set. This means, you haven't installed DJGPP correct. Please read the file README.1ST from the DJGPP distribution how to install DJGPP. If you continue now, you will get probably many errors."
+msgstr "RHIDE has oppdaget at miljõvariabelen 'DJDIR' ikke er satt. Dette betyr at du ikke har installert DJGPP riktig. Vennligst les filen README.1ST fra DJGPP-distribusjonen for hvordan du installerer DJGPP. Dersom du fortsetter nÜ, vil du sannsynligvis fÜ mange problemer."
+
+msgid "RHIDE has detected, that the environment variable DJDIR has not been set (or not correct). This is a fatal mistake. For information about fixing this, please read the File README.1ST from the DJGPP distribution. (about setting the DJGPP environment variable!!!) Should I continue?"
+msgstr "RHIDE har oppdaget at din DJGPP-miljõvariabel har ikke blitt satt (eller ikke korrekt). Dette er en grov feil. For informasjon om korreksjon av problemet, vennligst les filen README.1ST fra DJGPP-distribusjonen. (Om innstilling av DJGPP-miljõvariabelen!!!) Skal jeg fortsette?"
+
+msgid "RHIDE has detected, that you are running on a System where long filenames might be supported and you have installed the C++ compiler. Are you sure, you have read the DJGPP FAQ and the installing instructions for gcc when running under such a system? (like Windows 95/Windows NT) There might be a problem with the standard C++ libraries and the standard C++ include files because of a LFN-conflict. Should I continue?"
+msgstr "RHIDE har oppdaget at du kjõrer et system hvor lange filnavn muligens stõttes og at du har installert C++-kompilatoren. Er du sikker pÜ at du har lest DJGPP FAQen og installasjons instruksjonene for gcc nÜr du kjõrer et slikt system? (Som Windows 95/Windows NT). Det er muligens et problem med standard C++-biblioteker og standard C++-inkluderingsfiler pÜ grunn av en LFN-konflikt. Skal jeg fortsette?"
+
 msgid "RHIDE is an Integrated Development Environment"
 msgstr "RHIDE er et integrert utviklingsmiljõ (IDE)"
+
+msgid "Read Block"
+msgstr "Lese blokk"
+
+msgid "Read block from file"
+msgstr "Les blokk fra fil"
 
 msgid "Read from file"
 msgstr "Les fra fil"
@@ -1051,6 +1246,18 @@ msgstr "Lese ord fra fil"
 msgid "Refresh desk~t~op"
 msgstr "O~p~pdatere skrivebordet"
 
+msgid "RegEx Ops"
+msgstr "RegEx ~O~ps"
+
+msgid "RegEx style"
+msgstr "RegEx-stil"
+
+msgid "Regular Expressions Options"
+msgstr "Valg for regulëre uttrykk"
+
+msgid "Regular expression error: %s"
+msgstr "Feil i regulërt uttrykk: %s"
+
 msgid "Regular expression to list functions"
 msgstr "Regulërt sõkeuttrykk for funksjoner"
 
@@ -1063,8 +1270,14 @@ msgstr "Erstatt"
 msgid "Replace as much as possible spaces with tabs"
 msgstr "Erstatte mellomrom med sÜ mange tabulatorer som mulig"
 
+msgid "Replace text"
+msgstr "Erstatte tekst"
+
 msgid "Replace this occurence?"
 msgstr "Skal dette erstattes ?"
+
+msgid "Replace ~A~ll"
+msgstr "~E~rstatt alle"
 
 msgid "Reserved words"
 msgstr "Reserverte ord"
@@ -1072,14 +1285,26 @@ msgstr "Reserverte ord"
 msgid "Reset the debugged program"
 msgstr "Nullstill det avlusete programmet"
 
+msgid "Re~g~ular expressions"
+msgstr "~R~egulëre uttrykk"
+
+msgid "Robert Hîhne for porting TVision and making RHIDE"
+msgstr "Robert Hîhne for porting av TVision og for Ü lage RHIDE"
+
 msgid "Run the recorded macro"
 msgstr "Kjõre den innspillte makroen"
 
 msgid "Running GREP (arguments are prompted)"
 msgstr "Kjõrer GREP (argumenter etterspõrres)"
 
+msgid "R~e~peat"
+msgstr "~G~jenta"
+
 msgid "SDG Parameters"
 msgstr "SDG-parametre"
+
+msgid "SET's Editor v%lX.%lX.%lX, (c) 1996-1998"
+msgstr "SETs Editor v%lX.%lX.%lX, (c) 1996-1998"
 
 msgid "Save all the options to a project file"
 msgstr "Lagre alle innstillinger til en prosjektfil"
@@ -1126,6 +1351,9 @@ msgstr "Rulleliste"
 msgid "Search for file '%s'\n"
 msgstr "Sõker etter fil '%s'\n"
 
+msgid "Search hit"
+msgstr "Sõketreff"
+
 msgid "Search o~p~tions"
 msgstr "Sõkeinnstillinger"
 
@@ -1153,6 +1381,9 @@ msgstr "Velg et emne"
 msgid "Selected"
 msgstr "Valgt"
 
+msgid "Selected Text"
+msgstr "Valgt tekst"
+
 msgid "Selected disabled"
 msgstr "Valgt inaktiv"
 
@@ -1164,6 +1395,9 @@ msgstr "Sep"
 
 msgid "September"
 msgstr "September"
+
+msgid "Sequence of keys"
+msgstr "Tastesekvens"
 
 msgid "Set some options for the mouse"
 msgstr "Sette noen innstillinger for musen"
@@ -1180,6 +1414,9 @@ msgstr "Sett/fjern avbruddspunkt ved markõren"
 msgid "Several menu entries for getting help"
 msgstr "Et antall menyvalg for hjelp"
 
+msgid "Shawn Hargreaves for Allegro, used as sound engine"
+msgstr "Shawn Hargreaves for Allegro, brukt som lydmotor"
+
 msgid "Shortcut"
 msgstr "Snarvei"
 
@@ -1190,7 +1427,7 @@ msgid "Show Diassemb~l~er Window when needed"
 msgstr "Vise disasseblervinduet ved behov"
 
 msgid "Show Disassemb~l~er Window when needed"
-msgstr "Vise disasseblervinduet ved behov"
+msgstr "Vise disassemb~l~ervinduet ved behov"
 
 msgid "Show G~D~B commands"
 msgstr "Vise G~D~B kommandoer"
@@ -1220,7 +1457,7 @@ msgid "Source Directories"
 msgstr "Kataloger for kildekode"
 
 msgid "Source has been modified. Rebuild it?"
-msgstr "Kildekoden har blitt endret. Bygge pÜ nytt?"
+msgstr "Kildekoden har blitt endret. Bygge den pÜ nytt?"
 
 msgid "Speed: %f lines/second"
 msgstr "Hastighet: %g linjer/sekund"
@@ -1306,6 +1543,9 @@ msgstr "Lagre ~s~om..."
 msgid "S~h~ell"
 msgstr "S~k~all"
 
+msgid "S~t~ack window"
+msgstr "S~t~akkvindu"
+
 msgid "S~t~andard headers"
 msgstr "~S~tandardheaders..."
 
@@ -1315,14 +1555,32 @@ msgstr "Nodetabell"
 msgid "Text "
 msgstr "Tekst "
 
+msgid "Thanks to:"
+msgstr "Takk til:"
+
+msgid "That's SET's Editor v%lX.%lX.%lX, (c) 1996-1998"
+msgstr "Dette er SETs Editor v%lX.%lX.%lX, (c) 1996-1998"
+
+msgid "The FSF and GNU people for such a good tools"
+msgstr "FSF og GNU-folket for slike gode verktõyer"
+
+msgid "The University of California, Berkeley and its contributors"
+msgstr "The University of California, Berkeley og dens bidragsytere"
+
+msgid "The University of Cambridge for the PCRE package"
+msgstr "The University of Cambridge for PCRE-pakken"
+
 msgid "The desktop file cannot be used, because it was created by a newer version of RHIDE"
-msgstr "Skrivebordsfilen kan ikke brukes, fordi den er skapt av en nyere versjon av RHIDE"
+msgstr "Skrivebordsfilen kan ikke brukes, fordi den er laget av en nyere versjon av RHIDE"
 
 msgid "The desktop file cannot be used, because of a new format"
 msgstr "Skrivebordsfilen kan ikke brukes pga nytt format"
 
 msgid "The error was : "
 msgstr "Feilen var : "
+
+msgid "The file is read-only, try to revert it?"
+msgstr "Denne filen er read-only, prõve Ü endre det?"
 
 msgid "The item '%s' is already in your project"
 msgstr "Filen '%s' finnes allerede i prosjektet"
@@ -1345,8 +1603,20 @@ msgstr "Det mangler et sitattegn i dine argumenter"
 msgid "There were some errors"
 msgstr "Det var noen feil"
 
+msgid "This action doesn't have undo, are you sure?"
+msgstr "Denne handlingen kan du ikke angre, er du sikker?"
+
 msgid "This breakpoint could not enabled, because you are running under Windows 3.1x and there the number of breakpoints is limited to 3"
 msgstr "Dette avbruddspunktet kan ikke brukes, siden du kjõrer under Windows 3.1x og da er antallet avbruddspunkter begrenset til 3 stykker"
+
+msgid "This file allready exist, overwrite?"
+msgstr "Denne filen eksisterer allerede, overskrive?"
+
+msgid "This file contains ASCII 0 values, all the characters after it in this line becomes invisible. Be careful."
+msgstr "Denne filen inneholder ASCII 0-verdier, alle tegn etter den pÜ denne linjen blir usynlige. Vër forsiktig."
+
+msgid "This file isn't in disk!"
+msgstr "Denne filen er ikke pÜ disk!"
 
 msgid "This is %s. Copyright (c) 1996-1998 by Robert Hîhne\n"
 msgstr "Dette er %s. Copyright (c) 1996-1998 av Robert Hîhne\n"
@@ -1354,17 +1624,26 @@ msgstr "Dette er %s. Copyright (c) 1996-1998 av Robert Hîhne\n"
 msgid "This program has no usable debugging information. Try to compile it with the -g switch."
 msgstr "Dette programmet har ingen brukbar avlusningsinformasjon. Forsõk Ü kompilere med bryteren -g"
 
+msgid "This project was created with a newer RHIDE version and could not be used."
+msgstr "Dette prosjektet var laget med en nyere RHIDE-versjon og kan ikke brukes."
+
 msgid "This video mode (0x%03x) is not supported by the Turbo Vision library"
 msgstr "Denne skjermmodusen (0x%03x) stõttes ikke av Turbo Vision-biblioteket"
 
 msgid "To a~l~l"
 msgstr "A~l~le"
 
+msgid "Tomislav Uzelac for AMP, the MP3 engine"
+msgstr "Tomislav Uzelac for AMP, MP3-motoren"
+
 msgid "Trace into (No display swap)"
 msgstr "H~o~pp inn i (uten Ü bytte skjermside)"
 
 msgid "Tra~n~sparent Blocks"
 msgstr "T~r~ansparente blokker"
+
+msgid "T~o~ all"
+msgstr "Ti~l~ alle"
 
 msgid "Unchanged register"
 msgstr "Uendret register"
@@ -1384,6 +1663,15 @@ msgstr "UhÜndtert angre"
 msgid "Untitled"
 msgstr "Navnlõs"
 
+msgid "Use RCS"
+msgstr "Bruke RCS"
+
+msgid "Use a file with 1000 lines or more for that"
+msgstr "Bruk en fil med 1000 linjer eller mer til det"
+
+msgid "Use ~F~PC pascal compiler"
+msgstr "Bruke ~F~PC Pascal-kompilator"
+
 msgid "Use ~s~tandard libraries"
 msgstr "Bruk ~s~tandardbiblioteker"
 
@@ -1391,13 +1679,22 @@ msgid "User"
 msgstr "Brukerdefinerte"
 
 msgid "User Reserved words"
-msgstr "Brukerdefinerte ord"
+msgstr "Brukerreserverte ord"
 
 msgid "Us~e~ RCS"
 msgstr "Bruke RCS"
 
 msgid "U~s~e dual display"
 msgstr "Bruk dobbel skjerm"
+
+msgid "U~s~er defined"
+msgstr "~B~rukerdefinert"
+
+msgid "Value not in the range %D to %D"
+msgstr "Verdien er ikke i intervallet %D til %D"
+
+msgid "Value not in the range %U to %U"
+msgstr "Verdien er ikke i intervallet %U til %U"
 
 msgid "Value not in the range %ld to %ld"
 msgstr "Verdien er ikke i intervallet %ld til %ld"
@@ -1423,11 +1720,29 @@ msgstr "Vakt"
 msgid "WindowList"
 msgstr "Vinduliste"
 
+msgid "Wrap column"
+msgstr "Brekkolonne"
+
+msgid "Write Block"
+msgstr "Skriv blokk"
+
+msgid "Write block to file"
+msgstr "Skriv blokk til fil"
+
 msgid "Write to file"
 msgstr "Skriv til fil"
 
+msgid "Writing Makefile : %s\n"
+msgstr "Skriver Makefile: %s\n"
+
+msgid "Wrong file"
+msgstr "Feil fil"
+
 msgid "Wrong mode definition in pseudo macro."
 msgstr "Feil mode-definisjon i pseudomakro."
+
+msgid "Wrong version"
+msgstr "Feil versjon"
 
 msgid "You can give here only a valid filename for a Pascal source file"
 msgstr "Her kan du bare oppgi et gyldig filnavn for en Pascal-kildefil"
@@ -1447,6 +1762,9 @@ msgstr "Du kan ikke lime inn en rektangel rett etter slutten pÜ filen"
 msgid "You have already 3 breakpoints set and under Windows 3.1x the number of breakpoints is limited to 3"
 msgstr "Du har allerede satt 3 avbruddspunkter og under Windows 3.1x kan du ikke sette flere."
 
+msgid "You must install gzip to browse compressed files!"
+msgstr "Du mÜ installere gzip for Ü lese komprimerte filer!"
+
 msgid "You must type a character here"
 msgstr "Du mÜ oppgi et tegn her"
 
@@ -1455,6 +1773,9 @@ msgstr "Du mÜ oppgi en streng her"
 
 msgid "You must type a value here"
 msgstr "Du mÜ oppgi en verdi her"
+
+msgid "You'll losse all the changes"
+msgstr "Du vil miste alle endringer"
 
 msgid "[ without ]"
 msgstr "[ uten ]"
@@ -1475,7 +1796,7 @@ msgid "add an item to the project"
 msgstr "Legge til en fil i prosjektet"
 
 msgid "all dependencies in ~m~akefile"
-msgstr "Alle avhengigheter i make~f~il"
+msgstr "Alle avhengigheter i make~f~ile"
 
 msgid "and updating it"
 msgstr "og oppdaterer den"
@@ -1492,11 +1813,17 @@ msgstr "Kompiler om alle delfiler og bygg prosjektet helt fra starten"
 msgid "builtin C"
 msgstr "Innebygd C"
 
+msgid "builtin FPC"
+msgstr "Innebygd FPC"
+
 msgid "builtin assembler"
 msgstr "Innebygd assembler"
 
 msgid "builtin linker"
 msgstr "Innebygd lenker"
+
+msgid "by Salvador Eduardo Tropea"
+msgstr "av Salvador Eduardo Tropea"
 
 msgid "change the name of the project-target"
 msgstr "Endre navnet til prosjektets mÜlfil"
@@ -1517,7 +1844,7 @@ msgid "clearing dependencies for %s\n"
 msgstr "tõmmer avhengigheter for %s\n"
 
 msgid "clearing the FindCache\n"
-msgstr "tõmmer sõkecachen\n"
+msgstr "Tõmmer sõkecachen\n"
 
 msgid "clearing the filetime cache\n"
 msgstr "Tõmmer filtidscachen\n"
@@ -1646,10 +1973,10 @@ msgid "for developing Linux apps"
 msgstr "for utvikling av Linux-applikasjoner"
 
 msgid "found '%s' in FindCache\n"
-msgstr "fant '%s' i sõkecachen\n"
+msgstr "Fant '%s' i sõkecachen\n"
 
 msgid "found '%s' in current directory\n"
-msgstr "fant '%s' i nÜvërende katalog\n"
+msgstr "Fant '%s' i nÜvërende katalog\n"
 
 msgid "found '%s' in filetime cache "
 msgstr "Fant '%s' i filtidscachen "
@@ -1661,10 +1988,10 @@ msgid "found '%s' on desktop, time: %08lx\n"
 msgstr "Fant '%s' pÜ skrivebordet, tid: %08lx\n"
 
 msgid "found '%s' using the search directory '%s'\n"
-msgstr "fant '%s' ved hjelp av sõkestien '%s'\n"
+msgstr "Fant '%s' ved hjelp av sõkestien '%s'\n"
 
 msgid "found '%s'\n"
-msgstr "fant '%s'\n"
+msgstr "Fant '%s'\n"
 
 msgid "go to line number (after prompting)"
 msgstr "GÜ til en linje (spõr etter linjenummer)"
@@ -1745,7 +2072,7 @@ msgid "not available"
 msgstr "Ikke tilgjengelig"
 
 msgid "not found: take '%s'\n"
-msgstr "fant ikke: ta '%s'\n"
+msgstr "Fant ikke: ta '%s'\n"
 
 msgid "octal"
 msgstr "Oktal"
@@ -1767,6 +2094,9 @@ msgstr "Brytere:    -d[actdf]\n"
 
 msgid "options:\n"
 msgstr "Brytere:\n"
+
+msgid "or a TeX source file"
+msgstr "eller en TeX-kildefil"
 
 msgid "other"
 msgstr "andre"
@@ -1842,6 +2172,9 @@ msgstr "Kjõre prosjektets mÜlfil (lager mÜlfilen om nõdvendig)"
 
 msgid "running GREP:"
 msgstr "Kjõrer GREP:"
+
+msgid "sLisp macros"
+msgstr "sLisp makroer"
 
 msgid "save all opened editors to disk (if modified)"
 msgstr "Lagre alle Üpne editorvinduer til disk (hvis de er endret)"
@@ -1979,7 +2312,7 @@ msgid "with Turbo Vision interface"
 msgstr "med Turbo Vision-grensesnitt"
 
 msgid "write a makefile for this project"
-msgstr "Skrive en makefil (GNU Make) for dette prosjektet"
+msgstr "Skrive en makefile (GNU Make) for dette prosjektet"
 
 msgid "~Alt+F10~ local menu"
 msgstr "~Alt+F10~ lokal meny"
@@ -2008,6 +2341,12 @@ msgstr "~L~egge til"
 msgid "~A~dd item"
 msgstr "L~e~gge til fil..."
 
+msgid "~A~ll"
+msgstr "~A~lle"
+
+msgid "~A~lt-Keys settings"
+msgstr "~A~lt-tastinnstillinger..."
+
 msgid "~A~rguments ..."
 msgstr "~A~rgumenter..."
 
@@ -2020,6 +2359,15 @@ msgstr "~B~akgrunn"
 msgid "~B~ase output (no extentions)"
 msgstr "~B~asisutskrift (ingen utvidelser)"
 
+msgid "~B~asic POSIX"
+msgstr "~G~runnleggende POSIX"
+
+msgid "~B~ookmarks"
+msgstr "~B~okmerker"
+
+msgid "~B~oth Alt"
+msgstr "~B~egge Alt"
+
 msgid "~B~reakpoints"
 msgstr "~A~vbruddspunkter..."
 
@@ -2028,6 +2376,9 @@ msgstr "~B~ugrapport"
 
 msgid "~B~uild all"
 msgstr "~B~ygge alt"
+
+msgid "~Ctrl+Del~ Delete all"
+msgstr "~Ctrl+Del~ Slette alt"
 
 msgid "~Ctrl+F1~ Select from a list"
 msgstr "~Ctrl+F1~ Velg fra en liste"
@@ -2044,6 +2395,9 @@ msgstr "~K~alkulator"
 msgid "~C~all stack"
 msgstr "~K~allstakk"
 
+msgid "~C~ancel"
+msgstr "~A~vbryt"
+
 msgid "~C~ase sensitive"
 msgstr "~S~kille store/smÜ bokstaver"
 
@@ -2052,6 +2406,9 @@ msgstr "En~d~re"
 
 msgid "~C~hdir"
 msgstr "~B~ytt katalog"
+
+msgid "~C~hoose"
+msgstr "~V~elg"
 
 msgid "~C~lear"
 msgstr "~S~lett"
@@ -2073,6 +2430,9 @@ msgstr "K~o~mpilere"
 
 msgid "~C~ompilers"
 msgstr "K~o~mpilatorer"
+
+msgid "~C~onfiguration"
+msgstr "~K~onfigurasjon"
 
 msgid "~C~opy"
 msgstr "~K~opiere"
@@ -2110,6 +2470,9 @@ msgstr "~K~atalog over formater"
 msgid "~D~isassembler window"
 msgstr "~D~isassemblervindu"
 
+msgid "~D~olar tags"
+msgstr "~D~ollar-tagg"
+
 msgid "~D~on't move the cursor on Paste"
 msgstr "Ikk~e~ flytt markõren ved liming"
 
@@ -2131,6 +2494,9 @@ msgstr "~Esc~ Avbryt"
 msgid "~E~dit"
 msgstr "~R~ediger"
 
+msgid "~E~ditor"
+msgstr "~E~ditor"
+
 msgid "~E~ditor options"
 msgstr "~E~ditorinnstillinger..."
 
@@ -2151,6 +2517,9 @@ msgstr "~E~valuere/endre..."
 
 msgid "~E~xpression"
 msgstr "~U~ttrykk"
+
+msgid "~E~xtended POSIX"
+msgstr "~U~tvidet POSIX"
 
 msgid "~F10~ Menu"
 msgstr "~F10~ Meny"
@@ -2212,11 +2581,23 @@ msgstr "~F~ortran-brytere..."
 msgid "~F~rom cursor"
 msgstr "~F~ra markõr"
 
+msgid "~F~rom, length"
+msgstr "~F~ra, lengde"
+
+msgid "~F~rom, length, value"
+msgstr "~F~ra, lengde, verdi"
+
+msgid "~F~rom, to, length"
+msgstr "~F~ra, til, lengde"
+
 msgid "~F~uzzy"
 msgstr "~F~uzzy"
 
 msgid "~G~REP ..."
 msgstr "~G~REP ..."
+
+msgid "~G~enerate Code"
+msgstr "G~e~nerer kode"
 
 msgid "~G~lobal"
 msgstr "~G~lobal"
@@ -2245,6 +2626,12 @@ msgstr "~I~nkluderingsfiler..."
 msgid "~I~ncludes"
 msgstr "~I~nkludert..."
 
+msgid "~I~nsert"
+msgstr "~S~ett inn"
+
+msgid "~I~nspect an expression"
+msgstr "~I~nspisere et uttrykk..."
+
 msgid "~I~ntelligent C indent"
 msgstr "~I~ntelligent C-innrykk"
 
@@ -2260,8 +2647,14 @@ msgstr "~G~Ü til funksjon..."
 msgid "~K~eep intermediate"
 msgstr "~T~a vare pÜ midlertidig"
 
+msgid "~K~eys used by the menues, etc."
+msgstr "Taster brukt av menyene, osv."
+
 msgid "~L~ast help"
 msgstr "~F~orrige hjelp"
+
+msgid "~L~eft Alt"
+msgstr "~V~enstre Alt"
 
 msgid "~L~ibraries"
 msgstr "~B~iblioteker..."
@@ -2284,6 +2677,9 @@ msgstr "L~o~kale brytere..."
 msgid "~M~acro"
 msgstr "~M~akro"
 
+msgid "~M~acros"
+msgstr "~M~akroer"
+
 msgid "~M~ain function"
 msgstr "~m~ain()-funksjon..."
 
@@ -2295,6 +2691,9 @@ msgstr "~M~erker"
 
 msgid "~M~atch pair highlight"
 msgstr "Ut~h~ev matchende par"
+
+msgid "~M~essages"
+msgstr "~M~eldinger"
 
 msgid "~M~odify"
 msgstr "En~d~re"
@@ -2335,6 +2734,9 @@ msgstr "~N~ei"
 msgid "~N~odes"
 msgstr "~N~oder"
 
+msgid "~N~ormal text"
+msgstr "~N~ormal tekst"
+
 msgid "~O~K"
 msgstr "~O~K"
 
@@ -2343,6 +2745,9 @@ msgstr "~O~bjektkode..."
 
 msgid "~O~pen"
 msgstr "è~p~ne..."
+
+msgid "~O~pen Info"
+msgstr "è~p~ne Info..."
 
 msgid "~O~ptimization-Flags"
 msgstr "~O~ptimaliseringsbrytere..."
@@ -2368,6 +2773,9 @@ msgstr "~L~im inn"
 msgid "~P~athlist"
 msgstr "~S~õkestier"
 
+msgid "~P~erl Compatible"
+msgstr "Perl-kompatibel"
+
 msgid "~P~ersistent blocks"
 msgstr "~F~astholdende blokker"
 
@@ -2379,6 +2787,9 @@ msgstr "~G~runninnstillinger..."
 
 msgid "~P~revious"
 msgstr "~F~orrige"
+
+msgid "~P~rint"
+msgstr "S~k~riv ut"
 
 msgid "~P~rogram reset"
 msgstr "~N~ullstill program"
@@ -2401,6 +2812,9 @@ msgstr "~S~pill inn"
 msgid "~R~edo"
 msgstr "~G~jõr om"
 
+msgid "~R~emember old messages"
+msgstr "~H~uske gamle meldinger"
+
 msgid "~R~eplace"
 msgstr "~E~rstatt"
 
@@ -2413,6 +2827,9 @@ msgstr "~E~rstatt..."
 msgid "~R~eserved words"
 msgstr "~R~eserverte ord..."
 
+msgid "~R~estore default editor keys"
+msgstr "~G~jenopprette standard editortaster"
+
 msgid "~R~esult"
 msgstr "~R~esultat"
 
@@ -2421,6 +2838,9 @@ msgstr "~R~everser musknapper"
 
 msgid "~R~evert"
 msgstr "Tilb~a~ke"
+
+msgid "~R~ight Alt"
+msgstr "~H~õyre Alt"
 
 msgid "~R~ow cursor"
 msgstr "Li~n~jemarkõr"
@@ -2451,6 +2871,9 @@ msgstr "~V~algt tekst"
 
 msgid "~S~et/Reset Breakpoint"
 msgstr "~S~ette/fjerne avbruddspunkt"
+
+msgid "~S~how"
+msgstr "~V~ise"
 
 msgid "~S~how clipboard"
 msgstr "~V~ise utklippstavle"
@@ -2485,14 +2908,23 @@ msgstr "Sõke~t~ekst:"
 msgid "~T~ile"
 msgstr "S~i~de ved side"
 
+msgid "~T~o, length"
+msgstr "~T~il, lengde"
+
 msgid "~T~race into"
 msgstr "~H~opp inn i"
+
+msgid "~T~ry to use normal search"
+msgstr "~P~rõve Ü bruke vanlig sõk"
 
 msgid "~T~ype"
 msgstr "~T~ype"
 
 msgid "~U~ndo"
 msgstr "~A~ngre"
+
+msgid "~U~ntil return"
+msgstr "Kjõr til ~r~eturn"
 
 msgid "~U~p"
 msgstr "~O~pp"
@@ -2527,6 +2959,9 @@ msgstr "~A~dvarsler..."
 msgid "~W~atch an expression"
 msgstr "~O~vervÜke et uttrykk..."
 
+msgid "~W~atches"
+msgstr "O~v~ervÜkninger"
+
 msgid "~W~hole words only"
 msgstr "~B~are hele ord"
 
@@ -2536,8 +2971,11 @@ msgstr "~V~induliste..."
 msgid "~W~indows"
 msgstr "~V~indu"
 
+msgid "~W~rap words"
+msgstr "~B~rekk om linjene"
+
 msgid "~W~rite Makefile"
-msgstr "Skriv ~M~akefil"
+msgstr "Skriv ~M~akefile"
 
 msgid "~Y~es"
 msgstr "~J~a"

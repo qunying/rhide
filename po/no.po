@@ -1,5 +1,5 @@
 msgid  "Writing Makefile : %s\n"
-msgstr ""
+msgstr "Skriver Makefile: %s\n"
 
 msgid  "-o needs an argument\n"
 msgstr "-o trenger et argument\n"
@@ -8,7 +8,7 @@ msgid  "a projectfile must be given\n"
 msgstr "En prosjektfil mÜ oppgis\n"
 
 msgid  "-o and -r are not allowed together"
-msgstr ""
+msgstr "-o og -r kan ikke brukes samtidig"
 
 msgid  "error reading projectfile %s\n"
 msgstr "Feil ved lesing av prosjektfil %s\n"
@@ -122,7 +122,7 @@ msgid  "Add '%s' to the search path for source files"
 msgstr "Legge '%s' til sõkestien for kildefiler"
 
 msgid  "Source has been modified. Rebuild it?"
-msgstr "Kildekoden har blitt endret. Bygge pÜ nytt?"
+msgstr "Kildekoden har blitt endret. Bygge den pÜ nytt?"
 
 msgid  "Program exit code: %d (0x%04x)"
 msgstr "Returverdi: %d (0x%04x)"
@@ -143,10 +143,10 @@ msgid  "executing: "
 msgstr "Utfõrer: "
 
 msgid  "Output to stderr:"
-msgstr ""
+msgstr "Meldinger til stderr:"
 
 msgid  "Output to stdout:"
-msgstr ""
+msgstr "Meldinger til stdout:"
 
 msgid  "return value: %d\n"
 msgstr "Returverdi: %d\n"
@@ -386,7 +386,7 @@ msgid  "Reset the debugged program"
 msgstr "Nullstill det avlusete programmet"
 
 msgid  "Execute until end of function"
-msgstr ""
+msgstr "Utfõr til slutten av funksjonen"
 
 msgid  "Enter the name of the 'main'-function"
 msgstr "Oppgi navnet pÜ 'main()'-funksjonen"
@@ -470,7 +470,7 @@ msgid  "Create for all project items the dependencies"
 msgstr "Lage avhengigheter for alle delfilene i prosjektet"
 
 msgid  "write a makefile for this project"
-msgstr "Skrive en makefil (GNU Make) for dette prosjektet"
+msgstr "Skrive en makefile (GNU Make) for dette prosjektet"
 
 msgid  "Submenu for most of the options of RHIDE"
 msgstr "Meny for de fleste innstillinger i RHIDE"
@@ -617,7 +617,7 @@ msgid  "show the user screen"
 msgstr "Vise brukerskjerm"
 
 msgid  "Opens the window with watches"
-msgstr ""
+msgstr "èpner overvÜkningsvinduet"
 
 msgid  "Several menu entries for getting help"
 msgstr "Et antall menyvalg for hjelp"
@@ -653,13 +653,13 @@ msgid  "Shows the last opened help"
 msgstr "Viser den sist Üpnede hjelp"
 
 msgid  "How many closed windows should I remember"
-msgstr ""
+msgstr "Hvor mange lukkede vinduer skal jeg huske"
 
 msgid  "%s has been modified! Reload it?"
 msgstr "%s har blitt endret! Lese inn pÜ nytt?"
 
 msgid  "Name of the main target"
-msgstr "MÜlnavn"
+msgstr "MÜlnavnet"
 
 msgid  "Goto the line"
 msgstr "GÜ til linje"
@@ -686,7 +686,7 @@ msgid  "~O~K"
 msgstr "~O~K"
 
 msgid  "Please wait"
-msgstr "Vennligst vent"
+msgstr "Vennligst vent."
 
 msgid  "Creating the Bug report"
 msgstr "Lager bugrapporten..."
@@ -695,7 +695,7 @@ msgid  "Name of the main function"
 msgstr "Navnet til main()-funksjonen"
 
 msgid  "Expression to inspect"
-msgstr ""
+msgstr "Uttrykk som skal inspiseres"
 
 msgid  "~E~xpression"
 msgstr "~U~ttrykk"
@@ -737,7 +737,7 @@ msgid  "You can give here only a valid filename for a Pascal source file"
 msgstr "Her kan du bare oppgi et gyldig filnavn for en Pascal-kildefil"
 
 msgid  "or a TeX source file"
-msgstr ""
+msgstr "eller en TeX-kildefil"
 
 msgid  "usage: %s [options] [project-file] [edit-file]\n"
 msgstr "BruksmÜte: %s [brytere] [prosjektfil | tekstfil]\n"
@@ -746,7 +746,7 @@ msgid  "options:    -d[actdf]\n"
 msgstr "Brytere:    -d[actdf]\n"
 
 msgid  "            -c : show filename exactly (no case conversion)\n"
-msgstr "            -c : vise filnavn eksakt (ingen case konvertering)\n"
+msgstr "            -c : vise filnavn eksakt (ingen casekonvertering)\n"
 
 msgid  "            -y : force to use long filenames (Windows 95)\n"
 msgstr "            -y : Bruk lange filnavn (Windows 95)\n"
@@ -795,7 +795,7 @@ msgid  "            -C : Disable SIGINT handling\n"
 msgstr "            -C : SlÜ av SIGINT-hÜndtering\n"
 
 msgid  "            -T : Disable the DOS-box title feature\n"
-msgstr ""
+msgstr "            -T : SlÜ av tittelen til et DOS-vindu\n"
 
 msgid  "using %s as temp directory\n"
 msgstr "Bruker katalogen %s for midlertidige filer\n"
@@ -811,14 +811,18 @@ msgid  ""
 "This means, you haven't installed DJGPP correct. Please read the file "
 "README.1ST from the DJGPP distribution how to install DJGPP. If you continue "
 "now, you will get probably many errors."
-msgstr ""
+msgstr "RHIDE has oppdaget at miljõvariabelen 'DJDIR' ikke er satt. Dette "
+"betyr at du ikke har installert DJGPP riktig. Vennligst les filen "
+"README.1ST fra DJGPP-distribusjonen for hvordan du installerer DJGPP. "
+"Dersom du fortsetter nÜ, vil du sannsynligvis fÜ mange problemer."
 
 msgid  "Invalid project-file %s(%s)"
 msgstr "Ugyldig prosjektfil %s(%s)"
 
 msgid  ""
 "This project was created with a newer RHIDE version and could not be used."
-msgstr ""
+msgstr "Dette prosjektet var laget med en nyere RHIDE-versjon og kan ikke "
+"brukes."
 
 msgid  "~S~yntax help"
 msgstr "~S~yntakshjelp"
@@ -866,10 +870,10 @@ msgid  "Save a~l~l"
 msgstr "Lagre ~a~lt"
 
 msgid  "~P~rint"
-msgstr ""
+msgstr "S~k~riv ut"
 
 msgid  "Printer set~u~p"
-msgstr ""
+msgstr "Skriver~o~ppsett..."
 
 msgid  "~D~OS shell"
 msgstr "~D~OS-skall"
@@ -893,13 +897,13 @@ msgid  "~P~lay"
 msgstr "~K~jõr"
 
 msgid  "~C~hoose"
-msgstr ""
+msgstr "~V~elg"
 
 msgid  "R~e~peat"
-msgstr ""
+msgstr "~G~jenta"
 
 msgid  "~G~enerate Code"
-msgstr ""
+msgstr "G~e~nerer kode"
 
 msgid  "~E~dit"
 msgstr "~R~ediger"
@@ -929,7 +933,7 @@ msgid  "Cop~y~ to Windows Clipboard"
 msgstr "Kopi~e~re til Windows' utklippstavle"
 
 msgid  "Paste from ~W~indows Clipboard"
-msgstr ""
+msgstr "Lime i~n~n fra Windows' utklippstavle"
 
 msgid  "E~x~pand all tabs"
 msgstr "~U~tvide tabulatorer"
@@ -938,7 +942,7 @@ msgid  "C~o~mpact text"
 msgstr "K~o~mprimere tekst"
 
 msgid  "Profile Editor"
-msgstr "~P~rofilere editoren"
+msgstr "~P~rofilere editoren..."
 
 msgid  "~S~earch"
 msgstr "~S~õke"
@@ -986,7 +990,7 @@ msgid  "Go to cursor (No display swap)"
 msgstr "GÜ t~i~l markõr (uten Ü bytte skjermside)"
 
 msgid  "~U~ntil return"
-msgstr ""
+msgstr "Kjõr til ~r~eturn"
 
 msgid  "~P~rogram reset"
 msgstr "~N~ullstill program"
@@ -1046,7 +1050,7 @@ msgid  "Crea~t~e dependencies"
 msgstr "Lag avhengigheter"
 
 msgid  "~W~rite Makefile"
-msgstr "Skriv ~M~akefil"
+msgstr "Skriv ~M~akefile"
 
 msgid  "~D~irectories"
 msgstr "~K~ataloger"
@@ -1094,19 +1098,19 @@ msgid  "A~d~a-Flags"
 msgstr "A~d~a-brytere"
 
 msgid  "~E~ditor"
-msgstr ""
+msgstr "~E~ditor"
 
 msgid  "~E~ditor options"
 msgstr "~E~ditorinnstillinger..."
 
 msgid  "E~d~it key assignment"
-msgstr ""
+msgstr "~R~edigere tastetilordninger..."
 
 msgid  "~A~lt-Keys settings"
-msgstr ""
+msgstr "~A~lt-tastinnstillinger..."
 
 msgid  "~R~estore default editor keys"
-msgstr ""
+msgstr "~G~jenopprette standard editortaster"
 
 msgid  "~E~nvironment"
 msgstr "~M~iljõ"
@@ -1193,10 +1197,10 @@ msgid  "Pro~j~ect"
 msgstr "~P~rosjekt"
 
 msgid  "~W~atches"
-msgstr ""
+msgstr "O~v~ervÜkninger"
 
 msgid  "~M~essages"
-msgstr ""
+msgstr "~M~eldinger"
 
 msgid  "~U~serScreen"
 msgstr "~B~rukerskjerm"
@@ -1250,7 +1254,7 @@ msgid  "~W~atch an expression"
 msgstr "~O~vervÜke et uttrykk..."
 
 msgid  "~I~nspect an expression"
-msgstr ""
+msgstr "~I~nspisere et uttrykk..."
 
 msgid  "~B~reakpoints"
 msgstr "~A~vbruddspunkter..."
@@ -1310,10 +1314,10 @@ msgid  "Environment options"
 msgstr "Miljõinnstillinger"
 
 msgid  "~R~emember old messages"
-msgstr ""
+msgstr "~H~uske gamle meldinger"
 
 msgid  "all dependencies in ~m~akefile"
-msgstr "Alle avhengigheter i make~f~il"
+msgstr "Alle avhengigheter i make~f~ile"
 
 msgid  "create ~b~ackupfiles"
 msgstr "Opprette ~b~ackupfiler"
@@ -1361,16 +1365,16 @@ msgid  "Only #~i~nclude \"...\" as dependencies"
 msgstr "Bare #~i~nclude \"...\" som avhengigheter"
 
 msgid  "Directories in project items"
-msgstr ""
+msgstr "Kataloger i prosjektmedlemmer"
 
 msgid  "Show Disassemb~l~er Window when needed"
-msgstr "Vise disasseblervinduet ved behov"
+msgstr "Vise disassemb~l~ervinduet ved behov"
 
 msgid  "Use RCS"
-msgstr ""
+msgstr "Bruke RCS"
 
 msgid  "Use ~F~PC pascal compiler"
-msgstr ""
+msgstr "Bruke ~F~PC Pascal-kompilator"
 
 msgid  "O~p~tions"
 msgstr "~I~nnstillinger"
@@ -1388,7 +1392,7 @@ msgid  "Cancel"
 msgstr "~A~vbryt"
 
 msgid  "Mor~e~ options"
-msgstr ""
+msgstr "Fl~e~re valg"
 
 msgid  "This video mode (0x%03x) is not supported by the Turbo Vision library"
 msgstr "Denne skjermmodusen (0x%03x) stõttes ikke av Turbo "
@@ -1401,7 +1405,7 @@ msgid  "~D~elete"
 msgstr "F~j~erne"
 
 msgid  "Defa~u~lt"
-msgstr ""
+msgstr "~S~tandard"
 
 msgid  "New value"
 msgstr "Ny verdi"
@@ -1422,10 +1426,10 @@ msgid  "GPC Reserved words"
 msgstr "GPC-reserverte ord"
 
 msgid  "FPC Reserved words"
-msgstr ""
+msgstr "FPC-reserverte ord"
 
 msgid  "User Reserved words"
-msgstr "Brukerdefinerte ord"
+msgstr "Brukerreserverte ord"
 
 msgid  "local options for project-item"
 msgstr "Lokale alternativer for delfil i prosjekt"
@@ -1461,7 +1465,7 @@ msgid  "GNU Fortran compiler"
 msgstr "GNU Fortran-kompilator"
 
 msgid  "Free Pascal compiler"
-msgstr ""
+msgstr "Free Pascal-kompilator"
 
 msgid  "Comp~i~ler type"
 msgstr "Komp~i~latortype"
@@ -1482,7 +1486,7 @@ msgid  "return value"
 msgstr "Returverdi"
 
 msgid  "builtin FPC"
-msgstr ""
+msgstr "Innebygd FPC"
 
 msgid  "~E~rror checking"
 msgstr "F~e~ilkontroll"
@@ -1505,7 +1509,7 @@ msgstr "Skrivebordsfilen kan ikke brukes pga nytt format"
 msgid  ""
 "The desktop file cannot be used, because it was created by a newer version "
 "of RHIDE"
-msgstr "Skrivebordsfilen kan ikke brukes, fordi den er skapt av en nyere "
+msgstr "Skrivebordsfilen kan ikke brukes, fordi den er laget av en nyere "
 "versjon av RHIDE"
 
 msgid  "Save options to a project"
@@ -1593,7 +1597,7 @@ msgid  "~Enter~ Jump to source"
 msgstr "~Enter~ GÜ til kildekode"
 
 msgid  "~Ctrl+Del~ Delete all"
-msgstr ""
+msgstr "~Ctrl+Del~ Slette alt"
 
 msgid  "~Enter~ Select"
 msgstr "~Enter~ Velg"
@@ -1638,22 +1642,22 @@ msgid  "Search for file '%s'\n"
 msgstr "Sõker etter fil '%s'\n"
 
 msgid  "found '%s'\n"
-msgstr "fant '%s'\n"
+msgstr "Fant '%s'\n"
 
 msgid  "not found: take '%s'\n"
-msgstr "fant ikke: ta '%s'\n"
+msgstr "Fant ikke: ta '%s'\n"
 
 msgid  "clearing the FindCache\n"
-msgstr "tõmmer sõkecachen\n"
+msgstr "Tõmmer sõkecachen\n"
 
 msgid  "found '%s' in FindCache\n"
-msgstr "fant '%s' i sõkecachen\n"
+msgstr "Fant '%s' i sõkecachen\n"
 
 msgid  "found '%s' in current directory\n"
-msgstr "fant '%s' i nÜvërende katalog\n"
+msgstr "Fant '%s' i nÜvërende katalog\n"
 
 msgid  "found '%s' using the search directory '%s'\n"
-msgstr "fant '%s' ved hjelp av sõkestien '%s'\n"
+msgstr "Fant '%s' ved hjelp av sõkestien '%s'\n"
 
 msgid  "Open the file %s"
 msgstr "èpne filen %s"
@@ -1745,18 +1749,26 @@ msgid  ""
 "autoexec.bat by adding the following line to fix this problem:\n"
 "\n"
 "SET DJGPP=%s\n"
-msgstr ""
+msgstr "RHIDE har oppdaget at din DJGPP-miljõvariabel ikke var satt. Den er "
+"nÜ satt automatisk. Dersom RHIDE gjorde dette riktig, vennligst endre din "
+"autoexec.bat-fil ved Ü legge til fõlgende linje for Ü korrigere "
+"problemet:\n"
+"\n"
+"SET DJGPP=%s\n"
 
 msgid  ""
 "RHIDE has detected, that the environment variable DJDIR has not been set (or "
 "not correct). This is a fatal mistake. For information about fixing this, "
 "please read the File README.1ST from the DJGPP distribution. (about setting "
 "the DJGPP environment variable!!!) Should I continue?"
-msgstr ""
+msgstr "RHIDE har oppdaget at din DJGPP-miljõvariabel har ikke blitt satt "
+"(eller ikke korrekt). Dette er en grov feil. For informasjon om korreksjon "
+"av problemet, vennligst les filen README.1ST fra DJGPP-distribusjonen. (Om "
+"innstilling av DJGPP-miljõvariabelen!!!) Skal jeg fortsette?"
 
 msgid  ""
 "RHIDE could not access the direcory '%s', where it searches for language "
-"specifc strings. Please read the file 'RHIDE.BIN' how to install RHIDE "
+"specific strings. Please read the file 'RHIDE.BIN' how to install RHIDE "
 "correct. Should I continue?"
 msgstr ""
 
@@ -1767,7 +1779,12 @@ msgid  ""
 "running under such a system? (like Windows 95/Windows NT) There might be a "
 "problem with the standard C++ libraries and the standard C++ include files "
 "because of a LFN-conflict. Should I continue?"
-msgstr ""
+msgstr "RHIDE har oppdaget at du kjõrer et system hvor lange filnavn "
+"muligens stõttes og at du har installert C++-kompilatoren. Er du sikker pÜ "
+"at du har lest DJGPP FAQen og installasjons instruksjonene for gcc nÜr du "
+"kjõrer et slikt system? (Som Windows 95/Windows NT). Det er muligens et "
+"problem med standard C++-biblioteker og standard C++-inkluderingsfiler pÜ "
+"grunn av en LFN-konflikt. Skal jeg fortsette?"
 
 msgid  "You must type a value here"
 msgstr "Du mÜ oppgi en verdi her"
@@ -1818,7 +1835,7 @@ msgid  "D~i~sable"
 msgstr "S~l~Ü av"
 
 msgid  "~S~how"
-msgstr ""
+msgstr "~V~ise"
 
 msgid  "File/L~i~ne"
 msgstr "F~i~l/linje"
@@ -1848,7 +1865,7 @@ msgid  "Edit Breakpoint"
 msgstr "Redigere avbruddspunkt"
 
 msgid  "New Breakpoint"
-msgstr ""
+msgstr "Nytt avbruddspunkt"
 
 msgid  "BreakPoints"
 msgstr "Avbruddspunkter"
@@ -1952,52 +1969,52 @@ msgid  "<empty>"
 msgstr "<Tom>"
 
 msgid  "Write block to file"
-msgstr ""
+msgstr "Skriv blokk til fil"
 
 msgid  "Read block from file"
-msgstr ""
+msgstr "Les blokk fra fil"
 
 msgid  "Base Address"
-msgstr ""
+msgstr "Startadresse"
 
 msgid  "Parameter Error!"
-msgstr ""
+msgstr "Parameterfeil!"
 
 msgid  "Data window"
-msgstr ""
+msgstr "Datavindu"
 
 msgid  "Fill Block"
-msgstr ""
+msgstr "Fyll blokk"
 
 msgid  "~F~rom, length, value"
-msgstr ""
+msgstr "~F~ra, lengde, verdi"
 
 msgid  "Clear Block"
-msgstr ""
+msgstr "Tõm blokk"
 
 msgid  "~F~rom, length"
-msgstr ""
+msgstr "~F~ra, lengde"
 
 msgid  "Move Block"
-msgstr ""
+msgstr "Flytte blokk"
 
 msgid  "~F~rom, to, length"
-msgstr ""
+msgstr "~F~ra, til, lengde"
 
 msgid  "Read Block"
-msgstr ""
+msgstr "Lese blokk"
 
 msgid  "~T~o, length"
-msgstr ""
+msgstr "~T~il, lengde"
 
 msgid  "%u bytes read."
-msgstr ""
+msgstr "%u byter lest."
 
 msgid  "Write Block"
-msgstr ""
+msgstr "Skriv blokk"
 
 msgid  "%u bytes written."
-msgstr ""
+msgstr "%u byter lest"
 
 msgid  "~P~athlist"
 msgstr "~S~õkestier"
@@ -2045,7 +2062,7 @@ msgid  "Confirm"
 msgstr "Bekreft"
 
 msgid  "Don't warn you next time"
-msgstr ""
+msgstr "Ikke advare deg neste gang"
 
 msgid  "type not registered: %s\n"
 msgstr "uregistrert type: %s\n"
@@ -2110,9 +2127,6 @@ msgstr "Ugyldig disk eller katalog"
 msgid  "Invalid file name."
 msgstr "Ugyldig filnavn."
 
-msgid  ""
-msgstr ""
-
 msgid  "Jan"
 msgstr "Jan"
 
@@ -2168,10 +2182,10 @@ msgid  "~Alt-X~ Exit"
 msgstr "~Alt-X~ Avslutte"
 
 msgid  "Value not in the range %U to %U"
-msgstr ""
+msgstr "Verdien er ikke i intervallet %U til %U"
 
 msgid  "Value not in the range %D to %D"
-msgstr ""
+msgstr "Verdien er ikke i intervallet %D til %D"
 
 msgid  "about RH~G~DB"
 msgstr "Om RH~G~DB"
@@ -2180,10 +2194,10 @@ msgid  "~Q~uit"
 msgstr "~A~vslutt"
 
 msgid  "D~a~ta window"
-msgstr ""
+msgstr "D~a~tavindu"
 
 msgid  "S~t~ack window"
-msgstr ""
+msgstr "S~t~akkvindu"
 
 msgid  "~D~irectories for sources"
 msgstr "~K~ataloger for kildekode..."
@@ -2336,7 +2350,7 @@ msgid  "Hmmm ... I can't find any function, are you sure?"
 msgstr "Hmmm ... jeg kan ikke finne noen funksjoner, er du sikker?"
 
 msgid  "Use a file with 1000 lines or more for that"
-msgstr ""
+msgstr "Bruk en fil med 1000 linjer eller mer til det"
 
 msgid  "Speed: %f lines/second"
 msgstr "Hastighet: %g linjer/sekund"
@@ -2353,7 +2367,8 @@ msgstr "Match funnet pÜ linje %d kolonne %d."
 msgid  ""
 "This file contains ASCII 0 values, all the characters after it in this line "
 "becomes invisible. Be careful."
-msgstr ""
+msgstr "Denne filen inneholder ASCII 0-verdier, alle tegn etter den pÜ denne "
+"linjen blir usynlige. Vër forsiktig."
 
 msgid  "Unhandled syntax highlight"
 msgstr "UhÜndtert syntaksutheving"
@@ -2368,7 +2383,7 @@ msgid  "File %s exist. Overwrite ?"
 msgstr "Filen %s eksisterer. Overskrive ?"
 
 msgid  "This file allready exist, overwrite?"
-msgstr ""
+msgstr "Denne filen eksisterer allerede, overskrive?"
 
 msgid  "Saved: %s (%ld bytes)."
 msgstr "Lagret: %s (%ld bytes)."
@@ -2443,67 +2458,67 @@ msgid  "Empty pseudo macro"
 msgstr "Tom pseudomakro"
 
 msgid  "Wrong file"
-msgstr ""
+msgstr "Feil fil"
 
 msgid  "Wrong version"
-msgstr ""
+msgstr "Feil versjon"
 
 msgid  "Error while reading"
-msgstr ""
+msgstr "Feil under lesing"
 
 msgid  "Error while loading the keyboard binding"
-msgstr ""
+msgstr "Feil under innlasting av tastaturbindinger"
 
 msgid  "You'll losse all the changes"
-msgstr ""
+msgstr "Du vil miste alle endringer"
 
 msgid  "Error in sLisp interpreter:"
-msgstr ""
+msgstr "Feil i sLisp-tolkeren:"
 
 msgid  "End of SLP"
-msgstr ""
+msgstr "Slutt pÜ SLP"
 
 msgid  "No macros defined"
-msgstr ""
+msgstr "Ingen makroer definert"
 
 msgid  "sLisp macros"
-msgstr ""
+msgstr "sLisp makroer"
 
 msgid  "~M~acros"
-msgstr ""
+msgstr "~M~akroer"
 
 msgid  "Regular Expressions Options"
-msgstr ""
+msgstr "Valg for regulëre uttrykk"
 
 msgid  "RegEx style"
-msgstr ""
+msgstr "RegEx-stil"
 
 msgid  "~B~asic POSIX"
-msgstr ""
+msgstr "~G~runnleggende POSIX"
 
 msgid  "~E~xtended POSIX"
-msgstr ""
+msgstr "~U~tvidet POSIX"
 
 msgid  "~P~erl Compatible"
-msgstr ""
+msgstr "Perl-kompatibel"
 
 msgid  "Replace text"
-msgstr ""
+msgstr "Erstatte tekst"
 
 msgid  "~N~ormal text"
-msgstr ""
+msgstr "~N~ormal tekst"
 
 msgid  "~D~olar tags"
-msgstr ""
+msgstr "~D~ollar-tagg"
 
 msgid  "Optimize"
-msgstr ""
+msgstr "Optimaliser"
 
 msgid  "~T~ry to use normal search"
-msgstr ""
+msgstr "~P~rõve Ü bruke vanlig sõk"
 
 msgid  "E~v~er use RegEx"
-msgstr ""
+msgstr "Alltid bruke ~R~egEx"
 
 msgid  "Find"
 msgstr "Sõk"
@@ -2515,7 +2530,7 @@ msgid  "~W~hole words only"
 msgstr "~B~are hele ord"
 
 msgid  "Re~g~ular expressions"
-msgstr ""
+msgstr "~R~egulëre uttrykk"
 
 msgid  "Options"
 msgstr "Alternativ:"
@@ -2539,10 +2554,13 @@ msgid  "Origin"
 msgstr "Startpunkt:"
 
 msgid  "RegEx Ops"
-msgstr ""
+msgstr "RegEx ~O~ps"
 
 msgid  "Replace"
 msgstr "Erstatt"
+
+msgid  "~N~ew text"
+msgstr "~N~y tekst:"
 
 msgid  "~P~rompt on replace"
 msgstr "Be~k~reft erstattning"
@@ -2551,10 +2569,10 @@ msgid  "~R~eplace all"
 msgstr "~E~rstatt alle"
 
 msgid  "Replace ~A~ll"
-msgstr ""
+msgstr "~E~rstatt alle"
 
 msgid  "Goto Line"
-msgstr ""
+msgstr "GÜ til linje"
 
 msgid  "Local Options"
 msgstr "Lokale alternativer"
@@ -2590,7 +2608,7 @@ msgid  "Optimal ~F~ill"
 msgstr "O~p~timal-fyll"
 
 msgid  "~W~rap words"
-msgstr ""
+msgstr "~B~rekk om linjene"
 
 msgid  "O~f~f"
 msgstr "~A~v"
@@ -2605,7 +2623,7 @@ msgid  "C~l~ipper style"
 msgstr "C~l~ipper-stil"
 
 msgid  "U~s~er defined"
-msgstr ""
+msgstr "~B~rukerdefinert"
 
 msgid  "Syntax ~H~ighlight"
 msgstr "~S~yntaksutheving"
@@ -2614,7 +2632,7 @@ msgid  "~T~ab size"
 msgstr "~T~abulatorlengde"
 
 msgid  "Wrap column"
-msgstr ""
+msgstr "Brekkolonne"
 
 msgid  "Global Options"
 msgstr "Globale innstilllinger"
@@ -2626,16 +2644,16 @@ msgid  "~S~croll Lock centers"
 msgstr ""
 
 msgid  "T~o~ all"
-msgstr ""
+msgstr "Ti~l~ alle"
 
 msgid  "Search hit"
-msgstr ""
+msgstr "Sõketreff"
 
 msgid  "Replace this occurence?"
 msgstr "Skal dette erstattes ?"
 
 msgid  "~A~ll"
-msgstr ""
+msgstr "~A~lle"
 
 msgid  "Not enough memory for this operation"
 msgstr "Ikke nok minne for denne operasjonen"
@@ -2650,7 +2668,7 @@ msgid  "Error creating file "
 msgstr "Feil ved oppretting av fil "
 
 msgid  " has been modified. Save?"
-msgstr " har blitt endret. Lagre ?"
+msgstr " har blitt endret. Lagre?"
 
 msgid  "Save untitled file?"
 msgstr "Lagre navnlõs fil ?"
@@ -2668,36 +2686,37 @@ msgid  "Search string not found."
 msgstr "Sõkestreng ble ikke funnet."
 
 msgid  " bytes selected"
-msgstr ""
+msgstr " bytes valgt"
 
 msgid  "Line too long, cut it?"
 msgstr "Linjen er for lang, kappe den ?"
 
 msgid  "This file isn't in disk!"
-msgstr ""
+msgstr "Denne filen er ikke pÜ disk!"
 
 msgid  "The file is read-only, try to revert it?"
-msgstr ""
+msgstr "Denne filen er read-only, prõve Ü endre det?"
 
 msgid  ""
 "Failed to revert the read-only status, you won't be able to overwrite this "
 "file"
-msgstr ""
+msgstr "Klarte ikke Ü endre read-only-statusen, du kan ikke overskrive denne "
+"filen"
 
 msgid  "This action doesn't have undo, are you sure?"
-msgstr ""
+msgstr "Denne handlingen kan du ikke angre, er du sikker?"
 
 msgid  "Regular expression error: %s"
-msgstr ""
+msgstr "Feil i regulërt uttrykk: %s"
 
 msgid  "PCRE Exec error"
-msgstr ""
+msgstr "PCRE Exec error"
 
 msgid  "InfView - File: %s - Node: %s"
 msgstr "Infoviser - Fil: %s - Node: %s"
 
 msgid  "Open Info"
-msgstr ""
+msgstr "èpne Info"
 
 msgid  "Sorry can't find the string"
 msgstr "Beklager, men jeg kan ikke finne strengen"
@@ -2712,16 +2731,16 @@ msgid  "Prev. ~H~ist."
 msgstr "Forrige ~H~ist."
 
 msgid  "Nodes ~L~ist"
-msgstr ""
+msgstr "No~d~eliste"
 
 msgid  "~B~ookmarks"
-msgstr ""
+msgstr "~B~okmerker"
 
 msgid  "~C~onfiguration"
-msgstr ""
+msgstr "~K~onfigurasjon"
 
 msgid  "~O~pen Info"
-msgstr ""
+msgstr "è~p~ne Info..."
 
 msgid  "H~i~de"
 msgstr "~S~kjul"
@@ -2757,7 +2776,7 @@ msgid  "InfView Configuration"
 msgstr "Infoviser konfigurasjon"
 
 msgid  "Hide '*~N~ote' word"
-msgstr ""
+msgstr "Skjule '*~N~ote'-ord"
 
 msgid  "Hide real ~l~ink name"
 msgstr "Skjule virkelig ~l~inknavn"
@@ -2787,7 +2806,7 @@ msgid  "Attention can't open the help file '%s'."
 msgstr "OBS, kan ikke Üpne hjelpefilen '%s'."
 
 msgid  "You must install gzip to browse compressed files!"
-msgstr ""
+msgstr "Du mÜ installere gzip for Ü lese komprimerte filer!"
 
 msgid  ""
 "\n"
@@ -2795,60 +2814,132 @@ msgid  ""
 msgstr "\n"
 " Beklager, jeg kan ikke finne denne lenken (trykk ALT-F1).\n"
 
-msgid  "About"
+msgid  "~I~nsert"
+msgstr "~S~ett inn"
+
+msgid  "~O~k"
 msgstr ""
 
-msgid  "That's SET's Editor v%lX.%lX.%lX, (c) 1996-1998"
+msgid  "~C~ancel"
+msgstr "~A~vbryt"
+
+msgid  "Key assigment"
+msgstr "Tastetilordninger"
+
+msgid  "Command~s~"
+msgstr "~K~ommandoer"
+
+msgid  "Assigmen~t~"
+msgstr "~T~ilordninger"
+
+msgid  "Accepting that you'll change the SET's editor behavior"
 msgstr ""
 
-msgid  "by Salvador Eduardo Tropea"
+msgid  "Do you really want to discard the changes?"
 msgstr ""
 
-msgid  "A text editor specially designed for programmers."
+msgid  "Sequence of keys"
+msgstr "Tastesekvens"
+
+msgid  "This key is allready in use, do you want to replace it?"
 msgstr ""
 
-msgid  "Don't show it next time"
+msgid  ""
+"This sequence is used for more than one key, delete these assigments first"
 msgstr ""
 
-msgid  "SET's Editor v%lX.%lX.%lX, (c) 1996-1998"
+msgid  "Press a key"
 msgstr ""
 
-msgid  "Made in Argentina"
+msgid  "Key selector"
 msgstr ""
 
-msgid  "Thanks to:"
+msgid  "Macros"
 msgstr ""
 
-msgid  "The FSF and GNU people for such a good tools"
+msgid  "Commands"
 msgstr ""
 
-msgid  "DJ Delorie and colaborators for porting it to DOS"
+msgid  "A command"
 msgstr ""
 
-msgid  "Robert Hîhne for porting TVision and making RHIDE"
+msgid  "Scan Viewer"
 msgstr ""
 
-msgid  "The University of California, Berkeley and its contributors"
+msgid  "Alt keys settings"
+msgstr "Alt-tast-innstillinger"
+
+msgid  "~L~eft Alt"
+msgstr "~V~enstre Alt"
+
+msgid  "~R~ight Alt"
+msgstr "~H~õyre Alt"
+
+msgid  "~B~oth Alt"
+msgstr "~B~egge Alt"
+
+msgid  "~K~eys used by the menues, etc."
+msgstr "Taster brukt av menyene, osv."
+
+msgid  "Key Pad behavior"
 msgstr ""
 
-msgid  "The University of Cambridge for the PCRE package"
+msgid  "Mantain the ~B~IOS default"
 msgstr ""
 
-msgid  "Shawn Hargreaves for Allegro, used as sound engine"
+msgid  "Ever interpret shift+arrow as ~m~ovement"
 msgstr ""
 
-msgid  "Tomislav Uzelac for AMP, the MP3 engine"
+msgid  "Behavior"
 msgstr ""
 
-msgid  "Ove Kaaven for LibAmp, the Allegro adaptation of AMP"
+msgid  "Page: %d Lines: %d to %d  Date: %s  Time: %s\r\f"
 msgstr ""
 
-msgid  "All my friends that support my project (Laszlo, Marek, etc)"
+msgid  ""
+"* Source: %s * Title: %s * Author: %s\n"
+"\n"
+msgstr ""
+
+msgid  "Starting printing module"
+msgstr ""
+
+msgid  "Can't open output file for printing"
+msgstr ""
+
+msgid  "The header is too large, reduce the title and/or author lengths"
+msgstr ""
+
+msgid  "Header length: %d Columns: %d"
+msgstr ""
+
+msgid  "Processed: %d lines, total printed: %d lines"
+msgstr ""
+
+msgid  "Printer Setup"
+msgstr ""
+
+msgid  "Total ~l~ines per page:"
+msgstr ""
+
+msgid  "Columns ~w~/o margin:"
+msgstr ""
+
+msgid  "Left ~m~argin:"
+msgstr ""
+
+msgid  "Print line numbers"
+msgstr ""
+
+msgid  "~T~ime format:"
+msgstr ""
+
+msgid  "~D~ate format:"
 msgstr ""
 
 msgid  "Ho~m~e"
-msgstr ""
+msgstr "Hje~m~"
 
 msgid  "E~x~tended regex"
-msgstr ""
+msgstr "~U~tvidet regex"
 

@@ -100,7 +100,7 @@ endif
 touch_gprs:
 	@touch $(shell find -name "*.gpr" -print)
 
-check.files: touch_gprs
+check.files: init.version gpr2mak.exe touch_gprs
 	@touch $(shell find -name "*.gpr" -print)
 	@echo Checking in $(obj_dir)
 	@$(MAKE) --no-print-directory check_src_files \
@@ -180,12 +180,16 @@ init.version: ideversi.cc rhgdb/version.cc
 ideversi.cc: ideversi.in common.mak
 	sed -e s,@version@,$(VERSION),g \
 	    -e "s/WARN/This file is generated automatically, do not edit!/g" \
-          $(srcdir)/ideversi.in > ideversi.cc
+          $(srcdir)/ideversi.in > _vers_
+	$(move-if-change) _vers_ $@
+	-rm -f _vers_
 
 rhgdb/version.cc: rhgdb/version.in common.mak
 	sed -e s,@version@,$(VERSION),g \
 	    -e "s/WARN/This file is generated automatically, do not edit!/g" \
-          $(srcdir)/rhgdb/version.in > rhgdb/version.cc
+          $(srcdir)/rhgdb/version.in > _vers_
+	$(move-if-change) _vers_ $@
+	-rm -f _vers_
 
 distrib.src: init.version touch_gprs
 	$(MAKE) $(FLAGS_TO_PASS) gpr2mak.exe

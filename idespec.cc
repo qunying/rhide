@@ -420,7 +420,8 @@ static char *default_variables[] = {
   /local/share/rhide /share/rhide",
 
  "RHIDE_CONFIG_DIRS",
- "$(RHIDE_CONFIG_DIRS_$(RHIDE_OS)) $(RHIDE_BIN_DIR)/../share/rhide",
+ "$(RHIDE_CONFIG_DIRS_$(RHIDE_OS)) $(RHIDE_BIN_DIR)/../share/rhide\
+  $(SET_FILES)",
 
  "RHIDE_PATH_SEPARATOR_DJGPP",
  ";",

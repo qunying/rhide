@@ -1,4 +1,4 @@
-/* Copyright (C) 1996-2001 Robert H”hne, see COPYING.RH for details */
+/* Copyright (C) 1996-2002 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
 #ifdef __DJGPP__
 #include <go32.h>
@@ -909,7 +909,7 @@ About()
           _("for developing Linux apps"),
 #endif
           _("Copyright (C) by Robert H”hne"),
-          1996, 2001,
+          1996, 2002,
           _("Language: "), _("English"),
           _("Translated by: "), _("Nobody"),
           _("last updated: "), _("1998-11-29")
@@ -2465,7 +2465,7 @@ $(strip $(RHIDE_CONFIG_DIRS) $(INFOPATH) /usr/share/info /usr/info \
 #endif
   parse_commandline(__crt0_argc, __crt0_argv);
   TScreen::suspend();
-  fprintf(stderr, _("This is %s. Copyright (c) 1996-2001 by Robert H”hne\n"),
+  fprintf(stderr, _("This is %s. Copyright (c) 1996-2002 by Robert H”hne\n"),
           IDEVersion);
   fprintf(stderr, "             (%s %s)\n", build_date, build_time);
   TScreen::resume();

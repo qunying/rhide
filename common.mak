@@ -105,12 +105,12 @@ ifeq ($(top_obj_dir),)
 ifeq ($(strip $(rhide_OS)),DJGPP)
 export top_obj_dir:=$(shell cd $(top_dir); pwd; cd $(obj_dir))
 else
-export top_obj_dir:=`cd $(top_dir); pwd; cd $(obj_dir)`
+export top_obj_dir:=$(shell cd $(top_dir); pwd; cd $(obj_dir))
 endif
 endif
 
 ifeq ($(copyrite.exe),)
-copyrite.exe:=$(top_obj_dir)/copyrite.exe
+export copyrite.exe:=$(top_obj_dir)/copyrite.exe
 endif
 
 ifeq ($(strip $(rhide_OS)),Linux)

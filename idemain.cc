@@ -718,8 +718,10 @@ void SetMainTargetName(const char *name,TProject *_prj)
 
 void TargetName()
 {
-  char buffer[256];
-  strcpy(buffer,FName(Project.dest_name));
+  char buffer[PATH_MAX];
+  buffer[0] = 0;
+  if (Project.dest_name)
+    strcpy(buffer,FName(Project.dest_name));
   if (HistinputBox(_("Name of the main target"),_("~N~ame"),
       buffer,255,RHIDE_History_main_targetname) == cmOK)
   {

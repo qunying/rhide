@@ -35,6 +35,10 @@
 #define Uses_TCEditor_Commands
 #include <libide.h>
 
+#define Uses_TCEditor
+#include <ceditor.h>
+#include <edprint.h>
+
 #ifdef INTERNAL_DEBUGGER
 #include <librhgdb.h>
 
@@ -94,6 +98,20 @@ void SaveScreen();
 void RestoreScreen();
 
 #define DELTA(x) (*((long *)(x)))
+
+static
+void IDEPrintEditor(TCEditor *e)
+{
+  if (e->IslineInEdition)
+     e->MakeEfectiveLineInEdition();
+  e->buffer[e->bufLen]=0;
+  char *s=strrchr(e->fileName,'/');
+  if (!s)
+     s=e->fileName;
+  else
+     s++;
+  PrintSource(e->buffer,s);
+}
 
 int global_argc = 0;
 char **global_argv = NULL;
@@ -1087,6 +1105,14 @@ void IDE::handleEvent(TEvent & event)
     case evCommand:
       switch (event.message.command)
       {
+        case cmPrintSetup:
+          PrintSetup();
+          clearEvent(event);
+          break;
+        case cmPrint:
+          IDEPrintEditor(((TCEditWindow*)TProgram::deskTop->current)->editor);
+          clearEvent(event);
+          break;
         case cmJumpToFunction:
         {
           TView *ew = TProgram::deskTop->current;
@@ -2024,6 +2050,7 @@ void init_rhide(int _argc, char **_argv)
   fprintf(stderr,"             (%s %s)\n",build_date,build_time);
   TScreen::resume();
   TEventQueue::resume();
+  PrintSetDefaults();
 }
 
 /*

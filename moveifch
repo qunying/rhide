@@ -20,7 +20,7 @@ if
 test -r $2
 then
 if
-cmp $1 $2 > /dev/null
+cat $2 | cmp $1 > /dev/null
 then
 echo $2 is unchanged
 rm -f $1

@@ -700,7 +700,14 @@ static int isStandardHeader(const char *depfile)
     char *dir = expand_rhide_spec((char *)Options.StdInc->at(i));
     if (!*dir)
       continue;
-    char *res = strstr(depfile,dir);
+    char *tok, *res = NULL;
+    /* dir may be more than one directory */
+    /* it fails of course, if the directoy has spaces as part of the name :-( */
+    for (tok = strtok(dir, " "); tok; tok=strtok(NULL, " "))
+    {
+      res = strstr(depfile, tok);
+      if (res == depfile) break;
+    }
     string_free(dir);
     if (res == depfile)
       return 1;

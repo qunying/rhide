@@ -94,6 +94,9 @@ TMenuBar *IDE::initMenuBar( TRect r )
     +*new _TMenuItem( __("S~a~ve as..."), cmcSaveAs, kbNoKey, hcSaveAs )
     +*new _TMenuItem( __("Save a~l~l"), cmSaveAll, kbNoKey, hcSaveAll )
     +     newLine()
+    +*new _TMenuItem( __("~P~rint"), cmPrint, kbNoKey, hcPrint)
+    +*new _TMenuItem( __("Printer set~u~p"), cmPrintSetup, kbNoKey, hcPrintSetup)
+    +     newLine()
 #ifdef __DJGPP__
     +*new _TMenuItem( __("~D~OS shell"), cmDosShell, kbNoKey, hcDosShell )
 #else
@@ -106,6 +109,10 @@ TMenuBar *IDE::initMenuBar( TRect r )
     +*new _TMenuItem( __("~R~ecord"), cmcRecordMacro, kbShiftF10, hcRecord, "Shift+F10" )
     +*new _TMenuItem( __("~S~top"), cmcStopMacro, kbAltF10, hcStop, "Alt+F10" )
     +*new _TMenuItem( __("~P~lay"), cmcPlayMacro, kbCtrlF10, hcPlay, "Ctrl+F10" )
+    +     newLine()
+    +*new _TMenuItem( __("~C~hoose"), cmcChooseMacro, kbNoKey, hcChooseMacro)
+    +*new _TMenuItem( __("R~e~peat"), cmcRepeatMacro, kbShiftF3, hcRepeatMacro, "Shift+F3")
+    +*new _TMenuItem( __("~G~enerate Code"), cmcGenCodeForMacro, kbNoKey, hcGenCodeForMacro)
   ;
 
   TSubMenu& edit_menu = *new TSubMenu( _("~E~dit"), kbAltE, hcEdit )

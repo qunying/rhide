@@ -1183,6 +1183,8 @@ void IDE::handleEvent(TEvent & event)
         SC(Tile);
         SC(Cascade);
         SC(ShowCalculator);
+        SC(ClearMessages);
+        SC(ClearMessage);
         case cmShowMessages:
           ShowMessages(NULL, False, False, True);
           clearEvent(event);

@@ -65,6 +65,9 @@ arg3=$(first_dir)
 override GDB_SRC_=$(abs_path)
 endif
 override GDB_SRC:=$(GDB_SRC_)
+ifeq ($(strip $(GDB_OBJ)),)
+GDB_OBJ=$(GDB_SRC)
+endif
 
 TVOBJ_=$(TVOBJ)
 ifeq ($(TVOBJ_),)
@@ -93,6 +96,7 @@ echo_vars:
 	@echo TVSRC=$(TVSRC)
 	@echo SETSRC=$(SETSRC)
 	@echo GDB_SRC=$(GDB_SRC)
+	@echo GDB_OBJ=$(GDB_OBJ)
 	@echo TVOBJ=$(TVOBJ)
 	@echo SETOBJ=$(SETOBJ)
 	@echo SET_LIBS=$(SET_LIBS)
@@ -102,6 +106,7 @@ create_config:
 	@echo TVSRC=$(TVSRC) >> $(config_file)
 	@echo SETSRC=$(SETSRC) >> $(config_file)
 	@echo GDB_SRC=$(GDB_SRC) >> $(config_file)
+	@echo GDB_OBJ=$(GDB_OBJ) >> $(config_file)
 	@echo TVOBJ=$(TVOBJ) >> $(config_file)
 	@echo SETOBJ=$(SETOBJ) >> $(config_file)
 	@echo SET_LIBS=$(SET_LIBS) >> $(config_file)

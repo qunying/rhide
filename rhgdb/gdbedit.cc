@@ -1,4 +1,4 @@
-/* Copyright (C) 1996-2000 Robert H”hne, see COPYING.RH for details */
+/* Copyright (C) 1996-2000 Robert Höhne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
 #include <unistd.h>
 #include <string.h>
@@ -378,6 +378,7 @@ OpenViewer(char *_fname, int line, Boolean from_debugger, Boolean only_focus)
   int i, count;
   Boolean found;
   char *_bname, *bname;
+  fprintf(stderr, "searching %s\n", _fname);
   char *fname = find_file(_fname, _bname, found);
   char full_name[512];
   TCEditor *editor;

@@ -93,7 +93,9 @@ static void read_file(char *fname)
   current_filename = strdup(fname);
 }
 
-static void show_line(char *fname,int line_no)
+static void show_line(char *fname,int line_no
+                      , char *dirname __attribute__((unused))
+                      , char *fullname __attribute__((unused)))
 {
   if (!current_filename || strcmp(current_filename,fname))
     read_file(fname);

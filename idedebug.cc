@@ -87,7 +87,7 @@ OpenDisWin(int force_open)
 }
 
 static void
-select_source_line(char *fname, int line)
+select_source_line(char *fname, int line, char *fullname, char *dirname)
 {
   if (!debugger_started)
     return;
@@ -112,8 +112,22 @@ select_source_line(char *fname, int line)
   }
   else
   {
+    bool found = false;
+    if ((found = FindFile(fullname, full_name)) == false)
+    {
+      string_free(full_name);
+      found = FindFile(fname, full_name);
+    }
+    if (!found && dirname)
+    {
+      char *tmp = string_dup(dirname);
+      string_cat(dirname, "/", fname, NULL);
+      found = FindFile(tmp, full_name);
+      if (!found)
+        string_free(full_name);
+    }
     current_editor = is_on_desktop(fname, False);
-    if (!current_editor && FindFile(fname, full_name) == False)
+    if (!current_editor && !found)
     {
       if (lastSkippedName)
       {

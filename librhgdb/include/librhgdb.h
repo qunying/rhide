@@ -120,8 +120,10 @@ extern "C"
 /*
   Returns the filename for the function 'main' and puts in 'line' the
   linenumber, where it starts.
+  Store optionally the compilation directory in 'dirname' if
+  it is known.
 */
-  char *SourceForMain(int *line);
+  char *SourceForMain(int *line, char **dirname);
 
 /*
   Nonzero, if the debugger has started, otherwise zero.
@@ -356,8 +358,12 @@ extern "C"
 /*
   This function is called, when the line number 'line' of file 'fname'
   should be displayed.
+  if 'fullname' is not not NULL, it is the full name provided
+  by gdb (probably from the debug info).
+  if 'dirname' is not NULL, it is the compilation directory.
 */
-  extern void (*_select_source_line) (char *fname, int line);
+  extern void (*_select_source_line) (char *fname, int line,
+                                      char *dirname, char *fullname);
 /*
   Return the name of the program, being debugged
 */

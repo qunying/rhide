@@ -185,7 +185,8 @@ annotate_stopped()
   {
     s = find_pc_line(stop_pc, 0);
     fname = s.symtab ? s.symtab->filename : NULL;
-    _select_source_line(fname, s.line);
+    
+    _select_source_line(fname, s.line, s.symtab->dirname, s.symtab->fullname);
   }
   _DEBUG("a_stopped(%s,%d)\n", fname, s.line);
 }
@@ -515,10 +516,12 @@ init_proc()
 }
 
 char *
-SourceForMain(int *line)
+SourceForMain(int *line, char **dirname)
 {
   struct symbol *sym;
   struct symtab *symtab;
+
+  *dirname = NULL;
 
   *line = 0;
   sym = lookup_symbol(_GetMainFunction(), NULL, VAR_NAMESPACE, NULL, &symtab);
@@ -552,6 +555,7 @@ SourceForMain(int *line)
   }
   else
     *line = 0;
+  *dirname = symtab->dirname;
   return symtab->filename;
 }
 

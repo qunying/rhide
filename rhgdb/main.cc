@@ -1023,10 +1023,20 @@ main(int argc, char **argv)
   InitDebuggerInterface();
   if (InitRHGDB())
   {
-    main_source = SourceForMain(&main_line);
+    char *dirname;
+    main_source = SourceForMain(&main_line, &dirname);
     if (main_source)
     {
-      OpenViewer(main_source, main_line, False);
+      bool found = false;
+      if (dirname)
+      {
+        char *full_name = string_dup(dirname);
+        string_cat(full_name, "/", main_source, NULL);
+        found = OpenViewer(full_name, main_line, true);
+        string_free(full_name);
+      }
+      if (!found)
+        OpenViewer(main_source, main_line, False);
       CenterCursor();
     }
     else if (main_line != 0)
@@ -1166,13 +1176,28 @@ DebuggerScreen()
 }
 
 static void
-select_source_line(char *fname, int line)
+select_source_line(char *fname, int line, char *dirname, char *fullname)
 {
   Boolean isSource = False;
   int select_dis_win = dis_win && TProgram::deskTop->current == dis_win;
-
+  fprintf(stderr, "%s   %s   %s\n", fname, dirname, fullname);
   ClearCPULine();
-  if (fname)
+  
+  if (fullname)
+    isSource = OpenViewer(fullname, line, True);
+    
+  if (!isSource && dirname)
+  {
+    if (fname)
+    {
+      char *full_name = string_dup(dirname);
+      string_cat(full_name, "/", fname, NULL);
+      isSource = OpenViewer(full_name, line, true);
+      string_free(full_name);
+    }
+  }
+    
+  if (!isSource && fname)
     isSource = OpenViewer(fname, line, True);
 
   if (!fname || !isSource)

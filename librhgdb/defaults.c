@@ -4,11 +4,14 @@
 
 static void
 __select_source_line(char *fname __attribute__ ((unused)),
-                     int lineno __attribute__ ((unused)))
+                     int lineno __attribute__ ((unused)),
+                     char *dirname __attribute__((unused)),
+                     char *fullname __attribute__((unused)))
 {
 }
 
-void (*_select_source_line) (char *, int) = __select_source_line;
+void (*_select_source_line) (char *, int, char *, char *)
+  = __select_source_line;
 
 static void
 __DebuggerScreen(void)

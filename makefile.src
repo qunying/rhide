@@ -68,7 +68,7 @@ idegc.exe rhgdb/rhgdb.exe:: libgdb/libgdb.a
 
 # these are the targets, which cannot build with RHIDE
 
-.PHONY: needed
+.PHONY: needed touch_gprs
 
 needed: libgdb/libgdb.h libgdb/libgdb.a \
 	  $(RHIDESRC)/tvision/include/tv.h
@@ -97,14 +97,20 @@ else
 install_prefix_src=$(PACKAGE)$(DIR_VERSION)
 endif
 
-check.files:
+touch_gprs:
 	@touch $(shell find -name "*.gpr" -print)
-	@$(MAKE) check_src_files
+
+check.files: touch_gprs
+	@touch $(shell find -name "*.gpr" -print)
+	@echo Checking in $(obj_dir)
+	@$(MAKE) --no-print-directory check_src_files \
+	  update_src_file="cp -p"
 
 copy.files:
 	@-rm -f $(list_file)
 	$(MAKE) prefix=$(prefix) list_file=$(list_file) \
-	  list_prefix=$(install_prefix_src)/ copy_src_files
+	  list_prefix=$(install_prefix_src)/ copy_src_files \
+	  --no-print-directory
 
 mft.src:
 	$(INSTALL_DIR) $(copy_dir)/manifest
@@ -181,9 +187,8 @@ rhgdb/version.cc: rhgdb/version.in common.mak
 	    -e "s/WARN/This file is generated automatically, do not edit!/g" \
           $(srcdir)/rhgdb/version.in > rhgdb/version.cc
 
-distrib.src: init.version
+distrib.src: init.version touch_gprs
 	$(MAKE) $(FLAGS_TO_PASS) gpr2mak.exe
-	touch $(shell find -name "*.gpr" -print)
 	$(MAKE) $(FLAGS_TO_PASS) \
 	  prefix=$(copy_dir)/$(install_prefix_src) distrib.src_ \
 	  LFN=n
@@ -295,12 +300,10 @@ install.all:
 
 distrib.bin_: install.all install.bin_src_files $(MANIFEST)
 
-distrib.bin: init.version
+distrib.bin: init.version touch_gprs
 	rm -rf $(copy_dir)
 # make at first gpr2mak
 	$(MAKE) $(FLAGS_TO_PASS) $(DISTRIB_BIN_FLAGS) gpr2mak.exe
-# now touch all .gpr files to force to use the actual gpr2mak
-	touch $(shell find -name "*.gpr" -print)
 	$(MAKE)  $(FLAGS_TO_PASS) prefix=$(copy_dir)$(install_prefix_bin) \
 	  distrib.bin_ \
 	  logfile=rhide.log $(DISTRIB_BIN_FLAGS)

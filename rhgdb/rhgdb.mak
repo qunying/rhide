@@ -10,16 +10,16 @@ ifeq ($(strip $(RHIDESRC)),)
 RHIDESRC=s:/rho/rhide
 endif
 ifeq ($(strip $(SETOBJ)),)
-SETOBJ=d:/djgpp/contrib/setedit/makes
+SETOBJ=g:/djgpp/lib
 endif
 ifeq ($(strip $(SETSRC)),)
-SETSRC=d:/djgpp/contrib/setedit
+SETSRC=g:/djgpp/include/libset
 endif
 ifeq ($(strip $(TVOBJ)),)
-TVOBJ=d:/djgpp/contrib/tvision/djgpp
+TVOBJ=g:/djgpp/lib
 endif
 ifeq ($(strip $(TVSRC)),)
-TVSRC=d:/djgpp/contrib/tvision
+TVSRC=g:/djgpp/include/rhtvision
 endif
 vpath_src=$(RHIDESRC)/rhgdb
 vpath %.c $(vpath_src)
@@ -228,6 +228,10 @@ RHIDE_CONFIG_DIRS=$(RHIDE_CONFIG_DIRS_$(RHIDE_OS))\
 RHIDE_PATH_SEPARATOR_DJGPP=;
 RHIDE_PATH_SEPARATOR_Linux=:
 RHIDE_PATH_SEPARATOR=$(RHIDE_PATH_SEPARATOR_$(RHIDE_OS))
+RHIDE_TYPED_LIBS_DJGPP.cc=stdcxx
+RHIDE_TYPED_LIBS_DJGPP.cxx=stdcxx
+RHIDE_TYPED_LIBS_DJGPP.cpp=stdcxx
+RHIDE_TYPED_LIBS_DJGPP.f=g2c m
 RHIDE_STDINC_C_DJGPP_BETA=$(DJGPP_ALPHA)/include
 RHIDE_STDINC_C_DJGPP=$(DJDIR)/include $(RHIDE_STDINC_C_DJGPP_BETA)
 RHIDE_STDINC_CXX_DJGPP=$(DJDIR)/lang/cxx 
@@ -251,9 +255,6 @@ PCRE_OBJ=$(subst Linux,linux,$(SETOBJ)/$(RHIDE_OS))
 RHIDE_OS_LIBS_Linux=ncurses gpm
 RHIDE_OS_LIBS_DJGPP=intl dbg
 RHIDE_OS_LIBS=$(RHIDE_OS_LIBS_$(RHIDE_OS))
-RHIDE_COMPILE_LINK=$(RHIDE_LD) $(RHIDE_LIBDIRS) $(C_EXTRA_FLAGS) -o\
-	$(OUTFILE) $(OBJFILES) $(LIBRARIES) $(LDFLAGS) $(RHIDE_LDFLAGS)\
-	$(RHIDE_LIBS) $(SETOBJ)/easydiag.a -lrhtv
 RHIDE_STDINC_C_DJGPP_BETA=$(DJGPP_ALPHA)/include
 RHIDE_STDINC_C_DJGPP=$(DJDIR)/include $(RHIDE_STDINC_C_DJGPP_BETA)
 RHIDE_STDINC_CXX_DJGPP=$(DJDIR)/lang/cxx 
@@ -277,13 +278,10 @@ PCRE_OBJ=$(subst Linux,linux,$(SETOBJ)/$(RHIDE_OS))
 RHIDE_OS_LIBS_Linux=ncurses gpm
 RHIDE_OS_LIBS_DJGPP=intl dbg
 RHIDE_OS_LIBS=$(RHIDE_OS_LIBS_$(RHIDE_OS))
-RHIDE_COMPILE_LINK=$(RHIDE_LD) $(RHIDE_LIBDIRS) $(C_EXTRA_FLAGS) -o\
-	$(OUTFILE) $(OBJFILES) $(LIBRARIES) $(LDFLAGS) $(RHIDE_LDFLAGS)\
-	$(RHIDE_LIBS) $(SETOBJ)/easydiag.a -lrhtv
 INCLUDE_DIRS=$(RHIDESRC)/rhgdb/include $(RHIDESRC)/librhgdb/include\
 	$(RHIDESRC)/libtvgdb/include $(RHIDESRC)/libtvuti/include\
-	$(RHIDESRC)/librhuti $(TVSRC)/include $(SETSRC)/include\
-	$(SETSRC)/settvuti/include
+	$(RHIDESRC)/librhuti $(TVSRC)/include $(TVSRC) $(SETSRC)/include\
+	$(SETSRC)/settvuti/include $(SETSRC)
 LIB_DIRS=../librhgdb ../libtvgdb ../libtvuti ../librhuti ../libgdb $(TVOBJ)\
 	$(SETOBJ) $(PCRE_OBJ)
 C_DEBUG_FLAGS=-g

@@ -1269,4 +1269,7 @@ int RunProgram(const char *, bool, bool, bool)
   return -1;
 }
 
+void RunExternalProgram(char *, unsigned , char *)
+{
+}
 

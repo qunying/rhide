@@ -7,7 +7,7 @@ ifeq ($(strip $(RHIDESRC)),)
 RHIDESRC=s:/rho/rhide
 endif
 ifeq ($(strip $(TVSRC)),)
-TVSRC=d:/djgpp/contrib/tvision
+TVSRC=g:/djgpp/include/rhtvision
 endif
 vpath_src=$(RHIDESRC)/tvdemo
 vpath %.c $(vpath_src)
@@ -216,6 +216,10 @@ RHIDE_CONFIG_DIRS=$(RHIDE_CONFIG_DIRS_$(RHIDE_OS))\
 RHIDE_PATH_SEPARATOR_DJGPP=;
 RHIDE_PATH_SEPARATOR_Linux=:
 RHIDE_PATH_SEPARATOR=$(RHIDE_PATH_SEPARATOR_$(RHIDE_OS))
+RHIDE_TYPED_LIBS_DJGPP.cc=stdcxx
+RHIDE_TYPED_LIBS_DJGPP.cxx=stdcxx
+RHIDE_TYPED_LIBS_DJGPP.cpp=stdcxx
+RHIDE_TYPED_LIBS_DJGPP.f=g2c m
 RHIDE_STDINC_C_DJGPP_BETA=$(DJGPP_ALPHA)/include
 RHIDE_STDINC_C_DJGPP=$(DJDIR)/include $(RHIDE_STDINC_C_DJGPP_BETA)
 RHIDE_STDINC_CXX_DJGPP=$(DJDIR)/lang/cxx 
@@ -256,7 +260,7 @@ RHIDE_OS_CXXFLAGS=$(RHIDE_OS_CXXFLAGS_$(RHIDE_OS)) $(RH_WARN)\
 	-fno-exceptions -fno-rtti
 RHIDE_LIBDIRS=$(addprefix -L,$(dir $(LIBGDB_A)) $(LIB_DIRS))
 PCRE_OBJ=$(subst Linux,linux,$(SETOBJ)/$(RHIDE_OS))
-INCLUDE_DIRS=$(RHIDESRC)/tvdemo/include $(TVSRC)/include
+INCLUDE_DIRS=$(RHIDESRC)/tvdemo/include $(TVSRC)/include $(TVSRC)
 LIB_DIRS=
 C_DEBUG_FLAGS=-g
 C_OPT_FLAGS=-O2

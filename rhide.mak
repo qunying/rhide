@@ -10,16 +10,16 @@ ifeq ($(strip $(RHIDESRC)),)
 RHIDESRC=s:/rho/rhide
 endif
 ifeq ($(strip $(SETOBJ)),)
-SETOBJ=d:/djgpp/contrib/setedit/makes
+SETOBJ=g:/djgpp/lib
 endif
 ifeq ($(strip $(SETSRC)),)
-SETSRC=d:/djgpp/contrib/setedit
+SETSRC=g:/djgpp/include/libset
 endif
 ifeq ($(strip $(TVOBJ)),)
-TVOBJ=d:/djgpp/contrib/tvision/djgpp
+TVOBJ=g:/djgpp/lib
 endif
 ifeq ($(strip $(TVSRC)),)
-TVSRC=d:/djgpp/contrib/tvision
+TVSRC=g:/djgpp/include/rhtvision
 endif
 vpath_src=$(RHIDESRC)
 vpath %.c $(vpath_src)
@@ -230,6 +230,10 @@ RHIDE_CONFIG_DIRS=$(RHIDE_CONFIG_DIRS_$(RHIDE_OS))\
 RHIDE_PATH_SEPARATOR_DJGPP=;
 RHIDE_PATH_SEPARATOR_Linux=:
 RHIDE_PATH_SEPARATOR=$(RHIDE_PATH_SEPARATOR_$(RHIDE_OS))
+RHIDE_TYPED_LIBS_DJGPP.cc=stdcxx
+RHIDE_TYPED_LIBS_DJGPP.cxx=stdcxx
+RHIDE_TYPED_LIBS_DJGPP.cpp=stdcxx
+RHIDE_TYPED_LIBS_DJGPP.f=g2c m
 RHIDE_STDINC_C_DJGPP_BETA=$(DJGPP_ALPHA)/include
 RHIDE_STDINC_C_DJGPP=$(DJDIR)/include $(RHIDE_STDINC_C_DJGPP_BETA)
 RHIDE_STDINC_CXX_DJGPP=$(DJDIR)/lang/cxx 
@@ -254,9 +258,6 @@ RHIDE_OS_LIBS_Linux=ncurses gpm m
 RHIDE_OS_LIBS_DJGPP_idegc.exe=dbg
 RHIDE_OS_LIBS_DJGPP=intl $(RHIDE_OS_LIBS_DJGPP_$(MAIN_TARGET))
 RHIDE_OS_LIBS=$(RHIDE_OS_LIBS_$(RHIDE_OS))
-RHIDE_COMPILE_LINK=$(RHIDE_LD) $(RHIDE_LIBDIRS) $(C_EXTRA_FLAGS) -o\
-	$(OUTFILE) $(OBJFILES) $(LIBRARIES) $(LDFLAGS) $(RHIDE_LDFLAGS)\
-	$(RHIDE_LIBS) $(SETOBJ)/easydiag.a -lrhtv
 SET_FILES=$(DJDIR)/share/setedit
 RHIDE_STDINC_C_DJGPP_BETA=$(DJGPP_ALPHA)/include
 RHIDE_STDINC_C_DJGPP=$(DJDIR)/include $(RHIDE_STDINC_C_DJGPP_BETA)
@@ -282,17 +283,14 @@ RHIDE_OS_LIBS_Linux=ncurses gpm m
 RHIDE_OS_LIBS_DJGPP_idegc.exe=dbg
 RHIDE_OS_LIBS_DJGPP=intl $(RHIDE_OS_LIBS_DJGPP_$(MAIN_TARGET))
 RHIDE_OS_LIBS=$(RHIDE_OS_LIBS_$(RHIDE_OS))
-RHIDE_COMPILE_LINK=$(RHIDE_LD) $(RHIDE_LIBDIRS) $(C_EXTRA_FLAGS) -o\
-	$(OUTFILE) $(OBJFILES) $(LIBRARIES) $(LDFLAGS) $(RHIDE_LDFLAGS)\
-	$(RHIDE_LIBS) $(SETOBJ)/easydiag.a -lrhtv
 SET_FILES=$(DJDIR)/share/setedit
 INCLUDE_DIRS=$(RHIDESRC)/include $(RHIDESRC)/libtvuti/include\
 	$(RHIDESRC)/librhuti $(RHIDESRC)/libide/include\
 	$(RHIDESRC)/librhgdb/include $(RHIDESRC)/libtvgdb/include\
-	$(TVSRC)/include $(RHIDESRC)/tvdemo/include $(SETSRC)/include\
-	$(SETSRC)/settvuti/include $(SETSRC)/infview/include\
-	$(SETSRC)/calcu $(SETSRC)/setedit/include $(SETSRC)/easydiag\
-	$(TVSRC)
+	$(TVSRC)/include $(TVSRC) $(RHIDESRC)/tvdemo/include\
+	$(SETSRC)/include $(SETSRC)/settvuti/include\
+	$(SETSRC)/infview/include $(SETSRC)/calcu $(SETSRC)/setedit/include\
+	$(SETSRC)/easydiag $(SETSRC)
 LIB_DIRS=libide libtvuti tvdemo librhuti libgdb libtvgdb librhgdb $(TVOBJ)\
 	$(SETOBJ) $(PCRE_OBJ)
 C_DEBUG_FLAGS=-g
@@ -305,7 +303,7 @@ C_FPC_LANG_FLAGS=
 C_F_LANG_FLAGS=
 C_ADA_LANG_FLAGS=
 LIBS=ide rhuti set rhuti tvdem tvuti tvgdb rhtv rhgdb gdb z pcre
-LD_EXTRA_FLAGS=-Map rhide.map
+LD_EXTRA_FLAGS=
 C_EXTRA_FLAGS=-DRHIDE -DINTERNAL_DEBUGGER -DFOR_LIBSET
 LOCAL_OPT=$(subst ___~~~___, ,$(subst $(notdir $<)___,,$(filter $(notdir\
 	$<)___%,$(LOCAL_OPTIONS))))
@@ -337,7 +335,7 @@ SOURCE_NAME=$<
 OUTFILE=$@
 SPECIAL_CFLAGS=
 SPECIAL_LDFLAGS=
-PROG_ARGS=gpr2mak
+PROG_ARGS=
 SRC_DIRS=$(RHIDESRC)
 WUC=
 EDITORS=

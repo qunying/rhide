@@ -1,5 +1,17 @@
 /* Copyright (C) 1996-1998 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
+#ifdef __DJGPP__
+#include <go32.h>
+#include <dpmi.h>
+#include <dos.h>
+#include <setjmp.h>
+#include <sys/farptr.h>
+#include <sys/exceptn.h>
+#include <sys/movedata.h>
+#include <crt0.h>
+#include <conio.h>
+#endif
+
 #define Uses_TApplication
 #define Uses_TMenuBar
 #define Uses_TStaticText
@@ -80,17 +92,6 @@
 #include <inf.h>
 #include <time.h>
 #include <glob.h>
-
-#ifdef __DJGPP__
-#include <go32.h>
-#include <dpmi.h>
-#include <dos.h>
-#include <sys/farptr.h>
-#include <sys/exceptn.h>
-#include <sys/movedata.h>
-#include <crt0.h>
-#include <conio.h>
-#endif
 
 #include <slpinter.h>
 #include <loadkbin.h>

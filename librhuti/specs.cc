@@ -44,6 +44,7 @@ _find_var(char **vars,
       h = i - 1;
       if (c == 0)
       {
+        var_index = i;
         var_index--;
         while ((var_index >= 0) &&
                (strcmp(vars[var_index*2], variable) == 0))

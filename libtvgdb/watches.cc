@@ -51,6 +51,11 @@ void OpenWatchWindow()
 {
   TRect r;
   int i;
+  if (watchwindow)
+  {
+    watchwindow->select();
+    return;
+  }
   if (WatchWindowRect.a.x == -1)
   {
     WatchWindowRect = TProgram::deskTop->getExtent();

@@ -10,7 +10,12 @@
 #include <signal.h>
 #include <setjmp.h>
 
+#ifdef OLD_GDB
 void gdb_init();
+#else
+extern void error_init(void);
+void gdb_init(char *argv0);
+#endif
 
 int last_breakpoint_number = 0;
 int last_breakpoint_line = 0;
@@ -24,8 +29,6 @@ int reset_command = 0;
 int switch_to_user = 1;
 
 static int user_screen_shown = 0;
-static void __UserScreen();
-static void __DebuggerScreen();
 
 static int signal_start;
 static int signal_end;
@@ -40,7 +43,7 @@ void
 annotate_signal_name ()
 {
 DEBUG("|signal_name|");
-  signal_start = gdb_output_pos;
+  signal_start = get_gdb_output_buffer();
 }
 
 void
@@ -60,24 +63,26 @@ annotate_signal_string_end ()
 {
   char *signal;
 DEBUG("|signal_string_end|");
-  signal_end = gdb_output_pos;
+  signal_end = get_gdb_output_buffer();
   signal = (char *)alloca(signal_end-signal_start+1);
   strncpy(signal,gdb_output_buffer+signal_start,signal_end-signal_start);
   signal[signal_end-signal_start] = 0;
   if (user_screen_shown)
   {
-    __DebuggerScreen();
+    ShowDebuggerScreen();
     _UserWarning(WARN_SIGNALED,signal);
-    __UserScreen();
+    ShowUserScreen();
   }
   else
     _UserWarning(WARN_SIGNALED,signal);
-  // An attempt to recover after SIGINT
-#if !defined(__DJGPP__) || (__DJGPP__ >= 2 && __DJGPP_MINOR__ >= 3)
-  if (     strncmp(signal,"SIGINT," ,7) == 0
+  // An attempt to recover after SIGINT and other signals
+
+  if ( 1  || /* Why this ? */
+           strncmp(signal,"SIGINT," ,7) == 0
         || strncmp(signal,"SIGFPE," ,7) == 0
         || strncmp(signal,"SIGABRT,",8) == 0
         || strncmp(signal,"SIGSEGV,",8) == 0
+        || strncmp(signal,"SIGILL,",8)  == 0
      )
   {
     force_disassembler_window = 1;
@@ -86,9 +91,6 @@ DEBUG("|signal_string_end|");
   {
     call_reset = 1;
   }
-#else
-  call_reset = 1;
-#endif
 }
 
 void
@@ -111,7 +113,7 @@ annotate_exited (int exitstatus)
    called, which enables interrupts with the iret. */
   __dpmi_get_and_enable_virtual_interrupt_state();
 #endif
-  __DebuggerScreen();
+  ShowDebuggerScreen();
   DeleteBreakPoints();
   __EndSession(exitstatus);
 }
@@ -154,7 +156,7 @@ void
 annotate_starting ()
 {
 DEBUG("|starting|");
-  __UserScreen();
+  ShowUserScreen();
 }
 
 void annotate_stopped ()
@@ -162,7 +164,7 @@ void annotate_stopped ()
   struct symtab_and_line s;
   char *fname = NULL;
 DEBUG("|stopped|");
-  __DebuggerScreen();
+  ShowDebuggerScreen();
   debugger_started = inferior_pid;
   if (!reset_command)
   {
@@ -173,14 +175,16 @@ DEBUG("|stopped|");
   _DEBUG("a_stopped(%s,%d)\n",fname,s.line);
 }
 
-#define blocksize 2048
-
 char *gdb_output_buffer = NULL;
 char *gdb_error_buffer = NULL;
-int gdb_output_size = 0;
-int gdb_error_size = 0;
-int gdb_output_pos = 0;
-int gdb_error_pos = 0;
+long gdb_output_pos = 0;
+long gdb_error_pos = 0;
+
+#ifdef OLD_GDB
+#define blocksize 2048
+
+long gdb_output_size = 0;
+long gdb_error_size = 0;
 
 #define RESIZE(x) \
 do {\
@@ -203,12 +207,9 @@ do {\
   x##_pos = 0;\
 } while (0)
 
-#define NEW_GDB
-#if defined(gdb_stdout)
-#undef NEW_GDB
 #endif
 
-#ifdef NEW_GDB
+/* Moved from gdb-4.18  (gdb/main.c) as main.c does not go into libgdb.a  */
 /* Whether this is the command line version or not */
 int tui_version = 0;
 
@@ -218,9 +219,30 @@ int xdb_commands = 0;
 /* Whether dbx commands will be handled */
 int dbx_commands = 0;
 
-GDB_FILE *gdb_stdout;
-GDB_FILE *gdb_stderr;
+RH_GDB_FILE *gdb_stdout;
+RH_GDB_FILE *gdb_stderr;
+RH_GDB_FILE *gdb_stdlog;
+RH_GDB_FILE *gdb_stdtarg;
+
+int get_gdb_output_buffer (void)
+{
+#ifdef OLD_GDB
+  return gdb_output_pos;
+#else
+  if (gdb_output_buffer) free (gdb_output_buffer);
+  gdb_output_buffer = ui_file_xstrdup (gdb_stdout, &gdb_output_pos);
 #endif
+}
+
+int get_gdb_error_buffer (void)
+{
+#ifdef OLD_GDB
+  return gdb_error_pos;
+#else
+  if (gdb_error_buffer) free (gdb_error_buffer);
+  gdb_error_buffer = ui_file_xstrdup (gdb_stderr, &gdb_error_pos);
+#endif
+}
 
 #ifdef __DJGPP__
 
@@ -293,21 +315,23 @@ _init_librhgdb()
   char command[256];
   void (*oldINT)(int);
   oldINT = signal(SIGINT,SIG_DFL);
-#ifdef NEW_GDB
-  gdb_stdout = (GDB_FILE *)malloc (sizeof(GDB_FILE));
-  gdb_stdout->ts_streamtype = afile;
-  gdb_stdout->ts_filestream = stdout;
-  gdb_stdout->ts_strbuf = NULL;
-  gdb_stdout->ts_buflen = 0;
 
-  gdb_stderr = (GDB_FILE *)malloc (sizeof(GDB_FILE));
-  gdb_stderr->ts_streamtype = afile;
-  gdb_stderr->ts_filestream = stderr;
-  gdb_stderr->ts_strbuf = NULL;
-  gdb_stderr->ts_buflen = 0;
-#endif
-
+#ifdef OLD_GDB
   gdb_init();
+#else
+
+  /* fragment from gdb/main.c  */
+
+  gdb_stdout = mem_fileopen (); // stdio_fileopen (stdout);
+  gdb_stderr = mem_fileopen (); // stdio_fileopen (stderr);
+  gdb_stdlog = gdb_stderr;	/* for moment */
+  gdb_stdtarg = gdb_stderr;	/* for moment */
+  error_init();
+
+  /* end of fragment from gdb/main.c  */
+
+  gdb_init("rhide");
+#endif
 #ifdef __DJGPP__
   __win31_hack();
 #endif
@@ -347,6 +371,7 @@ void done_gdb()
 
 void handle_gdb_command(char *command)
 {
+#ifdef OLD_GDB
   jmp_buf old_quit_return,old_error_return;
   /* Save the old jmp_buf's, because we may be
      called nested */
@@ -362,25 +387,45 @@ void handle_gdb_command(char *command)
   /* Restore the old jmp_buf's */
   memcpy(quit_return,old_quit_return,sizeof(jmp_buf));
   memcpy(error_return,old_error_return,sizeof(jmp_buf));
+#else
+  /* Strings may not be writtable. Therefore let's make local copy  */
+  /* (GDB-5.0 is removing white space at end of string. So it's     */
+  /* modifying it  */
+  char * copy_of_command = strdup (command);
+  catch_command_errors (execute_command, copy_of_command, 0, RETURN_MASK_ALL);
+  free (copy_of_command);
+#endif
 }
 
+#ifdef OLD_GDB
 void
 fputs_unfiltered(const char *linebuffer, GDB_FILE *stream __attribute__((unused)))
 {
   _DEBUG("fputs_unfiltered(%s)\n",linebuffer);
   APPEND(gdb_output,linebuffer);
 }
+#endif
 
 void reset_gdb_output()
 {
+#ifdef OLD_GDB
   if (!gdb_output_buffer) RESIZE(gdb_output);
   RESET(gdb_output);
+#else
+  ui_file_rewind (gdb_stdout);
+  if (gdb_output_buffer) *gdb_output_buffer=0;
+#endif
 }
 
 void reset_gdb_error()
 {
+#ifdef OLD_GDB
   if (!gdb_error_buffer) RESIZE(gdb_error);
   RESET(gdb_error);
+#else
+  ui_file_rewind (gdb_stderr);
+  if (gdb_error_buffer) *gdb_error_buffer=0;
+#endif
 }
 
 /* If nonzero, display time usage both at startup and for each command.  */
@@ -451,7 +496,7 @@ void __EndSession(int exit_code)
   _EndSession(exit_code);
 }
 
-static void __DebuggerScreen()
+void ShowDebuggerScreen()
 {
 DEBUG("|DebuggerScreen|");
   if (user_screen_shown)
@@ -461,7 +506,7 @@ DEBUG("|DebuggerScreen|");
   }
 }
 
-static void __UserScreen()
+void ShowUserScreen()
 {
 DEBUG("|UserScreen|");
   if (switch_to_user)

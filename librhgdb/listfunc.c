@@ -90,7 +90,7 @@ static void insertFunction(char *file_name,struct symbol *sym,int bl,
   reset_gdb_output();
   type_print( SYMBOL_TYPE (sym),
 	      SYMBOL_SOURCE_NAME (sym),gdb_stdout, 0);
-  d_len += strlen(gdb_output_buffer);
+  d_len += get_gdb_output_buffer();
   dname = (char *)alloca(d_len+1);
   if (bl == STATIC_BLOCK)
     strcpy(dname, "static ");

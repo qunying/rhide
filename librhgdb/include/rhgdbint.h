@@ -15,6 +15,12 @@
 extern "C" {
 #endif
 
+#ifdef OLD_GDB
+#define RH_GDB_FILE GDB_FILE
+#else
+#define RH_GDB_FILE struct ui_file
+#endif
+
 void handle_gdb_command(char *);
 void reset_gdb_output();
 void reset_gdb_error();
@@ -33,8 +39,8 @@ char *Bname(char *);
 
 extern char *gdb_output_buffer;
 extern char *gdb_error_buffer;
-extern int gdb_output_pos;
-extern int gdb_error_pos;
+int get_gdb_output_buffer(void);
+int get_gdb_error_buffer(void);
 extern int invalid_line;
 extern int last_breakpoint_number;
 extern int last_breakpoint_line;

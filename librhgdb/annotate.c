@@ -12,11 +12,19 @@ void proc_remove_foreign(int pid __attribute__((unused)))
 }
 
 int rh_annotate;
+static int ignore_count_changed = 0;
 
 void
 breakpoints_changed ()
 {
 DEBUG("|breakpoints_changed|");
+ignore_count_changed = 0; /* Avoid multiple break annotations. */
+}
+
+void
+annotate_ignore_count_change (void)
+{
+ignore_count_changed = 1;
 }
 
 void

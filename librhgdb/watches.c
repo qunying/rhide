@@ -9,11 +9,11 @@
 
 static char command[1024];
 
-char *EvaluateWatch(const char *watch)
+char *EvaluateWatch(const char *watch, int force)
 {
   char *ret,*end;
 #if 1
-  if (!debugger_started) return NULL;
+  if (!debugger_started && !force) return NULL;
 #endif
   sprintf(command,"print %s",watch);
   /* Do not call the select_source_line. This can happen, when
@@ -36,7 +36,7 @@ char *EvaluateWatch(const char *watch)
 char *SetValue(char *var,char *expr)
 {
   char *tmp,*ret;
-  ret = EvaluateWatch(var);
+  ret = EvaluateWatch(var, 0);
   if (!ret) return NULL;
   tmp = strdup(ret);
   sprintf(command,"set variable %s=%s",var,expr);
@@ -58,7 +58,7 @@ char *SetValue(char *var,char *expr)
   }
 #endif
   free(tmp);
-  return EvaluateWatch(var);
+  return EvaluateWatch(var, 0);
 }
 
 

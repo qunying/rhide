@@ -264,8 +264,11 @@ int IsBreakPointLine(char *fname,int line);
   The returned value is not newly allocated, it points to
   a statically buffer which might be overwritten with any next
   call to any GDB-releated function!
-*/
-char *EvaluateWatch(const char *expr);
+
+  If force is 0 then EvaluateWatch immediatelly returns 0 when not in
+  debugger, otherwise it forwards print command to libgdb anyway
+ */
+char *EvaluateWatch(const char *expr, int force);
 
 /* 
    This is similiar to the GDB command:
@@ -448,6 +451,10 @@ void set_float_register_value(int num, long double value);
   Return the size of processor/FPU register 'num' in bytes.
 */
 int get_register_size(int num);
+
+void ShowUserScreen(void);
+
+void ShowDebuggerScreen(void);
 
 /*
   Return nonzero, if the given register number is a float register

@@ -2,6 +2,7 @@
 /* This file is part of RHIDE. */
 #include <libgdb.h>
 #include <librhgdb.h>
+#include <rhgdbint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
@@ -152,7 +153,7 @@ my_print_address (bfd_vma addr,
 static int
 print_insn (memaddr, stream)
      CORE_ADDR memaddr;
-     GDB_FILE *stream;
+     RH_GDB_FILE *stream;
 {
   disassemble_info info;
   int retval;

@@ -54,7 +54,7 @@ void TWatchListBox::update()
   {
     e = (TWatchEntry *)(list()->at(i));
     if (e->expr) free(e->expr);
-    expr = EvaluateWatch(e->variable);
+    expr = EvaluateWatch(e->variable, 0);
     if (!expr) expr = invalid;
     e->expr = strdup(expr);
     if (hScrollBar)

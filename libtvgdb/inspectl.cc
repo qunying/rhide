@@ -30,7 +30,7 @@ char *left_adjust(int left_space, const char *val)
 void TInspectList::update(const char *expr)
 {
   newList(NULL);
-  char *res = string_dup(EvaluateWatch(expr));
+  char *res = string_dup(EvaluateWatch(expr, 0));
   if (*res)
   {
     int left = 0;

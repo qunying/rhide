@@ -11,6 +11,12 @@
 
 #define TBREAK win31?"thbreak":"tbreak"
 
+/* Whether this is the async version or not.  The async version is
+   invoked on the command line with the -nw --async options.  In this
+   version, the usual command_loop is substituted by and event loop which
+   processes UI events asynchronously. */
+int event_loop_p = 0;
+
 int debugger_started = 0;
 
 int init_count = 0;
@@ -26,6 +32,8 @@ int verbose_gdb_commands = 0;
 int call_reset = 0;
 
 int force_disassembler_window = 0;
+
+static char * start_directory = 0;
 
 void Command(char *x,int call_hook)
 {
@@ -43,6 +51,8 @@ void Command(char *x,int call_hook)
 #if 0
   DEBUG_("inferior_pid: %d target_has_execution: %d in_command: %d\n",inferior_pid,target_has_execution,in_command);
 #endif
+  get_gdb_output_buffer ();
+  get_gdb_error_buffer ();
   _UpdateGDBOutWin(gdb_error_buffer);
   _UpdateGDBOutWin(gdb_output_buffer);
   debugger_started = inferior_pid;
@@ -61,6 +71,7 @@ static void set_source_directories(char **SrcDirs,int count)
 {
   int i;
   char command[1000];
+#if 1
   if (!SrcDirs || count == 0)
   {
     extern char *source_path;
@@ -69,6 +80,20 @@ static void set_source_directories(char **SrcDirs,int count)
     source_path = strdup("");
     return;
   }
+#else /* Why should this be better ? */
+  extern char *source_path;
+  if (source_path)
+    free(source_path);
+  source_path = strdup("");
+  Command("directory $cwd", 0);
+  Command("directory $cdir", 0);
+  if (start_directory)
+  {
+    strcpy(command, "directory ");
+    strcat(command, start_directory);
+    Command(command, 0);
+  }
+#endif
   for (i=0;i<count;i++)
   {
     strcpy(command,"directory ");
@@ -82,6 +107,7 @@ static time_t _progtime = 0;
 
 static int INIT()
 {
+  static char gdbVersionShown=0;
   char command[512],*progname;
   int i;
   char **argv;
@@ -91,11 +117,29 @@ static int INIT()
   struct stat st;
   _InitGDBOutWin();
   /*
+    Show GDB version and copyright notice in GDB output window
+    (of course if such is enabled). But do this only once.
+    It's rather well hidden though
+  */
+  if (!gdbVersionShown)
+  {
+    Command("show version", 0);
+    gdbVersionShown = 1;
+  }
+
+  /*
+    We should not crash if gdb command like 'x' gets exception.
+    This also could be usefull to make gdb command 'call'
+    accessible in rhide
+  */
+  Command("set unwindonsignal on", 0);
+  /*
     Change gdb's internal current_directory. This is absolutely
     needed in the case the app has changed the directory
   */
   strcpy(command,"cd ");
   getcwd(command+3,512-3);
+  start_directory = strdup(command+3);
   Command(command,0);
   init_gdb(_GetProgName());
   init_count++;
@@ -169,6 +213,7 @@ void GoToAddress(unsigned long address)
     run = "run";
     if (!INIT()) return;
     __StartSession();
+    ShowUserScreen ();
   }
   else
   {
@@ -179,6 +224,7 @@ void GoToAddress(unsigned long address)
   COMMAND(run);
   sprintf(command,"delete %d",last_breakpoint_number);
   Command(command,0);
+  ShowDebuggerScreen ();
 }
 
 void GoToLine(char *fname,int line)
@@ -191,6 +237,7 @@ void GoToLine(char *fname,int line)
     run = "run";
     if (!INIT()) return;
     __StartSession();
+    ShowUserScreen();
   }
   else
   {
@@ -210,6 +257,7 @@ void GoToLine(char *fname,int line)
     COMMAND(run);
     sprintf(command,"delete %d",last_breakpoint_number);
     Command(command,0);
+    ShowDebuggerScreen();
   }
 }  
     
@@ -221,6 +269,7 @@ static void step(char *cmd)
     char command[100];
     if (!INIT()) return;
     __StartSession();
+    ShowUserScreen();
     strcpy(command,TBREAK);
     strcat(command," ");
     strcat(command,_GetMainFunction());
@@ -231,6 +280,7 @@ static void step(char *cmd)
   {
     COMMAND(cmd);
   }
+  ShowDebuggerScreen();
 }
 
 void Step()
@@ -251,6 +301,7 @@ static void trace(char *cmd)
     char command[100];
     if (!INIT()) return;
     __StartSession();
+    ShowUserScreen();
     strcpy(command,TBREAK);
     strcat(command," ");
     strcat(command,_GetMainFunction());
@@ -261,6 +312,7 @@ static void trace(char *cmd)
   {
     COMMAND(cmd);
   }
+  ShowDebuggerScreen();
 }
 
 void Trace()
@@ -282,6 +334,9 @@ void reset_debugger()
   COMMAND("kill");
   debugger_started = 0;
   reset_command = 0;
+#ifdef DJGPP
+  inferior_pid = 0;
+#endif
 }
 
 void ResetDebugger()
@@ -309,12 +364,14 @@ void Continue()
   {
     if (!INIT()) return;
     __StartSession();
+    ShowUserScreen();
     COMMAND("run");
   }
   else
   {
     COMMAND("continue");
   }
+  ShowDebuggerScreen();
 }
 
 int InitRHGDB()

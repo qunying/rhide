@@ -490,7 +490,7 @@ void TDisassemblerViewer::draw()
             curCol = j * colWidth;
             if (j == numCols-1) width = size.x - curCol + 1; 
             else width = colWidth;
-            if (debugger_started && dis_lines[item].address == stop_pc)
+            if (debugger_started && dis_lines && dis_lines[item].address == stop_pc)
             {
               color = getColor(5);
               scOff = 2;
@@ -503,7 +503,7 @@ void TDisassemblerViewer::draw()
                 setCursor( curCol + 1, i );
                 scOff = 0;
                 }
-            else if (is_bp && is_bp(dis_lines[item].address))
+            else if (dis_lines && is_bp && is_bp(dis_lines[item].address))
             {
               color = getColor(6);
               scOff = 2;

@@ -99,7 +99,7 @@ void TWatchDialog::handleEvent(TEvent & event)
         {
           char input_buffer[256];
           input->getData(input_buffer);
-          ret = EvaluateWatch(input_buffer);
+          ret = EvaluateWatch(input_buffer, 0);
           if (!ret) ret = _("not available");
           result->setData(ret);
           newval->setData(empty_string);

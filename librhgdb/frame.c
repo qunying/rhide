@@ -93,44 +93,44 @@ void
 _rhgdb_annotate_frame_function_name ()
 {
   /* remember the start of the function name */
-  function_start = gdb_output_pos;
+  function_start = get_gdb_output_buffer();
 }
 
 void
 _rhgdb_annotate_frame_args ()
 {
   function_end =
-  args_start = gdb_output_pos;
+  args_start = get_gdb_output_buffer();
 }
 
 void
 _rhgdb_annotate_frame_source_begin ()
 {
-  args_end = gdb_output_pos;
+  args_end = get_gdb_output_buffer();
 }
 
 void
 _rhgdb_annotate_frame_source_file ()
 {
-  file_start = gdb_output_pos;
+  file_start = get_gdb_output_buffer();
 }
 
 void
 _rhgdb_annotate_frame_source_file_end ()
 {
-  file_end = gdb_output_pos;
+  file_end = get_gdb_output_buffer();
 }
 
 void
 _rhgdb_annotate_frame_source_line ()
 {
-  line_start = gdb_output_pos;
+  line_start = get_gdb_output_buffer();
 }
 
 void
 _rhgdb_annotate_frame_source_end ()
 {
-  line_end = gdb_output_pos;
+  line_end = get_gdb_output_buffer();
 }
 
 void
@@ -141,7 +141,7 @@ _rhgdb_annotate_frame_end ()
   if (!record_frames || !frame_begin_seen) return;
   /* This can happen, when the function has no debugging information */
   if (args_start >= 0 && args_end < 0)
-    args_end = gdb_output_pos;
+    args_end = get_gdb_output_buffer();
   frame_begin_seen = 0;
   fe = add_frame_entry();
   fe->address = current_address;

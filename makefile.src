@@ -113,7 +113,7 @@ check.files.internal: init.version gpr2mak.exe gprexp.exe touch_gprs
 	  update_gpr_file=$(top_obj_dir)/gprexp.exe
 
 check.files:
-	$(MAKE) check.files.internal LFN=y FNCASE=y
+	@$(MAKE) check.files.internal LFN=y FNCASE=y
 
 copy.files:
 	@-rm -f $(list_file)

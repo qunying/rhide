@@ -15,6 +15,7 @@
 #define Uses_TKeys
 
 #include <rhide.h>
+#include <rhutils.h>
 
 #define Uses_TParamList
 #define Uses_TLButton
@@ -28,7 +29,6 @@
 #include <infbase.h>
 
 #include <stdlib.h>
-#include <ctype.h>
 
 struct node_info;
 
@@ -52,14 +52,6 @@ struct node_info
 static file_info **files = NULL;
 static int file_count = 0;
 
-#ifndef __DJGPP__
-static void
-strlwr(char *s)
-{
-  while (*s) *s = tolower(*s++);
-}
-#endif
-
 static void add_node_from_file(file_info *file,node_info *node)
 {
   file->node_count++;
@@ -79,7 +71,7 @@ static void add_node_from_file(char *node_name,char *visible_name,file_info *fil
   node->name = strdup(node_name);
   node->iname = strdup(node_name);
   node->real_name = NULL;
-  strlwr(node->iname);
+  string_down(node->iname);
   add_node_from_file(file,node);
   if (!visible_name)
     return;

@@ -21,10 +21,10 @@ work after some runtime configuration on RHIDE.
 %setup
 ./configure
 %build
-make RHIDESRC=`pwd` LDFLAGS=-static
+make RHIDESRC=`pwd`
 
 %install
-make RHIDESRC=`pwd` install prefix=$RPM_BUILD_ROOT/usr LDFLAGS=-static
+make RHIDESRC=`pwd` install prefix=$RPM_BUILD_ROOT/usr
 
 %post
 tic /usr/share/rhide/eterm-rhide
@@ -43,7 +43,6 @@ tic /usr/share/rhide/eterm-rhide
 %doc /usr/share/doc/rhide/RHIDE.BIN
 %doc /usr/share/doc/rhide/VCSA.SH
 %doc /usr/share/doc/rhide/readme.key
-%doc /usr/share/doc/rhide/rhide.html
 %doc /usr/share/doc/rhide/rhide.txt
 /usr/share/info/infview.inf
 /usr/share/info/rhide.inf

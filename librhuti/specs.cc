@@ -13,12 +13,19 @@
 #define A(n)
 #endif
 
+static void _handle_newline();
+void (*handle_newline)() = _handle_newline;
+int expand_variable_names = 1;
 char **vars = NULL;
 int var_count = 0;
 static int var_size = 0;
 /* set this nonzero to print to stderr, how the specs
    are expanded */
 int debug_specs = 0;
+
+static void _handle_newline()
+{
+}
 
 static void
 _add_variable(char **&_vars, int & _var_count, int & _var_size,
@@ -35,9 +42,9 @@ _add_variable(char **&_vars, int & _var_count, int & _var_size,
       {
         string_free(_vars[j]);
         string_free(_vars[j+1]);
-        if (i<_var_count-1)
+        if (i<_var_count)
         {
-          memcpy(_vars+j,_vars+j+2,(_var_count-i-1)*sizeof(char *)*2);
+          memcpy(_vars+j,_vars+j+2,(_var_count-i)*sizeof(char *)*2);
         }
         _var_count--;
         break;
@@ -216,6 +223,11 @@ char *find_close_brace(char *open_brace)
   open_brace++;
   while (brace_count > 0 && *open_brace)
   {
+    if (*open_brace == '\\')
+    {
+      open_brace += 2;
+      continue;
+    }
     if (*open_brace == ')') brace_count--;
     else if (*open_brace == '(') brace_count++;
     open_brace++;
@@ -230,7 +242,7 @@ char *find_next_comma(char *arg)
   {
     if (*arg == '\\')
     {
-      arg++;
+      arg += 2;
       continue;
     }
     if (*arg == ',') return arg;
@@ -259,8 +271,9 @@ char *expand_variable(char *__token)
   // can be a computed variable like $(RHIDE_OS_LIBS_$(RHIDE_OS))
   // which can be computed at runtime depending on the value
   // of $(RHIDE_OS)
-  char *end = find_close_brace(__token+2);
-  if (end)
+  // if the expand_variable_names == 0, do not the above
+  char *end;
+  if (expand_variable_names && ((end = find_close_brace(__token+2)) != NULL))
   {
     char *_token;
     *end = 0;
@@ -336,13 +349,19 @@ char *check_for_string_function(char *token)
   return NULL;
 }
 
+static int _call_extern_first = 0;
+
 static A(1)
 char *expand_token(char *token)
 {
-  char *retval = check_for_string_function(token);
+  char *retval = NULL;
+  if (_call_extern_first && external_expand_token)
+    retval = external_expand_token(token,expand_tokens);
+  if (!retval)
+    retval = check_for_string_function(token);
   if (!retval)
     retval = expand_variable(token);
-  if (!retval && external_expand_token)
+  if (!_call_extern_first && !retval && external_expand_token)
     retval = external_expand_token(token,expand_tokens);
   if (!retval) retval = string_dup("");
   if (debug_specs)
@@ -363,6 +382,8 @@ char *expand_tokens(char *__tokens)
   start = tokens;
   while (*start)
   {
+    if (*start == '\n')
+      handle_newline();
     if (start[0] == '$' && start[1] == '(')
     {
       *start = 0;
@@ -395,15 +416,19 @@ END:
   return _tokens;
 }
 
-char *expand_spec(const char *spec,external_token_func ext_func)
+char *expand_spec(const char *spec,external_token_func ext_func,
+                  int call_extern_first)
 {
   char *retval;
+  int __call_extern_first = _call_extern_first;
+  _call_extern_first = call_extern_first;
   char *tokens = string_dup(spec);
   external_token_func old_func = external_expand_token;
   external_expand_token = ext_func;
   retval = expand_tokens(tokens);
   string_free(tokens);
   external_expand_token = old_func;
+  _call_extern_first = __call_extern_first;
   return retval;
 }
 

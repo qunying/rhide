@@ -1,4 +1,4 @@
-/* Copyright (C) 1996-2000 Robert H”hne, see COPYING.RH for details */
+/* Copyright (C) 1996-2000 Robert Höhne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
 #ifdef __DJGPP__
 #include <go32.h>
@@ -876,7 +876,12 @@ About()
           "\003%s\n"
           "\003\n%s%s\n"
           "%s%s\n"
-          "%s%s\n",
+          "%s%s\n"
+          "Editor  : %s\n"
+#ifdef INTERNAL_DEBUGGER
+          "Debugger: %s\n"
+#endif
+          ,
           IDEVersion,
           build_date, _("RHIDE is an Integrated Development Environment"),
 #ifdef __DJGPP__
@@ -885,11 +890,16 @@ About()
 #ifdef __linux__
           _("for developing Linux apps"),
 #endif
-          _("Copyright (C) by Robert H”hne, 1996-2000"),
+          _("Copyright (C) by Robert Höhne, 1996-2000"),
           _("Language: "), _("English"),
           _("Translated by: "), _("Nobody"),
-          _("last updated: "), _("1998-11-29"));
-  text = new TStaticText(TRect(0, 0, 58, 11), buffer);
+          _("last updated: "), _("1998-11-29")
+          ,TCEDITOR_VERSION_STR
+#ifdef INTERNAL_DEBUGGER
+          , gdb_version()
+#endif
+          );
+  text = new TStaticText(TRect(0, 0, 58, 14), buffer);
   text->options |= ofCentered;
   dialog->insert(text);
   TRect r(25, dialog->size.y - 3, 35, dialog->size.y - 1);
@@ -2405,7 +2415,7 @@ $(strip $(RHIDE_CONFIG_DIRS) $(INFOPATH)))");
 #endif
   parse_commandline(__crt0_argc, __crt0_argv);
   TScreen::suspend();
-  fprintf(stderr, _("This is %s. Copyright (c) 1996-2000 by Robert H”hne\n"),
+  fprintf(stderr, _("This is %s. Copyright (c) 1996-2000 by Robert Höhne\n"),
           IDEVersion);
   fprintf(stderr, "             (%s %s)\n", build_date, build_time);
   TScreen::resume();

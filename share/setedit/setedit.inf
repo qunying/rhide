@@ -2358,8 +2358,10 @@ you can select the name of the program. If you need to run more than one
 command separate it with `;'.
 
 The editor will redirect the stderr and stdout of the program and then will
-analize the output looking for errors. The algorithm is designed to work
-with the GNU tools that reports errors in the form: file:line:error.
+analize the output looking for errors. The dialog includes a list of
+parsing algorithms to analize the errors from the external program. To
+learn how to configure the editor for other formats or just fine tune any
+of them *Note Error messages from an external application::.
 
 This setting is stored in the desktop file. *Note Desktop Files::.
 
@@ -2706,12 +2708,39 @@ File: editor.inf,  Node: HTML Accents,  Next: Export as HTML,  Prev: Grep,  Up: 
 4.7.6 HTML Accents
 ------------------
 
+The following options are useful for people using ISO Latin 1 accents in
+your HTML code. Even when the current code page is different than ISO
+Latin 1.
+
+* Menu:
+
+* Convert accents to tags::
+* Convert tags to accents::
+
+
+File: editor.inf,  Node: Convert accents to tags,  Next: Convert tags to accents,  Prev: HTML Accents,  Up: HTML Accents
+
+4.7.6.1 Convert accents to tags
+...............................
+
 It converts all the accents in the text to ISO-Latin-1 HTML tags. That's
-usefull when editing html files because you can type accents naturally and
+useful when editing html files because you can type accents naturally and
 when finished you simply use this option to generate the right tags. It
 works for any code page selected.
 
 Name of the command: cmeHTMLAccents.
+
+
+File: editor.inf,  Node: Convert tags to accents,  Prev: Convert accents to tags,  Up: HTML Accents
+
+4.7.6.2 Convert tags to accents
+...............................
+
+It converts all the ISO-Latin-1 HTML tags into accents. That's useful when
+reading html files because you can convert the tags in symbols. It works
+for any code page selected.
+
+Name of the command: cmeHTMLTag2Accent.
 
 
 File: editor.inf,  Node: Export as HTML,  Next: Remap code page,  Prev: HTML Accents,  Up: Tool&Ops
@@ -3150,6 +3179,7 @@ the editor.
 * Scroll Lock centers::
 * See Tabs::
 * Do not move inside tabs::
+* Tab indents::
 * Syntax Highlight::
 
 
@@ -3187,26 +3217,9 @@ move the cursor to the next tabulator column. In the editor the tabulator
 columns are equidistant and the positions are controled by the Tab Size
 value.
 
-  If this setting is off the editor won't put any ASCII 9 in your text.
-Instead the editor will insert enough spaces to move the cursor to the
-next tab-stop, but if the cursor is positioned on the first character of
-the line the editor will insert spaces to move this position to the next
-hole in the line over the line where you are. Confused? Sorry for my
-English, an example will clarify that:
-
-This is a line over the line where you are
-
-That's the line where the cursor is, at column one.
-
-  After pressing TAB you'll get:
-
-This is a line over the line where you are
-
-     That's the line where the cursor is, at column one.
-
-  Now can ask, Why this? Is that useful? The answer is that's very useful to
-keep your code indented, experiment using that under a line with if, for,
-etc.
+  If this setting is off the editor won't put any ASCII 9 in your text.  The
+behavior if configured by the Tab indents option. Read the section about
+it for more information. *Note Tab indents::.
 
   Another thing controlled by this setting is the behaviour of the
 <Backspace> key, when the setting is on the key is just 'delete the
@@ -3611,7 +3624,7 @@ be customized from the Colors menu option. *Note Colors::.
   This mode was introduced in v0.4.23 and is globally enabled by default.
 
 
-File: editor.inf,  Node: Do not move inside tabs,  Next: Syntax Highlight,  Prev: See Tabs,  Up: Editing Modes
+File: editor.inf,  Node: Do not move inside tabs,  Next: Tab indents,  Prev: See Tabs,  Up: Editing Modes
 
 5.15 Do not move inside tabs
 ============================
@@ -3630,9 +3643,35 @@ first space.
   This mode was introduced in v0.4.23 and is globally enabled by default.
 
 
-File: editor.inf,  Node: Syntax Highlight,  Prev: Do not move inside tabs,  Up: Editing Modes
+File: editor.inf,  Node: Tab indents,  Next: Syntax Highlight,  Prev: Do not move inside tabs,  Up: Editing Modes
 
-5.16 Syntax Highlight
+5.16 Tab indents
+================
+
+  When Use real tabs option is disabled the editor will insert enough spaces
+to move the cursor to the next tab-stop. But if this option is enabled the
+editor will insert enough spaces to move the cursor to the next hole in
+the line over the line where is currently positioned. Confused?  Sorry for
+my English, an example will clarify that:
+
+This is a line over the line where you are
+
+That's the line where the cursor is, at column one.
+
+  After pressing TAB you'll get:
+
+This is a line over the line where you are
+
+     That's the line where the cursor is, at column one.
+
+  Now can ask, Why this? Is that useful? The answer is that's very useful to
+keep your code indented, experiment using that under a line with if, for,
+etc.
+
+
+File: editor.inf,  Node: Syntax Highlight,  Prev: Tab indents,  Up: Editing Modes
+
+5.17 Syntax Highlight
 =====================
 
   The editor can highlight the syntax of your code. The available modes are:
@@ -3687,6 +3726,14 @@ File: editor.inf,  Node: Syntax Highlight,  Prev: Do not move inside tabs,  Up: 
         * Texinfo
 
         * PIC assembler
+
+        * Makefiles
+
+        * TCL/Tk
+
+        * TeX
+
+        * PLM/51
 
   The kind of highlight is chosen automatically using the extension of the
 file. Additionally the editor supports Emacs like mode selection. Emacs
@@ -3763,6 +3810,7 @@ by the user. *Note User Words::.
 * EOLCInFirstUse2::
 * EOLComment1::
 * Escape::
+* EscapeAnywhere::
 * Files::
 * FullNameMatch::
 * HexMarker::
@@ -3905,7 +3953,7 @@ different ends use `EOLComment2' for the second.
   For more information *Note Format of short syntax highlight definitions::.
 
 
-File: editor.inf,  Node: Escape,  Next: Files,  Prev: EOLComment1,  Up: Syntax Highlight File
+File: editor.inf,  Node: Escape,  Next: EscapeAnywhere,  Prev: EOLComment1,  Up: Syntax Highlight File
 
 6.12 Escape
 ===========
@@ -3914,9 +3962,18 @@ File: editor.inf,  Node: Escape,  Next: Files,  Prev: EOLComment1,  Up: Syntax H
 concatenate lines.
 
 
-File: editor.inf,  Node: Files,  Next: FullNameMatch,  Prev: Escape,  Up: Syntax Highlight File
+File: editor.inf,  Node: EscapeAnywhere,  Next: Files,  Prev: Escape,  Up: Syntax Highlight File
 
-6.13 Files
+6.13 EscapeAnywhere
+===================
+
+  Indicates that escape characters can be found anywhere, not just inside
+strings or at the end of lines like in C.
+
+
+File: editor.inf,  Node: Files,  Next: FullNameMatch,  Prev: EscapeAnywhere,  Up: Syntax Highlight File
+
+6.14 Files
 ==========
 
   It indicates what extensions will use this highlight. The extensions must
@@ -3932,7 +3989,7 @@ program used to execute the file if that's an UNIX script.
 
 File: editor.inf,  Node: FullNameMatch,  Next: HexMarker,  Prev: Files,  Up: Syntax Highlight File
 
-6.14 FullNameMatch
+6.15 FullNameMatch
 ==================
 
   It can be used to indicate a regular expression to match the full path and
@@ -3945,7 +4002,7 @@ any book about Perl.
 
 File: editor.inf,  Node: HexMarker,  Next: Keywords,  Prev: FullNameMatch,  Up: Syntax Highlight File
 
-6.15 HexMarker
+6.16 HexMarker
 ==============
 
   This setting indicates what prefix is used for hexadecimal numbers. No
@@ -3956,7 +4013,7 @@ postfix supported yet. The lenght is limited to four characters.
 
 File: editor.inf,  Node: Keywords,  Next: Name,  Prev: HexMarker,  Up: Syntax Highlight File
 
-6.16 Keywords
+6.17 Keywords
 =============
 
   It can be used as many times as needed and is used to indicate the
@@ -3965,7 +4022,7 @@ reserved keywords of the language. The separator is the comma.
 
 File: editor.inf,  Node: Name,  Next: NameMatch,  Prev: Keywords,  Up: Syntax Highlight File
 
-6.17 Name
+6.18 Name
 =========
 
   It sets the name of the syntax highlight. This name is used in the local
@@ -3974,7 +4031,7 @@ settings dialog (cmcSetLocalOptions).
 
 File: editor.inf,  Node: NameMatch,  Next: NoCheckNumbers,  Prev: Name,  Up: Syntax Highlight File
 
-6.18 NameMatch
+6.19 NameMatch
 ==============
 
   It can be used to indicate a regular expression to match the name of the
@@ -3986,7 +4043,7 @@ any book about Perl.
 
 File: editor.inf,  Node: NoCheckNumbers,  Next: OpenComment1,  Prev: NameMatch,  Up: Syntax Highlight File
 
-6.19 NoCheckNumbers
+6.20 NoCheckNumbers
 ===================
 
   When this setting is on the numbers aren't highlighted.
@@ -3994,7 +4051,7 @@ File: editor.inf,  Node: NoCheckNumbers,  Next: OpenComment1,  Prev: NameMatch, 
 
 File: editor.inf,  Node: OpenComment1,  Next: PartialKeywords,  Prev: NoCheckNumbers,  Up: Syntax Highlight File
 
-6.20 OpenComment1
+6.21 OpenComment1
 =================
 
   Used to indicate the start of a multiline comment. The lenght is limited
@@ -4011,7 +4068,7 @@ format: *Note Format of short syntax highlight definitions::.
 
 File: editor.inf,  Node: Format of short syntax highlight definitions,  Prev: OpenComment1,  Up: OpenComment1
 
-6.20.1 Format of short syntax highlight definitions
+6.21.1 Format of short syntax highlight definitions
 ---------------------------------------------------
 
   All the characters after the equal sign are taked as part of the field.
@@ -4030,7 +4087,7 @@ as part of the field.
 
 File: editor.inf,  Node: PartialKeywords,  Next: PMacros,  Prev: OpenComment1,  Up: Syntax Highlight File
 
-6.21 PartialKeywords
+6.22 PartialKeywords
 ====================
 
   When this setting is enabled the list of the editor will highlight partial
@@ -4042,7 +4099,7 @@ much more slow.
 
 File: editor.inf,  Node: PMacros,  Next: Preprocessor,  Prev: PartialKeywords,  Up: Syntax Highlight File
 
-6.22 PMacros
+6.23 PMacros
 ============
 
   Indicates the name of the pseudo macros file used for this kind of files.
@@ -4053,7 +4110,7 @@ else {} in C and an if then else in BASIC. *Note Pseudo Macros::.
 
 File: editor.inf,  Node: Preprocessor,  Next: RelaxNumberCheck,  Prev: PMacros,  Up: Syntax Highlight File
 
-6.23 Preprocessor
+6.24 Preprocessor
 =================
 
   Indicates what symbol starts a preprocessor line.
@@ -4061,7 +4118,7 @@ File: editor.inf,  Node: Preprocessor,  Next: RelaxNumberCheck,  Prev: PMacros, 
 
 File: editor.inf,  Node: RelaxNumberCheck,  Next: ShellScript,  Prev: Preprocessor,  Up: Syntax Highlight File
 
-6.24 RelaxNumberCheck
+6.25 RelaxNumberCheck
 =====================
 
   This is used when a number can start a name and that isn't a wrong
@@ -4072,7 +4129,7 @@ as wrong values.
 
 File: editor.inf,  Node: ShellScript,  Next: ShortString,  Prev: RelaxNumberCheck,  Up: Syntax Highlight File
 
-6.25 ShellScript
+6.26 ShellScript
 ================
 
   It indicates what scripts will be highlighted. You must indicate the names
@@ -4087,7 +4144,7 @@ extension (`Files'). *Note EmacsModes::. *Note Files::.
 
 File: editor.inf,  Node: ShortString,  Next: SpecialSymbol,  Prev: ShellScript,  Up: Syntax Highlight File
 
-6.26 ShortString
+6.27 ShortString
 ================
 
   Used to indicate the start and end of strings, used for small strings or
@@ -4096,7 +4153,7 @@ characters.  The string ends at the end of line if not explicitly closed.
 
 File: editor.inf,  Node: SpecialSymbol,  Next: String1,  Prev: ShortString,  Up: Syntax Highlight File
 
-6.27 SpecialSymbol
+6.28 SpecialSymbol
 ==================
 
   That's used to mark pairs of characters that forms a particular symbol
@@ -4110,7 +4167,7 @@ with `@@' in Texinfo files. You can define more than one character here.
 
 File: editor.inf,  Node: String1,  Next: Symbols1,  Prev: SpecialSymbol,  Up: Syntax Highlight File
 
-6.28 String1
+6.29 String1
 ============
 
   Used to indicate the start and end of strings, used for long strings. You
@@ -4123,7 +4180,7 @@ close the string.
 
 File: editor.inf,  Node: Symbols1,  Next: Symbols2,  Prev: String1,  Up: Syntax Highlight File
 
-6.29 Symbols1
+6.30 Symbols1
 =============
 
   Used to indicate what characters are allowed symbols, normally used for
@@ -4132,7 +4189,7 @@ boolean and arithmetic symbols.
 
 File: editor.inf,  Node: Symbols2,  Next: UseInternal,  Prev: Symbols1,  Up: Syntax Highlight File
 
-6.30 Symbols2
+6.31 Symbols2
 =============
 
   Used to indicate what characters are allowed symbols, normally used for
@@ -4141,7 +4198,7 @@ flow control and subindex symbols.
 
 File: editor.inf,  Node: UseInternal,  Prev: Symbols2,  Up: Syntax Highlight File
 
-6.31 UseInternal
+6.32 UseInternal
 ================
 
   That's optional. When a highlight have this setting the editor will use
@@ -4576,7 +4633,7 @@ File: editor.inf,  Node: RunProgram,  Next: RunProgramRedir,  Prev: InsertText, 
 8.4.9 RunProgram
 ----------------
 
-  (RunProgram PROGRAM_NAME [FLAGS])
+  (RunProgram PROGRAM_NAME [[FLAGS] PARSER])
 
   Calls the desired program. You can pass more than one using the `;'
 separator or any separator supported by your shell. Under DOS `;' is ok
@@ -4587,6 +4644,9 @@ redirected and captured by the message window of the editor.
 
   Using 1 for the FLAGS argument the editor will redraw the screen after
 running the external program.
+
+  The PARSER parameter tells the editor which error parser will be used to
+parse the output of the external program. By default the GNU one is used.
 
   To learn more about the message window *Note Message Window::.
 
@@ -5092,7 +5152,9 @@ File: editor.inf,  Node: Miscellaneous,  Next: Index,  Prev: How to contact me, 
 * Text mode attributes::
 * File Open::
 * Message Window::
+* Error messages from an external application::
 * Mouse under Linux::
+* Passing extra command line options::
 
 
 File: editor.inf,  Node: Clipboard,  Next: Time and date modifiers formats,  Prev: Miscellaneous,  Up: Miscellaneous
@@ -5559,7 +5621,7 @@ conflict because you could need to press shift for some file name and then
 the search will be done in the directories list. Don't forget it.
 
 
-File: editor.inf,  Node: Message Window,  Next: Mouse under Linux,  Prev: File Open,  Up: Miscellaneous
+File: editor.inf,  Node: Message Window,  Next: Error messages from an external application,  Prev: File Open,  Up: Miscellaneous
 
 11.7 Message Window
 ===================
@@ -5574,17 +5636,51 @@ of windows (usually `Alt+0').
 
 If the messages are errors or hits from grep you can use `Alt+F7' and
 `Alt+F8' to quickly jump to the next/previous line. You can also just
-select any of the error/hits. This works with the output of any program
-that emits line numbers with the GNU convention.
+select any of the error/hits. The errors are parsed by the editor according
+to the user selection, many formats are supported by the editor and the
+mechanism is configurable. See the next section for more information.
 
 You can also delete entries in the message window pressing <Delete>. To
 add more flexibility the content of the message window can be stored in a
 file or copied to the clipboard, to do it just use the menu.
 
 
-File: editor.inf,  Node: Mouse under Linux,  Prev: Message Window,  Up: Miscellaneous
+File: editor.inf,  Node: Error messages from an external application,  Next: Mouse under Linux,  Prev: Message Window,  Up: Miscellaneous
 
-11.8 Mouse under Linux
+11.8 Error messages from an external application
+================================================
+
+Originally the editor only supported the GNU style. After many users asked
+for support of other error formats Grzegorz Adam Hankiewicz suggested
+doing it in a configurable way. So starting with v0.4.41 the editor can be
+configured to parse the errors from an external application.
+
+The configuration is stored in a file called `errors.cel'. The syntax is
+very similar to the one used in the `syntaxhl.shl' file. All definitions
+start with a `Name' declaration that indicates the name of the parsing
+options and ends with an `End' marker.
+
+The `Pattern' entry tells the editor how to parse a line containing an
+error from the external program. The pattern is actually a Perl regular
+expression. I used it because they are much more easy to learn than POSIX
+regular expressions and they are much more clear to me.
+
+The `File', `Line', `Severity' and `Description' entries indicates with
+subexpression will contain the file name, line number, degree of severity
+and description of the error. Note that actually only the first two are
+used. If you don't know what a subexpression is here is a hint: look at
+the parentheses.
+
+The `EnterDirPat' is another Perl regex to indicate how make informs about
+a directory change. `EnterDirDir' is the related subexpression.  That's
+needed for GNU make, I guess other make tools have a similar mechanism.
+`LeaveDir' is the pattern generated by make to indicate a change to the
+parent directory.
+
+
+File: editor.inf,  Node: Mouse under Linux,  Next: Passing extra command line options,  Prev: Error messages from an external application,  Up: Miscellaneous
+
+11.9 Mouse under Linux
 ======================
 
 When you are running in a console the mouse is captured by the editor and
@@ -5599,6 +5695,36 @@ If you are using an X terminal the mouse isn't interactive because X
 terminals only reports when the button is pressed and released but no when
 it's moved. You can do all the normal operations but you won't get the
 usual feedback.
+
+
+File: editor.inf,  Node: Passing extra command line options,  Prev: Mouse under Linux,  Up: Miscellaneous
+
+11.10 Passing extra command line options
+========================================
+
+You can pass extra command line options defining an environment variable
+called SET_CMDLINE. The editor will parse this variable and add it to the
+options passed in the command line. These options will be interpreted
+before the options passed in the command line.
+
+Any space (including tabs) are interpreted as separators. If you need to
+pass a file name containing spaces you must enclose the name with double
+quotes.  If you need to pass a name containing a double quote you must
+escape it using a back slash. Here are some examples:
+
+   * ops 1
+     - The editor interprets: two options "ops" and "1"
+
+   * "ops 1"
+     - The editor interprets: one option "ops 1"
+
+   * ops"1
+     - The editor interprets: one option containing a double quote inside
+
+This mechanism can be used to set default options and avoid typing them all
+the time. Another use is when you need to pass options to the editor and
+you are using Eterm, in this case Eterm can't pass command line options so
+you must use this mechanism.
 
 
 File: editor.inf,  Node: Index,  Next: Index of key commands,  Prev: Miscellaneous,  Up: Top
@@ -5625,6 +5751,7 @@ File: editor.inf,  Node: Index,  Next: Index of key commands,  Prev: Miscellaneo
 * cursor through tabs:                   Do not move inside tabs.
 * desktop files, do not create:          Editor General.
 * desktop files, style:                  Editor General.
+* errors from external program:          Error messages from an external application.
 * How to contact me:                     How to contact me.
 * Indentation:                           Indentation.
 * Insert and Delete:                     Insert and Delete.
@@ -5636,7 +5763,9 @@ File: editor.inf,  Node: Index,  Next: Index of key commands,  Prev: Miscellaneo
 * message window:                        Message Window.
 * MIME quoted printable:                 Block quoted printable decode.
 * Movement:                              Cursor movement.
+* No real tabs:                          Tab indents.
 * Overwrite:                             Overwrite.
+* parse, errors:                         Error messages from an external application.
 * Paste, do not move the cursor:         Do not move the cursor on Paste.
 * Persistent Blocks:                     Block modes.
 * Pseudo Macros:                         Pseudo Macros.
@@ -5655,6 +5784,7 @@ File: editor.inf,  Node: Index,  Next: Index of key commands,  Prev: Miscellaneo
 * syntax highlight, matching a path:     FullNameMatch.
 * syntax highlight, paste mode:          Paste Emacs mode.
 * syntax highlight, shell scripts:       ShellScript.
+* Tab as spaces:                         Tab indents.
 * TABs:                                  Real Tabs.
 * TABs, highlight/see:                   See Tabs.
 * TABs, indenting with:                  Optimal Fill.
@@ -5739,16 +5869,16 @@ File: editor.inf,  Node: Index of key commands,  Prev: Index,  Up: Top
 * cmcPaste <Shift+Ins>:                  Blocks.
 * cmcPasteClipWin <From menu>:           Paste from Windows Clipboard.
 * cmcPasteEmacsMode <From menu>:         Paste Emacs mode.
-* cmcPlayMacro <^F10> <1>:               Play (Macro).
-* cmcPlayMacro <^F10>:                   Miscellaneous keyboard commands.
+* cmcPlayMacro <^F10> <1>:               Miscellaneous keyboard commands.
+* cmcPlayMacro <^F10>:                   Play (Macro).
 * cmcPopCursorPos <From menu>:           Pop cursor position.
 * cmcProfileEditor <From menu>:          Profile Editor.
 * cmcPushCursorPos <From menu>:          Push cursor position.
 * cmcPutMarkn <^K n*>:                   Miscellaneous keyboard commands.
 * cmcQuotedPrintDecode <From menu>:      Block quoted printable decode.
 * cmcReadBlock <^K-R>:                   Blocks.
-* cmcRecordMacro <Shift+F10> <1>:        Miscellaneous keyboard commands.
-* cmcRecordMacro <Shift+F10>:            Record (Macro).
+* cmcRecordMacro <Shift+F10> <1>:        Record (Macro).
+* cmcRecordMacro <Shift+F10>:            Miscellaneous keyboard commands.
 * cmcRedo <From menu>:                   Redo.
 * cmcRepeatMacro <Shift+F3>:             Repeat (Macro).
 * cmcReplace <^Q-A>:                     Replace.
@@ -5768,14 +5898,14 @@ File: editor.inf,  Node: Index of key commands,  Prev: Index,  Up: Top
 * cmcSearchOpPar <Shift+^9>:             Miscellaneous keyboard commands.
 * cmcSearchStart <^[>:                   Miscellaneous keyboard commands.
 * cmcSelLength <^Q-L>:                   Blocks.
-* cmcSelRectCopy <^K-Shift+C> <1>:       Copy (Rectangle).
-* cmcSelRectCopy <^K-Shift+C>:           Rectangular Blocks.
+* cmcSelRectCopy <^K-Shift+C> <1>:       Rectangular Blocks.
+* cmcSelRectCopy <^K-Shift+C>:           Copy (Rectangle).
 * cmcSelRectCut <^K-Shift+T>:            Cut (Rectangle).
 * cmcSelRectCut <^K-ShiftT>:             Rectangular Blocks.
-* cmcSelRectDel <^K-Shift+L> <1>:        Clear (Rectangle).
-* cmcSelRectDel <^K-Shift+L>:            Rectangular Blocks.
-* cmcSelRectEnd <^K-Shift+K> <1>:        End (Rectangle).
-* cmcSelRectEnd <^K-Shift+K>:            Rectangular Blocks.
+* cmcSelRectDel <^K-Shift+L> <1>:        Rectangular Blocks.
+* cmcSelRectDel <^K-Shift+L>:            Clear (Rectangle).
+* cmcSelRectEnd <^K-Shift+K> <1>:        Rectangular Blocks.
+* cmcSelRectEnd <^K-Shift+K>:            End (Rectangle).
 * cmcSelRectHide <^K-Shift+H> <1>:       Hide (Rectangle).
 * cmcSelRectHide <^K-Shift+H>:           Rectangular Blocks.
 * cmcSelRectMove <^K+Shift+V>:           Rectangular Blocks.
@@ -5788,10 +5918,10 @@ File: editor.inf,  Node: Index of key commands,  Prev: Index,  Up: Top
 * cmcSelRectToLower <From menu>:         To lower (Rectangle).
 * cmcSelRectToUpper <>:                  Rectangular Blocks.
 * cmcSelRectToUpper <From menu>:         To upper (Rectangle).
-* cmcSetGlobalOptions <Alt+G> <1>:       Set Global.
-* cmcSetGlobalOptions <Alt+G>:           Miscellaneous keyboard commands.
-* cmcSetLocalOptions <Alt+L> <1>:        Set Local.
-* cmcSetLocalOptions <Alt+L>:            Miscellaneous keyboard commands.
+* cmcSetGlobalOptions <Alt+G> <1>:       Miscellaneous keyboard commands.
+* cmcSetGlobalOptions <Alt+G>:           Set Global.
+* cmcSetLocalOptions <Alt+L> <1>:        Miscellaneous keyboard commands.
+* cmcSetLocalOptions <Alt+L>:            Set Local.
 * cmcSmartIndent <^Tab>:                 Indentation.
 * cmcSmartUnIndent <Shift+^Tab>:         Indentation.
 * cmcStartSelect <^K-B>:                 Blocks.
@@ -5829,7 +5959,8 @@ File: editor.inf,  Node: Index of key commands,  Prev: Index,  Up: Top
 * cmeExportAsHTML <From menu>:           Export as HTML.
 * cmeFileOpenOptions <From menu>:        File open dialog.
 * cmeGrepDialog <From menu>:             Grep.
-* cmeHTMLAccents <From menu>:            HTML Accents.
+* cmeHTMLAccents <From menu>:            Convert accents to tags.
+* cmeHTMLTag2Accent <From menu>:         Convert tags to accents.
 * cmeInfView <F1>:                       InfView.
 * cmeKbBackDefault <From menu>:          Back to defaults.
 * cmeKeyPadBehavior <From menu>:         Key pad behavior.
@@ -6045,150 +6176,156 @@ Node: Editor General64241
 Node: Screen Saver67884
 Node: SDG Options69456
 Node: Run program (which one)70408
-Node: Keyboard71155
-Node: Key assignment71504
-Node: Setup Alt keys71928
-Node: Key pad behavior72253
-Node: Back to defaults72825
-Node: Consult scan codes73206
-Node: Screen Options73484
-Node: User Words75792
-Node: Default global edition77209
-Node: File open dialog81158
-Node: Calculator (command/menu)81435
-Node: SDG81713
-Node: Run program82006
-Node: Grep82278
-Node: HTML Accents84707
-Node: Export as HTML85131
-Node: Remap code page86286
-Node: Profile Editor87314
-Node: Redraw screen87628
-Node: Paste Emacs mode87941
-Node: Block quoted printable decode88564
-Node: Un/Indent block89043
-Node: Indent one space89410
-Node: Unindent one character89694
-Node: Indent one tab or gap90004
-Node: Unindent one tab or gap90377
-Node: Arbitrary indent90758
-Node: Delete memorized backups91094
-Node: Project91595
-Node: Open (Project)92943
-Node: Close (Project)93198
-Node: Help93384
-Node: InfView93552
-Node: Another InfView93769
-Node: Tip of the day94377
-Node: Syntax help95534
-Node: Options (Syntax help)96155
-Node: Files to search (Syntax help)97328
-Node: Search (Syntax help)98588
-Node: Editing Modes98948
-Node: Overwrite99531
-Node: Autoindent99843
-Node: Real Tabs100223
-Node: Persistent Blocks102447
-Node: Intelligent C indent102725
-Node: Can you explain to me more about the behavior of this mode?104866
-Node: Do you have more examples?107998
-Node: Column cursor109994
-Node: Row cursor110509
-Node: Match pair highlight110829
-Node: Transparent Blocks111664
-Node: Optimal Fill112041
-Node: Wrap Words112517
-Node: Do not move the cursor on Paste113114
-Node: Scroll Lock centers113507
-Node: See Tabs114009
-Node: Do not move inside tabs114505
-Node: Syntax Highlight115427
-Node: Syntax Highlight File117503
-Node: AllowedInsideNames119720
-Node: CanStartAName120139
-Node: Case120526
-Node: CloseComment1120953
-Node: EmacsModes121343
-Node: EOLCInFirstCol121874
-Node: EOLCInFirstCol1122150
-Node: EOLCInFirstCol2122410
-Node: EOLCInFirstUse1122671
-Node: EOLCInFirstUse2122996
-Node: EOLComment1123319
-Node: Escape123735
-Node: Files123950
-Node: FullNameMatch124561
-Node: HexMarker124965
-Node: Keywords125318
-Node: Name125576
-Node: NameMatch125807
-Node: NoCheckNumbers126189
-Node: OpenComment1126399
-Node: Format of short syntax highlight definitions126922
-Node: PartialKeywords127753
-Node: PMacros128219
-Node: Preprocessor128645
-Node: RelaxNumberCheck128845
-Node: ShellScript129238
-Node: ShortString129813
-Node: SpecialSymbol130108
-Node: String1130649
-Node: Symbols1131046
-Node: Symbols2131280
-Node: UseInternal131521
-Node: Pseudo Macros131964
-Node: Please enlighten me - what is that?132314
-Node: How can I customize that?133590
-Node: sLisp macros136131
-Node: How to write a sLisp macro137138
-Node: How strings are parsed138062
-Node: Running programs with a macro139078
-Node: Editor specific commands139803
-Node: AskString140326
-Node: ComplChoose140652
-Node: defmacro141617
-Node: ForceUpdate141920
-Node: getenv142263
-Node: GetSelection142603
-Node: GetSyntaxAtCursor142884
-Node: InsertText145130
-Node: RunProgram145625
-Node: RunProgramRedir146319
-Node: SendCommands146739
-Node: ShowInStatusLine147120
-Node: WhichEditor147535
-Node: WordUnderCursor148387
-Node: General sLisp commands149120
-Node: and149573
-Node: Operator &150024
-Node: eval150418
-Node: gstr150811
-Node: if151074
-Node: left151600
-Node: not151824
-Node: or152064
-Node: Operator |152406
-Node: Operator +152763
-Node: right153258
-Node: setv153496
-Node: ShortFileName154062
-Node: sstr154437
-Node: strxlt154757
-Node: substr155095
-Node: Calculator155518
-Node: How to contact me157939
-Node: Bugs158224
-Node: Miscellaneous158760
-Node: Clipboard159069
-Node: Time and date modifiers formats160145
-Node: Regular Expressions162279
-Node: Desktop Files171418
-Node: Text mode attributes172786
-Node: File Open175507
-Node: Sort of the files and directories in the dialog177815
-Node: Message Window179906
-Node: Mouse under Linux180911
-Node: Index181744
-Node: Index of key commands185068
+Node: Keyboard71288
+Node: Key assignment71637
+Node: Setup Alt keys72061
+Node: Key pad behavior72386
+Node: Back to defaults72958
+Node: Consult scan codes73339
+Node: Screen Options73617
+Node: User Words75925
+Node: Default global edition77342
+Node: File open dialog81291
+Node: Calculator (command/menu)81568
+Node: SDG81846
+Node: Run program82139
+Node: Grep82411
+Node: HTML Accents84840
+Node: Convert accents to tags85190
+Node: Convert tags to accents85671
+Node: Export as HTML86057
+Node: Remap code page87212
+Node: Profile Editor88240
+Node: Redraw screen88554
+Node: Paste Emacs mode88867
+Node: Block quoted printable decode89490
+Node: Un/Indent block89969
+Node: Indent one space90336
+Node: Unindent one character90620
+Node: Indent one tab or gap90930
+Node: Unindent one tab or gap91303
+Node: Arbitrary indent91684
+Node: Delete memorized backups92020
+Node: Project92521
+Node: Open (Project)93869
+Node: Close (Project)94124
+Node: Help94310
+Node: InfView94478
+Node: Another InfView94695
+Node: Tip of the day95303
+Node: Syntax help96460
+Node: Options (Syntax help)97081
+Node: Files to search (Syntax help)98254
+Node: Search (Syntax help)99514
+Node: Editing Modes99874
+Node: Overwrite100473
+Node: Autoindent100785
+Node: Real Tabs101165
+Node: Persistent Blocks102798
+Node: Intelligent C indent103076
+Node: Can you explain to me more about the behavior of this mode?105217
+Node: Do you have more examples?108349
+Node: Column cursor110345
+Node: Row cursor110860
+Node: Match pair highlight111180
+Node: Transparent Blocks112015
+Node: Optimal Fill112392
+Node: Wrap Words112868
+Node: Do not move the cursor on Paste113465
+Node: Scroll Lock centers113858
+Node: See Tabs114360
+Node: Do not move inside tabs114856
+Node: Tab indents115773
+Node: Syntax Highlight116657
+Node: Syntax Highlight File118793
+Node: AllowedInsideNames121029
+Node: CanStartAName121448
+Node: Case121835
+Node: CloseComment1122262
+Node: EmacsModes122652
+Node: EOLCInFirstCol123183
+Node: EOLCInFirstCol1123459
+Node: EOLCInFirstCol2123719
+Node: EOLCInFirstUse1123980
+Node: EOLCInFirstUse2124305
+Node: EOLComment1124628
+Node: Escape125044
+Node: EscapeAnywhere125268
+Node: Files125526
+Node: FullNameMatch126145
+Node: HexMarker126549
+Node: Keywords126902
+Node: Name127160
+Node: NameMatch127391
+Node: NoCheckNumbers127773
+Node: OpenComment1127983
+Node: Format of short syntax highlight definitions128506
+Node: PartialKeywords129337
+Node: PMacros129803
+Node: Preprocessor130229
+Node: RelaxNumberCheck130429
+Node: ShellScript130822
+Node: ShortString131397
+Node: SpecialSymbol131692
+Node: String1132233
+Node: Symbols1132630
+Node: Symbols2132864
+Node: UseInternal133105
+Node: Pseudo Macros133548
+Node: Please enlighten me - what is that?133898
+Node: How can I customize that?135174
+Node: sLisp macros137715
+Node: How to write a sLisp macro138722
+Node: How strings are parsed139646
+Node: Running programs with a macro140662
+Node: Editor specific commands141387
+Node: AskString141910
+Node: ComplChoose142236
+Node: defmacro143201
+Node: ForceUpdate143504
+Node: getenv143847
+Node: GetSelection144187
+Node: GetSyntaxAtCursor144468
+Node: InsertText146714
+Node: RunProgram147209
+Node: RunProgramRedir148062
+Node: SendCommands148482
+Node: ShowInStatusLine148863
+Node: WhichEditor149278
+Node: WordUnderCursor150130
+Node: General sLisp commands150863
+Node: and151316
+Node: Operator &151767
+Node: eval152161
+Node: gstr152554
+Node: if152817
+Node: left153343
+Node: not153567
+Node: or153807
+Node: Operator |154149
+Node: Operator +154506
+Node: right155001
+Node: setv155239
+Node: ShortFileName155805
+Node: sstr156180
+Node: strxlt156500
+Node: substr156838
+Node: Calculator157261
+Node: How to contact me159682
+Node: Bugs159967
+Node: Miscellaneous160503
+Node: Clipboard160899
+Node: Time and date modifiers formats161975
+Node: Regular Expressions164109
+Node: Desktop Files173248
+Node: Text mode attributes174616
+Node: File Open177337
+Node: Sort of the files and directories in the dialog179645
+Node: Message Window181736
+Node: Error messages from an external application182864
+Node: Mouse under Linux184535
+Node: Passing extra command line options185440
+Node: Index186640
+Node: Index of key commands190244
 
 End Tag Table

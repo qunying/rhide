@@ -235,7 +235,7 @@ End
 
 # ---------------- Clipper ----------------
 Name=Clipper 5.x
-Files=prg,ch
+Files=prg,ch,PRG,CH
 UseInternal=3
 OpenComment1=/*
 CloseComment1=*/
@@ -343,6 +343,7 @@ Keywords=CanStartAName,PMacros,End,NoCheckNumbers,EOLCInFirstCol,Preprocessor2
 Keywords=String3,PartialKeywords,ShortString,SpecialSymbol,SpecialSymbolCont
 Keywords=RelaxNumberCheck,EmacsModes,ShellScript,EOLCInFirstCol2,FullNameMatch
 Keywords=EOLCInFirstUse1,EOLCInFirstUse2,EOLCInFirstCol1,NameMatch
+Keywords=EscapeAnywhere
 End
 
 # ---------------- sLisp Files ----------------
@@ -473,6 +474,8 @@ End
 # followed by a comment.
 # Ported to Set Editor by Daniel Mizyrycki (mdaniel@balug.org.ar)
 #
+# Adjusted by SET to make it closer to the real Perl syntax.
+#
 Name=Perl
 Files=pl,pm
 EmacsModes=Perl
@@ -482,6 +485,7 @@ HexMarker=0x
 Symbols1=!&*+-:<=>?^|$~@\
 Symbols2=(){}[],;
 Escape=\
+EscapeAnywhere=1
 String1="
 String2='
 String3=`
@@ -660,7 +664,7 @@ End
 
 # ------------------------ Texinfo Source files (txi) ------------------------
 #
-# Contributed by Burton Radons <loth@cow-net.com> [ca]
+# Contributed by Burton Radons <loth@pacificcoast.net> [ca]
 #
 Name=Texinfo source
 Files=txi,tx
@@ -974,5 +978,37 @@ Keywords=scdefault,secdef,selectfont,seriesdefault,settodepth,settoheight,sfdefa
 Keywords=space,spacefactor,sqsubset,stackrel,stretch,strut,suppressfloats,symbol,tabskip,thanks,thefootnote,thickmuskip,thinmuskip,thinspace,today
 Keywords=tracingfonts,tracingoutput,trivlist,ttdefault,twocolumn,typein,typeout,unboldmath,undefinedpagestyle,underbar,underline,unlhd,unrhd,updefault
 Keywords=usecounter,usefont,usepackage,vcenter,verb,verbatim,vline,vphantom,width,wlog,xdef
+End
+
+# ---------------- PLM/51 ----------------
+#
+# Syntax highlight definitions for PLM/51 (Jari Korhonen 08061999)
+#
+Name=PLM/51
+Files=plm,PLM
+OpenComment1=/*
+CloseComment1=*/
+Symbols1=.=/()+-'*<>:_
+Symbols2=(),;
+String1='
+Preprocessor=$
+NoCheckNumbers=1
+Keywords=address,and,at,aux,auxiliary,based,bit,by,byte,call,case,con,constant
+Keywords=declare,disable,do,else,enable,end,ext,external,go,goto,ida,idata
+Keywords=if,indirectly_callable,interrupt,label,lit,literally,main,minus,mod
+Keywords=not,or,plus,procedure,pub,public,register,return,structure,then
+Keywords=to,using,while,word,xor
+End
+
+# ---------------- Command Line Errors description files ----------------
+#
+Name=Command Line Errors File
+Files=cle
+EOLComment1=#
+EOLCInFirstCol1=1
+Symbols1=,=
+NoCheckNumbers=1
+Keywords=Name,Pattern,File,Line,Description,Severity,EnterDirPat,EnterDirDir
+Keywords=LeaveDir,End
 End
 

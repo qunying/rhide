@@ -2137,20 +2137,26 @@ parse_commandline(int argc, char *argv[])
 static void
 find_project()
 {
-// I can assume, that PRJNAME == NULL, when calling this
-  glob_t found;
-
-  // I must initialize that, because I call glob NOT with GLOB_NOCHECK
-  // and so glob can return without finding any. But globfree assumes,
-  // that gl_pathv == NULL, if there is nothing found
-  found.gl_pathv = NULL;
-  found.gl_pathc = 0;
-  glob("*" PROJECT_EXT, 0, NULL, &found);
-  if (found.gl_pathc == 1)      // only one was found
-    string_dup(PRJNAME, found.gl_pathv[0]);
-  else if (found.gl_pathc > 1)
-    PRJNAME = select_project(_("Select a project"));
-  globfree(&found);
+  char *spec = NULL;
+  string_cat(spec, "$(strip $(subst ", RHIDE_OPTIONS_NAME, PROJECT_EXT,
+             ",,$(wildcard *", PROJECT_EXT, ")))", NULL);
+  char *files = expand_rhide_spec(spec);
+  string_free(spec);
+  if (!*files) // no .gpr file was found
+  {
+    string_free(files);
+    return;
+  }
+  string_cat(spec, "$(word 2,", files, ")", NULL);
+  char *file = expand_rhide_spec(spec);
+  string_free(files);
+  string_free(spec);
+  if (!*file) // only one .gpr file was found
+  {
+    PRJNAME = file;
+    return;
+  }
+  PRJNAME = select_project(_("Select a project"));
 }
 
 static char *tmpdir = NULL;
@@ -2779,7 +2785,7 @@ main(int argc, char **argv)
         if (!EDITNAME)
           About();
         if (EDITNAME)
-          App->openEditor(EDITNAME, True);
+          OpenEditor(EDITNAME, true);
       }
       should_update = 1;
       App->update();

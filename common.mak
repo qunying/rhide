@@ -44,8 +44,8 @@ ifeq ($REAL_SETSRC),)
 export REAL_SETSRC:=$(SETSRC)
 endif
 
-DJP=
-use_djp=no
+UPX=upx -9
+use_upx=yes
 
 setgid=
 setuid=
@@ -71,8 +71,6 @@ export rhide_OS:=DJGPP
 INSTALL_DIR=ginstall -d -m 0755
 INSTALL_DATA=ginstall $(DATA_MODE)
 INSTALL_PROGRAM=ginstall -s $(EXEC_MODE) $(SETUID) $(SETGID)
-DJP=upx
-use_djp=yes
 LN_SF=cp -fp
 else
 LN_SF=ln -sf
@@ -282,9 +280,7 @@ endif
 
 %.cfo: Makefile
 ifneq ($(srcdir),$(config_dir))
-ifeq ($(wildcard $(config_dir)/$*),)
 	@-mkdir $(config_dir)/$*
-endif
 endif
 	@$(MAKE) --no-print-directory -C $* -f $(srcdir)/$*/Makefile \
 	         $(FLAGS_TO_PASS) \
@@ -347,8 +343,8 @@ ifneq ($(strip $(install_bin_files)),)
 install.bin:: $(install_bin_files)
 	$(INSTALL_DIR) $(prefix)/$(install_bindir)
 	$(INSTALL_PROGRAM) $^ $(prefix)/$(install_bindir)
-ifeq ($(use_djp),yes)
-	$(DJP) $(addprefix $(prefix)/$(install_bindir)/,$(install_bin_files))
+ifeq ($(use_upx),yes)
+	$(UPX) $(addprefix $(prefix)/$(install_bindir)/,$(install_bin_files))
 endif
 	@echo $(addprefix $(install_bindir)/,$(install_bin_files)) >> $(logfile)
 endif

@@ -33,11 +33,11 @@ SEARCH_SETSRC_Linux=/usr/local/src/setedit \
 	/usr/src/setedit \
 	$(RHIDESRC)/../setedit
 
-SEARCH_GDBSRC_DJGPP=$(DJDIR)/gnu/gdb-5.0 \
-	$(RHIDESRC)/../gdb-5.0
+SEARCH_GDBSRC_DJGPP=$(DJDIR)/gnu/gdb-5.1 \
+	$(RHIDESRC)/../gdb-5.1
 
-SEARCH_GDBSRC_Linux=/usr/local/src/gdb-5.0 \
-	$(RHIDESRC)/../gdb-5.0
+SEARCH_GDBSRC_Linux=/usr/local/src/gdb-5.1 \
+	$(RHIDESRC)/../gdb-5.1
 
 TVSRC_=$(TVSRC)
 ifeq ($(strip $(TVSRC_)),)
@@ -102,11 +102,11 @@ echo_vars:
 	@echo SET_LIBS=$(SET_LIBS)
 
 create_config:
-	@echo RHIDESRC=$(RHIDESRC) > $(config_file)
-	@echo TVSRC=$(TVSRC) >> $(config_file)
-	@echo SETSRC=$(SETSRC) >> $(config_file)
-	@echo GDB_SRC=$(GDB_SRC) >> $(config_file)
-	@echo GDB_OBJ=$(GDB_OBJ) >> $(config_file)
-	@echo TVOBJ=$(TVOBJ) >> $(config_file)
-	@echo SETOBJ=$(SETOBJ) >> $(config_file)
-	@echo SET_LIBS=$(SET_LIBS) >> $(config_file)
+	@echo export RHIDESRC=$(RHIDESRC) > $(config_file)
+	@echo export TVSRC=$(TVSRC) >> $(config_file)
+	@echo export SETSRC=$(SETSRC) >> $(config_file)
+	@echo export GDB_SRC=$(GDB_SRC) >> $(config_file)
+	@echo export GDB_OBJ=$(GDB_OBJ) >> $(config_file)
+	@echo export TVOBJ=$(TVOBJ) >> $(config_file)
+	@echo export SETOBJ=$(SETOBJ) >> $(config_file)
+	@echo export SET_LIBS=$(SET_LIBS) >> $(config_file)

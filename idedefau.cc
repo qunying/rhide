@@ -106,8 +106,10 @@ void DefaultReservedWords(TProject *p)
   int i;
   ccIndex index;
   if (!p) p = project;
-  if (_CReservedWords(p)) destroy(_CReservedWords(p));
-  _CReservedWords(p) = new TStringCollection(15,16);
+  if (_CReservedWords(p))
+    _CReservedWords(p)->freeAll();
+  else
+    _CReservedWords(p) = new TStringCollection(15,16);
   i = 0;
   while (reserved[i])
   {
@@ -123,8 +125,10 @@ void DefaultGPCReservedWords(TProject *p)
   int i;
   ccIndex index;
   if (!p) p = project;
-  if (_GPCReservedWords(p)) destroy(_GPCReservedWords(p));
-  _GPCReservedWords(p) = new TStringCollection(15,16);
+  if (_GPCReservedWords(p))
+    _GPCReservedWords(p)->freeAll();
+  else
+    _GPCReservedWords(p) = new TStringCollection(15,16);
   i = 0;
   while (GPCreserved[i])
   {
@@ -140,8 +144,10 @@ void DefaultFPCReservedWords(TProject *p)
   int i;
   ccIndex index;
   if (!p) p = project;
-  if (_FPCReservedWords(p)) destroy(_FPCReservedWords(p));
-  _FPCReservedWords(p) = new TStringCollection(15,16);
+  if (_FPCReservedWords(p))
+    _FPCReservedWords(p)->freeAll();
+  else
+    _FPCReservedWords(p) = new TStringCollection(15,16);
   i = 0;
   while (FPCreserved[i])
   {
@@ -155,8 +161,10 @@ void DefaultFPCReservedWords(TProject *p)
 void DefaultUserWords(TProject *p)
 {
   if (!p) p = project;
-  if (_RHIDEUserWords(p)) destroy(_RHIDEUserWords(p));
-  _RHIDEUserWords(p) = new TStringCollection(15,16);
+  if (_RHIDEUserWords(p))
+    _RHIDEUserWords(p)->freeAll();
+  else
+    _RHIDEUserWords(p) = new TStringCollection(15,16);
   user_words_changed = 1;
 }
 

@@ -2046,12 +2046,10 @@ void init_rhide(int _argc, char **_argv)
   convert_num_pad = 1;
 #endif
   parse_commandline(__crt0_argc,__crt0_argv);
-  TEventQueue::suspend();
   TScreen::suspend();
   fprintf(stderr,_("This is %s. Copyright (c) 1996-1998 by Robert H”hne\n"),IDEVersion);
   fprintf(stderr,"             (%s %s)\n",build_date,build_time);
   TScreen::resume();
-  TEventQueue::resume();
   PrintSetDefaults();
 }
 

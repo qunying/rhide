@@ -26,7 +26,7 @@ PACKAGE=rhide
 # exceed 8 characters, the well known DOS limitation :-(
 PACKAGE_FILE=rhid
 PACKAGE_DIR=rhide
-VERSION=1.4.5x
+VERSION=1.4.6
 RHIDE_MAJOR=$(word 1,$(subst ., ,$(VERSION)))
 RHIDE_MINOR=$(subst $(RHIDE_MAJOR),,$(VERSION))
 # for the DJGPP archives
@@ -102,7 +102,11 @@ endif
 
 obj_dir:=$(shell pwd)
 ifeq ($(top_obj_dir),)
+ifneq ($(strip $(rhide_OS)),DJGPP)
+export top_obj_dir:=$(shell cd $(top_dir) && pwd && cd $(obj_dir))
+else
 export top_obj_dir:=$(shell cd $(top_dir); pwd; cd $(obj_dir))
+endif
 endif
 
 ifeq ($(strip $(rhide_OS)),Linux)
@@ -140,7 +144,7 @@ rhides=$(PACKAGE_FILE)$(FILE_VERSION)s
 rhide=$(PACKAGE_DIR)$(DIR_VERSION)
 
 ifeq ($(rhide_OS),DJGPP)
-copy_dir=f:/_
+copy_dir=d:/_
 else
 copy_dir=/usr/tmp/_
 endif
@@ -163,11 +167,11 @@ FLAGS_TO_PASS=\
 	prefix=$(prefix)
 
 %.sub: Makefile
-	$(MAKE) -C $* $(FLAGS_TO_PASS) SUBDIR_TARGET=$(SUBDIR_TARGET) \
+	@$(MAKE) -C $* $(FLAGS_TO_PASS) SUBDIR_TARGET=$(SUBDIR_TARGET) \
 	  $(SUBDIR_TARGET) logfile=../__log__
-	touch __log__
-	cat __log__ >> $(logfile)
-	rm -f __log__
+	@touch __log__
+	@cat __log__ >> $(logfile)
+	@rm -f __log__
 
 subdir_do: $(addsuffix .sub,$(sort $(subdirs)))
 
@@ -194,26 +198,26 @@ ifneq ($(SRC_FILES),)
 endif
 
 po_list:: $(po_files)
-	echo $(addprefix $(po_prefix),$(po_files)) > $(po_list)
+	@echo $(addprefix $(po_prefix),$(po_files)) > $(po_list)
 ifneq ($(strip $(po_subdirs)),)
 # special case for po_subdirs=..
 ifeq ($(strip $(po_subdirs)),..)
 this_dir:=$(notdir $(shell pwd))
 po_list::
-	$(MAKE) -C .. $(FLAGS_TO_PASS) po_list=$(this_dir)/$(this_dir).pst \
+	@$(MAKE) -C .. $(FLAGS_TO_PASS) po_list=$(this_dir)/$(this_dir).pst \
 	  po_prefix=$(po_prefix)../ po_list
-	cat $(this_dir).pst >> $(po_list)
-	rm $(this_dir).pst
+	@cat $(this_dir).pst >> $(po_list)
+	@rm $(this_dir).pst
 else
 po_sub_files=$(addsuffix .pst,$(po_subdirs))
 po_list:: $(po_sub_files)
-	cat $(po_sub_files) >> $(po_list)
-	rm $(po_sub_files)
+	@cat $(po_sub_files) >> $(po_list)
+	@rm $(po_sub_files)
 endif
 endif
 
 %.pst: Makefile
-	$(MAKE) -C $* $(FLAGS_TO_PASS) po_list=../$@ \
+	@$(MAKE) -C $* $(FLAGS_TO_PASS) po_list=../$@ \
 	  po_prefix=$(po_prefix)$*/ po_list
 
 update__srcdir:: $(update_files)
@@ -238,8 +242,9 @@ endif
 
 ifneq ($(strip $(gpr2mak)),)
 %.mak: %.gpr
+	@echo Creating '$@'
 ifeq ($(rhide_OS),DJGPP)
-	$(gpr2mak) -d -r- -o - $< \
+	@$(gpr2mak) -d -r- -o - $< \
 	  | sed -e 's,	$(DJDIR),	$$(DJDIR),g' \
 	        -e '/^		$$(DJDIR).*\\$$/d' \
 	        -e 's,^		$$(DJDIR)[^\\]*$$,,' \
@@ -248,7 +253,7 @@ ifeq ($(rhide_OS),DJGPP)
 		-e 's,	$(top_obj_dir),	$$(top_obj_dir),g' \
 	  $(USER_GPR2MAK_SEDS) > $@
 else
-	$(gpr2mak) -d -r- -o - $< \
+	@$(gpr2mak) -d -r- -o - $< \
 	  | sed -e 's,	$(RHIDESRC),	$$(RHIDESRC),g' \
 	        -e 's,	/usr/include,	$$(USRINC),g' \
 	        -e 's,	/usr/lib/gcc-lib,	$$(USRINC),g' \
@@ -322,27 +327,27 @@ install.info::
 install.doc::
 
 install::
-	rm -f $(logfile) $(instfile)
+	@rm -f $(logfile) $(instfile)
 
 ifneq ($(strip $(install_data_files)),)
 install.data:: $(install_data_files)
 	$(INSTALL_DIR) $(prefix)/$(install_datadir)
 	$(INSTALL_DATA) $^ $(prefix)/$(install_datadir)
-	echo $(addprefix $(install_datadir)/,$(install_data_files)) >> $(logfile)
+	@echo $(addprefix $(install_datadir)/,$(install_data_files)) >> $(logfile)
 endif
 
 ifneq ($(strip $(install_info_files)),)
 install.info:: $(install_info_files)
 	$(INSTALL_DIR) $(prefix)/$(install_infodir)
 	$(INSTALL_DATA) $^ $(prefix)/$(install_infodir)
-	echo $(addprefix $(install_infodir)/,$(install_info_files)) >> $(logfile)
+	@echo $(addprefix $(install_infodir)/,$(install_info_files)) >> $(logfile)
 endif
 
 ifneq ($(strip $(install_doc_files)),)
 install.doc:: $(install_doc_files)
 	$(INSTALL_DIR) $(prefix)/$(install_docdir)
 	$(INSTALL_DATA) $^ $(prefix)/$(install_docdir)
-	echo $(addprefix $(install_docdir)/,$(install_doc_files)) >> $(logfile)
+	@echo $(addprefix $(install_docdir)/,$(install_doc_files)) >> $(logfile)
 endif
 
 ifneq ($(strip $(install_bin_files)),)
@@ -353,7 +358,7 @@ install.bin:: $(INSTALL_BIN_FILES)
 ifeq ($(use_djp),yes)
 	$(DJP) $(addprefix $(prefix)/$(install_bindir)/,$(INSTALL_BIN_FILES))
 endif
-	echo $(addprefix $(install_bindir)/,$(INSTALL_BIN_FILES)) >> $(logfile)
+	@echo $(addprefix $(install_bindir)/,$(INSTALL_BIN_FILES)) >> $(logfile)
 endif
 
 ifneq ($(SUBDIR_TARGET),)

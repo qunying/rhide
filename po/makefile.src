@@ -71,7 +71,9 @@ MSGCAT_OPTIONS=-s
 $(addsuffix .po,$(LANGUAGES)): potfiles.po $(MSGCAT)
 	-cp -f $@ $(subst .po,.bak,$@)
 	$(MSGCAT) $(MSGCAT_OPTIONS) -cat $(subst .po,.cat,$@) \
-	  $(wildcard $@) $< $@
+	  -ocat __cat__ $(wildcard $@) $< __po__
+	$(move-if-change) __cat__ $(subst .po,.cat,$@)
+	$(move-if-change) __po__ $@
 	
 %.mo: %.po
 	-$(msgfmt) -o $@ $<

@@ -1257,4 +1257,16 @@ void abort()
   _exit(1);
 }
 
+/* The following functions are provided here only to make the
+   linker happy, since they are refernced by libset */
+void show_message(const char *, const char *,
+                  int , int , int )
+{
+}
+
+void InsertEnviromentVar(char *variable,char *contents)
+{
+  insert_variable(variable, contents);
+}
+
 

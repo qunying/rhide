@@ -1,0 +1,2 @@
+?package(rhide):needs=X11 section=Apps/Programming hints=Big,IDE \
+  title="rhide" command="/usr/bin/rhide"

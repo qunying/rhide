@@ -1,0 +1,7 @@
+.cvsignore
+files
+postinst.debhelper
+postrm.debhelper
+prerm.debhelper
+substvars
+tmp

@@ -1,0 +1,14 @@
+Source: rhide
+Section: devel
+Priority: optional
+Maintainer: Baurjan Ismagulov <ibr@ata.cs.hun.edu.tr>
+Build-Depends: debhelper (>= 4.0.0), libset-dev
+Standards-Version: 3.6.0
+
+Package: rhide
+Architecture: any
+Depends: ${shlibs:Depends}
+Description: An Integrated Development Environment
+ An Integrated Development Environment.
+ .
+ THIS IS NOT AN OFFICIAL PACKAGE AND IS NOT PART OF THE DEBIAN DISTRIBUTION.

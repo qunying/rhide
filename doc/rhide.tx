@@ -1,13 +1,13 @@
-% Copyright (C) 1996-2001 Robert H”hne, see COPYING.RH for details
+% Copyright (C) 1996-2003 Robert H”hne, see COPYING.RH for details
 % This file is part of RHIDE. 
 \input texinfo  @c -*-texinfo-*-
 
 @comment %**start of header
 
 @setfilename rhide.inf
-@set version 1.4.9
-@set update-date 10 Januar 2001
-@set update-month Januar 2001
+@set version 1.5
+@set update-date 16 february 2003
+@set update-month february 2003
 @c I'm using a4 paper
 @afourpaper
 
@@ -21,7 +21,7 @@
 @strong{Answer}:
 @end macro
 
-@set rh Robert Hoehne
+@set rh Robert H@"ohne
 @settitle RHIDE Version @value{version}
 @footnotestyle separate
 @paragraphindent asis
@@ -114,14 +114,14 @@
 
 @finalout
 
-@setchapternewpage odd
+@c @setchapternewpage odd
 
 @titlepage
 @c use the new format for titles
 @title RHIDE @value{version}
 @subtitle @sc{Robert H@"ohne}'s @sc{Integrated Development Environment}
 @subtitle Version @value{version}
-@subtitle for DJGPP Version 2.01
+@subtitle for DJGPP and GNU/Linux
 @subtitle @value{update-month}
 
 @author by @value{rh}
@@ -146,11 +146,14 @@ notice identical to this one.
 People, who helped me, to develop RHIDE:
 
 @itemize @bullet
-  @item @sc{Salvador Eduardo Tropea (SET)} <salvador@@inti.gov.ar>
+  @item @sc{Salvador Eduardo Tropea (SET)} @email{salvador@@inti.gov.ar}
     (translating to Spanish and the great Info Viewer and the editor)
 
   @item @sc{Christian Domp} by getting me the code for the additional
     supported video modes
+
+  @item @sc{Andris Pavenis} @email{pavenis@@lanet.lv}
+    by making many patches
 
 @ignore
   @item @sc{Eric Nicolas} <nicolas@@dsys.ceng.cea.fr>
@@ -174,49 +177,28 @@ People, who helped me, to develop RHIDE:
 @end itemize
 
 @vskip 0pt plus 1filll
-Copyright @copyright{} 1996-2000 @value{rh}
+Copyright @copyright{} 1996-2003 @value{rh}
 
 @end titlepage
 
-@*
-@*
-This is the documentation for the Integrated Development
-Environment RHIDE.
+@c @*
+@c @*
+@c This is the documentation for the Integrated Development
+@c Environment RHIDE.
+@c 
+@c Copyright @copyright{} 1996-2003 @value{rh}
+@c 
+@c 
+@c This documentation may be freely distributed with the RHIDE package or any
+@c part thereof, provided this copyright notice is left intact on all copies.
 
-Copyright @copyright{} 1996-2001 @value{rh}
-
-
-This documentation may be freely distributed with the RHIDE package or any
-part thereof, provided this copyright notice is left intact on all copies.
-
-@ifclear text
 @contents
-@end ifclear
 
 @node Top, Introduction, (dir), (dir)
 @top RHIDE
 
-@ifclear text
-  The following master menu lists the major topics in this documentation,
-including all the indices.
-@end ifclear
-
-@ifnottex
-@ifset text
-   Table of Contents@*
-   *****************@*
-@sp 2
-@format
-@include contents.idx
-@end format
-@*
-@end ifset
-@end ifnottex
-
 @chapter Introduction
 @section Copying
-
-@format
 
 RHIDE is copyright by @value{rh}.
 Parts of RHIDE are copyright by other people as noted in the
@@ -236,7 +218,7 @@ source files.
   along with this program; if not, write to the Free Software
   Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
-Additional permission:
+@b{additional permission:}
 
  As a special additional permission, the library librhuti which is
  in the source tree of the RHIDE sources in the librhuti/
@@ -246,8 +228,7 @@ Additional permission:
  subdirectory.
 
 
-Non-binding request
-===================
+@b{Non-binding request}
 
 If you distribute RHIDE together with other products it would be nice,
 if you could give me a note about it so I'll be informed. Of course
@@ -261,6 +242,7 @@ For contacting the author send electronic mail to
 
 or paper mail to
 
+@format
 @value{rh}
 Am Berg 3
 D - 09573 Dittmannsdorf
@@ -278,7 +260,8 @@ This contains the executables and the documentation for RHIDE
 running on DJGPP
 
 @item rhide-?.?-1.i386.rpm
-This is a RPM package with the binaries of RHIDE for GNU/Linux.
+This is a RPM package with the binaries of RHIDE
+for GNU/Linux. (currently they are built on SuSE 8.0)
 
 @item rhide??s.zip
 This contains the sources of RHIDE for DJGPP.
@@ -290,7 +273,7 @@ This is a RPM package with the sources of RHIDE for GNU/Linux.
 
 NOTE: The sources for the GNU/Linux and DJGPP versions are of course
 in its core the same, there are only differences in the directory
-structure and myabe in some preconfigured files. But in general
+structure and maybe in some preconfigured files. But in general
 both archives can be used on both systems (after some cosmetic changes).
 
 where @file{??} in the above filenames stand for the digits of the actual
@@ -305,9 +288,12 @@ These archives can be found at
 or at any ftp site, which mirrors DJGPP. On that DJGPP mirrors are of
 course only the DJGPP archives available.
 
-The RPM packackes can be found at sunsite mirrors and/or also
-in some GNU/Linux distributions. (At least I hope so when I`m ready
-to upload them there)
+RHIDE is now also hosted on sourceforge, from where you can
+download also the latest versions.
+@*
+@uref{http://sourceforge.net/projects/rhide, RHIDE on sourceforge}
+@*
+
 
 To install these archives, unzip them in the DJGPP-root
 directory, like any other DJGPP package.
@@ -315,55 +301,6 @@ directory, like any other DJGPP package.
 To install the GNU/Linux RPM packages, use your favorite install
 program (most Linux distributions allow to install RPM packages)
 or install it with the Redhat package manager itself.
-
-@ignore
-@subsection Configuring RHIDE
-@cindex Configuring RHIDE
-
-In most cases do nothing to configure RHIDE. But there are
-some special things, which must be configured which have mostly to do with
-the editor (or better) the keyboard layout.
-
-The editor of RHIDE is configurable for the keyboard. For this it uses a
-text file @file{keybind.txt}, which is searched in the following
-directories (in that order). If it was not found in any of these
-directories RHIDE uses builtin defaults. For more information about
-creating (customizing) the file and about the syntax of that file
-see @ref{Keyboard,Documentation about the keyboard,,setedit,SETs Editor}.
-
-@itemize @bullet
-@item The current directory
-@item The contents of the variable @samp{$(RHIDE_SHARE)} it is set.
-@item The contents of the variable @samp{$(HOME)} it is set.
-@item @file{%DJDIR%/share/rhide}
-@end itemize
-
-The binary archive of RHIDE includes already the config files for
-the US keyboard layout (@file{us.txt}) and many others, which are based
-on the GNU/Linux keytables. If you have problems with the keyboard layout
-try to copy one of the files to @file{keybind.txt} (probably the one,
-which has a name similar to your country).
-
-
-RHIDE also contains the file @file{keybind.txt} which IS @file{us.txt}.
-
-
-As an example,
-if you are are using a German keyboard, and you have installed @file{keyb.com}
-as your keyboard driver program, you need to copy @file{de.txt} to
-@file{keybind.txt} otherwise (for example) the keys @key{y} and @key{z}
-are exchanged.
-
-
-If you are using a keyboard driver (like I), which converts the scancodes
-of the keys (@file{keyb.com} does that NOT) you will probably not need
-the file @file{de.txt} (but the default @file{keybind.txt}).
-
-
-For configuring RHIDE on GNU/Linux (especially when running under X)
-@pxref{Running under GNU/Linux}.
-
-@end ignore
 
 @section What is RHIDE?
 
@@ -441,9 +378,8 @@ it, EMM386 has no DPMI-support), or you use CWSDPMI, the free DPMI-server
 from Charles W.@: Sandmann, which you can find on SimTel-ftp-sites. I use it
 and it works fine for me.
 
-Running RHIDE under Windows NT or Windows 2000 is very limited since of
-the poor support there for DOS programs.
-
+Running RHIDE under Windows NT or Windows 2000 should work, since I
+have W2000 and developing there.
 
 The builtin editor uses a simple heuristic to check, if a file
 is in UNIX or DOS text format. It checks the first 1024 Bytes, and if
@@ -452,11 +388,9 @@ is done at first only in memory. But if you save your file to disk,
 it will be saved in DOS text format.
 
 
-RHIDE will work correctly only with DJGPP version 2.01 or higher. If
-you have installed DJGPP 2.0, you will run into problems when the
-commandline passed to the called compilers or the linker will exceed
-the 126 character limit. There is a new technique used from
-DJGPP 2.01 on, which programs compiled under 2.0 don't understand.
+RHIDE will work correctly only with DJGPP version 2.03 or higher and please
+if you are running under W2000 (or XP) get always the latest DJGPP, since
+there are many efforts to make DJGPP working on these systems.
 
 
 @section Getting started
@@ -503,7 +437,7 @@ under GNU/Linux.
 
 @item -S
 Tells RHIDE to use only 16bit access to the video memory under
-DJGPP, becuase some video cards cannot handle the 32bit access.
+DJGPP, because some video cards cannot handle the 32bit access.
 
 @item -E
 Dump all variables known to RHIDE (the builtins and the real environment
@@ -529,19 +463,6 @@ Show a short help about all the possible options.
 Use BIOS calls for setting and resetting the behavior of the
 7th bit in a color attribute (blinking or 16 background colors) instead of
 direct outputs to the VGA registers.
-
-@ignore
-@item -k KEY_FILE
-The editor in RHIDE is now configurable also for the keyboard.
-The file, where the key bindings are stored, is searched at
-first in the current directory; then in the directory
-@file{%DJDIR%/data}; and then in the directory where the
-executable is. If all this fails default values are taken.
-
-@end ignore
-
-With this switch you can override the default name of @file{keybind.txt}
-to whatever you want.
 
 @item -p
 Normally RHIDE converts all the num-pad keys to the equivalent keys on the
@@ -887,18 +808,21 @@ Which means, that the environment variable @samp{VARIABLE} should
 become the contents @samp{CONTENTS} where @samp{CONTENTS} can be also
 a variable, which is expanded at runtime.
 
-@item .OTHER_ENV_FILE
-Such a line (it begins with a dot) tells RHIDE to read in at that point
+@item include OTHER_ENV_FILE
+Such a line tells RHIDE to read in at that point
 the file @file{OTHER_ENV_FILE} as environment file. The name
 @file{OTHER_ENV_FILE} can be also an environment variable, which is
 expanded before reading the file.
+
+The word @samp{include} may optionally also start with a dash
+@code{-}, to be compatible with GNU make.
 
 @item # comments
 A line, which begins with a @samp{#} means, that this line is ignored.
 It can be used for you to write there some comments about that file.
 
-@item !VARIABLE=CONTENTS
-This is the same syntax as without the ! at the beginning of the
+@item export VARIABLE=CONTENTS
+This is the same syntax as without the @samp{export} at the beginning of the
 line but it tells RHIDE to place the variable also in the environmen
 so also other programs (called by RHIDE) can see this variable.
 
@@ -908,6 +832,10 @@ RHIDE is very powerful in handling the environment variables. Most
 of it is taken from the behavior of GNU make. On this great things
 depend, that a variable name can consist also of other variables, which are
 computed when the variable should be expanded.
+
+In general, you can use the @samp{rhide.env} files very similar
+to makefiles for GNU make if you think there only about the
+variables and functions from GNU make.
 
 
 @cindex rhide.env, Samples
@@ -927,7 +855,7 @@ is /usr/local )
 Here is a part of the environment file @file{rhide.var} in the main
 RHIDE source directory (which is included by @file{rhide.env} with
 @format
-.$(RHIDESRC)/rhide.var
+include $(RHIDESRC)/rhide.var
 @end format
 
 
@@ -981,6 +909,9 @@ in any of the above mentioned directories. That means, if in all these
 directories @file{rhide.env} exists, it is loaded. This has the effect,
 that you can define some global defaults which can be overwritten with
 a @file{rhide.env} in the current or your home directory.
+
+If you need a sample usage of @file{rhide.env}, please take a look at
+the RHIDE sources.
 
 
 @chapter General information about how RHIDE works
@@ -1218,6 +1149,9 @@ must be the exclusive mouse access to the DOS window disabled.
 
 @section Running under Windows NT
 
+I haven't access to NT so I cannot say something about running RHIDE
+on this OS.
+
 @section Running under GNU/Linux
 @cindex GNU/Linux
 Since RHIDE is now available also for GNU/Linux here some hints. In general
@@ -1246,7 +1180,7 @@ handle correct the keyboard. Other programs which use ncurses know this also
 and have there own hardcaded patches but I do not want to do so.
 
 
-To fix the keyboard conflicts whenrunning in a xterm, I distribute
+To fix the keyboard conflicts when running in a xterm, I distribute
 little modified terminfo file @file{/usr/local/share/rhide/xterm-rhide}
 which you can place in @file{/usr/lib/terminfo/x} or when you have
 no root access you can place it also in @file{$HOME/.terminfo/x}.
@@ -2519,22 +2453,6 @@ will use also this setting.
 @xref{Editor options}.
 
 
-@c @node overwrite mode
-@c @subsubheading overwrite mode
-@c @cindex Overwrite mode
-@c @cindex Insert mode
-@c If you want the editor in overwrite mode,
-@c when opening a new one, then turn this option on
-@c
-@c
-@c For more information
-@c see @ref{Overwrite,Documentation for the editor,,setedit,SETs Editor}.
-@c
-@c
-@c @xref{Editor options}.
-@c
-@c
-
 @subsubsection Preferences
 
 Here you can customize some basic options for the
@@ -3243,9 +3161,10 @@ frame of the window with your mouse.
 @cindex How the editor works
 
 This section should describe the work of the editor. But because the editor
-is now so complex and, not my own work, there is now separate documentation,
-see @ref{Top,Documentation for the editor,,setedit,SETs Editor}
-for a detailed and better doc. But you
+is now so complex and, not my own work, there is now separate documentation
+with more detailed and better description see
+@ref{Top,Documentation for the editor,,setedit,SETs Editor}.
+But you
 can read also more from my doc, which describes the most common (for me)
 usage of the editor.
 
@@ -4940,13 +4859,6 @@ post the questions and/or problems only in the news groups.
 @chapter Index of key commands
 
 @printindex ky
-
-@c @ifset text
-@c @include contents.idx
-@c @end ifset
-@c @ifclear text
-@c @contents
-@c @end ifclear
 
 @bye
 

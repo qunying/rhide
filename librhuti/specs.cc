@@ -25,6 +25,37 @@ _handle_newline()
 {
 }
 
+static bool
+_find_var(char **vars,
+          int var_count,
+          const char *variable,
+          int &var_index)
+{
+  var_index = 0;
+  int h = var_count - 1;
+  while(var_index <= h)
+  {
+    int i = (var_index +  h) >> 1;
+    int c = strcmp(vars[i*2], variable);
+    if (c < 0)
+      var_index = i + 1;
+    else
+    {
+      h = i - 1;
+      if (c == 0)
+      {
+        var_index--;
+        while ((var_index >= 0) &&
+               (strcmp(vars[var_index*2], variable) == 0))
+          var_index--;
+        var_index++;
+        return true;
+      }
+    }
+  }
+  return false;
+}
+
 static void
 _add_variable(char **&_vars, int &_var_count, int &_var_size,
               const char *variable, const char *contents)
@@ -32,28 +63,23 @@ _add_variable(char **&_vars, int &_var_count, int &_var_size,
   /*
      Special case when contents==NULL, remove that variable 
    */
+  int var_index;
+  bool found = _find_var(_vars, _var_count, variable, var_index);
   if (!contents)
   {
-    int i;
+    if (!found)
+      return;
+    int j = var_index * 2;
 
-    for (i = _var_count; i > 0; i--)
+    string_free(_vars[j]);
+    string_free(_vars[j + 1]);
+    if (var_index+1 < _var_count)
     {
-      int j = (i - 1) * 2;
+      memcpy(_vars + j, _vars + j + 2,
 
-      if (strcmp(_vars[j], variable) == 0)
-      {
-        string_free(_vars[j]);
-        string_free(_vars[j + 1]);
-        if (i < _var_count)
-        {
-          memcpy(_vars + j, _vars + j + 2,
-
-                 (_var_count - i) * sizeof(char *) * 2);
-        }
-        _var_count--;
-        break;
-      }
+             (_var_count - var_index - 1) * sizeof(char *) * 2);
     }
+    _var_count--;
     return;
   }
   if (_var_count == _var_size)
@@ -61,9 +87,15 @@ _add_variable(char **&_vars, int &_var_count, int &_var_size,
     _var_size += 16;
     _vars = (char **) realloc(_vars, _var_size * 2 * sizeof(char *));
   }
+  if (var_index < _var_count)
+  {
+    memmove(_vars + var_index * 2 + 2,
+            _vars + var_index * 2,
+            (_var_count - var_index) * 2 * sizeof(char *));
+  }
   _var_count++;
-  string_dup(_vars[_var_count * 2 - 2], variable);
-  string_dup(_vars[_var_count * 2 - 1], contents);
+  string_dup(_vars[var_index * 2], variable);
+  string_dup(_vars[var_index * 2 + 1], contents);
 }
 
 static void
@@ -71,33 +103,22 @@ _set_variable(char **_vars, int _var_count, const char *variable,
               const char *contents)
 {
   int i;
-
-  for (i = _var_count; i > 0; i--)
-  {
-    int j = (i - 1) * 2;
-
-    if (strcmp(_vars[j], variable) == 0)
-    {
-      string_free(_vars[j + 1]);
-      _vars[j + 1] = string_dup(contents);
-      return;
-    }
-  }
+  if (!_find_var(_vars, _var_count, variable, i))
+    return;
+  i *= 2;
+  i++;
+  string_free(_vars[i]);
+  _vars[i] = string_dup(contents);
 }
 
 static const char *
 _get_variable(char **_vars, int _var_count, const char *variable)
 {
   int i;
-
-  for (i = _var_count; i > 0; i--)
-  {
-    int j = (i - 1) * 2;
-
-    if (strcmp(_vars[j], variable) == 0)
-      return _vars[j + 1];
-  }
-  return NULL;
+  if (!_find_var(_vars, _var_count, variable, i))
+    return NULL;
+  i *= 2;
+  return _vars[i + 1];
 }
 
 void
@@ -966,3 +987,4 @@ end:
   string_free(arg);
   return retval;
 }
+

@@ -121,7 +121,9 @@
   __CM(ClearMessage,111)\
   __CM(EditKeyBind,112)\
   __CM(SetUpAltKeys,113)\
-  __CM(KbBackDefault,114)
+  __CM(KbBackDefault,114)\
+  __CM(Print,115)\
+  __CM(PrintSetup,116)
 
 #define __RHIDE_HELP_CODES__\
   __HC(Compile,1)\
@@ -299,7 +301,12 @@
   __HC(EditKeyBind,296)\
   __HC(SetUpAltKeys,297)\
   __HC(KbBackDefault,298)\
-  __HC(Editor,299)
+  __HC(Editor,299)\
+  __HC(ChooseMacro,300)\
+  __HC(RepeatMacro,301)\
+  __HC(GenCodeForMacro,302)\
+  __HC(Print,303)\
+  __HC(PrintSetup,304)
 
 __RHIDE_COMMAND_CODES__
 __RHIDE_HELP_CODES__

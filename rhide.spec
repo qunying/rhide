@@ -1,10 +1,10 @@
 Summary: IDE for developing like the old known Borland 3.1 IDE
 Name: rhide
-Version: 1.4.8
+Version: 1.5
 Release: 1
 Copyright: GPL
 Group: Development/Debuggers
-Source: rhide-1.4.8.tar.gz
+Source: rhide-1.5.tar.gz
 Packager: Robert Hoehne <robert.hoehne@gmx.net>
 Vendor: Robert Hoehne <robert.hoehne@gmx.net>
 Buildroot: /usr/src/packages/BUILD

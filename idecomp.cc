@@ -756,10 +756,12 @@ static void check_c_deps(TDependency *dep)
             *temp = 0;
             strcpy(depfile,tmp);
             *temp = c;
-            if (!isStandardHeader(depfile))
+            char *_depfile = string_dup(depfile);
+            FExpand(_depfile);
+            if (!isStandardHeader(depfile) && !isStandardHeader(_depfile))
             {
               tmp_dep = new TDependency();
-              InitFName(tmp_dep->dest_name,depfile);
+              InitFName(tmp_dep->dest_name, _depfile);
               tmp_dep->source_name = NULL;
               tmp_dep->source_file_type = FILE_UNKNOWN;
               tmp_dep->dest_file_type = FILE_HEADER;
@@ -767,6 +769,7 @@ static void check_c_deps(TDependency *dep)
               if (!dep->dependencies) dep->dependencies = new TDepCollection(7,8);
               dep->dependencies->insert(tmp_dep);
             }
+            string_free(_depfile);
           }
         }
       } while ((temp = fgets(x,255,f)));

@@ -203,23 +203,113 @@ do {\
   x##_pos = 0;\
 } while (0)
 
+/* Whether this is the command line version or not */
+int tui_version = 0;
+
+/* Whether xdb commands will be handled */
+int xdb_commands = 0;
+
+/* Whether dbx commands will be handled */
+int dbx_commands = 0;
+
+GDB_FILE *gdb_stdout;
+GDB_FILE *gdb_stderr;
+
+#ifdef __DJGPP__
+
+/* Here comes the hack for Windows 3.1x.
+   The case for setting breakpoints s handled in librhgdb by allowing
+   only up to 3 hw breakpoints. But GDB uses for executing the step/next
+   commands internal breakpoints, which are set by target_insert_breakpoint
+   and deleteted by target_delete_breakpoint.
+   Under DJGPP I can assume that we are using only the go32 target, so I
+   overwrite the target ops to inserting/deleting every time a hw
+   breakpoint.
+*/
+
+#include <dpmi.h>
+
+extern int win31; /* in librhgdb */
+static struct target_ops *go32_ops;
+int go32_insert_hw_breakpoint(CORE_ADDR,CORE_ADDR);
+int go32_remove_hw_breakpoint(CORE_ADDR,CORE_ADDR);
+
+static int _win31_memory_insert_breakpoint(CORE_ADDR addr,
+                                    char *shadow __attribute__((unused)))
+{
+  return go32_insert_hw_breakpoint(addr,0 /* this is not used */);
+}
+
+static int _win31_memory_remove_breakpoint(CORE_ADDR addr,
+                                    char *shadow __attribute__((unused)))
+{
+  return go32_remove_hw_breakpoint(addr,0 /* this is not used */);
+}
+
+/* Pointer to array of target architecture structures; the size of the
+   array; the current index into the array; the allocated size of the 
+   array.  */
+extern struct target_ops **target_structs;
+extern unsigned target_struct_size;
+
+void
+__win31_hack()
+{
+  __dpmi_regs r;
+  unsigned i;
+  go32_ops = NULL;
+  r.x.ax = 0x160a;
+  __dpmi_int(0x2f,&r);
+  if (r.x.ax == 0 && r.h.bh == 3) win31 = 1;
+  else win31 = 0;
+  if (!win31) return;
+  for (i=0; i<target_struct_size; i++)
+  {
+    if ((target_structs[i]->to_shortname) &&
+        (strcmp(target_structs[i]->to_shortname, "djgpp") == 0))
+    {
+      go32_ops = target_structs[i];
+      break;
+    }
+  }
+  if (!go32_ops)
+    return;
+  go32_ops->to_insert_breakpoint = _win31_memory_insert_breakpoint;
+  go32_ops->to_remove_breakpoint = _win31_memory_remove_breakpoint;
+}
+
+#endif /* __DJGPP__ */
+
 static void __attribute__((constructor))
 _init_librhgdb()
 {
   char command[256];
   void (*oldINT)(int);
   oldINT = signal(SIGINT,SIG_DFL);
+  gdb_stdout = (GDB_FILE *)malloc (sizeof(GDB_FILE));
+  gdb_stdout->ts_streamtype = afile;
+  gdb_stdout->ts_filestream = stdout;
+  gdb_stdout->ts_strbuf = NULL;
+  gdb_stdout->ts_buflen = 0;
+
+  gdb_stderr = (GDB_FILE *)malloc (sizeof(GDB_FILE));
+  gdb_stderr->ts_streamtype = afile;
+  gdb_stderr->ts_filestream = stderr;
+  gdb_stderr->ts_strbuf = NULL;
+  gdb_stderr->ts_buflen = 0;
+
   gdb_init();
+#ifdef __DJGPP__
+  __win31_hack();
+#endif
   signal(SIGINT,oldINT);
   {
     extern int rh_annotate;
-    extern int watchdog;
     rh_annotate = 0; /* This is used only to force to have annotate.o
                         known to the linker, otherwise you have to
                         link your program with this lib here like
                         -lrhgdb -lgdb -lrhgdb
                      */
-    watchdog = 0;
   }
   sprintf(command,"set width %u",UINT_MAX);
   Command(command,0);
@@ -262,7 +352,7 @@ void handle_gdb_command(char *command)
 }
 
 void
-fputs_unfiltered(const char *linebuffer, FILE *stream __attribute__((unused)))
+fputs_unfiltered(const char *linebuffer, GDB_FILE *stream __attribute__((unused)))
 {
   _DEBUG("fputs_unfiltered(%s)\n",linebuffer);
   APPEND(gdb_output,linebuffer);

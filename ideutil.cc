@@ -192,6 +192,7 @@ FindFile(const char *name, char *&rel_name, TDirList * list)
   {
     string_dup(rel_name, name);
     char *dir = expand_rhide_spec((const char *) list->at(i));
+    FExpand(dir);
     Boolean found = AbsToRelPath(dir, rel_name, NULL, 0);
 
     string_free(dir);
@@ -404,4 +405,5 @@ ExpandFileNames(TProject * prj)
   ConvertDep(project);
   project = old;
 }
+
 

@@ -325,7 +325,9 @@ _init_librhgdb()
   sprintf(command,"set height %u",UINT_MAX);
   Command(command,0);
   Command("set print null-stop",0);
+#if 0
   Command("set print object on", 0);
+#endif
   Command("set print vtbl on", 0);
 }
 

@@ -2195,7 +2195,13 @@ set_tmpdir()
     tmpdir = getcwd(NULL, PATH_MAX);
     string_cat(tmpdir, "/");
     string_cat(tmpdir, temp_mask);
-    mktemp(tmpdir);
+    int handle = mkstemp(tmpdir);
+    if (handle != -1)
+    {
+      close(handle);
+      unlink(tmpdir);
+    }
+    string_cat(tmpdir, ".tmp");
     mktmpdir_ret = mkdir(tmpdir, 0755);
   }
   char *tempdir = string_dup("TMPDIR=");

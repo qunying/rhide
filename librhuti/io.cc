@@ -40,9 +40,8 @@ unique_name(char *before, char *retval)
     string_cat(name, before);
     string_cat(name, "XXXXXX");
   }
-  mktemp(name);
-  f = fopen(name, "w+b");
-  fclose(f);
+  int handle = mkstemp(name);
+  close(handle);
   return name;
 }
 

@@ -222,6 +222,5 @@ void show_message(const char *msg, const char *file,
   msgs = new TMsgCollection();
   msgs->insert(new MsgRec(file, msg, (msgType)msg_type, line, column));
   ShowMessages(msgs, False, 0, False);
-  destroy(msgs);
 }
 

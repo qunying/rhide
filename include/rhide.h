@@ -1,4 +1,4 @@
-/* Copyright (C) 1996-2000 Robert H”hne, see COPYING.RH for details */
+/* Copyright (C) 1996-2000 Robert Höhne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
 #ifndef __IDE_H__
 #define __IDE_H__
@@ -29,6 +29,11 @@
 #endif
 #endif
 
+#ifdef __DJGPP__
+#define RHIDE_OPTIONS_NAME "rh_opt"
+#else
+#define RHIDE_OPTIONS_NAME ".rh_opt"
+#endif
 
 
 #define VERY_OLD_PROJECT_IDENT "__gcc_project-file__"

@@ -88,11 +88,6 @@ __link(RIDEEditWindow)
                                           TStringCollectionW::build,
 
                                           __DELTA(TStringCollectionW));
-#ifdef __DJGPP__
-#define RHIDE_OPTIONS_NAME "rh_opt"
-#else
-#define RHIDE_OPTIONS_NAME ".rh_opt"
-#endif
 
      TProjectWindow *project_window;
      static char *dskname;

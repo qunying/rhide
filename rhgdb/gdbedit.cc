@@ -249,11 +249,11 @@ void TGDBEditor::formatLine( void *DrawBuf,
   (this->*FormatLinePtr)(DrawBuf,LinePtr,Width,Colors,lineLen,Attr,lineNo);
 }
 
+extern int SHLSelect(TCEditor &e, char *buffer, int buf_len);
 
 void TGDBEditor::setFormatLine()
 {
-  extern int SHLSelectByExtention(TCEditor &e);
-  SHLSelectByExtention(*this);
+  SHLSelect(*this, buffer, bufLen);
   FormatLinePtr = formatLinePtr;
   formatLinePtr = (void (TCEditor::*)
                   (void *, unsigned, int, unsigned short, unsigned,

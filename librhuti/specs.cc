@@ -1,4 +1,4 @@
-/* Copyright (C) 1996-2000 Robert H”hne, see COPYING.RHU for details */
+/* Copyright (C) 1996-2003 Robert H”hne, see COPYING.RHU for details */
 #include <rhutils.h>
 #include <string.h>
 #include <stdlib.h>
@@ -518,7 +518,7 @@ char *string_function_shell(char *_arg)
   char *arg = expand_tokens(_arg);
   char *retval = NULL;
   char *err_file = open_stderr();
-  FILE *pipe = popen(arg, "rt");
+  FILE *pipe = popen(arg, "r");
 
   if (pipe)
   {
@@ -531,7 +531,7 @@ char *string_function_shell(char *_arg)
 
       while (count--)
       {
-        if (*tmp == '\n')
+        if (*tmp=='\r' || *tmp == '\n')
           *tmp = ' ';
         tmp++;
       }

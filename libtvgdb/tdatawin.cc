@@ -17,7 +17,6 @@
 #define Uses_TDeskTop // execview
 
 #define Uses_TDataWindow
-#define Uses_TProgram
 #define Uses_tvgdbCommands
 //#define Uses_TKeys_Extended
 #include <libtvgdb.h>
@@ -717,7 +716,8 @@ checkaddress:
                 AddWindow(dw);
             break;
         case kbCtrlR:                   // read block
-            FILE *f1;
+        {
+            FILE *f1 = NULL;
             if (getFilename(buf,0) && (f1=fopen(buf,"rb"))!=NULL)
             {
                 sprintf(buf,"%#lx,", curs2memo() - memo + mem_start);
@@ -737,7 +737,10 @@ checkaddress:
                 fclose(f1);
             }
             break;
+        }
         case kbCtrlW:                   // write block
+        {
+            FILE *f1 = NULL;
             if (getFilename(buf,1) && (f1=fopen(buf,"wb"))!=NULL)
             {
                 sprintf(buf,"%#lx,", curs2memo() - memo + mem_start);
@@ -756,6 +759,7 @@ checkaddress:
                 fclose(f1);
             }
             break;
+        }
         case kbCtrlX:                   // change radix
             radix = (radix + 1) % rxMAX;
             indi->changeState(TDIndicator::iRadix, "XD"[radix]);

@@ -70,7 +70,6 @@ int tabsize = 8;
 int use_dual_display = 0;
 
 TDisassemblerWindow *dis_win = NULL;
-TDataWindow *data_win = NULL;
 
 static void ReadOptions(char *);
 static void SaveOptions(char *);

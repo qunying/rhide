@@ -20,13 +20,16 @@ void TIDEMemInfo::update(int force)
   }
 }
 
-static char scale_mem(unsigned long & b)
+static char scale_mem(unsigned long & b, int long_format)
 {
-  if (b <= 1024) return 'B';
+  unsigned long v = 1024;
+  if (long_format)
+    v*=1024;
+  if (b <= v) return 'B';
   b /= 1024;
-  if (b <= 1024) return 'K';
+  if (b <= v) return 'K';
   b /= 1024;
-  if (b <= 1024) return 'M';
+  if (b <= v) return 'M';
   b /= 1024;
   return 'K';
 }
@@ -37,8 +40,8 @@ void TIDEMemInfo::draw()
   char dummy[80];
   char v=' ',p=' ';
   unsigned long _v_mem = v_mem,_p_mem = p_mem;
-  v = scale_mem(_v_mem);
-  p = scale_mem(_p_mem);
+  v = scale_mem(_v_mem, long_format);
+  p = scale_mem(_p_mem, long_format);
   uchar c = getColor(2);
   b.moveChar(0, ' ', c, size.x);
   sprintf(dummy,"%ld%c/%ld%c",_v_mem,v,_p_mem,p);
@@ -62,7 +65,7 @@ unsigned long used_mem()
 }
 #endif
 
-void get_mem_info(unsigned long & virt_mem,unsigned long & phys_mem)
+void TIDEMemInfo::get_mem_info(unsigned long & virt_mem,unsigned long & phys_mem)
 {
 #ifdef __DJGPP__
   _go32_dpmi_meminfo info;

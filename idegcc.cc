@@ -935,6 +935,7 @@ Boolean RunMainTarget()
     string_free(spec);
     exit_code = RunProgram(cmd,redir_stderr,redir_stdout,True);
     string_free(cmd);
+    chdir(project_directory);
     messageBox(mfInformation|mfOKButton,
       _("Program exit code: %d (0x%04x)"),exit_code,exit_code);
     if (ShowUserAfterExit)

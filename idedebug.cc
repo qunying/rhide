@@ -386,6 +386,8 @@ static void EndSession(int exit_code)
   }
   Repaint();
   external_program_executed = 1;
+  if (project_directory)
+    chdir(project_directory);
 }
 
 static void BreakSession()

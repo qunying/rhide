@@ -2054,14 +2054,45 @@ parse_commandline(int argc, char *argv[])
           break;
         case 'L':
         {
-          static char language[256];
-
           arg = next_option(rhide_opt, rhide_opt_end, i, argc, argv);
           if (!arg)
             Usage();
-          strcpy(language, "LANGUAGE=");
-          strcat(language, arg);
-          putenv(language);
+          /**
+            I don't know, if it is a bug in the setlocale() function
+            or in my mind, but I had massive problems, setting the
+            language if there is no external env. variable set and
+            if I use a short language name like `de`.
+
+            I have now analyzed the following.
+            I have the rhide.mo file in "/usr/share/locale/de/LC_MESSAGES/".
+            In "/usr/lib/locale/" I have beside others the directory
+            "de_DE/" but NOT "de/".
+
+            If I set now the language to "de", it will fail, but
+            if I set it to "de_DE" it will succeed and also will it
+            work, if I create in "/usr/lib/locale/" a symbolic link
+            from "de_DE/" to "de/".
+
+            I don't know, why it works so, but it does so. That's
+            why I use the trick below, when the first call to
+            setlocale failed.
+          */
+            
+          if (setlocale(LC_MESSAGES, arg) == NULL)
+          {
+            char *new_arg = string_dup(arg);
+            string_up(new_arg);
+            char *temp_arg = string_dup(arg);
+            string_cat(temp_arg, "_", new_arg, NULL);
+            string_free(new_arg);
+            char *res = setlocale(LC_MESSAGES, temp_arg);
+            string_free(temp_arg);
+            if (res == NULL)
+            {
+              fprintf(stderr, "Could not switch to language `%s`.\n",
+                      arg);
+            }
+          }
           break;
         }
         case 'h':
@@ -2459,7 +2490,7 @@ $(strip $(RHIDE_CONFIG_DIRS) $(INFOPATH) /usr/share/info /usr/info \
       locale_dir = string_dup("/usr/local/share/locale");
     }
   }
-  setlocale(LC_ALL, "");
+  setlocale(LC_MESSAGES, "");
   BINDTEXTDOMAIN("rhide", locale_dir);
   string_free(locale_dir);
   TEXTDOMAIN("rhide");

@@ -751,7 +751,7 @@ msgstr "dla programuj¥cych pod DJGPP "
 msgid  "for developing Linux apps"
 msgstr "dla programuj¥cych pod Linuxem"
 
-msgid  "Copyright (C) by Robert H”hne, 1996-2000"
+msgid  "Copyright (C) by Robert H”hne"
 msgstr ""
 
 msgid  "Language: "
@@ -896,7 +896,7 @@ msgstr "%s u¾yty jako katalog tymczasowy\n"
 msgid  "warning: temporary file %s deleted\n"
 msgstr ""
 
-msgid  "This is %s. Copyright (c) 1996-2000 by Robert H”hne\n"
+msgid  "This is %s. Copyright (c) 1996-2001 by Robert H”hne\n"
 msgstr ""
 
 msgid  "Do you really want to interrupt RHIDE?"
@@ -3126,9 +3126,6 @@ msgstr "z interfejsem Turbo Vision"
 
 msgid  "based on GDB "
 msgstr "oparty na GDB "
-
-msgid  "Copyright (C) by Robert H”hne, 1996-1998"
-msgstr "Copyright (C) by Robert H”hne, 1996, 1997"
 
 msgid  "All windows on the desktop"
 msgstr "Wszystkie okna na pulpit"

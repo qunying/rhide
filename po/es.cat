@@ -1,12 +1,35 @@
+msgid  ""
+msgstr "Project-Id-Version: setedit 0.4.50\n"
+"PO-Revision-Date: 2001-10-09 19:33-0300\n"
+"Last-Translator: Salvador E. Tropea <set@ieee.org>\n"
+"Language-Team: Spanish <set@ieee.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CP850\n"
+"Content-Transfer-Encoding: 8bit\n"
+
 msgid  "Do you really want to delete\n"
 "this file from disk?"
 msgstr "¨Est  seguro que desea borrar\n"
 "el archivo del disco?"
 
+msgid  "SET Edit installer v1.10, copyright (c) 1999 by Salvador E. Tropea"
+msgstr "Instalador de SET Edit v1.10, copyright (c) 1999 by Salvador E. "
+"Tropea"
+
 msgid  "You are about switching to the user screen\n"
 "Press ENTER to go back"
 msgstr "Ud. est  por cambiar a la pantalla de usuario\n"
 "Presione INTRO para regresar"
+
+msgid  "                         2: dump unsaved buffers and call debugger "
+"to get\n"
+"                            information. Finally die.\n"
+"                         3: like 2 but stay in the debugger.\n"
+msgstr "                         2: grabar texto pendiente y llamar al "
+"depurador para\n"
+"                            obtener informaci¢n. Finalmente morir.\n"
+"                         3: como 2 pero permanecer en el depurador "
+"(debugger).\n"
 
 msgid  "            -C : Disable SIGINT handling\n"
 msgstr "            -C : Deshabilitar el manejo de SIGINT (Ctrl-C)\n"
@@ -166,11 +189,38 @@ msgid  "* Source: %s * Title: %s * Author: %s\n"
 msgstr "* Fuente: %s * T¡tulo: %s * Autor: %s\n"
 "\n"
 
+msgid  "+ Desk~t~op"
+msgstr "+ Escrit~o~rio"
+
+msgid  "+[line number]           jumps to the specified line. It only "
+"affects the next\n"
+"                         file in the list and should be specified after "
+"the\n"
+"                         options. If the line number is omitted you'll jump "
+"to\n"
+"                         the end of the text. Example: +6 file\n"
+msgstr "+[n£mero de l¡nea]       salta a la l¡nea especificada. S¢lo afecta "
+"al pr¢ximo\n"
+"                         archivo en la lista y deber¡a ser especificado "
+"luego\n"
+"                         de las opciones. Si el n£mero de l¡nea es omitido "
+"se\n"
+"                         salta al final del texto. Ejemplo: +6 archivo\n"
+
 msgid  ", after rebooting your system you'll be able to use the editor"
 msgstr ", luego de reinicializar su sistem ud. podr  usarlo"
 
 msgid  ",time: %08lx\n"
 msgstr ",hora: %08lx\n"
+
+msgid  "-B, --no-bios-keyb:      don't use BIOS for the keyboard [faster].\n"
+msgstr "-B, --no-bios-keyb:      no usar el BIOS para el teclado [m s "
+"r pido].\n"
+
+msgid  "-K, --keybind file_name: uses the specified name as keybinding "
+"file.\n"
+msgstr "-K, --keybind nom_arch:  utiliza el rachivo indicado para definir el "
+"teclado.\n"
 
 msgid  "-L, --force-lfn          forces the use of long file names under "
 "W9x.\n"
@@ -179,6 +229,9 @@ msgstr "-L, --force-lfn          fuerza el uso de nombres largos en W9x.\n"
 msgid  "-L, --force-lfn:         forces the use of long file names under "
 "W9x.\n"
 msgstr "-L, --force-lfn:         fuerza el uso de nombres largos en W9x.\n"
+
+msgid  "-M, --no-mixer:          disable board level mixer.\n"
+msgstr "-M, --no-mixer:          deshabilita el mezclador de sonido.\n"
 
 msgid  "-S, --low-vga-save:      use low level functions to save/restore VGA "
 "state.\n"
@@ -191,6 +244,11 @@ msgid  "-T, --tile-horiz:        arranges the windows using horizontal tile "
 msgstr "-T, --tile-horiz:        ordena las ventanas estilo mosaico "
 "horizontal.\n"
 
+msgid  "-b, --bios-keyb:         use BIOS for the keyboard [safer, "
+"default].\n"
+msgstr "-b, --bios-keyb:         usar el BIOS para el teclado [m s seguro, "
+"p/defecto].\n"
+
 msgid  "-c, --cascade:           arranges the windows using cascade style.\n"
 msgstr "-c, --cascade:           ordena las ventanas estilo cascada.\n"
 
@@ -200,6 +258,17 @@ msgid  "-d, --directory DIR      adds a directory to the list of directories "
 msgstr "-d, --directorio DIR     agrega el directorio especificado a la "
 "lista de\n"
 "                         directorios a buscar (DIR a INFOPATH)\n"
+
+msgid  "-d, --stack-dbg=n:       indicates which methode will be used in the "
+"event of a\n"
+"                         crash. The default methode is 0.\n"
+"                         0: dump unsaved buffers and stack calls.\n"
+"                         1: do nothings (conservative).\n"
+msgstr "-d, --stack-dbg=n:       indica el m‚todo a usar en caso de un error "
+"fatal del\n"
+"                         programa. Si no se especifica se usar  el 0.\n"
+"                         0: grabar texto pendiente y pila de ejecuci¢n.\n"
+"                         1: no hacer nada (conservador).\n"
 
 msgid  "-f, --file FILENAME      load FILENAME info file.\n"
 msgstr "-f, --file NOMBRE_ARCH   abre la ayuda NOMBRE_ARCH.\n"
@@ -238,6 +307,9 @@ msgstr "-l, --force-no-lfn       evita el uso de nombres largos en W9x.\n"
 msgid  "-l, --force-no-lfn:      avoids the use of long file names under "
 "W9x.\n"
 msgstr "-l, --force-no-lfn       evita el uso de nombres largos en W9x.\n"
+
+msgid  "-m, --no-mouse-hook:     don't hook the mouse interrupt, poll it.\n"
+msgstr "-m, --no-mouse-hook:     no utilizar la interrupci¢n del mouse.\n"
 
 msgid  "-m, --no-mouse-hook:     don't hook the mouse.\n"
 msgstr "-m, --no-mouse-hook:     no utilizar la interrupci¢n del mouse.\n"
@@ -406,8 +478,14 @@ msgstr "Concejo"
 msgid  "After foote~r~"
 msgstr "Despu‚s del pie de p ~g~ina"
 
+msgid  "After the ~r~est"
+msgstr "Desp~u~‚s del resto"
+
 msgid  "Album:  %s"
 msgstr "Album:  %s"
+
+msgid  "All my friends that support my project (Laszlo, Marek, Ivan,"
+msgstr "Todos mis amigos que soportaron mi proyecto (Laszlo, Marek,"
 
 msgid  "All my friends that support my project (Laszlo, Marek, Ivan, etc)"
 msgstr "Todos mis amigos que soportaron mi proyecto (Laszlo, Marek, Ivan, "
@@ -416,11 +494,23 @@ msgstr "Todos mis amigos que soportaron mi proyecto (Laszlo, Marek, Ivan, "
 msgid  "All windows on the desktop"
 msgstr "Todas las ventanas del escritorio"
 
+msgid  "Also note that info files are searched in the INFOPATH directories. "
+"To load a\n"
+"file stored in the current directory add ./ at the beginning of the name.\n"
+"Email bug reports to salvador@inti.gov.ar or djgpp@delorie.com.\n"
+msgstr "Note que los .info se buscan en los directorios indicados por "
+"INFOPATH.\n"
+"Para cargar uno del directorio actual agregue ./ al comienzo del nombre.\n"
+"Reporte errores a salvador@inti.gov.ar o djgpp@delorie.com.\n"
+
 msgid  "Alt keys settings"
 msgstr "Seteo de las teclas Alt"
 
 msgid  "An error has occoured when running the program "
 msgstr "Ocurri¢ un error al ejecutar el programa "
+
+msgid  "Anatoli Soltan for porting to Win32 using BC++"
+msgstr "Anatoli Soltan por portar a Win32 usando BC++"
 
 msgid  "Apr"
 msgstr "Abr"
@@ -439,6 +529,9 @@ msgstr "¨Esta seguro que desea abortar la instalaci¢n?"
 
 msgid  "Assignmen~t~"
 msgstr "Asi~g~naci¢n"
+
+msgid  "Associated string"
+msgstr "String asociado"
 
 msgid  "Associated value"
 msgstr "Valor asociado"
@@ -502,6 +595,12 @@ msgstr "~D~espu‚s del encabezado"
 msgid  "Back in the editor"
 msgstr "Nuevamente en el editor"
 
+msgid  "Backspace unindents ~2~"
+msgstr "La tecla <- desindenta ~5~"
+
+msgid  "Backspace unindents ~8~"
+msgstr "La tecla <- desindenta ~5~"
+
 msgid  "Basic regular expression (-~G~)"
 msgstr "Expresiones regul. b sicas (-~G~)"
 
@@ -516,11 +615,20 @@ msgstr "Antes del encabe~z~ado"
 msgid  "Behavior"
 msgstr "Comportamiento"
 
+msgid  "Bjorn Reese for a lot of ideas about the stack debugger for UNIX"
+msgstr "Bjorn Reese por varias ideas para el `stack debugger' para UNIX"
+
 msgid  "Block to ~l~ower"
 msgstr "Bloque a min£scu~l~as"
 
 msgid  "Block to ~u~pper"
 msgstr "Bloque a may£sc~u~las"
+
+msgid  "Block ~a~lternate"
+msgstr "~A~lternar el bloque"
+
+msgid  "Block ~i~nvert"
+msgstr "~I~nvertir el bloque"
 
 msgid  "Blue"
 msgstr "Azul"
@@ -673,6 +781,15 @@ msgstr "~P~aleta de colores ..."
 msgid  "Colors"
 msgstr "Colores"
 
+msgid  "Column markers"
+msgstr "Marcadores de columna"
+
+msgid  "Column markers ~4~"
+msgstr "Marcadores de columna ~2~"
+
+msgid  "Column markers ~9~"
+msgstr "Marcadores de columna ~2~"
+
 msgid  "Columns ~w~/o margin:"
 msgstr "Columnas ~s~in margen:"
 
@@ -693,6 +810,9 @@ msgstr "Comando~s~"
 
 msgid  "Comme.: %s"
 msgstr "Comen.: %s"
+
+msgid  "Comment unin~d~ent"
+msgstr "Indentar desco~m~entando"
 
 msgid  "Compiler ~O~ptions"
 msgstr "~O~pciones del Compilador"
@@ -716,7 +836,7 @@ msgid  "Configuring the system"
 msgstr "Configurando el sistema"
 
 msgid  "Confirm"
-msgstr "Confirma"
+msgstr "Confirmar"
 
 msgid  "Confirm options"
 msgstr "Confirmar opciones"
@@ -785,7 +905,7 @@ msgstr "No puedo hallar el archivo fuente '%s'. Aseg£rese de que el archivo "
 "exista o que el directorio donde est  figure en 'Opciones/Directorios'."
 
 msgid  "Could not open '%s' for reading"
-msgstr "No puedo abrir '%s' para leerlo"
+msgstr "No puede abrir '%s' para leerlo"
 
 msgid  "Could not open desktop file"
 msgstr "No puedo abrir el archivo del escritorio"
@@ -868,6 +988,9 @@ msgstr "C~o~mpactar el texto"
 msgid  "DJ Delorie and colaborators for porting it to DOS"
 msgstr "DJ Delorie y sus colaboradores por portarlas a DOS"
 
+msgid  "Data saved to file: %s"
+msgstr "Datos guardados en: %s"
+
 msgid  "Debugging Flags"
 msgstr "Opciones de Depuraci¢n"
 
@@ -907,14 +1030,20 @@ msgstr "Vent. de Di logo"
 msgid  "Directories in pr~o~ject items"
 msgstr "Directorios en los items del pr~o~yecto"
 
+msgid  "Directory"
+msgstr "Directorio"
+
 msgid  "Directory ~n~ame"
-msgstr "~N~ombre Directorio"
+msgstr "~N~ombre del directorio"
 
 msgid  "Directory ~t~ree"
-msgstr "~A~rbol de Dir."
+msgstr "Arbol direc~t~orios"
 
 msgid  "Disabled"
 msgstr "Deshabilitado"
+
+msgid  "Disabled by configuration"
+msgstr "Deshabilitado por configuraci¢n"
 
 msgid  "Disassembler"
 msgstr "Desensamblador"
@@ -924,6 +1053,9 @@ msgstr "Ventana del desensamblador"
 
 msgid  "Do it yourself but now"
 msgstr "Hacerlo ud. ahora"
+
+msgid  "Do it yourself editing autoexec.bat later"
+msgstr "Hacerlo ud. editando el autoexec.bat luego"
 
 msgid  "Do it yourself editing autoexec.bat latter"
 msgstr "Hacerlo ud. editando el autoexec.bat luego"
@@ -943,6 +1075,12 @@ msgstr "¨Desea borrar todos los archivos de respaldo y escritorio?"
 msgid  "Do you want to discard the changes?"
 msgstr "¨Desea descartar los cambios?"
 
+msgid  "Don't create backups for"
+msgstr "No crear archivos de respaldo para"
+
+msgid  "Don't forget to update your autoexec.bat later!"
+msgstr "­No olvide actualizar su autoexec.bat m s tarde!"
+
 msgid  "Don't forget to update your autoexec.bat latter!"
 msgstr "­No olvide actualizar su autoexec.bat m s tarde!"
 
@@ -952,11 +1090,35 @@ msgstr "No se como crear %s a partir de %s"
 msgid  "Don't move inside ta~b~s"
 msgstr "No moverse dentro de los ta~b~s"
 
+msgid  "Don't pur~g~e spaces"
+msgstr "No borrar espacios extra ~3~"
+
+msgid  "Don't remmember cursor ~p~osition"
+msgstr "No recordar la ~p~osici¢n del cursor"
+
 msgid  "Don't show it next time"
 msgstr "No mostrar esto la pr¢xima vez"
 
+msgid  "Don't wait to search the pair ~1~"
+msgstr "No esperar para resaltar ~1~"
+
+msgid  "Don't wait to searc~h~ the pair"
+msgstr "No esperar para resaltar ~1~"
+
+msgid  "Don't warn you next time"
+msgstr "No avisar la pr¢xima vez"
+
 msgid  "Don't ~s~how it again"
 msgstr "No ~m~ostrar esto nuevamente"
+
+msgid  "Don't ~w~arn about read-only files"
+msgstr "~N~o avisar acerca de archivos de s¢lo lectura"
+
+msgid  "Done"
+msgstr "Hecho"
+
+msgid  "Do~n~'t create backups for ..."
+msgstr "~N~o crear respaldos para ..."
 
 msgid  "Drives"
 msgstr "Discos"
@@ -991,6 +1153,9 @@ msgstr "~G~enerales del editor ..."
 msgid  "Empty pseudo macro"
 msgstr "Pseudo macro vac¡o"
 
+msgid  "Empty status line"
+msgstr "Definici¢n de la l¡nea de estado vac¡a"
+
 msgid  "Empty submenu"
 msgstr "Submen£ vac¡o"
 
@@ -1002,6 +1167,18 @@ msgstr "Fin de SLP"
 
 msgid  "End of grep search"
 msgstr "Fin de la b£squeda"
+
+msgid  "Ending with .bk~p~"
+msgstr "Terminan con .bk~p~"
+
+msgid  "Ending ~w~ith tilde"
+msgstr "~T~erminan con ¤uflo"
+
+msgid  "Enter c~o~de to run"
+msgstr "I~n~gresar c¢digo a ejecutar"
+
+msgid  "Enter sLisp code to interpret"
+msgstr "Ingrese c¢digo sLisp a ser interpretado"
 
 msgid  "Enter the name of the 'main'-function"
 msgstr "Ingrese el nombre de la funci¢n principal (main-function)"
@@ -1068,14 +1245,23 @@ msgstr "Error: "
 msgid  "Error: can't find the Node info"
 msgstr "Error: no puedo hallar el Nodo"
 
+msgid  "Errors ~p~arser"
+msgstr "Int‚rprete de ~e~rrores para"
+
 msgid  "Evaluate and modify"
 msgstr "Evaluar y modificar"
 
 msgid  "Evaluate or modify an expression"
 msgstr "Evaluar o modificar una expresi¢n"
 
+msgid  "Ever"
+msgstr "Sie~m~pre"
+
 msgid  "Ever interpret shift+arrow as ~m~ovement"
 msgstr "Siempre interpretar shift+flecha como ~m~ovimiento"
+
+msgid  "Exclude files"
+msgstr "Excluir archivos que"
 
 msgid  "Execute one instruction"
 msgstr "Ejecutar una instrucci¢n"
@@ -1104,6 +1290,9 @@ msgstr "Programa de E~r~ror"
 msgid  "E~v~al"
 msgstr "E~v~aluar"
 
+msgid  "E~v~er"
+msgstr "~S~iempre"
+
 msgid  "E~v~er use RegEx"
 msgstr "Siempre usar E~x~pReg"
 
@@ -1121,6 +1310,9 @@ msgstr "E~x~portar como HTML ..."
 
 msgid  "E~x~ternal options"
 msgstr "Opciones e~x~ternas"
+
+msgid  "Failed to initialize mixer, sorry"
+msgstr "Falla al inicializar el mezclador, lo lamento"
 
 msgid  "Failed to revert the read-only status, you won't be able to "
 "overwrite this file"
@@ -1154,6 +1346,9 @@ msgstr "Opciones de `Abrir Archivo'"
 msgid  "File allready in project (or another with the same name)"
 msgstr "El archivo ya est  en el proyecto (u otro con el mismo nombre)"
 
+msgid  "File already in project"
+msgstr "El archivo ya est  en el proyecto"
+
 msgid  "File name in path:"
 msgstr "Nombre de archivo en la ruta:"
 
@@ -1162,6 +1357,9 @@ msgstr "D~e~l di logo `Abrir Archivo' ..."
 
 msgid  "File/L~i~ne"
 msgstr "Archivo/L¡~n~ea"
+
+msgid  "Files starting with a dot"
+msgstr "Archivos que comienzan con punto"
 
 msgid  "Files to be searched for syntax help"
 msgstr "Archivos a usar en la b£squeda de ayuda para la sintaxis"
@@ -1217,8 +1415,20 @@ msgstr "Iconos del Marco"
 msgid  "Frame/background"
 msgstr "Marco/Fondo"
 
+msgid  "From program:"
+msgstr "Desde el programa:"
+
+msgid  "From stderr:"
+msgstr "De stderr:"
+
+msgid  "From stdout:"
+msgstr "De stdout:"
+
 msgid  "Function call stack"
 msgstr "Llamadas en la pila"
+
+msgid  "Functions:"
+msgstr "Funciones:"
 
 msgid  "Fu~n~ction"
 msgstr "~F~unci¢n"
@@ -1283,6 +1493,9 @@ msgstr "Ir a la l¡nea"
 msgid  "Goto ~f~unction"
 msgstr "Ir a la ~f~unci¢n"
 
+msgid  "Goto: (~F~ile)Node"
+msgstr "~I~r a: (Archivo)Nodo"
+
 msgid  "Gray Editor"
 msgstr "Editores grises"
 
@@ -1292,8 +1505,14 @@ msgstr "Ventanas grises"
 msgid  "Green"
 msgstr "Verde"
 
+msgid  "Grzegorz, etc.)."
+msgstr "Ivan, Grzegorz, etc.)."
+
 msgid  "G~D~B"
 msgstr "G~D~B"
+
+msgid  "Hardward Mixer Settings"
+msgstr "Seteos del Mezclador de Sonidos"
 
 msgid  "Header length: %d Columns: %d"
 msgstr "Largo del encabezado: %d Columnas: %d"
@@ -1404,6 +1623,9 @@ msgstr "Includes de "
 msgid  "Indent one ~t~ab/gap"
 msgstr "Indentar un ~t~ab o hueco"
 
+msgid  "Indent si~z~e"
+msgstr "In~d~entado"
+
 msgid  "Indent ~o~ne space"
 msgstr "Indentar ~u~n espacio"
 
@@ -1452,6 +1674,9 @@ msgstr "Ingreso normal"
 msgid  "Input selected"
 msgstr "Ingreso seleccio."
 
+msgid  "Insert key ~n~ame"
+msgstr "I~n~sertar el nombre de una tecla"
+
 msgid  "Installing"
 msgstr "Instalando"
 
@@ -1462,10 +1687,10 @@ msgid  "Instructions for edition"
 msgstr "Instrucciones para editar"
 
 msgid  "Invalid character in input"
-msgstr "Caracter inv lido ingresado"
+msgstr "Ingres¢ un caracter inv lido"
 
 msgid  "Invalid directory"
-msgstr "Directorio Inv lido"
+msgstr "Directorio inv lido"
 
 msgid  "Invalid drive"
 msgstr "Disco inv lido"
@@ -1474,13 +1699,16 @@ msgid  "Invalid drive or directory"
 msgstr "Disco o directorio inv lido"
 
 msgid  "Invalid file name."
-msgstr "Nombre de archivo Inv lido."
+msgstr "Nombre de archivo inv lido"
 
 msgid  "Invalid project-file %s(%s)"
 msgstr "Archivo de Proyecto inv lido %s(%s)"
 
+msgid  "Invalid range"
+msgstr "Rango inv lido"
+
 msgid  "Inverse"
-msgstr "Invertido"
+msgstr "Inverso"
 
 msgid  "In~v~erse matching (-v)"
 msgstr "B£squeda inversa (-~v~)"
@@ -1491,8 +1719,14 @@ msgstr "Ene"
 msgid  "January"
 msgstr "Enero"
 
+msgid  "Jean-loup Gailly and Mark Adler for the zlib"
+msgstr "Jean-loup Gailly and Mark Adler por la biblioteca zlib"
+
 msgid  "Jul"
 msgstr "Jul"
+
+msgid  "Julian R. Seward for bzip2 routines included"
+msgstr "Julian R. Seward por las rutinas bzip2 usadas"
 
 msgid  "July"
 msgstr "Julio"
@@ -1523,6 +1757,9 @@ msgstr "Comportamiento del teclado ~n~um‚rico"
 
 msgid  "Keyboard setup"
 msgstr "Configuraci¢n del teclado"
+
+msgid  "K~e~ep intermediate"
+msgstr "~N~o borrar el intermedio"
 
 msgid  "Label normal"
 msgstr "Etiqueta normal"
@@ -1653,11 +1890,17 @@ msgstr "Resaltar el par `al vuel~o~'"
 msgid  "Match pair on the fly ~4~"
 msgstr "Resaltar el par `al vuelo' ~4~"
 
+msgid  "Match pair on the fl~y~"
+msgstr "Resaltar el par `al vuelo' ~4~"
+
+msgid  "Max. c~l~osed to remember"
+msgstr "Max. de ventanas ~c~erradas a recordar"
+
 msgid  "Max. c~l~osed to remmember"
 msgstr "Max. de ventanas ~c~erradas a recordar"
 
 msgid  "May"
-msgstr "Mayo"
+msgstr "May"
 
 msgid  "Memory is nearly full. Please exit, and restart."
 msgstr "La memoria esta casi agotada. Por favor vuelva a iniciar el "
@@ -1671,6 +1914,9 @@ msgstr "Menues"
 
 msgid  "Message Window"
 msgstr "Ventana de Mensajes"
+
+msgid  "Message window ~s~croll"
+msgstr "Despla~z~amiento de la ventana de mensajes"
 
 msgid  "Messages Window"
 msgstr "Ventana de Mensajes"
@@ -1690,6 +1936,9 @@ msgstr "No encontre el ="
 msgid  "Missing Trigger sequence or too short"
 msgstr "Secuencia de Trigger muy corta o no colocada"
 
+msgid  "Missing command value"
+msgstr "Falta el nombre del comando"
+
 msgid  "Missing end"
 msgstr "No encontr‚ el final"
 
@@ -1702,8 +1951,14 @@ msgstr "No encontr‚ el comienzo"
 msgid  "Missing start in pseudo macro"
 msgstr "No puedo hallar el comienzo del pseudo macro"
 
+msgid  "Mixer model:"
+msgstr "Modelo:"
+
 msgid  "Mode: %6s            File: MPEG %1d.0 layer %1d"
-msgstr "Modo: %6s            Archivo: MPEG %1d.0 layer %1d"
+msgstr "Modo: %6s         Archivo: MPEG %1d.0 layer %1d"
+
+msgid  "More desktop options"
+msgstr "M s opciones del escritorio"
 
 msgid  "Mouse options"
 msgstr "Opciones del rat¢n"
@@ -1723,6 +1978,12 @@ msgstr "Nombre del programa"
 msgid  "Name of the node (leave blank for all)"
 msgstr "Nombre del nodo (dejar en blanco para usar todos)"
 
+msgid  "Never"
+msgstr "Nun~c~a"
+
+msgid  "Neve~r~"
+msgstr "N~u~nca"
+
 msgid  "New node for search"
 msgstr "Nuevo nodo a buscar"
 
@@ -1737,6 +1998,12 @@ msgstr "Pr¢x."
 
 msgid  "No INFO files for syntax help defined"
 msgstr "No se definieron archivos de ayuda para buscar sintaxis"
+
+msgid  "No `from' value in range"
+msgstr "Falta el valor desde donde comienza el rango"
+
+msgid  "No `quantity' value in range"
+msgstr "Falta indicar el tama¤o del rango"
 
 msgid  "No command for MenuItem"
 msgstr "Falta el comando para el `MenuItem'"
@@ -1768,6 +2035,9 @@ msgstr "No encontr‚ el complemento"
 msgid  "No menu definition"
 msgstr "No se defini¢ el men£"
 
+msgid  "No mixer support linked during configuration, sorry"
+msgstr "Lo lamento, no se incluy¢ soporte para el mezclador al compilar"
+
 msgid  "No number for a context"
 msgstr "Falta el n£mero para el contexto"
 
@@ -1777,8 +2047,14 @@ msgstr "b~l~oques no persistentes"
 msgid  "No project"
 msgstr "Sin proyecto"
 
+msgid  "No project loaded"
+msgstr "No hay proyecto cargado"
+
 msgid  "No pseudo macros available"
 msgstr "No hay pseudo macros disponibles"
+
+msgid  "No status line definition"
+msgstr "No se defini¢ la l¡nea de estado"
 
 msgid  "Nodes for syntax help"
 msgstr "Nodos para ayuda de sintaxis"
@@ -1813,6 +2089,12 @@ msgstr "Ahora ud. podr  editar el autoexec.bat. Para terminar haga click en "
 "el peque¤o rect ngulo hubicado en el el  ngulo superior izquierdo o "
 "presione Ctrl+F4"
 
+msgid  "Number expected"
+msgstr "Se esperaba un n£mero"
+
+msgid  "N~e~xt node"
+msgstr "~P~r¢ximo nodo"
+
 msgid  "OFF"
 msgstr "Apagado"
 
@@ -1837,11 +2119,20 @@ msgstr "Apa~g~ado"
 msgid  "Only #~i~nclude \"...\" as dependencies"
 msgstr "Solo los #~i~nclude \"...\" como dependencias"
 
+msgid  "Only if not ~f~ocused"
+msgstr "S¢~l~o si seleccionada"
+
 msgid  "Only o~u~tside comments"
 msgstr "Solo ~f~uera de comentarios"
 
 msgid  "Only ~i~nside comments"
 msgstr "So~l~o dentro de comentarios"
+
+msgid  "Onl~y~ if no file specified"
+msgstr "S¢lo si no s~e~ indicaron archivos"
+
+msgid  "On~l~y if no file specified"
+msgstr "S¢l~o~ si no se indicaron archivos"
 
 msgid  "Open Info"
 msgstr "Abrir Info"
@@ -1861,8 +2152,14 @@ msgstr "Abrir Archivo"
 msgid  "Open the file %s"
 msgstr "Abrir el archivo %s"
 
+msgid  "Open ~m~anpage"
+msgstr "Abrir una p gina del ~m~anual"
+
 msgid  "Open ~p~roject"
 msgstr "~A~brir proyecto"
+
+msgid  "Open ~r~ead-only files as R.O. buffers"
+msgstr "Abrir archivos ~s~¢lo lect. como s¢lo lect."
 
 msgid  "Optimal ~F~ill"
 msgstr "Rell~e~nado ¢ptimo"
@@ -1925,7 +2222,7 @@ msgid  "O~p~en only specified files"
 msgstr "Solo abrir archivos in~d~icados"
 
 msgid  "O~p~tions"
-msgstr "~O~pciones"
+msgstr "O~p~ciones"
 
 msgid  "O~t~her font"
 msgstr "O~t~ra font"
@@ -1963,11 +2260,17 @@ msgstr "Pegar desde e~l~ Porta. de Windows"
 msgid  "Pas~t~e from Windows Clipboard"
 msgstr "~I~nsertar desde el portapapeles de Windows"
 
+msgid  "Path to look for files under cursor"
+msgstr "Directorios para buscar archivos bajo el cursor"
+
 msgid  "Pathlist for source files"
 msgstr "Lista de directorios para los fuentes"
 
 msgid  "Pa~s~cal style"
 msgstr "Estilo Pascal ~1~"
+
+msgid  "Perl regular expression"
+msgstr "Expresi¢n regular Perl"
 
 msgid  "Play List"
 msgstr "Lista de MP3s"
@@ -1980,6 +2283,9 @@ msgstr "Por favor espere"
 
 msgid  "Pl~a~ces to search"
 msgstr "Lug~a~res a buscar"
+
+msgid  "Pocket Calculator"
+msgstr "Calculadora de Bolsillo"
 
 msgid  "Poc~k~et calculator"
 msgstr "Calculadora de ~B~olsillo"
@@ -2023,6 +2329,9 @@ msgstr "~I~mprimir n£meros de p gina"
 msgid  "Printer Setup"
 msgstr "Opciones de impresora"
 
+msgid  "Process interrupted"
+msgstr "Proceso interrumpido"
+
 msgid  "Processed: %d lines, total printed: %d lines"
 msgstr "Procesadas: %d l¡neas, total impresas: %d l¡neas"
 
@@ -2040,6 +2349,9 @@ msgstr "El programa ha recibido una se¤al: "
 
 msgid  "Project Window"
 msgstr "Ventana del Proyecto"
+
+msgid  "Project: "
+msgstr "Proyecto: "
 
 msgid  "Pro~j~ect"
 msgstr "~P~royecto"
@@ -2128,6 +2440,15 @@ msgstr "Expresiones regulares para la lista de funciones"
 msgid  "Regular e~x~pressions"
 msgstr "E~x~presiones regulares"
 
+msgid  "Remmember editor windows"
+msgstr "Recordar ventanas de edici¢n"
+
+msgid  "Remmember other windows"
+msgstr "Recordar otras ventanas"
+
+msgid  "Remmember ~c~losed windows"
+msgstr "Recordar ventanas cerradas"
+
 msgid  "Remove '%s' from the project"
 msgstr "Quito '%s' del proyecto"
 
@@ -2179,6 +2500,9 @@ msgstr "Ejecutando GREP (se pedir n los par metros)"
 msgid  "Running grep in: %s"
 msgstr "Ejecutando grep en: %s"
 
+msgid  "Ru~n~ selected code"
+msgstr "Ejecutar ~c~¢digo seleccionado"
+
 msgid  "R~e~mmember bkps to delete"
 msgstr "Recordar los arch. de resp. para ~b~orrarlos"
 
@@ -2194,11 +2518,17 @@ msgstr "~O~pciones del SDG"
 msgid  "SET's Editor v%lX.%lX.%lX, (c) 1996-1999"
 msgstr "SET's Editor v%lX.%lX.%lX, (c) 1996-1999"
 
+msgid  "SET's Editor v%lX.%lX.%lX, (c) 1996-2001"
+msgstr "SET's Editor v%lX.%lX.%lX, (c) 1996-2001"
+
 msgid  "Same ~b~ackground color as the editor"
 msgstr "Mismo color de ~f~ondo que en el editor"
 
 msgid  "Sample Rate: %5d Hz   Bitrate: %4d Kbits/s"
 msgstr "Frecuencia: %5d Hz    Bitrate: %4d Kbits/s"
+
+msgid  "Save"
+msgstr "Guardar"
 
 msgid  "Save DOS files ~a~s DOS"
 msgstr "Grabar archivos DOS en ~f~ormato DOS"
@@ -2237,13 +2567,16 @@ msgid  "Save te~x~t palette"
 msgstr "Guardar la paleta de modo te~x~to"
 
 msgid  "Save to file"
-msgstr "Grabar en un archivo"
+msgstr "Grabar"
 
 msgid  "Save untitled file?"
 msgstr "¨Grabo el archivo sin t¡tulo?"
 
 msgid  "Save w/same ~t~ime..."
 msgstr "G~u~ardar c/igual ~h~ora..."
+
+msgid  "Saved: %s (%ld bytes %d lines)."
+msgstr "Grabado %s (%ld bytes de longitud %d l¡neas)."
 
 msgid  "Saved: %s (%ld bytes)."
 msgstr "Grabado %s (%ld bytes de longitud)."
@@ -2302,6 +2635,9 @@ msgstr "No se pudo hallar el texto."
 msgid  "Search word in the ~t~opic"
 msgstr "Buscar la palabra en ~n~odo"
 
+msgid  "Search ~a~gain"
+msgstr "~R~epetir b£squeda"
+
 msgid  "Search ~m~ethod"
 msgstr "~M~‚todo de b£squeda"
 
@@ -2319,6 +2655,9 @@ msgstr "Buscando el escritorio y el men£   "
 
 msgid  "Searching programs dir"
 msgstr "Buscando el directorio de programas"
+
+msgid  "Searc~h~ files under cursor in ..."
+msgstr "Buscar arch. baj~o~ el cursor en ..."
 
 msgid  "Secondary encoding"
 msgstr "Codificaci¢n sec~u~ndaria"
@@ -2443,11 +2782,20 @@ msgstr "~M~ostrar la pantalla de usuario al salir"
 msgid  "Simplifying configuration"
 msgstr "Simplificando la configuraci¢n"
 
+msgid  "Sliders"
+msgstr "Deslizadores"
+
 msgid  "Sorry can't find the string"
 msgstr "Lo lamento, no puedo hallar la cadena de caracteres"
 
 msgid  "Sorry, I can't find autoexec.bat"
 msgstr "Lo lamento, no puedo hallar el autoexec.bat"
+
+msgid  "Sort mode"
+msgstr "Ordenamiento"
+
+msgid  "Sort the functions"
+msgstr "Ordenar las funciones"
 
 msgid  "Source Directories"
 msgstr "Directorios de Fuentes (.cc)"
@@ -2481,6 +2829,9 @@ msgstr "Comenzando SDG:"
 
 msgid  "Starting printing module"
 msgstr "Inicializando el m¢dulo de impresi¢n"
+
+msgid  "Startin~g~ with ."
+msgstr "Comien~z~an con ."
 
 msgid  "Stat failed."
 msgstr "­Fallo al usar 'stat'!"
@@ -2552,10 +2903,13 @@ msgid  "Submenu for things dealing with the editor"
 msgstr "Submen£ para cosas relacionadas con el editor"
 
 msgid  "Syntax Highlight"
-msgstr "Resaltado de sintaxis"
+msgstr "Resaltado de Sintaxis"
 
 msgid  "Syntax error"
 msgstr "Error de sintaxis"
+
+msgid  "Syntax ~H~L Options"
+msgstr "Ops. res. de sinta~x~is"
 
 msgid  "Syntax ~H~ighlight"
 msgstr "Resaltado de Sinta~x~is"
@@ -2581,11 +2935,23 @@ msgstr "Opcion~e~s Locales"
 msgid  "S~h~ell"
 msgstr "S~h~ell"
 
+msgid  "S~h~ow function name"
+msgstr "~M~ostrar el nombre de la funci¢n"
+
+msgid  "S~h~ow function ~n~ame"
+msgstr "Mostrar el nombre de la f~u~nci¢n"
+
 msgid  "S~t~andard headers"
 msgstr "~E~ncabezados standard"
 
 msgid  "S~t~op selected"
 msgstr "De~t~ener"
+
+msgid  "Tab smart indents ~5~"
+msgstr "El tab indenta buscando ~h~uecos"
+
+msgid  "Tab ~s~mart indents"
+msgstr "El tab indenta buscando ~h~uecos"
 
 msgid  "Tag Table"
 msgstr "Lista de temas"
@@ -2601,6 +2967,9 @@ msgstr "Agradecimientos para:"
 
 msgid  "That's SET's Editor v%lX.%lX.%lX, (c) 1996-1999"
 msgstr "Este es el editor de SET v%lX.%lX.%lX, (c) 1996-1999"
+
+msgid  "That's SET's Editor v%lX.%lX.%lX, (c) 1996-2001"
+msgstr "Este es el editor de SET v%lX.%lX.%lX, (c) 1996-2001"
 
 msgid  "That's a 'safe' screen saver. The editor have a beautiful plasma "
 "screen saver but currently isn't the default because some (really buggy) "
@@ -2658,8 +3027,19 @@ msgstr "El editor fue exitosamente instalado, ahora debe agregar el "
 msgid  "The error was : "
 msgstr "El error fue: "
 
+msgid  "The file is compressed. Do you want to save compressing?"
+msgstr "El archivo est  comprimido. ¨Desea guardarlo comprimido?"
+
 msgid  "The file is read-only, try to revert it?"
 msgstr "El archivo es de solo lectura, ¨revierto esto?"
+
+msgid  "The first argument, if present, is the name of the Info file to "
+"read.\n"
+"Any remaining arguments are treated as the names of menu items in the "
+"initial\n"
+msgstr "El primer par metro, si fue indicado, es el nombre del .info a "
+"leer.\n"
+"Los par metros siguientes indican el nombre de opciones del men£ de los\n"
 
 msgid  "The header is too large, reduce the title and/or author lengths"
 msgstr "El encabezado es demasiado largo, reduzca el t¡tulo y/o autor"
@@ -2727,6 +3107,9 @@ msgstr "Esto es %s. Copyright (c) 1996-1998 por Robert H”hne\n"
 msgid  "This key is allready in use, do you want to replace it?"
 msgstr "Esta tecla ya est  en uso, ¨desea reemplazarla?"
 
+msgid  "This key is already in use, do you want to replace it?"
+msgstr "Esta tecla ya est  en uso, ¨desea reemplazarla?"
+
 msgid  "This line no longer exists"
 msgstr "Esta l¡nea ya no existe"
 
@@ -2739,6 +3122,9 @@ msgid  "This sequence is used for more than one key, delete these "
 "assignments first"
 msgstr "Esta secuencia es usada por m s de una tecla, primero elimine esas "
 "asignaciones"
+
+msgid  "This terminal have a fixed code page"
+msgstr "Esta terminal no soporta cambios de p gina de caracteres"
 
 msgid  "This video mode (0x%03x) is not supported by the Turbo Vision "
 "library"
@@ -2790,6 +3176,10 @@ msgstr "A min£sc~u~las"
 
 msgid  "To ~u~pper"
 msgstr "A ma~y~£sculas"
+
+msgid  "Tomislav Uzelac for AMP, MP3 engine and Ove Kaaven for adapting to "
+"Allegro"
+msgstr "Tomislav Uzelac por AMP, motor MP3 y Ove Kaaven por adapt. p/Allegro"
 
 msgid  "Tomislav Uzelac for AMP, the MP3 engine"
 msgstr "Tomislav Uzelac por AMP, motor MP3"
@@ -2852,6 +3242,9 @@ msgstr "No puedo descomprimir archivos, probablemente esten da¤ados"
 msgid  "Unchanged register"
 msgstr "Registro no modificado"
 
+msgid  "Unclosed StatusRange"
+msgstr "No se ha cerrado el `StatusRange`"
+
 msgid  "Unclosed SubMenu"
 msgstr "SubMenu no cerrado"
 
@@ -2888,6 +3281,12 @@ msgstr "Utilice un archivo con al menos 1000 l¡neas"
 msgid  "Use external program"
 msgstr "Usar un programa ~e~xterno"
 
+msgid  "Use indent size ~6~"
+msgstr "Usar el valor de 'indentado' ~6~"
+
+msgid  "Use in~d~ent size"
+msgstr "Usar el valor de 'indentado' ~6~"
+
 msgid  "Use no shadows"
 msgstr "No usar sombras"
 
@@ -2918,6 +3317,9 @@ msgstr "Usar R~C~S"
 msgid  "U~s~e dual display"
 msgstr "U~s~ar dos monitores"
 
+msgid  "Vadim Belodorov for contributing the first port of TV to Win32"
+msgstr "Vadim Belodorov por contribuir el primer port de TV a Win32"
+
 msgid  "Valid options are:\n"
 msgstr "Las opciones disponibles son:\n"
 
@@ -2927,14 +3329,23 @@ msgstr "Valor fuera del rango %d a %d"
 msgid  "Value not in the range %ld to %ld"
 msgstr "Valor fuera del rango %ld a %ld"
 
+msgid  "Value not in the range %li to %li"
+msgstr "Valor fuera del rango %li a %li"
+
+msgid  "Value not in the range %lu to %lu"
+msgstr "Valor fuera del rango %lu a %lu"
+
 msgid  "Value not in the range %uld to %uld"
 msgstr "Valor fuera del rango %uld a %uld"
 
 msgid  "Value:"
 msgstr "Valor:"
 
+msgid  "Waiting ..."
+msgstr "Esperando ..."
+
 msgid  "Warning"
-msgstr "Advertencia"
+msgstr "Atenci¢n"
 
 msgid  "Warning Flags"
 msgstr "Opciones de Warning"
@@ -2950,6 +3361,13 @@ msgstr "Visor"
 
 msgid  "Watches"
 msgstr "Visores"
+
+msgid  "We are running a child process. Please wait or stop it."
+msgstr "Estamos corriendo un proceso hijo. Espere o det‚ngalo."
+
+msgid  "We still running a background task, exit anyways?"
+msgstr "Estamos ejecutando una tarea en segundo plano, ¨salir de todas "
+"maneras?"
 
 msgid  "What to do"
 msgstr "Que hacer"
@@ -3011,6 +3429,9 @@ msgstr "Archivo incorrecto"
 
 msgid  "Wrong file type."
 msgstr "Tipo de archivo incorrecto."
+
+msgid  "Wrong help context name or number"
+msgstr "N£mero o nombre de contexto err¢neo"
 
 msgid  "Wrong key name"
 msgstr "Nombre de tecla err¢neo"
@@ -3085,6 +3506,9 @@ msgstr "El autoexec.bat fue modificado, ¨Desea guardar los cambios?"
 
 msgid  "You must configure it first in the Options submenu"
 msgstr "Debe configurar que programa ejecutar en el men£ de opciones"
+
+msgid  "You must install GNU grep to use it!"
+msgstr "­Debe instalar grep para usar esto!"
 
 msgid  "You must install grep to use it!"
 msgstr "­Debe instalar grep para usar esto!"
@@ -3215,6 +3639,9 @@ msgstr "linker interno"
 msgid  "by Salvador Eduardo Tropea"
 msgstr "hecho por Salvador Eduardo Tropea"
 
+msgid  "by ~L~ine"
+msgstr "por ~L~¡nea"
+
 msgid  "change the name of the project-target"
 msgstr "cambia el nombre del programa, o biblioteca, a generar"
 
@@ -3322,6 +3749,9 @@ msgstr "Ajusta que optimizaciones se aplicar n al c¢digo"
 
 msgid  "delete the selected text "
 msgstr "borra el texto seleccionado"
+
+msgid  "eaving dir"
+msgstr "aliendo dir"
 
 msgid  "edit the list of flags for debugging"
 msgstr "edita la lista de par metros de depuraci¢n (debug)"
@@ -3494,6 +3924,24 @@ msgstr "sin errores"
 msgid  "no starting ("
 msgstr "( al ppio. no encontrado"
 
+msgid  "node visited.  For example, `infview libc \"function index\" printf' "
+"moves to the\n"
+"node `Function Index' and then to `printf' in the info file `libc'.\n"
+"\n"
+msgstr "nodos visitados. Por ejemplo: `infview libc \"function index\" "
+"printf' salta a\n"
+"el nodo `Function Index' y luego a `printf' del .info `libc'.\n"
+"\n"
+
+msgid  "node visited.  For example, `infview libc alpha printf' moves to the "
+"node\n"
+"`Alphabetical list' and then to `printf' in the info file `libc'.\n"
+"\n"
+msgstr "nodos visitados. Por ejemplo: `infview libc alpha printf' salta al "
+"nodo\n"
+"`Alphabetical list' y luego al `printf' del .info `libc'.\n"
+"\n"
+
 msgid  "normal text"
 msgstr "texto normal"
 
@@ -3502,6 +3950,9 @@ msgstr "no disponible"
 
 msgid  "not found: take '%s'\n"
 msgstr "no encontrado: tomando '%s'\n"
+
+msgid  "ntering dir"
+msgstr "ambiando a dir"
 
 msgid  "octal"
 msgstr "Octal"
@@ -3832,6 +4283,12 @@ msgstr "~Alt+F1~ ayuda anterior"
 msgid  "~Alt+F3~ Close"
 msgstr "~Alt+F3~ Cerrar"
 
+msgid  "~Alt+F7~ Previous"
+msgstr "~Alt+F7~ Anterior"
+
+msgid  "~Alt+F8~ Next"
+msgstr "~Alt+F8~ Pr¢ximo"
+
 msgid  "~Alt+F9~ Compile"
 msgstr "~Alt+F9~ Compilar"
 
@@ -3845,13 +4302,16 @@ msgid  "~Alt-F3~ Close"
 msgstr "~Alt-F3~ Cerrar"
 
 msgid  "~Alt-X~ Exit"
-msgstr "~Alt-X~ Sale"
+msgstr "~Alt-X~ Salir"
 
 msgid  "~A~SCII Chart"
 msgstr "Tabla ~A~SCII"
 
 msgid  "~A~SCII table"
 msgstr "Tabla ASC~I~I"
+
+msgid  "~A~bout"
+msgstr "~A~cerca de"
 
 msgid  "~A~dd"
 msgstr "~A~gregar"
@@ -3864,6 +4324,12 @@ msgstr "~T~odos"
 
 msgid  "~A~lphabetical"
 msgstr "~A~lfab‚tico"
+
+msgid  "~A~lphabetically"
+msgstr "~A~lfabeticamente"
+
+msgid  "~A~lways parse in background"
+msgstr "Siempre en segundo pl~a~no"
 
 msgid  "~A~nother InfView"
 msgstr "~O~tro InfView"
@@ -3907,11 +4373,17 @@ msgstr "Am~b~os Alt"
 msgid  "~B~reakpoints"
 msgstr "~B~reakpoints"
 
+msgid  "~B~rowse"
+msgstr "~R~ecorrer"
+
 msgid  "~B~ug report"
 msgstr "Reporte de ~p~roblemas"
 
 msgid  "~B~uild all"
 msgstr "~R~ehacer todo"
+
+msgid  "~Ctrl+C~ Stop"
+msgstr "~Ctrl+C~ Detener"
 
 msgid  "~Ctrl+Del~ Delete File"
 msgstr "~Ctrl+Del~ Borrar Archivo"
@@ -3921,6 +4393,9 @@ msgstr "~Ctrl+F1~ Seleccionar de la lista"
 
 msgid  "~Ctrl+Ins~ Copy"
 msgstr "~Ctrl+Ins~ Copiar"
+
+msgid  "~Ctrl+O~ Index"
+msgstr "~Ctrl+O~ Indice"
 
 msgid  "~Ctrl-F4~ Finish edition, or click in the button found in the top "
 "left corner"
@@ -3964,7 +4439,7 @@ msgid  "~C~haracter toggle"
 msgstr "Invertir ~c~aracter"
 
 msgid  "~C~hdir"
-msgstr "~C~am Dir"
+msgstr "~C~ambiar"
 
 msgid  "~C~hoose ..."
 msgstr "~E~legir ..."
@@ -3989,6 +4464,9 @@ msgstr "~C~olores ..."
 
 msgid  "~C~olumn cursor"
 msgstr "Cursor de ~C~olumna"
+
+msgid  "~C~omment indent"
+msgstr "~I~ndentar comentando"
 
 msgid  "~C~ompile"
 msgstr "~C~ompilar"
@@ -4047,6 +4525,9 @@ msgstr "~D~irectorio de recursos"
 msgid  "~D~irectories to search"
 msgstr "~D~irectorio a buscar"
 
+msgid  "~D~irectory"
+msgstr "~D~irectorio de ayudas"
+
 msgid  "~D~irectory of formats"
 msgstr "~D~irectorio de los formatos"
 
@@ -4067,6 +4548,9 @@ msgstr "No mover el cursor al pe~g~ar"
 
 msgid  "~D~on't remap codes under 32"
 msgstr "No ~a~lterar los c¢digos menores que 32"
+
+msgid  "~D~on't try to run in background"
+msgstr "No intentar correr en segundo ~p~lano"
 
 msgid  "~D~on't use colors"
 msgstr "No ~u~sar colores"
@@ -4128,6 +4612,9 @@ msgstr "Chequeo de ~E~rror"
 msgid  "~E~valuate/Modify"
 msgstr "~E~valuar/Modificar"
 
+msgid  "~E~ver"
+msgstr "S~i~empre"
+
 msgid  "~E~xpression"
 msgstr "~E~xpresi¢n"
 
@@ -4183,7 +4670,7 @@ msgid  "~F~ilename"
 msgstr "~A~rchivo"
 
 msgid  "~F~iles"
-msgstr "~A~rchivo"
+msgstr "~A~rchivos"
 
 msgid  "~F~iles first"
 msgstr "Los a~r~chivos primero"
@@ -4228,7 +4715,7 @@ msgid  "~G~o"
 msgstr "~I~r a"
 
 msgid  "~G~o to"
-msgstr "~I~r a"
+msgstr "I~r~ a"
 
 msgid  "~G~o to cursor"
 msgstr "~I~r hasta cursor"
@@ -4237,7 +4724,7 @@ msgid  "~G~o to line"
 msgstr "~I~r a l¡nea"
 
 msgid  "~G~oto"
-msgstr "~I~r a"
+msgstr "I~r~ a"
 
 msgid  "~G~oto Line..."
 msgstr "~I~r a l¡nea..."
@@ -4256,6 +4743,9 @@ msgstr "A~y~uda"
 
 msgid  "~H~ide"
 msgstr "Ocu~l~tar"
+
+msgid  "~H~istory"
+msgstr "Hi~s~toria"
 
 msgid  "~Ins~ Add"
 msgstr "~Ins~ Agregar"
@@ -4281,6 +4771,9 @@ msgstr "~I~ncludes"
 msgid  "~I~nfo"
 msgstr "~I~nfo"
 
+msgid  "~I~nfview"
+msgstr "~I~nfView"
+
 msgid  "~I~nsert"
 msgstr "~I~nsertar"
 
@@ -4298,6 +4791,9 @@ msgstr "O~b~jeto"
 
 msgid  "~J~ump to function"
 msgstr "~S~altar a la funci¢n"
+
+msgid  "~J~ump to the first error"
+msgstr "Sal~t~ar al primer error"
 
 msgid  "~K~eep intermediate"
 msgstr "~N~o borrar el intermedio"
@@ -4323,6 +4819,9 @@ msgstr "~L~ibrer¡as"
 msgid  "~L~ine"
 msgstr "~L~¡nea"
 
+msgid  "~L~ines per pass"
+msgstr "~L~¡neas por pasada"
+
 msgid  "~L~ink"
 msgstr "En~l~azar"
 
@@ -4341,6 +4840,9 @@ msgstr "~L~ocales de edici¢n ..."
 msgid  "~L~ocal options"
 msgstr "Opciones ~l~ocales"
 
+msgid  "~L~ock channels"
+msgstr "~T~rabar canales"
+
 msgid  "~M~P3 songs"
 msgstr "Sonidos ~M~P3"
 
@@ -4352,6 +4854,9 @@ msgstr "~M~acros"
 
 msgid  "~M~ain function"
 msgstr "~F~unci¢n principal"
+
+msgid  "~M~ain options"
+msgstr "~P~rincipales"
 
 msgid  "~M~ake"
 msgstr "~H~acer"
@@ -4392,14 +4897,23 @@ msgstr "~M~over"
 msgid  "~N~ame"
 msgstr "~N~ombre"
 
+msgid  "~N~ame current function"
+msgstr "~N~ombre de la funci¢n actual"
+
 msgid  "~N~ame of Node"
 msgstr "~N~ombre del Nodo"
 
 msgid  "~N~ame of the output file"
 msgstr "~N~ombre del archivo de salida"
 
+msgid  "~N~ever"
+msgstr "~N~unca"
+
 msgid  "~N~ew"
 msgstr "~N~uevo"
+
+msgid  "~N~ew InfView window"
+msgstr "~N~ueva ventana de InfView"
 
 msgid  "~N~ew text"
 msgstr "~N~uevo texto"
@@ -4422,11 +4936,17 @@ msgstr "~N~o"
 msgid  "~N~o SHL"
 msgstr "~S~in SHL"
 
+msgid  "~N~ode list"
+msgstr "~L~ista de nodos"
+
 msgid  "~N~odes"
 msgstr "~N~odos"
 
 msgid  "~N~ormal text"
 msgstr "Es texto ~n~ormal"
+
+msgid  "~N~ormally sorted"
+msgstr "Ordenarlos ~n~ormalmente"
 
 msgid  "~O~K"
 msgstr "~O~k"
@@ -4437,11 +4957,20 @@ msgstr "~O~bjetos"
 msgid  "~O~k"
 msgstr "~O~k"
 
+msgid  "~O~nly if no file specified"
+msgstr "S¢~l~o si no se indicaron archivos"
+
+msgid  "~O~nly selected text"
+msgstr "S¢lo el texto ~s~eleccionado"
+
 msgid  "~O~pen"
 msgstr "~A~brir"
 
 msgid  "~O~pen Info"
 msgstr "~A~brir Info"
+
+msgid  "~O~pen info file"
+msgstr "~A~brir un .info"
 
 msgid  "~O~pen..."
 msgstr "~A~brir ..."
@@ -4493,6 +5022,9 @@ msgstr "~P~referencias"
 
 msgid  "~P~revious"
 msgstr "~A~nterior"
+
+msgid  "~P~revious node"
+msgstr "Nodo ~a~nterior"
 
 msgid  "~P~rimary font (intense)"
 msgstr "Font ~p~rincipal (intenso)"
@@ -4587,11 +5119,17 @@ msgstr "~G~uardar"
 msgid  "~S~ave options"
 msgstr "~G~rabar opciones"
 
+msgid  "~S~ave to disk"
+msgstr "~G~rabar a disco"
+
 msgid  "~S~ave/Desktop options"
 msgstr "Opcione~s~ de grabado/escritorio"
 
 msgid  "~S~creen Options ..."
 msgstr "P~a~ntalla ..."
+
+msgid  "~S~creen configuration"
+msgstr "Configuraci¢n de ~p~antalla"
 
 msgid  "~S~creen mode"
 msgstr "Modos de ~V~ideo"
@@ -4683,6 +5221,9 @@ msgstr "~C~oncejo del d¡a"
 msgid  "~T~o code page"
 msgstr "~N~ueva codificaci¢n"
 
+msgid  "~T~op node"
+msgstr "~N~odo principal"
+
 msgid  "~T~race"
 msgstr "~A~vanzar"
 
@@ -4716,8 +5257,11 @@ msgstr "~D~esindentar un tab o hueco"
 msgid  "~U~p"
 msgstr "~A~rriba"
 
+msgid  "~U~pper node"
+msgstr "Nodo ~s~uperior"
+
 msgid  "~U~se OS screen to run the program"
-msgstr "~U~sar la pantalla del SO para correr el programa"
+msgstr "~U~sar la pantalla del SO"
 
 msgid  "~U~se `Files to search'"
 msgstr "~U~sar `Archivos a buscar'"
@@ -4727,6 +5271,9 @@ msgstr "~N~o usar sombras"
 
 msgid  "~U~se real tabs"
 msgstr "~u~sar verdaderos tabs"
+
+msgid  "~U~se real tabs (ASCII 9)"
+msgstr "~U~sar tabs reales (ASCII 9)"
 
 msgid  "~U~se tabs"
 msgstr "~U~sar tabs"

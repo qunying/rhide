@@ -1,3 +1,16 @@
+# Este es el archivo de traducci¢n a espa¤ol.
+# Copyright (C) 2001 Salvador E. Tropea.
+# Salvador E. Tropea <set@ieee.org>, 2001.
+
+msgid  ""
+msgstr "Project-Id-Version: setedit 0.4.50\n"
+"PO-Revision-Date: 2001-10-09 19:33-0300\n"
+"Last-Translator: Salvador E. Tropea <set@ieee.org>\n"
+"Language-Team: Spanish <set@ieee.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CP850\n"
+"Content-Transfer-Encoding: 8bit\n"
+
 msgid  "Writing Makefile : %s\n"
 msgstr ""
 
@@ -751,7 +764,7 @@ msgstr "para realizar aplicaciones con DJGPP"
 msgid  "for developing Linux apps"
 msgstr "para realizar aplicaciones en Linux"
 
-msgid  "Copyright (C) by Robert H”hne, 1996-2000"
+msgid  "Copyright (C) by Robert H”hne"
 msgstr ""
 
 msgid  "Language: "
@@ -786,6 +799,8 @@ msgstr "Nombre de la funci¢n principal"
 
 msgid  "Expression to inspect"
 msgstr ""
+
+# End of header
 
 msgid  "~E~xpression"
 msgstr "~E~xpresi¢n"
@@ -899,7 +914,7 @@ msgstr "usando %s como directorio temporal\n"
 msgid  "warning: temporary file %s deleted\n"
 msgstr ""
 
-msgid  "This is %s. Copyright (c) 1996-2000 by Robert H”hne\n"
+msgid  "This is %s. Copyright (c) 1996-2001 by Robert H”hne\n"
 msgstr ""
 
 msgid  "Do you really want to interrupt RHIDE?"
@@ -1498,7 +1513,7 @@ msgid  "Use ~F~PC pascal compiler"
 msgstr ""
 
 msgid  "O~p~tions"
-msgstr "~O~pciones"
+msgstr "O~p~ciones"
 
 msgid  "other"
 msgstr "~o~tro"
@@ -1891,7 +1906,7 @@ msgid  "Error"
 msgstr "Error"
 
 msgid  "Pocket Calculator"
-msgstr ""
+msgstr "Calculadora de Bolsillo"
 
 msgid  "type not registered: %s\n"
 msgstr "tipo no registrado: %s\n"
@@ -1900,13 +1915,13 @@ msgid  "Change Directory"
 msgstr "Cambiar Directorio"
 
 msgid  "Directory ~n~ame"
-msgstr "~N~ombre Directorio"
+msgstr "~N~ombre del directorio"
 
 msgid  "Directory ~t~ree"
-msgstr "~A~rbol de Dir."
+msgstr "Arbol direc~t~orios"
 
 msgid  "~C~hdir"
-msgstr "~C~am Dir"
+msgstr "~C~ambiar"
 
 msgid  "~R~evert"
 msgstr "~R~evertir"
@@ -1918,7 +1933,7 @@ msgid  "Drives"
 msgstr "Discos"
 
 msgid  "Invalid directory"
-msgstr "Directorio Inv lido"
+msgstr "Directorio inv lido"
 
 msgid  "Colors"
 msgstr "Colores"
@@ -1948,7 +1963,7 @@ msgid  "Clipboard"
 msgstr "Portapapeles"
 
 msgid  "~F~iles"
-msgstr "~A~rchivo"
+msgstr "~A~rchivos"
 
 msgid  "~S~elect"
 msgstr ""
@@ -1963,7 +1978,7 @@ msgid  "Invalid drive or directory"
 msgstr "Disco o directorio inv lido"
 
 msgid  "Invalid file name."
-msgstr "Nombre de archivo Inv lido."
+msgstr "Nombre de archivo inv lido"
 
 msgid  "Jan"
 msgstr "Ene"
@@ -1978,7 +1993,7 @@ msgid  "Apr"
 msgstr "Abr"
 
 msgid  "May"
-msgstr "Mayo"
+msgstr "May"
 
 msgid  "Jun"
 msgstr "Jun"
@@ -2002,7 +2017,7 @@ msgid  "Dec"
 msgstr "Dic"
 
 msgid  "Invalid character in input"
-msgstr "Caracter inv lido ingresado"
+msgstr "Ingres¢ un caracter inv lido"
 
 msgid  "<empty>"
 msgstr "<vac¡o>"
@@ -2017,10 +2032,10 @@ msgid  "Underline"
 msgstr "Subrayado"
 
 msgid  "Inverse"
-msgstr "Invertido"
+msgstr "Inverso"
 
 msgid  "~Alt-X~ Exit"
-msgstr "~Alt-X~ Sale"
+msgstr "~Alt-X~ Salir"
 
 msgid  "Value not in the range %U to %U"
 msgstr ""
@@ -2172,7 +2187,7 @@ msgid  "InfView Bookmarks"
 msgstr "Marcas del InfView"
 
 msgid  "~G~o to"
-msgstr "~I~r a"
+msgstr "I~r~ a"
 
 msgid  "~M~arks"
 msgstr "~M~arcas"
@@ -2350,7 +2365,7 @@ msgid  "~A~utoindent"
 msgstr "~A~utoindentar"
 
 msgid  "~U~se real tabs (ASCII 9)"
-msgstr ""
+msgstr "~U~sar tabs reales (ASCII 9)"
 
 msgid  "~P~ersistent blocks"
 msgstr "Bloques ~p~ersistentes"
@@ -2654,7 +2669,7 @@ msgid  "~D~irectory of formats"
 msgstr "~D~irectorio de los formatos"
 
 msgid  "K~e~ep intermediate"
-msgstr ""
+msgstr "~N~o borrar el intermedio"
 
 msgid  "Regular expression error: %s"
 msgstr "Error en la expresi¢n regular: %s"
@@ -3143,9 +3158,6 @@ msgstr "con interfaz Turbo Vision"
 
 msgid  "based on GDB "
 msgstr "basado en GDB "
-
-msgid  "Copyright (C) by Robert H”hne, 1996-1998"
-msgstr "Copyright (C) por Robert H”hne, 1996-1998"
 
 msgid  "All windows on the desktop"
 msgstr "Todas las ventanas del escritorio"

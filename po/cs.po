@@ -766,7 +766,7 @@ msgstr "pro v˜voj aplikac¡ DJGPP"
 msgid  "for developing Linux apps"
 msgstr "pro v˜voj Linuxov˜ch aplikac¡"
 
-msgid  "Copyright (C) by Robert H”hne, 1996-2000"
+msgid  "Copyright (C) by Robert H”hne"
 msgstr ""
 
 msgid  "Language: "
@@ -912,7 +912,7 @@ msgstr "adres © %s pou‘¡v n pro pomocn‚ soubory\n"
 msgid  "warning: temporary file %s deleted\n"
 msgstr ""
 
-msgid  "This is %s. Copyright (c) 1996-2000 by Robert H”hne\n"
+msgid  "This is %s. Copyright (c) 1996-2001 by Robert H”hne\n"
 msgstr ""
 
 msgid  "Do you really want to interrupt RHIDE?"
@@ -3149,9 +3149,6 @@ msgstr "s rozhran¡m Turbo Vision"
 
 msgid  "based on GDB "
 msgstr "zalo‘en˜ na GDB"
-
-msgid  "Copyright (C) by Robert H”hne, 1996-1998"
-msgstr "Copyright (C) by Robert H”hne, 1996-1998"
 
 msgid  "All windows on the desktop"
 msgstr "V¨echna okna na pracovn¡ plo¨e"

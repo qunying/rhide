@@ -751,7 +751,7 @@ msgstr "DJGPP sovellutusten kehitykseen"
 msgid  "for developing Linux apps"
 msgstr ""
 
-msgid  "Copyright (C) by Robert H”hne, 1996-2000"
+msgid  "Copyright (C) by Robert H”hne"
 msgstr ""
 
 msgid  "Language: "
@@ -897,7 +897,7 @@ msgstr "k„ytet„„n %s tilap„isten tiedostojen hakemistona\n"
 msgid  "warning: temporary file %s deleted\n"
 msgstr ""
 
-msgid  "This is %s. Copyright (c) 1996-2000 by Robert H”hne\n"
+msgid  "This is %s. Copyright (c) 1996-2001 by Robert H”hne\n"
 msgstr ""
 
 msgid  "Do you really want to interrupt RHIDE?"
@@ -3125,9 +3125,6 @@ msgstr ""
 
 msgid  "based on GDB "
 msgstr ""
-
-msgid  "Copyright (C) by Robert H”hne, 1996-1998"
-msgstr "Copyright (C) by Robert H”hne, 1996-1998"
 
 msgid  "All windows on the desktop"
 msgstr "Kaikki ikkunat ty”p”yd„ll„"

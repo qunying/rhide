@@ -1,3 +1,16 @@
+# German translation file for SETEdit.
+# Copyright (C) 2001 Salvador E. Tropea.
+# Robert Hîhne <robert.hoehne@gmx.net>, 2001.
+
+msgid  ""
+msgstr "Project-Id-Version: setedit 0.4.49\n"
+"PO-Revision-Date: 2001-10-07 13:59-0300\n"
+"Last-Translator: Oliver Schieche <oliver.schieche@d2mail.de>\n"
+"Language-Team: German <set@ieee.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CP850\n"
+"Content-Transfer-Encoding: 8bit\n"
+
 msgid  "Writing Makefile : %s\n"
 msgstr "Erzeuge Makefile : %s\n"
 
@@ -122,7 +135,7 @@ msgid  "Add '%s' to the search path for source files"
 msgstr "'%s' zum Suchpfad fÅr Quelldateien hinzufÅgen?"
 
 msgid  "Untitled"
-msgstr "Namenlos"
+msgstr "Unbenannt"
 
 msgid  "Source has been modified. Rebuild it?"
 msgstr "Quelltext wurde verÑndert. Neu erzeugen?"
@@ -281,10 +294,10 @@ msgid  "save all opened editors to disk (if modified)"
 msgstr "speichert alle geîffneten Editorfenster (falls geÑndert)"
 
 msgid  "konfigure your print settings"
-msgstr ""
+msgstr "Konfiguriere die Druckeinstellungen"
 
 msgid  "print the current editor file"
-msgstr ""
+msgstr "druckt die aktuelle Datei"
 
 msgid  "switch to DOS (call of %COMSPEC%, return with EXIT)"
 msgstr "geht zu MSDOS (Aufruf von %COMSPEC%, RÅckkehr mit EXIT)"
@@ -371,13 +384,13 @@ msgid  "Run the recorded macro"
 msgstr "Started das aufgezeichnete Makro"
 
 msgid  "choose a named macro"
-msgstr ""
+msgstr "WÑhlen Sie ein benanntes Makro"
 
 msgid  "repeat the last macro"
-msgstr ""
+msgstr "wiederholt das letzte Makro"
 
 msgid  "write code for recorded macro"
-msgstr ""
+msgstr "Code fÅr das aufgezeichnete Makro schreiben"
 
 msgid  "Check the speed of the editor"
 msgstr "Testet die Geschwindingkeit des Editors"
@@ -471,7 +484,7 @@ msgid  "Add an expression to the watching list"
 msgstr "FÅgt einen Ausdruck zur öberwachungsliste hinzu"
 
 msgid  "Open an inspector window for an expression"
-msgstr ""
+msgstr "ôffnet ein Inspektorfenster fÅr einen Ausdruck"
 
 msgid  "Show/Modify the breakpoints"
 msgstr "Zeige/éndere die Haltepunkte"
@@ -487,10 +500,10 @@ msgid  "Show a list with all functions"
 msgstr "Zeigt einen Liste mit allen Funktionen"
 
 msgid  "Open a window with a memory dump"
-msgstr ""
+msgstr "ôffnet ein Fenster mit einem Speicherabzug"
 
 msgid  "Open a window showing the dump of the stack"
-msgstr ""
+msgstr "ôffnet ein Fenster mit einem Stack-Dump"
 
 msgid  "Submenu for handling your projects"
 msgstr "UntermenÅ zu den Projektfunktionen"
@@ -595,19 +608,19 @@ msgid  "customize the colors of the IDE"
 msgstr "einstellen der Farben der IDE"
 
 msgid  "various options relating to the editor"
-msgstr ""
+msgstr "verschiedene Editoroptionen"
 
 msgid  "Set the editor options"
 msgstr "Setze die Editoroptionen"
 
 msgid  "Customize your key bindings"
-msgstr ""
+msgstr "Anpassung der Tastaturzuordnungen"
 
 msgid  "Define the meaning of the Alt-keys"
-msgstr ""
+msgstr "Bestimmt die Bedeutung der Alt-Tasten"
 
 msgid  "Restore default key bindings"
-msgstr ""
+msgstr "Stellt die Standardtastaturzuordnung wieder her"
 
 msgid  "set basic options for the IDE"
 msgstr "grundlegende Optionen der IDE"
@@ -688,7 +701,7 @@ msgid  "Opens the window with watches"
 msgstr "ôffnet das Fenster mit den Åberwachten AusdrÅcken"
 
 msgid  "show the message window"
-msgstr ""
+msgstr "Zeige das Meldungsfenster"
 
 msgid  "show the user screen"
 msgstr "zeigt den Nutzer-Bildschirm"
@@ -753,8 +766,8 @@ msgstr "zur Entwicklung von DJGPP Applikationen"
 msgid  "for developing Linux apps"
 msgstr "zur Entwicklung von Linux Applikationen"
 
-msgid  "Copyright (C) by Robert Hîhne, 1996-2000"
-msgstr "Alle Rechte bei Robert Hîhne, 1996-2000"
+msgid  "Copyright (C) by Robert Hîhne"
+msgstr "Alle Rechte bei Robert Hîhne"
 
 msgid  "Language: "
 msgstr "Sprache: "
@@ -772,7 +785,7 @@ msgid  "last updated: "
 msgstr "zuletzt aktualisiert: "
 
 msgid  "1998-11-29"
-msgstr "29.11.1998"
+msgstr "17.10.2001"
 
 msgid  "~O~K"
 msgstr "~O~K"
@@ -789,6 +802,8 @@ msgstr "Name der 'main'-Funktion"
 msgid  "Expression to inspect"
 msgstr "Ausdruck zum inspizieren"
 
+# End of header
+
 msgid  "~E~xpression"
 msgstr "~A~usdruck"
 
@@ -796,7 +811,7 @@ msgid  "Regular expression to list functions"
 msgstr "RegulÑrer Ausdruck zum Auflisten der Funktionen"
 
 msgid  "List of functions"
-msgstr "Liste der Funktionen"
+msgstr "Funktionenliste"
 
 msgid  "WindowList"
 msgstr "Fensterliste"
@@ -893,7 +908,7 @@ msgid  "            -T : Disable the DOS-box title feature\n"
 msgstr "            -T : Benutze nicht den DOS-Box Titel\n"
 
 msgid  "            -P : don`t remove temp files when exiting\n"
-msgstr ""
+msgstr "            -P : temp. Dateien beim Beenden nicht lîschen\n"
 
 msgid  "using %s as temp directory\n"
 msgstr "benutze %s als temporÑres Verzeichnis\n"
@@ -901,8 +916,8 @@ msgstr "benutze %s als temporÑres Verzeichnis\n"
 msgid  "warning: temporary file %s deleted\n"
 msgstr "Warnung: TemporÑre Datei %s wurde gelîscht\n"
 
-msgid  "This is %s. Copyright (c) 1996-2000 by Robert Hîhne\n"
-msgstr "Dies ist %s. Alle Rechte bei Robert Hîhne, 1996-2000\n"
+msgid  "This is %s. Copyright (c) 1996-2001 by Robert Hîhne\n"
+msgstr "Dies ist %s. Alle Rechte bei Robert Hîhne, 1996-2001\n"
 
 msgid  "Do you really want to interrupt RHIDE?"
 msgstr "Mîchtest Du wirklich RHIDE unterbrechen?"
@@ -929,7 +944,7 @@ msgid  "~S~yntax help"
 msgstr "~S~yntaxhilfe"
 
 msgid  "~F~iles to search"
-msgstr "~D~ateien fÅr die Suche"
+msgstr "Zu durchsuchende Dateien"
 
 msgid  "~O~ptions for searching"
 msgstr "~O~ptionen fÅr die Suche"
@@ -971,46 +986,46 @@ msgid  "Save a~l~l"
 msgstr "A~l~le speichern"
 
 msgid  "~P~rint"
-msgstr "D~r~ucken"
+msgstr "~D~rucken"
 
 msgid  "Printer set~u~p"
 msgstr "Drucker e~i~nrichten"
 
 msgid  "~D~OS shell"
-msgstr "~D~OS shell"
+msgstr "~D~OS Shell"
 
 msgid  "S~h~ell"
-msgstr "S~h~ell"
+msgstr "~A~lles"
 
 msgid  "E~x~it"
-msgstr "~E~nde"
+msgstr "~B~eenden"
 
 msgid  "~M~acro"
 msgstr "~M~akro"
 
 msgid  "~R~ecord"
-msgstr "~A~ufnehmen"
+msgstr "Auf~n~ehmen"
 
 msgid  "~S~top"
-msgstr "~S~toppen"
+msgstr "~S~top"
 
 msgid  "~P~lay"
-msgstr "A~b~spielen"
+msgstr "Ab~s~pielen"
 
 msgid  "~C~hoose"
 msgstr "~W~Ñhlen"
 
 msgid  "R~e~peat"
-msgstr "W~i~ederholen"
+msgstr "Wiederholen"
 
 msgid  "~G~enerate Code"
-msgstr "Er~z~euge Code"
+msgstr "Erzeuge ~C~ode"
 
 msgid  "Recta~n~gle"
 msgstr "Re~c~hteck"
 
 msgid  "~S~tart"
-msgstr "~S~tart"
+msgstr "~A~nfang"
 
 msgid  "~E~nd"
 msgstr "~E~nde"
@@ -1034,16 +1049,16 @@ msgid  "~M~ove"
 msgstr "~B~ewegen"
 
 msgid  "~E~dit"
-msgstr "~E~dit"
+msgstr "~B~earbeiten"
 
 msgid  "~U~ndo"
 msgstr "~R~ÅckgÑngig"
 
 msgid  "~R~edo"
-msgstr "~R~edo"
+msgstr "~W~iederherstellen"
 
 msgid  "~S~how clipboard"
-msgstr "~Z~wischenablage"
+msgstr "~Z~wischenablage anzeigen"
 
 msgid  "Cop~y~ to Windows Clipboard"
 msgstr "Kopiere zur ~W~indows Zwischenablage"
@@ -1052,31 +1067,31 @@ msgid  "Paste from ~W~indows Clipboard"
 msgstr "Kopiere ~v~on der Windows Zwischenablage"
 
 msgid  "E~x~pand all tabs"
-msgstr "Alle Tabs e~x~pandieren"
+msgstr "Tabs e~x~pandieren"
 
 msgid  "C~o~mpact text"
-msgstr "Text c~o~mpakt machen"
+msgstr "~L~eerzeichen zu Tabs"
 
 msgid  "Profile Editor"
 msgstr "Profile den Editor"
 
 msgid  "~S~earch"
-msgstr "~S~uchen"
+msgstr "~S~uche"
 
 msgid  "~F~ind..."
-msgstr "~S~uchen..."
+msgstr "~S~uche..."
 
 msgid  "~R~eplace..."
 msgstr "~E~rsetzen..."
 
 msgid  "~S~earch again"
-msgstr "~W~iederholen"
+msgstr "~W~iederhole Suche"
 
 msgid  "~G~oto Line..."
 msgstr "~G~ehe zu Zeile..."
 
 msgid  "~J~ump to function"
-msgstr "Gehe zu ~F~unktion"
+msgstr "~G~ehe zu Funktion"
 
 msgid  "~N~ext message"
 msgstr "~N~Ñchste Meldung"
@@ -1286,7 +1301,7 @@ msgid  "~W~indows"
 msgstr "~F~enster"
 
 msgid  "~S~ize/move"
-msgstr "~G~rî·e/Position"
+msgstr "~G~rî·e Ñndern/Bewegen"
 
 msgid  "~Z~oom"
 msgstr "~Z~oom"
@@ -1295,16 +1310,16 @@ msgid  "~T~ile"
 msgstr "~T~eilen"
 
 msgid  "C~a~scade"
-msgstr "~K~askade"
+msgstr "ö~b~erlappend"
 
 msgid  "~N~ext"
 msgstr "~N~Ñchstes"
 
 msgid  "~P~revious"
-msgstr "~V~orher"
+msgstr "~V~orherige"
 
 msgid  "~C~lose"
-msgstr "~S~chlie·en"
+msgstr "S~c~hlie·en"
 
 msgid  "~L~ist"
 msgstr "~L~iste"
@@ -1391,7 +1406,7 @@ msgid  "S~t~ack window"
 msgstr "S~t~ack Fenster"
 
 msgid  "Message Window"
-msgstr "Meldungsfenster"
+msgstr "Nachrichtenfenster"
 
 msgid  "Optimization Flags"
 msgstr "Optimierungs Optionen"
@@ -1442,7 +1457,7 @@ msgid  "~D~on`t show exit code"
 msgstr "~K~einen Beendigungswert zeigen"
 
 msgid  "~C~lean files recursive"
-msgstr ""
+msgstr "Dateien rekursiv lîschen"
 
 msgid  "all dependencies in ~m~akefile"
 msgstr "All AbhÑngigkeiten im ~M~akefile"
@@ -1508,10 +1523,10 @@ msgid  "O~p~tions"
 msgstr "~O~ptionen"
 
 msgid  "other"
-msgstr "anderer"
+msgstr "andere"
 
 msgid  "~S~creen mode"
-msgstr "B~i~ldschirmmodus"
+msgstr "Bildschirm~m~odus"
 
 msgid  "Closed ~W~indows"
 msgstr "Geschlossene ~F~enster"
@@ -1524,14 +1539,14 @@ msgstr "W~e~itere Optionen"
 
 msgid  "This video mode (0x%03x) is not supported by the Turbo Vision "
 "library"
-msgstr "Dieser Videomodus (0x%03x) wird nicht von der Turbo Vision "
-"BibliothekunterstÅtzt"
+msgstr "Videomodus 0x%03x wird von der Turbo Vision Bibliothek nicht "
+"unterstÅtzt"
 
 msgid  "~A~dd"
-msgstr "~H~inzu"
+msgstr "~H~inzufÅgen"
 
 msgid  "~D~elete"
-msgstr "Ent~f~ernen"
+msgstr "~L~îsche"
 
 msgid  "Defa~u~lt"
 msgstr "~S~tandard"
@@ -1663,7 +1678,7 @@ msgid  "finaly opening project %s\n"
 msgstr "EndgÅltiges ôfnnen des Projektes %s\n"
 
 msgid  "Project Window"
-msgstr "Projekt Fenster"
+msgstr "Projektfenster"
 
 msgid  "Add Item"
 msgstr "Element hinzufÅgen"
@@ -1693,7 +1708,7 @@ msgid  "~F5~ Zoom"
 msgstr "~F5~ Zoom"
 
 msgid  "~F6~ Next"
-msgstr "~F6~ NÑchst."
+msgstr "~F6~ NÑchstes"
 
 msgid  "~F10~ Menu"
 msgstr "~F10~ MenÅ"
@@ -1705,7 +1720,7 @@ msgid  "~Ins~ Add"
 msgstr "~Ins~ Hinzu"
 
 msgid  "~Del~ Delete"
-msgstr "~Del~ Entfernen"
+msgstr "~Del~ Lîschen"
 
 msgid  "~^O~ Local"
 msgstr "~^O~ Lokal"
@@ -1756,7 +1771,7 @@ msgid  "~^G~ Goto"
 msgstr "~^G~ Gehe zu"
 
 msgid  "~Alt+F3~ Close"
-msgstr "~Alt+F3~ Schlie·en"
+msgstr "~Alt+F3~ Weg"
 
 msgid  "~Enter~ Modify register"
 msgstr "~Enter~ VerÑnder Register"
@@ -1824,19 +1839,19 @@ msgstr "Fehler beim Erzeugen der Indizes fÅr %s (oder nichts gefunden). "
 "DieseDatei aus der Liste streichen?"
 
 msgid  "No INFO files for syntax help defined"
-msgstr "Keine INF-Dateien fÅr die Syntaxhilfe definiert"
+msgstr "Keine INFO Dateien fÅr Syntaxsuche angegeben"
 
 msgid  "Couldn't find any matching help"
-msgstr "Konnte keine entsprechende Hilfe finden"
+msgstr "Konnte keine passende Hilfe finden"
 
 msgid  "Options for syntax help"
-msgstr "Optionen fÅr die Syntaxhilfe"
+msgstr "Einstellungen fÅr Syntaxhilfe"
 
 msgid  "E~x~act"
 msgstr "E~x~akt"
 
 msgid  "~S~ubstring"
-msgstr "Teil~s~tring"
+msgstr "~T~eiltext"
 
 msgid  "~F~uzzy"
 msgstr "~F~uzzy"
@@ -1857,10 +1872,10 @@ msgid  "Calculator"
 msgstr "Rechner"
 
 msgid  "~R~esult"
-msgstr "~E~rgebnis"
+msgstr "~R~esultat"
 
 msgid  "E~v~al"
-msgstr "~B~erechnen"
+msgstr "~A~uswerten"
 
 msgid  "Error in expression (%d)"
 msgstr "Fehler in Ausdruck (%d)"
@@ -1915,13 +1930,13 @@ msgid  "Error"
 msgstr "Fehler"
 
 msgid  "Pocket Calculator"
-msgstr "Taschenrechner"
+msgstr "~T~aschenrechner"
 
 msgid  "type not registered: %s\n"
 msgstr "Typ nicht registriert: %s\n"
 
 msgid  "Change Directory"
-msgstr "Wechsle Verzeichnis"
+msgstr "Kann Verzeichnis nicht erstellen:"
 
 msgid  "Directory ~n~ame"
 msgstr "Verzeichnis ~N~ame"
@@ -1930,10 +1945,10 @@ msgid  "Directory ~t~ree"
 msgstr "Verzeichnis ~B~aum"
 
 msgid  "~C~hdir"
-msgstr "~W~echsle"
+msgstr "~W~echsle Verzeichnis..."
 
 msgid  "~R~evert"
-msgstr "~R~evert"
+msgstr "ö~b~erschreiben"
 
 msgid  "Help"
 msgstr "~H~ilfe"
@@ -1942,7 +1957,7 @@ msgid  "Drives"
 msgstr "Laufwerke"
 
 msgid  "Invalid directory"
-msgstr "UngÅltiges Verzeichnis"
+msgstr "UngÅltiges Laufwerk"
 
 msgid  "Colors"
 msgstr "Farben"
@@ -1951,7 +1966,7 @@ msgid  "~G~roup"
 msgstr "~G~ruppe"
 
 msgid  "~I~tem"
-msgstr "~E~lement"
+msgstr "~E~intrag"
 
 msgid  "~F~oreground"
 msgstr "~V~ordergrund"
@@ -1960,7 +1975,7 @@ msgid  "~B~ackground"
 msgstr "~H~intergrund"
 
 msgid  "Text "
-msgstr "Text "
+msgstr "NÑchstes"
 
 msgid  "Color"
 msgstr "Farbe"
@@ -1975,19 +1990,19 @@ msgid  "~F~iles"
 msgstr "~D~ateien"
 
 msgid  "~S~elect"
-msgstr ""
+msgstr "Au~s~wÑhlen"
 
 msgid  "~R~eplace"
 msgstr "Ersetzen"
 
 msgid  "~C~lear"
-msgstr "~L~îschen"
+msgstr "~L~îsche"
 
 msgid  "Invalid drive or directory"
-msgstr "UngÅltiges Verzeichnis oder Laufwerk."
+msgstr "UngÅltiges Laufwerk"
 
 msgid  "Invalid file name."
-msgstr "UngÅltiger Dateiname."
+msgstr "UngÅltiges Laufwerk"
 
 msgid  "Jan"
 msgstr "Jan"
@@ -2026,7 +2041,7 @@ msgid  "Dec"
 msgstr "Dez"
 
 msgid  "Invalid character in input"
-msgstr "UngÅltiges Zeichen in der Eingabe"
+msgstr "Extra Zeichen in Zeile"
 
 msgid  "<empty>"
 msgstr "<leer>"
@@ -2035,7 +2050,7 @@ msgid  "Normal"
 msgstr "Normal"
 
 msgid  "Highlight"
-msgstr "Hervorgehoben"
+msgstr "Syntax~h~ervorhebung"
 
 msgid  "Underline"
 msgstr "Unterstrichen"
@@ -2044,7 +2059,7 @@ msgid  "Inverse"
 msgstr "Invertiert"
 
 msgid  "~Alt-X~ Exit"
-msgstr "~Alt-X~ Ende"
+msgstr "~F6~ NÑchstes"
 
 msgid  "Value not in the range %U to %U"
 msgstr "Wert ist nicht im Bereich von %U bis %U"
@@ -2056,16 +2071,16 @@ msgid  "Type EXIT to return..."
 msgstr "Tippe EXIT um zuÅckzukehren"
 
 msgid  "Find"
-msgstr "Finde"
+msgstr "Suchen"
 
 msgid  "~T~ext to find"
-msgstr "Such~t~ext"
+msgstr "~S~uchtext"
 
 msgid  "~W~hole words only"
-msgstr "Nur ganze ~W~îrter"
+msgstr "Nur ~g~anze Wîrter"
 
 msgid  "O~K~"
-msgstr "~O~K"
+msgstr "O~K"
 
 msgid  "Replace"
 msgstr "Ersetzen"
@@ -2074,43 +2089,43 @@ msgid  "~N~ew text"
 msgstr "~N~euer Text"
 
 msgid  "~P~rompt on replace"
-msgstr "~F~ragen vor ersetzen"
+msgstr "Vorm Ersetzen ~n~achfragen"
 
 msgid  "~R~eplace all"
 msgstr "Alle e~r~setzen"
 
 msgid  "~C~hange dir..."
-msgstr "~V~erzeichnis wechseln"
+msgstr "~W~echsle Verzeichnis..."
 
 msgid  "Not enough memory for this operation."
-msgstr "Nicht genÅgend Speicher fÅr diese Operation."
+msgstr "Nicht genug Speicher fÅr diese Operation."
 
 msgid  "Not enough memory for this operation"
-msgstr "Nicht genÅgend Speicher fÅr diese Operation"
+msgstr "Nicht genug Speicher fÅr diese Operation"
 
 msgid  "Error reading file "
-msgstr "Fehler beim Lesen der Datei"
+msgstr "Fehler beim Lesen der Datei "
 
 msgid  "Error writing file "
-msgstr "Fehler beim Schreiben der Datei"
+msgstr "Fehler beim Schreiben der Datei "
 
 msgid  "Error creating file "
-msgstr "Feheler beim Erstellen der Datei"
+msgstr "Fehler beim Erstellen von "
 
 msgid  " has been modified. Save?"
 msgstr " wurde verÑndert. Speichern?"
 
 msgid  "Save untitled file?"
-msgstr "Namenlose Datei speichern?"
+msgstr "Unbenannte Datei speichern?"
 
 msgid  "Save file as"
-msgstr "Speichere Datei als"
+msgstr "Speicher Datei als"
 
 msgid  "Search string not found."
-msgstr "Suchtext wurde nicht gefunden"
+msgstr "Suchtext nicht gefunden."
 
 msgid  "Replace this occurence?"
-msgstr "Dieses Vorkommen ersetzen?"
+msgstr "Diese Vorkommen ersetzen?"
 
 msgid  "\r\n"
 "Error! that's an interactive application, don't redirect stdout\r\n"
@@ -2118,31 +2133,39 @@ msgid  "\r\n"
 "\r\n"
 "program 2> file\r\n"
 "\r\n"
-msgstr ""
+msgstr "\r\n"
+"Fehler! Dies ist eine interaktive Anwendung, leiten Sie nicht die\r\n"
+"Standardausgabe um. Wenn Sie Meldungen sammeln wollen, so leiten Sie "
+"die\r\n"
+"Standardfehlerausgabe um wie z.B.:\r\n"
+"programm 2> datei\r\n"
+"\r\n"
 
 msgid  "InfView - File: %s - Node: %s"
 msgstr "InfView - Datei: %s - Knoten: %s"
 
 msgid  "Open Info"
-msgstr "ôffne Info"
+msgstr "Info îffnen"
 
 msgid  "Searching ..."
-msgstr ""
+msgstr "Suche..."
 
 msgid  "Sorry can't find the string"
-msgstr "Sorry, konnte den Text nicht finden"
+msgstr "Sorry, kann den Text nicht finden"
+
+# unclear
 
 msgid  "Help Control"
 msgstr "Hilfe Kontrolle"
 
 msgid  "~U~p"
-msgstr "A~u~f"
+msgstr "~H~och"
 
 msgid  "Prev. ~H~ist."
-msgstr "Vorh. ~H~ist."
+msgstr "Vorh. ~V~erl."
 
 msgid  "Nodes ~L~ist"
-msgstr "Knoten ~L~iste"
+msgstr "Knoten~l~iste"
 
 msgid  "~B~ookmarks"
 msgstr "~L~esezeichen"
@@ -2154,19 +2177,19 @@ msgid  "~O~pen Info"
 msgstr "ô~f~fne Info"
 
 msgid  "H~i~de"
-msgstr "~V~erstecke"
+msgstr "~V~erbergen"
 
 msgid  "Hi~s~tory"
-msgstr "Hi~s~tory"
+msgstr "~V~erlauf"
 
 msgid  "Inf Find"
-msgstr "Inf finden"
+msgstr "Inf Suche"
 
 msgid  "In current ~t~opic"
-msgstr "~I~n aktuellem Thema"
+msgstr "Im aktuellen ~T~hema"
 
 msgid  "In the ~f~ile"
-msgstr "In der ~D~atei"
+msgstr "In der Datei"
 
 msgid  "In ~a~ll files"
 msgstr "In ~a~llen Dateien"
@@ -2175,10 +2198,10 @@ msgid  "Go To"
 msgstr "Gehe zu"
 
 msgid  "~N~ame of Node"
-msgstr "~N~ame des Knotens"
+msgstr "Knoten~n~ame"
 
 msgid  "Tag Table"
-msgstr "Tag Tabelle"
+msgstr "Markierungsliste"
 
 msgid  "~N~odes"
 msgstr "~K~noten"
@@ -2187,10 +2210,10 @@ msgid  "InfView Configuration"
 msgstr "InfView Konfiguration"
 
 msgid  "Hide '*~N~ote' word"
-msgstr "Verstecke '*~N~ode' Wort"
+msgstr "Verstecke `*~N~ode' Wort"
 
 msgid  "Hide real ~l~ink name"
-msgstr "Verstecke den richtigen ~L~ink-Name"
+msgstr "Verstecke ~L~inknamen"
 
 msgid  "InfView Bookmarks"
 msgstr "InfView Lesezeichen"
@@ -2199,41 +2222,41 @@ msgid  "~G~o to"
 msgstr "~G~ehe zu"
 
 msgid  "~M~arks"
-msgstr "~M~arkieren"
+msgstr "~M~arkierungen"
 
 msgid  "Attention !! this file is in DOS format, Do you want convert it?, "
 "Make a backup first !!"
-msgstr "Achtung !! Diese Datei is im DOS format. Wills Du sie "
-"konvertieren?Mache zuerst eine Sicherungskopie !!"
+msgstr "Achhtung !! Diese Datei ist im DOS Format. Wollen Sie sie umwandeln? "
+"(Erstellen Sie zuerst eine Kopie!)"
 
 msgid  "Error: can't find the Node info"
-msgstr "Fehler: Konnte den Info Knoten nicht finden"
+msgstr "Fehler: Kann Knoten info nicht finden"
 
 msgid  "Reading index table for: "
-msgstr ""
+msgstr "Lese Indextabelle fÅr: "
 
 msgid  "InfView"
-msgstr ""
+msgstr "InfView"
 
 msgid  "Attention can't open the help file."
 msgstr "Achtung! Konnte die Hilfedatei nicht îffnen."
 
 msgid  "Attention can't open the help file '%s'."
-msgstr "Achtung! Konnte die Hilfedatei '%s' nicht îffnen."
+msgstr "Achtung! Kann Hilfedatei `%s' nicht îffnen!"
 
 msgid  "\n"
 " Sorry I can't find this link (press ALT-F1).\n"
 msgstr "\n"
-" Sorry. Konnte diesen Link nicht finden (drÅcke ALT-F1).\n"
+" Sorry, kann diesen Link nicht finden (drÅcken Sie ALT-F1).\n"
 
 msgid  "Jump to function"
 msgstr "Gehe zu Funktion"
 
 msgid  "Hmmm ... I can't find any function, are you sure?"
-msgstr "Hmmm ... Ich kann keine Funktion finden. Bist Du sicher?"
+msgstr "Hmmm... Irgendwie kann ich hier keine Funktionen entdecken..."
 
 msgid  "Use a file with 1000 lines or more for that"
-msgstr "Benutze eine Datei mit mehr als 1000 Zeilen dafÅr"
+msgstr "Benutzen Sie eine Datei mit mehr als 1000 Zeilen dafÅr"
 
 msgid  "Speed: %f lines/second"
 msgstr "Geschwindigkeit: %f Zeilen/Sekunde"
@@ -2241,216 +2264,221 @@ msgstr "Geschwindigkeit: %f Zeilen/Sekunde"
 msgid  "Time: %f seconds\n"
 "Speed: %f lines/second\n"
 "%f chars/sec"
-msgstr ""
+msgstr "Zeit: %f Sekunden\n"
+"Geschwindigkeit: %f Zeilen/Sekunde\n"
+"%f Zeichen/Sek"
 
 msgid  "Time: %f seconds\n"
 "Speed: %f lines/second\n"
 "%5.2f%% Editor\n"
 "%f chars/sec"
-msgstr ""
+msgstr "Zeit: %f Sekunden\n"
+"Geschwindigkeit: %f Zeilen/Sek\n"
+"%5.2f%% Editor\n"
+"%f Zeichen/Sek"
 
 msgid  "No match found"
 msgstr "Keine öbereinstimmung gefunden"
 
 msgid  "Match found at line %d column %d."
-msgstr "öbereinstimmung in Zeile %d Spalte %d gefunden"
+msgstr "öbereinstimmung in Zeile %d, Spalte %d."
 
 msgid  "This file contains ASCII 0 values, all the characters after it in "
 "this line becomes invisible. Be careful."
-msgstr "Diese Datei enthÑlt ASCII 0 Werte, alle Zeichen danach in der "
-"Zeilewerden unsichtbar, sei vorsichtig"
+msgstr "Die Datei beinhaltet ASCII 0 Werte, alle Zeichen danach werden "
+"unsichtbar in der Zeile. Seien Sie vorsichtig."
 
 msgid  "Parsing file"
-msgstr ""
+msgstr "Analysiere Datei"
 
 msgid  "Unhandled syntax highlight"
-msgstr "Nicht behandelte Syntaxhervorhebung"
+msgstr "Unbehandelte Syntaxhervorhebung"
 
 msgid  "Unhandled undo"
-msgstr "Nicht behandelets Undo"
+msgstr "Unbehandeltes Undo!"
 
 msgid  "Unhandled redo"
-msgstr "Nicht behandeltes Redo"
+msgstr "Unbehandeltes Redo!"
 
 msgid  "Saved: %s (%ld bytes)."
 msgstr "Gespeichert: %s (%ld Byte)."
 
 msgid  "Stat failed."
-msgstr "Stat ist fehlgeschlagen."
+msgstr "`Stat' hhat versagt!"
 
 msgid  "Regular Expressions Options"
-msgstr "Optionen fÅr die Regularen AusdrÅcke"
+msgstr "Einstellungen fÅr RegulÑre AusdrÅcke"
 
 msgid  "RegEx style"
 msgstr "RegEx Stil"
 
 msgid  "~B~asic POSIX"
-msgstr "~G~rundlegend POSIX"
+msgstr "~E~infach POSIX"
 
 msgid  "~E~xtended POSIX"
-msgstr "Er~w~eitert POSIX"
+msgstr "~E~rweitertes POSIX"
 
 msgid  "~P~erl Compatible"
 msgstr "~P~erl kompatibel"
 
 msgid  "Replace text"
-msgstr "Ersetze Text"
+msgstr "Text ersetzen"
 
 msgid  "~N~ormal text"
-msgstr "~N~ormaler Text"
+msgstr "~n~ormaler Text"
 
 msgid  "~D~olar tags"
-msgstr "~D~ollar Tags"
+msgstr "~D~ollar-Markierungen"
 
 msgid  "Optimize"
-msgstr "Optimiere"
+msgstr "Optimieren"
 
 msgid  "~T~ry to use normal search"
-msgstr "~V~ersuche normale Suche"
+msgstr "Versuche ~n~ormale Suche"
 
 msgid  "E~v~er use RegEx"
-msgstr "~I~mmer RegEx benutzen"
+msgstr "Immer RegEx ~v~erwenden"
 
 msgid  "Options"
-msgstr "~O~ptionen"
+msgstr "Einstellungen"
 
 msgid  "Regular e~x~pressions"
-msgstr ""
+msgstr "RegulÑre Ausd~r~Åcke"
 
 msgid  "Only ~i~nside comments"
-msgstr ""
+msgstr "Nur innerhalb von Kommentaren"
 
 msgid  "Only o~u~tside comments"
-msgstr ""
+msgstr "Nur au·erhalb von Kommentaren"
 
 msgid  "~G~lobal"
 msgstr "~G~lobal"
 
 msgid  "~S~elected text"
-msgstr "~M~arkierter Text"
+msgstr "Ausge~w~Ñhlter Text"
 
 msgid  "Scope"
 msgstr "Bereich"
 
 msgid  "~F~rom cursor"
-msgstr "~V~om Cursor"
+msgstr "~A~b Cursor"
 
 msgid  "~E~ntire scope"
-msgstr "Ganzer ~B~ereich"
+msgstr "~G~anzer Bereich"
 
 msgid  "Origin"
-msgstr "Start"
+msgstr "Ursprung"
 
 msgid  "RegEx ~O~ps"
-msgstr ""
+msgstr "~O~ps ExpReg"
 
 msgid  "Or~i~gin"
-msgstr ""
+msgstr "Ursprun~g~"
 
 msgid  "Replace ~A~ll"
-msgstr "Alle e~r~setzen"
+msgstr "Alle ersetzen"
 
 msgid  "Goto Line"
 msgstr "Gehe zu Zeile"
 
 msgid  "Desired line"
-msgstr ""
+msgstr "GewÅnschte Zeile"
 
 msgid  "Local Options"
-msgstr "Lokale Optionen"
+msgstr "Lokale Einstellungen"
 
 msgid  "Options ~3~"
-msgstr ""
+msgstr "Einstellungen ~3~"
 
 msgid  "~O~verwrite"
-msgstr "öb~e~rschreiben"
+msgstr "ö~b~erschreiben"
 
 msgid  "~A~utoindent"
-msgstr "~A~utomatisches EinrÅcken"
+msgstr "~A~utoeinschub"
 
 msgid  "~U~se real tabs (ASCII 9)"
-msgstr ""
+msgstr "Ben~u~tze richtige Tabs (ASCII 9)"
 
 msgid  "~P~ersistent blocks"
 msgstr "~B~estÑndige Blîcke"
 
 msgid  "~I~ntelligent C indent"
-msgstr "~I~ntelligentes C einrÅcken"
+msgstr "~I~ntelligenter C-Einschub"
 
 msgid  "~C~olumn cursor"
-msgstr "Spaltencursor"
+msgstr "Spalten~c~ursor"
 
 msgid  "~R~ow cursor"
-msgstr "Zeilencursor"
+msgstr "~Z~eilencursor"
 
 msgid  "~M~atch pair highlight"
-msgstr "~K~lammerpaar hervorheben"
+msgstr "~K~lammernpaar hervorheben"
 
 msgid  "Match pair on the fly ~4~"
-msgstr ""
+msgstr "Passende Klammer online ~4~"
 
 msgid  "Tra~n~sparent Blocks"
-msgstr "Transparente Blîcke"
+msgstr "Tran~s~parente Blîcke"
 
 msgid  "Optimal ~F~ill"
 msgstr "Optimale ~F~Ållung"
 
 msgid  "~W~rap words"
-msgstr "~W~îrter umbrechen"
+msgstr "~W~ortumbruch"
 
 msgid  "S~e~e tabs"
-msgstr ""
+msgstr "Tabs s~e~hen"
 
 msgid  "Don't move inside ta~b~s"
-msgstr ""
+msgstr "Nicht innerhalb Ta~b~s bewegen"
 
 msgid  "Tab indents ~5~"
-msgstr ""
+msgstr "Tabulator rÅckt ein ~5~"
 
 msgid  "Off ~1~"
-msgstr ""
+msgstr "Aus ~1~"
 
 msgid  "C++ st~y~le"
-msgstr ""
+msgstr "C++ St~i~l"
 
 msgid  "Pa~s~cal style"
-msgstr "Pa~s~cal Stil"
+msgstr "Pascal ~S~til"
 
 msgid  "C~l~ipper style"
 msgstr "C~l~ipper Stil"
 
 msgid  "User ~d~efined"
-msgstr ""
+msgstr "Benutzer~d~efiniert"
 
 msgid  "Syntax ~H~ighlight"
 msgstr "Syntax~h~ervorhebung"
 
 msgid  "~T~ab size"
-msgstr "~T~abgrî·e"
+msgstr "~T~abulatorgrî·e"
 
 msgid  "Wrap column ~2~"
-msgstr ""
+msgstr "Spalten umbrechen ~2~"
 
 msgid  "Global Options"
-msgstr "Globale Optionen"
+msgstr "Globale Einstellungen"
 
 msgid  "~U~se tabs"
-msgstr "Benut~z~e Tabs"
+msgstr "Ben~u~tze Tabs"
 
 msgid  "Match pair on the fly ~1~"
-msgstr ""
+msgstr "Passende Klammer online ~1~"
 
 msgid  "~D~on't move the cursor on Paste"
-msgstr "Bewege nicht den Cursor bei Paste"
+msgstr "~C~ursor beim EinfÅgen nicht bewegen"
 
 msgid  "~S~croll Lock centers"
 msgstr "~S~croll Lock zentriert"
 
 msgid  "Wrap co~l~umn"
-msgstr ""
+msgstr "Spa~l~tenumbruch"
 
 msgid  "T~o~ all"
-msgstr "~F~År alle"
+msgstr "FÅr ~a~lle"
 
 msgid  "Search hit"
 msgstr "Suchtreffer"
@@ -2462,179 +2490,185 @@ msgid  "~N~o"
 msgstr "~N~ein"
 
 msgid  "~A~ll"
-msgstr "~A~lle"
+msgstr "~A~lles"
 
 msgid  "Export Options"
-msgstr ""
+msgstr "Export Optionen"
 
 msgid  "~F~ile name as title"
-msgstr ""
+msgstr "~D~ateiname als öberschrift"
 
 msgid  "Same ~b~ackground color as the editor"
-msgstr ""
+msgstr "Gleiche Hintergrund wie im ~E~ditor"
 
 msgid  "~M~onospacied font"
-msgstr ""
+msgstr "~M~onospaced Schrift"
 
 msgid  "Bo~l~d attribute"
-msgstr ""
+msgstr "~F~ettdruck"
 
 msgid  "Use ~c~olors"
-msgstr ""
+msgstr "Benutze ~F~arben"
 
 msgid  "~D~on't use colors"
-msgstr ""
+msgstr "Keine Farben verwen~d~en"
 
 msgid  "Pseudo Macros"
-msgstr ""
+msgstr "Pseudo Macros"
 
 msgid  "Arbitrary indent"
-msgstr ""
+msgstr "Eigener Einschub"
 
 msgid  "Indentation text"
-msgstr ""
+msgstr "Einschubtext"
 
 msgid  "Write to file"
-msgstr "Schreibe in Datei"
+msgstr "In Datei schreiben"
 
 msgid  "Read from file"
 msgstr "Lese aus Datei"
 
 msgid  " bytes selected, in "
-msgstr ""
+msgstr " Bytes ausgewÑhlt in "
 
 msgid  " lines"
-msgstr ""
+msgstr " Zeilen"
 
 msgid  "Line too long, cut it?"
-msgstr "Zeile zu lang, kÅrzen ?"
+msgstr "Zeile zu lang. Abschneiden?"
 
 msgid  "Line extremely long, can't handle it reliably, sorry"
-msgstr ""
+msgstr "Zeile ist extem lang. Kann Sie leider nicht zuverlÑssig handhaben."
 
 msgid  "This file isn't in disk!"
-msgstr "Diese Datei ist nicht auf der Platte!"
+msgstr "Diese Datei ist nicht auf Festplatte!"
 
 msgid  "The file is read-only, try to revert it?"
-msgstr "Die Datei ist schreibgeschÅtz, versuchen zu Ñndern?"
+msgstr "Diese Datei ist Nur-Lesen. éndern?"
 
 msgid  "Failed to revert the read-only status, you won't be able to "
 "overwrite this file"
-msgstr "Fehler beim zurÅcksetzen des Schreibschutzstatus, Du wirst diese "
-"Datei nicht Åberschreiben kînnen"
+msgstr "Konnte Nur-Lesen-Status nicht umkehren. Sie werden diese Datei nicht "
+"Åberschreiben kînnen"
 
 msgid  "This action doesn't have undo, are you sure?"
-msgstr "Diese Aktion hat kein Undo, bist Du sicher?"
+msgstr "Diese Operation hat kein `RÅckgÑngig'. Sind Sie sich sicher?"
 
 msgid  " already exist, overwrite?"
-msgstr ""
+msgstr " existiert bereits. öberschreiben?"
 
 msgid  " isn't a file, probably a device, go ahead?"
-msgstr ""
+msgstr " ist keine Datei -mîglicherweise ein GerÑt- fortsetzen?"
 
 msgid  "Can't make a back up file, continue saving?"
-msgstr ""
+msgstr "Konnte keine Sicherheitskopie erstellen. Trotzdem speichern?"
 
 msgid  "You can't paste a rectangle crossing the end of the file"
-msgstr "Du kannst kein Rechteck Åber das Dateiende hinaus markieren"
+msgstr "Sie kînnen kein Rechteck einfÅgen, das Åber das Dateiende hinaus "
+"geht"
 
 msgid  "No pseudo macros available"
-msgstr ""
+msgstr "Keine pseudo macros verfÅgbar"
 
 msgid  "You must install gzip to browse compressed files!"
-msgstr "Du mu·t gzip installieren um die komprimierten Dateien anzusehen!"
+msgstr "Sie mÅssen gzip installieren, um komprimierte Dateien einzusehen!"
 
 msgid  "Wrong file"
-msgstr "Falsche Datei"
+msgstr "Falsche Datei."
 
 msgid  "Wrong version"
 msgstr "Falsche Version"
 
 msgid  "Error while reading"
-msgstr "Fehler beim Lesen"
+msgstr "Fehler wÑhrend des Lesens"
 
 msgid  "Error while loading the keyboard binding"
-msgstr "Fehler beim Lesen der Tastaturbelegung"
+msgstr "Fehler beim Lesen der Tastaturkonfiguration"
 
 msgid  "You'll lose all the changes"
-msgstr ""
+msgstr "Sie werden alle énderungen verlieren"
 
 msgid  "Available"
-msgstr ""
+msgstr "VerfÅgbar"
 
 msgid  "What to do"
-msgstr ""
+msgstr "Was zu tun"
 
 msgid  "Action"
-msgstr ""
+msgstr "Aktion"
 
 msgid  "~D~isable"
-msgstr ""
+msgstr "~A~usschalten"
 
 msgid  "~E~nable"
-msgstr "~A~ktivieren"
+msgstr "~E~inschalten"
 
 msgid  "Associated value"
-msgstr ""
+msgstr "Verbundener Wert"
 
 msgid  "Value:"
-msgstr ""
+msgstr "Wert:"
 
 msgid  "Do you want to discard the changes?"
-msgstr ""
+msgstr "Wollen Sie die énderungen verwerfen?"
 
 msgid  "Settings"
-msgstr ""
+msgstr "Einstellungen"
 
 msgid  "Default global options"
-msgstr ""
+msgstr "Standardeinstellungen (global)"
 
 msgid  "~N~o SHL"
-msgstr ""
+msgstr "~K~ein SHL"
 
 msgid  "New user word"
-msgstr ""
+msgstr "Neues Benutzerwort"
 
 msgid  "Word:"
-msgstr ""
+msgstr "Wort:"
 
 msgid  "List of words"
-msgstr ""
+msgstr "Wortliste"
 
 msgid  "User words"
-msgstr ""
+msgstr "Benutzerwîrter"
 
 msgid  "\n"
 "Error! please run the editor from a valid directory\n"
 "\n"
-msgstr ""
+msgstr "\n"
+"Fehler! Bitte starten Sie den Editor aus einem gÅltigen Verzeichnis "
+"heraus\n"
+"\n"
 
 msgid  "Unknown"
-msgstr ""
+msgstr "Unbekannt"
 
 msgid  "Macro definition don't start with Trigger"
-msgstr "Makrodefinition beginnt nicht mit Trigger"
+msgstr "Makro Definition fÑngt nicht mit Trigger an"
 
 msgid  "Missing Trigger sequence or too short"
-msgstr "Fehlende Triggersequenz oder zu kurz"
+msgstr "Trigger Sequenz fehlt oder ist zu kurz"
 
 msgid  "Macro definition without mode keyword"
-msgstr "Makrodefinition ohne SchlÅsselwort"
+msgstr "Makro Definition ohne mode SchlÅsselwort"
 
 msgid  "Wrong mode definition in pseudo macro."
-msgstr "Schlechte Modedefinition im Pseudomakro"
+msgstr "Falsche Modusdefinition im Pseudo Makro."
 
 msgid  "Missing start in pseudo macro"
-msgstr "Fehlnder Start im Pseudomakro"
+msgstr "Anfang des pseudo macro fehlt"
 
 msgid  "Missing end in pseudo macro"
-msgstr "Fehlendes Ende im Pseudomakro"
+msgstr "Ende im pseudo macro fehlt"
 
 msgid  "Empty pseudo macro"
-msgstr "Leeres Pseudomakro"
+msgstr "Leeres Pseudo Macro"
 
 msgid  "Starting SDG:"
 msgstr "Starte SDG:"
+
+# unclear
 
 msgid  "Error while %s:"
 msgstr "Fehler wÑhrend %s:"
@@ -2643,10 +2677,10 @@ msgid  "(%d) %s in line %d"
 msgstr "(%d) %s in Zeile %d"
 
 msgid  "In section %s"
-msgstr "In Abschnitt %s"
+msgstr "In Sektion %s"
 
 msgid  "Error of type: %s"
-msgstr "Fehler vom Typ: %s"
+msgstr "Typfehler: %s"
 
 msgid  "Code: ...%s..."
 msgstr "Code: ...%s..."
@@ -2661,31 +2695,31 @@ msgid  "~F~ormat file (.frt)"
 msgstr "~F~ormatdatei (.frt)"
 
 msgid  "~I~ntermediate file"
-msgstr "~Z~wischendatei"
+msgstr "~T~emporÑrdatei"
 
 msgid  "~B~ase output (no extentions)"
-msgstr "~B~asis Ausgabe (keine Endung)"
+msgstr "Ausgabe (ohne Dateierweiterung)"
 
 msgid  "~D~irectory of formats"
-msgstr "~V~erzeichnisse der Formate"
+msgstr "~F~ormatverzeichnisse"
 
 msgid  "K~e~ep intermediate"
-msgstr ""
+msgstr "~T~emporÑrdatei behalten"
 
 msgid  "Regular expression error: %s"
-msgstr "RegulÑrer-Ausdruck-Fehler: %s"
+msgstr "Fehler im regulÑren Ausdruck: %s"
 
 msgid  "PCRE Exec error"
-msgstr "PCRE AusfÅhrungs-Fehler"
+msgstr "PCRE Exec Fehler"
 
 msgid  "Error in sLisp interpreter:"
-msgstr "Fehler im sLisp Interpreter:"
+msgstr "Fehler im sLisp öbersetzer:"
 
 msgid  "End of SLP"
 msgstr "Ende von SLP"
 
 msgid  "No macros defined"
-msgstr "Keine Makros definiert"
+msgstr "Keine macros definiert"
 
 msgid  "sLisp macros"
 msgstr "sLisp Makros"
@@ -2694,13 +2728,13 @@ msgid  "~M~acros"
 msgstr "~M~akros"
 
 msgid  "Key assignment"
-msgstr ""
+msgstr "Tasten zuweisen"
 
 msgid  "Accepting that you'll change the SET's editor behavior"
-msgstr "Diesem zustimmend, wirst Du die Arbeitsweise von SET's Editor Ñndern"
+msgstr "Wollen Sie die énderungen in SET's Verhalten beibehalten?"
 
 msgid  "Do you really want to discard the changes?"
-msgstr "Mîchtest Du wirklich die énderungen verwerfen?"
+msgstr "Wollen Sie die énderungen wirklich verwerfen?"
 
 msgid  "Sequence of keys"
 msgstr "Tastenfolge"
@@ -2710,159 +2744,160 @@ msgstr "Diese Taste ist schon benutzt, mîchtest Du sie ersetzen?"
 
 msgid  "This sequence is used for more than one key, delete these "
 "assignments first"
-msgstr ""
+msgstr "Diese Reihenfolge wird bereits fÅr mehr als eine Taste benutzt. "
+"Lîschen Sie diese Zuweisungen vorher"
 
 msgid  "Press a key"
-msgstr "DrÅcke eine Taste"
+msgstr "Eine Taste drÅcken"
 
 msgid  "Key selector"
-msgstr "Tastenauswahl"
+msgstr "Bitte eine Tasten drÅcken"
 
 msgid  "Macros"
 msgstr "Makros"
 
 msgid  "Commands"
-msgstr "Kommandos"
+msgstr "Befehle"
 
 msgid  "A command"
-msgstr "Ein Kommando"
+msgstr "Ein Befehl"
 
 msgid  "Scan Viewer"
-msgstr "Scan-Betrachter"
+msgstr "Scan Betrachter"
 
 msgid  "~O~k"
 msgstr "~O~k"
 
 msgid  "Alt keys settings"
-msgstr "Alt-Tasten Einstellungen"
+msgstr "Alt Tasteneinstellungen"
 
 msgid  "~L~eft Alt"
-msgstr "~L~inks Alt"
+msgstr "~L~inke Alt"
 
 msgid  "~R~ight Alt"
-msgstr "~R~echts Alt"
+msgstr "~R~echte Alt"
 
 msgid  "~B~oth Alt"
 msgstr "~B~eide Alt"
 
 msgid  "~K~eys used by the menues, etc."
-msgstr "~T~asten die von MenÅs usw. benutzt werden"
+msgstr "~T~asten von MenÅs, etc. benutzt"
 
 msgid  "Key Pad behavior"
-msgstr "Verhalten der numerischen Tastatur"
+msgstr "KeyPad Verhalten"
 
 msgid  "Mantain the ~B~IOS default"
-msgstr "Benutze den BIOS-Standard"
+msgstr "Behalte ~B~IOS Standard"
 
 msgid  "Ever interpret shift+arrow as ~m~ovement"
-msgstr "Interpretiere immer Shift-Pfeil als ~B~ewegung"
+msgstr "U~m~schalt+Pfeil immer als Bewegung"
 
 msgid  "Behavior"
-msgstr "Funktionsweise"
+msgstr "Verhalten"
 
 msgid  "Keyboard setup"
-msgstr ""
+msgstr "Tastatur Setup"
 
 msgid  "~U~S keyboard and most others"
-msgstr ""
+msgstr "~U~S Tastatur und meiste andere"
 
 msgid  "~G~reek keyboard (CP 737)"
-msgstr ""
+msgstr "~G~riechische Tastatur (CP 737)"
 
 msgid  "Type of keyboard"
-msgstr ""
+msgstr "Tastaturtyp"
 
 msgid  "Page: %d Lines: %d to %d  Date: %s  Time: %s%s"
-msgstr ""
+msgstr "Seite: %d Zeilen: %d bis %d  Datum: %s  Zeit: %s%s"
 
 msgid  "* Source: %s * Title: %s * Author: %s\n"
 "\n"
-msgstr "* Quelle: %s * Titel: %s * Autor: %s\n"
+msgstr "* Quelle: %s * Titel: %s * Author: %s\n"
 "\n"
 
 msgid  "Starting printing module"
-msgstr "Starte das Druck-Modul"
+msgstr "Starte Drucken-Modus"
 
 msgid  "Can't open output file for printing"
-msgstr "Konnte die Ausgabedatei nicht zum Drucken îffnen"
+msgstr "Konnte Ausgabedatei nicht zum Drucken îffnen"
 
 msgid  "The header is too large, reduce the title and/or author lengths"
-msgstr "Der Kopf ist zu gro·, reduziere die Titel und/oder die Autor-LÑnge"
+msgstr "Der Kopf ist zu gro·, vermindern Sie die Titel-/AuthorlÑnge"
 
 msgid  "Header length: %d Columns: %d"
 msgstr "KopflÑnge: %d Spalten: %d"
 
 msgid  "Processed: %d lines, total printed: %d lines"
-msgstr "Verarbeited: %d Zeilen, total gedruckt: %d Zeilen"
+msgstr "Verarbeitet: %d Zeilen, insgesamt gedruckt %d Zeilen"
 
 msgid  "Printer Setup"
-msgstr "Druckereinrichtung"
+msgstr "Druckereinstellungen"
 
 msgid  "Total ~l~ines per page:"
-msgstr "Anzahl Zei~l~en pro Seite (total):"
+msgstr "Gesamte Zeilen pro Seite:"
 
 msgid  "Columns ~w~/o margin:"
-msgstr "Spalten ~o~hne Rand"
+msgstr "Spalten ~o~hne Rand:"
 
 msgid  "Left ~m~argin:"
-msgstr "Linker ~R~and"
+msgstr "Linker ~R~and:"
 
 msgid  "Print line numbers"
-msgstr "Drucke Zeilennummern"
+msgstr "Zeilennummern drucken"
 
 msgid  "~T~ime format:"
-msgstr "~Z~eitformat:"
+msgstr "Zei~t~format:"
 
 msgid  "~D~ate format:"
-msgstr "~D~atumsformat"
+msgstr "~D~atumformat:"
 
 msgid  "T~i~tle"
-msgstr ""
+msgstr "T~i~tel"
 
 msgid  "~A~uthor"
-msgstr ""
+msgstr "~A~uthor"
 
 msgid  "Before ~h~eading"
-msgstr ""
+msgstr "Vor öbersc~h~rift"
 
 msgid  "A~f~ter heading"
-msgstr ""
+msgstr "Nach öberschri~f~t"
 
 msgid  "~B~efore footer"
-msgstr ""
+msgstr "~V~or Fu·"
 
 msgid  "After foote~r~"
-msgstr ""
+msgstr "Nach ~F~u·note"
 
 msgid  "~P~rinter initialization"
-msgstr ""
+msgstr "D~r~uckereinstellungen"
 
 msgid  "O~u~tput file"
-msgstr ""
+msgstr "A~u~sgabedatei"
 
 msgid  "Output is a de~v~ice/file"
-msgstr ""
+msgstr "Ausgabe ist ein Ger~Ñ~t/Datei"
 
 msgid  "Output i~s~ a program"
-msgstr ""
+msgstr "Ausgabe ist ein Programm"
 
 msgid  "~C~ancel"
-msgstr "Abbru~c~h"
+msgstr "~A~bbruch"
 
 msgid  "Ho~m~e"
-msgstr "Ho~m~e"
+msgstr "~S~tart"
 
 msgid  "~T~ree"
-msgstr ""
+msgstr "~B~aum"
 
 msgid  "~I~nsert"
-msgstr "E~i~nfÅgen"
+msgstr "~E~infÅgen"
 
 msgid  "Command~s~"
-msgstr "Kommando~s~"
+msgstr "Befehl~e~"
 
 msgid  "Assignmen~t~"
-msgstr ""
+msgstr "Zuweisun~g~"
 
 msgid  "You must type a value here"
 msgstr "Du mu·t hier einen Wert eingeben"
@@ -3031,13 +3066,13 @@ msgid  "Function call stack"
 msgstr "Funktionsaufrufstapel"
 
 msgid  "invalid number"
-msgstr ""
+msgstr "ungÅltige Zahl"
 
 msgid  "Change register value"
 msgstr "VerÑnder Registerwert"
 
 msgid  "~I~nspect"
-msgstr ""
+msgstr "~I~nspizieren"
 
 msgid  "Write block to file"
 msgstr "Schreibe Block in Datei"
@@ -3109,10 +3144,10 @@ msgid  "about RH~G~DB"
 msgstr "öber RH~G~DB"
 
 msgid  "~Q~uit"
-msgstr "~E~nde"
+msgstr "~V~erlassen"
 
 msgid  "~I~nspect data"
-msgstr ""
+msgstr "Daten ~i~nspizieren"
 
 msgid  "~D~irectories for sources"
 msgstr "~V~erzeichnisse fÅr Quelldateien"
@@ -3159,9 +3194,6 @@ msgstr "mit Turbo Vision Schnittstelle"
 msgid  "based on GDB "
 msgstr "basierend auf GDB"
 
-msgid  "Copyright (C) by Robert Hîhne, 1996-1998"
-msgstr "Alle Rechte bei Robert Hîhne, 1996-1998"
-
 msgid  "All windows on the desktop"
 msgstr "Alle Fenster auf der ArbeitsflÑche"
 
@@ -3202,7 +3234,7 @@ msgid  " Hex "
 msgstr " Hex "
 
 msgid  "ASCII Chart"
-msgstr "ASCII Diagramm"
+msgstr "ASCII Tabelle"
 
 msgid  "January"
 msgstr "Januar"

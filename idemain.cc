@@ -1329,9 +1329,11 @@ void IDE::handleEvent(TEvent & event)
         case cmSelectProject:
         {
           TDependency *dep = (TDependency *)event.message.infoPtr;
+          char *pname = string_dup(FName(dep->source_name));
           AddToStack();
           CloseProject();
-          OpenProject(FName(dep->source_name));
+          OpenProject(pname);
+          string_free(pname);
           clearEvent(event);
           break;
         }

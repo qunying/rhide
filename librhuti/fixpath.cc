@@ -7,6 +7,7 @@
 
 #include <unistd.h>
 #include <string.h>
+#include <limits.h>
 
 /* 
    Here now the very usefull function _fixpath() from DJGPP's
@@ -43,7 +44,7 @@ __fixpath(const char *in, char *out)
   /* Convert relative path to absolute */
   if (!is_slash(*ip))
   {
-    getwd(op);
+    getcwd(op, PATH_MAX);
     op += strlen(op);
   }
 

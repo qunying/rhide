@@ -418,9 +418,9 @@ _additional_po_files:=$(wildcard $(REAL_TVSRC)/*.cc)\
 	$(wildcard $(REAL_SETSRC)/settvuti/*.cc)
 
 check_perms:
-	find $(srcdir) -not -type d | xargs chmod 644
-	find $(srcdir) -type d -o -name "*.exe" | xargs chmod 755
-	chmod 755 $(srcdir)/configure $(srcdir)/rhidex $(srcdir)/rhgdbx \
+	-find $(srcdir) -not -type d | xargs chmod 644
+	-find $(srcdir) -type d -o -name "*.exe" | xargs chmod 755
+	-chmod 755 $(srcdir)/configure $(srcdir)/rhidex $(srcdir)/rhgdbx \
 	$(srcdir)/config.guess $(srcdir)/config.sub \
 	$(srcdir)/configure.sub $(srcdir)/install.sh
 

@@ -1,10 +1,7 @@
 #
-#define abs_path
-#cd $(1) pwd
-#endef
-abs_path=$(shell sh -c "cd $(1) && pwd")
-#abs_path=$(1)
-first_dir=$(subst $(2),,$(word 1,$(foreach dir,$(1),$(wildcard $(dir)$(2)))))
+abs_path=$(shell sh -c "cd $(arg3) && pwd")
+
+first_dir=$(subst $(arg2),,$(word 1,$(foreach dir,$($(arg1)),$(wildcard $(dir)$(arg2)))))
 
 RHIDE_OS_=$(RHIDE_OS)
 ifeq ($(strip $(RHIDE_OS_)),)
@@ -39,28 +36,33 @@ SEARCH_SETSRC_Linux=/usr/local/src/setedit \
 SEARCH_GDBSRC_DJGPP=$(DJDIR)/gnu/gdb-5.0 \
 	$(RHIDESRC)/../gdb-5.0
 
-SEARCH_SETSRC_Linux=/usr/local/src/gdb-5.0 \
-	/usr/src/gdb-5.0 \
+SEARCH_GDBSRC_Linux=/usr/local/src/gdb-5.0 \
 	$(RHIDESRC)/../gdb-5.0
 
 TVSRC_=$(TVSRC)
 ifeq ($(strip $(TVSRC_)),)
-override TVSRC_=$(call abs_path,$(call first_dir,\
-	$(SEARCH_TVSRC_$(RHIDE_OS)),/include/tv.h))
+arg2=/include/tv.h
+arg1=SEARCH_TVSRC_$(RHIDE_OS)
+arg3=$(first_dir)
+override TVSRC_=$(abs_path)
 endif
 override TVSRC:=$(TVSRC_)
 
 SETSRC_=$(SETSRC)
 ifeq ($(strip $(SETSRC_)),)
-override SETSRC_=$(call abs_path,$(call first_dir,\
-	$(SEARCH_SETSRC_$(RHIDE_OS)),/include/ceditor.h))
+arg2=/include/ceditor.h
+arg1=SEARCH_SETSRC_$(RHIDE_OS)
+arg3=$(first_dir)
+override SETSRC_=$(abs_path)
 endif
 override SETSRC:=$(SETSRC_)
 
 GDB_SRC_=$(GDB_SRC)
 ifeq ($(strip $(GDB_SRC_)),)
-override GDB_SRC_=$(call abs_path,$(call first_dir,\
-	$(SEARCH_GDBSRC_$(RHIDE_OS)),/gdb/gdbtypes.h))
+arg2=/gdb/gdbtypes.h
+arg1=SEARCH_GDBSRC_$(RHIDE_OS)
+arg3=$(first_dir)
+override GDB_SRC_=$(abs_path)
 endif
 override GDB_SRC:=$(GDB_SRC_)
 

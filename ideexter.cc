@@ -53,7 +53,7 @@ void GDB()
 static char *_read_buffer = NULL;
 static int _read_buffer_size = 0;
 static int _read_buffer_len = 0;
-static char _read_buffer_char;
+static int _read_buffer_char;
 
 #define RESIZE() \
 do {\
@@ -202,4 +202,46 @@ void GPROF()
   string_free(cmd);
 }
 
+void RunExternalProgram(const char *program, int show_stderr, int show_stdout)
+{
+  TMsgCollection *msgs = NULL;
+  char *tmp = string_dup(_("executing: "));
+  string_cat(tmp, program);
+  show_message(tmp, NULL, 0, 0, 2);
+  RunProgram(program, True, True, False);
+  if (show_stderr)
+  {
+    if (!msgs)
+      msgs = new TMsgCollection();
+    msgs->insert(new MsgRec(NULL, _("Output to stderr:")));
+    char *buffer;
+    FILE *f;
+    f = fopen(cpp_errname,"r");
+    while ((buffer = GetLine(f)) != NULL)
+    {
+      msgs->insert(new MsgRec(NULL,buffer));
+    }
+    fclose(f);
+  }
+  if (show_stdout)
+  {
+    if (!msgs)
+      msgs = new TMsgCollection();
+    msgs->insert(new MsgRec(NULL, _("Output to stdout:")));
+    char *buffer;
+    FILE *f;
+    f = fopen(cpp_outname,"r");
+    while ((buffer = GetLine(f)) != NULL)
+    {
+      msgs->insert(new MsgRec(NULL,buffer));
+    }
+    fclose(f);
+  }
+  if (!debug_tempfiles)
+  {
+    remove(cpp_outname);
+    remove(cpp_errname);
+  }
+  if (msgs) ShowMessages(msgs,False);
+}
 

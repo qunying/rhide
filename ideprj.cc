@@ -64,6 +64,12 @@
   project file */
 __link ( RIDEEditWindow )
 
+#ifdef __DJGPP__
+#define RHIDE_OPTIONS_NAME "rh_opt"
+#else
+#define RHIDE_OPTIONS_NAME ".rh_opt"
+#endif
+
 TProjectWindow *project_window;
 static char *dskname;
 
@@ -824,37 +830,36 @@ static void SetGlobalOptions()
 static int TryStandardProject(const char *dir,const char *name,
                               char *& desktopname,char *&projectname)
 {
-  string_dup(desktopname,dir);
-  string_cat(desktopname,name);
-  string_dup(projectname,desktopname);
-  string_cat(desktopname,DESKTOP_EXT);
-  string_cat(projectname,PROJECT_EXT);
+  string_free(desktopname);
+  string_free(projectname);
+  string_cat(desktopname, dir, "/", name, DESKTOP_EXT, NULL);
+  string_cat(projectname, dir, "/", name, PROJECT_EXT, NULL);
   return __file_exists(projectname);
 }
 
+static char *standard_project_name = NULL;
+
 static Boolean OpenStandardProject(const char *prjname,Boolean with_desktop = True)
 {
-  char *dir,*tmp;
+  char *dir = NULL, *tmp = NULL;
 #ifdef INTERNAL_DEBUGGER
   DeleteAllWatches();
   DeleteAllBreakPoints();
 #endif
-  if (!TryStandardProject(RHIDE_DIR,RHIDE_NAME,tmp,dir))
-  {
-    char *_dir = getenv("DJDIR");
-    if (_dir)
-    {
-      char *__dir;
-      string_dup(__dir,_dir);
-      string_cat(__dir,"/bin/");
-      string_free(tmp);
-      string_free(dir);
-      TryStandardProject(__dir,"rhide",tmp,dir);
-      string_free(__dir);
-    }
-  }
+  int found = 0;
+  const char *try_dir;
+  try_dir = getenv("HOME");
+  if (!found && try_dir)
+    found = TryStandardProject(try_dir, RHIDE_OPTIONS_NAME, tmp, dir);
+  try_dir = getenv("DJDIR");
+  if (!found && try_dir)
+    found = TryStandardProject(try_dir, RHIDE_OPTIONS_NAME, tmp, dir);
+  string_free(standard_project_name);
+  string_free(dskname);
   if ((project = ReadProject(dir)) != NULL)
   {
+    standard_project_name = string_dup(dir);
+    dskname = string_dup(tmp);
     if (with_desktop == True)
     {
       ifpstream *idfile;
@@ -901,6 +906,9 @@ static Boolean OpenStandardProject(const char *prjname,Boolean with_desktop = Tr
   }
   string_free(tmp);
   string_free(dir);
+  if (!project)
+    TryStandardProject(getenv("HOME"), RHIDE_OPTIONS_NAME,
+                       dskname, standard_project_name);
   return False;
 }
 
@@ -1129,8 +1137,14 @@ void ResetProjectStack()
 
 void SaveProject()
 {
-  if (!project_name) return;
-  SaveProject(project, project_name);
+  if (!project_name)
+  {
+    if (!standard_project_name)
+      return;
+    SaveProject(project, standard_project_name);
+  }
+  else
+    SaveProject(project, project_name);
   if (stack_count == 0)
   {
     ofpstream *dfile;

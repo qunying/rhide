@@ -413,10 +413,10 @@ static char *default_variables[] = {
  "$(RHIDE_STANDARD_INCLUDES_$(RHIDE_OS))",
 
  "RHIDE_CONFIG_DIRS_DJGPP",
- ". $(RHIDE_SHARE) $(HOME) $(DJDIR)/share/rhide",
+ ". $(RHIDE_SHARE) $(GET_HOME) $(DJDIR)/share/rhide",
 
  "RHIDE_CONFIG_DIRS_Linux",
- ". $(RHIDE_SHARE) $(HOME) /usr/local/share/rhide /usr/share/rhide\
+ ". $(RHIDE_SHARE) $(GET_HOME) /usr/local/share/rhide /usr/share/rhide\
   /local/share/rhide /share/rhide",
 
  "RHIDE_CONFIG_DIRS",
@@ -556,6 +556,8 @@ TF(PROJECT_ITEMS);
 TF(DEFAULT_MASK);
 TF(RHIDE_BIN_DIR);
 TF(PASCAL_TYPE);
+TF(GET_HOME);
+TF(make_GET_HOME);
 
 static _rhide_tokens rhide_tokens[] =
 {
@@ -592,9 +594,26 @@ static _rhide_tokens rhide_tokens[] =
   SF(DEFAULT_MASK,NULL),
   SF(RHIDE_BIN_DIR,NULL),
   SF(PASCAL_TYPE,NULL),
+  SF(GET_HOME,rhide_token_make_GET_HOME),
   {NULL,0,NULL,NULL}
 #undef SF
 };
+
+TF(make_GET_HOME)
+{
+  return string_dup("$(HOME)");
+}
+
+TF(GET_HOME)
+{
+  char *tmp = ExpandSpec("$(HOME)");
+  char *c = NULL;
+  if (*tmp)
+    c = tmp+strlen(tmp)-1;
+  if (c && ((*c == '/') || (*c == '\\')))
+    *c = 0;
+  return tmp;
+}
 
 TF(PASCAL_TYPE)
 {

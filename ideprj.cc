@@ -847,13 +847,15 @@ static Boolean OpenStandardProject(const char *prjname,Boolean with_desktop = Tr
   DeleteAllBreakPoints();
 #endif
   int found = 0;
-  const char *try_dir;
-  try_dir = getenv("HOME");
-  if (!found && try_dir)
+  char *try_dir;
+  try_dir = expand_rhide_spec("$(GET_HOME)");
+  if (!found && *try_dir)
     found = TryStandardProject(try_dir, RHIDE_OPTIONS_NAME, tmp, dir);
-  try_dir = getenv("DJDIR");
-  if (!found && try_dir)
+  string_free(try_dir);
+  try_dir = expand_rhide_spec("$(DJDIR)");
+  if (!found && *try_dir)
     found = TryStandardProject(try_dir, RHIDE_OPTIONS_NAME, tmp, dir);
+  string_free(try_dir);
   string_free(standard_project_name);
   string_free(dskname);
   if ((project = ReadProject(dir)) != NULL)
@@ -907,8 +909,12 @@ static Boolean OpenStandardProject(const char *prjname,Boolean with_desktop = Tr
   string_free(tmp);
   string_free(dir);
   if (!project)
-    TryStandardProject(getenv("HOME"), RHIDE_OPTIONS_NAME,
+  {
+    try_dir = expand_rhide_spec("$(GET_HOME)");
+    TryStandardProject(try_dir, RHIDE_OPTIONS_NAME,
                        dskname, standard_project_name);
+    string_free(try_dir);
+  }
   return False;
 }
 

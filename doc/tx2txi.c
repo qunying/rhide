@@ -294,9 +294,12 @@ scan_file()
         FILE *ifile = inf;
 
         *fend = 0;
-        inf = fopen(fstart, "rt");
-        scan_file();
-        fclose(inf);
+        find_file(fstart, &inf);
+        if (inf != NULL)
+        {
+          scan_file();
+          fclose(inf);
+        }
         inf = ifile;
         continue;
       }

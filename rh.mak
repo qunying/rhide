@@ -77,7 +77,7 @@ PROJECT_ITEMS=copyrite.gpr doc/htmlspl.gpr doc/tx2txi.gpr gpr2mak.gpr\
 	librhgdb/test/mygdb.gpr po/msgcat.gpr rhgdb/rhgdb.gpr rhide.gpr\
 	rhide_.gpr
 DEFAULT_MASK=*.gpr
-RHIDE_BIN_DIR=d:/obj/rhide
+RHIDE_BIN_DIR=c:/obj/rhide
 PASCAL_TYPE=GPC
 GET_HOME=$(HOME)
 CLEAN_FILES=$(MAIN_TARGET) $(OBJFILES)
@@ -316,9 +316,7 @@ RHIDE_OS_LIBS_DJGPP_rhgdb.exe=dbg
 RHIDE_OS_LIBS_DJGPP=$(RHIDE_OS_LIBS_DJGPP_$(MAIN_TARGET))
 RHIDE_OS_LIBS=$(PCRE_LIB_$(RHIDE_OS)) $(INTL_LIB_$(RHIDE_OS))\
 	$(RHIDE_OS_LIBS_$(RHIDE_OS))
-RHIDE_COMPILE_LINK=$(RHIDE_LD) $(RHIDE_LIBDIRS) $(C_EXTRA_FLAGS) -o\
-	$(OUTFILE) $(OBJFILES) $(LIBRARIES) $(LDFLAGS) $(RHIDE_LDFLAGS)\
-	$(RHIDE_LIBS) $(SETOBJ)/easydiag.a -lrhtv
+RHIDE_LIBS+=$(SETOBJ)/easydiag.a -lrhtv
 SET_FILES=$(DJDIR)/share/setedit
 RHIDE_STDINC_C_$(RHIDE_OS)=/usr/include /usr/local/include
 RHIDE_STDINC_C_DJGPP=/usr/include /usr/local/include
@@ -355,9 +353,7 @@ RHIDE_OS_LIBS_DJGPP_rhgdb.exe=dbg
 RHIDE_OS_LIBS_DJGPP=$(RHIDE_OS_LIBS_DJGPP_$(MAIN_TARGET))
 RHIDE_OS_LIBS=$(PCRE_LIB_$(RHIDE_OS)) $(INTL_LIB_$(RHIDE_OS))\
 	$(RHIDE_OS_LIBS_$(RHIDE_OS))
-RHIDE_COMPILE_LINK=$(RHIDE_LD) $(RHIDE_LIBDIRS) $(C_EXTRA_FLAGS) -o\
-	$(OUTFILE) $(OBJFILES) $(LIBRARIES) $(LDFLAGS) $(RHIDE_LDFLAGS)\
-	$(RHIDE_LIBS) $(SETOBJ)/easydiag.a -lrhtv
+RHIDE_LIBS+=$(SETOBJ)/easydiag.a -lrhtv
 SET_FILES=$(DJDIR)/share/setedit
 %.o: %.c
 	$(RHIDE_COMPILE.c.o)

@@ -1,15 +1,6 @@
 # Copyright (C) 1996-2001 Robert H”hne, see COPYING.RH for details 
 # This file is part of RHIDE. 
 # gpr2mak -d -r- -o - libide.gpr
-ifeq ($(strip $(RHIDESRC)),)
-RHIDESRC=s:/rho/rhide
-endif
-ifeq ($(strip $(SETSRC)),)
-SETSRC=g:/DJGPP/contrib/setedit
-endif
-ifeq ($(strip $(TVSRC)),)
-TVSRC=g:/DJGPP/contrib/tvision
-endif
 vpath_src=$(RHIDESRC)/libide
 vpath %.c $(vpath_src)
 vpath %.cc $(vpath_src)
@@ -97,7 +88,7 @@ PROJECT_ITEMS=commands.cc ideclass.cc names/names.gpr stream/stream.gpr\
 	tideedit.cc tidefile.cc toptions.cc tprjlist.cc tprjwind.cc\
 	tproject.cc
 DEFAULT_MASK=*.[cghmps]*
-RHIDE_BIN_DIR=d:/obj/rhide
+RHIDE_BIN_DIR=c:/obj/rhide
 PASCAL_TYPE=GPC
 GET_HOME=$(HOME)
 CLEAN_FILES=$(MAIN_TARGET) $(OBJFILES)
@@ -433,7 +424,7 @@ NO_LINK=
 LINK_FILES=$(filter-out $(NO_LINK),$(DEPS_0))
 libide.a:: $(DEPS_0)
 	$(RHIDE_COMPILE_ARCHIVE)
-DEPS_1=commands.cc idecomma.h libide.h rhutils.h libtvuti.h tvutilfu.h
+DEPS_1=commands.cc
 commands.o:: $(DEPS_1)
 	$(RHIDE_COMPILE.cc.o)
 DEPS_2=ideclass.cc ideenums.h idefunct.h libide.h libtvuti.h
@@ -459,7 +450,7 @@ DEPS_5=tdepende.cc ideenums.h libide.h tdepende.h tfname.h rhutils.h\
 	libtvuti.h tparamli.h
 tdepende.o:: $(DEPS_5)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_6=tflagcol.cc libide.h tflagcol.h tflagent.h rhutils.h
+DEPS_6=tflagcol.cc libide.h tflagcol.h tflagent.h rhutils.h libtvuti.h
 tflagcol.o:: $(DEPS_6)
 	$(RHIDE_COMPILE.cc.o)
 DEPS_7=tflagent.cc libide.h tflagent.h rhutils.h libtvuti.h tvutilfu.h
@@ -469,7 +460,7 @@ DEPS_8=tflaglis.cc idecomma.h libide.h tflagcol.h tflagent.h tflaglis.h\
 	rhutils.h libtvuti.h
 tflaglis.o:: $(DEPS_8)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_9=tfname.cc libide.h tfname.h rhutils.h
+DEPS_9=tfname.cc libide.h tfname.h rhutils.h libtvuti.h
 tfname.o:: $(DEPS_9)
 	$(RHIDE_COMPILE.cc.o)
 DEPS_10=tideedit.cc idecomma.h libide.h tideedit.h tidefile.h rhutils.h\

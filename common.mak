@@ -344,7 +344,7 @@ ifneq ($(SUBDIR_TARGET),)
 install:: $(addsuffix .sub,$(subdirs))
 endif
 
-install:: install.data install.info install.doc install.bin
+install:: all install.data install.info install.doc install.bin
 
 $(copyrite.exe):: $(RHIDESRC)/copyrite.c
 	gcc -o $@ -s -O $<

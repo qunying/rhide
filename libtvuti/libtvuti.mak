@@ -1,12 +1,6 @@
 # Copyright (C) 1996-2001 Robert H”hne, see COPYING.RH for details 
 # This file is part of RHIDE. 
 # gpr2mak -d -r- -o - libtvuti.gpr
-ifeq ($(strip $(RHIDESRC)),)
-RHIDESRC=s:/rho/rhide
-endif
-ifeq ($(strip $(TVSRC)),)
-TVSRC=g:/DJGPP/contrib/tvision
-endif
 vpath_src=$(RHIDESRC)/libtvuti
 vpath %.c $(vpath_src)
 vpath %.cc $(vpath_src)
@@ -90,7 +84,7 @@ PROJECT_ITEMS=bigmessa.cc cmd.cc commands.cc editdirl.cc editpara.cc\
 	tmemstrm.cc tmsgcoll.cc tmsglist.cc tparamli.cc tscollec.cc\
 	twindowl.cc windowli.cc
 DEFAULT_MASK=*.[cgh]*
-RHIDE_BIN_DIR=d:/obj/rhide
+RHIDE_BIN_DIR=c:/obj/rhide
 PASCAL_TYPE=GPC
 GET_HOME=$(HOME)
 CLEAN_FILES=$(MAIN_TARGET) $(OBJFILES)

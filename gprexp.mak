@@ -1,21 +1,6 @@
 # Copyright (C) 1996-2001 Robert H”hne, see COPYING.RH for details 
 # This file is part of RHIDE. 
 # gpr2mak -d -r- -o - gprexp.gpr
-ifeq ($(strip $(RHIDESRC)),)
-RHIDESRC=s:/rho/rhide
-endif
-ifeq ($(strip $(SETOBJ)),)
-SETOBJ=g:/DJGPP/contrib/setedit/makes
-endif
-ifeq ($(strip $(SETSRC)),)
-SETSRC=g:/DJGPP/contrib/setedit
-endif
-ifeq ($(strip $(TVOBJ)),)
-TVOBJ=g:/DJGPP/contrib/tvision/djgpp
-endif
-ifeq ($(strip $(TVSRC)),)
-TVSRC=g:/DJGPP/contrib/tvision
-endif
 vpath_src=$(RHIDESRC)
 vpath %.c $(vpath_src)
 vpath %.cc $(vpath_src)
@@ -96,7 +81,7 @@ PROJECT_ITEMS=gprexp.cc idedefau.cc ideenv.cc ideflags.cc idemak.cc\
 	idespec.cc idestrm.cc idesupp.cc ideutil.cc ideversi.cc\
 	libide/libide.gpr librhuti/librhuti.gpr libtvuti/libtvuti.gpr
 DEFAULT_MASK=*.[cghspm]*
-RHIDE_BIN_DIR=d:/obj/rhide
+RHIDE_BIN_DIR=c:/obj/rhide
 PASCAL_TYPE=GPC
 GET_HOME=$(HOME)
 CLEAN_FILES=$(MAIN_TARGET) $(OBJFILES)
@@ -335,9 +320,7 @@ RHIDE_OS_LIBS_DJGPP_rhgdb.exe=dbg
 RHIDE_OS_LIBS_DJGPP=$(RHIDE_OS_LIBS_DJGPP_$(MAIN_TARGET))
 RHIDE_OS_LIBS=$(PCRE_LIB_$(RHIDE_OS)) $(INTL_LIB_$(RHIDE_OS))\
 	$(RHIDE_OS_LIBS_$(RHIDE_OS))
-RHIDE_COMPILE_LINK=$(RHIDE_LD) $(RHIDE_LIBDIRS) $(C_EXTRA_FLAGS) -o\
-	$(OUTFILE) $(OBJFILES) $(LIBRARIES) $(LDFLAGS) $(RHIDE_LDFLAGS)\
-	$(RHIDE_LIBS) $(SETOBJ)/easydiag.a -lrhtv
+RHIDE_LIBS+=$(SETOBJ)/easydiag.a -lrhtv
 SET_FILES=$(DJDIR)/share/setedit
 RHIDE_STDINC_C_$(RHIDE_OS)=/usr/include /usr/local/include
 RHIDE_STDINC_C_DJGPP=/usr/include /usr/local/include
@@ -374,9 +357,7 @@ RHIDE_OS_LIBS_DJGPP_rhgdb.exe=dbg
 RHIDE_OS_LIBS_DJGPP=$(RHIDE_OS_LIBS_DJGPP_$(MAIN_TARGET))
 RHIDE_OS_LIBS=$(PCRE_LIB_$(RHIDE_OS)) $(INTL_LIB_$(RHIDE_OS))\
 	$(RHIDE_OS_LIBS_$(RHIDE_OS))
-RHIDE_COMPILE_LINK=$(RHIDE_LD) $(RHIDE_LIBDIRS) $(C_EXTRA_FLAGS) -o\
-	$(OUTFILE) $(OBJFILES) $(LIBRARIES) $(LDFLAGS) $(RHIDE_LDFLAGS)\
-	$(RHIDE_LIBS) $(SETOBJ)/easydiag.a -lrhtv
+RHIDE_LIBS+=$(SETOBJ)/easydiag.a -lrhtv
 SET_FILES=$(DJDIR)/share/setedit
 %.o: %.c
 	$(RHIDE_COMPILE.c.o)
@@ -466,7 +447,7 @@ LINK_FILES=$(filter-out $(NO_LINK),$(DEPS_0))
 gprexp.exe:: $(DEPS_0)
 	$(RHIDE_COMPILE_LINK)
 DEPS_1=gprexp.cc rhide.h ideenums.h libide.h tdepende.h tfname.h toptions.h\
-	tproject.h rhutils.h
+	tproject.h rhutils.h libtvuti.h
 nodebobj/gprexp.o:: $(DEPS_1)
 	$(RHIDE_COMPILE.cc.o)
 DEPS_2=idedefau.cc flags/ada_opt.h flags/c_opt.h flags/cxx_opt.h\

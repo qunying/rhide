@@ -1,15 +1,6 @@
 # Copyright (C) 1996-2001 Robert H”hne, see COPYING.RH for details 
 # This file is part of RHIDE. 
 # gpr2mak -d -r- -o - libtvgdb.gpr
-ifeq ($(strip $(RHIDESRC)),)
-RHIDESRC=s:/rho/rhide
-endif
-ifeq ($(strip $(SETSRC)),)
-SETSRC=g:/DJGPP/contrib/setedit
-endif
-ifeq ($(strip $(TVSRC)),)
-TVSRC=g:/DJGPP/contrib/tvision
-endif
 vpath_src=$(RHIDESRC)/libtvgdb
 vpath %.c $(vpath_src)
 vpath %.cc $(vpath_src)
@@ -91,7 +82,7 @@ PROJECT_ITEMS=breakdia.cc callstac.cc commands.cc funcsel.cc inspect.cc\
 	tfuncinp.cc tfunctio.cc tgdbwind.cc tregwin.cc tvgdb.cc twatchdi.cc\
 	twatchli.cc userwarn.cc watches.cc
 DEFAULT_MASK=*
-RHIDE_BIN_DIR=d:/obj/rhide
+RHIDE_BIN_DIR=c:/obj/rhide
 PASCAL_TYPE=GPC
 GET_HOME=$(HOME)
 CLEAN_FILES=$(MAIN_TARGET) $(OBJFILES)

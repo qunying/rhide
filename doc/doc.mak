@@ -1,9 +1,6 @@
 # Copyright (C) 1996-2001 Robert H”hne, see COPYING.RH for details 
 # This file is part of RHIDE. 
 # gpr2mak -d -r- -o - doc.gpr
-ifeq ($(strip $(RHIDESRC)),)
-RHIDESRC=s:/rho/rhide
-endif
 vpath_src=$(RHIDESRC)/doc
 vpath %.c $(vpath_src)
 vpath %.cc $(vpath_src)
@@ -65,7 +62,7 @@ EDITORS=
 MAIN_TARGET=
 PROJECT_ITEMS=rhide.tx
 DEFAULT_MASK=*
-RHIDE_BIN_DIR=d:/obj/rhide
+RHIDE_BIN_DIR=c:/obj/rhide
 PASCAL_TYPE=GPC
 GET_HOME=$(HOME)
 CLEAN_FILES=$(MAIN_TARGET) $(OBJFILES)
@@ -304,9 +301,7 @@ RHIDE_OS_LIBS_DJGPP_rhgdb.exe=dbg
 RHIDE_OS_LIBS_DJGPP=$(RHIDE_OS_LIBS_DJGPP_$(MAIN_TARGET))
 RHIDE_OS_LIBS=$(PCRE_LIB_$(RHIDE_OS)) $(INTL_LIB_$(RHIDE_OS))\
 	$(RHIDE_OS_LIBS_$(RHIDE_OS))
-RHIDE_COMPILE_LINK=$(RHIDE_LD) $(RHIDE_LIBDIRS) $(C_EXTRA_FLAGS) -o\
-	$(OUTFILE) $(OBJFILES) $(LIBRARIES) $(LDFLAGS) $(RHIDE_LDFLAGS)\
-	$(RHIDE_LIBS) $(SETOBJ)/easydiag.a -lrhtv
+RHIDE_LIBS+=$(SETOBJ)/easydiag.a -lrhtv
 SET_FILES=$(DJDIR)/share/setedit
 RHIDE_COMPILE_TX=make $(OUTFILE)
 RHIDE_COMPILE.tx.inf=$(RHIDE_COMPILE_TX)
@@ -345,9 +340,7 @@ RHIDE_OS_LIBS_DJGPP_rhgdb.exe=dbg
 RHIDE_OS_LIBS_DJGPP=$(RHIDE_OS_LIBS_DJGPP_$(MAIN_TARGET))
 RHIDE_OS_LIBS=$(PCRE_LIB_$(RHIDE_OS)) $(INTL_LIB_$(RHIDE_OS))\
 	$(RHIDE_OS_LIBS_$(RHIDE_OS))
-RHIDE_COMPILE_LINK=$(RHIDE_LD) $(RHIDE_LIBDIRS) $(C_EXTRA_FLAGS) -o\
-	$(OUTFILE) $(OBJFILES) $(LIBRARIES) $(LDFLAGS) $(RHIDE_LDFLAGS)\
-	$(RHIDE_LIBS) $(SETOBJ)/easydiag.a -lrhtv
+RHIDE_LIBS+=$(SETOBJ)/easydiag.a -lrhtv
 SET_FILES=$(DJDIR)/share/setedit
 RHIDE_COMPILE_TX=make $(OUTFILE)
 RHIDE_COMPILE.tx.inf=$(RHIDE_COMPILE_TX)

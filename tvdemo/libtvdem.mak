@@ -1,12 +1,6 @@
 # Copyright (C) 1996-2001 Robert H”hne, see COPYING.RH for details 
 # This file is part of RHIDE. 
 # gpr2mak -d -r- -o - libtvdem.gpr
-ifeq ($(strip $(RHIDESRC)),)
-RHIDESRC=s:/rho/rhide
-endif
-ifeq ($(strip $(TVSRC)),)
-TVSRC=g:/DJGPP/contrib/tvision
-endif
 vpath_src=$(RHIDESRC)/tvdemo
 vpath %.c $(vpath_src)
 vpath %.cc $(vpath_src)
@@ -73,7 +67,7 @@ EDITORS=
 MAIN_TARGET=libtvdem.a
 PROJECT_ITEMS=ascii.cc calendar.cc libtvdem.cc mousedlg.cc puzzle.cc
 DEFAULT_MASK=*.c*
-RHIDE_BIN_DIR=d:/obj/rhide
+RHIDE_BIN_DIR=c:/obj/rhide
 PASCAL_TYPE=GPC
 GET_HOME=$(HOME)
 CLEAN_FILES=$(MAIN_TARGET) $(OBJFILES)

@@ -1,12 +1,6 @@
 # Copyright (C) 1996-2001 Robert H”hne, see COPYING.RH for details 
 # This file is part of RHIDE. 
 # gpr2mak -d -r- -o - names.gpr
-ifeq ($(strip $(RHIDESRC)),)
-RHIDESRC=s:/rho/rhide
-endif
-ifeq ($(strip $(TVSRC)),)
-TVSRC=g:/DJGPP/contrib/tvision
-endif
 vpath_src=$(RHIDESRC)/libide/names
 vpath %.c $(vpath_src)
 vpath %.cc $(vpath_src)
@@ -78,7 +72,7 @@ MAIN_TARGET=
 PROJECT_ITEMS=ndepcoll.cc ndepende.cc nflagcol.cc nflagent.cc nideedit.cc\
 	nidefile.cc noptions.cc nproject.cc
 DEFAULT_MASK=*.[chmps]*
-RHIDE_BIN_DIR=d:/obj/rhide
+RHIDE_BIN_DIR=c:/obj/rhide
 PASCAL_TYPE=GPC
 GET_HOME=$(HOME)
 CLEAN_FILES=$(MAIN_TARGET) $(OBJFILES)

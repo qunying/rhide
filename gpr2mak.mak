@@ -1,24 +1,6 @@
 # Copyright (C) 1996-2001 Robert H”hne, see COPYING.RH for details 
 # This file is part of RHIDE. 
 # gpr2mak -d -r- -o - gpr2mak.gpr
-ifeq ($(strip $(PCRE_OBJ)),)
-PCRE_OBJ=
-endif
-ifeq ($(strip $(RHIDESRC)),)
-RHIDESRC=s:/rho/rhide
-endif
-ifeq ($(strip $(SETOBJ)),)
-SETOBJ=g:/DJGPP/contrib/setedit/makes
-endif
-ifeq ($(strip $(SETSRC)),)
-SETSRC=g:/DJGPP/contrib/setedit
-endif
-ifeq ($(strip $(TVOBJ)),)
-TVOBJ=g:/DJGPP/contrib/tvision/djgpp
-endif
-ifeq ($(strip $(TVSRC)),)
-TVSRC=g:/DJGPP/contrib/tvision
-endif
 vpath_src=$(RHIDESRC)
 vpath %.c $(vpath_src)
 vpath %.cc $(vpath_src)
@@ -99,7 +81,7 @@ PROJECT_ITEMS=gpr2mak.cc idedefau.cc ideenv.cc ideflags.cc idemak.cc\
 	idespec.cc idestrm.cc idesupp.cc ideutil.cc ideversi.cc\
 	libide/libide.gpr librhuti/librhuti.gpr libtvuti/libtvuti.gpr
 DEFAULT_MASK=*.[cghspm]*
-RHIDE_BIN_DIR=d:/obj/rhide
+RHIDE_BIN_DIR=c:/obj/rhide
 PASCAL_TYPE=GPC
 GET_HOME=$(HOME)
 CLEAN_FILES=$(MAIN_TARGET) $(OBJFILES)
@@ -338,9 +320,7 @@ RHIDE_OS_LIBS_DJGPP_rhgdb.exe=dbg
 RHIDE_OS_LIBS_DJGPP=$(RHIDE_OS_LIBS_DJGPP_$(MAIN_TARGET))
 RHIDE_OS_LIBS=$(PCRE_LIB_$(RHIDE_OS)) $(INTL_LIB_$(RHIDE_OS))\
 	$(RHIDE_OS_LIBS_$(RHIDE_OS))
-RHIDE_COMPILE_LINK=$(RHIDE_LD) $(RHIDE_LIBDIRS) $(C_EXTRA_FLAGS) -o\
-	$(OUTFILE) $(OBJFILES) $(LIBRARIES) $(LDFLAGS) $(RHIDE_LDFLAGS)\
-	$(RHIDE_LIBS) $(SETOBJ)/easydiag.a -lrhtv
+RHIDE_LIBS+=$(SETOBJ)/easydiag.a -lrhtv
 SET_FILES=$(DJDIR)/share/setedit
 RHIDE_STDINC_C_$(RHIDE_OS)=/usr/include /usr/local/include
 RHIDE_STDINC_C_DJGPP=/usr/include /usr/local/include
@@ -377,9 +357,7 @@ RHIDE_OS_LIBS_DJGPP_rhgdb.exe=dbg
 RHIDE_OS_LIBS_DJGPP=$(RHIDE_OS_LIBS_DJGPP_$(MAIN_TARGET))
 RHIDE_OS_LIBS=$(PCRE_LIB_$(RHIDE_OS)) $(INTL_LIB_$(RHIDE_OS))\
 	$(RHIDE_OS_LIBS_$(RHIDE_OS))
-RHIDE_COMPILE_LINK=$(RHIDE_LD) $(RHIDE_LIBDIRS) $(C_EXTRA_FLAGS) -o\
-	$(OUTFILE) $(OBJFILES) $(LIBRARIES) $(LDFLAGS) $(RHIDE_LDFLAGS)\
-	$(RHIDE_LIBS) $(SETOBJ)/easydiag.a -lrhtv
+RHIDE_LIBS+=$(SETOBJ)/easydiag.a -lrhtv
 SET_FILES=$(DJDIR)/share/setedit
 %.o: %.c
 	$(RHIDE_COMPILE.c.o)
@@ -469,14 +447,14 @@ LINK_FILES=$(filter-out $(NO_LINK),$(DEPS_0))
 gpr2mak.exe:: $(DEPS_0)
 	$(RHIDE_COMPILE_LINK)
 DEPS_1=gpr2mak.cc rhide.h ideenums.h libide.h tdepende.h tfname.h\
-	toptions.h tproject.h rhutils.h
+	toptions.h tproject.h rhutils.h libtvuti.h
 nodebobj/gpr2mak.o:: $(DEPS_1)
 	$(RHIDE_COMPILE.cc.o)
 DEPS_2=idedefau.cc flags/ada_opt.h flags/c_opt.h flags/cxx_opt.h\
 	flags/deb_opt.h flags/f_opt.h flags/fpc_opt.h flags/fpcreser.h\
 	flags/gpcreser.h flags/opt_opt.h flags/pas_opt.h flags/reserved.h\
 	flags/warn_opt.h rhide.h ideenums.h libide.h tdepende.h tflagcol.h\
-	tflagent.h tfname.h toptions.h tproject.h
+	tflagent.h tfname.h toptions.h tproject.h libtvuti.h
 nodebobj/idedefau.o:: $(DEPS_2)
 	$(RHIDE_COMPILE.cc.o)
 DEPS_3=ideenv.cc rhide.h rhutils.h

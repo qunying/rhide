@@ -1,15 +1,6 @@
 # Copyright (C) 1996-2001 Robert H”hne, see COPYING.RH for details 
 # This file is part of RHIDE. 
 # gpr2mak -d -r- -o - stream.gpr
-ifeq ($(strip $(RHIDESRC)),)
-RHIDESRC=s:/rho/rhide
-endif
-ifeq ($(strip $(SETSRC)),)
-SETSRC=g:/DJGPP/contrib/setedit
-endif
-ifeq ($(strip $(TVSRC)),)
-TVSRC=g:/DJGPP/contrib/tvision
-endif
 vpath_src=$(RHIDESRC)/libide/stream
 vpath %.c $(vpath_src)
 vpath %.cc $(vpath_src)
@@ -83,7 +74,7 @@ MAIN_TARGET=
 PROJECT_ITEMS=sdepcoll.cc sdepende.cc sflagcol.cc sflagent.cc sideedit.cc\
 	sidefile.cc soptions.cc sproject.cc
 DEFAULT_MASK=*.[chmps]*
-RHIDE_BIN_DIR=d:/obj/rhide
+RHIDE_BIN_DIR=c:/obj/rhide
 PASCAL_TYPE=GPC
 GET_HOME=$(HOME)
 CLEAN_FILES=$(MAIN_TARGET) $(OBJFILES)
@@ -412,28 +403,29 @@ DEPS_0= sdepcoll.o sdepende.o sflagcol.o sflagent.o sideedit.o sidefile.o\
 NO_LINK=
 LINK_FILES=$(filter-out $(NO_LINK),$(DEPS_0))
 TARGET_0:: $(DEPS_0)
-DEPS_1=sdepcoll.cc libide.h tdepende.h
+DEPS_1=sdepcoll.cc libide.h tdepende.h libtvuti.h
 sdepcoll.o:: $(DEPS_1)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_2=sdepende.cc ideenums.h libide.h tdepende.h tfname.h
+DEPS_2=sdepende.cc ideenums.h libide.h tdepende.h tfname.h libtvuti.h
 sdepende.o:: $(DEPS_2)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_3=sflagcol.cc libide.h tflagcol.h
+DEPS_3=sflagcol.cc libide.h tflagcol.h libtvuti.h
 sflagcol.o:: $(DEPS_3)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_4=sflagent.cc libide.h tflagent.h
+DEPS_4=sflagent.cc libide.h tflagent.h libtvuti.h
 sflagent.o:: $(DEPS_4)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_5=sideedit.cc libide.h tideedit.h
+DEPS_5=sideedit.cc libide.h tideedit.h libtvuti.h
 sideedit.o:: $(DEPS_5)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_6=sidefile.cc libide.h tidefile.h
+DEPS_6=sidefile.cc libide.h tidefile.h libtvuti.h
 sidefile.o:: $(DEPS_6)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_7=soptions.cc libide.h toptions.h
+DEPS_7=soptions.cc libide.h toptions.h libtvuti.h
 soptions.o:: $(DEPS_7)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_8=sproject.cc ideenums.h libide.h tdepende.h tfname.h tproject.h
+DEPS_8=sproject.cc ideenums.h libide.h tdepende.h tfname.h tproject.h\
+	libtvuti.h
 sproject.o:: $(DEPS_8)
 	$(RHIDE_COMPILE.cc.o)
 all:: TARGET_0

@@ -1,9 +1,6 @@
 # Copyright (C) 1996-2001 Robert H”hne, see COPYING.RH for details 
 # This file is part of RHIDE. 
 # gpr2mak -d -r- -o - htmlspl.gpr
-ifeq ($(strip $(RHIDESRC)),)
-RHIDESRC=s:/rho/rhide
-endif
 vpath_src=$(RHIDESRC)/doc
 vpath %.c $(vpath_src)
 vpath %.cc $(vpath_src)
@@ -65,7 +62,7 @@ EDITORS=
 MAIN_TARGET=htmlspl.exe
 PROJECT_ITEMS=htmlspl.cc
 DEFAULT_MASK=*
-RHIDE_BIN_DIR=d:/obj/rhide
+RHIDE_BIN_DIR=c:/obj/rhide
 PASCAL_TYPE=GPC
 GET_HOME=$(HOME)
 CLEAN_FILES=$(MAIN_TARGET) $(OBJFILES)
@@ -304,9 +301,7 @@ RHIDE_OS_LIBS_DJGPP_rhgdb.exe=dbg
 RHIDE_OS_LIBS_DJGPP=$(RHIDE_OS_LIBS_DJGPP_$(MAIN_TARGET))
 RHIDE_OS_LIBS=$(PCRE_LIB_$(RHIDE_OS)) $(INTL_LIB_$(RHIDE_OS))\
 	$(RHIDE_OS_LIBS_$(RHIDE_OS))
-RHIDE_COMPILE_LINK=$(RHIDE_LD) $(RHIDE_LIBDIRS) $(C_EXTRA_FLAGS) -o\
-	$(OUTFILE) $(OBJFILES) $(LIBRARIES) $(LDFLAGS) $(RHIDE_LDFLAGS)\
-	$(RHIDE_LIBS) $(SETOBJ)/easydiag.a -lrhtv
+RHIDE_LIBS+=$(SETOBJ)/easydiag.a -lrhtv
 SET_FILES=$(DJDIR)/share/setedit
 RHIDE_COMPILE_TX=make $(OUTFILE)
 RHIDE_COMPILE.tx.inf=$(RHIDE_COMPILE_TX)
@@ -345,9 +340,7 @@ RHIDE_OS_LIBS_DJGPP_rhgdb.exe=dbg
 RHIDE_OS_LIBS_DJGPP=$(RHIDE_OS_LIBS_DJGPP_$(MAIN_TARGET))
 RHIDE_OS_LIBS=$(PCRE_LIB_$(RHIDE_OS)) $(INTL_LIB_$(RHIDE_OS))\
 	$(RHIDE_OS_LIBS_$(RHIDE_OS))
-RHIDE_COMPILE_LINK=$(RHIDE_LD) $(RHIDE_LIBDIRS) $(C_EXTRA_FLAGS) -o\
-	$(OUTFILE) $(OBJFILES) $(LIBRARIES) $(LDFLAGS) $(RHIDE_LDFLAGS)\
-	$(RHIDE_LIBS) $(SETOBJ)/easydiag.a -lrhtv
+RHIDE_LIBS+=$(SETOBJ)/easydiag.a -lrhtv
 SET_FILES=$(DJDIR)/share/setedit
 RHIDE_COMPILE_TX=make $(OUTFILE)
 RHIDE_COMPILE.tx.inf=$(RHIDE_COMPILE_TX)
@@ -434,35 +427,7 @@ NO_LINK=
 LINK_FILES=$(filter-out $(NO_LINK),$(DEPS_0))
 htmlspl.exe:: $(DEPS_0)
 	$(RHIDE_COMPILE_LINK)
-DEPS_1=htmlspl.cc g:/djgpp/include/assert.h g:/djgpp/include/ctype.h\
-	g:/djgpp/include/inlines/ctype.ha g:/djgpp/include/inlines/ctype.hd\
-	g:/djgpp/include/limits.h g:/djgpp/include/stddef.h\
-	g:/djgpp/include/stdlib.h g:/djgpp/include/string.h\
-	g:/djgpp/include/sys/cdefs.h g:/djgpp/include/sys/djtypes.h\
-	g:/djgpp/include/sys/movedata.h g:/djgpp/include/sys/types.h\
-	g:/djgpp/include/sys/version.h g:/djgpp/include/unistd.h\
-	g:/djgpp/lang/cxx/_G_config.h g:/djgpp/lang/cxx/alloc.h\
-	g:/djgpp/lang/cxx/cassert g:/djgpp/lang/cxx/cctype\
-	g:/djgpp/lang/cxx/cstddef g:/djgpp/lang/cxx/cstring\
-	g:/djgpp/lang/cxx/fstream g:/djgpp/lang/cxx/fstream.h\
-	g:/djgpp/lang/cxx/iostream.h g:/djgpp/lang/cxx/iterator\
-	g:/djgpp/lang/cxx/libio.h g:/djgpp/lang/cxx/map\
-	g:/djgpp/lang/cxx/std/bastring.cc g:/djgpp/lang/cxx/std/bastring.h\
-	g:/djgpp/lang/cxx/std/straits.h g:/djgpp/lang/cxx/stl_alloc.h\
-	g:/djgpp/lang/cxx/stl_bvector.h g:/djgpp/lang/cxx/stl_config.h\
-	g:/djgpp/lang/cxx/stl_construct.h g:/djgpp/lang/cxx/stl_function.h\
-	g:/djgpp/lang/cxx/stl_iterator.h g:/djgpp/lang/cxx/stl_map.h\
-	g:/djgpp/lang/cxx/stl_multimap.h g:/djgpp/lang/cxx/stl_pair.h\
-	g:/djgpp/lang/cxx/stl_relops.h g:/djgpp/lang/cxx/stl_tree.h\
-	g:/djgpp/lang/cxx/stl_uninitialized.h\
-	g:/djgpp/lang/cxx/stl_vector.h g:/djgpp/lang/cxx/stlalgobase.h\
-	g:/djgpp/lang/cxx/streambuf.h g:/djgpp/lang/cxx/strfile.h\
-	g:/djgpp/lang/cxx/string g:/djgpp/lang/cxx/strstream\
-	g:/djgpp/lang/cxx/strstream.h g:/djgpp/lang/cxx/type_traits.h\
-	g:/djgpp/lang/cxx/vector\
-	g:/djgpp/lib/gcc-lib/djgpp/2.952/include/exception\
-	g:/djgpp/lib/gcc-lib/djgpp/2.952/include/new\
-	g:/djgpp/lib/gcc-lib/djgpp/2.952/include/new.h
+DEPS_1=htmlspl.cc
 htmlspl.o:: $(DEPS_1)
 	$(RHIDE_COMPILE.cc.o)
 all:: htmlspl.exe

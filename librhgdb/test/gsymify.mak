@@ -1,9 +1,6 @@
 # Copyright (C) 1996-2001 Robert H”hne, see COPYING.RH for details 
 # This file is part of RHIDE. 
 # gpr2mak -d -r- -o - gsymify.gpr
-ifeq ($(strip $(RHIDESRC)),)
-RHIDESRC=s:/rho/rhide
-endif
 vpath_src=$(RHIDESRC)/librhgdb $(RHIDESRC)/libtvgdb
 vpath %.c $(vpath_src)
 vpath %.cc $(vpath_src)
@@ -72,7 +69,7 @@ EDITORS=
 MAIN_TARGET=gsymify.exe
 PROJECT_ITEMS=../librhgdb.gpr symify.c
 DEFAULT_MASK=*
-RHIDE_BIN_DIR=d:/obj/rhide
+RHIDE_BIN_DIR=c:/obj/rhide
 PASCAL_TYPE=GPC
 GET_HOME=$(HOME)
 CLEAN_FILES=$(MAIN_TARGET) $(OBJFILES)
@@ -297,9 +294,24 @@ RHIDE_OS_CFLAGS_Linux=-D_GNU_SOURCE
 RHIDE_OS_CXXFLAGS_Linux=-D_GNU_SOURCE
 RHIDE_LIBDIRS=$(addprefix -L,$(dir $(LIBGDB_A)) $(LIB_DIRS))
 PCRE_OBJ=$(subst Linux,linux,$(SETOBJ)/$(RHIDE_OS))
-RHIDE_OS_LIBS_DJGPP=dbg
-RHIDE_OS_LIBS_Linux=ncurses
-RHIDE_OS_LIBS=$(RHIDE_OS_LIBS_$(RHIDE_OS))
+PCRE_LIB_$(RHIDE_OS)=pcre
+PCRE_LIB_DJGPP=pcre
+INTL_LIB_$(RHIDE_OS)=intl
+INTL_LIB_DJGPP=intl
+INTL_LIB_Linux=
+RHIDE_OS_LIBS_$(RHIDE_OS)=$(RHIDE_OS_LIBS_$(RHIDE_OS)_$(MAIN_TARGET))
+RHIDE_OS_LIBS_DJGPP=$(RHIDE_OS_LIBS_$(RHIDE_OS)_$(MAIN_TARGET))
+RHIDE_OS_LIBS_Linux=ncurses gpm m dl
+RHIDE_OS_LIBS_CYGWIN=termcap
+RHIDE_OS_LIBS_DJGPP_idegc.exe=dbg
+RHIDE_OS_LIBS_DJGPP_rhgdb.exe=dbg
+RHIDE_OS_LIBS_DJGPP=$(RHIDE_OS_LIBS_DJGPP_$(MAIN_TARGET))
+RHIDE_OS_LIBS=$(PCRE_LIB_$(RHIDE_OS)) $(INTL_LIB_$(RHIDE_OS))\
+	$(RHIDE_OS_LIBS_$(RHIDE_OS))
+RHIDE_LIBS+=$(SETOBJ)/easydiag.a -lrhtv
+RHIDE_OS_LIBS_DJGPP_gsymify.exe=dbg
+RHIDE_OS_LIBS_DJGPP_mygdb.exe=dbg
+RHIDE_OS_LIBS_DJGPP_listfunc.exe=dbg
 RHIDE_STDINC_C_$(RHIDE_OS)=/usr/include /usr/local/include
 RHIDE_STDINC_C_DJGPP=/usr/include /usr/local/include
 RHIDE_STDINC_CXX_$(RHIDE_OS)=/usr/include/g++ /usr/local/include/g++
@@ -321,9 +333,24 @@ RHIDE_OS_CFLAGS_Linux=-D_GNU_SOURCE
 RHIDE_OS_CXXFLAGS_Linux=-D_GNU_SOURCE
 RHIDE_LIBDIRS=$(addprefix -L,$(dir $(LIBGDB_A)) $(LIB_DIRS))
 PCRE_OBJ=$(subst Linux,linux,$(SETOBJ)/$(RHIDE_OS))
-RHIDE_OS_LIBS_DJGPP=dbg
-RHIDE_OS_LIBS_Linux=ncurses
-RHIDE_OS_LIBS=$(RHIDE_OS_LIBS_$(RHIDE_OS))
+PCRE_LIB_$(RHIDE_OS)=pcre
+PCRE_LIB_DJGPP=pcre
+INTL_LIB_$(RHIDE_OS)=intl
+INTL_LIB_DJGPP=intl
+INTL_LIB_Linux=
+RHIDE_OS_LIBS_$(RHIDE_OS)=$(RHIDE_OS_LIBS_$(RHIDE_OS)_$(MAIN_TARGET))
+RHIDE_OS_LIBS_DJGPP=$(RHIDE_OS_LIBS_$(RHIDE_OS)_$(MAIN_TARGET))
+RHIDE_OS_LIBS_Linux=ncurses gpm m dl
+RHIDE_OS_LIBS_CYGWIN=termcap
+RHIDE_OS_LIBS_DJGPP_idegc.exe=dbg
+RHIDE_OS_LIBS_DJGPP_rhgdb.exe=dbg
+RHIDE_OS_LIBS_DJGPP=$(RHIDE_OS_LIBS_DJGPP_$(MAIN_TARGET))
+RHIDE_OS_LIBS=$(PCRE_LIB_$(RHIDE_OS)) $(INTL_LIB_$(RHIDE_OS))\
+	$(RHIDE_OS_LIBS_$(RHIDE_OS))
+RHIDE_LIBS+=$(SETOBJ)/easydiag.a -lrhtv
+RHIDE_OS_LIBS_DJGPP_gsymify.exe=dbg
+RHIDE_OS_LIBS_DJGPP_mygdb.exe=dbg
+RHIDE_OS_LIBS_DJGPP_listfunc.exe=dbg
 %.o: %.c
 	$(RHIDE_COMPILE.c.o)
 %.o: %.i

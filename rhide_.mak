@@ -1,24 +1,6 @@
 # Copyright (C) 1996-2001 Robert H”hne, see COPYING.RH for details 
 # This file is part of RHIDE. 
 # gpr2mak -d -r- -o - rhide_.gpr
-ifeq ($(strip $(PCRE_OBJ)),)
-PCRE_OBJ=
-endif
-ifeq ($(strip $(RHIDESRC)),)
-RHIDESRC=s:/rho/rhide
-endif
-ifeq ($(strip $(SETOBJ)),)
-SETOBJ=g:/DJGPP/contrib/setedit/makes
-endif
-ifeq ($(strip $(SETSRC)),)
-SETSRC=g:/DJGPP/contrib/setedit
-endif
-ifeq ($(strip $(TVOBJ)),)
-TVOBJ=g:/DJGPP/contrib/tvision/djgpp
-endif
-ifeq ($(strip $(TVSRC)),)
-TVSRC=g:/DJGPP/contrib/tvision
-endif
 vpath_src=$(RHIDESRC)
 vpath %.c $(vpath_src)
 vpath %.cc $(vpath_src)
@@ -44,7 +26,7 @@ vpath_header=$(RHIDESRC)/include $(RHIDESRC)/libtvuti/include\
 	$(TVSRC)/include $(TVSRC) $(RHIDESRC)/tvdemo/include\
 	$(SETSRC)/include $(SETSRC)/settvuti/include\
 	$(SETSRC)/infview/include $(SETSRC)/calcu $(SETSRC)/setedit/include\
-	$(SETSRC)
+	$(SETSRC) $(SETSRC)/easydiag
 vpath %.h $(vpath_header)
 vpath %.hpp $(vpath_header)
 vpath %.ha $(vpath_header)
@@ -68,7 +50,7 @@ INCLUDE_DIRS=$(RHIDESRC)/include $(RHIDESRC)/libtvuti/include\
 	$(TVSRC)/include $(TVSRC) $(RHIDESRC)/tvdemo/include\
 	$(SETSRC)/include $(SETSRC)/settvuti/include\
 	$(SETSRC)/infview/include $(SETSRC)/calcu $(SETSRC)/setedit/include\
-	$(SETSRC)
+	$(SETSRC) $(SETSRC)/easydiag
 LIB_DIRS=libide libtvuti tvdemo librhuti $(TVOBJ) $(SETOBJ) $(PCRE_OBJ)
 C_DEBUG_FLAGS=-g
 C_OPT_FLAGS=-O2
@@ -112,7 +94,7 @@ SOURCE_NAME=$<
 OUTFILE=$@
 SPECIAL_CFLAGS=
 SPECIAL_LDFLAGS=
-PROG_ARGS=o:/sport/sportamt
+PROG_ARGS=gpr2mak
 SRC_DIRS=$(RHIDESRC)
 WUC=
 EDITORS=
@@ -125,7 +107,7 @@ PROJECT_ITEMS=commands.cc fstrcmp.c ideapp.cc idebug.cc idecheck.cc\
 	ideutil.cc ideversi.cc libide/libide.gpr librhuti/librhuti.gpr\
 	libtvuti/libtvuti.gpr openedit.cc rhassert.c tvdemo/libtvdem.gpr
 DEFAULT_MASK=*.[acghmops]*
-RHIDE_BIN_DIR=d:/obj/rhide
+RHIDE_BIN_DIR=c:/obj/rhide
 PASCAL_TYPE=GPC
 GET_HOME=$(HOME)
 CLEAN_FILES=$(MAIN_TARGET) $(OBJFILES)
@@ -364,9 +346,7 @@ RHIDE_OS_LIBS_DJGPP_rhgdb.exe=dbg
 RHIDE_OS_LIBS_DJGPP=$(RHIDE_OS_LIBS_DJGPP_$(MAIN_TARGET))
 RHIDE_OS_LIBS=$(PCRE_LIB_$(RHIDE_OS)) $(INTL_LIB_$(RHIDE_OS))\
 	$(RHIDE_OS_LIBS_$(RHIDE_OS))
-RHIDE_COMPILE_LINK=$(RHIDE_LD) $(RHIDE_LIBDIRS) $(C_EXTRA_FLAGS) -o\
-	$(OUTFILE) $(OBJFILES) $(LIBRARIES) $(LDFLAGS) $(RHIDE_LDFLAGS)\
-	$(RHIDE_LIBS) $(SETOBJ)/easydiag.a -lrhtv
+RHIDE_LIBS+=$(SETOBJ)/easydiag.a -lrhtv
 SET_FILES=$(DJDIR)/share/setedit
 RHIDE_STDINC_C_$(RHIDE_OS)=/usr/include /usr/local/include
 RHIDE_STDINC_C_DJGPP=/usr/include /usr/local/include
@@ -403,9 +383,7 @@ RHIDE_OS_LIBS_DJGPP_rhgdb.exe=dbg
 RHIDE_OS_LIBS_DJGPP=$(RHIDE_OS_LIBS_DJGPP_$(MAIN_TARGET))
 RHIDE_OS_LIBS=$(PCRE_LIB_$(RHIDE_OS)) $(INTL_LIB_$(RHIDE_OS))\
 	$(RHIDE_OS_LIBS_$(RHIDE_OS))
-RHIDE_COMPILE_LINK=$(RHIDE_LD) $(RHIDE_LIBDIRS) $(C_EXTRA_FLAGS) -o\
-	$(OUTFILE) $(OBJFILES) $(LIBRARIES) $(LDFLAGS) $(RHIDE_LDFLAGS)\
-	$(RHIDE_LIBS) $(SETOBJ)/easydiag.a -lrhtv
+RHIDE_LIBS+=$(SETOBJ)/easydiag.a -lrhtv
 SET_FILES=$(DJDIR)/share/setedit
 %.o: %.c
 	$(RHIDE_COMPILE.c.o)
@@ -519,7 +497,7 @@ nodebobj/idebug.o:: $(DEPS_4)
 DEPS_5=idecheck.cc rhide.h rhutils.h libtvuti.h tvutilfu.h
 nodebobj/idecheck.o:: $(DEPS_5)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_6=idecolor.cc pal.h rhide.h libide.h tidefile.h
+DEPS_6=idecolor.cc pal.h rhide.h libide.h tidefile.h libtvuti.h
 nodebobj/idecolor.o:: $(DEPS_6)
 	$(RHIDE_COMPILE.cc.o)
 DEPS_7=idecomp.cc rhide.h ideenums.h idefunct.h libide.h tdepende.h\

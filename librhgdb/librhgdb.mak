@@ -1,9 +1,6 @@
 # Copyright (C) 1996-2001 Robert H”hne, see COPYING.RH for details 
 # This file is part of RHIDE. 
 # gpr2mak -d -r- -o - librhgdb.gpr
-ifeq ($(strip $(RHIDESRC)),)
-RHIDESRC=s:/rho/rhide
-endif
 vpath_src=$(RHIDESRC)/librhgdb
 vpath %.c $(vpath_src)
 vpath %.cc $(vpath_src)
@@ -74,7 +71,7 @@ MAIN_TARGET=librhgdb.a
 PROJECT_ITEMS=annotate.c breakpoi.c defaults.c dis.c frame.c gdbcontr.c\
 	gdbinter.c listfunc.c regs.c symify.c watchdog.c watches.c
 DEFAULT_MASK=*
-RHIDE_BIN_DIR=d:/obj/rhide
+RHIDE_BIN_DIR=c:/obj/rhide
 PASCAL_TYPE=GPC
 GET_HOME=$(HOME)
 CLEAN_FILES=$(MAIN_TARGET) $(OBJFILES)

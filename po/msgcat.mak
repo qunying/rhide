@@ -1,9 +1,6 @@
 # Copyright (C) 1996-2001 Robert H”hne, see COPYING.RH for details 
 # This file is part of RHIDE. 
 # gpr2mak -d -r- -o - msgcat.gpr
-ifeq ($(strip $(RHIDESRC)),)
-RHIDESRC=s:/rho/rhide
-endif
 vpath_src=$(RHIDESRC) $(RHIDESRC)/po
 vpath %.c $(vpath_src)
 vpath %.cc $(vpath_src)
@@ -75,7 +72,7 @@ EDITORS=
 MAIN_TARGET=msgcat.exe
 PROJECT_ITEMS=../librhuti/librhuti.gpr fstrcmp.c msgcat.cc
 DEFAULT_MASK=*
-RHIDE_BIN_DIR=d:/obj/rhide
+RHIDE_BIN_DIR=c:/obj/rhide
 PASCAL_TYPE=GPC
 GET_HOME=$(HOME)
 CLEAN_FILES=$(MAIN_TARGET) $(OBJFILES)

@@ -70,7 +70,7 @@ void SourceDirectories();
 void repaint();
 void Preferences();
 char *RHGDBWordUnderCursor(void);
-
+void init_syntax();
 void ClearCPULine (void);
 
 #endif

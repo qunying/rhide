@@ -777,6 +777,7 @@ void init_rhgdb(int __crt0_argc,char **__crt0_argv)
   TScreen::suspend();
   fprintf(stderr,_("This is %s. Copyright (c) 1996-2000 by Robert H”hne\n"),RHGDBVersion);
   TScreen::resume();
+  init_syntax();
 }
 
 static void rhgdb_sig(int signo)

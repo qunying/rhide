@@ -35,7 +35,7 @@ init_pascal_reserved_words()
 #undef F
 }
 
-static void __attribute__ ((__constructor__))
+void
 init_syntax()
 {
   char *syntax_file;

@@ -53,7 +53,7 @@ int convert_file(const char *arg)
 
 int main(int argc, char **argv)
 {
-  for ( ; argc > 2; argc--, argv++)
+  for ( ; argc > 1; argc--, argv++)
   {
     int ret = convert_file(argv[1]);
     if (ret != 0)
@@ -61,3 +61,4 @@ int main(int argc, char **argv)
   }
   return 0;
 }
+

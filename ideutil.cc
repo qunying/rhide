@@ -1,8 +1,5 @@
 /* Copyright (C) 1996-1998 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
-/*
- $Id$
-*/
 #define Uses_TNSSortedCollection
 #define Uses_ifpstream
 
@@ -92,16 +89,6 @@ Boolean FindFile(const char * name,char * & full_name)
         retval = FindFile(name,Options.include_path,full_name,False);
         break;
       default:
-#if 0
-        string_dup(full_name,name);
-        if (__file_exists(full_name))
-        {
-          retval = True;
-          FExpand(full_name);
-        }
-        else retval = False;
-        break;
-#else
 /* What is with files, which have no known source suffixes?
    I think this is the better way to find it. As an example
    I have in the doc directory a project doc.gpr where I have
@@ -111,7 +98,6 @@ Boolean FindFile(const char * name,char * & full_name)
 */
         retval = FindFile(name,Options.SrcDirs,full_name,False);
         break;
-#endif
     }
   }
   if (debug_files)
@@ -188,9 +174,6 @@ Boolean FindFile(const char * name,TDirList * list,
   }
   strcpy(bname,name);
   // That's now a try for allowing directories in 'name'
-#if 0
-  BaseName(bname);
-#endif
   if (!NoFileCache)
   {
     ff = new FileFind(bname,NULL);

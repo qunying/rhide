@@ -25,7 +25,9 @@ make RHIDESRC=`pwd` LDFLAGS=-static
 
 %install
 make RHIDESRC=`pwd` install prefix=$RPM_BUILD_ROOT/usr LDFLAGS=-static
-tic $RPM_BUILD_ROOT/usr/share/rhide/eterm-rhide
+
+%post
+tic /usr/share/rhide/eterm-rhide
 
 %files
 /usr/bin/gpr2mak

@@ -61,6 +61,8 @@ VARIABLE=CONTENTS
      the include separated by a space.
      (For compatibility I still support the old dot
       syntax).
+     If the line starts with "-include" is treated the
+     same way.
   3) A line, which starts with the word export, tells
      RHIDE, to put this variable also in the environment
      with putenv(). (The old ! syntax is still working)
@@ -93,6 +95,8 @@ _rhide_load_environment_file(char *fname, int unload)
       string_free(_fname);
       continue;
     }
+    if (strncmp(line, "-include ", 9) == 0)
+      strcpy(line, line+1);
     if (strncmp(line, "include ", 8) == 0)
     {
       char *_fname = expand_spec(line + 8, NULL);

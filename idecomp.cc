@@ -19,6 +19,7 @@
 #define Uses_TSCollection
 #define Uses_TDirList
 #define Uses_tvutilFunctions
+#define Uses_TMsgListBox
 #include <libtvuti.h>
 
 #include <rhutils.h>
@@ -938,6 +939,9 @@ static Boolean compile_nsm_to_obj(TDependency *dep,char *spec)
 Boolean compile_dep(TDependency *dep)
 {
   Boolean retval;
+  int old_msg_count = -1;
+  if (msg_list)
+    old_msg_count = msg_list->list()->getCount();
   char *sname = NULL,*dname = NULL;
   if (dep->compile_id == COMPILE_NONE) return True;
   Boolean user_spec;
@@ -1055,7 +1059,7 @@ Boolean compile_dep(TDependency *dep)
   {
     TMsgCollection *errs = new TMsgCollection();;
     errs->insert((new MsgRec(NULL,_("There were some errors"))));
-    ShowMessages(errs,False);
+    ShowMessages(errs,False,old_msg_count);
     remove(dname);
   }
   if (UseRCS && is_rcs_file)

@@ -1,4 +1,5 @@
 # Copyright (C) 1996-1998 Robert H”hne, see COPYING.RH for details 
 # This file is part of RHIDE. 
+include $(RHIDESRC)/rhide.env
 RHIDE_COMPILE_TX=make $(OUTFILE)
 RHIDE_COMPILE.tx.inf=$(RHIDE_COMPILE_TX)

@@ -131,3 +131,7 @@
 #include <inspect.h>
 #endif
 
+void AddDataWindow();
+void ShowStackWindow();
+void UpdateDataWindows();
+

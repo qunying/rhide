@@ -28,7 +28,7 @@ PACKAGE=rhide
 # exceed 8 characters, the well known DOS limitation :-(
 PACKAGE_FILE=rhid
 PACKAGE_DIR=rhide
-VERSION=1.4.4
+VERSION=1.4.4.x
 RHIDE_MAJOR=$(word 1,$(subst ., ,$(VERSION)))
 RHIDE_MINOR=$(subst $(RHIDE_MAJOR),,$(VERSION))
 # for the DJGPP archives
@@ -158,7 +158,7 @@ FLAGS_TO_PASS=\
 	SETGID="$(SETGID)" \
 	prefix=$(prefix)
 
-%.sub: makefile
+%.sub: Makefile
 	$(MAKE) -C $* $(FLAGS_TO_PASS) SUBDIR_TARGET=$(SUBDIR_TARGET) \
 	  $(SUBDIR_TARGET) logfile=../__log__
 	touch __log__
@@ -169,9 +169,11 @@ subdir_do: $(addsuffix .sub,$(sort $(subdirs)))
 
 O_SRC_FILES=$(wildcard $(addprefix $(obj_dir)/,$(sort $(src_files))))
 _O_SRC_FILES=$(subst $(obj_dir)/,,$(O_SRC_FILES))
-_S_SRC_FILES=$(filter-out $(_O_SRC_FILES),$(sort $(src_files)))
-S_SRC_FILES=$(addprefix $(srcdir)/,$(_S_SRC_FILES))
-SRC_FILES=$(O_SRC_FILES) $(S_SRC_FILES)
+__SRC_FILES=$(filter-out $(_O_SRC_FILES),$(sort $(src_files)))
+S_SRC_FILES=$(wildcard $(addprefix $(srcdir)/,$(__SRC_FILES)))
+_S_SRC_FILES=$(subst $(srcdir)/,,$(S_SRC_FILES))
+_SRC_FILES=$(filter-out $(_O_SRC_FILES) $(_S_SRC_FILES),$(sort $(src_files)))
+SRC_FILES=$(O_SRC_FILES) $(S_SRC_FILES) $(_SRC_FILES)
 
 ifneq ($(strip $(subdirs)),)
 copy_src_files:: $(addsuffix .cpy,$(sort $(subdirs)))
@@ -206,7 +208,7 @@ po_list:: $(po_sub_files)
 endif
 endif
 
-%.pst: makefile
+%.pst: Makefile
 	$(MAKE) -C $* $(FLAGS_TO_PASS) po_list=../$@ \
 	  po_prefix=$(po_prefix)$*/ po_list
 
@@ -221,7 +223,7 @@ else
 endif
 endif
 
-%.cpy: makefile
+%.cpy: Makefile
 	@-mkdir -p $(prefix)/$*
 	@-rm -f $*/$(list_file)
 	@$(MAKE) -C $* $(FLAGS_TO_PASS) prefix=$(prefix)/$* \
@@ -283,7 +285,7 @@ create.objdir::
 	@echo Configuring $(objdir) ..
 	-mkdir $(objdir)
 
-%.cfo: makefile
+%.cfo: Makefile
 	$(MAKE) -C $* $(FLAGS_TO_PASS) objdir=$(objdir)/$* config
 
 .PHONY: config
@@ -294,7 +296,7 @@ config::
 	@redir -e nul -o nul
 else
 config:: check.objdir create.objdir
-	update $(srcdir)/makefile $(objdir)/makefile
+	update $(srcdir)/Makefile $(objdir)/Makefile
 ifneq ($(cfg_files),)
 	cp -fp $(addprefix $(srcdir)/,$(cfg_files)) $(objdir)
 endif

@@ -97,7 +97,7 @@ __link(RIDEEditWindow)
      TProjectWindow *project_window;
      static char *dskname;
 
-     static ushort DeskTop_Version = 25;
+     static ushort DeskTop_Version = 26;
      static ushort BreakPoint_Version = 0;
 
      static void SetGlobalOptions();
@@ -281,7 +281,8 @@ SaveDesktop(opstream & os, Boolean save_windows = True)
   os.writeBytes(&palette->data[1], len);
   {
     GlobalOptionsRect temp;
-
+    len = sizeof(temp);
+    os << len;
     TCEditor::CompactGlobalOptions(&temp);
     os.writeBytes(&temp, sizeof(temp));
   }
@@ -604,8 +605,13 @@ LoadDesktop(ipstream & is, Boolean load_windows = True)
         uint16 t1;
         char tab[3];
         char wcol[3];
-      }
-      before_0417;
+      } before_0417;
+      struct
+      {
+        uint16 t1;
+        char tab[3];
+        char wcol[4];
+      } before_0445;
       GlobalOptionsRect opt;
     }
     temp;
@@ -623,9 +629,24 @@ LoadDesktop(ipstream & is, Boolean load_windows = True)
       is.readBytes(&temp, sizeof(temp.before_0417));
       temp.opt.wcol[3] = 0;
     }
+    else if (version < 26)
+    {
+      is.readBytes(&temp, sizeof(temp.before_0445));
+    }
     else
-      is.readBytes(&temp, sizeof(temp));
-    TCEditor::ExpandGlobalOptions(&temp.opt);
+    {
+      is >> len;
+      if (len == sizeof(GlobalOptionsRect))
+      {
+        is.readBytes(&temp, len);
+        TCEditor::ExpandGlobalOptions(&temp.opt);
+      }
+      else
+      {
+        char buf[len];
+        is.readBytes(buf, len);
+      }
+    }
   }
 
   TRect dsk_rect = TProgram::deskTop->getExtent();

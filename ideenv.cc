@@ -90,10 +90,10 @@ _rhide_load_environment_file(char *fname, int unload)
       variable++;
     }
     char *equal = strchr(line,'=');
-    if (equal && !unload)
+    if (equal)
     {
       *equal = 0;
-      insert_variable(variable,equal+1);
+      insert_variable(variable,unload ? NULL : equal+1);
 #ifdef __linux__
 /* That's now a special case, when running under linux
   using ncurses. There is this variable used, but only
@@ -106,24 +106,26 @@ _rhide_load_environment_file(char *fname, int unload)
 #endif
       if (_putenv)
       {
-        *equal = '=';
+        if (!unload) *equal = '=';
         /* not all systems allocate the memory for the
            variable, so better waste some memory than a
            sigsegv later :-( */
         putenv(string_dup(variable));
       }
     }
-    else
-    {
-      if (equal)
-        *equal = 0;
-      insert_variable(variable, NULL);
-      if (_putenv)
-        putenv(string_dup(variable));
-    }
   }
   fclose(f);
   return 1;
+}
+
+void push_environment()
+{
+  _rhide_load_environment_file("rhide.env", 0);
+}
+
+void pop_environment()
+{
+  _rhide_load_environment_file("rhide.env", 1);
 }
 
 

@@ -110,7 +110,7 @@ static void close_errfile()
 */
 static int next_error_line()
 {
-  char c;
+  int c;
   bufpos = 0;
   while ((c = fgetc(errfile)) != EOF && c != '\n')
   {

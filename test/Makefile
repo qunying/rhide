@@ -1,5 +1,6 @@
 # Copyright (C) 1996-1998 Robert H”hne, see COPYING.RH for details 
 # This file is part of RHIDE. 
+-include ../config.env
 ifeq ($(strip $(RHIDESRC)),)
 error You must set the environment variable RHIDESRC
 endif

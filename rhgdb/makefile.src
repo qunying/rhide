@@ -8,9 +8,9 @@ srcdir=$(RHIDESRC)/rhgdb
 VPATH=$(srcdir)
 project=rhgdb
 
-po_files=gdbedit.cc main.cc options.cc version.cc gdbsynt.cc
+po_files=gdbedit.cc main.cc options.cc gdbsynt.cc
 src_files=$(po_files) makefile rhgdb.gpr rhgdb.mak makefile.src \
-	  rhide.env rhide.var version.in
+	  rhide.env rhide.var version.in version.cc
 update_files=rhgdb.gpr rhgdb.mak
 cfg_files=
 

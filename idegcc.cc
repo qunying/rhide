@@ -115,7 +115,9 @@ RunProgram(const char *cmd,
     cpp_outname = open_stdout();
   if (redir_stderr == True)
     cpp_errname = open_stderr();
+  running_child = 1;
   retval = system(cmd);
+  running_child = 0;
   setup_main_title();
   if (project)
     setup_title(project_name);

@@ -465,6 +465,8 @@ void setup_main_title();
 
 extern int link_strm;
 
+extern int running_child;     // Set to 1 when running compilers etc. to
+                              // prevent SIGINT handling in this case
 #endif
 
 

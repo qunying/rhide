@@ -118,6 +118,7 @@
 void SaveScreen();
 void RestoreScreen();
 static int keep_temp_dir = 0;
+int running_child = 0;	/* Set to no zero when invoking compilers, etc  */
 
 #define DELTA(x) (*((long *)(x)))
 
@@ -2596,7 +2597,7 @@ rhide_sig(int signo)
   switch (signo)
   {
     case SIGINT:
-      if (intr_in_progress)
+      if (intr_in_progress || running_child)
         return;
       intr_in_progress = 1;
       if (messageBox(_("Do you really want to interrupt RHIDE?"),

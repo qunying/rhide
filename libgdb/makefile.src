@@ -122,7 +122,11 @@ GDB_CONFIG_CYGWIN=CC=gcc $(GDB_SRC)/configure --disable-nls
 $(GDB_OBJ)/Makefile:
 	sh -c "cd $(GDB_OBJ) && $(GDB_CONFIG_$(rhide_OS))"
 # gdb 6.1.1 needs it:
-	sh -c "test -f $(GDB_SRC)/gdb/block.h && cd $(GDB_OBJ) && $(MAKE) configure-host"
+	sh -c "if test -f $(GDB_SRC)/gdb/block.h; then \
+			cd $(GDB_OBJ) && $(MAKE) configure-host; \
+		else \
+			exit 0; \
+		fi"
 
 $(GDB_OBJ)/bfd/bfd.h: $(GDB_OBJ)/Makefile
 	$(MAKE) -C $(dir $@) $(notdir $@)

@@ -11,7 +11,7 @@
 #include <setjmp.h>
 
 #ifdef OLD_GDB
-void gdb_init();
+void gdb_init(char *);
 #else
 extern void error_init(void);
 void gdb_init(char *argv0);
@@ -317,7 +317,18 @@ _init_librhgdb()
   oldINT = signal(SIGINT,SIG_DFL);
 
 #ifdef OLD_GDB
-  gdb_init();
+  gdb_stdout = (GDB_FILE *)malloc (sizeof(GDB_FILE));
+  gdb_stdout->ts_streamtype = afile;
+  gdb_stdout->ts_filestream = stdout;
+  gdb_stdout->ts_strbuf = NULL;
+  gdb_stdout->ts_buflen = 0;
+
+  gdb_stderr = (GDB_FILE *)malloc (sizeof(GDB_FILE));
+  gdb_stderr->ts_streamtype = afile;
+  gdb_stderr->ts_filestream = stderr;
+  gdb_stderr->ts_strbuf = NULL;
+  gdb_stderr->ts_buflen = 0;
+  gdb_init("rhide");
 #else
 
   /* fragment from gdb/main.c  */
@@ -371,6 +382,8 @@ void done_gdb()
 
 void handle_gdb_command(char *command)
 {
+  /* Strings may not be writtable. Therefore let's make local copy  */
+  char * copy_of_command = strdup (command);
 #ifdef OLD_GDB
   jmp_buf old_quit_return,old_error_return;
   /* Save the old jmp_buf's, because we may be
@@ -381,20 +394,18 @@ void handle_gdb_command(char *command)
   _DEBUG("start of handle_gdb_command(%s)\n",command);
   if (!SET_TOP_LEVEL())
   {
-    execute_command(command,0);
+    execute_command(copy_of_command, 0);
   }
   _DEBUG("end of handle_gdb_command(%s)\n",command);
   /* Restore the old jmp_buf's */
   memcpy(quit_return,old_quit_return,sizeof(jmp_buf));
   memcpy(error_return,old_error_return,sizeof(jmp_buf));
 #else
-  /* Strings may not be writtable. Therefore let's make local copy  */
   /* (GDB-5.0 is removing white space at end of string. So it's     */
   /* modifying it  */
-  char * copy_of_command = strdup (command);
   catch_command_errors (execute_command, copy_of_command, 0, RETURN_MASK_ALL);
-  free (copy_of_command);
 #endif
+  free (copy_of_command);
 }
 
 #ifdef OLD_GDB

@@ -1869,27 +1869,12 @@ ShowIncludes()
 }
 
 static void
-clear_deps(TDependency * dep, Boolean remove_files = False)
+clear_deps(TDependency * dep)
 {
   if (debug_dependencies)
   {
     fprintf(stderr, _("clearing dependencies for %s\n"),
             FName(dep->dest_name));
-  }
-  if (remove_files == True &&
-      dep->dest_name &&
-      dep->compile_id != COMPILE_NONE &&
-      dep->compile_id != COMPILE_PROJECT &&
-      dep->compile_id != COMPILE_UNKNOWN)
-  {
-    char *dname;
-
-    FindFile(FName(dep->dest_name), dname);
-    if (debug_dependencies)
-    {
-      fprintf(stderr, _("removing %s\n"), dname);
-    }
-    remove(dname);
   }
   if (dep->dependencies)
   {
@@ -1899,7 +1884,7 @@ clear_deps(TDependency * dep, Boolean remove_files = False)
     {
       TDependency *_dep = (TDependency *) dep->dependencies->at(i);
 
-      clear_deps(_dep, remove_files);
+      clear_deps(_dep);
       if (!_dep->source_name && !_dep->dependencies)
         dep->dependencies->atFree(i);
       else
@@ -1927,10 +1912,49 @@ ClearDependencies()
   ClearFindCache();
 }
 
+static void
+clean_files(TDependency *dep)
+{
+  char *files = expand_rhide_spec("$(CLEAN_FILES)");
+  char *file = files;
+  char *tmp = files;
+  while (tmp && *tmp)
+  {
+    file = tmp;
+    while (*tmp && *tmp != ' ') tmp++;
+    char c = *tmp;
+    *tmp = 0;
+    remove(file);
+    *tmp = c;
+    tmp++;
+  }
+  string_free(files);
+  if (!DeleteRecursive)
+    return;
+  int count = 0;
+
+  if (project->dependencies)
+    count = project->dependencies->getCount();
+  for (int i = 0; i < count; i++)
+  {
+    TDependency *_dep = (TDependency *) project->dependencies->at(i);
+
+    if (_dep->source_file_type == FILE_PROJECT)
+    {
+      AddToStack();
+      if (_PushProject(_dep) == True)
+        clean_files(_dep);
+      _PopProject();
+      RemoveFromStack();
+    }
+  }
+}
+
 void
 MakeClear()
 {
-  clear_deps(&Project, True);
+  clear_deps(&Project);
+  clean_files(&Project);
   ClearFileHash();
   ClearFindCache();
 }

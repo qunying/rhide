@@ -12,7 +12,7 @@ void split_fname(const char *fname, char &drive, char *&dir,
   const char *slash;
   const char *dot = NULL;
   const char *filename=fname;
-  if (isalpha(fname[0]) && fname[1] == ':')
+  if (isalpha((int)(unsigned char)fname[0]) && fname[1] == ':')
   {
     drive = fname[0];
     filename = fname+2;

@@ -781,9 +781,11 @@ TDisassemblerWindow::TDisassemblerWindow(const TRect &bounds,
   r.grow(-1,-1);
   r.b.x -= max_reg_len+1+8+8;
   vs = new TScrollBar(TRect(r.b.x-1,r.a.y,r.b.x,r.b.y));
+  vs->options |= ofPostProcess;
   insert(vs);
 
   hs = new TScrollBar(TRect(r.a.x,r.b.y-1,r.b.x,r.b.y));
+  hs->options |= ofPostProcess;
   insert(hs);
 
   r.b.x--;

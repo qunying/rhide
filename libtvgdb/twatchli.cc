@@ -79,11 +79,7 @@ void TWatchListBox::AddVariable(char *var)
   e = new TWatchEntry;
   e->variable = strdup(var);
   e->expr = NULL;
-#if 0
-  list()->insert(e);
-#else
   list()->atInsert(focused, e);
-#endif
   setRange(range+1);
   update();
 }

@@ -3,9 +3,6 @@
 #define Uses_TProgram
 #define Uses_TDeskTop
 #define Uses_TDialog
-#define Uses_TEditWindow
-#define Uses_TFileEditor
-#define Uses_TEditorApp
 #define Uses_TPalette
 #define Uses_TSortedListBox
 

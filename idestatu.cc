@@ -6,7 +6,6 @@
 #define Uses_TStatusDef
 #define Uses_TStatusItem
 #define Uses_TDialog
-#define Uses_TEditor
 #define Uses_editCommands
 #define Uses_TSortedListBox
 #define Uses_TStringCollection

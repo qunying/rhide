@@ -1303,6 +1303,7 @@ struct PSTACK
 {
   char *dir;
   char *name;
+  st_user_vars_state st;
 };
 
 PSTACK *PRJSTACK = NULL;
@@ -1322,6 +1323,7 @@ AddToStack()
   getcwd(tmp, 255);
   string_dup(ps->dir, tmp);
   string_dup(ps->name, project_name);
+  push_user_vars_state(&ps->st);
 }
 
 int
@@ -1349,6 +1351,7 @@ RemoveFromStack()
 
   string_free(ps->dir);
   string_free(ps->name);
+  pop_user_vars_state(&ps->st);
   PRJSTACKCOUNT--;
   PRJSTACK = (PSTACK *) realloc(PRJSTACK, PRJSTACKCOUNT * sizeof(PSTACK));
 }

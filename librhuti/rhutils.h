@@ -101,6 +101,18 @@ extern char **user_vars;
    count and  _NOT_ the string count in 'user_vars') */
 extern int user_var_count;
 
+struct st_user_vars_state
+{
+ char **user_vars;
+ int user_var_count;
+ int user_var_size;
+};
+
+/* Remmember current state and duplicate it */
+extern void push_user_vars_state(st_user_vars_state *st);
+/* Delete current stack and restore previous */
+extern void pop_user_vars_state(st_user_vars_state *st);
+
 /* set this to nonzero to print to stderr debug information about expanding
    the specs */
 extern int debug_specs;

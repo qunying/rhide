@@ -11,6 +11,7 @@
 #include <ctype.h>
 #include <unistd.h>
 
+extern int debug_specs;
 static int _rhide_load_environment_file(char *fname, int unload);
 
 void
@@ -77,6 +78,8 @@ _rhide_load_environment_file(char *fname, int unload)
   char *variable;
 
   f = fopen(fname, "rt");
+  if (debug_specs)
+     fprintf(stderr,"%s env from %s\n",unload ? "Unloading" : "Loading",fname);
   if (!f)
     return 0;
   while (getline(line, line_size, f) != -1)
@@ -183,11 +186,15 @@ _rhide_load_environment_file(char *fname, int unload)
 void
 push_environment()
 {
+  if (debug_specs)
+     fprintf(stderr,"--------------------------\nPush\n--------------------------\n");
   _rhide_load_environment_file("rhide.env", 0);
 }
 
 void
 pop_environment()
 {
+  if (debug_specs)
+     fprintf(stderr,"--------------------------\nPop\n--------------------------\n");
   _rhide_load_environment_file("rhide.env", 1);
 }

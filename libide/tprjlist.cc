@@ -73,8 +73,8 @@ void TProjectListBox::handleEvent(TEvent &event)
       case kbEnter:
         if (!list() || list()->getCount() == 0) break;
         selectItem(focused);
-	clearEvent(event);
-	break;
+        clearEvent(event);
+        break;
     }
   }
 }

@@ -121,6 +121,10 @@ END-INFO-DIR-ENTRY
 @mail{Erik Bachmann,ebp@@dde.dk}
 @end macro
 
+@macro NORWEGIAN{}
+@mail{Trond Endrestol,endrestol@@hotmail.com}
+@end macro
+
 @ifclear text
 @ifclear html
 @ifclear dvi
@@ -316,10 +320,6 @@ If you distribute the binaries for RHIDE from modified sources, then
 you have to add a notification which is printed at startup of RHIDE
 and in the about box to tell the user that you have made modifications
 and that it is not the binary from the original sources distributed by me.
-
-If you distribute the sources for RHIDE, you are not allowed to distribute
-the full modified sources for the Turbo Vision library because of the
-copying conditions by Borland International.
 
 If you want to include RHIDE (binaries and/or sources) in a commercial
 product (on a CD-ROM for a book or something else) contact me first.
@@ -695,6 +695,9 @@ Italian maintained by @ITALIAN
 
 @titem nl
 Dutch maintained by @DUTCH
+
+@titem no
+Norwegian maintained by @NORWEGIAN
 
 @ignore
 @titem pl
@@ -2228,6 +2231,13 @@ you must type @var{$(DJDIR)}.
 @cindex Include directories
 @cindex Search path for include files
 
+Place here a list of directories, where gcc
+(and RHIDE) should search for header files which
+you use via #include ... and which are not in the
+default directories (like %DJDIR%/include)
+If you want to use for instance allegro, put here
+the directory, where allegro.h is.
+
 This is the list of directories, where GCC looks for include files and RHIDE
 searches in this directory (after looking in the current directory) for
 header files.
@@ -2259,6 +2269,15 @@ the object files, which are compiled, are stored in this directory.
 
 This is the list of directories, where RHIDE looks for the source files
 (after looking in the current directory).
+@paragraph{}
+
+It enables you also
+one feature (like I use it mostly at any time), to
+have the sources in one directory tree and the objects
+and executables in a total different directory. Simply
+Go to any directory, create there your project and then
+add the needed files to your project. Finally specify
+the path to your sources here and RHIDE will find them.
 @paragraph{}
 
 @subsubsection Standard headers

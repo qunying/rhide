@@ -58,8 +58,8 @@ public:
 #else
   TFileName *source_name;
   TFileName *dest_name;
-#define FName(x) (x?x->Name():(const char *)NULL)
-#define InitFName(x,y) x = new TFileName(y?y:"")
+#define FName(x) ((x)?(x)->Name():(const char *)NULL)
+#define InitFName(x,y) (x) = new TFileName((y)?(y):"")
 #endif
   char * compiler;
   char * error_check;

@@ -121,8 +121,8 @@ int CheckIDE()
             "sure, you have read the DJGPP FAQ and the installing "
             "instructions for gcc when running under such a system? "
             "(like Windows 95/Windows NT) "
-            "There might "
-            "be a problem with the standard C++ include files because "
+            "There might be a problem with the standard C++ libraries and "
+            "the standard C++ include files because "
             "of a LFN-conflict. Should I continue?")) == cmNo)
         {
           ret = 1;

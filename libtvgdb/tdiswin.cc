@@ -514,7 +514,7 @@ TDisassemblerViewer::draw()
         width = size.x - curCol + 1;
       else
         width = colWidth;
-      if (debugger_started && dis_lines && dis_lines[item].address == stop_pc)
+      if (debugger_started() && dis_lines && dis_lines[item].address == stop_pc)
       {
         color = getColor(5);
         scOff = 2;

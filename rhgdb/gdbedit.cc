@@ -226,7 +226,7 @@ DebuggerFormatLine(TCEditor * editor,
   uint32 offset = 0;
   ushort color;
 
-  if (debugger_started && editor == current_editor && CPULine == LineNo)
+  if (debugger_started() && editor == current_editor && CPULine == LineNo)
   {
     editor->formatLine(DrawBuf, LinePtr, Width, Colors, lineLen, Attr,
                        LineNo

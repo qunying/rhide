@@ -214,10 +214,9 @@ RHIDE_TYPED_LIBS_DJGPP.cc=stdcxx
 RHIDE_TYPED_LIBS_DJGPP.cxx=stdcxx
 RHIDE_TYPED_LIBS_DJGPP.cpp=stdcxx
 RHIDE_TYPED_LIBS_DJGPP.f=g2c m
-RHIDE_STDINC_C_DJGPP_BETA=$(DJGPP_ALPHA)/include
-RHIDE_STDINC_C_DJGPP=$(DJDIR)/include $(RHIDE_STDINC_C_DJGPP_BETA)
+RHIDE_STDINC_C_DJGPP=$(DJDIR)/include
 RHIDE_STDINC_CXX_DJGPP=$(DJDIR)/lang/cxx 
-RHIDE_STDINC_GCC_DJGPP=$(DJDIR)/lib/gcc-lib
+RHIDE_STDINC_GCC_DJGPP=$(DJDIR)/lib
 RHIDE_STDINC_C_Linux=/usr/include /usr/local/include
 RHIDE_STDINC_CXX_Linux=/usr/include/g++ /usr/local/include/g++
 RHIDE_STDINC_GCC_Linux=/usr/lib/gcc-lib /usr/local/lib/gcc-lib
@@ -236,10 +235,9 @@ RHIDE_LIBDIRS=$(addprefix -L,$(dir $(LIBGDB_A)) $(LIB_DIRS))
 PCRE_OBJ=$(subst Linux,linux,$(SETOBJ)/$(RHIDE_OS))
 RHIDE_OS_LIBS_Linux=ncurses
 RHIDE_OS_LIBS=$(RHIDE_OS_LIBS_$(RHIDE_OS))
-RHIDE_STDINC_C_DJGPP_BETA=$(DJGPP_ALPHA)/include
-RHIDE_STDINC_C_DJGPP=$(DJDIR)/include $(RHIDE_STDINC_C_DJGPP_BETA)
+RHIDE_STDINC_C_DJGPP=$(DJDIR)/include
 RHIDE_STDINC_CXX_DJGPP=$(DJDIR)/lang/cxx 
-RHIDE_STDINC_GCC_DJGPP=$(DJDIR)/lib/gcc-lib
+RHIDE_STDINC_GCC_DJGPP=$(DJDIR)/lib
 RHIDE_STDINC_C_Linux=/usr/include /usr/local/include
 RHIDE_STDINC_CXX_Linux=/usr/include/g++ /usr/local/include/g++
 RHIDE_STDINC_GCC_Linux=/usr/lib/gcc-lib /usr/local/lib/gcc-lib
@@ -392,10 +390,11 @@ DEPS_1=
 all:: ../librhuti/librhuti.gpr.force
 ../librhuti/librhuti.gpr.force:
 	$(MAKE) -C ../librhuti/ -f librhuti.mak
-DEPS_2=fstrcmp.c
+DEPS_2=fstrcmp.c g:/djgpp/include/sys/version.h
 fstrcmp.o:: $(DEPS_2)
 	$(RHIDE_COMPILE.c.o)
-DEPS_3=msgcat.cc $(RHIDESRC)/librhuti/rhutils.h
+DEPS_3=msgcat.cc g:/djgpp/include/sys/version.h\
+	$(RHIDESRC)/librhuti/rhutils.h
 msgcat.o:: $(DEPS_3)
 	$(RHIDE_COMPILE.cc.o)
 all:: msgcat.exe

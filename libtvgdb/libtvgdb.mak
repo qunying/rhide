@@ -220,10 +220,9 @@ RHIDE_TYPED_LIBS_DJGPP.cc=stdcxx
 RHIDE_TYPED_LIBS_DJGPP.cxx=stdcxx
 RHIDE_TYPED_LIBS_DJGPP.cpp=stdcxx
 RHIDE_TYPED_LIBS_DJGPP.f=g2c m
-RHIDE_STDINC_C_DJGPP_BETA=$(DJGPP_ALPHA)/include
-RHIDE_STDINC_C_DJGPP=$(DJDIR)/include $(RHIDE_STDINC_C_DJGPP_BETA)
+RHIDE_STDINC_C_DJGPP=$(DJDIR)/include
 RHIDE_STDINC_CXX_DJGPP=$(DJDIR)/lang/cxx 
-RHIDE_STDINC_GCC_DJGPP=$(DJDIR)/lib/gcc-lib
+RHIDE_STDINC_GCC_DJGPP=$(DJDIR)/lib
 RHIDE_STDINC_C_Linux=/usr/include /usr/local/include
 RHIDE_STDINC_CXX_Linux=/usr/include/g++ /usr/local/include/g++
 RHIDE_STDINC_GCC_Linux=/usr/lib/gcc-lib /usr/local/lib/gcc-lib
@@ -240,10 +239,9 @@ RHIDE_OS_CXXFLAGS=$(RHIDE_OS_CXXFLAGS_$(RHIDE_OS)) $(RH_WARN)\
 	-fno-exceptions -fno-rtti
 RHIDE_LIBDIRS=$(addprefix -L,$(dir $(LIBGDB_A)) $(LIB_DIRS))
 PCRE_OBJ=$(subst Linux,linux,$(SETOBJ)/$(RHIDE_OS))
-RHIDE_STDINC_C_DJGPP_BETA=$(DJGPP_ALPHA)/include
-RHIDE_STDINC_C_DJGPP=$(DJDIR)/include $(RHIDE_STDINC_C_DJGPP_BETA)
+RHIDE_STDINC_C_DJGPP=$(DJDIR)/include
 RHIDE_STDINC_CXX_DJGPP=$(DJDIR)/lang/cxx 
-RHIDE_STDINC_GCC_DJGPP=$(DJDIR)/lib/gcc-lib
+RHIDE_STDINC_GCC_DJGPP=$(DJDIR)/lib
 RHIDE_STDINC_C_Linux=/usr/include /usr/local/include
 RHIDE_STDINC_CXX_Linux=/usr/include/g++ /usr/local/include/g++
 RHIDE_STDINC_GCC_Linux=/usr/lib/gcc-lib /usr/local/lib/gcc-lib
@@ -397,8 +395,7 @@ NO_LINK=
 LINK_FILES=$(filter-out $(NO_LINK),$(DEPS_0))
 libtvgdb.a:: $(DEPS_0)
 	$(RHIDE_COMPILE_ARCHIVE)
-DEPS_1=breakdia.cc g:/djgpp/include/sys/version.h\
-	$(RHIDESRC)/librhgdb/include/librhgdb.h\
+DEPS_1=breakdia.cc $(RHIDESRC)/librhgdb/include/librhgdb.h\
 	$(RHIDESRC)/libtvgdb/include/libtvgdb.h\
 	$(RHIDESRC)/libtvgdb/include/tbreakli.h\
 	$(RHIDESRC)/libtvgdb/include/tfuncinp.h\

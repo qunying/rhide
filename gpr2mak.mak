@@ -231,10 +231,9 @@ RHIDE_TYPED_LIBS_DJGPP.cc=stdcxx
 RHIDE_TYPED_LIBS_DJGPP.cxx=stdcxx
 RHIDE_TYPED_LIBS_DJGPP.cpp=stdcxx
 RHIDE_TYPED_LIBS_DJGPP.f=g2c m
-RHIDE_STDINC_C_DJGPP_BETA=$(DJGPP_ALPHA)/include
-RHIDE_STDINC_C_DJGPP=$(DJDIR)/include $(RHIDE_STDINC_C_DJGPP_BETA)
+RHIDE_STDINC_C_DJGPP=$(DJDIR)/include
 RHIDE_STDINC_CXX_DJGPP=$(DJDIR)/lang/cxx 
-RHIDE_STDINC_GCC_DJGPP=$(DJDIR)/lib/gcc-lib
+RHIDE_STDINC_GCC_DJGPP=$(DJDIR)/lib
 RHIDE_STDINC_C_Linux=/usr/include /usr/local/include
 RHIDE_STDINC_CXX_Linux=/usr/include/g++ /usr/local/include/g++
 RHIDE_STDINC_GCC_Linux=/usr/lib/gcc-lib /usr/local/lib/gcc-lib
@@ -260,10 +259,9 @@ RHIDE_COMPILE_LINK=$(RHIDE_LD) $(RHIDE_LIBDIRS) $(C_EXTRA_FLAGS) -o\
 	$(OUTFILE) $(OBJFILES) $(LIBRARIES) $(LDFLAGS) $(RHIDE_LDFLAGS)\
 	$(RHIDE_LIBS) $(SETOBJ)/easydiag.a -lrhtv
 SET_FILES=$(DJDIR)/share/setedit
-RHIDE_STDINC_C_DJGPP_BETA=$(DJGPP_ALPHA)/include
-RHIDE_STDINC_C_DJGPP=$(DJDIR)/include $(RHIDE_STDINC_C_DJGPP_BETA)
+RHIDE_STDINC_C_DJGPP=$(DJDIR)/include
 RHIDE_STDINC_CXX_DJGPP=$(DJDIR)/lang/cxx 
-RHIDE_STDINC_GCC_DJGPP=$(DJDIR)/lib/gcc-lib
+RHIDE_STDINC_GCC_DJGPP=$(DJDIR)/lib
 RHIDE_STDINC_C_Linux=/usr/include /usr/local/include
 RHIDE_STDINC_CXX_Linux=/usr/include/g++ /usr/local/include/g++
 RHIDE_STDINC_GCC_Linux=/usr/lib/gcc-lib /usr/local/lib/gcc-lib

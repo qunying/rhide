@@ -214,10 +214,9 @@ RHIDE_TYPED_LIBS_DJGPP.cc=stdcxx
 RHIDE_TYPED_LIBS_DJGPP.cxx=stdcxx
 RHIDE_TYPED_LIBS_DJGPP.cpp=stdcxx
 RHIDE_TYPED_LIBS_DJGPP.f=g2c m
-RHIDE_STDINC_C_DJGPP_BETA=$(DJGPP_ALPHA)/include
-RHIDE_STDINC_C_DJGPP=$(DJDIR)/include $(RHIDE_STDINC_C_DJGPP_BETA)
+RHIDE_STDINC_C_DJGPP=$(DJDIR)/include
 RHIDE_STDINC_CXX_DJGPP=$(DJDIR)/lang/cxx 
-RHIDE_STDINC_GCC_DJGPP=$(DJDIR)/lib/gcc-lib
+RHIDE_STDINC_GCC_DJGPP=$(DJDIR)/lib
 RHIDE_STDINC_C_Linux=/usr/include /usr/local/include
 RHIDE_STDINC_CXX_Linux=/usr/include/g++ /usr/local/include/g++
 RHIDE_STDINC_GCC_Linux=/usr/lib/gcc-lib /usr/local/lib/gcc-lib
@@ -234,10 +233,9 @@ RHIDE_OS_CXXFLAGS=$(RHIDE_OS_CXXFLAGS_$(RHIDE_OS)) $(RH_WARN)\
 	-fno-exceptions -fno-rtti
 RHIDE_LIBDIRS=$(addprefix -L,$(dir $(LIBGDB_A)) $(LIB_DIRS))
 PCRE_OBJ=$(subst Linux,linux,$(SETOBJ)/$(RHIDE_OS))
-RHIDE_STDINC_C_DJGPP_BETA=$(DJGPP_ALPHA)/include
-RHIDE_STDINC_C_DJGPP=$(DJDIR)/include $(RHIDE_STDINC_C_DJGPP_BETA)
+RHIDE_STDINC_C_DJGPP=$(DJDIR)/include
 RHIDE_STDINC_CXX_DJGPP=$(DJDIR)/lang/cxx 
-RHIDE_STDINC_GCC_DJGPP=$(DJDIR)/lib/gcc-lib
+RHIDE_STDINC_GCC_DJGPP=$(DJDIR)/lib
 RHIDE_STDINC_C_Linux=/usr/include /usr/local/include
 RHIDE_STDINC_CXX_Linux=/usr/include/g++ /usr/local/include/g++
 RHIDE_STDINC_GCC_Linux=/usr/lib/gcc-lib /usr/local/lib/gcc-lib
@@ -383,11 +381,11 @@ NO_LINK=watchdog.o
 LINK_FILES=$(filter-out $(NO_LINK),$(DEPS_0))
 librhgdb.a:: $(DEPS_0)
 	$(RHIDE_COMPILE_ARCHIVE)
-DEPS_1=annotate.c ../libgdb/libgdb.h g:/djgpp/include/sys/version.h\
+DEPS_1=annotate.c ../libgdb/libgdb.h\
 	$(RHIDESRC)/librhgdb/include/rhgdbint.h
 annotate.o:: $(DEPS_1)
 	$(RHIDE_COMPILE.c.o)
-DEPS_2=breakpoi.c ../libgdb/libgdb.h g:/djgpp/include/sys/version.h\
+DEPS_2=breakpoi.c ../libgdb/libgdb.h\
 	$(RHIDESRC)/librhgdb/include/librhgdb.h\
 	$(RHIDESRC)/librhgdb/include/rhgdbint.h
 breakpoi.o:: $(DEPS_2)
@@ -395,43 +393,39 @@ breakpoi.o:: $(DEPS_2)
 DEPS_3=defaults.c $(RHIDESRC)/librhgdb/include/librhgdb.h
 defaults.o:: $(DEPS_3)
 	$(RHIDE_COMPILE.c.o)
-DEPS_4=dis.c ../libgdb/libgdb.h g:/djgpp/include/sys/version.h\
-	$(RHIDESRC)/librhgdb/include/librhgdb.h\
+DEPS_4=dis.c ../libgdb/libgdb.h $(RHIDESRC)/librhgdb/include/librhgdb.h\
 	$(RHIDESRC)/librhgdb/include/rhgdbint.h
 dis.o:: $(DEPS_4)
 	$(RHIDE_COMPILE.c.o)
-DEPS_5=frame.c ../libgdb/libgdb.h g:/djgpp/include/sys/version.h\
-	$(RHIDESRC)/librhgdb/include/librhgdb.h\
+DEPS_5=frame.c ../libgdb/libgdb.h $(RHIDESRC)/librhgdb/include/librhgdb.h\
 	$(RHIDESRC)/librhgdb/include/rhgdbint.h
 frame.o:: $(DEPS_5)
 	$(RHIDE_COMPILE.c.o)
-DEPS_6=gdbcontr.c ../libgdb/libgdb.h g:/djgpp/include/sys/version.h\
+DEPS_6=gdbcontr.c ../libgdb/libgdb.h\
 	$(RHIDESRC)/librhgdb/include/librhgdb.h\
 	$(RHIDESRC)/librhgdb/include/rhgdbint.h
 gdbcontr.o:: $(DEPS_6)
 	$(RHIDE_COMPILE.c.o)
-DEPS_7=gdbinter.c ../libgdb/libgdb.h g:/djgpp/include/sys/version.h\
+DEPS_7=gdbinter.c ../libgdb/libgdb.h\
 	$(RHIDESRC)/librhgdb/include/librhgdb.h\
 	$(RHIDESRC)/librhgdb/include/rhgdbint.h
 gdbinter.o:: $(DEPS_7)
 	$(RHIDE_COMPILE.c.o)
-DEPS_8=listfunc.c ../libgdb/libgdb.h g:/djgpp/include/sys/version.h\
+DEPS_8=listfunc.c ../libgdb/libgdb.h\
 	$(RHIDESRC)/librhgdb/include/librhgdb.h\
 	$(RHIDESRC)/librhgdb/include/rhgdbint.h
 listfunc.o:: $(DEPS_8)
 	$(RHIDE_COMPILE.c.o)
-DEPS_9=regs.c ../libgdb/libgdb.h g:/djgpp/include/sys/version.h\
-	$(RHIDESRC)/librhgdb/include/librhgdb.h
+DEPS_9=regs.c ../libgdb/libgdb.h $(RHIDESRC)/librhgdb/include/librhgdb.h
 regs.o:: $(DEPS_9)
 	$(RHIDE_COMPILE.c.o)
-DEPS_10=symify.c ../libgdb/libgdb.h g:/djgpp/include/sys/version.h\
-	$(RHIDESRC)/librhgdb/include/librhgdb.h
+DEPS_10=symify.c ../libgdb/libgdb.h $(RHIDESRC)/librhgdb/include/librhgdb.h
 symify.o:: $(DEPS_10)
 	$(RHIDE_COMPILE.c.o)
 DEPS_11=watchdog.c
 watchdog.o:: $(DEPS_11)
 	$(RHIDE_COMPILE.c.o)
-DEPS_12=watches.c ../libgdb/libgdb.h g:/djgpp/include/sys/version.h\
+DEPS_12=watches.c ../libgdb/libgdb.h\
 	$(RHIDESRC)/librhgdb/include/librhgdb.h\
 	$(RHIDESRC)/librhgdb/include/rhgdbint.h
 watches.o:: $(DEPS_12)

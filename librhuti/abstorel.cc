@@ -10,7 +10,7 @@
 
 int
 AbsToRelPath(const char *ref_path, char *&ret_path, const char *subst,
-             int allow_prevdirs)
+             int allow_prevdirs, int max_up_count)
 {
   const char *ref = ref_path;
   const char *ret;
@@ -43,9 +43,8 @@ AbsToRelPath(const char *ref_path, char *&ret_path, const char *subst,
       return 1;
     }
     // ref is completely a directory part of ret
-    if (*ret == '/' || ref[-1] == '/'	/*
-	   ref had a slash as last char 
-	 */ )
+    if (*ret == '/' || ref[-1] == '/')
+    // ref had a slash as last char
     {
       // do no copy the slash
       if (*ret == '/')
@@ -106,8 +105,15 @@ AbsToRelPath(const char *ref_path, char *&ret_path, const char *subst,
   ref++;
   ret++;
   string_dup(ret_val, "..");
+  int up_count = 0;
   while ((ref = strchr(ref, '/')) != NULL)
   {
+    up_count++;
+    if (up_count > max_up_count)
+    {
+      string_free(ret_val);
+      return 0;
+    }
     string_cat(ret_val, "/..");
     ref++;
   }

@@ -198,14 +198,17 @@ char *unique_name(char *before, char *retval = (char *) 0);
   It assumes that ref_path is an absolute path which can
   optionally have a slash appended. When the files/directories
   were total different, 0 is returned, otherwise 1.
-  If ref_path was completely inside ret subst != NULL, then the resulting
+  If ref_path was completely inside ret subst != NULL, then the result
   will be ret where ref_path is substituted by subst.
   If allow_prevdirs == 0, then it returns 1 only, if ref is
   completely part of ref_path.
+  max_up_count defines the maximum count of ../'s in the returned
+  relative name. If it needs more, it returns 0 and the unmodified
+  path.
 */
 
 int AbsToRelPath(const char *ref_path, char *&ret, const char *subst = 0,
-                 int allow_prevdirs = 1);
+                 int allow_prevdirs = 1, int max_up_count = 3);
 
 /*
   This macros declares a function to be called before main.

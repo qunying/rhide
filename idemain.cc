@@ -745,9 +745,9 @@ void Repaint()
 {
   if (NoShadows) DisableShadows();
   else EnableShadows();
-//  TProgram::deskTop->redraw();
+  TProgram::deskTop->redraw();
   TProgram::application->Redraw();
-//  message(TProgram::application,evBroadcast,cmRedraw,NULL);
+  message(TProgram::application,evBroadcast,cmRedraw,NULL);
   update_mem(1);
 }
 
@@ -1869,9 +1869,9 @@ static void parse_commandline(int argc,char *argv[])
   if (nt_detected)
   {
     extern int use_mouse_handler;
+    use_mouse_handler = 0;
     extern int slow_screen;
     TGKey::useBIOS = 1;
-    use_mouse_handler = 0;
     slow_screen = 1;
   }
 #endif

@@ -23,6 +23,18 @@ struct FileEntry
 #ifdef REMOVE_FILENAMES
   int alloc_count;
 #endif
+  FileEntry() :
+    name(NULL)
+#ifdef USE_SLASH
+    , slash(NULL)
+#endif
+  {
+  }
+  ~FileEntry()
+  {
+    if (name != NULL)
+      delete name;
+  }
 };
 
 class FileNameCollection : TNSSortedCollection
@@ -65,7 +77,9 @@ Boolean FileNameCollection::Search(const char *name,ccIndex &index)
     fe.slash = fe.name;
   else
     fe.slash++;
-  return search(&fe,index);
+  Boolean ret = search(&fe,index);
+  fe.name = NULL;
+  return ret;
 }
 #endif
 
@@ -86,8 +100,7 @@ int FileNameCollection::compare(void *key1,void *key2)
 
 void FileNameCollection::freeItem(void *item)
 {
-  delete (((FileEntry *)item)->name);
-  delete (item);
+  delete (FileEntry *)item;
 }
 
 char *FileNameCollection::addName(char *name)

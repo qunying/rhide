@@ -109,6 +109,7 @@ char *create_bug_report(int call_gcc)
   VAR(PATH);
 #ifdef __DJGPP__
   VAR(DJGPP);
+  VAR(DJDIR);
   VAR(LFN);
 #endif
   VAR(INFOPATH);

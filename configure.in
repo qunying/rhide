@@ -12,6 +12,8 @@ case "$host" in
   *) AC_MSG_ERROR([$host is not supported (yet). Sorry.]) ;;
 esac
 AC_SUBST(rhide_OS)
+AC_ARG_WITH(dummy-iconv,[--with-dummy-iconv  use dummy iconv function to reduce executable size],
+[DUMMY_ICONV=yes])
 
 dnl This fixes the annoing bug in autoconf which
 dnl does not handle correct drive letters in diretories
@@ -45,7 +47,7 @@ $DJDIR/include/rhtvision \
 /usr/include/rhtvision"
 RH_CHECK_FILE_LIST(TV_INC, tv.h, $TV_INC_SEARCH,[Turbo Vision header files])
 
-TV_OBJ_SEARCH="$TV_INC/../`echo $rhide_OS | sed s,Linux,linux,g` \
+TV_OBJ_SEARCH="$TV_INC/../`echo $rhide_OS | sed -e s,Linux,linux,g -e s,CYGWIN,win32,g` \
 $TV_INC/../../lib"
 RH_CHECK_FILE_LIST(TVOBJ, librhtv.a, $TV_OBJ_SEARCH,[Turbo Vision libraray])
 
@@ -68,16 +70,36 @@ if test "x$LIB_INTL" = xno; then
   LIBS="-lintl $LIBS"
   AC_TRY_LINK([#include <libintl.h>
   #include <stdio.h>],printf(gettext("test")),
-  [LIB_INTL=intl])dnl
+  [LIB_INTL=intl])
   LIBS="$rh_save_LIBS"
   if test "x$LIB_INTL" = xno; then
     rh_save_LIBS="$LIBS"
-    LIBS="-lintl -liconv $LIBS"
+    if test "x$DUMMY_ICONV" != x; then
+      LIBS="iconv.o -lintl $LIBS"
+      ICONV_O=`pwd`/iconv.o
+      ICONV_L=
+      $CC -o iconv.o -DUSE_DUMMY_ICONV -c $abs_srcdir/iconv.c
+    else
+      ICONV_O=
+      ICONV_L=iconv
+      LIBS="-lintl -liconv $LIBS"
+    fi
     AC_TRY_LINK([#include <libintl.h>
-  #include <stdio.h>],
-  printf(gettext("test")),
-  [LIB_INTL="intl iconv"])dnl
+    #include <stdio.h>],
+    printf(gettext("test")),
+    [LIB_INTL="intl $ICONV_L"
+     SET_SPECIAL_LDFLAGS="$ICONV_O $SET_SPECIAL_LDFLAGS"])
     LIBS="$rh_save_LIBS"
+  fi
+  if test "x$LIB_INTL" = xno; then
+    rh_save_libs="$LIBS"
+    LIBS="iconv.o -lintl $LIBS"
+    $CC -o iconv.o -DUSE_DUMMY_ICONV -c $abs_srcdir/iconv.c
+    AC_TRY_LINK([#include <libintl.h>
+    #include <stdio.h>],printf(gettext("test")),
+    [LIB_INTL=intl
+     SET_SPECIAL_LDFLAGS="`pwd`/iconv.o $SET_SPECIAL_LDFLAGS"])
+    LIBS="$rh_save_libs"
   fi
   AC_MSG_RESULT([$LIB_INTL])
 fi

@@ -1,21 +1,14 @@
 /* Copyright (C) 1996-1998 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
-#define Uses_TApplication
 #define Uses_MsgBox
+#define Uses_TProgram
 #define Uses_TDeskTop
-#define Uses_TFileDialog
 #define Uses_TLabel
-#define Uses_TRect
-#define Uses_TCheckBoxes
-#define Uses_TRadioButtons
 #define Uses_THistory
-#define Uses_TSItem
-#define Uses_TButton
-#define Uses_TScrollBar
+#define Uses_TDialog
 #define Uses_IDEConst
 #include <rhide.h>
 #include <rhidehis.h>
-#include <ideapp.h>
 
 #define Uses_TProject
 #include <libide.h>
@@ -39,6 +32,8 @@
 #include <errno.h>
 
 int dialog_handled;
+
+extern unsigned doEditDialog(int, ...);
 
 static unsigned IDEdoEditDialog(int /* dialog */, ...)
 {

@@ -71,7 +71,7 @@ __link ( RIDEEditWindow )
 TProjectWindow *project_window;
 static char *dskname;
 
-static ushort DeskTop_Version = 21;
+static ushort DeskTop_Version = 22;
 static ushort BreakPoint_Version = 0;
 
 static void SetGlobalOptions();
@@ -313,7 +313,6 @@ void LoadDesktop(ipstream & is,Boolean load_windows = True)
   if (strcmp(magic,DESKTOP_IDENT))
     return;
   is >> version;
-//  if (version < 5)
   if (version < 19) // applied editor v 0.34
   {
     messageBox(_("The desktop file cannot be used, because of a new format"),
@@ -493,9 +492,23 @@ void LoadDesktop(ipstream & is,Boolean load_windows = True)
   TCEditor::colorsCached = 0;
 
   {
-    GlobalOptionsRect temp;
-    is.readBytes(&temp,sizeof(temp));
-    TCEditor::ExpandGlobalOptions(&temp);
+    union {
+       struct {
+        uint16 t1;
+        char tab[3];
+       } before_0413;
+       GlobalOptionsRect opt;
+    } temp;
+    if (version < 22) // applied editor 0.4.13
+    {
+      is.readBytes(&temp, sizeof(temp.before_0413));
+      temp.opt.wcol[0] = '6';
+      temp.opt.wcol[1] = '0';
+      temp.opt.wcol[2] = 0;
+    }
+    else
+      is.readBytes(&temp,sizeof(temp));
+    TCEditor::ExpandGlobalOptions(&temp.opt);
   }
 
   TRect dsk_rect = TProgram::deskTop->getExtent();

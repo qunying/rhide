@@ -1,6 +1,9 @@
 # Copyright (C) 1996-2000 Robert H”hne, see COPYING.RH for details 
 # This file is part of RHIDE. 
 # d:/obj/rhide/gpr2mak.exe -d -r- -o __tmp__.mak rhide.gpr
+ifeq ($(strip $(GDB_OBJ)),)
+GDB_OBJ=/dev/o/gnu/gdb-5.0
+endif
 ifeq ($(strip $(PCRE_OBJ)),)
 PCRE_OBJ=
 endif
@@ -309,7 +312,8 @@ INCLUDE_DIRS=$(RHIDESRC)/include $(RHIDESRC)/libtvuti/include\
 	$(SETSRC)/infview/include $(SETSRC)/calcu $(SETSRC)/setedit/include\
 	$(SETSRC)/easydiag $(SETSRC)
 LIB_DIRS=libide libtvuti tvdemo librhuti libgdb libtvgdb librhgdb $(TVOBJ)\
-	$(SETOBJ) $(PCRE_OBJ)
+	$(SETOBJ) $(PCRE_OBJ) $(GDB_OBJ)/gdb $(GDB_OBJ)/bfd\
+	$(GDB_OBJ)/opcodes $(GDB_OBJ)/libiberty $(GDB_OBJ)/readline
 C_DEBUG_FLAGS=-g
 C_OPT_FLAGS=-O2
 C_WARN_FLAGS=

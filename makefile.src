@@ -60,7 +60,7 @@ all:: libgdb/libgdbrh.h $(programs)
 needed: libgdb/libgdbrh.h
 
 libgdb/libgdbrh.h:
-	$(MAKE) -C libgdb $(FLAGS_TO_PASS)
+	$(MAKE) -C libgdb $(FLAGS_TO_PASS) $(notdir $@)
 
 rhgdb/rhgdb.exe::
 	$(MAKE) -C rhgdb $(FLAGS_TO_PASS)

@@ -31,7 +31,8 @@ src_files=$(po_files) Makefile common.mak README.IDE RHIDE.BIN RHIDE.SRC \
 	ideversi.in ideversi.cc readme.key rhide_.env \
 	moveifch gprexp.gpr gprexp.mak rh.gpr rh.mak config.mak \
 	tolf.cc tolf.gpr tolf.mak tocrlf.gpr tocrlf.mak \
-	copyrite.gpr copyrite.mak
+	copyrite.gpr copyrite.mak rhidex rhgdbx eterm-rhide \
+	rhide.spec
 
 subdirs=libide librhgdb libtvgdb libtvuti include doc libgdb \
 	rhgdb debobj nodebobj po tvdemo librhuti share\
@@ -40,12 +41,16 @@ my_subdirs=libide librhgdb libtvgdb include doc libgdb rhgdb po libtvuti \
 	   debobj nodebobj librhuti
 po_subdirs=libide librhgdb libtvgdb libtvuti rhgdb tvdemo
 
-install_bin_files=gpr2mak$(exe) gprexp$(exe) rhide$(exe)
+additional_bin_files=
+ifeq ($(rhide_OS),Linux)
+additional_bin_files=rhidex rhgdbx
+endif
+install_bin_files=gpr2mak$(exe) gprexp$(exe) rhide$(exe) $(additional_bin_files)
 install_doc_files=readme.key COPYING COPYING.RH README.IDE RHIDE.BIN\
 	LINUX.TXT VCSA.SH
 
 install_data_files_common=rhide_.env
-install_data_files_Linux=
+install_data_files_Linux=eterm-rhide
 install_data_files=$(install_data_files_common) $(install_data_files_$(rhide_OS))
 
 main_executables=gpr2mak.exe gprexp.exe idegc.exe rhgdb/rhgdb.exe
@@ -204,6 +209,7 @@ else
 	tar -C $(copy_dir) -cvf - `ls $(copy_dir) | sed 's,$(copy_dir)/,,g'` \
 	  | gzip -9c > $(obj_dir)/$(PACKAGE)$(DIR_VERSION).tar.gz
 endif
+	rm -rf $(copy_dir)
 
 init.version: ideversi.cc rhgdb/version.cc
 
@@ -412,9 +418,11 @@ config::
 check_perms:
 	find $(srcdir) -not -type d | xargs chmod 644
 	find $(srcdir) -type d | xargs chmod 755
-	chmod 755 $(srcdir)/configure
+	chmod 755 $(srcdir)/configure $(srcdir)/rhidex $(srcdir)/rhgdbx
 
 distrib.rpm: distrib.src
 ifneq ($(rhide_OS),DJGPP)
+	ln -sf $(obj_dir)/$(PACKAGE)$(DIR_VERSION).tar.gz /usr/src/packages/SOURCES/$(PACKAGE)$(DIR_VERSION).tar.gz
 	rpm -ba --clean $(srcdir)/rhide.spec
+	rm -f /usr/src/packages/SOURCES/$(PACKAGE)$(DIR_VERSION).tar.gz
 endif

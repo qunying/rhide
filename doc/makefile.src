@@ -71,7 +71,7 @@ html2ctx html2ctx.exe: html2ctx.c
 	dvips -o $@ $<
 
 rhide.dvi: rhide.txi
-	export MAKEINFO='$(MAKEINFO) -Ddvi'; texi2dvi $<
+	bash -c "export MAKEINFO='$(MAKEINFO) -Ddvi'; texi2dvi $<"
 
 htmlctx.tmp: rhide.num $(srcdir)/htmlprep.sed
 	sed -f $(srcdir)/htmlprep.sed $< | \

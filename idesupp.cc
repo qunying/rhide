@@ -35,4 +35,8 @@ char *ExpandFileNameToThePointWhereTheProgramWasLoaded(const char *s)
   return buffer;
 }
 
+void RunExternalProgram(char *, unsigned , char *)
+{
+}
+
 

@@ -110,9 +110,6 @@ int RunProgram(const char *cmd,
   }
 #endif
 
-#ifdef __DJGPP__
-  __djgpp_exception_toggle();
-#endif
   retval = system(cmd);
 
 #ifndef __DJGPP__
@@ -124,9 +121,6 @@ int RunProgram(const char *cmd,
 #endif
 
   external_program_executed = 1;
-#ifdef __DJGPP__
-  __djgpp_exception_toggle();
-#endif
   if (redir_stdout == True) close_stdout();
   if (redir_stderr == True) close_stderr();
   if (SwitchToUser == True)

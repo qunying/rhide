@@ -152,7 +152,7 @@ $(wildcard $(path)/$(notdir ",tmp,"))))");
     }
     else if (argv[i][0] != '-')
     {
-      pname = argv[i];
+      pname = string_dup(argv[i]);
       break;
     }
   }

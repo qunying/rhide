@@ -66,7 +66,7 @@ void OpenDisWin(int force_open)
   if (!dis_win && (force_open || AutomaticOpenDisass))
   {
     extern unsigned long stop_pc;
-    TRect r(1,1,79,20);
+    TRect r(1,1,79,23);
     dis_win = new TDisassemblerWindow(r, _("Disassembler window"));
     AddWindow(dis_win,(TWindow **)&dis_win);
     if (debugger_started)

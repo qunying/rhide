@@ -142,6 +142,12 @@ msgstr "GREP uruchomiony: "
 msgid  "executing: "
 msgstr "wykonuj©: "
 
+msgid  "Output to stderr:"
+msgstr ""
+
+msgid  "Output to stdout:"
+msgstr ""
+
 msgid  "return value: %d\n"
 msgstr "warto˜† zwr¢cona: %d\n"
 
@@ -689,11 +695,14 @@ msgstr "Tworz© raport o bˆ©dach"
 msgid  "Name of the main function"
 msgstr "Nazwa funkcji gˆ¢wnej"
 
-msgid  "Regular expression to list functions"
-msgstr "Maska wyra¾enia do wyszukiwania funkcji"
+msgid  "Expression to inspect"
+msgstr ""
 
 msgid  "~E~xpression"
 msgstr "~W~yra¾enie"
+
+msgid  "Regular expression to list functions"
+msgstr "Maska wyra¾enia do wyszukiwania funkcji"
 
 msgid  "List of functions"
 msgstr "Lista funkcji"
@@ -857,6 +866,12 @@ msgstr "~Z~apisz jako"
 msgid  "Save a~l~l"
 msgstr "Zapisz ~w~szystkie"
 
+msgid  "~P~rint"
+msgstr ""
+
+msgid  "Printer set~u~p"
+msgstr ""
+
 msgid  "~D~OS shell"
 msgstr "Sesja ~D~OS"
 
@@ -877,6 +892,15 @@ msgstr "~Z~akoäcz"
 
 msgid  "~P~lay"
 msgstr "~O~dtwarzaj"
+
+msgid  "~C~hoose"
+msgstr ""
+
+msgid  "R~e~peat"
+msgstr ""
+
+msgid  "~G~enerate Code"
+msgstr ""
 
 msgid  "~E~dit"
 msgstr "~E~dycja"
@@ -905,7 +929,7 @@ msgstr "~W~yczy˜†"
 msgid  "Cop~y~ to Windows Clipboard"
 msgstr ""
 
-msgid  "Pas~t~e from Windows Clipboard"
+msgid  "Paste from ~W~indows Clipboard"
 msgstr ""
 
 msgid  "E~x~pand all tabs"
@@ -1225,6 +1249,9 @@ msgstr "~O~blicz/Zmieä"
 
 msgid  "~W~atch an expression"
 msgstr "Obejrzyj ~w~yra¾enie"
+
+msgid  "~I~nspect an expression"
+msgstr ""
 
 msgid  "~B~reakpoints"
 msgstr "~P~uˆapka"
@@ -1701,36 +1728,6 @@ msgstr "~O~pcje wyszukiwania"
 msgid  "Fu~z~zy value"
 msgstr "~W~arto˜† rozmyta"
 
-msgid  "Not enough memory for this operation"
-msgstr "Za maˆo pami©ci do wykonania operacji."
-
-msgid  "Error reading file "
-msgstr "Bˆ¥d podczas czytania pliku "
-
-msgid  "Error writing file "
-msgstr "Bˆ¥d podczas zapisywania pliku "
-
-msgid  "Error creating file "
-msgstr "Bˆ¥d podczas tworzenia pliku "
-
-msgid  " has been modified. Save?"
-msgstr " zostaˆ zmieniony. Zachowa†?"
-
-msgid  "Save untitled file?"
-msgstr "Zapisa† plik bez nazwy?"
-
-msgid  "Save file as"
-msgstr "Zapisz plik jako"
-
-msgid  "Search string not found."
-msgstr "Nie znaleziono zzukanego ˆaäcucha."
-
-msgid  "Replace this occurence?"
-msgstr "Zamieni† te wyst¥pienie"
-
-msgid  "Line too long, cut it?"
-msgstr "Linia za dˆuga, uci¥c?"
-
 msgid  "Calculator"
 msgstr "Kalkulator"
 
@@ -1743,148 +1740,12 @@ msgstr "~O~blicz"
 msgid  "Error in expression (%d)"
 msgstr "Bˆ¥d w wyra¾eniu (%d)"
 
-msgid  "Color"
-msgstr "Kolor"
-
-msgid  "Desktop"
-msgstr "Pulpit"
-
-msgid  "Normal"
-msgstr "Normalny"
-
-msgid  "Menus"
-msgstr "Menu"
-
-msgid  "Disabled"
-msgstr "Nieaktywny"
-
-msgid  "Shortcut"
-msgstr "Klawisz skr¢tu"
-
-msgid  "Selected"
-msgstr "Wybrany"
-
-msgid  "Selected disabled"
-msgstr "Wybrany nieaktywny"
-
-msgid  "Shortcut selected"
-msgstr "Wybrany klawisz skr¢tu"
-
-msgid  "Blue Windows"
-msgstr "Niebieskie okna"
-
-msgid  "Cyan Windows"
-msgstr "R¢¾owe okna"
-
-msgid  "Gray Windows"
-msgstr "Szare okna"
-
-msgid  "Dialogs"
-msgstr "Okna dialogowe"
-
-msgid  "Label normal"
-msgstr "Normalna etykieta"
-
-msgid  "Label selected"
-msgstr "Wybrana etykieta"
-
-msgid  "Label shortcut"
-msgstr "Klawisz skr¢tu etykiety"
-
-msgid  "Button normal"
-msgstr "Przycisk normalny"
-
-msgid  "Button default"
-msgstr "Przycisk domy˜lny"
-
-msgid  "Button selected"
-msgstr "Wybrany przycisk"
-
-msgid  "Button disabled"
-msgstr "Przycisk nieaktywny"
-
-msgid  "Button shortcut"
-msgstr "Klawisz skr¢tu przycisku"
-
-msgid  "Button shadow"
-msgstr "Cieniowanie przycisku"
-
-msgid  "Cluster normal"
-msgstr "Grupa normalna"
-
-msgid  "Cluster selected"
-msgstr "Grupa wybrana"
-
-msgid  "Cluster shortcut"
-msgstr "Klawisz skr¢tu grupy"
-
-msgid  "Input normal"
-msgstr "Wej˜cie normalne"
-
-msgid  "Input selected"
-msgstr "Zaznaczone wej˜cie"
-
-msgid  "Input arrow"
-msgstr "Strzaˆka wej˜cia"
-
-msgid  "History button"
-msgstr "Przycisk historii"
-
-msgid  "History sides"
-msgstr "Strony historii"
-
-msgid  "History bar page"
-msgstr "Pasek przesuwu historii"
-
-msgid  "History bar icons"
-msgstr "Piktogram historii"
-
-msgid  "List normal"
-msgstr "Lista normalna"
-
-msgid  "List focused"
-msgstr "Lista wyr¢¾niona"
-
-msgid  "List selected"
-msgstr "Lista wybrana"
-
-msgid  "List divider"
-msgstr "Dzielnik listy"
-
-msgid  "Information pane"
-msgstr "Strona informacyjna"
-
-msgid  "Blue Editor"
-msgstr "Niebieski edytor"
-
-msgid  "Cyan Editor"
-msgstr "R¢¾owy edytor"
-
-msgid  "Gray Editor"
-msgstr "Szary edytor"
-
-msgid  "Info viewer"
-msgstr "Okno pomocy"
-
-msgid  "keyword"
-msgstr "Sˆowo kluczowe"
-
-msgid  "selected keyword"
-msgstr "Wybrane sˆowo kluczowe"
-
-msgid  "marked keyword"
-msgstr "Zaznaczone ˜lowo kluczowe"
-
-msgid  "Disassembler"
-msgstr ""
-
-msgid  "Unchanged register"
-msgstr ""
-
-msgid  "Changed register"
-msgstr ""
-
-msgid  "Focused register"
+msgid  ""
+"RHIDE has detected that your DJGPP environment variable was not set. It is "
+"set now automatically. If RHIDE did the right choice, please modify your "
+"autoexec.bat by adding the following line to fix this problem:\n"
+"\n"
+"SET DJGPP=%s\n"
 msgstr ""
 
 msgid  ""
@@ -1898,6 +1759,15 @@ msgid  ""
 "RHIDE could not access the direcory '%s', where it searches for language "
 "specifc strings. Please read the file 'RHIDE.BIN' how to install RHIDE "
 "correct. Should I continue?"
+msgstr ""
+
+msgid  ""
+"RHIDE has detected, that you are running on a System where long filenames "
+"might be supported and you have installed the C++ compiler. Are you sure, "
+"you have read the DJGPP FAQ and the installing instructions for gcc when "
+"running under such a system? (like Windows 95/Windows NT) There might be a "
+"problem with the standard C++ libraries and the standard C++ include files "
+"because of a LFN-conflict. Should I continue?"
 msgstr ""
 
 msgid  "You must type a value here"
@@ -2082,6 +1952,54 @@ msgstr ""
 msgid  "<empty>"
 msgstr "<pusty>"
 
+msgid  "Write block to file"
+msgstr ""
+
+msgid  "Read block from file"
+msgstr ""
+
+msgid  "Base Address"
+msgstr ""
+
+msgid  "Parameter Error!"
+msgstr ""
+
+msgid  "Data window"
+msgstr ""
+
+msgid  "Fill Block"
+msgstr ""
+
+msgid  "~F~rom, length, value"
+msgstr ""
+
+msgid  "Clear Block"
+msgstr ""
+
+msgid  "~F~rom, length"
+msgstr ""
+
+msgid  "Move Block"
+msgstr ""
+
+msgid  "~F~rom, to, length"
+msgstr ""
+
+msgid  "Read Block"
+msgstr ""
+
+msgid  "~T~o, length"
+msgstr ""
+
+msgid  "%u bytes read."
+msgstr ""
+
+msgid  "Write Block"
+msgstr ""
+
+msgid  "%u bytes written."
+msgstr ""
+
 msgid  "~P~athlist"
 msgstr "~L~ista ˜cie¾ek"
 
@@ -2175,6 +2093,9 @@ msgstr "~T~ˆo"
 msgid  "Text "
 msgstr "Tekst "
 
+msgid  "Color"
+msgstr "Kolor"
+
 msgid  "~F~iles"
 msgstr "~P~liki"
 
@@ -2232,6 +2153,9 @@ msgstr "Gru"
 msgid  "Invalid character in input"
 msgstr "Niedozwolony znak na wej˜ciu"
 
+msgid  "Normal"
+msgstr "Normalny"
+
 msgid  "Highlight"
 msgstr "Pod˜wietl"
 
@@ -2255,6 +2179,12 @@ msgstr "~O~ RHGDB"
 
 msgid  "~Q~uit"
 msgstr "~Z~akoäcz"
+
+msgid  "D~a~ta window"
+msgstr ""
+
+msgid  "S~t~ack window"
+msgstr ""
 
 msgid  "~D~irectories for sources"
 msgstr "~K~atalogi plik¢w «r¢dˆowych"
@@ -2703,8 +2633,32 @@ msgstr "~W~sz©dzie"
 msgid  "Search hit"
 msgstr ""
 
+msgid  "Replace this occurence?"
+msgstr "Zamieni† te wyst¥pienie"
+
 msgid  "~A~ll"
 msgstr ""
+
+msgid  "Not enough memory for this operation"
+msgstr "Za maˆo pami©ci do wykonania operacji."
+
+msgid  "Error reading file "
+msgstr "Bˆ¥d podczas czytania pliku "
+
+msgid  "Error writing file "
+msgstr "Bˆ¥d podczas zapisywania pliku "
+
+msgid  "Error creating file "
+msgstr "Bˆ¥d podczas tworzenia pliku "
+
+msgid  " has been modified. Save?"
+msgstr " zostaˆ zmieniony. Zachowa†?"
+
+msgid  "Save untitled file?"
+msgstr "Zapisa† plik bez nazwy?"
+
+msgid  "Save file as"
+msgstr "Zapisz plik jako"
 
 msgid  "Write to file"
 msgstr "Zapisz do pliku"
@@ -2712,8 +2666,14 @@ msgstr "Zapisz do pliku"
 msgid  "Read from file"
 msgstr "Czytaj z pliku"
 
+msgid  "Search string not found."
+msgstr "Nie znaleziono zzukanego ˆaäcucha."
+
 msgid  " bytes selected"
 msgstr " bajt¢w wybrano"
+
+msgid  "Line too long, cut it?"
+msgstr "Linia za dˆuga, uci¥c?"
 
 msgid  "This file isn't in disk!"
 msgstr ""

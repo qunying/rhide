@@ -142,6 +142,12 @@ msgstr "k”r GREP:"
 msgid  "executing: "
 msgstr "exekverar: "
 
+msgid  "Output to stderr:"
+msgstr ""
+
+msgid  "Output to stdout:"
+msgstr ""
+
 msgid  "return value: %d\n"
 msgstr "returv„rde: %d\n"
 
@@ -688,11 +694,14 @@ msgstr ""
 msgid  "Name of the main function"
 msgstr ""
 
-msgid  "Regular expression to list functions"
-msgstr "Regul„rt s”kuttryck f”r funktioner"
+msgid  "Expression to inspect"
+msgstr ""
 
 msgid  "~E~xpression"
 msgstr "~U~ttryck"
+
+msgid  "Regular expression to list functions"
+msgstr "Regul„rt s”kuttryck f”r funktioner"
 
 msgid  "List of functions"
 msgstr "Lista ”ver funktioner"
@@ -855,6 +864,12 @@ msgstr "Spara so~m~ ..."
 msgid  "Save a~l~l"
 msgstr "Spara a~l~lt"
 
+msgid  "~P~rint"
+msgstr ""
+
+msgid  "Printer set~u~p"
+msgstr ""
+
 msgid  "~D~OS shell"
 msgstr "~D~OS shell"
 
@@ -875,6 +890,15 @@ msgstr "Sto~p~"
 
 msgid  "~P~lay"
 msgstr "~K~”r"
+
+msgid  "~C~hoose"
+msgstr ""
+
+msgid  "R~e~peat"
+msgstr ""
+
+msgid  "~G~enerate Code"
+msgstr ""
 
 msgid  "~E~dit"
 msgstr "~R~edigera"
@@ -903,7 +927,7 @@ msgstr "~R~adera"
 msgid  "Cop~y~ to Windows Clipboard"
 msgstr ""
 
-msgid  "Pas~t~e from Windows Clipboard"
+msgid  "Paste from ~W~indows Clipboard"
 msgstr ""
 
 msgid  "E~x~pand all tabs"
@@ -1223,6 +1247,9 @@ msgstr "~U~tv„rdera/Žndra"
 
 msgid  "~W~atch an expression"
 msgstr "~V~akta uttryck"
+
+msgid  "~I~nspect an expression"
+msgstr ""
 
 msgid  "~B~reakpoints"
 msgstr "~B~rytpunkter"
@@ -1697,36 +1724,6 @@ msgstr ""
 msgid  "Fu~z~zy value"
 msgstr ""
 
-msgid  "Not enough memory for this operation"
-msgstr "Otillr„ckligt minne f”r denna operation"
-
-msgid  "Error reading file "
-msgstr "Fel vid l„sning av fil "
-
-msgid  "Error writing file "
-msgstr "Fel vid skrivning av fil "
-
-msgid  "Error creating file "
-msgstr "Fel vid skapande av fil "
-
-msgid  " has been modified. Save?"
-msgstr " har „ndrats. Spara ?"
-
-msgid  "Save untitled file?"
-msgstr "Spara namnl”s fil ?"
-
-msgid  "Save file as"
-msgstr "Spara fil som"
-
-msgid  "Search string not found."
-msgstr "S”kstr„ng ej funnen."
-
-msgid  "Replace this occurence?"
-msgstr "Skall detta ers„ttas ?"
-
-msgid  "Line too long, cut it?"
-msgstr "Rad f”r l†ng, kapa den ?"
-
 msgid  "Calculator"
 msgstr ""
 
@@ -1739,148 +1736,12 @@ msgstr "Ut~v~„rdera"
 msgid  "Error in expression (%d)"
 msgstr ""
 
-msgid  "Color"
-msgstr "F„rg"
-
-msgid  "Desktop"
-msgstr "Skrivbord"
-
-msgid  "Normal"
-msgstr "Normal"
-
-msgid  "Menus"
-msgstr "Menyer"
-
-msgid  "Disabled"
-msgstr "Inaktiv"
-
-msgid  "Shortcut"
-msgstr "Genv„g"
-
-msgid  "Selected"
-msgstr "Vald"
-
-msgid  "Selected disabled"
-msgstr "Vald inaktiv"
-
-msgid  "Shortcut selected"
-msgstr "Vald genv„g"
-
-msgid  "Blue Windows"
-msgstr "Bl† f”nster"
-
-msgid  "Cyan Windows"
-msgstr "Turkos f”nster"
-
-msgid  "Gray Windows"
-msgstr "Gr† f”nster"
-
-msgid  "Dialogs"
-msgstr "Dialogrutor"
-
-msgid  "Label normal"
-msgstr "Normal etikett"
-
-msgid  "Label selected"
-msgstr "Vald etikett"
-
-msgid  "Label shortcut"
-msgstr "Genv„g f”r etikett"
-
-msgid  "Button normal"
-msgstr "Normal knapp"
-
-msgid  "Button default"
-msgstr "F”rvald knapp"
-
-msgid  "Button selected"
-msgstr "Vald knapp"
-
-msgid  "Button disabled"
-msgstr "Inaktiv knapp"
-
-msgid  "Button shortcut"
-msgstr "Genv„g f”r knapp"
-
-msgid  "Button shadow"
-msgstr "Knappskugga"
-
-msgid  "Cluster normal"
-msgstr "Normal grupp"
-
-msgid  "Cluster selected"
-msgstr "Vald grupp"
-
-msgid  "Cluster shortcut"
-msgstr "Genv„g f”r grupp"
-
-msgid  "Input normal"
-msgstr "Normalt editf„lt"
-
-msgid  "Input selected"
-msgstr "Valt editf„lt"
-
-msgid  "Input arrow"
-msgstr "Inmatningspil"
-
-msgid  "History button"
-msgstr "Knapp f”r historia"
-
-msgid  "History sides"
-msgstr "Sida f”r historia"
-
-msgid  "History bar page"
-msgstr "List f”r historia"
-
-msgid  "History bar icons"
-msgstr "Ikoner i hist.list"
-
-msgid  "List normal"
-msgstr "Normal lista"
-
-msgid  "List focused"
-msgstr "Aktiv lista"
-
-msgid  "List selected"
-msgstr "Valt i lista"
-
-msgid  "List divider"
-msgstr "Avdelare i lista"
-
-msgid  "Information pane"
-msgstr "Informationspanel"
-
-msgid  "Blue Editor"
-msgstr "Bl† editor"
-
-msgid  "Cyan Editor"
-msgstr ""
-
-msgid  "Gray Editor"
-msgstr ""
-
-msgid  "Info viewer"
-msgstr ""
-
-msgid  "keyword"
-msgstr ""
-
-msgid  "selected keyword"
-msgstr ""
-
-msgid  "marked keyword"
-msgstr ""
-
-msgid  "Disassembler"
-msgstr ""
-
-msgid  "Unchanged register"
-msgstr ""
-
-msgid  "Changed register"
-msgstr ""
-
-msgid  "Focused register"
+msgid  ""
+"RHIDE has detected that your DJGPP environment variable was not set. It is "
+"set now automatically. If RHIDE did the right choice, please modify your "
+"autoexec.bat by adding the following line to fix this problem:\n"
+"\n"
+"SET DJGPP=%s\n"
 msgstr ""
 
 msgid  ""
@@ -1894,6 +1755,15 @@ msgid  ""
 "RHIDE could not access the direcory '%s', where it searches for language "
 "specifc strings. Please read the file 'RHIDE.BIN' how to install RHIDE "
 "correct. Should I continue?"
+msgstr ""
+
+msgid  ""
+"RHIDE has detected, that you are running on a System where long filenames "
+"might be supported and you have installed the C++ compiler. Are you sure, "
+"you have read the DJGPP FAQ and the installing instructions for gcc when "
+"running under such a system? (like Windows 95/Windows NT) There might be a "
+"problem with the standard C++ libraries and the standard C++ include files "
+"because of a LFN-conflict. Should I continue?"
 msgstr ""
 
 msgid  "You must type a value here"
@@ -2078,6 +1948,54 @@ msgstr ""
 msgid  "<empty>"
 msgstr "<tom>"
 
+msgid  "Write block to file"
+msgstr ""
+
+msgid  "Read block from file"
+msgstr ""
+
+msgid  "Base Address"
+msgstr ""
+
+msgid  "Parameter Error!"
+msgstr ""
+
+msgid  "Data window"
+msgstr ""
+
+msgid  "Fill Block"
+msgstr ""
+
+msgid  "~F~rom, length, value"
+msgstr ""
+
+msgid  "Clear Block"
+msgstr ""
+
+msgid  "~F~rom, length"
+msgstr ""
+
+msgid  "Move Block"
+msgstr ""
+
+msgid  "~F~rom, to, length"
+msgstr ""
+
+msgid  "Read Block"
+msgstr ""
+
+msgid  "~T~o, length"
+msgstr ""
+
+msgid  "%u bytes read."
+msgstr ""
+
+msgid  "Write Block"
+msgstr ""
+
+msgid  "%u bytes written."
+msgstr ""
+
 msgid  "~P~athlist"
 msgstr "~S~”kv„gar"
 
@@ -2171,6 +2089,9 @@ msgstr "~B~akgrund"
 msgid  "Text "
 msgstr "Text "
 
+msgid  "Color"
+msgstr "F„rg"
+
 msgid  "~F~iles"
 msgstr "~F~iler"
 
@@ -2228,6 +2149,9 @@ msgstr "Dec"
 msgid  "Invalid character in input"
 msgstr "Ogiltigt tecken i inmatning"
 
+msgid  "Normal"
+msgstr "Normal"
+
 msgid  "Highlight"
 msgstr "Upplyst"
 
@@ -2251,6 +2175,12 @@ msgstr ""
 
 msgid  "~Q~uit"
 msgstr "~A~vsluta"
+
+msgid  "D~a~ta window"
+msgstr ""
+
+msgid  "S~t~ack window"
+msgstr ""
 
 msgid  "~D~irectories for sources"
 msgstr "~K~ataloger f”r k„llkod"
@@ -2698,8 +2628,32 @@ msgstr "Till allt"
 msgid  "Search hit"
 msgstr ""
 
+msgid  "Replace this occurence?"
+msgstr "Skall detta ers„ttas ?"
+
 msgid  "~A~ll"
 msgstr ""
+
+msgid  "Not enough memory for this operation"
+msgstr "Otillr„ckligt minne f”r denna operation"
+
+msgid  "Error reading file "
+msgstr "Fel vid l„sning av fil "
+
+msgid  "Error writing file "
+msgstr "Fel vid skrivning av fil "
+
+msgid  "Error creating file "
+msgstr "Fel vid skapande av fil "
+
+msgid  " has been modified. Save?"
+msgstr " har „ndrats. Spara ?"
+
+msgid  "Save untitled file?"
+msgstr "Spara namnl”s fil ?"
+
+msgid  "Save file as"
+msgstr "Spara fil som"
 
 msgid  "Write to file"
 msgstr "Skriv till fil"
@@ -2707,8 +2661,14 @@ msgstr "Skriv till fil"
 msgid  "Read from file"
 msgstr "L„s fr†n fil"
 
+msgid  "Search string not found."
+msgstr "S”kstr„ng ej funnen."
+
 msgid  " bytes selected"
 msgstr " bytes valda"
+
+msgid  "Line too long, cut it?"
+msgstr "Rad f”r l†ng, kapa den ?"
 
 msgid  "This file isn't in disk!"
 msgstr ""

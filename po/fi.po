@@ -142,6 +142,12 @@ msgstr "ajetaan GREP:i„."
 msgid  "executing: "
 msgstr "suoritetaan: "
 
+msgid  "Output to stderr:"
+msgstr ""
+
+msgid  "Output to stdout:"
+msgstr ""
+
 msgid  "return value: %d\n"
 msgstr "paluu arvo: %d\n"
 
@@ -689,11 +695,14 @@ msgstr ""
 msgid  "Name of the main function"
 msgstr ""
 
-msgid  "Regular expression to list functions"
-msgstr "T„sm„llinen lauseke listataksesi funktiot"
+msgid  "Expression to inspect"
+msgstr ""
 
 msgid  "~E~xpression"
 msgstr "Laus~e~ke"
+
+msgid  "Regular expression to list functions"
+msgstr "T„sm„llinen lauseke listataksesi funktiot"
 
 msgid  "List of functions"
 msgstr "Funktio lista"
@@ -858,6 +867,12 @@ msgstr "Tallenna n~i~mell„..."
 msgid  "Save a~l~l"
 msgstr "Tallenna ~k~aikki"
 
+msgid  "~P~rint"
+msgstr ""
+
+msgid  "Printer set~u~p"
+msgstr ""
+
 msgid  "~D~OS shell"
 msgstr "~D~ossi"
 
@@ -878,6 +893,15 @@ msgstr "~S~eis"
 
 msgid  "~P~lay"
 msgstr "~A~ja"
+
+msgid  "~C~hoose"
+msgstr ""
+
+msgid  "R~e~peat"
+msgstr ""
+
+msgid  "~G~enerate Code"
+msgstr ""
 
 msgid  "~E~dit"
 msgstr "~M~uuta"
@@ -906,7 +930,7 @@ msgstr "~T~yhjenn„"
 msgid  "Cop~y~ to Windows Clipboard"
 msgstr ""
 
-msgid  "Pas~t~e from Windows Clipboard"
+msgid  "Paste from ~W~indows Clipboard"
 msgstr ""
 
 msgid  "E~x~pand all tabs"
@@ -1226,6 +1250,9 @@ msgstr "~L~aske/Muuta"
 
 msgid  "~W~atch an expression"
 msgstr "~T~arkkaile lauseketta"
+
+msgid  "~I~nspect an expression"
+msgstr ""
 
 msgid  "~B~reakpoints"
 msgstr "K~e~skeytykohdat"
@@ -1700,36 +1727,6 @@ msgstr ""
 msgid  "Fu~z~zy value"
 msgstr ""
 
-msgid  "Not enough memory for this operation"
-msgstr "Ei riitt„v„sti muistia t„h„n toimintoon"
-
-msgid  "Error reading file "
-msgstr "Virhe tiedostoa luettaessa"
-
-msgid  "Error writing file "
-msgstr "Virhe tiedostoa kirjoitettaessa"
-
-msgid  "Error creating file "
-msgstr "Virhe tiedostoa luotaessa"
-
-msgid  " has been modified. Save?"
-msgstr " on muutunut. Tallenetaanko?"
-
-msgid  "Save untitled file?"
-msgstr "Tallennetetaanko nime„m„t”n tiedosto?"
-
-msgid  "Save file as"
-msgstr "Tallenna tiedosto nimell„"
-
-msgid  "Search string not found."
-msgstr "Etsitty„ merkkijonoa ei l”ytynyt."
-
-msgid  "Replace this occurence?"
-msgstr "Korvataan t„m„ esiintym„?"
-
-msgid  "Line too long, cut it?"
-msgstr "Rivi liian pitk„, leikataan se?"
-
 msgid  "Calculator"
 msgstr ""
 
@@ -1742,148 +1739,12 @@ msgstr "~L~aske"
 msgid  "Error in expression (%d)"
 msgstr ""
 
-msgid  "Color"
-msgstr "V„ri"
-
-msgid  "Desktop"
-msgstr "Ty”p”yt„"
-
-msgid  "Normal"
-msgstr "Normaali"
-
-msgid  "Menus"
-msgstr "Valikot"
-
-msgid  "Disabled"
-msgstr "Estetty"
-
-msgid  "Shortcut"
-msgstr "Pikan„pp„imist”komento"
-
-msgid  "Selected"
-msgstr "Valittu"
-
-msgid  "Selected disabled"
-msgstr "Valinta estetty"
-
-msgid  "Shortcut selected"
-msgstr "Valittu pikan„pp„imist”komento"
-
-msgid  "Blue Windows"
-msgstr "Siniset ikkunat"
-
-msgid  "Cyan Windows"
-msgstr "Cyaaniset ikkunat"
-
-msgid  "Gray Windows"
-msgstr "Harmaat ikkunat"
-
-msgid  "Dialogs"
-msgstr "Keskusteluikkunat"
-
-msgid  "Label normal"
-msgstr "Normaali 'label'"
-
-msgid  "Label selected"
-msgstr "Valittu 'label'"
-
-msgid  "Label shortcut"
-msgstr "Pikan„pp„imist”komento 'label'iin"
-
-msgid  "Button normal"
-msgstr "Normaali painonappi"
-
-msgid  "Button default"
-msgstr "Oletus painonappi"
-
-msgid  "Button selected"
-msgstr "Valittu painonappi"
-
-msgid  "Button disabled"
-msgstr "Estetty painonappi"
-
-msgid  "Button shortcut"
-msgstr "Pikan„pp„imist”komento painonappiin"
-
-msgid  "Button shadow"
-msgstr "Painonapin varjostus"
-
-msgid  "Cluster normal"
-msgstr "Ryhm„"
-
-msgid  "Cluster selected"
-msgstr "Valittu ryhm„"
-
-msgid  "Cluster shortcut"
-msgstr "Ryhm„n pikan„pp„imist”komento"
-
-msgid  "Input normal"
-msgstr "Normaali sy”tt”kentt„"
-
-msgid  "Input selected"
-msgstr "Valittu  sy”tt”kentt„"
-
-msgid  "Input arrow"
-msgstr "Sy”tt”kentt„n nuoli"
-
-msgid  "History button"
-msgstr "Historia painonappi"
-
-msgid  "History sides"
-msgstr "Historia ikoni"
-
-msgid  "History bar page"
-msgstr "Historia palkki"
-
-msgid  "History bar icons"
-msgstr "Historia palkin painikkeet"
-
-msgid  "List normal"
-msgstr "Normaali lista"
-
-msgid  "List focused"
-msgstr "Aktivoitu lista"
-
-msgid  "List selected"
-msgstr "Valittu lista"
-
-msgid  "List divider"
-msgstr "Listan jakaja"
-
-msgid  "Information pane"
-msgstr "Informaation paneeli"
-
-msgid  "Blue Editor"
-msgstr "Sininen editori"
-
-msgid  "Cyan Editor"
-msgstr ""
-
-msgid  "Gray Editor"
-msgstr ""
-
-msgid  "Info viewer"
-msgstr ""
-
-msgid  "keyword"
-msgstr ""
-
-msgid  "selected keyword"
-msgstr ""
-
-msgid  "marked keyword"
-msgstr ""
-
-msgid  "Disassembler"
-msgstr ""
-
-msgid  "Unchanged register"
-msgstr ""
-
-msgid  "Changed register"
-msgstr ""
-
-msgid  "Focused register"
+msgid  ""
+"RHIDE has detected that your DJGPP environment variable was not set. It is "
+"set now automatically. If RHIDE did the right choice, please modify your "
+"autoexec.bat by adding the following line to fix this problem:\n"
+"\n"
+"SET DJGPP=%s\n"
 msgstr ""
 
 msgid  ""
@@ -1897,6 +1758,15 @@ msgid  ""
 "RHIDE could not access the direcory '%s', where it searches for language "
 "specifc strings. Please read the file 'RHIDE.BIN' how to install RHIDE "
 "correct. Should I continue?"
+msgstr ""
+
+msgid  ""
+"RHIDE has detected, that you are running on a System where long filenames "
+"might be supported and you have installed the C++ compiler. Are you sure, "
+"you have read the DJGPP FAQ and the installing instructions for gcc when "
+"running under such a system? (like Windows 95/Windows NT) There might be a "
+"problem with the standard C++ libraries and the standard C++ include files "
+"because of a LFN-conflict. Should I continue?"
 msgstr ""
 
 msgid  "You must type a value here"
@@ -2080,6 +1950,54 @@ msgstr ""
 msgid  "<empty>"
 msgstr "<tyhj„>"
 
+msgid  "Write block to file"
+msgstr ""
+
+msgid  "Read block from file"
+msgstr ""
+
+msgid  "Base Address"
+msgstr ""
+
+msgid  "Parameter Error!"
+msgstr ""
+
+msgid  "Data window"
+msgstr ""
+
+msgid  "Fill Block"
+msgstr ""
+
+msgid  "~F~rom, length, value"
+msgstr ""
+
+msgid  "Clear Block"
+msgstr ""
+
+msgid  "~F~rom, length"
+msgstr ""
+
+msgid  "Move Block"
+msgstr ""
+
+msgid  "~F~rom, to, length"
+msgstr ""
+
+msgid  "Read Block"
+msgstr ""
+
+msgid  "~T~o, length"
+msgstr ""
+
+msgid  "%u bytes read."
+msgstr ""
+
+msgid  "Write Block"
+msgstr ""
+
+msgid  "%u bytes written."
+msgstr ""
+
 msgid  "~P~athlist"
 msgstr "~P~olku"
 
@@ -2173,6 +2091,9 @@ msgstr "~T~austa"
 msgid  "Text "
 msgstr "Teksti"
 
+msgid  "Color"
+msgstr "V„ri"
+
 msgid  "~F~iles"
 msgstr "~T~iedostot"
 
@@ -2230,6 +2151,9 @@ msgstr "Jou"
 msgid  "Invalid character in input"
 msgstr "V„„r„ merkki sy”tteess„."
 
+msgid  "Normal"
+msgstr "Normaali"
+
 msgid  "Highlight"
 msgstr "Korostus"
 
@@ -2253,6 +2177,12 @@ msgstr ""
 
 msgid  "~Q~uit"
 msgstr "~P~oistu"
+
+msgid  "D~a~ta window"
+msgstr ""
+
+msgid  "S~t~ack window"
+msgstr ""
 
 msgid  "~D~irectories for sources"
 msgstr "~L~„hde tiedostojen hakemistot"
@@ -2700,8 +2630,32 @@ msgstr "~K~aikille"
 msgid  "Search hit"
 msgstr ""
 
+msgid  "Replace this occurence?"
+msgstr "Korvataan t„m„ esiintym„?"
+
 msgid  "~A~ll"
 msgstr ""
+
+msgid  "Not enough memory for this operation"
+msgstr "Ei riitt„v„sti muistia t„h„n toimintoon"
+
+msgid  "Error reading file "
+msgstr "Virhe tiedostoa luettaessa"
+
+msgid  "Error writing file "
+msgstr "Virhe tiedostoa kirjoitettaessa"
+
+msgid  "Error creating file "
+msgstr "Virhe tiedostoa luotaessa"
+
+msgid  " has been modified. Save?"
+msgstr " on muutunut. Tallenetaanko?"
+
+msgid  "Save untitled file?"
+msgstr "Tallennetetaanko nime„m„t”n tiedosto?"
+
+msgid  "Save file as"
+msgstr "Tallenna tiedosto nimell„"
 
 msgid  "Write to file"
 msgstr "Kirjoitetaan tiedostoon"
@@ -2709,8 +2663,14 @@ msgstr "Kirjoitetaan tiedostoon"
 msgid  "Read from file"
 msgstr "Luetaan tiedostosta"
 
+msgid  "Search string not found."
+msgstr "Etsitty„ merkkijonoa ei l”ytynyt."
+
 msgid  " bytes selected"
 msgstr " tavua valittu"
+
+msgid  "Line too long, cut it?"
+msgstr "Rivi liian pitk„, leikataan se?"
 
 msgid  "This file isn't in disk!"
 msgstr ""

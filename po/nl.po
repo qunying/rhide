@@ -142,6 +142,12 @@ msgstr ""
 msgid  "executing: "
 msgstr "uitvoeren: "
 
+msgid  "Output to stderr:"
+msgstr ""
+
+msgid  "Output to stdout:"
+msgstr ""
+
 msgid  "return value: %d\n"
 msgstr ""
 
@@ -688,10 +694,13 @@ msgstr ""
 msgid  "Name of the main function"
 msgstr ""
 
-msgid  "Regular expression to list functions"
+msgid  "Expression to inspect"
 msgstr ""
 
 msgid  "~E~xpression"
+msgstr ""
+
+msgid  "Regular expression to list functions"
 msgstr ""
 
 msgid  "List of functions"
@@ -855,6 +864,12 @@ msgstr "Op~s~laan als..."
 msgid  "Save a~l~l"
 msgstr "~A~lles opslaan"
 
+msgid  "~P~rint"
+msgstr ""
+
+msgid  "Printer set~u~p"
+msgstr ""
+
 msgid  "~D~OS shell"
 msgstr "~D~OS shell"
 
@@ -874,6 +889,15 @@ msgid  "~S~top"
 msgstr ""
 
 msgid  "~P~lay"
+msgstr ""
+
+msgid  "~C~hoose"
+msgstr ""
+
+msgid  "R~e~peat"
+msgstr ""
+
+msgid  "~G~enerate Code"
 msgstr ""
 
 msgid  "~E~dit"
@@ -903,7 +927,7 @@ msgstr "~W~issen"
 msgid  "Cop~y~ to Windows Clipboard"
 msgstr ""
 
-msgid  "Pas~t~e from Windows Clipboard"
+msgid  "Paste from ~W~indows Clipboard"
 msgstr ""
 
 msgid  "E~x~pand all tabs"
@@ -1222,6 +1246,9 @@ msgid  "~E~valuate/Modify"
 msgstr ""
 
 msgid  "~W~atch an expression"
+msgstr ""
+
+msgid  "~I~nspect an expression"
 msgstr ""
 
 msgid  "~B~reakpoints"
@@ -1696,36 +1723,6 @@ msgstr ""
 msgid  "Fu~z~zy value"
 msgstr ""
 
-msgid  "Not enough memory for this operation"
-msgstr ""
-
-msgid  "Error reading file "
-msgstr ""
-
-msgid  "Error writing file "
-msgstr ""
-
-msgid  "Error creating file "
-msgstr ""
-
-msgid  " has been modified. Save?"
-msgstr ""
-
-msgid  "Save untitled file?"
-msgstr ""
-
-msgid  "Save file as"
-msgstr ""
-
-msgid  "Search string not found."
-msgstr ""
-
-msgid  "Replace this occurence?"
-msgstr ""
-
-msgid  "Line too long, cut it?"
-msgstr ""
-
 msgid  "Calculator"
 msgstr ""
 
@@ -1738,148 +1735,12 @@ msgstr ""
 msgid  "Error in expression (%d)"
 msgstr ""
 
-msgid  "Color"
-msgstr "Kleur"
-
-msgid  "Desktop"
-msgstr "Bureaublad"
-
-msgid  "Normal"
-msgstr "Normaal"
-
-msgid  "Menus"
-msgstr "Menu's"
-
-msgid  "Disabled"
-msgstr "Niet-aktief"
-
-msgid  "Shortcut"
-msgstr "Snelkoppeling"
-
-msgid  "Selected"
-msgstr "Geselecteerd"
-
-msgid  "Selected disabled"
-msgstr "Gesel. niet-aktief"
-
-msgid  "Shortcut selected"
-msgstr "Gesel. snelkoppeling"
-
-msgid  "Blue Windows"
-msgstr "Blauwe vensters"
-
-msgid  "Cyan Windows"
-msgstr "Cyaankl. vensters"
-
-msgid  "Gray Windows"
-msgstr "Grijze vensters"
-
-msgid  "Dialogs"
-msgstr "Dialoogitems"
-
-msgid  "Label normal"
-msgstr "Label normaal"
-
-msgid  "Label selected"
-msgstr "Label geselecteerd"
-
-msgid  "Label shortcut"
-msgstr "Label snelkoppeling"
-
-msgid  "Button normal"
-msgstr "Knop normaal"
-
-msgid  "Button default"
-msgstr "Knop standaardvoorkeur"
-
-msgid  "Button selected"
-msgstr "Knop geselecteerd"
-
-msgid  "Button disabled"
-msgstr "Knop niet-aktief"
-
-msgid  "Button shortcut"
-msgstr "Knop snelkoppeling"
-
-msgid  "Button shadow"
-msgstr "Knopschaduw"
-
-msgid  "Cluster normal"
-msgstr "Groep normaal"
-
-msgid  "Cluster selected"
-msgstr "Groep geselecteerd"
-
-msgid  "Cluster shortcut"
-msgstr "Groep snelkoppeling"
-
-msgid  "Input normal"
-msgstr "Invoer normaal"
-
-msgid  "Input selected"
-msgstr "Invoer geselecteerd"
-
-msgid  "Input arrow"
-msgstr "Invoer eindepijl"
-
-msgid  "History button"
-msgstr "History knop"
-
-msgid  "History sides"
-msgstr "History zijkanten"
-
-msgid  "History bar page"
-msgstr "History-balk"
-
-msgid  "History bar icons"
-msgstr "History-balk iconen"
-
-msgid  "List normal"
-msgstr "Lijst normaal"
-
-msgid  "List focused"
-msgstr "Lijst aktief"
-
-msgid  "List selected"
-msgstr "Lijst geselecteerd"
-
-msgid  "List divider"
-msgstr "Lijstdeler"
-
-msgid  "Information pane"
-msgstr "Informatiepaneel"
-
-msgid  "Blue Editor"
-msgstr "Blauwe editor"
-
-msgid  "Cyan Editor"
-msgstr ""
-
-msgid  "Gray Editor"
-msgstr ""
-
-msgid  "Info viewer"
-msgstr ""
-
-msgid  "keyword"
-msgstr ""
-
-msgid  "selected keyword"
-msgstr ""
-
-msgid  "marked keyword"
-msgstr ""
-
-msgid  "Disassembler"
-msgstr ""
-
-msgid  "Unchanged register"
-msgstr ""
-
-msgid  "Changed register"
-msgstr ""
-
-msgid  "Focused register"
+msgid  ""
+"RHIDE has detected that your DJGPP environment variable was not set. It is "
+"set now automatically. If RHIDE did the right choice, please modify your "
+"autoexec.bat by adding the following line to fix this problem:\n"
+"\n"
+"SET DJGPP=%s\n"
 msgstr ""
 
 msgid  ""
@@ -1893,6 +1754,15 @@ msgid  ""
 "RHIDE could not access the direcory '%s', where it searches for language "
 "specifc strings. Please read the file 'RHIDE.BIN' how to install RHIDE "
 "correct. Should I continue?"
+msgstr ""
+
+msgid  ""
+"RHIDE has detected, that you are running on a System where long filenames "
+"might be supported and you have installed the C++ compiler. Are you sure, "
+"you have read the DJGPP FAQ and the installing instructions for gcc when "
+"running under such a system? (like Windows 95/Windows NT) There might be a "
+"problem with the standard C++ libraries and the standard C++ include files "
+"because of a LFN-conflict. Should I continue?"
 msgstr ""
 
 msgid  "You must type a value here"
@@ -2067,6 +1937,54 @@ msgstr ""
 msgid  "<empty>"
 msgstr ""
 
+msgid  "Write block to file"
+msgstr ""
+
+msgid  "Read block from file"
+msgstr ""
+
+msgid  "Base Address"
+msgstr ""
+
+msgid  "Parameter Error!"
+msgstr ""
+
+msgid  "Data window"
+msgstr ""
+
+msgid  "Fill Block"
+msgstr ""
+
+msgid  "~F~rom, length, value"
+msgstr ""
+
+msgid  "Clear Block"
+msgstr ""
+
+msgid  "~F~rom, length"
+msgstr ""
+
+msgid  "Move Block"
+msgstr ""
+
+msgid  "~F~rom, to, length"
+msgstr ""
+
+msgid  "Read Block"
+msgstr ""
+
+msgid  "~T~o, length"
+msgstr ""
+
+msgid  "%u bytes read."
+msgstr ""
+
+msgid  "Write Block"
+msgstr ""
+
+msgid  "%u bytes written."
+msgstr ""
+
 msgid  "~P~athlist"
 msgstr "~P~adlijst"
 
@@ -2160,6 +2078,9 @@ msgstr "~A~chtergrond"
 msgid  "Text "
 msgstr "Tekst "
 
+msgid  "Color"
+msgstr "Kleur"
+
 msgid  "~F~iles"
 msgstr "~B~estanden"
 
@@ -2176,7 +2097,15 @@ msgid  "Invalid file name."
 msgstr "Ongeldige bestandsnaam"
 
 msgid  ""
-msgstr ""
+msgstr "Date: 1996-08-15 22:18:08+0000\n"
+"From: Robert.Hoehne <Robert.Hoehne@pc>\n"
+"Content-Type: text/plain; charset=\n"
+"Xgettext-Options: --default-domain=potfiles --add-comments --keyword=_ "
+"--directory=s:/rhide --files-from=s:/rhide/potfiles.in\n"
+"Files: ide21.cc idecolor.cc idedebug.cc idedefau.cc ideexter.cc ideforma.cc "
+"idegcc.cc idehelp.cc idehints.cc ideio.cc idemain.cc idemenu.cc idemsg.cc "
+"ideopt.cc idepipe.cc ideprj.cc ideresou.cc idestatu.cc idestrm.cc "
+"ideutil.cc ideversi.cc openedit.cc\n"
 
 msgid  "Jan"
 msgstr "Jan"
@@ -2217,6 +2146,9 @@ msgstr "Dec"
 msgid  "Invalid character in input"
 msgstr ""
 
+msgid  "Normal"
+msgstr "Normaal"
+
 msgid  "Highlight"
 msgstr "Benadrukt"
 
@@ -2239,6 +2171,12 @@ msgid  "about RH~G~DB"
 msgstr ""
 
 msgid  "~Q~uit"
+msgstr ""
+
+msgid  "D~a~ta window"
+msgstr ""
+
+msgid  "S~t~ack window"
 msgstr ""
 
 msgid  "~D~irectories for sources"
@@ -2687,7 +2625,31 @@ msgstr ""
 msgid  "Search hit"
 msgstr ""
 
+msgid  "Replace this occurence?"
+msgstr ""
+
 msgid  "~A~ll"
+msgstr ""
+
+msgid  "Not enough memory for this operation"
+msgstr ""
+
+msgid  "Error reading file "
+msgstr ""
+
+msgid  "Error writing file "
+msgstr ""
+
+msgid  "Error creating file "
+msgstr ""
+
+msgid  " has been modified. Save?"
+msgstr ""
+
+msgid  "Save untitled file?"
+msgstr ""
+
+msgid  "Save file as"
 msgstr ""
 
 msgid  "Write to file"
@@ -2696,7 +2658,13 @@ msgstr ""
 msgid  "Read from file"
 msgstr ""
 
+msgid  "Search string not found."
+msgstr ""
+
 msgid  " bytes selected"
+msgstr ""
+
+msgid  "Line too long, cut it?"
 msgstr ""
 
 msgid  "This file isn't in disk!"

@@ -142,6 +142,12 @@ msgstr "udf›rer GREP"
 msgid  "executing: "
 msgstr "Udf›rer: "
 
+msgid  "Output to stderr:"
+msgstr ""
+
+msgid  "Output to stdout:"
+msgstr ""
+
 msgid  "return value: %d\n"
 msgstr "retur v‘rdi: %d\n"
 
@@ -690,11 +696,14 @@ msgstr ""
 msgid  "Name of the main function"
 msgstr ""
 
-msgid  "Regular expression to list functions"
-msgstr "Ordin‘rt udtryk for liste funktioner"
+msgid  "Expression to inspect"
+msgstr ""
 
 msgid  "~E~xpression"
 msgstr "Udtryk (~E~)"
+
+msgid  "Regular expression to list functions"
+msgstr "Ordin‘rt udtryk for liste funktioner"
 
 msgid  "List of functions"
 msgstr "Liste over funktioner"
@@ -857,6 +866,12 @@ msgstr "Gem som... (~A~)"
 msgid  "Save a~l~l"
 msgstr "Gem ~a~lle"
 
+msgid  "~P~rint"
+msgstr ""
+
+msgid  "Printer set~u~p"
+msgstr ""
+
 msgid  "~D~OS shell"
 msgstr "~D~OS shell"
 
@@ -876,6 +891,15 @@ msgid  "~S~top"
 msgstr ""
 
 msgid  "~P~lay"
+msgstr ""
+
+msgid  "~C~hoose"
+msgstr ""
+
+msgid  "R~e~peat"
+msgstr ""
+
+msgid  "~G~enerate Code"
 msgstr ""
 
 msgid  "~E~dit"
@@ -905,7 +929,7 @@ msgstr "Slet (~C~)"
 msgid  "Cop~y~ to Windows Clipboard"
 msgstr ""
 
-msgid  "Pas~t~e from Windows Clipboard"
+msgid  "Paste from ~W~indows Clipboard"
 msgstr ""
 
 msgid  "E~x~pand all tabs"
@@ -1225,6 +1249,9 @@ msgstr "Vis/‘ndr~e~"
 
 msgid  "~W~atch an expression"
 msgstr "Vis v‘rdi af et udtryk (~W~)"
+
+msgid  "~I~nspect an expression"
+msgstr ""
 
 msgid  "~B~reakpoints"
 msgstr "Programstop (~B~)"
@@ -1699,36 +1726,6 @@ msgstr ""
 msgid  "Fu~z~zy value"
 msgstr ""
 
-msgid  "Not enough memory for this operation"
-msgstr "Ikke tilstr‘kkelig ledig hukommelse til denne operation."
-
-msgid  "Error reading file "
-msgstr "FEJL ved l‘sning af fil "
-
-msgid  "Error writing file "
-msgstr "FEJL ved skrivning til fil "
-
-msgid  "Error creating file "
-msgstr "FEJL ved oprettelse af fil "
-
-msgid  " has been modified. Save?"
-msgstr " er blevet ‘ndret. Gem?"
-
-msgid  "Save untitled file?"
-msgstr "Gem unavngiven fil?"
-
-msgid  "Save file as"
-msgstr "Gem som"
-
-msgid  "Search string not found."
-msgstr "S›gestreng ikke fundet."
-
-msgid  "Replace this occurence?"
-msgstr "Erstat denne forekomst?"
-
-msgid  "Line too long, cut it?"
-msgstr ""
-
 msgid  "Calculator"
 msgstr ""
 
@@ -1741,148 +1738,12 @@ msgstr "E~v~aluer"
 msgid  "Error in expression (%d)"
 msgstr ""
 
-msgid  "Color"
-msgstr "Farve"
-
-msgid  "Desktop"
-msgstr "Desktop"
-
-msgid  "Normal"
-msgstr "Normal"
-
-msgid  "Menus"
-msgstr "Menuer"
-
-msgid  "Disabled"
-msgstr "Inaktiv"
-
-msgid  "Shortcut"
-msgstr "Genvej"
-
-msgid  "Selected"
-msgstr "Markeret"
-
-msgid  "Selected disabled"
-msgstr "Markeret inaktiv"
-
-msgid  "Shortcut selected"
-msgstr "Genvej markeret"
-
-msgid  "Blue Windows"
-msgstr "Bl† vinduer"
-
-msgid  "Cyan Windows"
-msgstr "Cyan vinduer"
-
-msgid  "Gray Windows"
-msgstr "Gr† vinduer"
-
-msgid  "Dialogs"
-msgstr "Dialoger"
-
-msgid  "Label normal"
-msgstr "Normal etikette"
-
-msgid  "Label selected"
-msgstr "Markeret etikette"
-
-msgid  "Label shortcut"
-msgstr "Etikette genvej"
-
-msgid  "Button normal"
-msgstr "Normal knap"
-
-msgid  "Button default"
-msgstr "Standardknap"
-
-msgid  "Button selected"
-msgstr "Markeret knap"
-
-msgid  "Button disabled"
-msgstr "Inaktiv knap"
-
-msgid  "Button shortcut"
-msgstr "Knap genvej"
-
-msgid  "Button shadow"
-msgstr "Knapskygge"
-
-msgid  "Cluster normal"
-msgstr "Normal gruppe"
-
-msgid  "Cluster selected"
-msgstr "Markeret gruppe"
-
-msgid  "Cluster shortcut"
-msgstr "Markeret gruppe genvej"
-
-msgid  "Input normal"
-msgstr "normalt indl‘sning"
-
-msgid  "Input selected"
-msgstr "indl‘st markeret"
-
-msgid  "Input arrow"
-msgstr "Indl‘sningspil"
-
-msgid  "History button"
-msgstr "Historikknap"
-
-msgid  "History sides"
-msgstr "Historik"
-
-msgid  "History bar page"
-msgstr "Historikliste"
-
-msgid  "History bar icons"
-msgstr "Historikliste ikoner"
-
-msgid  "List normal"
-msgstr "Normalliste"
-
-msgid  "List focused"
-msgstr "Aktiv liste"
-
-msgid  "List selected"
-msgstr "Markeret liste"
-
-msgid  "List divider"
-msgstr "Listeadskilder"
-
-msgid  "Information pane"
-msgstr "Informationspanel"
-
-msgid  "Blue Editor"
-msgstr "Bl† editor"
-
-msgid  "Cyan Editor"
-msgstr ""
-
-msgid  "Gray Editor"
-msgstr ""
-
-msgid  "Info viewer"
-msgstr ""
-
-msgid  "keyword"
-msgstr ""
-
-msgid  "selected keyword"
-msgstr ""
-
-msgid  "marked keyword"
-msgstr ""
-
-msgid  "Disassembler"
-msgstr ""
-
-msgid  "Unchanged register"
-msgstr ""
-
-msgid  "Changed register"
-msgstr ""
-
-msgid  "Focused register"
+msgid  ""
+"RHIDE has detected that your DJGPP environment variable was not set. It is "
+"set now automatically. If RHIDE did the right choice, please modify your "
+"autoexec.bat by adding the following line to fix this problem:\n"
+"\n"
+"SET DJGPP=%s\n"
 msgstr ""
 
 msgid  ""
@@ -1896,6 +1757,15 @@ msgid  ""
 "RHIDE could not access the direcory '%s', where it searches for language "
 "specifc strings. Please read the file 'RHIDE.BIN' how to install RHIDE "
 "correct. Should I continue?"
+msgstr ""
+
+msgid  ""
+"RHIDE has detected, that you are running on a System where long filenames "
+"might be supported and you have installed the C++ compiler. Are you sure, "
+"you have read the DJGPP FAQ and the installing instructions for gcc when "
+"running under such a system? (like Windows 95/Windows NT) There might be a "
+"problem with the standard C++ libraries and the standard C++ include files "
+"because of a LFN-conflict. Should I continue?"
 msgstr ""
 
 msgid  "You must type a value here"
@@ -2070,6 +1940,54 @@ msgstr ""
 msgid  "<empty>"
 msgstr "<tom>"
 
+msgid  "Write block to file"
+msgstr ""
+
+msgid  "Read block from file"
+msgstr ""
+
+msgid  "Base Address"
+msgstr ""
+
+msgid  "Parameter Error!"
+msgstr ""
+
+msgid  "Data window"
+msgstr ""
+
+msgid  "Fill Block"
+msgstr ""
+
+msgid  "~F~rom, length, value"
+msgstr ""
+
+msgid  "Clear Block"
+msgstr ""
+
+msgid  "~F~rom, length"
+msgstr ""
+
+msgid  "Move Block"
+msgstr ""
+
+msgid  "~F~rom, to, length"
+msgstr ""
+
+msgid  "Read Block"
+msgstr ""
+
+msgid  "~T~o, length"
+msgstr ""
+
+msgid  "%u bytes read."
+msgstr ""
+
+msgid  "Write Block"
+msgstr ""
+
+msgid  "%u bytes written."
+msgstr ""
+
 msgid  "~P~athlist"
 msgstr "Stiliste (~P~)"
 
@@ -2163,6 +2081,9 @@ msgstr "~B~aggrund"
 msgid  "Text "
 msgstr "Tekst "
 
+msgid  "Color"
+msgstr "Farve"
+
 msgid  "~F~iles"
 msgstr "~F~iler"
 
@@ -2220,6 +2141,9 @@ msgstr "Dec"
 msgid  "Invalid character in input"
 msgstr "Ulovligt tegn i inddata"
 
+msgid  "Normal"
+msgstr "Normal"
+
 msgid  "Highlight"
 msgstr "Fremh‘vet"
 
@@ -2243,6 +2167,12 @@ msgstr "Om RH~G~DB"
 
 msgid  "~Q~uit"
 msgstr "Afslut (~Q~)"
+
+msgid  "D~a~ta window"
+msgstr ""
+
+msgid  "S~t~ack window"
+msgstr ""
 
 msgid  "~D~irectories for sources"
 msgstr "Kataloger til kil~d~etekster"
@@ -2690,8 +2620,32 @@ msgstr ""
 msgid  "Search hit"
 msgstr ""
 
+msgid  "Replace this occurence?"
+msgstr "Erstat denne forekomst?"
+
 msgid  "~A~ll"
 msgstr ""
+
+msgid  "Not enough memory for this operation"
+msgstr "Ikke tilstr‘kkelig ledig hukommelse til denne operation."
+
+msgid  "Error reading file "
+msgstr "FEJL ved l‘sning af fil "
+
+msgid  "Error writing file "
+msgstr "FEJL ved skrivning til fil "
+
+msgid  "Error creating file "
+msgstr "FEJL ved oprettelse af fil "
+
+msgid  " has been modified. Save?"
+msgstr " er blevet ‘ndret. Gem?"
+
+msgid  "Save untitled file?"
+msgstr "Gem unavngiven fil?"
+
+msgid  "Save file as"
+msgstr "Gem som"
 
 msgid  "Write to file"
 msgstr "Skriv til fil"
@@ -2699,8 +2653,14 @@ msgstr "Skriv til fil"
 msgid  "Read from file"
 msgstr "L‘s fra fil"
 
+msgid  "Search string not found."
+msgstr "S›gestreng ikke fundet."
+
 msgid  " bytes selected"
 msgstr " byte markeret"
+
+msgid  "Line too long, cut it?"
+msgstr ""
 
 msgid  "This file isn't in disk!"
 msgstr ""

@@ -10,7 +10,7 @@ ifeq ($(strip $(SETSRC)),)
 SETSRC=c:/djgpp/contrib/setedit
 endif
 ifeq ($(strip $(TVSRC)),)
-TVSRC=c:/djgpp/contrib/tvision
+TVSRC=c:/djgpp/contrib/tvsrc
 endif
 vpath_src=$(RHIDESRC)/libide/names
 vpath %.c $(vpath_src)

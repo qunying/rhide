@@ -7,7 +7,7 @@ ifeq ($(strip $(RHIDESRC)),)
 RHIDESRC=s:/rho/rhide
 endif
 ifeq ($(strip $(TVSRC)),)
-TVSRC=c:/djgpp/contrib/tvision
+TVSRC=c:/djgpp/contrib/tvsrc
 endif
 vpath_src=$(RHIDESRC)/libtvuti/stream
 vpath %.c $(vpath_src)

@@ -13,10 +13,10 @@ ifeq ($(strip $(SETSRC)),)
 SETSRC=c:/djgpp/contrib/setedit
 endif
 ifeq ($(strip $(TVOBJ)),)
-TVOBJ=c:/djgpp/contrib/tvision/djgpp
+TVOBJ=c:/djgpp/contrib/tvsrc/djgpp
 endif
 ifeq ($(strip $(TVSRC)),)
-TVSRC=c:/djgpp/contrib/tvision
+TVSRC=c:/djgpp/contrib/tvsrc
 endif
 vpath_src=$(RHIDESRC)/rhgdb
 vpath %.c $(vpath_src)

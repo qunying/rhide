@@ -1,4 +1,4 @@
-/* Copyright (C) 1996,1997 Robert H”hne, see COPYING.RH for details */
+/* Copyright (C) 1996-1998 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
 /* This is an example, that gcc produces wrong line number information
    for code which is optimized out. (compile this with -O) */

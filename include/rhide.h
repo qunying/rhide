@@ -1,4 +1,4 @@
-/* Copyright (C) 1996,1997 Robert H”hne, see COPYING.RH for details */
+/* Copyright (C) 1996-1998 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
 /*
  $Id$
@@ -175,7 +175,7 @@ extern char *default_directory;
 Boolean FindFile(const char * name,TDirList * list,char * & full_name,Boolean uselist=True);
 Boolean FindFile(const char * name,char * & full_name);
 void ClearFindCache();
-void AbsToRelPath(char *ref_path,char * & ret);
+int AbsToRelPath(char *ref_path,char * & ret, const char *subst = NULL);
 extern int debug_dependencies;
 extern int debug_commands;
 extern int debug_tempfiles;

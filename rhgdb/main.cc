@@ -1,4 +1,4 @@
-/* Copyright (C) 1996,1997 Robert H”hne, see COPYING.RH for details */
+/* Copyright (C) 1996-1998 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
 /*
  $Id$
@@ -231,7 +231,7 @@ static void About()
                  _("RHGDB is a source level debugger"),
                  _("with Turbo Vision interface"),
                  _("based on GDB "),version,
-                 _("Copyright (C) by Robert H”hne, 1996,1997"));
+                 _("Copyright (C) by Robert H”hne, 1996-1998"));
   text = new TStaticText(TRect(0,0,50,9),buffer);
   text->options |= ofCentered;
   dialog->insert(text);
@@ -664,7 +664,7 @@ void init_rhgdb(int __crt0_argc,char **__crt0_argv)
   TScreen::suspend();
 #endif
 #endif
-  fprintf(stderr,_("This is %s. Copyright (c) 1996,1997 by Robert H”hne\n"),RHGDBVersion);
+  fprintf(stderr,_("This is %s. Copyright (c) 1996-1998 by Robert H”hne\n"),RHGDBVersion);
   fprintf(stderr,"             (%s %s)\n",build_date,build_time);
 #ifndef __DJGPP__
 #if 1

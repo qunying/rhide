@@ -1,4 +1,4 @@
-# Copyright (C) 1996,1997 Robert H”hne, see COPYING.RH for details 
+# Copyright (C) 1996-1998 Robert H”hne, see COPYING.RH for details 
 # This file is part of RHIDE. 
 s/comment --- transform a list of nodenames followed by chapter ---/&/
 s/comment --- or section name, into a Sed script which changes  ---/&/

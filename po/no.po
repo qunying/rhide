@@ -879,8 +879,8 @@ msgid "for developing Linux apps"
 msgstr "for utvikling av Linux-applikasjoner"
 
 #: idemain.cc:723 rhgdb/main.cc:233
-msgid "Copyright (C) by Robert H”hne, 1996,1997"
-msgstr "Copyright (C) av Robert H”hne, 1996,1997"
+msgid "Copyright (C) by Robert H”hne, 1996-1998"
+msgstr "Copyright (C) av Robert H”hne, 1996-1998"
 
 #: idemain.cc:727 ideopt.cc:161 ideopt.cc:313 ideopt.cc:484 ideopt.cc:646 ideopt.cc:1065 idesynta.cc:611 libset/bufun.cc:447 libset/infview/inf.cc:1898 libset/infview/inf.cc:1921 libset/infview/inf.cc:1944 libset/infview/inf.cc:1970 libtvgdb/breakdia.cc:114 libtvgdb/breakdia.cc:287 libtvuti/bigmessa.cc:81 libtvuti/bigmessa.cc:132 rhgdb/main.cc:237 rhgdb/options.cc:115 tvdemo/mousedlg.cc:116 tvision/classes/t/tchdirdi.cc:56 tvision/classes/t/tcolordi.cc:96 tvision/classes/t/tfiledia.cc:87 tvision/msgbox.cc:34 tvision/msgbox.cc:174
 msgid "~O~K"
@@ -1027,8 +1027,8 @@ msgid "using %s as temp directory\n"
 msgstr "Bruker katalogen %s for midlertidige filer\n"
 
 #: idemain.cc:1971 rhgdb/main.cc:662
-msgid "This is %s. Copyright (c) 1996,1997 by Robert H”hne\n"
-msgstr "Dette er %s. Copyright (c) 1996,1997 av Robert H”hne\n"
+msgid "This is %s. Copyright (c) 1996-1998 by Robert H”hne\n"
+msgstr "Dette er %s. Copyright (c) 1996-1998 av Robert H”hne\n"
 
 #: idemain.cc:2061
 msgid "Do you really want to interrupt RHIDE?"

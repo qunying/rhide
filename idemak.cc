@@ -1,4 +1,4 @@
-/* Copyright (C) 1996,1997 Robert H”hne, see COPYING.RH for details */
+/* Copyright (C) 1996-1998 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
 /*
  $Id$
@@ -157,7 +157,31 @@ void put_breakline(FILE *f,int start_len,int max_len,char *s)
   }
 }
 
-static void WriteTarget(FILE *f,TDependency *dep,int depth)
+static
+void _AbsToRelPath(char *&dname, TStringCollection *vars)
+{
+  int i, count;
+  char *dir, *_dir;
+  if (!dname || !*dname) return;
+  if (AbsToRelPath(project_directory, dname, NULL))
+    return;
+  count = vars->getCount();
+  for (i=0; i<count; i++)
+  {
+    int retval;
+    dir = string_dup("$(");
+    string_cat(dir, (char *)vars->at(i), ")", NULL);
+    _dir = expand_rhide_spec(dir);
+    retval = AbsToRelPath(_dir, dname, dir);
+    string_free(_dir);
+    string_free(dir);
+    if (retval) return;
+  }
+}
+
+static
+void WriteTarget(FILE *f,TDependency *dep,int depth,
+                 TStringCollection *vars)
 {
   int i;
   char tmp[10];
@@ -178,6 +202,13 @@ static void WriteTarget(FILE *f,TDependency *dep,int depth)
   if ((AllDeps || depth<2) && dep->dependencies &&
       dep->dependencies->getCount()>0)
   {
+    if (depcount == 1)
+    {
+      char *_targets = expand_rhide_spec("$(targets 0)");
+      string_cat(deps, " ", _targets, NULL);
+      string_free(_targets);
+    }
+    else
     {
       for (i=0;i<dep->dependencies->getCount();i++)
       {
@@ -186,6 +217,9 @@ static void WriteTarget(FILE *f,TDependency *dep,int depth)
         {
           char *dname;
           FindFile(FName(_dep->dest_name),dname);
+#if 1
+          _AbsToRelPath(dname, vars);
+#endif
           string_cat(deps, " ", dname, NULL);
           string_free(dname);
         }
@@ -227,9 +261,11 @@ static void WriteTarget(FILE *f,TDependency *dep,int depth)
       split_fname(FName(dep->source_name), _dir, name, ext);
       string_free(_dir);
     }
-    if (*dir && dir[strlen(dir)-1] == '/')
-      dir[strlen(dir)-1] = 0;
-    fprintf(f,"%s.%s%s.force:\n", dir, name, ext);
+//    if (*dir && dir[strlen(dir)-1] == '/')
+//      dir[strlen(dir)-1] = 0;
+    fprintf(f, ".PHONY: %s%s%s.force\n", dir, name, ext);
+    fprintf(f, "all:: %s%s%s.force\n", dir, name, ext);
+    fprintf(f,"%s%s%s.force:\n", dir, name, ext);
     fprintf(f,"\t$(MAKE)%s%s -f %s.mak\n",*dir?" -C ":"",*dir?dir:"",name);
     if (recursive_make && (_PushProject(dep) == True))
     {
@@ -247,7 +283,7 @@ static void WriteTarget(FILE *f,TDependency *dep,int depth)
   {
     char *dname;
     FindFile(FName(dep->dest_name),dname);
-    AbsToRelPath(project_directory,dname);
+    _AbsToRelPath(dname, vars);
     if (!*dname)
     {
       fprintf(f, "TARGET_%d:: ", depcount-1);
@@ -269,7 +305,7 @@ static void WriteTarget(FILE *f,TDependency *dep,int depth)
     {
       for (i=0;i<dep->dependencies->getCount();i++)
       {
-        WriteTarget(f,(TDependency *)dep->dependencies->at(i),depth+1);
+        WriteTarget(f,(TDependency *)dep->dependencies->at(i),depth+1, vars);
       }
     }
   }
@@ -317,15 +353,17 @@ static void WriteTarget(FILE *f,TDependency *dep,int depth)
   }
 }
 
-static void WriteTargets(FILE *f)
+static
+void WriteTargets(FILE *f, TStringCollection *vars)
 {
   depcount = 0;
   targets = new TSCollection();
-  WriteTarget(f,project,1);
+  WriteTarget(f,project,1,vars);
   destroy(targets);
 }
 
-static void check_vars(TStringCollection *vars,TDirList *dirs)
+static
+void check_vars(TStringCollection *vars,TDirList *dirs)
 {
   int i;
   ccIndex index;
@@ -400,7 +438,6 @@ void WriteMake(char *outname,int argc,char *argv[])
     if (env) fprintf(f,"%s",env);
     fprintf(f,"\nendif\n");
   }
-  destroy(vars);
   if (Options.SrcDirs->getCount() > 0)
   {
     fprintf(f,"vpath_src=");
@@ -444,16 +481,17 @@ void WriteMake(char *outname,int argc,char *argv[])
   }
   WriteSpecData(f);
   target0 = FName(Project.dest_name);
+  // make it the default rule
+  fprintf(f, "all::\n");
+  WriteTargets(f, vars);
   if (!target0 || !*target0) target0 = "TARGET_0";
   fprintf(f,"all:: %s\n", target0);
-  WriteTargets(f);
-  fprintf(f,"\n");
-  fprintf(f,"force::\n\n");
   fclose(f);
   string_free(dir);
   string_free(fname);
   string_free(ext);
   string_free(name);
+  destroy(vars);
 }
 
 project_stack *PROJECT_STACK = NULL;

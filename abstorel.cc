@@ -1,4 +1,4 @@
-/* Copyright (C) 1996,1997 Robert H”hne, see COPYING.RH for details */
+/* Copyright (C) 1996-1998 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
 /*
  $Id$
@@ -13,14 +13,14 @@
   optionally have a slash appended
 */
 
-void AbsToRelPath(char *ref_path,char *& ret_path)
+int AbsToRelPath(char *ref_path,char *& ret_path, const char *subst)
 {
   char *ref = ref_path;
   char *ret;
   char *ret_val;
   // Just in case, that ret_pat is not absolute, make it now absolute
   // relative to the current directory
-  if (!ref_path || !*ref_path) return;
+  if (!ref_path || !*ref_path) return 0;
 #if 0
 /* I hope, I can assume that this is called only with an absolute
    name ret_path */
@@ -34,7 +34,7 @@ void AbsToRelPath(char *ref_path,char *& ret_path)
   }
   // total different
   if (ret == ret_path)
-    return;
+    return 0;
   // ref is part of ret
   if (!*ref)
   {
@@ -42,18 +42,27 @@ void AbsToRelPath(char *ref_path,char *& ret_path)
     if (!*ret)
     {
       string_free(ret_path);
-      string_dup(ret_path,"");
-      return;
+      if (subst)
+        string_dup(ret_path, subst);
+      else
+        string_dup(ret_path,"");
+      return 1;
     }
     // ref is completely a directory part of ret
     if (*ret == '/' || ref[-1] == '/' /* ref had a slash as last char */)
     {
       // do no copy the slash
       if (*ret == '/') ret++;
-      string_dup(ret_val,ret);
+      if (subst)
+      {
+        string_dup(ret_val, subst);
+        string_cat(ret_val, "/", ret, NULL);
+      }
+      else
+        string_dup(ret_val,ret);
       string_free(ret_path);
       ret_path = ret_val;
-      return;
+      return 1;
     }
     // ref was only a sub_string of ret
     while (*ret != '/')
@@ -79,7 +88,7 @@ void AbsToRelPath(char *ref_path,char *& ret_path)
       }
       string_free(ret_path);
       ret_path = ret_val;
-      return;
+      return 1;
     }
     // ret was simply a substring of ref
     while (*ret != '/')
@@ -110,6 +119,7 @@ void AbsToRelPath(char *ref_path,char *& ret_path)
   }
   string_free(ret_path);
   ret_path = ret_val;
+  return 1;
 }
 
 

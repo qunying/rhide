@@ -1,4 +1,4 @@
-% Copyright (C) 1996,1997 Robert H”hne, see COPYING.RH for details 
+% Copyright (C) 1996-1998 Robert H”hne, see COPYING.RH for details 
 % This file is part of RHIDE. 
 \input texinfo  @c -*-texinfo-*-
 
@@ -236,7 +236,7 @@ People, who helped me, to develop RHIDE:
 @end itemize
 
 @vskip 0pt plus 1filll
-Copyright @copyright{} 1996,1997 @value{rh}
+Copyright @copyright{} 1996-1998 @value{rh}
 
 @end titlepage
 
@@ -252,7 +252,7 @@ This is the documentation for the Integrated Development
 Environment RHIDE.
 @paragraph{}
 
-Copyright @copyright{} 1996,1997 @value{rh}
+Copyright @copyright{} 1996-1998 @value{rh}
 @paragraph{}
 
 @paragraph{}

@@ -1,5 +1,5 @@
 /* Copyright (C) 1995 DJ Delorie, see COPYING.DJ for details */
-/* Copyright (C) 1996,1997 Robert H”hne, see COPYING.RH for details */
+/* Copyright (C) 1996-1998 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
 /*
  $Id$
@@ -14,7 +14,7 @@
 #include <limits.h>
 
 #define CP \
-"%s Copyright (C) 1996,%d Robert H”hne, see COPYING.RH for details %s\n" \
+"%s Copyright (C) 1996-%d Robert H”hne, see COPYING.RH for details %s\n" \
 "%s This file is part of RHIDE. %s\n"
 
 #define CO(start,end) sprintf(cline, CP, start, y, end, start, end)
@@ -75,7 +75,7 @@ main(int argc, char *argv[])
     if (y<80) y += 2000;
     if (y<200) y += 1900;
 #else
-    y = 1997;
+    y = 1998;
 #endif
     /* Compute what we'd like the first line to be */
     if (!strcmp(ext, ".c")

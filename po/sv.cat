@@ -1954,8 +1954,8 @@ msgstr "Hj„lp om hj„lpsystemet"
 msgid "Shows the last opened help"
 msgstr "Visar den sist ”ppnade hj„lpen"
 
-msgid "Copyright (C) by Robert H”hne, 1996,1997"
-msgstr "Copyright (C) Robert H”hne, 1996,1997"
+msgid "Copyright (C) by Robert H”hne, 1996-1998"
+msgstr "Copyright (C) Robert H”hne, 1996-1998"
 
 msgid "You can give here only a valid filename for a Pascal source file"
 msgstr "H„r kan endast anges ett giltigt namn f”r en Pascal k„llkodsfil"
@@ -1990,8 +1990,8 @@ msgstr "            -p : konvertera inte siffertangenterna p† numpaden\n"
 msgid "Error while loading the keybinding file %s\n"
 msgstr "Fel vid l„sning av tangentbindningsfil %s\n"
 
-msgid "This is %s. Copyright (c) 1996,1997 by Robert H”hne\n"
-msgstr "Detta „r %s. Copyright (c) 1996,1997 Robert H”hne\n"
+msgid "This is %s. Copyright (c) 1996-1998 by Robert H”hne\n"
+msgstr "Detta „r %s. Copyright (c) 1996-1998 Robert H”hne\n"
 
 msgid "RHIDE Help ~i~ndex"
 msgstr "RHIDE hj„lp ~i~ndex"

@@ -2254,11 +2254,11 @@ msgstr "~M~edir la velocidad del editor"
 msgid "~V~alue (-1 for none)"
 msgstr "~V~alor (-1 ignora)"
 
-msgid "Copyright (C) by Robert H”hne, 1996,1997"
-msgstr "Copyright (C) por Robert H”hne, 1996,1997"
+msgid "Copyright (C) by Robert H”hne, 1996-1998"
+msgstr "Copyright (C) por Robert H”hne, 1996-1998"
 
-msgid "This is %s. Copyright (c) 1996,1997 by Robert H”hne\n"
-msgstr "Esto es %s. Copyright (C) por Robert H”hne, 1996,1997\n"
+msgid "This is %s. Copyright (c) 1996-1998 by Robert H”hne\n"
+msgstr "Esto es %s. Copyright (C) por Robert H”hne, 1996-1998\n"
 
 msgid "~I~ntelligent C indent"
 msgstr "~I~ndentado de C inteligente"

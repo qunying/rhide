@@ -1,4 +1,4 @@
-# Copyright (C) 1996,1997 Robert H”hne, see COPYING.RH for details 
+# Copyright (C) 1996-1998 Robert H”hne, see COPYING.RH for details 
 # This file is part of RHIDE. 
 #
 # $Id$
@@ -9,7 +9,7 @@ VPATH=$(srcdir)
 project=libtvuti
 
 po_files=\
-	bigmessa.cc editdirl.cc editpara.cc libtvuti.cc tdirlist.cc \
+	bigmessa.cc editdirl.cc editpara.cc tdirlist.cc \
 	tenterin.cc tenterli.cc tenterra.cc tintinpu.cc tlbutton.cc \
 	tmeminfo.cc tparamli.cc tscollec.cc twindowl.cc windowli.cc \
 	tenterch.cc history.cc tcheckdi.cc tmsgcoll.cc tmsglist.cc \

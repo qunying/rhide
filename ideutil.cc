@@ -1,4 +1,4 @@
-/* Copyright (C) 1996,1997 Robert H”hne, see COPYING.RH for details */
+/* Copyright (C) 1996-1998 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
 /*
  $Id$
@@ -46,7 +46,7 @@ Boolean FindFile(const char * name,char * & full_name)
 {
   FILE_TYPE t;
   Boolean retval = False;
-  if (!name)
+  if (!name || !*name)
   {
     string_dup(full_name,"");
     return False;

@@ -2239,11 +2239,11 @@ msgstr "Rivi liian pitk„, leikataan se?"
 msgid "InfView - File: %s - Node: %s"
 msgstr "InfView - Tiedosto: %s - Solmu: %s"
 
-msgid "Copyright (C) by Robert H”hne, 1996,1997"
-msgstr "Copyright (C) by Robert H”hne, 1996,1997"
+msgid "Copyright (C) by Robert H”hne, 1996-1998"
+msgstr "Copyright (C) by Robert H”hne, 1996-1998"
 
-msgid "This is %s. Copyright (c) 1996,1997 by Robert H”hne\n"
-msgstr "T„m„ on %s. Copyright (c) 1996,1997 by Robert H”hne\n"
+msgid "This is %s. Copyright (c) 1996-1998 by Robert H”hne\n"
+msgstr "T„m„ on %s. Copyright (c) 1996-1998 by Robert H”hne\n"
 
 msgid "~I~ntelligent C indent"
 msgstr "Žlyk„s C s~i~sennys"

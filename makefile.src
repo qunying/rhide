@@ -1,4 +1,4 @@
-# Copyright (C) 1996,1997 Robert H”hne, see COPYING.RH for details 
+# Copyright (C) 1996-1998 Robert H”hne, see COPYING.RH for details 
 # This file is part of RHIDE. 
 #
 # $Id$
@@ -179,11 +179,11 @@ init.version:
           $(srcdir)/rhgdb/version.in > $(srcdir)/rhgdb/version.cc
 
 distrib.src: init.version
-	rm -f nodebobj/ideversi.o
 	$(MAKE) $(FLAGS_TO_PASS) gpr2mak.exe
 	touch $(shell find -name "*.gpr" -print)
 	$(MAKE) $(FLAGS_TO_PASS) \
-	  prefix=$(copy_dir)/$(install_prefix_src) distrib.src_
+	  prefix=$(copy_dir)/$(install_prefix_src) distrib.src_ \
+	  LFN=y
 
 doc info dvi:
 	$(MAKE) -C doc $@

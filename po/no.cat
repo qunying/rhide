@@ -655,8 +655,8 @@ msgstr "for utvikling av DJGPP-applikasjoner"
 msgid "for developing Linux apps"
 msgstr "for utvikling av Linux-applikasjoner"
 
-msgid "Copyright (C) by Robert H”hne, 1996,1997"
-msgstr "Copyright (C) av Robert H”hne, 1996,1997"
+msgid "Copyright (C) by Robert H”hne, 1996-1998"
+msgstr "Copyright (C) av Robert H”hne, 1996-1998"
 
 msgid "~O~K"
 msgstr "~O~K"
@@ -766,8 +766,8 @@ msgstr "            -C : Sl† av SIGINT-h†ndtering\n"
 msgid "using %s as temp directory\n"
 msgstr "Bruker katalogen %s for midlertidige filer\n"
 
-msgid "This is %s. Copyright (c) 1996,1997 by Robert H”hne\n"
-msgstr "Dette er %s. Copyright (c) 1996,1997 av Robert H”hne\n"
+msgid "This is %s. Copyright (c) 1996-1998 by Robert H”hne\n"
+msgstr "Dette er %s. Copyright (c) 1996-1998 av Robert H”hne\n"
 
 msgid "Do you really want to interrupt RHIDE?"
 msgstr "Vil du virkelig avbryte RHIDE?"

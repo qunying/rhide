@@ -1,4 +1,4 @@
-/* Copyright (C) 1996,1997 Robert H”hne, see COPYING.RH for details */
+/* Copyright (C) 1996-1998 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
 /*
  $Id$
@@ -738,7 +738,7 @@ static void About()
 #ifdef __linux__
        _("for developing Linux apps"),
 #endif
-       _("Copyright (C) by Robert H”hne, 1996,1997"));
+       _("Copyright (C) by Robert H”hne, 1996-1998"));
   text = new TStaticText(TRect(0,0,50,9),buffer);
   text->options |= ofCentered;
   dialog->insert(text);
@@ -1998,7 +1998,7 @@ void init_rhide(int _argc, char **_argv)
   TScreen::suspend();
 #endif
 #endif
-  fprintf(stderr,_("This is %s. Copyright (c) 1996,1997 by Robert H”hne\n"),IDEVersion);
+  fprintf(stderr,_("This is %s. Copyright (c) 1996-1998 by Robert H”hne\n"),IDEVersion);
   fprintf(stderr,"             (%s %s)\n",build_date,build_time);
 #ifndef __DJGPP__
 #if 1

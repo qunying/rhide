@@ -766,6 +766,9 @@ compile_user(TDependency * dep, char *spec)
         case COMPILE_LINK:
           error = ERROR_BUILTIN_LINK;
           break;
+        case COMPILE_LINK_DLL:
+          error = ERROR_BUILTIN_LINK;
+          break;
         default:
           error = ERROR_RETVAL;
           break;
@@ -1265,6 +1268,7 @@ compile_dep(TDependency * dep)
       case COMPILE_LINK:
       case COMPILE_LINK_PASCAL_AUTOMAKE:
       case COMPILE_LINK_FPC_AUTOMAKE:
+      case COMPILE_LINK_DLL:
         retval = compile_link(dep, spec);
         break;
       case COMPILE_ARCHIVE:
@@ -1285,7 +1289,8 @@ compile_dep(TDependency * dep)
     ShowMessages(errs, False);
     if (PRJSTACKCOUNT == 0 &&
         (dep->compile_id == COMPILE_ARCHIVE ||
-         dep->compile_id == COMPILE_LINK))
+         dep->compile_id == COMPILE_LINK ||
+	 dep->compile_id == COMPILE_LINK_DLL))
     {
       already_maked = 1;
     }

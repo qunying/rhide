@@ -86,6 +86,7 @@ FindFile(const char *name, char *&full_name)
         retval = FindFile(name, Options.SrcDirs, full_name, False);
         break;
       case FILE_LIBRARY:
+      case FILE_DLL:
         retval = FindFile(name, Options.library_path, full_name, False);
         break;
       case FILE_OBJECT:

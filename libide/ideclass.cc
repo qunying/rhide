@@ -109,6 +109,10 @@ get_file_type(const char *_ext)
     return FILE_TEX_SOURCE;
   if (!strcmp(ext, ".dvi"))
     return FILE_DVI;
+  if (!strcmp(ext, ".so"))
+    return FILE_DLL;
+  if (!strcmp(ext, ".dll"))
+    return FILE_DLL;
   return FILE_UNKNOWN;
 }
 
@@ -249,6 +253,8 @@ how_to_compile(FILE_TYPE from, FILE_TYPE to)
           return COMPILE_LINK;
         case FILE_LIBRARY:
           return COMPILE_ARCHIVE;
+	case FILE_DLL:
+	  return COMPILE_LINK_DLL;
         default:
           break;
       }

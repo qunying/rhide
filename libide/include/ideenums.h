@@ -31,7 +31,8 @@ typedef enum
   COMPILE_LINK_ADA,
   COMPILE_FPC,
   COMPILE_LINK_FPC_AUTOMAKE,
-  COMPILE_TEX
+  COMPILE_TEX,
+  COMPILE_LINK_DLL
 }
 COMPILE_ID;
 
@@ -61,7 +62,8 @@ typedef enum
   FILE_ADA_SPEC,
   FILE_FPC_SOURCE,              // *.pp *.pas *.pas depends on use_fpc flag
   FILE_TEX_SOURCE,
-  FILE_DVI
+  FILE_DVI,
+  FILE_DLL                      // *.so *.dll
 }
 FILE_TYPE;
 

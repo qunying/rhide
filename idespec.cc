@@ -220,9 +220,21 @@ static char *default_variables[] = {
 
  "RHIDE_COMPILE_FPC",
  "$(RHIDE_FPC) $(RHIDE_FPC_FLAGS) -E- $(SOURCE_NAME)",
+ 
+ "RHIDE_SHARED_LDFLAGS_$(RHIDE_OS)",
+ "",
+ 
+ "RHIDE_SHARED_LDFLAGS_Linux",
+ "-shared",
 
  "RHIDE_COMPILE_FPC_FORCE",
  "$(RHIDE_FPC) $(RHIDE_FPC_FLAGS) -B -E- $(SOURCE_NAME)",
+
+ "RHIDE_COMPILE_LINK_DLL",
+ "$(RHIDE_LD) $(RHIDE_LIBDIRS) $(C_EXTRA_FLAGS) -o $(OUTFILE)\
+  $(OBJFILES) $(LIBRARIES) $(LDFLAGS) $(RHIDE_LDFLAGS) \
+  $(RHIDE_SHARED_LDFLAGS) $(RHIDE_LIBS)",
+
 
  "RHIDE_COMPILE_LINK",
  "$(RHIDE_LD) $(RHIDE_LIBDIRS) $(C_EXTRA_FLAGS) -o $(OUTFILE)\
@@ -954,13 +966,15 @@ _libraries(int check_exclude)
   {
     TDependency *dep = (TDependency *) _token_dep->dependencies->at(i);
 
-    if (dep->dest_file_type != FILE_LIBRARY)
+    if ((dep->dest_file_type != FILE_LIBRARY) &&
+        (dep->dest_file_type != FILE_DLL))
       continue;
     if ((check_exclude == 1) && dep->exclude_from_link)
       continue;
     if ((check_exclude == 2) && !dep->exclude_from_link)
       continue;
-    if (dep->dest_file_type == FILE_LIBRARY)
+    if ((dep->dest_file_type == FILE_LIBRARY) ||
+        (dep->dest_file_type == FILE_DLL))
     {
       FindFile(FName(dep->dest_name), tmp);
       AbsToRelPath(project_directory, tmp);
@@ -1049,7 +1063,8 @@ _objfiles(int check_exclude, int use_all_obj)
         (use_all_obj ||
          (dep->dest_file_type != FILE_LIBRARY) &&
          (dep->dest_file_type != FILE_EXE) &&
-         (dep->dest_file_type != FILE_COFF)))
+         (dep->dest_file_type != FILE_COFF) &&
+	 (dep->dest_file_type != FILE_DLL)))
     {
       string_dup(recur_directory, project_directory);
       recursive_object_files(dep, retval, check_exclude);
@@ -1566,6 +1581,10 @@ GetCompilerSpec(TDependency * dep, Boolean & is_user)
           }
         }
         return string_dup("$(RHIDE_COMPILE_LINK)");
+      }
+      if (dep->compile_id == COMPILE_LINK_DLL)
+      {
+        return string_dup("$(RHIDE_COMPILE_LINK_DLL)");
       }
       if (dep->compile_id == COMPILE_USER)
       {

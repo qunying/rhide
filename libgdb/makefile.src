@@ -1,4 +1,4 @@
-# Copyright (C) 1996-2000 Robert H”hne, see COPYING.RH for details 
+# Copyright (C) 1996-2000 Robert H”hne, see COPYING.RH for details
 # This file is part of RHIDE. 
 
 srcdir=$(RHIDESRC)/libgdb
@@ -102,6 +102,12 @@ libgdbrh.c: Makefile
 	echo '#include <version.h>' >> libgdbrh.c
 	echo '#include <parser-defs.h>' >> libgdbrh.c
 	-sh -c "test -f $(GDB_SRC)/gdb/regcache.h && echo '#include <regcache.h>' >> libgdbrh.c"
+# gdb 6.1.1 headers:
+	-sh -c "test -f $(GDB_SRC)/include/dis-asm.h && echo '#include <dis-asm.h>' >> libgdbrh.c"
+	-sh -c "test -f $(GDB_SRC)/gdb/disasm.h && echo '#include <disasm.h>' >> libgdbrh.c"
+	-sh -c "test -f $(GDB_SRC)/gdb/block.h && echo '#include <block.h>' >> libgdbrh.c"
+	-sh -c "test -f $(GDB_SRC)/gdb/dictionary.h && echo '#include <dictionary.h>' >> libgdbrh.c"
+	-sh -c "test -f $(GDB_SRC)/gdb/cli-out.h && echo '#include <cli-out.h>' >> libgdbrh.c"
 
 LIBGDB_FLAGS+=$(OS_FLAGS)
 override CFLAGS+=$(OS_CFLAGS)
@@ -115,6 +121,8 @@ GDB_CONFIG_CYGWIN=CC=gcc $(GDB_SRC)/configure --disable-nls
 
 $(GDB_OBJ)/Makefile:
 	sh -c "cd $(GDB_OBJ) && $(GDB_CONFIG_$(rhide_OS))"
+# gdb 6.1.1 needs it:
+	sh -c "test -f $(GDB_SRC)/gdb/block.h && cd $(GDB_OBJ) && $(MAKE) configure-host"
 
 $(GDB_OBJ)/bfd/bfd.h: $(GDB_OBJ)/Makefile
 	$(MAKE) -C $(dir $@) $(notdir $@)
@@ -133,7 +141,7 @@ libgdbrh.h: $(GDB_OBJ)/bfd/bfd.h libgdbrh.c gdb_ver.txt
 	cat gdb_ver.txt >> libgdbrh.h
 endif
 
-optional_subdirs=mi di
+optional_subdirs=mi di cli
 sub_dirs=$(subst $(GDB_OBJ)/gdb/,,$(wildcard $(addprefix $(GDB_OBJ)/gdb/,$(optional_subdirs))))
 sub_dir=$(subst .tt,,$@)
 
@@ -185,9 +193,7 @@ echo_ver.exe: $(GDB_OBJ)/gdb/version.o
 	gcc -s -o $@ $< -x c -
 
 gdb_ver.txt: echo_ver.exe
-	./$< | sed -e "s,\.,,g" \
-	  -e "s,.*,#define GDB_VERSION &,1" > $@
-	
+	./$< | perl -e '$$a=<>; $$a=~/(\d+)\.(\d)\.?(\d)?/; print "#define GDB_VERSION_1 $$1\n#define GDB_VERSION_2 $$2\n#define GDB_VERSION_3 $$3\n"; $$a=~s/\.//g; print "#define GDB_VERSION $$a\n"' > $@
 
 force:
 

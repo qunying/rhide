@@ -101,12 +101,12 @@ insertFunction(char *file_name, struct symbol *sym, int bl,
   {
     SYMBOL_INIT_LANGUAGE_SPECIFIC(sym,
                                   deduce_language_from_filename(file_name));
-    SYMBOL_INIT_DEMANGLED_NAME(sym, &objfile->symbol_obstack);
+    InitDemangledName();
   }
   if (SYMBOL_LANGUAGE(sym) == language_cplus)
     is_cplusplus = 1;
   reset_gdb_output();
-  type_print(SYMBOL_TYPE(sym), SYMBOL_SOURCE_NAME(sym), gdb_stdout, 0);
+  type_print(SYMBOL_TYPE(sym), Symbol_Printable_Name(sym), gdb_stdout, 0);
   d_len += get_gdb_output_buffer();
   dname = (char *) alloca(d_len + 1);
   if (bl == STATIC_BLOCK)
@@ -139,7 +139,7 @@ insertFunction(char *file_name, struct symbol *sym, int bl,
 
   *temp = 0;
   Function->return_name = strdup(dname);
-  Function->linkage_name = strdup(SYMBOL_NAME(sym));
+  Function->linkage_name = strdup(Symbol_Name(sym));
   Function->line_number = find_pc_line(pc, 0).line;
 }
 
@@ -168,10 +168,10 @@ insertFunctionPsym(char *file_name, struct partial_symbol *sym, int bl,
   {
     SYMBOL_INIT_LANGUAGE_SPECIFIC(sym,
                                   deduce_language_from_filename(file_name));
-    SYMBOL_INIT_DEMANGLED_NAME(sym, &objfile->symbol_obstack);
+    InitDemangledName();
   }
   reset_gdb_output();
-  type_print(builtin_type_void, SYMBOL_SOURCE_NAME(sym), gdb_stdout, 0);
+  type_print(builtin_type_void, Symbol_Printable_Name(sym), gdb_stdout, 0);
   d_len += strlen(gdb_output_buffer);
   dname = (char *) alloca(d_len + 1);
   if (bl == STATIC_BLOCK)
@@ -189,7 +189,7 @@ insertFunctionPsym(char *file_name, struct partial_symbol *sym, int bl,
   Function->demangled_name = strdup(temp);
   *temp = 0;
   Function->return_name = strdup(dname);
-  Function->linkage_name = strdup(SYMBOL_NAME(sym));
+  Function->linkage_name = strdup(Symbol_Name(sym));
   Function->line_number = find_pc_line(pc, 0).line;
 }
 #endif
@@ -197,14 +197,15 @@ insertFunctionPsym(char *file_name, struct partial_symbol *sym, int bl,
 static void
 list_symbols(char *regexp)
 {
-  register struct symtab *s;
-  register struct blockvector *bv;
+  struct symtab *s;
+  struct blockvector *bv;
   struct blockvector *prev_bv = NULL;
-  register struct block *b;
-  register int i, j;
-  register struct symbol *sym;
+  struct block *b;
+  int i;
+  Declare_Iter;
+  struct symbol *sym;
   struct objfile *objfile;
-  register struct partial_symtab *ps;
+  struct partial_symtab *ps;
   struct partial_symbol **psym;
 
   if (regexp != NULL)
@@ -256,7 +257,7 @@ list_symbols(char *regexp)
            If it would match (logic taken from loop below)
            load the file and go on to the next one 
          */
-        if ((regexp == NULL || SYMBOL_MATCHES_REGEXP(*psym))
+        if ((regexp == NULL || Symbol_Matches_Regexp(*psym))
             && SYMBOL_CLASS(*psym) == LOC_BLOCK)
         {
 #if 1
@@ -286,10 +287,10 @@ list_symbols(char *regexp)
       for (i = GLOBAL_BLOCK; i <= STATIC_BLOCK; i++)
       {
         b = BLOCKVECTOR_BLOCK(bv, i);
-        ALL_BLOCK_SYMBOLS (b, j, sym)
+        All_Block_Symbols()
         {
           if (SYMBOL_CLASS(sym) == LOC_BLOCK &&
-              (regexp == NULL || SYMBOL_MATCHES_REGEXP(sym)))
+              (regexp == NULL || Symbol_Matches_Regexp(sym)))
           {
             insertFunction(s->filename, sym, i,
                            BLOCK_START(SYMBOL_BLOCK_VALUE(sym)), objfile);
@@ -321,6 +322,9 @@ sort_functions()
 void
 ListFunctions(const char *regex, struct function_entry **list, int *count)
 {
+  #if GDB_6
+  struct ui_out * saved_ui_out = uiout;
+  #endif
   free_functions();
   if (!debugger_started)
   {
@@ -331,7 +335,13 @@ ListFunctions(const char *regex, struct function_entry **list, int *count)
       return;
     }
   }
+  #if GDB_6
+  uiout = rhgdb_ui_out;
+  #endif
   list_symbols((char *) regex);
+  #if GDB_6
+  uiout = saved_ui_out;
+  #endif
   if (function_count > 0)
     sort_functions();
   *count = function_count;

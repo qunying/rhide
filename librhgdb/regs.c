@@ -13,7 +13,7 @@ register_count()
 int
 is_float_reg(int num)
 {
-  return TYPE_CODE(REGISTER_VIRTUAL_TYPE(num)) == TYPE_CODE_FLT;
+  return TYPE_CODE(Register_Type(num)) == TYPE_CODE_FLT;
 }
 
 const char *
@@ -22,6 +22,38 @@ register_name(int num)
   return REGISTER_NAME(num);
 }
 
+#if GDB_6
+unsigned long
+get_register_value(int num)
+{
+  union { char c[MAX_REGISTER_SIZE]; unsigned long value; } buf;
+
+  if (!debugger_started)
+    return 0;
+  buf.value=0;
+  regcache_cooked_read (current_regcache, num, buf.c);
+  return buf.value; 
+}
+
+long double
+get_float_register_value(int num)
+{
+  union { char c[MAX_REGISTER_SIZE]; long double value; } buf;
+
+  if (!debugger_started)
+    return 0;
+  regcache_cooked_read (current_regcache, num, buf.c);
+  return buf.value + 0.0;
+}
+
+void
+set_float_register_value(int num, long double value)
+{
+  if (!debugger_started())
+    return;
+  regcache_cooked_write (current_regcache, num, &value); 
+}
+#else
 unsigned long
 get_register_value(int num)
 {
@@ -66,6 +98,24 @@ get_float_register_value(int num)
     memcpy(d, buf, REGISTER_RAW_SIZE(num));
   return *((long double *) d) + 0.0;
 }
+
+void
+set_float_register_value(int num, long double value)
+{
+  char d[sizeof(long double)];
+  char buf[20];
+
+  if (!debugger_started())
+    return;
+  *(long double *) d = value;
+#ifdef REGISTER_CONVERT_TO_RAW
+  REGISTER_CONVERT_TO_RAW(REGISTER_VIRTUAL_TYPE(num), num, d, buf);
+#else
+  floatformat_from_double(&floatformat_i387_ext, d, buf);
+#endif
+  write_register_gen(register_count() + num, buf);
+}
+#endif
 
 void
 set_register_value(int num, unsigned long value)
@@ -127,25 +177,8 @@ write_register_gen(regno, myaddr)
 }
 #endif //REGCACHE_H
 
-void
-set_float_register_value(int num, long double value)
-{
-  char d[sizeof(long double)];
-  char buf[20];
-
-  if (!debugger_started())
-    return;
-  *(long double *) d = value;
-#ifdef REGISTER_CONVERT_TO_RAW
-  REGISTER_CONVERT_TO_RAW(REGISTER_VIRTUAL_TYPE(num), num, d, buf);
-#else
-  floatformat_from_double(&floatformat_i387_ext, d, buf);
-#endif
-  write_register_gen(register_count() + num, buf);
-}
-
 int
-get_register_size(int num __attribute__ ((unused)))
+get_register_size(int num)
 {
-  return REGISTER_RAW_SIZE(num);
+  return Register_Size(num);
 }

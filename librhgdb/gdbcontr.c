@@ -214,6 +214,9 @@ INIT()
      accessible in rhide
    */
   Command("set unwindonsignal on", 0);
+  #if defined(__linux__) && GDB_6
+  Command("handle SIG32 nostop noprint pass", 0);
+  #endif
   /*
      Change gdb's internal current_directory. This is absolutely
      needed in the case the app has changed the directory

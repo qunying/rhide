@@ -98,7 +98,7 @@ my_print_address_symbolic(CORE_ADDR addr, int only_exact,
 
   if (symbol)
   {
-    name = SYMBOL_SOURCE_NAME(symbol);
+    name = Symbol_Printable_Name(symbol);
   }
 
   msymbol = lookup_minimal_symbol_by_pc(addr);
@@ -113,7 +113,7 @@ my_print_address_symbolic(CORE_ADDR addr, int only_exact,
       symbol = 0;
       symtab = 0;
       name_location = SYMBOL_VALUE_ADDRESS(msymbol);
-      name = SYMBOL_SOURCE_NAME(msymbol);
+      name = Symbol_Printable_Name(msymbol);
     }
   }
   if (symbol == NULL && msymbol == NULL)
@@ -160,6 +160,23 @@ my_print_address_symbolic(CORE_ADDR addr, int only_exact,
   return 1;
 }
 
+#if GDB_VERSION_1 >= 6
+static int
+print_insn(CORE_ADDR memaddr, struct ui_file * stream)
+{
+  long length;
+  struct ui_file * disasm_out = mem_fileopen ();
+  int retval = gdb_print_insn (memaddr, disasm_out);
+  char * buffer = ui_file_xstrdup (disasm_out, &length);
+  ui_file_delete (disasm_out);
+  if (mark_functions)
+    my_print_address_symbolic(memaddr, 1, mark_source, " ", ":\n");
+  my_fprintf(NULL, "%08lx:  ", memaddr);
+  my_fprintf (0, "%s\n", buffer);
+  free (buffer);
+  return retval;
+}
+#else // GDB_VERSION_1 >= 6
 static void
 my_print_address(bfd_vma addr,
                  struct disassemble_info *info __attribute__ ((unused)))
@@ -195,6 +212,7 @@ print_insn(memaddr, stream)
   my_fprintf(NULL, "\n");
   return retval;
 }
+#endif // else GDB_VERSION_1 >= 6
 
 static char **disass_lines = NULL;
 static int disass_lines_count = 0;

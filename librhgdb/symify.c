@@ -3,6 +3,7 @@
 #include <libgdbrh.h>
 #include <unistd.h>
 #include <librhgdb.h>
+#include <rhgdbint.h>
 
 void
 symify(const char *s, char **function, char **file, int *line, int _diff)
@@ -33,11 +34,11 @@ symify(const char *s, char **function, char **file, int *line, int _diff)
       return;
     }
     diff = core - SYMBOL_VALUE_ADDRESS(msymbol);
-    sl = strlen(SYMBOL_NAME(msymbol));
+    sl = strlen(Symbol_Name(msymbol));
     sprintf(diff_string, "%+ld", diff);
     sl += strlen(diff_string);
     *function = (char *) malloc(sl + 1);
-    strcpy(*function, SYMBOL_NAME(msymbol));
+    strcpy(*function, Symbol_Name(msymbol));
     strcat(*function, diff_string);
     *line = 0;
     return;
@@ -45,9 +46,9 @@ symify(const char *s, char **function, char **file, int *line, int _diff)
   sal = find_pc_line(core, 1);
   symbol = find_pc_function(core);
   symtab = sal.symtab;
-  sl = strlen(SYMBOL_SOURCE_NAME(symbol));
+  sl = strlen(Symbol_Printable_Name(symbol));
   *function = (char *) malloc(sl + 1);
-  strcpy(*function, SYMBOL_SOURCE_NAME(symbol));
+  strcpy(*function, Symbol_Printable_Name(symbol));
   sl = strlen(symtab->filename);
   *file = (char *) malloc(sl + 1);
   strcpy(*file, symtab->filename);

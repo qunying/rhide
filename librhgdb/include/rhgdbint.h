@@ -36,11 +36,16 @@ extern "C"
 {
 #endif
 
+/* TODO: Which version is that?
+   It should be converted to something like:
+   #if GDB_VERSION_1 < 5 ....
+   
 #define OLD_GDB
 
 #ifdef UI_FILE_H
 #undef OLD_GDB
 #endif
+*/
 
 #ifdef OLD_GDB
 #define RH_GDB_FILE GDB_FILE
@@ -88,4 +93,34 @@ void clear_started();
 void clear_inferior();
 int _inferior_pid();
 
+#if GDB_VERSION_1 >= 6
+ extern struct ui_out * rhgdb_ui_out;
+ #define Symbol_Printable_Name(a) SYMBOL_PRINT_NAME(a)
+ #define AddressOf(b) b->loc->address
+ #define TargetClose() target_close(&current_target, 1)
+ #define LookupSymbol() lookup_symbol(_GetMainFunction(), NULL, VAR_DOMAIN, NULL, &symtab)
+ #define InitDemangledName() SYMBOL_INIT_DEMANGLED_NAME(sym, &objfile->objfile_obstack)
+ #define Symbol_Name(a) DEPRECATED_SYMBOL_NAME(a)
+ #define Symbol_Matches_Regexp(a) (re_exec(SYMBOL_NATURAL_NAME(a))!=0)
+ #define Declare_Iter struct dict_iterator iter
+ #define All_Block_Symbols() ALL_BLOCK_SYMBOLS (b, iter, sym)
+ #define Register_Type(a) register_type(current_gdbarch,a)
+ #define Register_Size(a) register_size(current_gdbarch,a)
+ #define GDB_6 1
+#else
+ #define Symbol_Printable_Name(a) SYMBOL_SOURCE_NAME(a)
+ #define AddressOf(b) b->address
+ #define TargetClose() target_close(1)
+ #define LookupSymbol() lookup_symbol(_GetMainFunction(), NULL, VAR_NAMESPACE, NULL, &symtab)
+ #define InitDemangledName() SYMBOL_INIT_DEMANGLED_NAME(sym, &objfile->symbol_obstack)
+ #define Symbol_Name(a) SYMBOL_NAME(a)
+ #define Symbol_Matches_Regexp(a) SYMBOL_MATCHES_REGEXP(a)
+ #define Declare_Iter int j
+ #define All_Block_Symbols() ALL_BLOCK_SYMBOLS (b, j, sym)
+ #define Register_Type(a) REGISTER_VIRTUAL_TYPE(a)
+ #define Register_Size(a) REGISTER_RAW_SIZE(a)
+ #define GDB_6 0
 #endif
+
+#endif
+

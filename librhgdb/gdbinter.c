@@ -30,6 +30,11 @@ int switch_to_user = 1;
 
 static int user_screen_shown = 0;
 
+#if GDB_6
+ struct ui_out * rhgdb_ui_out = 0;
+ struct ui_file * rhgdb_ui_file = 0;
+#endif
+
 static int signal_start;
 static int signal_end;
 
@@ -144,11 +149,11 @@ annotate_error_begin()
 void
 CreateBreakPointHook(struct breakpoint *b)
 {
-  struct symtab_and_line s = find_pc_line(b->address, 0);
+  struct symtab_and_line s = find_pc_line(AddressOf(b), 0);
 
   last_breakpoint_number = b->number;
   invalid_line = (b->line_number != s.line);
-  last_breakpoint_address = b->address;
+  last_breakpoint_address = AddressOf(b);
   last_breakpoint_line = s.line;
   if (s.symtab)
     last_breakpoint_file = s.symtab->filename;
@@ -245,6 +250,13 @@ RH_GDB_FILE *gdb_stdout;
 RH_GDB_FILE *gdb_stderr;
 RH_GDB_FILE *gdb_stdlog;
 RH_GDB_FILE *gdb_stdtarg;
+// gdb 6.1.1:
+RH_GDB_FILE *gdb_stdin;
+/* target IO streams */
+RH_GDB_FILE *gdb_stdtargin;
+RH_GDB_FILE *gdb_stdtargerr;
+/* System root path, used to find libraries etc.  */
+char *gdb_sysroot = 0;
 
 int
 get_gdb_output_buffer(void)
@@ -372,6 +384,8 @@ static void __attribute__ ((constructor)) _init_librhgdb()
      fragment from gdb/main.c  
    */
 
+  if (GDB_6)
+    gdb_stdin = stdio_fileopen (stdin);
   gdb_stdout = mem_fileopen();  // stdio_fileopen (stdout);
   gdb_stderr = mem_fileopen();  // stdio_fileopen (stderr);
   gdb_stdlog = gdb_stderr;      /*
@@ -380,6 +394,14 @@ static void __attribute__ ((constructor)) _init_librhgdb()
   gdb_stdtarg = gdb_stderr;     /*
                                    for moment 
                                  */
+  if (GDB_6)
+  {
+    gdb_stdtargerr = gdb_stderr;	/* for moment */
+    gdb_stdtargin = gdb_stdin;	/* for moment */
+  
+    gdb_sysroot = "";
+  }
+
   error_init();
 
   /*
@@ -388,6 +410,11 @@ static void __attribute__ ((constructor)) _init_librhgdb()
 
   gdb_init("rhide");
 #endif
+
+#if GDB_6
+  rhgdb_ui_out = cli_out_new (gdb_stdout);
+#endif
+
 #if defined(__DJGPP__) && defined(INCLUDE_WIN31_HACK)
   __win31_hack();
 #endif
@@ -425,7 +452,7 @@ void
 done_gdb()
 {
   target_kill();
-  target_close(1);
+  TargetClose();
   create_breakpoint_hook = NULL;
 }
 
@@ -465,7 +492,14 @@ handle_gdb_command(char *command)
   /*
      modifying it  
    */
+  #if GDB_6
+  struct ui_out * saved_ui_out = uiout;
+  uiout = rhgdb_ui_out;
   catch_command_errors(execute_command, copy_of_command, 0, RETURN_MASK_ALL);
+  uiout = saved_ui_out;
+  #else
+  catch_command_errors(execute_command, copy_of_command, 0, RETURN_MASK_ALL);
+  #endif
 #endif
   free(copy_of_command);
 }
@@ -530,7 +564,7 @@ SourceForMain(int *line, char **dirname)
   *dirname = NULL;
 
   *line = 0;
-  sym = lookup_symbol(_GetMainFunction(), NULL, VAR_NAMESPACE, NULL, &symtab);
+  sym = LookupSymbol();
   if (!sym)
   {
     struct minimal_symbol *msymbol =

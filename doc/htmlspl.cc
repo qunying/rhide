@@ -5,7 +5,10 @@
 #include <vector>
 #include <fstream>
 #include <map>
-#include <strstream>
+#include <iostream>
+#include <cstdio>
+
+using namespace std;
 
 static int chapter = 0;
 string line;
@@ -16,6 +19,14 @@ static ifstream _fi;
 static istream *fi;
 static ofstream fo;
 static string base;
+
+static
+string int2str(int i)
+{
+  char buf[50];
+  sprintf(buf, "%d", i);
+  return string(buf);
+}
 
 static void
 write_foot(bool next = true)
@@ -51,10 +62,8 @@ int start_new_file()
   write_foot(true);
   fo.close();
   chapter++;
-  ostrstream os;
-  os << base << chapter << ".tmp" << ends;
-  fo.open(os.str());
-  os.freeze(0);
+  string fname = base + int2str(chapter) + ".tmp";
+  fo.open(fname.c_str());
   if (!fo) return -2;
   return 0;
 }
@@ -94,10 +103,8 @@ check_ref(string & s)
     string::size_type i;
     if ((i = s.find(ref)) != string::npos)
     {
-      ostrstream os;
-      os << base << (*it).second << ".html" << ends;
-      s.insert(i+1, os.str());
-      os.freeze(0);
+      string fname = base + int2str((*it).second) + ".html";
+      s.insert(i+1, fname);
       return;
     }
   }
@@ -108,12 +115,10 @@ convert_file(int chap, bool is_last)
 {
   ifstream fi;
   ofstream fo;
-  ostrstream osi;
-  osi << base << chap << ".tmp" << ends;
-  fi.open(osi.str());
-  ostrstream oso;
-  oso << base << chap << ".html" << ends;
-  fo.open(oso.str());
+  string fnamei = base + int2str(chap) + ".tmp";
+  fi.open(fnamei.c_str());
+  string fnameo = base + int2str(chap) + ".html";
+  fo.open(fnameo.c_str());
   write_head(fo, chap, !is_last);
   string s;
   while (ReadLine(fi, s))
@@ -123,9 +128,7 @@ convert_file(int chap, bool is_last)
   }
   fo.close();
   fi.close();
-  unlink(osi.str());
-  osi.freeze(0);
-  oso.freeze(0);
+  unlink(fnamei.c_str());
 }
 
 int main(int argc,char *argv[])
@@ -138,10 +141,8 @@ int main(int argc,char *argv[])
     fi = &_fi;
   } else fi = &cin;
   base = argv[1];
-  ostrstream os;
-  os << base << chapter << ".tmp" << ends;
-  fo.open(os.str());
-  os.freeze(0);
+  string fname = base + int2str(chapter) + ".tmp";
+  fo.open(fname.c_str());
   while (ReadLine(*fi, line))
   {
     if (!start_ended)

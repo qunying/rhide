@@ -281,7 +281,7 @@ void ShowWindowList(const char *title)
         window = OpenClosedWindow(list->focused - windows->getCount());
         window->select();
         window->show();
-        message(TProgram::application, evBroadcast, cmWindowOpened, (void *)window->title);
+        message(TProgram::application, evBroadcast, cmWindowOpened, (void *)window->getTitle(1000));
         i = cmCancel;
         break;
       case cmSelectWindow:

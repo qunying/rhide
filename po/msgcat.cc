@@ -42,9 +42,9 @@
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include <rhutils.h>
 #ifdef __DJGPP__
 #include <conio.h>
-#include <rhutils.h>
 
 static void NORM()
 {
@@ -82,6 +82,10 @@ static void LIGHT()
 #if 1
   attr_set(A_REVERSE);
 #endif
+}
+
+static void CLEAR_SCREEN()
+{
 }
 
 #define CRLF "\n"

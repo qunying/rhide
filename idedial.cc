@@ -1,4 +1,4 @@
-/* Copyright (C) 1996-2000 Robert H”hne, see COPYING.RH for details */
+/* Copyright (C) 1996-2002 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
 #define Uses_MsgBox
 #define Uses_TProgram
@@ -39,7 +39,21 @@ IDEdoEditDialog(int dialog, ...)
   va_list args;
 
   va_start(args, dialog);
-  unsigned ret = doEditDialog(dialog, args);
+
+  unsigned ret;
+  switch (dialog)
+  {
+    /* Silence some SetEdit warnings about attempts to revert R/O files
+       as they seems (at least to me) major muisance especially at debugging
+       time when opening R/O system header files  */
+     case edIsReadOnly:
+     case edStillReadOnly:
+             ret = cmOK;
+             break;
+
+     default:
+             ret = doEditDialog(dialog, args);
+  }
 
   va_end(args);
   return ret;

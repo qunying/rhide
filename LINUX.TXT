@@ -4,11 +4,11 @@ of RHIDE.
 It is currently available ONLY on my website and NOT
 via FTP. The main URL for RHIDE is
 
-http://www.tu-chemnitz.de/~rho/rhide.html
+http://www.tu-chemnitz.de/~sho/rho/rhide.html
 
 and specific to the linux RHIDE you can use also
 
-http://www.tu-chemnitz.de/~rho/rhide-linux.html
+http://www.tu-chemnitz.de/~sho/rho/rhide-linux.html
 
 I will place there the sources and also ready binaries.
 After seeing the problems with shared linked binaries,
@@ -121,5 +121,5 @@ to me.
 
       Have fun with RHIDE, 
 
-  Robert Hoehne <Robert.Hoehne@Mathematik.TU-Chemnitz.de>
+  Robert Hoehne <robert.hoehne@gmx.net>
 

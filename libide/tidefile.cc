@@ -67,7 +67,7 @@ void TIDEFileEditor::setFormatLine()
   FormatLinePtr = formatLinePtr;
   formatLinePtr = (void (TCEditor::*)
                   (void *, unsigned, int, unsigned short, unsigned,
-                   uint32, unsigned ))&formatLine;
+                   uint32, unsigned ))&TIDEFileEditor::formatLine;
   update(ufView);
 }
 
@@ -214,39 +214,38 @@ void TIDEFileEditor::handleEvent(TEvent & event)
 
 Boolean TIDEFileEditor::valid( ushort command )
 {
-    Boolean retval;
-    struct utimbuf ut;
-    if( command == cmValid )
-        return isValid;
-    else
-        {
-        if( modified == True )
-            {
-            int d;
-            if( *fileName == EOS )
-                d = edSaveUntitled;
-            else
-                d = edSaveModify;
-
-            switch( editorDialog( d, fileName ) )
-                {
-                case cmYes:
-                    retval = save();
-                    if (retval == True)
-                    {
-                      ut.modtime = edittime;
-                      utime(fileName,&ut);
-                    }
-                    return retval;
-                case cmNo:
-                    modified = False;
-                    return True;
-                case cmCancel:
-                    return False;
-                }
-            }
-        }
+  Boolean retval;
+  struct utimbuf ut;
+  if (command == cmValid)
+    return isValid;
+  if (command != cmClose)
     return True;
+  if (modified == True)
+  {
+    int d;
+    if (*fileName == EOS)
+      d = edSaveUntitled;
+    else
+      d = edSaveModify;
+
+    switch (editorDialog(d, fileName ))
+    {
+      case cmYes:
+        retval = save();
+        if (retval == True)
+        {
+          ut.modtime = edittime;
+          utime(fileName, &ut);
+        }
+        return retval;
+      case cmNo:
+        modified = False;
+        return True;
+      case cmCancel:
+        return False;
+    }
+  }
+  return True;
 }
 
 void goto_line(TIDEFileEditor *editor,int line, int column)

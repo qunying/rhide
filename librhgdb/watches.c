@@ -73,7 +73,7 @@ annotate_value_end ()
 _DEBUG("a_value_end\n");
 }
 
-char *EvaluateWatch(char *watch)
+char *EvaluateWatch(const char *watch)
 {
   char *ret,*end;
 #if 1

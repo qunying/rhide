@@ -260,9 +260,12 @@ int IsBreakPointLine(char *fname,int line);
 /*
   This is the interface to the GDB command
     print expr
-  It returns the result or NULL, if not available
+  It returns the result or NULL, if not available.
+  The returned value is not newly allocated, it points to
+  a statically buffer which might be overwritten with any next
+  call to any GDB-releated function!
 */
-char *EvaluateWatch(char *expr);
+char *EvaluateWatch(const char *expr);
 
 /* 
    This is similiar to the GDB command:

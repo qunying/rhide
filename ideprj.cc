@@ -998,12 +998,14 @@ SetGlobalOptions()
   else
     verbose_gdb_commands = 0;
 #endif
+#ifdef __DJGPP__
   extern int save_text_palette;
 
   if (SaveTextPalette)
     save_text_palette = 1;
   else
     save_text_palette = 0;
+#endif
   max_closed = Project.max_closed_windows;
 }
 

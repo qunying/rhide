@@ -813,9 +813,11 @@ parse_commandline(int argc, char *argv[])
           break;
         case 'b':
         {
+#ifdef __DJGPP__
           extern int blink_use_bios;
 
           blink_use_bios = 1;
+#endif
           break;
         }
         case 'c':

@@ -717,13 +717,14 @@ Preferences()
 #define S(x,y) if (global_options[1] & (1 << (y))) (x) = 1; else (x) = 0
     SetGetOptions1();
 #undef S
+#ifdef __DJGPP__
     extern int save_text_palette;
 
     if (SaveTextPalette)
       save_text_palette = 1;
     else
       save_text_palette = 0;
-
+#endif
 #ifdef INTERNAL_DEBUGGER
     if (VerboseGDB)
       verbose_gdb_commands = 1;

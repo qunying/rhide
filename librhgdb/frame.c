@@ -5,28 +5,6 @@
 #include <librhgdb.h>
 #include <stdlib.h>
 
-
-#if GDB_6
-struct ui_file * frame_out = 0;
-
-static void debugf (const char * fmt, ...)
-{
-  static FILE * frame_debug = 0;
-  
-  if (!frame_debug)
-    frame_debug = fopen ("frame.dbg", "w");
-  if (frame_debug)
-  {
-    va_list args;
-    va_start (args, fmt);
-    vfprintf (frame_debug, fmt, args);
-    va_end (args);
-    fflush(frame_debug);
-  }
-}
-#endif
-
-
 static void
 init_frame_entry(frame_entry * fe)
 {
@@ -111,10 +89,6 @@ static int line_end;
 void
 _rhgdb_annotate_frame_begin(int level __attribute__ ((unused)), CORE_ADDR pc)
 {
-  #if GDB_6
-  debugf ("%s: uiout=%8p\n", __PRETTY_FUNCTION__, uiout);
-  #endif
-
   frame_begin_seen = 1;
   current_address = pc;
   current_line_number = -1;
@@ -228,23 +202,8 @@ BackTrace()
   clear_frames();
   record_frames = 1;
   frame_begin_seen = 0;
-  #if !GDB_6
   Command("backtrace", 0);
   record_frames = 0;
-  #else
-  frame_out = mem_fileopen();
-  //struct ui_file * saved_ui_file = cli_out_set_stream (uiout, frame_out);
-  Command("backtrace", 0);
-  record_frames = 0;
-  {
-     long len;
-     char * tmp = ui_file_xstrdup (frame_out, &len);
-     debugf ("Return from 'backtrace' is : %s\n", tmp);
-     free (tmp);
-  }
-  //cli_out_set_stream (uiout, saved_ui_file);
-  ui_file_delete (frame_out);
-  #endif
 }
 
 void

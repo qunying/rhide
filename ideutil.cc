@@ -94,6 +94,15 @@ FindFile(const char *name, char *&full_name)
       case FILE_HEADER:
         retval = FindFile(name, Options.include_path, full_name, False);
         break;
+      case FILE_EXE:
+      /*
+        EXE files are searched only in the current directory.
+        Maybe I add a separate option for that in the future.
+      */
+        string_dup(full_name, name);
+        FExpand(full_name);
+        retval = __file_exists(full_name);
+        break;
       default:
 /* What is with files, which have no known source suffixes?
    I think this is the better way to find it. As an example

@@ -187,14 +187,14 @@ FLAGS_TO_PASS=\
 	update_gpr_file="$(update_gpr_file)" \
 	txt_conv="$(txt_conv)"
 
-%.sub: Makefile
+%._sub: Makefile
 	@$(MAKE) -C $* $(FLAGS_TO_PASS) SUBDIR_TARGET=$(SUBDIR_TARGET) \
 	  $(SUBDIR_TARGET) logfile=../__log__
 	@touch __log__
 	@cat __log__ >> $(logfile)
 	@rm -f __log__
 
-subdir_do: $(addsuffix .sub,$(sort $(subdirs)))
+subdir_do: $(addsuffix ._sub,$(sort $(subdirs)))
 
 O_SRC_FILES=$(wildcard $(addprefix $(obj_dir)/,$(sort $(src_files))))
 _O_SRC_FILES=$(subst $(obj_dir)/,,$(O_SRC_FILES))
@@ -222,7 +222,7 @@ copy_src_files:: $(addsuffix .cpy,$(sort $(subdirs)))
 
 check_src_files:: $(addsuffix .chk,$(sort $(subdirs)))
 
-update__srcdir:: $(addsuffix .sub,$(subdirs))
+update__srcdir:: $(addsuffix ._sub,$(subdirs))
 endif
 
 po_list:: $(po_files)
@@ -354,7 +354,7 @@ endif
 endif
 
 ifneq ($(SUBDIR_TARGET),)
-install:: $(addsuffix .sub,$(subdirs))
+install:: $(addsuffix ._sub,$(subdirs))
 endif
 
 install:: all install.data install.info install.doc install.bin

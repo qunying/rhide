@@ -63,9 +63,9 @@ public:
   TGDBEditor(const TRect &,TScrollBar *,TScrollBar *,TSIndicator *,const char *);
   virtual void handleEvent(TEvent &event);
   static int (*externalFormatLine)(TCEditor *,void *, unsigned, int,
-                                   unsigned short, unsigned, unsigned short,
+                                   unsigned short, unsigned, uint32,
                                    unsigned );
-  void formatLine(void *, unsigned, int, unsigned short, unsigned, unsigned short, unsigned );
+  void formatLine(void *, unsigned, int, unsigned short, unsigned, uint32, unsigned );
   void setFormatLine();
   void (TCEditor::*FormatLinePtr)(void *, unsigned, int, unsigned short, unsigned,
                                   unsigned short, unsigned );
@@ -200,7 +200,7 @@ int DebuggerFormatLine(TCEditor *editor,
                        int Width,
                        unsigned short Colors,
                        unsigned lineLen,
-                       unsigned short Attr,
+                       uint32 Attr,
                        unsigned LineNo)
 {
 #define drawbuf ((ushort *)DrawBuf)
@@ -233,7 +233,7 @@ int DebuggerFormatLine(TCEditor *editor,
 }
 
 int (*TGDBEditor::externalFormatLine)(TCEditor *,void *, unsigned, int,
-                                   unsigned short, unsigned, unsigned short,
+                                   unsigned short, unsigned, uint32,
                                    unsigned ) = NULL;
 
 void TGDBEditor::formatLine( void *DrawBuf,
@@ -241,7 +241,7 @@ void TGDBEditor::formatLine( void *DrawBuf,
 			  int Width,
 			  unsigned short Colors,
                           unsigned lineLen,
-                          unsigned short Attr,
+                          uint32 Attr,
                           unsigned lineNo // needed for RHIDE
 			)
 {
@@ -258,7 +258,7 @@ void TGDBEditor::setFormatLine()
   FormatLinePtr = formatLinePtr;
   formatLinePtr = (void (TCEditor::*)
                   (void *, unsigned, int, unsigned short, unsigned,
-                   unsigned short, unsigned ))&formatLine;
+                   uint32, unsigned ))&formatLine;
   update(ufView);
 }
 

@@ -111,22 +111,23 @@ void ShowMessages(TMsgCollection *msgs,Boolean remove_old,
     msg_window = new TMsgDialog(MsgWindowRect,_("Message Window"));
     msg_window->flags = wfMove | wfGrow | wfZoom | wfClose;
     msg_window->growMode = gfGrowLoY | gfGrowHiX | gfGrowHiY;
-    if (!msg_list)
+    TNSCollection * msg_coll = 0;
+    if (msg_list)
     {
-      r = msg_window->getExtent();
-      r.grow(-1,-1);
-      scrollbar = msg_window->standardScrollBar(sbVertical | sbHandleKeyboard);
-      msg_list = new TMsgListBox(r,1,scrollbar);
-      msg_list->growMode = gfGrowHiX | gfGrowHiY;
-      scrollbar = msg_window->standardScrollBar(sbHorizontal | sbHandleKeyboard);
-      scrollbar->setParams(0,0,255-(r.b.x-r.a.x),40,1);
-      msg_list->hScrollBar = scrollbar;
+      msg_coll = msg_list->swapList(0);
+      destroy(msg_list->hScrollBar);
+      destroy(msg_list->vScrollBar);
+      destroy(msg_list);
     }
-    else
-    {
-      msg_window->insert(msg_list->hScrollBar);
-      msg_window->insert(msg_list->vScrollBar);
-    }
+    r = msg_window->getExtent();
+    r.grow(-1,-1);
+    scrollbar = msg_window->standardScrollBar(sbVertical | sbHandleKeyboard);
+    msg_list = new TMsgListBox(r,1,scrollbar);
+    msg_list->growMode = gfGrowHiX | gfGrowHiY;
+    scrollbar = msg_window->standardScrollBar(sbHorizontal | sbHandleKeyboard);
+    scrollbar->setParams(0,0,255-(r.b.x-r.a.x),40,1);
+    msg_list->hScrollBar = scrollbar;
+    msg_list->newList(msg_coll);
     msg_window->insert(msg_list);
     msg_list->show();
     msg_list->hScrollBar->show();

@@ -22,6 +22,22 @@ void TEnterListBox::newList( TNSCollection *aList )
     drawView();
 }
 
+
+TNSCollection * TEnterListBox::swapList( TNSCollection *aList )
+{
+    TNSCollection * tmp = items;
+    items = aList;
+    if( aList != 0 )
+        setRange( aList->getCount() );
+    else
+        setRange(0);
+    if( range > 0 )
+        focusItem(0);
+    drawView();
+    return tmp;
+}
+
+
 void TEnterListBox::focusItem(ccIndex item)
 {
   TListViewer::focusItem(item);

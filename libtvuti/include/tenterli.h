@@ -14,7 +14,8 @@ public:
     TListViewer(bounds,numcols,NULL,bar), items(NULL) {}
   virtual void handleEvent(TEvent &);
   virtual void focusItem(ccIndex);
-  virtual void newList( TNSCollection *aList );
+  virtual void newList(TNSCollection *aList);
+  virtual TNSCollection *swapList(TNSCollection *aList);
 
   TNSCollection *list()
   {
@@ -23,7 +24,7 @@ public:
 
 private:
 
-    TNSCollection *items;
+  TNSCollection *items;
 
 };
 

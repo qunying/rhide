@@ -57,7 +57,7 @@ ConvertName(TFileName * &_name, TStringCollection * vars)
   if (*Name && ((*Name == '/') || (rh_isalpha(*Name) && (Name[1] == ':'))))
   {
     name = string_dup(Name);
-    _AbsToRelPath(name, vars, false);
+    _AbsToRelPath(name, vars, true);
     InitFName(_name, name);
   }
   string_free(name);

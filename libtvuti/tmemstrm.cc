@@ -4,25 +4,22 @@
 #include <libtvuti.h>
 
 #include "config.h"
-#ifdef HAVE_STREAMBUF
-#include <streambuf>
-#else
-#include <streambuf.h>
-#endif
+#include <strstream>
 
-class rh_sstream : public std::streambuf
+#define strbase std::strstreambuf
+
+class rh_sstream : public strbase
 {
 public:
-  rh_sstream() : std::streambuf()
+  rh_sstream() : strbase()
+  {
+  }
+  rh_sstream(char *buf, int len) : strbase(buf, len)
   {
   }
   const void *Buffer()
   {
-    return eback();
-  }
-  void set_buf(void *buf, int size)
-  {
-    setbuf((char *)buf, size);
+    return pbase();
   }
 };
 
@@ -32,15 +29,14 @@ iopstream(new rh_sstream())
 }
 
 TMemoryStream::TMemoryStream(void *b, int len):
-iopstream(new rh_sstream())
+iopstream(new rh_sstream((char*)b, len))
 {
-  ((rh_sstream *) bp)->set_buf(b, len);
 }
 
 unsigned long
 TMemoryStream::getSize()
 {
-  return ((rh_sstream *) bp)->in_avail();
+  return ((rh_sstream *) bp)->pcount();
 }
 
 const void *

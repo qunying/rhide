@@ -66,7 +66,7 @@ TIDEEditWindow::TIDEEditWindow( const TRect& bounds,
   editor->origin.x+editor->size.x,editor->origin.y+editor->size.y);
   TScrollBar * hScrollBar = editor->hScrollBar;
   TScrollBar * vScrollBar = editor->vScrollBar;
-  TIndicator * indicator = editor->indicator;
+  TSIndicator * indicator = editor->indicator;
   editor->hScrollBar = NULL;
   editor->vScrollBar = NULL;
   editor->indicator = NULL;

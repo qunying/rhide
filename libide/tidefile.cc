@@ -10,8 +10,8 @@
 #define Uses_TDeskTop
 #define Uses_MsgBox
 #define Uses_editCommands
-#define Uses_TIndicator
 
+#define Uses_TSIndicator
 #define Uses_TIDEFileEditor
 #define Uses_ideCommands
 #define Uses_ideFunctions
@@ -72,7 +72,7 @@ void TIDEFileEditor::setFormatLine()
 }
 
 TIDEFileEditor::TIDEFileEditor(const TRect & rect,TScrollBar *ahscrollbar,
-				TScrollBar *avscrollbar,TIndicator *aindicator,
+				TScrollBar *avscrollbar,TSIndicator *aindicator,
 				const char *aFileName) :
   TCFileEditor(rect,ahscrollbar,avscrollbar,aindicator,aFileName)
 {

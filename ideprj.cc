@@ -68,7 +68,7 @@ __link ( RIDEEditWindow )
 TProjectWindow *project_window;
 static char *dskname;
 
-static ushort DeskTop_Version = 24;
+static ushort DeskTop_Version = 25;
 static ushort BreakPoint_Version = 0;
 
 static void SetGlobalOptions();

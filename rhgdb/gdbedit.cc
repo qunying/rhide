@@ -17,6 +17,7 @@
 
 #define Uses_TCEditor
 #define Uses_TCEditWindow
+#define Uses_TSIndicator
 #include <ceditor.h>
 
 #define Uses_TDirList
@@ -59,7 +60,7 @@ TStringCollection *ClipperRWords;
 class TGDBEditor : public TCEditor
 {
 public:
-  TGDBEditor(const TRect &,TScrollBar *,TScrollBar *,TIndicator *,const char *);
+  TGDBEditor(const TRect &,TScrollBar *,TScrollBar *,TSIndicator *,const char *);
   virtual void handleEvent(TEvent &event);
   static int (*externalFormatLine)(TCEditor *,void *, unsigned, int,
                                    unsigned short, unsigned, unsigned short,
@@ -117,7 +118,7 @@ TGDBEditWindow::TGDBEditWindow( const TRect& bounds,
   editor->origin.x+editor->size.x,editor->origin.y+editor->size.y);
   TScrollBar * hScrollBar = editor->hScrollBar;
   TScrollBar * vScrollBar = editor->vScrollBar;
-  TIndicator * indicator = editor->indicator;
+  TSIndicator * indicator = editor->indicator;
   editor->hScrollBar = NULL;
   editor->vScrollBar = NULL;
   editor->indicator = NULL;
@@ -132,7 +133,7 @@ TGDBEditWindow::TGDBEditWindow( const TRect& bounds,
 }
 
 TGDBEditor::TGDBEditor(const TRect & rect,TScrollBar *ahscrollbar,
-				TScrollBar *avscrollbar,TIndicator *aindicator,
+				TScrollBar *avscrollbar,TSIndicator *aindicator,
 				const char *aFileName) :
   TCEditor(rect,ahscrollbar,avscrollbar,aindicator,aFileName)
 {

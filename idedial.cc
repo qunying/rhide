@@ -33,16 +33,16 @@
 
 int dialog_handled;
 
-extern unsigned doEditDialog(int, ...);
+extern unsigned doEditDialog(int, va_list arg);
 
-static unsigned IDEdoEditDialog(int /* dialog */, ...)
+static unsigned IDEdoEditDialog(int /* dialog */, va_list )
 {
   dialog_handled = 0;
   return 0;
 }
 
-unsigned (*dial_ori)(int, ...) = doEditDialog;
-unsigned (*dial_new)(int, ...) = IDEdoEditDialog;
+unsigned (*dial_ori)(int, va_list arg) = doEditDialog;
+unsigned (*dial_new)(int, va_list arg) = IDEdoEditDialog;
 
 extern "C" int eval(char *mit,char **out);
 

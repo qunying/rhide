@@ -3,10 +3,12 @@
 #if defined( Uses_TIDEFileEditor ) && !defined( __TIDEFileEditor__ )
 #define __TIDEFileEditor__
 
+class TSIndicator;
+
 class TIDEFileEditor : public TCFileEditor
 {
 public:
-  TIDEFileEditor(const TRect &,TScrollBar *,TScrollBar *,TIndicator *,const char *);
+  TIDEFileEditor(const TRect &,TScrollBar *,TScrollBar *,TSIndicator *,const char *);
   ~TIDEFileEditor();
   static TStreamable * build();
   static const char * const name;

@@ -33,5 +33,6 @@ N(TParamList,\x0D)
 N(TStringCollection,\x0E)
 N(TNoCaseStringCollection,\x0F)
 N(TInfViewer,\x10)
+N(TSIndicator,\x11)
 // N(TIDEInfWindow,\x11) // defined in idehelp.cc for now
 

@@ -1156,15 +1156,19 @@ void IDE::handleEvent(TEvent & event)
           TView *ew = TProgram::deskTop->current;
           if (ew != NULL)
           {
-            int line;
             TIDEFileEditor *editor = (TIDEFileEditor *)((TCEditWindow *)ew)->editor;
             if (editor)
-              {
+            {
+#if (TCEDITOR_VERSION >= 0x000422)
+               editor->editorDialog(edJumpToFunction);
+#else
+              int line;
                char *word=editor->WordUnderCursor(80);
                if (doEditDialog(edJumpToFunction,&line,editor->buffer,editor->bufLen,word))
                   goto_line(editor,line);
                delete word;
-              }
+#endif
+            }
           }
           clearEvent(event);
           break;

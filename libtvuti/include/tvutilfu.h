@@ -5,7 +5,8 @@
 
 class TWindow;
 void AddWindow(TWindow *,TWindow **ref = NULL,Boolean before = False,
-               Boolean remember_closed = False, Boolean is_removable = True);
+               Boolean remember_closed = False, Boolean is_removable = True,
+               int old_number = 0);
 void RemoveWindow(TWindow *, Boolean remember_closed = True);
 void UpdateWindow(TWindow *window);
 void ShowWindowList(const char *);
@@ -55,4 +56,6 @@ int InputUInt(unsigned int &retval, const char *title, const char *label_name);
 void add_command_constant(const char *name,unsigned short value);
 void add_help_constant(const char *name, unsigned short value);
 
+class TDialog;
+ushort execDialog( TDialog *d, void *data );
 #endif

@@ -29,10 +29,11 @@ src_files=$(po_files) Makefile common.mak README.IDE RHIDE.BIN RHIDE.SRC \
 	rhide_ch.log todo zipcomm.bin zipcomm.src rhide.env \
 	LINUX.TXT rhide.var VCSA.SH common.var configure \
 	ideversi.in ideversi.cc readme.key rhide_.env \
-	moveifch gprexp.gpr gprexp.mak rh.gpr rh.mak config.mak \
+	moveifch gprexp.gpr gprexp.mak rh.gpr rh.mak \
 	tolf.cc tolf.gpr tolf.mak tocrlf.gpr tocrlf.mak \
 	copyrite.gpr copyrite.mak rhidex rhgdbx eterm-rhide \
-	rhide.spec
+	rhide.spec aclocal.m4 config.guess config.in config.sub \
+	configure.in configure.sub install.sh
 
 subdirs=libide librhgdb libtvgdb libtvuti include doc libgdb \
 	rhgdb debobj nodebobj po tvdemo librhuti share\
@@ -59,18 +60,18 @@ include $(RHIDESRC)/common.mak
 
 programs=gpr2mak.exe idegc.exe rhgdb/rhgdb.exe gprexp.exe
 
-all:: libgdb/libgdbrh.h $(programs)
+all:: libgdb/libgdbrh.h init.version $(programs)
 
 # these are the targets, which cannot build with RHIDE
 
 .PHONY: needed touch_gprs
 
-needed: libgdb/libgdbrh.h libgdb/libgdbrh.a
+needed: libgdb/libgdbrh.h libgdb/libgdbrh.a init.version
 
 libgdb/libgdbrh.h libgdb/libgdbrh.a:
 	$(MAKE) -C libgdb $(FLAGS_TO_PASS) $(notdir $@)
 
-rhgdb/rhgdb.exe::
+rhgdb/rhgdb.exe:: rhgdb/version.cc
 	$(MAKE) -C rhgdb $(FLAGS_TO_PASS)
 
 gprexp.exe:: gprexp.mak force
@@ -83,6 +84,8 @@ ide.exe:: rhide_.mak force
 	$(MAKE) -f rhide_.mak $(FLAGS_TO_PASS)
 	
 idegc.exe rhgdb/rhgdb.exe:: libgdb/libgdbrh.a
+
+idegc.exe ide.exe gpr2mak.exe gprexp.exe:: ideversi.cc
 
 idegc.exe:: rhide.mak force
 	$(MAKE) -f rhide.mak $(FLAGS_TO_PASS)
@@ -414,14 +417,12 @@ _additional_po_files:=$(wildcard $(REAL_TVSRC)/*.cc)\
 	$(wildcard $(REAL_SETSRC)/setedit/*.cc)\
 	$(wildcard $(REAL_SETSRC)/settvuti/*.cc)
 
-config::
-	$(MAKE) -f config.mak config_file=$(config_dir)/config.env \
-	  create_config
-
 check_perms:
 	find $(srcdir) -not -type d | xargs chmod 644
-	find $(srcdir) -type d | xargs chmod 755
-	chmod 755 $(srcdir)/configure $(srcdir)/rhidex $(srcdir)/rhgdbx
+	find $(srcdir) -type d -o -name "*.exe" | xargs chmod 755
+	chmod 755 $(srcdir)/configure $(srcdir)/rhidex $(srcdir)/rhgdbx \
+	$(srcdir)/config.guess $(srcdir)/config.sub \
+	$(srcdir)/configure.sub $(srcdir)/install.sh
 
 distrib.rpm: distrib.src
 ifneq ($(rhide_OS),DJGPP)

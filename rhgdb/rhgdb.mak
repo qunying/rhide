@@ -22,7 +22,7 @@ vpath %.asm $(vpath_src)
 vpath %.nsm $(vpath_src)
 vpath_header=$(RHIDESRC)/rhgdb/include $(RHIDESRC)/librhgdb/include\
 	$(RHIDESRC)/libtvgdb/include $(RHIDESRC)/libtvuti/include\
-	$(RHIDESRC)/librhuti $(RHIDESRC)/include $(TVSRC)/include\
+	$(RHIDESRC)/librhuti $(RHIDESRC)/include $(TV_INC)\
 	$(SETSRC)/settvuti/include $(SETSRC)/include
 vpath %.h $(vpath_header)
 vpath %.hpp $(vpath_header)
@@ -41,7 +41,7 @@ endif
 
 INCLUDE_DIRS=$(RHIDESRC)/rhgdb/include $(RHIDESRC)/librhgdb/include\
 	$(RHIDESRC)/libtvgdb/include $(RHIDESRC)/libtvuti/include\
-	$(RHIDESRC)/librhuti $(RHIDESRC)/include $(TVSRC)/include\
+	$(RHIDESRC)/librhuti $(RHIDESRC)/include $(TV_INC)\
 	$(SETSRC)/settvuti/include $(SETSRC)/include
 LIB_DIRS=../librhgdb ../libtvgdb ../libtvuti ../librhuti ../libgdb $(TVOBJ)\
 	$(SETOBJ) $(PCRE_OBJ)
@@ -54,7 +54,7 @@ C_P_LANG_FLAGS=
 C_FPC_LANG_FLAGS=
 C_F_LANG_FLAGS=
 C_ADA_LANG_FLAGS=
-LIBS=tvgdb rhgdb rhuti set tvuti rhuti rhtv gdbrh z
+LIBS=tvgdb rhgdb tvuti rhuti set rhtv gdbrh
 LD_EXTRA_FLAGS=
 C_EXTRA_FLAGS=-DFOR_LIBSET
 LOCAL_OPT=$(subst ___~~~___, ,$(subst $(notdir $<)___,,$(filter $(notdir\

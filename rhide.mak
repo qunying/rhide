@@ -22,8 +22,8 @@ vpath %.asm $(vpath_src)
 vpath %.nsm $(vpath_src)
 vpath_header=$(RHIDESRC)/include $(RHIDESRC)/libtvuti/include\
 	$(RHIDESRC)/librhuti $(RHIDESRC)/libide/include\
-	$(RHIDESRC)/librhgdb/include $(RHIDESRC)/libtvgdb/include\
-	$(TVSRC)/include $(RHIDESRC)/tvdemo/include $(SETSRC)/include\
+	$(RHIDESRC)/librhgdb/include $(RHIDESRC)/libtvgdb/include $(TV_INC)\
+	$(RHIDESRC)/tvdemo/include $(SETSRC)/include\
 	$(SETSRC)/settvuti/include $(SETSRC)/infview/include\
 	$(SETSRC)/calcu $(SETSRC)/setedit/include
 vpath %.h $(vpath_header)
@@ -45,8 +45,8 @@ endif
 
 INCLUDE_DIRS=$(RHIDESRC)/include $(RHIDESRC)/libtvuti/include\
 	$(RHIDESRC)/librhuti $(RHIDESRC)/libide/include\
-	$(RHIDESRC)/librhgdb/include $(RHIDESRC)/libtvgdb/include\
-	$(TVSRC)/include $(RHIDESRC)/tvdemo/include $(SETSRC)/include\
+	$(RHIDESRC)/librhgdb/include $(RHIDESRC)/libtvgdb/include $(TV_INC)\
+	$(RHIDESRC)/tvdemo/include $(SETSRC)/include\
 	$(SETSRC)/settvuti/include $(SETSRC)/infview/include\
 	$(SETSRC)/calcu $(SETSRC)/setedit/include
 LIB_DIRS=libide libtvuti tvdemo librhuti libgdb libtvgdb librhgdb $(TVOBJ)\
@@ -60,7 +60,7 @@ C_P_LANG_FLAGS=
 C_FPC_LANG_FLAGS=
 C_F_LANG_FLAGS=
 C_ADA_LANG_FLAGS=
-LIBS=ide rhuti set rhuti tvdem tvuti tvgdb rhtv rhgdb gdbrh z
+LIBS=ide tvdem tvgdb tvuti rhuti set rhgdb gdbrh rhtv
 LD_EXTRA_FLAGS=
 C_EXTRA_FLAGS=-DRHIDE -DINTERNAL_DEBUGGER -DFOR_LIBSET
 LOCAL_OPT=$(subst ___~~~___, ,$(subst $(notdir $<)___,,$(filter $(notdir\

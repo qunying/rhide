@@ -84,7 +84,7 @@ override SETOBJ:=$(SETOBJ_)
 config_file=config.env
 
 ifeq ($(wildcard $(SETOBJ)/libeasyd.a),$(SETOBJ)/libeasyd.a)
-SET_LIBS=-L$(SETOBJ)/../libbzip2 -leasyd -lsettv -lbz2
+SET_LIBS=-L$(SETOBJ)/../libpcre -L$(SETOBJ)/../libbzip2 -leasyd -lsettv -lbz2
 else
 SET_LIBS=$(SETOBJ)/easydiag.a
 endif

@@ -2322,31 +2322,34 @@ int main(int argc, char **argv)
   init_signals();
   if (!PRJNAME) find_project();
   OpenProject(PRJNAME);
+  if (CheckIDE() != 1)
+  {
 #ifdef __DJGPP__
-  if (getenv("DJDIR") == NULL)
-  {
-    BigmessageBox(mfError | mfOKButton,
-        _("RHIDE has detected, that the environment variable %DJDIR% \
-has not been set. This means, you haven't installed DJGPP correct. \
-Please read the file README.1ST from the DJGPP distribution how to \
-install DJGPP. If you continue now, you will get probably many \
-errors."));
-  }
-#endif
-  {
-    if (!PRJNAME)
+    if (getenv("DJDIR") == NULL)
     {
-      if (!EDITNAME) About();
-      if (EDITNAME) App->openEditor(EDITNAME,True);
+      BigmessageBox(mfError | mfOKButton,
+       _("RHIDE has detected, that the environment variable 'DJDIR' "
+         "has not been set. This means, you haven't installed DJGPP correct. "
+         "Please read the file README.1ST from the DJGPP distribution how to "
+         "install DJGPP. If you continue now, you will get probably many "
+         "errors."));
     }
-    App->run();
-    CloseProject();
-  }
-#ifndef __DJGPP__
-  signal(SIGSTOP,SIG_DFL);
-  signal(SIGINT,SIG_DFL);
-  signal(SIGWINCH,SIG_DFL);
 #endif
+    {
+      if (!PRJNAME)
+      {
+        if (!EDITNAME) About();
+        if (EDITNAME) App->openEditor(EDITNAME,True);
+      }
+      App->run();
+      CloseProject();
+    }
+#ifndef __DJGPP__
+    signal(SIGSTOP,SIG_DFL);
+    signal(SIGINT,SIG_DFL);
+    signal(SIGWINCH,SIG_DFL);
+#endif
+  }
   destroy(App);
   chdir(startup_directory);
   return 0;

@@ -671,7 +671,23 @@ Boolean Make(Boolean force_messages)
         const char *title = window->getTitle(256);
         COMPILE_ID id = how_to_compile(title,STANDARD_OBJECT_SUFFIX);
         if (id != COMPILE_NONE && id != COMPILE_UNKNOWN)
+        {
+          char *full_name;
+          char *bname;
+          BaseName(title, bname);
+          if (FindFile(bname, full_name) == False)
+          {
+            /* If the file was not found in the current or source
+               directories, add a search path to it */
+            char dir[PATH_MAX];
+            split_fname_fmt(title, "%D", dir);
+            strcat(dir, ".");
+            Options.SrcDirs->insert(dir);
+          }
+          string_free(full_name);
+          string_free(bname);
           AddProjectItem(title);
+        }
       }
     }
     if (!Project.dependencies || Project.dependencies->getCount() == 0)

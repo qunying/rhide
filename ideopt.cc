@@ -123,8 +123,7 @@ InitOptions()
   SaveTextPalette = 0;
 }
 
-ushort
-EditParamList(TParamList * paramlist, const char *title, int hist_id)
+ushort EditParamList(TParamList * paramlist, const char *title, int hist_id)
 {
   return editParamList(paramlist, title, hist_id);
 }
@@ -235,8 +234,8 @@ class TArrowInputLine:public TInputLine
 {
 public:
   int up, down;
-  
-    
+
+
     TArrowInputLine(const TRect & rect, int alimit, int allowup =
                     0, int allowdown =
                     0):TInputLine(rect, alimit), up(allowup), down(allowdown)
@@ -290,47 +289,25 @@ Libraries(void)
   dialog = new TDialog(r, _("Libraries"));
   dialog->options |= ofCentered;
   r = TRect(2, 1, 8, 17);
+/* *INDENT-OFF* */
   chk = new TCheckBoxes(r, new TSItem("~0~",
-                                      new TSItem("~1~",
-                                                 new TSItem("~2~",
-                                                            new TSItem("~3~",
-                                                                       new
-                                                                       TSItem
-                                                                       ("~4~",
-                                                                        new
-                                                                        TSItem
-                                                                        ("~5~",
-                                                                         new
-                                                                         TSItem
-                                                                         ("~6~",
-                                                                          new
-                                                                          TSItem
-                                                                          ("~7~",
-                                                                           new
-                                                                           TSItem
-                                                                           ("~8~",
-                                                                            new
-                                                                            TSItem
-                                                                            ("~9~",
-                                                                             new
-                                                                             TSItem
-                                                                             ("~A~",
-                                                                              new
-                                                                              TSItem
-                                                                              ("~B~",
-                                                                               new
-                                                                               TSItem
-                                                                               ("~C~",
-                                                                                new
-                                                                                TSItem
-                                                                                ("~D~",
-                                                                                 new
-                                                                                 TSItem
-                                                                                 ("~E~",
-                                                                                  new
-                                                                                  TSItem
-                                                                                  ("~F~",
-                                                                                   NULL)))))))))))))))));
+                           new TSItem("~1~",
+                           new TSItem("~2~",
+                           new TSItem("~3~",
+                           new TSItem("~4~",
+                           new TSItem("~5~",
+                           new TSItem("~6~",
+                           new TSItem("~7~",
+                           new TSItem("~8~",
+                           new TSItem("~9~",
+                           new TSItem("~A~",
+                           new TSItem("~B~",
+                           new TSItem("~C~",
+                           new TSItem("~D~",
+                           new TSItem("~E~",
+                           new TSItem("~F~",
+                           NULL)))))))))))))))));
+/* *INDENT-ON* */
   flags = Options.libs;
   chk->setData(&flags);
   dialog->insert(chk);
@@ -353,9 +330,11 @@ Libraries(void)
   r.a.x = 2;
   r.b.x = r.a.x + 35;
   r.b.y = r.a.y + 2;
+/* *INDENT-OFF* */
   chk1 = new TCheckBoxes(r, new TSItem(_("Use ~s~tandard libraries"),
-                                       new TSItem(_("link for ~p~rofiling"),
-                                                  NULL)));
+                            new TSItem(_("link for ~p~rofiling"),
+                            NULL)));
+/* *INDENT-ON* */
   stdlibs = NoStdLib ? 0 : 1;
   if (ForProfile)
     stdlibs |= 2;
@@ -429,96 +408,84 @@ public:
 const ushort cmMoreOptions = 9999;
 
 #define SetGetOptions()       \
-    S(AllDeps,0);             \
-    S(CreateBackupFiles,1);   \
-    S(ShowSyntax,2);          \
-    S(UseDualDisplay,3);      \
-    S(ShowStderr,4);          \
-    S(ShowStdout,5);          \
-    S(ShowWhatDoing,6);       \
-    S(ShowMem,7);             \
-    S(NoFileCache,8);         \
-    S(IntenseMode,9);         \
-    S(VerboseGDB,10);         \
-    S(NoShadows,11);          \
-    S(SaveTextPalette,12);    \
-    S(SaveProjectOnlyWhenClosing,13);\
-    S(ShowUserAfterExit,14);  \
-    S(OnlyUserIncludes,15);   \
-    S(AllowDirectories,16);   \
-    S(AutomaticOpenDisass,17);\
-    S(UseRCS,18);\
-    S(UseFPC,19);
+    S(AllDeps, 0);             \
+    S(CreateBackupFiles, 1);   \
+    S(ShowSyntax, 2);          \
+    S(UseDualDisplay, 3);      \
+    S(ShowStderr, 4);          \
+    S(ShowStdout, 5);          \
+    S(ShowWhatDoing, 6);       \
+    S(ShowMem, 7);             \
+    S(NoFileCache, 8);         \
+    S(IntenseMode, 9);         \
+    S(VerboseGDB, 10);         \
+    S(NoShadows, 11);          \
+    S(SaveTextPalette, 12);    \
+    S(SaveProjectOnlyWhenClosing, 13);\
+    S(ShowUserAfterExit, 14);  \
+    S(OnlyUserIncludes, 15);   \
+    S(AllowDirectories, 16);   \
+    S(AutomaticOpenDisass, 17);\
+    S(UseRCS, 18);\
+    S(UseFPC, 19);
 
 #define SetGetOptions1()      \
-    S(SaveMessages,0);\
-    S(DontShowExitCode,1);
+    S(SaveMessages, 0);\
+    S(DontShowExitCode, 1);\
+    S(DeleteRecursive, 2);
 
 TEnvironmentDialog::TEnvironmentDialog():
 TDialog(TRect(0, 0, 76, 23), _("Environment options")),
 TWindowInit(TEnvironmentDialog::initFrame)
 {
-  TRect
-    r, r1, r2;
-  char *
-    tmp;
+  TRect r, r1, r2;
+  char *tmp;
 
 #ifdef __DJGPP__
-  char
-    tabstring[10];
-  ushort
-    radiodata, oldmode;
+  char tabstring[10];
+
+  ushort radiodata, oldmode;
 #endif
-  uint32
-    global_options[max_cluster];
+  uint32 global_options[max_cluster];
 
   r1 = TRect(3, 2, 49, 2 + 20);
 
-  r1.b.y = r1.a.y + 2;
-  cluster[1] = new TEnterCheckBoxes(r1, new TSItem(_("~R~emember old messages"),	// r
-                                                   new
-                                                   TSItem(_("~D~on`t show exit code"),	// d
-                                                          NULL)), 1);
+  r1.b.y = r1.a.y + 3;
+/* *INDENT-OFF* */
+  cluster[1] = new TEnterCheckBoxes(r1,
+                 new TSItem(_("~R~emember old messages"),   // r
+                 new TSItem(_("~D~on`t show exit code"),    // d
+                 new TSItem(_("~C~lean files recursive"),   // c
+                 NULL))), 1);
+/* *INDENT-OFF* */
   cluster[1]->helpCtx = hcPreferenceCheckbox1;
 
   r1.b.y = r1.a.y + 20;
+/* *INDENT-OFF* */
   cluster[0] = new TEnterCheckBoxes(r1,
-                                    new TSItem(_("all dependencies in ~m~akefile"),	// m
-                                               new
-                                               TSItem(_("create ~b~ackupfiles"),	// b
-                                                      new
-                                                      TSItem(_("syntax ~h~ighlighting"),	// h
-                                                             new
-                                                             TSItem(_("U~s~e dual display"),	// s
-                                                                    new
-                                                                    TSItem(_
-                                                                           ("redirect 'stde~r~r'"),	// r
-new TSItem(_("redirect 'stdou~t~'"),	// t
-           new TSItem(_("show ~p~rocess information"),	// p
-                      new TSItem(_("show free memor~y~"),	// y
-                                 new TSItem(_("No file cachin~g~"),	// g
-                                            new
-                                            TSItem(_("1~6~ background colors"),	// 6
-                                                   new
-                                                   TSItem(_("Show G~D~B commands"),	// d
-                                                          new
-                                                          TSItem(_("~U~se no shadows"),	// u
-                                                                 new
-                                                                 TSItem(_("Save te~x~t palette"),	// x
-                                                                        new
-                                                                        TSItem
-                                                                        (_
-                                                                         ("Save pro~j~ect only when closing"),	// j
-new TSItem(_("Sho~w~ user screen after exit"),	// w
-           new TSItem(_("Only #~i~nclude \"...\" as dependencies"),	// i
-                      new TSItem(_("Directories in project items"),	//
-                                 new
-                                 TSItem(_("Show Disassemb~l~er Window when needed"),	// l
-                                        new TSItem(_("Use RCS"),	//
-                                                   new
-                                                   TSItem(_("Use ~F~PC pascal compiler"),	// f
-                                                          NULL)))))))))))))))))))),
-                                    1);
+                new TSItem(_("all dependencies in ~m~akefile"),          // m
+                new TSItem(_("create ~b~ackupfiles"),                    // b
+                new TSItem(_("syntax ~h~ighlighting"),                   // h
+                new TSItem(_("U~s~e dual display"),                      // s
+                new TSItem(_("redirect 'stde~r~r'"),                     // r
+                new TSItem(_("redirect 'stdou~t~'"),                     // t
+                new TSItem(_("show ~p~rocess information"),              // p
+                new TSItem(_("show free memor~y~"),                      // y
+                new TSItem(_("No file cachin~g~"),                       // g
+                new TSItem(_("1~6~ background colors"),                  // 6
+                new TSItem(_("Show G~D~B commands"),                     // d
+                new TSItem(_("~U~se no shadows"),                        // u
+                new TSItem(_("Save te~x~t palette"),                     // x
+                new TSItem(_("Save pro~j~ect only when closing"),        // j
+                new TSItem(_("Sho~w~ user screen after exit"),           // w
+                new TSItem(_("Only #~i~nclude \"...\" as dependencies"), // i
+                new TSItem(_("Directories in project items"),            //
+                new TSItem(_("Show Disassemb~l~er Window when needed"),  // l
+                new TSItem(_("Use RCS"),                                 //
+                new TSItem(_("Use ~F~PC pascal compiler"),               // f
+                NULL)))))))))))))))))))),
+                1);
+/* *INDENT-ON* */
   cluster[0]->helpCtx = hcPreferenceCheckbox;
   memset(global_options, 0, sizeof(global_options));
 #define S(x,y) if (x) global_options[0] |= (1 << (y))
@@ -542,50 +509,22 @@ new TSItem(_("Sho~w~ user screen after exit"),	// w
   r2.a.y = r1.a.y;
   r2.b.y = r2.a.y + 13;
 #ifdef __DJGPP__
+/* *INDENT-OFF* */
   radio = new TEnterRadioButtons(r2, new TSItem(("8~0~x25"),
-                                                new TSItem(("80x~2~8"),
-                                                           new
-                                                           TSItem(("~8~0x35"),
-                                                                  new
-                                                                  TSItem(
-                                                                         ("80x~4~0"),
-                                                                         new
-                                                                         TSItem
-                                                                         (
-                                                                          ("80x4~3~"),
-                                                                          new
-                                                                          TSItem
-                                                                          (
-                                                                           ("80x~5~0"),
-                                                                           new
-                                                                           TSItem
-                                                                           (_
-                                                                            ("other"),
-                                                                            new
-                                                                            TSItem
-                                                                            (
-                                                                             ("80x30"),
-                                                                             new
-                                                                             TSItem
-                                                                             (
-                                                                              ("80x34"),
-                                                                              new
-                                                                              TSItem
-                                                                              (
-                                                                               ("90x30"),
-                                                                               new
-                                                                               TSItem
-                                                                               (
-                                                                                ("90x34"),
-                                                                                new
-                                                                                TSItem
-                                                                                (
-                                                                                 ("94x30"),
-                                                                                 new
-                                                                                 TSItem
-                                                                                 (
-                                                                                  ("94x34"),
-                                                                                  NULL))))))))))))));
+           new TSItem(("80x~2~8"),
+           new TSItem(("~8~0x35"),
+           new TSItem(("80x~4~0"),
+           new TSItem(("80x4~3~"),
+           new TSItem(("80x~5~0"),
+           new TSItem(_("other"),
+           new TSItem(("80x30"),
+           new TSItem(("80x34"),
+           new TSItem(("90x30"),
+           new TSItem(("90x34"),
+           new TSItem(("94x30"),
+           new TSItem(("94x34"),
+           NULL))))))))))))));
+/* *INDENT-ON* */
   tmp = _("~S~creen mode");
   insert(new
          TLabel(TRect(r2.a.x, r2.a.y - 1, r2.a.x + cstrlen(tmp) + 1, r2.a.y),
@@ -1241,21 +1180,19 @@ TWindowInit(&TLocalDialog::initFrame)
   insert(output_name);
   rrr = r;
   r = TRect(35, 2, 65, 2 + 9);
-  compiler_id = new TEnterRadioButtons(r, new TSItem(_("Auto"),
-                                                     new TSItem(_("User"),
-                                                                new
-                                                                TSItem(_
-                                                                       ("None"),
-                                                                       new
-TSItem(_("GNU C compiler"),
-       new TSItem(_("GNU C++ compiler"),
-                  new TSItem(_("GNU assembler"),
-                             new TSItem(_("GNU Pascal compiler"),
-                                        new TSItem(_("GNU Fortran compiler"),
-                                                   new
-                                                   TSItem(_
-                                                          ("Free Pascal compiler"),
-                                                          NULL))))))))));
+/* *INDENT-OFF* */
+  compiler_id = new TEnterRadioButtons(r,
+                    new TSItem(_("Auto"),
+                    new TSItem(_("User"),
+                    new TSItem(_("None"),
+                    new TSItem(_("GNU C compiler"),
+                    new TSItem(_("GNU C++ compiler"),
+                    new TSItem(_("GNU assembler"),
+                    new TSItem(_("GNU Pascal compiler"),
+                    new TSItem(_("GNU Fortran compiler"),
+                    new TSItem(_("Free Pascal compiler"),
+                    NULL))))))))));
+/* *INDENT-ON* */
   rr = r;
   r.a.y--;
   r.b.y = r.a.y + 1;
@@ -1280,18 +1217,17 @@ TSItem(_("GNU C compiler"),
   r.a.y = rr.b.y + 2;
   r.b.y = r.a.y + 8;
   r.b.x = r.a.x + 30;
+/* *INDENT-OFF* */
   error_type = new TEnterRadioButtons(r, new TSItem(_("Auto"),
-                                                    new TSItem(_("User"),
-                                                               new
-                                                               TSItem(_
-                                                                      ("None"),
-                                                                      new
-TSItem(_("builtin C"),
-       new TSItem(_("builtin assembler"),
-                  new TSItem(_("builtin linker"),
-                             new TSItem(_("return value"),
-                                        new TSItem(_("builtin FPC"),
-                                                   NULL)))))))));
+                                         new TSItem(_("User"),
+                                         new TSItem(_("None"),
+                                         new TSItem(_("builtin C"),
+                                         new TSItem(_("builtin assembler"),
+                                         new TSItem(_("builtin linker"),
+                                         new TSItem(_("return value"),
+                                         new TSItem(_("builtin FPC"),
+                                         NULL)))))))));
+/* *INDENT-ON* */
   rr = r;
   r.move(0, -1);
   tmp = _("~E~rror checking");
@@ -1317,9 +1253,11 @@ TSItem(_("builtin C"),
   r.b.y = r.a.y + 2;
   r.a.x = rrr.a.x;
   r.b.x = r.a.x + 30;
+/* *INDENT-OFF* */
   others = new TEnterCheckBoxes(r, new TSItem(_("exclude from link"),
-                                              new TSItem(_("rebuild seldom"),
-                                                         NULL)));
+                                   new TSItem(_("rebuild seldom"),
+                                   NULL)));
+/* *INDENT-ON* */
   r.move(0, -1);
   tmp = _("o~t~her options");
   r.b.x = r.a.x + cstrlen(tmp) + 1;
@@ -1493,8 +1431,8 @@ LocalOptions()
   if (project->dependencies->getCount() == 0)
     return;
   dep =
-    (TDependency *) (project->dependencies->
-                     at(project_window->liste->focused));
+    (TDependency *) (project->
+                     dependencies->at(project_window->liste->focused));
   TLocalDialog *dialog = new TLocalDialog();
 
   SetOptions(dialog, dep);

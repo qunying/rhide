@@ -6,7 +6,7 @@ VPATH=$(srcdir)
 
 src_files=\
 	  infeng.txi infger.txi infspa.txi \
-	  enum.c html2ctx.c Makefile rhide.tx tx2txi.c \
+	  enum.c Makefile rhide.tx tx2txi.c \
 	  makefile.src rhide.env \
 	  rhide.var doc.gpr doc.mak \
 	  tx2txi.gpr tx2txi.mak

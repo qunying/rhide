@@ -697,7 +697,7 @@ ifeq ($(strip $(RHIDE_OS)),)\n\
 ifneq ($(strip $(DJDIR)),)\n\
 RHIDE_OS_:=DJGPP\n\
 else\n\
-RHIDE_OS_:=$(shell uname)\n\
+RHIDE_OS_:=$(patsubst CYGWIN%,CYGWIN,$(shell uname))\n\
 endif\n\
 endif\n\
 ");
@@ -709,7 +709,10 @@ TF(RHIDE_OS)
     return string_dup("DJGPP");
   struct utsname u;
   uname(&u);
-  return string_dup(u.sysname);
+  if (strncmp(u.sysname, "CYGWIN", 6) == 0)
+    return string_dup("CYGWIN");
+  else
+    return string_dup(u.sysname);
 }
 
 TF(make_EDITORS)

@@ -112,12 +112,21 @@ ifneq ($(LIBGDB_H),)
 libgdbrh.h: $(LIBGDB_H)
 	echo "#include <$(LIBGDB_H)>" > libgdbrh.h
 else
-libgdbrh.h: $(GDB_OBJ)/bfd/bfd.h libgdbrh.c
+libgdbrh.h: $(GDB_OBJ)/bfd/bfd.h libgdbrh.c gdb_ver.txt
 	gcc -E -P $(INC_PATH) $(CFLAGS) $(MMALLOC_CFLAGS) libgdbrh.c \
 	  | sed -e '/^[ 	]*$$/d' > libgdbrh.h
 	gcc -E -P -dM $(INC_PATH) $(CFLAGS) $(MMALLOC_CFLAGS) libgdbrh.c \
 	  | sed -e '/^[ 	]*$$/d' >> libgdbrh.h
+	cat gdb_ver.txt >> libgdbrh.h
 endif
+
+optional_subdirs=mi di
+sub_dirs=$(subst $(GDB_OBJ)/gdb/,,$(wildcard $(addprefix $(GDB_OBJ)/gdb/,$(optional_subdirs))))
+sub_dir=$(subst .tt,,$@)
+
+%.tt: libgdb-files
+	echo $(wildcard $(subst $(sub_dir)/,,$(subst .c,.o,$(subst $(GDB_SRC),$(GDB_OBJ),\
+	     $(wildcard $(GDB_SRC)/gdb/$(sub_dir)/*.c))))) > $@
 
 gdb.t: libgdb-files
 	printf "%s\n" $(shell cat $<) | sed -n -e 's,^.*\.o,$(GDB_OBJ)/gdb/&,p' $(EXCLUDE_REGEX) > $@
@@ -136,10 +145,12 @@ $(GDB_OBJ)/%.a:
 	$(MAKE) -C $(dir $@) CFLAGS="$(CFLAGS)" $(LIBGDB_FLAGS)
 
 libgdb-files: force
-	$(MAKE) -C $(GDB_OBJ)/gdb CFLAGS="$(CFLAGS)" $(LIBGDB_FLAGS) libgdb.a
+	$(MAKE) -C $(GDB_OBJ)/gdb CFLAGS="$(CFLAGS)" $(LIBGDB_FLAGS)
 	ls $(GDB_OBJ)/gdb/*.o | sed s,$(GDB_OBJ)/gdb/,,g > $@
 
-T_FILES=libbfd.t libiberty.t libopcodes.t libreadline.t $(notdir $(subst .a,.t,$(MMALLOC_LIB))) gdb.t
+T_FILES=libbfd.t libiberty.t libopcodes.t libreadline.t \
+	$(notdir $(subst .a,.t,$(MMALLOC_LIB))) gdb.t \
+	$(addsuffix .tt,$(optional_subdirs))
 
 list: $(T_FILES)
 
@@ -151,4 +162,18 @@ libgdbrh.a: $(CHECKS) libgdbrh.h list
 	rm -f $(T_FILES) libgdb-files
 endif
 
+$(GDB_OBJ)/gdb/version.o: $(GDB_OBJ)/Makefile
+	$(MAKE) -C $(dir $@) $(notdir $@)
+	
+echo_ver: $(GDB_OBJ)/gdb/version.o
+	echo 'int main(int argc, char **argv)\
+	  {extern const char version[];printf("%s",version);return 0;}' | \
+	gcc -s -o echo_ver $< -x c -
+
+gdb_ver.txt: echo_ver
+	$< | sed -e "s,\.,,g" \
+	  -e "s,.*,#define GDB_VERSION &,1" > $@
+	
+
 force:
+

@@ -180,7 +180,7 @@ annotate_stopped()
 
   DEBUG("|stopped|");
   ShowDebuggerScreen();
-  debugger_started = inferior_pid;
+  init_started();
   if (!reset_command)
   {
     char *dirname = NULL, *fullname = NULL;
@@ -267,7 +267,7 @@ get_gdb_error_buffer(void)
   return gdb_error_pos;
 }
 
-#ifdef __DJGPP__
+#if defined(__DJGPP__) && defined(INCLUDE_WIN31_HACK)
 
 /* Here comes the hack for Windows 3.1x.
    The case for setting breakpoints s handled in librhgdb by allowing
@@ -387,7 +387,7 @@ static void __attribute__ ((constructor)) _init_librhgdb()
 
   gdb_init("rhide");
 #endif
-#ifdef __DJGPP__
+#if defined(__DJGPP__) && defined(INCLUDE_WIN31_HACK)
   __win31_hack();
 #endif
   signal(SIGINT, oldINT);
@@ -579,9 +579,9 @@ __BreakSession()
 void
 __EndSession(int exit_code)
 {
-  debugger_started = 0;
+  clear_started();
 #ifdef __DJGPP__
-  inferior_pid = 0;
+  clear_inferior();
 #endif
   _EndSession(exit_code);
 }

@@ -2,7 +2,7 @@
 /* This file is part of RHIDE. */
 #include <libgdbrh.h>
 #include <librhgdb.h>
-
+#include <rhgdbint.h>
 
 int
 register_count()
@@ -74,6 +74,7 @@ set_register_value(int num, unsigned long value)
 #define CANNOT_STORE_REGISTER(regno) 0
 #endif
 
+#ifndef REGCACHE_H
 extern int registers_pid;
 
 /* Write register REGNO at MYADDR to the target.  MYADDR points at
@@ -93,10 +94,10 @@ write_register_gen(regno, myaddr)
   if (CANNOT_STORE_REGISTER(regno))
     return;
 
-  if (registers_pid != inferior_pid)
+  if (registers_pid != _inferior_pid())
   {
     registers_changed();
-    registers_pid = inferior_pid;
+    registers_pid = _inferior_pid();
   }
 
   size = REGISTER_RAW_SIZE(regno);
@@ -118,6 +119,7 @@ write_register_gen(regno, myaddr)
 
   target_store_registers(regno);
 }
+#endif //REGCACHE_H
 
 void
 set_float_register_value(int num, long double value)
@@ -125,7 +127,7 @@ set_float_register_value(int num, long double value)
   char d[sizeof(long double)];
   char buf[20];
 
-  if (!debugger_started)
+  if (!debugger_started())
     return;
   *(long double *) d = value;
 #ifdef REGISTER_CONVERT_TO_RAW

@@ -497,7 +497,7 @@ RHGDBApp::handleEvent(TEvent & event)
           break;
         case cmDisWindow:
           OpenDisWin();
-          if (debugger_started)
+          if (debugger_started())
             dis_win->update(stop_pc);
           clearEvent(event);
           break;
@@ -1098,7 +1098,7 @@ TRACE(int _switch_to_user)
 void
 RESET()
 {
-  if (!debugger_started)
+  if (!debugger_started())
     return;
   ResetDebugger();
   repaint();

@@ -23,7 +23,7 @@ symify(const char *s, char **function, char **file, int *line, int _diff)
   sscanf(s, "%lx", &core);
   core += _diff;
   sprintf(tmp, "*%ld", core);
-  sals = decode_line_1(&tmp, 0, 0, 0, 0);
+  sals = decode_line_spec(tmp, 0);
   if (!sals.sals[0].symtab)
   {
     msymbol = lookup_minimal_symbol_by_pc(core);

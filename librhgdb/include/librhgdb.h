@@ -128,7 +128,7 @@ extern "C"
 /*
   Nonzero, if the debugger has started, otherwise zero.
 */
-  extern int debugger_started;
+  int debugger_started();
 
 
 /*

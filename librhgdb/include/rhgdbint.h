@@ -83,5 +83,9 @@ void __EndSession(int);
 extern char *_progname;
 void reset_debugger();
 extern int call_reset;
+void init_started();
+void clear_started();
+void clear_inferior();
+int _inferior_pid();
 
 #endif

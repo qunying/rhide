@@ -208,7 +208,7 @@ TRegisters::handleEvent(TEvent & event)
         default:
           break;
         case cmModifyRegister:
-          if (debugger_started)
+          if (debugger_started())
           {
             editRegister(selected);
           }
@@ -853,7 +853,7 @@ TDialog(bounds, aTitle), TWindowInit(TDisassemblerWindow::initFrame)
   insert(registers);
 
   viewer->select();
-  if (debugger_started)
+  if (debugger_started())
     update(stop_pc);
 }
 

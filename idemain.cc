@@ -750,7 +750,7 @@ IDE::update()
     E(cmUserScreen);
   }
 #ifdef INTERNAL_DEBUGGER
-  if (debugger_started)
+  if (debugger_started())
   {
     E(cmModifyRegister);
     E(cmGotoDisass);

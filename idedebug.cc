@@ -76,7 +76,7 @@ OpenDisWin(int force_open)
 
     dis_win = new TDisassemblerWindow(r, _("Disassembler window"));
     AddWindow(dis_win, (TWindow **) & dis_win);
-    if (debugger_started)
+    if (debugger_started())
       dis_win->update(stop_pc);
   }
   else if (dis_win)
@@ -89,7 +89,7 @@ OpenDisWin(int force_open)
 static void
 select_source_line(char *fname, int line, char *dirname, char *fullname)
 {
-  if (!debugger_started)
+  if (!debugger_started())
     return;
   int select_dis_win = dis_win && TProgram::deskTop->current == dis_win;
   char *full_name = NULL;
@@ -302,7 +302,7 @@ RESET()
 int
 DEBUGGER_STARTED()
 {
-  return debugger_started;
+  return debugger_started();
 }
 
 void
@@ -356,7 +356,7 @@ static unsigned long last_modified = 0;
 static int
 DoMake()
 {
-  if (debugger_started)
+  if (debugger_started())
   {
     if (!hasmodified && already_maked)
     {

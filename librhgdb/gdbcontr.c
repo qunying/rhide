@@ -17,11 +17,52 @@
    processes UI events asynchronously. */
 int event_loop_p = 0;
 
-int debugger_started = 0;
+static
+int _debugger_started = 0;
+int debugger_started()
+{
+  return _debugger_started;
+}
+
+#if !defined(GDB_VERSION)
+#define GDB_VERSION 50
+#endif
+
+#if GDB_VERSION == 50
+#define PID_TYPE int
+#define NULL_PID 0
+#else
+#define PID_TYPE ptid_t
+#define NULL_PID null_ptid
+#define inferior_pid inferior_ptid
+
+char *interpreter_p = 0;
+
+#endif
+
+extern PID_TYPE inferior_pid;
+
+int _inferior_pid()
+{
+  return PIDGET(inferior_pid);
+}
+
+void clear_inferior()
+{
+  inferior_pid = NULL_PID;
+}
+
+void init_started()
+{
+  _debugger_started = _inferior_pid();
+}
+
+void clear_started()
+{
+  _debugger_started = 0;
+}
 
 int init_count = 0;
-
-extern int inferior_pid;
 
 void (*post_command_hook) (void) = 0;
 
@@ -60,7 +101,7 @@ Command(char *x, int call_hook)
   get_gdb_error_buffer();
   _UpdateGDBOutWin(gdb_error_buffer);
   _UpdateGDBOutWin(gdb_output_buffer);
-  debugger_started = inferior_pid;
+  init_started();
   if (in_command == 1 && call_hook && post_command_hook)
     post_command_hook();
   in_command--;
@@ -259,7 +300,7 @@ GoToAddress(unsigned long address)
 
   if (!_DoMake())
     return;
-  if (!debugger_started)
+  if (!debugger_started())
   {
     run = "run";
     if (!INIT())
@@ -287,7 +328,7 @@ GoToLine(char *fname, int line)
 
   if (!_DoMake())
     return;
-  if (!debugger_started)
+  if (!debugger_started())
   {
     run = "run";
     if (!INIT())
@@ -323,7 +364,7 @@ step(char *cmd)
 {
   if (!_DoMake())
     return;
-  if (!debugger_started)
+  if (!debugger_started())
   {
     char command[100];
 
@@ -361,7 +402,7 @@ trace(char *cmd)
 {
   if (!_DoMake())
     return;
-  if (!debugger_started)
+  if (!debugger_started())
   {
     char command[100];
 
@@ -402,10 +443,10 @@ reset_debugger()
   DeleteBreakPoints();
   __BreakSession();
   COMMAND("kill");
-  debugger_started = 0;
+  clear_started();
   reset_command = 0;
 #ifdef DJGPP
-  inferior_pid = 0;
+  clear_inferior();
 #endif
 }
 
@@ -414,7 +455,7 @@ ResetDebugger()
 {
   call_reset = 0;
 #if 1
-  if (debugger_started || inferior_pid)
+  if (debugger_started() || _inferior_pid())
 #endif
     reset_debugger();
   DeleteBreakPoints();
@@ -423,7 +464,7 @@ ResetDebugger()
 void
 ClearSymbols()
 {
-  if (debugger_started || inferior_pid)
+  if (debugger_started() || _inferior_pid())
     ResetDebugger();
   if (init_count > 0)
     Command("file", 0);
@@ -435,7 +476,7 @@ Continue()
 {
   if (!_DoMake())
     return;
-  if (!debugger_started)
+  if (!debugger_started())
   {
     if (!INIT())
       return;
@@ -453,7 +494,7 @@ Continue()
 int
 InitRHGDB()
 {
-  if (debugger_started)
+  if (debugger_started())
     reset_debugger();
   return INIT();
 }

@@ -66,20 +66,24 @@ GetProgName()
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#ifdef __DJGPP__
 #include <pc.h>
 
 #define SC(r,c) (*(char *)(sc + (r)*ScreenCols() + (c)))
 #define SW(r,c) (*(sc + (r)*ScreenCols() + (c)))
+#endif
 
 int
 main(int argc, char *argv[])
 {
   char *function, *file;
   int lineno;
+#ifdef __DJGPP__
   int r, c;
   short *sc;
   char buf[1024];
   int i;
+#endif
   int diff = 0;
   unsigned v;
   FILE *ofile = 0;
@@ -160,7 +164,7 @@ main(int argc, char *argv[])
     fclose(ofile);
     return 0;
   }
-
+#ifdef __DJGPP__
   sc = (short *) malloc(ScreenRows() * ScreenCols() * 2);
 
   ScreenRetrieve(sc);
@@ -211,6 +215,7 @@ main(int argc, char *argv[])
   }
   else
     ScreenUpdate(sc);
+#endif
   return 0;
 }
 

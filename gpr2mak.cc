@@ -184,6 +184,7 @@ $(wildcard $(path)/$(notdir ",tmp,"))))");
     chdir(orig_dir);
     return -3;
   }
+  push_environment();
   AllDeps = all_deps;
   WriteMake(outname,argc,argv);
   _WriteMake(all_deps, argc, argv);

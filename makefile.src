@@ -23,7 +23,7 @@ src_files=$(po_files) Makefile common.mak README.IDE RHIDE.BIN RHIDE.SRC \
 	COPYING.RH COPYING wrong.c copyrite.c makefile.src \
 	gpr2mak.gpr rhide_.gpr rhide.gpr gpr2mak.mak rhide_.mak rhide.mak \
 	rhide_ch.log todo pal.c zipcomm.bin zipcomm.src rhide.env \
-	LINUX.TXT rhide.var INSTALL.LINUX INSTALL.MAK VCSA.SH common.var \
+	LINUX.TXT rhide.var VCSA.SH common.var \
 	ideversi.in ideversi.cc readme.key rhide_.env \
 	rhide.terminfo moveifch gprexp.gpr gprexp.mak
 
@@ -274,11 +274,11 @@ MANIFEST=
 endif
 
 bin_src_data_files_DJGPP=
-bin_src_data_files_Linux=LINUX.TXT INSTALL.MAK
+bin_src_data_files_Linux=LINUX.TXT
 bin_src_data_files=RHIDE.BIN README.IDE COPYING.RH COPYING rhide_ch.log \
 		$(bin_src_data_files_$(rhide_OS))
 bin_src_bin_files_DJGPP=
-bin_src_bin_files_Linux=INSTALL.LINUX VCSA.SH
+bin_src_bin_files_Linux=VCSA.SH
 bin_src_bin_files=$(bin_src_bin_files_$(rhide_OS))
 bin_src_files=$(bin_src_data_files) $(bin_src_bin_files)
 bin_src_prefix_DJGPP=$(install_prefix_src)/

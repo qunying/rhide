@@ -20,20 +20,20 @@
 #define __S(color) #color
 #define _S(bg,fg) __S(\x##bg##fg)
 #define S(index,foreground,background,name,comment...) _S(background,foreground)
-#define SS(index,foreground,background,name,group,comment...) _S(background,foreground)
+#define S_(index,foreground,background,name,group,comment...) _S(background,foreground)
 
 /* This is the palette for the system when in color mode */
 #define cpIDEColor\
-        SS( 1,Blue,Lightgray,Color,Desktop) \
+        S_( 1,Blue,Lightgray,Color,Desktop) \
         \
-        SS( 2,Black,Lightgray,Normal,Menus) \
+        S_( 2,Black,Lightgray,Normal,Menus) \
         S( 3,Darkgray,Lightgray,Disabled) \
         S( 4,Red,Lightgray,Shortcut) \
         S( 5,Black,Green,Selected) \
         S( 6,Darkgray,Green,Selected disabled) \
         S( 7,Red,Green,Shortcut selected) \
         \
-        SS( 8,Lightgray,Blue,Frame disabled,Blue Windows) \
+        S_( 8,Lightgray,Blue,Frame disabled,Blue Windows) \
         S( 9,White,Blue,Frame) \
         S( A,Lightgreen,Blue,Frame icons) \
         S( B,Blue,Cyan,Scroll bar page) \
@@ -43,7 +43,7 @@
         \
         S( F,Black,Black,reserved) \
         \
-        SS(10,Lightgray,Cyan,Frame disabled,Cyan Windows) \
+        S_(10,Lightgray,Cyan,Frame disabled,Cyan Windows) \
         S(11,White,Cyan,Frame) \
         S(12,Lightgreen,Cyan,Frame icons) \
         S(13,Cyan,Blue,Scroll bar page) \
@@ -53,7 +53,7 @@
         \
         S(17,Black,Black,reserved) \
         \
-        SS(18,Lightgray,Black,Frame disabled,Gray Windows ) \
+        S_(18,Lightgray,Black,Frame disabled,Gray Windows ) \
         S(19,White,Black,Frame) \
         S(1A,White,Black,Frame icons) \
         S(1B,Lightgray,Black,Scroll bar page) \
@@ -63,7 +63,7 @@
         \
         S(1F,Black,Black,reserved) \
         \
-        SS(20,Black,Lightgray,Frame disabled,Dialogs) \
+        S_(20,Black,Lightgray,Frame disabled,Dialogs) \
         S(21,White,Lightgray,Frame) \
         S(22,Lightgreen,Lightgray,Frame icons) \
         S(23,Cyan,Blue,Scroll bar page) \
@@ -97,7 +97,7 @@
         S(3E,Black,Black,reserved) \
         S(3F,Black,Black,reserved) \
         \
-        SS(40,Lightgray,Blue,Frame disabled,Blue Editor) \
+        S_(40,Lightgray,Blue,Frame disabled,Blue Editor) \
         S(41,White,Blue,Frame) \
         S(42,Lightgreen,Blue,Frame icons) \
         S(43,Blue,Cyan,Scroll bar page) \
@@ -131,7 +131,7 @@
         S(5E,Black,Black,reserved) \
         S(5F,Black,Black,reserved) \
         \
-        SS(60,Lightgray,Blue,Frame disabled,Cyan Editor) \
+        S_(60,Lightgray,Blue,Frame disabled,Cyan Editor) \
         S(61,White,Blue,Frame) \
         S(62,Lightgreen,Blue,Frame icons) \
         S(63,Blue,Cyan,Scroll bar page) \
@@ -165,7 +165,7 @@
         S(7E,Black,Black,reserved) \
         S(7F,Black,Black,reserved) \
         \
-        SS(80,Lightgray,Blue,Frame disabled,Gray Editor) \
+        S_(80,Lightgray,Blue,Frame disabled,Gray Editor) \
         S(81,White,Blue,Frame) \
         S(82,Lightgreen,Blue,Frame icons) \
         S(83,Blue,Cyan,Scroll bar page) \
@@ -199,7 +199,7 @@
         S(9E,Black,Black,reserved) \
         S(9F,Black,Black,reserved) \
         \
-        SS(A0,Lightgray,Cyan,Frame disabled,Info viewer) \
+        S_(A0,Lightgray,Cyan,Frame disabled,Info viewer) \
         S(A1,White,Cyan,Frame) \
         S(A2,Lightgreen,Cyan,Frame icons) \
         S(A3,Cyan,Blue,Scroll bar page) \
@@ -217,7 +217,7 @@
         S(AE,Black,Black,reserved) \
         S(AF,Black,Black,reserved) \
         \
-        SS(B0,Black,Lightgray,Frame disabled,Disassembler) \
+        S_(B0,Black,Lightgray,Frame disabled,Disassembler) \
         S(B1,White,Lightgray,Frame) \
         S(B2,Lightgreen,Lightgray,Frame icons) \
         S(B3,Blue,Cyan,Scroll bar page) \
@@ -235,7 +235,7 @@
         S(BE,Black,Black,reserved) \
         S(BF,Black,Black,reserved) \
         \
-        SS(C0,Black,Lightgray,Frame disabled,DataWindow) \
+        S_(C0,Black,Lightgray,Frame disabled,DataWindow) \
         S(C1,White,Lightgray,Frame) \
         S(C2,Lightgreen,Lightgray,Frame icons) \
         S(C3,Blue,Cyan,Scroll bar page) \

@@ -95,10 +95,10 @@ static void addItem(TColorGroup *&group,int index, const char *name, const char 
 
 #include "pal.c"
 #undef S
-#undef SS
+#undef S_
 #define S(index,foreground,background,name,comment...) \
   addItem(group,0x##index,#name,"");
-#define SS(index,foreground,background,name,_group,comment...) \
+#define S_(index,foreground,background,name,_group,comment...) \
   addItem(group,0x##index,#name,#_group);
 #endif
 

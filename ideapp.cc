@@ -39,8 +39,6 @@ TStringCollection *FpcRWords;
 TStringCollection *ClipperRWords;
 TCEditWindow *clipWindow;
 
-extern "C" unsigned IDEdoEditDialog( int dialog, ...);
-
 IDE::IDE() :
     TProgInit( IDE::initStatusLine,
                IDE::initMenuBar,

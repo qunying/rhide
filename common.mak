@@ -185,7 +185,8 @@ FLAGS_TO_PASS=\
 	SETGID="$(SETGID)" \
 	prefix=$(prefix) \
 	update_src_file="$(update_src_file)" \
-	update_gpr_file="$(update_gpr_file)"
+	update_gpr_file="$(update_gpr_file)" \
+	txt_conv="$(txt_conv)"
 
 %.sub: Makefile
 	@$(MAKE) -C $* $(FLAGS_TO_PASS) SUBDIR_TARGET=$(SUBDIR_TARGET) \
@@ -281,7 +282,9 @@ endif
 
 %.cfo: Makefile
 ifneq ($(srcdir),$(config_dir))
+ifeq ($(wildcard $(config_dir)/$*),)
 	@-mkdir $(config_dir)/$*
+endif
 endif
 	@$(MAKE) --no-print-directory -C $* -f $(srcdir)/$*/Makefile \
 	         $(FLAGS_TO_PASS) \
@@ -318,6 +321,9 @@ install.data:: $(install_data_files)
 	$(INSTALL_DIR) $(prefix)/$(install_datadir)
 	$(INSTALL_DATA) $^ $(prefix)/$(install_datadir)
 	@echo $(addprefix $(install_datadir)/,$(install_data_files)) >> $(logfile)
+ifneq ($(txt_conv),)
+	$(txt_conv) $(addprefix $(prefix)/$(install_datadir)/,$(install_data_files))
+endif
 endif
 
 ifneq ($(strip $(install_info_files)),)
@@ -332,6 +338,9 @@ install.doc:: $(install_doc_files)
 	$(INSTALL_DIR) $(prefix)/$(install_docdir)
 	$(INSTALL_DATA) $^ $(prefix)/$(install_docdir)
 	@echo $(addprefix $(install_docdir)/,$(install_doc_files)) >> $(logfile)
+ifneq ($(txt_conv),)
+	$(txt_conv) $(addprefix $(prefix)/$(install_docdir)/,$(install_doc_files))
+endif
 endif
 
 ifneq ($(strip $(install_bin_files)),)

@@ -7,9 +7,9 @@ class TMemoryStream:public iopstream
 {
 public:
   TMemoryStream();
-  TMemoryStream(const void *, int);
+  TMemoryStream(void *, int);
   unsigned long getSize();
-  void *getBuffer();
+  const void *getBuffer();
 };
 
 #endif

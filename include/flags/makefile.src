@@ -10,7 +10,7 @@ project=
 src_files=\
 	  c_opt.h cxx_opt.h deb_opt.h gpcreser.h opt_opt.h pas_opt.h \
 	  reserved.h warn_opt.h Makefile f_opt.h makefile.src ada_opt.h \
-	  fpc_opt.h fpcreser.h words.sed
+	  fpc_opt.h fpcreser.h words.sed switch.sed
 po_files=
 cfg_files=
 update_files=

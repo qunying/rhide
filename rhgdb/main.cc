@@ -380,13 +380,14 @@ About()
           "\003%s\n"
           "\003(%s%s)\n"
           "\003\n"
-          "\003%s\n",
+          "\003%s, %d-%d\n",
           RHGDBVersion,
           build_date,
           _("RHGDB is a source level debugger"),
           _("with Turbo Vision interface"),
           _("based on GDB "), version,
-          _("Copyright (C) by Robert H”hne, 1996-1998"));
+          _("Copyright (C) by Robert H”hne"),
+          1996,2001);
   text = new TStaticText(TRect(0, 0, 50, 9), buffer);
   text->options |= ofCentered;
   dialog->insert(text);
@@ -954,13 +955,8 @@ init_rhgdb(int __crt0_argc, char **__crt0_argv)
   prog_name = __crt0_argv[0];
   parse_commandline(__crt0_argc, __crt0_argv);
 
-//  TEventQueue::suspend();
-//  TScreen::suspend();
-//  fprintf(stderr,_("This is %s. Copyright (c) 1996-1998 by Robert H”hne\n"),RHGDBVersion);
-//  TScreen::resume();
-//  TEventQueue::resume();
   TScreen::suspend();
-  fprintf(stderr, _("This is %s. Copyright (c) 1996-2000 by Robert H”hne\n"),
+  fprintf(stderr, _("This is %s. Copyright (c) 1996-2001 by Robert H”hne\n"),
           RHGDBVersion);
   TScreen::resume();
   init_syntax();

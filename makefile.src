@@ -156,7 +156,7 @@ LANGUAGES.SRC=
 endif
 
 distrib.src_: $(LANGUAGES.SRC) tmp.start copy.files \
-	     tv2_diffs $(MANIFEST_SRC)
+	     $(MANIFEST_SRC)
 	rm -f $(rhides).zip
 	$(MAKE) mark.copyright copyrite_srcdir=$(prefix)
 ifeq ($(rhide_OS),DJGPP)

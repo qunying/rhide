@@ -1871,17 +1871,20 @@ ShowIncludes()
   dialog->insert(box);
   if (TProgram::deskTop->execView(dialog) == cmOK)
   {
-    char *name, *dir, _tmp[256], *tmp = _tmp, fname[256];
+    char *name, *dir, _tmp[256], *tmp = _tmp, fname[256], ch;
 
     strcpy(tmp, (char *) list->at(box->focused));
     name = tmp;
-    while (*tmp != ' ')
+    while (*tmp != ' ' && *tmp != '(')
       tmp++;
-    *tmp = 0;
-    tmp++;
-    while (*tmp != '(')
+    ch = *tmp;
+    *tmp++ = 0;
+    if (ch==' ')
+    {  
+      while (*tmp != '(')
+        tmp++;
       tmp++;
-    tmp++;
+    }
     dir = tmp;
     while (*tmp != ')')
       tmp++;

@@ -15,6 +15,7 @@ AbsToRelPath(const char *ref_path, char *&ret_path, const char *subst,
   const char *ref = ref_path;
   const char *ret;
   char *ret_val;
+  int up_count = 0;
 
   // Just in case, that ret_pat is not absolute, make it now absolute
   // relative to the current directory
@@ -79,10 +80,17 @@ AbsToRelPath(const char *ref_path, char *&ret_path, const char *subst,
     {
       ref++;
       string_dup(ret_val, "..");
+      up_count++;
       while ((ref = strchr(ref, '/')) != NULL)
       {
         ref++;
         string_cat(ret_val, "/..");
+        up_count++;
+        if (up_count > max_up_count)
+        {
+          string_free(ret_val);
+          return 0;
+        }
       }
       string_free(ret_path);
       ret_path = ret_val;
@@ -105,7 +113,6 @@ AbsToRelPath(const char *ref_path, char *&ret_path, const char *subst,
   ref++;
   ret++;
   string_dup(ret_val, "..");
-  int up_count = 0;
   while ((ref = strchr(ref, '/')) != NULL)
   {
     up_count++;

@@ -1,12 +1,16 @@
-#: gpr2mak.cc:128
+#: gpr2mak.cc:119
 msgid "-o needs an argument\n"
 msgstr "-o tarvitsee  parametrin \n"
 
-#: gpr2mak.cc:141
+#: gpr2mak.cc:132
 msgid "a projectfile must be given\n"
 msgstr "projektitiedosto t„ytyy antaa\n"
 
-#: gpr2mak.cc:147
+#: gpr2mak.cc:140
+msgid "-o and -r are not allowed together"
+msgstr ""
+
+#: gpr2mak.cc:157
 msgid "error reading projectfile %s\n"
 msgstr "virhe luettaessa projektitiedostoa %s\n"
 
@@ -134,31 +138,31 @@ msgstr "sulkujen t„sm„ys"
 msgid "rectangle block"
 msgstr "suorakulmio lohko"
 
-#: idedebug.cc:73 rhgdb/main.cc:264
+#: idedebug.cc:73 rhgdb/main.cc:265
 msgid "Disassembler window"
 msgstr ""
 
-#: idedebug.cc:110 idemain.cc:1217 rhgdb/gdbedit.cc:391
+#: idedebug.cc:110 idemain.cc:1249 rhgdb/gdbedit.cc:391
 msgid "Could not find the source file %s."
 msgstr "Ei l”ydy l„hdetiedostoa %s."
 
-#: idedebug.cc:115 idemain.cc:1222 idemain.cc:2286 rhgdb/gdbedit.cc:394 rhgdb/main.cc:1214
+#: idedebug.cc:115 idemain.cc:1254 idemain.cc:2337 rhgdb/gdbedit.cc:394 rhgdb/main.cc:1222
 msgid "Open a file"
 msgstr "Avaa tiedosto"
 
-#: idedebug.cc:116 idedial.cc:327 idemain.cc:667 idemain.cc:940 idemain.cc:1223 idemain.cc:1389 idemain.cc:1452 idemain.cc:2286 ideopt.cc:801 ideprj.cc:653 ideprj.cc:1326 libset/ceditor.cc:10260 libset/ceditor.cc:10311 rhgdb/gdbedit.cc:395 rhgdb/main.cc:249 rhgdb/main.cc:1184 rhgdb/main.cc:1200 rhgdb/main.cc:1215 tvision/fileview.cc:213
+#: idedebug.cc:116 idedial.cc:107 idemain.cc:684 idemain.cc:958 idemain.cc:1255 idemain.cc:1421 idemain.cc:1484 idemain.cc:2337 ideopt.cc:812 ideprj.cc:641 ideprj.cc:1276 libset/ceditor.cc:10260 libset/ceditor.cc:10311 rhgdb/gdbedit.cc:395 rhgdb/main.cc:250 rhgdb/main.cc:1192 rhgdb/main.cc:1208 rhgdb/main.cc:1223 tvision/fileview.cc:213
 msgid "~N~ame"
 msgstr "~N~imi"
 
-#: idedebug.cc:132 ideprj.cc:1386 rhgdb/gdbedit.cc:408
+#: idedebug.cc:132 ideprj.cc:1336 rhgdb/gdbedit.cc:408
 msgid "Add '%s' to the search path for source files"
 msgstr "Lis„„ '%s' l„hdetiedostojen hakupolkuun"
 
-#: idedebug.cc:267
+#: idedebug.cc:279
 msgid "Source has been modified. Rebuild it?"
 msgstr "L„hdett„ on muutettu. Rakennetaanko se?"
 
-#: idedebug.cc:359 idegcc.cc:903 rhgdb/main.cc:910
+#: idedebug.cc:371 idegcc.cc:976 rhgdb/main.cc:918
 msgid "Program exit code: %d (0x%04x)"
 msgstr "Ohjelman poistumis koodi: %d (0x%04x)"
 
@@ -166,7 +170,7 @@ msgstr "Ohjelman poistumis koodi: %d (0x%04x)"
 msgid "ready"
 msgstr "valmis"
 
-#: ideexter.cc:152 idespec.cc:315
+#: ideexter.cc:152 idespec.cc:394
 msgid "arguments for GREP"
 msgstr "parametrit GREP:lle"
 
@@ -178,7 +182,7 @@ msgstr "GREP:ille on vain %d parametri„. Jatketaanko?"
 msgid "running GREP:"
 msgstr "ajetaan GREP:i„."
 
-#: ideapp.cc:145 ideapp.cc:155 idebug.cc:62 idegcc.cc:87 idegcc.cc:319
+#: ideapp.cc:146 ideapp.cc:156 idebug.cc:60 idegcc.cc:87 idegcc.cc:319
 msgid "executing: "
 msgstr "suoritetaan: "
 
@@ -210,67 +214,67 @@ msgstr "l”ydetty '%s' tiedostoaika muistista "
 msgid ",time: %08lx\n"
 msgstr ", aika: %08lx\n"
 
-#: idegcc.cc:328 idegcc.cc:466 idegcc.cc:476
+#: idegcc.cc:328 idegcc.cc:533 idegcc.cc:543
 msgid "checking"
 msgstr "tarkistan"
 
-#: idecomp.cc:808 idegcc.cc:494
+#: idecomp.cc:968 idegcc.cc:561
 msgid "Could not find the source file '%s'. Make sure, that the file exist or check the settings in 'Options/Directories' for the correct paths."
 msgstr "Ei l”ydy tiedostoa '%s'. Tarkista ett„ tiedosto on olemassa tai tarkista hakemisto asetukset kohdasta 'Asetukset/Hakemistot'."
 
-#: idegcc.cc:505 idegcc.cc:695
+#: idegcc.cc:572 idegcc.cc:768
 msgid "is up to date"
 msgstr "on ajan tasalla"
 
-#: idegcc.cc:508 idegcc.cc:533
+#: idegcc.cc:575 idegcc.cc:600
 msgid "is"
 msgstr "on"
 
-#: idegcc.cc:509 idegcc.cc:533
+#: idegcc.cc:576 idegcc.cc:600
 msgid "newer"
 msgstr "uudempi"
 
-#: idegcc.cc:509 idegcc.cc:533
+#: idegcc.cc:576 idegcc.cc:600
 msgid "older"
 msgstr "vanhempi"
 
-#: idegcc.cc:509 idegcc.cc:534
+#: idegcc.cc:576 idegcc.cc:601
 msgid "than"
 msgstr "kuin"
 
-#: idegcc.cc:547
+#: idegcc.cc:616
 msgid "must rebuild"
 msgstr "t„ytyy uudellen rakentaa"
 
-#: idegcc.cc:557
+#: idegcc.cc:626
 msgid "rebuilding of"
 msgstr "uudelleen rakennetaan"
 
-#: idegcc.cc:558
+#: idegcc.cc:627
 msgid "success"
 msgstr "onnistui"
 
-#: idegcc.cc:558
+#: idegcc.cc:627
 msgid "error"
 msgstr "virhe"
 
-#: idegcc.cc:570
+#: idegcc.cc:639
 msgid "clearing the filetime cache\n"
 msgstr "tyhjennet„„n tiedostoaika muisti\n"
 
-#: idegcc.cc:750
+#: idegcc.cc:823
 msgid "in function "
 msgstr "funktiossa "
 
-#: idegcc.cc:767
+#: idegcc.cc:840
 msgid "Call frame traceback:"
 msgstr "Kutsukehys takaisin j„ljitys:"
 
-#: idegcc.cc:807
+#: idegcc.cc:880
 msgid "contents of stderr from "
 msgstr "'stderr' sis„lt” "
 
-#: idegcc.cc:848
+#: idegcc.cc:921
 msgid "contents of stdout from "
 msgstr "'stdout' sis„lt” "
 
@@ -495,548 +499,564 @@ msgid "Reset the debugged program"
 msgstr "Uudelleen k„ynnist„ debuggeri-ohjelma"
 
 #: idehints.cc:190
-msgid "Enter the name of the 'main'-function"
+msgid "Execute until end of function"
 msgstr ""
 
 #: idehints.cc:193
+msgid "Enter the name of the 'main'-function"
+msgstr ""
+
+#: idehints.cc:196
 msgid "enter commandline arguments for your program"
 msgstr "anna komentorivi parametrit ohjelmalle"
 
-#: idehints.cc:197
+#: idehints.cc:200
 msgid "Submenu for compiling and/or creating your program/library"
 msgstr "Alivalikko ohjelman tai kirjaston k„„nt„mist„ tai luomista varten"
 
-#: idehints.cc:200
+#: idehints.cc:203
 msgid "compile the current editor or the selected project-item"
 msgstr "k„„nt„„ aktiivisen tiedoston tai valitun projekti kohdan"
 
-#: idehints.cc:203
+#: idehints.cc:206
 msgid "make the project (with checking auto-dependencies)"
 msgstr "projektille make (automaattinen riippuvaisuus tarkastus)"
 
-#: idehints.cc:206
+#: idehints.cc:209
 msgid "link the project or create the library"
 msgstr "linkkaa projektin tai luo kirjaston"
 
-#: idehints.cc:209
+#: idehints.cc:212
 msgid "build the project completely new"
 msgstr "rakentaa kaiken uudestaan"
 
-#: idehints.cc:213
+#: idehints.cc:216
 msgid "Submenu for debugging your program"
 msgstr "Alivalikko ohjelman debuggaukseen"
 
-#: idehints.cc:216
+#: idehints.cc:219
 msgid "Set/Clear a breakpoint at the current line"
 msgstr "Aseta/tyhjenn„ rivin keskeytyskohta"
 
-#: idehints.cc:219
+#: idehints.cc:222
 msgid "Evaluate or modify an expression"
 msgstr "Laske tai muuta lauseketta"
 
-#: idehints.cc:222
+#: idehints.cc:225
 msgid "Add an expression to the watching list"
 msgstr "Lis„„ lauseke tarkastelu listaan"
 
-#: idehints.cc:225
+#: idehints.cc:228
 msgid "Show/Modify the breakpoints"
 msgstr "N„yt„/Muuta keskeytyskohtia"
 
-#: idehints.cc:228
+#: idehints.cc:231
 msgid "Show a disassembler window at the current execution point"
 msgstr ""
 
-#: idehints.cc:231
+#: idehints.cc:234
 msgid "Show a list with all functions"
 msgstr "N„yt„ kaikki funktiot"
 
-#: idehints.cc:234
+#: idehints.cc:237
 msgid "Shows a window with the function call stack"
 msgstr ""
 
-#: idehints.cc:238
+#: idehints.cc:241
 msgid "Submenu for handling your projects"
 msgstr "Alivalikko projektin k„sittelyyn"
 
-#: idehints.cc:241
+#: idehints.cc:244
 msgid "open a project"
 msgstr "avaa projektin"
 
-#: idehints.cc:244
+#: idehints.cc:247
 msgid "close the current project"
 msgstr "sulkee projektin"
 
-#: idehints.cc:247
+#: idehints.cc:250
 msgid "add an item to the project"
 msgstr "lisaa alkion projektiin"
 
-#: idehints.cc:250
+#: idehints.cc:253
 msgid "remove the selected item from the project"
 msgstr "poistaa valitun alkion projektista"
 
-#: idehints.cc:253
+#: idehints.cc:256
 msgid "enter local commandline options for compiling this item"
 msgstr "anna paikalliset komentorivi parametrit t„m„n alkion k„„nt„miseen"
 
-#: idehints.cc:256
+#: idehints.cc:259
 msgid "show the dependencies for the selected item"
 msgstr "n„yt„ valitun alkion riippuvaisuussuhteet"
 
-#: idehints.cc:259
+#: idehints.cc:262
 msgid "change the name of the project-target"
 msgstr "muuta projektin kohteen nime„"
 
-#: idehints.cc:262
+#: idehints.cc:265
 msgid "Set the primary file (only for GPC with '--automake'!!!)"
 msgstr "Aseta p„„tiedosto (vain GPC:lle '--automake'!!! p„„ll„"
 
-#: idehints.cc:265
+#: idehints.cc:268
 msgid "remove the list of automaticaly generated dependencies"
 msgstr "poista automaattinen riippuvaisuussuhde lista"
 
-#: idehints.cc:268
+#: idehints.cc:271
 msgid "remove all files, which can be rebuild with this project"
 msgstr "poista kaikki tiedotot, jotka voidaa uudelleen muodostaa"
 
-#: idehints.cc:271
+#: idehints.cc:274
 msgid "Create for all project items the dependencies"
 msgstr ""
 
-#: idehints.cc:274
+#: idehints.cc:277
 msgid "write a makefile for this project"
 msgstr "kirjoittaa 'make'-tiedoston projektista"
 
-#: idehints.cc:278
+#: idehints.cc:281
 msgid "Submenu for most of the options of RHIDE"
 msgstr "Alivalikko suurimmalle osalle RHIDE:en vaihtoehdoille"
 
-#: idehints.cc:282
+#: idehints.cc:285
 msgid "set various search paths for finding the files"
 msgstr "asettaa useita etsint„ polkuja tiedostojen etsimist„ varten"
 
-#: idehints.cc:285
+#: idehints.cc:288
 msgid "set where to search for include files"
 msgstr "aseta include-tiedostojen hakupolku"
 
-#: idehints.cc:288
+#: idehints.cc:291
 msgid "set where to search for libraries"
 msgstr "aseta library-tiedostojen hakupolku"
 
-#: idehints.cc:291
+#: idehints.cc:294
 msgid "set where to search for object files"
 msgstr "aseta object-tiedostojen hakupolku"
 
-#: idehints.cc:294
+#: idehints.cc:297
 msgid "set where to search for source files"
 msgstr "aseta l„hde-tiedostojen hakupolku"
 
-#: idehints.cc:297
+#: idehints.cc:300
 msgid "Define, where your standard headers are"
 msgstr ""
 
-#: idehints.cc:301
+#: idehints.cc:304
 msgid "customize various options for the C/C++-compiler"
 msgstr "r„„t„l”i C/C++ k„„nt„j„n optioita"
 
-#: idehints.cc:304
+#: idehints.cc:307
 msgid "customize the generating of warnings"
 msgstr "r„„t„l”i virheilmoitusten tuottamisen"
 
-#: idehints.cc:307
+#: idehints.cc:310
 msgid "customize, how to optimize the code"
 msgstr "r„„t„l”i koodin optimointi"
 
-#: idehints.cc:310
+#: idehints.cc:313
 msgid "customize the generating of debugging information"
 msgstr "r„„t„l”i debuggin tietojen tuottaminen"
 
-#: idehints.cc:313
+#: idehints.cc:316
 msgid "customize C-compiler specific flags"
 msgstr "r„„t„l”i C-k„„nt„j„n erityis asetukset"
 
-#: idehints.cc:316
+#: idehints.cc:319
 msgid "customize C++-compiler specific flags"
 msgstr "r„„t„l”i C++-k„„nt„j„n erityis asetukset"
 
-#: idehints.cc:319
+#: idehints.cc:322
 msgid "Flags only when compiling Pascal files"
 msgstr "Asetukset kun k„„nnet„„n Pascal-tiedostoja"
 
-#: idehints.cc:322
+#: idehints.cc:325
 msgid "Flags only when compiling Fortran files"
 msgstr ""
 
-#: idehints.cc:325
+#: idehints.cc:328
 msgid "Flags only when compiling ADA files"
 msgstr ""
 
-#: idehints.cc:329
+#: idehints.cc:332
 msgid "set which libraries to be linked with the program"
 msgstr "valitsee mitk„ kirjastot tulee linkitt„„ mukaan ohjelmaan"
 
-#: idehints.cc:332
+#: idehints.cc:335
 msgid "set additional flags to the linker"
 msgstr "asettaa ylim„„r„iset asetukset linkkerille"
 
-#: idehints.cc:335
+#: idehints.cc:338
 msgid "set additional flags to the compiler (defines, ...)"
 msgstr "asettaa ylim„„r„iset asetukset k„„nt„j„lle (defines, ...)"
 
-#: idehints.cc:339
+#: idehints.cc:342
 msgid "customize the IDE"
 msgstr "r„„t„l”i IDE"
 
-#: idehints.cc:342
+#: idehints.cc:345
 msgid "customize the colors of the IDE"
 msgstr "r„„t„l”i IDE:n v„rit"
 
-#: idehints.cc:345
+#: idehints.cc:348
 msgid "Set the editor options"
 msgstr ""
 
-#: idehints.cc:348
+#: idehints.cc:351
 msgid "set basic options for the IDE"
 msgstr "aseta IDE:n perus asetuksen"
 
-#: idehints.cc:351
+#: idehints.cc:354
 msgid "Set some options for the mouse"
 msgstr ""
 
-#: idehints.cc:354
+#: idehints.cc:357
 msgid "edit the list of reserved words"
 msgstr "muuta varattujen sanojen listaa"
 
-#: idehints.cc:357
+#: idehints.cc:360
 msgid "Edit the list of reserved words for Pascal files"
 msgstr "Korjaa Pascal-tiedostojen varattujen sanojen listaa"
 
-#: idehints.cc:360
+#: idehints.cc:363
 msgid "edit the list of flags for the C-compiler"
 msgstr "muuta C-k„„nt„j„n asetus listaa"
 
-#: idehints.cc:363
+#: idehints.cc:366
 msgid "edit the list of flags for the C++-compiler"
 msgstr "muuta C++-k„„nt„j„n asetus listaa"
 
-#: idehints.cc:366
+#: idehints.cc:369
 msgid "Edit the list of pascal options"
 msgstr "Muuta pascal:in asetusarvoja"
 
-#: idehints.cc:369
+#: idehints.cc:372
 msgid "Edit the list of fortran options"
 msgstr ""
 
-#: idehints.cc:372
+#: idehints.cc:375
 msgid "Edit the list of ADA options"
 msgstr ""
 
-#: idehints.cc:375
+#: idehints.cc:378
 msgid "edit the list of flags for warnings"
 msgstr "muuta varoitusten asetus listaa"
 
-#: idehints.cc:378
+#: idehints.cc:381
 msgid "edit the list of flags for debugging"
 msgstr "muuta debuggerin asetus listaa"
 
-#: idehints.cc:381
+#: idehints.cc:384
 msgid "edit the list of optimization flags"
 msgstr "muuta otimoinnin asetus listaa"
 
-#: idehints.cc:384
+#: idehints.cc:387
 msgid "edit the list of user defined words (for syntaxhighlight)"
 msgstr "muuta varattujen sanojen listaa (syntaksin korostusta varten)"
 
-#: idehints.cc:387
+#: idehints.cc:390
 msgid "Save all the options to a project file"
 msgstr ""
 
-#: idehints.cc:390
+#: idehints.cc:393
 msgid "Load the options from a project file"
 msgstr ""
 
-#: idehints.cc:394
+#: idehints.cc:397
 msgid "Submenu for dealing with windows"
 msgstr "Alivalikko ikkunoiden k„sittelyyn"
 
-#: idehints.cc:397
+#: idehints.cc:400
 msgid "resize/move the current window"
 msgstr "muuta/siirr„ ikkunaa"
 
-#: idehints.cc:400
+#: idehints.cc:403
 msgid "toggles between full size and previous size of the current window"
 msgstr "vaihta tilaa t„yden ikkunan ja edellisen koon v„lill„"
 
-#: idehints.cc:403
+#: idehints.cc:406
 msgid "show all editor windows simultaniously"
 msgstr "n„yt„ kaikki ikkunat samanaikaisesti"
 
-#: idehints.cc:406
+#: idehints.cc:409
 msgid "show from each editor the title"
 msgstr "n„yt„ kaikkien editori-tiedostojen otsikot"
 
-#: idehints.cc:409
+#: idehints.cc:412
 msgid "switch to the next window on the desktop"
 msgstr "siirry seuraavaan ikkunaan ty”p”yd„ll„"
 
-#: idehints.cc:412
+#: idehints.cc:415
 msgid "switch to the previous window on the desktop"
 msgstr "siirry edelliseen ikkunaan ty”p”yd„ll„"
 
-#: idehints.cc:415
+#: idehints.cc:418
 msgid "close the current window"
 msgstr "sulkee ikkunan"
 
-#: idehints.cc:418
+#: idehints.cc:421
 msgid "show a list of all windows on the desktop"
 msgstr "n„ytt„„ listan kaikista ikkunoista ty”p”yd„ll„"
 
-#: idehints.cc:421
+#: idehints.cc:424
 msgid "show the project window"
 msgstr "n„ytt„„ projekti ikkunan"
 
-#: idehints.cc:424
+#: idehints.cc:427
 msgid "show the user screen"
 msgstr "n„ytt„„ ohjelman suoritus ikkunan"
 
-#: idehints.cc:428
+#: idehints.cc:430
+msgid "Opens the window with watches"
+msgstr ""
+
+#: idehints.cc:434
 msgid "Several menu entries for getting help"
 msgstr "Muutama valinta avun saamiseksi"
 
-#: idehints.cc:431
+#: idehints.cc:437
 msgid "opens the Info Viewer"
 msgstr "avaa Info-ohjelman"
 
-#: idehints.cc:434
+#: idehints.cc:440
 msgid "The main index of the RHIDE help"
 msgstr "RHIDE:n avun p„„hakemisto"
 
-#: idehints.cc:438
+#: idehints.cc:444
 msgid "Submenu for syntax help"
 msgstr ""
 
-#: idehints.cc:441
+#: idehints.cc:447
 msgid "Help for the function under the cursor"
 msgstr "Apu funktiolle, joka on kursorin kohdalla"
 
-#: idehints.cc:444
+#: idehints.cc:450
 msgid "Files to be searched for syntax help"
 msgstr ""
 
-#: idehints.cc:447
+#: idehints.cc:453
 msgid "Options for the syntax help"
 msgstr ""
 
-#: idehints.cc:451
+#: idehints.cc:457
 msgid "Get a list with all available syntax help topics"
 msgstr ""
 
-#: idehints.cc:454
+#: idehints.cc:460
 msgid "The main index of the libc reference"
 msgstr "Kirjaston avun hakemisto"
 
-#: idehints.cc:457
+#: idehints.cc:463
 msgid "Get help about using the helpsystem"
 msgstr "Hae apua k„ytt„en avustusj„rjestelm„„"
 
-#: idehints.cc:460
+#: idehints.cc:466
 msgid "Shows the last opened help"
 msgstr "N„ytt„„ viimeisimm„n avatun avun"
 
-#: idehints.cc:464
+#: idehints.cc:470
 msgid "How many closed windows should I remember"
 msgstr ""
 
-#: idemain.cc:211
+#: idemain.cc:222
 msgid "%s has been modified! Reload it?"
 msgstr ""
 
-#: idemain.cc:667 idemain.cc:1452
+#: idemain.cc:684 idemain.cc:1484
 msgid "Name of the main target"
 msgstr "P„„kohteen nimi"
 
-#: idemain.cc:681
+#: idemain.cc:699
 msgid "Goto the line"
 msgstr "Mene riville"
 
-#: idemain.cc:681
+#: idemain.cc:699
 msgid "line ~n~umber"
 msgstr "rivi ~n~umero"
 
-#: idemain.cc:706
+#: idemain.cc:724
 msgid "About RHIDE"
 msgstr "Asiaa RHIDE:st„"
 
-#: idemain.cc:716
+#: idemain.cc:734
 msgid "RHIDE is an Integrated Development Environment"
 msgstr "RHIDE on integroitu kehitys ymp„rist”"
 
-#: idemain.cc:718
+#: idemain.cc:736
 msgid "for developing DJGPP apps"
 msgstr "DJGPP sovellutusten kehitykseen"
 
-#: idemain.cc:721
+#: idemain.cc:739
 msgid "for developing Linux apps"
 msgstr ""
 
-#: idemain.cc:723 rhgdb/main.cc:233
+#: idemain.cc:741 rhgdb/main.cc:234
 msgid "Copyright (C) by Robert H”hne, 1996-1998"
 msgstr "Copyright (C) by Robert H”hne, 1996-1998"
 
-#: idedial.cc:266 idemain.cc:727 ideopt.cc:161 ideopt.cc:313 ideopt.cc:484 ideopt.cc:646 ideopt.cc:1065 idesynta.cc:611 libset/bufun.cc:447 libset/infview/inf.cc:1898 libset/infview/inf.cc:1921 libset/infview/inf.cc:1944 libset/infview/inf.cc:1970 libtvgdb/breakdia.cc:114 libtvgdb/breakdia.cc:287 libtvuti/bigmessa.cc:81 libtvuti/bigmessa.cc:132 rhgdb/main.cc:237 rhgdb/options.cc:115 tvdemo/mousedlg.cc:116 tvision/classes/t/tchdirdi.cc:56 tvision/classes/t/tcolordi.cc:96 tvision/classes/t/tfiledia.cc:87 tvision/msgbox.cc:34 tvision/msgbox.cc:174
+#: idemain.cc:745 ideopt.cc:163 ideopt.cc:322 ideopt.cc:495 ideopt.cc:657 ideopt.cc:1093 idesynta.cc:611 libset/bufun.cc:447 libset/infview/inf.cc:1902 libset/infview/inf.cc:1925 libset/infview/inf.cc:1948 libset/infview/inf.cc:1974 libtvgdb/breakdia.cc:291 libtvuti/bigmessa.cc:81 libtvuti/bigmessa.cc:132 rhgdb/main.cc:238 rhgdb/options.cc:115 tvdemo/mousedlg.cc:116 tvision/classes/t/tchdirdi.cc:56 tvision/classes/t/tcolordi.cc:96 tvision/classes/t/tfiledia.cc:87 tvision/msgbox.cc:36 tvision/msgbox.cc:199
 msgid "~O~K"
 msgstr "~O~K"
 
-#: idemain.cc:917
+#: idemain.cc:935
 msgid "Please wait"
 msgstr ""
 
-#: idemain.cc:919
+#: idemain.cc:937
 msgid "Creating the Bug report"
 msgstr ""
 
-#: idemain.cc:940 rhgdb/main.cc:249
+#: idemain.cc:958 rhgdb/main.cc:250
 msgid "Name of the main function"
 msgstr ""
 
-#: idemain.cc:1203 libtvgdb/tfuncinp.cc:37 rhgdb/main.cc:328
+#: idemain.cc:1235 libtvgdb/tfuncinp.cc:37 rhgdb/main.cc:333
 msgid "Regular expression to list functions"
 msgstr "T„sm„llinen lauseke listataksesi funktiot"
 
-#: idedial.cc:442 idemain.cc:1204 libset/calcu/calcu.cc:72 libtvgdb/tfuncinp.cc:38 libtvgdb/twatchdi.cc:48 libtvgdb/twatchli.cc:100 libtvgdb/watches.cc:98 rhgdb/main.cc:329
+#: idedial.cc:223 idemain.cc:1236 libset/calcu/calcu.cc:72 libtvgdb/tfuncinp.cc:38 libtvgdb/twatchdi.cc:48 libtvgdb/twatchli.cc:111 libtvgdb/watches.cc:98 rhgdb/main.cc:334
 msgid "~E~xpression"
 msgstr "Laus~e~ke"
 
-#: idemain.cc:1207 libset/bufun.cc:445 rhgdb/main.cc:331
+#: idemain.cc:1239 libset/bufun.cc:445 rhgdb/main.cc:336
 msgid "List of functions"
 msgstr "Funktio lista"
 
-#: idemain.cc:1245
+#: idemain.cc:1277
 msgid "WindowList"
 msgstr "Ikkuna lista"
 
-#: idemain.cc:1348
+#: idemain.cc:1380
 msgid "Standard Include Directories"
 msgstr ""
 
-#: idemain.cc:1353
+#: idemain.cc:1385
 msgid "Include Directories"
 msgstr "Include hakemistot"
 
-#: idemain.cc:1358
+#: idemain.cc:1390
 msgid "Library Directories"
 msgstr "Library hakemistot"
 
-#: idemain.cc:1363
+#: idemain.cc:1395
 msgid "Object Directories"
 msgstr "Object hakemistot"
 
-#: idemain.cc:1368
+#: idemain.cc:1400
 msgid "Source Directories"
 msgstr "L„hde hakemistot"
 
-#: idemain.cc:1373
+#: idemain.cc:1405
 msgid "INFO files for syntaxhelp"
 msgstr ""
 
-#: idemain.cc:1378 rhgdb/main.cc:320
+#: idemain.cc:1410 rhgdb/main.cc:325
 msgid "Program arguments"
 msgstr "Ohjelman parametrit"
 
-#: idemain.cc:1388
+#: idemain.cc:1420
 msgid "Select a project"
 msgstr "Valitse projekti"
 
-#: idemain.cc:1458
+#: idemain.cc:1491
 msgid "You can give here only a valid filename for a Pascal source file"
 msgstr "Voit antaa t„ss„ vain Pascal-kielisen tiedostonimen"
 
-#: idemain.cc:1495
+#: idemain.cc:1532
 msgid "usage: %s [options] [project-file] [edit-file]\n"
 msgstr "k„ytt”:%s [optiot] [projekti tiedosto] [editoitava tiedosto]\n"
 
-#: idemain.cc:1496
+#: idemain.cc:1533
 msgid "options:    -d[actdf]\n"
 msgstr "parametrit:     -d[actdf]\n"
 
-#: idemain.cc:1498 rhgdb/main.cc:464
+#: idemain.cc:1535 rhgdb/main.cc:469
 msgid "            -c : show filename exactly (no case conversion)\n"
 msgstr "            -c : tiedostonimi tarkasti (iso/pieni kirjain eri asia)\n"
 
-#: idemain.cc:1499 rhgdb/main.cc:465
+#: idemain.cc:1536 rhgdb/main.cc:470
 msgid "            -y : force to use long filenames (Windows 95)\n"
 msgstr "            -y : pakko k„ytt„„ pitki„ tiedostonimi„ (Windows 95)\n"
 
-#: idemain.cc:1500 rhgdb/main.cc:466
+#: idemain.cc:1537 rhgdb/main.cc:471
 msgid "            -n : do not use long filenames (Windows 95)\n"
 msgstr "            -n : ei k„ytet„ pitki„ tiedostonimi„ (Windows 95)\n"
 
-#: idemain.cc:1501 rhgdb/main.cc:469
+#: idemain.cc:1538 rhgdb/main.cc:474
 msgid "            -b : use BIOS calls for toggle the blinkstate\n"
 msgstr "            -b : k„yt„ BIOS kutsuja vilkutus tilan muutokseen\n"
 
-#: idemain.cc:1502 rhgdb/main.cc:470
+#: idemain.cc:1539 rhgdb/main.cc:475
 msgid "            -p : do not convert the numpad keys\n"
 msgstr "            -p : ei muunneta numeron„pp„imist”n n„pp„imi„\n"
 
-#: idemain.cc:1503 rhgdb/main.cc:471
+#: idemain.cc:1540 rhgdb/main.cc:476
 msgid "            -G num : Use methode <num> for screen swapping\n"
 msgstr ""
 
-#: idemain.cc:1504 rhgdb/main.cc:472
+#: idemain.cc:1541 rhgdb/main.cc:477
 msgid "            -K : Use the BIOS for keyboard input\n"
 msgstr ""
 
-#: idemain.cc:1505 rhgdb/main.cc:475
+#: idemain.cc:1542 rhgdb/main.cc:480
 msgid "            -M : Do not install the mouse handler\n"
 msgstr ""
 
-#: idemain.cc:1506
+#: idemain.cc:1543
 msgid "            -S : use slower (safer) screen output\n"
 msgstr ""
 
-#: idemain.cc:1509
+#: idemain.cc:1546
 msgid "            -K : Do not patch the keytable\n"
 msgstr ""
 
-#: idemain.cc:1510
+#: idemain.cc:1547
 msgid "            -H : Do not install console switch handler\n"
 msgstr ""
 
-#: idemain.cc:1512 rhgdb/main.cc:467
+#: idemain.cc:1549 rhgdb/main.cc:472
 msgid "            -L LANGUAGE : use language LANGUAGE\n"
 msgstr "            -L LANGUAGE : k„yt„ kielt„ LANGUAGE\n"
 
-#: idemain.cc:1513 rhgdb/main.cc:468
+#: idemain.cc:1550 rhgdb/main.cc:473
 msgid "            -h : show this help\n"
 msgstr "            -h : n„yt„ t„m„ avustus\n"
 
-#: idemain.cc:1514
+#: idemain.cc:1551
 msgid "            -k KEY_FILE : use KEY_FILE for key bindings\n"
 msgstr "            -k KEY_FILE : k„yt„ KEY_FILE:„ n„pp„imist”n m„„rittelyyn\n"
 
-#: idemain.cc:1515
+#: idemain.cc:1552
 msgid "            -E : Output all env. variables and exit\n"
 msgstr ""
 
-#: idemain.cc:1516
+#: idemain.cc:1553
 msgid "            -C : Disable SIGINT handling\n"
 msgstr ""
 
-#: idemain.cc:1839
+#: idemain.cc:1555
+msgid "            -T : Disable the DOS-box title feature\n"
+msgstr ""
+
+#: idemain.cc:1867
 msgid "using %s as temp directory\n"
 msgstr "k„ytet„„n %s tilap„isten tiedostojen hakemistona\n"
 
-#: idemain.cc:1971 rhgdb/main.cc:662
+#: idemain.cc:2001 rhgdb/main.cc:670
 msgid "This is %s. Copyright (c) 1996-1998 by Robert H”hne\n"
 msgstr "T„m„ on %s. Copyright (c) 1996-1998 by Robert H”hne\n"
 
-#: idemain.cc:2061
+#: idemain.cc:2097
 msgid "Do you really want to interrupt RHIDE?"
 msgstr ""
 
-#: idemak.cc:46 ideprj.cc:581
+#: idemak.cc:53 idemak.cc:58 ideprj.cc:587
 msgid "Invalid project-file %s(%s)"
 msgstr "Kelvoton projekti-tiedosto %s(%s)"
+
+#: idemak.cc:74 idemak.cc:79
+msgid "This project was created with a newer RHIDE version and could not be used."
+msgstr ""
 
 #: idemenu.cc:78 idemenu.cc:79
 msgid "~S~yntax help"
@@ -1050,7 +1070,7 @@ msgstr ""
 msgid "~O~ptions for searching"
 msgstr ""
 
-#: idedial.cc:457 idemenu.cc:84 idemenu.cc:85 tvision/classes/t/tfiledia.cc:115
+#: idedial.cc:238 idemenu.cc:84 idemenu.cc:85 tvision/classes/t/tfiledia.cc:115
 msgid "~H~elp"
 msgstr "~A~pua"
 
@@ -1074,7 +1094,7 @@ msgstr "Avustus ~a~vusta"
 msgid "~L~ast help"
 msgstr "viimeisin"
 
-#: idemenu.cc:94 ideopt.cc:662 rhgdb/main.cc:135
+#: idemenu.cc:94 ideopt.cc:673 rhgdb/main.cc:135
 msgid "~F~ile"
 msgstr "~T~iedosto"
 
@@ -1082,7 +1102,7 @@ msgstr "~T~iedosto"
 msgid "~O~pen"
 msgstr "~A~vaa"
 
-#: idemenu.cc:96 libtvgdb/breakdia.cc:100
+#: idemenu.cc:96 libtvgdb/breakdia.cc:101
 msgid "~N~ew"
 msgstr "~U~usi"
 
@@ -1126,7 +1146,7 @@ msgstr "~S~eis"
 msgid "~P~lay"
 msgstr "~A~ja"
 
-#: idemenu.cc:115 ideopt.cc:652
+#: idemenu.cc:115 ideopt.cc:663
 msgid "~E~dit"
 msgstr "~M~uuta"
 
@@ -1238,343 +1258,351 @@ msgstr "Mene k~u~rsorille asti"
 msgid "Go to cursor (No display swap)"
 msgstr ""
 
-#: idemenu.cc:159 rhgdb/main.cc:149
+#: idemenu.cc:159
+msgid "~U~ntil return"
+msgstr ""
+
+#: idemenu.cc:160 rhgdb/main.cc:149
 msgid "~P~rogram reset"
 msgstr "~O~hjelman uudelleen k„ynnistys"
 
-#: idemenu.cc:161 rhgdb/main.cc:151
+#: idemenu.cc:162 rhgdb/main.cc:151
 msgid "~M~ain function"
 msgstr ""
 
-#: idemenu.cc:163 rhgdb/main.cc:152
+#: idemenu.cc:164 rhgdb/main.cc:152
 msgid "~A~rguments ..."
 msgstr "Komentorivi ~p~arametrit"
 
-#: idemenu.cc:166 idemenu.cc:167
+#: idemenu.cc:167 idemenu.cc:168
 msgid "~C~ompile"
 msgstr "~K~„„nn„"
 
-#: idemenu.cc:168
+#: idemenu.cc:169
 msgid "~M~ake"
 msgstr "~T~ee"
 
-#: idemenu.cc:169
+#: idemenu.cc:170
 msgid "~L~ink"
 msgstr "~L~inkkaa"
 
-#: idemenu.cc:170
+#: idemenu.cc:171
 msgid "~B~uild all"
 msgstr "Tee k~a~ikki"
 
-#: idemenu.cc:173
+#: idemenu.cc:174
 msgid "~P~roject"
 msgstr "~P~rojekti"
 
-#: idemenu.cc:174
+#: idemenu.cc:175
 msgid "Open ~p~roject"
 msgstr "~A~vaa projekti"
 
-#: idemenu.cc:175
+#: idemenu.cc:176
 msgid "~C~lose project"
 msgstr "~S~ulje projekti"
 
-#: idemenu.cc:176
+#: idemenu.cc:177
 msgid "~A~dd item"
 msgstr "~L~is„„ alkio"
 
-#: idemenu.cc:177
+#: idemenu.cc:178
 msgid "D~e~lete item"
 msgstr "~P~oista alkio"
 
-#: idemenu.cc:178
+#: idemenu.cc:179
 msgid "~L~ocal options"
 msgstr "Pai~k~alliset optiot"
 
-#: idemenu.cc:179
+#: idemenu.cc:180
 msgid "~I~ncludes"
 msgstr "~I~ncludes"
 
-#: idemenu.cc:181
+#: idemenu.cc:182
 msgid "main target~n~ame"
 msgstr "P„„kohde ~n~imi"
 
-#: idemenu.cc:182
+#: idemenu.cc:183
 msgid "Primary ~f~ile"
 msgstr "P„„~k~ohde tiedosto"
 
-#: idemenu.cc:183
+#: idemenu.cc:184
 msgid "Clea~r~ dependencies"
 msgstr "T~y~hjenn„ riippuvuussuhteet"
 
-#: idemenu.cc:184
+#: idemenu.cc:185
 msgid "~D~elete rebuildable files"
 msgstr "P~o~ista uudelleen muodostettavat tiedostot"
 
-#: idemenu.cc:186
+#: idemenu.cc:187
 msgid "Crea~t~e dependencies"
 msgstr ""
 
-#: idemenu.cc:189
+#: idemenu.cc:190
 msgid "~W~rite Makefile"
 msgstr "Kirjoita ~M~AKE-tiedosto"
 
-#: idemenu.cc:192
+#: idemenu.cc:193
 msgid "~D~irectories"
 msgstr "~H~akemistot"
 
-#: idemenu.cc:193
+#: idemenu.cc:194
 msgid "~I~nclude"
 msgstr "~I~nclude"
 
-#: idemenu.cc:194 idemenu.cc:233
+#: idemenu.cc:195 idemenu.cc:234
 msgid "~L~ibraries"
 msgstr "~K~irjastot"
 
-#: idemenu.cc:195
+#: idemenu.cc:196
 msgid "~O~bject"
 msgstr "~O~bject"
 
-#: idemenu.cc:196
+#: idemenu.cc:197
 msgid "~S~ources"
 msgstr "~S~orsat"
 
-#: idemenu.cc:198
+#: idemenu.cc:199
 msgid "S~t~andard headers"
 msgstr ""
 
-#: idemenu.cc:201
+#: idemenu.cc:202
 msgid "~C~ompilers"
 msgstr "~K~„„nt„j„t"
 
-#: idemenu.cc:202
+#: idemenu.cc:203
 msgid "~W~arnings"
 msgstr "~V~aroitukset"
 
-#: idemenu.cc:203
+#: idemenu.cc:204
 msgid "~O~ptimizations"
 msgstr "~O~ptimointi"
 
-#: idemenu.cc:204
+#: idemenu.cc:205
 msgid "De~b~ugging"
 msgstr "De~b~uggaus"
 
-#: idemenu.cc:205
+#: idemenu.cc:206
 msgid "~C~-Flags"
 msgstr "~C~:n asetukset"
 
-#: idemenu.cc:206 idemenu.cc:220
+#: idemenu.cc:207 idemenu.cc:221
 msgid "C~X~X-Flags"
 msgstr "C~X~X:an asetukset"
 
-#: idemenu.cc:207 idemenu.cc:221
+#: idemenu.cc:208 idemenu.cc:222
 msgid "P~a~scal-Flags"
 msgstr "~P~ascal asetukset"
 
-#: idemenu.cc:208
+#: idemenu.cc:209
 msgid "~F~ortran-Flags"
 msgstr ""
 
-#: idemenu.cc:209
+#: idemenu.cc:210
 msgid "A~d~a-Flags"
 msgstr ""
 
-#: idemenu.cc:212
+#: idemenu.cc:213
 msgid "~E~nvironment"
 msgstr "~Y~mp„rist”"
 
-#: idemenu.cc:213
+#: idemenu.cc:214
 msgid "~C~olors"
 msgstr "~V~„rit"
 
-#: idemenu.cc:214
+#: idemenu.cc:215
 msgid "~E~ditor options"
 msgstr ""
 
-#: idemenu.cc:215 rhgdb/main.cc:164
+#: idemenu.cc:216 rhgdb/main.cc:164
 msgid "~P~references"
 msgstr "~A~setukset"
 
-#: idemenu.cc:216
+#: idemenu.cc:217
 msgid "~M~ouse options"
 msgstr ""
 
-#: idemenu.cc:217
+#: idemenu.cc:218
 msgid "~R~eserved words"
 msgstr "Va~r~atut sanat"
 
-#: idemenu.cc:218
+#: idemenu.cc:219
 msgid "P~a~scal Reserved words"
 msgstr "~P~ascal:in varatut sanat"
 
-#: idemenu.cc:219
+#: idemenu.cc:220
 msgid "C-~F~lags"
 msgstr "~C~:n asetukset"
 
-#: idemenu.cc:222
+#: idemenu.cc:223
 msgid "Fortra~n~-Flags"
 msgstr ""
 
-#: idemenu.cc:223
+#: idemenu.cc:224
 msgid "Ada-~F~lags"
 msgstr ""
 
-#: idemenu.cc:224
+#: idemenu.cc:225
 msgid "~W~arning-Flags"
 msgstr "~V~aroitus asetukset"
 
-#: idemenu.cc:225
+#: idemenu.cc:226
 msgid "~D~ebugging-Flags"
 msgstr "~D~ebugging asetukset"
 
-#: idemenu.cc:226
+#: idemenu.cc:227
 msgid "~O~ptimization-Flags"
 msgstr "~O~ptimointi asetukset"
 
-#: idemenu.cc:227
+#: idemenu.cc:228
 msgid "~U~ser words"
 msgstr "~K~„ytt„j„n sanat"
 
-#: idemenu.cc:230 rhgdb/main.cc:162
+#: idemenu.cc:231 rhgdb/main.cc:162
 msgid "~O~ptions"
 msgstr "A~s~etus"
 
-#: idemenu.cc:234
+#: idemenu.cc:235
 msgid "L~i~nker Options"
 msgstr "L~i~nkkerin asetukset"
 
-#: idemenu.cc:235
+#: idemenu.cc:236
 msgid "Compiler ~O~ptions"
 msgstr "K~„~„nt„j„n asetukset"
 
-#: idemenu.cc:237 rhgdb/main.cc:165
+#: idemenu.cc:238 rhgdb/main.cc:165
 msgid "~S~ave options"
 msgstr "~T~allenna asetukset"
 
-#: idemenu.cc:238
+#: idemenu.cc:239
 msgid "Loa~d~ options"
 msgstr ""
 
-#: idemenu.cc:240 rhgdb/main.cc:167
+#: idemenu.cc:241 rhgdb/main.cc:167
 msgid "~W~indows"
 msgstr "~I~kkunat"
 
-#: idemenu.cc:241 rhgdb/main.cc:168
+#: idemenu.cc:242 rhgdb/main.cc:168
 msgid "~S~ize/move"
 msgstr "~K~oko/Siirr„"
 
-#: idemenu.cc:242 rhgdb/main.cc:169
+#: idemenu.cc:243 rhgdb/main.cc:169
 msgid "~Z~oom"
 msgstr "S~u~urenna"
 
-#: idemenu.cc:243
+#: idemenu.cc:244
 msgid "~T~ile"
 msgstr "J„rjest„ ~v~ierekk„in"
 
-#: idemenu.cc:244
+#: idemenu.cc:245
 msgid "C~a~scade"
 msgstr "J„rjest„ l~o~mittain"
 
-#: idemenu.cc:245 libset/infview/inf.cc:1848 rhgdb/main.cc:170
+#: idemenu.cc:246 libset/infview/inf.cc:1852 rhgdb/main.cc:170
 msgid "~N~ext"
 msgstr "Se~u~raava"
 
-#: idemenu.cc:246 libset/infview/inf.cc:1851 rhgdb/main.cc:171
+#: idemenu.cc:247 libset/infview/inf.cc:1855 rhgdb/main.cc:171
 msgid "~P~revious"
 msgstr "~E~dellinen"
 
-#: idemenu.cc:247 rhgdb/main.cc:172
+#: idemenu.cc:248 rhgdb/main.cc:172
 msgid "~C~lose"
 msgstr "~S~ulje"
 
-#: idemenu.cc:248
+#: idemenu.cc:249
 msgid "~L~ist"
 msgstr "~L~istaa"
 
-#: idemenu.cc:249
+#: idemenu.cc:250
 msgid "Pro~j~ect"
 msgstr "~P~rojekti"
 
-#: idemenu.cc:251
+#: idemenu.cc:251 rhgdb/main.cc:174
+msgid "~W~atches"
+msgstr ""
+
+#: idemenu.cc:253
 msgid "~U~serScreen"
 msgstr "K~„~ytt„j„n n„ytt”"
 
-#: idemenu.cc:254 rhgdb/main.cc:133
+#: idemenu.cc:256 rhgdb/main.cc:133
 msgid "~ð~"
 msgstr "~ð~"
 
-#: idemenu.cc:255
+#: idemenu.cc:257
 msgid "about RH~I~DE"
 msgstr "Asiaa RH~I~DE:st„"
 
-#: idemenu.cc:256
+#: idemenu.cc:258
 msgid "~s~mall bug report"
 msgstr ""
 
-#: idemenu.cc:257
+#: idemenu.cc:259
 msgid "~B~ug report"
 msgstr ""
 
-#: idemenu.cc:260
+#: idemenu.cc:262
 msgid "~F~SDB"
 msgstr "~F~SDB"
 
-#: idemenu.cc:262
+#: idemenu.cc:264
 msgid "~G~REP ..."
 msgstr "~G~REP ..."
 
-#: idemenu.cc:263
+#: idemenu.cc:265
 msgid "G~D~B"
 msgstr "G~D~B"
 
-#: idemenu.cc:265
+#: idemenu.cc:267
 msgid "Refresh desk~t~op"
 msgstr "~P~„ivit„ ty”p„yt„"
 
-#: idemenu.cc:267
+#: idemenu.cc:269
 msgid "~C~alculator"
 msgstr ""
 
-#: idemenu.cc:268
+#: idemenu.cc:270
 msgid "~P~uzzle"
 msgstr ""
 
-#: idemenu.cc:269
+#: idemenu.cc:271
 msgid "Ca~l~endar"
 msgstr ""
 
-#: idemenu.cc:270
+#: idemenu.cc:272
 msgid "~A~SCII table"
 msgstr ""
 
-#: idemenu.cc:274 rhgdb/main.cc:153
+#: idemenu.cc:276 rhgdb/main.cc:153
 msgid "~D~ebug"
 msgstr "~D~ebug"
 
-#: idemenu.cc:275 rhgdb/main.cc:154
+#: idemenu.cc:277 rhgdb/main.cc:154
 msgid "~S~et/Reset Breakpoint"
 msgstr "~A~seta/Nollaa keskeytyskohta"
 
-#: idemenu.cc:276 rhgdb/main.cc:155
+#: idemenu.cc:278 rhgdb/main.cc:155
 msgid "~E~valuate/Modify"
 msgstr "~L~aske/Muuta"
 
-#: idemenu.cc:277 rhgdb/main.cc:156
+#: idemenu.cc:279 rhgdb/main.cc:156
 msgid "~W~atch an expression"
 msgstr "~T~arkkaile lauseketta"
 
-#: idemenu.cc:278 rhgdb/main.cc:157
+#: idemenu.cc:280 rhgdb/main.cc:157
 msgid "~B~reakpoints"
 msgstr "K~e~skeytykohdat"
 
-#: idemenu.cc:280 rhgdb/main.cc:159
+#: idemenu.cc:282 rhgdb/main.cc:159
 msgid "~D~isassembler window"
 msgstr ""
 
-#: idemenu.cc:281 rhgdb/main.cc:160
+#: idemenu.cc:283 rhgdb/main.cc:160
 msgid "~C~all stack"
 msgstr ""
 
-#: idemenu.cc:282 rhgdb/main.cc:161
+#: idemenu.cc:284 rhgdb/main.cc:161
 msgid "List of ~F~unctions"
 msgstr "~F~unktioiden lista"
 
@@ -1582,287 +1610,303 @@ msgstr "~F~unktioiden lista"
 msgid "Message Window"
 msgstr "Viesti ikkuna"
 
-#: ideopt.cc:175 ideopt.cc:922
+#: ideopt.cc:177 ideopt.cc:941
 msgid "Optimization Flags"
 msgstr "Optimointi asetukset"
 
-#: ideopt.cc:180 ideopt.cc:917
+#: ideopt.cc:182 ideopt.cc:936
 msgid "Warning Flags"
 msgstr "Varoitus asetukset"
 
-#: ideopt.cc:185 ideopt.cc:912
+#: ideopt.cc:187 ideopt.cc:931
 msgid "Debugging Flags"
 msgstr "Bebuggaus asetukset"
 
-#: ideopt.cc:190 ideopt.cc:907
+#: ideopt.cc:192 ideopt.cc:926
 msgid "C++ Flags"
 msgstr "C++ asetukset"
 
-#: ideopt.cc:195 ideopt.cc:902
+#: ideopt.cc:197 ideopt.cc:921
 msgid "C Flags"
 msgstr "C asetukset"
 
-#: ideopt.cc:200 ideopt.cc:927
+#: ideopt.cc:204 ideopt.cc:208 ideopt.cc:948 ideopt.cc:952
 msgid "Pascal Flags"
 msgstr "Pascal asetukset"
 
-#: ideopt.cc:205 ideopt.cc:932
+#: ideopt.cc:214 ideopt.cc:958
 msgid "Fortran Flags"
 msgstr ""
 
-#: ideopt.cc:210 ideopt.cc:937
+#: ideopt.cc:219 ideopt.cc:963
 msgid "Ada Flags"
 msgstr ""
 
-#: ideopt.cc:261
+#: ideopt.cc:270
 msgid "Libraries"
 msgstr "~K~irjastot"
 
-#: ideopt.cc:302
+#: ideopt.cc:311
 msgid "Use ~s~tandard libraries"
 msgstr "K„yt„ ~s~tandardi kirjastoja"
 
-#: ideopt.cc:303
+#: ideopt.cc:312
 msgid "link for ~p~rofiling"
 msgstr "Linkkaa ~p~rofilointia varten"
 
-#: ideopt.cc:339
+#: ideopt.cc:348
 msgid "Additional linker options"
 msgstr "Ylim„„r„iset linkkaus asetukset"
 
-#: ideopt.cc:345
+#: ideopt.cc:354
 msgid "Additional compiler options"
 msgstr "Ylim„„r„iset k„„nt„j„ asetukset"
 
-#: ideopt.cc:385 rhgdb/options.cc:44
+#: ideopt.cc:395 rhgdb/options.cc:44
 msgid "Environment options"
 msgstr "Ymp„rist”n asetukset"
 
-#: ideopt.cc:397
+#: ideopt.cc:407
 msgid "all dependencies in ~m~akefile"
 msgstr "kaikki riippuvuussuhteet make-tiedostossa"
 
-#: ideopt.cc:398
+#: ideopt.cc:408
 msgid "create ~b~ackupfiles"
 msgstr "luodaan ~v~armuuskopiot"
 
-#: ideopt.cc:399
+#: ideopt.cc:409
 msgid "syntax ~h~ighlighting"
 msgstr "syntaksin ~k~orostus"
 
-#: ideopt.cc:400 rhgdb/options.cc:105
+#: ideopt.cc:410 rhgdb/options.cc:105
 msgid "U~s~e dual display"
 msgstr ""
 
-#: ideopt.cc:401
+#: ideopt.cc:411
 msgid "redirect 'stde~r~r'"
 msgstr "ohjaa 'stde~r~r':in"
 
-#: ideopt.cc:402
+#: ideopt.cc:412
 msgid "redirect 'stdou~t~'"
 msgstr "ohjeaa 'stdou~t~':in"
 
-#: ideopt.cc:403
+#: ideopt.cc:413
 msgid "show ~p~rocess information"
 msgstr "n„yt„ ~k~„sittely tiedot"
 
-#: ideopt.cc:404
+#: ideopt.cc:414
 msgid "show free memor~y~"
 msgstr "n„yt„ vapaa ~m~uisti"
 
-#: ideopt.cc:405
+#: ideopt.cc:415
 msgid "No file cachin~g~"
 msgstr "Ei tietoja v„limuistissa"
 
-#: ideopt.cc:406
+#: ideopt.cc:416
 msgid "1~6~ background colors"
 msgstr "1~6~ tausta v„ri„"
 
-#: ideopt.cc:407 rhgdb/options.cc:104
+#: ideopt.cc:417 rhgdb/options.cc:104
 msgid "Show G~D~B commands"
 msgstr "N„yt„ G~D~B komennot"
 
-#: ideopt.cc:408
+#: ideopt.cc:418
 msgid "~U~se no shadows"
 msgstr ""
 
-#: ideopt.cc:409
+#: ideopt.cc:419
 msgid "Save te~x~t palette"
 msgstr ""
 
-#: ideopt.cc:410
+#: ideopt.cc:420
 msgid "Save pro~j~ect only when closing"
 msgstr ""
 
-#: ideopt.cc:411
+#: ideopt.cc:421
 msgid "Sho~w~ user screen after exit"
 msgstr ""
 
-#: ideopt.cc:412
+#: ideopt.cc:422
 msgid "Only #~i~nclude \"...\" as dependencies"
 msgstr ""
 
-#: ideopt.cc:413
+#: ideopt.cc:423
 msgid "Directories in pr~o~ject items"
 msgstr ""
 
-#: ideopt.cc:414
+#: ideopt.cc:424
 msgid "Show Disassemb~l~er Window when needed"
 msgstr ""
 
-#: ideopt.cc:415
+#: ideopt.cc:425
 msgid "Us~e~ RCS"
 msgstr ""
 
-#: ideopt.cc:422
+#: ideopt.cc:426
+msgid "Use ~F~PC pascal compiler"
+msgstr ""
+
+#: ideopt.cc:433
 msgid "O~p~tions"
 msgstr "A~s~etus"
 
-#: ideopt.cc:439 rhgdb/options.cc:59
+#: ideopt.cc:450 rhgdb/options.cc:59
 msgid "other"
 msgstr "muut"
 
-#: ideopt.cc:447 rhgdb/options.cc:67
+#: ideopt.cc:458 rhgdb/options.cc:67
 msgid "~S~creen mode"
 msgstr "~N~„yt”n asetus"
 
-#: ideopt.cc:473
+#: ideopt.cc:484
 msgid "Closed ~W~indows"
 msgstr ""
 
-#: idedial.cc:106 idedial.cc:161 idedial.cc:222 idedial.cc:268 idedial.cc:454 ideopt.cc:487 ideopt.cc:654 ideopt.cc:1068 idesynta.cc:614 libset/bufun.cc:451 libset/calcu/calcu.cc:85 libset/infview/inf.cc:1900 libset/infview/inf.cc:1923 libset/infview/inf.cc:1948 libset/infview/inf.cc:1972 libset/infview/inf.cc:2027 libset/sdginter.cc:161 libtvgdb/breakdia.cc:289 libtvgdb/twatchdi.cc:71 libtvuti/bigmessa.cc:85 libtvuti/bigmessa.cc:136 rhgdb/options.cc:118 tvdemo/mousedlg.cc:119 tvision/classes/t/tcolordi.cc:98 tvision/classes/t/tfiledia.cc:109 tvision/msgbox.cc:35 tvision/msgbox.cc:178
+#: idedial.cc:235 ideopt.cc:498 ideopt.cc:665 ideopt.cc:1096 idesynta.cc:614 libset/bufun.cc:451 libset/calcu/calcu.cc:85 libset/infview/inf.cc:1904 libset/infview/inf.cc:1927 libset/infview/inf.cc:1952 libset/infview/inf.cc:1976 libset/infview/inf.cc:2031 libset/sdginter.cc:161 libset/setedit/editdiag.cc:91 libset/setedit/editdiag.cc:145 libset/setedit/editdiag.cc:165 libset/setedit/editdiag.cc:235 libset/setedit/editdiag.cc:280 libtvgdb/breakdia.cc:293 libtvgdb/twatchdi.cc:71 libtvuti/bigmessa.cc:85 libtvuti/bigmessa.cc:136 rhgdb/options.cc:118 tvdemo/mousedlg.cc:119 tvision/classes/t/tcolordi.cc:98 tvision/classes/t/tfiledia.cc:109 tvision/msgbox.cc:37 tvision/msgbox.cc:203
 msgid "Cancel"
 msgstr "~P~eruutus"
 
-#: ideopt.cc:611 rhgdb/options.cc:201
+#: ideopt.cc:622 rhgdb/options.cc:201
 msgid "This video mode (0x%03x) is not supported by the Turbo Vision library"
 msgstr "T„m„ video moodi (0x%03x) ei ole tuettu Turbo Vision kirjastossa"
 
-#: ideopt.cc:648 libset/infview/inf.cc:2019
+#: ideopt.cc:659 libset/infview/inf.cc:2023
 msgid "~A~dd"
 msgstr "~L~is„„"
 
-#: ideopt.cc:650 libset/infview/inf.cc:2023 libtvgdb/breakdia.cc:103
+#: ideopt.cc:661 libset/infview/inf.cc:2027 libtvgdb/breakdia.cc:104
 msgid "~D~elete"
 msgstr "P~o~ista"
 
-#: ideopt.cc:659
-msgid "De~f~ault"
-msgstr "O~l~etus"
+#: ideopt.cc:670
+msgid "Defa~u~lt"
+msgstr ""
 
-#: ideopt.cc:738 ideopt.cc:748
+#: ideopt.cc:749 ideopt.cc:759
 msgid "New value"
 msgstr "~U~usi arvo"
 
-#: ideopt.cc:738 ideopt.cc:748 libide/tflagent.cc:50 libide/tflagent.cc:69 libide/tflagent.cc:90 libide/tflagent.cc:109 libide/tflagent.cc:122 libtvgdb/tdiswin.cc:84
+#: ideopt.cc:749 ideopt.cc:759 libide/tflagent.cc:50 libide/tflagent.cc:69 libide/tflagent.cc:90 libide/tflagent.cc:109 libide/tflagent.cc:122 libtvgdb/tdiswin.cc:85
 msgid "~V~alue"
 msgstr "A~r~vo"
 
-#: ideopt.cc:801
+#: ideopt.cc:812
 msgid "Read words from file"
 msgstr "Lue sanat tiedostosta"
 
-#: ideopt.cc:828
+#: ideopt.cc:839
 msgid "Couldn't open file %s"
 msgstr "Ei voi avata tiedostoa %s"
 
-#: ideopt.cc:841
+#: ideopt.cc:852
 msgid "Reserved words"
 msgstr "Va~r~atut sanat"
 
-#: ideopt.cc:847
+#: ideopt.cc:860
 msgid "GPC Reserved words"
 msgstr "GPC Varatut sanat"
 
-#: ideopt.cc:853
+#: ideopt.cc:865
+msgid "FPC Reserved words"
+msgstr ""
+
+#: ideopt.cc:872
 msgid "User Reserved words"
 msgstr "K„ytt„j„n varatut sanat"
 
-#: ideopt.cc:956
+#: ideopt.cc:982
 msgid "local options for project-item"
 msgstr "projektin paikalliset asetukset"
 
-#: ideopt.cc:966
+#: ideopt.cc:992
 msgid "local ~c~ommandline options"
 msgstr "paikalliset komentorivi asetukset"
 
-#: ideopt.cc:977
+#: ideopt.cc:1003
 msgid "~N~ame of the output file"
 msgstr "Tulostustiedoston ~n~imi"
 
-#: ideopt.cc:984 ideopt.cc:1017
+#: ideopt.cc:1010 ideopt.cc:1044
 msgid "Auto"
 msgstr "Automaattinen"
 
-#: ideopt.cc:985 ideopt.cc:1018
+#: ideopt.cc:1011 ideopt.cc:1045
 msgid "User"
 msgstr "K„ytt„j„"
 
-#: ideopt.cc:986 ideopt.cc:1019
+#: ideopt.cc:1012 ideopt.cc:1046
 msgid "None"
 msgstr "Ei mit„„n"
 
-#: ideopt.cc:987
+#: ideopt.cc:1013
 msgid "GNU C compiler"
 msgstr "GNU C k„„nt„j„"
 
-#: ideopt.cc:988
+#: ideopt.cc:1014
 msgid "GNU C++ compiler"
 msgstr "GNU C++ k„„nt„j„"
 
-#: ideopt.cc:989
+#: ideopt.cc:1015
 msgid "GNU assembler"
 msgstr "GNU assembleri"
 
-#: ideopt.cc:990
+#: ideopt.cc:1016
 msgid "GNU Pascal compiler"
 msgstr "GNU Pascal k„„nt„j„"
 
-#: ideopt.cc:991
+#: ideopt.cc:1017
 msgid "GNU Fortran compiler"
 msgstr ""
 
-#: ideopt.cc:996
+#: ideopt.cc:1018
+msgid "Free Pascal compiler"
+msgstr ""
+
+#: ideopt.cc:1023
 msgid "Comp~i~ler type"
 msgstr "K„„nt„j„n ~t~yyppi"
 
-#: ideopt.cc:1008
+#: ideopt.cc:1035
 msgid "Com~p~iler"
 msgstr "~K~„„nt„j„"
 
-#: ideopt.cc:1020
+#: ideopt.cc:1047
 msgid "builtin C"
 msgstr "tehd„„n C"
 
-#: ideopt.cc:1021
+#: ideopt.cc:1048
 msgid "builtin assembler"
 msgstr "tehd„„n assembleri"
 
-#: ideopt.cc:1022
+#: ideopt.cc:1049
 msgid "builtin linker"
 msgstr "tehd„„n linkkaus"
 
-#: ideopt.cc:1023
+#: ideopt.cc:1050
 msgid "return value"
 msgstr "paluu arvo"
 
-#: ideopt.cc:1027
+#: ideopt.cc:1051
+msgid "builtin FPC"
+msgstr ""
+
+#: ideopt.cc:1055
 msgid "~E~rror checking"
 msgstr "~V~irhe tarkistus"
 
-#: ideopt.cc:1040
+#: ideopt.cc:1068
 msgid "E~r~ror program"
 msgstr "Virhe ~o~hjelmassa"
 
-#: ideopt.cc:1050
+#: ideopt.cc:1078
 msgid "exclude from link"
 msgstr "poistettu linkkauksesta"
 
-#: ideopt.cc:1051
+#: ideopt.cc:1079
 msgid "rebuild seldom"
 msgstr ""
 
-#: ideopt.cc:1054
+#: ideopt.cc:1082
 msgid "o~t~her options"
 msgstr "m~u~ut asetukset"
 
@@ -1874,99 +1918,99 @@ msgstr "Ty”p”yd„n asetustiedostoa ei voida k„ytt„„ (uusi formaatti)"
 msgid "The desktop file cannot be used, because it was created by a newer version of RHIDE"
 msgstr "Ty”p”yd„n tiedostoa ei voi k„ytt„„, koska se on tehty uudemmalla RHIDE:n versiolla"
 
-#: ideprj.cc:670
+#: ideprj.cc:658
 msgid "Save options to a project"
 msgstr ""
 
-#: ideprj.cc:680
+#: ideprj.cc:668
 msgid "Read options from project"
 msgstr ""
 
-#: ideprj.cc:862 ideprj.cc:999
+#: ideprj.cc:851 ideprj.cc:989
 msgid "Couldn't open %s"
 msgstr "Ei voida avata %s"
 
-#: ideprj.cc:926 ideprj.cc:1001
+#: ideprj.cc:915 ideprj.cc:991
 msgid "No project"
 msgstr ""
 
-#: ideprj.cc:1071 ideprj.cc:1107
+#: ideprj.cc:1045 ideprj.cc:1064
 msgid "changing cwd to %s\n"
 msgstr "muutetaan cwd -> %s\n"
 
-#: ideprj.cc:1080
+#: ideprj.cc:1046
 msgid "temporary opening project %s\n"
 msgstr "v„liaikaisesti avataan projekti %s\n"
 
-#: ideprj.cc:1108
+#: ideprj.cc:1058
 msgid "closing temporary opened project project %s\n"
 msgstr "suljetaan v„liaikaisesti avattu projekti %s\n"
 
-#: ideprj.cc:1138
+#: ideprj.cc:1083
 msgid "finaly opening project %s\n"
 msgstr "lopuksi avataan projekti %s\n"
 
-#: ideprj.cc:1202
+#: ideprj.cc:1143
 msgid "Project Window"
 msgstr "Projekti Ikkuna"
 
-#: ideprj.cc:1326
+#: ideprj.cc:1276
 msgid "Add Item"
 msgstr "Lis„„ alkio"
 
-#: ideprj.cc:1346
+#: ideprj.cc:1296
 msgid "The item '%s' is already in your project"
 msgstr "Alkio '%s' on jo projektissa"
 
-#: ideprj.cc:1419
+#: ideprj.cc:1369
 msgid "Remove '%s' from the project"
 msgstr "Poistetaan '%s' projektista"
 
-#: ideprj.cc:1496
+#: ideprj.cc:1446
 msgid "Include files for "
 msgstr "Include tiedostot tiedostolle  "
 
-#: ideprj.cc:1552
+#: ideprj.cc:1502
 msgid "clearing dependencies for %s\n"
 msgstr "tyhjennet„„n riippuvuussuhteet %s\n"
 
-#: ideprj.cc:1564
+#: ideprj.cc:1514
 msgid "removing %s\n"
 msgstr "postetaan %s\n"
 
-#: idestatu.cc:50 idestatu.cc:106 idestatu.cc:111 idestatu.cc:121 idestatu.cc:139 idestatu.cc:143 idestatu.cc:147 idestatu.cc:152
+#: idestatu.cc:50 idestatu.cc:111 idestatu.cc:116 idestatu.cc:126 idestatu.cc:144 idestatu.cc:148 idestatu.cc:152 idestatu.cc:157
 msgid "~F1~ Help"
 msgstr "~F1~ Apua"
 
-#: idestatu.cc:52 idestatu.cc:87 idestatu.cc:129 idestatu.cc:154
+#: idestatu.cc:52 idestatu.cc:87 idestatu.cc:134 idestatu.cc:159
 msgid "~F2~ Save"
 msgstr "~F2~ Tallenna"
 
-#: idestatu.cc:53 idestatu.cc:88 idestatu.cc:130 idestatu.cc:155
+#: idestatu.cc:53 idestatu.cc:88 idestatu.cc:135 idestatu.cc:160
 msgid "~F3~ Open"
 msgstr "~F3~ Avaa"
 
-#: idestatu.cc:54 idestatu.cc:65 idestatu.cc:72 idestatu.cc:89 idestatu.cc:116 idestatu.cc:131 idestatu.cc:156 rhgdb/main.cc:190
+#: idestatu.cc:54 idestatu.cc:65 idestatu.cc:72 idestatu.cc:89 idestatu.cc:121 idestatu.cc:136 idestatu.cc:161 rhgdb/main.cc:191
 msgid "~F5~ Zoom"
 msgstr "~F5~ Suurenna"
 
-#: idestatu.cc:55 idestatu.cc:73 idestatu.cc:90 idestatu.cc:132 idestatu.cc:157
+#: idestatu.cc:55 idestatu.cc:73 idestatu.cc:90 idestatu.cc:137 idestatu.cc:162
 msgid "~F6~ Next"
 msgstr "~F6~ Seuraava"
 
-#: idestatu.cc:56 idestatu.cc:75 idestatu.cc:92 idestatu.cc:118 idestatu.cc:134 idestatu.cc:159 rhgdb/main.cc:192
+#: idestatu.cc:56 idestatu.cc:75 idestatu.cc:92 idestatu.cc:123 idestatu.cc:139 idestatu.cc:164 rhgdb/main.cc:193
 msgid "~F10~ Menu"
 msgstr "~F10~ Valikko "
 
-#: idestatu.cc:57 idestatu.cc:67 idestatu.cc:76 idestatu.cc:93 idestatu.cc:117 idestatu.cc:135 idestatu.cc:160 rhgdb/main.cc:191
+#: idestatu.cc:57 idestatu.cc:67 idestatu.cc:76 idestatu.cc:93 idestatu.cc:122 idestatu.cc:140 idestatu.cc:165 rhgdb/main.cc:192
 msgid "~Alt+X~ Quit"
 msgstr "~Alt+X~ Poistu"
 
-#: idestatu.cc:61 idestatu.cc:113 rhgdb/main.cc:187
+#: idestatu.cc:61 idestatu.cc:107 idestatu.cc:118 rhgdb/main.cc:188
 msgid "~Ins~ Add"
 msgstr "~Ins~ Lis„„"
 
-#: idestatu.cc:62 idestatu.cc:114 rhgdb/main.cc:188
+#: idestatu.cc:62 idestatu.cc:108 idestatu.cc:119 rhgdb/main.cc:189
 msgid "~Del~ Delete"
 msgstr "~Del~ Poista"
 
@@ -1978,11 +2022,11 @@ msgstr "~^O~ Paikallinen"
 msgid "~^I~ Includes"
 msgstr "~^I~ Includes"
 
-#: idestatu.cc:66 idestatu.cc:74 idestatu.cc:91 idestatu.cc:133 idestatu.cc:158
+#: idestatu.cc:66 idestatu.cc:74 idestatu.cc:91 idestatu.cc:138 idestatu.cc:163
 msgid "~Alt+F9~ Compile"
 msgstr "~Alt+F9~ K„„nn„"
 
-#: idestatu.cc:71 idestatu.cc:107
+#: idestatu.cc:71 idestatu.cc:109 idestatu.cc:112
 msgid "~Enter~ Jump to source"
 msgstr "~Enter~ siirryt„„n kohtaan"
 
@@ -1994,75 +2038,75 @@ msgstr "~Enter~ valitse"
 msgid "~Del~ Close"
 msgstr "~Del~ Sulje"
 
-#: idestatu.cc:97
+#: idestatu.cc:98
 msgid "~F1~ Help on InfoViewer"
 msgstr "~F1~ Apua InfoViewer"
 
-#: idestatu.cc:98
+#: idestatu.cc:99
 msgid "~Alt+F1~ last help"
 msgstr "~Alt+F1~ viimeisin"
 
-#: idestatu.cc:99
+#: idestatu.cc:100
 msgid "~Alt+F10~ local menu"
 msgstr "~Alt+F10~ paikallinen valikko"
 
-#: idestatu.cc:101
+#: idestatu.cc:102
 msgid "~^F1~ Bookmarks"
 msgstr ""
 
-#: idestatu.cc:109 rhgdb/main.cc:185
+#: idestatu.cc:114 rhgdb/main.cc:186
 msgid "~Ctrl+F1~ Select from a list"
 msgstr "~Ctrl+F1~ Valitse listasta"
 
-#: idestatu.cc:115 rhgdb/main.cc:189
+#: idestatu.cc:120 rhgdb/main.cc:190
 msgid "~Enter~ Edit"
 msgstr "~Enter~ Muuta"
 
-#: idestatu.cc:122
+#: idestatu.cc:127
 msgid "~Esc~ Cancel"
 msgstr "~Esc~ Peruuta"
 
-#: idestatu.cc:123
+#: idestatu.cc:128
 msgid "~Space~ select"
 msgstr "~Space~ valitse"
 
-#: idestatu.cc:144
+#: idestatu.cc:149
 msgid "~^G~ Goto"
 msgstr ""
 
-#: idestatu.cc:145 idestatu.cc:149
+#: idestatu.cc:150 idestatu.cc:154
 msgid "~Alt+F3~ Close"
 msgstr ""
 
-#: idestatu.cc:148
+#: idestatu.cc:153
 msgid "~Enter~ Modify register"
 msgstr ""
 
-#: ideutil.cc:55
+#: ideutil.cc:56
 msgid "Search for file '%s'\n"
 msgstr "Etsit„„n tiedostosta '%s'\n"
 
-#: ideutil.cc:118
+#: ideutil.cc:120
 msgid "found '%s'\n"
 msgstr "l”ytyi '%s'\n"
 
-#: ideutil.cc:120
+#: ideutil.cc:122
 msgid "not found: take '%s'\n"
 msgstr "ei l”ytynyt: ota '%s'\n"
 
-#: ideutil.cc:169
+#: ideutil.cc:171
 msgid "clearing the FindCache\n"
 msgstr "tyhjennetaan etsint„ v„limuisti\n"
 
-#: ideutil.cc:202
+#: ideutil.cc:204
 msgid "found '%s' in FindCache\n"
 msgstr "l”ytyi '%s' etsint„ v„limuistista\n"
 
-#: ideutil.cc:213
+#: ideutil.cc:215
 msgid "found '%s' in current directory\n"
 msgstr "l”ytyi '%s' nykyisesta hakemistosta\n"
 
-#: ideutil.cc:231 ideutil.cc:257
+#: ideutil.cc:233 ideutil.cc:259
 msgid "found '%s' using the search directory '%s'\n"
 msgstr "l”ytyi '%s' etsint„ hakemistosta\n"
 
@@ -2078,7 +2122,7 @@ msgstr "Virhe on ilmaantunut ohjelmaa ajettaessa "
 msgid "The error was : "
 msgstr "Virhe oli : "
 
-#: idecomp.cc:146 idecomp.cc:636
+#: idecomp.cc:146 idecomp.cc:790
 msgid "Messages to stdout:"
 msgstr ""
 
@@ -2086,27 +2130,27 @@ msgstr ""
 msgid "Messages to stderr:"
 msgstr ""
 
-#: idecomp.cc:189
+#: idecomp.cc:189 idecomp.cc:336
 msgid "Control-Break Pressed"
 msgstr "Control-Break painettu"
 
-#: idecomp.cc:400
+#: idecomp.cc:543
 msgid "Compiling: "
 msgstr "K„„nnet„„n: "
 
-#: idecomp.cc:405
+#: idecomp.cc:548
 msgid "Creating: "
 msgstr "Luodaan: "
 
-#: idecomp.cc:782
+#: idecomp.cc:942
 msgid "Don't know how to build %s from %s"
 msgstr "En tied„ kuinka %s tehd„„n %s:st„ "
 
-#: idecomp.cc:874
+#: idecomp.cc:1038
 msgid "no errors"
 msgstr "Ei virheit„"
 
-#: idecomp.cc:886
+#: idecomp.cc:1050
 msgid "There were some errors"
 msgstr ""
 
@@ -2146,7 +2190,7 @@ msgstr ""
 msgid "Search ~m~ethode"
 msgstr ""
 
-#: idedial.cc:84 idedial.cc:134 idesynta.cc:586 libset/infview/inf.cc:1889
+#: idesynta.cc:586 libset/infview/inf.cc:1893 libset/setedit/editdiag.cc:69 libset/setedit/editdiag.cc:116
 msgid "~C~ase sensitive"
 msgstr "Erottele ~p~ienet/suuret merkit"
 
@@ -2158,199 +2202,59 @@ msgstr ""
 msgid "Fu~z~zy value"
 msgstr ""
 
-#: idedial.cc:71
-msgid "Find"
-msgstr "Etsi"
-
-#: idedial.cc:78 idedial.cc:122 libset/infview/inf.cc:1884
-msgid "~T~ext to find"
-msgstr "Etsitt„v„ ~t~eksti"
-
-#: idedial.cc:85 idedial.cc:135 libset/infview/inf.cc:1890
-msgid "~W~hole words only"
-msgstr "~V~ain koko sanat"
-
-#: idedial.cc:89 idedial.cc:144
-msgid "~G~lobal"
-msgstr "~G~lobaali"
-
-#: idedial.cc:90 idedial.cc:145
-msgid "~S~elected text"
-msgstr "~V~alittu teksti"
-
-#: idedial.cc:93 idedial.cc:148
-msgid "Scope"
-msgstr "Laajuus"
-
-#: idedial.cc:97 idedial.cc:152
-msgid "~F~rom cursor"
-msgstr "Kurso~r~ilta"
-
-#: idedial.cc:98 idedial.cc:153
-msgid "~E~ntire scope"
-msgstr "~K~oko laajuus"
-
-#: idedial.cc:101 idedial.cc:156
-msgid "Origin"
-msgstr "Alkuper„"
-
-#: idedial.cc:104 idedial.cc:159 idedial.cc:220 libset/sdginter.cc:160
-msgid "O~K~"
-msgstr "~O~K"
-
-#: idedial.cc:115
-msgid "Replace"
-msgstr "Korvaa"
-
-#: idedial.cc:128
-msgid "~N~ew text"
-msgstr "~U~usi teksti"
-
-#: idedial.cc:136
-msgid "~P~rompt on replace"
-msgstr "~K~ysy korvaus"
-
-#: idedial.cc:137
-msgid "~R~eplace all"
-msgstr "Korvaa k~a~ikki"
-
-#: idedial.cc:140
-msgid "Options"
-msgstr "A~s~etus"
-
-#: idedial.cc:188
-msgid "Local Options"
-msgstr "Paikalliset asetukset"
-
-#: idedial.cc:193
-msgid "~O~verwrite"
-msgstr "K~o~rvaa"
-
-#: idedial.cc:194 idedial.cc:246
-msgid "~A~utoindent"
-msgstr "~A~utomaattinen sisennys"
-
-#: idedial.cc:195 idedial.cc:247
-msgid "~U~se tabs"
-msgstr "K„ytet„„n tab~u~lointeja"
-
-#: idedial.cc:196 idedial.cc:248
-msgid "~P~ersistent blocks"
-msgstr "~P~ersistent blocks"
-
-#: idedial.cc:197 idedial.cc:249
-msgid "~I~ntelligent C indent"
-msgstr "Žlyk„s C s~i~sennys"
-
-#: idedial.cc:198 idedial.cc:250
-msgid "~C~olumn cursor"
-msgstr "~S~arake kursori"
-
-#: idedial.cc:199 idedial.cc:251
-msgid "~R~ow cursor"
-msgstr "~R~ivi kursori"
-
-#: idedial.cc:200 idedial.cc:252
-msgid "~M~atch pair highlight"
-msgstr ""
-
-#: idedial.cc:201 idedial.cc:254
-msgid "Tra~n~sparent Blocks"
-msgstr "L„~p~in„kyv„t lohkot"
-
-#: idedial.cc:202 idedial.cc:255
-msgid "Optimal ~F~ill"
-msgstr ""
-
-#: idedial.cc:206
-msgid "O~f~f"
-msgstr "P~o~is"
-
-#: idedial.cc:207
-msgid "~C~++ style"
-msgstr "~C~++ tyyli"
-
-#: idedial.cc:208
-msgid "Pa~s~cal style"
-msgstr "~P~ascal tyyli"
-
-#: idedial.cc:209
-msgid "C~l~ipper style"
-msgstr "C~l~ipper tyyli"
-
-#: idedial.cc:212
-msgid "Syntax ~H~ighlight"
-msgstr "Syntaksin korostus"
-
-#: idedial.cc:217 idedial.cc:261
-msgid "~T~ab size"
-msgstr "~T~abulaattorin koko"
-
-#: idedial.cc:241
-msgid "Global Options"
-msgstr ""
-
-#: idedial.cc:253
-msgid "~D~on't move the cursor on Paste"
-msgstr "Ž~l~„ siirr„ kursoria liimauksessa"
-
-#: idedial.cc:264
-msgid "To a~l~l"
-msgstr ""
-
-#: idedial.cc:284
+#: idedial.cc:64
 msgid "Not enough memory for this operation"
 msgstr "Ei riitt„v„sti muistia t„h„n toimintoon"
 
-#: idedial.cc:293
+#: idedial.cc:73
 msgid "Error reading file "
 msgstr "Virhe tiedostoa luettaessa"
 
-#: idedial.cc:298
+#: idedial.cc:78
 msgid "Error writing file "
 msgstr "Virhe tiedostoa kirjoitettaessa"
 
-#: idedial.cc:306
+#: idedial.cc:86
 msgid "Error creating file "
 msgstr "Virhe tiedostoa luotaessa"
 
-#: idedial.cc:315
+#: idedial.cc:95
 msgid " has been modified. Save?"
 msgstr " on muutunut. Tallenetaanko?"
 
-#: idedial.cc:320
+#: idedial.cc:100
 msgid "Save untitled file?"
 msgstr "Tallennetetaanko nime„m„t”n tiedosto?"
 
-#: idedial.cc:327
+#: idedial.cc:107
 msgid "Save file as"
 msgstr "Tallenna tiedosto nimell„"
 
-#: idedial.cc:341
+#: idedial.cc:121
 msgid "Search string not found."
 msgstr "Etsitty„ merkkijonoa ei l”ytynyt."
 
-#: idedial.cc:361
+#: idedial.cc:141
 msgid "Replace this occurence?"
 msgstr "Korvataan t„m„ esiintym„?"
 
-#: idedial.cc:407
+#: idedial.cc:187
 msgid "Line too long, cut it?"
 msgstr "Rivi liian pitk„, leikataan se?"
 
-#: idedial.cc:424 libset/calcu/calcu.cc:123
+#: idedial.cc:205 libset/calcu/calcu.cc:123
 msgid "Calculator"
 msgstr ""
 
-#: idedial.cc:447 libset/calcu/calcu.cc:78 libtvgdb/twatchdi.cc:53
+#: idedial.cc:228 libset/calcu/calcu.cc:78 libtvgdb/twatchdi.cc:53
 msgid "~R~esult"
 msgstr "~T~ulos"
 
-#: idedial.cc:451 libset/calcu/calcu.cc:82 libtvgdb/twatchdi.cc:65
+#: idedial.cc:232 libset/calcu/calcu.cc:82 libtvgdb/twatchdi.cc:65
 msgid "E~v~al"
 msgstr "~L~aske"
 
-#: idedial.cc:472 libset/calcu/calcu.cc:107
+#: idedial.cc:253 libset/calcu/calcu.cc:107
 msgid "Error in expression (%d)"
 msgstr ""
 
@@ -2582,71 +2486,79 @@ msgstr "Et voi antaa merkki„ t„ss„"
 msgid "Warning: %s is write protected"
 msgstr ""
 
-#: libtvgdb/breakdia.cc:77
+#: libtvgdb/breakdia.cc:78
 msgid "File"
 msgstr "~T~iedosto"
 
-#: libtvgdb/breakdia.cc:81
+#: libtvgdb/breakdia.cc:82
 msgid "Line/Function"
 msgstr "Rivi/Funktio"
 
-#: libtvgdb/breakdia.cc:85
+#: libtvgdb/breakdia.cc:86
 msgid "Condition"
 msgstr "Ehto"
 
-#: libtvgdb/breakdia.cc:89
+#: libtvgdb/breakdia.cc:90
 msgid "Count"
 msgstr "Laskuri"
 
-#: libtvgdb/breakdia.cc:97
+#: libtvgdb/breakdia.cc:98
 msgid "~M~odify"
 msgstr "~M~uuta"
 
-#: libtvgdb/breakdia.cc:106
+#: libtvgdb/breakdia.cc:107
 msgid "~E~nable"
 msgstr "~S~alli"
 
-#: libtvgdb/breakdia.cc:110
+#: libtvgdb/breakdia.cc:111
 msgid "D~i~sable"
 msgstr "E~s~t„"
 
-#: libtvgdb/breakdia.cc:233
+#: libtvgdb/breakdia.cc:115
+msgid "~A~nzeigen"
+msgstr ""
+
+#: libtvgdb/breakdia.cc:234
 msgid "File/L~i~ne"
 msgstr "Tiedosto/R~i~vi"
 
-#: libtvgdb/breakdia.cc:234
+#: libtvgdb/breakdia.cc:235
 msgid "Fu~n~ction"
 msgstr "Fu~n~ctio"
 
-#: libtvgdb/breakdia.cc:237
+#: libtvgdb/breakdia.cc:241
 msgid "~T~ype"
 msgstr "~T~yyppi"
 
-#: libtvgdb/breakdia.cc:245
+#: libtvgdb/breakdia.cc:249
 msgid "F~u~nction"
 msgstr "Fu~n~ctio"
 
-#: libtvgdb/breakdia.cc:253
+#: libtvgdb/breakdia.cc:257
 msgid "~F~ilename"
 msgstr "~T~iedoston nimi"
 
-#: libtvgdb/breakdia.cc:263
+#: libtvgdb/breakdia.cc:267
 msgid "~L~ine"
 msgstr "~R~ivi"
 
-#: libtvgdb/breakdia.cc:273
+#: libtvgdb/breakdia.cc:277
 msgid "Con~d~ition"
 msgstr "Ehto"
 
-#: libtvgdb/breakdia.cc:282
+#: libtvgdb/breakdia.cc:286
 msgid "Coun~t~"
 msgstr "Laskuri"
 
-#: libtvgdb/breakdia.cc:302
+#: libtvgdb/breakdia.cc:307
 msgid "Edit Breakpoint"
 msgstr "Muuta keskeytykohtaa"
 
-#: libtvgdb/breakdia.cc:364
+#: libtvgdb/breakdia.cc:312
+msgid "New Breakpoint"
+msgstr ""
+
+#: libtvgdb/breakdia.cc:377
 msgid "BreakPoints"
 msgstr "Keskeytyskohdat"
 
@@ -2682,7 +2594,7 @@ msgstr "ei saatavilla"
 msgid "could not change"
 msgstr "ei voi muuttaa"
 
-#: libtvgdb/twatchli.cc:100
+#: libtvgdb/twatchli.cc:111
 msgid "Change the expression to watch"
 msgstr "Muuta tarkkailtavaa lauseketta"
 
@@ -2744,15 +2656,15 @@ msgstr "T„t„ keskeytyskohtaa ei valita, koska ajat Windows 3.1x:st„ ja keskeytys
 msgid "You have already 3 breakpoints set and under Windows 3.1x the number of breakpoints is limited to 3"
 msgstr "Sinulla on jo kolme keskeytyskohtaa Windows 3.1x:„n alla, jossa keskeytyskohtien m„„r„ on rajoitettu kolmeen"
 
-#: libtvgdb/callstac.cc:164
+#: libtvgdb/callstac.cc:167
 msgid "Function call stack"
 msgstr ""
 
-#: libtvgdb/tdiswin.cc:84
+#: libtvgdb/tdiswin.cc:85
 msgid "Change register value"
 msgstr ""
 
-#: libtvgdb/tdiswin.cc:380 tvision/classes/t/tlistvie.cc:148
+#: libtvgdb/tdiswin.cc:381 tvision/classes/t/tlistvie.cc:154
 msgid "<empty>"
 msgstr "<tyhj„>"
 
@@ -2793,29 +2705,33 @@ msgstr "Ei voi avata '%s' lukua varten"
 msgid "Save to file"
 msgstr "Tallenna tiedostoon"
 
-#: tvision/msgbox.cc:32
+#: tvision/msgbox.cc:34
 msgid "~Y~es"
 msgstr "~K~yll„"
 
-#: tvision/msgbox.cc:33
+#: tvision/msgbox.cc:35
 msgid "~N~o"
 msgstr "~E~i"
 
-#: tvision/msgbox.cc:48
+#: tvision/msgbox.cc:50
 msgid "Warning"
 msgstr "Varoitus"
 
-#: tvision/msgbox.cc:49
+#: tvision/msgbox.cc:51
 msgid "Error"
 msgstr "Virhe"
 
-#: tvision/msgbox.cc:50
+#: tvision/msgbox.cc:52
 msgid "Information"
 msgstr "Ilmoitus"
 
-#: tvision/msgbox.cc:51
+#: tvision/msgbox.cc:53
 msgid "Confirm"
 msgstr "Varmistus"
+
+#: tvision/msgbox.cc:81
+msgid "Don't warn you next time"
+msgstr ""
 
 #: tvision/classes/opstream.cc:202
 msgid "type not registered: %s\n"
@@ -2965,7 +2881,7 @@ msgstr "Alleviivaus"
 msgid "Inverse"
 msgstr "K„„nteinen"
 
-#: tvision/classes/t/tprogram.cc:218
+#: tvision/classes/t/tprogram.cc:240
 msgid "~Alt-X~ Exit"
 msgstr "~Alt-X~ Poistu"
 
@@ -2993,91 +2909,91 @@ msgstr "~L~„hde tiedostojen hakemistot"
 msgid "~L~oad options"
 msgstr "~H~ae asetukset"
 
-#: rhgdb/main.cc:174
+#: rhgdb/main.cc:175
 msgid "~U~ser screen"
 msgstr "~K~„ytt„j„n kuvaruutu"
 
-#: rhgdb/main.cc:175
+#: rhgdb/main.cc:176
 msgid "~W~indow list"
 msgstr "~I~kkuna lista"
 
-#: rhgdb/main.cc:195
+#: rhgdb/main.cc:196
 msgid "~F7~ Trace"
 msgstr "~F7~ j„ljit„"
 
-#: rhgdb/main.cc:196
+#: rhgdb/main.cc:197
 msgid "~F8~ Step"
 msgstr "~F8~ Askella"
 
-#: rhgdb/main.cc:197
+#: rhgdb/main.cc:198
 msgid "~F4~ Goto"
 msgstr "~F4~ Mene"
 
-#: rhgdb/main.cc:198
+#: rhgdb/main.cc:199
 msgid "~^F2~ Reset"
 msgstr "~^F2~ Resetoi"
 
-#: rhgdb/main.cc:199
+#: rhgdb/main.cc:200
 msgid "~^F8~ Break"
 msgstr "~^F8~ Katkaisu"
 
-#: rhgdb/main.cc:200
+#: rhgdb/main.cc:201
 msgid "~^F4~ Eval"
 msgstr "~^F4~ Laske"
 
-#: rhgdb/main.cc:201
+#: rhgdb/main.cc:202
 msgid "~^F9~ Run"
 msgstr "~^F9~ Aja"
 
-#: rhgdb/main.cc:218
+#: rhgdb/main.cc:219
 msgid "About RHGDB"
 msgstr ""
 
-#: rhgdb/main.cc:230
+#: rhgdb/main.cc:231
 msgid "RHGDB is a source level debugger"
 msgstr ""
 
-#: rhgdb/main.cc:231
+#: rhgdb/main.cc:232
 msgid "with Turbo Vision interface"
 msgstr ""
 
-#: rhgdb/main.cc:232
+#: rhgdb/main.cc:233
 msgid "based on GDB "
 msgstr ""
 
-#: rhgdb/main.cc:433
+#: rhgdb/main.cc:438
 msgid "All windows on the desktop"
 msgstr "Kaikki ikkunat ty”p”yd„ll„"
 
-#: rhgdb/main.cc:462
+#: rhgdb/main.cc:467
 msgid "usage: %s [options] exe-file [[arg1 [arg2 ...]]]\n"
 msgstr ""
 
-#: rhgdb/main.cc:463
+#: rhgdb/main.cc:468
 msgid "options:\n"
 msgstr ""
 
-#: rhgdb/main.cc:473
+#: rhgdb/main.cc:478
 msgid "            -D : Use dual-display debugging\n"
 msgstr ""
 
-#: rhgdb/main.cc:474
+#: rhgdb/main.cc:479
 msgid "            -i INI_FILE : Use INI_FILE as config file\n"
 msgstr ""
 
-#: rhgdb/main.cc:678
+#: rhgdb/main.cc:686
 msgid "Do you really want to interrupt RHGDB?"
 msgstr ""
 
-#: rhgdb/main.cc:1183
+#: rhgdb/main.cc:1191
 msgid "Save options to file"
 msgstr "Tallenna asetukset tiedostoon"
 
-#: rhgdb/main.cc:1199
+#: rhgdb/main.cc:1207
 msgid "Read options from file"
 msgstr "lue asetukset tiedostosta"
 
-#: rhgdb/main.cc:1227
+#: rhgdb/main.cc:1235
 msgid "Pathlist for source files"
 msgstr "Hakupolku l„hde tiedostoille"
 
@@ -3289,6 +3205,10 @@ msgstr ""
 msgid "~K~eep intermediate"
 msgstr ""
 
+#: libset/sdginter.cc:160 libset/setedit/editdiag.cc:89 libset/setedit/editdiag.cc:141 libset/setedit/editdiag.cc:163 libset/setedit/editdiag.cc:233 libset/setedit/editdiag.cc:278
+msgid "O~K~"
+msgstr "~O~K"
+
 #: libset/loadkbin.cc:76
 msgid "Can't open %s\n"
 msgstr "Ei voida avata %s\n"
@@ -3345,83 +3265,91 @@ msgstr "Tyhj„ pseudo makro"
 msgid "InfView - File: %s - Node: %s"
 msgstr "InfView - Tiedosto: %s - Solmu: %s"
 
-#: libset/infview/inf.cc:1553
+#: libset/infview/inf.cc:1557
 msgid "Sorry can't find the string"
 msgstr "Sori vaan, ei l”ydy merkkijonoa"
 
-#: libset/infview/inf.cc:1844
+#: libset/infview/inf.cc:1848
 msgid "Help Control"
 msgstr "Avun hallinta"
 
-#: libset/infview/inf.cc:1854
+#: libset/infview/inf.cc:1858
 msgid "~U~p"
 msgstr "~Y~l”s"
 
-#: libset/infview/inf.cc:1857
+#: libset/infview/inf.cc:1861
 msgid "Prev. ~H~ist."
 msgstr "Edell. ~H~ist."
 
-#: libset/infview/inf.cc:1860
+#: libset/infview/inf.cc:1864
 msgid "H~i~de"
 msgstr "~P~iilota"
 
-#: libset/infview/inf.cc:1867
+#: libset/infview/inf.cc:1871
 msgid "Hi~s~tory"
 msgstr "Hi~s~toria"
 
-#: libset/infview/inf.cc:1877
+#: libset/infview/inf.cc:1881
 msgid "Inf Find"
 msgstr "Etsi tieto"
 
-#: libset/infview/inf.cc:1893
+#: libset/infview/inf.cc:1888 libset/setedit/editdiag.cc:64 libset/setedit/editdiag.cc:106
+msgid "~T~ext to find"
+msgstr "Etsitt„v„ ~t~eksti"
+
+#: libset/infview/inf.cc:1894 libset/setedit/editdiag.cc:70 libset/setedit/editdiag.cc:117
+msgid "~W~hole words only"
+msgstr "~V~ain koko sanat"
+
+#: libset/infview/inf.cc:1897
 msgid "In current ~t~opic"
 msgstr "Vain kyseist„ ~k~ohdasta"
 
-#: libset/infview/inf.cc:1894
+#: libset/infview/inf.cc:1898
 msgid "In the ~f~ile"
 msgstr "Koko ~t~iedostosta"
 
-#: libset/infview/inf.cc:1895
+#: libset/infview/inf.cc:1899
 msgid "In ~a~ll files"
 msgstr "~K~aikista tiedostoista"
 
-#: libset/infview/inf.cc:1909
+#: libset/infview/inf.cc:1913
 msgid "Go To"
 msgstr "Mene"
 
-#: libset/infview/inf.cc:1916
+#: libset/infview/inf.cc:1920
 msgid "~N~ame of Node"
 msgstr "Kohda~n~ nimi"
 
-#: libset/infview/inf.cc:1935
+#: libset/infview/inf.cc:1939
 msgid "Tag Table"
 msgstr ""
 
-#: libset/infview/inf.cc:1942
+#: libset/infview/inf.cc:1946
 msgid "~N~odes"
 msgstr ""
 
-#: libset/infview/inf.cc:1962
+#: libset/infview/inf.cc:1966
 msgid "InfView Configuration"
 msgstr ""
 
-#: libset/infview/inf.cc:1967
+#: libset/infview/inf.cc:1971
 msgid "Hide '*~N~ode' word"
 msgstr ""
 
-#: libset/infview/inf.cc:1968
+#: libset/infview/inf.cc:1972
 msgid "Hide real ~l~ink name"
 msgstr ""
 
-#: libset/infview/inf.cc:2010
+#: libset/infview/inf.cc:2014
 msgid "InfView Bookmarks"
 msgstr ""
 
-#: libset/infview/inf.cc:2030
+#: libset/infview/inf.cc:2034
 msgid "~G~o to"
 msgstr ""
 
-#: libset/infview/inf.cc:2042
+#: libset/infview/inf.cc:2046
 msgid "~M~arks"
 msgstr ""
 
@@ -3451,4 +3379,148 @@ msgid ""
 " Sorry I can't find this link (press ALT-F1).\n"
 msgstr "\n"
 " Sori, ei l”ydy t„t„ yhteytt„ (paina ALT-F1).\n"
+
+#: libset/setedit/editdiag.cc:57
+msgid "Find"
+msgstr "Etsi"
+
+#: libset/setedit/editdiag.cc:74 libset/setedit/editdiag.cc:126
+msgid "~G~lobal"
+msgstr "~G~lobaali"
+
+#: libset/setedit/editdiag.cc:75 libset/setedit/editdiag.cc:127
+msgid "~S~elected text"
+msgstr "~V~alittu teksti"
+
+#: libset/setedit/editdiag.cc:78 libset/setedit/editdiag.cc:130
+msgid "Scope"
+msgstr "Laajuus"
+
+#: libset/setedit/editdiag.cc:82 libset/setedit/editdiag.cc:134
+msgid "~F~rom cursor"
+msgstr "Kurso~r~ilta"
+
+#: libset/setedit/editdiag.cc:83 libset/setedit/editdiag.cc:135
+msgid "~E~ntire scope"
+msgstr "~K~oko laajuus"
+
+#: libset/setedit/editdiag.cc:86 libset/setedit/editdiag.cc:138
+msgid "Origin"
+msgstr "Alkuper„"
+
+#: libset/setedit/editdiag.cc:99
+msgid "Replace"
+msgstr "Korvaa"
+
+#: libset/setedit/editdiag.cc:111
+msgid "~N~ew text"
+msgstr "~U~usi teksti"
+
+#: libset/setedit/editdiag.cc:118
+msgid "~P~rompt on replace"
+msgstr "~K~ysy korvaus"
+
+#: libset/setedit/editdiag.cc:119
+msgid "~R~eplace all"
+msgstr "Korvaa k~a~ikki"
+
+#: libset/setedit/editdiag.cc:122
+msgid "Options"
+msgstr "A~s~etus"
+
+#: libset/setedit/editdiag.cc:143
+msgid "Replace ~A~ll"
+msgstr ""
+
+#: libset/setedit/editdiag.cc:154
+msgid "Goto Line"
+msgstr "Mene riville"
+
+#: libset/setedit/editdiag.cc:160
+msgid "Line number"
+msgstr "Rivi numero"
+
+#: libset/setedit/editdiag.cc:195
+msgid "Local Options"
+msgstr "Paikalliset asetukset"
+
+#: libset/setedit/editdiag.cc:200
+msgid "~O~verwrite"
+msgstr "K~o~rvaa"
+
+#: libset/setedit/editdiag.cc:201 libset/setedit/editdiag.cc:258
+msgid "~A~utoindent"
+msgstr "~A~utomaattinen sisennys"
+
+#: libset/setedit/editdiag.cc:202 libset/setedit/editdiag.cc:259
+msgid "~U~se tabs"
+msgstr "K„ytet„„n tab~u~lointeja"
+
+#: libset/setedit/editdiag.cc:203 libset/setedit/editdiag.cc:260
+msgid "~P~ersistent blocks"
+msgstr "~P~ersistent blocks"
+
+#: libset/setedit/editdiag.cc:204 libset/setedit/editdiag.cc:261
+msgid "~I~nteligent C indent"
+msgstr "Žlyk„s C s~i~sennys"
+
+#: libset/setedit/editdiag.cc:205 libset/setedit/editdiag.cc:262
+msgid "~C~olumn cursor"
+msgstr "~S~arake kursori"
+
+#: libset/setedit/editdiag.cc:206 libset/setedit/editdiag.cc:263
+msgid "~R~ow cursor"
+msgstr "~R~ivi kursori"
+
+#: libset/setedit/editdiag.cc:207 libset/setedit/editdiag.cc:264
+msgid "~M~atch pair highligth"
+msgstr "~L~”ydetyn parin korostus"
+
+#: libset/setedit/editdiag.cc:208 libset/setedit/editdiag.cc:266
+msgid "Tra~n~sparent Blocks"
+msgstr "L„~p~in„kyv„t lohkot"
+
+#: libset/setedit/editdiag.cc:209 libset/setedit/editdiag.cc:267
+msgid "Optimal ~F~ill"
+msgstr ""
+
+#: libset/setedit/editdiag.cc:213
+msgid "O~f~f"
+msgstr "P~o~is"
+
+#: libset/setedit/editdiag.cc:214
+msgid "~C~++ style"
+msgstr "~C~++ tyyli"
+
+#: libset/setedit/editdiag.cc:215
+msgid "Pa~s~cal style"
+msgstr "~P~ascal tyyli"
+
+#: libset/setedit/editdiag.cc:216
+msgid "C~l~ipper style"
+msgstr "C~l~ipper tyyli"
+
+#: libset/setedit/editdiag.cc:217
+msgid "U~s~er defined"
+msgstr ""
+
+#: libset/setedit/editdiag.cc:220
+msgid "Syntax ~H~ighlight"
+msgstr "Syntaksin korostus"
+
+#: libset/setedit/editdiag.cc:230 libset/setedit/editdiag.cc:273
+msgid "~T~ab size"
+msgstr "~T~abulaattorin koko"
+
+#: libset/setedit/editdiag.cc:253
+msgid "Global Options"
+msgstr ""
+
+#: libset/setedit/editdiag.cc:265
+msgid "~D~on't move the cursor on Paste"
+msgstr "Ž~l~„ siirr„ kursoria liimauksessa"
+
+#: libset/setedit/editdiag.cc:276
+msgid "T~o~ all"
+msgstr "~K~aikille"
 

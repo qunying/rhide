@@ -746,7 +746,7 @@ msgid "for developing DJGPP apps"
 msgstr "dla programuj¥cych pod DJGPP "
 
 msgid "Copyright (C) by Robert H”hne, 1996-1998"
-msgstr "Copyright (C) by Robert H”hne, 1996-1998"
+msgstr "Copyright (C) by Robert H”hne, 1996, 1997"
 
 msgid "~O~K"
 msgstr "~D~alej"
@@ -830,7 +830,7 @@ msgid "using %s as temp directory\n"
 msgstr "%s u¾yty jako katalog tymczasowy\n"
 
 msgid "This is %s. Copyright (c) 1996-1998 by Robert H”hne\n"
-msgstr "%s. Copyright (c) 1996-1998 Robert H”hne\n"
+msgstr "%s. Copyright (c) 1996, 1997 Robert H”hne\n"
 
 msgid "Error while loading the keybinding file %s\n"
 msgstr "Bˆad przy wczytywaniu pliku %s definicji klawiszy\n"

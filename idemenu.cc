@@ -5,7 +5,6 @@
 */
 #define Uses_TRect
 #define Uses_TKeys
-#define Uses_RawKeys
 #define Uses_IDEConst
 #define Uses_TMenuBar
 #define Uses_TSubMenu
@@ -247,9 +246,10 @@ TMenuBar *IDE::initMenuBar( TRect r )
     +*new _TMenuItem( __("~P~revious"), cmPrev, kbShiftF6, hcPrev, "Shift+F6" )
     +*new _TMenuItem( __("~C~lose"), cmClose, kbAltF3, hcClose, "Alt+F3" )
     +*new _TMenuItem( __("~L~ist"), cmShowWindowList, kbAlt0, hcShowWindowList, "Alt+0" )
+    +     newLine()
     +*new _TMenuItem( __("Pro~j~ect"), cmShowProject, kbNoKey, hcShowProject)
     +*new _TMenuItem( __("~W~atches"), cmShowWatchWindow, kbNoKey, hcShowWatchWindow )
-    +     newLine()
+    +*new _TMenuItem( __("~M~essages"), cmShowMessages, kbNoKey, hcShowMessages)
     +*new _TMenuItem( __("~U~serScreen"), cmUserScreen, kbAltF5, hcUserScreen, "Alt+F5" )
   ;
 

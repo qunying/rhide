@@ -1183,6 +1183,10 @@ void IDE::handleEvent(TEvent & event)
         SC(Tile);
         SC(Cascade);
         SC(ShowCalculator);
+        case cmShowMessages:
+          ShowMessages(NULL, False, False, True);
+          clearEvent(event);
+          break;
 #ifdef INTERNAL_DEBUGGER
         SC2(ShowWatchWindow, OpenWatchWindow);
         case cmDisWindow:
@@ -2066,15 +2070,15 @@ static void LoadKeys()
     /* syntax_file = "__syntax__"; */
     syntax_file = "__syntax";
     FILE *f = fopen(syntax_file,"w+t");
-    fprintf(f,"
-Name=C/C++
-Files=C,c,cpp,cxx,cc,h,hpp,i,ii
-UseInternal=1
-End
-Name=Pascal
-Files=pas,inc,p,pp
-UseInternal=2
-End
+    fprintf(f,"\n\
+Name=C/C++\n\
+Files=C,c,cpp,cxx,cc,h,hpp,i,ii\n\
+UseInternal=1\n\
+End\n\
+Name=Pascal\n\
+Files=pas,inc,p,pp\n\
+UseInternal=2\n\
+End\n\
 ");
     fclose(f);
     LoadSyntaxHighLightFile(syntax_file,TCEditor::SHLArray,

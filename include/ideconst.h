@@ -118,7 +118,8 @@
   __CM(CloseRCS,105)\
   __CM(InfoAnswer,106)\
   __CM(ShowWatchWindow,107)\
-  __CM(Finish,108)
+  __CM(Finish,108)\
+  __CM(ShowMessages,109)
 
 #define __RHIDE_HELP_CODES__\
   __HC(Compile,1)\
@@ -290,7 +291,8 @@
   __HC(LocalOtheroptions,244) /* +16 */\
   __HC(ClosedWindows,260)\
   __HC(ShowWatchWindow,261)\
-  __HC(Finish,262)
+  __HC(Finish,262)\
+  __HC(ShowMessages,263)
 
 __RHIDE_COMMAND_CODES__
 __RHIDE_HELP_CODES__

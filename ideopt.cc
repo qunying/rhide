@@ -360,13 +360,16 @@ class TEnvironmentDialog : public TDialog
 public:
   TEnvironmentDialog();
   virtual void handleEvent(TEvent &);
-
-  TCheckBoxes *cluster;
+#define max_cluster 2
+  TCheckBoxes *cluster[max_cluster];
 #ifdef __DJGPP__
   TRadioButtons *radio;
   TInputLine *usermode;
 #endif
   TIntInputLine *closed;
+  TLabel *options_label;
+  int current_cluster;
+  const cmMoreOptions = 9999;
 };
 
 #define SetGetOptions()       \
@@ -391,6 +394,9 @@ public:
     S(UseRCS,18);\
     S(UseFPC,19);
 
+#define SetGetOptions1()      \
+    S(SaveMessages,0);
+
 TEnvironmentDialog::TEnvironmentDialog()
    : TDialog(TRect(0,0,76,23),_("Environment options")),
      TWindowInit(TEnvironmentDialog::initFrame)
@@ -401,9 +407,16 @@ TEnvironmentDialog::TEnvironmentDialog()
   char tabstring[10];
   ushort radiodata,oldmode;
 #endif
-  uint32 global_options;
+  uint32 global_options[max_cluster];
   r1 = TRect(3,2,49,2+20);
-  cluster = new TEnterCheckBoxes(r1,
+
+  r1.b.y = r1.a.y+1;
+  cluster[1] = new TEnterCheckBoxes(r1,
+                new TSItem(_("~R~emember old messages"),                 // r
+                NULL),1);
+
+  r1.b.y = r1.a.y+20;
+  cluster[0] = new TEnterCheckBoxes(r1,
                 new TSItem(_("all dependencies in ~m~akefile"),          // m
                 new TSItem(_("create ~b~ackupfiles"),                    // b
                 new TSItem(_("syntax ~h~ighlighting"),                   // h
@@ -425,16 +438,24 @@ TEnvironmentDialog::TEnvironmentDialog()
                 new TSItem(_("Us~e~ RCS"),                               // e
                 new TSItem(_("Use ~F~PC pascal compiler"),               // f
                 NULL)))))))))))))))))))),1);
-  cluster->helpCtx = hcPreferenceCheckbox;
-  global_options = 0;
-#define S(x,y) if (x) global_options |= (1 << (y))
+  cluster[0]->helpCtx = hcPreferenceCheckbox;
+  memset(global_options, 0, sizeof(global_options));
+#define S(x,y) if (x) global_options[0] |= (1 << (y))
   SetGetOptions();
 #undef S
+#define S(x,y) if (x) global_options[1] |= (1 << (y))
+  SetGetOptions1();
+#undef S
   tmp = _("O~p~tions");
-  insert(new TLabel(
-    TRect(r1.a.x,r1.a.y-1,r1.a.x+cstrlen(tmp)+1,r1.a.y),tmp,cluster));
-  insert(cluster);
-  cluster->setData(&global_options);
+  options_label = new TLabel(
+    TRect(r1.a.x,r1.a.y-1,r1.a.x+cstrlen(tmp)+1,r1.a.y),tmp,cluster[0]);
+  insert(options_label);
+  insert(cluster[1]);
+  cluster[1]->hide();
+  insert(cluster[0]);
+  current_cluster = 0;
+  cluster[0]->setData(&global_options[0]);
+  cluster[1]->setData(&global_options[1]);
 
   r2.a.x = r1.b.x + 2;
   r2.b.x = r2.a.x + 20;
@@ -496,9 +517,14 @@ TEnvironmentDialog::TEnvironmentDialog()
   r.a.x = r.b.x + 3;
   r.b.x = r.a.x + 10;
   insert(new TLButton(r,_("Cancel"),cmCancel,bfNormal));
+  r.a.x = r2.a.x;
+  r.b.x = r.a.x + 23;
+  r.a.y += 1;
+  r.b.y += 1;
+  insert(new TLButton(r, _("~M~ore options"), cmMoreOptions, bfNormal));
 
   options |= ofCentered;
-  cluster->select();
+  cluster[0]->select();
 }
 
 void TEnvironmentDialog::handleEvent(TEvent &event)
@@ -521,6 +547,22 @@ void TEnvironmentDialog::handleEvent(TEvent &event)
           }
           break;
 #endif
+        default:
+          break;
+      }
+      break;
+    case evCommand:
+      switch (event.message.command)
+      {
+        case cmMoreOptions:
+          cluster[current_cluster]->hide();
+          current_cluster++;
+          if (current_cluster == max_cluster)
+            current_cluster = 0;
+          cluster[current_cluster]->show();
+          options_label->link = cluster[current_cluster];
+          clearEvent(event);
+          break;
         default:
           break;
       }
@@ -549,7 +591,7 @@ void DisableShadows()
 
 void Preferences()
 {
-  uint32 global_options;
+  uint32 global_options[max_cluster];
   TEnvironmentDialog *dialog;
   int do_it = 1;
 #ifdef __DJGPP__
@@ -579,13 +621,17 @@ void Preferences()
     else radiodata += (rdata << 8);
     Project.screen_mode = radiodata;
 #endif
-    dialog->cluster->getData(&global_options);
+    dialog->cluster[0]->getData(&global_options[0]);
+    dialog->cluster[1]->getData(&global_options[1]);
     dialog->closed->getData(&Project.max_closed_windows);
     if (Project.max_closed_windows < -1)
       Project.max_closed_windows = -1;
     max_closed = Project.max_closed_windows;
-#define S(x,y) if (global_options & (1 << (y))) (x) = 1; else (x) = 0
+#define S(x,y) if (global_options[0] & (1 << (y))) (x) = 1; else (x) = 0
     SetGetOptions();
+#undef S
+#define S(x,y) if (global_options[1] & (1 << (y))) (x) = 1; else (x) = 0
+    SetGetOptions1();
 #undef S
     extern int save_text_palette;
     if (SaveTextPalette)

@@ -12,6 +12,7 @@
 #define Uses_TDeskTop
 #define Uses_LangTexte
 #define Uses_TWindowList
+#define Uses_TProject
 #include <libide.h>
 
 #define Uses_TSCollection
@@ -74,8 +75,20 @@ public:
     TWindowInit(TMsgDialog::initFrame)
   {
   }
+  virtual void shutDown();
   virtual void changeBounds(const TRect &);
 };
+
+void TMsgDialog::shutDown()
+{
+  msg_list->hide();
+  remove(msg_list);
+  msg_list->hScrollBar->hide();
+  remove(msg_list->hScrollBar);
+  msg_list->vScrollBar->hide();
+  remove(msg_list->vScrollBar);
+  TDialog::shutDown();
+}
 
 void TMsgDialog::changeBounds(const TRect &r)
 {
@@ -84,9 +97,12 @@ void TMsgDialog::changeBounds(const TRect &r)
 }
 
 void ShowMessages(TMsgCollection *msgs,Boolean remove_old,
-                  Boolean select_first_err)
+                  Boolean select_first_err, Boolean select_it)
 {
+  TView *old_focused;
+  int old_count = 0;
   TProgram::deskTop->lock();
+  old_focused = TProgram::deskTop->current;
   if (!msg_window)
   {
     TScrollBar *scrollbar;
@@ -99,22 +115,37 @@ void ShowMessages(TMsgCollection *msgs,Boolean remove_old,
     msg_window = new TMsgDialog(MsgWindowRect,_("Message Window"));
     msg_window->flags = wfMove | wfGrow | wfZoom | wfClose;
     msg_window->growMode = gfGrowLoY | gfGrowHiX | gfGrowHiY;
-    r = msg_window->getExtent();
-    r.grow(-1,-1);
-    scrollbar = msg_window->standardScrollBar(sbVertical | sbHandleKeyboard);
-    msg_list = new TMsgListBox(r,1,scrollbar);
-    msg_list->growMode = gfGrowHiX | gfGrowHiY;
-    scrollbar = msg_window->standardScrollBar(sbHorizontal | sbHandleKeyboard);
-    scrollbar->setParams(0,0,255-(r.b.x-r.a.x),40,1);
-    msg_list->hScrollBar = scrollbar;
+    if (!msg_list)
+    {
+      r = msg_window->getExtent();
+      r.grow(-1,-1);
+      scrollbar = msg_window->standardScrollBar(sbVertical | sbHandleKeyboard);
+      msg_list = new TMsgListBox(r,1,scrollbar);
+      msg_list->growMode = gfGrowHiX | gfGrowHiY;
+      scrollbar = msg_window->standardScrollBar(sbHorizontal | sbHandleKeyboard);
+      scrollbar->setParams(0,0,255-(r.b.x-r.a.x),40,1);
+      msg_list->hScrollBar = scrollbar;
+    }
+    else
+    {
+      msg_window->insert(msg_list->hScrollBar);
+      msg_window->insert(msg_list->vScrollBar);
+    }
     msg_window->insert(msg_list);
+    msg_list->show();
+    msg_list->hScrollBar->show();
     AddWindow(msg_window,(TWindow **)&msg_window);
   }
   msg_window->hide();
-  if (remove_old==True || msg_list->list() == NULL) msg_list->newList(msgs);
+  if ((remove_old==True && !SaveMessages) ||
+      msg_list->list() == NULL)
+  {
+    msg_list->newList(msgs);
+  }
   else if (msgs)
   {
-    int i,old=msg_list->list()->getCount();
+    int i, old;
+    old = old_count = msg_list->list()->getCount();
     if (msgs->getCount() == 0) old--;
     for (i=0;i<msgs->getCount();i++)
     {
@@ -143,13 +174,11 @@ void ShowMessages(TMsgCollection *msgs,Boolean remove_old,
       msg_list->hScrollBar->setRange(0, maxlen);
       msg_list->hScrollBar->setValue(0);
     }
-    msg_window->show();
-    msg_window->select();
   }
   if (msg_list->list() != NULL && select_first_err == True)
   {
     int i,count=msg_list->list()->getCount();
-    for (i=0;i<count;i++)
+    for (i=old_count;i<count;i++)
     {
       MsgRec *rec = (MsgRec *)msg_list->list()->at(i);
       if (rec->type == msgError || rec->type == msgWarning)
@@ -159,6 +188,12 @@ void ShowMessages(TMsgCollection *msgs,Boolean remove_old,
       }
     }
   }
+  if (msg_window)
+    msg_window->show();
+  if (msg_window && (msgs || (select_it == True)))
+    msg_window->select();
+  else if (old_focused)
+    old_focused->select();
   TProgram::deskTop->unlock();
 }
 

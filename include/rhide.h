@@ -189,7 +189,8 @@ class TMsgCollection;
 class TDialog;
 TCEditWindow * is_on_desktop(const char *,Boolean is_full_name = False);
 void ShowMessages(TMsgCollection *msgs,Boolean remove_old,
-                  Boolean select_first_err = False);
+                  Boolean select_first_err = False,
+                  Boolean select_it = False);
 extern TDialog *msg_window;
 
 /* module idedefault.cc */
@@ -369,7 +370,8 @@ typedef struct
   unsigned automatic_open_disass:1;
   unsigned use_rcs:1;
   unsigned use_fpc:1;
-  unsigned dummy:10;
+  unsigned save_messages:1;
+  unsigned dummy:9;
 } ide_options1;
 
 #define IDE_OPTIONS1 (*((ide_options1*)&(Project.options1)))
@@ -390,6 +392,7 @@ typedef struct
 #define AutomaticOpenDisass (IDE_OPTIONS1.automatic_open_disass)
 #define UseRCS (IDE_OPTIONS1.use_rcs)
 #define UseFPC (IDE_OPTIONS1.use_fpc)
+#define SaveMessages (IDE_OPTIONS1.save_messages)
 
 #define NoStdInc (IDE_OPTIONS.no_stdinc)
 #define NoStdLib (IDE_OPTIONS.no_stdlib)

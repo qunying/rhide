@@ -569,3 +569,15 @@
             source-file suffix for it is ".pp". Additionally it can be switched
             to use fpc as replacement for gpc (new switch in the preferences),
             where fpc is used then in all cases where there would be gpc used.
+
+01.01.1998: When setting the "Main targetname" to empty, only the object
+            files are created. This can be used, include in one project
+            other so called subprojects.
+
+02.01.1998: Applied many patches from SET about font, codepage things.
+            Many changes and improvements in the keyboard system (but not
+            all visible to end user and still not tested under linux).
+
+04.01.1998: Placed version 1.4.3 on my beta-site
+ 
+05.01.1998: Reenabled the Alt+Space (was disabled after SET's patches)

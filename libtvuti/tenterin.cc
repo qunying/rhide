@@ -9,6 +9,8 @@
 void TEnterInputLine::handleEvent(TEvent &event)
 {
   TInputLine::handleEvent(event);
+  if (!handle_enter)
+    return;
   if (!(state & sfSelected)) return;
   switch (event.what)
   {

@@ -358,7 +358,7 @@ Boolean Compile(TDependency *_dep)
       event.message.command = cmEditorAnswer;
       w->handleEvent(event);
       if (event.what != evNothing) return False;
-      name = w->getTitle(100);
+      name = ((TCEditWindow *)w)->editor->fileName;
       i = project_index(name);
       if (i>=0) dep = (TDependency *)Project.dependencies->at(i);
       else dep = NULL;
@@ -619,7 +619,7 @@ Boolean Make(Boolean force_messages)
       window->handleEvent(event);
       if (event.what == evNothing)
       {
-        const char *title = window->getTitle(256);
+        const char *title = ((TCEditWindow *)window)->editor->fileName;
         COMPILE_ID id = how_to_compile(title,STANDARD_OBJECT_SUFFIX);
         if (id != COMPILE_NONE && id != COMPILE_UNKNOWN)
         {
@@ -848,7 +848,7 @@ void CheckStderr()
       for (i=0;i<count;i++)
       {
         window = (TIDEFileWindow *)DESKTOPWINDOW(i);
-        if (strcmp(tmp,window->getTitle(100)) == 0)
+        if (strcmp(tmp, window->title) == 0)
         {
 	    window->close();
           RemoveWindow(window);
@@ -889,7 +889,7 @@ void CheckStdout()
       for (i=0;i<count;i++)
       {
         window = (TIDEFileWindow *)DESKTOPWINDOW(i);
-        if (strcmp(tmp,window->getTitle(100)) == 0)
+        if (strcmp(tmp, window->title) == 0)
         {
 	    window->close();
           RemoveWindow(window);

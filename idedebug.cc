@@ -179,8 +179,8 @@ const char *WhereIsCursor(int &line,int &column,char *&bname,TCEditWindow *&ew)
   event.message.command = cmEditorAnswer;
   ew->handleEvent(event);
   if (event.what != evNothing) return NULL;
-  file = ew->getTitle(100);
-  BaseName(file,bname);
+  file = ew->editor->fileName;
+  BaseName(file?file:_("Untitled"),bname);
   line = ew->editor->curPos.y+1;
   column = ew->editor->curPos.x+1;
   return file;

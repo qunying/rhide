@@ -130,7 +130,7 @@ TCEditWindow *IDE::openEditor( char *fileName, Boolean visible )
       p = OpenClosedWindow(was_closed);
     }
     if (fname && *fname)
-      TimeOfFile(((TCEditWindow *)p)->getTitle(PATH_MAX),True); // this removes the file from the hashtable
+      TimeOfFile(((TCEditWindow *)p)->editor->fileName,True); // this removes the file from the hashtable
     p->growMode = gfGrowHiX | gfGrowHiY;
     return (TCEditWindow *)p;
 }

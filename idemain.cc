@@ -27,7 +27,6 @@
 #define Uses_TDepCollection
 #define Uses_TMemInfo
 #define Uses_IDEConst
-#define Uses_RawKeys
 #define Uses_TIDEEditWindow
 #define Uses_TIDEFileEditor
 #define Uses_ideFunctions
@@ -799,7 +798,8 @@ void IDE::getEvent(TEvent & event)
       {
         case cmEnter:
           event.what = evKeyDown;
-          event.keyDown.keyCode = RawkbSpace;
+          event.keyDown.keyCode = kbSpace;
+          event.keyDown.charScan.charCode = ' ';
           break;
         case cmHelp:
           if (help_request)
@@ -1122,7 +1122,8 @@ void IDE::handleEvent(TEvent & event)
       {
         case cmEnter:
           event.what = evKeyDown;
-          event.keyDown.keyCode = RawkbSpace;
+          event.keyDown.keyCode = kbSpace;
+          event.keyDown.charScan.charCode = ' ';
           break;
         default:
           break;

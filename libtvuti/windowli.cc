@@ -70,7 +70,8 @@ static int numbers_size = 0;
 #define numbers_block_size 120
 
 void AddWindow(TWindow *window,TWindow **ref,Boolean before,
-               Boolean remember_closed, Boolean is_removable)
+               Boolean remember_closed, Boolean is_removable,
+               int old_number)
 {
   int i,count,Number;
   DeskTopWindow *window_rec;
@@ -82,11 +83,25 @@ void AddWindow(TWindow *window,TWindow **ref,Boolean before,
   }
   count = windows->getCount();
   Number = -1;
-  for (i=0;i<numbers_count;i++)
+  if (old_number && ((old_number > numbers_count) ||
+                     (numbers[old_number-1] == 0)))
+  {
+    if (old_number > numbers_count)
+    {
+      while (numbers_size < old_number)
+        numbers_size += numbers_block_size;
+      numbers = (char *)realloc(numbers,sizeof(char)*numbers_size);;
+      memset(numbers+numbers_count, 0, numbers_size-numbers_count);
+      numbers_count = old_number;
+    }
+    numbers[old_number-1] = 1;
+    Number = old_number;
+  }
+  else for (i=0;i<numbers_count;i++)
   {
     if (!numbers[i])
     {
-      Number = i;
+      Number = i + 1;
       numbers[i] = 1;
       break;
     }
@@ -98,11 +113,11 @@ void AddWindow(TWindow *window,TWindow **ref,Boolean before,
       numbers_size += numbers_block_size;
       numbers = (char *)realloc(numbers,sizeof(char)*numbers_size);
     }
-    numbers[i] = 1;
-    Number = numbers_count;
+    numbers[numbers_count] = 1;
+    Number = numbers_count + 1;
     numbers_count++;
   }
-  window->number = Number + 1;
+  window->number = Number;
   window_rec = new DeskTopWindow;
   window_rec->window = window;
   window_rec->ref = ref;

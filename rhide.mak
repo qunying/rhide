@@ -1,6 +1,6 @@
 # Copyright (C) 1996-2001 Robert H”hne, see COPYING.RH for details 
 # This file is part of RHIDE. 
-# d:/obj/rhide/gpr2mak.exe -d -r- -o __tmp__.mak rhide.gpr
+# gpr2mak -d -r- -o - rhide.gpr
 ifeq ($(strip $(PCRE_OBJ)),)
 PCRE_OBJ=
 endif
@@ -51,6 +51,8 @@ vpath %.ha $(vpath_header)
 vpath %.hd $(vpath_header)
 vpath_obj=debobj
 vpath %.o $(vpath_obj)
+FLAGS_FOR_SUBPROJECTS=RHIDE_OS_="$(RHIDE_OS_)" CFLAGS="$(CFLAGS)"\
+	CXXFLAGS="$(CXXFLAGS)" LDFLAGS="$(LDFLAGS)" CPPFLAGS="$(CPPFLAGS)"
 RHIDE_OS=$(RHIDE_OS_)
 ifeq ($(strip $(RHIDE_OS)),)
 ifneq ($(strip $(DJDIR)),)
@@ -183,20 +185,21 @@ RHIDE_COMPILE_FORTRAN_FORCE=$(RHIDE_G77) $(RHIDE_INCLUDES) $(C_DEBUG_FLAGS)\
 	-x f77 $(LOCAL_OPT)  -c $(SOURCE_NAME) -o $(OUTFILE)
 RHIDE_COMPILE_C=$(RHIDE_GCC) $(RHIDE_INCLUDES) $(C_DEBUG_FLAGS)\
 	$(C_OPT_FLAGS)  $(C_WARN_FLAGS) $(C_C_LANG_FLAGS) $(C_EXTRA_FLAGS)\
-	$(CPPFLAGS)   $(CFLAGS) $(RHIDE_OS_CFLAGS) $(LOCAL_OPT) -c\
+	$(RHIDE_OS_CFLAGS)  $(CPPFLAGS) $(CFLAGS) $(LOCAL_OPT) -c\
 	$(SOURCE_NAME) -o $(OUTFILE)
 RHIDE_COMPILE_C_FORCE=$(RHIDE_GCC) $(RHIDE_INCLUDES) $(C_DEBUG_FLAGS)\
 	$(C_OPT_FLAGS)  $(C_WARN_FLAGS) $(C_C_LANG_FLAGS) $(C_EXTRA_FLAGS)\
-	-x c $(CPPFLAGS)  $(CFLAGS) $(RHIDE_OS_CFLAGS) $(LOCAL_OPT) -c\
+	-x c $(RHIDE_OS_CFLAGS)  $(CPPFLAGS) $(CFLAGS) $(LOCAL_OPT) -c\
 	$(SOURCE_NAME) -o $(OUTFILE)
 RHIDE_COMPILE_CC=$(RHIDE_GXX) $(RHIDE_INCLUDES) $(C_DEBUG_FLAGS)\
 	$(C_OPT_FLAGS)  $(C_WARN_FLAGS) $(C_C_LANG_FLAGS)\
-	$(C_CXX_LANG_FLAGS) $(C_EXTRA_FLAGS)  $(CPPFLAGS) $(CXXFLAGS)\
-	$(RHIDE_OS_CXXFLAGS) $(LOCAL_OPT)   -c $(SOURCE_NAME) -o $(OUTFILE)
+	$(C_CXX_LANG_FLAGS) $(C_EXTRA_FLAGS)  $(RHIDE_OS_CXXFLAGS)\
+	$(CPPFLAGS) $(CXXFLAGS) $(LOCAL_OPT)   -c $(SOURCE_NAME) -o\
+	$(OUTFILE)
 RHIDE_COMPILE_CC_FORCE=$(RHIDE_GXX) $(RHIDE_INCLUDES) $(C_DEBUG_FLAGS)\
 	$(C_OPT_FLAGS)  $(C_WARN_FLAGS) $(C_C_LANG_FLAGS)\
-	$(C_CXX_LANG_FLAGS) $(C_EXTRA_FLAGS)  $(CPPFLAGS) $(CXXFLAGS)\
-	$(RHIDE_OS_CXXFLAGS) -x c++ $(LOCAL_OPT)   -c $(SOURCE_NAME) -o\
+	$(C_CXX_LANG_FLAGS) $(C_EXTRA_FLAGS)  $(RHIDE_OS_CXXFLAGS)\
+	$(CPPFLAGS) $(CXXFLAGS) -x c++ $(LOCAL_OPT)   -c $(SOURCE_NAME) -o\
 	$(OUTFILE)
 RHIDE_COMPILE_ASM=$(RHIDE_AS) $(RHIDE_INCLUDES) $(C_DEBUG_FLAGS)\
 	$(C_OPT_FLAGS)  $(C_WARN_FLAGS) $(C_EXTRA_FLAGS) $(LOCAL_OPT)  -c\
@@ -247,8 +250,8 @@ RHIDE_COMPILE_ARCHIVE=$(RHIDE_AR) $(RHIDE_ARFLAGS) $(OUTFILE)\
 	$(ALL_OBJFILES)
 RHIDE_COMPILE_ADA=$(RHIDE_GCC) $(RHIDE_INCLUDES) $(C_DEBUG_FLAGS)\
 	$(C_OPT_FLAGS)  $(C_WARN_FLAGS) $(C_C_LANG_FLAGS) $(C_EXTRA_FLAGS)\
-	$(LOCAL_OPT)  $(C_ADA_LANG_FLAGS)  $(CPPFLAGS) $(CFLAGS)\
-	$(RHIDE_OS_CFLAGS) -c $(SOURCE_NAME) -o $(OUTFILE)
+	$(LOCAL_OPT)  $(C_ADA_LANG_FLAGS)  $(RHIDE_OS_CFLAGS) $(CPPFLAGS)\
+	$(CFLAGS) -c $(SOURCE_NAME) -o $(OUTFILE)
 RHIDE_ADA_BIND_FILE=$(addprefix _,$(setsuffix .c,$(OUTFILE)))
 RHIDE_COMPILE_LINK_ADA_BIND=$(RHIDE_GNATBIND) -o $(RHIDE_ADA_BIND_FILE)\
 	$(setsuffix .ali,$(OUTFILE))
@@ -656,27 +659,27 @@ DEPS_33=
 .PHONY: libide/libide.gpr.force
 all:: libide/libide.gpr.force
 libide/libide.gpr.force:
-	$(MAKE) -C libide/ -f libide.mak
+	$(MAKE) -C libide/ -f libide.mak $(FLAGS_FOR_SUBPROJECTS)
 DEPS_34=
 .PHONY: librhgdb/librhgdb.gpr.force
 all:: librhgdb/librhgdb.gpr.force
 librhgdb/librhgdb.gpr.force:
-	$(MAKE) -C librhgdb/ -f librhgdb.mak
+	$(MAKE) -C librhgdb/ -f librhgdb.mak $(FLAGS_FOR_SUBPROJECTS)
 DEPS_35=
 .PHONY: librhuti/librhuti.gpr.force
 all:: librhuti/librhuti.gpr.force
 librhuti/librhuti.gpr.force:
-	$(MAKE) -C librhuti/ -f librhuti.mak
+	$(MAKE) -C librhuti/ -f librhuti.mak $(FLAGS_FOR_SUBPROJECTS)
 DEPS_36=
 .PHONY: libtvgdb/libtvgdb.gpr.force
 all:: libtvgdb/libtvgdb.gpr.force
 libtvgdb/libtvgdb.gpr.force:
-	$(MAKE) -C libtvgdb/ -f libtvgdb.mak
+	$(MAKE) -C libtvgdb/ -f libtvgdb.mak $(FLAGS_FOR_SUBPROJECTS)
 DEPS_37=
 .PHONY: libtvuti/libtvuti.gpr.force
 all:: libtvuti/libtvuti.gpr.force
 libtvuti/libtvuti.gpr.force:
-	$(MAKE) -C libtvuti/ -f libtvuti.mak
+	$(MAKE) -C libtvuti/ -f libtvuti.mak $(FLAGS_FOR_SUBPROJECTS)
 DEPS_38=openedit.cc ideapp.h rhide.h ideenums.h idefunct.h libide.h\
 	tdepende.h tfname.h tideedit.h toptions.h tproject.h rhutils.h\
 	libtvuti.h tdirlist.h tvutilco.h tvutilfu.h
@@ -689,5 +692,5 @@ DEPS_40=
 .PHONY: tvdemo/libtvdem.gpr.force
 all:: tvdemo/libtvdem.gpr.force
 tvdemo/libtvdem.gpr.force:
-	$(MAKE) -C tvdemo/ -f libtvdem.mak
+	$(MAKE) -C tvdemo/ -f libtvdem.mak $(FLAGS_FOR_SUBPROJECTS)
 all:: idegc.exe

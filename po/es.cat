@@ -186,6 +186,14 @@ msgstr "-S, --low-vga-save:      usar rutinas de bajo nivel para "
 "grabar/restaurar el\n"
 "                         estado del chip VGA.\n"
 
+msgid  "-T, --tile-horiz:        arranges the windows using horizontal tile "
+"style.\n"
+msgstr "-T, --tile-horiz:        ordena las ventanas estilo mosaico "
+"horizontal.\n"
+
+msgid  "-c, --cascade:           arranges the windows using cascade style.\n"
+msgstr "-c, --cascade:           ordena las ventanas estilo cascada.\n"
+
 msgid  "-d, --directory DIR      adds a directory to the list of directories "
 "to search\n"
 "                         (DIR to INFOPATH)\n"
@@ -195,6 +203,14 @@ msgstr "-d, --directorio DIR     agrega el directorio especificado a la "
 
 msgid  "-f, --file FILENAME      load FILENAME info file.\n"
 msgstr "-f, --file NOMBRE_ARCH   abre la ayuda NOMBRE_ARCH.\n"
+
+msgid  "-f, --file-list file_n:  loads the files listed in file_n, each line "
+"in this\n"
+"                         file must contain only one file name.\n"
+msgstr "-f, --file-list file_n:  carga los archivos listados en file_n, cada "
+"l¡nea\n"
+"                         del archivo file_n es interpretada como un "
+"nombre.\n"
 
 msgid  "-h, --help               displays this text ;-).\n"
 "\n"
@@ -214,6 +230,14 @@ msgstr "-k, --use-rh-52-keys     habilita el mapeo de teclado usado en Red "
 msgid  "-k, --use-rh-52-keys:    enables the Red Hat 5.2 style keyboard "
 "mapping.\n"
 msgstr "-k, --use-rh-52-keys:    usar el mapeo de teclado de Red Hat 5.2.\n"
+
+msgid  "-l, --force-no-lfn       avoids the use of long file names under "
+"W9x.\n"
+msgstr "-l, --force-no-lfn       evita el uso de nombres largos en W9x.\n"
+
+msgid  "-l, --force-no-lfn:      avoids the use of long file names under "
+"W9x.\n"
+msgstr "-l, --force-no-lfn       evita el uso de nombres largos en W9x.\n"
 
 msgid  "-m, --no-mouse-hook:     don't hook the mouse.\n"
 msgstr "-m, --no-mouse-hook:     no utilizar la interrupci¢n del mouse.\n"
@@ -256,6 +280,11 @@ msgstr "-s, --no-signal:         deshabilita el uso de `signals' para grabar "
 msgid  "-s, --save-dkt FILENAME  save the desktop to this file at exit.\n"
 msgstr "-s, --save-dkt NOMBREAR  grabar el archivo de escritorio como "
 "NOMBREAR.\n"
+
+msgid  "-t, --tile-vert:         arranges the windows using vertical tile "
+"style.\n"
+msgstr "-t, --tile-vert:         ordena las ventanas estilo mosaico "
+"vertical.\n"
 
 msgid  "1~6~ background colors"
 msgstr "1~6~ colores de fondo"
@@ -404,6 +433,9 @@ msgstr "Indentado arbitrario"
 
 msgid  "Are these options correct?"
 msgstr "¨Son correctas estas opciones?"
+
+msgid  "Are you sure you want to abort the installation?"
+msgstr "¨Esta seguro que desea abortar la instalaci¢n?"
 
 msgid  "Assignmen~t~"
 msgstr "Asi~g~naci¢n"
@@ -694,6 +726,12 @@ msgstr "Consultar c¢digos de ~t~eclas"
 
 msgid  "Control-Break Pressed"
 msgstr "Presion¢ Control-Break"
+
+msgid  "Convert ~a~ccents to tags"
+msgstr "Convertir ~a~centos en marcadores"
+
+msgid  "Convert ~t~ags to accents"
+msgstr "Convertir ~m~arcadores en acentos"
 
 msgid  "Con~d~ition"
 msgstr "Condici¢n"
@@ -1853,6 +1891,9 @@ msgstr "Origen"
 msgid  "Or~i~gin"
 msgstr "Origen"
 
+msgid  "Other options"
+msgstr "Otras opciones"
+
 msgid  "Other ~f~ont"
 msgstr "Otra ~f~ont"
 
@@ -2257,6 +2298,9 @@ msgstr "~O~pciones de b£squeda"
 
 msgid  "Search string not found."
 msgstr "No se pudo hallar el texto."
+
+msgid  "Search word in the ~t~opic"
+msgstr "Buscar la palabra en ~n~odo"
 
 msgid  "Search ~m~ethod"
 msgstr "~M~‚todo de b£squeda"
@@ -4032,6 +4076,9 @@ msgstr "~N~o usar esto"
 
 msgid  "~ENTER~ Evaluate"
 msgstr "~INTRO~ Evaluar"
+
+msgid  "~ESC~ Aborts installation"
+msgstr "~ESC~ Aborta la instalaci¢n"
 
 msgid  "~ESC~ Close"
 msgstr "~ESC~ Cerrar"

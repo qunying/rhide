@@ -431,45 +431,45 @@ DEPS_4=
 all:: stream/stream.gpr.force
 stream/stream.gpr.force:
 	$(MAKE) -C stream/ -f stream.mak
-DEPS_5=tdepende.cc ideenums.h libide.h tdepende.h tfname.h rhutils.h\
-	libtvuti.h tparamli.h
+DEPS_5=tdepende.cc ideenums.h libide.h libtvuti.h rhutils.h tdepende.h\
+	tfname.h tparamli.h
 tdepende.o:: $(DEPS_5)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_6=tflagcol.cc libide.h tflagcol.h tflagent.h rhutils.h
+DEPS_6=tflagcol.cc libide.h rhutils.h tflagcol.h tflagent.h
 tflagcol.o:: $(DEPS_6)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_7=tflagent.cc libide.h tflagent.h rhutils.h libtvuti.h tvutilfu.h
+DEPS_7=tflagent.cc libide.h libtvuti.h rhutils.h tflagent.h tvutilfu.h
 tflagent.o:: $(DEPS_7)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_8=tflaglis.cc idecomma.h libide.h tflagcol.h tflagent.h tflaglis.h\
-	rhutils.h libtvuti.h
+DEPS_8=tflaglis.cc idecomma.h libide.h libtvuti.h rhutils.h tflagcol.h\
+	tflagent.h tflaglis.h
 tflaglis.o:: $(DEPS_8)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_9=tfname.cc libide.h tfname.h rhutils.h
+DEPS_9=tfname.cc libide.h rhutils.h tfname.h
 tfname.o:: $(DEPS_9)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_10=tideedit.cc idecomma.h libide.h tideedit.h tidefile.h rhutils.h\
-	libtvuti.h
+DEPS_10=tideedit.cc idecomma.h libide.h libtvuti.h rhutils.h tideedit.h\
+	tidefile.h
 tideedit.o:: $(DEPS_10)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_11=tidefile.cc idecomma.h ideenums.h idefunct.h libide.h tideedit.h\
-	tidefile.h rhutils.h libtvuti.h
+DEPS_11=tidefile.cc idecomma.h ideenums.h idefunct.h libide.h libtvuti.h\
+	rhutils.h tideedit.h tidefile.h
 tidefile.o:: $(DEPS_11)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_12=toptions.cc libide.h tflagcol.h toptions.h libtvuti.h tdirlist.h\
+DEPS_12=toptions.cc libide.h libtvuti.h tdirlist.h tflagcol.h toptions.h\
 	tparamli.h
 toptions.o:: $(DEPS_12)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_13=tprjlist.cc idecomma.h ideenums.h idefunct.h libide.h tdepende.h\
-	tfname.h tideedit.h tprjlist.h libtvuti.h tvutilco.h
+DEPS_13=tprjlist.cc idecomma.h ideenums.h idefunct.h libide.h libtvuti.h\
+	tdepende.h tfname.h tideedit.h tprjlist.h tvutilco.h
 tprjlist.o:: $(DEPS_13)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_14=tprjwind.cc idecomma.h libide.h tdepende.h tprjlist.h tprjwind.h\
-	libtvuti.h
+DEPS_14=tprjwind.cc idecomma.h libide.h libtvuti.h tdepende.h tprjlist.h\
+	tprjwind.h
 tprjwind.o:: $(DEPS_14)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_15=tproject.cc ideenums.h libide.h tdepende.h tfname.h toptions.h\
-	tproject.h rhutils.h libtvuti.h tparamli.h
+DEPS_15=tproject.cc ideenums.h libide.h libtvuti.h rhutils.h tdepende.h\
+	tfname.h toptions.h tparamli.h tproject.h
 tproject.o:: $(DEPS_15)
 	$(RHIDE_COMPILE.cc.o)
 all:: libide.a

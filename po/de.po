@@ -310,6 +310,33 @@ msgstr "zeigt die Zwischenablage"
 msgid  "delete the selected text "
 msgstr "lîscht den ausgewÑhlten Text"
 
+msgid  "Submenu for handling with rectangular blocks"
+msgstr "UntermenÅ zur Behandlung rechteckiger Blîcke"
+
+msgid  "Start selecting rectangular block"
+msgstr "Startet die Selektion eines rechteckigen Blockes"
+
+msgid  "End selecting rectangular block"
+msgstr "Beendet die Selektion eines rechteckigen Blockes"
+
+msgid  "Hide selected rectangular block"
+msgstr "Verbirgt den markierten rechteckigen Block"
+
+msgid  "Copy selected rectangular block"
+msgstr "Kopiert den markierten rechteckigen Block"
+
+msgid  "Paste selected rectangular block"
+msgstr "FÅgt einen rechteckigen Block ein"
+
+msgid  "Cut selected rectangular block"
+msgstr "Schneidet einen rechteckigen Block aus"
+
+msgid  "Clear selected rectangular block"
+msgstr "Lîscht den markierten rechteckigen Block"
+
+msgid  "Move selected rectangular block"
+msgstr "Verschiebt den markierten rechteckigen Block"
+
 msgid  "Copy the selected text to the Windows clipboard"
 msgstr "kopiert den ausgewÑhlten Text in die Windows-Zwischenablage"
 
@@ -684,8 +711,8 @@ msgstr "zur Entwicklung von DJGPP Applikationen"
 msgid  "for developing Linux apps"
 msgstr "zur Entwicklung von Linux Applikationen"
 
-msgid  "Copyright (C) by Robert Hîhne, 1996-1998"
-msgstr "Alle Rechte bei Robert Hîhne, 1996-1998"
+msgid  "Copyright (C) by Robert Hîhne, 1996-2000"
+msgstr "Alle Rechte bei Robert Hîhne, 1996-2000"
 
 msgid  "Language: "
 msgstr "Sprache: "
@@ -826,8 +853,11 @@ msgstr "            -T : Benutze nicht den DOS-Box Titel\n"
 msgid  "using %s as temp directory\n"
 msgstr "benutze %s als temporÑres Verzeichnis\n"
 
-msgid  "This is %s. Copyright (c) 1996-1998 by Robert Hîhne\n"
-msgstr "Dies ist %s. Alle Rechte bei Robert Hîhne, 1996-1998\n"
+msgid  "warning: temporary file %s deleted\n"
+msgstr "Warnung: TemporÑre Datei %s wurde gelîscht\n"
+
+msgid  "This is %s. Copyright (c) 1996-2000 by Robert Hîhne\n"
+msgstr "Dies ist %s. Alle Rechte bei Robert Hîhne, 1996-2000\n"
 
 msgid  "Do you really want to interrupt RHIDE?"
 msgstr "Mîchtest Du wirklich RHIDE unterbrechen?"
@@ -931,6 +961,33 @@ msgstr "W~i~ederholen"
 msgid  "~G~enerate Code"
 msgstr "Er~z~euge Code"
 
+msgid  "Recta~n~gle"
+msgstr "Re~c~hteck"
+
+msgid  "~S~tart"
+msgstr "~S~tart"
+
+msgid  "~E~nd"
+msgstr "~E~nde"
+
+msgid  "~H~ide"
+msgstr "~V~erstecke"
+
+msgid  "~C~opy"
+msgstr "~K~opieren"
+
+msgid  "~P~aste"
+msgstr "~E~infÅgen"
+
+msgid  "Cu~t~"
+msgstr "~A~usschneiden"
+
+msgid  "C~l~ear"
+msgstr "~L~îschen"
+
+msgid  "~M~ove"
+msgstr "~B~ewegen"
+
 msgid  "~E~dit"
 msgstr "~E~dit"
 
@@ -940,20 +997,8 @@ msgstr "~R~ÅckgÑngig"
 msgid  "~R~edo"
 msgstr "~R~edo"
 
-msgid  "Cu~t~"
-msgstr "~A~usschneiden"
-
-msgid  "~C~opy"
-msgstr "~K~opieren"
-
-msgid  "~P~aste"
-msgstr "~E~infÅgen"
-
 msgid  "~S~how clipboard"
 msgstr "~Z~wischenablage"
-
-msgid  "C~l~ear"
-msgstr "~L~îschen"
 
 msgid  "Cop~y~ to Windows Clipboard"
 msgstr "Kopiere zur ~W~indows Zwischenablage"
@@ -1349,7 +1394,7 @@ msgid  "~R~emember old messages"
 msgstr "~B~ehalte alte Meldungen"
 
 msgid  "~D~on`t show exit code"
-msgstr ""
+msgstr "~K~einen Beendigungswert zeigen"
 
 msgid  "all dependencies in ~m~akefile"
 msgstr "All AbhÑngigkeiten im ~M~akefile"
@@ -1778,171 +1823,6 @@ msgstr "~B~erechnen"
 msgid  "Error in expression (%d)"
 msgstr "Fehler in Ausdruck (%d)"
 
-msgid  "Color"
-msgstr "Farbe"
-
-msgid  "Desktop"
-msgstr "Arbeitsplatz"
-
-msgid  "Normal"
-msgstr "Normal"
-
-msgid  "Menus"
-msgstr "MenÅs"
-
-msgid  "Disabled"
-msgstr "Inaktiv"
-
-msgid  "Shortcut"
-msgstr "Kurzzeichen"
-
-msgid  "Selected"
-msgstr "AusgewÑhlt"
-
-msgid  "Selected disabled"
-msgstr "Inaktiv ausgewÑhlt"
-
-msgid  "Shortcut selected"
-msgstr "Abk. ausgewÑhlt"
-
-msgid  "Blue Windows"
-msgstr "Blaue Fenster"
-
-msgid  "Cyan Windows"
-msgstr "TÅrkisene Fenster"
-
-msgid  "Gray Windows"
-msgstr "Graue Fenster"
-
-msgid  "Dialogs"
-msgstr "Dialoge"
-
-msgid  "Label normal"
-msgstr "Etikett normal"
-
-msgid  "Label selected"
-msgstr "Etikett ausgewÑhlt"
-
-msgid  "Label shortcut"
-msgstr "Etikett Kurzzeichen"
-
-msgid  "Button normal"
-msgstr "Knopf normal"
-
-msgid  "Button default"
-msgstr "Knopf standard"
-
-msgid  "Button selected"
-msgstr "Knopf ausgewÑhlt"
-
-msgid  "Button disabled"
-msgstr "Knopf inaktiv"
-
-msgid  "Button shortcut"
-msgstr "Knopf Kurzzeichen"
-
-msgid  "Button shadow"
-msgstr "Knopf Schatten"
-
-msgid  "Cluster normal"
-msgstr "Cluster normal"
-
-msgid  "Cluster selected"
-msgstr "Cluster ausgewÑhlt"
-
-msgid  "Cluster shortcut"
-msgstr "Cluster Kurzzeichen"
-
-msgid  "Input normal"
-msgstr "Eingabe normal"
-
-msgid  "Input selected"
-msgstr "Eingabe ausgewÑhlt"
-
-msgid  "Input arrow"
-msgstr "Eingabe Zeiger"
-
-msgid  "History button"
-msgstr "History-Knopf"
-
-msgid  "History sides"
-msgstr "History-Seiten"
-
-msgid  "History bar page"
-msgstr "History-Balken"
-
-msgid  "History bar icons"
-msgstr "History-Balken Symbole"
-
-msgid  "List normal"
-msgstr "Liste normal"
-
-msgid  "List focused"
-msgstr "Liste fokussiert"
-
-msgid  "List selected"
-msgstr "Liste ausgewÑhlt"
-
-msgid  "List divider"
-msgstr "Liste Teiler"
-
-msgid  "Information pane"
-msgstr "Informationsseite"
-
-msgid  "Blue Editor"
-msgstr "Blauer Editor"
-
-msgid  "Odd tab"
-msgstr ""
-
-msgid  "Even tab"
-msgstr ""
-
-msgid  "Cyan Editor"
-msgstr "Cyan Editor"
-
-msgid  "Gray Editor"
-msgstr "Grauer Editor"
-
-msgid  "Info viewer"
-msgstr "Info Betrachter"
-
-msgid  "keyword"
-msgstr "SchlÅsselwort"
-
-msgid  "selected keyword"
-msgstr "AusgewÑhltes SchlÅsselwort"
-
-msgid  "marked keyword"
-msgstr "Markiertes SchlÅsselwort"
-
-msgid  "Disassembler"
-msgstr "Disassembler"
-
-msgid  "Unchanged register"
-msgstr "UnverÑndertes Register"
-
-msgid  "Changed register"
-msgstr "VerÑndertes Register"
-
-msgid  "Focused register"
-msgstr "AusgewÑhltes Register"
-
-msgid  "DataWindow"
-msgstr ""
-
-msgid  "Normal Text(active)"
-msgstr ""
-
-msgid  "Normal Text(inactive)"
-msgstr ""
-
-msgid  "Focused Text"
-msgstr ""
-
-msgid  "Selected Text"
-msgstr ""
-
 msgid  "RHIDE has detected that your DJGPP environment variable was not set. "
 "It is set now automatically. If RHIDE did the right choice, please modify "
 "your autoexec.bat by adding the following line to fix this problem:\n"
@@ -1987,37 +1867,13 @@ msgstr "RHIDE hat festgestellt, da· Du unter einem System arbeitest, wo "
 "LFN-Konflikt. Soll ich weitermachen?"
 
 msgid  "Converting Projectfile : %s\n"
-msgstr ""
-
-msgid  "Could not open '%s' for reading"
-msgstr "Konnte '%s' nicht zum Lesen îffnen"
-
-msgid  "Save to file"
-msgstr "Speichere in Datei"
-
-msgid  "~Y~es"
-msgstr "~J~a"
-
-msgid  "~N~o"
-msgstr "~N~ein"
-
-msgid  "Warning"
-msgstr "Warnung"
+msgstr "Konvertiere Projektdatei : %s\n"
 
 msgid  "Error"
 msgstr "Fehler"
 
-msgid  "Information"
-msgstr "Information"
-
-msgid  "Confirm"
-msgstr "EinverstÑndnis"
-
-msgid  "Don't warn you next time"
-msgstr "Das nÑchste mal nicht warnen"
-
 msgid  "Pocket Calculator"
-msgstr ""
+msgstr "Taschenrechner"
 
 msgid  "type not registered: %s\n"
 msgstr "Typ nicht registriert: %s\n"
@@ -2064,8 +1920,11 @@ msgstr "~H~intergrund"
 msgid  "Text "
 msgstr "Text "
 
+msgid  "Color"
+msgstr "Farbe"
+
 msgid  "~T~ry"
-msgstr ""
+msgstr "~V~ersuch"
 
 msgid  "Clipboard"
 msgstr "Zwischenablage"
@@ -2129,6 +1988,9 @@ msgstr "UngÅltiges Zeichen in der Eingabe"
 
 msgid  "<empty>"
 msgstr "<leer>"
+
+msgid  "Normal"
+msgstr "Normal"
 
 msgid  "Highlight"
 msgstr "Hervorgehoben"
@@ -2215,9 +2077,6 @@ msgid  "\r\n"
 "program 2> file\r\n"
 "\r\n"
 msgstr ""
-
-msgid  "Goto Line"
-msgstr "Gehe zu Zeile"
 
 msgid  "InfView - File: %s - Node: %s"
 msgstr "InfView - Datei: %s - Knoten: %s"
@@ -2324,67 +2183,6 @@ msgid  "\n"
 " Sorry I can't find this link (press ALT-F1).\n"
 msgstr "\n"
 " Sorry. Konnte diesen Link nicht finden (drÅcke ALT-F1).\n"
-
-msgid  "Could not create %s."
-msgstr ""
-
-msgid  "Could not open desktop file"
-msgstr "Konnte die Desktopdatei nicht îffnen"
-
-msgid  "Wrong desktop file"
-msgstr ""
-
-msgid  "Error reading desktop file"
-msgstr "Fehler beim Lesen der Desktopdatei"
-
-msgid  "InfView v"
-msgstr ""
-
-msgid  "infview [option]... [info_file [menu_item...]]\n"
-"\n"
-msgstr ""
-
-msgid  "Valid options are:\n"
-msgstr ""
-
-msgid  "-d, --directory DIR      adds a directory to the list of directories "
-"to search\n"
-"                         (DIR to INFOPATH)\n"
-msgstr ""
-
-msgid  "-f, --file FILENAME      load FILENAME info file.\n"
-msgstr ""
-
-msgid  "-L, --force-lfn          forces the use of long file names under "
-"W9x.\n"
-msgstr ""
-
-msgid  "-k, --use-rh-52-keys     enables the Red Hat 5.2 style keyboard "
-"mapping.\n"
-msgstr ""
-
-msgid  "-n, --node NODE          jumps to this node.\n"
-msgstr ""
-
-msgid  "-r, --read-dkt FILENAME  if no file is opened use this desktop "
-"file.\n"
-msgstr ""
-
-msgid  "-s, --save-dkt FILENAME  save the desktop to this file at exit.\n"
-msgstr ""
-
-msgid  "-h, --help               displays this text ;-).\n"
-"\n"
-msgstr ""
-
-msgid  "Could not find '%s'."
-msgstr ""
-
-msgid  "You must select the editor window first"
-msgstr ""
-
-msgid  "Not implemented in Linux"
-msgstr ""
 
 msgid  "Jump to function"
 msgstr "Gehe zu Funktion"
@@ -2510,6 +2308,9 @@ msgstr ""
 msgid  "Replace ~A~ll"
 msgstr "Alle e~r~setzen"
 
+msgid  "Goto Line"
+msgstr "Gehe zu Zeile"
+
 msgid  "Desired line"
 msgstr ""
 
@@ -2525,8 +2326,8 @@ msgstr "öb~e~rschreiben"
 msgid  "~A~utoindent"
 msgstr "~A~utomatisches EinrÅcken"
 
-msgid  "~U~se tabs"
-msgstr "Benut~z~e Tabs"
+msgid  "~U~se real tabs (ASCII 9)"
+msgstr ""
 
 msgid  "~P~ersistent blocks"
 msgstr "~B~estÑndige Blîcke"
@@ -2561,6 +2362,9 @@ msgstr ""
 msgid  "Don't move inside ta~b~s"
 msgstr ""
 
+msgid  "Tab indents ~5~"
+msgstr ""
+
 msgid  "Off ~1~"
 msgstr ""
 
@@ -2588,6 +2392,9 @@ msgstr ""
 msgid  "Global Options"
 msgstr "Globale Optionen"
 
+msgid  "~U~se tabs"
+msgstr "Benut~z~e Tabs"
+
 msgid  "Match pair on the fly ~1~"
 msgstr ""
 
@@ -2605,6 +2412,12 @@ msgstr "~F~År alle"
 
 msgid  "Search hit"
 msgstr "Suchtreffer"
+
+msgid  "~Y~es"
+msgstr "~J~a"
+
+msgid  "~N~o"
+msgstr "~N~ein"
 
 msgid  "~A~ll"
 msgstr "~A~lle"
@@ -2814,8 +2627,8 @@ msgstr "~B~asis Ausgabe (keine Endung)"
 msgid  "~D~irectory of formats"
 msgstr "~V~erzeichnisse der Formate"
 
-msgid  "~K~eep intermediate"
-msgstr "~B~ehalte Zwischenatei"
+msgid  "K~e~ep intermediate"
+msgstr ""
 
 msgid  "Regular expression error: %s"
 msgstr "RegulÑrer-Ausdruck-Fehler: %s"
@@ -2837,624 +2650,6 @@ msgstr "sLisp Makros"
 
 msgid  "~M~acros"
 msgstr "~M~akros"
-
-msgid  " [%d nodes]"
-msgstr ""
-
-msgid  "New node for search"
-msgstr ""
-
-msgid  "Name of the info file"
-msgstr ""
-
-msgid  "Name of the node (leave blank for all)"
-msgstr ""
-
-msgid  "Nodes for syntax help"
-msgstr ""
-
-msgid  "Search ~m~ethod"
-msgstr ""
-
-msgid  "Search O~p~tions"
-msgstr ""
-
-msgid  "So~r~t by score"
-msgstr ""
-
-msgid  "Fu~z~zy value [1..1000]"
-msgstr ""
-
-msgid  "Other options"
-msgstr ""
-
-msgid  "Search word in the ~t~opic"
-msgstr ""
-
-msgid  "Choose a node"
-msgstr ""
-
-msgid  "You are about switching to the user screen\n"
-"Press ENTER to go back"
-msgstr ""
-
-msgid  "Avoid using files that aren't in a directory that isn't relative to "
-"the working one. For example: in another drive. If you do it you'll have "
-"problems if the directories are moved or transported to other machine."
-msgstr ""
-
-msgid  "Do you really want to delete\n"
-"this file from disk?"
-msgstr ""
-
-msgid  "With this settings SHIFT key will affect the case of the letters "
-"during incremental searchs, CAPS-LOCK too. Don't forget it."
-msgstr ""
-
-msgid  "With this settings incremental searchs aren't very intuitive, "
-"specially when pressing SHIFT. Don't forget it."
-msgstr ""
-
-msgid  "Holding SHIFT the incremental search is done for the directory "
-"names, otherwise applies to files. Don't forget it."
-msgstr ""
-
-msgid  "Advice"
-msgstr ""
-
-msgid  "Don't show it next time"
-msgstr "Zeige dies das nÑchste mal nicht"
-
-msgid  "  Char: "
-msgstr "  Zeichen: "
-
-msgid  " Decimal: "
-msgstr " Dezimal: "
-
-msgid  " Hex: "
-msgstr ""
-
-msgid  "ASCII Chart"
-msgstr "ASCII Diagramm"
-
-msgid  "January"
-msgstr "Januar"
-
-msgid  "February"
-msgstr "Februar"
-
-msgid  "March"
-msgstr "MÑrz"
-
-msgid  "April"
-msgstr "April"
-
-msgid  "June"
-msgstr "Juni"
-
-msgid  "July"
-msgstr "Juli"
-
-msgid  "August"
-msgstr "August"
-
-msgid  "September"
-msgstr "September"
-
-msgid  "October"
-msgstr "Oktober"
-
-msgid  "November"
-msgstr "November"
-
-msgid  "December"
-msgstr "Dezember"
-
-msgid  "Su Mo Tu We Th Fr Sa"
-msgstr "So Mo Di Mi Do Fr Sa"
-
-msgid  "Calendar"
-msgstr "Kalender"
-
-msgid  "   ASCII chart"
-msgstr ""
-
-msgid  "   Calendar "
-msgstr ""
-
-msgid  "   Clipboard (%d bytes)"
-msgstr "   Zwischenablage (%d Byte)"
-
-msgid  "   Closed: "
-msgstr "   Geschlossen: "
-
-msgid  "   Main InfView "
-msgstr "  Haupt InfView"
-
-msgid  "   InfView "
-msgstr "   InfView "
-
-msgid  "   Man page: "
-msgstr ""
-
-msgid  "You must install man to use it!"
-msgstr ""
-
-msgid  "Man page to view"
-msgstr ""
-
-msgid  "~M~an page for ..."
-msgstr ""
-
-msgid  "~S~ection"
-msgstr ""
-
-msgid  "~E~xtra options"
-msgstr ""
-
-msgid  "   Message Window (%d lines)"
-msgstr ""
-
-msgid  "   MP3 Control panel"
-msgstr ""
-
-msgid  "Wrong desktop file."
-msgstr "Schlechte Desktopdatei"
-
-msgid  "The desktop file is too old."
-msgstr ""
-
-msgid  "You need a newer editor for this desktop file."
-msgstr ""
-
-msgid  "A friendly text editor."
-msgstr ""
-
-msgid  "About"
-msgstr "öber"
-
-msgid  "That's SET's Editor v%lX.%lX.%lX, (c) 1996-1999"
-msgstr ""
-
-msgid  "by Salvador Eduardo Tropea"
-msgstr "von Salvador Eduardo Tropea"
-
-msgid  "SET's Editor v%lX.%lX.%lX, (c) 1996-1999"
-msgstr ""
-
-msgid  "Made in Argentina"
-msgstr ""
-
-msgid  "Thanks to:"
-msgstr ""
-
-msgid  "The FSF and GNU people for such a good tools"
-msgstr ""
-
-msgid  "DJ Delorie and colaborators for porting it to DOS"
-msgstr ""
-
-msgid  "Robert Hîhne for porting TVision and making RHIDE"
-msgstr ""
-
-msgid  "The University of California, Berkeley and its contributors"
-msgstr ""
-
-msgid  "The University of Cambridge for the PCRE package"
-msgstr ""
-
-msgid  "Shawn Hargreaves for Allegro, used as sound engine"
-msgstr ""
-
-msgid  "Tomislav Uzelac for AMP, the MP3 engine"
-msgstr ""
-
-msgid  "Ove Kaaven for LibAmp, the Allegro adaptation of AMP"
-msgstr ""
-
-msgid  "All my friends that support my project (Laszlo, Marek, Ivan, etc)"
-msgstr ""
-
-msgid  "This file is already opened, first close it."
-msgstr ""
-
-msgid  "File Open"
-msgstr "Datei ôffnen"
-
-msgid  "You must select an editor window for this operation"
-msgstr ""
-
-msgid  "Export file as"
-msgstr ""
-
-msgid  "This window can't be printed select an editor"
-msgstr ""
-
-msgid  "This line no longer exists"
-msgstr ""
-
-msgid  "The disk copy of %s is newer, reload it?"
-msgstr ""
-
-msgid  "I can't find the readme.1st file, please look for it the .ZIP and "
-"read the file."
-msgstr ""
-
-msgid  "\n"
-"Wrong installation! You must define the %s environment variable.\n"
-msgstr ""
-
-msgid  "Read the readme.1st file included in the .zip distribution file.\n"
-"\n"
-msgstr ""
-
-msgid  "I suggest that: SET %s=%s/%s\n"
-"\n"
-msgstr ""
-
-msgid  "I suggest that: SET %s=%s\n"
-"\n"
-msgstr ""
-
-msgid  "press ENTER to continue\n"
-msgstr ""
-
-msgid  "\n"
-"You defined SET_FILES wrongly, it doesn't point to a directory.\n"
-"\n"
-msgstr ""
-
-msgid  "Memory is nearly full. Please exit, and restart."
-msgstr "Speicher ist fast voll. Bitte beenden und neu starten."
-
-msgid  "Setedit "
-msgstr ""
-
-msgid  "setedit [options] [file_name ...]\n"
-"\n"
-msgstr ""
-
-msgid  "-s, --no-signal:         disables the hook of signals to save the "
-"modified\n"
-"                         buffers during a crash. Could be needed if the "
-"editor\n"
-"                         hangs in an extraordinary way.\n"
-msgstr ""
-
-msgid  "-r, --no-redirect:       disables the stderr redirection. Only used "
-"during\n"
-"                         debugging.\n"
-msgstr ""
-
-msgid  "-L, --force-lfn:         forces the use of long file names under "
-"W9x.\n"
-msgstr ""
-
-msgid  "-m, --no-mouse-hook:     don't hook the mouse.\n"
-msgstr ""
-
-msgid  "-S, --low-vga-save:      use low level functions to save/restore VGA "
-"state.\n"
-msgstr ""
-
-msgid  "-k, --use-rh-52-keys:    enables the Red Hat 5.2 style keyboard "
-"mapping.\n"
-msgstr ""
-
-msgid  "-p, --project file_name: loads the indicated project, if the file "
-"doesn't exist\n"
-"                         the editor creates a new one\n"
-msgstr ""
-
-msgid  "-h, --help:              displays this text ;-).\n"
-"\n"
-msgstr ""
-
-msgid  "Do you want to delete all the .BKP, desktop and project files?"
-msgstr ""
-
-msgid  "~O~pen..."
-msgstr "ô~f~fnen..."
-
-msgid  "Save as ~U~NIX..."
-msgstr ""
-
-msgid  "~Q~uit"
-msgstr "~E~nde"
-
-msgid  "S~e~t Local"
-msgstr "S~e~tze Lokal"
-
-msgid  "Set ~G~lobal"
-msgstr "Setze ~G~lobal"
-
-msgid  "~P~rofile Editor"
-msgstr "~P~rofile den Editor"
-
-msgid  "Re~c~tangle"
-msgstr "Re~c~hteck"
-
-msgid  "~S~tart"
-msgstr "~S~tart"
-
-msgid  "~E~nd"
-msgstr "~E~nde"
-
-msgid  "~H~ide"
-msgstr "~V~erstecke"
-
-msgid  "~M~ove"
-msgstr "~B~ewegen"
-
-msgid  "~U~ser Screen"
-msgstr "Nutzer~b~ildschirm"
-
-msgid  "~I~NF View"
-msgstr ""
-
-msgid  "~A~nother InfView"
-msgstr ""
-
-msgid  "~V~arious"
-msgstr ""
-
-msgid  "~S~DG"
-msgstr ""
-
-msgid  "SDG ~O~ptions"
-msgstr ""
-
-msgid  "Copy to ~W~indows Clip."
-msgstr ""
-
-msgid  "Paste ~f~rom Wind. Clip."
-msgstr ""
-
-msgid  "Co~l~ors"
-msgstr ""
-
-msgid  "~Alt+F1~ Back"
-msgstr ""
-
-msgid  "~Alt+F10~ Control"
-msgstr ""
-
-msgid  "~^H~ Help"
-msgstr "~^H~ Hilfe"
-
-msgid  "~ESC~ Close"
-msgstr "~ESC~ Schlie·en"
-
-msgid  "~Alt+I~ Include"
-msgstr ""
-
-msgid  "~Alt+B~ Bookmark"
-msgstr ""
-
-msgid  "~Ins~ Open"
-msgstr ""
-
-msgid  "~Ctrl+Del~ Delete File"
-msgstr ""
-
-msgid  "~Ins~ Insert"
-msgstr "~Ins~ EinfÅgen"
-
-msgid  "~ENTER~ Evaluate"
-msgstr ""
-
-msgid  "~Ctrl+Ins~ Copy"
-msgstr ""
-
-msgid  "~Shift+Ins~ Paste"
-msgstr ""
-
-msgid  "Open Read-only ~c~opy"
-msgstr ""
-
-msgid  "Save w/same ~t~ime..."
-msgstr ""
-
-msgid  "Pr~i~nt Setup..."
-msgstr ""
-
-msgid  "S~e~t Local options"
-msgstr ""
-
-msgid  "Set ~G~lobal options"
-msgstr ""
-
-msgid  "Pus~h~ cursor position"
-msgstr ""
-
-msgid  "Pop cursor pos~i~tion"
-msgstr ""
-
-msgid  "C~a~se (upper/lower)"
-msgstr ""
-
-msgid  "Block to ~u~pper"
-msgstr ""
-
-msgid  "Block to ~l~ower"
-msgstr ""
-
-msgid  "~C~haracter toggle"
-msgstr ""
-
-msgid  "~G~o to line"
-msgstr ""
-
-msgid  "Jump to ~p~rototype"
-msgstr ""
-
-msgid  "~C~hoose ..."
-msgstr ""
-
-msgid  "Pse~u~do macros ..."
-msgstr ""
-
-msgid  "To ~u~pper"
-msgstr ""
-
-msgid  "To l~o~wer"
-msgstr ""
-
-msgid  "Poc~k~et calculator"
-msgstr ""
-
-msgid  "~R~un program"
-msgstr ""
-
-msgid  "~A~SCII Chart"
-msgstr ""
-
-msgid  "~M~P3 songs"
-msgstr ""
-
-msgid  "~S~elect a song"
-msgstr ""
-
-msgid  "~P~lay selected"
-msgstr ""
-
-msgid  "S~t~op selected"
-msgstr ""
-
-msgid  "~C~onvert to WAV"
-msgstr ""
-
-msgid  "~E~dit/Create list"
-msgstr ""
-
-msgid  "P~l~ay list"
-msgstr ""
-
-msgid  "St~o~p list"
-msgstr ""
-
-msgid  "~H~TML Accents"
-msgstr ""
-
-msgid  "E~x~port as HTML ..."
-msgstr ""
-
-msgid  "Re~m~ap code page ..."
-msgstr ""
-
-msgid  "~B~lock quoted printable decode"
-msgstr ""
-
-msgid  "Un/~I~ndent block"
-msgstr ""
-
-msgid  "Indent ~o~ne space"
-msgstr ""
-
-msgid  "Unindent o~n~e character"
-msgstr ""
-
-msgid  "Indent one ~t~ab/gap"
-msgstr ""
-
-msgid  "~U~nindent one tab/gap"
-msgstr ""
-
-msgid  "~A~rbitrary indent"
-msgstr ""
-
-msgid  "Paste ~E~macs mode"
-msgstr ""
-
-msgid  "Test of macro from menu"
-msgstr ""
-
-msgid  "~D~elete memorized backups"
-msgstr ""
-
-msgid  "Redra~w~ screen"
-msgstr ""
-
-msgid  "~C~olors ..."
-msgstr ""
-
-msgid  "Color ~P~alette ..."
-msgstr ""
-
-msgid  "~L~ocal edition ..."
-msgstr ""
-
-msgid  "Glo~b~al edition ..."
-msgstr ""
-
-msgid  "Editor ~G~eneral ..."
-msgstr ""
-
-msgid  "Scr~e~en saver ..."
-msgstr ""
-
-msgid  "S~D~G Options ..."
-msgstr ""
-
-msgid  "~R~un program (which one) ..."
-msgstr ""
-
-msgid  "~K~eyboard"
-msgstr ""
-
-msgid  "~K~ey assignment"
-msgstr ""
-
-msgid  "~S~etup Alt keys"
-msgstr ""
-
-msgid  "Key ~p~ad behavior"
-msgstr ""
-
-msgid  "~B~ack to defaults"
-msgstr ""
-
-msgid  "Consult ~s~can codes"
-msgstr ""
-
-msgid  "~S~creen Options ..."
-msgstr ""
-
-msgid  "~U~ser words ..."
-msgstr ""
-
-msgid  "De~f~ault global edition ..."
-msgstr ""
-
-msgid  "File ~o~pen dialog ..."
-msgstr ""
-
-msgid  "~T~ip of the day"
-msgstr ""
-
-msgid  "~M~an page View"
-msgstr ""
-
-msgid  "A~b~out"
-msgstr ""
-
-msgid  "Palette editor"
-msgstr ""
-
-msgid  "Color RGB composition"
-msgstr ""
-
-msgid  "Red"
-msgstr ""
-
-msgid  "Green"
-msgstr ""
-
-msgid  "Blue"
-msgstr ""
-
-msgid  "~D~efault"
-msgstr ""
 
 msgid  "Key assignment"
 msgstr ""
@@ -3535,180 +2730,6 @@ msgstr ""
 msgid  "Type of keyboard"
 msgstr ""
 
-msgid  "No fonts found"
-msgstr ""
-
-msgid  "Primary ~e~ncoding"
-msgstr ""
-
-msgid  "Screen Options"
-msgstr ""
-
-msgid  "~P~rimary font (intense)"
-msgstr ""
-
-msgid  "~R~OM BIOS fonts"
-msgstr ""
-
-msgid  "O~t~her font"
-msgstr ""
-
-msgid  "~S~econdary font"
-msgstr ""
-
-msgid  "~D~on't use it"
-msgstr ""
-
-msgid  "Other ~f~ont"
-msgstr ""
-
-msgid  "Secondary encoding"
-msgstr ""
-
-msgid  "Use external program"
-msgstr ""
-
-msgid  "File Open options"
-msgstr ""
-
-msgid  "~S~ort type"
-msgstr ""
-
-msgid  "~A~lphabetical"
-msgstr ""
-
-msgid  "~D~irectories first"
-msgstr ""
-
-msgid  "~F~iles first"
-msgstr ""
-
-msgid  "Case style"
-msgstr ""
-
-msgid  "~C~apital letters goes first"
-msgstr ""
-
-msgid  "Case ~i~nsensitive"
-msgstr ""
-
-msgid  "Parent directory (..)"
-msgstr ""
-
-msgid  "First in the ~l~ist"
-msgstr ""
-
-msgid  "At the ~e~nd of the list"
-msgstr ""
-
-msgid  "Screen saver"
-msgstr ""
-
-msgid  "Help for screen saver"
-msgstr ""
-
-msgid  "E~x~ternal options"
-msgstr ""
-
-msgid  "Sc~r~een saver (?)"
-msgstr ""
-
-msgid  "OF~F~"
-msgstr ""
-
-msgid  "O~N~"
-msgstr ""
-
-msgid  "T~e~st"
-msgstr ""
-
-msgid  "~I~nfo"
-msgstr ""
-
-msgid  "~T~ime"
-msgstr ""
-
-msgid  "seconds"
-msgstr ""
-
-msgid  "Ti~m~e"
-msgstr ""
-
-msgid  "mouse sec."
-msgstr ""
-
-msgid  "General editor options"
-msgstr ""
-
-msgid  "~S~ave/Desktop options"
-msgstr ""
-
-msgid  "Make ~b~ackups"
-msgstr ""
-
-msgid  "~U~NIX style backups"
-msgstr ""
-
-msgid  "H~i~dden backups"
-msgstr ""
-
-msgid  "R~e~mmember bkps to delete"
-msgstr ""
-
-msgid  "~D~on't create desktop files"
-msgstr ""
-
-msgid  "Save desktop files ~h~idden"
-msgstr ""
-
-msgid  "Tile windows ~v~ertically first"
-msgstr ""
-
-msgid  "Save UNIX files ~a~s UNIX"
-msgstr ""
-
-msgid  "Save DOS files ~a~s DOS"
-msgstr ""
-
-msgid  "O~p~en only specified files"
-msgstr ""
-
-msgid  "~C~lock"
-msgstr ""
-
-msgid  "OFF"
-msgstr ""
-
-msgid  "ON"
-msgstr ""
-
-msgid  "St~y~le"
-msgstr ""
-
-msgid  "AM/PM"
-msgstr ""
-
-msgid  "24 hs"
-msgstr ""
-
-msgid  "~M~ax. editor copies"
-msgstr ""
-
-msgid  "Max. c~l~osed to remmember"
-msgstr ""
-
-msgid  "~F~rom code page"
-msgstr ""
-
-msgid  "~T~o code page"
-msgstr ""
-
-msgid  "~D~on't remap codes under 32"
-msgstr ""
-
-msgid  "Code page remap"
-msgstr ""
-
 msgid  "Page: %d Lines: %d to %d  Date: %s  Time: %s%s"
 msgstr ""
 
@@ -3785,231 +2806,6 @@ msgstr ""
 
 msgid  "~C~ancel"
 msgstr "Abbru~c~h"
-
-msgid  "File allready in project (or another with the same name)"
-msgstr ""
-
-msgid  "Add File"
-msgstr "Datei hinzufÅgen"
-
-msgid  " 1 Project Window"
-msgstr ""
-
-msgid  "Could not open project file"
-msgstr "Konnte die Projektdatei nicht îffnen"
-
-msgid  "Wrong project file."
-msgstr "Schlechte Projektdatei."
-
-msgid  "Error reading project file"
-msgstr "Fehler beim Lesen der Projektdatei"
-
-msgid  "Could not save the project."
-msgstr "Konnte das Projekt nicht speichern."
-
-msgid  "Open Project"
-msgstr "ôffne Projekt"
-
-msgid  "The clipboard is empty"
-msgstr ""
-
-msgid  "You must install grep to use it!"
-msgstr ""
-
-msgid  "Running grep in: %s"
-msgstr ""
-
-msgid  "chdir error: %s"
-msgstr ""
-
-msgid  "Powered Grep by SET"
-msgstr ""
-
-msgid  "~P~attern box"
-msgstr ""
-
-msgid  "Files to ~s~earch"
-msgstr ""
-
-msgid  "~D~irectories to search"
-msgstr ""
-
-msgid  "`Pattern box' is the pa~t~tern"
-msgstr ""
-
-msgid  "`Pattern box' is a fi~l~e name"
-msgstr ""
-
-msgid  "Use the ~c~lipboard selection"
-msgstr ""
-
-msgid  "Source of Pattern"
-msgstr ""
-
-msgid  "Basic regular expression (-~G~)"
-msgstr ""
-
-msgid  "~E~xtended regular expression (-E)"
-msgstr ""
-
-msgid  "~F~ixed separated by CR (-F)"
-msgstr ""
-
-msgid  "Type of Pattern"
-msgstr ""
-
-msgid  "~U~se `Files to search'"
-msgstr ""
-
-msgid  "Search in ope~n~ed windows"
-msgstr ""
-
-msgid  "Search in pro~j~ect"
-msgstr ""
-
-msgid  "Pl~a~ces to search"
-msgstr ""
-
-msgid  "~R~ecurse in subdirs"
-msgstr ""
-
-msgid  "~I~gnore case (-i)"
-msgstr ""
-
-msgid  "~W~hole words only (-w)"
-msgstr ""
-
-msgid  "Whole line (-~x~)"
-msgstr ""
-
-msgid  "In~v~erse matching (-v)"
-msgstr ""
-
-msgid  "You must provide at least one directory to search"
-msgstr ""
-
-msgid  "There aren't opened files"
-msgstr ""
-
-msgid  "No files in project"
-msgstr ""
-
-msgid  "Powered grep"
-msgstr ""
-
-msgid  "Recurse & dirs. ignored, using internal names"
-msgstr ""
-
-msgid  "End of grep search"
-msgstr ""
-
-msgid  "No error"
-msgstr ""
-
-msgid  "String expected"
-msgstr ""
-
-msgid  "Unclosed string"
-msgstr ""
-
-msgid  "No key for SubMenu"
-msgstr ""
-
-msgid  "Wrong key name"
-msgstr ""
-
-msgid  "Extra characters in line"
-msgstr ""
-
-msgid  "No number for a context"
-msgstr ""
-
-msgid  "Syntax error"
-msgstr ""
-
-msgid  "Empty submenu"
-msgstr ""
-
-msgid  "Unclosed SubMenu"
-msgstr ""
-
-msgid  "No command for MenuItem"
-msgstr ""
-
-msgid  "Wrong command name"
-msgstr ""
-
-msgid  "No menu definition"
-msgstr ""
-
-msgid  "Wrong context name"
-msgstr ""
-
-msgid  "Unfinished macro name"
-msgstr ""
-
-msgid  "Unable to register macro"
-msgstr ""
-
-msgid  "Error loading menu: (%d) %s in line %d of %s."
-msgstr ""
-
-msgid  "Command to run"
-msgstr ""
-
-msgid  "~E~nter the program name"
-msgstr ""
-
-msgid  "~U~se OS screen to run the program"
-msgstr ""
-
-msgid  "Running %s"
-msgstr ""
-
-msgid  "Back in the editor"
-msgstr ""
-
-msgid  "You must configure it first in the Options submenu"
-msgstr ""
-
-msgid  "Screen saver, press a key"
-msgstr ""
-
-msgid  "Press a key to continue"
-msgstr ""
-
-msgid  "That's a 'safe' screen saver. The editor have a beautiful plasma "
-"screen saver but currently isn't the default because some (really buggy) "
-"Winshit 9x video drivers makes strange things when a windowed DOS program "
-"switchs to video mode. I hate it ...."
-msgstr ""
-
-msgid  "Tip of the day"
-msgstr ""
-
-msgid  "~T~ip"
-msgstr ""
-
-msgid  "Don't ~s~how it again"
-msgstr ""
-
-msgid  "Show it once a ~d~ay"
-msgstr ""
-
-msgid  "Show it in the ~m~essage window"
-msgstr ""
-
-msgid  "~N~ext tip"
-msgstr ""
-
-msgid  "Windows List"
-msgstr "Fensterliste"
-
-msgid  "~G~o"
-msgstr "~G~ehe"
-
-msgid  "You can't delete it from disk"
-msgstr ""
 
 msgid  "Ho~m~e"
 msgstr "Ho~m~e"
@@ -4267,6 +3063,9 @@ msgstr "Warnung: "
 msgid  "about RH~G~DB"
 msgstr "öber RH~G~DB"
 
+msgid  "~Q~uit"
+msgstr "~E~nde"
+
 msgid  "~D~irectories for sources"
 msgstr "~V~erzeichnisse fÅr Quelldateien"
 
@@ -4312,6 +3111,9 @@ msgstr "mit Turbo Vision Schnittstelle"
 msgid  "based on GDB "
 msgstr "basierend auf GDB"
 
+msgid  "Copyright (C) by Robert Hîhne, 1996-1998"
+msgstr "Alle Rechte bei Robert Hîhne, 1996-1998"
+
 msgid  "All windows on the desktop"
 msgstr "Alle Fenster auf der ArbeitsflÑche"
 
@@ -4326,6 +3128,9 @@ msgstr "            -D : Benutze Dualbildschirm zum debuggen\n"
 
 msgid  "            -i INI_FILE : Use INI_FILE as config file\n"
 msgstr "            -i INI_DATEI : Benutze INI_DATEI als Konfig-Datei\n"
+
+msgid  "This is %s. Copyright (c) 1996-1998 by Robert Hîhne\n"
+msgstr "Dies ist %s. Alle Rechte bei Robert Hîhne, 1996-1998\n"
 
 msgid  "Do you really want to interrupt RHGDB?"
 msgstr "Mîchtest Du wirklich RHGDB unterbrechen?"
@@ -4342,8 +3147,56 @@ msgstr "Pfadliste fÅr Quelldateien"
 msgid  "~T~absize"
 msgstr "~T~abgrî·e"
 
+msgid  "  Char: "
+msgstr "  Zeichen: "
+
+msgid  " Decimal: "
+msgstr " Dezimal: "
+
 msgid  " Hex "
 msgstr " Hex "
+
+msgid  "ASCII Chart"
+msgstr "ASCII Diagramm"
+
+msgid  "January"
+msgstr "Januar"
+
+msgid  "February"
+msgstr "Februar"
+
+msgid  "March"
+msgstr "MÑrz"
+
+msgid  "April"
+msgstr "April"
+
+msgid  "June"
+msgstr "Juni"
+
+msgid  "July"
+msgstr "Juli"
+
+msgid  "August"
+msgstr "August"
+
+msgid  "September"
+msgstr "September"
+
+msgid  "October"
+msgstr "Oktober"
+
+msgid  "November"
+msgstr "November"
+
+msgid  "December"
+msgstr "Dezember"
+
+msgid  "Su Mo Tu We Th Fr Sa"
+msgstr "So Mo Di Mi Do Fr Sa"
+
+msgid  "Calendar"
+msgstr "Kalender"
 
 msgid  "Move"
 msgstr "Zug"

@@ -345,6 +345,9 @@ msgstr "Testet die Geschwindingkeit des Editors"
 msgid  "Clear Block"
 msgstr "Lîsche Block"
 
+msgid  "Clear selected rectangular block"
+msgstr "Lîscht den markierten rechteckigen Block"
+
 msgid  "Clea~r~ dependencies"
 msgstr "Lîsche die ~A~bhÑngigkeiten"
 
@@ -411,8 +414,14 @@ msgstr "EinverstÑndnis"
 msgid  "Control-Break Pressed"
 msgstr "Control-Pause wurde gedrÅckt"
 
+msgid  "Converting Projectfile : %s\n"
+msgstr "Konvertiere Projektdatei : %s\n"
+
 msgid  "Con~d~ition"
 msgstr "Bedingung"
+
+msgid  "Copy selected rectangular block"
+msgstr "Kopiert den markierten rechteckigen Block"
 
 msgid  "Copy the selected text to the Windows clipboard"
 msgstr "kopiert den ausgewÑhlten Text in die Windows-Zwischenablage"
@@ -422,6 +431,9 @@ msgstr "Alle Rechte bei Robert Hîhne, 1996"
 
 msgid  "Copyright (C) by Robert Hîhne, 1996-1998"
 msgstr "Alle Rechte bei Robert Hîhne, 1996-1998"
+
+msgid  "Copyright (C) by Robert Hîhne, 1996-2000"
+msgstr "Alle Rechte bei Robert Hîhne, 1996-2000"
 
 msgid  "Cop~y~ to Windows Clip."
 msgstr "Kopiere zur ~W~indows Zwischenablage"
@@ -505,6 +517,9 @@ msgstr "Er~z~euge die AbhÑngigkeiten"
 
 msgid  "Cross cursor"
 msgstr "Kreuzcursor"
+
+msgid  "Cut selected rectangular block"
+msgstr "Schneidet einen rechteckigen Block aus"
 
 msgid  "Cu~t~"
 msgstr "~A~usschneiden"
@@ -640,6 +655,9 @@ msgstr "Ende von SDG"
 
 msgid  "End of SLP"
 msgstr "Ende von SLP"
+
+msgid  "End selecting rectangular block"
+msgstr "Beendet die Selektion eines rechteckigen Blockes"
 
 msgid  "English"
 msgstr "Deutsch"
@@ -921,6 +939,9 @@ msgstr "Verstecke '*~N~ode' Wort"
 msgid  "Hide real ~l~ink name"
 msgstr "Verstecke den richtigen ~L~ink-Name"
 
+msgid  "Hide selected rectangular block"
+msgstr "Verbirgt den markierten rechteckigen Block"
+
 msgid  "Highlight"
 msgstr "Hervorgehoben"
 
@@ -1185,6 +1206,9 @@ msgstr "Zug"
 msgid  "Move Block"
 msgstr "Verschiebe Block"
 
+msgid  "Move selected rectangular block"
+msgstr "Verschiebt den markierten rechteckigen Block"
+
 msgid  "Name of the main function"
 msgstr "Name der 'main'-Funktion"
 
@@ -1332,6 +1356,9 @@ msgstr "Pascal-spezifische Optionen"
 msgid  "Paste from ~W~indows Clipboard"
 msgstr "Kopiere ~v~on der Windows Zwischenablage"
 
+msgid  "Paste selected rectangular block"
+msgstr "FÅgt einen rechteckigen Block ein"
+
 msgid  "Paste text from the Windows clipboard"
 msgstr "fÅgt Text aus der Windows-Zwischenablage ein"
 
@@ -1349,6 +1376,9 @@ msgstr "Pa~s~cal Stil"
 
 msgid  "Please wait"
 msgstr "Bitte warten"
+
+msgid  "Pocket Calculator"
+msgstr "Taschenrechner"
 
 msgid  "Powerful builtin calculator"
 msgstr "LeistungsfÑhiger eingebauter Rechner"
@@ -1503,6 +1533,9 @@ msgstr "Lade Optionen aus Projekt"
 
 msgid  "Read words from file"
 msgstr "Lese Wîrter aus Datei"
+
+msgid  "Recta~n~gle"
+msgstr "Re~c~hteck"
 
 msgid  "Refresh desk~t~op"
 msgstr "Desk~t~op erneuern"
@@ -1736,6 +1769,9 @@ msgstr "Geschwindigkeit: %f Zeilen/Sekunde"
 msgid  "Standard Include Directories"
 msgstr "Standard Include-Verzeichnisse"
 
+msgid  "Start selecting rectangular block"
+msgstr "Startet die Selektion eines rechteckigen Blockes"
+
 msgid  "Start the FSDB debugger"
 msgstr "Started den debugger FSDB"
 
@@ -1799,6 +1835,9 @@ msgstr "UntermenÅ zum Debuggen Deines Programmes"
 
 msgid  "Submenu for handling with macros"
 msgstr "Untermenu zu den Makrofunctionen"
+
+msgid  "Submenu for handling with rectangular blocks"
+msgstr "UntermenÅ zur Behandlung rechteckiger Blîcke"
 
 msgid  "Submenu for handling your projects"
 msgstr "UntermenÅ zu den Projektfunktionen"
@@ -1928,6 +1967,9 @@ msgstr "Dies ist %s. Alle Rechte bei Robert Hîhne, 1996\n"
 
 msgid  "This is %s. Copyright (c) 1996-1998 by Robert Hîhne\n"
 msgstr "Dies ist %s. Alle Rechte bei Robert Hîhne, 1996-1998\n"
+
+msgid  "This is %s. Copyright (c) 1996-2000 by Robert Hîhne\n"
+msgstr "Dies ist %s. Alle Rechte bei Robert Hîhne, 1996-2000\n"
 
 msgid  "This key is allready in use, do you want to replace it?"
 msgstr "Diese Taste ist schon benutzt, mîchtest Du sie ersetzen?"
@@ -2691,6 +2733,9 @@ msgstr "benutzerdef. Wîrter"
 msgid  "using %s as temp directory\n"
 msgstr "benutze %s als temporÑres Verzeichnis\n"
 
+msgid  "warning: temporary file %s deleted\n"
+msgstr "Warnung: TemporÑre Datei %s wurde gelîscht\n"
+
 msgid  "with Turbo Vision interface"
 msgstr "mit Turbo Vision Schnittstelle"
 
@@ -2888,6 +2933,9 @@ msgstr "~D~ollar Tags"
 
 msgid  "~D~on't move the cursor on Paste"
 msgstr "Bewege nicht den Cursor bei Paste"
+
+msgid  "~D~on`t show exit code"
+msgstr "~K~einen Beendigungswert zeigen"
 
 msgid  "~ESC~ Close"
 msgstr "~ESC~ Schlie·en"
@@ -3374,6 +3422,9 @@ msgstr "~B~is, LÑnge"
 
 msgid  "~T~race into"
 msgstr "~E~inzelne Anweisung"
+
+msgid  "~T~ry"
+msgstr "~V~ersuch"
 
 msgid  "~T~ry to use normal search"
 msgstr "~V~ersuche normale Suche"

@@ -289,8 +289,8 @@ SOURCE_NAME=$<
 OUTFILE=$@
 SPECIAL_CFLAGS=
 SPECIAL_LDFLAGS=
-PROG_ARGS=-directory s:/rho/rhide -cat s:/rho/rhide/po/de.cat -ocat de.cat\
-	$(RHIDESRC)/po/de.po de.po -po potfiles.po de.poo
+PROG_ARGS=-directory s:/rho/rhide -cat s:/rho/rhide/po/de.cat -ocat __cat__\
+	$(RHIDESRC)/po/de.po -po potfiles.po -o __po__
 SRC_DIRS=$(RHIDESRC) $(RHIDESRC)/po
 WUC=
 EDITORS=

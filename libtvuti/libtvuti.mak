@@ -409,16 +409,16 @@ libtvuti.a:: $(DEPS_0)
 DEPS_1=bigmessa.cc libtvuti.h tvutilfu.h
 bigmessa.o:: $(DEPS_1)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_2=cmd.cc rhutils.h libtvuti.h tvutilfu.h
+DEPS_2=cmd.cc libtvuti.h rhutils.h tvutilfu.h
 cmd.o:: $(DEPS_2)
 	$(RHIDE_COMPILE.cc.o)
 DEPS_3=commands.cc libtvuti.h tvutilco.h tvutilfu.h
 commands.o:: $(DEPS_3)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_4=editdirl.cc rhutils.h libtvuti.h tdirlist.h tvutilfu.h
+DEPS_4=editdirl.cc libtvuti.h rhutils.h tdirlist.h tvutilfu.h
 editdirl.o:: $(DEPS_4)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_5=editpara.cc rhutils.h libtvuti.h tparamli.h tvutilfu.h
+DEPS_5=editpara.cc libtvuti.h rhutils.h tparamli.h tvutilfu.h
 editpara.o:: $(DEPS_5)
 	$(RHIDE_COMPILE.cc.o)
 DEPS_6=execdial.cc libtvuti.h tvutilfu.h
@@ -430,7 +430,7 @@ history.o:: $(DEPS_7)
 DEPS_8=ihistory.cc libtvuti.h tvutilfu.h
 ihistory.o:: $(DEPS_8)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_9=msgrec.cc rhutils.h libtvuti.h msgrec.h
+DEPS_9=msgrec.cc libtvuti.h msgrec.h rhutils.h
 msgrec.o:: $(DEPS_9)
 	$(RHIDE_COMPILE.cc.o)
 DEPS_10=
@@ -446,7 +446,7 @@ stream/stream.gpr.force:
 DEPS_12=tcheckdi.cc libtvuti.h tcheckdi.h
 tcheckdi.o:: $(DEPS_12)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_13=tdirlist.cc rhutils.h libtvuti.h tdirlist.h
+DEPS_13=tdirlist.cc libtvuti.h rhutils.h tdirlist.h
 tdirlist.o:: $(DEPS_13)
 	$(RHIDE_COMPILE.cc.o)
 DEPS_14=tenterch.cc libtvuti.h tenterch.h tvutilco.h
@@ -476,21 +476,21 @@ tmemstrm.o:: $(DEPS_21)
 DEPS_22=tmsgcoll.cc libtvuti.h msgrec.h tmsgcoll.h
 tmsgcoll.o:: $(DEPS_22)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_23=tmsglist.cc rhutils.h libtvuti.h msgrec.h tenterli.h tmsgcoll.h\
+DEPS_23=tmsglist.cc libtvuti.h msgrec.h rhutils.h tenterli.h tmsgcoll.h\
 	tmsglist.h tvutilco.h
 tmsglist.o:: $(DEPS_23)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_24=tparamli.cc rhutils.h libtvuti.h tparamli.h
+DEPS_24=tparamli.cc libtvuti.h rhutils.h tparamli.h
 tparamli.o:: $(DEPS_24)
 	$(RHIDE_COMPILE.cc.o)
 DEPS_25=tscollec.cc libtvuti.h tscollec.h
 tscollec.o:: $(DEPS_25)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_26=twindowl.cc rhutils.h libtvuti.h tenterli.h tscollec.h tvutilco.h\
+DEPS_26=twindowl.cc libtvuti.h rhutils.h tenterli.h tscollec.h tvutilco.h\
 	twindowl.h
 twindowl.o:: $(DEPS_26)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_27=windowli.cc rhutils.h libtvuti.h tenterli.h tmemstrm.h tscollec.h\
+DEPS_27=windowli.cc libtvuti.h rhutils.h tenterli.h tmemstrm.h tscollec.h\
 	tvutilco.h tvutilfu.h twindowl.h
 windowli.o:: $(DEPS_27)
 	$(RHIDE_COMPILE.cc.o)

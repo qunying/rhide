@@ -283,14 +283,14 @@ LD_EXTRA_FLAGS=
 C_EXTRA_FLAGS=-DFOR_LIBSET
 LOCAL_OPT=$(subst ___~~~___, ,$(subst $(notdir $<)___,,$(filter $(notdir\
 	$<)___%,$(LOCAL_OPTIONS))))
-OBJFILES=nodebobj/abstorel.o nodebobj/gpr2mak.o nodebobj/idedefau.o\
-	nodebobj/ideenv.o nodebobj/ideflags.o nodebobj/idemak.o\
-	nodebobj/idespec.o nodebobj/idestrm.o nodebobj/idesupp.o\
-	nodebobj/ideutil.o nodebobj/ideversi.o
-ALL_OBJFILES=nodebobj/abstorel.o nodebobj/gpr2mak.o nodebobj/idedefau.o\
-	nodebobj/ideenv.o nodebobj/ideflags.o nodebobj/idemak.o\
-	nodebobj/idespec.o nodebobj/idestrm.o nodebobj/idesupp.o\
-	nodebobj/ideutil.o nodebobj/ideversi.o
+OBJFILES=nodebobj/gpr2mak.o nodebobj/idedefau.o nodebobj/ideenv.o\
+	nodebobj/ideflags.o nodebobj/idemak.o nodebobj/idespec.o\
+	nodebobj/idestrm.o nodebobj/idesupp.o nodebobj/ideutil.o\
+	nodebobj/ideversi.o
+ALL_OBJFILES=nodebobj/gpr2mak.o nodebobj/idedefau.o nodebobj/ideenv.o\
+	nodebobj/ideflags.o nodebobj/idemak.o nodebobj/idespec.o\
+	nodebobj/idestrm.o nodebobj/idesupp.o nodebobj/ideutil.o\
+	nodebobj/ideversi.o
 LIBRARIES=
 SOURCE_NAME=$<
 OUTFILE=$@
@@ -310,8 +310,8 @@ endif
 endif
 
 MAIN_TARGET=gpr2mak.exe
-PROJECT_ITEMS=abstorel.cc gpr2mak.cc idedefau.cc ideenv.cc ideflags.cc\
-	idemak.cc idespec.cc idestrm.cc idesupp.cc ideutil.cc ideversi.cc\
+PROJECT_ITEMS=gpr2mak.cc idedefau.cc ideenv.cc ideflags.cc idemak.cc\
+	idespec.cc idestrm.cc idesupp.cc ideutil.cc ideversi.cc\
 	libide/libide.gpr librhuti/librhuti.gpr libtvuti/libtvuti.gpr
 DEFAULT_MASK=*.[cghspm]*
 RHIDE_BIN_DIR=c:/obj/rhide
@@ -391,19 +391,16 @@ PASCAL_TYPE=GPC
 %.s: %.C
 	$(RHIDE_COMPILE.C.s)
 all::
-DEPS_0= nodebobj/abstorel.o nodebobj/gpr2mak.o nodebobj/idedefau.o\
-	nodebobj/ideenv.o nodebobj/ideflags.o nodebobj/idemak.o\
-	nodebobj/idespec.o nodebobj/idestrm.o nodebobj/idesupp.o\
-	nodebobj/ideutil.o nodebobj/ideversi.o libide/libide.a\
-	librhuti/librhuti.a libtvuti/libtvuti.a
+DEPS_0= nodebobj/gpr2mak.o nodebobj/idedefau.o nodebobj/ideenv.o\
+	nodebobj/ideflags.o nodebobj/idemak.o nodebobj/idespec.o\
+	nodebobj/idestrm.o nodebobj/idesupp.o nodebobj/ideutil.o\
+	nodebobj/ideversi.o libide/libide.a librhuti/librhuti.a\
+	libtvuti/libtvuti.a
 NO_LINK=libide/libide.a librhuti/librhuti.a libtvuti/libtvuti.a
 LINK_FILES=$(filter-out $(NO_LINK),$(DEPS_0))
 gpr2mak.exe:: $(DEPS_0)
 	$(RHIDE_COMPILE_LINK)
-DEPS_1=abstorel.cc $(RHIDESRC)/librhuti/rhutils.h
-nodebobj/abstorel.o:: $(DEPS_1)
-	$(RHIDE_COMPILE.cc.o)
-DEPS_2=gpr2mak.cc $(RHIDESRC)/include/rhide.h\
+DEPS_1=gpr2mak.cc $(RHIDESRC)/include/rhide.h\
 	$(RHIDESRC)/libide/include/ideenums.h\
 	$(RHIDESRC)/libide/include/libide.h\
 	$(RHIDESRC)/libide/include/tdepende.h\
@@ -411,9 +408,9 @@ DEPS_2=gpr2mak.cc $(RHIDESRC)/include/rhide.h\
 	$(RHIDESRC)/libide/include/toptions.h\
 	$(RHIDESRC)/libide/include/tproject.h\
 	$(RHIDESRC)/librhuti/rhutils.h
-nodebobj/gpr2mak.o:: $(DEPS_2)
+nodebobj/gpr2mak.o:: $(DEPS_1)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_3=idedefau.cc $(RHIDESRC)/include/flags/ada_opt.h\
+DEPS_2=idedefau.cc $(RHIDESRC)/include/flags/ada_opt.h\
 	$(RHIDESRC)/include/flags/c_opt.h\
 	$(RHIDESRC)/include/flags/cxx_opt.h\
 	$(RHIDESRC)/include/flags/deb_opt.h\
@@ -433,12 +430,12 @@ DEPS_3=idedefau.cc $(RHIDESRC)/include/flags/ada_opt.h\
 	$(RHIDESRC)/libide/include/tfname.h\
 	$(RHIDESRC)/libide/include/toptions.h\
 	$(RHIDESRC)/libide/include/tproject.h
-nodebobj/idedefau.o:: $(DEPS_3)
+nodebobj/idedefau.o:: $(DEPS_2)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_4=ideenv.cc $(RHIDESRC)/include/rhide.h $(RHIDESRC)/librhuti/rhutils.h
-nodebobj/ideenv.o:: $(DEPS_4)
+DEPS_3=ideenv.cc $(RHIDESRC)/include/rhide.h $(RHIDESRC)/librhuti/rhutils.h
+nodebobj/ideenv.o:: $(DEPS_3)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_5=ideflags.cc $(RHIDESRC)/include/rhide.h\
+DEPS_4=ideflags.cc $(RHIDESRC)/include/rhide.h\
 	$(RHIDESRC)/libide/include/ideenums.h\
 	$(RHIDESRC)/libide/include/libide.h\
 	$(RHIDESRC)/libide/include/tdepende.h\
@@ -452,9 +449,9 @@ DEPS_5=ideflags.cc $(RHIDESRC)/include/rhide.h\
 	$(RHIDESRC)/libtvuti/include/tdirlist.h\
 	$(RHIDESRC)/libtvuti/include/tparamli.h\
 	$(RHIDESRC)/libtvuti/include/tscollec.h
-nodebobj/ideflags.o:: $(DEPS_5)
+nodebobj/ideflags.o:: $(DEPS_4)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_6=idemak.cc $(RHIDESRC)/include/rhide.h\
+DEPS_5=idemak.cc $(RHIDESRC)/include/rhide.h\
 	$(RHIDESRC)/libide/include/ideenums.h\
 	$(RHIDESRC)/libide/include/libide.h\
 	$(RHIDESRC)/libide/include/tdepende.h\
@@ -466,9 +463,9 @@ DEPS_6=idemak.cc $(RHIDESRC)/include/rhide.h\
 	$(RHIDESRC)/libtvuti/include/tdirlist.h\
 	$(RHIDESRC)/libtvuti/include/tparamli.h\
 	$(RHIDESRC)/libtvuti/include/tscollec.h
-nodebobj/idemak.o:: $(DEPS_6)
+nodebobj/idemak.o:: $(DEPS_5)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_7=idespec.cc $(RHIDESRC)/include/rhide.h\
+DEPS_6=idespec.cc $(RHIDESRC)/include/rhide.h\
 	$(RHIDESRC)/include/rhidehis.h\
 	$(RHIDESRC)/libide/include/idecomma.h\
 	$(RHIDESRC)/libide/include/ideenums.h\
@@ -487,16 +484,16 @@ DEPS_7=idespec.cc $(RHIDESRC)/include/rhide.h\
 	$(RHIDESRC)/libtvuti/include/tscollec.h\
 	$(RHIDESRC)/libtvuti/include/tvutilfu.h\
 	$(RHIDESRC)/libtvuti/include/twindowl.h
-nodebobj/idespec.o:: $(DEPS_7)
+nodebobj/idespec.o:: $(DEPS_6)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_8=idestrm.cc
-nodebobj/idestrm.o:: $(DEPS_8)
+DEPS_7=idestrm.cc
+nodebobj/idestrm.o:: $(DEPS_7)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_9=idesupp.cc $(RHIDESRC)/include/rhide.h\
+DEPS_8=idesupp.cc $(RHIDESRC)/include/rhide.h\
 	$(RHIDESRC)/librhuti/rhutils.h
-nodebobj/idesupp.o:: $(DEPS_9)
+nodebobj/idesupp.o:: $(DEPS_8)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_10=ideutil.cc $(RHIDESRC)/include/rhide.h\
+DEPS_9=ideutil.cc $(RHIDESRC)/include/rhide.h\
 	$(RHIDESRC)/libide/include/ideenums.h\
 	$(RHIDESRC)/libide/include/idefunct.h\
 	$(RHIDESRC)/libide/include/libide.h\
@@ -508,22 +505,22 @@ DEPS_10=ideutil.cc $(RHIDESRC)/include/rhide.h\
 	$(RHIDESRC)/libtvuti/include/libtvuti.h\
 	$(RHIDESRC)/libtvuti/include/tdirlist.h\
 	$(RHIDESRC)/libtvuti/include/tvutilfu.h
-nodebobj/ideutil.o:: $(DEPS_10)
+nodebobj/ideutil.o:: $(DEPS_9)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_11=ideversi.cc
-nodebobj/ideversi.o:: $(DEPS_11)
+DEPS_10=ideversi.cc
+nodebobj/ideversi.o:: $(DEPS_10)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_12=
+DEPS_11=
 .PHONY: libide/libide.gpr.force
 all:: libide/libide.gpr.force
 libide/libide.gpr.force:
 	$(MAKE) -C libide/ -f libide.mak
-DEPS_13=
+DEPS_12=
 .PHONY: librhuti/librhuti.gpr.force
 all:: librhuti/librhuti.gpr.force
 librhuti/librhuti.gpr.force:
 	$(MAKE) -C librhuti/ -f librhuti.mak
-DEPS_14=
+DEPS_13=
 .PHONY: libtvuti/libtvuti.gpr.force
 all:: libtvuti/libtvuti.gpr.force
 libtvuti/libtvuti.gpr.force:

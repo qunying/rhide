@@ -8,7 +8,8 @@ project=librhuti
 
 po_files=\
 	back2sl.cc basename.cc expvar.cc fexpand.cc specs.cc splitfn.cc\
-	stricat.cc stridown.cc stridup.cc strifree.cc fixpath.cc io.cc
+	stricat.cc stridown.cc stridup.cc strifree.cc fixpath.cc io.cc\
+	abstorel.cc
 src_files=$(po_files) Makefile makefile.src librhuti.gpr librhuti.mak \
 	rhutils.h rhide.env rhide.var COPYING.RHU
 cfg_files=

@@ -264,10 +264,10 @@ LD_EXTRA_FLAGS=
 C_EXTRA_FLAGS=
 LOCAL_OPT=$(subst ___~~~___, ,$(subst $(notdir $<)___,,$(filter $(notdir\
 	$<)___%,$(LOCAL_OPTIONS))))
-OBJFILES=back2sl.o basename.o fexpand.o fixpath.o io.o specs.o splitfn.o\
-	stricat.o stridown.o stridup.o strifree.o
-ALL_OBJFILES=back2sl.o basename.o fexpand.o fixpath.o io.o specs.o\
+OBJFILES=abstorel.o back2sl.o basename.o fexpand.o fixpath.o io.o specs.o\
 	splitfn.o stricat.o stridown.o stridup.o strifree.o
+ALL_OBJFILES=abstorel.o back2sl.o basename.o fexpand.o fixpath.o io.o\
+	specs.o splitfn.o stricat.o stridown.o stridup.o strifree.o
 LIBRARIES=
 SOURCE_NAME=$<
 OUTFILE=$@
@@ -287,8 +287,9 @@ endif
 endif
 
 MAIN_TARGET=librhuti.a
-PROJECT_ITEMS=back2sl.cc basename.cc fexpand.cc fixpath.cc io.cc specs.cc\
-	splitfn.cc stricat.cc stridown.cc stridup.cc strifree.cc
+PROJECT_ITEMS=abstorel.cc back2sl.cc basename.cc fexpand.cc fixpath.cc\
+	io.cc specs.cc splitfn.cc stricat.cc stridown.cc stridup.cc\
+	strifree.cc
 DEFAULT_MASK=*.[chs]*
 RHIDE_BIN_DIR=c:/obj/rhide
 PASCAL_TYPE=GPC
@@ -367,43 +368,46 @@ PASCAL_TYPE=GPC
 %.s: %.C
 	$(RHIDE_COMPILE.C.s)
 all::
-DEPS_0= back2sl.o basename.o fexpand.o fixpath.o io.o specs.o splitfn.o\
-	stricat.o stridown.o stridup.o strifree.o 
+DEPS_0= abstorel.o back2sl.o basename.o fexpand.o fixpath.o io.o specs.o\
+	splitfn.o stricat.o stridown.o stridup.o strifree.o 
 NO_LINK=
 LINK_FILES=$(filter-out $(NO_LINK),$(DEPS_0))
 librhuti.a:: $(DEPS_0)
 	$(RHIDE_COMPILE_ARCHIVE)
-DEPS_1=back2sl.cc $(RHIDESRC)/librhuti/rhutils.h
-back2sl.o:: $(DEPS_1)
+DEPS_1=abstorel.cc $(RHIDESRC)/librhuti/rhutils.h
+abstorel.o:: $(DEPS_1)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_2=basename.cc $(RHIDESRC)/librhuti/rhutils.h
-basename.o:: $(DEPS_2)
+DEPS_2=back2sl.cc $(RHIDESRC)/librhuti/rhutils.h
+back2sl.o:: $(DEPS_2)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_3=fexpand.cc $(RHIDESRC)/librhuti/rhutils.h
-fexpand.o:: $(DEPS_3)
+DEPS_3=basename.cc $(RHIDESRC)/librhuti/rhutils.h
+basename.o:: $(DEPS_3)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_4=fixpath.cc
-fixpath.o:: $(DEPS_4)
+DEPS_4=fexpand.cc $(RHIDESRC)/librhuti/rhutils.h
+fexpand.o:: $(DEPS_4)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_5=io.cc $(RHIDESRC)/librhuti/rhutils.h
-io.o:: $(DEPS_5)
+DEPS_5=fixpath.cc
+fixpath.o:: $(DEPS_5)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_6=specs.cc $(RHIDESRC)/librhuti/rhutils.h
-specs.o:: $(DEPS_6)
+DEPS_6=io.cc $(RHIDESRC)/librhuti/rhutils.h
+io.o:: $(DEPS_6)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_7=splitfn.cc $(RHIDESRC)/librhuti/rhutils.h
-splitfn.o:: $(DEPS_7)
+DEPS_7=specs.cc $(RHIDESRC)/librhuti/rhutils.h
+specs.o:: $(DEPS_7)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_8=stricat.cc $(RHIDESRC)/librhuti/rhutils.h
-stricat.o:: $(DEPS_8)
+DEPS_8=splitfn.cc $(RHIDESRC)/librhuti/rhutils.h
+splitfn.o:: $(DEPS_8)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_9=stridown.cc $(RHIDESRC)/librhuti/rhutils.h
-stridown.o:: $(DEPS_9)
+DEPS_9=stricat.cc $(RHIDESRC)/librhuti/rhutils.h
+stricat.o:: $(DEPS_9)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_10=stridup.cc $(RHIDESRC)/librhuti/rhutils.h
-stridup.o:: $(DEPS_10)
+DEPS_10=stridown.cc $(RHIDESRC)/librhuti/rhutils.h
+stridown.o:: $(DEPS_10)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_11=strifree.cc $(RHIDESRC)/librhuti/rhutils.h
-strifree.o:: $(DEPS_11)
+DEPS_11=stridup.cc $(RHIDESRC)/librhuti/rhutils.h
+stridup.o:: $(DEPS_11)
+	$(RHIDE_COMPILE.cc.o)
+DEPS_12=strifree.cc $(RHIDESRC)/librhuti/rhutils.h
+strifree.o:: $(DEPS_12)
 	$(RHIDE_COMPILE.cc.o)
 all:: librhuti.a

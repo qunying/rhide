@@ -174,6 +174,18 @@ void close_stderr_out(void);
    the application is responsible for deleting this file */
 char *unique_name(char *before,char *retval = (char *)0);
 
+
+/*
+  This functions makes ret_path relative to ref_path
+  It assumes that ref_path is an absolute path which can
+  optionally have a slash appended. When the files/directories
+  were total different, 0 is returned, otherwise 1.
+  If ref_path was completely inside ret subst != NULL, then the resulting
+  will be ret where ref_path is substituted by subst.
+*/
+
+int AbsToRelPath(char *ref_path,char * & ret, const char *subst = 0);
+
 #endif /* __rhutils_h */
 
 

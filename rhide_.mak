@@ -293,30 +293,28 @@ LD_EXTRA_FLAGS=
 C_EXTRA_FLAGS=-DRHIDE -DFOR_LIBSET
 LOCAL_OPT=$(subst ___~~~___, ,$(subst $(notdir $<)___,,$(filter $(notdir\
 	$<)___%,$(LOCAL_OPTIONS))))
-OBJFILES=nodebobj/abstorel.o nodebobj/commands.o nodebobj/fstrcmp.o\
-	nodebobj/ideapp.o nodebobj/idebug.o nodebobj/idecheck.o\
-	nodebobj/idecolor.o nodebobj/idecomp.o nodebobj/idedebug.o\
-	nodebobj/idedefau.o nodebobj/idedial.o nodebobj/ideenv.o\
-	nodebobj/ideexter.o nodebobj/ideflags.o nodebobj/idegcc.o\
-	nodebobj/idehelp.o nodebobj/idehints.o nodebobj/idemain.o\
-	nodebobj/idemak.o nodebobj/idemenu.o nodebobj/idemsg.o\
-	nodebobj/ideopt.o nodebobj/ideprj.o nodebobj/idercs.o\
-	nodebobj/idespec.o nodebobj/idestatu.o nodebobj/idestrm.o\
-	nodebobj/idesupp.o nodebobj/idesynta.o nodebobj/ideuser.o\
-	nodebobj/ideutil.o nodebobj/ideversi.o nodebobj/openedit.o\
-	nodebobj/rhassert.o
-ALL_OBJFILES=nodebobj/abstorel.o nodebobj/commands.o nodebobj/fstrcmp.o\
-	nodebobj/ideapp.o nodebobj/idebug.o nodebobj/idecheck.o\
-	nodebobj/idecolor.o nodebobj/idecomp.o nodebobj/idedebug.o\
-	nodebobj/idedefau.o nodebobj/idedial.o nodebobj/ideenv.o\
-	nodebobj/ideexter.o nodebobj/ideflags.o nodebobj/idegcc.o\
-	nodebobj/idehelp.o nodebobj/idehints.o nodebobj/idemain.o\
-	nodebobj/idemak.o nodebobj/idemenu.o nodebobj/idemsg.o\
-	nodebobj/ideopt.o nodebobj/ideprj.o nodebobj/idercs.o\
-	nodebobj/idespec.o nodebobj/idestatu.o nodebobj/idestrm.o\
-	nodebobj/idesupp.o nodebobj/idesynta.o nodebobj/ideuser.o\
-	nodebobj/ideutil.o nodebobj/ideversi.o nodebobj/openedit.o\
-	nodebobj/rhassert.o
+OBJFILES=nodebobj/commands.o nodebobj/fstrcmp.o nodebobj/ideapp.o\
+	nodebobj/idebug.o nodebobj/idecheck.o nodebobj/idecolor.o\
+	nodebobj/idecomp.o nodebobj/idedebug.o nodebobj/idedefau.o\
+	nodebobj/idedial.o nodebobj/ideenv.o nodebobj/ideexter.o\
+	nodebobj/ideflags.o nodebobj/idegcc.o nodebobj/idehelp.o\
+	nodebobj/idehints.o nodebobj/idemain.o nodebobj/idemak.o\
+	nodebobj/idemenu.o nodebobj/idemsg.o nodebobj/ideopt.o\
+	nodebobj/ideprj.o nodebobj/idercs.o nodebobj/idespec.o\
+	nodebobj/idestatu.o nodebobj/idestrm.o nodebobj/idesupp.o\
+	nodebobj/idesynta.o nodebobj/ideuser.o nodebobj/ideutil.o\
+	nodebobj/ideversi.o nodebobj/openedit.o nodebobj/rhassert.o
+ALL_OBJFILES=nodebobj/commands.o nodebobj/fstrcmp.o nodebobj/ideapp.o\
+	nodebobj/idebug.o nodebobj/idecheck.o nodebobj/idecolor.o\
+	nodebobj/idecomp.o nodebobj/idedebug.o nodebobj/idedefau.o\
+	nodebobj/idedial.o nodebobj/ideenv.o nodebobj/ideexter.o\
+	nodebobj/ideflags.o nodebobj/idegcc.o nodebobj/idehelp.o\
+	nodebobj/idehints.o nodebobj/idemain.o nodebobj/idemak.o\
+	nodebobj/idemenu.o nodebobj/idemsg.o nodebobj/ideopt.o\
+	nodebobj/ideprj.o nodebobj/idercs.o nodebobj/idespec.o\
+	nodebobj/idestatu.o nodebobj/idestrm.o nodebobj/idesupp.o\
+	nodebobj/idesynta.o nodebobj/ideuser.o nodebobj/ideutil.o\
+	nodebobj/ideversi.o nodebobj/openedit.o nodebobj/rhassert.o
 LIBRARIES=
 SOURCE_NAME=$<
 OUTFILE=$@
@@ -336,14 +334,13 @@ endif
 endif
 
 MAIN_TARGET=ide.exe
-PROJECT_ITEMS=abstorel.cc commands.cc fstrcmp.c ideapp.cc idebug.cc\
-	idecheck.cc idecolor.cc idecomp.cc idedebug.cc idedefau.cc\
-	idedial.cc ideenv.cc ideexter.cc ideflags.cc idegcc.cc idehelp.cc\
-	idehints.cc idemain.cc idemak.cc idemenu.cc idemsg.cc ideopt.cc\
-	ideprj.cc idercs.cc idespec.cc idestatu.cc idestrm.cc idesupp.cc\
-	idesynta.cc ideuser.cc ideutil.cc ideversi.cc libide/libide.gpr\
-	librhuti/librhuti.gpr libtvuti/libtvuti.gpr openedit.cc rhassert.c\
-	tvdemo/libtvdem.gpr
+PROJECT_ITEMS=commands.cc fstrcmp.c ideapp.cc idebug.cc idecheck.cc\
+	idecolor.cc idecomp.cc idedebug.cc idedefau.cc idedial.cc ideenv.cc\
+	ideexter.cc ideflags.cc idegcc.cc idehelp.cc idehints.cc idemain.cc\
+	idemak.cc idemenu.cc idemsg.cc ideopt.cc ideprj.cc idercs.cc\
+	idespec.cc idestatu.cc idestrm.cc idesupp.cc idesynta.cc ideuser.cc\
+	ideutil.cc ideversi.cc libide/libide.gpr librhuti/librhuti.gpr\
+	libtvuti/libtvuti.gpr openedit.cc rhassert.c tvdemo/libtvdem.gpr
 DEFAULT_MASK=*.[acghmops]*
 RHIDE_BIN_DIR=c:/obj/rhide
 PASCAL_TYPE=GPC
@@ -422,38 +419,35 @@ PASCAL_TYPE=GPC
 %.s: %.C
 	$(RHIDE_COMPILE.C.s)
 all::
-DEPS_0= nodebobj/abstorel.o nodebobj/commands.o nodebobj/fstrcmp.o\
-	nodebobj/ideapp.o nodebobj/idebug.o nodebobj/idecheck.o\
-	nodebobj/idecolor.o nodebobj/idecomp.o nodebobj/idedebug.o\
-	nodebobj/idedefau.o nodebobj/idedial.o nodebobj/ideenv.o\
-	nodebobj/ideexter.o nodebobj/ideflags.o nodebobj/idegcc.o\
-	nodebobj/idehelp.o nodebobj/idehints.o nodebobj/idemain.o\
-	nodebobj/idemak.o nodebobj/idemenu.o nodebobj/idemsg.o\
-	nodebobj/ideopt.o nodebobj/ideprj.o nodebobj/idercs.o\
-	nodebobj/idespec.o nodebobj/idestatu.o nodebobj/idestrm.o\
-	nodebobj/idesupp.o nodebobj/idesynta.o nodebobj/ideuser.o\
-	nodebobj/ideutil.o nodebobj/ideversi.o nodebobj/openedit.o\
-	nodebobj/rhassert.o libide/libide.a librhuti/librhuti.a\
-	libtvuti/libtvuti.a tvdemo/libtvdem.a
+DEPS_0= nodebobj/commands.o nodebobj/fstrcmp.o nodebobj/ideapp.o\
+	nodebobj/idebug.o nodebobj/idecheck.o nodebobj/idecolor.o\
+	nodebobj/idecomp.o nodebobj/idedebug.o nodebobj/idedefau.o\
+	nodebobj/idedial.o nodebobj/ideenv.o nodebobj/ideexter.o\
+	nodebobj/ideflags.o nodebobj/idegcc.o nodebobj/idehelp.o\
+	nodebobj/idehints.o nodebobj/idemain.o nodebobj/idemak.o\
+	nodebobj/idemenu.o nodebobj/idemsg.o nodebobj/ideopt.o\
+	nodebobj/ideprj.o nodebobj/idercs.o nodebobj/idespec.o\
+	nodebobj/idestatu.o nodebobj/idestrm.o nodebobj/idesupp.o\
+	nodebobj/idesynta.o nodebobj/ideuser.o nodebobj/ideutil.o\
+	nodebobj/ideversi.o nodebobj/openedit.o nodebobj/rhassert.o\
+	libide/libide.a librhuti/librhuti.a libtvuti/libtvuti.a\
+	tvdemo/libtvdem.a
 NO_LINK=libide/libide.a librhuti/librhuti.a libtvuti/libtvuti.a\
 	tvdemo/libtvdem.a
 LINK_FILES=$(filter-out $(NO_LINK),$(DEPS_0))
 ide.exe:: $(DEPS_0)
 	$(RHIDE_COMPILE_LINK)
-DEPS_1=abstorel.cc $(RHIDESRC)/librhuti/rhutils.h
-nodebobj/abstorel.o:: $(DEPS_1)
-	$(RHIDE_COMPILE.cc.o)
-DEPS_2=commands.cc $(SETSRC)/include/ced_coma.h $(SETSRC)/include/ceditor.h\
+DEPS_1=commands.cc $(SETSRC)/include/ced_coma.h $(SETSRC)/include/ceditor.h\
 	$(SETSRC)/settvuti/include/settvuti.h\
 	$(RHIDESRC)/include/ideconst.h $(RHIDESRC)/include/rhide.h\
 	$(RHIDESRC)/libtvuti/include/libtvuti.h\
 	$(RHIDESRC)/libtvuti/include/tvutilfu.h
-nodebobj/commands.o:: $(DEPS_2)
+nodebobj/commands.o:: $(DEPS_1)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_3=fstrcmp.c
-nodebobj/fstrcmp.o:: $(DEPS_3)
+DEPS_2=fstrcmp.c
+nodebobj/fstrcmp.o:: $(DEPS_2)
 	$(RHIDE_COMPILE.c.o)
-DEPS_4=ideapp.cc $(SETSRC)/include/ced_clas.h $(SETSRC)/include/ced_coma.h\
+DEPS_3=ideapp.cc $(SETSRC)/include/ced_clas.h $(SETSRC)/include/ced_coma.h\
 	$(SETSRC)/include/ced_exte.h $(SETSRC)/include/ceditor.h\
 	$(SETSRC)/include/pmcoll.h $(SETSRC)/include/sindicat.h\
 	$(SETSRC)/include/tvsetuti.h $(SETSRC)/settvuti/include/sarray.h\
@@ -470,18 +464,18 @@ DEPS_4=ideapp.cc $(SETSRC)/include/ced_clas.h $(SETSRC)/include/ced_coma.h\
 	$(RHIDESRC)/librhuti/rhutils.h\
 	$(RHIDESRC)/libtvuti/include/libtvuti.h\
 	$(RHIDESRC)/libtvuti/include/tvutilfu.h $(RHIDESRC)/pal.c
-nodebobj/ideapp.o:: $(DEPS_4)
+nodebobj/ideapp.o:: $(DEPS_3)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_5=idebug.cc $(RHIDESRC)/include/rhide.h $(RHIDESRC)/librhuti/rhutils.h
-nodebobj/idebug.o:: $(DEPS_5)
+DEPS_4=idebug.cc $(RHIDESRC)/include/rhide.h $(RHIDESRC)/librhuti/rhutils.h
+nodebobj/idebug.o:: $(DEPS_4)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_6=idecheck.cc $(RHIDESRC)/include/rhide.h\
+DEPS_5=idecheck.cc $(RHIDESRC)/include/rhide.h\
 	$(RHIDESRC)/librhuti/rhutils.h\
 	$(RHIDESRC)/libtvuti/include/libtvuti.h\
 	$(RHIDESRC)/libtvuti/include/tvutilfu.h
-nodebobj/idecheck.o:: $(DEPS_6)
+nodebobj/idecheck.o:: $(DEPS_5)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_7=idecolor.cc $(SETSRC)/include/ced_clas.h\
+DEPS_6=idecolor.cc $(SETSRC)/include/ced_clas.h\
 	$(SETSRC)/include/ced_exte.h $(SETSRC)/include/ceditor.h\
 	$(SETSRC)/include/pmcoll.h $(SETSRC)/include/sindicat.h\
 	$(SETSRC)/include/tvsetuti.h $(SETSRC)/settvuti/include/sarray.h\
@@ -491,9 +485,9 @@ DEPS_7=idecolor.cc $(SETSRC)/include/ced_clas.h\
 	$(SETSRC)/settvuti/include/viewplus.h $(RHIDESRC)/include/rhide.h\
 	$(RHIDESRC)/libide/include/libide.h\
 	$(RHIDESRC)/libide/include/tidefile.h $(RHIDESRC)/pal.c
-nodebobj/idecolor.o:: $(DEPS_7)
+nodebobj/idecolor.o:: $(DEPS_6)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_8=idecomp.cc $(RHIDESRC)/include/rhide.h\
+DEPS_7=idecomp.cc $(RHIDESRC)/include/rhide.h\
 	$(RHIDESRC)/libide/include/ideenums.h\
 	$(RHIDESRC)/libide/include/idefunct.h\
 	$(RHIDESRC)/libide/include/libide.h\
@@ -510,9 +504,9 @@ DEPS_8=idecomp.cc $(RHIDESRC)/include/rhide.h\
 	$(RHIDESRC)/libtvuti/include/tmsglist.h\
 	$(RHIDESRC)/libtvuti/include/tscollec.h\
 	$(RHIDESRC)/libtvuti/include/tvutilfu.h
-nodebobj/idecomp.o:: $(DEPS_8)
+nodebobj/idecomp.o:: $(DEPS_7)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_9=idedebug.cc $(SETSRC)/include/ced_clas.h\
+DEPS_8=idedebug.cc $(SETSRC)/include/ced_clas.h\
 	$(SETSRC)/include/ced_exte.h $(SETSRC)/include/ceditor.h\
 	$(SETSRC)/include/pmcoll.h $(SETSRC)/include/sindicat.h\
 	$(SETSRC)/include/tvsetuti.h $(SETSRC)/settvuti/include/sarray.h\
@@ -538,9 +532,9 @@ DEPS_9=idedebug.cc $(SETSRC)/include/ced_clas.h\
 	$(RHIDESRC)/libtvuti/include/tparamli.h\
 	$(RHIDESRC)/libtvuti/include/tscollec.h\
 	$(RHIDESRC)/libtvuti/include/tvutilfu.h
-nodebobj/idedebug.o:: $(DEPS_9)
+nodebobj/idedebug.o:: $(DEPS_8)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_10=idedefau.cc $(RHIDESRC)/include/flags/ada_opt.h\
+DEPS_9=idedefau.cc $(RHIDESRC)/include/flags/ada_opt.h\
 	$(RHIDESRC)/include/flags/c_opt.h\
 	$(RHIDESRC)/include/flags/cxx_opt.h\
 	$(RHIDESRC)/include/flags/deb_opt.h\
@@ -560,9 +554,9 @@ DEPS_10=idedefau.cc $(RHIDESRC)/include/flags/ada_opt.h\
 	$(RHIDESRC)/libide/include/tfname.h\
 	$(RHIDESRC)/libide/include/toptions.h\
 	$(RHIDESRC)/libide/include/tproject.h
-nodebobj/idedefau.o:: $(DEPS_10)
+nodebobj/idedefau.o:: $(DEPS_9)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_11=idedial.cc $(SETSRC)/calcu/calcu.h $(SETSRC)/include/ced_coma.h\
+DEPS_10=idedial.cc $(SETSRC)/calcu/calcu.h $(SETSRC)/include/ced_coma.h\
 	$(SETSRC)/include/ced_exte.h $(SETSRC)/include/ceditor.h\
 	$(SETSRC)/setedit/include/editcoma.h\
 	$(SETSRC)/settvuti/include/edhists.h\
@@ -581,13 +575,13 @@ DEPS_11=idedial.cc $(SETSRC)/calcu/calcu.h $(SETSRC)/include/ced_coma.h\
 	$(RHIDESRC)/libtvuti/include/libtvuti.h\
 	$(RHIDESRC)/libtvuti/include/tlbutton.h\
 	$(RHIDESRC)/libtvuti/include/tvutilfu.h
-nodebobj/idedial.o:: $(DEPS_11)
+nodebobj/idedial.o:: $(DEPS_10)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_12=ideenv.cc $(RHIDESRC)/include/rhide.h\
+DEPS_11=ideenv.cc $(RHIDESRC)/include/rhide.h\
 	$(RHIDESRC)/librhuti/rhutils.h
-nodebobj/ideenv.o:: $(DEPS_12)
+nodebobj/ideenv.o:: $(DEPS_11)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_13=ideexter.cc $(RHIDESRC)/include/rhide.h\
+DEPS_12=ideexter.cc $(RHIDESRC)/include/rhide.h\
 	$(RHIDESRC)/include/rhidehis.h\
 	$(RHIDESRC)/libide/include/ideenums.h\
 	$(RHIDESRC)/libide/include/libide.h\
@@ -602,9 +596,9 @@ DEPS_13=ideexter.cc $(RHIDESRC)/include/rhide.h\
 	$(RHIDESRC)/libtvuti/include/tmsgcoll.h\
 	$(RHIDESRC)/libtvuti/include/tparamli.h\
 	$(RHIDESRC)/libtvuti/include/tscollec.h
-nodebobj/ideexter.o:: $(DEPS_13)
+nodebobj/ideexter.o:: $(DEPS_12)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_14=ideflags.cc $(RHIDESRC)/include/rhide.h\
+DEPS_13=ideflags.cc $(RHIDESRC)/include/rhide.h\
 	$(RHIDESRC)/libide/include/ideenums.h\
 	$(RHIDESRC)/libide/include/libide.h\
 	$(RHIDESRC)/libide/include/tdepende.h\
@@ -618,9 +612,9 @@ DEPS_14=ideflags.cc $(RHIDESRC)/include/rhide.h\
 	$(RHIDESRC)/libtvuti/include/tdirlist.h\
 	$(RHIDESRC)/libtvuti/include/tparamli.h\
 	$(RHIDESRC)/libtvuti/include/tscollec.h
-nodebobj/ideflags.o:: $(DEPS_14)
+nodebobj/ideflags.o:: $(DEPS_13)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_15=idegcc.cc $(SETSRC)/include/ced_clas.h $(SETSRC)/include/ced_exte.h\
+DEPS_14=idegcc.cc $(SETSRC)/include/ced_clas.h $(SETSRC)/include/ced_exte.h\
 	$(SETSRC)/include/ceditor.h $(SETSRC)/include/pmcoll.h\
 	$(SETSRC)/include/sindicat.h $(SETSRC)/include/tvsetuti.h\
 	$(SETSRC)/settvuti/include/sarray.h\
@@ -652,9 +646,9 @@ DEPS_15=idegcc.cc $(SETSRC)/include/ced_clas.h $(SETSRC)/include/ced_exte.h\
 	$(RHIDESRC)/libtvuti/include/tscollec.h\
 	$(RHIDESRC)/libtvuti/include/tvutilfu.h\
 	$(RHIDESRC)/libtvuti/include/twindowl.h
-nodebobj/idegcc.o:: $(DEPS_15)
+nodebobj/idegcc.o:: $(DEPS_14)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_16=idehelp.cc $(SETSRC)/include/ced_clas.h\
+DEPS_15=idehelp.cc $(SETSRC)/include/ced_clas.h\
 	$(SETSRC)/include/ced_exte.h $(SETSRC)/include/ceditor.h\
 	$(SETSRC)/include/pmcoll.h $(SETSRC)/include/sindicat.h\
 	$(SETSRC)/include/tvsetuti.h $(SETSRC)/infview/include/inf.h\
@@ -673,15 +667,15 @@ DEPS_16=idehelp.cc $(SETSRC)/include/ced_clas.h\
 	$(RHIDESRC)/libtvuti/include/libtvuti.h\
 	$(RHIDESRC)/libtvuti/include/tvutilco.h\
 	$(RHIDESRC)/libtvuti/include/tvutilfu.h
-nodebobj/idehelp.o:: $(DEPS_16)
+nodebobj/idehelp.o:: $(DEPS_15)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_17=idehints.cc $(RHIDESRC)/include/ideconst.h\
+DEPS_16=idehints.cc $(RHIDESRC)/include/ideconst.h\
 	$(RHIDESRC)/include/rhide.h $(RHIDESRC)/libide/include/idecomma.h\
 	$(RHIDESRC)/libide/include/libide.h\
 	$(RHIDESRC)/libtvuti/include/libtvuti.h
-nodebobj/idehints.o:: $(DEPS_17)
+nodebobj/idehints.o:: $(DEPS_16)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_18=idemain.cc $(SETSRC)/include/ced_clas.h\
+DEPS_17=idemain.cc $(SETSRC)/include/ced_clas.h\
 	$(SETSRC)/include/ced_coma.h $(SETSRC)/include/ced_exte.h\
 	$(SETSRC)/include/ced_inte.h $(SETSRC)/include/ceditor.h\
 	$(SETSRC)/include/loadkbin.h $(SETSRC)/include/pmcoll.h\
@@ -721,9 +715,9 @@ DEPS_18=idemain.cc $(SETSRC)/include/ced_clas.h\
 	$(RHIDESRC)/libtvuti/include/tvutilfu.h\
 	$(RHIDESRC)/libtvuti/include/twindowl.h\
 	$(RHIDESRC)/tvdemo/include/libtvdem.h
-nodebobj/idemain.o:: $(DEPS_18)
+nodebobj/idemain.o:: $(DEPS_17)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_19=idemak.cc $(RHIDESRC)/include/rhide.h\
+DEPS_18=idemak.cc $(RHIDESRC)/include/rhide.h\
 	$(RHIDESRC)/libide/include/ideenums.h\
 	$(RHIDESRC)/libide/include/libide.h\
 	$(RHIDESRC)/libide/include/tdepende.h\
@@ -735,9 +729,9 @@ DEPS_19=idemak.cc $(RHIDESRC)/include/rhide.h\
 	$(RHIDESRC)/libtvuti/include/tdirlist.h\
 	$(RHIDESRC)/libtvuti/include/tparamli.h\
 	$(RHIDESRC)/libtvuti/include/tscollec.h
-nodebobj/idemak.o:: $(DEPS_19)
+nodebobj/idemak.o:: $(DEPS_18)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_20=idemenu.cc $(SETSRC)/include/ced_coma.h\
+DEPS_19=idemenu.cc $(SETSRC)/include/ced_coma.h\
 	$(SETSRC)/include/ced_exte.h $(SETSRC)/include/ceditor.h\
 	$(SETSRC)/include/tvsetuti.h $(SETSRC)/infview/include/inf.h\
 	$(SETSRC)/infview/include/infbase.h\
@@ -748,9 +742,9 @@ DEPS_20=idemenu.cc $(SETSRC)/include/ced_coma.h\
 	$(RHIDESRC)/libide/include/idecomma.h\
 	$(RHIDESRC)/libide/include/libide.h\
 	$(RHIDESRC)/libtvuti/include/libtvuti.h
-nodebobj/idemenu.o:: $(DEPS_20)
+nodebobj/idemenu.o:: $(DEPS_19)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_21=idemsg.cc $(SETSRC)/include/ced_clas.h $(SETSRC)/include/ced_exte.h\
+DEPS_20=idemsg.cc $(SETSRC)/include/ced_clas.h $(SETSRC)/include/ced_exte.h\
 	$(SETSRC)/include/ceditor.h $(SETSRC)/include/pmcoll.h\
 	$(SETSRC)/include/sindicat.h $(SETSRC)/include/tvsetuti.h\
 	$(SETSRC)/settvuti/include/sarray.h\
@@ -773,9 +767,9 @@ DEPS_21=idemsg.cc $(SETSRC)/include/ced_clas.h $(SETSRC)/include/ced_exte.h\
 	$(RHIDESRC)/libtvuti/include/tscollec.h\
 	$(RHIDESRC)/libtvuti/include/tvutilfu.h\
 	$(RHIDESRC)/libtvuti/include/twindowl.h
-nodebobj/idemsg.o:: $(DEPS_21)
+nodebobj/idemsg.o:: $(DEPS_20)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_22=ideopt.cc $(SETSRC)/include/ced_clas.h $(SETSRC)/include/ced_exte.h\
+DEPS_21=ideopt.cc $(SETSRC)/include/ced_clas.h $(SETSRC)/include/ced_exte.h\
 	$(SETSRC)/include/ceditor.h $(SETSRC)/include/pmcoll.h\
 	$(SETSRC)/include/sindicat.h $(SETSRC)/include/tvsetuti.h\
 	$(SETSRC)/settvuti/include/sarray.h\
@@ -811,9 +805,9 @@ DEPS_22=ideopt.cc $(SETSRC)/include/ced_clas.h $(SETSRC)/include/ced_exte.h\
 	$(RHIDESRC)/libtvuti/include/tscollec.h\
 	$(RHIDESRC)/libtvuti/include/tvutilco.h\
 	$(RHIDESRC)/libtvuti/include/tvutilfu.h
-nodebobj/ideopt.o:: $(DEPS_22)
+nodebobj/ideopt.o:: $(DEPS_21)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_23=ideprj.cc $(SETSRC)/include/ced_clas.h $(SETSRC)/include/ced_exte.h\
+DEPS_22=ideprj.cc $(SETSRC)/include/ced_clas.h $(SETSRC)/include/ced_exte.h\
 	$(SETSRC)/include/ceditor.h $(SETSRC)/include/pmcoll.h\
 	$(SETSRC)/include/sindicat.h $(SETSRC)/include/tvsetuti.h\
 	$(SETSRC)/settvuti/include/sarray.h\
@@ -843,9 +837,9 @@ DEPS_23=ideprj.cc $(SETSRC)/include/ced_clas.h $(SETSRC)/include/ced_exte.h\
 	$(RHIDESRC)/libtvuti/include/tscollec.h\
 	$(RHIDESRC)/libtvuti/include/tvutilfu.h\
 	$(RHIDESRC)/libtvuti/include/twindowl.h
-nodebobj/ideprj.o:: $(DEPS_23)
+nodebobj/ideprj.o:: $(DEPS_22)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_24=idercs.cc $(RHIDESRC)/include/rhide.h\
+DEPS_23=idercs.cc $(RHIDESRC)/include/rhide.h\
 	$(RHIDESRC)/libide/include/ideenums.h\
 	$(RHIDESRC)/libide/include/idefunct.h\
 	$(RHIDESRC)/libide/include/libide.h\
@@ -856,9 +850,9 @@ DEPS_24=idercs.cc $(RHIDESRC)/include/rhide.h\
 	$(RHIDESRC)/librhuti/rhutils.h\
 	$(RHIDESRC)/libtvuti/include/libtvuti.h\
 	$(RHIDESRC)/libtvuti/include/tdirlist.h
-nodebobj/idercs.o:: $(DEPS_24)
+nodebobj/idercs.o:: $(DEPS_23)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_25=idespec.cc $(RHIDESRC)/include/rhide.h\
+DEPS_24=idespec.cc $(RHIDESRC)/include/rhide.h\
 	$(RHIDESRC)/include/rhidehis.h\
 	$(RHIDESRC)/libide/include/idecomma.h\
 	$(RHIDESRC)/libide/include/ideenums.h\
@@ -877,9 +871,9 @@ DEPS_25=idespec.cc $(RHIDESRC)/include/rhide.h\
 	$(RHIDESRC)/libtvuti/include/tscollec.h\
 	$(RHIDESRC)/libtvuti/include/tvutilfu.h\
 	$(RHIDESRC)/libtvuti/include/twindowl.h
-nodebobj/idespec.o:: $(DEPS_25)
+nodebobj/idespec.o:: $(DEPS_24)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_26=idestatu.cc $(SETSRC)/include/ced_coma.h\
+DEPS_25=idestatu.cc $(SETSRC)/include/ced_coma.h\
 	$(SETSRC)/include/ced_exte.h $(SETSRC)/include/ceditor.h\
 	$(SETSRC)/include/tvsetuti.h $(SETSRC)/infview/include/inf.h\
 	$(SETSRC)/infview/include/infbase.h\
@@ -893,16 +887,16 @@ DEPS_26=idestatu.cc $(SETSRC)/include/ced_coma.h\
 	$(RHIDESRC)/libtvuti/include/thintsta.h\
 	$(RHIDESRC)/libtvuti/include/tscollec.h\
 	$(RHIDESRC)/libtvuti/include/tvutilco.h
-nodebobj/idestatu.o:: $(DEPS_26)
+nodebobj/idestatu.o:: $(DEPS_25)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_27=idestrm.cc
-nodebobj/idestrm.o:: $(DEPS_27)
+DEPS_26=idestrm.cc
+nodebobj/idestrm.o:: $(DEPS_26)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_28=idesupp.cc $(RHIDESRC)/include/rhide.h\
+DEPS_27=idesupp.cc $(RHIDESRC)/include/rhide.h\
 	$(RHIDESRC)/librhuti/rhutils.h
-nodebobj/idesupp.o:: $(DEPS_28)
+nodebobj/idesupp.o:: $(DEPS_27)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_29=idesynta.cc $(SETSRC)/infview/include/infbase.h\
+DEPS_28=idesynta.cc $(SETSRC)/infview/include/infbase.h\
 	$(SETSRC)/settvuti/include/setstack.h\
 	$(SETSRC)/settvuti/include/settvuti.h\
 	$(SETSRC)/settvuti/include/tnocastc.h $(RHIDESRC)/include/rhide.h\
@@ -917,9 +911,9 @@ DEPS_29=idesynta.cc $(SETSRC)/infview/include/infbase.h\
 	$(RHIDESRC)/libtvuti/include/tintinpu.h\
 	$(RHIDESRC)/libtvuti/include/tlbutton.h\
 	$(RHIDESRC)/libtvuti/include/tparamli.h
-nodebobj/idesynta.o:: $(DEPS_29)
+nodebobj/idesynta.o:: $(DEPS_28)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_30=ideuser.cc $(RHIDESRC)/include/rhide.h\
+DEPS_29=ideuser.cc $(RHIDESRC)/include/rhide.h\
 	$(RHIDESRC)/libide/include/ideenums.h\
 	$(RHIDESRC)/libide/include/libide.h\
 	$(RHIDESRC)/libide/include/tdepende.h\
@@ -927,9 +921,9 @@ DEPS_30=ideuser.cc $(RHIDESRC)/include/rhide.h\
 	$(RHIDESRC)/libtvuti/include/libtvuti.h\
 	$(RHIDESRC)/libtvuti/include/msgrec.h\
 	$(RHIDESRC)/libtvuti/include/tmsgcoll.h
-nodebobj/ideuser.o:: $(DEPS_30)
+nodebobj/ideuser.o:: $(DEPS_29)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_31=ideutil.cc $(RHIDESRC)/include/rhide.h\
+DEPS_30=ideutil.cc $(RHIDESRC)/include/rhide.h\
 	$(RHIDESRC)/libide/include/ideenums.h\
 	$(RHIDESRC)/libide/include/idefunct.h\
 	$(RHIDESRC)/libide/include/libide.h\
@@ -941,27 +935,27 @@ DEPS_31=ideutil.cc $(RHIDESRC)/include/rhide.h\
 	$(RHIDESRC)/libtvuti/include/libtvuti.h\
 	$(RHIDESRC)/libtvuti/include/tdirlist.h\
 	$(RHIDESRC)/libtvuti/include/tvutilfu.h
-nodebobj/ideutil.o:: $(DEPS_31)
+nodebobj/ideutil.o:: $(DEPS_30)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_32=ideversi.cc
-nodebobj/ideversi.o:: $(DEPS_32)
+DEPS_31=ideversi.cc
+nodebobj/ideversi.o:: $(DEPS_31)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_33=
+DEPS_32=
 .PHONY: libide/libide.gpr.force
 all:: libide/libide.gpr.force
 libide/libide.gpr.force:
 	$(MAKE) -C libide/ -f libide.mak
-DEPS_34=
+DEPS_33=
 .PHONY: librhuti/librhuti.gpr.force
 all:: librhuti/librhuti.gpr.force
 librhuti/librhuti.gpr.force:
 	$(MAKE) -C librhuti/ -f librhuti.mak
-DEPS_35=
+DEPS_34=
 .PHONY: libtvuti/libtvuti.gpr.force
 all:: libtvuti/libtvuti.gpr.force
 libtvuti/libtvuti.gpr.force:
 	$(MAKE) -C libtvuti/ -f libtvuti.mak
-DEPS_36=openedit.cc $(SETSRC)/include/ced_clas.h\
+DEPS_35=openedit.cc $(SETSRC)/include/ced_clas.h\
 	$(SETSRC)/include/ced_exte.h $(SETSRC)/include/ceditor.h\
 	$(SETSRC)/include/pmcoll.h $(SETSRC)/include/sindicat.h\
 	$(SETSRC)/include/tvsetuti.h $(SETSRC)/settvuti/include/sarray.h\
@@ -982,12 +976,12 @@ DEPS_36=openedit.cc $(SETSRC)/include/ced_clas.h\
 	$(RHIDESRC)/libtvuti/include/tdirlist.h\
 	$(RHIDESRC)/libtvuti/include/tvutilco.h\
 	$(RHIDESRC)/libtvuti/include/tvutilfu.h
-nodebobj/openedit.o:: $(DEPS_36)
+nodebobj/openedit.o:: $(DEPS_35)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_37=rhassert.c
-nodebobj/rhassert.o:: $(DEPS_37)
+DEPS_36=rhassert.c
+nodebobj/rhassert.o:: $(DEPS_36)
 	$(RHIDE_COMPILE.c.o)
-DEPS_38=
+DEPS_37=
 .PHONY: tvdemo/libtvdem.gpr.force
 all:: tvdemo/libtvdem.gpr.force
 tvdemo/libtvdem.gpr.force:

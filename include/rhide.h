@@ -176,7 +176,6 @@ extern char *default_directory;
 Boolean FindFile(const char * name,TDirList * list,char * & full_name,Boolean uselist=True);
 Boolean FindFile(const char * name,char * & full_name);
 void ClearFindCache();
-int AbsToRelPath(char *ref_path,char * & ret, const char *subst = NULL);
 extern int debug_dependencies;
 extern int debug_commands;
 extern int debug_tempfiles;

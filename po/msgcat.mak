@@ -269,11 +269,11 @@ C_EXTRA_FLAGS=
 LOCAL_OPT=$(subst ___~~~___, ,$(subst $(notdir $<)___,,$(filter $(notdir\
 	$<)___%,$(LOCAL_OPTIONS))))
 OBJFILES=fstrcmp.o msgcat.o
-ALL_OBJFILES=../librhuti/back2sl.o ../librhuti/basename.o\
-	../librhuti/fexpand.o ../librhuti/fixpath.o ../librhuti/io.o\
-	../librhuti/specs.o ../librhuti/splitfn.o ../librhuti/stricat.o\
-	../librhuti/stridown.o ../librhuti/stridup.o ../librhuti/strifree.o\
-	fstrcmp.o msgcat.o
+ALL_OBJFILES=../librhuti/abstorel.o ../librhuti/back2sl.o\
+	../librhuti/basename.o ../librhuti/fexpand.o ../librhuti/fixpath.o\
+	../librhuti/io.o ../librhuti/specs.o ../librhuti/splitfn.o\
+	../librhuti/stricat.o ../librhuti/stridown.o ../librhuti/stridup.o\
+	../librhuti/strifree.o fstrcmp.o msgcat.o
 LIBRARIES=../librhuti/librhuti.a
 SOURCE_NAME=$<
 OUTFILE=$@

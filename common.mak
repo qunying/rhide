@@ -100,6 +100,12 @@ top_dir:=$(subst $(space),,$(top_dir))
 top_dir:=$(patsubst %/,%,$(top_dir))
 endif
 
+ifeq ($(top_dir),.)
+_top_dir=
+else
+_top_dir=$(top_dir)/
+endif
+
 obj_dir:=$(shell pwd)
 ifeq ($(top_obj_dir),)
 ifeq ($(strip $(rhide_OS)),DJGPP)
@@ -267,10 +273,11 @@ ifeq ($(rhide_OS),DJGPP)
 else
 	@$(gpr2mak) -d -r- -o - $(notdir $<) \
 	  | sed -e 's,	$(RHIDESRC),	$$(RHIDESRC),g' \
-	        -e 's,	/usr/include,	$$(USRINC),g' \
+	        -e 's,\([ 	]\)$(_top_dir)../../src/rhide,\1$$(RHIDESRC),g' \
+	        -e 's,\([ 	]\)*[\./]*[^ ]*i486-pc-linux-[^ \\]*,\1$$(USRINC),g' \
 	        -e 's,	/usr/lib/gcc-lib,	$$(USRINC),g' \
-	        -e '/^		$$(USRINC).*\\$$/d' \
-	        -e 's,^		$$(USRINC)[^\\]*$$,,' \
+	        -e '/^[ 	]*$$(USRINC).*\\$$/d' \
+	        -e 's,\([ 	]*\)$$(USRINC),\1,g' \
 		-e 's,^		$(obj_dir)/,		,' \
 		-e 's,	$(top_obj_dir),	$$(top_obj_dir),g' \
 	  $(USER_GPR2MAK_SEDS) > __tmp__.mak

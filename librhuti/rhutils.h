@@ -73,12 +73,12 @@ extern int debug_specs;
    then the variable is removed. */
 void insert_variable(const char *variable, const char *contents);
 
-/* Some helper functions: 'open_brace' points to and opening brace
+/* Some helper functions: 'open_brace' points to an opening brace
    or parenthesis and return the matching closing character or
-   NULL of not found */
+   NULL if not found */
 char *find_close_brace(char *open_brace);
 /* Find the next comma in the string where it knows about quoting characters
-   '\'' and '"' or NULL of no comma was found */
+   '\'' and '"' or return NULL if no comma was found */
 char *find_next_comma(char *arg);
 
 /* Split a given filename in its parts given in the format string 'fmt'

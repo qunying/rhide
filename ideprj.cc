@@ -1003,7 +1003,30 @@ Boolean OpenProject(const char * prjname)
     if (idfile)
       close_ifpstream(idfile);
   }
-  if (!project) OpenStandardProject(project_name);
+  if (!project)
+  {
+    OpenStandardProject(project_name, False);
+    if (project)
+    {
+      if (project_window)
+      {
+        TWindow *w = project_window;
+        RemoveWindow(project_window, False);
+        w->close();
+      }
+      TProject *_project = project;
+      project = new TProject();
+      *project = *_project;
+      destroy(_project);
+      ClearFindCache();
+      ShowProject();
+      string_free(dskname);
+      char *spec = NULL;
+      string_cat(spec, "$(subst .gpr,.gdt,", project_name, ")", NULL);
+      dskname = expand_rhide_spec(spec);
+      string_free(spec);
+    }
+  }
   if (project_directory) string_free(project_directory);
   project_directory = getcwd(NULL,512);
   if (project)

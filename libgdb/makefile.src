@@ -132,6 +132,7 @@ $(GDB_OBJ)/%.a:
 	$(MAKE) -C $(dir $@) CFLAGS="$(CFLAGS)" $(LIBGDB_FLAGS)
 
 libgdb-files: force
+	$(MAKE) -C $(GDB_OBJ) CFLAGS="$(CFLAGS)" $(LIBGDB_FLAGS)
 	ls $(GDB_OBJ)/gdb/*.o | sed s,$(GDB_OBJ)/gdb/,,g > $@
 
 T_FILES=libbfd.t libiberty.t libopcodes.t libreadline.t $(notdir $(subst .a,.t,$(MMALLOC_LIB))) gdb.t

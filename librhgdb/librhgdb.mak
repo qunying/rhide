@@ -383,11 +383,11 @@ NO_LINK=watchdog.o
 LINK_FILES=$(filter-out $(NO_LINK),$(DEPS_0))
 librhgdb.a:: $(DEPS_0)
 	$(RHIDE_COMPILE_ARCHIVE)
-DEPS_1=annotate.c g:/djgpp/include/sys/version.h ../libgdb/libgdb.h\
+DEPS_1=annotate.c ../libgdb/libgdb.h g:/djgpp/include/sys/version.h\
 	$(RHIDESRC)/librhgdb/include/rhgdbint.h
 annotate.o:: $(DEPS_1)
 	$(RHIDE_COMPILE.c.o)
-DEPS_2=breakpoi.c g:/djgpp/include/sys/version.h ../libgdb/libgdb.h\
+DEPS_2=breakpoi.c ../libgdb/libgdb.h g:/djgpp/include/sys/version.h\
 	$(RHIDESRC)/librhgdb/include/librhgdb.h\
 	$(RHIDESRC)/librhgdb/include/rhgdbint.h
 breakpoi.o:: $(DEPS_2)
@@ -395,43 +395,43 @@ breakpoi.o:: $(DEPS_2)
 DEPS_3=defaults.c $(RHIDESRC)/librhgdb/include/librhgdb.h
 defaults.o:: $(DEPS_3)
 	$(RHIDE_COMPILE.c.o)
-DEPS_4=dis.c g:/djgpp/include/sys/version.h ../libgdb/libgdb.h\
+DEPS_4=dis.c ../libgdb/libgdb.h g:/djgpp/include/sys/version.h\
 	$(RHIDESRC)/librhgdb/include/librhgdb.h\
 	$(RHIDESRC)/librhgdb/include/rhgdbint.h
 dis.o:: $(DEPS_4)
 	$(RHIDE_COMPILE.c.o)
-DEPS_5=frame.c g:/djgpp/include/sys/version.h ../libgdb/libgdb.h\
+DEPS_5=frame.c ../libgdb/libgdb.h g:/djgpp/include/sys/version.h\
 	$(RHIDESRC)/librhgdb/include/librhgdb.h\
 	$(RHIDESRC)/librhgdb/include/rhgdbint.h
 frame.o:: $(DEPS_5)
 	$(RHIDE_COMPILE.c.o)
-DEPS_6=gdbcontr.c g:/djgpp/include/sys/version.h ../libgdb/libgdb.h\
+DEPS_6=gdbcontr.c ../libgdb/libgdb.h g:/djgpp/include/sys/version.h\
 	$(RHIDESRC)/librhgdb/include/librhgdb.h\
 	$(RHIDESRC)/librhgdb/include/rhgdbint.h
 gdbcontr.o:: $(DEPS_6)
 	$(RHIDE_COMPILE.c.o)
-DEPS_7=gdbinter.c g:/djgpp/include/sys/version.h ../libgdb/libgdb.h\
+DEPS_7=gdbinter.c ../libgdb/libgdb.h g:/djgpp/include/sys/version.h\
 	$(RHIDESRC)/librhgdb/include/librhgdb.h\
 	$(RHIDESRC)/librhgdb/include/rhgdbint.h
 gdbinter.o:: $(DEPS_7)
 	$(RHIDE_COMPILE.c.o)
-DEPS_8=listfunc.c g:/djgpp/include/sys/version.h ../libgdb/libgdb.h\
+DEPS_8=listfunc.c ../libgdb/libgdb.h g:/djgpp/include/sys/version.h\
 	$(RHIDESRC)/librhgdb/include/librhgdb.h\
 	$(RHIDESRC)/librhgdb/include/rhgdbint.h
 listfunc.o:: $(DEPS_8)
 	$(RHIDE_COMPILE.c.o)
-DEPS_9=regs.c g:/djgpp/include/sys/version.h ../libgdb/libgdb.h\
+DEPS_9=regs.c ../libgdb/libgdb.h g:/djgpp/include/sys/version.h\
 	$(RHIDESRC)/librhgdb/include/librhgdb.h
 regs.o:: $(DEPS_9)
 	$(RHIDE_COMPILE.c.o)
-DEPS_10=symify.c g:/djgpp/include/sys/version.h ../libgdb/libgdb.h\
+DEPS_10=symify.c ../libgdb/libgdb.h g:/djgpp/include/sys/version.h\
 	$(RHIDESRC)/librhgdb/include/librhgdb.h
 symify.o:: $(DEPS_10)
 	$(RHIDE_COMPILE.c.o)
 DEPS_11=watchdog.c
 watchdog.o:: $(DEPS_11)
 	$(RHIDE_COMPILE.c.o)
-DEPS_12=watches.c g:/djgpp/include/sys/version.h ../libgdb/libgdb.h\
+DEPS_12=watches.c ../libgdb/libgdb.h g:/djgpp/include/sys/version.h\
 	$(RHIDESRC)/librhgdb/include/librhgdb.h\
 	$(RHIDESRC)/librhgdb/include/rhgdbint.h
 watches.o:: $(DEPS_12)

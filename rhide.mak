@@ -19,7 +19,7 @@ endif
 ifeq ($(strip $(TVSRC)),)
 TVSRC=g:/DJGPP/include/rhtvision
 endif
-vpath_src=$(RHIDESRC) o:/djgpp/contrib/tvision_/classes o:/djgpp/contrib/setedit/mainsrc s:/rho/rhide/libide
+vpath_src=$(RHIDESRC)
 vpath %.c $(vpath_src)
 vpath %.cc $(vpath_src)
 vpath %.cpp $(vpath_src)
@@ -341,8 +341,7 @@ OUTFILE=$@
 SPECIAL_CFLAGS=
 SPECIAL_LDFLAGS=
 PROG_ARGS=h:/pho_Pascal/hello
-SRC_DIRS=$(RHIDESRC) o:/djgpp/contrib/tvision_/classes\
-	o:/djgpp/contrib/setedit/mainsrc s:/rho/rhide/libide
+SRC_DIRS=$(RHIDESRC)
 WUC=
 EDITORS=
 RHIDE_OS=$(RHIDE_OS_)

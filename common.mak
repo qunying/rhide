@@ -280,7 +280,9 @@ ifneq ($(strip $(project)),)
 endif
 
 %.cfo: Makefile
+ifneq ($(srcdir),$(config_dir))
 	@-mkdir $(config_dir)/$*
+endif
 	@$(MAKE) --no-print-directory -C $* -f $(srcdir)/$*/Makefile \
 	         $(FLAGS_TO_PASS) \
 	config_dir=$(config_dir)/$* config 
@@ -289,6 +291,7 @@ endif
 
 config::
 	@echo Configuring $(config_dir) . . .
+ifneq ($(srcdir),$(config_dir))
 	@cp -fp $(srcdir)/Makefile $(wildcard $(srcdir)/rhide.env) $(config_dir)
 ifneq ($(cfg_files),)
 	@cp -fp $(addprefix $(srcdir)/,$(cfg_files)) $(obj_dir)
@@ -296,6 +299,7 @@ endif
 ifneq ($(projects),)
 	@cp -fp $(addprefix $(srcdir)/,$(addsuffix .gpr,$(projects))) $(config_dir)
 	@cp -fp $(addprefix $(srcdir)/,$(addsuffix .mak,$(projects))) $(config_dir)
+endif
 endif
 ifneq ($(subdirs),)
 config:: $(addsuffix .cfo,$(subdirs))

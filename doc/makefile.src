@@ -27,9 +27,9 @@ MAKEINFO=makeinfo -I $(srcdir)
 
 all:: all_doc
 
-doc: rhide.inf rhide.html rhide.txt $(INFVIEW)
+doc: rhide.inf rhide.html rhide.txt rhide.pdf $(INFVIEW)
 
-all_doc: info dvi txt ps html
+all_doc: info dvi txt ps html pdf
 
 info: rhide.inf
 
@@ -51,6 +51,8 @@ ps: rhide.ps
 
 html: rhide.html
 
+pdf: rhide.pdf
+
 rhide.inf: rhide.txi
 
 %.inf: %.txi
@@ -63,8 +65,10 @@ html2ctx html2ctx.exe: html2ctx.c
 	dvips -o $@ $<
 
 rhide.dvi: rhide.txi
-#	bash -c "export MAKEINFO='$(MAKEINFO) -Ddvi'; texi2dvi $<"
-	bash -c "export MAKEINFO='$(MAKEINFO)'; texi2dvi --debug $<"
+	bash -c "export MAKEINFO='$(MAKEINFO)'; texi2dvi $<"
+
+rhide.pdf: rhide.txi
+	bash -c "export MAKEINFO='$(MAKEINFO)'; texi2dvi -p $<"
 
 htmlref.tmp: htmlctx.tmp Makefile
 	sed -e \
@@ -98,14 +102,7 @@ cindex.idx kindex.idx: htmlidx.sed cindex.tmp kindex.tmp
 	sed -f $< kindex.tmp > kindex.idx
 
 contents.idx: rhide.dvi Makefile
-	$(MAKEINFO) --no-split --no-headers --no-validate --fill-column 78 \
-	  --number-sections -o - rhide.txi | \
-	sed -n \
-	-e 's/^@subsubsection  */  /p' \
-	-e 's/^@subsection  */  /p' \
-	-e 's/^@section  */  /p' \
-	-e 's/^@chapter  *//p' \
-	$< > $@
+	sed -n -f $(srcdir)/toc.sed rhide.toc > $@
 
 rhide.txt: rhide.txi contents.idx
 	$(MAKEINFO) --no-split --no-headers --no-validate --fill-column 78 \

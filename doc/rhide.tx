@@ -5,23 +5,21 @@
 @comment %**start of header
 
 @setfilename rhide.inf
-@set version 1.4
-@set update-date 29 September 1997
-@set update-month September 1997
+@set version 1.5
+@set update-date 27 July 2000
+@set update-month September 2000
+@c I'm using a4 paper
+@afourpaper
+
 
 @macro quest{stuff}
-@quote-arg
+@c @quote-arg
 @emph{@strong{Question}: \stuff\}
 @end macro
 
 @macro ans
 @strong{Answer}:
 @end macro
-
-@c I'm using a4 paper
-@iftex
-@afourlatex
-@end iftex
 
 @set rh Robert H@"ohne
 @settitle RHIDE Version @value{version}
@@ -95,43 +93,11 @@
 @mail{Trond Endrestol,endrestol@@hotmail.com}
 @end macro
 
-@ifclear text
-@ifclear html
-@ifclear dvi
 @macro ikey{KEY,DESC}
 @key{\KEY\}
-@kindex \DESC\ | @key{\KEY\} |
-@kindex @key{\KEY\} | \DESC\
-@end macro
-@end ifclear
-@ifset dvi
-@macro ikey{KEY,DESC}
-@key{\KEY\}
-@kindex \DESC\ @key{\KEY\}
-@kindex @key{\KEY\} \DESC\
-@end macro
-@end ifset
-@end ifclear
-@end ifclear
-@ifset html
-@macro ikey{KEY,DESC}
-@key{\KEY\}
-@kindex \DESC\ | @key{\KEY\} |
-@kindex @key{\KEY\} | \DESC\
-@end macro
-@end ifset
-@ifset text
-@macro ikey{KEY,DESC}
-@key{\KEY\}
-@kindex \DESC\ | @key{\KEY\} |
-@kindex @key{\KEY\} | \DESC\
-@end macro
-@end ifset
+@kindex \DESC\ | @key{\KEY\}
 
-@macro RHIDEHOME
-@uref{http://www.tu-chemnitz.de/~sho/rho/rhide.html,the RHIDE home page}
 @end macro
-
 
 @c Smaller amounts of whitespace between chapters
 @c and sections.
@@ -217,7 +183,7 @@ Copyright @copyright{} 1996-2000 @value{rh}
 This is the documentation for the Integrated Development
 Environment RHIDE.
 
-Copyright @copyright{} 1996-1998 @value{rh}
+Copyright @copyright{} 1996-2000 @value{rh}
 
 
 This documentation may be freely distributed with the RHIDE package or any
@@ -227,7 +193,6 @@ part thereof, provided this copyright notice is left intact on all copies.
 @contents
 @end ifclear
 
-@ifnottex
 @node Top, Introduction, (dir), (dir)
 @top RHIDE
 
@@ -236,6 +201,7 @@ part thereof, provided this copyright notice is left intact on all copies.
 including all the indices.
 @end ifclear
 
+@ifnottex
 @ifset text
    Table of Contents@*
    *****************@*
@@ -333,7 +299,9 @@ version of RHIDE which is as of writing this version 1.5 which leads to
 
 
 These archives can be found at
+@*
 @uref{http://ww.tu-chemnitz.de/~sho/rho/rhide.html, The RHIDE home page}
+@*
 or at any ftp site, which mirrors DJGPP. On that DJGPP mirrors are of
 course only the DJGPP archives available.
 
@@ -361,7 +329,7 @@ text file @file{keybind.txt}, which is searched in the following
 directories (in that order). If it was not found in any of these
 directories RHIDE uses builtin defaults. For more information about
 creating (customizing) the file and about the syntax of that file
-see @ref{Keyboard,Documentation about the keyboard,,setedit}.
+see @ref{Keyboard,Documentation about the keyboard,,setedit,SETs Editor}.
 
 @itemize @bullet
 @item The current directory
@@ -439,8 +407,8 @@ will be set to the time of the last modification in the editor.
 
 @item
 You can interrupt external programs (the compilers or your
-program) by pressing @ikey{Ctrl+C,Ignoring}or
-@ikey{Ctrl+Break,Interrupting the compilers}which are
+program) by pressing @ikey{Ctrl+C,Ignoring} or
+@ikey{Ctrl+Break,Interrupting the compilers} which are
 ignored by the IDE. That means also, that you cannot interrupt the
 IDE by pressing these keys. If you want to enable this, compile
 the IDE without the @samp{-DNO_BREAK}-flag.
@@ -515,7 +483,7 @@ Possible options are
 for debugging RHIDE itself @pxref{Debugging RHIDE}.
 If no project was open, you will see an empty desktop.
 At the top-line of the screen you can see the menu. This is activated by
-pressing @ikey{F10,Menu}or by clicking with the mouse at this line.
+pressing @ikey{F10,Menu} or by clicking with the mouse at this line.
 Alternatively
 you can press @key{Alt} plus the highlighted character of a pull-down
 menu, @i{e.g.@:} to activate the @emph{File} menu, press @kbd{Alt+F}. At the
@@ -1364,9 +1332,9 @@ file @pxref{Load options}.
 
 This chapter describes the pull-down menus and all their sub-menus.
 The main menu bar, the topmost line of the screen, is selected with the
-hotkey @ikey{F10,Menu}or by clicking with the mouse at this line. You can walk
+hotkey @ikey{F10,Menu} or by clicking with the mouse at this line. You can walk
 through the menu with the cursor keys and a menu entry is selected with
-@ikey{ENTER,Select menu item}or by clicking with the mouse on it.
+@ikey{ENTER,Select menu item} or by clicking with the mouse on it.
 
 
 @section System menu
@@ -1424,7 +1392,7 @@ This brings up a dialog, where you can do some calculations. This
 dialog is similar to the evaluate dialog @pxref{Evaluate/Modify}, but it
 uses not the feature of GDB, but it is a separate calculator.
 For more information
-see @ref{Calculator,Documentation for the editor,,setedit}.
+see @ref{Calculator,Documentation for the editor,,setedit,SETs Editor}.
 
 
 There can be used also some of the standard functions like
@@ -2401,7 +2369,7 @@ the next line by referring to the previous line if you press enter.
 
 
 For more information
-see @ref{Autoindent,Documentation for the editor,,setedit}
+see @ref{Autoindent,Documentation for the editor,,setedit,SETs Editor}
 
 
 @xref{Editor options}.
@@ -2417,7 +2385,7 @@ the number of spaces (defined by tabsize) is inserted.
 
 
 For more information see
-@ref{Real Tabs,Documentation for the editor,,setedit}.
+@ref{Real Tabs,Documentation for the editor,,setedit,SETs Editor}.
 
 
 @xref{Editor options}.
@@ -2432,7 +2400,7 @@ like the behavior of earlier versions of RHIDE, disable this option.
 
 
 For more information see
-@ref{Persistent Blocks,Documentation for the editor,,setedit}.
+@ref{Persistent Blocks,Documentation for the editor,,setedit,SETs Editor}.
 
 
 @xref{Editor options}.
@@ -2449,7 +2417,7 @@ autoindenting. This works only if @var{autoindent} is enabled.
 
 
 For more information see
-@ref{Intelligent C indent,Documentation for the editor,,setedit}.
+@ref{Intelligent C indent,Documentation for the editor,,setedit,SETs Editor}.
 
 
 @xref{Editor options}.
@@ -2465,7 +2433,7 @@ editor window at the cursor column.
 
 
 For more information see
-@ref{Column cursor,Documentation for the editor,,setedit}.
+@ref{Column cursor,Documentation for the editor,,setedit,SETs Editor}.
 
 
 @xref{Editor options}.
@@ -2481,7 +2449,7 @@ editor window at the cursor row.
 
 
 For more information see
-@ref{Row cursor,Documentation for the editor,,setedit}.
+@ref{Row cursor,Documentation for the editor,,setedit,SETs Editor}.
 
 
 @xref{Editor options}.
@@ -2496,7 +2464,7 @@ there was no matching found.
 
 
 For more information see
-@ref{Match pair highlight,Documentation for the editor}.
+@ref{Match pair highlight,Documentation for the editor,,setedit,SETs editor}.
 
 
 @xref{Editor options}.
@@ -2552,7 +2520,7 @@ will use also this setting.
 @c
 @c
 @c For more information
-@c see @ref{Overwrite,Documentation for the editor,,setedit}.
+@c see @ref{Overwrite,Documentation for the editor,,setedit,SETs Editor}.
 @c
 @c
 @c @xref{Editor options}.
@@ -2942,7 +2910,7 @@ highlighted, when syntax highlighting is enabled @pxref{Preferences}.
 @node How to change the list of flags
 @subsubheading How to change the list of flags
 @iftex
-@setref{How to change the list of flags}
+@anchor How to change the list of flags
 @end iftex
 
 The syntax of the strings, which you can modify or add with the last
@@ -3240,7 +3208,7 @@ is used very often when writing C programs.
 @cindex Help about help
 This brings up a help-window for instructions and available keystrokes
 when using the integrated INFO viewer.
-(see @ref{Top,,,infview})
+(see @ref{Top,,,infview, SETs Info Viewer})
 
 @c @subsection Last help
 @c This shows the last opened help window.
@@ -3265,7 +3233,7 @@ frame of the window with your mouse.
 
 This section should describe the work of the editor. But because the editor
 is now so complex and, not my own work, there is now separate documentation,
-see @ref{Top,Documentation for the editor,,setedit}
+see @ref{Top,Documentation for the editor,,setedit,SETs Editor}
 for a detailed and better doc. But you
 can read also more from my doc, which describes the most common (for me)
 usage of the editor.
@@ -4188,7 +4156,7 @@ one of all the shown options.
 @cindex Pseudo Macros
 
 Please look for a detailed documentation here:
-@ref{Pseudo Macros,Documentation about Pseudo Macros,,setedit}
+@ref{Pseudo Macros,Documentation about Pseudo Macros,,setedit,SETs Editor}.
 
 
 @section The INFO Viewer
@@ -4203,7 +4171,7 @@ for @file{info.exe}.
 
 To get help about the INFO Viewer hit @ikey{F1,Help about the INFO Viewer}when
 the help-window is opened or follow this link to
-@ref{Top,The Info Viewer,,infview}.
+@ref{Top,,,infview, SETs Info Viewer}.
 
 
 In addition to getting help with this system you can also copy text
@@ -4727,7 +4695,10 @@ exact information about this?}
 
 @cindex Latest version of RHIDE
 @cindex RHIDE, latest version
-@ans{} See @uref{http://www.tu-chemnitz.de/~sho/rho/rhide.html, at the RHIDE home page}.
+@ans{} See
+@*
+@uref{http://www.tu-chemnitz.de/~sho/rho/rhide.html, at the RHIDE home page}.
+@*
 This page contains the latest news and the latest version of RHIDE.
 
 
@@ -4914,7 +4885,9 @@ special editing ...) please send them to @SET{}, because he
 is the author of the in RHIDE integrated editor.
 
 
-See at @RHIDEHOME{}, if this problem was already reported by other
+See at
+@uref{http://www.tu-chemnitz.de/~sho/rho/rhide.html,the RHIDE home page},
+if this problem was already reported by other
 users. As the next ask the problem in the news group
 @uref{news:comp.os.msdos.djgpp}, because there may be some other people
 with the same problem, and they can give you an answer or I, because

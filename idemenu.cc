@@ -1,5 +1,6 @@
 /* Copyright (C) 1996-2000 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
+#include <string.h>
 #define Uses_TRect
 #define Uses_TKeys
 #define Uses_TKeys_Extended
@@ -11,13 +12,16 @@
 #define Uses_TDialog
 #define Uses_TSortedListBox
 #define Uses_TStringCollection
-
+#define Uses_TScroller
+#define Uses_TNoCaseStringCollection
 #define Uses_ideCommands
+#define Uses_SOStack
+#define Uses_TNoCaseSOSStringCollection
 #include <libide.h>
+#include <settvuti.h>
 
 #include "rhide.h"
 #include "ideapp.h"
-#include <string.h>
 #include <inf.h>
 
 #define Uses_TCEditor_Commands

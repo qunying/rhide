@@ -1,5 +1,22 @@
 /* Copyright (C) 1996-2000 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <unistd.h>
+#include <signal.h>
+#include <setjmp.h>
+#ifdef __DJGPP__
+#include <dir.h>
+#include <sys/exceptn.h>
+#include <dpmi.h>
+#include <crt0.h>
+#endif
+#ifdef __linux__
+#undef ERR
+#include <curses.h>
+#endif
 #define Uses_TEventQueue
 #define Uses_TApplication
 #define Uses_TScreen
@@ -27,10 +44,9 @@
 #define Uses_tvutilFunctions
 #define Uses_tvutilCommands
 #define Uses_TWindowList
-#include <libtvuti.h>
-
-#include <rhutils.h>
-
+#define Uses_TInputLinePiped
+#define Uses_TCEditor
+#define Uses_TCEditor_Internal
 #define Uses_TWatchListBox
 #define Uses_tvgdbCommands
 #define Uses_tvgdbFunctions
@@ -38,33 +54,13 @@
 #define Uses_TDataWindow
 #define Uses_TInspector
 #define Uses_TInspectDialog
-#include <libtvgdb.h>
-
-#define Uses_TInputLinePiped
-#define Uses_TCEditor
 #include <ceditor.h>
-#include <ced_inte.h>
-
+#include <libtvuti.h>
+#include <rhutils.h>
+#include <libtvgdb.h>
 #include <librhgdb.h>
-#include <stdio.h>
 #include "rhgdb.h"
-#include <string.h>
-#include <stdlib.h>
-#include <locale.h>
-#include <unistd.h>
-#include <signal.h>
-#include <setjmp.h>
 
-#ifdef __DJGPP__
-#include <dir.h>
-#include <sys/exceptn.h>
-#include <dpmi.h>
-#include <crt0.h>
-#endif
-#ifdef __linux__
-#undef ERR
-#include <curses.h>
-#endif
 
 extern int RunProgram(const char *cmd,
                       Boolean redir_stderr, Boolean redir_stdout,

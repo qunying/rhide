@@ -8,11 +8,10 @@
 #define Uses_TPalette
 #define Uses_TProgram
 #define Uses_TDeskTop
-
-#include "rhide.h"
-
 #define Uses_TIDEFileEditor
 #include <libide.h>
+
+#include "rhide.h"
 
 static TPalette *temp_pal = NULL;
 

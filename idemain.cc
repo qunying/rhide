@@ -26,7 +26,6 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <locale.h>
-#include <inf.h>
 #include <time.h>
 #include <glob.h>
 
@@ -64,7 +63,12 @@
 #define Uses_ideCommands
 #define Uses_TCEditor_Internal
 #define Uses_TCEditor_Commands
+#define Uses_TStringCollection
+#define Uses_TNoCaseStringCollection
+#define Uses_TDialog
+#define Uses_TScroller
 #include <libide.h>
+#include <inf.h>
 
 #define Uses_TInputLinePiped
 #define Uses_TCEditor
@@ -2307,11 +2311,14 @@ static char startup_directory[256];
 
 int DebuggerFormatLine(TCEditor * editor,
                        void *DrawBuf,
-
                        unsigned LinePtr,
                        int Width,
                        unsigned short Colors,
-                       unsigned lineLen, uint32 Attr, unsigned LineNo);
+                       unsigned lineLen, uint32 Attr, unsigned LineNo
+#if (TCEDITOR_VERSION >= 0x000452)
+                       , uint32 *
+#endif
+                       );
 
 #ifdef __DJGPP__
 extern char **environ;

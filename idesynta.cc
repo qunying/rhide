@@ -1,5 +1,8 @@
 /* Copyright (C) 1996-2000 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
+#include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
 #define Uses_TStringCollection
 #define Uses_TSortedListBox
 #define Uses_MsgBox
@@ -13,22 +16,25 @@
 #define Uses_TScrollBar
 #define Uses_TRangeValidator
 #define Uses_TKeys
-
-#include "rhide.h"
-#include <rhutils.h>
+#define Uses_TNSSortedCollection
+#define Uses_TStringCollection
+#define Uses_SOStack
+#define Uses_TNoCaseSOSStringCollection
+#define Uses_TNoCaseStringCollection
 
 #define Uses_TParamList
 #define Uses_TLButton
 #define Uses_TIntInputLine
-#include <libtvuti.h>
 
 #define Uses_TProject
 #include <libide.h>
+#include <settvuti.h>
+#include <libtvuti.h>
 
-#include <string.h>
 #include <infbase.h>
 
-#include <stdlib.h>
+#include "rhide.h"
+#include <rhutils.h>
 
 struct node_info;
 

@@ -1,5 +1,6 @@
 /* Copyright (C) 1996-2000 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
+#include <string.h>
 #define Uses_TRect
 #define Uses_TKeys
 #define Uses_TKeys_Extended
@@ -11,9 +12,14 @@
 #define Uses_TStringCollection
 #define Uses_TApplication
 #define Uses_TFileViewer
-
+#define Uses_TNSSortedCollection
+#define Uses_TStringCollection
+#define Uses_SOStack
+#define Uses_TNoCaseSOSStringCollection
+#define Uses_TNoCaseStringCollection
 #define Uses_ideCommands
 #include <libide.h>
+#include <settvuti.h>
 
 #define Uses_THintStatusLine
 #define Uses_TSCollection
@@ -29,7 +35,6 @@
 #include <libtvgdb.h>
 #endif
 
-#include <string.h>
 #include <inf.h>
 
 #define Uses_TCEditor_Commands

@@ -1,24 +1,23 @@
 /* Copyright (C) 1996-2000 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
+#include <unistd.h>
 #define Uses_MsgBox
 #define Uses_TApplication
-
 #define Uses_TDirList
 #define Uses_tvutilCommands
 #define Uses_tvutilFunctions
-#include <libtvuti.h>
-
-#include <rhutils.h>
-
 #define Uses_TIDEEditWindow
 #define Uses_TProject
 #define Uses_TOptions
 #define Uses_ideFunctions
 #include <libide.h>
+#include <libtvuti.h>
+
+#include <rhutils.h>
+
 #include "rhide.h"
 #include "ideapp.h"
 
-#include <unistd.h>
 
 // This is for the Ctrl+ENTER feature
 

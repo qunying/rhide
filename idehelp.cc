@@ -14,6 +14,10 @@
 #define Uses_ideCommands
 #define Uses_TIDEEditWindow
 #define Uses_TIDEFileEditor
+#define Uses_TStringCollection
+#define Uses_TNoCaseStringCollection
+#define Uses_TDialog
+#define Uses_TScroller
 #include <libide.h>
 
 #define Uses_tvutilCommands
@@ -24,7 +28,6 @@
 
 #include "rhide.h"
 
-#define Uses_TStringCollection
 #include <inf.h>
 #include <ctype.h>
 

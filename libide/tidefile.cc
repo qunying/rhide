@@ -38,20 +38,41 @@ TIDEFileEditor::~TIDEFileEditor()
 int
   TIDEFileEditor::use_syntax = 1;
 
+#if (TCEDITOR_VERSION < 0x000452)
 int (*TIDEFileEditor::externalFormatLine) (TCEditor *, void *, unsigned, int,
                                            unsigned short, unsigned, uint32,
                                            unsigned) =
+#else
+int (*TIDEFileEditor::externalFormatLine) (TCEditor *, void *, unsigned, int,
+                                           unsigned short, unsigned, uint32,
+                                           unsigned, uint32 *) =
+#endif
   NULL;
 
 void
+#if (TCEDITOR_VERSION < 0x000452)
 TIDEFileEditor::formatLine(void *DrawBuf,
-                           unsigned LinePtr, int Width, unsigned short Colors, unsigned lineLen, uint32 Attr, unsigned lineNo	// needed for RHIDE
+                           unsigned LinePtr, int Width, unsigned short Colors, 
+			   unsigned lineLen, uint32 Attr, unsigned lineNo	// needed for RHIDE
+#else
+TIDEFileEditor::formatLine(void *DrawBuf,
+                           unsigned LinePtr, int Width, unsigned short Colors, 
+			   unsigned lineLen, uint32 Attr, unsigned lineNo	// needed for RHIDE
+			   , uint32 *colMarkers
+#endif
   )
 {
+#if (TCEDITOR_VERSION < 0x000452)
   if (externalFormatLine &&
       externalFormatLine(this, DrawBuf, LinePtr, Width, Colors, lineLen,
                          Attr, lineNo)) return;
   (this->*FormatLinePtr) (DrawBuf, LinePtr, Width, Colors, lineLen, Attr, lineNo);
+#else
+  if (externalFormatLine &&
+      externalFormatLine(this, DrawBuf, LinePtr, Width, Colors, lineLen,
+                         Attr, lineNo, colMarkers)) return;
+  (this->*FormatLinePtr) (DrawBuf, LinePtr, Width, Colors, lineLen, Attr, lineNo, colMarkers);
+#endif
 }
 
 
@@ -66,9 +87,15 @@ TIDEFileEditor::setFormatLine()
   else
     SHLSelect(*this, buffer, bufLen);
   FormatLinePtr = formatLinePtr;
+#if (TCEDITOR_VERSION < 0x000452)
   formatLinePtr = (void (TCEditor::*)
                    (void *, unsigned, int, unsigned short, unsigned,
                     uint32, unsigned)) &TIDEFileEditor::formatLine;
+#else
+  formatLinePtr = (void (TCEditor::*)
+                   (void *, unsigned, int, unsigned short, unsigned,
+                    uint32, unsigned, uint32 *)) &TIDEFileEditor::formatLine;
+#endif
   update(ufView);
 }
 

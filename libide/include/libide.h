@@ -28,6 +28,7 @@
 
 #if defined( Uses_TIDEFileEditor )
 #define Uses_TCFileEditor
+#define Uses_TCEditor_Internal
 #define __INC_TIDEFILE__
 #endif
 
@@ -93,16 +94,25 @@
 #define _INC_TFILENAME
 #endif
 
+#if 0
+/*
+  with SET's new compatlayer header this is not
+  longer possible, since it can be include only once
+  and tv.h includes it but for instance ceditor.h
+  defines some other needed Uses_CLY... which are then
+  ignored :-(
+*/
 #include <tv.h>
+#endif
+
+#if defined( __INC_CEDITOR__ )
+#include <ceditor.h>
+#endif
 
 /*
   always include libtvuti.h
 */
 #include <libtvuti.h>
-
-#if defined( __INC_CEDITOR__ )
-#include <ceditor.h>
-#endif
 
 #if defined( _INC_TFILENAME )
 #include <tfname.h>
@@ -164,6 +174,3 @@
 #include <idefunct.h>
 #endif
 
-#if defined( __INC_CEDITOR__ )
-#include <ceditor.h>
-#endif

@@ -38,7 +38,11 @@ DebuggerFormatLine(TCEditor * editor,
                    unsigned LinePtr,
                    int Width,
                    unsigned short Colors,
-                   unsigned lineLen, uint32 Attr, unsigned LineNo)
+                   unsigned lineLen, uint32 Attr, unsigned LineNo
+#if (TCEDITOR_VERSION >= 0x000452)
+                   , uint32 *colmap
+#endif
+		   )
 {
 #define drawbuf ((ushort *)DrawBuf)
   uint32 offset = 0;
@@ -48,7 +52,11 @@ DebuggerFormatLine(TCEditor * editor,
       editor == current_editor->editor && CPULine == LineNo)
   {
     editor->formatLine(DrawBuf, LinePtr, Width, Colors, lineLen, Attr,
-                       LineNo);
+                       LineNo
+#if (TCEDITOR_VERSION >= 0x000452)
+                       ,colmap
+#endif
+                       );
     color = editor->getColor(cCPU) << 8;
     while (Width--)
     {
@@ -60,7 +68,11 @@ DebuggerFormatLine(TCEditor * editor,
   if (IsBreakPointLine(((TIDEFileEditor *) editor)->bname, LineNo + 1) >= 0)
   {
     editor->formatLine(DrawBuf, LinePtr, Width, Colors, lineLen, Attr,
-                       LineNo);
+                       LineNo
+#if (TCEDITOR_VERSION >= 0x000452)
+                       ,colmap
+#endif
+                       );
     color = editor->getColor(cBreak) << 8;
     while (Width--)
     {

@@ -92,7 +92,7 @@ __link(RIDEEditWindow)
      TProjectWindow *project_window;
      static char *dskname;
 
-     static ushort DeskTop_Version = 26;
+     static ushort DeskTop_Version = 27;
      static ushort BreakPoint_Version = 0;
 
      static void SetGlobalOptions();
@@ -276,8 +276,8 @@ SaveDesktop(opstream & os, Boolean save_windows = True)
   os.writeBytes(&palette->data[1], len);
   {
     GlobalOptionsRect temp;
-    len = sizeof(temp);
-    os << len;
+    unsigned u = sizeof(temp);
+    os << u;
     TCEditor::CompactGlobalOptions(&temp);
     os.writeBytes(&temp, sizeof(temp));
   }
@@ -630,16 +630,34 @@ LoadDesktop(ipstream & is, Boolean load_windows = True)
     }
     else
     {
-      is >> len;
-      if (len == sizeof(GlobalOptionsRect))
+      if (version < 27)
       {
-        is.readBytes(&temp, len);
-        TCEditor::ExpandGlobalOptions(&temp.opt);
+        is >> len;
+        if (len == sizeof(GlobalOptionsRect))
+        {
+          is.readBytes(&temp, len);
+          TCEditor::ExpandGlobalOptions(&temp.opt);
+        }
+        else
+        {
+          char buf[len];
+          is.readBytes(buf, len);
+        }
       }
       else
       {
-        char buf[len];
-        is.readBytes(buf, len);
+        unsigned l;
+        is >> l;
+        if (l == sizeof(GlobalOptionsRect))
+        {
+          is.readBytes(&temp, l);
+          TCEditor::ExpandGlobalOptions(&temp.opt);
+        }
+        else
+        {
+          char buf[l];
+          is.readBytes(buf, l);
+        }
       }
     }
   }

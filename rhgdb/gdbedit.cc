@@ -2,7 +2,7 @@
 /* This file is part of RHIDE. */
 #include <unistd.h>
 #include <string.h>
-
+#include <stdio.h>
 #define Uses_TEvent
 #define Uses_TWindow
 #define Uses_TProgram
@@ -13,10 +13,10 @@
 #define Uses_TFileDialog
 #define Uses_MsgBox
 #define Uses_TStringCollection
-#include <tv.h>
 
 #define Uses_TCEditor
 #define Uses_TCEditWindow
+#define Uses_TCEditor_Internal
 #include <ceditor.h>
 
 #define Uses_TDirList
@@ -62,14 +62,24 @@ public:
   TGDBEditor(const TRect &, TScrollBar *, TScrollBar *, TSIndicator *,
              const char *);
   virtual void handleEvent(TEvent & event);
+  void setFormatLine();
+#if (TCEDITOR_VERSION < 0x000452)
   static int (*externalFormatLine) (TCEditor *, void *, unsigned, int,
                                     unsigned short, unsigned, unsigned,
                                     unsigned);
   void formatLine(void *, unsigned, int, unsigned short, unsigned, unsigned,
                   unsigned);
-  void setFormatLine();
   void (TCEditor::*FormatLinePtr) (void *, unsigned, int, unsigned short,
                                    unsigned, unsigned, unsigned);
+#else
+  static int (*externalFormatLine) (TCEditor *, void *, unsigned, int,
+                                    unsigned short, unsigned, unsigned,
+                                    unsigned, uint32 *);
+  void formatLine(void *, unsigned, int, unsigned short, unsigned, unsigned,
+                  unsigned, uint32 *);
+  void (TCEditor::*FormatLinePtr) (void *, unsigned, int, unsigned short,
+                                   unsigned, unsigned, unsigned, uint32 *);
+#endif
    ~TGDBEditor();
   char *bname;
 };
@@ -206,7 +216,11 @@ DebuggerFormatLine(TCEditor * editor,
                    unsigned LinePtr,
                    int Width,
                    unsigned short Colors,
-                   unsigned lineLen, unsigned Attr, unsigned LineNo)
+                   unsigned lineLen, unsigned Attr, unsigned LineNo
+#if (TCEDITOR_VERSION >= 0x000452)
+                   , uint32 *colmap
+#endif
+                   )
 {
 #define drawbuf ((ushort *)DrawBuf)
   uint32 offset = 0;
@@ -215,7 +229,11 @@ DebuggerFormatLine(TCEditor * editor,
   if (debugger_started && editor == current_editor && CPULine == LineNo)
   {
     editor->formatLine(DrawBuf, LinePtr, Width, Colors, lineLen, Attr,
-                       LineNo);
+                       LineNo
+#if (TCEDITOR_VERSION >= 0x000452)
+                       , colmap
+#endif
+                       );
     color = editor->getColor(cCPU) << 8;
     while (Width--)
     {
@@ -227,7 +245,11 @@ DebuggerFormatLine(TCEditor * editor,
   if (IsBreakPointLine(((TGDBEditor *) editor)->bname, LineNo + 1) >= 0)
   {
     editor->formatLine(DrawBuf, LinePtr, Width, Colors, lineLen, Attr,
-                       LineNo);
+                       LineNo
+#if (TCEDITOR_VERSION >= 0x000452)
+                       , colmap
+#endif
+                       );
     color = editor->getColor(cBreak) << 8;
     while (Width--)
     {
@@ -241,15 +263,32 @@ DebuggerFormatLine(TCEditor * editor,
 
 int (*TGDBEditor::externalFormatLine) (TCEditor *, void *, unsigned, int,
                                        unsigned short, unsigned, unsigned,
-                                       unsigned) = NULL;
+                                       unsigned
+#if (TCEDITOR_VERSION >= 0x000452)
+                                       , uint32 *
+#endif
+                                       ) = NULL;
 
 void
-TGDBEditor::formatLine(void *DrawBuf, unsigned LinePtr, int Width, unsigned short Colors, unsigned lineLen, unsigned Attr, unsigned lineNo	// needed for RHIDE
+TGDBEditor::formatLine(void *DrawBuf, unsigned LinePtr, int Width, unsigned short Colors, unsigned lineLen,
+                       unsigned Attr, unsigned lineNo // needed for RHIDE
+#if (TCEDITOR_VERSION >= 0x000452)
+                       , uint32 *colmap
+#endif
   )
 {
   if (DebuggerFormatLine(this, DrawBuf, LinePtr, Width, Colors, lineLen,
-                         Attr, lineNo)) return;
-  (this->*FormatLinePtr) (DrawBuf, LinePtr, Width, Colors, lineLen, Attr, lineNo);
+                         Attr, lineNo
+#if (TCEDITOR_VERSION >= 0x000452)
+                         , colmap
+#endif
+                         )) return;
+  (this->*FormatLinePtr) (DrawBuf, LinePtr, Width, Colors, lineLen,
+                          Attr, lineNo
+#if (TCEDITOR_VERSION >= 0x000452)
+                          , colmap
+#endif
+                          );
 }
 
 extern int SHLSelect(TCEditor & e, char *buffer, int buf_len);
@@ -261,7 +300,11 @@ TGDBEditor::setFormatLine()
   FormatLinePtr = formatLinePtr;
   formatLinePtr = (void (TCEditor::*)
                    (void *, unsigned, int, unsigned short, unsigned,
-                    unsigned, unsigned)) &TGDBEditor::formatLine;
+                    unsigned, unsigned
+#if (TCEDITOR_VERSION >= 0x000452)
+                    , uint32 *
+#endif
+                    )) &TGDBEditor::formatLine;
   update(ufView);
 }
 

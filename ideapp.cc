@@ -6,21 +6,21 @@
 #define Uses_TPalette
 #define Uses_TDeskTop
 #define Uses_TStringCollection
-#include "rhide.h"
 
+#define Uses_TCEditor
+#define Uses_TCEditWindow
+#define Uses_TCEditor_Commands
 #define Uses_TIDEEditWindow
 #define Uses_TProject
 #include <libide.h>
+
+#include "rhide.h"
+
 
 #define Uses_tvutilFunctions
 #include <libtvuti.h>
 
 #include <rhutils.h>
-
-#define Uses_TCEditor
-#define Uses_TCEditWindow
-#define Uses_TCEditor_Commands
-#include <ceditor.h>
 
 #include "ideapp.h"
 

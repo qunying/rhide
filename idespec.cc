@@ -1,37 +1,37 @@
 /* Copyright (C) 1996-2000 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
-#define Uses_TWindow
-#define Uses_TEvent
-#define Uses_TStringCollection
-
-#define Uses_TProject
-#define Uses_TOptions
-#define Uses_TDependency
-#define Uses_TDepCollection
-#define Uses_TFlagCollection
-
-#include "rhide.h"
-#include "rhidehis.h"
-
-#define Uses_TWindowList
-#define Uses_TSCollection
-#define Uses_ideFunctions
-#define Uses_ideCommands
-#include <libide.h>
-
-#define Uses_TParamList
-#define Uses_TDirList
-#define Uses_TWindowList
-#define Uses_tvutilFunctions
-#include <libtvuti.h>
-#include <rhutils.h>
-
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
 #include <ctype.h>
 #include <sys/utsname.h>
+#define Uses_TWindow
+#define Uses_TEvent
+#define Uses_TStringCollection
+#define Uses_TProject
+#define Uses_TOptions
+#define Uses_TDependency
+#define Uses_TDepCollection
+#define Uses_TFlagCollection
+#define Uses_TCEditor_Internal
+#define Uses_TWindowList
+#define Uses_TSCollection
+#define Uses_ideFunctions
+#define Uses_ideCommands
+#define Uses_TParamList
+#define Uses_TDirList
+#define Uses_TWindowList
+#define Uses_tvutilFunctions
+#include <ceditor.h>
+#include "rhide.h"
+#include "rhidehis.h"
+
+#include <libide.h>
+
+#include <libtvuti.h>
+#include <rhutils.h>
+
 
 /* *INDENT-OFF* */
 #define SAME_LIBS(x,y)\
@@ -1578,8 +1578,6 @@ GetCompilerSpec(TDependency * dep, Boolean & is_user)
   }
   return NULL;
 }
-
-#include <ced_inte.h> // for TCEDITOR_VERSION
 
 void
 #if (TCEDITOR_VERSION >= 0x000447UL)

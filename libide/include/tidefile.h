@@ -15,14 +15,24 @@ public:
   static const char *const name;
   virtual void handleEvent(TEvent &);
   virtual Boolean valid(ushort);
+#if (TCEDITOR_VERSION < 0x000452)
   static int (*externalFormatLine) (TCEditor *, void *, unsigned, int,
                                     unsigned short, unsigned, uint32,
                                     unsigned);
   void formatLine(void *, unsigned, int, unsigned short, unsigned, uint32,
                   unsigned);
-  void setFormatLine();
   void (TCEditor::*FormatLinePtr) (void *, unsigned, int, unsigned short,
                                    unsigned, uint32, unsigned);
+#else
+  static int (*externalFormatLine) (TCEditor *, void *, unsigned, int,
+                                    unsigned short, unsigned, uint32,
+                                    unsigned, uint32 *);
+  void formatLine(void *, unsigned, int, unsigned short, unsigned, uint32,
+                  unsigned, uint32 *);
+  void (TCEditor::*FormatLinePtr) (void *, unsigned, int, unsigned short,
+                                   unsigned, uint32, unsigned, uint32 *);
+#endif
+  void setFormatLine();
 private:
     virtual const char *streamableName() const
   {

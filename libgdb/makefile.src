@@ -102,7 +102,7 @@ LIBGDB_FLAGS+=$(OS_FLAGS)
 override CFLAGS+=$(OS_CFLAGS)
 
 $(GDB_OBJ)/Makefile:
-	cd $(GDB_OBJ) && $(GDB_SRC)/configure
+	sh -c "cd $(GDB_OBJ) && CC=gcc $(GDB_SRC)/configure"
 
 $(GDB_OBJ)/bfd/bfd.h: $(GDB_OBJ)/Makefile
 	$(MAKE) -C $(dir $@) $(notdir $@)

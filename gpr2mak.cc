@@ -179,7 +179,7 @@ $(wildcard $(path)/$(notdir ",tmp,"))))", NULL);
     chdir(pdir);
     string_free(pdir);
   }
-  if ((project = ReadProject(project_name, False)) == NULL)
+  if ((project = ReadProject(project_name, false)) == NULL)
   {
     fprintf(stderr,_("error reading projectfile %s\n"),project_name);
     chdir(orig_dir);

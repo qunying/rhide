@@ -310,7 +310,7 @@ ifpstream *open_ifpstream(const char *name)
 {
 #ifdef USE_OPEN
   int handle;
-#ifdef __MSDOS__
+#ifdef O_BINARY
   handle = open (name, O_RDONLY|O_BINARY);
 #else
   handle = open (name, O_RDONLY);

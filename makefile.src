@@ -26,12 +26,6 @@ src_files=$(po_files) Makefile common.mak README.IDE RHIDE.BIN RHIDE.SRC \
 	ideversi.in ideversi.cc readme.key rhide_.env \
 	moveifch gprexp.gpr gprexp.mak
 
-ifeq ($(rhide_OS),DJGPP)
-ADD_SUBDIRS=
-else
-ADD_SUBDIRS=
-endif
-
 subdirs=libide librhgdb libtvgdb libtvuti include doc libgdb \
 	rhgdb debobj nodebobj po tvdemo librhuti share\
 	$(ADD_SUBDIRS)
@@ -74,6 +68,8 @@ gpr2mak.exe:: gpr2mak.mak force
 ide.exe:: rhide_.mak force
 	$(MAKE) -f rhide_.mak $(FLAGS_TO_PASS)
 	
+idegc.exe rhgdb/rhgdb.exe:: libgdb/libgdbrh.a
+
 idegc.exe:: rhide.mak force
 	$(MAKE) -f rhide.mak $(FLAGS_TO_PASS)
 
@@ -292,9 +288,7 @@ DISTRIB_BIN_FLAGS=\
 
 ifeq ($(rhide_OS),DJGPP)
 install_prefix_bin=
-endif
-
-ifeq ($(rhide_OS),Linux)
+else
 install_prefix_bin=/$(PACKAGE_DIR)$(DIR_VERSION)
 endif
 

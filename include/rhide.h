@@ -268,7 +268,7 @@ void OpenDisWin(int force_open = 0);
 
 /* module idemak.cc */
 class TProject;
-TProject *ReadProject(const char *, Boolean from_ide = True);
+TProject *ReadProject(const char *, bool from_ide = true);
 void WriteMake(char *outname=NULL,int argc=0,char *arg[]=NULL);
 void put_breakline(FILE *f,int start_len,int max_len,const char *s);
 extern TProject *project;

@@ -99,7 +99,7 @@
 #include <libtvdem.h>
 
 #include <ideapp.h>
-#ifndef __DJGPP__
+#ifdef __linux__
 //FIXME: on my Linux the symbol ERR is already defined
 // in sys/ucontext.h, but since curses.h is needed only
 // for timeout(), I think I can live with it.
@@ -1590,27 +1590,29 @@ void IDE::handleEvent(TEvent & event)
           int old_flag = update_flag;
           TMouse::suspend();
           update_flag = 0;
-#ifdef __DJGPP__
-          TScreen::suspend();
-#else
+#ifdef __linux__
           RestoreScreen();
+#else
+          TScreen::suspend();
 #endif
           do
           {
             idle();
-#ifndef __DJGPP__
-            timeout (1);
+#ifdef __linux__
+            timeout(1);
 #endif
             clearEvent(event);
             event.getKeyEvent();
 #ifdef __DJGPP__
             __dpmi_yield();
 #else
-            timeout (0);
+#ifdef __linux__
+            timeout(0);
+#endif
 #endif
           } while (event.what == evNothing);
           clearEvent(event);
-#ifdef __DJGPP__
+#ifndef __linux__
           TScreen::resume();
 #endif
           update_flag = old_flag;

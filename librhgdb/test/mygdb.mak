@@ -1,4 +1,4 @@
-# Copyright (C) 1996-2000 Robert H”hne, see COPYING.RH for details 
+# Copyright (C) 1996-2001 Robert H”hne, see COPYING.RH for details 
 # This file is part of RHIDE. 
 # d:/obj/rhide/gpr2mak.exe -d -r- -o __tmp__.mak mygdb.gpr
 ifeq ($(strip $(RHIDESRC)),)
@@ -28,6 +28,51 @@ vpath %.h $(vpath_header)
 vpath %.hpp $(vpath_header)
 vpath %.ha $(vpath_header)
 vpath %.hd $(vpath_header)
+RHIDE_OS=$(RHIDE_OS_)
+ifeq ($(strip $(RHIDE_OS)),)
+ifneq ($(strip $(DJDIR)),)
+RHIDE_OS_:=DJGPP
+else
+RHIDE_OS_:=$(shell uname)
+endif
+endif
+
+INCLUDE_DIRS=$(RHIDESRC)/librhgdb/include ../../libgdb
+LIB_DIRS=.. ../../libgdb
+C_DEBUG_FLAGS=-g
+C_OPT_FLAGS=-O
+C_WARN_FLAGS=-Wall
+C_C_LANG_FLAGS=
+C_CXX_LANG_FLAGS=
+C_P_LANG_FLAGS=
+C_FPC_LANG_FLAGS=
+C_F_LANG_FLAGS=
+C_ADA_LANG_FLAGS=
+LIBS=gdbrh
+LD_EXTRA_FLAGS=
+C_EXTRA_FLAGS=
+LOCAL_OPT=$(subst ___~~~___, ,$(subst $(notdir $<)___,,$(filter $(notdir\
+	$<)___%,$(LOCAL_OPTIONS))))
+
+OBJFILES=mygdb.o
+ALL_OBJFILES=../annotate.o ../breakpoi.o ../defaults.o ../dis.o ../frame.o\
+	../gdbcontr.o ../gdbinter.o ../listfunc.o ../regs.o ../symify.o\
+	../watches.o mygdb.o
+LIBRARIES=../librhgdb.a
+SOURCE_NAME=$<
+OUTFILE=$@
+SPECIAL_CFLAGS=
+SPECIAL_LDFLAGS=
+PROG_ARGS=mygdb.exe
+SRC_DIRS=$(RHIDESRC)/librhgdb/test
+WUC=
+EDITORS=
+MAIN_TARGET=mygdb.exe
+PROJECT_ITEMS=../librhgdb.gpr mygdb.c
+DEFAULT_MASK=*.[cho]*
+RHIDE_BIN_DIR=d:/obj/rhide
+PASCAL_TYPE=GPC
+GET_HOME=$(HOME)
 RHIDE_GCC=gcc
 RHIDE_AS=gcc
 RHIDE_GXX=gcc
@@ -51,8 +96,9 @@ RHIDE_TYPED_LIBS_FPC=fpc
 RHIDE_TYPED_LIBS.p=$(RHIDE_TYPED_LIBS_$(PASCAL_TYPE))
 RHIDE_TYPED_LIBS.pas=$(RHIDE_TYPED_LIBS.p)
 RHIDE_TYPED_LIBS.pp=$(RHIDE_TYPED_LIBS_FPC)
+RHIDE_TYPED_LIBS_$(RHIDE_OS).cc=stdc++
 RHIDE_TYPED_LIBS_DJGPP.cc=stdcxx
-RHIDE_TYPED_LIBS_Linux.cc=stdc++
+RHIDE_TYPED_LIBS_DJGPP.cc=stdcxx
 RHIDE_TYPED_LIBS.cc=$(RHIDE_TYPED_LIBS_$(RHIDE_OS).cc)
 RHIDE_TYPED_LIBS.cpp=$(RHIDE_TYPED_LIBS.cc)
 RHIDE_TYPED_LIBS.cxx=$(RHIDE_TYPED_LIBS.cc)
@@ -127,12 +173,15 @@ RHIDE_COMPILE_PASCAL=$(RHIDE_COMPILE_$(PASCAL_TYPE))
 RHIDE_COMPILE_PASCAL_FORCE=$(RHIDE_COMPILE_$(PASCAL_TYPE)_FORCE)
 RHIDE_COMPILE_LINK_PASCAL_AUTOMAKE=$(RHIDE_COMPILE_LINK_$(PASCAL_TYPE)_AUTOMAKE)
 RHIDE_COMPILE_LINK_PASCAL=$(RHIDE_COMPILE_LINK_$(PASCAL_TYPE))
+RHIDE_FPC_LIBDIRS_$(RHIDE_OS)=/usr/local/lib /usr/lib /lib
+RHIDE_FPC_LIBDIRS_DJGPP=/usr/local/lib /usr/lib /lib
 RHIDE_FPC_LIBDIRS_DJGPP=$(DJDIR)/lib
-RHIDE_FPC_LIBDIRS_Linux=/usr/local/lib /usr/lib /lib
 RHIDE_FPC_LIBDIRS=$(RHIDE_FPC_LIBDIRS_$(RHIDE_OS))
-RHIDE_FPC_LINK_FLAGS_DJGPP=-O coff-go32-exe $(RHIDE_LIBDIRS) $(addprefix\
+RHIDE_FPC_LINK_FLAGS_$(RHIDE_OS)=$(RHIDE_LIBDIRS) $(addprefix\
 	-L,$(RHIDE_FPC_LIBDIRS))
-RHIDE_FPC_LINK_FLAGS_Linux=$(RHIDE_LIBDIRS) $(addprefix\
+RHIDE_FPC_LINK_FLAGS_DJGPP=$(RHIDE_LIBDIRS) $(addprefix\
+	-L,$(RHIDE_FPC_LIBDIRS))
+RHIDE_FPC_LINK_FLAGS_DJGPP=-O coff-go32-exe $(RHIDE_LIBDIRS) $(addprefix\
 	-L,$(RHIDE_FPC_LIBDIRS))
 RHIDE_FPC_LINK_FLAGS=$(RHIDE_FPC_LINK_FLAGS_$(RHIDE_OS))
 RHIDE_COMPILE_LINK_FPC=echo 'separate linking for FPK is not supported.\
@@ -201,20 +250,25 @@ RHIDE_GREP=grep -n $(prompt arguments for GREP,$(WUC) $(DEFAULT_GREP_MASK))
 RHIDE_GPROF=gprof $(OUTFILE)
 RHIDE_RLOG=$(shell rlog -R $(rlog_arg))
 RHIDE_CO=$(shell co -q $(co_arg))
+RHIDE_STANDARD_INCLUDES_$(RHIDE_OS)=$(addprefix /usr/,include include/sys\
+	include/g++ include/g++/std)
+RHIDE_STANDARD_INCLUDES_DJGPP=$(addprefix /usr/,include include/sys\
+	include/g++ include/g++/std)
 RHIDE_STANDARD_INCLUDES_DJGPP=$(addprefix $(DJDIR)/,include include/sys\
 	lang/cxx lang/cxx/std)
-RHIDE_STANDARD_INCLUDES_Linux=$(addprefix /usr/,include include/sys\
-	include/g++ include/g++/std)
 RHIDE_STANDARD_INCLUDES=$(RHIDE_STANDARD_INCLUDES_$(RHIDE_OS))
-RHIDE_CONFIG_DIRS_DJGPP=$(DJDIR)/share/rhide
-RHIDE_CONFIG_DIRS_Linux=/usr/local/share/rhide /usr/share/rhide \
+RHIDE_CONFIG_DIRS_$(RHIDE_OS)=/usr/local/share/rhide /usr/share/rhide \
 	/local/share/rhide /share/rhide
+RHIDE_CONFIG_DIRS_DJGPP=/usr/local/share/rhide /usr/share/rhide \
+	/local/share/rhide /share/rhide
+RHIDE_CONFIG_DIRS_DJGPP=$(DJDIR)/share/rhide
 RHIDE_CONFIG_DIRS_COMMON=$(RHIDE_CONFIG_DIRS_$(RHIDE_OS))\
 	$(RHIDE_BIN_DIR)/../share/rhide
 RHIDE_CONFIG_DIRS=. $(RHIDE_SHARE) $(GET_HOME)   $(RHIDE_CONFIG_DIRS_COMMON)\
 	 $(addsuffix /SET,$(RHIDE_CONFIG_DIRS_COMMON))  $(SET_FILES)
+RHIDE_PATH_SEPARATOR_$(RHIDE_OS)=:
+RHIDE_PATH_SEPARATOR_DJGPP=:
 RHIDE_PATH_SEPARATOR_DJGPP=;
-RHIDE_PATH_SEPARATOR_Linux=:
 RHIDE_PATH_SEPARATOR=$(RHIDE_PATH_SEPARATOR_$(RHIDE_OS))
 RHIDE_EMPTY=
 RHIDE_SPACE=$(RHIDE_EMPTY) $(RHIDE_EMPTY)
@@ -222,21 +276,18 @@ RHIDE_TYPED_LIBS_DJGPP.cc=stdcxx
 RHIDE_TYPED_LIBS_DJGPP.cxx=stdcxx
 RHIDE_TYPED_LIBS_DJGPP.cpp=stdcxx
 RHIDE_TYPED_LIBS_DJGPP.f=g2c m
+RHIDE_STDINC_C_$(RHIDE_OS)=/usr/include /usr/local/include
+RHIDE_STDINC_CXX_$(RHIDE_OS)=/usr/include/g++ /usr/local/include/g++
+RHIDE_STDINC_GCC_$(RHIDE_OS)=/usr/lib/gcc-lib /usr/local/lib/gcc-lib
 RHIDE_STDINC_C_DJGPP=$(DJDIR)/include
 RHIDE_STDINC_CXX_DJGPP=$(DJDIR)/lang/cxx 
 RHIDE_STDINC_GCC_DJGPP=$(DJDIR)/lib
-RHIDE_STDINC_C_Linux=/usr/include /usr/local/include
-RHIDE_STDINC_CXX_Linux=/usr/include/g++ /usr/local/include/g++
-RHIDE_STDINC_GCC_Linux=/usr/lib/gcc-lib /usr/local/lib/gcc-lib
 RHIDE_STDINC_C=$(RHIDE_STDINC_C_$(RHIDE_OS))
 RHIDE_STDINC_CXX=$(RHIDE_STDINC_CXX_$(RHIDE_OS)) $(TVSRC)/include $(SETSRC)
 RHIDE_STDINC_GCC=$(RHIDE_STDINC_GCC_$(RHIDE_OS))
 RHIDE_STDINC=$(RHIDE_STDINC_C) $(RHIDE_STDINC_CXX) $(RHIDE_STDINC_GCC)\
 	$(RHIDE_STDINC_EXTRA) $(dir $(LIBGDB_H))
-RHIDE_OS_CFLAGS_Linux=-D_GNU_SOURCE
 RHIDE_OS_CFLAGS=$(RHIDE_OS_CFLAGS_$(RHIDE_OS)) $(RH_WARN)
-RHIDE_OS_CXXFLAGS_Linux=-D_GNU_SOURCE
-RHIDE_OS_CXXFLAGS_DJGPP=
 RHIDE_OS_CXXFLAGS=$(RHIDE_OS_CXXFLAGS_$(RHIDE_OS)) $(RH_WARN)\
 	-fno-exceptions -fno-rtti
 RHIDE_LIBDIRS=$(addprefix -L,$(dir $(LIBGDB_A)) $(LIB_DIRS))
@@ -244,21 +295,18 @@ PCRE_OBJ=$(subst Linux,linux,$(SETOBJ)/$(RHIDE_OS))
 RHIDE_OS_LIBS_DJGPP=dbg
 RHIDE_OS_LIBS_Linux=ncurses
 RHIDE_OS_LIBS=$(RHIDE_OS_LIBS_$(RHIDE_OS))
+RHIDE_STDINC_C_$(RHIDE_OS)=/usr/include /usr/local/include
+RHIDE_STDINC_CXX_$(RHIDE_OS)=/usr/include/g++ /usr/local/include/g++
+RHIDE_STDINC_GCC_$(RHIDE_OS)=/usr/lib/gcc-lib /usr/local/lib/gcc-lib
 RHIDE_STDINC_C_DJGPP=$(DJDIR)/include
 RHIDE_STDINC_CXX_DJGPP=$(DJDIR)/lang/cxx 
 RHIDE_STDINC_GCC_DJGPP=$(DJDIR)/lib
-RHIDE_STDINC_C_Linux=/usr/include /usr/local/include
-RHIDE_STDINC_CXX_Linux=/usr/include/g++ /usr/local/include/g++
-RHIDE_STDINC_GCC_Linux=/usr/lib/gcc-lib /usr/local/lib/gcc-lib
 RHIDE_STDINC_C=$(RHIDE_STDINC_C_$(RHIDE_OS))
 RHIDE_STDINC_CXX=$(RHIDE_STDINC_CXX_$(RHIDE_OS)) $(TVSRC)/include $(SETSRC)
 RHIDE_STDINC_GCC=$(RHIDE_STDINC_GCC_$(RHIDE_OS))
 RHIDE_STDINC=$(RHIDE_STDINC_C) $(RHIDE_STDINC_CXX) $(RHIDE_STDINC_GCC)\
 	$(RHIDE_STDINC_EXTRA) $(dir $(LIBGDB_H))
-RHIDE_OS_CFLAGS_Linux=-D_GNU_SOURCE
 RHIDE_OS_CFLAGS=$(RHIDE_OS_CFLAGS_$(RHIDE_OS)) $(RH_WARN)
-RHIDE_OS_CXXFLAGS_Linux=-D_GNU_SOURCE
-RHIDE_OS_CXXFLAGS_DJGPP=
 RHIDE_OS_CXXFLAGS=$(RHIDE_OS_CXXFLAGS_$(RHIDE_OS)) $(RH_WARN)\
 	-fno-exceptions -fno-rtti
 RHIDE_LIBDIRS=$(addprefix -L,$(dir $(LIBGDB_A)) $(LIB_DIRS))
@@ -266,49 +314,6 @@ PCRE_OBJ=$(subst Linux,linux,$(SETOBJ)/$(RHIDE_OS))
 RHIDE_OS_LIBS_DJGPP=dbg
 RHIDE_OS_LIBS_Linux=ncurses
 RHIDE_OS_LIBS=$(RHIDE_OS_LIBS_$(RHIDE_OS))
-INCLUDE_DIRS=$(RHIDESRC)/librhgdb/include ../../libgdb
-LIB_DIRS=.. ../../libgdb
-C_DEBUG_FLAGS=-g
-C_OPT_FLAGS=-O
-C_WARN_FLAGS=-Wall
-C_C_LANG_FLAGS=
-C_CXX_LANG_FLAGS=
-C_P_LANG_FLAGS=
-C_FPC_LANG_FLAGS=
-C_F_LANG_FLAGS=
-C_ADA_LANG_FLAGS=
-LIBS=rhgdb gdbrh rhgdb
-LD_EXTRA_FLAGS=
-C_EXTRA_FLAGS=
-LOCAL_OPT=$(subst ___~~~___, ,$(subst $(notdir $<)___,,$(filter $(notdir\
-	$<)___%,$(LOCAL_OPTIONS))))
-
-OBJFILES=mygdb.o
-ALL_OBJFILES=mygdb.o
-LIBRARIES=
-SOURCE_NAME=$<
-OUTFILE=$@
-SPECIAL_CFLAGS=
-SPECIAL_LDFLAGS=
-PROG_ARGS=mygdb.exe
-SRC_DIRS=$(RHIDESRC)/librhgdb/test
-WUC=
-EDITORS=
-RHIDE_OS=$(RHIDE_OS_)
-ifeq ($(strip $(RHIDE_OS)),)
-ifneq ($(strip $(DJDIR)),)
-RHIDE_OS_:=DJGPP
-else
-RHIDE_OS_:=$(shell uname)
-endif
-endif
-
-MAIN_TARGET=mygdb.exe
-PROJECT_ITEMS=../librhgdb.gpr mygdb.c
-DEFAULT_MASK=*.[cho]*
-RHIDE_BIN_DIR=d:/obj/rhide
-PASCAL_TYPE=GPC
-GET_HOME=$(HOME)
 %.o: %.c
 	$(RHIDE_COMPILE.c.o)
 %.o: %.i
@@ -386,7 +391,7 @@ GET_HOME=$(HOME)
 include rhide.env
 all::
 DEPS_0= mygdb.o ../librhgdb.a
-NO_LINK=../librhgdb.a
+NO_LINK=
 LINK_FILES=$(filter-out $(NO_LINK),$(DEPS_0))
 mygdb.exe:: $(DEPS_0)
 	$(RHIDE_COMPILE_LINK)

@@ -107,11 +107,11 @@ static char *default_variables[] = {
  "RHIDE_TYPED_LIBS.pp",
  "$(RHIDE_TYPED_LIBS_FPC)",
 
+ "RHIDE_TYPED_LIBS_$(RHIDE_OS).cc",
+ "stdc++",
+
  "RHIDE_TYPED_LIBS_DJGPP.cc",
  "stdcxx",
-
- "RHIDE_TYPED_LIBS_Linux.cc",
- "stdc++",
 
  "RHIDE_TYPED_LIBS.cc",
  "$(RHIDE_TYPED_LIBS_$(RHIDE_OS).cc)",
@@ -250,20 +250,20 @@ static char *default_variables[] = {
  "RHIDE_COMPILE_LINK_PASCAL",
  "$(RHIDE_COMPILE_LINK_$(PASCAL_TYPE))",
 
+ "RHIDE_FPC_LIBDIRS_$(RHIDE_OS)",
+ "/usr/local/lib /usr/lib /lib",
+
  "RHIDE_FPC_LIBDIRS_DJGPP",
  "$(DJDIR)/lib",
-
- "RHIDE_FPC_LIBDIRS_Linux",
- "/usr/local/lib /usr/lib /lib",
 
  "RHIDE_FPC_LIBDIRS",
  "$(RHIDE_FPC_LIBDIRS_$(RHIDE_OS))",
 
+ "RHIDE_FPC_LINK_FLAGS_$(RHIDE_OS)",
+ "$(RHIDE_LIBDIRS) $(addprefix -L,$(RHIDE_FPC_LIBDIRS))",
+
  "RHIDE_FPC_LINK_FLAGS_DJGPP",
  "-O coff-go32-exe $(RHIDE_LIBDIRS) $(addprefix -L,$(RHIDE_FPC_LIBDIRS))",
-
- "RHIDE_FPC_LINK_FLAGS_Linux",
- "$(RHIDE_LIBDIRS) $(addprefix -L,$(RHIDE_FPC_LIBDIRS))",
 
  "RHIDE_FPC_LINK_FLAGS",
  "$(RHIDE_FPC_LINK_FLAGS_$(RHIDE_OS))",
@@ -403,21 +403,21 @@ static char *default_variables[] = {
  "RHIDE_CO",
  "$(shell co -q $(co_arg))",
 
+ "RHIDE_STANDARD_INCLUDES_$(RHIDE_OS)",
+ "$(addprefix /usr/,include include/sys include/g++ include/g++/std)",
+
  "RHIDE_STANDARD_INCLUDES_DJGPP",
  "$(addprefix $(DJDIR)/,include include/sys lang/cxx lang/cxx/std)",
-
- "RHIDE_STANDARD_INCLUDES_Linux",
- "$(addprefix /usr/,include include/sys include/g++ include/g++/std)",
 
  "RHIDE_STANDARD_INCLUDES",
  "$(RHIDE_STANDARD_INCLUDES_$(RHIDE_OS))",
 
- "RHIDE_CONFIG_DIRS_DJGPP",
- "$(DJDIR)/share/rhide",
-
- "RHIDE_CONFIG_DIRS_Linux",
+ "RHIDE_CONFIG_DIRS_$(RHIDE_OS)",
  "/usr/local/share/rhide /usr/share/rhide\
   /local/share/rhide /share/rhide",
+
+ "RHIDE_CONFIG_DIRS_DJGPP",
+ "$(DJDIR)/share/rhide",
 
  "RHIDE_CONFIG_DIRS_COMMON",
  "$(RHIDE_CONFIG_DIRS_$(RHIDE_OS)) $(RHIDE_BIN_DIR)/../share/rhide",
@@ -428,11 +428,11 @@ static char *default_variables[] = {
   $(addsuffix /SET,$(RHIDE_CONFIG_DIRS_COMMON))\
   $(SET_FILES)",
 
+ "RHIDE_PATH_SEPARATOR_$(RHIDE_OS)",
+ ":",
+
  "RHIDE_PATH_SEPARATOR_DJGPP",
  ";",
-
- "RHIDE_PATH_SEPARATOR_Linux",
- ":",
 
  "RHIDE_PATH_SEPARATOR",
  "$(RHIDE_PATH_SEPARATOR_$(RHIDE_OS))",
@@ -464,20 +464,31 @@ extern char **environ;
 static int variables_inited = 0;
 static
 char *_handle_rhide_token(const char *_token,token_func expand_tokens);
+static
+char *ExpandSpec(const char *spec);
 
 static void
 init_variables(void)
 {
-  char *variable,*contents;
   if (variables_inited)
     return;
+  variables_inited = 1;
   int i=0;
   while (default_variables[i])
   {
-    variable = default_variables[i];
-    contents = getenv(variable);
+    char *variable,*contents, *_variable;
+    _variable = default_variables[i];
+    variable = ExpandSpec(_variable);
+    contents = getenv(_variable);
     if (!contents) contents = default_variables[i+1];
-    insert_variable(variable,contents);
+    insert_variable(_variable, contents);
+    if (strcmp(variable, _variable) != 0)
+    {
+      contents = getenv(variable);
+      if (!contents) contents = default_variables[i+1];
+      insert_variable(variable, contents);
+    }
+    string_free(variable);
     i += 2;
   }
   // Now check the env for any RHIDE_ variable
@@ -485,13 +496,13 @@ init_variables(void)
   {
     if (strncmp(environ[i],"RHIDE_",6) == 0)
     {
-      contents = strchr(environ[i],'=');
+      char *contents = strchr(environ[i],'=');
       if (!contents) continue;
       contents++;
       char var[256];
       memcpy(var,environ[i],(int)(contents-environ[i])-1);
       var[(int)(contents-environ[i])-1] = 0;
-      insert_variable(var,contents);
+      insert_variable(var, contents);
     }
   }
   variables_inited = 1;
@@ -573,6 +584,7 @@ TF(make_GET_HOME);
 static _rhide_tokens rhide_tokens[] =
 {
 #define SF(x,y) {#x,sizeof(#x)-1,rhide_token_##x,y}
+  SF(RHIDE_OS,rhide_token_make_RHIDE_OS),
   SF(INCLUDE_DIRS,NULL),
   SF(LIB_DIRS,NULL),
   SF(C_DEBUG_FLAGS,NULL),
@@ -599,7 +611,6 @@ static _rhide_tokens rhide_tokens[] =
   SF(SRC_DIRS,NULL),
   SF(WUC,rhide_token_make_WUC),
   SF(EDITORS,rhide_token_make_EDITORS),
-  SF(RHIDE_OS,rhide_token_make_RHIDE_OS),
   SF(MAIN_TARGET,NULL),
   SF(PROJECT_ITEMS,NULL),
   SF(DEFAULT_MASK,NULL),
@@ -1283,11 +1294,6 @@ static void WriteRules(FILE *f)
 void WriteSpecData(FILE *f)
 {
   int i;
-  for (i=0;i<var_count;i++)
-  {
-    fprintf(f,"%s=",vars[i*2]);
-    put_breakline(f,strlen(vars[i*2]),75,vars[i*2+1]);
-  }
   i=0;
   _token_dep = project;
   while (rhide_tokens[i].name)
@@ -1302,6 +1308,11 @@ void WriteSpecData(FILE *f)
     string_free(token);
     string_free(name);
     i++;
+  }
+  for (i=0;i<var_count;i++)
+  {
+    fprintf(f,"%s=",vars[i*2]);
+    put_breakline(f,strlen(vars[i*2]),75,vars[i*2+1]);
   }
   WriteRules(f);
 }

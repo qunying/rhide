@@ -39,12 +39,16 @@ CHECKS=
 EXCLUDE_REGEX=| sed -e '/main.o/d'
 endif
 
-ifeq ($(strip $(rhide_OS)),Linux)
+ifneq ($(strip $(rhide_OS)),DJGPP)
 OS_CFLAGS=-DHAVE_CONFIG_H -O2 -DNO_MMALLOC -g
 #MMALLOC=../mmalloc/libmmalloc.a
 #MMALLOC_INC=o_gdb/mmalloc s_gdb/mmalloc
 CHECKS=
 EXCLUDE_REGEX=| sed -e '/.*gnu-regex.*/d' -e '/main.o/d'
+endif
+
+ifeq ($(strip $(rhide_OS)),CYGWIN)
+EXCLUDE_REGEX=| sed -e '/main.o/d'
 endif
 
 MMALLOC_LIB=$(subst ..,$(GDB_OBJ),$(MMALLOC))
@@ -131,7 +135,7 @@ $(GDB_OBJ)/%.a:
 	$(MAKE) -C $(dir $@) CFLAGS="$(CFLAGS)" $(LIBGDB_FLAGS)
 
 libgdb-files: force
-	$(MAKE) -C $(GDB_OBJ) CFLAGS="$(CFLAGS)" $(LIBGDB_FLAGS)
+	$(MAKE) -C $(GDB_OBJ)/gdb CFLAGS="$(CFLAGS)" $(LIBGDB_FLAGS) libgdb.a
 	ls $(GDB_OBJ)/gdb/*.o | sed s,$(GDB_OBJ)/gdb/,,g > $@
 
 T_FILES=libbfd.t libiberty.t libopcodes.t libreadline.t $(notdir $(subst .a,.t,$(MMALLOC_LIB))) gdb.t

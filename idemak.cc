@@ -34,7 +34,7 @@ int recursive_make = 0;
 
 unsigned short ProjectVersion = 1;
 
-TProject *ReadProject(const char *prjname, Boolean from_ide)
+TProject *ReadProject(const char *prjname, bool from_ide)
 {
   ifpstream *ifile;
   char *magic;
@@ -48,7 +48,7 @@ TProject *ReadProject(const char *prjname, Boolean from_ide)
         (strcmp(magic,PROJECT_IDENT) && strcmp(magic,OLD_PROJECT_IDENT) &&
          strcmp(magic,VERY_OLD_PROJECT_IDENT)))
     {
-      if (from_ide = True)
+      if (from_ide)
       {
         messageBox(mfError | mfOKButton,_("Invalid project-file %s(%s)"),
                    prjname,magic);
@@ -68,7 +68,7 @@ TProject *ReadProject(const char *prjname, Boolean from_ide)
     delete magic;
     if (version > ProjectVersion)
     {
-      if (from_ide = True)
+      if (from_ide)
       {
         messageBox(mfError | mfOKButton,
 _("This project was created with a newer RHIDE version and could not be used."));

@@ -89,15 +89,14 @@ int RunProgram(const char *cmd,
     fprintf(stderr,"%s",cmd);
     fprintf(stderr,"\n");
   }
-  if (redir_stdout == True) cpp_outname = open_stdout();
-  if (redir_stderr == True) cpp_errname = open_stderr();
   SaveAll();
+
   if (SwitchToUser == True)
   {
     TProgram::deskTop->setState(sfVisible,False);
     TProgram::application->suspend();
   }
-#ifndef __DJGPP__
+#ifdef __linux__
   else
   {
     tcgetattr (fileno(stdin),&term);
@@ -107,6 +106,8 @@ int RunProgram(const char *cmd,
   }
 #endif
 
+  if (redir_stdout == True) cpp_outname = open_stdout();
+  if (redir_stderr == True) cpp_errname = open_stderr();
   retval = system(cmd);
   setup_main_title();
   if (project)
@@ -114,8 +115,8 @@ int RunProgram(const char *cmd,
   else
     setup_title(_("No project"));
 
-#ifndef __DJGPP__
-  if (SwitchToUser==false)
+#ifdef __linux__
+  if (SwitchToUser == false)
   {
     term.c_cc[VINTR] = 0;
     tcsetattr (fileno(stdin), TCSANOW, &term);

@@ -76,10 +76,13 @@ use_djp=yes
 LN_SF=cp -fp
 else
 LN_SF=ln -sf
+INSTALL_DIR=install -d -m 0755
+INSTALL_DATA=install $(DATA_MODE)
+INSTALL_PROGRAM=install -s $(EXEC_MODE) $(SETUID) $(SETGID)
 endif
 
 ifeq ($(strip $(rhide_OS)),)
-export rhide_OS:=$(shell uname)
+export rhide_OS:=$(patsubst CYGWIN%,CYGWIN,$(shell uname))
 endif
 
 ifeq ($(rhide_OS),DJGPP)
@@ -91,11 +94,6 @@ endif
 SETMODE=0
 setgid=
 setuid=
-ifeq ($(strip $(rhide_OS)),Linux)
-INSTALL_DIR=install -d -m 0755
-INSTALL_DATA=install $(DATA_MODE)
-INSTALL_PROGRAM=install -s $(EXEC_MODE) $(SETUID) $(SETGID)
-endif
 
 # This makes top_dir as a relative path to srcdir
 empty=
@@ -132,7 +130,7 @@ ifeq ($(copyrite.exe),)
 export copyrite.exe:=$(top_obj_dir)/copyrite.exe
 endif
 
-ifeq ($(strip $(rhide_OS)),Linux)
+ifneq ($(strip $(rhide_OS)),DJGPP)
 move-if-change=$(SHELL) $(RHIDESRC)/moveifch
 else
 move-if-change=$(RHIDESRC)/moveifch
@@ -266,27 +264,6 @@ endif
 ifneq ($(strip $(gpr2mak)),)
 %.mak: %.gpr $(copyrite.exe)
 	@$(update_gpr_file) $(notdir $<) > /dev/null
-#ifeq ($(rhide_OS),DJGPP)
-#	@$(gpr2mak) -d -r- -o - $(notdir $<) \
-#	  | sed -e 's,	$(DJDIR),	$$(DJDIR),g' \
-#	        -e '/^		$$(DJDIR).*\\$$/d' \
-#	        -e 's,^		$$(DJDIR)[^\\]*$$,,' \
-#	        -e 's,	$(RHIDESRC),	$$(RHIDESRC),g' \
-#		-e 's,^		$(obj_dir)/,		,' \
-#		-e 's,	$(top_obj_dir),	$$(top_obj_dir),g' \
-#	  $(USER_GPR2MAK_SEDS) > __tmp__.mak
-#else
-#	@$(gpr2mak) -d -r- -o - $(notdir $<) \
-#	  | sed -e 's,	$(RHIDESRC),	$$(RHIDESRC),g' \
-#	        -e 's,\([ 	]\)$(_top_dir)../../src/rhide,\1$$(RHIDESRC),g' \
-#	        -e 's,\([ 	]\)*[\./]*[^ ]*i486-pc-linux-[^ \\]*,\1$$(USRINC),g' \
-#	        -e 's,	/usr/lib/gcc-lib,	$$(USRINC),g' \
-#	        -e '/^[ 	]*$$(USRINC).*\\$$/d' \
-#	        -e 's,\([ 	]*\)$$(USRINC),\1,g' \
-#		-e 's,^		$(obj_dir)/,		,' \
-#		-e 's,	$(top_obj_dir),	$$(top_obj_dir),g' \
-#	  $(USER_GPR2MAK_SEDS) > __tmp__.mak
-#endif
 	@$(gpr2mak) -d -r- -o __tmp__.mak $(notdir $<) > /dev/null
 	@$(copyrite.exe) __tmp__.mak > /dev/null
 	@$(move-if-change) __tmp__.mak $@ > /dev/null
@@ -301,21 +278,22 @@ ifneq ($(strip $(project)),)
 endif
 
 %.cfo: Makefile
-	@-mkdir $*
+	@-mkdir $(config_dir)/$*
 	@$(MAKE) --no-print-directory -C $* -f $(srcdir)/$*/Makefile \
-	         $(FLAGS_TO_PASS) config
+	         $(FLAGS_TO_PASS) \
+	config_dir=$(config_dir)/$* config 
 
 .PHONY: config
 
 config::
-	@echo Configuring $(obj_dir) ...
-	@cp -fp $(srcdir)/Makefile $(wildcard $(srcdir)/rhide.env) $(obj_dir)
+	@echo Configuring $(config_dir) . . .
+	@cp -fp $(srcdir)/Makefile $(wildcard $(srcdir)/rhide.env) $(config_dir)
 ifneq ($(cfg_files),)
 	@cp -fp $(addprefix $(srcdir)/,$(cfg_files)) $(obj_dir)
 endif
 ifneq ($(projects),)
-	@cp -fp $(addprefix $(srcdir)/,$(addsuffix .gpr,$(projects))) $(obj_dir)
-	@cp -fp $(addprefix $(srcdir)/,$(addsuffix .mak,$(projects))) $(obj_dir)
+	@cp -fp $(addprefix $(srcdir)/,$(addsuffix .gpr,$(projects))) $(config_dir)
+	@cp -fp $(addprefix $(srcdir)/,$(addsuffix .mak,$(projects))) $(config_dir)
 endif
 ifneq ($(subdirs),)
 config:: $(addsuffix .cfo,$(subdirs))

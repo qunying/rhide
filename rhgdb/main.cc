@@ -59,7 +59,8 @@
 #include <sys/exceptn.h>
 #include <dpmi.h>
 #include <crt0.h>
-#else
+#endif
+#ifdef __linux__
 #undef ERR
 #include <curses.h>
 #endif
@@ -475,14 +476,16 @@ void RHGDBApp::handleEvent(TEvent & event)
           do
           {
             clearEvent(event);
-#ifndef __DJGPP__
-            timeout (1);
+#ifdef __linux__
+            timeout(1);
 #endif
             event.getKeyEvent();
 #ifdef __DJGPP__
-            __dpmi_yield ();
+            __dpmi_yield();
 #else
-            timeout (0);
+#ifdef __linux__
+            timeout(0);
+#endif
 #endif
           } while (event.what == evNothing);
 #if 0

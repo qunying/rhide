@@ -407,7 +407,8 @@ typedef struct
   unsigned use_fpc:1;
   unsigned save_messages:1;
   unsigned dont_show_exit_code:1;
-  unsigned dummy:8;
+  unsigned delete_recursive:1;
+  unsigned dummy:7;
 }
 ide_options1;
 
@@ -431,6 +432,7 @@ ide_options1;
 #define UseFPC (IDE_OPTIONS1.use_fpc)
 #define SaveMessages (IDE_OPTIONS1.save_messages)
 #define DontShowExitCode (IDE_OPTIONS1.dont_show_exit_code)
+#define DeleteRecursive (IDE_OPTIONS1.delete_recursive)
 
 #define NoStdInc (IDE_OPTIONS.no_stdinc)
 #define NoStdLib (IDE_OPTIONS.no_stdlib)

@@ -5,55 +5,43 @@
 #include <stdio.h>
 #include <limits.h>
 
-char **directories = NULL;
-int dir_count = 0;
+static char **directories = NULL;
+static int dir_count = 0;
 
-void add_directory(char *dir)
+static void
+add_directory(char *dir)
 {
   dir_count++;
-  directories = (char **)realloc(directories,dir_count*sizeof(char *));
-  directories[dir_count-1] = strdup(dir);
+  directories = (char **) realloc(directories, dir_count * sizeof(char *));
+
+  directories[dir_count - 1] = strdup(dir);
 }
 
-FILE *open_file(char *name)
-{
-  FILE *f;
-  char tmp[512];
-  int i;
-  f = fopen(name,"r");
-  if (f) return f;
-  for (i=0;i<dir_count;i++)
-  {
-    strcpy(tmp,directories[i]);
-    strcat(tmp,"/");
-    strcat(tmp,name);
-    f = fopen(tmp,"r");
-    if (f) return f;
-  }
-  return NULL;
-}
-
-char *find_file(char *name,FILE **f)
+static char *
+find_file(char *name, FILE ** f)
 {
   static char tmp[PATH_MAX];
   int i;
-  strcpy(tmp,name);
-  *f = fopen(tmp,"r");
-  if (*f) return tmp;
-  for (i=0;i<dir_count;i++)
+
+  strcpy(tmp, name);
+  *f = fopen(tmp, "r");
+  if (*f)
+    return tmp;
+  for (i = 0; i < dir_count; i++)
   {
-    strcpy(tmp,directories[i]);
-    strcat(tmp,"/");
-    strcat(tmp,name);
-    *f = fopen(tmp,"r");
-    if (*f) return tmp;
+    strcpy(tmp, directories[i]);
+    strcat(tmp, "/");
+    strcat(tmp, name);
+    *f = fopen(tmp, "r");
+    if (*f)
+      return tmp;
   }
   *f = NULL;
   return NULL;
 }
 
-int line_count = 0;
-char **lines = NULL;
+static int line_count = 0;
+static char **lines = NULL;
 
 struct Node
 {
@@ -69,31 +57,55 @@ struct Node
   char **lines;
 };
 
-char Line[2048];
-struct Node *current_node = NULL;
-struct Node *last_node = NULL;
-struct Node *Top = NULL;
-FILE *inf,*outf;
+static char *Line = NULL;
+static int line_size = 0;
+static struct Node *current_node = NULL;
+static struct Node *last_node = NULL;
+static struct Node *Top = NULL;
+static FILE *inf, *outf;
 
-void readln()
+static void
+readln()
 {
-  if (feof(inf))
+  int cur_pos = 0;
+  if (cur_pos >= line_size)
   {
-    Line[0] = 0;
+    line_size += 1024;
+    Line = (char *) realloc(Line, line_size);
   }
-  fgets(Line,4095,inf);
-  Line[strlen(Line)-1] = 0;
+  Line[0] = 0;
+  while (!feof(inf))
+  {
+    if (cur_pos >= line_size)
+    {
+      line_size += 1024;
+      Line = (char *) realloc(Line, line_size);
+    }
+    switch (Line[cur_pos] = getc(inf))
+    {
+      case '\n':
+        Line[cur_pos] = 0;
+        return;
+      case '\r':
+        continue;
+      default:
+        cur_pos++;
+    }
+  }
 }
 
-struct Node *NewNode()
+static struct Node *
+NewNode()
 {
   struct Node *n;
-  n = (struct Node *)malloc(sizeof(struct Node));
-  memset(n,0,sizeof(struct Node));
+  n = (struct Node *) malloc(sizeof(struct Node));
+  memset(n, 0, sizeof(struct Node));
+
   return n;
 }
 
-void InsertCurrentNode()
+static void
+InsertCurrentNode()
 {
   if (!Top)
   {
@@ -129,25 +141,34 @@ void InsertCurrentNode()
   current_node = NULL;
 }
 
-void ScanNodeLine()
+static void
+ScanNodeLine()
 {
-  char *tmp = Line+5;
+  char *tmp = Line + 5;
   char *end;
-  while (*tmp && *tmp == ' ') tmp++;
+
+  while (*tmp && *tmp == ' ')
+    tmp++;
   end = tmp;
-  while (*end && *end != ',') end++;
+  while (*end && *end != ',')
+    end++;
   *end = 0;
-  if (end != tmp) current_node->node_name = strdup(tmp);
+  if (end != tmp)
+    current_node->node_name = strdup(tmp);
   current_node->level = 1000;
 }
 
-void GetName(struct Node *n)
+static void
+GetName(struct Node *n)
 {
-  char *tmp = strchr(Line,' '),*end,c;
+  char *tmp = strchr(Line, ' '), *end, c;
   char *_name = tmp;
-  while (*tmp == ' ') tmp++;
+
+  while (*tmp == ' ')
+    tmp++;
   end = tmp;
-  while (*end && *end != ' ') end++;
+  while (*end && *end != ' ')
+    end++;
   c = *end;
   n->name = strdup(tmp);
   *end = c;
@@ -156,38 +177,41 @@ void GetName(struct Node *n)
   *_name = ' ';
 }
 
-int GetLevel()
+static int
+GetLevel()
 {
 #define s(x,l) if (strncmp(Line,"@"#x,sizeof(#x)) == 0) return l
-  s(chapter,1);
-  s(section,2);
-  s(subsection,3);
-  s(subsubsection,4);
-  s(top,0);
-  s(unnumbered,1);
-  s(unnumberedsec,2);
-  s(unnumberedsubsec,3);
-  s(unnumberedsubsubsec,4);
-  s(appendix,1);
-  s(appendixsec,2);
-  s(appendixsubsec,3);
-  s(appendixsubsubsec,4);
+  s(chapter, 1);
+  s(section, 2);
+  s(subsection, 3);
+  s(subsubsection, 4);
+  s(top, 0);
+  s(unnumbered, 1);
+  s(unnumberedsec, 2);
+  s(unnumberedsubsec, 3);
+  s(unnumberedsubsubsec, 4);
+  s(appendix, 1);
+  s(appendixsec, 2);
+  s(appendixsubsec, 3);
+  s(appendixsubsubsec, 4);
 #if 0
-  s(majorheading,0);
-  s(chapheading,1);
-  s(heading,2);
-  s(subheading,3);
-  s(subsubheading,4);
+  s(majorheading, 0);
+  s(chapheading, 1);
+  s(heading, 2);
+  s(subheading, 3);
+  s(subsubheading, 4);
 #endif
 #undef s
   return -1;
 }
 
-void start_node()
+static void
+start_node()
 {
-  if (current_node) InsertCurrentNode();
+  if (current_node)
+    InsertCurrentNode();
   current_node = NewNode();
-  if (strncmp(Line,"@node",5) == 0)
+  if (strncmp(Line, "@node", 5) == 0)
   {
     ScanNodeLine();
     readln(inf);
@@ -195,9 +219,10 @@ void start_node()
     {
       current_node->line_count++;
       current_node->lines =
-        (char **)realloc(current_node->lines,
-                         current_node->line_count*sizeof(char *));
-      current_node->lines[current_node->line_count-1] = strdup(Line);
+        (char **) realloc(current_node->lines,
+                          current_node->line_count * sizeof(char *));
+
+      current_node->lines[current_node->line_count - 1] = strdup(Line);
       return;
     }
   }
@@ -207,19 +232,21 @@ void start_node()
 
 static int in_menu = 0;
 
-void handle_line()
+static void
+handle_line()
 {
   if (in_menu)
   {
-    if (strncmp(Line,"@end menu",9) == 0) in_menu = 0;
+    if (strncmp(Line, "@end menu", 9) == 0)
+      in_menu = 0;
     return;
   }
-  if (strncmp(Line,"@menu",5) == 0)
+  if (strncmp(Line, "@menu", 5) == 0)
   {
     in_menu = 1;
     return;
   }
-  if (strncmp(Line,"@node",5) == 0 || GetLevel() >= 0)
+  if (strncmp(Line, "@node", 5) == 0 || GetLevel() >= 0)
   {
     start_node();
     return;
@@ -228,29 +255,35 @@ void handle_line()
   {
     current_node->line_count++;
     current_node->lines =
-      (char **)realloc(current_node->lines,
-                       current_node->line_count*sizeof(char *));
-    current_node->lines[current_node->line_count-1] = strdup(Line);
+      (char **) realloc(current_node->lines,
+
+                        current_node->line_count * sizeof(char *));
+    current_node->lines[current_node->line_count - 1] = strdup(Line);
     return;
   }
   line_count++;
-  lines = (char **)realloc(lines,line_count*sizeof(char *));
-  lines[line_count-1] = strdup(Line);
+  lines = (char **) realloc(lines, line_count * sizeof(char *));
+
+  lines[line_count - 1] = strdup(Line);
 }
 
-void scan_file()
+static void
+scan_file()
 {
   while (!feof(inf))
   {
     readln();
     if (strncmp(Line, "@include {", 10) == 0)
     {
-      char *fstart = Line+10, *fend;
+      char *fstart = Line + 10, *fend;
+
       fend = fstart;
-      while (*fend && *fend != '}') fend++;
+      while (*fend && *fend != '}')
+        fend++;
       if (*fend)
       {
         FILE *ifile = inf;
+
         *fend = 0;
         inf = fopen(fstart, "rt");
         scan_file();
@@ -261,44 +294,53 @@ void scan_file()
     }
     handle_line();
   }
-  if (current_node) InsertCurrentNode();
+  if (current_node)
+    InsertCurrentNode();
 }
 
 #define nodename(n) (n->node_name?n->node_name:n->name)
 
-void print_node_line(struct Node *node)
+static void
+print_node_line(struct Node *node)
 {
-  fprintf(outf,"@node %s, %s, %s, %s\n",
-    nodename(node),
-    node->next?nodename(node->next):" ",
-    node->prev?nodename(node->prev):" ",
-    node->up?nodename(node->up):" ");
-  if (node->level_string) fprintf(outf,"%s %s\n",node->level_string,node->name);
+  fprintf(outf, "@node %s, %s, %s, %s\n",
+          nodename(node),
+          node->next ? nodename(node->next) : " ",
+          node->prev ? nodename(node->prev) : " ",
+          node->up ? nodename(node->up) : " ");
+  if (node->level_string)
+    fprintf(outf, "%s %s\n", node->level_string, node->name);
 }
 
-void print_node_contents(struct Node *n)
+static void
+print_node_contents(struct Node *n)
 {
   int i;
-  for (i=0;i<n->line_count;i++)
+
+  for (i = 0; i < n->line_count; i++)
   {
-    fprintf(outf,"%s\n",n->lines[i]);
+    fprintf(outf, "%s\n", n->lines[i]);
   }
 }
 
-void output_menu(struct Node *_n)
+static void
+output_menu(struct Node *_n)
 {
   struct Node *n = _n->down;
-  fprintf(outf,"@menu\n");
+
+  fprintf(outf, "@menu\n");
   do
   {
-    fprintf(outf,"* %s::\n",nodename(n));
-    n=n->next;
-  } while (n);
-  fprintf(outf,"@end menu\n\n");
+    fprintf(outf, "* %s::\n", nodename(n));
+    n = n->next;
+  }
+  while (n);
+  fprintf(outf, "@end menu\n\n");
 }
 
 
-void output_node(struct Node *n)
+static void
+output_node(struct Node *n)
 {
   print_node_line(n);
   print_node_contents(n);
@@ -311,22 +353,27 @@ void output_node(struct Node *n)
     output_node(n->next);
 }
 
-void output_file()
+static void
+output_file()
 {
   int i;
-  for (i=0;i<line_count;i++) fprintf(outf,"%s\n",lines[i]);
+
+  for (i = 0; i < line_count; i++)
+    fprintf(outf, "%s\n", lines[i]);
   output_node(Top);
 }
 
 
-int main(int argc,char *argv[])
+int
+main(int argc, char *argv[])
 {
   struct Node *dir;
   char *real_name;
+
   while (argc > 3)
   {
     argc--;
-    if (strcmp(argv[1],"-I") == 0)
+    if (strcmp(argv[1], "-I") == 0)
     {
       argc--;
       argv++;
@@ -334,12 +381,15 @@ int main(int argc,char *argv[])
     }
     argv++;
   }
-  real_name = find_file(argv[1],&inf);
-  if (!inf) return -1;
+  real_name = find_file(argv[1], &inf);
+  if (!inf)
+    return -1;
   scan_file();
   fclose(inf);
-  if (argc < 3) outf = stdout;
-  else outf = fopen(argv[2],"w");
+  if (argc < 3)
+    outf = stdout;
+  else
+    outf = fopen(argv[2], "w");
   dir = NewNode();
   dir->name = strdup("(dir)");
   Top->prev = dir;
@@ -348,4 +398,3 @@ int main(int argc,char *argv[])
   fclose(outf);
   return 0;
 }
-

@@ -39,7 +39,7 @@ get_file_type(const char *_ext)
   {
     if (!*_ext)
       return FILE_NOTHING;
-    return FILE_COFF;
+    return FILE_EXE;
   }
   if (!strcmp(ext, ".c"))
     return FILE_C_SOURCE;

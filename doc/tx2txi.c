@@ -316,8 +316,6 @@ int main(int argc,char *argv[])
       argv++;
       add_directory(argv[1]);
     }
-    else
-    ;
     argv++;
   }
   real_name = find_file(argv[1],&inf);

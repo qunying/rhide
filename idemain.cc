@@ -748,14 +748,17 @@ static void About()
   TDialog *dialog;
   TStaticText *text;
   char buffer[1000];
-  dialog = new TDialog(TRect(0,0,60,16),_("About RHIDE"));
+  dialog = new TDialog(TRect(0,0,60,19),_("About RHIDE"));
   dialog->options |= ofCentered;
   sprintf(buffer,"\003%s\n"
                  "\003(%s)\n"
        "\003\n"
        "\003%s\n"
        "\003%s\n\003\n"
-       "\003%s\n",
+       "\003%s\n"
+       "\003\n%s%s\n"
+       "%s%s\n"
+       "%s%s\n",
        IDEVersion,
                  build_date,
        _("RHIDE is an Integrated Development Environment"),
@@ -765,11 +768,15 @@ static void About()
 #ifdef __linux__
        _("for developing Linux apps"),
 #endif
-       _("Copyright (C) by Robert H”hne, 1996-1998"));
-  text = new TStaticText(TRect(0,0,50,9),buffer);
+       _("Copyright (C) by Robert H”hne, 1996-1998"),
+       _("Language: "), _("English"),
+       _("Translated by: "), _("Nobody"),
+       _("last updated: "), _("1998-11-29"));
+  text = new TStaticText(TRect(0,0,58,11),buffer);
   text->options |= ofCentered;
   dialog->insert(text);
-  dialog->insert(new TButton(TRect(25,11,35,13),_("~O~K"),cmOK,bfDefault));
+  TRect r(25, dialog->size.y-3, 35, dialog->size.y-1);
+  dialog->insert(new TButton(r,_("~O~K"),cmOK,bfDefault));
   TProgram::deskTop->execView(dialog);
   destroy(dialog);
 }
@@ -996,7 +1003,9 @@ static
 void AddInspect(const char *expr)
 {
   char buf[1000];
-  strcpy(buf, expr);
+  buf[0] = 0;
+  if (expr)
+    strcpy(buf, expr);
   if (inputBox(_("Expression to inspect"), _("~E~xpression"), buf, 999) == cmOK)
   {
     TInspector *w = new TInspector(TProgram::deskTop->getExtent(), buf);
@@ -2382,6 +2391,7 @@ int main(int argc, char **argv)
         if (!EDITNAME) About();
         if (EDITNAME) App->openEditor(EDITNAME,True);
       }
+      App->update();
       App->run();
       CloseProject();
     }

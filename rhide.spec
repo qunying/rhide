@@ -54,11 +54,11 @@ make RHIDESRC=`pwd` install prefix=$RPM_BUILD_ROOT/usr LDFLAGS=-static
 /usr/share/locale/pl/LC_MESSAGES/rhide.mo
 /usr/share/locale/pt/LC_MESSAGES/rhide.mo
 /usr/share/locale/sv/LC_MESSAGES/rhide.mo
-%config /usr/share/rhide/clippmac.pmc
-%config /usr/share/rhide/cpmacros.pmc
-%config /usr/share/rhide/htmlmac.pmc
-%config /usr/share/rhide/perlmac.pmc
-%config /usr/share/rhide/pmacros.pmc
-%config /usr/share/rhide/rhide.terminfo
 %config /usr/share/rhide/rhide_.env
-%config /usr/share/rhide/syntaxhl.shl
+%config /usr/share/rhide/SET/clippmac.pmc
+%config /usr/share/rhide/SET/cpmacros.pmc
+%config /usr/share/rhide/SET/htmlmac.pmc
+%config /usr/share/rhide/SET/macros.slp
+%config /usr/share/rhide/SET/perlmac.pmc
+%config /usr/share/rhide/SET/pmacros.pmc
+%config /usr/share/rhide/SET/syntaxhl.shl

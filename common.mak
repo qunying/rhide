@@ -34,7 +34,7 @@ FILE_VERSION=$(subst .,,$(VERSION))
 DIR_VERSION_Linux=-$(VERSION)
 # for the DJGPP directories
 DIR_VERSION_DJGPP=-$(RHIDE_MAJOR).$(subst .,,$(RHIDE_MINOR))
-DIR_VERSION=$(DIR_VERSION_$(RHIDE_OS))
+DIR_VERSION=$(DIR_VERSION_$(rhide_OS))
 
 DJP=
 use_djp=no

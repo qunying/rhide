@@ -97,10 +97,9 @@ void TMsgDialog::changeBounds(const TRect &r)
 }
 
 void ShowMessages(TMsgCollection *msgs,Boolean remove_old,
-                  Boolean select_first_err, Boolean select_it)
+                  int select_first_err, Boolean select_it)
 {
   TView *old_focused;
-  int old_count = 0;
   TProgram::deskTop->lock();
   old_focused = TProgram::deskTop->current;
   if (!msg_window)
@@ -141,12 +140,12 @@ void ShowMessages(TMsgCollection *msgs,Boolean remove_old,
       msg_list->list() == NULL)
   {
     msg_list->newList(msgs);
-    old_count = 0;
+    select_first_err = 0;
   }
   else if (msgs)
   {
     int i, old;
-    old = old_count = msg_list->list()->getCount();
+    old = msg_list->list()->getCount();
     if (msgs->getCount() == 0) old--;
     for (i=0;i<msgs->getCount();i++)
     {
@@ -176,10 +175,10 @@ void ShowMessages(TMsgCollection *msgs,Boolean remove_old,
       msg_list->hScrollBar->setValue(0);
     }
   }
-  if (msg_list->list() != NULL && select_first_err == True)
+  if (msg_list->list() != NULL && select_first_err >= 0)
   {
     int i,count=msg_list->list()->getCount();
-    for (i=old_count;i<count;i++)
+    for (i=select_first_err;i<count;i++)
     {
       MsgRec *rec = (MsgRec *)msg_list->list()->at(i);
       if (rec->type == msgError || rec->type == msgWarning)

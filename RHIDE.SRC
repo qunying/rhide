@@ -1,4 +1,4 @@
-RHIDE is Copyright (C) 1996-2001 by Robert H”hne, see COPYING.RH for details
+RHIDE is Copyright (C) 1996-2003 by Robert Hoehne, see COPYING.RH for details
 
 This is the source distribution of RHIDE. (for notes to the GNU/Linux
 system see the chapter below additionally)
@@ -7,15 +7,15 @@ system see the chapter below additionally)
 Other sources are required to build RHIDE. These are the editor
 sources from Salvador Eduardo Tropea (setedit) and the Turbo Vision
 library also maintained by Salvador. And of course you need the
-gdb sources. For RHIDE 1.5 you can use ONLY GDB 5.0. No other version
-is really tested and proved to work!
+gdb sources. For RHIDE 1.5 you can use GDB 5.3. GDB 5.[0-2] should work
+also, but not longer heavily tested.
 
 For DJGPP you can use the source archives found on any simtelnet
 mirror:
 
-for the editor 0.4.54       v2apps/edi0454s.zip
+for the editor 0.4.57       v2apps/edi0457s.zip
 for the TV sources 1.1.4    v2tk/tv114s.zip
-for the gdb sources         v2gnu/gdb511s.zip
+for the gdb sources         v2gnu/gdb531s.zip
 
 For GNU/Linux please use for the gdb sources the official GDB 5.1.1
 sources and for the other sources maintained by Salvador please
@@ -66,6 +66,55 @@ default on your system.
 Recompiling RHIDE
 =================
 
+At first you will have to build the TV library and the libset library
+contained in the the sources for setedit. To do this, please follow
+the instructions contained on thos packages and remember, when configuring
+setedit to provide the '--libset' switch. When compiling libset do the
+following two make calls in the setedit directory after configuring:
+
+make needed
+make libset
+
+You don't need to do a 'make install'
+
+Extract the sources for GDB.
+
+If you have successfull compiled this two packages you can go to configure
+the RHIDE sources. Let's assume you have extracted them in '/usr/local/src'
+or '%DJDIR%' on DJGPP. Then the real sources will live in
+
+/usr/local/src/rhide-?.?
+or
+%DJDIR%/contrib/rhide-?.?
+
+Now change to the directory mentioned above and run there the configure
+script (on DJGPP you have to type 'sh configure').
+
+If If you have installed the above other source package in thier default
+directories, everything should work OK, otherwise you have to provide the
+paths to those packages on the commandline for configure.
+
+The default paths for the packages are searched in the configure
+script. If they don't match your installation, you should set 
+environment variables before calling configure. Here are the variables
+which you can set:
+
+TV_INC               directory, where the TV headers are
+TV_OBJ               directory, where librhtv.a is
+SETSRC               root directory, where the setedit sources are
+SETOBJ               root directory, where the setedit libs are
+GDB_SRC              root directory of the GDB sources
+GDB_OBJ              root directory of the GDB objects
+
+
+If you have already libgdb.a and librhgdb.h (probably from a previous
+build or downloaded) you can set the variables
+
+LIBGDB_A
+LIBGDB_H
+
+to those files and then you don't need the GDB_... variables.
+
 Since RHIDE depends on many other packages it is not so easy to describe
 all possible situations where you might have installed them. At first RHIDE
 needs some environment variables set to point to the directories where to
@@ -73,75 +122,6 @@ find the other packages. These are described now here. The defaults given
 there are meant, when you run make in the root RHIDE source director and
 the described variable is not set.
 
-$RHIDESRC       this variable have to be set ALWAYS! and have to be an absolute
-                path to the root source directory of RHIDE.
-		DEFAULT: the actual directory where you are
-		
-		
-$SETSRC         this variable should point to the root setedit source directory
-                DEFAULT for DJGPP:     $DJDIR/contrib/setedit
-		DEFAULT for GNU/Linux: $RHIDESRC/../setedit
-		
-$SETOBJ         this variable should point to the directory, where you have
-                build the editor.
-		DEFAULT for DJGPP:     $DJDIR/contrib/setedit/makes
-		DEFAULT for GNU/Linux: $RHIDESRC/../setedit/makes
-		
-$TVSRC          this variable should point to the directory of the Turbo Vision
-                include files.
-		DEFAULT for DJGPP:     $DJDIR/contrib/tvision
-		DEFAULT for GNU/Linux: $RHIDESRC/../tvision
-		
-$TVOBJ          this variable should point the directory where you have build
-                the librhtv library.
-		DEFAULT for DJGPP:     $DJDIR/contrib/tvision/djgpp
-		DEFAULT for GNU/Linux: $RHIDESRC/../tvision/linux
-		
-$GDB_SRC        this variable should point to the source directory of GDB
-                DEFAULT for DJGPP:     $DJDIR/gnu/gdb-5.11
-		DEFAULT for GNU/Linux: $RHIDESRC/../gdb-5.11
-		
-$GDB_OBJ        this should point to the directory where you have built gdb
-                DEFAULT for DJGPP and GNU/Linux: $GDB_SRC
-		
-If you have already build libgdb.a (and with it libgdb.h) the you can set
-the two variables
-$
-
-The above mentioned variables does not imply that you really need the sources
-or that you have manually build the sources. In fact the variables are used
-to determine the directories for the header files and libraries used by RHIDE.
-
-If you have for instance (on DJGPP) have installed the binary archive for
-the TV port (from tv114b.zip) then you should set the TV variables to
-
-TVSRC=$DJDIR/include/tvision
-		
-		- GNU debugger 5.1.1. You have to install the sources for gdb 5.1.1.
-  If you do not install them in the directories like distributed
-  with DJGPP ( %DJDIR%/gnu/gdb-5.11 ), you have to add to your DJGPP.ENV
-  file the line, if I assume, that they are installed in s:/gnu/gdb-5.11:
-
-GDB_SRC=s:/gnu/gdb-5.11
-
-  If you have setup gdb 5.1.1, to compile in an other directory than
-  the source directory (see in that package, how this can be done),
-  you must also set in your DJGPP.ENV the variable GDB_OBJ to point
-  to that directory.
-
-  On Linux the default directory for the GNU sources differ from
-  distribution to distribution, so please check your correct directory
-  and edit the makefile.src in the libgdb/ subdirectory.
-
-  To get the GDB sources compiled correct by the step from the RHIDE
-  build process
-
-  make needed
-
-  you have to configure the GDB sources at first on Linux. (DJGPP
-  sources come already configured!)
-
-- And some time.
 
 ========================================================================
 
@@ -160,11 +140,9 @@ the RHIDE sources:
 
 $(RHIDESRC)/configure
 
-(for DJGPP users:
+for DJGPP users:
 
 sh $(RHIDESRC)/configure
-
-)
 
 Now you are ready to build RHIDE. Simply type
 
@@ -172,6 +150,7 @@ make
 
 and anything should build fine if you have followed the
 instructions above correct.
+
 Installing the new build RHIDE
 ==============================
 
@@ -192,4 +171,4 @@ until this future day you must try to understand my code or ask me.
 
                    Have fun with RHIDE
 
-           Robert H”hne <robert.hoehne@gmx>
+           Robert Hoehne <robert.hoehne@gmx>

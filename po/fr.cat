@@ -1,95 +1,86 @@
-msgid "Desktop"
-msgstr "Bureau"
+msgid "80x25 Color"
+msgstr "80x25 Couleur"
 
-msgid "Color"
-msgstr "Couleur"
+msgid "80x28 Color"
+msgstr "80x28 Couleur"
 
-msgid "Menus"
-msgstr "Menus"
+msgid "80x35 Color"
+msgstr "80x35 Couleur"
 
-msgid "Normal"
-msgstr "Normal"
+msgid "80x40 Color"
+msgstr "80x40 Couleur"
 
-msgid "Disabled"
-msgstr "Inactif"
+msgid "80x43 Color"
+msgstr "80x43 Couleur"
 
-msgid "Shortcut"
-msgstr "Raccourcis"
+msgid "80x50 Color"
+msgstr "80x50 Couleur"
 
-msgid "Selected"
-msgstr "S‚lectionn‚"
+msgid "About RHIDE"
+msgstr "A propos de RHIDE"
 
-msgid "Selected disabled"
-msgstr "Raccourcis inactif"
+msgid "Add Item"
+msgstr "Ajouter l'‚l‚ment"
 
-msgid "Shortcut selected"
-msgstr "Raccourcis s‚lectionn‚"
+msgid "Addition compiler options"
+msgstr "Options additionelles de compilation"
+
+msgid "Additional compiler options"
+msgstr "Options additionelles de compilation"
+
+msgid "Additional linker options"
+msgstr "Options additionelles de Link"
+
+msgid "Apr"
+msgstr "Avr"
+
+msgid "Aug"
+msgstr "Aou"
+
+msgid "Blue Editor"
+msgstr "Editeur bleu"
 
 msgid "Blue Windows"
 msgstr "Fenˆtres bleues"
 
-msgid "Frame disabled"
-msgstr "Cadre inactif"
-
-msgid "Frame"
-msgstr "Cadre"
-
-msgid "Frame icons"
-msgstr "Icones du cadre"
-
-msgid "Scroll bar page"
-msgstr "Ascenseurs"
-
-msgid "Scroll bar icons"
-msgstr "Icones des ascenseurs"
-
-msgid "Static text"
-msgstr "Texte statique"
-
-msgid "Selected text"
-msgstr "Texte s‚lectionn‚"
-
-msgid "reserved"
-msgstr "R‚serv‚"
-
-msgid "Cyan Windows"
-msgstr "Fenˆtres cyans"
-
-msgid "Gray Windows"
-msgstr "Fenˆtre grise"
-
-msgid "Dialogs"
-msgstr "BoŒtes de dialogue"
-
-msgid "Frame/background"
-msgstr "Cadre/fond"
-
-msgid "Label normal"
-msgstr "Label normal"
-
-msgid "Label selected"
-msgstr "Label s‚lectionn‚"
-
-msgid "Label shortcut"
-msgstr "Raccourcis d'un label"
-
-msgid "Button normal"
-msgstr "Bouton normal"
-
 msgid "Button default"
 msgstr "Bouton par d‚fault"
-
-msgid "Button selected"
-msgstr "Bouton s‚lectionn‚"
 
 msgid "Button disabled"
 msgstr "Bouton inactif"
 
-msgid "Button shortcut"
-msgstr "Raccourcis d'un bouton"
+msgid "Button normal"
+msgstr "Bouton normal"
+
+msgid "Button selected"
+msgstr "Bouton s‚lectionn‚"
 
 msgid "Button shadow"
 msgstr "Ombre d'un bouton"
+
+msgid "Button shortcut"
+msgstr "Raccourcis d'un bouton"
+
+msgid "C Flags"
+msgstr "C Flags"
+
+msgid "C++ Flags"
+msgstr "C++ Flags"
+
+msgid "C-~F~lags"
+msgstr "C-~F~lags"
+
+msgid "Cancel"
+msgstr "~A~nnuler"
+
+msgid "Change Directory"
+msgstr "Change de re‚pertoire"
+
+msgid "Clea~r~ dependencies"
+msgstr "Effacer de~p~endances"
+
+msgid "Clipboard"
+msgstr "Presse papier"
 
 msgid "Cluster normal"
 msgstr "Cluster normal"
@@ -100,14 +91,137 @@ msgstr "Cluster s‚lectionn‚"
 msgid "Cluster shortcut"
 msgstr "Raccourcis d'un cluster"
 
-msgid "Input normal"
-msgstr "Entr‚e normal"
+msgid "Color"
+msgstr "Couleur"
 
-msgid "Input selected"
-msgstr "Entr‚e s‚lectionn‚e"
+msgid "Colors"
+msgstr "Couleurs"
 
-msgid "Input arrow"
-msgstr "FlŠches de l'entr‚e"
+msgid "Compiler ~O~ptions"
+msgstr "Options du compilateur"
+
+msgid "Compiling: "
+msgstr "compilation: "
+
+msgid "Com~p~iler"
+msgstr "~C~ompile"
+
+msgid "Confirm"
+msgstr "Confirmation"
+
+msgid "Control-Break Pressed"
+msgstr "Control-Break Press‚"
+
+msgid "Copyright (C) by Robert H”hne, 1996"
+msgstr "Copyright (C) par Robert H”hne, 1996"
+
+msgid "Copyright (C) by Robert H”hne, 1996-1998"
+msgstr "Copyright (C) par Robert H”hne, 1996-1998"
+
+msgid "Couldn't open %s"
+msgstr "Impossible d'ouvrir %s"
+
+msgid "Couldn't open file %s"
+msgstr "Impossible d'ouvrir %s"
+
+msgid "Cu~t~"
+msgstr "~C~ouper"
+
+msgid "Cyan Windows"
+msgstr "Fenˆtres cyans"
+
+msgid "C~X~X-Flags"
+msgstr "C~X~X-Flags"
+
+msgid "C~a~scade"
+msgstr "~C~ascade"
+
+msgid "C~l~ear"
+msgstr "~E~ffacer"
+
+msgid "Debugging Flags"
+msgstr "Debugging Flags"
+
+msgid "Dec"
+msgstr "Dec"
+
+msgid "Desktop"
+msgstr "Bureau"
+
+msgid "De~b~ugging"
+msgstr "~D~ebugging"
+
+msgid "De~f~ault"
+msgstr "D‚faut"
+
+msgid "Dialogs"
+msgstr "BoŒtes de dialogue"
+
+msgid "Directory ~n~ame"
+msgstr "~N~om de r‚pertoire"
+
+msgid "Directory ~t~ree"
+msgstr "~A~rbre de r‚pertoire"
+
+msgid "Disabled"
+msgstr "Inactif"
+
+msgid "Drives"
+msgstr "Disques"
+
+msgid "D~e~lete item"
+msgstr "~D~‚truit l'entr‚e"
+
+msgid "Environment options"
+msgstr "Environnement"
+
+msgid "Error"
+msgstr "Erreur"
+
+msgid "Error: "
+msgstr "Erreur: "
+
+msgid "E~x~it"
+msgstr "~Q~uitter"
+
+msgid "Feb"
+msgstr "Fev"
+
+msgid "Frame"
+msgstr "Cadre"
+
+msgid "Frame disabled"
+msgstr "Cadre inactif"
+
+msgid "Frame icons"
+msgstr "Icones du cadre"
+
+msgid "Frame/background"
+msgstr "Cadre/fond"
+
+msgid "Goto Line"
+msgstr "Aller … la ligne"
+
+msgid "Goto the line"
+msgstr "Aller … la ligne"
+
+msgid "Gray Windows"
+msgstr "Fenˆtre grise"
+
+msgid "G~D~B"
+msgstr "G~D~B"
+
+msgid "Help"
+msgstr "Aide"
+
+msgid "Highlight"
+msgstr "Surbrillance"
+
+msgid "History bar icons"
+msgstr "Icones de l'historique"
+
+msgid "History bar page"
+msgstr "Ascenseur de l'historique"
 
 msgid "History button"
 msgstr "Bouton de l'historique"
@@ -115,116 +229,284 @@ msgstr "Bouton de l'historique"
 msgid "History sides"
 msgstr "Bords de l'historique"
 
-msgid "History bar page"
-msgstr "Ascenseur de l'historique"
+msgid "Include Directories"
+msgstr "R‚pertoires des Includes"
 
-msgid "History bar icons"
-msgstr "Icones de l'historique"
+msgid "Include files for "
+msgstr "Fichiers inclus pour "
 
-msgid "List normal"
-msgstr "Liste normal"
-
-msgid "List focused"
-msgstr "Liste active"
-
-msgid "List selected"
-msgstr "Liste s‚lectionn‚e"
-
-msgid "List divider"
-msgstr "Diviseur de liste"
+msgid "Information"
+msgstr "Information"
 
 msgid "Information pane"
 msgstr "Panneau d'information"
 
-msgid "Blue Editor"
-msgstr "Editeur bleu"
+msgid "Input arrow"
+msgstr "FlŠches de l'entr‚e"
 
-msgid "normal text"
-msgstr "Texte normal"
+msgid "Input normal"
+msgstr "Entr‚e normal"
 
-msgid "marked text"
-msgstr "Texte s‚lectionn‚"
+msgid "Input selected"
+msgstr "Entr‚e s‚lectionn‚e"
 
-msgid "comment"
-msgstr "Commentaire"
+msgid "Invalid directory"
+msgstr "R‚pertoire erron‚"
 
-msgid "reserved word"
-msgstr "Mots r‚serv‚s"
+msgid "Invalid drive or directory"
+msgstr "Disque ou r‚pertoire erron‚"
 
-msgid "identifier"
-msgstr "Identifiants"
+msgid "Invalid file name."
+msgstr "Nom de fichier erron‚"
 
-msgid "symbol"
-msgstr "Symboles"
+msgid "Invalid project-file %s(%s)"
+msgstr "Fichier-projet erron‚ %s(%s)"
 
-msgid "string"
-msgstr "ChaŒne"
+msgid "Inverse"
+msgstr "Invers‚"
 
-msgid "integer"
-msgstr "Entier"
+msgid "Jan"
+msgstr "Jan"
 
-msgid "float"
-msgstr "Flottant"
+msgid "Jul"
+msgstr "Jul"
 
-msgid "octal"
-msgstr "Octal"
+msgid "Jun"
+msgstr "Jui"
 
-msgid "hex"
-msgstr "Hexad‚cimal"
+msgid "Label normal"
+msgstr "Label normal"
 
-msgid "character"
-msgstr "Character"
+msgid "Label selected"
+msgstr "Label s‚lectionn‚"
 
-msgid "preprocessor"
-msgstr "Pr‚processeur"
+msgid "Label shortcut"
+msgstr "Raccourcis d'un label"
 
-msgid "illegal char"
-msgstr "Character ill‚gal"
+msgid "Libraries"
+msgstr "Librairies"
 
-msgid "user defined words"
-msgstr "Mot cl‚f user-defined"
+msgid "Library Directories"
+msgstr "R‚pertoires des librairies"
+
+msgid "Line number"
+msgstr "Ligne num‚ro"
+
+msgid "List divider"
+msgstr "Diviseur de liste"
+
+msgid "List focused"
+msgstr "Liste active"
+
+msgid "List normal"
+msgstr "Liste normal"
+
+msgid "List selected"
+msgstr "Liste s‚lectionn‚e"
+
+msgid "Local Options"
+msgstr "Options locales"
+
+msgid "L~i~nker Options"
+msgstr "Options de ~L~ink"
+
+msgid "Mar"
+msgstr "Mar"
+
+msgid "May"
+msgstr "Mai"
+
+msgid "Menus"
+msgstr "Menus"
+
+msgid "Message Window"
+msgstr "Messages"
+
+msgid "Messages Window"
+msgstr "Messages"
+
+msgid "Name of the main target"
+msgstr "Nom de la cible principale"
+
+msgid "New value"
+msgstr "Nouvelle valeur"
+
+msgid "Normal"
+msgstr "Normal"
+
+msgid "Nov"
+msgstr "Nov"
+
+msgid "Object Directories"
+msgstr "R‚pertoires des objets (.o)"
+
+msgid "Oct"
+msgstr "Oct"
 
 msgid "Open a file"
 msgstr "Ouvrir un fichier"
 
-msgid "~N~ame"
-msgstr "~N~om"
+msgid "Open ~p~roject"
+msgstr "Ouvrir un ~p~rojet"
+
+msgid "Optimization Flags"
+msgstr "Optimization Flags"
+
+msgid "O~K~"
+msgstr "~O~k"
+
+msgid "O~p~tions"
+msgstr "O~p~tions"
+
+msgid "Previ~o~us message"
+msgstr "Message ~P~r‚c‚dent"
+
+msgid "Program arguments"
+msgstr "Arguments du programme"
+
+msgid "Project Window"
+msgstr "Projet"
+
+msgid "Pro~j~ect"
+msgstr "~P~rojet"
+
+msgid "RHIDE is an Integrated Development Environment"
+msgstr "RHIDE est un environnement de d‚veloppement int‚gr‚ (IDE)"
+
+msgid "Refresh desk~t~op"
+msgstr "Retrace le bureau"
+
+msgid "Remove '%s' from the project"
+msgstr "EnlŠve '%s' du projet"
+
+msgid "Reserved words"
+msgstr "Mots r‚serv‚s"
+
+msgid "Running GREP (arguments are prompted)"
+msgstr "Ex‚cute GREP (Les arguments sont demand‚s)"
+
+msgid "Save a~l~l"
+msgstr "Entregistrer ~t~out"
+
+msgid "Save file as"
+msgstr "Enregistrer sous"
+
+msgid "Scroll bar icons"
+msgstr "Icones des ascenseurs"
+
+msgid "Scroll bar page"
+msgstr "Ascenseurs"
+
+msgid "Select a project"
+msgstr "S‚lectionne un projet"
+
+msgid "Selected"
+msgstr "S‚lectionn‚"
+
+msgid "Selected disabled"
+msgstr "Raccourcis inactif"
+
+msgid "Selected text"
+msgstr "Texte s‚lectionn‚"
+
+msgid "Sep"
+msgstr "Sep"
+
+msgid "Shortcut"
+msgstr "Raccourcis"
+
+msgid "Shortcut selected"
+msgstr "Raccourcis s‚lectionn‚"
+
+msgid "Source Directories"
+msgstr "R‚pertoires des sources"
+
+msgid "Start the FSDB debugger"
+msgstr "D‚marre le d‚bugger FSDB"
+
+msgid "Start the GDB debugger"
+msgstr "D‚marre le d‚bugger GDB"
+
+msgid "Static text"
+msgstr "Texte statique"
+
+msgid "Syntax ~H~ighlight"
+msgstr "coloration ~s~yntaxique"
+
+msgid "S~a~ve as..."
+msgstr "~E~nregistrer sous..."
+
+msgid "Text "
+msgstr "Text"
+
+msgid "The item '%s' is already in your project"
+msgstr "L'‚l‚ment %s est d‚j… dans votre projet"
+
+msgid "There is an unmatched quote in your arguments"
+msgstr "Guillement non ferm‚ dans un argument"
+
+msgid "This is %s. Copyright (c) 1996 by Robert H”hne\n"
+msgstr "Copyright (C) par Robert H”hne, 1996\n"
+
+msgid "This is %s. Copyright (c) 1996-1998 by Robert H”hne\n"
+msgstr "Copyright (C) par Robert H”hne, 1996-1998\n"
+
+msgid "Too many files."
+msgstr "Trop de fichiers"
+
+msgid "Underline"
+msgstr "Soulign‚"
+
+msgid "Untitled"
+msgstr "Sans titre"
+
+msgid "Use ~s~tandard libraries"
+msgstr "Utilise les librairies ~s~tandard"
+
+msgid "Warning"
+msgstr "Attention"
+
+msgid "Warning Flags"
+msgstr "Warning Flags"
+
+msgid "Warning: "
+msgstr "Attention: "
+
+msgid "WindowList"
+msgstr "Liste des fenˆtres"
+
+msgid "about RH~I~DE"
+msgstr "A propos de RH~I~DE"
+
+msgid "add an item to the project"
+msgstr "Ajoute un ‚lement au projet"
 
 msgid "arguments for GREP"
 msgstr "Arguments pour GREP"
 
-msgid "executing: "
-msgstr "ex‚cution: "
+msgid "build the project completely new"
+msgstr "Reconstruit entiŠrement le projet"
+
+msgid "change the name of the project-target"
+msgstr "Change le nom de la cible pour ce projet"
+
+msgid "character"
+msgstr "Character"
 
 msgid "checking"
 msgstr "checking"
 
-msgid "is up to date"
-msgstr "est … jour"
+msgid "close the current project"
+msgstr "Ferme le projet courant"
 
-msgid "is"
-msgstr "est"
+msgid "close the current window"
+msgstr "Ferme la fenˆtre courante"
 
-msgid "newer"
-msgstr "jamais"
+msgid "comment"
+msgstr "Commentaire"
 
-msgid "older"
-msgstr "plus vieux"
-
-msgid "than"
-msgstr "que"
-
-msgid "must rebuild"
-msgstr "doit reconstruire"
-
-msgid "rebuilding of"
-msgstr "reconstruction de"
-
-msgid "success"
-msgstr "succŠs"
-
-msgid "error"
-msgstr "erreur"
+msgid "compile the current editor or the selected project-item"
+msgstr "Compile l'‚diteur courant ou l'‚l‚ment de projet s‚lectionn‚"
 
 msgid "contents of stderr from "
 msgstr "contenu de stderr depuis "
@@ -232,59 +514,89 @@ msgstr "contenu de stderr depuis "
 msgid "contents of stdout from "
 msgstr "contenu de stdout depuis "
 
-msgid "show information about RHIDE"
-msgstr "Informations sur RHIDE"
+msgid "copy the selected text to the clipboard"
+msgstr "Copie le texte s‚lectionn‚ vers le presse papier"
 
-msgid "Start the FSDB debugger"
-msgstr "D‚marre le d‚bugger FSDB"
+msgid "costumize C++-compiler specific flags"
+msgstr "Modifie les options du compilateur C++"
 
-msgid "Running GREP (arguments are prompted)"
-msgstr "Ex‚cute GREP (Les arguments sont demand‚s)"
+msgid "costumize C-compiler specific flags"
+msgstr "Modifie les options du compilateur C"
 
-msgid "repaints the desktop"
-msgstr "Redessine le bureau"
+msgid "costumize the colors of the IDE"
+msgstr "Ajuste les couleurs de RHIDE"
 
-msgid "Start the GDB debugger"
-msgstr "D‚marre le d‚bugger GDB"
+msgid "costumize the generating of debugging information"
+msgstr "Modifie les options pour le debugging"
 
-msgid "opens the Info Viewer"
-msgstr "ouvre le viewer 'Info'"
-
-msgid "opens a file in the editor"
-msgstr "Ouvre un fichier dans l'‚diteur"
+msgid "costumize, how to optimize the code"
+msgstr "Modifie les options pour l'optimisation"
 
 msgid "create a new editor window"
 msgstr "Cr‚e une nouvelle fenˆtre ‚diteur"
 
-msgid "save the current editor to disk (if modified)"
-msgstr "Sauve l'‚diteur courant sur disque (si modifi‚)"
+msgid "create ~b~ackupfiles"
+msgstr "cr‚er des fichiers .~b~ak"
 
-msgid "save the current editor under a different name to disk"
-msgstr "Sauve l'‚diteur courant sur disque, sous un nouveau nom"
+msgid "customize C++-compiler specific flags"
+msgstr "Modifie les options du compilateur C++"
 
-msgid "save all opened editors to disk (if modified)"
-msgstr "Sauve tous les ‚diteurs ouverts sur disque (si modifi‚s)"
+msgid "customize C-compiler specific flags"
+msgstr "Modifie les options du compilateur C"
 
-msgid "switch to DOS (call of %COMSPEC%, return with EXIT)"
-msgstr "Session DOS (appel de %COMSPEC%, retour en tapant EXIT)"
+msgid "customize the IDE"
+msgstr "Personalise RHIDE"
 
-msgid "quits the IDE"
-msgstr "Quitte RHIDE"
+msgid "customize the colors of the IDE"
+msgstr "Ajuste les couleurs de RHIDE"
 
-msgid "move the selected text to the clipboard"
-msgstr "D‚place le texte s‚lectionn‚ vers le presse papier"
+msgid "customize the generating of debugging information"
+msgstr "Modifie les options pour le debugging"
 
-msgid "copy the selected text to the clipboard"
-msgstr "Copie le texte s‚lectionn‚ vers le presse papier"
+msgid "customize the generating of warnings"
+msgstr "Modifie les options pour les Warnings"
 
-msgid "insert the selected text from the clipboard"
-msgstr "InsŠre la s‚lection du presse papier … la position courante"
+msgid "customize various options for the C/C++-compiler"
+msgstr "Ajuste les diff‚rentes options de compilation C/C++"
 
-msgid "shows the clipboard"
-msgstr "Affiche le contenu du presse papier"
+msgid "customize, how to optimize the code"
+msgstr "Modifie les options pour l'optimisation"
 
 msgid "delete the selected text "
 msgstr "Efface le texte s‚lectionn‚"
+
+msgid "edit the list of flags for debugging"
+msgstr "Edite la liste des switchs pour le debugging"
+
+msgid "edit the list of flags for the C++-compiler"
+msgstr "Edite la liste des switchs pour le compilateur C++"
+
+msgid "edit the list of flags for the C-compiler"
+msgstr "Edite la liste des switchs pour le compilateur C"
+
+msgid "edit the list of flags for warnings"
+msgstr "Edite la liste des switchs pour les warnings"
+
+msgid "edit the list of optimization flags"
+msgstr "Edite la liste des switchs pour l'optimisation"
+
+msgid "edit the list of reserved words"
+msgstr "Modifie la liste des mots r‚serv‚s"
+
+msgid "edit the list of user defined words (for syntaxhighlight)"
+msgstr "Edit la liste des mots r‚serv‚s \"user-defined\""
+
+msgid "enter commandline arguments for your program"
+msgstr "Entre des arguments de la ligne de commande pour la cible"
+
+msgid "enter local commandline options for compiling this item"
+msgstr "Entre des options locales pour la compilation de cet ‚l‚ment"
+
+msgid "error"
+msgstr "erreur"
+
+msgid "executing: "
+msgstr "ex‚cution: "
 
 msgid "find a string in the current editor"
 msgstr "Recherche une chaŒne dans l'‚diteur actif"
@@ -292,11 +604,146 @@ msgstr "Recherche une chaŒne dans l'‚diteur actif"
 msgid "find and replace a string in the current editor"
 msgstr "Recherche et remplace une chaŒne dans l'‚diteur actif"
 
-msgid "repeat the last find- or replace-operation"
-msgstr "Recommence la derniŠre recherche ou recherche/remplacement"
+msgid "float"
+msgstr "Flottant"
+
+msgid "for developing DJGPP apps"
+msgstr "pour le d‚veloppement d'applications avec DJGPP"
 
 msgid "go to line number (after prompting)"
 msgstr "Se d‚place directement … la ligne..."
+
+msgid "hex"
+msgstr "Hexad‚cimal"
+
+msgid "identifier"
+msgstr "Identifiants"
+
+msgid "illegal char"
+msgstr "Character ill‚gal"
+
+msgid "insert the selected text from the clipboard"
+msgstr "InsŠre la s‚lection du presse papier … la position courante"
+
+msgid "integer"
+msgstr "Entier"
+
+msgid "is"
+msgstr "est"
+
+msgid "is up to date"
+msgstr "est … jour"
+
+msgid "line ~n~umber"
+msgstr "Ligne ~n~um‚ro"
+
+msgid "link for ~p~rofiling"
+msgstr "Link pour ~p~rofiling"
+
+msgid "link the project or create the library"
+msgstr "Lie le projet ou cr‚e la librairie"
+
+msgid "main target~n~ame"
+msgstr "~N~om de la cible"
+
+msgid "make the project (with checking auto-dependencies)"
+msgstr "Construit le projet (avec auto-d‚pendances)"
+
+msgid "marked text"
+msgstr "Texte s‚lectionn‚"
+
+msgid "move the selected text to the clipboard"
+msgstr "D‚place le texte s‚lectionn‚ vers le presse papier"
+
+msgid "must rebuild"
+msgstr "doit reconstruire"
+
+msgid "newer"
+msgstr "jamais"
+
+msgid "no errors"
+msgstr "Pas d'erreur"
+
+msgid "normal text"
+msgstr "Texte normal"
+
+msgid "octal"
+msgstr "Octal"
+
+msgid "older"
+msgstr "plus vieux"
+
+msgid "open a project"
+msgstr "Ouvre un projet"
+
+msgid "opens a file in the editor"
+msgstr "Ouvre un fichier dans l'‚diteur"
+
+msgid "opens the Info Viewer"
+msgstr "ouvre le viewer 'Info'"
+
+msgid "other"
+msgstr "autre"
+
+msgid "o~v~erwrite mode"
+msgstr "mode ~r~ecouvrement"
+
+msgid "preprocessor"
+msgstr "Pr‚processeur"
+
+msgid "quits the IDE"
+msgstr "Quitte RHIDE"
+
+msgid "rebuilding of"
+msgstr "reconstruction de"
+
+msgid "redirect 'stde~r~r'"
+msgstr "redirection 'stde~r~r'"
+
+msgid "redirect 'stdou~t~'"
+msgstr "redirection 'stdou~t~'"
+
+msgid "redirecting %s to %s\n"
+msgstr "redirige %s vers %s\n"
+
+msgid "remove all files, which can be rebuild with this project"
+msgstr "efface tous les fichiers qui peuvent etre reconstruits"
+
+msgid "remove the list of automaticaly generated dependencies"
+msgstr "efface la liste de toutes les dependances generees automatiquement"
+
+msgid "remove the list of automaticly generated dependencies"
+msgstr "efface la liste de toutes les dependances generees automatiquement"
+
+msgid "remove the selected item from the project"
+msgstr "enlŠve l'‚l‚ment de projet s‚lectionn‚"
+
+msgid "repaints the desktop"
+msgstr "Redessine le bureau"
+
+msgid "repeat the last find- or replace-operation"
+msgstr "Recommence la derniŠre recherche ou recherche/remplacement"
+
+msgid "reserved"
+msgstr "R‚serv‚"
+
+msgid "reserved word"
+msgstr "Mots r‚serv‚s"
+
+msgid "resize/move the current window"
+msgstr "Change la taille/position de la fenˆtre courante"
+
+msgid "run the project-target (if executable after doing a make)"
+msgstr "Ex‚cute la cible du project (s'il s'agit d'un ex‚cutable)"
+
+msgid "save all opened editors to disk (if modified)"
+msgstr "Sauve tous les ‚diteurs ouverts sur disque (si modifi‚s)"
+
+msgid "save the current editor to disk (if modified)"
+msgstr "Sauve l'‚diteur courant sur disque (si modifi‚)"
+
+msgid "save the current editor under a different name to disk"
+msgstr "Sauve l'‚diteur courant sur disque, sous un nouveau nom"
 
 msgid "select next message"
 msgstr "Message suivant"
@@ -304,50 +751,17 @@ msgstr "Message suivant"
 msgid "select previous message"
 msgstr "Message pr‚c‚dent"
 
-msgid "run the project-target (if executable after doing a make)"
-msgstr "Ex‚cute la cible du project (s'il s'agit d'un ex‚cutable)"
+msgid "set addition flags to the compiler (defines, ...)"
+msgstr "Ajuste les paramŠtres additionels du compilateur (#defines...)"
 
-msgid "enter commandline arguments for your program"
-msgstr "Entre des arguments de la ligne de commande pour la cible"
+msgid "set additional flags to the compiler (defines, ...)"
+msgstr "Ajuste les paramŠtres additionels du compilateur (#defines...)"
 
-msgid "compile the current editor or the selected project-item"
-msgstr "Compile l'‚diteur courant ou l'‚l‚ment de projet s‚lectionn‚"
+msgid "set additional flags to the linker"
+msgstr "Ajuste les options du linker"
 
-msgid "make the project (with checking auto-dependencies)"
-msgstr "Construit le projet (avec auto-d‚pendances)"
-
-msgid "link the project or create the library"
-msgstr "Lie le projet ou cr‚e la librairie"
-
-msgid "build the project completely new"
-msgstr "Reconstruit entiŠrement le projet"
-
-msgid "open a project"
-msgstr "Ouvre un projet"
-
-msgid "close the current project"
-msgstr "Ferme le projet courant"
-
-msgid "add an item to the project"
-msgstr "Ajoute un ‚lement au projet"
-
-msgid "remove the selected item from the project"
-msgstr "enlŠve l'‚l‚ment de projet s‚lectionn‚"
-
-msgid "enter local commandline options for compiling this item"
-msgstr "Entre des options locales pour la compilation de cet ‚l‚ment"
-
-msgid "show the dependencies for the selected item"
-msgstr "Affiche les d‚pendences de l'‚l‚ment de projet s‚lectionn‚"
-
-msgid "change the name of the project-target"
-msgstr "Change le nom de la cible pour ce projet"
-
-msgid "remove the list of automaticly generated dependencies"
-msgstr "efface la liste de toutes les dependances generees automatiquement"
-
-msgid "remove all files, which can be rebuild with this project"
-msgstr "efface tous les fichiers qui peuvent etre reconstruits"
+msgid "set basic options for the IDE"
+msgstr "Ajuste les options de base de RHIDE"
 
 msgid "set various search paths for finding the files"
 msgstr "Modifie les diff‚rents chemins de recherche de fichiers"
@@ -367,62 +781,26 @@ msgstr "Modifie les chemins de recherche des fichiers source"
 msgid "set which libraries to be linked with the program"
 msgstr "Sp‚cifie les librairies … inclure dans le projet"
 
-msgid "set additional flags to the linker"
-msgstr "Ajuste les options du linker"
-
-msgid "set addition flags to the compiler (defines, ...)"
-msgstr "Ajuste les paramŠtres additionels du compilateur (#defines...)"
-
-msgid "set basic options for the IDE"
-msgstr "Ajuste les options de base de RHIDE"
-
-msgid "edit the list of reserved words"
-msgstr "Modifie la liste des mots r‚serv‚s"
-
-msgid "edit the list of flags for the C-compiler"
-msgstr "Edite la liste des switchs pour le compilateur C"
-
-msgid "edit the list of flags for the C++-compiler"
-msgstr "Edite la liste des switchs pour le compilateur C++"
-
-msgid "edit the list of flags for warnings"
-msgstr "Edite la liste des switchs pour les warnings"
-
-msgid "edit the list of flags for debugging"
-msgstr "Edite la liste des switchs pour le debugging"
-
-msgid "edit the list of optimization flags"
-msgstr "Edite la liste des switchs pour l'optimisation"
-
-msgid "edit the list of user defined words (for syntaxhighlight)"
-msgstr "Edit la liste des mots r‚serv‚s \"user-defined\""
-
-msgid "write a makefile for this project"
-msgstr "Cr‚e un fichier makefile … partir de ce projet"
-
-msgid "resize/move the current window"
-msgstr "Change la taille/position de la fenˆtre courante"
-
-msgid "toggles between full size and previous size of the current window"
-msgstr "Bascule entre plein ‚cran et taille normale pour la fenˆtre courante"
+msgid "show a list of all windows on the desktop"
+msgstr "Affiche la liste des fenˆtres"
 
 msgid "show all editor windows simultaniously"
 msgstr "Montre tous les ‚diteurs juxtapos‚s"
 
+msgid "show free memor~y~"
+msgstr "montre la memoire libre"
+
+msgid "show free ~m~emory"
+msgstr "montre la memoire libre"
+
 msgid "show from each editor the title"
 msgstr "Montre tous les ‚diteurs d‚cal‚s"
 
-msgid "switch to the next window on the desktop"
-msgstr "Bascule vers la fenˆtre suivante"
+msgid "show information about RHIDE"
+msgstr "Informations sur RHIDE"
 
-msgid "switch to the previous window on the desktop"
-msgstr "Bascule vers la fenˆtre pr‚c‚dente"
-
-msgid "close the current window"
-msgstr "Ferme la fenˆtre courante"
-
-msgid "show a list of all windows on the desktop"
-msgstr "Affiche la liste des fenˆtres"
+msgid "show the dependencies for the selected item"
+msgstr "Affiche les d‚pendences de l'‚l‚ment de projet s‚lectionn‚"
 
 msgid "show the project window"
 msgstr "Affiche la fenˆtre de projet"
@@ -430,185 +808,137 @@ msgstr "Affiche la fenˆtre de projet"
 msgid "show the user screen"
 msgstr "Affiche l'‚cran utilisateur"
 
-msgid "redirecting %s to %s\n"
-msgstr "redirige %s vers %s\n"
+msgid "show ~p~rocess information"
+msgstr "montre infos sur le process"
 
-msgid "Name of the main target"
-msgstr "Nom de la cible principale"
+msgid "shows the clipboard"
+msgstr "Affiche le contenu du presse papier"
 
-msgid "Goto the line"
-msgstr "Aller … la ligne"
+msgid "sho~w~ process information"
+msgstr "montre infos sur le process"
 
-msgid "line ~n~umber"
-msgstr "Ligne ~n~um‚ro"
+msgid "string"
+msgstr "ChaŒne"
 
-msgid "About RHIDE"
-msgstr "A propos de RHIDE"
+msgid "success"
+msgstr "succŠs"
 
-msgid "RHIDE is an Integrated Development Environment"
-msgstr "RHIDE est un environnement de d‚veloppement int‚gr‚ (IDE)"
+msgid "switch to DOS (call of %COMSPEC%, return with EXIT)"
+msgstr "Session DOS (appel de %COMSPEC%, retour en tapant EXIT)"
 
-msgid "for developing DJGPP apps"
-msgstr "pour le d‚veloppement d'applications avec DJGPP"
+msgid "switch to the next window on the desktop"
+msgstr "Bascule vers la fenˆtre suivante"
 
-msgid "Copyright (C) by Robert H”hne, 1996"
-msgstr "Copyright (C) par Robert H”hne, 1996"
+msgid "switch to the previous window on the desktop"
+msgstr "Bascule vers la fenˆtre pr‚c‚dente"
 
-msgid "~O~K"
-msgstr "~O~k"
+msgid "symbol"
+msgstr "Symboles"
 
-msgid "WindowList"
-msgstr "Liste des fenˆtres"
+msgid "syntax ~h~ighlighting"
+msgstr "coloration ~s~yntaxique"
 
-msgid "Include Directories"
-msgstr "R‚pertoires des Includes"
+msgid "than"
+msgstr "que"
 
-msgid "Library Directories"
-msgstr "R‚pertoires des librairies"
+msgid "toggles between full size and previous size of the current window"
+msgstr "Bascule entre plein ‚cran et taille normale pour la fenˆtre courante"
 
-msgid "Object Directories"
-msgstr "R‚pertoires des objets (.o)"
+msgid "undoes the last edit command"
+msgstr "Annule la derniŠre commande"
 
-msgid "Source Directories"
-msgstr "R‚pertoires des sources"
+msgid "undoes the last edit command (no cursor moving)"
+msgstr "Annule la derniŠre commande"
 
-msgid "Program arguments"
-msgstr "Arguments du programme"
+msgid "usage: %s [options] [project-file]\n"
+msgstr "usge: %s [Options] [fichier-projet]\n"
 
-msgid "Select a project"
-msgstr "S‚lectionne un projet"
+msgid "user defined words"
+msgstr "Mot cl‚f user-defined"
 
 msgid "using %s as temp directory\n"
 msgstr "utilisation de %s comme r‚pertoire temporaire\n"
 
-msgid "This is %s. Copyright (c) 1996 by Robert H”hne\n"
-msgstr "Copyright (C) par Robert H”hne, 1996\n"
+msgid "write a makefile for this project"
+msgstr "Cr‚e un fichier makefile … partir de ce projet"
 
-msgid "Invalid project-file %s(%s)"
-msgstr "Fichier-projet erron‚ %s(%s)"
+msgid "~Alt+F10~ local menu"
+msgstr "~Alt+F10~ menu local"
 
-msgid "~F~ile"
-msgstr "~F~ichiers"
+msgid "~Alt+F1~ last help"
+msgstr "~Alt+F1~ derniere aide"
 
-msgid "~O~pen"
-msgstr "~O~uvrir"
+msgid "~Alt+F9~ Compile"
+msgstr "~Alt+F9~ Compile"
 
-msgid "~N~ew"
-msgstr "~N~ouveau"
+msgid "~Alt+X~ Quit"
+msgstr "~Alt+X~ Quit"
 
-msgid "~S~ave"
-msgstr "~E~nregistrer"
+msgid "~Alt-X~ Exit"
+msgstr "~Alt-Q~ Quitter"
 
-msgid "S~a~ve as..."
-msgstr "~E~nregistrer sous..."
-
-msgid "Save a~l~l"
-msgstr "Entregistrer ~t~out"
-
-msgid "~D~OS shell"
-msgstr "Session ~D~OS"
-
-msgid "E~x~it"
-msgstr "~Q~uitter"
-
-msgid "~E~dit"
-msgstr "~E~dition"
-
-msgid "~U~ndo"
-msgstr "~A~nnuler"
-
-msgid "Cu~t~"
-msgstr "~C~ouper"
-
-msgid "~C~opy"
-msgstr "Co~p~ier"
-
-msgid "~P~aste"
-msgstr "C~o~ller"
-
-msgid "~S~how clipboard"
-msgstr "Affiche le ~p~resse papier"
-
-msgid "~C~lear"
-msgstr "~E~ffacer"
-
-msgid "~S~earch"
-msgstr "~R~echerche"
-
-msgid "~F~ind..."
-msgstr "~R~erchercher..."
-
-msgid "~R~eplace..."
-msgstr "R~e~mplacer..."
-
-msgid "~S~earch again"
-msgstr "rechercher de ~n~ouveau"
-
-msgid "~G~oto Line..."
-msgstr "Aller … la ligne..."
-
-msgid "~N~ext message"
-msgstr "Message ~S~uivant"
-
-msgid "Previ~o~us message"
-msgstr "Message ~P~r‚c‚dent"
-
-msgid "~R~un"
-msgstr "~E~x‚cution"
-
-msgid "~S~tep over"
-msgstr "~S~tep over"
-
-msgid "~T~race into"
-msgstr "~T~race into"
-
-msgid "~G~o to cursor"
-msgstr "~A~ller au curseur"
-
-msgid "~P~rogram reset"
-msgstr "~I~nitialise le programme"
-
-msgid "~A~rguments ..."
-msgstr "~A~rguments ..."
-
-msgid "~C~ompile"
-msgstr "~C~ompile"
-
-msgid "~M~ake"
-msgstr "~M~ake"
-
-msgid "~L~ink"
-msgstr "~L~ink"
-
-msgid "~B~uild all"
-msgstr "~B~uild all"
-
-msgid "~P~roject"
-msgstr "~P~rojet"
-
-msgid "Open ~p~roject"
-msgstr "Ouvrir un ~p~rojet"
-
-msgid "~C~lose project"
-msgstr "~F~erme le projet"
+msgid "~A~dd"
+msgstr "~A~jouter"
 
 msgid "~A~dd item"
 msgstr "Ajoute une ~e~ntr‚e"
 
-msgid "D~e~lete item"
-msgstr "~D~‚truit l'entr‚e"
+msgid "~A~rguments ..."
+msgstr "~A~rguments ..."
 
-msgid "~L~ocal options"
-msgstr "Options ~l~ocales"
+msgid "~A~utoindent"
+msgstr "~a~utoindentation"
 
-msgid "~I~ncludes"
-msgstr "D‚~p~endances"
+msgid "~B~ackground"
+msgstr "~F~ond"
 
-msgid "main target~n~ame"
-msgstr "~N~om de la cible"
+msgid "~B~uild all"
+msgstr "~B~uild all"
 
-msgid "Clea~r~ dependencies"
-msgstr "Effacer de~p~endances"
+msgid "~C~-Flags"
+msgstr "~C~-Flags"
+
+msgid "~C~/C++-Compiler"
+msgstr "~C~ompilateur C/C++"
+
+msgid "~C~hange dir..."
+msgstr "Change de re‚pertoire"
+
+msgid "~C~hdir"
+msgstr "~C~hdir"
+
+msgid "~C~lear"
+msgstr "~E~ffacer"
+
+msgid "~C~lose"
+msgstr "~F~erme"
+
+msgid "~C~lose project"
+msgstr "~F~erme le projet"
+
+msgid "~C~olors"
+msgstr "~C~ouleurs"
+
+msgid "~C~ompile"
+msgstr "~C~ompile"
+
+msgid "~C~opy"
+msgstr "Co~p~ier"
+
+msgid "~Del~ Close"
+msgstr "~Del~ Ferme"
+
+msgid "~Del~ Delete"
+msgstr "~Del~ Supprimer"
+
+msgid "~D~OS shell"
+msgstr "Session ~D~OS"
+
+msgid "~D~ebugging-Flags"
+msgstr "~D~ebugging-Flags"
+
+msgid "~D~elete"
+msgstr "~S~upprimer"
 
 msgid "~D~elete rebuildable files"
 msgstr "~E~ffacer les fichiers temporaires"
@@ -616,236 +946,29 @@ msgstr "~E~ffacer les fichiers temporaires"
 msgid "~D~irectories"
 msgstr "~R~‚pertoires"
 
-msgid "~I~nclude"
-msgstr "~I~nclude"
+msgid "~Enter~ Jump to source"
+msgstr "~Enter~ Ouvre la source"
 
-msgid "~L~ibraries"
-msgstr "~L~ibrairies"
+msgid "~Enter~ Select"
+msgstr "~Enter~ S‚lectionne"
 
-msgid "~O~bject"
-msgstr "~O~bjets"
+msgid "~Esc~ Cancel"
+msgstr "~Esc~ Annuler"
 
-msgid "~S~ources"
-msgstr "~S~ources"
-
-msgid "~C~/C++-Compiler"
-msgstr "~C~ompilateur C/C++"
-
-msgid "~W~arnings"
-msgstr "~W~arnings"
-
-msgid "~O~ptimizations"
-msgstr "~O~ptimisation"
-
-msgid "De~b~ugging"
-msgstr "~D~ebugging"
-
-msgid "~C~-Flags"
-msgstr "~C~-Flags"
-
-msgid "C~X~X-Flags"
-msgstr "C~X~X-Flags"
+msgid "~E~dit"
+msgstr "~E~dition"
 
 msgid "~E~nvironment"
 msgstr "~E~nvironnement"
 
-msgid "~C~olors"
-msgstr "~C~ouleurs"
+msgid "~F10~ Menu"
+msgstr "~F10~ Menu"
 
-msgid "~P~references"
-msgstr "~P~r‚f‚rences"
+msgid "~F1~ Help"
+msgstr "~F1~ Help"
 
-msgid "~R~eserved words"
-msgstr "Mots ~R~‚serv‚s"
-
-msgid "C-~F~lags"
-msgstr "C-~F~lags"
-
-msgid "~W~arning-Flags"
-msgstr "~W~arning-Flags"
-
-msgid "~D~ebugging-Flags"
-msgstr "~D~ebugging-Flags"
-
-msgid "~O~ptimization-Flags"
-msgstr "~O~ptimization-Flags"
-
-msgid "~U~ser words"
-msgstr "Mots clefs '~U~ser defined'"
-
-msgid "~O~ptions"
-msgstr "~O~ptions"
-
-msgid "L~i~nker Options"
-msgstr "Options de ~L~ink"
-
-msgid "Compiler ~O~ptions"
-msgstr "Options du compilateur"
-
-msgid "~W~rite Makefile"
-msgstr "Cr‚er un ~M~akefile"
-
-msgid "~W~indows"
-msgstr "~F~enˆtres"
-
-msgid "~S~ize/move"
-msgstr "~D~‚place/dimentionne"
-
-msgid "~Z~oom"
-msgstr "~Z~oom"
-
-msgid "~T~ile"
-msgstr "~M~osa‹que"
-
-msgid "C~a~scade"
-msgstr "~C~ascade"
-
-msgid "~N~ext"
-msgstr "~S~uivante"
-
-msgid "~P~revious"
-msgstr "~P~r‚c‚dente"
-
-msgid "~C~lose"
-msgstr "~F~erme"
-
-msgid "~L~ist"
-msgstr "~L~iste"
-
-msgid "Pro~j~ect"
-msgstr "~P~rojet"
-
-msgid "~U~serScreen"
-msgstr "Ecran ~U~tilisateur"
-
-msgid "~H~elp"
-msgstr "~A~ide"
-
-msgid "~ð~"
-msgstr "~ð~"
-
-msgid "about RH~I~DE"
-msgstr "A propos de RH~I~DE"
-
-msgid "~F~SDB"
-msgstr "~F~SDB"
-
-msgid "~G~REP ..."
-msgstr "~G~REP ..."
-
-msgid "G~D~B"
-msgstr "G~D~B"
-
-msgid "Refresh desk~t~op"
-msgstr "Retrace le bureau"
-
-msgid "Messages Window"
-msgstr "Messages"
-
-msgid "Optimization Flags"
-msgstr "Optimization Flags"
-
-msgid "Warning Flags"
-msgstr "Warning Flags"
-
-msgid "Debugging Flags"
-msgstr "Debugging Flags"
-
-msgid "C++ Flags"
-msgstr "C++ Flags"
-
-msgid "C Flags"
-msgstr "C Flags"
-
-msgid "Libraries"
-msgstr "Librairies"
-
-msgid "Use ~s~tandard libraries"
-msgstr "Utilise les librairies ~s~tandard"
-
-msgid "link for ~p~rofiling"
-msgstr "Link pour ~p~rofiling"
-
-msgid "Additional linker options"
-msgstr "Options additionelles de Link"
-
-msgid "Addition compiler options"
-msgstr "Options additionelles de compilation"
-
-msgid "Environment options"
-msgstr "Environnement"
-
-msgid "create ~b~ackupfiles"
-msgstr "cr‚er des fichiers .~b~ak"
-
-msgid "syntax ~h~ighlighting"
-msgstr "coloration ~s~yntaxique"
-
-msgid "~s~ave before compiling"
-msgstr "~s~auve avant compilation"
-
-msgid "~a~utoindent"
-msgstr "~a~utoindentation"
-
-msgid "o~v~erwrite mode"
-msgstr "mode ~r~ecouvrement"
-
-msgid "redirect 'stde~r~r'"
-msgstr "redirection 'stde~r~r'"
-
-msgid "redirect 'stdou~t~'"
-msgstr "redirection 'stdou~t~'"
-
-msgid "O~p~tions"
-msgstr "O~p~tions"
-
-msgid "other"
-msgstr "autre"
-
-msgid "~S~creen mode"
-msgstr "Mode ~e~cran"
-
-msgid "~T~absize"
-msgstr "Taille ~T~abulation"
-
-msgid "Cancel"
-msgstr "~A~nnuler"
-
-msgid "~A~dd"
-msgstr "~A~jouter"
-
-msgid "~D~elete"
-msgstr "~S~upprimer"
-
-msgid "De~f~ault"
-msgstr "D‚faut"
-
-msgid "New value"
-msgstr "Nouvelle valeur"
-
-msgid "~V~alue"
-msgstr "~V~aleur"
-
-msgid "Reserved words"
-msgstr "Mots r‚serv‚s"
-
-msgid "Couldn't open %s"
-msgstr "Impossible d'ouvrir %s"
-
-msgid "Project Window"
-msgstr "Projet"
-
-msgid "Add Item"
-msgstr "Ajouter l'‚l‚ment"
-
-msgid "The item '%s' is already in your project"
-msgstr "L'‚l‚ment %s est d‚j… dans votre projet"
-
-msgid "Remove '%s' from the project"
-msgstr "EnlŠve '%s' du projet"
-
-msgid "Include files for "
-msgstr "Fichiers inclus pour "
+msgid "~F1~ Help on InfoViewer"
+msgstr "~F1~ Aide sur l'InfoViewer"
 
 msgid "~F2~ Save"
 msgstr "~F2~ Enregistrer"
@@ -859,345 +982,222 @@ msgstr "~F5~ Zoom"
 msgid "~F6~ Next"
 msgstr "~F6~ Suivant"
 
-msgid "~Alt+F9~ Compile"
-msgstr "~Alt+F9~ Compile"
+msgid "~F~SDB"
+msgstr "~F~SDB"
 
-msgid "~F10~ Menu"
-msgstr "~F10~ Menu"
-
-msgid "~Alt+X~ Quit"
-msgstr "~Alt+X~ Quit"
-
-msgid "~F1~ Help"
-msgstr "~F1~ Help"
-
-msgid "~Ins~ Add"
-msgstr "~Ins~ Ajouter"
-
-msgid "~Del~ Delete"
-msgstr "~Del~ Supprimer"
-
-msgid "~^O~ Local"
-msgstr "~^O~ Local"
-
-msgid "~^I~ Includes"
-msgstr "~^I~ Includes"
-
-msgid "~Enter~ Jump to source"
-msgstr "~Enter~ Ouvre la source"
-
-msgid "~Esc~ Cancel"
-msgstr "~Esc~ Annuler"
-
-msgid "~Space~ select"
-msgstr "~Espace~ selectionner"
-
-msgid "~Enter~ Select"
-msgstr "~Enter~ S‚lectionne"
-
-msgid "~Del~ Close"
-msgstr "~Del~ Ferme"
-
-msgid "~F1~ Help on InfoViewer"
-msgstr "~F1~ Aide sur l'InfoViewer"
-
-msgid "~Alt+F1~ last help"
-msgstr "~Alt+F1~ derniere aide"
-
-msgid "~Alt+F10~ local menu"
-msgstr "~Alt+F10~ menu local"
-
-msgid "Control-Break Pressed"
-msgstr "Control-Break Press‚"
-
-msgid "Compiling: "
-msgstr "compilation: "
-
-msgid "no errors"
-msgstr "Pas d'erreur"
-
-msgid "~P~athlist"
-msgstr "~C~hemins"
-
-msgid "~P~arameter"
-msgstr "~P~aramŠtres"
-
-msgid "There is an unmatched quote in your arguments"
-msgstr "Guillement non ferm‚ dans un argument"
-
-msgid "~Y~es"
-msgstr "~O~ui"
-
-msgid "~N~o"
-msgstr "~N~on"
-
-msgid "Warning"
-msgstr "Attention"
-
-msgid "Error"
-msgstr "Erreur"
-
-msgid "Information"
-msgstr "Information"
-
-msgid "Confirm"
-msgstr "Confirmation"
-
-msgid "Change Directory"
-msgstr "Change de re‚pertoire"
-
-msgid "Directory ~n~ame"
-msgstr "~N~om de r‚pertoire"
-
-msgid "Directory ~t~ree"
-msgstr "~A~rbre de r‚pertoire"
-
-msgid "~C~hdir"
-msgstr "~C~hdir"
-
-msgid "~R~evert"
-msgstr "~I~nverser"
-
-msgid "Help"
-msgstr "Aide"
-
-msgid "Drives"
-msgstr "Disques"
-
-msgid "Invalid directory"
-msgstr "R‚pertoire erron‚"
-
-msgid "Colors"
-msgstr "Couleurs"
-
-msgid "~G~roup"
-msgstr "~G~roupe"
-
-msgid "~I~tem"
-msgstr "~E~lement"
-
-msgid "~F~oreground"
-msgstr "~P~remier plan"
-
-msgid "~B~ackground"
-msgstr "~F~ond"
-
-msgid "Text "
-msgstr "Text"
-
-msgid "Clipboard"
-msgstr "Presse papier"
-
-msgid "Untitled"
-msgstr "Sans titre"
+msgid "~F~ile"
+msgstr "~F~ichiers"
 
 msgid "~F~iles"
 msgstr "~F~ichiers"
 
-msgid "~R~eplace"
-msgstr "~R~emplacer"
+msgid "~F~ind..."
+msgstr "~R~erchercher..."
 
-msgid "Invalid drive or directory"
-msgstr "Disque ou r‚pertoire erron‚"
+msgid "~F~oreground"
+msgstr "~P~remier plan"
 
-msgid "Invalid file name."
-msgstr "Nom de fichier erron‚"
+msgid "~G~REP ..."
+msgstr "~G~REP ..."
 
-msgid "Jan"
-msgstr "Jan"
+msgid "~G~o to cursor"
+msgstr "~A~ller au curseur"
 
-msgid "Feb"
-msgstr "Fev"
+msgid "~G~oto Line..."
+msgstr "Aller … la ligne..."
 
-msgid "Mar"
-msgstr "Mar"
+msgid "~G~roup"
+msgstr "~G~roupe"
 
-msgid "Apr"
-msgstr "Avr"
+msgid "~H~elp"
+msgstr "~A~ide"
 
-msgid "May"
-msgstr "Mai"
+msgid "~Ins~ Add"
+msgstr "~Ins~ Ajouter"
 
-msgid "Jun"
-msgstr "Jui"
+msgid "~I~nclude"
+msgstr "~I~nclude"
 
-msgid "Jul"
-msgstr "Jul"
+msgid "~I~ncludes"
+msgstr "D‚~p~endances"
 
-msgid "Aug"
-msgstr "Aou"
+msgid "~I~tem"
+msgstr "~E~lement"
 
-msgid "Sep"
-msgstr "Sep"
+msgid "~L~ibraries"
+msgstr "~L~ibrairies"
 
-msgid "Oct"
-msgstr "Oct"
+msgid "~L~ink"
+msgstr "~L~ink"
 
-msgid "Nov"
-msgstr "Nov"
+msgid "~L~ist"
+msgstr "~L~iste"
 
-msgid "Dec"
-msgstr "Dec"
+msgid "~L~ocal options"
+msgstr "Options ~l~ocales"
 
-msgid "Highlight"
-msgstr "Surbrillance"
+msgid "~M~ake"
+msgstr "~M~ake"
 
-msgid "Underline"
-msgstr "Soulign‚"
+msgid "~N~ame"
+msgstr "~N~om"
 
-msgid "Inverse"
-msgstr "Invers‚"
-
-msgid "~Alt-X~ Exit"
-msgstr "~Alt-Q~ Quitter"
-
-msgid "costumize, how to optimize the code"
-msgstr "Modifie les options pour l'optimisation"
-
-msgid "costumize the generating of debugging information"
-msgstr "Modifie les options pour le debugging"
-
-msgid "costumize C-compiler specific flags"
-msgstr "Modifie les options du compilateur C"
-
-msgid "costumize C++-compiler specific flags"
-msgstr "Modifie les options du compilateur C++"
-
-msgid "costumize the colors of the IDE"
-msgstr "Ajuste les couleurs de RHIDE"
-
-msgid "undoes the last edit command (no cursor moving)"
-msgstr "Annule la derniŠre commande"
-
-msgid "customize various options for the C/C++-compiler"
-msgstr "Ajuste les diff‚rentes options de compilation C/C++"
-
-msgid "customize the IDE"
-msgstr "Personalise RHIDE"
-
-msgid "customize the generating of warnings"
-msgstr "Modifie les options pour les Warnings"
-
-msgid "sho~w~ process information"
-msgstr "montre infos sur le process"
-
-msgid "show free ~m~emory"
-msgstr "montre la memoire libre"
-
-msgid "usage: %s [options] [project-file]\n"
-msgstr "usge: %s [Options] [fichier-projet]\n"
-
-msgid "80x25 Color"
-msgstr "80x25 Couleur"
-
-msgid "80x28 Color"
-msgstr "80x28 Couleur"
-
-msgid "80x35 Color"
-msgstr "80x35 Couleur"
-
-msgid "80x40 Color"
-msgstr "80x40 Couleur"
-
-msgid "80x43 Color"
-msgstr "80x43 Couleur"
-
-msgid "80x50 Color"
-msgstr "80x50 Couleur"
-
-msgid "Too many files."
-msgstr "Trop de fichiers"
-
-msgid "undoes the last edit command"
-msgstr "Annule la derniŠre commande"
-
-msgid "customize, how to optimize the code"
-msgstr "Modifie les options pour l'optimisation"
-
-msgid "customize the generating of debugging information"
-msgstr "Modifie les options pour le debugging"
-
-msgid "customize C-compiler specific flags"
-msgstr "Modifie les options du compilateur C"
-
-msgid "customize the colors of the IDE"
-msgstr "Ajuste les couleurs de RHIDE"
-
-msgid "Additional compiler options"
-msgstr "Options additionelles de compilation"
-
-msgid "show ~p~rocess information"
-msgstr "montre infos sur le process"
-
-msgid "show free memor~y~"
-msgstr "montre la memoire libre"
-
-msgid "Couldn't open file %s"
-msgstr "Impossible d'ouvrir %s"
-
-msgid "Error: "
-msgstr "Erreur: "
-
-msgid "Warning: "
-msgstr "Attention: "
+msgid "~N~ew"
+msgstr "~N~ouveau"
 
 msgid "~N~ew value"
 msgstr "Nouvelle valeur"
 
-msgid "~C~hange dir..."
-msgstr "Change de re‚pertoire"
+msgid "~N~ext"
+msgstr "~S~uivante"
 
-msgid "Save file as"
-msgstr "Enregistrer sous"
+msgid "~N~ext message"
+msgstr "Message ~S~uivant"
 
-msgid "O~K~"
+msgid "~N~o"
+msgstr "~N~on"
+
+msgid "~O~K"
 msgstr "~O~k"
 
-msgid "Goto Line"
-msgstr "Aller … la ligne"
+msgid "~O~bject"
+msgstr "~O~bjets"
 
-msgid "Line number"
-msgstr "Ligne num‚ro"
+msgid "~O~pen"
+msgstr "~O~uvrir"
 
-msgid "Local Options"
-msgstr "Options locales"
+msgid "~O~ptimization-Flags"
+msgstr "~O~ptimization-Flags"
 
-msgid "~A~utoindent"
-msgstr "~a~utoindentation"
+msgid "~O~ptimizations"
+msgstr "~O~ptimisation"
 
-msgid "Syntax ~H~ighlight"
-msgstr "coloration ~s~yntaxique"
+msgid "~O~ptions"
+msgstr "~O~ptions"
+
+msgid "~P~arameter"
+msgstr "~P~aramŠtres"
+
+msgid "~P~aste"
+msgstr "C~o~ller"
+
+msgid "~P~athlist"
+msgstr "~C~hemins"
+
+msgid "~P~references"
+msgstr "~P~r‚f‚rences"
+
+msgid "~P~revious"
+msgstr "~P~r‚c‚dente"
+
+msgid "~P~rogram reset"
+msgstr "~I~nitialise le programme"
+
+msgid "~P~roject"
+msgstr "~P~rojet"
+
+msgid "~R~eplace"
+msgstr "~R~emplacer"
+
+msgid "~R~eplace..."
+msgstr "R~e~mplacer..."
+
+msgid "~R~eserved words"
+msgstr "Mots ~R~‚serv‚s"
+
+msgid "~R~evert"
+msgstr "~I~nverser"
+
+msgid "~R~un"
+msgstr "~E~x‚cution"
+
+msgid "~Space~ select"
+msgstr "~Espace~ selectionner"
+
+msgid "~S~ave"
+msgstr "~E~nregistrer"
+
+msgid "~S~creen mode"
+msgstr "Mode ~e~cran"
+
+msgid "~S~earch"
+msgstr "~R~echerche"
+
+msgid "~S~earch again"
+msgstr "rechercher de ~n~ouveau"
+
+msgid "~S~how clipboard"
+msgstr "Affiche le ~p~resse papier"
+
+msgid "~S~ize/move"
+msgstr "~D~‚place/dimentionne"
+
+msgid "~S~ources"
+msgstr "~S~ources"
+
+msgid "~S~tep over"
+msgstr "~S~tep over"
 
 msgid "~T~ab size"
 msgstr "Taille ~T~abulation"
 
-msgid "C~l~ear"
-msgstr "~E~ffacer"
+msgid "~T~absize"
+msgstr "Taille ~T~abulation"
+
+msgid "~T~ile"
+msgstr "~M~osa‹que"
+
+msgid "~T~race into"
+msgstr "~T~race into"
+
+msgid "~U~ndo"
+msgstr "~A~nnuler"
 
 msgid "~U~ser screen"
 msgstr "Ecran ~U~tilisateur"
 
+msgid "~U~ser words"
+msgstr "Mots clefs '~U~ser defined'"
+
+msgid "~U~serScreen"
+msgstr "Ecran ~U~tilisateur"
+
+msgid "~V~alue"
+msgstr "~V~aleur"
+
+msgid "~W~arning-Flags"
+msgstr "~W~arning-Flags"
+
+msgid "~W~arnings"
+msgstr "~W~arnings"
+
 msgid "~W~indow list"
 msgstr "Liste des fenˆtres"
 
-msgid "remove the list of automaticaly generated dependencies"
-msgstr "efface la liste de toutes les dependances generees automatiquement"
+msgid "~W~indows"
+msgstr "~F~enˆtres"
 
-msgid "customize C++-compiler specific flags"
-msgstr "Modifie les options du compilateur C++"
+msgid "~W~rite Makefile"
+msgstr "Cr‚er un ~M~akefile"
 
-msgid "set additional flags to the compiler (defines, ...)"
-msgstr "Ajuste les paramŠtres additionels du compilateur (#defines...)"
+msgid "~Y~es"
+msgstr "~O~ui"
 
-msgid "Com~p~iler"
-msgstr "~C~ompile"
+msgid "~Z~oom"
+msgstr "~Z~oom"
 
-msgid "Message Window"
-msgstr "Messages"
+msgid "~^I~ Includes"
+msgstr "~^I~ Includes"
 
-msgid "Copyright (C) by Robert H”hne, 1996-1998"
-msgstr "Copyright (C) par Robert H”hne, 1996-1998"
+msgid "~^O~ Local"
+msgstr "~^O~ Local"
 
-msgid "This is %s. Copyright (c) 1996-1998 by Robert H”hne\n"
-msgstr "Copyright (C) par Robert H”hne, 1996-1998\n"
+msgid "~a~utoindent"
+msgstr "~a~utoindentation"
+
+msgid "~s~ave before compiling"
+msgstr "~s~auve avant compilation"
+
+msgid "~ð~"
+msgstr "~ð~"
 

@@ -1,1091 +1,5 @@
-msgid "Desktop"
-msgstr "Bureaublad"
-
-msgid "Color"
-msgstr "Kleur"
-
-msgid "Menus"
-msgstr "Menu's"
-
-msgid "Normal"
-msgstr "Normaal"
-
-msgid "Disabled"
-msgstr "Niet-aktief"
-
-msgid "Shortcut"
-msgstr "Snelkoppeling"
-
-msgid "Selected"
-msgstr "Geselecteerd"
-
-msgid "Selected disabled"
-msgstr "Gesel. niet-aktief"
-
-msgid "Shortcut selected"
-msgstr "Gesel. snelkoppeling"
-
-msgid "Blue Windows"
-msgstr "Blauwe vensters"
-
-msgid "Frame disabled"
-msgstr "Kader niet-aktief"
-
-msgid "Frame"
-msgstr "Kader"
-
-msgid "Frame icons"
-msgstr "Kader iconen"
-
-msgid "Scroll bar page"
-msgstr "Schuifbalk"
-
-msgid "Scroll bar icons"
-msgstr "Schuifbalk iconen"
-
-msgid "Static text"
-msgstr "Tekst statisch"
-
-msgid "Selected text"
-msgstr "Tekst geselecteerd"
-
-msgid "reserved"
-msgstr "Gereserveerd"
-
-msgid "Cyan Windows"
-msgstr "Cyaankl. vensters"
-
-msgid "Gray Windows"
-msgstr "Grijze vensters"
-
-msgid "Dialogs"
-msgstr "Dialoogitems"
-
-msgid "Frame/background"
-msgstr "Kader/achtergrond"
-
-msgid "Label normal"
-msgstr "Label normaal"
-
-msgid "Label selected"
-msgstr "Label geselecteerd"
-
-msgid "Label shortcut"
-msgstr "Label snelkoppeling"
-
-msgid "Button normal"
-msgstr "Knop normaal"
-
-msgid "Button default"
-msgstr "Knop standaardvoorkeur"
-
-msgid "Button selected"
-msgstr "Knop geselecteerd"
-
-msgid "Button disabled"
-msgstr "Knop niet-aktief"
-
-msgid "Button shortcut"
-msgstr "Knop snelkoppeling"
-
-msgid "Button shadow"
-msgstr "Knopschaduw"
-
-msgid "Cluster normal"
-msgstr "Groep normaal"
-
-msgid "Cluster selected"
-msgstr "Groep geselecteerd"
-
-msgid "Cluster shortcut"
-msgstr "Groep snelkoppeling"
-
-msgid "Input normal"
-msgstr "Invoer normaal"
-
-msgid "Input selected"
-msgstr "Invoer geselecteerd"
-
-msgid "Input arrow"
-msgstr "Invoer eindepijl"
-
-msgid "History button"
-msgstr "History knop"
-
-msgid "History sides"
-msgstr "History zijkanten"
-
-msgid "History bar page"
-msgstr "History-balk"
-
-msgid "History bar icons"
-msgstr "History-balk iconen"
-
-msgid "List normal"
-msgstr "Lijst normaal"
-
-msgid "List focused"
-msgstr "Lijst aktief"
-
-msgid "List selected"
-msgstr "Lijst geselecteerd"
-
-msgid "List divider"
-msgstr "Lijstdeler"
-
-msgid "Information pane"
-msgstr "Informatiepaneel"
-
-msgid "Blue Editor"
-msgstr "Blauwe editor"
-
-msgid "normal text"
-msgstr "normale tekst"
-
-msgid "marked text"
-msgstr "gemarkeerde tekst"
-
-msgid "comment"
-msgstr "kommentaar"
-
-msgid "reserved word"
-msgstr "gereserveerd woord"
-
-msgid "identifier"
-msgstr "identifier"
-
-msgid "symbol"
-msgstr "symbool"
-
-msgid "string"
-msgstr "string"
-
-msgid "integer"
-msgstr "integer"
-
-msgid "float"
-msgstr "kommagetal"
-
-msgid "octal"
-msgstr "oktaal"
-
-msgid "hex"
-msgstr "hexadecimaal"
-
-msgid "character"
-msgstr "karakter"
-
-msgid "preprocessor"
-msgstr "preprocessor"
-
-msgid "illegal char"
-msgstr "illegaal karakter"
-
-msgid "user defined words"
-msgstr "user defined woorden"
-
-msgid "Open a file"
-msgstr "Open een bestand"
-
-msgid "~N~ame"
-msgstr "~N~aam"
-
-msgid "arguments for GREP"
-msgstr "parameters voor GREP"
-
-msgid "executing: "
-msgstr "uitvoeren: "
-
-msgid "checking"
-msgstr "controleren"
-
-msgid "is up to date"
-msgstr "is up to date"
-
-msgid "is"
-msgstr "is"
-
-msgid "newer"
-msgstr "nieuwer"
-
-msgid "older"
-msgstr "ouder"
-
-msgid "than"
-msgstr "dan"
-
-msgid "must rebuild"
-msgstr "moet opnieuw compileren"
-
-msgid "rebuilding of"
-msgstr "compilatie van"
-
-msgid "success"
-msgstr "succes"
-
-msgid "error"
-msgstr "fout"
-
-msgid "contents of stderr from "
-msgstr "inhoud stderr van "
-
-msgid "contents of stdout from "
-msgstr "inhoud stdout van "
-
-msgid "show information about RHIDE"
-msgstr "toont informatie over RHIDE"
-
-msgid "Start the FSDB debugger"
-msgstr "start de FSDB debugger"
-
-msgid "Running GREP (arguments are prompted)"
-msgstr "start GREP (na invoer parameters)"
-
-msgid "repaints the desktop"
-msgstr "ververst het bureaublad"
-
-msgid "Start the GDB debugger"
-msgstr "start de GDB debugger"
-
-msgid "opens the Info Viewer"
-msgstr "èben hjëlpefile ( Info Viewer )"
-
-msgid "opens a file in the editor"
-msgstr "opent een bestand in een nieuw tekstvenster"
-
-msgid "create a new editor window"
-msgstr "opent een nieuw tekstvenster"
-
-msgid "save the current editor to disk (if modified)"
-msgstr "slaat het huidige tekstvenster op (indien gewijzigd)"
-
-msgid "save the current editor under a different name to disk"
-msgstr "slaat het huidige tekstvenster op onder een nieuwe naam"
-
-msgid "save all opened editors to disk (if modified)"
-msgstr "slaat alle geopende tekstvensters op (indien gewijzigd)"
-
-msgid "switch to DOS (call of %COMSPEC%, return with EXIT)"
-msgstr "aktiveert DOS (roept %COMSPEC% aan en keert terug na EXIT)"
-
-msgid "quits the IDE"
-msgstr "beâindigt RHIDE"
-
-msgid "move the selected text to the clipboard"
-msgstr "verplaatst de geselecteerde tekst naar het klembord"
-
-msgid "copy the selected text to the clipboard"
-msgstr "kopieert de geselecteerde tekst naar het klembord"
-
-msgid "insert the selected text from the clipboard"
-msgstr "kopieert de in het klembord geselecteerde tekst"
-
-msgid "shows the clipboard"
-msgstr "toont het klembord"
-
-msgid "delete the selected text "
-msgstr "verwijdert de geselecteerde tekst"
-
-msgid "find a string in the current editor"
-msgstr "zoekt een string in het huidige tekstvenster"
-
-msgid "find and replace a string in the current editor"
-msgstr "zoekt en vervangt een string in het huidige tekstvenster"
-
-msgid "repeat the last find- or replace-operation"
-msgstr "herhaalt de laatste zoek- of vervangoperatie"
-
-msgid "go to line number (after prompting)"
-msgstr "gaat naar regelnummer (na invoer)"
-
-msgid "select next message"
-msgstr "springt naar de volgende mededeling"
-
-msgid "select previous message"
-msgstr "springt naar de vorige mededeling"
-
-msgid "run the project-target (if executable after doing a make)"
-msgstr "start het programma (indien uitvoerbaar na Make)"
-
-msgid "enter commandline arguments for your program"
-msgstr "de commandline parameters van het programma instellen"
-
-msgid "compile the current editor or the selected project-item"
-msgstr "compileert het huidige tekstvenster of het aktieve project"
-
-msgid "make the project (with checking auto-dependencies)"
-msgstr "voert Make uit voor het aktieve project"
-
-msgid "link the project or create the library"
-msgstr "linkt of genereert het programma/de bibliotheek"
-
-msgid "build the project completely new"
-msgstr "compileert alle items in het huidige project opnieuw"
-
-msgid "open a project"
-msgstr "èben et projekt"
-
-msgid "close the current project"
-msgstr "Luk det aktuelle projekt"
-
-msgid "add an item to the project"
-msgstr "Tilfõj et emne til projektet"
-
-msgid "remove the selected item from the project"
-msgstr "Fjern det markerede emne fra projektet"
-
-msgid "enter local commandline options for compiling this item"
-msgstr "Indtast lokal kommandolinie argumenter til oversëttelse af dette emne"
-
-msgid "show the dependencies for the selected item"
-msgstr "Vis afhëngige filer til dette emne"
-
-msgid "change the name of the project-target"
-msgstr "Omdõb projektets resultat"
-
-msgid "remove the list of automaticly generated dependencies"
-msgstr "Slet listen af automatisk genererede afhëngigheder"
-
-msgid "remove all files, which can be rebuild with this project"
-msgstr "Slet alle filer som kan genskabes fra dette projekt"
-
-msgid "set various search paths for finding the files"
-msgstr "Sët sõgestier"
-
-msgid "set where to search for include files"
-msgstr "Sët sõgesti til #include filer"
-
-msgid "set where to search for libraries"
-msgstr "Sët sõgesti til biblioteker"
-
-msgid "set where to search for object files"
-msgstr "Sët sõgesti til objekt-filer"
-
-msgid "set where to search for source files"
-msgstr "Sët sõgesti til kildetekster"
-
-msgid "set which libraries to be linked with the program"
-msgstr "Vëlg hvilke biblioteker som skal lënkes ind i projektet"
-
-msgid "set additional flags to the linker"
-msgstr "Sët yderligere flag til linkeren"
-
-msgid "set addition flags to the compiler (defines, ...)"
-msgstr "Sët yderligere flag til oversëtteren (defines, ...)"
-
-msgid "set basic options for the IDE"
-msgstr "Vëlg basal opsëtning af RHIDE"
-
-msgid "edit the list of reserved words"
-msgstr "RedigÇr listen af reserverede ord"
-
-msgid "edit the list of flags for the C-compiler"
-msgstr "RedigÇr listen af flag til C-oversëtter"
-
-msgid "edit the list of flags for the C++-compiler"
-msgstr "RedigÇr listen af flag til C++-oversëtter"
-
-msgid "edit the list of flags for warnings"
-msgstr "RedigÇr listen af flag for advarsler"
-
-msgid "edit the list of flags for debugging"
-msgstr "de lijst met debugopties bewerken"
-
-msgid "edit the list of optimization flags"
-msgstr "RedigÇr listen af optimeringsflag"
-
-msgid "edit the list of user defined words (for syntaxhighlight)"
-msgstr "Rediger listen af brugerdefinerede ord (som skal fremhëves)"
-
-msgid "write a makefile for this project"
-msgstr "Dan en MAKE-fil fra projektet"
-
-msgid "resize/move the current window"
-msgstr "índre stõrrelse/flyt det aktuelle vindue"
-
-msgid "toggles between full size and previous size of the current window"
-msgstr "Skift aktuelle vindue imellem fuldskërm og forrige stõrrelse"
-
-msgid "show all editor windows simultaniously"
-msgstr "Vis alle editorvinduer (ved siden af hinanden)"
-
-msgid "show from each editor the title"
-msgstr "Vis alle editorvinduers titler (overlappende vinduer)"
-
-msgid "switch to the next window on the desktop"
-msgstr "Skift til nëste vindue"
-
-msgid "switch to the previous window on the desktop"
-msgstr "Skift til forrige vindue"
-
-msgid "close the current window"
-msgstr "Luk det aktuelle vindue"
-
-msgid "show a list of all windows on the desktop"
-msgstr "Vis en oversigt over alle Übne vinduer"
-
-msgid "show the project window"
-msgstr "Vis projektvinduet"
-
-msgid "show the user screen"
-msgstr "Vis uddataskërmbilledet (DOS)"
-
-msgid "redirecting %s to %s\n"
-msgstr "%s wordt afgevangen in %s\n"
-
-msgid "Name of the main target"
-msgstr "naam van het projectprogramma"
-
-msgid "Goto the line"
-msgstr "Ga naar de regel"
-
-msgid "line ~n~umber"
-msgstr "Regel ~n~ummer"
-
-msgid "About RHIDE"
-msgstr "Over RHIDE"
-
-msgid "RHIDE is an Integrated Development Environment"
-msgstr "RHIDE is een geãntegreerde programmeringsomgeving (IDE)"
-
-msgid "for developing DJGPP apps"
-msgstr "voor het ontwikkelen van DJGPP applicaties"
-
-msgid "Copyright (C) by Robert Hîhne, 1996"
-msgstr "Copyright (C) Robert Hîhne, MCMXCVI"
-
-msgid "~O~K"
-msgstr "~O~k"
-
-msgid "WindowList"
-msgstr "Vensterlijst"
-
-msgid "Include Directories"
-msgstr "~I~nclude directory's"
-
-msgid "Library Directories"
-msgstr "~B~ibliotheek directory's"
-
-msgid "Object Directories"
-msgstr "~O~bject directory's"
-
-msgid "Source Directories"
-msgstr "~B~ron directory's"
-
-msgid "Program arguments"
-msgstr "Programma parameters"
-
-msgid "Select a project"
-msgstr "Selecteer een project"
-
-msgid "using %s as temp directory\n"
-msgstr "gebruik %s als tijdelijke directory\n"
-
-msgid "This is %s. Copyright (c) 1996 by Robert Hîhne\n"
-msgstr "Copyright (C) Robert Hîhne, MCMXCVI\n"
-
-msgid "Invalid project-file %s(%s)"
-msgstr "Ongeldig projectbestand %s(%s)"
-
-msgid "~F~ile"
-msgstr "~B~estand"
-
-msgid "~O~pen"
-msgstr "~O~penen"
-
-msgid "~N~ew"
-msgstr "~N~ieuw"
-
-msgid "~S~ave"
-msgstr "O~p~slaan"
-
-msgid "S~a~ve as..."
-msgstr "Op~s~laan als..."
-
-msgid "Save a~l~l"
-msgstr "~A~lles opslaan"
-
-msgid "~D~OS shell"
-msgstr "~D~OS shell"
-
-msgid "E~x~it"
-msgstr "~E~inde"
-
-msgid "~E~dit"
-msgstr "Be~w~erken"
-
-msgid "~U~ndo"
-msgstr "~O~ngedaan"
-
-msgid "Cu~t~"
-msgstr "K~n~ippen"
-
-msgid "~C~opy"
-msgstr "~K~opiâren"
-
-msgid "~P~aste"
-msgstr "~P~lakken"
-
-msgid "~S~how clipboard"
-msgstr "~T~oon klemboord"
-
-msgid "~C~lear"
-msgstr "~W~issen"
-
-msgid "~S~earch"
-msgstr "~Z~oeken"
-
-msgid "~F~ind..."
-msgstr "~Z~oeken..."
-
-msgid "~R~eplace..."
-msgstr "~V~ervangen..."
-
-msgid "~S~earch again"
-msgstr "~O~pnieuw zoeken"
-
-msgid "~G~oto Line..."
-msgstr "~G~a naar regel..."
-
-msgid "~N~ext message"
-msgstr "~V~olgende mededeling"
-
-msgid "Previ~o~us message"
-msgstr "V~o~rige mededeling"
-
-msgid "~R~un"
-msgstr "Sta~r~t"
-
-msgid "~S~tep over"
-msgstr "~S~tap over"
-
-msgid "~T~race into"
-msgstr "~T~race tot in"
-
-msgid "~G~o to cursor"
-msgstr "~G~a naar cursor"
-
-msgid "~P~rogram reset"
-msgstr "~R~eset programma"
-
-msgid "~A~rguments ..."
-msgstr "~P~arameters..."
-
-msgid "~C~ompile"
-msgstr "~C~ompileren"
-
-msgid "~M~ake"
-msgstr "~M~ake"
-
-msgid "~L~ink"
-msgstr "~L~ink"
-
-msgid "~B~uild all"
-msgstr "~A~lles compileren"
-
-msgid "~P~roject"
-msgstr "~P~roject"
-
-msgid "Open ~p~roject"
-msgstr "~O~pen project"
-
-msgid "~C~lose project"
-msgstr "~S~luit project"
-
-msgid "~A~dd item"
-msgstr "Item ~t~oevoegen"
-
-msgid "D~e~lete item"
-msgstr "Item ~v~erwijderen"
-
-msgid "~L~ocal options"
-msgstr "~L~okale opties"
-
-msgid "~I~ncludes"
-msgstr "~I~ncludes"
-
-msgid "main target~n~ame"
-msgstr "~P~rogrammanaam"
-
-msgid "Clea~r~ dependencies"
-msgstr "Clea~r~ dependencies"
-
-msgid "~D~elete rebuildable files"
-msgstr "~D~elete rebuildable files"
-
-msgid "~D~irectories"
-msgstr "~D~irectory's"
-
-msgid "~I~nclude"
-msgstr "~I~nclude"
-
-msgid "~L~ibraries"
-msgstr "Biblio~t~heken"
-
-msgid "~O~bject"
-msgstr "~O~bjecten"
-
-msgid "~S~ources"
-msgstr "~B~ronnen"
-
-msgid "~C~/C++-Compiler"
-msgstr "~C~/C++-Compiler"
-
-msgid "~W~arnings"
-msgstr "~W~aarschuwingen"
-
-msgid "~O~ptimizations"
-msgstr "~O~ptimalisaties"
-
-msgid "De~b~ugging"
-msgstr "~D~ebuggen"
-
-msgid "~C~-Flags"
-msgstr "~C~-Opties"
-
-msgid "C~X~X-Flags"
-msgstr "C~X~X-Opties"
-
-msgid "~E~nvironment"
-msgstr "~O~mgeving"
-
-msgid "~C~olors"
-msgstr "~K~leuren"
-
-msgid "~P~references"
-msgstr "~V~oorkeuren"
-
-msgid "~R~eserved words"
-msgstr "~G~ereserveerde woorden"
-
-msgid "C-~F~lags"
-msgstr "~C~-Opties"
-
-msgid "~W~arning-Flags"
-msgstr "~W~aarschuwingsopties"
-
-msgid "~D~ebugging-Flags"
-msgstr "~D~ebugopties"
-
-msgid "~O~ptimization-Flags"
-msgstr "~O~ptimalisatieopties"
-
-msgid "~U~ser words"
-msgstr "~U~ser defined words"
-
-msgid "~O~ptions"
-msgstr "~O~pties"
-
-msgid "L~i~nker Options"
-msgstr "~L~inker opties"
-
-msgid "Compiler ~O~ptions"
-msgstr "~C~ompiler opties"
-
-msgid "~W~rite Makefile"
-msgstr "~G~enereer makefile"
-
-msgid "~W~indows"
-msgstr "~V~ensters"
-
-msgid "~S~ize/move"
-msgstr "~S~chalen/verplaatsen"
-
-msgid "~Z~oom"
-msgstr "~Z~oom"
-
-msgid "~T~ile"
-msgstr "~T~ile"
-
-msgid "C~a~scade"
-msgstr "~C~ascade"
-
-msgid "~N~ext"
-msgstr "~V~olgende"
-
-msgid "~P~revious"
-msgstr "V~o~rige"
-
-msgid "~C~lose"
-msgstr "~S~luiten"
-
-msgid "~L~ist"
-msgstr "~L~ijst"
-
-msgid "Pro~j~ect"
-msgstr "~P~roject"
-
-msgid "~U~serScreen"
-msgstr "~G~ebruikersscherm"
-
-msgid "~H~elp"
-msgstr "~H~elp"
-
-msgid "~~"
-msgstr "~~"
-
-msgid "about RH~I~DE"
-msgstr "over RH~I~DE"
-
-msgid "~F~SDB"
-msgstr "~F~SDB"
-
-msgid "~G~REP ..."
-msgstr "~G~REP..."
-
-msgid "G~D~B"
-msgstr "G~D~B"
-
-msgid "Refresh desk~t~op"
-msgstr "Bureaublad verversen"
-
-msgid "Messages Window"
-msgstr "Mededelingenvenster"
-
-msgid "Optimization Flags"
-msgstr "Optimalisatieopties"
-
-msgid "Warning Flags"
-msgstr "Waarschuwingsopties"
-
-msgid "Debugging Flags"
-msgstr "Debugopties"
-
-msgid "C++ Flags"
-msgstr "C++-specifieke opties"
-
-msgid "C Flags"
-msgstr "C-specifieke opties"
-
-msgid "Libraries"
-msgstr "Bibliotheken"
-
-msgid "Use ~s~tandard libraries"
-msgstr "Gebruik ~s~tandaardbibliotheken"
-
-msgid "link for ~p~rofiling"
-msgstr "linken voor ~p~rofilen"
-
-msgid "Additional linker options"
-msgstr "Overige linkeropties"
-
-msgid "Addition compiler options"
-msgstr "Overige compileropties"
-
-msgid "Environment options"
-msgstr "Omgevingsopties"
-
-msgid "create ~b~ackupfiles"
-msgstr "genereer ~b~ackupbestanden"
-
-msgid "syntax ~h~ighlighting"
-msgstr "syntax ~h~ighlighting"
-
-msgid "~s~ave before compiling"
-msgstr "~o~pslaan voor compilatie"
-
-msgid "~a~utoindent"
-msgstr "~a~utoindent"
-
-msgid "o~v~erwrite mode"
-msgstr "o~v~erschrijf mode"
-
-msgid "redirect 'stde~r~r'"
-msgstr "afvangen 'stde~r~r'"
-
-msgid "redirect 'stdou~t~'"
-msgstr "afvangen 'stdou~t~'"
-
-msgid "O~p~tions"
-msgstr "O~p~ties"
-
-msgid "other"
-msgstr "overige"
-
-msgid "~S~creen mode"
-msgstr "~S~chermmode"
-
-msgid "~T~absize"
-msgstr "~T~abstops"
-
-msgid "Cancel"
-msgstr "~A~nnuleren"
-
-msgid "~A~dd"
-msgstr "~T~oevoegen"
-
-msgid "~D~elete"
-msgstr "~V~erwijderen"
-
-msgid "De~f~ault"
-msgstr "~S~tandaard"
-
-msgid "New value"
-msgstr "Nieuwe waarde"
-
-msgid "~V~alue"
-msgstr "~W~aarde"
-
-msgid "Reserved words"
-msgstr "Gereserveerde woorden"
-
-msgid "Couldn't open %s"
-msgstr "Kan %s niet openen"
-
-msgid "Project Window"
-msgstr "Projectvenster"
-
-msgid "Add Item"
-msgstr "Item toevoegen"
-
-msgid "The item '%s' is already in your project"
-msgstr "Het project bevat reeds het item '%s'"
-
-msgid "Remove '%s' from the project"
-msgstr "'%s' uit huidig project verwijderen"
-
-msgid "Include files for "
-msgstr "Include-bestanden voor "
-
-msgid "~F2~ Save"
-msgstr "~F2~ Opslaan"
-
-msgid "~F3~ Open"
-msgstr "~F3~ Openen"
-
-msgid "~F5~ Zoom"
-msgstr "~F5~ Zoom"
-
-msgid "~F6~ Next"
-msgstr "~F6~ Volgende"
-
-msgid "~Alt+F9~ Compile"
-msgstr "~Alt+F9~ Compileren"
-
-msgid "~F10~ Menu"
-msgstr "~F10~ Menu"
-
-msgid "~Alt+X~ Quit"
-msgstr "~Alt+X~ Einde"
-
-msgid "~F1~ Help"
-msgstr "~F1~ Help"
-
-msgid "~Ins~ Add"
-msgstr "~Ins~ Toevoegen"
-
-msgid "~Del~ Delete"
-msgstr "~Del~ Verwijderen"
-
-msgid "~^O~ Local"
-msgstr "~^O~ Lokaal"
-
-msgid "~^I~ Includes"
-msgstr "~^I~ Includes"
-
-msgid "~Enter~ Jump to source"
-msgstr "~Enter~ Ga naar bron"
-
-msgid "~Esc~ Cancel"
-msgstr "~Esc~ Annuleren"
-
-msgid "~Space~ select"
-msgstr "~Spatie~ Selecteren"
-
-msgid "~Enter~ Select"
-msgstr "~Enter~ Selecteer"
-
-msgid "~Del~ Close"
-msgstr "~Del~ Sluiten"
-
-msgid "~F1~ Help on InfoViewer"
-msgstr "~F1~ Help over InfoViewer"
-
-msgid "~Alt+F1~ last help"
-msgstr "~Alt+F1~ Laatste help"
-
-msgid "~Alt+F10~ local menu"
-msgstr "~Alt+F10~ Lokaal menu"
-
-msgid "Control-Break Pressed"
-msgstr "Control-Break gedetecteerd"
-
-msgid "Compiling: "
-msgstr "compileren: "
-
-msgid "no errors"
-msgstr "geen fouten"
-
-msgid "~P~athlist"
-msgstr "~P~adlijst"
-
-msgid "~P~arameter"
-msgstr "~A~rgument"
-
-msgid "There is an unmatched quote in your arguments"
-msgstr "Ongesloten apostrophe gevonden in parameters"
-
-msgid "~Y~es"
-msgstr "~J~a"
-
-msgid "~N~o"
-msgstr "~N~ee"
-
-msgid "Warning"
-msgstr "Waarschuwing"
-
-msgid "Error"
-msgstr "Fout"
-
-msgid "Information"
-msgstr "Informatie"
-
-msgid "Confirm"
-msgstr "Bevestig"
-
-msgid "Change Directory"
-msgstr "Directory veranderen"
-
-msgid "Directory ~n~ame"
-msgstr "Directory~n~aam"
-
-msgid "Directory ~t~ree"
-msgstr "Directory~b~oom"
-
-msgid "~C~hdir"
-msgstr "~C~hdir"
-
-msgid "~R~evert"
-msgstr "~R~evert"
-
-msgid "Help"
-msgstr "Help"
-
-msgid "Drives"
-msgstr "Stations"
-
-msgid "Invalid directory"
-msgstr "Ongeldige directory"
-
-msgid "Colors"
-msgstr "Kleuren"
-
-msgid "~G~roup"
-msgstr "~G~roep"
-
-msgid "~I~tem"
-msgstr "~O~nderdeel"
-
-msgid "~F~oreground"
-msgstr "~V~oorgrond"
-
-msgid "~B~ackground"
-msgstr "~A~chtergrond"
-
-msgid "Text "
-msgstr "Tekst "
-
-msgid "Clipboard"
-msgstr "Klembord"
-
-msgid "Untitled"
-msgstr "Naamloos"
-
-msgid "~F~iles"
-msgstr "~B~estanden"
-
-msgid "~R~eplace"
-msgstr "~V~ervangen"
-
-msgid "Invalid drive or directory"
-msgstr "Ongeldig station of directory"
-
-msgid "Invalid file name."
-msgstr "Ongeldige bestandsnaam"
-
-msgid "Jan"
-msgstr "Jan"
-
-msgid "Feb"
-msgstr "Feb"
-
-msgid "Mar"
-msgstr "Maa"
-
-msgid "Apr"
-msgstr "Apr"
-
-msgid "May"
-msgstr "Mei"
-
-msgid "Jun"
-msgstr "Jun"
-
-msgid "Jul"
-msgstr "Jul"
-
-msgid "Aug"
-msgstr "Aug"
-
-msgid "Sep"
-msgstr "Sep"
-
-msgid "Oct"
-msgstr "Okt"
-
-msgid "Nov"
-msgstr "Nov"
-
-msgid "Dec"
-msgstr "Dec"
-
-msgid "Highlight"
-msgstr "Benadrukt"
-
-msgid "Underline"
-msgstr "Onderstreept"
-
-msgid "Inverse"
-msgstr "Geãnverteerd"
-
-msgid "~Alt-X~ Exit"
-msgstr "~Alt-X~ Einde"
-
-msgid "costumize, how to optimize the code"
-msgstr "Vëlg optimering af koden"
-
-msgid "costumize the generating of debugging information"
-msgstr "Vëlg niveau af debug-information"
-
-msgid "costumize C-compiler specific flags"
-msgstr "de specifieke C-compileropties instellen"
-
-msgid "costumize C++-compiler specific flags"
-msgstr "Tilret C++-oversëtter specifikke flag"
-
-msgid "costumize the colors of the IDE"
-msgstr "Vëlg farvekombikationer til RHIDE"
-
-msgid "undoes the last edit command (no cursor moving)"
-msgstr "maakt het laatste commando ongedaan (geen cursorbeweging)"
-
-msgid "customize various options for the C/C++-compiler"
-msgstr "Tilret opsëtningen af C/C++-oversëtteren"
-
-msgid "customize the IDE"
-msgstr "Tilret opsëtning af RHIDE"
-
-msgid "customize the generating of warnings"
-msgstr "Vëlg hvilke advarsler, som kan anvendes"
-
-msgid "sho~w~ process information"
-msgstr "~t~oont procesinformatie"
-
-msgid "show free ~m~emory"
-msgstr "~t~oont vrij geheugen"
-
-msgid "usage: %s [options] [project-file]\n"
-msgstr "gebruik: %s [opties] [projectbestand]\n"
+msgid ""
+msgstr "Date: 1996-08-15 22:18:08+0000\nFrom: Robert.Hoehne <Robert.Hoehne@pc>\nContent-Type: text/plain; charset=\nXgettext-Options: --default-domain=potfiles --add-comments --keyword=_ --directory=s:/rhide --files-from=s:/rhide/potfiles.in\nFiles: ide21.cc idecolor.cc idedebug.cc idedefau.cc ideexter.cc ideforma.cc idegcc.cc idehelp.cc idehints.cc ideio.cc idemain.cc idemenu.cc idemsg.cc ideopt.cc idepipe.cc ideprj.cc ideresou.cc idestatu.cc idestrm.cc ideutil.cc ideversi.cc openedit.cc\n"
 
 msgid "80x25 Color"
 msgstr "80x25 Kleur"
@@ -1105,114 +19,1200 @@ msgstr "80x43 Kleur"
 msgid "80x50 Color"
 msgstr "80x50 Kleur"
 
-msgid ""
-msgstr "Date: 1996-08-15 22:18:08+0000\nFrom: Robert.Hoehne <Robert.Hoehne@pc>\nContent-Type: text/plain; charset=\nXgettext-Options: --default-domain=potfiles --add-comments --keyword=_ --directory=s:/rhide --files-from=s:/rhide/potfiles.in\nFiles: ide21.cc idecolor.cc idedebug.cc idedefau.cc ideexter.cc ideforma.cc idegcc.cc idehelp.cc idehints.cc ideio.cc idemain.cc idemenu.cc idemsg.cc ideopt.cc idepipe.cc ideprj.cc ideresou.cc idestatu.cc idestrm.cc ideutil.cc ideversi.cc openedit.cc\n"
+msgid "About RHIDE"
+msgstr "Over RHIDE"
 
-msgid "Too many files."
-msgstr "Teveel bestanden."
+msgid "Add Item"
+msgstr "Item toevoegen"
 
-msgid "undoes the last edit command"
-msgstr "maakt het laatste commando ongedaan"
-
-msgid "remove the list of automaticaly generated dependencies"
-msgstr "Slet listen af automatisk genererede afhëngigheder"
-
-msgid "customize, how to optimize the code"
-msgstr "Vëlg optimering af koden"
-
-msgid "customize the generating of debugging information"
-msgstr "Vëlg niveau af debug-information"
-
-msgid "customize C-compiler specific flags"
-msgstr "de specifieke C-compileropties instellen"
-
-msgid "customize C++-compiler specific flags"
-msgstr "de specifieke C++-compileropties instellen"
-
-msgid "set additional flags to the compiler (defines, ...)"
-msgstr "Sët yderligere flag til oversëtteren (defines, ...)"
-
-msgid "customize the colors of the IDE"
-msgstr "Vëlg farvekombikationer til RHIDE"
+msgid "Addition compiler options"
+msgstr "Overige compileropties"
 
 msgid "Additional compiler options"
 msgstr "Overige compileropties"
 
-msgid "show ~p~rocess information"
-msgstr "~t~oont procesinformatie"
+msgid "Additional linker options"
+msgstr "Overige linkeropties"
 
-msgid "show free memor~y~"
-msgstr "~t~oont vrij geheugen"
+msgid "Apr"
+msgstr "Apr"
 
-msgid "Couldn't open file %s"
-msgstr "Kan %s niet openen"
+msgid "Aug"
+msgstr "Aug"
 
-msgid "Error: "
-msgstr "Fout: "
+msgid "Blue Editor"
+msgstr "Blauwe editor"
 
-msgid "Warning: "
-msgstr "Waarschuwing: "
+msgid "Blue Windows"
+msgstr "Blauwe vensters"
 
-msgid "File"
-msgstr "Bestand"
+msgid "Button default"
+msgstr "Knop standaardvoorkeur"
 
-msgid "file: "
-msgstr "Bestand: "
+msgid "Button disabled"
+msgstr "Knop niet-aktief"
 
-msgid "~N~ew value"
-msgstr "~N~ieuwe waarde"
+msgid "Button normal"
+msgstr "Knop normaal"
 
-msgid "Find"
-msgstr "Zoeken"
+msgid "Button selected"
+msgstr "Knop geselecteerd"
 
-msgid "Replace"
-msgstr "Vervangen"
+msgid "Button shadow"
+msgstr "Knopschaduw"
 
-msgid "~Alt-F3~ Close"
-msgstr "~Alt-F3~ Sluiten"
+msgid "Button shortcut"
+msgstr "Knop snelkoppeling"
 
-msgid "O~K~"
-msgstr "~O~k"
+msgid "C Flags"
+msgstr "C-specifieke opties"
 
-msgid "Options"
-msgstr "Opties"
+msgid "C++ Flags"
+msgstr "C++-specifieke opties"
 
-msgid "Goto Line"
-msgstr "Ga naar regel"
+msgid "C-~F~lags"
+msgstr "~C~-Opties"
 
-msgid "Line number"
-msgstr "Regel nummer"
+msgid "Cancel"
+msgstr "~A~nnuleren"
 
-msgid "Local Options"
-msgstr "Lokale opties"
+msgid "Change Directory"
+msgstr "Directory veranderen"
 
-msgid "~A~utoindent"
-msgstr "~a~utoindent"
+msgid "Clea~r~ dependencies"
+msgstr "Clea~r~ dependencies"
 
-msgid "Syntax ~H~ighlight"
-msgstr "syntax ~h~ighlighting"
+msgid "Clipboard"
+msgstr "Klembord"
 
-msgid "~T~ab size"
-msgstr "~T~abstops"
+msgid "Cluster normal"
+msgstr "Groep normaal"
 
-msgid "C~l~ear"
-msgstr "~W~issen"
+msgid "Cluster selected"
+msgstr "Groep geselecteerd"
 
-msgid "~U~ser screen"
-msgstr "~G~ebruikersscherm"
+msgid "Cluster shortcut"
+msgstr "Groep snelkoppeling"
 
-msgid "~W~indow list"
-msgstr "Vensterlijst"
+msgid "Color"
+msgstr "Kleur"
 
-msgid "~^F9~ Run"
-msgstr "~^F9~ Start"
+msgid "Colors"
+msgstr "Kleuren"
 
-msgid "Message Window"
-msgstr "Mededelingenvenster"
+msgid "Compiler ~O~ptions"
+msgstr "~C~ompiler opties"
+
+msgid "Compiling: "
+msgstr "compileren: "
+
+msgid "Confirm"
+msgstr "Bevestig"
+
+msgid "Control-Break Pressed"
+msgstr "Control-Break gedetecteerd"
+
+msgid "Copyright (C) by Robert Hîhne, 1996"
+msgstr "Copyright (C) Robert Hîhne, MCMXCVI"
 
 msgid "Copyright (C) by Robert Hîhne, 1996-1998"
 msgstr "Copyright (C) Robert Hîhne, MCMXCVI,MCMXCVII"
 
+msgid "Couldn't open %s"
+msgstr "Kan %s niet openen"
+
+msgid "Couldn't open file %s"
+msgstr "Kan %s niet openen"
+
+msgid "Cu~t~"
+msgstr "K~n~ippen"
+
+msgid "Cyan Windows"
+msgstr "Cyaankl. vensters"
+
+msgid "C~X~X-Flags"
+msgstr "C~X~X-Opties"
+
+msgid "C~a~scade"
+msgstr "~C~ascade"
+
+msgid "C~l~ear"
+msgstr "~W~issen"
+
+msgid "Debugging Flags"
+msgstr "Debugopties"
+
+msgid "Dec"
+msgstr "Dec"
+
+msgid "Desktop"
+msgstr "Bureaublad"
+
+msgid "De~b~ugging"
+msgstr "~D~ebuggen"
+
+msgid "De~f~ault"
+msgstr "~S~tandaard"
+
+msgid "Dialogs"
+msgstr "Dialoogitems"
+
+msgid "Directory ~n~ame"
+msgstr "Directory~n~aam"
+
+msgid "Directory ~t~ree"
+msgstr "Directory~b~oom"
+
+msgid "Disabled"
+msgstr "Niet-aktief"
+
+msgid "Drives"
+msgstr "Stations"
+
+msgid "D~e~lete item"
+msgstr "Item ~v~erwijderen"
+
+msgid "Environment options"
+msgstr "Omgevingsopties"
+
+msgid "Error"
+msgstr "Fout"
+
+msgid "Error: "
+msgstr "Fout: "
+
+msgid "E~x~it"
+msgstr "~E~inde"
+
+msgid "Feb"
+msgstr "Feb"
+
+msgid "File"
+msgstr "Bestand"
+
+msgid "Find"
+msgstr "Zoeken"
+
+msgid "Frame"
+msgstr "Kader"
+
+msgid "Frame disabled"
+msgstr "Kader niet-aktief"
+
+msgid "Frame icons"
+msgstr "Kader iconen"
+
+msgid "Frame/background"
+msgstr "Kader/achtergrond"
+
+msgid "Goto Line"
+msgstr "Ga naar regel"
+
+msgid "Goto the line"
+msgstr "Ga naar de regel"
+
+msgid "Gray Windows"
+msgstr "Grijze vensters"
+
+msgid "G~D~B"
+msgstr "G~D~B"
+
+msgid "Help"
+msgstr "Help"
+
+msgid "Highlight"
+msgstr "Benadrukt"
+
+msgid "History bar icons"
+msgstr "History-balk iconen"
+
+msgid "History bar page"
+msgstr "History-balk"
+
+msgid "History button"
+msgstr "History knop"
+
+msgid "History sides"
+msgstr "History zijkanten"
+
+msgid "Include Directories"
+msgstr "~I~nclude directory's"
+
+msgid "Include files for "
+msgstr "Include-bestanden voor "
+
+msgid "Information"
+msgstr "Informatie"
+
+msgid "Information pane"
+msgstr "Informatiepaneel"
+
+msgid "Input arrow"
+msgstr "Invoer eindepijl"
+
+msgid "Input normal"
+msgstr "Invoer normaal"
+
+msgid "Input selected"
+msgstr "Invoer geselecteerd"
+
+msgid "Invalid directory"
+msgstr "Ongeldige directory"
+
+msgid "Invalid drive or directory"
+msgstr "Ongeldig station of directory"
+
+msgid "Invalid file name."
+msgstr "Ongeldige bestandsnaam"
+
+msgid "Invalid project-file %s(%s)"
+msgstr "Ongeldig projectbestand %s(%s)"
+
+msgid "Inverse"
+msgstr "Geãnverteerd"
+
+msgid "Jan"
+msgstr "Jan"
+
+msgid "Jul"
+msgstr "Jul"
+
+msgid "Jun"
+msgstr "Jun"
+
+msgid "Label normal"
+msgstr "Label normaal"
+
+msgid "Label selected"
+msgstr "Label geselecteerd"
+
+msgid "Label shortcut"
+msgstr "Label snelkoppeling"
+
+msgid "Libraries"
+msgstr "Bibliotheken"
+
+msgid "Library Directories"
+msgstr "~B~ibliotheek directory's"
+
+msgid "Line number"
+msgstr "Regel nummer"
+
+msgid "List divider"
+msgstr "Lijstdeler"
+
+msgid "List focused"
+msgstr "Lijst aktief"
+
+msgid "List normal"
+msgstr "Lijst normaal"
+
+msgid "List selected"
+msgstr "Lijst geselecteerd"
+
+msgid "Local Options"
+msgstr "Lokale opties"
+
+msgid "L~i~nker Options"
+msgstr "~L~inker opties"
+
+msgid "Mar"
+msgstr "Maa"
+
+msgid "May"
+msgstr "Mei"
+
+msgid "Menus"
+msgstr "Menu's"
+
+msgid "Message Window"
+msgstr "Mededelingenvenster"
+
+msgid "Messages Window"
+msgstr "Mededelingenvenster"
+
+msgid "Name of the main target"
+msgstr "naam van het projectprogramma"
+
+msgid "New value"
+msgstr "Nieuwe waarde"
+
+msgid "Normal"
+msgstr "Normaal"
+
+msgid "Nov"
+msgstr "Nov"
+
+msgid "Object Directories"
+msgstr "~O~bject directory's"
+
+msgid "Oct"
+msgstr "Okt"
+
+msgid "Open a file"
+msgstr "Open een bestand"
+
+msgid "Open ~p~roject"
+msgstr "~O~pen project"
+
+msgid "Optimization Flags"
+msgstr "Optimalisatieopties"
+
+msgid "Options"
+msgstr "Opties"
+
+msgid "O~K~"
+msgstr "~O~k"
+
+msgid "O~p~tions"
+msgstr "O~p~ties"
+
+msgid "Previ~o~us message"
+msgstr "V~o~rige mededeling"
+
+msgid "Program arguments"
+msgstr "Programma parameters"
+
+msgid "Project Window"
+msgstr "Projectvenster"
+
+msgid "Pro~j~ect"
+msgstr "~P~roject"
+
+msgid "RHIDE is an Integrated Development Environment"
+msgstr "RHIDE is een geãntegreerde programmeringsomgeving (IDE)"
+
+msgid "Refresh desk~t~op"
+msgstr "Bureaublad verversen"
+
+msgid "Remove '%s' from the project"
+msgstr "'%s' uit huidig project verwijderen"
+
+msgid "Replace"
+msgstr "Vervangen"
+
+msgid "Reserved words"
+msgstr "Gereserveerde woorden"
+
+msgid "Running GREP (arguments are prompted)"
+msgstr "start GREP (na invoer parameters)"
+
+msgid "Save a~l~l"
+msgstr "~A~lles opslaan"
+
+msgid "Scroll bar icons"
+msgstr "Schuifbalk iconen"
+
+msgid "Scroll bar page"
+msgstr "Schuifbalk"
+
+msgid "Select a project"
+msgstr "Selecteer een project"
+
+msgid "Selected"
+msgstr "Geselecteerd"
+
+msgid "Selected disabled"
+msgstr "Gesel. niet-aktief"
+
+msgid "Selected text"
+msgstr "Tekst geselecteerd"
+
+msgid "Sep"
+msgstr "Sep"
+
+msgid "Shortcut"
+msgstr "Snelkoppeling"
+
+msgid "Shortcut selected"
+msgstr "Gesel. snelkoppeling"
+
+msgid "Source Directories"
+msgstr "~B~ron directory's"
+
+msgid "Start the FSDB debugger"
+msgstr "start de FSDB debugger"
+
+msgid "Start the GDB debugger"
+msgstr "start de GDB debugger"
+
+msgid "Static text"
+msgstr "Tekst statisch"
+
+msgid "Syntax ~H~ighlight"
+msgstr "syntax ~h~ighlighting"
+
+msgid "S~a~ve as..."
+msgstr "Op~s~laan als..."
+
+msgid "Text "
+msgstr "Tekst "
+
+msgid "The item '%s' is already in your project"
+msgstr "Het project bevat reeds het item '%s'"
+
+msgid "There is an unmatched quote in your arguments"
+msgstr "Ongesloten apostrophe gevonden in parameters"
+
+msgid "This is %s. Copyright (c) 1996 by Robert Hîhne\n"
+msgstr "Copyright (C) Robert Hîhne, MCMXCVI\n"
+
 msgid "This is %s. Copyright (c) 1996-1998 by Robert Hîhne\n"
 msgstr "Copyright (C) Robert Hîhne, MCMXCVI,MCMXCVII\n"
+
+msgid "Too many files."
+msgstr "Teveel bestanden."
+
+msgid "Underline"
+msgstr "Onderstreept"
+
+msgid "Untitled"
+msgstr "Naamloos"
+
+msgid "Use ~s~tandard libraries"
+msgstr "Gebruik ~s~tandaardbibliotheken"
+
+msgid "Warning"
+msgstr "Waarschuwing"
+
+msgid "Warning Flags"
+msgstr "Waarschuwingsopties"
+
+msgid "Warning: "
+msgstr "Waarschuwing: "
+
+msgid "WindowList"
+msgstr "Vensterlijst"
+
+msgid "about RH~I~DE"
+msgstr "over RH~I~DE"
+
+msgid "add an item to the project"
+msgstr "Tilfõj et emne til projektet"
+
+msgid "arguments for GREP"
+msgstr "parameters voor GREP"
+
+msgid "build the project completely new"
+msgstr "compileert alle items in het huidige project opnieuw"
+
+msgid "change the name of the project-target"
+msgstr "Omdõb projektets resultat"
+
+msgid "character"
+msgstr "karakter"
+
+msgid "checking"
+msgstr "controleren"
+
+msgid "close the current project"
+msgstr "Luk det aktuelle projekt"
+
+msgid "close the current window"
+msgstr "Luk det aktuelle vindue"
+
+msgid "comment"
+msgstr "kommentaar"
+
+msgid "compile the current editor or the selected project-item"
+msgstr "compileert het huidige tekstvenster of het aktieve project"
+
+msgid "contents of stderr from "
+msgstr "inhoud stderr van "
+
+msgid "contents of stdout from "
+msgstr "inhoud stdout van "
+
+msgid "copy the selected text to the clipboard"
+msgstr "kopieert de geselecteerde tekst naar het klembord"
+
+msgid "costumize C++-compiler specific flags"
+msgstr "Tilret C++-oversëtter specifikke flag"
+
+msgid "costumize C-compiler specific flags"
+msgstr "de specifieke C-compileropties instellen"
+
+msgid "costumize the colors of the IDE"
+msgstr "Vëlg farvekombikationer til RHIDE"
+
+msgid "costumize the generating of debugging information"
+msgstr "Vëlg niveau af debug-information"
+
+msgid "costumize, how to optimize the code"
+msgstr "Vëlg optimering af koden"
+
+msgid "create a new editor window"
+msgstr "opent een nieuw tekstvenster"
+
+msgid "create ~b~ackupfiles"
+msgstr "genereer ~b~ackupbestanden"
+
+msgid "customize C++-compiler specific flags"
+msgstr "de specifieke C++-compileropties instellen"
+
+msgid "customize C-compiler specific flags"
+msgstr "de specifieke C-compileropties instellen"
+
+msgid "customize the IDE"
+msgstr "Tilret opsëtning af RHIDE"
+
+msgid "customize the colors of the IDE"
+msgstr "Vëlg farvekombikationer til RHIDE"
+
+msgid "customize the generating of debugging information"
+msgstr "Vëlg niveau af debug-information"
+
+msgid "customize the generating of warnings"
+msgstr "Vëlg hvilke advarsler, som kan anvendes"
+
+msgid "customize various options for the C/C++-compiler"
+msgstr "Tilret opsëtningen af C/C++-oversëtteren"
+
+msgid "customize, how to optimize the code"
+msgstr "Vëlg optimering af koden"
+
+msgid "delete the selected text "
+msgstr "verwijdert de geselecteerde tekst"
+
+msgid "edit the list of flags for debugging"
+msgstr "de lijst met debugopties bewerken"
+
+msgid "edit the list of flags for the C++-compiler"
+msgstr "RedigÇr listen af flag til C++-oversëtter"
+
+msgid "edit the list of flags for the C-compiler"
+msgstr "RedigÇr listen af flag til C-oversëtter"
+
+msgid "edit the list of flags for warnings"
+msgstr "RedigÇr listen af flag for advarsler"
+
+msgid "edit the list of optimization flags"
+msgstr "RedigÇr listen af optimeringsflag"
+
+msgid "edit the list of reserved words"
+msgstr "RedigÇr listen af reserverede ord"
+
+msgid "edit the list of user defined words (for syntaxhighlight)"
+msgstr "Rediger listen af brugerdefinerede ord (som skal fremhëves)"
+
+msgid "enter commandline arguments for your program"
+msgstr "de commandline parameters van het programma instellen"
+
+msgid "enter local commandline options for compiling this item"
+msgstr "Indtast lokal kommandolinie argumenter til oversëttelse af dette emne"
+
+msgid "error"
+msgstr "fout"
+
+msgid "executing: "
+msgstr "uitvoeren: "
+
+msgid "file: "
+msgstr "Bestand: "
+
+msgid "find a string in the current editor"
+msgstr "zoekt een string in het huidige tekstvenster"
+
+msgid "find and replace a string in the current editor"
+msgstr "zoekt en vervangt een string in het huidige tekstvenster"
+
+msgid "float"
+msgstr "kommagetal"
+
+msgid "for developing DJGPP apps"
+msgstr "voor het ontwikkelen van DJGPP applicaties"
+
+msgid "go to line number (after prompting)"
+msgstr "gaat naar regelnummer (na invoer)"
+
+msgid "hex"
+msgstr "hexadecimaal"
+
+msgid "identifier"
+msgstr "identifier"
+
+msgid "illegal char"
+msgstr "illegaal karakter"
+
+msgid "insert the selected text from the clipboard"
+msgstr "kopieert de in het klembord geselecteerde tekst"
+
+msgid "integer"
+msgstr "integer"
+
+msgid "is"
+msgstr "is"
+
+msgid "is up to date"
+msgstr "is up to date"
+
+msgid "line ~n~umber"
+msgstr "Regel ~n~ummer"
+
+msgid "link for ~p~rofiling"
+msgstr "linken voor ~p~rofilen"
+
+msgid "link the project or create the library"
+msgstr "linkt of genereert het programma/de bibliotheek"
+
+msgid "main target~n~ame"
+msgstr "~P~rogrammanaam"
+
+msgid "make the project (with checking auto-dependencies)"
+msgstr "voert Make uit voor het aktieve project"
+
+msgid "marked text"
+msgstr "gemarkeerde tekst"
+
+msgid "move the selected text to the clipboard"
+msgstr "verplaatst de geselecteerde tekst naar het klembord"
+
+msgid "must rebuild"
+msgstr "moet opnieuw compileren"
+
+msgid "newer"
+msgstr "nieuwer"
+
+msgid "no errors"
+msgstr "geen fouten"
+
+msgid "normal text"
+msgstr "normale tekst"
+
+msgid "octal"
+msgstr "oktaal"
+
+msgid "older"
+msgstr "ouder"
+
+msgid "open a project"
+msgstr "èben et projekt"
+
+msgid "opens a file in the editor"
+msgstr "opent een bestand in een nieuw tekstvenster"
+
+msgid "opens the Info Viewer"
+msgstr "èben hjëlpefile ( Info Viewer )"
+
+msgid "other"
+msgstr "overige"
+
+msgid "o~v~erwrite mode"
+msgstr "o~v~erschrijf mode"
+
+msgid "preprocessor"
+msgstr "preprocessor"
+
+msgid "quits the IDE"
+msgstr "beâindigt RHIDE"
+
+msgid "rebuilding of"
+msgstr "compilatie van"
+
+msgid "redirect 'stde~r~r'"
+msgstr "afvangen 'stde~r~r'"
+
+msgid "redirect 'stdou~t~'"
+msgstr "afvangen 'stdou~t~'"
+
+msgid "redirecting %s to %s\n"
+msgstr "%s wordt afgevangen in %s\n"
+
+msgid "remove all files, which can be rebuild with this project"
+msgstr "Slet alle filer som kan genskabes fra dette projekt"
+
+msgid "remove the list of automaticaly generated dependencies"
+msgstr "Slet listen af automatisk genererede afhëngigheder"
+
+msgid "remove the list of automaticly generated dependencies"
+msgstr "Slet listen af automatisk genererede afhëngigheder"
+
+msgid "remove the selected item from the project"
+msgstr "Fjern det markerede emne fra projektet"
+
+msgid "repaints the desktop"
+msgstr "ververst het bureaublad"
+
+msgid "repeat the last find- or replace-operation"
+msgstr "herhaalt de laatste zoek- of vervangoperatie"
+
+msgid "reserved"
+msgstr "Gereserveerd"
+
+msgid "reserved word"
+msgstr "gereserveerd woord"
+
+msgid "resize/move the current window"
+msgstr "índre stõrrelse/flyt det aktuelle vindue"
+
+msgid "run the project-target (if executable after doing a make)"
+msgstr "start het programma (indien uitvoerbaar na Make)"
+
+msgid "save all opened editors to disk (if modified)"
+msgstr "slaat alle geopende tekstvensters op (indien gewijzigd)"
+
+msgid "save the current editor to disk (if modified)"
+msgstr "slaat het huidige tekstvenster op (indien gewijzigd)"
+
+msgid "save the current editor under a different name to disk"
+msgstr "slaat het huidige tekstvenster op onder een nieuwe naam"
+
+msgid "select next message"
+msgstr "springt naar de volgende mededeling"
+
+msgid "select previous message"
+msgstr "springt naar de vorige mededeling"
+
+msgid "set addition flags to the compiler (defines, ...)"
+msgstr "Sët yderligere flag til oversëtteren (defines, ...)"
+
+msgid "set additional flags to the compiler (defines, ...)"
+msgstr "Sët yderligere flag til oversëtteren (defines, ...)"
+
+msgid "set additional flags to the linker"
+msgstr "Sët yderligere flag til linkeren"
+
+msgid "set basic options for the IDE"
+msgstr "Vëlg basal opsëtning af RHIDE"
+
+msgid "set various search paths for finding the files"
+msgstr "Sët sõgestier"
+
+msgid "set where to search for include files"
+msgstr "Sët sõgesti til #include filer"
+
+msgid "set where to search for libraries"
+msgstr "Sët sõgesti til biblioteker"
+
+msgid "set where to search for object files"
+msgstr "Sët sõgesti til objekt-filer"
+
+msgid "set where to search for source files"
+msgstr "Sët sõgesti til kildetekster"
+
+msgid "set which libraries to be linked with the program"
+msgstr "Vëlg hvilke biblioteker som skal lënkes ind i projektet"
+
+msgid "show a list of all windows on the desktop"
+msgstr "Vis en oversigt over alle Übne vinduer"
+
+msgid "show all editor windows simultaniously"
+msgstr "Vis alle editorvinduer (ved siden af hinanden)"
+
+msgid "show free memor~y~"
+msgstr "~t~oont vrij geheugen"
+
+msgid "show free ~m~emory"
+msgstr "~t~oont vrij geheugen"
+
+msgid "show from each editor the title"
+msgstr "Vis alle editorvinduers titler (overlappende vinduer)"
+
+msgid "show information about RHIDE"
+msgstr "toont informatie over RHIDE"
+
+msgid "show the dependencies for the selected item"
+msgstr "Vis afhëngige filer til dette emne"
+
+msgid "show the project window"
+msgstr "Vis projektvinduet"
+
+msgid "show the user screen"
+msgstr "Vis uddataskërmbilledet (DOS)"
+
+msgid "show ~p~rocess information"
+msgstr "~t~oont procesinformatie"
+
+msgid "shows the clipboard"
+msgstr "toont het klembord"
+
+msgid "sho~w~ process information"
+msgstr "~t~oont procesinformatie"
+
+msgid "string"
+msgstr "string"
+
+msgid "success"
+msgstr "succes"
+
+msgid "switch to DOS (call of %COMSPEC%, return with EXIT)"
+msgstr "aktiveert DOS (roept %COMSPEC% aan en keert terug na EXIT)"
+
+msgid "switch to the next window on the desktop"
+msgstr "Skift til nëste vindue"
+
+msgid "switch to the previous window on the desktop"
+msgstr "Skift til forrige vindue"
+
+msgid "symbol"
+msgstr "symbool"
+
+msgid "syntax ~h~ighlighting"
+msgstr "syntax ~h~ighlighting"
+
+msgid "than"
+msgstr "dan"
+
+msgid "toggles between full size and previous size of the current window"
+msgstr "Skift aktuelle vindue imellem fuldskërm og forrige stõrrelse"
+
+msgid "undoes the last edit command"
+msgstr "maakt het laatste commando ongedaan"
+
+msgid "undoes the last edit command (no cursor moving)"
+msgstr "maakt het laatste commando ongedaan (geen cursorbeweging)"
+
+msgid "usage: %s [options] [project-file]\n"
+msgstr "gebruik: %s [opties] [projectbestand]\n"
+
+msgid "user defined words"
+msgstr "user defined woorden"
+
+msgid "using %s as temp directory\n"
+msgstr "gebruik %s als tijdelijke directory\n"
+
+msgid "write a makefile for this project"
+msgstr "Dan en MAKE-fil fra projektet"
+
+msgid "~Alt+F10~ local menu"
+msgstr "~Alt+F10~ Lokaal menu"
+
+msgid "~Alt+F1~ last help"
+msgstr "~Alt+F1~ Laatste help"
+
+msgid "~Alt+F9~ Compile"
+msgstr "~Alt+F9~ Compileren"
+
+msgid "~Alt+X~ Quit"
+msgstr "~Alt+X~ Einde"
+
+msgid "~Alt-F3~ Close"
+msgstr "~Alt-F3~ Sluiten"
+
+msgid "~Alt-X~ Exit"
+msgstr "~Alt-X~ Einde"
+
+msgid "~A~dd"
+msgstr "~T~oevoegen"
+
+msgid "~A~dd item"
+msgstr "Item ~t~oevoegen"
+
+msgid "~A~rguments ..."
+msgstr "~P~arameters..."
+
+msgid "~A~utoindent"
+msgstr "~a~utoindent"
+
+msgid "~B~ackground"
+msgstr "~A~chtergrond"
+
+msgid "~B~uild all"
+msgstr "~A~lles compileren"
+
+msgid "~C~-Flags"
+msgstr "~C~-Opties"
+
+msgid "~C~/C++-Compiler"
+msgstr "~C~/C++-Compiler"
+
+msgid "~C~hdir"
+msgstr "~C~hdir"
+
+msgid "~C~lear"
+msgstr "~W~issen"
+
+msgid "~C~lose"
+msgstr "~S~luiten"
+
+msgid "~C~lose project"
+msgstr "~S~luit project"
+
+msgid "~C~olors"
+msgstr "~K~leuren"
+
+msgid "~C~ompile"
+msgstr "~C~ompileren"
+
+msgid "~C~opy"
+msgstr "~K~opiâren"
+
+msgid "~Del~ Close"
+msgstr "~Del~ Sluiten"
+
+msgid "~Del~ Delete"
+msgstr "~Del~ Verwijderen"
+
+msgid "~D~OS shell"
+msgstr "~D~OS shell"
+
+msgid "~D~ebugging-Flags"
+msgstr "~D~ebugopties"
+
+msgid "~D~elete"
+msgstr "~V~erwijderen"
+
+msgid "~D~elete rebuildable files"
+msgstr "~D~elete rebuildable files"
+
+msgid "~D~irectories"
+msgstr "~D~irectory's"
+
+msgid "~Enter~ Jump to source"
+msgstr "~Enter~ Ga naar bron"
+
+msgid "~Enter~ Select"
+msgstr "~Enter~ Selecteer"
+
+msgid "~Esc~ Cancel"
+msgstr "~Esc~ Annuleren"
+
+msgid "~E~dit"
+msgstr "Be~w~erken"
+
+msgid "~E~nvironment"
+msgstr "~O~mgeving"
+
+msgid "~F10~ Menu"
+msgstr "~F10~ Menu"
+
+msgid "~F1~ Help"
+msgstr "~F1~ Help"
+
+msgid "~F1~ Help on InfoViewer"
+msgstr "~F1~ Help over InfoViewer"
+
+msgid "~F2~ Save"
+msgstr "~F2~ Opslaan"
+
+msgid "~F3~ Open"
+msgstr "~F3~ Openen"
+
+msgid "~F5~ Zoom"
+msgstr "~F5~ Zoom"
+
+msgid "~F6~ Next"
+msgstr "~F6~ Volgende"
+
+msgid "~F~SDB"
+msgstr "~F~SDB"
+
+msgid "~F~ile"
+msgstr "~B~estand"
+
+msgid "~F~iles"
+msgstr "~B~estanden"
+
+msgid "~F~ind..."
+msgstr "~Z~oeken..."
+
+msgid "~F~oreground"
+msgstr "~V~oorgrond"
+
+msgid "~G~REP ..."
+msgstr "~G~REP..."
+
+msgid "~G~o to cursor"
+msgstr "~G~a naar cursor"
+
+msgid "~G~oto Line..."
+msgstr "~G~a naar regel..."
+
+msgid "~G~roup"
+msgstr "~G~roep"
+
+msgid "~H~elp"
+msgstr "~H~elp"
+
+msgid "~Ins~ Add"
+msgstr "~Ins~ Toevoegen"
+
+msgid "~I~nclude"
+msgstr "~I~nclude"
+
+msgid "~I~ncludes"
+msgstr "~I~ncludes"
+
+msgid "~I~tem"
+msgstr "~O~nderdeel"
+
+msgid "~L~ibraries"
+msgstr "Biblio~t~heken"
+
+msgid "~L~ink"
+msgstr "~L~ink"
+
+msgid "~L~ist"
+msgstr "~L~ijst"
+
+msgid "~L~ocal options"
+msgstr "~L~okale opties"
+
+msgid "~M~ake"
+msgstr "~M~ake"
+
+msgid "~N~ame"
+msgstr "~N~aam"
+
+msgid "~N~ew"
+msgstr "~N~ieuw"
+
+msgid "~N~ew value"
+msgstr "~N~ieuwe waarde"
+
+msgid "~N~ext"
+msgstr "~V~olgende"
+
+msgid "~N~ext message"
+msgstr "~V~olgende mededeling"
+
+msgid "~N~o"
+msgstr "~N~ee"
+
+msgid "~O~K"
+msgstr "~O~k"
+
+msgid "~O~bject"
+msgstr "~O~bjecten"
+
+msgid "~O~pen"
+msgstr "~O~penen"
+
+msgid "~O~ptimization-Flags"
+msgstr "~O~ptimalisatieopties"
+
+msgid "~O~ptimizations"
+msgstr "~O~ptimalisaties"
+
+msgid "~O~ptions"
+msgstr "~O~pties"
+
+msgid "~P~arameter"
+msgstr "~A~rgument"
+
+msgid "~P~aste"
+msgstr "~P~lakken"
+
+msgid "~P~athlist"
+msgstr "~P~adlijst"
+
+msgid "~P~references"
+msgstr "~V~oorkeuren"
+
+msgid "~P~revious"
+msgstr "V~o~rige"
+
+msgid "~P~rogram reset"
+msgstr "~R~eset programma"
+
+msgid "~P~roject"
+msgstr "~P~roject"
+
+msgid "~R~eplace"
+msgstr "~V~ervangen"
+
+msgid "~R~eplace..."
+msgstr "~V~ervangen..."
+
+msgid "~R~eserved words"
+msgstr "~G~ereserveerde woorden"
+
+msgid "~R~evert"
+msgstr "~R~evert"
+
+msgid "~R~un"
+msgstr "Sta~r~t"
+
+msgid "~Space~ select"
+msgstr "~Spatie~ Selecteren"
+
+msgid "~S~ave"
+msgstr "O~p~slaan"
+
+msgid "~S~creen mode"
+msgstr "~S~chermmode"
+
+msgid "~S~earch"
+msgstr "~Z~oeken"
+
+msgid "~S~earch again"
+msgstr "~O~pnieuw zoeken"
+
+msgid "~S~how clipboard"
+msgstr "~T~oon klemboord"
+
+msgid "~S~ize/move"
+msgstr "~S~chalen/verplaatsen"
+
+msgid "~S~ources"
+msgstr "~B~ronnen"
+
+msgid "~S~tep over"
+msgstr "~S~tap over"
+
+msgid "~T~ab size"
+msgstr "~T~abstops"
+
+msgid "~T~absize"
+msgstr "~T~abstops"
+
+msgid "~T~ile"
+msgstr "~T~ile"
+
+msgid "~T~race into"
+msgstr "~T~race tot in"
+
+msgid "~U~ndo"
+msgstr "~O~ngedaan"
+
+msgid "~U~ser screen"
+msgstr "~G~ebruikersscherm"
+
+msgid "~U~ser words"
+msgstr "~U~ser defined words"
+
+msgid "~U~serScreen"
+msgstr "~G~ebruikersscherm"
+
+msgid "~V~alue"
+msgstr "~W~aarde"
+
+msgid "~W~arning-Flags"
+msgstr "~W~aarschuwingsopties"
+
+msgid "~W~arnings"
+msgstr "~W~aarschuwingen"
+
+msgid "~W~indow list"
+msgstr "Vensterlijst"
+
+msgid "~W~indows"
+msgstr "~V~ensters"
+
+msgid "~W~rite Makefile"
+msgstr "~G~enereer makefile"
+
+msgid "~Y~es"
+msgstr "~J~a"
+
+msgid "~Z~oom"
+msgstr "~Z~oom"
+
+msgid "~^F9~ Run"
+msgstr "~^F9~ Start"
+
+msgid "~^I~ Includes"
+msgstr "~^I~ Includes"
+
+msgid "~^O~ Local"
+msgstr "~^O~ Lokaal"
+
+msgid "~a~utoindent"
+msgstr "~a~utoindent"
+
+msgid "~s~ave before compiling"
+msgstr "~o~pslaan voor compilatie"
+
+msgid "~~"
+msgstr "~~"
 

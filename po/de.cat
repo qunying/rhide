@@ -28,6 +28,9 @@ msgstr "            -M : Installiere nicht den Maus-Handler\n"
 msgid "            -S : use slower (safer) screen output\n"
 msgstr "            -S : benutze langsame (sichere) Bildschirmausgabe\n"
 
+msgid "            -T : Disable the DOS-box title feature\n"
+msgstr "            -T : Benutze nicht den DOS-Box Titel\n"
+
 msgid "            -b : use BIOS calls for toggle the blinkstate\n"
 msgstr "            -b : benutze BIOS zum Umschalten des Blinkstatus\n"
 
@@ -50,7 +53,7 @@ msgid "            -p : do not convert the numpad keys\n"
 msgstr "            -p : keine Konvertierung der Tasten der num. Tastatur\n"
 
 msgid "            -y : force to use long filenames (Windows 95)\n"
-msgstr "            -y : erzwinge Benutzung von langen Dateinamen (Windows 95)\n"
+msgstr "            -y : erzwinge Benutzung von langen Dateinamen (Windows95)\n"
 
 msgid "   Clipboard (%d bytes)"
 msgstr "   Zwischenablage (%d Byte)"
@@ -100,6 +103,9 @@ msgstr "(%d) %s in Zeile %d"
 msgid ",time: %08lx\n"
 msgstr ",Zeit: %08lx\n"
 
+msgid "-o and -r are not allowed together"
+msgstr "-o und -r sind nicht gleichzeitig erlaubt"
+
 msgid "-o needs an argument\n"
 msgstr "-o benîtigt ein Argument\n"
 
@@ -118,8 +124,14 @@ msgstr "Ein einfacher Kalender"
 msgid "A table with all the ASCII characters"
 msgstr "Eine Tabelle mit allen ASCII-Zeichen"
 
+msgid "A text editor specially designed for programmers."
+msgstr "Ein Text-Editor speziell fÅr Programmierer entwickelt."
+
 msgid "ASCII Chart"
 msgstr "ASCII Diagramm"
+
+msgid "About"
+msgstr "öber"
 
 msgid "About RHGDB"
 msgstr "öber RHGDB"
@@ -176,7 +188,7 @@ msgid "Attention !! this file is in DOS format,"
 msgstr "Achtung !! Diese Datei ist im DOS format,"
 
 msgid "Attention !! this file is in DOS format, Do you want convert it?, Make a backup first !!"
-msgstr "Achtung !! Diese Datei is im DOS format. Wills Du sie konvertieren? Mache zuerst eine Sicherungskopie !!"
+msgstr "Achtung !! Diese Datei is im DOS format. Wills Du sie konvertieren?Mache zuerst eine Sicherungskopie !!"
 
 msgid "Attention can't open the file '%s'."
 msgstr "Achtung! Konnte die Datei '%s' nicht îffnen."
@@ -274,6 +286,9 @@ msgstr "VerÑnder Registerwert"
 msgid "Change the expression to watch"
 msgstr "éndere den Åberwachten Ausdruck"
 
+msgid "Changed register"
+msgstr "VerÑndertes Register"
+
 msgid "Check the speed of the editor"
 msgstr "Testet die Geschwindingkeit des Editors"
 
@@ -362,7 +377,7 @@ msgid "Could not find desktop file"
 msgstr "Konnte die Desktopdatei nicht finden"
 
 msgid "Could not find the program. You must build at first the program to use this function, because the symbols are taken from that file."
-msgstr "Konnte das Programm nicht finden. Du mu·t zuerst das Programm erzeugen, da die Symbole von dieser Datei genommen werden."
+msgstr "Konnte das Programm nicht finden. Du mu·t zuerst das Programm erzeugen,da die Symbole von dieser Datei genommen werden."
 
 msgid "Could not find the source file %s."
 msgstr "Konnte die Quelldatei %s nicht finden."
@@ -371,7 +386,7 @@ msgid "Could not find the source file '%s'. Make shure, that the file exist or c
 msgstr "Konnte die Quelldatei '%s' nicht finden, Stelle sicher, da· sie existiert oder ÅberprÅfe die Einstellungen in 'Optionen/Verzeichnisse' auf korrekte Pfade"
 
 msgid "Could not find the source file '%s'. Make sure, that the file exist or check the settings in 'Options/Directories' for the correct paths."
-msgstr "Konnte die Quelldatei '%s' nicht finden, Stelle sicher, da· sie existiert oder ÅberprÅfe die Einstellungen in 'Optionen/Verzeichnisse' auf korrekte Pfade"
+msgstr "Konnte die Quelldatei '%s' nicht finden, Stelle sicher, da· sieexistiert oder ÅberprÅfe die Einstellungen in 'Optionen/Verzeichnisse' aufkorrekte Pfade"
 
 msgid "Could not open '%s' for reading"
 msgstr "Konnte '%s' nicht zum Lesen îffnen"
@@ -454,6 +469,9 @@ msgstr "Dez"
 msgid "December"
 msgstr "Dezember"
 
+msgid "Defa~u~lt"
+msgstr "~S~tandard"
+
 msgid "Define, where your standard headers are"
 msgstr "Definiere, wo Deine Standard-Header sind"
 
@@ -469,6 +487,9 @@ msgstr "~S~tandard"
 msgid "Dialogs"
 msgstr "Dialoge"
 
+msgid "Directories in project items"
+msgstr "Verzeichnisse in Projekt-Items"
+
 msgid "Directories in pr~o~ject items"
 msgstr "~V~erzeichnisse in Projekt-Items"
 
@@ -480,6 +501,9 @@ msgstr "Verzeichnis ~B~aum"
 
 msgid "Disabled"
 msgstr "Inaktiv"
+
+msgid "Disassembler"
+msgstr "Disassembler"
 
 msgid "Disassembler window"
 msgstr "Disassembler Fenster"
@@ -498,6 +522,12 @@ msgstr "Mîchtest Du wirklich RHIDE unterbrechen?"
 
 msgid "Don't know how to build %s from %s"
 msgstr "Wei· nicht, wie %s von %s erzeugt werden soll"
+
+msgid "Don't show it next time"
+msgstr "Zeige dies das nÑchste mal nicht"
+
+msgid "Don't warn you next time"
+msgstr "Das nÑchste mal nicht warnen"
 
 msgid "Drives"
 msgstr "Laufwerke"
@@ -529,6 +559,9 @@ msgstr "Leeres Pseudomakro"
 msgid "End of SDG"
 msgstr "Ende von SDG"
 
+msgid "End of SLP"
+msgstr "Ende von SLP"
+
 msgid "Enter the name of the 'main'-function"
 msgstr "Gebe den Namen der 'main'-Funktion ein"
 
@@ -542,10 +575,13 @@ msgid "Error creating file "
 msgstr "Feheler beim Erstellen der Datei"
 
 msgid "Error creating the indices for %s (or nothing found). Remove that file from the list?"
-msgstr "Fehler beim Erzeugen der Indizes fÅr %s (oder nichts gefunden). Diese Datei aus der Liste streichen?"
+msgstr "Fehler beim Erzeugen der Indizes fÅr %s (oder nichts gefunden). DieseDatei aus der Liste streichen?"
 
 msgid "Error in expression (%d)"
 msgstr "Fehler in Ausdruck (%d)"
+
+msgid "Error in sLisp interpreter:"
+msgstr "Fehler im sLisp Interpreter:"
 
 msgid "Error memory exhausted!!!\n"
 msgstr "Fehler: Speicher reicht nicht nicht!!!\n"
@@ -567,6 +603,12 @@ msgstr "Fehler wÑhrend %s:"
 
 msgid "Error while loading the keybinding file %s\n"
 msgstr "Fehler beim Laden der Tastaturbelungsdatei %s\n"
+
+msgid "Error while loading the keyboard binding"
+msgstr "Fehler beim Lesen der Tastaturbelegung"
+
+msgid "Error while reading"
+msgstr "Fehler beim Lesen"
 
 msgid "Error writing file "
 msgstr "Fehler beim Schreiben der Datei"
@@ -592,6 +634,9 @@ msgstr "NÑchste Anweisung in Einzelschritten ausfÅhren"
 msgid "Execute one instruction (No display swap)"
 msgstr "NÑchste Anweisung in Einzelschritten ausfÅhren (Kein Displayswap)"
 
+msgid "Execute until end of function"
+msgstr "Bis zum Ende der Funktion ausfÅhren"
+
 msgid "Expand all tabs to spaces"
 msgstr "Ersetzt alle Tabs durch Leerzeichen"
 
@@ -609,6 +654,12 @@ msgstr "~E~nde"
 
 msgid "E~x~pand all tabs"
 msgstr "Alle Tabs e~x~pandieren"
+
+msgid "E~x~tended regex"
+msgstr "Er~w~eiterter Reg. Ausdr."
+
+msgid "FPC Reserved words"
+msgstr "FPC reservierte Wîrter"
 
 msgid "Fast       Medium      Slow"
 msgstr "Schnell    Mittel   Langsam"
@@ -649,6 +700,9 @@ msgstr "Optionen, die nur zum öberstzen von Fortran-Dateien verwendet werden"
 msgid "Flags only when compiling Pascal files"
 msgstr "Optionen, die nur zum öbersetzen von Pascal-Dateien verwendet werden"
 
+msgid "Focused register"
+msgstr "AusgewÑhltes Register"
+
 msgid "For this line is no code generated"
 msgstr "FÅr diese Zeile ist kein Code erzeugt"
 
@@ -669,6 +723,9 @@ msgstr "Rahmen Symbole"
 
 msgid "Frame/background"
 msgstr "Rahmen/Hintergrund"
+
+msgid "Free Pascal compiler"
+msgstr "Free Pascal Compiler"
 
 msgid "Function call stack"
 msgstr "Funktionsaufrufstapel"
@@ -751,6 +808,9 @@ msgstr "Hilfe Å~b~er Hilfe"
 msgid "Hide '*~N~ode' word"
 msgstr "Verstecke '*~N~ode' Wort"
 
+msgid "Hide '*~N~ote' word"
+msgstr "Verstecke '*~N~ode' Wort"
+
 msgid "Hide real ~l~ink name"
 msgstr "Verstecke den richtigen ~L~ink-Name"
 
@@ -774,6 +834,9 @@ msgstr "Hi~s~tory"
 
 msgid "Hmmm ... I can't find any function, are you sure?"
 msgstr "Hmmm ... Ich kann keine Funktion finden. Bist Du sicher?"
+
+msgid "How many closed windows should I remember"
+msgstr "Wieviel geschlossene Fenster soll ich mir merken"
 
 msgid "H~i~de"
 msgstr "~V~erstecke"
@@ -979,6 +1042,9 @@ msgstr "Fehlendes Ende im Pseudomakro"
 msgid "Missing start in pseudo macro"
 msgstr "Fehlnder Start im Pseudomakro"
 
+msgid "Mor~e~ options"
+msgstr "W~e~itere Optionen"
+
 msgid "Mouse options"
 msgstr "Mausoptionen"
 
@@ -990,6 +1056,9 @@ msgstr "Name der 'main'-Funktion"
 
 msgid "Name of the main target"
 msgstr "Name des zu erzeugenden Programms"
+
+msgid "New Breakpoint"
+msgstr "Neuer Haltepunkt"
 
 msgid "New value"
 msgstr "Neuer Wert"
@@ -1003,6 +1072,9 @@ msgstr "Kein Displayswapping"
 msgid "No file cachin~g~"
 msgstr "Kein Datei \"Cachin~g~\""
 
+msgid "No macros defined"
+msgstr "Keine Makros definiert"
+
 msgid "No match found"
 msgstr "Keine öbereinstimmung gefunden"
 
@@ -1011,6 +1083,9 @@ msgstr "Keine bestÑndigen B~l~îcke"
 
 msgid "No project"
 msgstr "Kein Projekt"
+
+msgid "Nodes ~L~ist"
+msgstr "Knoten ~L~iste"
 
 msgid "None"
 msgstr "Kein"
@@ -1045,6 +1120,9 @@ msgstr "Nur #~i~nclude "..." als AbhÑngigkeiten"
 msgid "Only #~i~nclude \"...\" as dependencies"
 msgstr "Nur #~i~nclude \"...\" als AbhÑngigkeiten"
 
+msgid "Open Info"
+msgstr "ôffne Info"
+
 msgid "Open Project"
 msgstr "ôffne Projekt"
 
@@ -1059,6 +1137,9 @@ msgstr "ôffne die Datei %s"
 
 msgid "Open ~p~roject"
 msgstr "~P~rojekt îffnen"
+
+msgid "Opens the window with watches"
+msgstr "ôffnet das Fenster mit den Åberwachten AusdrÅcken"
 
 msgid "Optimal ~F~ill"
 msgstr "Optimale ~F~Ållung"
@@ -1156,6 +1237,12 @@ msgstr "RHGDB ist ein Quelltextdebugger"
 msgid "RHIDE Help ~i~ndex"
 msgstr "RHIDE Hilfe ~I~ndex"
 
+msgid "RHIDE has detected, that the environment variable %DJDIR% has not been set. This means, you haven't installed DJGPP correct. Please read the file README.1ST from the DJGPP distribution how to install DJGPP. If you continue now, you will get probably many errors."
+msgstr "RHIDE hat festgestellt, da· die Umgebungsvariable %DJDIR% nicht gesetzt ist. Dies bedeutet, da· Du DJGPP nicht korrekt installiert hast. Bitte lese die Datei README.1ST von der DJGPP Distribution wie DJGPP zu installieren ist. Wenn Du jetzt weiter machts, wirst Du wahrscheinlich viele Fehler bekommen."
+
+msgid "RHIDE has detected, that the environment variable %DJDIR%has not been set. This means, you haven't installed DJGPP correct. Please read the file README.1ST from the DJGPP distribution how to install DJGPP. If you continue now, you will get probably many errors."
+msgstr "RHIDE hat festgestellt, da· die Umgebungsvariable %DJDIR% nicht gesetzt ist. Dies bedeutet, da· Du DJGPP nicht korrekt installiert hast. Bitte lese die Datei README.1ST von der DJGPP Distribution wie DJGPP zu installieren ist. Wenn Du jetzt weiter machts, wirst Du wahrscheinlich viele Fehler bekommen."
+
 msgid "RHIDE is an Integrated Development Environment"
 msgstr "RHIDE ist eine Integrierte Entwicklungsumgebung"
 
@@ -1200,6 +1287,9 @@ msgstr "Debugger-Sitzung abbrechen"
 
 msgid "Re~c~tangle"
 msgstr "Re~c~hteck"
+
+msgid "Re~g~ular expressions"
+msgstr "~R~egulÑre AusdrÅcke"
 
 msgid "Ro~w~ cursor"
 msgstr "Zeilencurs~o~r"
@@ -1474,6 +1564,9 @@ msgstr "Tag Tabelle"
 msgid "Text "
 msgstr "Text "
 
+msgid "That's SET's Editor v%X.%X.%X, (c) 1996-1998"
+msgstr "Dies ist SET's Editor v%X.%X.%X, (c) 1996-1998"
+
 msgid "The Error was: %s\n"
 msgstr "Der Fehler war: %s\n"
 
@@ -1484,10 +1577,10 @@ msgid "The desktop file belongs to another version."
 msgstr "Die Desktopdatei gehîrt zu einer anderen Version"
 
 msgid "The desktop file cannot be used, because it was created by a newer version of RHIDE"
-msgstr "Die Desktopdatei kann nicht benutzt werden, da sie durch eine neuere Version von RHIDE erzeugt wurde"
+msgstr "Die Desktopdatei kann nicht benutzt werden, da sie durch eine neuereVersion von RHIDE erzeugt wurde"
 
 msgid "The desktop file cannot be used, because of a new format"
-msgstr "Die Desktopdatei kann aufgrund eines neuen Formates nicht verwendet werden"
+msgstr "Die Desktopdatei kann aufgrund eines neuen Formates nicht verwendetwerden"
 
 msgid "The error was : "
 msgstr "Der Fehler war: "
@@ -1502,7 +1595,7 @@ msgid "The main index of the libc reference"
 msgstr "Der Haupindex der libc Referenz"
 
 msgid "The selected breakpoint is invalid, probably this file is not compiled with debugging information or for this line is no code generated."
-msgstr "Der gewÑhlte Haltepunkt ist ungÅltig, wahrscheinlich ist die Datei nicht mit Debuginformationen Åbersetzt worden oder fÅr die Zeile wurde kein Code erzeugt"
+msgstr "Der gewÑhlte Haltepunkt ist ungÅltig, wahrscheinlich ist die Dateinicht mit Debuginformationen Åbersetzt worden oder fÅr die Zeile wurde keinCode erzeugt"
 
 msgid "There are only %d parameters for GREP. Continue ?"
 msgstr "Da sind nur %d Parameter fÅr GREP. Fortfahren ?"
@@ -1514,10 +1607,16 @@ msgid "There were some errors"
 msgstr "Da waren einige Fehler"
 
 msgid "This breakpoint could not enabled, because you are running under Windows 3.1x and there the number of breakpoints is limited to 3"
-msgstr "Dieser Haltepunkt konnte nicht aktiviert werden, da das program unter Windows 3.1x lÑuft (max 3 Haltepunkte)"
+msgstr "Dieser Haltepunkt konnte nicht aktiviert werden, da das program unterWindows 3.1x lÑuft (max 3 Haltepunkte)"
 
 msgid "This breakpoint could not enabled, because you are running under Windows 3.1x and there the number ofbreakpoints is limited to 3"
 msgstr "Dieser Haltepunkt konnte nicht aktiviert werden, da das program unter Windows 3.1x lÑuft (max 3 Haltepunkte)"
+
+msgid "This file allready exist, overwrite?"
+msgstr "Diese Datei existiert bereits. öberschreiben?"
+
+msgid "This file contains ASCII 0 values, all the characters after it in this line becomes invisible. Be careful."
+msgstr "Diese Datei enthÑlt ASCII 0 Werte, alle Zeichen danach in der Zeilewerden unsichtbar, sei vorsichtig"
 
 msgid "This is %s. Copyright (c) 1996 by Robert Hîhne\n"
 msgstr "Dies ist %s. Alle Rechte bei Robert Hîhne, 1996\n"
@@ -1526,10 +1625,13 @@ msgid "This is %s. Copyright (c) 1996-1998 by Robert Hîhne\n"
 msgstr "Dies ist %s. Alle Rechte bei Robert Hîhne, 1996-1998\n"
 
 msgid "This program has no usable debugging information. Try to compile it with the -g switch."
-msgstr "Dieses Programm hat keine nutzbaren Debuginformation. Versuche es mit dem -g Switch."
+msgstr "Dieses Programm hat keine nutzbaren Debuginformation. Versuche es mitdem -g Switch."
+
+msgid "This project was created with a newer RHIDE version and could not be used."
+msgstr "Dieses Projekt wurde mit einer neueren Version von RHIDE erzeugt und konnte nicht genutzt werden."
 
 msgid "This video mode (0x%03x) is not supported by the Turbo Vision library"
-msgstr "Dieser Videomodus (0x%03x) wird nicht von der Turbo Vision Bibliothek unterstÅtzt"
+msgstr "Dieser Videomodus (0x%03x) wird nicht von der Turbo Vision BibliothekunterstÅtzt"
 
 msgid "To a~l~l"
 msgstr "~F~År alle"
@@ -1552,6 +1654,9 @@ msgstr "Tippe EXIT um zuÅckzukehren"
 msgid "T~o~ all"
 msgstr "~F~År alle"
 
+msgid "Unchanged register"
+msgstr "UnverÑndertes Register"
+
 msgid "Underline"
 msgstr "Unterstrichen"
 
@@ -1567,8 +1672,17 @@ msgstr "Nicht behandelets Undo"
 msgid "Untitled"
 msgstr "Namenlos"
 
+msgid "Use RCS"
+msgstr "Benutze RCS"
+
+msgid "Use a file with 1000 lines or more for that"
+msgstr "Benutze eine Datei mit mehr als 1000 Zeilen dafÅr"
+
 msgid "Use no shadows"
 msgstr "Benutze ~k~eine Schatten"
+
+msgid "Use ~F~PC pascal compiler"
+msgstr "Benutze ~F~PC Compiler"
 
 msgid "Use ~s~tandard libraries"
 msgstr "Benutze ~s~tandard Bibliotheken"
@@ -1621,11 +1735,20 @@ msgstr "Fensterliste"
 msgid "Windows List"
 msgstr "Fensterliste"
 
+msgid "Wrap column"
+msgstr "Spalten umbrechen"
+
 msgid "Write to file"
 msgstr "Schreibe in Datei"
 
+msgid "Writing Makefile : %s\n"
+msgstr "Erzeuge Makefile : %s\n"
+
 msgid "Wrong desktop file."
 msgstr "Schlechte Desktopdatei"
+
+msgid "Wrong file"
+msgstr "Falsche Datei"
 
 msgid "Wrong mode definition in pseudo macro."
 msgstr "Schlechte Modedefinition im Pseudomakro"
@@ -1633,8 +1756,11 @@ msgstr "Schlechte Modedefinition im Pseudomakro"
 msgid "Wrong project file."
 msgstr "Schlechte Projektdatei."
 
+msgid "Wrong version"
+msgstr "Falsche Version"
+
 msgid "You can give here only a valid filename for a Pascal source file"
-msgstr "Du kannst hier nur einen zulÑssigen Namen fÅr eine Pascal Quelldatei angeben"
+msgstr "Du kannst hier nur einen zulÑssigen Namen fÅr eine Pascal Quelldateiangeben"
 
 msgid "You can type a character here"
 msgstr "Du kannst hier ein Zeichen eingeben"
@@ -1652,7 +1778,7 @@ msgid "You have already 3 breakpoints set and under Windows 3.1 the number of br
 msgstr "Du hast schon 3 Haltepunkte gesetzt und unter Windows 3.1x sind nur maximal 3 erlaubt"
 
 msgid "You have already 3 breakpoints set and under Windows 3.1x the number of breakpoints is limited to 3"
-msgstr "Du hast schon 3 Haltepunkte gesetzt und unter Windows 3.1x sind nur maximal 3 erlaubt"
+msgstr "Du hast schon 3 Haltepunkte gesetzt und unter Windows 3.1x sind nurmaximal 3 erlaubt"
 
 msgid "You must type a character here"
 msgstr "Du mu·t hier ein Zeichen eingeben"
@@ -1662,6 +1788,9 @@ msgstr "Du mu·t hier einen String eingeben"
 
 msgid "You must type a value here"
 msgstr "Du mu·t hier einen Wert eingeben"
+
+msgid "You'll losse all the changes"
+msgstr "Du wirst alle énderungen verlieren"
 
 msgid "[ without ]"
 msgstr "[ ohne ]"
@@ -1702,11 +1831,17 @@ msgstr "erzeugt das Programm/die Bibliothek komplett neu"
 msgid "builtin C"
 msgstr "eingebautes C"
 
+msgid "builtin FPC"
+msgstr "eingebautes FPC"
+
 msgid "builtin assembler"
 msgstr "eingebauter Assembler"
 
 msgid "builtin linker"
 msgstr "eingebauter Linker"
+
+msgid "by Salvador Eduardo Tropea"
+msgstr "von Salvador Eduardo Tropea"
 
 msgid "change the name of the project-target"
 msgstr "Ñndert den Namen des erzeugten Programmes (Bibliothek)"
@@ -1978,6 +2113,9 @@ msgstr "Optionen:    -d[actdf]\n"
 msgid "options:\n"
 msgstr "Optionen:\n"
 
+msgid "or a TeX source file"
+msgstr "oder eine TeX Quelldatei"
+
 msgid "other"
 msgstr "anderer"
 
@@ -2061,6 +2199,9 @@ msgstr "fÅhrt das erzeugte Programm aus (falls ausfÅhrbar nach Make)"
 
 msgid "running GREP:"
 msgstr "GREP wird ausgefÅhrt:"
+
+msgid "sLisp macros"
+msgstr "sLisp Makros"
 
 msgid "save all opened editors to disk (if modified)"
 msgstr "speichert alle geîffneten Editorfenster (falls geÑndert)"
@@ -2257,6 +2398,9 @@ msgstr "~H~intergrund"
 msgid "~B~ase output (no extentions)"
 msgstr "~B~asis Ausgabe (keine Endung)"
 
+msgid "~B~ookmarks"
+msgstr "~L~esezeichen"
+
 msgid "~B~reakpoints"
 msgstr "~H~altepunkte"
 
@@ -2265,6 +2409,9 @@ msgstr "~B~ug Report"
 
 msgid "~B~uild all"
 msgstr "~N~eu erzeugen"
+
+msgid "~Ctrl+Del~ Delete all"
+msgstr "~Ctrl+Del~ Lîsche alles"
 
 msgid "~Ctrl+F1~ Select from a list"
 msgstr "~Ctrl+F1~ WÑhle aus einer Liste"
@@ -2322,6 +2469,9 @@ msgstr "~C~ompile"
 
 msgid "~C~ompilers"
 msgstr "~C~ompiler"
+
+msgid "~C~onfiguration"
+msgstr "~K~onfiguration"
 
 msgid "~C~opy"
 msgstr "~K~opieren"
@@ -2563,6 +2713,9 @@ msgstr "~K~lammerpaar hervorheben"
 msgid "~M~atch pair highligth"
 msgstr "~K~lammerpaar hervorheben"
 
+msgid "~M~essages"
+msgstr "~M~eldungen"
+
 msgid "~M~odify"
 msgstr "énd~e~rn"
 
@@ -2613,6 +2766,9 @@ msgstr "~O~bjektdateien"
 
 msgid "~O~pen"
 msgstr "ô~f~fnen"
+
+msgid "~O~pen Info"
+msgstr "ô~f~fne Info"
 
 msgid "~O~pen..."
 msgstr "ô~f~fnen..."
@@ -2677,6 +2833,12 @@ msgstr "~A~ufnehmen"
 msgid "~R~edo"
 msgstr "~R~edo"
 
+msgid "~R~egular expressions"
+msgstr "~R~egulÑre AusdrÅcke"
+
+msgid "~R~emember old messages"
+msgstr "~B~ehalte alte Meldungen"
+
 msgid "~R~eplace"
 msgstr "Ersetzen"
 
@@ -2716,6 +2878,9 @@ msgstr "~S~peichere Optionen"
 msgid "~S~creen mode"
 msgstr "B~i~ldschirmmodus"
 
+msgid "~S~croll Lock centers"
+msgstr "~S~croll Lock zentriert"
+
 msgid "~S~earch"
 msgstr "~S~uchen"
 
@@ -2730,6 +2895,9 @@ msgstr "~M~arkierter Text"
 
 msgid "~S~et/Reset Breakpoint"
 msgstr "~S~etze/Entferne Haltepunkt"
+
+msgid "~S~how"
+msgstr "~A~nzeigen"
 
 msgid "~S~how clipboard"
 msgstr "~Z~wischenablage"
@@ -2776,6 +2944,9 @@ msgstr "~T~yp"
 msgid "~U~ndo"
 msgstr "~R~ÅckgÑngig"
 
+msgid "~U~ntil return"
+msgstr "~B~is return"
+
 msgid "~U~p"
 msgstr "A~u~f"
 
@@ -2815,6 +2986,9 @@ msgstr "~W~arnungen"
 msgid "~W~atch an expression"
 msgstr "öber~w~ache Ausdruck"
 
+msgid "~W~atches"
+msgstr "ö~b~erwachte AusdrÅcke"
+
 msgid "~W~hole words only"
 msgstr "Nur ganze ~W~îrter"
 
@@ -2823,6 +2997,12 @@ msgstr "~F~ensterliste"
 
 msgid "~W~indows"
 msgstr "~F~enster"
+
+msgid "~W~rap column"
+msgstr "~S~palten umbrechen"
+
+msgid "~W~rap words"
+msgstr "~W~îrter umbrechen"
 
 msgid "~W~rite Makefile"
 msgstr "~E~rzeuge Makefile"

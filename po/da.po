@@ -1,3522 +1,2775 @@
-#: gpr2mak.cc:119
-msgid "-o needs an argument\n"
+msgid  "Writing Makefile : %s\n"
+msgstr ""
+
+msgid  "-o needs an argument\n"
 msgstr "-o skal have et argument\n"
 
-#: gpr2mak.cc:132
-msgid "a projectfile must be given\n"
+msgid  "a projectfile must be given\n"
 msgstr "en projektfil skal angives\n"
 
-#: gpr2mak.cc:140
-msgid "-o and -r are not allowed together"
+msgid  "-o and -r are not allowed together"
 msgstr ""
 
-#: gpr2mak.cc:157
-msgid "error reading projectfile %s\n"
+msgid  "error reading projectfile %s\n"
 msgstr "fejl ved lësning af projektfil %s\n"
 
-#: :6 idecolor.cc:37 idecolor.cc:54
-msgid "Frame disabled"
+msgid  "Frame disabled"
 msgstr "Ramme inaktiv"
 
-#: :6 idecolor.cc:38
-msgid "Frame"
+msgid  "Frame"
 msgstr "Ramme"
 
-#: :6 idecolor.cc:39 idecolor.cc:56
-msgid "Frame icons"
+msgid  "Frame icons"
 msgstr "Ramme ikoner"
 
-#: :6 idecolor.cc:40 idecolor.cc:57
-msgid "Scroll bar page"
+msgid  "Scroll bar page"
 msgstr "Bladre felts side !?!"
 
-#: :6 idecolor.cc:41 idecolor.cc:58
-msgid "Scroll bar icons"
+msgid  "Scroll bar icons"
 msgstr "Bladrefeltsikoner"
 
-#: :6 idecolor.cc:42
-msgid "Static text"
+msgid  "Static text"
 msgstr "Fast tekst"
 
-#: :6 idecolor.cc:43
-msgid "Selected text"
+msgid  "Selected text"
 msgstr "Markeret tekst"
 
-#: :6 idecolor.cc:45
-msgid "reserved"
+msgid  "reserved"
 msgstr "reserveret"
 
-#: idecolor.cc:55
-msgid "Frame/background"
+msgid  "Frame/background"
 msgstr "Ramme/baggrund"
 
-#: :6 idecolor.cc:59
-msgid "normal text"
+msgid  "normal text"
 msgstr "Normal tekst"
 
-#: :6 idecolor.cc:60
-msgid "marked text"
+msgid  "marked text"
 msgstr "markeret tekst"
 
-#: :6 idecolor.cc:61
-msgid "comment"
+msgid  "comment"
 msgstr "kommentar"
 
-#: :6 idecolor.cc:62
-msgid "reserved word"
+msgid  "reserved word"
 msgstr "reserveret ord"
 
-#: :6 idecolor.cc:63
-msgid "identifier"
+msgid  "identifier"
 msgstr "Identifikator"
 
-#: :6 idecolor.cc:64
-msgid "symbol"
+msgid  "symbol"
 msgstr "symbol"
 
-#: :6 idecolor.cc:65
-msgid "string"
+msgid  "string"
 msgstr "streng"
 
-#: :6 idecolor.cc:66
-msgid "integer"
+msgid  "integer"
 msgstr "heltal (integer)"
 
-#: :6 idecolor.cc:67
-msgid "float"
+msgid  "float"
 msgstr "flydende tal"
 
-#: :6 idecolor.cc:68
-msgid "octal"
+msgid  "octal"
 msgstr "oktal tal"
 
-#: :6 idecolor.cc:69
-msgid "hex"
+msgid  "hex"
 msgstr "hexadicimal tal"
 
-#: :6 idecolor.cc:70
-msgid "character"
+msgid  "character"
 msgstr "tegn"
 
-#: :6 idecolor.cc:71
-msgid "preprocessor"
+msgid  "preprocessor"
 msgstr "prëprocessor"
 
-#: :6 idecolor.cc:72
-msgid "illegal char"
+msgid  "illegal char"
 msgstr "illegalt tegn"
 
-#: :6 idecolor.cc:73
-msgid "user defined words"
+msgid  "user defined words"
 msgstr "Brugerdefineret ord"
 
-#: :6 idecolor.cc:74
-msgid "CPU line"
+msgid  "CPU line"
 msgstr "CPU linie"
 
-#: :6 idecolor.cc:75
-msgid "Breakpoint"
+msgid  "Breakpoint"
 msgstr "Programstop (breakpoint)"
 
-#: :6 idecolor.cc:76
-msgid "symbol2"
+msgid  "symbol2"
 msgstr "symbol 2"
 
-#: :6 idecolor.cc:77
-msgid "Cross cursor"
+msgid  "Cross cursor"
 msgstr ""
 
-#: :6 idecolor.cc:78
-msgid "editor statusline"
+msgid  "editor statusline"
 msgstr ""
 
-#: :6 idecolor.cc:79
-msgid "parens matching"
+msgid  "parens matching"
 msgstr ""
 
-#: :6 idecolor.cc:80
-msgid "rectangle block"
+msgid  "rectangle block"
 msgstr ""
 
-#: idedebug.cc:73 rhgdb/main.cc:265
-msgid "Disassembler window"
+msgid  "Disassembler window"
 msgstr ""
 
-#: idedebug.cc:110 idemain.cc:1249 rhgdb/gdbedit.cc:391
-msgid "Could not find the source file %s."
+msgid  "Could not find the source file %s."
 msgstr "Kan ikke finde kildeteksten i filen %s"
 
-#: idedebug.cc:115 idemain.cc:1254 idemain.cc:2337 rhgdb/gdbedit.cc:394 rhgdb/main.cc:1222
-msgid "Open a file"
+msgid  "Open a file"
 msgstr "èben en fil"
 
-#: idedebug.cc:116 idedial.cc:107 idemain.cc:684 idemain.cc:958 idemain.cc:1255 idemain.cc:1421 idemain.cc:1484 idemain.cc:2337 ideopt.cc:812 ideprj.cc:641 ideprj.cc:1276 libset/ceditor.cc:10260 libset/ceditor.cc:10311 rhgdb/gdbedit.cc:395 rhgdb/main.cc:250 rhgdb/main.cc:1192 rhgdb/main.cc:1208 rhgdb/main.cc:1223 tvision/fileview.cc:213
-msgid "~N~ame"
+msgid  "~N~ame"
 msgstr "~N~avn"
 
-#: idedebug.cc:132 ideprj.cc:1336 rhgdb/gdbedit.cc:408
-msgid "Add '%s' to the search path for source files"
+msgid  "Add '%s' to the search path for source files"
 msgstr "Tilfõj '%s' til sõgestien for kildetekstfiler"
 
-#: idedebug.cc:279
-msgid "Source has been modified. Rebuild it?"
+msgid  "Source has been modified. Rebuild it?"
 msgstr ""
 
-#: idedebug.cc:371 idegcc.cc:976 rhgdb/main.cc:918
-msgid "Program exit code: %d (0x%04x)"
+msgid  "Program exit code: %d (0x%04x)"
 msgstr ""
 
-#: ideexter.cc:106
-msgid "ready"
+msgid  "ready"
 msgstr ""
 
-#: ideexter.cc:152 idespec.cc:394
-msgid "arguments for GREP"
+msgid  "arguments for GREP"
 msgstr "argumenter til GREP"
 
-#: ideexter.cc:161
-msgid "There are only %d parameters for GREP. Continue ?"
+msgid  "There are only %d parameters for GREP. Continue ?"
 msgstr ""
 
-#: ideexter.cc:179
-msgid "running GREP:"
+msgid  "running GREP:"
 msgstr "udfõrer GREP"
 
-#: ideapp.cc:146 ideapp.cc:156 idebug.cc:60 idegcc.cc:87 idegcc.cc:319
-msgid "executing: "
+msgid  "executing: "
 msgstr "Udfõrer: "
 
-#: idegcc.cc:118
-msgid "return value: %d\n"
+msgid  "return value: %d\n"
 msgstr "retur vërdi: %d\n"
 
-#: idegcc.cc:213
-msgid "checking file time for '%s'\n"
+msgid  "checking file time for '%s'\n"
 msgstr "undersõger klokkeslet pÜ filen: '%s'\n"
 
-#: idegcc.cc:236
-msgid "found '%s' on desktop, time: %08lx\n"
+msgid  "found '%s' on desktop, time: %08lx\n"
 msgstr "fundet pÜ desktoppen, klokkeslet: %08lx ?!?\n"
 
-#: idegcc.cc:243 idegcc.cc:278
-msgid "and updating it"
+msgid  "and updating it"
 msgstr "og opdaterer den"
 
-#: idegcc.cc:261 idegcc.cc:299
-msgid "found '%s' not in filetime cache, time: %08lx\n"
-msgstr "har fundet '%s' som ikke ligger i filklokkeslet cachen, klokkeslet: %08lx\n"
+msgid  "found '%s' not in filetime cache, time: %08lx\n"
+msgstr "har fundet '%s' som ikke ligger i filklokkeslet cachen, klokkeslet: "
+"%08lx\n"
 
-#: idegcc.cc:272
-msgid "found '%s' in filetime cache "
+msgid  "found '%s' in filetime cache "
 msgstr "fundet '%s' i filklokkeslet cachen "
 
-#: idegcc.cc:288
-msgid ",time: %08lx\n"
+msgid  ",time: %08lx\n"
 msgstr ", klokkeslet: %08lx\n"
 
-#: idegcc.cc:328 idegcc.cc:533 idegcc.cc:543
-msgid "checking"
+msgid  "checking"
 msgstr "undersõger"
 
-#: idecomp.cc:968 idegcc.cc:561
-msgid "Could not find the source file '%s'. Make sure, that the file exist or check the settings in 'Options/Directories' for the correct paths."
-msgstr "Kan ikke finde kildeteksten i filen '%s'. Undersõg om filen eksisterer og at opsëtningen i 'Opsëtning/Kataloger' er korrekt."
+msgid  ""
+"Could not find the source file '%s'. Make sure, that the file exist or check "
+"the settings in 'Options/Directories' for the correct paths."
+msgstr "Kan ikke finde kildeteksten i filen '%s'. Undersõg om filen "
+"eksisterer og at opsëtningen i 'Opsëtning/Kataloger' er korrekt."
 
-#: idegcc.cc:572 idegcc.cc:768
-msgid "is up to date"
+msgid  "is up to date"
 msgstr "er opdateret"
 
-#: idegcc.cc:575 idegcc.cc:600
-msgid "is"
+msgid  "is"
 msgstr "er"
 
-#: idegcc.cc:576 idegcc.cc:600
-msgid "newer"
+msgid  "newer"
 msgstr "nyere"
 
-#: idegcc.cc:576 idegcc.cc:600
-msgid "older"
+msgid  "older"
 msgstr "ëldre"
 
-#: idegcc.cc:576 idegcc.cc:601
-msgid "than"
+msgid  "than"
 msgstr "end"
 
-#: idegcc.cc:616
-msgid "must rebuild"
+msgid  "must rebuild"
 msgstr "skal genoversëttes"
 
-#: idegcc.cc:626
-msgid "rebuilding of"
+msgid  "rebuilding of"
 msgstr "genoversëtning af"
 
-#: idegcc.cc:627
-msgid "success"
+msgid  "success"
 msgstr "success"
 
-#: idegcc.cc:627
-msgid "error"
+msgid  "error"
 msgstr "Fejl"
 
-#: idegcc.cc:639
-msgid "clearing the filetime cache\n"
+msgid  "clearing the filetime cache\n"
 msgstr "sletter filklokkeslet cachen\n"
 
-#: idegcc.cc:823
-msgid "in function "
+msgid  "in function "
 msgstr "i funktion "
 
-#: idegcc.cc:840
-msgid "Call frame traceback:"
+msgid  "Call frame traceback:"
 msgstr "Kalder tilbagesõgning:"
 
-#: idegcc.cc:880
-msgid "contents of stderr from "
+msgid  "contents of stderr from "
 msgstr "indhold af stderr fra "
 
-#: idegcc.cc:921
-msgid "contents of stdout from "
+msgid  "contents of stdout from "
 msgstr "indhold af stdout fra "
 
-#: idehelp.cc:147
-msgid "Info Viewer"
+msgid  "Info Viewer"
 msgstr ""
 
-#: idehints.cc:20
-msgid "show information about RHIDE"
+msgid  "show information about RHIDE"
 msgstr "vis information om RHIDE"
 
-#: idehints.cc:23
-msgid "Creates a small bug report"
+msgid  "Creates a small bug report"
 msgstr ""
 
-#: idehints.cc:26
-msgid "Creates a sample bug report"
+msgid  "Creates a sample bug report"
 msgstr ""
 
-#: idehints.cc:29
-msgid "Start the FSDB debugger"
+msgid  "Start the FSDB debugger"
 msgstr "Start FSDB debugger"
 
-#: idehints.cc:32
-msgid "Running GREP (arguments are prompted)"
+msgid  "Running GREP (arguments are prompted)"
 msgstr "Kõr GREP (Spõrger efter argumenter)"
 
-#: idehints.cc:35
-msgid "Start the GDB debugger"
+msgid  "Start the GDB debugger"
 msgstr "Start GDB debugger"
 
-#: idehints.cc:38
-msgid "repaints the desktop"
+msgid  "repaints the desktop"
 msgstr "gentegn skërmbillede"
 
-#: idehints.cc:41
-msgid "Powerful builtin calculator"
+msgid  "Powerful builtin calculator"
 msgstr ""
 
-#: idehints.cc:44
-msgid "A nice puzzle game"
+msgid  "A nice puzzle game"
 msgstr ""
 
-#: idehints.cc:47
-msgid "A simple calender"
+msgid  "A simple calender"
 msgstr ""
 
-#: idehints.cc:50
-msgid "A table with all the ASCII characters"
+msgid  "A table with all the ASCII characters"
 msgstr ""
 
-#: idehints.cc:54
-msgid "Menu entries for handling with files"
+msgid  "Menu entries for handling with files"
 msgstr ""
 
-#: idehints.cc:57
-msgid "opens a file in the editor"
+msgid  "opens a file in the editor"
 msgstr "èben en fil i editoren"
 
-#: idehints.cc:60
-msgid "create a new editor window"
+msgid  "create a new editor window"
 msgstr "èben nyt vindue i editor"
 
-#: idehints.cc:63
-msgid "save the current editor to disk (if modified)"
+msgid  "save the current editor to disk (if modified)"
 msgstr "Gem fil pÜ disken (hvis ëndret)"
 
-#: idehints.cc:66
-msgid "save the current editor under a different name to disk"
+msgid  "save the current editor under a different name to disk"
 msgstr "Gem aktuel fil under andet navn"
 
-#: idehints.cc:69
-msgid "save all opened editors to disk (if modified)"
+msgid  "save all opened editors to disk (if modified)"
 msgstr "Gem alle Übne filer (hvis ëndret)"
 
-#: idehints.cc:73
-msgid "switch to DOS (call of %COMSPEC%, return with EXIT)"
+msgid  "switch to DOS (call of %COMSPEC%, return with EXIT)"
 msgstr "Kald DOS (vha. %COMSPEC%, retur med EXIT)"
 
-#: idehints.cc:77
-msgid "switch to a shell (call of $SHELL or /bin/sh, return with exit)"
+msgid  "switch to a shell (call of $SHELL or /bin/sh, return with exit)"
 msgstr ""
 
-#: idehints.cc:81
-msgid "quits the IDE"
+msgid  "quits the IDE"
 msgstr "Afslutter programmet"
 
-#: idehints.cc:85
-msgid "Submenu for things dealing with the editor"
+msgid  "Submenu for things dealing with the editor"
 msgstr ""
 
-#: idehints.cc:88
-msgid "undoes the last edit command"
+msgid  "undoes the last edit command"
 msgstr "Fortryd den seneste redigering"
 
-#: idehints.cc:91
-msgid "undoes the last undo command"
+msgid  "undoes the last undo command"
 msgstr ""
 
-#: idehints.cc:94
-msgid "move the selected text to the clipboard"
+msgid  "move the selected text to the clipboard"
 msgstr "Klip den markerede tekst til udklipsholder"
 
-#: idehints.cc:97
-msgid "copy the selected text to the clipboard"
+msgid  "copy the selected text to the clipboard"
 msgstr "Kopier den markerede tekst til udklipsholder"
 
-#: idehints.cc:100
-msgid "insert the selected text from the clipboard"
+msgid  "insert the selected text from the clipboard"
 msgstr "Indsët tekst fra udklipsholder"
 
-#: idehints.cc:103
-msgid "shows the clipboard"
+msgid  "shows the clipboard"
 msgstr "Vis udklipsholder"
 
-#: idehints.cc:106
-msgid "delete the selected text "
+msgid  "delete the selected text "
 msgstr "Slet den markerede tekst"
 
-#: idehints.cc:109
-msgid "Copy the selected text to the Windows clipboard"
+msgid  "Copy the selected text to the Windows clipboard"
 msgstr ""
 
-#: idehints.cc:112
-msgid "Paste text from the Windows clipboard"
+msgid  "Paste text from the Windows clipboard"
 msgstr ""
 
-#: idehints.cc:115
-msgid "Expand all tabs to spaces"
+msgid  "Expand all tabs to spaces"
 msgstr ""
 
-#: idehints.cc:118
-msgid "Replace as much as possible spaces with tabs"
+msgid  "Replace as much as possible spaces with tabs"
 msgstr ""
 
-#: idehints.cc:122
-msgid "Submenu for handling with macros"
+msgid  "Submenu for handling with macros"
 msgstr ""
 
-#: idehints.cc:125
-msgid "Start the recording for a macro"
+msgid  "Start the recording for a macro"
 msgstr ""
 
-#: idehints.cc:128
-msgid "Stop the recording for a macro"
+msgid  "Stop the recording for a macro"
 msgstr ""
 
-#: idehints.cc:131
-msgid "Run the recorded macro"
+msgid  "Run the recorded macro"
 msgstr ""
 
-#: idehints.cc:134
-msgid "Check the speed of the editor"
+msgid  "Check the speed of the editor"
 msgstr ""
 
-#: idehints.cc:138
-msgid "Submenu for searching/replacing text"
+msgid  "Submenu for searching/replacing text"
 msgstr ""
 
-#: idehints.cc:141
-msgid "find a string in the current editor"
+msgid  "find a string in the current editor"
 msgstr "Sõg en streng i det aktive vindue"
 
-#: idehints.cc:144
-msgid "find and replace a string in the current editor"
+msgid  "find and replace a string in the current editor"
 msgstr "Sõg og erstat en streng i det aktive vindue"
 
-#: idehints.cc:147
-msgid "repeat the last find- or replace-operation"
+msgid  "repeat the last find- or replace-operation"
 msgstr "Gentag den seneste Sõg og erstat kommando"
 
-#: idehints.cc:150
-msgid "go to line number (after prompting)"
+msgid  "go to line number (after prompting)"
 msgstr "GÜ til linie nr."
 
-#: idehints.cc:153
-msgid "Select a function from the current editor"
+msgid  "Select a function from the current editor"
 msgstr ""
 
-#: idehints.cc:156
-msgid "select next message"
+msgid  "select next message"
 msgstr "MarkÇr nëste meddelelse"
 
-#: idehints.cc:159
-msgid "select previous message"
+msgid  "select previous message"
 msgstr "MarkÇr forrige meddelelse"
 
-#: idehints.cc:163
-msgid "Submenu for running your program"
+msgid  "Submenu for running your program"
 msgstr ""
 
-#: idehints.cc:166
-msgid "run the project-target (if executable after doing a make)"
+msgid  "run the project-target (if executable after doing a make)"
 msgstr "Kõr projektets resultat (Kun pÜ eksekverbare filer)"
 
-#: idehints.cc:169
-msgid "Step over function calls"
+msgid  "Step over function calls"
 msgstr "Spring over funktionskald"
 
-#: idehints.cc:172
-msgid "Step over function calls (No display swap)"
+msgid  "Step over function calls (No display swap)"
 msgstr ""
 
-#: idehints.cc:175
-msgid "Execute one instruction"
+msgid  "Execute one instruction"
 msgstr "Udfõr een instruktion"
 
-#: idehints.cc:178
-msgid "Execute one instruction (No display swap)"
+msgid  "Execute one instruction (No display swap)"
 msgstr ""
 
-#: idehints.cc:181
-msgid "Stops execution at the cursor"
+msgid  "Stops execution at the cursor"
 msgstr "Stop udfõrsel ved markõr"
 
-#: idehints.cc:184
-msgid "Stops execution at the cursor (No display swap)"
+msgid  "Stops execution at the cursor (No display swap)"
 msgstr ""
 
-#: idehints.cc:187
-msgid "Reset the debugged program"
+msgid  "Reset the debugged program"
 msgstr "Nulstil program"
 
-#: idehints.cc:190
-msgid "Execute until end of function"
+msgid  "Execute until end of function"
 msgstr ""
 
-#: idehints.cc:193
-msgid "Enter the name of the 'main'-function"
+msgid  "Enter the name of the 'main'-function"
 msgstr ""
 
-#: idehints.cc:196
-msgid "enter commandline arguments for your program"
+msgid  "enter commandline arguments for your program"
 msgstr "Kommandolinie argumenter til dit program"
 
-#: idehints.cc:200
-msgid "Submenu for compiling and/or creating your program/library"
+msgid  "Submenu for compiling and/or creating your program/library"
 msgstr ""
 
-#: idehints.cc:203
-msgid "compile the current editor or the selected project-item"
+msgid  "compile the current editor or the selected project-item"
 msgstr "Oversët filen i projektet eller det aktive vindue"
 
-#: idehints.cc:206
-msgid "make the project (with checking auto-dependencies)"
-msgstr "Oversët hele projektet (undersõger afhëngihed imellem de enkelte dele)"
+msgid  "make the project (with checking auto-dependencies)"
+msgstr "Oversët hele projektet (undersõger afhëngihed imellem de enkelte "
+"dele)"
 
-#: idehints.cc:209
-msgid "link the project or create the library"
+msgid  "link the project or create the library"
 msgstr "Lënk filerne i projektet (*.EXE) / opret biblioteket (*.LIB)"
 
-#: idehints.cc:212
-msgid "build the project completely new"
+msgid  "build the project completely new"
 msgstr "Oversët og lënk alle filer i projektet"
 
-#: idehints.cc:216
-msgid "Submenu for debugging your program"
+msgid  "Submenu for debugging your program"
 msgstr ""
 
-#: idehints.cc:219
-msgid "Set/Clear a breakpoint at the current line"
+msgid  "Set/Clear a breakpoint at the current line"
 msgstr "Sët/slet programstop ved aktuel linie"
 
-#: idehints.cc:222
-msgid "Evaluate or modify an expression"
+msgid  "Evaluate or modify an expression"
 msgstr "Vis/ëndre et udtryk"
 
-#: idehints.cc:225
-msgid "Add an expression to the watching list"
+msgid  "Add an expression to the watching list"
 msgstr ""
 
-#: idehints.cc:228
-msgid "Show/Modify the breakpoints"
+msgid  "Show/Modify the breakpoints"
 msgstr "Vis/ëndre programstop"
 
-#: idehints.cc:231
-msgid "Show a disassembler window at the current execution point"
+msgid  "Show a disassembler window at the current execution point"
 msgstr ""
 
-#: idehints.cc:234
-msgid "Show a list with all functions"
+msgid  "Show a list with all functions"
 msgstr "Vis liste med alle funktioner"
 
-#: idehints.cc:237
-msgid "Shows a window with the function call stack"
+msgid  "Shows a window with the function call stack"
 msgstr ""
 
-#: idehints.cc:241
-msgid "Submenu for handling your projects"
+msgid  "Submenu for handling your projects"
 msgstr ""
 
-#: idehints.cc:244
-msgid "open a project"
+msgid  "open a project"
 msgstr "Üben et projekt"
 
-#: idehints.cc:247
-msgid "close the current project"
+msgid  "close the current project"
 msgstr "luk det aktuelle projekt"
 
-#: idehints.cc:250
-msgid "add an item to the project"
+msgid  "add an item to the project"
 msgstr "tilfõj en fil til projektet"
 
-#: idehints.cc:253
-msgid "remove the selected item from the project"
+msgid  "remove the selected item from the project"
 msgstr "slet den markerede fil fra projektet"
 
-#: idehints.cc:256
-msgid "enter local commandline options for compiling this item"
+msgid  "enter local commandline options for compiling this item"
 msgstr "indtast lokale kommandolinie parametre for oversëttelse af denne fil"
 
-#: idehints.cc:259
-msgid "show the dependencies for the selected item"
+msgid  "show the dependencies for the selected item"
 msgstr "vis afhëngigheder for den markerede fil"
 
-#: idehints.cc:262
-msgid "change the name of the project-target"
+msgid  "change the name of the project-target"
 msgstr "skift navn pÜ projektet"
 
-#: idehints.cc:265
-msgid "Set the primary file (only for GPC with '--automake'!!!)"
+msgid  "Set the primary file (only for GPC with '--automake'!!!)"
 msgstr ""
 
-#: idehints.cc:268
-msgid "remove the list of automaticaly generated dependencies"
+msgid  "remove the list of automaticaly generated dependencies"
 msgstr "fjern listen af automatisk generede afhëngigheder"
 
-#: idehints.cc:271
-msgid "remove all files, which can be rebuild with this project"
+msgid  "remove all files, which can be rebuild with this project"
 msgstr "fjern alle filer, som kan genoversëttes fra dette projekt"
 
-#: idehints.cc:274
-msgid "Create for all project items the dependencies"
+msgid  "Create for all project items the dependencies"
 msgstr ""
 
-#: idehints.cc:277
-msgid "write a makefile for this project"
+msgid  "write a makefile for this project"
 msgstr "generer en MAKE fil for dette projekt"
 
-#: idehints.cc:281
-msgid "Submenu for most of the options of RHIDE"
+msgid  "Submenu for most of the options of RHIDE"
 msgstr ""
 
-#: idehints.cc:285
-msgid "set various search paths for finding the files"
+msgid  "set various search paths for finding the files"
 msgstr "sët sõgestier til filer"
 
-#: idehints.cc:288
-msgid "set where to search for include files"
+msgid  "set where to search for include files"
 msgstr "sët sõgesti for inkluderede filer"
 
-#: idehints.cc:291
-msgid "set where to search for libraries"
+msgid  "set where to search for libraries"
 msgstr "sët sõgesti for biblioteker"
 
-#: idehints.cc:294
-msgid "set where to search for object files"
+msgid  "set where to search for object files"
 msgstr "sët sõgesti for objektfiler"
 
-#: idehints.cc:297
-msgid "set where to search for source files"
+msgid  "set where to search for source files"
 msgstr "sët sõgesti for kildetekster"
 
-#: idehints.cc:300
-msgid "Define, where your standard headers are"
+msgid  "Define, where your standard headers are"
 msgstr ""
 
-#: idehints.cc:304
-msgid "customize various options for the C/C++-compiler"
+msgid  "customize various options for the C/C++-compiler"
 msgstr "opsëtning af parametre til C/C++-oversëtter"
 
-#: idehints.cc:307
-msgid "customize the generating of warnings"
+msgid  "customize the generating of warnings"
 msgstr "opsëtning af advarselsniveau"
 
-#: idehints.cc:310
-msgid "customize, how to optimize the code"
+msgid  "customize, how to optimize the code"
 msgstr "opsëtning af optimering"
 
-#: idehints.cc:313
-msgid "customize the generating of debugging information"
+msgid  "customize the generating of debugging information"
 msgstr "opsëtning af afluser information"
 
-#: idehints.cc:316
-msgid "customize C-compiler specific flags"
+msgid  "customize C-compiler specific flags"
 msgstr "opsëtning af C-oversëtter specifikke flag"
 
-#: idehints.cc:319
-msgid "customize C++-compiler specific flags"
+msgid  "customize C++-compiler specific flags"
 msgstr "opsëtning af C++-oversëtter specifikke flag"
 
-#: idehints.cc:322
-msgid "Flags only when compiling Pascal files"
+msgid  "Flags only when compiling Pascal files"
 msgstr "Pascal oversëtter flag"
 
-#: idehints.cc:325
-msgid "Flags only when compiling Fortran files"
+msgid  "Flags only when compiling Fortran files"
 msgstr ""
 
-#: idehints.cc:328
-msgid "Flags only when compiling ADA files"
+msgid  "Flags only when compiling ADA files"
 msgstr ""
 
-#: idehints.cc:332
-msgid "set which libraries to be linked with the program"
+msgid  "set which libraries to be linked with the program"
 msgstr "vëlg hvilke biblioteker som skal lënkes ind i programmet"
 
-#: idehints.cc:335
-msgid "set additional flags to the linker"
+msgid  "set additional flags to the linker"
 msgstr "sët andre flag for linker"
 
-#: idehints.cc:338
-msgid "set additional flags to the compiler (defines, ...)"
+msgid  "set additional flags to the compiler (defines, ...)"
 msgstr "sët andre flag for oversëtter (defines, ...)"
 
-#: idehints.cc:342
-msgid "customize the IDE"
+msgid  "customize the IDE"
 msgstr "opsëtning af IDE"
 
-#: idehints.cc:345
-msgid "customize the colors of the IDE"
+msgid  "customize the colors of the IDE"
 msgstr "opsëtning af farvevalg i IDE"
 
-#: idehints.cc:348
-msgid "Set the editor options"
+msgid  "Set the editor options"
 msgstr ""
 
-#: idehints.cc:351
-msgid "set basic options for the IDE"
+msgid  "set basic options for the IDE"
 msgstr "Basal opsëtning af IDE"
 
-#: idehints.cc:354
-msgid "Set some options for the mouse"
+msgid  "Set some options for the mouse"
 msgstr ""
 
-#: idehints.cc:357
-msgid "edit the list of reserved words"
+msgid  "edit the list of reserved words"
 msgstr "rediger listen af reserverede ord"
 
-#: idehints.cc:360
-msgid "Edit the list of reserved words for Pascal files"
+msgid  "Edit the list of reserved words for Pascal files"
 msgstr "Rediger listen af reserverede ord for Pascal filer"
 
-#: idehints.cc:363
-msgid "edit the list of flags for the C-compiler"
+msgid  "edit the list of flags for the C-compiler"
 msgstr "rediger listen af flag til C-oversëtter"
 
-#: idehints.cc:366
-msgid "edit the list of flags for the C++-compiler"
+msgid  "edit the list of flags for the C++-compiler"
 msgstr "rediger listen af flag til C++-oversëtter"
 
-#: idehints.cc:369
-msgid "Edit the list of pascal options"
+msgid  "Edit the list of pascal options"
 msgstr ""
 
-#: idehints.cc:372
-msgid "Edit the list of fortran options"
+msgid  "Edit the list of fortran options"
 msgstr ""
 
-#: idehints.cc:375
-msgid "Edit the list of ADA options"
+msgid  "Edit the list of ADA options"
 msgstr ""
 
-#: idehints.cc:378
-msgid "edit the list of flags for warnings"
+msgid  "edit the list of flags for warnings"
 msgstr "rediger listen af flag for advarsler"
 
-#: idehints.cc:381
-msgid "edit the list of flags for debugging"
+msgid  "edit the list of flags for debugging"
 msgstr "rediger listen af flag for aflusning"
 
-#: idehints.cc:384
-msgid "edit the list of optimization flags"
+msgid  "edit the list of optimization flags"
 msgstr "rediger listen af flag for optimering"
 
-#: idehints.cc:387
-msgid "edit the list of user defined words (for syntaxhighlight)"
+msgid  "edit the list of user defined words (for syntaxhighlight)"
 msgstr "rediger listen af brugerdefinerede ord (syntaksfremhëvning)"
 
-#: idehints.cc:390
-msgid "Save all the options to a project file"
+msgid  "Save all the options to a project file"
 msgstr ""
 
-#: idehints.cc:393
-msgid "Load the options from a project file"
+msgid  "Load the options from a project file"
 msgstr ""
 
-#: idehints.cc:397
-msgid "Submenu for dealing with windows"
+msgid  "Submenu for dealing with windows"
 msgstr ""
 
-#: idehints.cc:400
-msgid "resize/move the current window"
+msgid  "resize/move the current window"
 msgstr "ëndre stõrrelse/flyt det aktuelle vindue"
 
-#: idehints.cc:403
-msgid "toggles between full size and previous size of the current window"
+msgid  "toggles between full size and previous size of the current window"
 msgstr "skift imellem fuld skërm og vindue"
 
-#: idehints.cc:406
-msgid "show all editor windows simultaniously"
+msgid  "show all editor windows simultaniously"
 msgstr "vis alle editor vinder samtidigt"
 
-#: idehints.cc:409
-msgid "show from each editor the title"
+msgid  "show from each editor the title"
 msgstr "vis hver vindues titel"
 
-#: idehints.cc:412
-msgid "switch to the next window on the desktop"
+msgid  "switch to the next window on the desktop"
 msgstr "skift til nëste vindue"
 
-#: idehints.cc:415
-msgid "switch to the previous window on the desktop"
+msgid  "switch to the previous window on the desktop"
 msgstr "skift til forrige vindue"
 
-#: idehints.cc:418
-msgid "close the current window"
+msgid  "close the current window"
 msgstr "luk vindue"
 
-#: idehints.cc:421
-msgid "show a list of all windows on the desktop"
+msgid  "show a list of all windows on the desktop"
 msgstr "vis liste over alle Übne vinduer"
 
-#: idehints.cc:424
-msgid "show the project window"
+msgid  "show the project window"
 msgstr "vis projekt vinduet"
 
-#: idehints.cc:427
-msgid "show the user screen"
+msgid  "show the user screen"
 msgstr "vis bruger skërmbillede"
 
-#: idehints.cc:430
-msgid "Opens the window with watches"
+msgid  "Opens the window with watches"
 msgstr ""
 
-#: idehints.cc:434
-msgid "Several menu entries for getting help"
+msgid  "Several menu entries for getting help"
 msgstr ""
 
-#: idehints.cc:437
-msgid "opens the Info Viewer"
+msgid  "opens the Info Viewer"
 msgstr "Übner hjëlp / \"Info Viewer\""
 
-#: idehints.cc:440
-msgid "The main index of the RHIDE help"
+msgid  "The main index of the RHIDE help"
 msgstr ""
 
-#: idehints.cc:444
-msgid "Submenu for syntax help"
+msgid  "Submenu for syntax help"
 msgstr ""
 
-#: idehints.cc:447
-msgid "Help for the function under the cursor"
+msgid  "Help for the function under the cursor"
 msgstr ""
 
-#: idehints.cc:450
-msgid "Files to be searched for syntax help"
+msgid  "Files to be searched for syntax help"
 msgstr ""
 
-#: idehints.cc:453
-msgid "Options for the syntax help"
+msgid  "Options for the syntax help"
 msgstr ""
 
-#: idehints.cc:457
-msgid "Get a list with all available syntax help topics"
+msgid  "Get a list with all available syntax help topics"
 msgstr ""
 
-#: idehints.cc:460
-msgid "The main index of the libc reference"
+msgid  "The main index of the libc reference"
 msgstr ""
 
-#: idehints.cc:463
-msgid "Get help about using the helpsystem"
+msgid  "Get help about using the helpsystem"
 msgstr ""
 
-#: idehints.cc:466
-msgid "Shows the last opened help"
+msgid  "Shows the last opened help"
 msgstr ""
 
-#: idehints.cc:470
-msgid "How many closed windows should I remember"
+msgid  "How many closed windows should I remember"
 msgstr ""
 
-#: idemain.cc:222
-msgid "%s has been modified! Reload it?"
+msgid  "%s has been modified! Reload it?"
 msgstr ""
 
-#: idemain.cc:684 idemain.cc:1484
-msgid "Name of the main target"
+msgid  "Name of the main target"
 msgstr "Navn pÜ projekt"
 
-#: idemain.cc:699
-msgid "Goto the line"
+msgid  "Goto the line"
 msgstr "GÜ til linien"
 
-#: idemain.cc:699
-msgid "line ~n~umber"
+msgid  "line ~n~umber"
 msgstr "line ~n~r."
 
-#: idemain.cc:724
-msgid "About RHIDE"
+msgid  "About RHIDE"
 msgstr "Om RHIDE"
 
-#: idemain.cc:734
-msgid "RHIDE is an Integrated Development Environment"
+msgid  "RHIDE is an Integrated Development Environment"
 msgstr "RHIDE er et integreret udviklingsmiljõ (IDE)"
 
-#: idemain.cc:736
-msgid "for developing DJGPP apps"
+msgid  "for developing DJGPP apps"
 msgstr "til udvikling af DJGPP applikationer"
 
-#: idemain.cc:739
-msgid "for developing Linux apps"
+msgid  "for developing Linux apps"
 msgstr "til udvikling af Linux applikationer"
 
-#: idemain.cc:741 rhgdb/main.cc:234
-msgid "Copyright (C) by Robert Hîhne, 1996-1998"
+msgid  "Copyright (C) by Robert Hîhne, 1996-1998"
 msgstr "(C)opyright: Robert Hîhne, 1996-1998"
 
-#: idemain.cc:745 ideopt.cc:163 ideopt.cc:322 ideopt.cc:495 ideopt.cc:657 ideopt.cc:1093 idesynta.cc:611 libset/bufun.cc:447 libset/infview/inf.cc:1902 libset/infview/inf.cc:1925 libset/infview/inf.cc:1948 libset/infview/inf.cc:1974 libtvgdb/breakdia.cc:291 libtvuti/bigmessa.cc:81 libtvuti/bigmessa.cc:132 rhgdb/main.cc:238 rhgdb/options.cc:115 tvdemo/mousedlg.cc:116 tvision/classes/t/tchdirdi.cc:56 tvision/classes/t/tcolordi.cc:96 tvision/classes/t/tfiledia.cc:87 tvision/msgbox.cc:36 tvision/msgbox.cc:199
-msgid "~O~K"
+msgid  "~O~K"
 msgstr "~O~k"
 
-#: idemain.cc:935
-msgid "Please wait"
+msgid  "Please wait"
 msgstr ""
 
-#: idemain.cc:937
-msgid "Creating the Bug report"
+msgid  "Creating the Bug report"
 msgstr ""
 
-#: idemain.cc:958 rhgdb/main.cc:250
-msgid "Name of the main function"
+msgid  "Name of the main function"
 msgstr ""
 
-#: idemain.cc:1235 libtvgdb/tfuncinp.cc:37 rhgdb/main.cc:333
-msgid "Regular expression to list functions"
+msgid  "Regular expression to list functions"
 msgstr "Ordinërt udtryk for liste funktioner"
 
-#: idedial.cc:223 idemain.cc:1236 libset/calcu/calcu.cc:72 libtvgdb/tfuncinp.cc:38 libtvgdb/twatchdi.cc:48 libtvgdb/twatchli.cc:111 libtvgdb/watches.cc:98 rhgdb/main.cc:334
-msgid "~E~xpression"
+msgid  "~E~xpression"
 msgstr "Udtryk (~E~)"
 
-#: idemain.cc:1239 libset/bufun.cc:445 rhgdb/main.cc:336
-msgid "List of functions"
+msgid  "List of functions"
 msgstr "Liste over funktioner"
 
-#: idemain.cc:1277
-msgid "WindowList"
+msgid  "WindowList"
 msgstr "Vinduesliste"
 
-#: idemain.cc:1380
-msgid "Standard Include Directories"
+msgid  "Standard Include Directories"
 msgstr ""
 
-#: idemain.cc:1385
-msgid "Include Directories"
+msgid  "Include Directories"
 msgstr "Kataloger til Include-filer"
 
-#: idemain.cc:1390
-msgid "Library Directories"
+msgid  "Library Directories"
 msgstr "Kataloger til biblioteker"
 
-#: idemain.cc:1395
-msgid "Object Directories"
+msgid  "Object Directories"
 msgstr "Kataloger til objekt-filer"
 
-#: idemain.cc:1400
-msgid "Source Directories"
+msgid  "Source Directories"
 msgstr "Kataloger til kildetekst"
 
-#: idemain.cc:1405
-msgid "INFO files for syntaxhelp"
+msgid  "INFO files for syntaxhelp"
 msgstr ""
 
-#: idemain.cc:1410 rhgdb/main.cc:325
-msgid "Program arguments"
+msgid  "Program arguments"
 msgstr "Argumenter til programmet"
 
-#: idemain.cc:1420
-msgid "Select a project"
+msgid  "Select a project"
 msgstr "Vëlg et projekt"
 
-#: idemain.cc:1491
-msgid "You can give here only a valid filename for a Pascal source file"
+msgid  "You can give here only a valid filename for a Pascal source file"
 msgstr ""
 
-#: idemain.cc:1532
-msgid "usage: %s [options] [project-file] [edit-file]\n"
+msgid  "or a TeX source file"
 msgstr ""
 
-#: idemain.cc:1533
-msgid "options:    -d[actdf]\n"
+msgid  "usage: %s [options] [project-file] [edit-file]\n"
+msgstr ""
+
+msgid  "options:    -d[actdf]\n"
 msgstr "flag:       -d[actdf]\n"
 
-#: idemain.cc:1535 rhgdb/main.cc:469
-msgid "            -c : show filename exactly (no case conversion)\n"
+msgid  "            -c : show filename exactly (no case conversion)\n"
 msgstr ""
 
-#: idemain.cc:1536 rhgdb/main.cc:470
-msgid "            -y : force to use long filenames (Windows 95)\n"
+msgid  "            -y : force to use long filenames (Windows 95)\n"
 msgstr ""
 
-#: idemain.cc:1537 rhgdb/main.cc:471
-msgid "            -n : do not use long filenames (Windows 95)\n"
+msgid  "            -n : do not use long filenames (Windows 95)\n"
 msgstr ""
 
-#: idemain.cc:1538 rhgdb/main.cc:474
-msgid "            -b : use BIOS calls for toggle the blinkstate\n"
+msgid  "            -b : use BIOS calls for toggle the blinkstate\n"
 msgstr ""
 
-#: idemain.cc:1539 rhgdb/main.cc:475
-msgid "            -p : do not convert the numpad keys\n"
+msgid  "            -p : do not convert the numpad keys\n"
 msgstr ""
 
-#: idemain.cc:1540 rhgdb/main.cc:476
-msgid "            -G num : Use methode <num> for screen swapping\n"
+msgid  "            -G num : Use methode <num> for screen swapping\n"
 msgstr ""
 
-#: idemain.cc:1541 rhgdb/main.cc:477
-msgid "            -K : Use the BIOS for keyboard input\n"
+msgid  "            -K : Use the BIOS for keyboard input\n"
 msgstr ""
 
-#: idemain.cc:1542 rhgdb/main.cc:480
-msgid "            -M : Do not install the mouse handler\n"
+msgid  "            -M : Do not install the mouse handler\n"
 msgstr ""
 
-#: idemain.cc:1543
-msgid "            -S : use slower (safer) screen output\n"
+msgid  "            -S : use slower (safer) screen output\n"
 msgstr ""
 
-#: idemain.cc:1546
-msgid "            -K : Do not patch the keytable\n"
+msgid  "            -K : Do not patch the keytable\n"
 msgstr ""
 
-#: idemain.cc:1547
-msgid "            -H : Do not install console switch handler\n"
+msgid  "            -H : Do not install console switch handler\n"
 msgstr ""
 
-#: idemain.cc:1549 rhgdb/main.cc:472
-msgid "            -L LANGUAGE : use language LANGUAGE\n"
+msgid  "            -L LANGUAGE : use language LANGUAGE\n"
 msgstr ""
 
-#: idemain.cc:1550 rhgdb/main.cc:473
-msgid "            -h : show this help\n"
+msgid  "            -h : show this help\n"
 msgstr ""
 
-#: idemain.cc:1551
-msgid "            -k KEY_FILE : use KEY_FILE for key bindings\n"
+msgid  "            -k KEY_FILE : use KEY_FILE for key bindings\n"
 msgstr ""
 
-#: idemain.cc:1552
-msgid "            -E : Output all env. variables and exit\n"
+msgid  "            -E : Output all env. variables and exit\n"
 msgstr ""
 
-#: idemain.cc:1553
-msgid "            -C : Disable SIGINT handling\n"
+msgid  "            -C : Disable SIGINT handling\n"
 msgstr ""
 
-#: idemain.cc:1555
-msgid "            -T : Disable the DOS-box title feature\n"
+msgid  "            -T : Disable the DOS-box title feature\n"
 msgstr ""
 
-#: idemain.cc:1867
-msgid "using %s as temp directory\n"
+msgid  "using %s as temp directory\n"
 msgstr "bruger %s som temporërt katalog\n"
 
-#: idemain.cc:2001 rhgdb/main.cc:670
-msgid "This is %s. Copyright (c) 1996-1998 by Robert Hîhne\n"
+msgid  "This is %s. Copyright (c) 1996-1998 by Robert Hîhne\n"
 msgstr "%s. (C)opyright: Robert Hîhne, 1996-1998\n"
 
-#: idemain.cc:2097
-msgid "Do you really want to interrupt RHIDE?"
+msgid  "Do you really want to interrupt RHIDE?"
 msgstr ""
 
-#: idemak.cc:53 idemak.cc:58 ideprj.cc:587
-msgid "Invalid project-file %s(%s)"
+msgid  ""
+"RHIDE has detected, that the environment variable %DJDIR% has not been set. "
+"This means, you haven't installed DJGPP correct. Please read the file "
+"README.1ST from the DJGPP distribution how to install DJGPP. If you continue "
+"now, you will get probably many errors."
+msgstr ""
+
+msgid  "Invalid project-file %s(%s)"
 msgstr "Uanvendelig projektfil %s(%s)"
 
-#: idemak.cc:74 idemak.cc:79
-msgid "This project was created with a newer RHIDE version and could not be used."
+msgid  ""
+"This project was created with a newer RHIDE version and could not be used."
 msgstr ""
 
-#: idemenu.cc:78 idemenu.cc:79
-msgid "~S~yntax help"
+msgid  "~S~yntax help"
 msgstr ""
 
-#: idemenu.cc:80
-msgid "~F~iles to search"
+msgid  "~F~iles to search"
 msgstr ""
 
-#: idemenu.cc:81
-msgid "~O~ptions for searching"
+msgid  "~O~ptions for searching"
 msgstr ""
 
-#: idedial.cc:238 idemenu.cc:84 idemenu.cc:85 tvision/classes/t/tfiledia.cc:115
-msgid "~H~elp"
+msgid  "~H~elp"
 msgstr "~H~jëlp"
 
-#: idemenu.cc:86
-msgid "RHIDE Help ~i~ndex"
+msgid  "RHIDE Help ~i~ndex"
 msgstr ""
 
-#: idemenu.cc:88
-msgid "Index for s~y~ntax help"
+msgid  "Index for s~y~ntax help"
 msgstr ""
 
-#: idemenu.cc:89
-msgid "lib~c~ reference"
+msgid  "lib~c~ reference"
 msgstr ""
 
-#: idemenu.cc:90
-msgid "Help ~a~bout help"
+msgid  "Help ~a~bout help"
 msgstr ""
 
-#: idemenu.cc:91
-msgid "~L~ast help"
+msgid  "~L~ast help"
 msgstr ""
 
-#: idemenu.cc:94 ideopt.cc:673 rhgdb/main.cc:135
-msgid "~F~ile"
+msgid  "~F~ile"
 msgstr "~F~iler"
 
-#: idemenu.cc:95 rhgdb/main.cc:136 tvision/classes/t/tfiledia.cc:79
-msgid "~O~pen"
+msgid  "~O~pen"
 msgstr "èben (~O~)"
 
-#: idemenu.cc:96 libtvgdb/breakdia.cc:101
-msgid "~N~ew"
+msgid  "~N~ew"
 msgstr "~N~y fil"
 
-#: idemenu.cc:97
-msgid "~S~ave"
+msgid  "~S~ave"
 msgstr "Gem fil (~S~)"
 
-#: idemenu.cc:98
-msgid "S~a~ve as..."
+msgid  "S~a~ve as..."
 msgstr "Gem som... (~A~)"
 
-#: idemenu.cc:99
-msgid "Save a~l~l"
+msgid  "Save a~l~l"
 msgstr "Gem ~a~lle"
 
-#: idemenu.cc:102
-msgid "~D~OS shell"
+msgid  "~D~OS shell"
 msgstr "~D~OS shell"
 
-#: idemenu.cc:104
-msgid "S~h~ell"
+msgid  "S~h~ell"
 msgstr ""
 
-#: idemenu.cc:106
-msgid "E~x~it"
+msgid  "E~x~it"
 msgstr "Afslut (~X~)"
 
-#: idemenu.cc:109
-msgid "~M~acro"
+msgid  "~M~acro"
 msgstr ""
 
-#: idemenu.cc:110
-msgid "~R~ecord"
+msgid  "~R~ecord"
 msgstr ""
 
-#: idemenu.cc:111
-msgid "~S~top"
+msgid  "~S~top"
 msgstr ""
 
-#: idemenu.cc:112
-msgid "~P~lay"
+msgid  "~P~lay"
 msgstr ""
 
-#: idemenu.cc:115 ideopt.cc:663
-msgid "~E~dit"
+msgid  "~E~dit"
 msgstr "R~e~diger"
 
-#: idemenu.cc:116
-msgid "~U~ndo"
+msgid  "~U~ndo"
 msgstr "Fortryd (~U~)"
 
-#: idemenu.cc:117
-msgid "~R~edo"
+msgid  "~R~edo"
 msgstr "Gentag (~R~)"
 
-#: idemenu.cc:119
-msgid "Cu~t~"
+msgid  "Cu~t~"
 msgstr "Klip (~t~)"
 
-#: idemenu.cc:120
-msgid "~C~opy"
+msgid  "~C~opy"
 msgstr "Kopier (~C~)"
 
-#: idemenu.cc:121
-msgid "~P~aste"
+msgid  "~P~aste"
 msgstr "Indsët (~P~)"
 
-#: idemenu.cc:122
-msgid "~S~how clipboard"
+msgid  "~S~how clipboard"
 msgstr "Vi~s~ udklipsholder"
 
-#: idemenu.cc:124
-msgid "C~l~ear"
+msgid  "C~l~ear"
 msgstr "Slet (~C~)"
 
-#: idemenu.cc:127
-msgid "Cop~y~ to Windows Clipboard"
+msgid  "Cop~y~ to Windows Clipboard"
 msgstr ""
 
-#: idemenu.cc:128
-msgid "Pas~t~e from Windows Clipboard"
+msgid  "Pas~t~e from Windows Clipboard"
 msgstr ""
 
-#: idemenu.cc:131
-msgid "E~x~pand all tabs"
+msgid  "E~x~pand all tabs"
 msgstr ""
 
-#: idemenu.cc:132
-msgid "C~o~mpact text"
+msgid  "C~o~mpact text"
 msgstr ""
 
-#: idemenu.cc:136
-msgid "Profile Editor"
+msgid  "Profile Editor"
 msgstr ""
 
-#: idemenu.cc:139
-msgid "~S~earch"
+msgid  "~S~earch"
 msgstr "~S~õg"
 
-#: idemenu.cc:140
-msgid "~F~ind..."
+msgid  "~F~ind..."
 msgstr "~S~õg..."
 
-#: idemenu.cc:141
-msgid "~R~eplace..."
+msgid  "~R~eplace..."
 msgstr "E~r~stat..."
 
-#: idemenu.cc:142
-msgid "~S~earch again"
+msgid  "~S~earch again"
 msgstr "Gentag ~s~õgning"
 
-#: idemenu.cc:143 rhgdb/main.cc:139
-msgid "~G~oto Line..."
+msgid  "~G~oto Line..."
 msgstr "~G~Ü til linie..."
 
-#: idemenu.cc:144 rhgdb/main.cc:140
-msgid "~J~ump to function"
+msgid  "~J~ump to function"
 msgstr ""
 
-#: idemenu.cc:146
-msgid "~N~ext message"
+msgid  "~N~ext message"
 msgstr "~N~ëste meddelelse"
 
-#: idemenu.cc:147
-msgid "Previ~o~us message"
+msgid  "Previ~o~us message"
 msgstr "F~o~rrige meddelelse"
 
-#: idemenu.cc:150 idemenu.cc:151 rhgdb/main.cc:141 rhgdb/main.cc:142
-msgid "~R~un"
+msgid  "~R~un"
 msgstr "Kõ~r~"
 
-#: idemenu.cc:153 rhgdb/main.cc:143
-msgid "~S~tep over"
+msgid  "~S~tep over"
 msgstr "~S~pring over"
 
-#: idemenu.cc:154 rhgdb/main.cc:144
-msgid "Step over (No display swap)"
+msgid  "Step over (No display swap)"
 msgstr ""
 
-#: idemenu.cc:155 rhgdb/main.cc:145
-msgid "~T~race into"
+msgid  "~T~race into"
 msgstr "For~t~sët ned i"
 
-#: idemenu.cc:156 rhgdb/main.cc:146
-msgid "Trace into (No display swap)"
+msgid  "Trace into (No display swap)"
 msgstr ""
 
-#: idemenu.cc:157 rhgdb/main.cc:147
-msgid "~G~o to cursor"
+msgid  "~G~o to cursor"
 msgstr "F~o~rtsët frem til markõr"
 
-#: idemenu.cc:158 rhgdb/main.cc:148
-msgid "Go to cursor (No display swap)"
+msgid  "Go to cursor (No display swap)"
 msgstr ""
 
-#: idemenu.cc:159
-msgid "~U~ntil return"
+msgid  "~U~ntil return"
 msgstr ""
 
-#: idemenu.cc:160 rhgdb/main.cc:149
-msgid "~P~rogram reset"
+msgid  "~P~rogram reset"
 msgstr "Initialiser ~p~rogram"
 
-#: idemenu.cc:162 rhgdb/main.cc:151
-msgid "~M~ain function"
+msgid  "~M~ain function"
 msgstr ""
 
-#: idemenu.cc:164 rhgdb/main.cc:152
-msgid "~A~rguments ..."
+msgid  "~A~rguments ..."
 msgstr "~A~rgumenter ..."
 
-#: idemenu.cc:167 idemenu.cc:168
-msgid "~C~ompile"
+msgid  "~C~ompile"
 msgstr "Oversët (~C~)"
 
-#: idemenu.cc:169
-msgid "~M~ake"
+msgid  "~M~ake"
 msgstr "Oversët alt (~M~)"
 
-#: idemenu.cc:170
-msgid "~L~ink"
+msgid  "~L~ink"
 msgstr "~L~ënk filer"
 
-#: idemenu.cc:171
-msgid "~B~uild all"
+msgid  "~B~uild all"
 msgstr "~B~yg alt"
 
-#: idemenu.cc:174
-msgid "~P~roject"
+msgid  "~P~roject"
 msgstr "~P~rojekt"
 
-#: idemenu.cc:175
-msgid "Open ~p~roject"
+msgid  "Open ~p~roject"
 msgstr "èben ~p~roject"
 
-#: idemenu.cc:176
-msgid "~C~lose project"
+msgid  "~C~lose project"
 msgstr "Luk projekt (~C~)"
 
-#: idemenu.cc:177
-msgid "~A~dd item"
+msgid  "~A~dd item"
 msgstr "Tilfõj fil (~A~)"
 
-#: idemenu.cc:178
-msgid "D~e~lete item"
+msgid  "D~e~lete item"
 msgstr "Sl~e~t fil"
 
-#: idemenu.cc:179
-msgid "~L~ocal options"
+msgid  "~L~ocal options"
 msgstr "~L~okal flag"
 
-#: idemenu.cc:180
-msgid "~I~ncludes"
+msgid  "~I~ncludes"
 msgstr "~I~nkluder"
 
-#: idemenu.cc:182
-msgid "main target~n~ame"
+msgid  "main target~n~ame"
 msgstr "projekt ~n~avn"
 
-#: idemenu.cc:183
-msgid "Primary ~f~ile"
+msgid  "Primary ~f~ile"
 msgstr ""
 
-#: idemenu.cc:184
-msgid "Clea~r~ dependencies"
+msgid  "Clea~r~ dependencies"
 msgstr "Fje~r~n afhëngigheder"
 
-#: idemenu.cc:185
-msgid "~D~elete rebuildable files"
+msgid  "~D~elete rebuildable files"
 msgstr "Slet genopbyggelige filer (~D~)"
 
-#: idemenu.cc:187
-msgid "Crea~t~e dependencies"
+msgid  "Crea~t~e dependencies"
 msgstr ""
 
-#: idemenu.cc:190
-msgid "~W~rite Makefile"
+msgid  "~W~rite Makefile"
 msgstr "Generer MAKE-fil (~W~)"
 
-#: idemenu.cc:193
-msgid "~D~irectories"
+msgid  "~D~irectories"
 msgstr "Kataloger (~D~)"
 
-#: idemenu.cc:194
-msgid "~I~nclude"
+msgid  "~I~nclude"
 msgstr "~I~nkluder"
 
-#: idemenu.cc:195 idemenu.cc:234
-msgid "~L~ibraries"
+msgid  "~L~ibraries"
 msgstr "bib~l~ioteker"
 
-#: idemenu.cc:196
-msgid "~O~bject"
+msgid  "~O~bject"
 msgstr "~O~bjekter"
 
-#: idemenu.cc:197
-msgid "~S~ources"
+msgid  "~S~ources"
 msgstr "Kildetek~s~ter"
 
-#: idemenu.cc:199
-msgid "S~t~andard headers"
+msgid  "S~t~andard headers"
 msgstr ""
 
-#: idemenu.cc:202
-msgid "~C~ompilers"
+msgid  "~C~ompilers"
 msgstr ""
 
-#: idemenu.cc:203
-msgid "~W~arnings"
+msgid  "~W~arnings"
 msgstr "Advarsler (~W~)"
 
-#: idemenu.cc:204
-msgid "~O~ptimizations"
+msgid  "~O~ptimizations"
 msgstr "~O~ptimeringer"
 
-#: idemenu.cc:205
-msgid "De~b~ugging"
+msgid  "De~b~ugging"
 msgstr "Aflusning (~B~)"
 
-#: idemenu.cc:206
-msgid "~C~-Flags"
+msgid  "~C~-Flags"
 msgstr "~C~-Flag"
 
-#: idemenu.cc:207 idemenu.cc:221
-msgid "C~X~X-Flags"
+msgid  "C~X~X-Flags"
 msgstr "C~X~X-Flag"
 
-#: idemenu.cc:208 idemenu.cc:222
-msgid "P~a~scal-Flags"
+msgid  "P~a~scal-Flags"
 msgstr "P~a~scal flag"
 
-#: idemenu.cc:209
-msgid "~F~ortran-Flags"
+msgid  "~F~ortran-Flags"
 msgstr ""
 
-#: idemenu.cc:210
-msgid "A~d~a-Flags"
+msgid  "A~d~a-Flags"
 msgstr ""
 
-#: idemenu.cc:213
-msgid "~E~nvironment"
+msgid  "~E~ditor"
+msgstr ""
+
+msgid  "~E~ditor options"
+msgstr ""
+
+msgid  "E~d~it key assignment"
+msgstr ""
+
+msgid  "~A~lt-Keys settings"
+msgstr ""
+
+msgid  "~R~estore default editor keys"
+msgstr ""
+
+msgid  "~E~nvironment"
 msgstr "OS miljõ (~E~)"
 
-#: idemenu.cc:214
-msgid "~C~olors"
+msgid  "~C~olors"
 msgstr "Farver (~C~)"
 
-#: idemenu.cc:215
-msgid "~E~ditor options"
-msgstr ""
-
-#: idemenu.cc:216 rhgdb/main.cc:164
-msgid "~P~references"
+msgid  "~P~references"
 msgstr "~P~referencer"
 
-#: idemenu.cc:217
-msgid "~M~ouse options"
+msgid  "~M~ouse options"
 msgstr ""
 
-#: idemenu.cc:218
-msgid "~R~eserved words"
+msgid  "~R~eserved words"
 msgstr "~R~eservede ord"
 
-#: idemenu.cc:219
-msgid "P~a~scal Reserved words"
+msgid  "P~a~scal Reserved words"
 msgstr "Reserverede ord i P~a~scal"
 
-#: idemenu.cc:220
-msgid "C-~F~lags"
+msgid  "C-~F~lags"
 msgstr "C-~F~lag"
 
-#: idemenu.cc:223
-msgid "Fortra~n~-Flags"
+msgid  "Fortra~n~-Flags"
 msgstr ""
 
-#: idemenu.cc:224
-msgid "Ada-~F~lags"
+msgid  "Ada-~F~lags"
 msgstr ""
 
-#: idemenu.cc:225
-msgid "~W~arning-Flags"
+msgid  "~W~arning-Flags"
 msgstr "Advarselsflag (~W~)"
 
-#: idemenu.cc:226
-msgid "~D~ebugging-Flags"
+msgid  "~D~ebugging-Flags"
 msgstr "Aflusningsflag (~D~)"
 
-#: idemenu.cc:227
-msgid "~O~ptimization-Flags"
+msgid  "~O~ptimization-Flags"
 msgstr "~O~ptimeringsflag"
 
-#: idemenu.cc:228
-msgid "~U~ser words"
+msgid  "~U~ser words"
 msgstr "Br~u~gerord"
 
-#: idemenu.cc:231 rhgdb/main.cc:162
-msgid "~O~ptions"
+msgid  "~O~ptions"
 msgstr "~O~psëtning"
 
-#: idemenu.cc:235
-msgid "L~i~nker Options"
+msgid  "L~i~nker Options"
 msgstr "Lënker opsëtn~i~ng"
 
-#: idemenu.cc:236
-msgid "Compiler ~O~ptions"
+msgid  "Compiler ~O~ptions"
 msgstr "~O~versëtter opsëtning"
 
-#: idemenu.cc:238 rhgdb/main.cc:165
-msgid "~S~ave options"
+msgid  "~S~ave options"
 msgstr "Gem op~s~ëtning"
 
-#: idemenu.cc:239
-msgid "Loa~d~ options"
+msgid  "Loa~d~ options"
 msgstr ""
 
-#: idemenu.cc:241 rhgdb/main.cc:167
-msgid "~W~indows"
+msgid  "~W~indows"
 msgstr "Vinduer (~W~)"
 
-#: idemenu.cc:242 rhgdb/main.cc:168
-msgid "~S~ize/move"
+msgid  "~S~ize/move"
 msgstr "~S~tõrrelse/flyt"
 
-#: idemenu.cc:243 rhgdb/main.cc:169
-msgid "~Z~oom"
+msgid  "~Z~oom"
 msgstr "~Z~oom"
 
-#: idemenu.cc:244
-msgid "~T~ile"
+msgid  "~T~ile"
 msgstr "Sideordne~t~"
 
-#: idemenu.cc:245
-msgid "C~a~scade"
+msgid  "C~a~scade"
 msgstr "Overl~a~ppende"
 
-#: idemenu.cc:246 libset/infview/inf.cc:1852 rhgdb/main.cc:170
-msgid "~N~ext"
+msgid  "~N~ext"
 msgstr "~N~ëste"
 
-#: idemenu.cc:247 libset/infview/inf.cc:1855 rhgdb/main.cc:171
-msgid "~P~revious"
+msgid  "~P~revious"
 msgstr "Forrige (~P~)"
 
-#: idemenu.cc:248 rhgdb/main.cc:172
-msgid "~C~lose"
+msgid  "~C~lose"
 msgstr "Luk (~C~)"
 
-#: idemenu.cc:249
-msgid "~L~ist"
+msgid  "~L~ist"
 msgstr "~L~iste"
 
-#: idemenu.cc:250
-msgid "Pro~j~ect"
+msgid  "Pro~j~ect"
 msgstr "Pro~j~ekt"
 
-#: idemenu.cc:251 rhgdb/main.cc:174
-msgid "~W~atches"
+msgid  "~W~atches"
 msgstr ""
 
-#: idemenu.cc:253
-msgid "~U~serScreen"
+msgid  "~M~essages"
+msgstr ""
+
+msgid  "~U~serScreen"
 msgstr "Br~u~gerskërmbillede"
 
-#: idemenu.cc:256 rhgdb/main.cc:133
-msgid "~~"
+msgid  "~~"
 msgstr "~~"
 
-#: idemenu.cc:257
-msgid "about RH~I~DE"
+msgid  "about RH~I~DE"
 msgstr "Om RH~I~DE"
 
-#: idemenu.cc:258
-msgid "~s~mall bug report"
+msgid  "~s~mall bug report"
 msgstr ""
 
-#: idemenu.cc:259
-msgid "~B~ug report"
+msgid  "~B~ug report"
 msgstr ""
 
-#: idemenu.cc:262
-msgid "~F~SDB"
+msgid  "~F~SDB"
 msgstr "~F~SDB"
 
-#: idemenu.cc:264
-msgid "~G~REP ..."
+msgid  "~G~REP ..."
 msgstr "~G~REP ..."
 
-#: idemenu.cc:265
-msgid "G~D~B"
+msgid  "G~D~B"
 msgstr "G~D~B"
 
-#: idemenu.cc:267
-msgid "Refresh desk~t~op"
+msgid  "Refresh desk~t~op"
 msgstr "Gentegn skërmbillede~t~"
 
-#: idemenu.cc:269
-msgid "~C~alculator"
+msgid  "~C~alculator"
 msgstr ""
 
-#: idemenu.cc:270
-msgid "~P~uzzle"
+msgid  "~P~uzzle"
 msgstr ""
 
-#: idemenu.cc:271
-msgid "Ca~l~endar"
+msgid  "Ca~l~endar"
 msgstr ""
 
-#: idemenu.cc:272
-msgid "~A~SCII table"
+msgid  "~A~SCII table"
 msgstr ""
 
-#: idemenu.cc:276 rhgdb/main.cc:153
-msgid "~D~ebug"
+msgid  "~D~ebug"
 msgstr "Aflusning (~D~)"
 
-#: idemenu.cc:277 rhgdb/main.cc:154
-msgid "~S~et/Reset Breakpoint"
+msgid  "~S~et/Reset Breakpoint"
 msgstr "~S~ët/fjern programstop"
 
-#: idemenu.cc:278 rhgdb/main.cc:155
-msgid "~E~valuate/Modify"
+msgid  "~E~valuate/Modify"
 msgstr "Vis/ëndr~e~"
 
-#: idemenu.cc:279 rhgdb/main.cc:156
-msgid "~W~atch an expression"
+msgid  "~W~atch an expression"
 msgstr "Vis vërdi af et udtryk (~W~)"
 
-#: idemenu.cc:280 rhgdb/main.cc:157
-msgid "~B~reakpoints"
+msgid  "~B~reakpoints"
 msgstr "Programstop (~B~)"
 
-#: idemenu.cc:282 rhgdb/main.cc:159
-msgid "~D~isassembler window"
+msgid  "~D~isassembler window"
 msgstr ""
 
-#: idemenu.cc:283 rhgdb/main.cc:160
-msgid "~C~all stack"
+msgid  "~C~all stack"
 msgstr ""
 
-#: idemenu.cc:284 rhgdb/main.cc:161
-msgid "List of ~F~unctions"
+msgid  "List of ~F~unctions"
 msgstr "Liste over ~F~unktioner"
 
-#: idemsg.cc:99 libset/edmsg.cc:91
-msgid "Message Window"
+msgid  "Message Window"
 msgstr "Meddelelsesvindue"
 
-#: ideopt.cc:177 ideopt.cc:941
-msgid "Optimization Flags"
+msgid  "Optimization Flags"
 msgstr "Optimeringsflag"
 
-#: ideopt.cc:182 ideopt.cc:936
-msgid "Warning Flags"
+msgid  "Warning Flags"
 msgstr "Advarselsflag"
 
-#: ideopt.cc:187 ideopt.cc:931
-msgid "Debugging Flags"
+msgid  "Debugging Flags"
 msgstr "Debugningsflag"
 
-#: ideopt.cc:192 ideopt.cc:926
-msgid "C++ Flags"
+msgid  "C++ Flags"
 msgstr "C++ flag"
 
-#: ideopt.cc:197 ideopt.cc:921
-msgid "C Flags"
+msgid  "C Flags"
 msgstr "C flag"
 
-#: ideopt.cc:204 ideopt.cc:208 ideopt.cc:948 ideopt.cc:952
-msgid "Pascal Flags"
+msgid  "Pascal Flags"
 msgstr "Pascal flag"
 
-#: ideopt.cc:214 ideopt.cc:958
-msgid "Fortran Flags"
+msgid  "Fortran Flags"
 msgstr ""
 
-#: ideopt.cc:219 ideopt.cc:963
-msgid "Ada Flags"
+msgid  "Ada Flags"
 msgstr ""
 
-#: ideopt.cc:270
-msgid "Libraries"
+msgid  "Libraries"
 msgstr "Biblioteker"
 
-#: ideopt.cc:311
-msgid "Use ~s~tandard libraries"
+msgid  "Use ~s~tandard libraries"
 msgstr "Brug ~s~tandard biblioteker"
 
-#: ideopt.cc:312
-msgid "link for ~p~rofiling"
+msgid  "link for ~p~rofiling"
 msgstr "lënke til ~p~rofilering"
 
-#: ideopt.cc:348
-msgid "Additional linker options"
+msgid  "Additional linker options"
 msgstr "Yderligere linkerflag"
 
-#: ideopt.cc:354
-msgid "Additional compiler options"
+msgid  "Additional compiler options"
 msgstr "Yderligere oversëtterflag"
 
-#: ideopt.cc:395 rhgdb/options.cc:44
-msgid "Environment options"
+msgid  "Environment options"
 msgstr "Omgivelser (Environment)"
 
-#: ideopt.cc:407
-msgid "all dependencies in ~m~akefile"
+msgid  "~R~emember old messages"
+msgstr ""
+
+msgid  "all dependencies in ~m~akefile"
 msgstr "alle afhëngigheder i MAKE fil"
 
-#: ideopt.cc:408
-msgid "create ~b~ackupfiles"
+msgid  "create ~b~ackupfiles"
 msgstr "Opret ~b~ackupfiler"
 
-#: ideopt.cc:409
-msgid "syntax ~h~ighlighting"
+msgid  "syntax ~h~ighlighting"
 msgstr "syntaks frem~h~ëvelse"
 
-#: ideopt.cc:410 rhgdb/options.cc:105
-msgid "U~s~e dual display"
+msgid  "U~s~e dual display"
 msgstr ""
 
-#: ideopt.cc:411
-msgid "redirect 'stde~r~r'"
+msgid  "redirect 'stde~r~r'"
 msgstr "omdirigÇr 'stde~r~r'"
 
-#: ideopt.cc:412
-msgid "redirect 'stdou~t~'"
+msgid  "redirect 'stdou~t~'"
 msgstr "omdirigÇr 'stdou~t~'"
 
-#: ideopt.cc:413
-msgid "show ~p~rocess information"
+msgid  "show ~p~rocess information"
 msgstr "Vis procesinformation (~W~)"
 
-#: ideopt.cc:414
-msgid "show free memor~y~"
+msgid  "show free memor~y~"
 msgstr "vis ledig huko~m~melse"
 
-#: ideopt.cc:415
-msgid "No file cachin~g~"
+msgid  "No file cachin~g~"
 msgstr "Ingen fil ~c~achning"
 
-#: ideopt.cc:416
-msgid "1~6~ background colors"
+msgid  "1~6~ background colors"
 msgstr ""
 
-#: ideopt.cc:417 rhgdb/options.cc:104
-msgid "Show G~D~B commands"
+msgid  "Show G~D~B commands"
 msgstr ""
 
-#: ideopt.cc:418
-msgid "~U~se no shadows"
+msgid  "~U~se no shadows"
 msgstr ""
 
-#: ideopt.cc:419
-msgid "Save te~x~t palette"
+msgid  "Save te~x~t palette"
 msgstr ""
 
-#: ideopt.cc:420
-msgid "Save pro~j~ect only when closing"
+msgid  "Save pro~j~ect only when closing"
 msgstr ""
 
-#: ideopt.cc:421
-msgid "Sho~w~ user screen after exit"
+msgid  "Sho~w~ user screen after exit"
 msgstr ""
 
-#: ideopt.cc:422
-msgid "Only #~i~nclude \"...\" as dependencies"
+msgid  "Only #~i~nclude \"...\" as dependencies"
 msgstr ""
 
-#: ideopt.cc:423
-msgid "Directories in pr~o~ject items"
+msgid  "Directories in project items"
 msgstr ""
 
-#: ideopt.cc:424
-msgid "Show Disassemb~l~er Window when needed"
+msgid  "Show Disassemb~l~er Window when needed"
 msgstr ""
 
-#: ideopt.cc:425
-msgid "Us~e~ RCS"
+msgid  "Use RCS"
 msgstr ""
 
-#: ideopt.cc:426
-msgid "Use ~F~PC pascal compiler"
+msgid  "Use ~F~PC pascal compiler"
 msgstr ""
 
-#: ideopt.cc:433
-msgid "O~p~tions"
+msgid  "O~p~tions"
 msgstr "O~p~sëtning"
 
-#: ideopt.cc:450 rhgdb/options.cc:59
-msgid "other"
+msgid  "other"
 msgstr "andre"
 
-#: ideopt.cc:458 rhgdb/options.cc:67
-msgid "~S~creen mode"
+msgid  "~S~creen mode"
 msgstr "~S~ërmmodus"
 
-#: ideopt.cc:484
-msgid "Closed ~W~indows"
+msgid  "Closed ~W~indows"
 msgstr ""
 
-#: idedial.cc:235 ideopt.cc:498 ideopt.cc:665 ideopt.cc:1096 idesynta.cc:614 libset/bufun.cc:451 libset/calcu/calcu.cc:85 libset/infview/inf.cc:1904 libset/infview/inf.cc:1927 libset/infview/inf.cc:1952 libset/infview/inf.cc:1976 libset/infview/inf.cc:2031 libset/sdginter.cc:161 libset/setedit/editdiag.cc:91 libset/setedit/editdiag.cc:145 libset/setedit/editdiag.cc:165 libset/setedit/editdiag.cc:235 libset/setedit/editdiag.cc:280 libtvgdb/breakdia.cc:293 libtvgdb/twatchdi.cc:71 libtvuti/bigmessa.cc:85 libtvuti/bigmessa.cc:136 rhgdb/options.cc:118 tvdemo/mousedlg.cc:119 tvision/classes/t/tcolordi.cc:98 tvision/classes/t/tfiledia.cc:109 tvision/msgbox.cc:37 tvision/msgbox.cc:203
-msgid "Cancel"
+msgid  "Cancel"
 msgstr "Fortryd"
 
-#: ideopt.cc:622 rhgdb/options.cc:201
-msgid "This video mode (0x%03x) is not supported by the Turbo Vision library"
-msgstr "Denne skërmmodus (0x%03x) er ikke understõttet af Turbo Vision biblioteket"
+msgid  "Mor~e~ options"
+msgstr ""
 
-#: ideopt.cc:659 libset/infview/inf.cc:2023
-msgid "~A~dd"
+msgid  "This video mode (0x%03x) is not supported by the Turbo Vision library"
+msgstr "Denne skërmmodus (0x%03x) er ikke understõttet af Turbo Vision "
+"biblioteket"
+
+msgid  "~A~dd"
 msgstr "Tilfõj (~A~)"
 
-#: ideopt.cc:661 libset/infview/inf.cc:2027 libtvgdb/breakdia.cc:104
-msgid "~D~elete"
+msgid  "~D~elete"
 msgstr "Slet (~D~)"
 
-#: ideopt.cc:670
-msgid "Defa~u~lt"
+msgid  "Defa~u~lt"
 msgstr ""
 
-#: ideopt.cc:749 ideopt.cc:759
-msgid "New value"
+msgid  "New value"
 msgstr "Ny vërdi"
 
-#: ideopt.cc:749 ideopt.cc:759 libide/tflagent.cc:50 libide/tflagent.cc:69 libide/tflagent.cc:90 libide/tflagent.cc:109 libide/tflagent.cc:122 libtvgdb/tdiswin.cc:85
-msgid "~V~alue"
+msgid  "~V~alue"
 msgstr "~V~ërdi"
 
-#: ideopt.cc:812
-msgid "Read words from file"
+msgid  "Read words from file"
 msgstr "Lës fra fil"
 
-#: ideopt.cc:839
-msgid "Couldn't open file %s"
+msgid  "Couldn't open file %s"
 msgstr "Kan ikke Übne filen: %s"
 
-#: ideopt.cc:852
-msgid "Reserved words"
+msgid  "Reserved words"
 msgstr "Reserverede ord"
 
-#: ideopt.cc:860
-msgid "GPC Reserved words"
+msgid  "GPC Reserved words"
 msgstr "GPC reververede ord"
 
-#: ideopt.cc:865
-msgid "FPC Reserved words"
+msgid  "FPC Reserved words"
 msgstr ""
 
-#: ideopt.cc:872
-msgid "User Reserved words"
+msgid  "User Reserved words"
 msgstr "Bruger reserverede ord"
 
-#: ideopt.cc:982
-msgid "local options for project-item"
+msgid  "local options for project-item"
 msgstr "lokal flag for fil"
 
-#: ideopt.cc:992
-msgid "local ~c~ommandline options"
+msgid  "local ~c~ommandline options"
 msgstr "lokal kommandolinie flag (~C~)"
 
-#: ideopt.cc:1003
-msgid "~N~ame of the output file"
+msgid  "~N~ame of the output file"
 msgstr "~N~avn pÜ uddatafil"
 
-#: ideopt.cc:1010 ideopt.cc:1044
-msgid "Auto"
+msgid  "Auto"
 msgstr "Auto"
 
-#: ideopt.cc:1011 ideopt.cc:1045
-msgid "User"
+msgid  "User"
 msgstr "Bruger"
 
-#: ideopt.cc:1012 ideopt.cc:1046
-msgid "None"
+msgid  "None"
 msgstr "Ingen"
 
-#: ideopt.cc:1013
-msgid "GNU C compiler"
+msgid  "GNU C compiler"
 msgstr "GNU C oversëtter"
 
-#: ideopt.cc:1014
-msgid "GNU C++ compiler"
+msgid  "GNU C++ compiler"
 msgstr "GNU C++ oversëtter"
 
-#: ideopt.cc:1015
-msgid "GNU assembler"
+msgid  "GNU assembler"
 msgstr "GNU assember"
 
-#: ideopt.cc:1016
-msgid "GNU Pascal compiler"
+msgid  "GNU Pascal compiler"
 msgstr "GNU Pascal oversëtter"
 
-#: ideopt.cc:1017
-msgid "GNU Fortran compiler"
+msgid  "GNU Fortran compiler"
 msgstr ""
 
-#: ideopt.cc:1018
-msgid "Free Pascal compiler"
+msgid  "Free Pascal compiler"
 msgstr ""
 
-#: ideopt.cc:1023
-msgid "Comp~i~ler type"
+msgid  "Comp~i~ler type"
 msgstr "Oversëtter type (~I~)"
 
-#: ideopt.cc:1035
-msgid "Com~p~iler"
+msgid  "Com~p~iler"
 msgstr "Oversëtter (~P~)"
 
-#: ideopt.cc:1047
-msgid "builtin C"
+msgid  "builtin C"
 msgstr "builtin C ?!?"
 
-#: ideopt.cc:1048
-msgid "builtin assembler"
+msgid  "builtin assembler"
 msgstr "builtin assembler ?!?"
 
-#: ideopt.cc:1049
-msgid "builtin linker"
+msgid  "builtin linker"
 msgstr "builtin linker ?!?"
 
-#: ideopt.cc:1050
-msgid "return value"
+msgid  "return value"
 msgstr "returvërdi"
 
-#: ideopt.cc:1051
-msgid "builtin FPC"
+msgid  "builtin FPC"
 msgstr ""
 
-#: ideopt.cc:1055
-msgid "~E~rror checking"
+msgid  "~E~rror checking"
 msgstr "F~e~jlcheck"
 
-#: ideopt.cc:1068
-msgid "E~r~ror program"
+msgid  "E~r~ror program"
 msgstr "Fejlp~r~ogram"
 
-#: ideopt.cc:1078
-msgid "exclude from link"
+msgid  "exclude from link"
 msgstr "udelad fra lënkning"
 
-#: ideopt.cc:1079
-msgid "rebuild seldom"
+msgid  "rebuild seldom"
 msgstr ""
 
-#: ideopt.cc:1082
-msgid "o~t~her options"
+msgid  "o~t~her options"
 msgstr "andre flag (~t~)"
 
-#: ideprj.cc:304 ideprj.cc:319
-msgid "The desktop file cannot be used, because of a new format"
+msgid  "The desktop file cannot be used, because of a new format"
 msgstr "Desktopfilen kan ikke anvendes pga. nyt format"
 
-#: ideprj.cc:327
-msgid "The desktop file cannot be used, because it was created by a newer version of RHIDE"
+msgid  ""
+"The desktop file cannot be used, because it was created by a newer version "
+"of RHIDE"
 msgstr ""
 
-#: ideprj.cc:658
-msgid "Save options to a project"
+msgid  "Save options to a project"
 msgstr ""
 
-#: ideprj.cc:668
-msgid "Read options from project"
+msgid  "Read options from project"
 msgstr ""
 
-#: ideprj.cc:851 ideprj.cc:989
-msgid "Couldn't open %s"
+msgid  "Couldn't open %s"
 msgstr "Kan ikke Übne %s"
 
-#: ideprj.cc:915 ideprj.cc:991
-msgid "No project"
+msgid  "No project"
 msgstr ""
 
-#: ideprj.cc:1045 ideprj.cc:1064
-msgid "changing cwd to %s\n"
+msgid  "changing cwd to %s\n"
 msgstr "skifter katalog til %s\n"
 
-#: ideprj.cc:1046
-msgid "temporary opening project %s\n"
+msgid  "temporary opening project %s\n"
 msgstr "Übner midlertidigt projektet: %s\n"
 
-#: ideprj.cc:1058
-msgid "closing temporary opened project project %s\n"
+msgid  "closing temporary opened project project %s\n"
 msgstr "lukker midlertidigt Übnet projekt: %s\n"
 
-#: ideprj.cc:1083
-msgid "finaly opening project %s\n"
+msgid  "finaly opening project %s\n"
 msgstr "Übner projektet: %s\n"
 
-#: ideprj.cc:1143
-msgid "Project Window"
+msgid  "Project Window"
 msgstr "Projectvindue"
 
-#: ideprj.cc:1276
-msgid "Add Item"
+msgid  "Add Item"
 msgstr "Tilfõj fil"
 
-#: ideprj.cc:1296
-msgid "The item '%s' is already in your project"
+msgid  "The item '%s' is already in your project"
 msgstr "Filen '%s' er allerede i projektet"
 
-#: ideprj.cc:1369
-msgid "Remove '%s' from the project"
+msgid  "Remove '%s' from the project"
 msgstr "Fjern '%s' fra projektet"
 
-#: ideprj.cc:1446
-msgid "Include files for "
+msgid  "Include files for "
 msgstr "Include-filer til "
 
-#: ideprj.cc:1502
-msgid "clearing dependencies for %s\n"
+msgid  "clearing dependencies for %s\n"
 msgstr "sletter afhëngigheder for %s\n"
 
-#: ideprj.cc:1514
-msgid "removing %s\n"
+msgid  "removing %s\n"
 msgstr "fjerner %s\n"
 
-#: idestatu.cc:50 idestatu.cc:111 idestatu.cc:116 idestatu.cc:126 idestatu.cc:144 idestatu.cc:148 idestatu.cc:152 idestatu.cc:157
-msgid "~F1~ Help"
+msgid  "~F1~ Help"
 msgstr "~F1~ Hjëlp"
 
-#: idestatu.cc:52 idestatu.cc:87 idestatu.cc:134 idestatu.cc:159
-msgid "~F2~ Save"
+msgid  "~F2~ Save"
 msgstr "~F2~ Gem"
 
-#: idestatu.cc:53 idestatu.cc:88 idestatu.cc:135 idestatu.cc:160
-msgid "~F3~ Open"
+msgid  "~F3~ Open"
 msgstr "~F3~ èben"
 
-#: idestatu.cc:54 idestatu.cc:65 idestatu.cc:72 idestatu.cc:89 idestatu.cc:121 idestatu.cc:136 idestatu.cc:161 rhgdb/main.cc:191
-msgid "~F5~ Zoom"
+msgid  "~F5~ Zoom"
 msgstr "~F5~ Zoom"
 
-#: idestatu.cc:55 idestatu.cc:73 idestatu.cc:90 idestatu.cc:137 idestatu.cc:162
-msgid "~F6~ Next"
+msgid  "~F6~ Next"
 msgstr "~F6~ Nëste"
 
-#: idestatu.cc:56 idestatu.cc:75 idestatu.cc:92 idestatu.cc:123 idestatu.cc:139 idestatu.cc:164 rhgdb/main.cc:193
-msgid "~F10~ Menu"
+msgid  "~F10~ Menu"
 msgstr "~F10~ Menu"
 
-#: idestatu.cc:57 idestatu.cc:67 idestatu.cc:76 idestatu.cc:93 idestatu.cc:122 idestatu.cc:140 idestatu.cc:165 rhgdb/main.cc:192
-msgid "~Alt+X~ Quit"
+msgid  "~Alt+X~ Quit"
 msgstr "~Alt+X~ Afslut"
 
-#: idestatu.cc:61 idestatu.cc:107 idestatu.cc:118 rhgdb/main.cc:188
-msgid "~Ins~ Add"
+msgid  "~Ins~ Add"
 msgstr "~Ins~ Tilfõj"
 
-#: idestatu.cc:62 idestatu.cc:108 idestatu.cc:119 rhgdb/main.cc:189
-msgid "~Del~ Delete"
+msgid  "~Del~ Delete"
 msgstr "~Del~ Slet"
 
-#: idestatu.cc:63
-msgid "~^O~ Local"
+msgid  "~^O~ Local"
 msgstr "~^O~ Lokal"
 
-#: idestatu.cc:64
-msgid "~^I~ Includes"
+msgid  "~^I~ Includes"
 msgstr "~^I~ Incl."
 
-#: idestatu.cc:66 idestatu.cc:74 idestatu.cc:91 idestatu.cc:138 idestatu.cc:163
-msgid "~Alt+F9~ Compile"
+msgid  "~Alt+F9~ Compile"
 msgstr "~Alt+F9~ Oversët"
 
-#: idestatu.cc:71 idestatu.cc:109 idestatu.cc:112
-msgid "~Enter~ Jump to source"
+msgid  "~Enter~ Jump to source"
 msgstr "~Enter~ Vis kildetekst"
 
-#: idestatu.cc:80
-msgid "~Enter~ Select"
+msgid  "~Ctrl+Del~ Delete all"
+msgstr ""
+
+msgid  "~Enter~ Select"
 msgstr "~Enter~ Vëlg"
 
-#: idestatu.cc:81
-msgid "~Del~ Close"
+msgid  "~Del~ Close"
 msgstr "~Del~ Luk"
 
-#: idestatu.cc:98
-msgid "~F1~ Help on InfoViewer"
+msgid  "~F1~ Help on InfoViewer"
 msgstr "~F1~ Hjëlp til InfoViewer"
 
-#: idestatu.cc:99
-msgid "~Alt+F1~ last help"
+msgid  "~Alt+F1~ last help"
 msgstr "~Alt+F1~ Sidste hjëlp"
 
-#: idestatu.cc:100
-msgid "~Alt+F10~ local menu"
+msgid  "~Alt+F10~ local menu"
 msgstr "~Alt+F10~ lokal menu"
 
-#: idestatu.cc:102
-msgid "~^F1~ Bookmarks"
+msgid  "~^F1~ Bookmarks"
 msgstr ""
 
-#: idestatu.cc:114 rhgdb/main.cc:186
-msgid "~Ctrl+F1~ Select from a list"
+msgid  "~Ctrl+F1~ Select from a list"
 msgstr "~Ctrl+F1~ Vëlg fra liste"
 
-#: idestatu.cc:120 rhgdb/main.cc:190
-msgid "~Enter~ Edit"
+msgid  "~Enter~ Edit"
 msgstr "~Enter~ Edit ?!?"
 
-#: idestatu.cc:127
-msgid "~Esc~ Cancel"
+msgid  "~Esc~ Cancel"
 msgstr "~Esc~ AnnulÇr"
 
-#: idestatu.cc:128
-msgid "~Space~ select"
+msgid  "~Space~ select"
 msgstr "~Space~ Vëlg"
 
-#: idestatu.cc:149
-msgid "~^G~ Goto"
+msgid  "~^G~ Goto"
 msgstr ""
 
-#: idestatu.cc:150 idestatu.cc:154
-msgid "~Alt+F3~ Close"
+msgid  "~Alt+F3~ Close"
 msgstr ""
 
-#: idestatu.cc:153
-msgid "~Enter~ Modify register"
+msgid  "~Enter~ Modify register"
 msgstr ""
 
-#: ideutil.cc:56
-msgid "Search for file '%s'\n"
+msgid  "Search for file '%s'\n"
 msgstr "Sõg efter filen: '%s'\n"
 
-#: ideutil.cc:120
-msgid "found '%s'\n"
+msgid  "found '%s'\n"
 msgstr "'%s' fundet\n"
 
-#: ideutil.cc:122
-msgid "not found: take '%s'\n"
+msgid  "not found: take '%s'\n"
 msgstr "'%s' IKKE fundet\n"
 
-#: ideutil.cc:171
-msgid "clearing the FindCache\n"
+msgid  "clearing the FindCache\n"
 msgstr "sletter sõgecache\n"
 
-#: ideutil.cc:204
-msgid "found '%s' in FindCache\n"
+msgid  "found '%s' in FindCache\n"
 msgstr "%s fundet i sõgecache\n"
 
-#: ideutil.cc:215
-msgid "found '%s' in current directory\n"
+msgid  "found '%s' in current directory\n"
 msgstr "'%s' fundet i aktuelt katalog\n"
 
-#: ideutil.cc:233 ideutil.cc:259
-msgid "found '%s' using the search directory '%s'\n"
+msgid  "found '%s' using the search directory '%s'\n"
 msgstr "'%s' fundet i sõgekataloget '%s'\n"
 
-#: openedit.cc:55
-msgid "Open the file %s"
+msgid  "Open the file %s"
 msgstr ""
 
-#: ideuser.cc:129
-msgid "An error has occoured when running the program "
+msgid  "An error has occoured when running the program "
 msgstr "Der er opstÜet en fejl under udfõrslen af dette program "
 
-#: ideuser.cc:133
-msgid "The error was : "
+msgid  "The error was : "
 msgstr "Fejlen er: "
 
-#: idecomp.cc:146 idecomp.cc:790
-msgid "Messages to stdout:"
+msgid  "Messages to stdout:"
 msgstr ""
 
-#: idecomp.cc:158
-msgid "Messages to stderr:"
+msgid  "Messages to stderr:"
 msgstr ""
 
-#: idecomp.cc:189 idecomp.cc:336
-msgid "Control-Break Pressed"
+msgid  "Control-Break Pressed"
 msgstr "Afbrudt med Control-Break"
 
-#: idecomp.cc:543
-msgid "Compiling: "
+msgid  "Compiling: "
 msgstr "Oversëtter: "
 
-#: idecomp.cc:548
-msgid "Creating: "
+msgid  "Creating: "
 msgstr ""
 
-#: idecomp.cc:942
-msgid "Don't know how to build %s from %s"
+msgid  "Don't know how to build %s from %s"
 msgstr "Kan ikke opbygge %s udfra %s"
 
-#: idecomp.cc:1038
-msgid "no errors"
+msgid  "no errors"
 msgstr "Ingen fejl"
 
-#: idecomp.cc:1050
-msgid "There were some errors"
+msgid  "There were some errors"
 msgstr ""
 
-#: idesynta.cc:373
-msgid "Select a topic"
+msgid  "Select a topic"
 msgstr ""
 
-#: idesynta.cc:468 idesynta.cc:497
-msgid "Error creating the indices for %s (or nothing found). Remove that file from the list?"
+msgid  ""
+"Error creating the indices for %s (or nothing found). Remove that file from "
+"the list?"
 msgstr ""
 
-#: idesynta.cc:527
-msgid "No INFO files for syntax help defined"
+msgid  "No INFO files for syntax help defined"
 msgstr ""
 
-#: idesynta.cc:550
-msgid "Couldn't find any matching help"
+msgid  "Couldn't find any matching help"
 msgstr ""
 
-#: idesynta.cc:569
-msgid "Options for syntax help"
+msgid  "Options for syntax help"
 msgstr ""
 
-#: idesynta.cc:572
-msgid "E~x~act"
+msgid  "E~x~act"
 msgstr ""
 
-#: idesynta.cc:573
-msgid "~S~ubstring"
+msgid  "~S~ubstring"
 msgstr ""
 
-#: idesynta.cc:574
-msgid "~F~uzzy"
+msgid  "~F~uzzy"
 msgstr ""
 
-#: idesynta.cc:577
-msgid "Search ~m~ethode"
+msgid  "Search ~m~ethode"
 msgstr ""
 
-#: idesynta.cc:586 libset/infview/inf.cc:1893 libset/setedit/editdiag.cc:69 libset/setedit/editdiag.cc:116
-msgid "~C~ase sensitive"
+msgid  "~C~ase sensitive"
 msgstr "Skëln imellem a/A (~C~)"
 
-#: idesynta.cc:589
-msgid "Search o~p~tions"
+msgid  "Search o~p~tions"
 msgstr ""
 
-#: idesynta.cc:602
-msgid "Fu~z~zy value"
+msgid  "Fu~z~zy value"
 msgstr ""
 
-#: idedial.cc:64
-msgid "Not enough memory for this operation"
+msgid  "Not enough memory for this operation"
 msgstr "Ikke tilstrëkkelig ledig hukommelse til denne operation."
 
-#: idedial.cc:73
-msgid "Error reading file "
+msgid  "Error reading file "
 msgstr "FEJL ved lësning af fil "
 
-#: idedial.cc:78
-msgid "Error writing file "
+msgid  "Error writing file "
 msgstr "FEJL ved skrivning til fil "
 
-#: idedial.cc:86
-msgid "Error creating file "
+msgid  "Error creating file "
 msgstr "FEJL ved oprettelse af fil "
 
-#: idedial.cc:95
-msgid " has been modified. Save?"
+msgid  " has been modified. Save?"
 msgstr " er blevet ëndret. Gem?"
 
-#: idedial.cc:100
-msgid "Save untitled file?"
+msgid  "Save untitled file?"
 msgstr "Gem unavngiven fil?"
 
-#: idedial.cc:107
-msgid "Save file as"
+msgid  "Save file as"
 msgstr "Gem som"
 
-#: idedial.cc:121
-msgid "Search string not found."
+msgid  "Search string not found."
 msgstr "Sõgestreng ikke fundet."
 
-#: idedial.cc:141
-msgid "Replace this occurence?"
+msgid  "Replace this occurence?"
 msgstr "Erstat denne forekomst?"
 
-#: idedial.cc:187
-msgid "Line too long, cut it?"
+msgid  "Line too long, cut it?"
 msgstr ""
 
-#: idedial.cc:205 libset/calcu/calcu.cc:123
-msgid "Calculator"
+msgid  "Calculator"
 msgstr ""
 
-#: idedial.cc:228 libset/calcu/calcu.cc:78 libtvgdb/twatchdi.cc:53
-msgid "~R~esult"
+msgid  "~R~esult"
 msgstr "~R~esultat"
 
-#: idedial.cc:232 libset/calcu/calcu.cc:82 libtvgdb/twatchdi.cc:65
-msgid "E~v~al"
+msgid  "E~v~al"
 msgstr "E~v~aluer"
 
-#: idedial.cc:253 libset/calcu/calcu.cc:107
-msgid "Error in expression (%d)"
+msgid  "Error in expression (%d)"
 msgstr ""
 
-#: :6 tvision/classes/t/tcolordi.cc:86
-msgid "Color"
+msgid  "Color"
 msgstr "Farve"
 
-#: :6
-msgid "Desktop"
+msgid  "Desktop"
 msgstr "Desktop"
 
-#: :6 tvision/classes/t/tmonosel.cc:30
-msgid "Normal"
+msgid  "Normal"
 msgstr "Normal"
 
-#: :6
-msgid "Menus"
+msgid  "Menus"
 msgstr "Menuer"
 
-#: :6
-msgid "Disabled"
+msgid  "Disabled"
 msgstr "Inaktiv"
 
-#: :6
-msgid "Shortcut"
+msgid  "Shortcut"
 msgstr "Genvej"
 
-#: :6
-msgid "Selected"
+msgid  "Selected"
 msgstr "Markeret"
 
-#: :6
-msgid "Selected disabled"
+msgid  "Selected disabled"
 msgstr "Markeret inaktiv"
 
-#: :6
-msgid "Shortcut selected"
+msgid  "Shortcut selected"
 msgstr "Genvej markeret"
 
-#: :6
-msgid "Blue Windows"
+msgid  "Blue Windows"
 msgstr "BlÜ vinduer"
 
-#: :6
-msgid "Cyan Windows"
+msgid  "Cyan Windows"
 msgstr "Cyan vinduer"
 
-#: :6
-msgid "Gray Windows"
+msgid  "Gray Windows"
 msgstr "GrÜ vinduer"
 
-#: :6
-msgid "Dialogs"
+msgid  "Dialogs"
 msgstr "Dialoger"
 
-#: :6
-msgid "Label normal"
+msgid  "Label normal"
 msgstr "Normal etikette"
 
-#: :6
-msgid "Label selected"
+msgid  "Label selected"
 msgstr "Markeret etikette"
 
-#: :6
-msgid "Label shortcut"
+msgid  "Label shortcut"
 msgstr "Etikette genvej"
 
-#: :6
-msgid "Button normal"
+msgid  "Button normal"
 msgstr "Normal knap"
 
-#: :6
-msgid "Button default"
+msgid  "Button default"
 msgstr "Standardknap"
 
-#: :6
-msgid "Button selected"
+msgid  "Button selected"
 msgstr "Markeret knap"
 
-#: :6
-msgid "Button disabled"
+msgid  "Button disabled"
 msgstr "Inaktiv knap"
 
-#: :6
-msgid "Button shortcut"
+msgid  "Button shortcut"
 msgstr "Knap genvej"
 
-#: :6
-msgid "Button shadow"
+msgid  "Button shadow"
 msgstr "Knapskygge"
 
-#: :6
-msgid "Cluster normal"
+msgid  "Cluster normal"
 msgstr "Normal gruppe"
 
-#: :6
-msgid "Cluster selected"
+msgid  "Cluster selected"
 msgstr "Markeret gruppe"
 
-#: :6
-msgid "Cluster shortcut"
+msgid  "Cluster shortcut"
 msgstr "Markeret gruppe genvej"
 
-#: :6
-msgid "Input normal"
+msgid  "Input normal"
 msgstr "normalt indlësning"
 
-#: :6
-msgid "Input selected"
+msgid  "Input selected"
 msgstr "indlëst markeret"
 
-#: :6
-msgid "Input arrow"
+msgid  "Input arrow"
 msgstr "Indlësningspil"
 
-#: :6
-msgid "History button"
+msgid  "History button"
 msgstr "Historikknap"
 
-#: :6
-msgid "History sides"
+msgid  "History sides"
 msgstr "Historik"
 
-#: :6
-msgid "History bar page"
+msgid  "History bar page"
 msgstr "Historikliste"
 
-#: :6
-msgid "History bar icons"
+msgid  "History bar icons"
 msgstr "Historikliste ikoner"
 
-#: :6
-msgid "List normal"
+msgid  "List normal"
 msgstr "Normalliste"
 
-#: :6
-msgid "List focused"
+msgid  "List focused"
 msgstr "Aktiv liste"
 
-#: :6
-msgid "List selected"
+msgid  "List selected"
 msgstr "Markeret liste"
 
-#: :6
-msgid "List divider"
+msgid  "List divider"
 msgstr "Listeadskilder"
 
-#: :6
-msgid "Information pane"
+msgid  "Information pane"
 msgstr "Informationspanel"
 
-#: :6
-msgid "Blue Editor"
+msgid  "Blue Editor"
 msgstr "BlÜ editor"
 
-#: :6
-msgid "Cyan Editor"
+msgid  "Cyan Editor"
 msgstr ""
 
-#: :6
-msgid "Gray Editor"
+msgid  "Gray Editor"
 msgstr ""
 
-#: :6
-msgid "Info viewer"
+msgid  "Info viewer"
 msgstr ""
 
-#: :6
-msgid "keyword"
+msgid  "keyword"
 msgstr ""
 
-#: :6
-msgid "selected keyword"
+msgid  "selected keyword"
 msgstr ""
 
-#: :6
-msgid "marked keyword"
+msgid  "marked keyword"
 msgstr ""
 
-#: :6
-msgid "Disassembler"
+msgid  "Disassembler"
 msgstr ""
 
-#: :6
-msgid "Unchanged register"
+msgid  "Unchanged register"
 msgstr ""
 
-#: :6
-msgid "Changed register"
+msgid  "Changed register"
 msgstr ""
 
-#: :6
-msgid "Focused register"
+msgid  "Focused register"
 msgstr ""
 
-#: libide/tflagent.cc:49
-msgid "You must type a value here"
+msgid  "You must type a value here"
 msgstr ""
 
-#: libide/tflagent.cc:60
-msgid "You can type a value here"
+msgid  "You can type a value here"
 msgstr ""
 
-#: libide/tflagent.cc:61
-msgid "~V~alue (-1 for none)"
+msgid  "~V~alue (-1 for none)"
 msgstr ""
 
-#: libide/tflagent.cc:72 libide/tflagent.cc:93
-msgid " allowed chars "
+msgid  " allowed chars "
 msgstr ""
 
-#: libide/tflagent.cc:80
-msgid "You must type a string here"
+msgid  "You must type a string here"
 msgstr ""
 
-#: libide/tflagent.cc:101
-msgid "You can type a string here"
+msgid  "You can type a string here"
 msgstr ""
 
-#: libide/tflagent.cc:112
-msgid "You must type a character here"
+msgid  "You must type a character here"
 msgstr ""
 
-#: libide/tflagent.cc:125
-msgid "You can type a character here"
+msgid  "You can type a character here"
 msgstr ""
 
-#: libide/tidefile.cc:98 libide/tidefile.cc:287
-msgid "Warning: %s is write protected"
+msgid  "Warning: %s is write protected"
 msgstr ""
 
-#: libtvgdb/breakdia.cc:78
-msgid "File"
+msgid  "File"
 msgstr "fil"
 
-#: libtvgdb/breakdia.cc:82
-msgid "Line/Function"
+msgid  "Line/Function"
 msgstr "Linie/funktion"
 
-#: libtvgdb/breakdia.cc:86
-msgid "Condition"
+msgid  "Condition"
 msgstr "betingelse"
 
-#: libtvgdb/breakdia.cc:90
-msgid "Count"
+msgid  "Count"
 msgstr "tëller"
 
-#: libtvgdb/breakdia.cc:98
-msgid "~M~odify"
+msgid  "~M~odify"
 msgstr "índre  ~M~"
 
-#: libtvgdb/breakdia.cc:107
-msgid "~E~nable"
+msgid  "~E~nable"
 msgstr "Aktiv~e~r"
 
-#: libtvgdb/breakdia.cc:111
-msgid "D~i~sable"
+msgid  "D~i~sable"
 msgstr "deakt~i~ver"
 
-#: libtvgdb/breakdia.cc:115
-msgid "~A~nzeigen"
+msgid  "~S~how"
 msgstr ""
 
-#: libtvgdb/breakdia.cc:234
-msgid "File/L~i~ne"
+msgid  "File/L~i~ne"
 msgstr "Fil/L~i~nie"
 
-#: libtvgdb/breakdia.cc:235
-msgid "Fu~n~ction"
+msgid  "Fu~n~ction"
 msgstr "Fu~n~ktion"
 
-#: libtvgdb/breakdia.cc:241
-msgid "~T~ype"
+msgid  "~T~ype"
 msgstr "~T~ype"
 
-#: libtvgdb/breakdia.cc:249
-msgid "F~u~nction"
+msgid  "F~u~nction"
 msgstr "F~u~nktion"
 
-#: libtvgdb/breakdia.cc:257
-msgid "~F~ilename"
+msgid  "~F~ilename"
 msgstr "~F~ilnavn"
 
-#: libtvgdb/breakdia.cc:267
-msgid "~L~ine"
+msgid  "~L~ine"
 msgstr "~L~inie"
 
-#: libtvgdb/breakdia.cc:277
-msgid "Con~d~ition"
+msgid  "Con~d~ition"
 msgstr "Betingelse ~d~"
 
-#: libtvgdb/breakdia.cc:286
-msgid "Coun~t~"
+msgid  "Coun~t~"
 msgstr "~T~ëller"
 
-#: libtvgdb/breakdia.cc:307
-msgid "Edit Breakpoint"
+msgid  "Edit Breakpoint"
 msgstr "Rediger programstop"
 
-#: libtvgdb/breakdia.cc:312
-msgid "New Breakpoint"
+msgid  "New Breakpoint"
 msgstr ""
 
-#: libtvgdb/breakdia.cc:377
-msgid "BreakPoints"
+msgid  "BreakPoints"
 msgstr "Programstop"
 
-#: libtvgdb/tfuncinp.cc:40
-msgid "Select a function"
+msgid  "Select a function"
 msgstr "Vëlg en funktion"
 
-#: libtvgdb/tfunctio.cc:77
-msgid "return type: "
+msgid  "return type: "
 msgstr "returtype: "
 
-#: libtvgdb/tfunctio.cc:80
-msgid "file: "
+msgid  "file: "
 msgstr "fil: "
 
-#: libtvgdb/tgdbwind.cc:77
-msgid "Output from GDB"
+msgid  "Output from GDB"
 msgstr "Udskrift fra GDB"
 
-#: libtvgdb/twatchdi.cc:61
-msgid "~N~ew value"
+msgid  "~N~ew value"
 msgstr "~N~y vërdi"
 
-#: libtvgdb/twatchdi.cc:68
-msgid "~C~hange"
+msgid  "~C~hange"
 msgstr "Ret (~C~)"
 
-#: libtvgdb/twatchdi.cc:90 libtvgdb/twatchli.cc:54
-msgid "not available"
+msgid  "not available"
 msgstr "ikke tilgëngelig"
 
-#: libtvgdb/twatchdi.cc:103
-msgid "could not change"
+msgid  "could not change"
 msgstr "kan ikke ëndre"
 
-#: libtvgdb/twatchli.cc:111
-msgid "Change the expression to watch"
+msgid  "Change the expression to watch"
 msgstr "índre udtrykket som overvÜges"
 
-#: libtvgdb/watches.cc:61
-msgid "Watch"
+msgid  "Watch"
 msgstr "OvervÜg"
 
-#: libtvgdb/watches.cc:81
-msgid "Evaluate and modify"
+msgid  "Evaluate and modify"
 msgstr ""
 
-#: libtvgdb/watches.cc:98
-msgid "Add to watch list"
+msgid  "Add to watch list"
 msgstr "Tilfõj til overvÜgningsliste"
 
-#: libtvgdb/userwarn.cc:24
-msgid ""
+msgid  ""
 "%s\n"
 "\n"
 "(Breakpoint at function '%s' in file %s)"
 msgstr ""
 
-#: libtvgdb/userwarn.cc:29
-msgid ""
+msgid  ""
 "%s\n"
 "\n"
 "(Breakpoint at line %d in file %s)"
 msgstr ""
 
-#: libtvgdb/userwarn.cc:55
-msgid "Program has received signal: "
+msgid  "Program has received signal: "
 msgstr ""
 
-#: libtvgdb/userwarn.cc:59
-msgid "For this line is no code generated"
+msgid  "For this line is no code generated"
 msgstr ""
 
-#: libtvgdb/userwarn.cc:63
-msgid "Could not find the program. You must build at first the program to use this function, because the symbols are taken from that file."
+msgid  ""
+"Could not find the program. You must build at first the program to use this "
+"function, because the symbols are taken from that file."
 msgstr ""
 
-#: libtvgdb/userwarn.cc:68
-msgid "The selected breakpoint is invalid, probably this file is not compiled with debugging information or for this line is no code generated."
+msgid  ""
+"The selected breakpoint is invalid, probably this file is not compiled with "
+"debugging information or for this line is no code generated."
 msgstr ""
 
-#: libtvgdb/userwarn.cc:75
-msgid "This program has no usable debugging information. Try to compile it with the -g switch."
+msgid  ""
+"This program has no usable debugging information. Try to compile it with the "
+"-g switch."
 msgstr ""
 
-#: libtvgdb/userwarn.cc:79
-msgid "This breakpoint could not enabled, because you are running under Windows 3.1x and there the number of breakpoints is limited to 3"
+msgid  ""
+"This breakpoint could not enabled, because you are running under Windows "
+"3.1x and there the number of breakpoints is limited to 3"
 msgstr ""
 
-#: libtvgdb/userwarn.cc:86
-msgid "You have already 3 breakpoints set and under Windows 3.1x the number of breakpoints is limited to 3"
+msgid  ""
+"You have already 3 breakpoints set and under Windows 3.1x the number of "
+"breakpoints is limited to 3"
 msgstr ""
 
-#: libtvgdb/callstac.cc:167
-msgid "Function call stack"
+msgid  "Function call stack"
 msgstr ""
 
-#: libtvgdb/tdiswin.cc:85
-msgid "Change register value"
+msgid  "Change register value"
 msgstr ""
 
-#: libtvgdb/tdiswin.cc:381 tvision/classes/t/tlistvie.cc:154
-msgid "<empty>"
+msgid  "<empty>"
 msgstr "<tom>"
 
-#: libtvuti/editdirl.cc:22
-msgid "~P~athlist"
+msgid  "~P~athlist"
 msgstr "Stiliste (~P~)"
 
-#: libtvuti/editpara.cc:26
-msgid "~P~arameter"
+msgid  "~P~arameter"
 msgstr "~P~arametre"
 
-#: libtvuti/editpara.cc:32
-msgid "There is an unmatched quote in your arguments"
+msgid  "There is an unmatched quote in your arguments"
 msgstr "Citationstegn mangler i argumentet (ulige antal)"
 
-#: libtvuti/twindowl.cc:106
-msgid "Closed"
+msgid  "Closed"
 msgstr ""
 
-#. Do not add closed 'Untitled' windows
-#: libset/editwind.cc:229 libtvuti/windowli.cc:156
-msgid "Untitled"
+msgid  "Untitled"
 msgstr "Unavngiven"
 
-#: libtvuti/tmsglist.cc:121 libtvuti/tmsglist.cc:149
-msgid "Error: "
+msgid  "Error: "
 msgstr "FEJL: "
 
-#: libtvuti/tmsglist.cc:124 libtvuti/tmsglist.cc:152
-msgid "Warning: "
+msgid  "Warning: "
 msgstr "ADVARSEL: "
 
-#: tvision/fileview.cc:147
-msgid "Could not open '%s' for reading"
+msgid  "Could not open '%s' for reading"
 msgstr "Kan ikke Übne '%s' for lësning"
 
-#: tvision/fileview.cc:212
-msgid "Save to file"
+msgid  "Save to file"
 msgstr ""
 
-#: tvision/msgbox.cc:34
-msgid "~Y~es"
+msgid  "~Y~es"
 msgstr "Ja (~Y~)"
 
-#: tvision/msgbox.cc:35
-msgid "~N~o"
+msgid  "~N~o"
 msgstr "~N~ej"
 
-#: tvision/msgbox.cc:50
-msgid "Warning"
+msgid  "Warning"
 msgstr "Advarsel"
 
-#: tvision/msgbox.cc:51
-msgid "Error"
+msgid  "Error"
 msgstr "Fejl"
 
-#: tvision/msgbox.cc:52
-msgid "Information"
+msgid  "Information"
 msgstr "Information"
 
-#: tvision/msgbox.cc:53
-msgid "Confirm"
+msgid  "Confirm"
 msgstr "Bekrëft"
 
-#: tvision/msgbox.cc:81
-msgid "Don't warn you next time"
+msgid  "Don't warn you next time"
 msgstr ""
 
-#: tvision/classes/opstream.cc:202
-msgid "type not registered: %s\n"
+msgid  "type not registered: %s\n"
 msgstr "typen er ikke registreret: %s\n"
 
-#: tvision/classes/t/tchdirdi.cc:37
-msgid "Change Directory"
+msgid  "Change Directory"
 msgstr "Skift katalog"
 
-#: tvision/classes/t/tchdirdi.cc:45
-msgid "Directory ~n~ame"
+msgid  "Directory ~n~ame"
 msgstr "Katalog ~n~avn"
 
-#: tvision/classes/t/tchdirdi.cc:53
-msgid "Directory ~t~ree"
+msgid  "Directory ~t~ree"
 msgstr "Katalog ~t~rë"
 
-#: tvision/classes/t/tchdirdi.cc:58
-msgid "~C~hdir"
+msgid  "~C~hdir"
 msgstr "Skift katalog (~C~)"
 
-#: tvision/classes/t/tchdirdi.cc:60
-msgid "~R~evert"
+msgid  "~R~evert"
 msgstr "GÜ tilbage (~R~)"
 
-#: tvision/classes/t/tchdirdi.cc:62
-msgid "Help"
+msgid  "Help"
 msgstr "Hjëlp"
 
-#: tvision/classes/t/tchdirdi.cc:104 tvision/classes/t/tdirlist.cc:217
-msgid "Drives"
+msgid  "Drives"
 msgstr "drev"
 
-#: tvision/classes/t/tchdirdi.cc:176
-msgid "Invalid directory"
+msgid  "Invalid directory"
 msgstr "Ukendt katalog"
 
-#: tvision/classes/t/tcolordi.cc:40
-msgid "Colors"
+msgid  "Colors"
 msgstr "Farver"
 
-#: tvision/classes/t/tcolordi.cc:52
-msgid "~G~roup"
+msgid  "~G~roup"
 msgstr "~G~ruppe"
 
-#: tvision/classes/t/tcolordi.cc:60
-msgid "~I~tem"
+msgid  "~I~tem"
 msgstr "Emne (~I~)"
 
-#: tvision/classes/t/tcolordi.cc:66
-msgid "~F~oreground"
+msgid  "~F~oreground"
 msgstr "~F~orgrund"
 
-#: tvision/classes/t/tcolordi.cc:75
-msgid "~B~ackground"
+msgid  "~B~ackground"
 msgstr "~B~aggrund"
 
-#: tvision/classes/t/tcolordi.cc:80
-msgid "Text "
+msgid  "Text "
 msgstr "Tekst "
 
-#: tvision/classes/t/tfiledia.cc:71
-msgid "~F~iles"
+msgid  "~F~iles"
 msgstr "~F~iler"
 
-#: tvision/classes/t/tfiledia.cc:95
-msgid "~R~eplace"
+msgid  "~R~eplace"
 msgstr "E~r~stat"
 
-#: tvision/classes/t/tfiledia.cc:103
-msgid "~C~lear"
+msgid  "~C~lear"
 msgstr "Slet (~C~)"
 
-#: tvision/classes/t/tfiledia.cc:243
-msgid "Invalid drive or directory"
+msgid  "Invalid drive or directory"
 msgstr "Ukendt drev eller katalog"
 
-#: tvision/classes/t/tfiledia.cc:292
-msgid "Invalid file name."
+msgid  "Invalid file name."
 msgstr "Ugyldigt filnavn"
 
-#: tvision/classes/t/tfileinf.cc:37
-msgid ""
+msgid  ""
 msgstr ""
 
-#: tvision/classes/t/tfileinf.cc:37
-msgid "Jan"
+msgid  "Jan"
 msgstr "Jan"
 
-#: tvision/classes/t/tfileinf.cc:37
-msgid "Feb"
+msgid  "Feb"
 msgstr "Feb"
 
-#: tvision/classes/t/tfileinf.cc:37
-msgid "Mar"
+msgid  "Mar"
 msgstr "Mar"
 
-#: tvision/classes/t/tfileinf.cc:37
-msgid "Apr"
+msgid  "Apr"
 msgstr "Apr"
 
-#: tvdemo/calendar.cc:33 tvision/classes/t/tfileinf.cc:37
-msgid "May"
+msgid  "May"
 msgstr "Maj"
 
-#: tvision/classes/t/tfileinf.cc:37
-msgid "Jun"
+msgid  "Jun"
 msgstr "Jun"
 
-#: tvision/classes/t/tfileinf.cc:38
-msgid "Jul"
+msgid  "Jul"
 msgstr "Jul"
 
-#: tvision/classes/t/tfileinf.cc:38
-msgid "Aug"
+msgid  "Aug"
 msgstr "Aug"
 
-#: tvision/classes/t/tfileinf.cc:38
-msgid "Sep"
+msgid  "Sep"
 msgstr "Sep"
 
-#: tvision/classes/t/tfileinf.cc:38
-msgid "Oct"
+msgid  "Oct"
 msgstr "Okt"
 
-#: tvision/classes/t/tfileinf.cc:38
-msgid "Nov"
+msgid  "Nov"
 msgstr "Nov"
 
-#: tvision/classes/t/tfileinf.cc:38
-msgid "Dec"
+msgid  "Dec"
 msgstr "Dec"
 
-#: tvision/classes/t/tfilterv.cc:59
-msgid "Invalid character in input"
+msgid  "Invalid character in input"
 msgstr "Ulovligt tegn i inddata"
 
-#: tvision/classes/t/tmonosel.cc:31
-msgid "Highlight"
+msgid  "Highlight"
 msgstr "Fremhëvet"
 
-#: tvision/classes/t/tmonosel.cc:32
-msgid "Underline"
+msgid  "Underline"
 msgstr "Understreget"
 
-#: tvision/classes/t/tmonosel.cc:33
-msgid "Inverse"
+msgid  "Inverse"
 msgstr "Invers"
 
-#: tvision/classes/t/tprogram.cc:240
-msgid "~Alt-X~ Exit"
+msgid  "~Alt-X~ Exit"
 msgstr "~Alt-X~ Afslut"
 
-#: tvision/classes/t/trangeva.cc:41
-msgid "Value not in the range %uld to %uld"
+msgid  "Value not in the range %uld to %uld"
 msgstr ""
 
-#: tvision/classes/t/trangeva.cc:44
-msgid "Value not in the range %ld to %ld"
+msgid  "Value not in the range %ld to %ld"
 msgstr ""
 
-#: rhgdb/main.cc:134
-msgid "about RH~G~DB"
+msgid  "about RH~G~DB"
 msgstr "Om RH~G~DB"
 
-#: rhgdb/main.cc:137
-msgid "~Q~uit"
+msgid  "~Q~uit"
 msgstr "Afslut (~Q~)"
 
-#: rhgdb/main.cc:163
-msgid "~D~irectories for sources"
+msgid  "~D~irectories for sources"
 msgstr "Kataloger til kil~d~etekster"
 
-#: rhgdb/main.cc:166
-msgid "~L~oad options"
+msgid  "~L~oad options"
 msgstr "Ind~l~ës opsëtning"
 
-#: rhgdb/main.cc:175
-msgid "~U~ser screen"
+msgid  "~U~ser screen"
 msgstr "Br~u~gerskërmbillede"
 
-#: rhgdb/main.cc:176
-msgid "~W~indow list"
+msgid  "~W~indow list"
 msgstr "Vindues liste (~W~)"
 
-#: rhgdb/main.cc:196
-msgid "~F7~ Trace"
+msgid  "~F7~ Trace"
 msgstr "~F7~ Sõgning/trace"
 
-#: rhgdb/main.cc:197
-msgid "~F8~ Step"
+msgid  "~F8~ Step"
 msgstr "~F8~ enkelt trin"
 
-#: rhgdb/main.cc:198
-msgid "~F4~ Goto"
+msgid  "~F4~ Goto"
 msgstr "~F4~ GÜ til"
 
-#: rhgdb/main.cc:199
-msgid "~^F2~ Reset"
+msgid  "~^F2~ Reset"
 msgstr "^F2~ Nulstil"
 
-#: rhgdb/main.cc:200
-msgid "~^F8~ Break"
+msgid  "~^F8~ Break"
 msgstr "~^F8~ Break"
 
-#: rhgdb/main.cc:201
-msgid "~^F4~ Eval"
+msgid  "~^F4~ Eval"
 msgstr "~^F4~ Evaluer"
 
-#: rhgdb/main.cc:202
-msgid "~^F9~ Run"
+msgid  "~^F9~ Run"
 msgstr "~^F9~ Kõr"
 
-#: rhgdb/main.cc:219
-msgid "About RHGDB"
+msgid  "About RHGDB"
 msgstr "Om RHGDB"
 
-#: rhgdb/main.cc:231
-msgid "RHGDB is a source level debugger"
+msgid  "RHGDB is a source level debugger"
 msgstr ""
 
-#: rhgdb/main.cc:232
-msgid "with Turbo Vision interface"
+msgid  "with Turbo Vision interface"
 msgstr ""
 
-#: rhgdb/main.cc:233
-msgid "based on GDB "
+msgid  "based on GDB "
 msgstr ""
 
-#: rhgdb/main.cc:438
-msgid "All windows on the desktop"
+msgid  "All windows on the desktop"
 msgstr "Alle vinduer pÜ desktoppen"
 
-#: rhgdb/main.cc:467
-msgid "usage: %s [options] exe-file [[arg1 [arg2 ...]]]\n"
+msgid  "usage: %s [options] exe-file [[arg1 [arg2 ...]]]\n"
 msgstr ""
 
-#: rhgdb/main.cc:468
-msgid "options:\n"
+msgid  "options:\n"
 msgstr ""
 
-#: rhgdb/main.cc:478
-msgid "            -D : Use dual-display debugging\n"
+msgid  "            -D : Use dual-display debugging\n"
 msgstr ""
 
-#: rhgdb/main.cc:479
-msgid "            -i INI_FILE : Use INI_FILE as config file\n"
+msgid  "            -i INI_FILE : Use INI_FILE as config file\n"
 msgstr ""
 
-#: rhgdb/main.cc:686
-msgid "Do you really want to interrupt RHGDB?"
+msgid  "Do you really want to interrupt RHGDB?"
 msgstr ""
 
-#: rhgdb/main.cc:1191
-msgid "Save options to file"
+msgid  "Save options to file"
 msgstr "Gem opsëtning i en fil"
 
-#: rhgdb/main.cc:1207
-msgid "Read options from file"
+msgid  "Read options from file"
 msgstr "Lës opsëtning fra fil"
 
-#: rhgdb/main.cc:1235
-msgid "Pathlist for source files"
+msgid  "Pathlist for source files"
 msgstr "Stiliste for kildetekster"
 
-#: rhgdb/options.cc:87
-msgid "~T~absize"
+msgid  "~T~absize"
 msgstr "~T~abulatorstõrrelse"
 
-#: tvdemo/ascii.cc:145
-msgid "  Char: "
+msgid  "  Char: "
 msgstr ""
 
-#: tvdemo/ascii.cc:146
-msgid " Decimal: "
+msgid  " Decimal: "
 msgstr ""
 
-#: tvdemo/ascii.cc:147
-msgid " Hex "
+msgid  " Hex "
 msgstr ""
 
-#: tvdemo/ascii.cc:174
-msgid "ASCII Chart"
+msgid  "ASCII Chart"
 msgstr ""
 
-#: tvdemo/calendar.cc:33
-msgid "January"
+msgid  "January"
 msgstr ""
 
-#: tvdemo/calendar.cc:33
-msgid "February"
+msgid  "February"
 msgstr ""
 
-#: tvdemo/calendar.cc:33
-msgid "March"
+msgid  "March"
 msgstr ""
 
-#: tvdemo/calendar.cc:33
-msgid "April"
+msgid  "April"
 msgstr ""
 
-#: tvdemo/calendar.cc:34
-msgid "June"
+msgid  "June"
 msgstr ""
 
-#: tvdemo/calendar.cc:34
-msgid "July"
+msgid  "July"
 msgstr ""
 
-#: tvdemo/calendar.cc:34
-msgid "August"
+msgid  "August"
 msgstr ""
 
-#: tvdemo/calendar.cc:34
-msgid "September"
+msgid  "September"
 msgstr ""
 
-#: tvdemo/calendar.cc:34
-msgid "October"
+msgid  "October"
 msgstr ""
 
-#: tvdemo/calendar.cc:35
-msgid "November"
+msgid  "November"
 msgstr ""
 
-#: tvdemo/calendar.cc:35
-msgid "December"
+msgid  "December"
 msgstr ""
 
-#: tvdemo/calendar.cc:110
-msgid "Su Mo Tu We Th Fr Sa"
+msgid  "Su Mo Tu We Th Fr Sa"
 msgstr ""
 
-#: tvdemo/calendar.cc:199
-msgid "Calendar"
+msgid  "Calendar"
 msgstr ""
 
-#: tvdemo/puzzle.cc:80
-msgid "Move"
+msgid  "Move"
 msgstr ""
 
-#: tvdemo/puzzle.cc:270
-msgid "Puzzle"
+msgid  "Puzzle"
 msgstr ""
 
-#: tvdemo/mousedlg.cc:92
-msgid "Mouse options"
+msgid  "Mouse options"
 msgstr ""
 
-#: tvdemo/mousedlg.cc:106
-msgid "~M~ouse double click"
+msgid  "~M~ouse double click"
 msgstr ""
 
-#: tvdemo/mousedlg.cc:109
-msgid "Fast       Medium      Slow"
+msgid  "Fast       Medium      Slow"
 msgstr ""
 
-#: tvdemo/mousedlg.cc:112
-msgid "~R~everse mouse buttons"
+msgid  "~R~everse mouse buttons"
 msgstr ""
 
-#: libset/bufun.cc:434
-msgid "Jump to function"
+msgid  "Jump to function"
 msgstr ""
 
-#: libset/bufun.cc:481
-msgid "Hmmm ... I can't find any function, are you sure?"
+msgid  "Hmmm ... I can't find any function, are you sure?"
 msgstr ""
 
-#: libset/ceditor.cc:3243 libset/ceditor.cc:3262
-msgid "Speed: %f lines/second"
+msgid  "Use a file with 1000 lines or more for that"
 msgstr ""
 
-#: libset/ceditor.cc:3663
-msgid "You can't paste a rectangle crossing the end of the file"
+msgid  "Speed: %f lines/second"
 msgstr ""
 
-#: libset/ceditor.cc:4370
-msgid "No match found"
+msgid  "You can't paste a rectangle crossing the end of the file"
 msgstr ""
 
-#: libset/ceditor.cc:4382
-msgid "Match found at line %d column %d."
+msgid  "No match found"
 msgstr ""
 
-#: libset/ceditor.cc:8790
-msgid "Unhandled syntax highlight"
+msgid  "Match found at line %d column %d."
 msgstr ""
 
-#: libset/ceditor.cc:9626
-msgid "Unhandled undo"
+msgid  ""
+"This file contains ASCII 0 values, all the characters after it in this line "
+"becomes invisible. Be careful."
 msgstr ""
 
-#: libset/ceditor.cc:9806
-msgid "Unhandled redo"
+msgid  "Unhandled syntax highlight"
 msgstr ""
 
-#: libset/ceditor.cc:10259
-msgid "Read from file"
+msgid  "Unhandled undo"
+msgstr ""
+
+msgid  "Unhandled redo"
+msgstr ""
+
+msgid  "Read from file"
 msgstr "Lës fra fil"
 
-#: libset/ceditor.cc:10311
-msgid "Write to file"
+msgid  "Write to file"
 msgstr "Skriv til fil"
 
-#: libset/ceditor.cc:10323
-msgid "File %s exist. Overwrite ?"
+msgid  "File %s exist. Overwrite ?"
 msgstr "Filen %s eksisterer. Overskriv? "
 
-#: libset/ceditor.cc:10626
-msgid "Saved: %s (%ld bytes)."
+msgid  "This file allready exist, overwrite?"
 msgstr ""
 
-#: libset/ceditor.cc:10628
-msgid "Stat failed."
+msgid  "Saved: %s (%ld bytes)."
 msgstr ""
 
-#: libset/editwind.cc:228
-msgid "Clipboard"
+msgid  "Stat failed."
+msgstr ""
+
+msgid  "Clipboard"
 msgstr "Udklipsholder"
 
-#: libset/sdginter.cc:67
-msgid "Starting SDG:"
+msgid  "Starting SDG:"
 msgstr ""
 
-#: libset/sdginter.cc:73
-msgid "Error while %s:"
+msgid  "Error while %s:"
 msgstr ""
 
-#: libset/sdginter.cc:78
-msgid "(%d) %s in line %d"
+msgid  "(%d) %s in line %d"
 msgstr ""
 
-#: libset/sdginter.cc:87
-msgid "In section %s"
+msgid  "In section %s"
 msgstr ""
 
-#: libset/sdginter.cc:89
-msgid "Error of type: %s"
+msgid  "Error of type: %s"
 msgstr ""
 
-#: libset/sdginter.cc:92
-msgid "Code: ...%s..."
+msgid  "Code: ...%s..."
 msgstr ""
 
-#: libset/sdginter.cc:97
-msgid "End of SDG"
+msgid  "End of SDG"
 msgstr ""
 
-#: libset/sdginter.cc:137
-msgid "SDG Parameters"
+msgid  "SDG Parameters"
 msgstr ""
 
-#: libset/sdginter.cc:143
-msgid "~F~ormat file (.frt)"
+msgid  "~F~ormat file (.frt)"
 msgstr ""
 
-#: libset/sdginter.cc:147
-msgid "~I~ntermediate file"
+msgid  "~I~ntermediate file"
 msgstr ""
 
-#: libset/sdginter.cc:151
-msgid "~B~ase output (no extentions)"
+msgid  "~B~ase output (no extentions)"
 msgstr ""
 
-#: libset/sdginter.cc:155
-msgid "~D~irectory of formats"
+msgid  "~D~irectory of formats"
 msgstr ""
 
-#: libset/sdginter.cc:158
-msgid "~K~eep intermediate"
+msgid  "~K~eep intermediate"
 msgstr ""
 
-#: libset/sdginter.cc:160 libset/setedit/editdiag.cc:89 libset/setedit/editdiag.cc:141 libset/setedit/editdiag.cc:163 libset/setedit/editdiag.cc:233 libset/setedit/editdiag.cc:278
-msgid "O~K~"
+msgid  "O~K~"
 msgstr "O~K~"
 
-#: libset/loadkbin.cc:76
-msgid "Can't open %s\n"
-msgstr "Kan ikke Übne %s\n"
-
-#: libset/loadkbin.cc:90
-msgid "[ without ]"
-msgstr ""
-
-#: libset/loadkbin.cc:94
-msgid "Section out of range"
-msgstr ""
-
-#: libset/loadkbin.cc:101
-msgid "Missing ="
-msgstr ""
-
-#: libset/loadkbin.cc:105
-msgid "Scan code out of range"
-msgstr ""
-
-#: libset/loadkbin.cc:108
-msgid "Command out of range"
-msgstr ""
-
-#: libset/pmacros.cc:76
-msgid "Macro definition don't start with Trigger"
+msgid  "Macro definition don't start with Trigger"
 msgstr "Makrodefinition starter ikke med Trigger ?!?"
 
-#: libset/pmacros.cc:84
-msgid "Missing Trigger sequence or too short"
+msgid  "Missing Trigger sequence or too short"
 msgstr "Manglende eller for kort Trigger sekvens"
 
-#: libset/pmacros.cc:102
-msgid "Macro definition without mode keyword"
+msgid  "Macro definition without mode keyword"
 msgstr ""
 
-#: libset/pmacros.cc:111
-msgid "Wrong mode definition in pseudo macro."
+msgid  "Wrong mode definition in pseudo macro."
 msgstr ""
 
-#: libset/pmacros.cc:135
-msgid "Missing start in pseudo macro"
+msgid  "Missing start in pseudo macro"
 msgstr ""
 
-#: libset/pmacros.cc:140
-msgid "Missing end in pseudo macro"
+msgid  "Missing end in pseudo macro"
 msgstr ""
 
-#: libset/pmacros.cc:149
-msgid "Empty pseudo macro"
+msgid  "Empty pseudo macro"
 msgstr "Tom pseudo makro"
 
-#: libset/infview/inf.cc:596
-msgid "InfView - File: %s - Node: %s"
+msgid  "Wrong file"
 msgstr ""
 
-#: libset/infview/inf.cc:1557
-msgid "Sorry can't find the string"
+msgid  "Wrong version"
+msgstr ""
+
+msgid  "Error while reading"
+msgstr ""
+
+msgid  "Error while loading the keyboard binding"
+msgstr ""
+
+msgid  "You'll losse all the changes"
+msgstr ""
+
+msgid  "Error in sLisp interpreter:"
+msgstr ""
+
+msgid  "End of SLP"
+msgstr ""
+
+msgid  "No macros defined"
+msgstr ""
+
+msgid  "sLisp macros"
+msgstr ""
+
+msgid  "~M~acros"
+msgstr "~M~makroer"
+
+msgid  "InfView - File: %s - Node: %s"
+msgstr ""
+
+msgid  "Open Info"
+msgstr ""
+
+msgid  "Sorry can't find the string"
 msgstr "Beklager - kan ikke finde strengen :-("
 
-#: libset/infview/inf.cc:1848
-msgid "Help Control"
+msgid  "Help Control"
 msgstr "Opsëtning af hjëlp ?!?"
 
-#: libset/infview/inf.cc:1858
-msgid "~U~p"
+msgid  "~U~p"
 msgstr "Op (~U~)"
 
-#: libset/infview/inf.cc:1861
-msgid "Prev. ~H~ist."
+msgid  "Prev. ~H~ist."
 msgstr "Forrige ~H~ist."
 
-#: libset/infview/inf.cc:1864
-msgid "H~i~de"
+msgid  "Nodes ~L~ist"
+msgstr ""
+
+msgid  "~B~ookmarks"
+msgstr ""
+
+msgid  "~C~onfiguration"
+msgstr ""
+
+msgid  "~O~pen Info"
+msgstr ""
+
+msgid  "H~i~de"
 msgstr "Skjul (~I~)"
 
-#: libset/infview/inf.cc:1871
-msgid "Hi~s~tory"
+msgid  "Hi~s~tory"
 msgstr "Hi~s~torik"
 
-#: libset/infview/inf.cc:1881
-msgid "Inf Find"
+msgid  "Inf Find"
 msgstr "Sõg Inf"
 
-#: libset/infview/inf.cc:1888 libset/setedit/editdiag.cc:64 libset/setedit/editdiag.cc:106
-msgid "~T~ext to find"
+msgid  "~T~ext to find"
 msgstr "Sõg efter ~t~ekst"
 
-#: libset/infview/inf.cc:1894 libset/setedit/editdiag.cc:70 libset/setedit/editdiag.cc:117
-msgid "~W~hole words only"
+msgid  "~W~hole words only"
 msgstr "Kun hele ord (~W~)"
 
-#: libset/infview/inf.cc:1897
-msgid "In current ~t~opic"
+msgid  "In current ~t~opic"
 msgstr "I de~t~te emne"
 
-#: libset/infview/inf.cc:1898
-msgid "In the ~f~ile"
+msgid  "In the ~f~ile"
 msgstr "I denne ~f~il"
 
-#: libset/infview/inf.cc:1899
-msgid "In ~a~ll files"
+msgid  "In ~a~ll files"
 msgstr "I ~a~lle filer"
 
-#: libset/infview/inf.cc:1913
-msgid "Go To"
+msgid  "Go To"
 msgstr "GÜ til"
 
-#: libset/infview/inf.cc:1920
-msgid "~N~ame of Node"
+msgid  "~N~ame of Node"
 msgstr "~N~odens navn"
 
-#: libset/infview/inf.cc:1939
-msgid "Tag Table"
+msgid  "Tag Table"
 msgstr ""
 
-#: libset/infview/inf.cc:1946
-msgid "~N~odes"
+msgid  "~N~odes"
 msgstr ""
 
-#: libset/infview/inf.cc:1966
-msgid "InfView Configuration"
+msgid  "InfView Configuration"
 msgstr ""
 
-#: libset/infview/inf.cc:1971
-msgid "Hide '*~N~ode' word"
+msgid  "Hide '*~N~ote' word"
 msgstr ""
 
-#: libset/infview/inf.cc:1972
-msgid "Hide real ~l~ink name"
+msgid  "Hide real ~l~ink name"
 msgstr ""
 
-#: libset/infview/inf.cc:2014
-msgid "InfView Bookmarks"
+msgid  "InfView Bookmarks"
 msgstr ""
 
-#: libset/infview/inf.cc:2034
-msgid "~G~o to"
+msgid  "~G~o to"
 msgstr "~G~Ü til"
 
-#: libset/infview/inf.cc:2046
-msgid "~M~arks"
+msgid  "~M~arks"
 msgstr ""
 
-#: libset/infview/infbase.cc:223
-msgid "Attention !! this file is in DOS format,"
-msgstr "ADVARSEL! Denne fil er i DOS format,"
+msgid  ""
+"Attention !! this file is in DOS format, Do you want convert it?, Make a "
+"backup first !!"
+msgstr "ADVARSEL! Denne fil er i DOS format. ùnsker du at konvertere den "
+"(husk at tage en kopi fõrst!)"
 
-#: libset/infview/infbase.cc:237
-msgid "Attention !! this file is in DOS format, Do you want convert it?, Make a backup first !!"
-msgstr "ADVARSEL! Denne fil er i DOS format. ùnsker du at konvertere den (husk at tage en kopi fõrst!)"
-
-#: libset/infview/infbase.cc:254
-msgid "Error: can't find the Node info"
+msgid  "Error: can't find the Node info"
 msgstr "FEJL!: kan ikke find noden"
 
-#: libset/infview/infbase.cc:1199
-msgid "Attention can't open the help file."
+msgid  "Attention can't open the help file."
 msgstr ""
 
-#: libset/infview/infbase.cc:1201
-msgid "Attention can't open the help file '%s'."
+msgid  "Attention can't open the help file '%s'."
 msgstr ""
 
-#: libset/infview/infbase.cc:1725
-msgid ""
+msgid  ""
 "\n"
 " Sorry I can't find this link (press ALT-F1).\n"
 msgstr "\n"
 "Beklager! Kan ikke finde denne lënke (tryk ALT-F1).\n"
 
-#: libset/setedit/editdiag.cc:57
-msgid "Find"
+msgid  "Find"
 msgstr "Sõg"
 
-#: libset/setedit/editdiag.cc:74 libset/setedit/editdiag.cc:126
-msgid "~G~lobal"
+msgid  "~R~egular expressions"
 msgstr ""
 
-#: libset/setedit/editdiag.cc:75 libset/setedit/editdiag.cc:127
-msgid "~S~elected text"
+msgid  "E~x~tended regex"
 msgstr ""
 
-#: libset/setedit/editdiag.cc:78 libset/setedit/editdiag.cc:130
-msgid "Scope"
+msgid  "~G~lobal"
 msgstr ""
 
-#: libset/setedit/editdiag.cc:82 libset/setedit/editdiag.cc:134
-msgid "~F~rom cursor"
+msgid  "~S~elected text"
 msgstr ""
 
-#: libset/setedit/editdiag.cc:83 libset/setedit/editdiag.cc:135
-msgid "~E~ntire scope"
+msgid  "~F~rom cursor"
 msgstr ""
 
-#: libset/setedit/editdiag.cc:86 libset/setedit/editdiag.cc:138
-msgid "Origin"
+msgid  "~E~ntire scope"
 msgstr ""
 
-#: libset/setedit/editdiag.cc:99
-msgid "Replace"
+msgid  "Scope"
+msgstr ""
+
+msgid  "Origin"
+msgstr ""
+
+msgid  "Replace"
 msgstr "Erstat"
 
-#: libset/setedit/editdiag.cc:111
-msgid "~N~ew text"
+msgid  "~N~ew text"
 msgstr "~N~y tekst"
 
-#: libset/setedit/editdiag.cc:118
-msgid "~P~rompt on replace"
+msgid  "Re~g~ular expressions"
+msgstr ""
+
+msgid  "~P~rompt on replace"
 msgstr "Spõrg ved erstat (~P~)"
 
-#: libset/setedit/editdiag.cc:119
-msgid "~R~eplace all"
+msgid  "~R~eplace all"
 msgstr "E~r~stat alle"
 
-#: libset/setedit/editdiag.cc:122
-msgid "Options"
+msgid  "Options"
 msgstr ""
 
-#: libset/setedit/editdiag.cc:143
-msgid "Replace ~A~ll"
+msgid  "Replace ~A~ll"
 msgstr ""
 
-#: libset/setedit/editdiag.cc:154
-msgid "Goto Line"
+msgid  "Goto Line"
 msgstr "GÜ til linie"
 
-#: libset/setedit/editdiag.cc:160
-msgid "Line number"
+msgid  "Line number"
 msgstr "Linie nr"
 
-#: libset/setedit/editdiag.cc:195
-msgid "Local Options"
+msgid  "Local Options"
 msgstr "Lokale flag"
 
-#: libset/setedit/editdiag.cc:200
-msgid "~O~verwrite"
+msgid  "~O~verwrite"
 msgstr "~O~verskriv"
 
-#: libset/setedit/editdiag.cc:201 libset/setedit/editdiag.cc:258
-msgid "~A~utoindent"
+msgid  "~A~utoindent"
 msgstr "~A~utoindryk"
 
-#: libset/setedit/editdiag.cc:202 libset/setedit/editdiag.cc:259
-msgid "~U~se tabs"
+msgid  "~U~se tabs"
 msgstr "Br~u~g tabulering"
 
-#: libset/setedit/editdiag.cc:203 libset/setedit/editdiag.cc:260
-msgid "~P~ersistent blocks"
+msgid  "~P~ersistent blocks"
 msgstr "~P~ersistent blocks ?!?"
 
-#: libset/setedit/editdiag.cc:204 libset/setedit/editdiag.cc:261
-msgid "~I~nteligent C indent"
+msgid  "~I~ntelligent C indent"
 msgstr ""
 
-#: libset/setedit/editdiag.cc:205 libset/setedit/editdiag.cc:262
-msgid "~C~olumn cursor"
+msgid  "~C~olumn cursor"
 msgstr ""
 
-#: libset/setedit/editdiag.cc:206 libset/setedit/editdiag.cc:263
-msgid "~R~ow cursor"
+msgid  "~R~ow cursor"
 msgstr ""
 
-#: libset/setedit/editdiag.cc:207 libset/setedit/editdiag.cc:264
-msgid "~M~atch pair highligth"
+msgid  "~M~atch pair highligth"
 msgstr ""
 
-#: libset/setedit/editdiag.cc:208 libset/setedit/editdiag.cc:266
-msgid "Tra~n~sparent Blocks"
+msgid  "Tra~n~sparent Blocks"
 msgstr ""
 
-#: libset/setedit/editdiag.cc:209 libset/setedit/editdiag.cc:267
-msgid "Optimal ~F~ill"
+msgid  "Optimal ~F~ill"
 msgstr ""
 
-#: libset/setedit/editdiag.cc:213
-msgid "O~f~f"
+msgid  "~W~rap words"
+msgstr ""
+
+msgid  "O~f~f"
 msgstr "~F~ra"
 
-#: libset/setedit/editdiag.cc:214
-msgid "~C~++ style"
+msgid  "~C~++ style"
 msgstr "~C~++ stil"
 
-#: libset/setedit/editdiag.cc:215
-msgid "Pa~s~cal style"
+msgid  "Pa~s~cal style"
 msgstr "~P~ascal stil"
 
-#: libset/setedit/editdiag.cc:216
-msgid "C~l~ipper style"
+msgid  "C~l~ipper style"
 msgstr "C~l~ipper stil"
 
-#: libset/setedit/editdiag.cc:217
-msgid "U~s~er defined"
+msgid  "U~s~er defined"
 msgstr ""
 
-#: libset/setedit/editdiag.cc:220
-msgid "Syntax ~H~ighlight"
+msgid  "Syntax ~H~ighlight"
 msgstr "Syntaksfremhëvning"
 
-#: libset/setedit/editdiag.cc:230 libset/setedit/editdiag.cc:273
-msgid "~T~ab size"
+msgid  "~T~ab size"
 msgstr "~T~ab stõrrelse"
 
-#: libset/setedit/editdiag.cc:253
-msgid "Global Options"
+msgid  "Wrap column"
 msgstr ""
 
-#: libset/setedit/editdiag.cc:265
-msgid "~D~on't move the cursor on Paste"
+msgid  "Global Options"
 msgstr ""
 
-#: libset/setedit/editdiag.cc:276
-msgid "T~o~ all"
+msgid  "~D~on't move the cursor on Paste"
+msgstr ""
+
+msgid  "~S~croll Lock centers"
+msgstr ""
+
+msgid  "~W~rap column"
+msgstr ""
+
+msgid  "T~o~ all"
+msgstr ""
+
+msgid  "About"
+msgstr ""
+
+msgid  "That's SET's Editor v%X.%X.%X, (c) 1996-1998"
+msgstr ""
+
+msgid  "by Salvador Eduardo Tropea"
+msgstr ""
+
+msgid  "A text editor specially designed for programmers."
+msgstr ""
+
+msgid  "Don't show it next time"
 msgstr ""
 

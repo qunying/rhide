@@ -967,7 +967,9 @@ EditWords(TStringCollection * Words, int &words_changed,
           if (handle > 0)
           {
             char *buffer;
-            long len = filelength(handle);
+            struct stat st;
+            fstat(handle, &st);
+            long len = st.st_size;
 
             buffer = (char *) malloc(len + 1);
             len =::read(handle, buffer, len);

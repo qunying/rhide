@@ -17,7 +17,7 @@ po_files=\
 	idestatu.cc idestrm.cc ideutil.cc openedit.cc \
 	ideuser.cc idecomp.cc idespec.cc idesupp.cc idebug.cc idesynta.cc \
 	abstorel.cc rhassert.c ideenv.cc fstrcmp.c ideapp.cc idedial.cc \
-	pal.cp idercs.cc commands.cc
+	pal.cp idercs.cc commands.cc idecheck.cc
 
 src_files=$(po_files) Makefile common.mak README.IDE RHIDE.BIN RHIDE.SRC \
 	COPYING.RH COPYING wrong.c copyrite.c makefile.src \

@@ -3,6 +3,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <errno.h>
 #include <sys/utsname.h>
 #include <glob.h>
 
@@ -83,20 +84,30 @@ _add_variable(char **&_vars, int &_var_count, int &_var_size,
     _var_count--;
     return;
   }
-  if (_var_count == _var_size)
+
+  if (found)
   {
-    _var_size += 16;
-    _vars = (char **) realloc(_vars, _var_size * 2 * sizeof(char *));
+     int j = var_index * 2;
+     string_free(_vars[j + 1]);
+     string_dup(_vars[var_index * 2 + 1], contents);
   }
-  if (var_index < _var_count)
+  else
   {
-    memmove(_vars + var_index * 2 + 2,
-            _vars + var_index * 2,
-            (_var_count - var_index) * 2 * sizeof(char *));
+     if (_var_count == _var_size)
+     {
+       _var_size += 16;
+       _vars = (char **) realloc(_vars, _var_size * 2 * sizeof(char *));
+     }
+     if (var_index < _var_count)
+     {
+       memmove(_vars + var_index * 2 + 2,
+               _vars + var_index * 2,
+               (_var_count - var_index) * 2 * sizeof(char *));
+     }
+     _var_count++;
+     string_dup(_vars[var_index * 2], variable);
+     string_dup(_vars[var_index * 2 + 1], contents);
   }
-  _var_count++;
-  string_dup(_vars[var_index * 2], variable);
-  string_dup(_vars[var_index * 2 + 1], contents);
 }
 
 static void
@@ -523,11 +534,21 @@ char *string_function_shell(char *_arg)
   if (pipe)
   {
     char buf[1024];
-    int count;
+    int count, done=0;
 
-    while ((count = fread(buf, 1, 1023, pipe)))
+    while (!done)
     {
       char *tmp = buf;
+
+      count = fread(buf, 1, 1023, pipe);
+      if (count==0)
+      {
+#if !defined(__DJGPP__)      
+         if (ferror(pipe) && errno==EINTR) { clearerr(pipe); continue; }
+#endif	 
+	 done = 1; 
+	 continue;
+      }      
 
       while (count--)
       {

@@ -13,7 +13,7 @@ endif
 endif
 
 INCLUDE_DIRS=
-LIB_DIRS=
+LIB_DIRS=libgdb
 C_DEBUG_FLAGS=-g
 C_OPT_FLAGS=
 C_WARN_FLAGS=
@@ -30,24 +30,24 @@ LOCAL_OPT=$(subst ___~~~___, ,$(subst $(notdir $<)___,,$(filter $(notdir\
 	$<)___%,$(LOCAL_OPTIONS))))
 
 OBJFILES=
-ALL_OBJFILES=copyrite.o doc/htmlspl.o doc/tx2txi.o nodebobj/gpr2mak.o\
-	nodebobj/idedefau.o nodebobj/ideenv.o nodebobj/ideflags.o\
-	nodebobj/idemak.o nodebobj/idespec.o nodebobj/idestrm.o\
-	nodebobj/idesupp.o nodebobj/ideutil.o nodebobj/ideversi.o\
-	nodebobj/gprexp.o nodebobj/idedefau.o nodebobj/ideenv.o\
+ALL_OBJFILES=nodebobj/copyrite.o doc/htmlspl.o doc/tx2txi.o\
+	nodebobj/gpr2mak.o nodebobj/idedefau.o nodebobj/ideenv.o\
 	nodebobj/ideflags.o nodebobj/idemak.o nodebobj/idespec.o\
 	nodebobj/idestrm.o nodebobj/idesupp.o nodebobj/ideutil.o\
-	nodebobj/ideversi.o librhgdb/test/symify.o librhgdb/test/listfunc.o\
-	librhgdb/test/mygdb.o po/fstrcmp.o po/msgcat.o rhgdb/gdbedit.o\
-	rhgdb/gdbsynt.o rhgdb/main.o rhgdb/options.o rhgdb/version.o\
-	debobj/commands.o debobj/fstrcmp.o debobj/ideapp.o debobj/idebug.o\
-	debobj/idecheck.o debobj/idecolor.o debobj/idecomp.o\
-	debobj/idedebug.o debobj/idedefau.o debobj/idedial.o\
-	debobj/ideenv.o debobj/ideexter.o debobj/ideflags.o\
-	debobj/ideforma.o debobj/idegcc.o debobj/idehelp.o\
-	debobj/idehints.o debobj/idemain.o debobj/idemak.o debobj/idemenu.o\
-	debobj/idemsg.o debobj/ideopt.o debobj/ideprj.o debobj/idercs.o\
-	debobj/idespec.o debobj/idestatu.o debobj/idestrm.o\
+	nodebobj/ideversi.o nodebobj/gprexp.o nodebobj/idedefau.o\
+	nodebobj/ideenv.o nodebobj/ideflags.o nodebobj/idemak.o\
+	nodebobj/idespec.o nodebobj/idestrm.o nodebobj/idesupp.o\
+	nodebobj/ideutil.o nodebobj/ideversi.o librhgdb/test/symify.o\
+	librhgdb/test/listfunc.o librhgdb/test/mygdb.o po/fstrcmp.o\
+	po/msgcat.o rhgdb/gdbedit.o rhgdb/gdbsynt.o rhgdb/main.o\
+	rhgdb/options.o rhgdb/version.o debobj/commands.o debobj/fstrcmp.o\
+	debobj/ideapp.o debobj/idebug.o debobj/idecheck.o debobj/idecolor.o\
+	debobj/idecomp.o debobj/idedebug.o debobj/idedefau.o\
+	debobj/idedial.o debobj/ideenv.o debobj/ideexter.o\
+	debobj/ideflags.o debobj/ideforma.o debobj/idegcc.o\
+	debobj/idehelp.o debobj/idehints.o debobj/idemain.o debobj/idemak.o\
+	debobj/idemenu.o debobj/idemsg.o debobj/ideopt.o debobj/ideprj.o\
+	debobj/idercs.o debobj/idespec.o debobj/idestatu.o debobj/idestrm.o\
 	debobj/idesupp.o debobj/idesynta.o debobj/ideuser.o\
 	debobj/ideutil.o debobj/ideversi.o debobj/openedit.o\
 	debobj/rhassert.o nodebobj/commands.o nodebobj/fstrcmp.o\
@@ -72,11 +72,11 @@ SRC_DIRS=
 WUC=
 EDITORS=
 MAIN_TARGET=
-PROJECT_ITEMS=copyrite.gpr doc/htmlspl.gpr doc/tx2txi.gpr gpr2mak.gpr\
-	gprexp.gpr librhgdb/test/gsymify.gpr librhgdb/test/listfunc.gpr\
-	librhgdb/test/mygdb.gpr po/msgcat.gpr rhgdb/rhgdb.gpr rhide.gpr\
-	rhide_.gpr tocrlf.gpr tolf.gpr
-DEFAULT_MASK=*.gpr
+PROJECT_ITEMS=copyrite.gpr doc/doc.gpr doc/htmlspl.gpr doc/tx2txi.gpr\
+	gpr2mak.gpr gprexp.gpr librhgdb/test/gsymify.gpr\
+	librhgdb/test/listfunc.gpr librhgdb/test/mygdb.gpr po/msgcat.gpr\
+	rhgdb/rhgdb.gpr rhide.gpr rhide_.gpr tocrlf.gpr tolf.gpr
+DEFAULT_MASK=*
 RHIDE_BIN_DIR=c:/obj/rhide
 PASCAL_TYPE=GPC
 GET_HOME=$(HOME)
@@ -281,78 +281,6 @@ RHIDE_PATH_SEPARATOR_DJGPP=;
 RHIDE_PATH_SEPARATOR=$(RHIDE_PATH_SEPARATOR_$(RHIDE_OS))
 RHIDE_EMPTY=
 RHIDE_SPACE=$(RHIDE_EMPTY) $(RHIDE_EMPTY)
-RHIDE_STDINC_C_$(RHIDE_OS)=/usr/include /usr/local/include
-RHIDE_STDINC_C_DJGPP=/usr/include /usr/local/include
-RHIDE_STDINC_CXX_$(RHIDE_OS)=/usr/include/g++ /usr/local/include/g++
-RHIDE_STDINC_CXX_DJGPP=/usr/include/g++ /usr/local/include/g++
-RHIDE_STDINC_GCC_$(RHIDE_OS)=/usr/lib/gcc-lib /usr/local/lib/gcc-lib
-RHIDE_STDINC_GCC_DJGPP=/usr/lib/gcc-lib /usr/local/lib/gcc-lib
-RHIDE_STDINC_C_DJGPP=$(DJDIR)/include
-RHIDE_STDINC_CXX_DJGPP=$(DJDIR)/lang/cxx 
-RHIDE_STDINC_GCC_DJGPP=$(DJDIR)/lib
-RHIDE_STDINC_C=$(RHIDE_STDINC_C_$(RHIDE_OS))
-RHIDE_STDINC_CXX=$(RHIDE_STDINC_CXX_$(RHIDE_OS)) $(TVSRC)/include $(SETSRC)
-RHIDE_STDINC_GCC=$(RHIDE_STDINC_GCC_$(RHIDE_OS))
-RHIDE_STDINC=$(RHIDE_STDINC_C) $(RHIDE_STDINC_CXX) $(RHIDE_STDINC_GCC)\
-	$(RHIDE_STDINC_EXTRA) $(dir $(LIBGDB_H))
-RHIDE_OS_CFLAGS=$(RHIDE_OS_CFLAGS_$(RHIDE_OS)) $(RH_WARN)
-RHIDE_OS_CXXFLAGS=$(RHIDE_OS_CXXFLAGS_$(RHIDE_OS)) $(RH_WARN)\
-	-fno-exceptions -fno-rtti
-RHIDE_OS_CFLAGS_Linux=-D_GNU_SOURCE
-RHIDE_OS_CXXFLAGS_Linux=-D_GNU_SOURCE
-RHIDE_LIBDIRS=$(addprefix -L,$(dir $(LIBGDB_A)) $(LIB_DIRS))
-PCRE_OBJ=$(subst Linux,linux,$(SETOBJ)/$(RHIDE_OS))
-PCRE_LIB_$(RHIDE_OS)=pcre
-PCRE_LIB_DJGPP=pcre
-INTL_LIB_$(RHIDE_OS)=intl
-INTL_LIB_DJGPP=intl
-INTL_LIB_Linux=
-RHIDE_OS_LIBS_$(RHIDE_OS)=$(RHIDE_OS_LIBS_$(RHIDE_OS)_$(MAIN_TARGET))
-RHIDE_OS_LIBS_DJGPP=$(RHIDE_OS_LIBS_$(RHIDE_OS)_$(MAIN_TARGET))
-RHIDE_OS_LIBS_Linux=ncurses gpm m dl
-RHIDE_OS_LIBS_CYGWIN=termcap
-RHIDE_OS_LIBS_DJGPP_idegc.exe=dbg
-RHIDE_OS_LIBS_DJGPP_rhgdb.exe=dbg
-RHIDE_OS_LIBS_DJGPP=$(RHIDE_OS_LIBS_DJGPP_$(MAIN_TARGET))
-RHIDE_OS_LIBS=$(PCRE_LIB_$(RHIDE_OS)) $(INTL_LIB_$(RHIDE_OS))\
-	$(RHIDE_OS_LIBS_$(RHIDE_OS))
-SET_FILES=$(DJDIR)/share/setedit
-RHIDE_STDINC_C_$(RHIDE_OS)=/usr/include /usr/local/include
-RHIDE_STDINC_C_DJGPP=/usr/include /usr/local/include
-RHIDE_STDINC_CXX_$(RHIDE_OS)=/usr/include/g++ /usr/local/include/g++
-RHIDE_STDINC_CXX_DJGPP=/usr/include/g++ /usr/local/include/g++
-RHIDE_STDINC_GCC_$(RHIDE_OS)=/usr/lib/gcc-lib /usr/local/lib/gcc-lib
-RHIDE_STDINC_GCC_DJGPP=/usr/lib/gcc-lib /usr/local/lib/gcc-lib
-RHIDE_STDINC_C_DJGPP=$(DJDIR)/include
-RHIDE_STDINC_CXX_DJGPP=$(DJDIR)/lang/cxx 
-RHIDE_STDINC_GCC_DJGPP=$(DJDIR)/lib
-RHIDE_STDINC_C=$(RHIDE_STDINC_C_$(RHIDE_OS))
-RHIDE_STDINC_CXX=$(RHIDE_STDINC_CXX_$(RHIDE_OS)) $(TVSRC)/include $(SETSRC)
-RHIDE_STDINC_GCC=$(RHIDE_STDINC_GCC_$(RHIDE_OS))
-RHIDE_STDINC=$(RHIDE_STDINC_C) $(RHIDE_STDINC_CXX) $(RHIDE_STDINC_GCC)\
-	$(RHIDE_STDINC_EXTRA) $(dir $(LIBGDB_H))
-RHIDE_OS_CFLAGS=$(RHIDE_OS_CFLAGS_$(RHIDE_OS)) $(RH_WARN)
-RHIDE_OS_CXXFLAGS=$(RHIDE_OS_CXXFLAGS_$(RHIDE_OS)) $(RH_WARN)\
-	-fno-exceptions -fno-rtti
-RHIDE_OS_CFLAGS_Linux=-D_GNU_SOURCE
-RHIDE_OS_CXXFLAGS_Linux=-D_GNU_SOURCE
-RHIDE_LIBDIRS=$(addprefix -L,$(dir $(LIBGDB_A)) $(LIB_DIRS))
-PCRE_OBJ=$(subst Linux,linux,$(SETOBJ)/$(RHIDE_OS))
-PCRE_LIB_$(RHIDE_OS)=pcre
-PCRE_LIB_DJGPP=pcre
-INTL_LIB_$(RHIDE_OS)=intl
-INTL_LIB_DJGPP=intl
-INTL_LIB_Linux=
-RHIDE_OS_LIBS_$(RHIDE_OS)=$(RHIDE_OS_LIBS_$(RHIDE_OS)_$(MAIN_TARGET))
-RHIDE_OS_LIBS_DJGPP=$(RHIDE_OS_LIBS_$(RHIDE_OS)_$(MAIN_TARGET))
-RHIDE_OS_LIBS_Linux=ncurses gpm m dl
-RHIDE_OS_LIBS_CYGWIN=termcap
-RHIDE_OS_LIBS_DJGPP_idegc.exe=dbg
-RHIDE_OS_LIBS_DJGPP_rhgdb.exe=dbg
-RHIDE_OS_LIBS_DJGPP=$(RHIDE_OS_LIBS_DJGPP_$(MAIN_TARGET))
-RHIDE_OS_LIBS=$(PCRE_LIB_$(RHIDE_OS)) $(INTL_LIB_$(RHIDE_OS))\
-	$(RHIDE_OS_LIBS_$(RHIDE_OS))
-SET_FILES=$(DJDIR)/share/setedit
 %.o: %.c
 	$(RHIDE_COMPILE.c.o)
 %.o: %.i
@@ -431,7 +359,7 @@ include rhide.env
 all::
 clean::
 	rm -f $(CLEAN_FILES)
-DEPS_0= 
+DEPS_0= doc/rhide.inf 
 NO_LINK=
 LINK_FILES=$(filter-out $(NO_LINK),$(DEPS_0))
 TARGET_0:: $(DEPS_0)
@@ -444,6 +372,14 @@ clean::
 	$(MAKE) -f copyrite.mak $(FLAGS_FOR_SUBPROJECTS) clean
 
 DEPS_2=
+.PHONY: doc/doc.gpr.force
+all:: doc/doc.gpr.force
+doc/doc.gpr.force:
+	$(MAKE) -C doc/ -f doc.mak $(FLAGS_FOR_SUBPROJECTS)
+clean::
+	$(MAKE) -C doc/ -f doc.mak $(FLAGS_FOR_SUBPROJECTS) clean
+
+DEPS_3=
 .PHONY: doc/htmlspl.gpr.force
 all:: doc/htmlspl.gpr.force
 doc/htmlspl.gpr.force:
@@ -451,7 +387,7 @@ doc/htmlspl.gpr.force:
 clean::
 	$(MAKE) -C doc/ -f htmlspl.mak $(FLAGS_FOR_SUBPROJECTS) clean
 
-DEPS_3=
+DEPS_4=
 .PHONY: doc/tx2txi.gpr.force
 all:: doc/tx2txi.gpr.force
 doc/tx2txi.gpr.force:
@@ -459,7 +395,7 @@ doc/tx2txi.gpr.force:
 clean::
 	$(MAKE) -C doc/ -f tx2txi.mak $(FLAGS_FOR_SUBPROJECTS) clean
 
-DEPS_4=
+DEPS_5=
 .PHONY: gpr2mak.gpr.force
 all:: gpr2mak.gpr.force
 gpr2mak.gpr.force:
@@ -467,7 +403,7 @@ gpr2mak.gpr.force:
 clean::
 	$(MAKE) -f gpr2mak.mak $(FLAGS_FOR_SUBPROJECTS) clean
 
-DEPS_5=
+DEPS_6=
 .PHONY: gprexp.gpr.force
 all:: gprexp.gpr.force
 gprexp.gpr.force:
@@ -475,7 +411,7 @@ gprexp.gpr.force:
 clean::
 	$(MAKE) -f gprexp.mak $(FLAGS_FOR_SUBPROJECTS) clean
 
-DEPS_6=
+DEPS_7=
 .PHONY: librhgdb/test/gsymify.gpr.force
 all:: librhgdb/test/gsymify.gpr.force
 librhgdb/test/gsymify.gpr.force:
@@ -483,7 +419,7 @@ librhgdb/test/gsymify.gpr.force:
 clean::
 	$(MAKE) -C librhgdb/test/ -f gsymify.mak $(FLAGS_FOR_SUBPROJECTS) clean
 
-DEPS_7=
+DEPS_8=
 .PHONY: librhgdb/test/listfunc.gpr.force
 all:: librhgdb/test/listfunc.gpr.force
 librhgdb/test/listfunc.gpr.force:
@@ -491,7 +427,7 @@ librhgdb/test/listfunc.gpr.force:
 clean::
 	$(MAKE) -C librhgdb/test/ -f listfunc.mak $(FLAGS_FOR_SUBPROJECTS) clean
 
-DEPS_8=
+DEPS_9=
 .PHONY: librhgdb/test/mygdb.gpr.force
 all:: librhgdb/test/mygdb.gpr.force
 librhgdb/test/mygdb.gpr.force:
@@ -499,7 +435,7 @@ librhgdb/test/mygdb.gpr.force:
 clean::
 	$(MAKE) -C librhgdb/test/ -f mygdb.mak $(FLAGS_FOR_SUBPROJECTS) clean
 
-DEPS_9=
+DEPS_10=
 .PHONY: po/msgcat.gpr.force
 all:: po/msgcat.gpr.force
 po/msgcat.gpr.force:
@@ -507,7 +443,7 @@ po/msgcat.gpr.force:
 clean::
 	$(MAKE) -C po/ -f msgcat.mak $(FLAGS_FOR_SUBPROJECTS) clean
 
-DEPS_10=
+DEPS_11=
 .PHONY: rhgdb/rhgdb.gpr.force
 all:: rhgdb/rhgdb.gpr.force
 rhgdb/rhgdb.gpr.force:
@@ -515,7 +451,7 @@ rhgdb/rhgdb.gpr.force:
 clean::
 	$(MAKE) -C rhgdb/ -f rhgdb.mak $(FLAGS_FOR_SUBPROJECTS) clean
 
-DEPS_11=
+DEPS_12=
 .PHONY: rhide.gpr.force
 all:: rhide.gpr.force
 rhide.gpr.force:
@@ -523,7 +459,7 @@ rhide.gpr.force:
 clean::
 	$(MAKE) -f rhide.mak $(FLAGS_FOR_SUBPROJECTS) clean
 
-DEPS_12=
+DEPS_13=
 .PHONY: rhide_.gpr.force
 all:: rhide_.gpr.force
 rhide_.gpr.force:
@@ -531,7 +467,7 @@ rhide_.gpr.force:
 clean::
 	$(MAKE) -f rhide_.mak $(FLAGS_FOR_SUBPROJECTS) clean
 
-DEPS_13=
+DEPS_14=
 .PHONY: tocrlf.gpr.force
 all:: tocrlf.gpr.force
 tocrlf.gpr.force:
@@ -539,7 +475,7 @@ tocrlf.gpr.force:
 clean::
 	$(MAKE) -f tocrlf.mak $(FLAGS_FOR_SUBPROJECTS) clean
 
-DEPS_14=
+DEPS_15=
 .PHONY: tolf.gpr.force
 all:: tolf.gpr.force
 tolf.gpr.force:

@@ -292,48 +292,6 @@ RHIDE_PATH_SEPARATOR_DJGPP=;
 RHIDE_PATH_SEPARATOR=$(RHIDE_PATH_SEPARATOR_$(RHIDE_OS))
 RHIDE_EMPTY=
 RHIDE_SPACE=$(RHIDE_EMPTY) $(RHIDE_EMPTY)
-RHIDE_STDINC_C_$(RHIDE_OS)=/usr/include /usr/local/include
-RHIDE_STDINC_C_DJGPP=/usr/include /usr/local/include
-RHIDE_STDINC_CXX_$(RHIDE_OS)=/usr/include/g++ /usr/local/include/g++
-RHIDE_STDINC_CXX_DJGPP=/usr/include/g++ /usr/local/include/g++
-RHIDE_STDINC_GCC_$(RHIDE_OS)=/usr/lib/gcc-lib /usr/local/lib/gcc-lib
-RHIDE_STDINC_GCC_DJGPP=/usr/lib/gcc-lib /usr/local/lib/gcc-lib
-RHIDE_STDINC_C_DJGPP=$(DJDIR)/include
-RHIDE_STDINC_CXX_DJGPP=$(DJDIR)/lang/cxx 
-RHIDE_STDINC_GCC_DJGPP=$(DJDIR)/lib
-RHIDE_STDINC_C=$(RHIDE_STDINC_C_$(RHIDE_OS))
-RHIDE_STDINC_CXX=$(RHIDE_STDINC_CXX_$(RHIDE_OS)) $(TVSRC)/include $(SETSRC)
-RHIDE_STDINC_GCC=$(RHIDE_STDINC_GCC_$(RHIDE_OS))
-RHIDE_STDINC=$(RHIDE_STDINC_C) $(RHIDE_STDINC_CXX) $(RHIDE_STDINC_GCC)\
-	$(RHIDE_STDINC_EXTRA) $(dir $(LIBGDB_H))
-RHIDE_OS_CFLAGS=$(RHIDE_OS_CFLAGS_$(RHIDE_OS)) $(RH_WARN)
-RHIDE_OS_CXXFLAGS=$(RHIDE_OS_CXXFLAGS_$(RHIDE_OS)) $(RH_WARN)\
-	-fno-exceptions -fno-rtti
-RHIDE_OS_CFLAGS_Linux=-D_GNU_SOURCE
-RHIDE_OS_CXXFLAGS_Linux=-D_GNU_SOURCE
-RHIDE_LIBDIRS=$(addprefix -L,$(dir $(LIBGDB_A)) $(LIB_DIRS))
-PCRE_OBJ=$(subst Linux,linux,$(SETOBJ)/$(RHIDE_OS))
-RHIDE_STDINC_C_$(RHIDE_OS)=/usr/include /usr/local/include
-RHIDE_STDINC_C_DJGPP=/usr/include /usr/local/include
-RHIDE_STDINC_CXX_$(RHIDE_OS)=/usr/include/g++ /usr/local/include/g++
-RHIDE_STDINC_CXX_DJGPP=/usr/include/g++ /usr/local/include/g++
-RHIDE_STDINC_GCC_$(RHIDE_OS)=/usr/lib/gcc-lib /usr/local/lib/gcc-lib
-RHIDE_STDINC_GCC_DJGPP=/usr/lib/gcc-lib /usr/local/lib/gcc-lib
-RHIDE_STDINC_C_DJGPP=$(DJDIR)/include
-RHIDE_STDINC_CXX_DJGPP=$(DJDIR)/lang/cxx 
-RHIDE_STDINC_GCC_DJGPP=$(DJDIR)/lib
-RHIDE_STDINC_C=$(RHIDE_STDINC_C_$(RHIDE_OS))
-RHIDE_STDINC_CXX=$(RHIDE_STDINC_CXX_$(RHIDE_OS)) $(TVSRC)/include $(SETSRC)
-RHIDE_STDINC_GCC=$(RHIDE_STDINC_GCC_$(RHIDE_OS))
-RHIDE_STDINC=$(RHIDE_STDINC_C) $(RHIDE_STDINC_CXX) $(RHIDE_STDINC_GCC)\
-	$(RHIDE_STDINC_EXTRA) $(dir $(LIBGDB_H))
-RHIDE_OS_CFLAGS=$(RHIDE_OS_CFLAGS_$(RHIDE_OS)) $(RH_WARN)
-RHIDE_OS_CXXFLAGS=$(RHIDE_OS_CXXFLAGS_$(RHIDE_OS)) $(RH_WARN)\
-	-fno-exceptions -fno-rtti
-RHIDE_OS_CFLAGS_Linux=-D_GNU_SOURCE
-RHIDE_OS_CXXFLAGS_Linux=-D_GNU_SOURCE
-RHIDE_LIBDIRS=$(addprefix -L,$(dir $(LIBGDB_A)) $(LIB_DIRS))
-PCRE_OBJ=$(subst Linux,linux,$(SETOBJ)/$(RHIDE_OS))
 %.o: %.c
 	$(RHIDE_COMPILE.c.o)
 %.o: %.i
@@ -424,7 +382,7 @@ NO_LINK=
 LINK_FILES=$(filter-out $(NO_LINK),$(DEPS_0))
 libide.a:: $(DEPS_0)
 	$(RHIDE_COMPILE_ARCHIVE)
-DEPS_1=commands.cc
+DEPS_1=commands.cc idecomma.h libide.h rhutils.h libtvuti.h tvutilfu.h
 commands.o:: $(DEPS_1)
 	$(RHIDE_COMPILE.cc.o)
 DEPS_2=ideclass.cc ideenums.h idefunct.h libide.h libtvuti.h

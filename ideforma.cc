@@ -1,5 +1,6 @@
 /* Copyright (C) 1996-1998 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
+#define Uses_TIDEEditWindow
 #define Uses_TIDEFileEditor
 #include <libide.h>
 #include <rhide.h>
@@ -29,7 +30,7 @@
 
 #ifdef INTERNAL_DEBUGGER
 extern uint32 CPULine;
-extern TCEditor *current_editor;
+extern TCEditWindow *current_editor;
 
 int DebuggerFormatLine(TCEditor *editor,
                        void *DrawBuf,
@@ -43,7 +44,7 @@ int DebuggerFormatLine(TCEditor *editor,
 #define drawbuf ((ushort *)DrawBuf)
   uint32 offset = 0;
   ushort color;
-  if (DEBUGGER_STARTED() && editor == current_editor &&
+  if (DEBUGGER_STARTED() && editor == current_editor->editor &&
       CPULine == LineNo)
   {
      editor->formatLine(DrawBuf,LinePtr,Width,Colors,lineLen,Attr,LineNo);

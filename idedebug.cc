@@ -37,7 +37,7 @@
 #include <unistd.h>
 #include <string.h>
 
-TCEditor *current_editor;
+TCEditWindow *current_editor;
 uint32 CPULine;
 
 #ifdef INTERNAL_DEBUGGER
@@ -80,13 +80,12 @@ static void select_source_line(char *fname,int line)
     return;
   int select_dis_win = dis_win && TProgram::deskTop->current == dis_win;
   char *full_name = NULL;
-  TCEditWindow *ew = NULL;
   TProgram::deskTop->lock();
   // remove at first the last CPU line
   if (current_editor)
   {
     CPULine = (uint32)-1;
-    current_editor->update(ufView);
+    current_editor->editor->update(ufView);
   }
   if (!fname)
   {
@@ -98,8 +97,8 @@ static void select_source_line(char *fname,int line)
   }
   else
   {
-    ew = is_on_desktop(fname,False);
-    if (!ew && FindFile(fname,full_name) == False)
+    current_editor = is_on_desktop(fname,False);
+    if (!current_editor && FindFile(fname,full_name) == False)
     {
       ushort result;
       char *bname;
@@ -141,21 +140,20 @@ static void select_source_line(char *fname,int line)
         goto end;
       }
     }
-    if (!ew) ew = OpenEditor(full_name,True);
-    ew->select();
+    if (!current_editor) OpenEditor(full_name, True, current_editor);
+    current_editor->select();
     string_free(full_name);
-    current_editor = ew->editor;
     CPULine = line-1;
-    current_editor->MoveCursorTo(0,CPULine);
-    current_editor->trackCursor(False);
+    current_editor->editor->MoveCursorTo(0,CPULine);
+    current_editor->editor->trackCursor(False);
     /* If the line is at the first or last screen line, try to
        center it */
-    current_editor->update(ufView);
-    if (current_editor->cursor.y == 0 ||
-        current_editor->cursor.y == current_editor->size.y-1)
+    current_editor->editor->update(ufView);
+    if (current_editor->editor->cursor.y == 0 ||
+        current_editor->editor->cursor.y == current_editor->editor->size.y-1)
     {
-      current_editor->trackCursor(True);
-      current_editor->update(ufView);
+      current_editor->editor->trackCursor(True);
+      current_editor->editor->update(ufView);
     }
   }
 end:

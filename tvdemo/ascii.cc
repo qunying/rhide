@@ -141,11 +141,12 @@ void TReport::draw()
     char        color = getColor(6);
     char        str[80];
 
-    sprintf(str, "%s%c%s%3d%s%2X",
+    sprintf(str, "%s%c%s%3d%s%02X",
                  _("  Char: "), (asciiChar==0)?(char)0x20:(char)asciiChar,
                  _(" Decimal: "), (int)asciiChar,
                  _(" Hex "), (int)asciiChar);
 
+    buf.moveChar(0, ' ', color, size.x);
     buf.moveStr(0, str, color);
     writeLine(0, 0, 32, 1, buf);
 }

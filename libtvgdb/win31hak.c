@@ -25,12 +25,14 @@ extern struct target_ops go32_ops;
 int go32_insert_hw_breakpoint(CORE_ADDR,CORE_ADDR);
 int go32_remove_hw_breakpoint(CORE_ADDR,CORE_ADDR);
 
-static int _win31_memory_insert_breakpoint(CORE_ADDR addr, char *shadow)
+static int _win31_memory_insert_breakpoint(CORE_ADDR addr,
+                                    char *shadow __attribute__((unused)))
 {
   return go32_insert_hw_breakpoint(addr,0 /* this is not used */);
 }
 
-static int _win31_memory_remove_breakpoint(CORE_ADDR addr, char *shadow)
+static int _win31_memory_remove_breakpoint(CORE_ADDR addr,
+                                    char *shadow __attribute__((unused)))
 {
   return go32_remove_hw_breakpoint(addr,0 /* this is not used */);
 }

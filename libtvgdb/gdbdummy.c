@@ -145,7 +145,7 @@ DD(_initialize_maint_cmds)
 
 /* no chill language */
 DD(_initialize_chill_language)
-char *chill_demangle(char *name)
+char *chill_demangle(char *name __attribute__((unused)))
 {
   return NULL;
 }

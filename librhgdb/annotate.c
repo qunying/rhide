@@ -187,6 +187,12 @@ DEBUG("|display_end|");
 }
 
 void
+annotate_catchpoint (int number __attribute__((unused)))
+{
+DEBUG("|catchpoint(%d)|",number);
+}
+
+void
 _initialize_annotate ()
 {
 }

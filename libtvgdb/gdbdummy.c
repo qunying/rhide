@@ -57,6 +57,11 @@ DD(_initialize_os9kread)
 DD(_initialize_nlmread)
 DD(_initialize_m2_language)
 
+/* gdb/remote.o */
+D(putpkt)
+D(getpkt)
+D(remote_console_output)
+
 /* bfd/cofflink.o */
 
 D(_bfd_coff_link_add_symbols)

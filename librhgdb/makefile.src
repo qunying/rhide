@@ -22,5 +22,5 @@ po_subdirs=
 
 include $(RHIDESRC)/common.mak
 
-librhgdb.a:: ../libgdb/libgdb.h
+librhgdb.a:: ../libgdb/libgdbrh.h
 

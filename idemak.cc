@@ -74,14 +74,12 @@ ReadProject(const char *prjname, bool from_ide)
       if (from_ide)
       {
         messageBox(mfError | mfOKButton,
-                   _
-                   ("This project was created with a newer RHIDE version and could not be used."));
+                   _("This project was created with a newer RHIDE version and could not be used."));
       }
       else
       {
         fprintf(stderr,
-                _
-                ("This project was created with a newer RHIDE version and could not be used."));
+                _("This project was created with a newer RHIDE version and could not be used."));
         fprintf(stderr, "\n");
       }
       close_ifpstream(ifile);
@@ -365,8 +363,8 @@ WriteTarget(FILE * f, TDependency * dep, int depth, TStringCollection * vars)
     fprintf(f, ".PHONY: %s%s%s.force\n", dir, name, ext);
     fprintf(f, "all:: %s%s%s.force\n", dir, name, ext);
     fprintf(f, "%s%s%s.force:\n", dir, name, ext);
-    fprintf(f, "\t$(MAKE)%s%s -f %s.mak\n", *dir ? " -C " : "",
-            *dir ? dir : "", name);
+    fprintf(f, "\t$(MAKE)%s%s -f %s.mak $(FLAGS_FOR_SUBPROJECTS)\n",
+            *dir ? " -C " : "", *dir ? dir : "", name);
     if (recursive_make && (_PushProject(dep) == True))
     {
       int _depcount = depcount;
@@ -530,7 +528,11 @@ WriteMake(char *outname, int argc, char *argv[])
     int i;
 
     fprintf(f, "# created with the command:\n#");
-    for (i = 0; i < argc; i++)
+    char *prog;
+    BaseName(argv[0], prog, 0);
+    fprintf(f, " %s", prog);
+    string_free(prog);
+    for (i = 1; i < argc; i++)
     {
       fprintf(f, " %s", argv[i]);
     }

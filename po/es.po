@@ -1,12 +1,9 @@
+# Copyright (C) 1996-2001 Robert H”hne, see COPYING.RH for details */
 # Este es el archivo de traducci¢n a espa¤ol.
-# Copyright (C) 2001 Salvador E. Tropea.
-# Salvador E. Tropea <set@ieee.org>, 2001.
 
 msgid  ""
-msgstr "Project-Id-Version: setedit 0.4.50\n"
-"PO-Revision-Date: 2001-10-09 19:33-0300\n"
+msgstr "Project-Id-Version: RHIDE 1.5\n"
 "Last-Translator: Salvador E. Tropea <set@ieee.org>\n"
-"Language-Team: Spanish <set@ieee.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CP850\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -914,7 +911,7 @@ msgstr "usando %s como directorio temporal\n"
 msgid  "warning: temporary file %s deleted\n"
 msgstr ""
 
-msgid  "This is %s. Copyright (c) 1996-2001 by Robert H”hne\n"
+msgid  "This is %s. Copyright (c) 1996-2002 by Robert H”hne\n"
 msgstr ""
 
 msgid  "Do you really want to interrupt RHIDE?"
@@ -2849,21 +2846,6 @@ msgstr "Salida es un programa ~1~"
 msgid  "~C~ancel"
 msgstr "~C~ancela"
 
-msgid  "Ho~m~e"
-msgstr "~C~asa"
-
-msgid  "~T~ree"
-msgstr "A~r~bol"
-
-msgid  "~I~nsert"
-msgstr "~I~nsertar"
-
-msgid  "Command~s~"
-msgstr "Comando~s~"
-
-msgid  "Assignmen~t~"
-msgstr "Asi~g~naci¢n"
-
 msgid  "You must type a value here"
 msgstr "Ud. debe ingresar un valor a"
 
@@ -3173,6 +3155,9 @@ msgstr "            -D : Usar dos monitores\n"
 
 msgid  "            -i INI_FILE : Use INI_FILE as config file\n"
 msgstr "           -i INI : Usar INI como archivo de configuraci¢n\n"
+
+msgid  "This is %s. Copyright (c) 1996-2001 by Robert H”hne\n"
+msgstr ""
 
 msgid  "Do you really want to interrupt RHGDB?"
 msgstr "¨Est  seguro que desea detener RHGDB?"

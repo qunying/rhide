@@ -31,7 +31,7 @@ RHIDE_MAJOR=$(word 1,$(subst ., ,$(VERSION)))
 RHIDE_MINOR=$(subst $(RHIDE_MAJOR),,$(VERSION))
 # for the DJGPP archives
 FILE_VERSION=$(subst .,,$(VERSION))
-DIR_VERSION_Linux=-$(VERSION)
+DIR_VERSION_$(rhide_OS)=-$(VERSION)
 # for the DJGPP directories
 DIR_VERSION_DJGPP=-$(RHIDE_MAJOR).$(subst .,,$(RHIDE_MINOR))
 DIR_VERSION=$(DIR_VERSION_$(rhide_OS))
@@ -86,8 +86,13 @@ endif
 ifeq ($(rhide_OS),DJGPP)
 exe=.exe
 else
+ifeq ($(rhide_OS),CYGWIN)
+exe=.exe
+link_type=dynamic
+else
 exe=
 use_upx=
+endif
 endif
 
 SETMODE=0
@@ -155,11 +160,8 @@ rhideb=$(PACKAGE_FILE)$(FILE_VERSION)b
 rhides=$(PACKAGE_FILE)$(FILE_VERSION)s
 rhide=$(PACKAGE_DIR)$(DIR_VERSION)
 
-ifeq ($(rhide_OS),DJGPP)
-copy_dir=/_
-else
-copy_dir=/tmp/_
-endif
+copy_dir=$(top_obj_dir)/_
+build_dir=$(top_obj_dir)/__
 
 FLAGS_TO_PASS=\
 	CFLAGS="$(CFLAGS)" \
@@ -370,4 +372,5 @@ $(copyrite.exe):: $(RHIDESRC)/copyrite.c
 ifneq ($(projects),)
 clean:: $(addsuffix .cln, $(projects))
 endif
+
 

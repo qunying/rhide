@@ -21,9 +21,9 @@ include $(RHIDESRC)/common.mak
 
 ifeq ($(GDB_SRC),)
 ifeq ($(rhide_OS),DJGPP)
-GDB_SRC=$(DJDIR)/gnu/gdb-4.16
+GDB_SRC=$(DJDIR)/gnu/gdb-4.18
 else
-GDB_SRC=/usr/src/gdb-4.16
+GDB_SRC=/usr/src/packages/BUILD/gdb-4.18
 endif
 endif
 
@@ -148,49 +148,5 @@ libgdb.a: $(CHECKS) libgdb.h list
 	ar rcs $@ $(shell cat $(T_FILES) | sed -e '/.*xmalloc.*/d')
 	rm -f $(T_FILES)
 endif
-
-awks=$(strip $(wildcard $(addsuffix /awk.exe,$(subst ;, ,$(PATH)))))
-gawks=$(strip $(wildcard $(addsuffix /gawk.exe,$(subst ;, ,$(PATH)))))
-gawk=$(subst \,/,$(word 1,$(gawks)))
-
-check_awk:
-ifeq ($(awks),)
-ifeq ($(gawk),)
-# no awk found
-	@echo No awk program found, please install gawk or any other awk
-# this forces make to abort
-	@rm -f awk_check
-	@test -f awk_check
-else
-	@echo You have installed an awk program ($(gawk))
-	@echo You should rename or copy it $(subst gawk,awk,$(gawk))
-	@echo or create a symbolic link (but only if it is a DJGPP program) like:
-	@echo ""
-	@echo ""
-	@echo    ln -s $(gawk) $(subst gawk,awk,$(gawk))
-	@echo ""
-	@echo ""
-# this forces make to abort
-	@rm -f awk_check
-	@test -f awk_check
-endif
-else
-	@rem
-endif
-
-# this is the check for the correct echo.exe, because gdb needs the
-# echo.exe from the base DJGPP distribution
-check_echo:
-	@rm -f echo_check
-	@echo.exe -o echo_check echo_check > /dev/null
-	@echo If the make fails here, you have installed the wrong echo.exe
-	@echo You have probably installed the echo.exe from GNU fileutils
-	@echo In this case rename it to gecho.exe and reinstall the echo.exe
-	@echo from the base DJGPP archive (djdev???.zip)
-	@test -f echo_check
-	@rm -f echo_check
-	@echo ""
-	@echo The check for echo.exe was successfull
-
 
 force:

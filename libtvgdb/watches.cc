@@ -4,6 +4,7 @@
 #define Uses_TDeskTop
 #define Uses_TRect
 #define Uses_MsgBox
+#define Uses_TInputLine
 
 #define Uses_TSCollection
 #define Uses_tvutilFunctions
@@ -89,14 +90,12 @@ void AddWatch(char *buffer, Boolean show_window)
 
 void AddWatchEntry(char *_buffer)
 {
-  char buffer[256];
-  if (_buffer) strcpy(buffer,_buffer);
-  else buffer[0] = 0;
-  if (HistinputBox(_("Add to watch list"),_("~E~xpression"),buffer,255,
-                   tvgdb_History_Watch_Entry) == cmOK)
-  {
-    AddWatch(buffer);
-  }
+  TWatchDialog *d;
+  d = new TWatchDialog(TRect(10,2,70,10),_("Add to watch list"),
+                       _buffer ? _buffer : "", 0);
+  if (TProgram::deskTop->execView(d) == cmOK)
+    AddWatch(d->input->data);
+  destroy(d);
 }
 
 void DeleteAllWatches()

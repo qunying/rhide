@@ -22,7 +22,8 @@
 #include <librhgdb.h>
 #include <string.h>
 
-TWatchDialog::TWatchDialog(const TRect & bounds, char *Title, char *StartVal)
+TWatchDialog::TWatchDialog(const TRect & bounds, char *Title, char *StartVal,
+                           int evaluate)
   : TDialog(bounds,Title),
   TWindowInit(TWatchDialog::initFrame)
 {
@@ -44,25 +45,35 @@ TWatchDialog::TWatchDialog(const TRect & bounds, char *Title, char *StartVal)
   r.move(0,-1);
   insert(new TLabel(r,_("~E~xpression"),input));
   r.move(0,3);
-  result = new TInputLine(r,255);
-  insert(result);
-  r.move(0,-1);
-  insert(new TLabel(r,_("~R~esult"),result));
-  r.move(0,3);
-  newval = new TInputLine(r,255);
-  InitHistoryID(tvgdb_History_Watch_Newvalue);
-  insert(new THistory(TRect(r.b.x,r.a.y,r.b.x+3,r.b.y), newval,
-                      tvgdb_History_Watch_Newvalue));
-  insert(newval);
-  r.move(0,-1);
-  insert(new TLabel(r,_("~N~ew value"),newval));
-  r.move(0,3);
+  if (evaluate)
+  {
+    result = new TInputLine(r,255);
+    insert(result);
+    r.move(0,-1);
+    insert(new TLabel(r,_("~R~esult"),result));
+    r.move(0,3);
+    newval = new TInputLine(r,255);
+    InitHistoryID(tvgdb_History_Watch_Newvalue);
+    insert(new THistory(TRect(r.b.x,r.a.y,r.b.x+3,r.b.y), newval,
+                        tvgdb_History_Watch_Newvalue));
+    insert(newval);
+    r.move(0,-1);
+    insert(new TLabel(r,_("~N~ew value"),newval));
+    r.move(0,3);
+  }
   r.b.x = r.a.x + 10;
   r.b.y = r.a.y + 2;
-  insert(new TLButton(r,_("E~v~al"),cmEval,bfDefault));
-  r.a.x = r.b.x + 2;
-  r.b.x = r.a.x + 10;
-  insert(new TLButton(r,_("~C~hange"),cmChange,bfNormal));
+  if (evaluate)
+  {
+    insert(new TLButton(r,_("E~v~al"),cmEval,bfDefault));
+    r.a.x = r.b.x + 2;
+    r.b.x = r.a.x + 10;
+    insert(new TLButton(r,_("~C~hange"),cmChange,bfNormal));
+  }
+  else
+  {
+    insert(new TLButton(r, _("~O~K"), cmOK, bfDefault));
+  }
   r.a.x = r.b.x + 2;
   r.b.x = r.a.x + 10;
   insert(new TLButton(r,_("Cancel"),cmCancel,bfNormal));

@@ -297,7 +297,7 @@ static char *GetProgName()
   return progname;
 }
 
-void main(int argc,char *argv[])
+int main(int argc,char *argv[])
 {
   int count,i;
   struct function_entry *functions;
@@ -312,6 +312,7 @@ void main(int argc,char *argv[])
                    functions[i].linkage_name,
                    functions[i].file_name);
   }
+  return 0;
 }
 
 #endif

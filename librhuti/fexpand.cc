@@ -1,4 +1,5 @@
 /* Copyright (C) 1996-1998 Robert H”hne, see COPYING.RHU for details */
+#include <limits.h>
 #include <rhutils.h>
 
 #ifdef __DJGPP__
@@ -7,10 +8,9 @@
 #define _fixpath __fixpath
 #endif
 
-static char _static_buffer[2048]; // this should be enough
-
 void FExpand(char * & name,int new_alloc)
 {
+  char _static_buffer[PATH_MAX];
   char *fname = _static_buffer;
   _fixpath(name,fname);
   if (new_alloc)

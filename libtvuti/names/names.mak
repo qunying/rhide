@@ -1,6 +1,6 @@
 # Copyright (C) 1996-2000 Robert H”hne, see COPYING.RH for details 
 # This file is part of RHIDE. 
-# d:/obj/rhide/gpr2mak.exe -d -r- -o <¾ names.gpr
+# d:/obj/rhide/gpr2mak.exe -d -r- -o  names.gpr
 ifeq ($(strip $(RHIDESRC)),)
 RHIDESRC=s:/rho/rhide
 endif
@@ -226,6 +226,44 @@ RHIDE_TYPED_LIBS_DJGPP.cc=stdcxx
 RHIDE_TYPED_LIBS_DJGPP.cxx=stdcxx
 RHIDE_TYPED_LIBS_DJGPP.cpp=stdcxx
 RHIDE_TYPED_LIBS_DJGPP.f=g2c m
+RHIDE_STDINC_C_DJGPP=$(DJDIR)/include
+RHIDE_STDINC_CXX_DJGPP=$(DJDIR)/lang/cxx 
+RHIDE_STDINC_GCC_DJGPP=$(DJDIR)/lib
+RHIDE_STDINC_C_Linux=/usr/include /usr/local/include
+RHIDE_STDINC_CXX_Linux=/usr/include/g++ /usr/local/include/g++
+RHIDE_STDINC_GCC_Linux=/usr/lib/gcc-lib /usr/local/lib/gcc-lib
+RHIDE_STDINC_C=$(RHIDE_STDINC_C_$(RHIDE_OS))
+RHIDE_STDINC_CXX=$(RHIDE_STDINC_CXX_$(RHIDE_OS)) $(TVSRC)/include $(SETSRC)
+RHIDE_STDINC_GCC=$(RHIDE_STDINC_GCC_$(RHIDE_OS))
+RHIDE_STDINC=$(RHIDE_STDINC_C) $(RHIDE_STDINC_CXX) $(RHIDE_STDINC_GCC)\
+	$(RHIDE_STDINC_EXTRA) $(dir $(LIBGDB_H))
+RHIDE_OS_CFLAGS_Linux=-D_GNU_SOURCE
+RHIDE_OS_CFLAGS=$(RHIDE_OS_CFLAGS_$(RHIDE_OS)) $(RH_WARN)
+RHIDE_OS_CXXFLAGS_Linux=-D_GNU_SOURCE
+RHIDE_OS_CXXFLAGS_DJGPP=
+RHIDE_OS_CXXFLAGS=$(RHIDE_OS_CXXFLAGS_$(RHIDE_OS)) $(RH_WARN)\
+	-fno-exceptions -fno-rtti
+RHIDE_LIBDIRS=$(addprefix -L,$(dir $(LIBGDB_A)) $(LIB_DIRS))
+PCRE_OBJ=$(subst Linux,linux,$(SETOBJ)/$(RHIDE_OS))
+RHIDE_STDINC_C_DJGPP=$(DJDIR)/include
+RHIDE_STDINC_CXX_DJGPP=$(DJDIR)/lang/cxx 
+RHIDE_STDINC_GCC_DJGPP=$(DJDIR)/lib
+RHIDE_STDINC_C_Linux=/usr/include /usr/local/include
+RHIDE_STDINC_CXX_Linux=/usr/include/g++ /usr/local/include/g++
+RHIDE_STDINC_GCC_Linux=/usr/lib/gcc-lib /usr/local/lib/gcc-lib
+RHIDE_STDINC_C=$(RHIDE_STDINC_C_$(RHIDE_OS))
+RHIDE_STDINC_CXX=$(RHIDE_STDINC_CXX_$(RHIDE_OS)) $(TVSRC)/include $(SETSRC)
+RHIDE_STDINC_GCC=$(RHIDE_STDINC_GCC_$(RHIDE_OS))
+RHIDE_STDINC=$(RHIDE_STDINC_C) $(RHIDE_STDINC_CXX) $(RHIDE_STDINC_GCC)\
+	$(RHIDE_STDINC_EXTRA) $(dir $(LIBGDB_H))
+RHIDE_OS_CFLAGS_Linux=-D_GNU_SOURCE
+RHIDE_OS_CFLAGS=$(RHIDE_OS_CFLAGS_$(RHIDE_OS)) $(RH_WARN)
+RHIDE_OS_CXXFLAGS_Linux=-D_GNU_SOURCE
+RHIDE_OS_CXXFLAGS_DJGPP=
+RHIDE_OS_CXXFLAGS=$(RHIDE_OS_CXXFLAGS_$(RHIDE_OS)) $(RH_WARN)\
+	-fno-exceptions -fno-rtti
+RHIDE_LIBDIRS=$(addprefix -L,$(dir $(LIBGDB_A)) $(LIB_DIRS))
+PCRE_OBJ=$(subst Linux,linux,$(SETOBJ)/$(RHIDE_OS))
 INCLUDE_DIRS=$(RHIDESRC)/libtvuti/include $(RHIDESRC)/librhuti\
 	$(TVSRC)/include $(TVSRC)
 LIB_DIRS=
@@ -344,21 +382,16 @@ GET_HOME=$(HOME)
 	$(RHIDE_COMPILE.C.ii)
 %.s: %.C
 	$(RHIDE_COMPILE.C.s)
+include rhide.env
 all::
 DEPS_0= ndirlist.o nparamli.o 
 NO_LINK=
 LINK_FILES=$(filter-out $(NO_LINK),$(DEPS_0))
 TARGET_0:: $(DEPS_0)
-DEPS_1=ndirlist.cc g:/djgpp/include/fcntl.h\
-	g:/djgpp/include/rhtvision/ttypes.h\
-	g:/djgpp/include/rhtvision/tvutil.h g:/djgpp/include/sys/djtypes.h\
-	g:/djgpp/include/sys/types.h g:/djgpp/include/sys/version.h
+DEPS_1=ndirlist.cc
 ndirlist.o:: $(DEPS_1)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_2=nparamli.cc g:/djgpp/include/fcntl.h\
-	g:/djgpp/include/rhtvision/ttypes.h\
-	g:/djgpp/include/rhtvision/tvutil.h g:/djgpp/include/sys/djtypes.h\
-	g:/djgpp/include/sys/types.h g:/djgpp/include/sys/version.h
+DEPS_2=nparamli.cc
 nparamli.o:: $(DEPS_2)
 	$(RHIDE_COMPILE.cc.o)
 all:: TARGET_0

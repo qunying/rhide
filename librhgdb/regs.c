@@ -1,4 +1,4 @@
-/* Copyright (C) 1996-2000 Robert H”hne, see COPYING.RH for details */
+/* Copyright (C) 1996-2003 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
 #include <libgdbrh.h>
 #include <librhgdb.h>
@@ -37,7 +37,15 @@ get_register_value(int num)
     REGISTER_CONVERT_TO_VIRTUAL(num, REGISTER_VIRTUAL_TYPE(num), buf, d);
   }
   else
-    memcpy(d, buf, REGISTER_RAW_SIZE(num));
+  {
+    size_t len = REGISTER_RAW_SIZE(num);
+    if (len>sizeof(d))   /* paranoya  */
+    {
+       _DEBUG("Length of register %d is %d and is too long for 'long'\n", i, len);
+       len = sizeof(d);
+    }
+    memcpy(d, buf, len);
+  }
   return *(unsigned long *) d;
 }
 

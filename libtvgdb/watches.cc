@@ -96,7 +96,7 @@ Evaluate(char *watch)
 }
 
 void
-AddWatch(char *buffer, Boolean show_window)
+AddWatch(const char *buffer, Boolean show_window)
 {
   if ((show_window == True) && !watchwindow)
     OpenWatchWindow();
@@ -113,7 +113,8 @@ AddWatchEntry(char *_buffer)
   d = new TWatchDialog(TRect(10, 2, 70, 10), _("Add to watch list"),
                        _buffer ? _buffer : "", 0);
   if (TProgram::deskTop->execView(d) == cmOK)
-    AddWatch(d->input->data);
+    // Assumes we are in 8 bits mode
+    AddWatch((const char *)d->input->getData());
   destroy(d);
 }
 

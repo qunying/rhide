@@ -178,9 +178,10 @@ void SetProjectScreenMode();
 void EnableShadows();
 void DisableShadows();
 class TFileDialog;
-char *select_project(char *title);
-TFileDialog *FileOpenDialog(char *init_val, char *title, char *input_label,
-                            ushort aOptions, int hist, char *init_dir);
+char *select_project(const char *title);
+TFileDialog *FileOpenDialog(char *init_val, const char *title,
+                            const char *input_label, ushort aOptions,
+                            int hist, char *init_dir);
 extern char *default_directory;
 
 /* module ideutil.cc */

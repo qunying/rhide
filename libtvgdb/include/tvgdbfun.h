@@ -5,7 +5,7 @@
 
 void Evaluate(char *watch = NULL);
 void AddWatchEntry(char *var = NULL);
-void AddWatch(char *buffer, Boolean show_window = True);
+void AddWatch(const char *buffer, Boolean show_window = True);
 void OpenWatchWindow();
 void DeleteAllWatches();
 void DeleteAllBreakPoints();

@@ -45,6 +45,7 @@
 #define Uses_TStringCollection
 #define Uses_TGKey
 #define Uses_TFileCollection
+#define Uses_TVConfigFile
 
 #define Uses_TProject
 #define Uses_TOptions
@@ -739,7 +740,7 @@ IDE::update()
     D(cmCompile);
   }
 
-  if (dual_display)
+  if (TDisplay::dual_display)
   {
     D(cmUserScreen);
   }
@@ -877,7 +878,7 @@ About()
   TStaticText *text;
   char buffer[1000];
 
-  dialog = new TDialog(TRect(0, 0, 60, 19), _("About RHIDE"));
+  dialog = new TDialog(TRect(0, 0, 60, 22), _("About RHIDE"));
   dialog->options |= ofCentered;
   sprintf(buffer, "\003%s\n"
           "\003(%s)\n"
@@ -885,12 +886,16 @@ About()
           "\003%s\n"
           "\003%s\n\003\n"
           "\003%s, %d-%d\n"
+          "Editor, help system and modifications by:\n"
+          "\003Salvador Eduardo Tropea\n"
+          "This is a CVS snapshot with modifications by:\n"
+          "\003%s\n"
           "\003\n%s%s\n"
-          "%s%s\n"
-          "%s%s\n"
-          "Editor  : %s\n"
+          "%s%s - %s%s\n"
+          "Editor      : %s\n"
+          "Turbo Vision: v%s\n"
 #ifdef INTERNAL_DEBUGGER
-          "Debugger: %s\n"
+          "Debugger    : v%s\n"
 #endif
           ,
           IDEVersion,
@@ -904,16 +909,18 @@ About()
           _("for developing apps"),
 #endif
           _("Copyright (C) by Robert H”hne"),
-          1996, 2002,
+          1996, 2003,
+          "Andris Pavenis",
           _("Language: "), _("English"),
           _("Translated by: "), _("Nobody"),
           _("last updated: "), _("1998-11-29")
           ,TCEDITOR_VERSION_STR
+          ,TV_VERSION
 #ifdef INTERNAL_DEBUGGER
           , gdb_version()
 #endif
           );
-  text = new TStaticText(TRect(0, 0, 58, 14), buffer);
+  text = new TStaticText(TRect(0, 0, 58, 17), buffer);
   text->options |= ofCentered;
   dialog->insert(text);
   TRect r(25, dialog->size.y - 3, 35, dialog->size.y - 1);
@@ -1726,11 +1733,11 @@ IDE::handleEvent(TEvent & event)
 
           TMouse::suspend();
           update_flag = 0;
-#ifdef __linux__
-          RestoreScreen();
-#else
+          // Important: Robert used a hack here to avoid suspending the
+          // keyboard. This no longer works for TV 2.x. The code will
+          // work, but to exit the user screen you *must* press ENTER
+          // when using the Linux console.
           TScreen::suspend();
-#endif
           do
           {
             idle();
@@ -1749,9 +1756,7 @@ IDE::handleEvent(TEvent & event)
           }
           while (event.what == evNothing);
           clearEvent(event);
-#ifndef __linux__
           TScreen::resume();
-#endif
           update_flag = old_flag;
           TMouse::resume();
           Repaint();
@@ -1915,9 +1920,7 @@ static int call_usage = 0;
 static int dump_env = 0;
 static int no_sigint = 0;
 
-#ifdef __DJGPP__
 static int no_title = 0;
-#endif
 
 #define Usage() do { call_usage = 1; return; } while (0)
 
@@ -1932,7 +1935,8 @@ parse_commandline(int argc, char *argv[])
   char *_rhide_opt = expand_rhide_spec("$(RHIDEOPT)");
   char *rhide_opt = NULL;
 
-  TGKey::useBIOS = 0;
+  // SET: Create the config file data now, some options uses it.
+  TProgInit::config=new TVMainConfigFile();
 
   if (*_rhide_opt)
   {
@@ -1968,19 +1972,14 @@ parse_commandline(int argc, char *argv[])
           keep_temp_dir = 1;
           break;
         case 'T':
-#ifdef __DJGPP__
           no_title = 1;
-#endif
           break;
         case 'C':
           no_sigint = 1;
           break;
         case 'H':
-#ifdef __linux__
-          extern int install_console_sigs;
-
-          install_console_sigs = 0;
-#endif
+          // SET: Warning: It also implies -K!
+          TVMainConfigFile::Add("Linux","PatchKeys",0L);
           break;
         case 'S':
 #ifdef __DJGPP__
@@ -1994,14 +1993,15 @@ parse_commandline(int argc, char *argv[])
           dump_env = 1;
           break;
         case 'M':
-#ifdef __DJGPP__
-          extern int use_mouse_handler;
-
-          use_mouse_handler = 0;
-#endif
+          // SET: Select mouse polling for DOS.
+          TVMainConfigFile::Add("DOS","PollMouse",1);
           break;
         case 'K':
-          TGKey::useBIOS = 1;
+          // SET: Select BIOS keyboard for DOS.
+          TVMainConfigFile::Add("DOS","BIOSKey",1);
+          // SET: Don't patch keyboard tables for Linux
+          // Warning: It also implies -H!
+          TVMainConfigFile::Add("Linux","PatchKeys",0L);
           break;
         case 'G':
           arg = next_option(rhide_opt, rhide_opt_end, i, argc, argv);
@@ -2014,7 +2014,8 @@ parse_commandline(int argc, char *argv[])
 #endif
           break;
         case 'p':
-          TGKey::translateKeyPad = 0;
+          // SET: Disable keypad translation.
+          TGKey::SetKbdMapping(TGKey::dosNormalKeypad);
           break;
         case 'k':
           arg = next_option(rhide_opt, rhide_opt_end, i, argc, argv);
@@ -2023,14 +2024,14 @@ parse_commandline(int argc, char *argv[])
           keybindings = ExpandFileNameToThePointWhereTheProgramWasLoaded(arg);
           break;
         case 'b':
-        {
-#ifdef __DJGPP__
-          extern int blink_use_bios;
-
-          blink_use_bios = 1;
-#endif
+          // SET: Not available in TV 2.x
+          if (0)
+          {
+            extern int blink_use_bios;
+  
+            blink_use_bios = 1;
+          }
           break;
-        }
         case 'c':
 #ifdef __DJGPP__
           _crt0_startup_flags |= _CRT0_FLAG_PRESERVE_FILENAME_CASE;
@@ -2166,9 +2167,9 @@ parse_commandline(int argc, char *argv[])
       string_free(ext);
     }
   }
-#ifdef __DJGPP__
-/* Select some switches on NT, because it is buggy and cannot
-   handle correct some standard tricks */
+  // SET: I think it isn't needed for TV 2.x.
+  /* Select some switches on NT, because it is buggy and cannot
+   handle correct some standard tricks
   extern int nt_detected;
 
   if (nt_detected)
@@ -2179,8 +2180,7 @@ parse_commandline(int argc, char *argv[])
     extern int slow_screen;
 
     slow_screen = 1;
-  }
-#endif
+  } */
 }
 
 static void
@@ -2445,7 +2445,7 @@ $(strip $(RHIDE_CONFIG_DIRS) $(INFOPATH) /usr/share/info /usr/info \
   {
     string_free(locale_dir);
     // get the system default localedir
-    char *_locale_dir = BINDTEXTDOMAIN("rhide", NULL);
+    const char *_locale_dir = BINDTEXTDOMAIN("rhide", NULL);
     if (_locale_dir)
       locale_dir = string_dup(_locale_dir);
     else
@@ -2496,8 +2496,10 @@ $(strip $(RHIDE_CONFIG_DIRS) $(INFOPATH) /usr/share/info /usr/info \
   convert_num_pad = 1;
 #endif
   TScreen::suspend();
-  fprintf(stderr, _("This is %s. Copyright (c) 1996-2002 by Robert H”hne\n"),
+  fprintf(stderr, _("This is %s. Copyright (c) 1996-2003 by Robert H”hne\n"),
           IDEVersion);
+  fprintf(stderr, _("Editor, help system and modifications by Salvador Eduardo Tropea\n"));
+  fprintf(stderr, _("This CVS snapshot also contains modifications by Andris Pavenis\n"));
   fprintf(stderr, "             (%s %s)\n", build_date, build_time);
   TScreen::resume();
   PrintSetDefaults();
@@ -2522,9 +2524,7 @@ const char msg[] =
 
 static jmp_buf abort_jmp;
 
-#ifdef __DJGPP__
-static void free_title_seg();
-#endif
+static void restore_title();
 
 extern "C" __attribute__ ((__noreturn__))
      void
@@ -2541,8 +2541,8 @@ extern "C" __attribute__ ((__noreturn__))
   setjmp(abort_jmp);
 #ifdef __DJGPP__
   __djgpp_exception_state_ptr = &abort_jmp;
-  free_title_seg();
 #endif
+  restore_title();
   raise(SIGABRT);
   _exit(1);
 }
@@ -2678,117 +2678,47 @@ init_signals()
 #endif
 }
 
-#ifdef __DJGPP__
-static int _title_seg = -1, _title_selector = 0;
-
-#define _TITLE_SIZE 80
-#define _OLD_TITLE 0
-#define _NEW_TITLE _OLD_TITLE+_TITLE_SIZE
-#define _OLD_SUBTITLE _NEW_TITLE+_TITLE_SIZE
-#define _NEW_SUBTITLE _OLD_SUBTITLE+_TITLE_SIZE
-#define TITLE_SIZE _NEW_SUBTITLE+_TITLE_SIZE
+// SET: I rewrote all the code that handles the window title. Now TV
+// supports it and not only for W9x.
+static char *OriginalWindowTitle=NULL;
 
 static void
-free_title_seg()
+setup_title_low(const char *s)
 {
-  __dpmi_regs r;
-
-  if (_title_seg == -1)
-    return;
-
-  /*
-     Restore the old virtual machine title 
-   */
-  r.x.ax = 0x168E;
-  r.x.dx = 1;
-  r.x.es = _title_seg;
-  r.x.di = _OLD_TITLE;
-  r.x.cx = _TITLE_SIZE;
-  __dpmi_int(0x2f, &r);
-
-  /*
-     Save the old application title 
-   */
-  r.x.ax = 0x168E;
-  r.x.dx = 0;
-  r.x.es = _title_seg;
-  r.x.di = _OLD_SUBTITLE;
-  r.x.cx = _TITLE_SIZE;
-  __dpmi_int(0x2f, &r);
-
-  __dpmi_free_dos_memory(_title_selector);
-  _title_seg = -1;
+  if (!OriginalWindowTitle)
+     OriginalWindowTitle=(char *)TScreen::getWindowTitle();
+  TScreen::setWindowTitle(s);
 }
 
 static void
-_init_title()
+restore_title()
 {
-  __dpmi_regs r;
-
-  if (no_title)
-    return;
-  _title_seg = __dpmi_allocate_dos_memory(TITLE_SIZE / 16, &_title_selector);
-  if (_title_seg == -1)
-    return;
-
-  /*
-     Save the old virtual machine title 
-   */
-  r.x.ax = 0x168E;
-  r.x.dx = 3;
-  r.x.es = _title_seg;
-  r.x.di = _OLD_TITLE;
-  r.x.cx = _TITLE_SIZE;
-  __dpmi_int(0x2f, &r);
-
-  /*
-     Save the old application title 
-   */
-  r.x.ax = 0x168E;
-  r.x.dx = 2;
-  r.x.es = _title_seg;
-  r.x.di = _OLD_SUBTITLE;
-  r.x.cx = _TITLE_SIZE;
-  __dpmi_int(0x2f, &r);
-
-  atexit(free_title_seg);
+  if (OriginalWindowTitle)
+    {
+     TScreen::setWindowTitle((const char *)OriginalWindowTitle);
+     delete[] OriginalWindowTitle;
+     OriginalWindowTitle=NULL;
+    }
 }
-
-static void
-_setup_title(const char *title, int offset, int subfunc)
-{
-  __dpmi_regs r;
-
-  if (_title_seg == -1)
-    return;
-  movedata(_my_ds(), (unsigned) title, _title_selector, offset, _TITLE_SIZE);
-  _farpokeb(_title_selector, offset + _TITLE_SIZE, 0);
-  r.x.ax = 0x168E;
-  r.x.dx = subfunc;
-  r.x.es = _title_seg;
-  r.x.di = offset;
-  __dpmi_int(0x2f, &r);
-}
-
-#endif
 
 void
 setup_main_title()
 {
-#ifdef __DJGPP__
-  _setup_title(IDEVersion, _NEW_TITLE, 1);
-#endif
+  setup_title_low(IDEVersion);
 }
 
 void
 setup_title(const char *title)
 {
-#ifdef __DJGPP__
-  _setup_title(title, _NEW_SUBTITLE, 0);
-#else
-  if (title)
-    return;
-#endif
+  char *str0=IDEVersion;
+  int len=strlen(str0)+strlen(title)+4;
+ 
+  char *s=(char *)alloca(len);
+  strcpy(s,str0);
+  strcat(s," - ");
+  strcat(s,title);
+
+  setup_title_low(s);
 }
 
 int
@@ -2801,15 +2731,7 @@ main(int argc, char **argv)
     dump_environment();
   LoadKeys();
   getcwd(startup_directory, 255);
-#ifdef __DJGPP__
-  extern int w95_detected;
-
-  if (w95_detected)
-  {
-    _init_title();
-    setup_main_title();
-  }
-#endif
+  setup_main_title();
 #ifdef INTERNAL_DEBUGGER
   InitDebuggerInterface();
   TIDEFileEditor::externalFormatLine = DebuggerFormatLine;
@@ -2890,6 +2812,8 @@ IDE::fileOpen()
   }
   TProgram::deskTop->remove(dialog);
   destroy(dialog);
+
+  restore_title();
 }
 
 

@@ -15,7 +15,7 @@
 static char buffer[1000];
 
 static char *
-IdentifyBreakPoint(struct BreakPoint *bp, char *msg)
+IdentifyBreakPoint(struct BreakPoint *bp, const char *msg)
 {
   if (BREAK_FUNCTION(bp))
   {
@@ -31,7 +31,7 @@ IdentifyBreakPoint(struct BreakPoint *bp, char *msg)
 }
 
 static char *
-merge_message(char *msg1, char *msg2)
+merge_message(const char *msg1, const char *msg2)
 {
   strcpy(buffer, msg1);
   strcat(buffer, msg2);
@@ -41,7 +41,7 @@ merge_message(char *msg1, char *msg2)
 void
 UserWarning(int number, ...)
 {
-  char *msg = NULL;
+  const char *msg = NULL;
   va_list arg;
   struct BreakPoint *bp;
 

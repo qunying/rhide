@@ -18,7 +18,7 @@ public:
   void update();
   void GetVariable(ccIndex item, char *buffer, int maxlen);
   void SetVariable(ccIndex item, char *buffer);
-  void AddVariable(char *var);
+  void AddVariable(const char *var);
   void RemoveVariable(ccIndex item);
   virtual void getText(char *dest, ccIndex index, short maxlen);
 };

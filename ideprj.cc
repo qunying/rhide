@@ -324,10 +324,12 @@ SetProjectScreenMode()
 {
   if (TScreen::screenMode != Project.screen_mode)
     TProgram::application->setScreenMode(Project.screen_mode);
+#ifdef __DJGPP__
   if (IntenseMode)
     setIntenseState();
   else
     setBlinkState();
+#endif
 }
 
 static void
@@ -790,7 +792,7 @@ SaveOptions(char *_name)
 }
 
 char *
-select_project(char *title)
+select_project(const char *title)
 {
   ushort result;
   TFileDialog *dialog;
@@ -1596,7 +1598,7 @@ AddProjectItem(const char *name)
 }
 
 TFileDialog *
-FileOpenDialog(char *init_val, char *title, char *input_label,
+FileOpenDialog(char *init_val, const char *title, const char *input_label,
                ushort aOptions, int hist, char *init_dir)
 {
   TFileDialog *dialog;

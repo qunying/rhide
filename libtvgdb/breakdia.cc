@@ -45,7 +45,8 @@ TDialog(bounds, Title), TWindowInit(TBreakListDialog::initFrame)
   TScrollBar *sb;
   TRect r, rr;
   int size;
-  char tmp[256], *temp, *_tmp;
+  char tmp[256], *temp;
+  const char *_tmp;
 
   helpCtx = hcBreakListDialog;
   r = getExtent();
@@ -232,8 +233,8 @@ TBreakEditDialog::handleEvent(TEvent & event)
 TBreakEditDialog::TBreakEditDialog(const char *Title):
 TDialog(TRect(0, 0, 51, 14), Title), TWindowInit(TBreakEditDialog::initFrame)
 {
-  char *i1 = _("File/L~i~ne");
-  char *i2 = _("Fu~n~ction");
+  const char *i1 = _("File/L~i~ne");
+  const char *i2 = _("Fu~n~ction");
   int l = max(cstrlen(i1), cstrlen(i2));
   TRect r(30, 2, 30 + l + 6, 4);
 
@@ -301,7 +302,8 @@ static void
 EditBreak(int number)
 {
   ushort type, control;
-  char buffer[512], *_buffer, *tit;
+  char buffer[512], *_buffer;
+  const char *tit;
   BreakPoint *bp;
   TBreakEditDialog *dialog;
 

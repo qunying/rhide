@@ -38,6 +38,7 @@
 #define Uses_TButton
 #define Uses_TFileViewer
 #define Uses_TGKey
+#define Uses_TVConfigFile
 
 #define Uses_TDirList
 #define Uses_TParamList
@@ -589,11 +590,8 @@ RHGDBApp::handleEvent(TEvent & event)
         case cmUserScreen:
         {
           TMouse::suspend();
-#if 0
+          // See comments in idemain.cc
           TScreen::suspend();
-#else
-          RestoreScreen();
-#endif
           do
           {
             clearEvent(event);
@@ -610,9 +608,7 @@ RHGDBApp::handleEvent(TEvent & event)
 #endif
           }
           while (event.what == evNothing);
-#if 0
           TScreen::resume();
-#endif
           TMouse::resume();
           repaint();
           clearEvent(event);
@@ -790,12 +786,15 @@ parse_commandline(int argc, char *argv[])
           use_dual_display = 1;
           break;
         case 'M':
-          extern int use_mouse_handler;
-
-          use_mouse_handler = 0;
+          // SET: Select mouse polling for DOS.
+          TVMainConfigFile::Add("DOS","PollMouse",1);
           break;
         case 'K':
-          TGKey::useBIOS = 1;
+          // SET: Select BIOS keyboard for DOS.
+          TVMainConfigFile::Add("DOS","BIOSKey",1);
+          // SET: Don't patch keyboard tables for Linux
+          // Warning: It also implies -H!
+          TVMainConfigFile::Add("Linux","PatchKeys",0L);
           break;
         case 'G':
 //          extern int screen_saving;
@@ -805,21 +804,18 @@ parse_commandline(int argc, char *argv[])
 //          screen_saving = atoi(arg);
           break;
         case 'p':
-#if 0
-          extern int convert_num_pad;
-
-          convert_num_pad = 0;
-#endif
+          // SET: Disable keypad translation.
+          TGKey::SetKbdMapping(TGKey::dosNormalKeypad);
           break;
         case 'b':
-        {
-#ifdef __DJGPP__
-          extern int blink_use_bios;
-
-          blink_use_bios = 1;
-#endif
+          // SET: Not available in TV 2.x
+          if (0)
+          {
+            extern int blink_use_bios;
+  
+            blink_use_bios = 1;
+          }
           break;
-        }
         case 'c':
 #ifdef __DJGPP__
           _crt0_startup_flags |= _CRT0_FLAG_PRESERVE_FILENAME_CASE;
@@ -892,7 +888,7 @@ init_rhgdb(int __crt0_argc, char **__crt0_argv)
   if (!locale_dir)
   {
     // get the system default localedir
-    char *_locale_dir = BINDTEXTDOMAIN("rhide", NULL);
+    const char *_locale_dir = BINDTEXTDOMAIN("rhide", NULL);
     if (_locale_dir)
       locale_dir = string_dup(_locale_dir);
     else
@@ -1241,11 +1237,11 @@ static void
 StartSession()
 {
   old_mode = TScreen::getCrtMode();
-  if (!dual_display && use_dual_display && dual_display_supported())
+  if (!TDisplay::dual_display && use_dual_display && dual_display_supported())
   {
     TMouse::suspend();
     TScreen::suspend();
-    dual_display = 1;
+    TDisplay::dual_display = 1;
     TScreen::resume();
     TMouse::resume();
     TProgram::application->setScreenMode(old_mode);
@@ -1257,11 +1253,11 @@ StartSession()
 static void
 EndSession(int exit_code)
 {
-  if (dual_display && use_dual_display)
+  if (TDisplay::dual_display && use_dual_display)
   {
     TMouse::suspend();
     TScreen::suspend();
-    dual_display = 0;
+    TDisplay::dual_display = 0;
     TScreen::resume();
     TMouse::resume();
     TProgram::application->setScreenMode(old_mode);
@@ -1276,11 +1272,11 @@ EndSession(int exit_code)
 static void
 BreakSession()
 {
-  if (dual_display && use_dual_display)
+  if (TDisplay::dual_display && use_dual_display)
   {
     TMouse::suspend();
     TScreen::suspend();
-    dual_display = 0;
+    TDisplay::dual_display = 0;
     TScreen::resume();
     TMouse::resume();
     TProgram::application->setScreenMode(old_mode);
@@ -1579,7 +1575,7 @@ SaveOptions()
   if (TProgram::deskTop->execView(dialog) != cmCancel)
   {
     strcpy(fname, dialog->directory);
-    strcat(fname, dialog->fileName->data);
+    strcat(fname, (const char *)dialog->fileName->getData());
     SaveOptions(fname);
   }
   destroy(dialog);
@@ -1597,7 +1593,7 @@ LoadOptions()
   if (TProgram::deskTop->execView(dialog) != cmCancel)
   {
     strcpy(fname, dialog->directory);
-    strcat(fname, dialog->fileName->data);
+    strcat(fname, (const char *)dialog->fileName->getData());
     ReadOptions(fname);
   }
   destroy(dialog);
@@ -1614,7 +1610,7 @@ FileOpen()
   if (TProgram::deskTop->execView(dialog) != cmCancel)
   {
     strcpy(fname, dialog->directory);
-    strcat(fname, dialog->fileName->data);
+    strcat(fname, (const char *)dialog->fileName->getData());
     OpenViewer(fname, 1, False);
   }
   destroy(dialog);

@@ -199,7 +199,7 @@ TDependency::write(opstream & os)
   os << dependencies;
   local_options->ToString(localoptions);
   if (strlen(localoptions) == 0)
-    os.writeString(NULL);
+    os.writeString((const char *)NULL);
   else
     os.writeString(localoptions);
   delete(localoptions);

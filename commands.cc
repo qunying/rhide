@@ -147,8 +147,7 @@ CONSTRUCTOR_FUNCTION(init_rhide_commands)
   __CM(SaveSameTime,121)\
   __CM(WrapOn,122)\
   __CM(WrapOff,123)\
-  __CM(WrapToggle,124)\
-  __CM(UpdateCodePage,125)
+  __CM(WrapToggle,124)
 #undef __CM
 #define __CM(x,y) add_command_constant("cmc"#x,cmc##x);
 __RHIDE_EDITOR_COMMANDS__}

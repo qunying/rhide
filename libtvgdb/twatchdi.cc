@@ -89,7 +89,7 @@ TDialog(bounds, Title), TWindowInit(TWatchDialog::initFrame)
 void
 TWatchDialog::handleEvent(TEvent & event)
 {
-  char *ret;
+  const char *ret;
   static char *empty_string = "";
 
   TDialog::handleEvent(event);
@@ -106,7 +106,7 @@ TWatchDialog::handleEvent(TEvent & event)
           ret = EvaluateWatch(input_buffer, 0);
           if (!ret)
             ret = _("not available");
-          result->setData(ret);
+          result->setData((void *)ret);
           newval->setData(empty_string);
           input->selectAll(True);
           clearEvent(event);
@@ -114,14 +114,16 @@ TWatchDialog::handleEvent(TEvent & event)
         }
         case cmChange:
         {
-          char input_buffer[256], new_buffer[256], *ret;
+          char input_buffer[256], new_buffer[256];
+          const char *ret;
 
           newval->getData(new_buffer);
           input->getData(input_buffer);
           ret = SetValue(input_buffer, new_buffer);
           if (!ret)
             ret = _("could not change");
-          result->setData(ret);
+          // Safe conversion, TInputLine just copies the value
+          result->setData((void *)ret);
           break;
         }
       }

@@ -51,8 +51,8 @@ TWatchListBox::update()
   int i, count = list()->getCount();
   TWatchEntry *e;
   int len = 0, maxlen = 0;
-  char *invalid = _("not available");
-  char *expr;
+  const char *invalid = _("not available");
+  const char *expr;
 
   for (i = 0; i < count; i++)
   {
@@ -81,7 +81,7 @@ TWatchListBox::update()
 }
 
 void
-TWatchListBox::AddVariable(char *var)
+TWatchListBox::AddVariable(const char *var)
 {
   TWatchEntry *e;
 

@@ -1,4 +1,4 @@
-/* Copyright (C) 1996-1998 Robert H”hne, see COPYING.RH for details */
+/* Copyright (C) 1996-2003 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
 #include <libgdbrh.h>
 #include <librhgdb.h>
@@ -121,7 +121,7 @@ insertFunction(char *file_name, struct symbol *sym, int bl,
   Function = insert_function_common(file_name);
   tmp = strchr(dname, '(');
   temp = tmp - 1;
-  while (*temp != ' ' || template_level > 0)
+  while ((*temp != ' ' || template_level > 0) && temp>=dname)
   {
     if (is_cplusplus)
     {
@@ -286,14 +286,8 @@ list_symbols(char *regexp)
       for (i = GLOBAL_BLOCK; i <= STATIC_BLOCK; i++)
       {
         b = BLOCKVECTOR_BLOCK(bv, i);
-        /*
-           Skip the sort if this block is always sorted.  
-         */
-        if (!BLOCK_SHOULD_SORT(b))
-          sort_block_syms(b);
-        for (j = 0; j < BLOCK_NSYMS(b); j++)
+        ALL_BLOCK_SYMBOLS (b, j, sym)
         {
-          sym = BLOCK_SYM(b, j);
           if (SYMBOL_CLASS(sym) == LOC_BLOCK &&
               (regexp == NULL || SYMBOL_MATCHES_REGEXP(sym)))
           {

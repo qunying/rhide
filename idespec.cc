@@ -32,6 +32,7 @@
 #include <libtvuti.h>
 #include <rhutils.h>
 
+const char *argsForGrep=__("arguments for GREP");
 
 /* *INDENT-OFF* */
 #define SAME_LIBS(x,y)\
@@ -402,7 +403,7 @@ static char *default_variables[] = {
  "*.[cfhmnps]*",
 
  "RHIDE_GREP",
- "grep -n $(prompt "__("arguments for GREP")",$(WUC) $(DEFAULT_GREP_MASK))",
+ "grep -n $(prompt " "arguments for GREP" ",$(WUC) $(DEFAULT_GREP_MASK))",
 
  "RHIDE_GPROF",
  "gprof $(OUTFILE)",

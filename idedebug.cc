@@ -433,11 +433,11 @@ int dual_display_supported();
 static void
 StartSession()
 {
-  if (!dual_display && UseDualDisplay && dual_display_supported())
+  if (!TDisplay::dual_display && UseDualDisplay && dual_display_supported())
   {
     TMouse::suspend();
     TScreen::suspend();
-    dual_display = 1;
+    TDisplay::dual_display = 1;
     TScreen::resume();
     TMouse::resume();
     TProgram::application->setScreenMode(Project.screen_mode);
@@ -460,11 +460,11 @@ RemoveSessionTempFiles(void)
 static void
 EndSession(int exit_code)
 {
-  if (dual_display && UseDualDisplay)
+  if (TDisplay::dual_display && UseDualDisplay)
   {
     TMouse::suspend();
     TScreen::suspend();
-    dual_display = 0;
+    TDisplay::dual_display = 0;
     TScreen::resume();
     TMouse::resume();
     TProgram::application->setScreenMode(Project.screen_mode);
@@ -509,11 +509,11 @@ EndSession(int exit_code)
 static void
 BreakSession()
 {
-  if (dual_display && UseDualDisplay)
+  if (TDisplay::dual_display && UseDualDisplay)
   {
     TMouse::suspend();
     TScreen::suspend();
-    dual_display = 0;
+    TDisplay::dual_display = 0;
     TScreen::resume();
     TMouse::resume();
     TProgram::application->setScreenMode(Project.screen_mode);

@@ -439,7 +439,7 @@ TDialog(TRect(0, 0, 76, 23), _("Environment options")),
 TWindowInit(TEnvironmentDialog::initFrame)
 {
   TRect r, r1, r2;
-  char *tmp;
+  const char *tmp;
 
 #ifdef __DJGPP__
   char tabstring[10];
@@ -1158,7 +1158,7 @@ TDialog(TRect(0, 0, 69, 25), _("local options for project-item")),
 TWindowInit(&TLocalDialog::initFrame)
 {
   TRect r, rr, rrr;
-  char *tmp;
+  const char *tmp;
 
   r = TRect(2, 2, 32, 3);
   cmdline = new TEnterInputLine(r, 255);
@@ -1363,18 +1363,18 @@ GetOptions(TLocalDialog * dialog, TDependency * dep)
   Boolean retval;
   TParamList *pl = new TParamList();
 
-  retval = pl->FromString(dialog->cmdline->data);
+  retval = pl->FromString((const char *)dialog->cmdline->getData());
   destroy(pl);
   if (retval == False)
     return False;
-  dep->local_options->FromString(dialog->cmdline->data);
+  dep->local_options->FromString((const char *)dialog->cmdline->getData());
   if (dep->compile_id != COMPILE_PROJECT)
   {
     if (dep->dest_name)
       delete dep->dest_name;
     char *tmp;
 
-    BaseName(dialog->output_name->data, tmp);
+    BaseName((const char *)dialog->output_name->getData(), tmp);
     InitFName(dep->dest_name, tmp);
     string_free(tmp);
     dep->dest_file_type = get_file_type(FName(dep->dest_name));
@@ -1414,9 +1414,9 @@ GetOptions(TLocalDialog * dialog, TDependency * dep)
       dep->compile_id = COMPILE_UNKNOWN;
   }
   string_free(dep->compiler);
-  string_dup(dep->compiler, dialog->compiler->data);
+  string_dup(dep->compiler, (const char *)dialog->compiler->getData());
   string_free(dep->error_check);
-  string_dup(dep->error_check, dialog->error_prog->data);
+  string_dup(dep->error_check, (const char *)dialog->error_prog->getData());
   dialog->error_type->getData(&dep->error_type);
   dialog->others->getData(&dep->flags);
   return True;

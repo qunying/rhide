@@ -637,7 +637,7 @@ SyntaxOptions()
   TRadioButtons *radio;
   TCheckBoxes *check;
   TIntInputLine *inp;
-  char *tmp;
+  const char *tmp;
 
   d = new TDialog(TRect(0, 0, 42, 15), _("Options for syntax help"));
   d->options |= ofCentered;

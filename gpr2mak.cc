@@ -111,7 +111,7 @@ $(wildcard $(path)/$(notdir ", tmp, "))))", NULL);
   {
     string_free(locale_dir);
     // get the system default localedir
-    char *_locale_dir = BINDTEXTDOMAIN("rhide", NULL);
+    const char *_locale_dir = BINDTEXTDOMAIN("rhide", NULL);
 
     if (_locale_dir)
       locale_dir = string_dup(_locale_dir);

@@ -43,7 +43,7 @@ TWindowInit(TEnvironmentDialog::initFrame)
 {
   TRect
     r;
-  char *
+  const char *
     tmp;
   char
     tabstring[10];

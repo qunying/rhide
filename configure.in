@@ -48,8 +48,7 @@ $DJDIR/include/rhtvision \
 /usr/include/rhtvision"
 RH_CHECK_FILE_LIST(TV_INC, tv.h, $TV_INC_SEARCH,[Turbo Vision header files])
 
-TV_OBJ_SEARCH="$TV_INC/../`echo $rhide_OS | sed -e s,Linux,linux,g -e s,CYGWIN,win32,g` \
-$TV_INC/../../lib"
+TV_OBJ_SEARCH="$TV_INC/../makes $TV_INC/../../lib"
 RH_CHECK_FILE_LIST(TVOBJ, librhtv.a, $TV_OBJ_SEARCH,[Turbo Vision libraray])
 
 SETSRC_SEARCH="$abs_srcdir/../setedit \
@@ -164,7 +163,7 @@ AC_CHECK_LIB(pcre,pcre_version,
 SET_LIBS="$SET_LIBS rhtv"
 
 AC_CHECK_HEADERS(X11/keysym.h,
-[SET_SPECIAL_LDFLAGS="$SET_SPECIAL_LDFLAGS -L/usr/X11/lib" SET_LIBS="$SET_LIBS X11"],
+[SET_SPECIAL_LDFLAGS="$SET_SPECIAL_LDFLAGS -L/usr/X11/lib -L/usr/X11R6/lib" SET_LIBS="$SET_LIBS X11 Xmu"],
 [])
 
 AC_SUBST(SET_SPECIAL_LDFLAGS)

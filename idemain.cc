@@ -1982,7 +1982,7 @@ parse_commandline(int argc, char *argv[])
           TVMainConfigFile::Add("Linux","PatchKeys",0L);
           break;
         case 'S':
-#ifdef __DJGPP__
+#if 0 //def __DJGPP__
           extern int slow_screen;
           extern char useBIOS_VGA_State;
           useBIOS_VGA_State = 0;

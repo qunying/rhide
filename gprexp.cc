@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <locale.h>
 #include <string.h>
+#include <ctype.h>
 #ifdef __DJGPP__
 #include <crt0.h>
 #endif
@@ -46,9 +47,15 @@ void ConvertName(TFileName *&_name, TStringCollection *vars)
 {
   if (!_name)
     return;
-  char *name = string_dup(FName(_name));
-  _AbsToRelPath(name, vars);
-  InitFName(_name, name);
+  char *name = NULL;
+  const char *Name = FName(_name);
+  if (*Name && ((*Name == '/') ||
+               (isalpha((int)(unsigned char)*Name) && (Name[1] == ':'))))
+  {
+    name = string_dup(Name);
+    _AbsToRelPath(name, vars);
+    InitFName(_name, name);
+  }
   string_free(name);
 }
 
@@ -250,15 +257,15 @@ void WriteGPR(char *outname)
     string_dup(name,outname);
   }
   ofpstream *file;
-  if (strcmp(name,"-") == 0)
-    file = new ofpstream("");
-  else
-    file = new ofpstream(name);
   check_vars(vars,Options.SrcDirs);
   check_vars(vars,Options.ObjDirs);
   check_vars(vars,Options.include_path);
   check_vars(vars,Options.library_path);
   TProject *tmp = ConvertProject(project, vars);
+  if (strcmp(name,"-") == 0)
+    file = new ofpstream("");
+  else
+    file = new ofpstream(name);
   file->writeString(PROJECT_IDENT);
   *file << ProjectVersion;
   *file << tmp;

@@ -9,6 +9,7 @@
 #define Uses_TDirList
 #define Uses_TParamList
 #define Uses_TStringCollection
+#define Uses_ideFunctions
 
 #include <libide.h>
 
@@ -173,6 +174,19 @@ void _AbsToRelPath(char *&dname, TStringCollection *vars)
   int i, count;
   char *dir, *_dir;
   if (!dname || !*dname) return;
+
+  FILE_TYPE t = get_file_type(dname);
+  if (t == FILE_HEADER)
+  {
+    char *rel;
+    if (FindFile(dname, rel, Options.include_path))
+    {
+      string_free(dname);
+      dname = rel;
+      return;
+    }
+  }
+  
   if (AbsToRelPath(project_directory, dname, NULL))
     return;
   count = vars->getCount();
@@ -262,9 +276,7 @@ void WriteTarget(FILE *f,TDependency *dep,int depth,
         {
           char *dname;
           FindFile(FName(_dep->dest_name),dname);
-#if 1
           _AbsToRelPath(dname, vars);
-#endif
           string_cat(deps, " ", dname, NULL);
           string_free(dname);
         }
@@ -510,6 +522,23 @@ void WriteMake(char *outname,int argc,char *argv[])
     VS(.m);
     VS(.asm);
     VS(.nsm);
+#undef VS
+  }
+  if (Options.include_path->getCount() > 0)
+  {
+    char *vp = string_dup("vpath_header=");
+    for (i=0;i<Options.include_path->getCount();i++)
+    {
+      if (i>0) string_cat(vp, " ");
+      string_cat(vp, ((char *)Options.include_path->at(i)));
+    }
+    put_breakline(f, 0, 75, vp);
+    string_free(vp);
+#define VS(suffix) fprintf(f,"vpath %c"#suffix" $(vpath_header)\n",'%')
+    VS(.h);
+    VS(.hpp);
+    VS(.ha);
+    VS(.hd);
 #undef VS
   }
   if (Options.ObjDirs->getCount() > 0)

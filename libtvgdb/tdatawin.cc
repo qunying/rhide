@@ -216,7 +216,6 @@ TDataViewer::TDataViewer(const TRect& bounds, TScrollBar *aVScrollBar, const cha
             targetEndian=0;
     }
     endian = targetEndian;
-    indi->changeState(TDIndicator::iEndian, "eE"[endian]);
     orig_addr_txt=string_dup(taddr);
     isvalid_address(orig_addr_txt,&orig_addr);
     setCursor(ADDRCHARS,0);

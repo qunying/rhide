@@ -36,9 +36,9 @@ _init_win_check()
 
 #endif
 
-static char *_getenv(char *v)
+static const char *_getenv(char *v)
 {
-  char *vv = getenv(v);
+  const char *vv = getenv(v);
   return vv ? vv : "";
 }
 

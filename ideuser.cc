@@ -115,7 +115,7 @@ Boolean user_check_errors(TDependency *dep,TMsgCollection &args)
 {
   FILE *inf;
   char *tmp;
-  char c;
+  int c;
   Boolean retval = True;
   string_dup(tmp,dep->error_check);
   string_cat(tmp," ");

@@ -448,13 +448,5 @@ void DeleteAllBreakPoints()
   }
 }
 
-/* force to link gdbdummy.o */
-
-static __attribute__ (( constructor ))
-void _init_libtvgdb()
-{
-  extern int gdbdummy;
-  gdbdummy = 1;
-}
 
 

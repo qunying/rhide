@@ -7,5 +7,4 @@ RHIDE_OS_LIBS_Linux=intl ncurses gpm m
 RHIDE_OS_LIBS_DJGPP_idegc.exe=dbg
 RHIDE_OS_LIBS_DJGPP=intl $(RHIDE_OS_LIBS_DJGPP_$(MAIN_TARGET))
 RHIDE_OS_LIBS=$(RHIDE_OS_LIBS_$(RHIDE_OS))
-RHIDE_LIBS=$(addprefix -l,$(LIBS) $(RHIDE_TYPED_LIBS) $(RHIDE_OS_LIBS)) $(SETOBJ)/easydiag.a
 

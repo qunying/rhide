@@ -190,8 +190,12 @@ SRC_FILES=$(O_SRC_FILES) $(S_SRC_FILES) $(_SRC_FILES)
 ifneq ($(strip $(subdirs)),)
 copy_src_files:: $(addsuffix .cpy,$(sort $(subdirs)))
 
+check_src_files:: $(addsuffix .chk,$(sort $(subdirs)))
+
 update__srcdir:: $(addsuffix .sub,$(subdirs))
 endif
+
+check_src_files:: $(SRC_FILES)
 
 copy_src_files:: $(SRC_FILES)
 ifneq ($(SRC_FILES),)
@@ -244,6 +248,10 @@ endif
 	@cat $*/$(list_file) >> $(list_file)
 	@-rm -f $*/$(list_file)
 
+%.chk: Makefile
+	@$(MAKE) -C $* $(FLAGS_TO_PASS) --no-print-directory \
+	  check_src_files
+
 ifneq ($(strip $(gpr2mak)),)
 %.mak: %.gpr $(copyrite.exe)
 	@echo Checking '$(notdir $@)'
@@ -267,10 +275,10 @@ else
 		-e 's,	$(top_obj_dir),	$$(top_obj_dir),g' \
 	  $(USER_GPR2MAK_SEDS) > __tmp__.mak
 endif
-	@$(copyrite.exe) __tmp__.mak
-	@$(move-if-change) __tmp__.mak $@
+	@$(copyrite.exe) __tmp__.mak > /dev/null
+	@$(move-if-change) __tmp__.mak $@ > /dev/null
 	@rm -f __tmp__.mak
-	@cp -p $@ $(srcdir)/$(notdir $@)
+	@-cp -p $@ $(srcdir)/$(notdir $@)
 endif
 
 ifneq ($(strip $(project)),)

@@ -97,6 +97,10 @@ else
 install_prefix_src=$(PACKAGE)$(DIR_VERSION)
 endif
 
+check.files:
+	@touch $(shell find -name "*.gpr" -print)
+	@$(MAKE) check_src_files
+
 copy.files:
 	@-rm -f $(list_file)
 	$(MAKE) prefix=$(prefix) list_file=$(list_file) \

@@ -19,10 +19,12 @@
 #define Uses_TInputLinePiped
 #include <settvuti.h>
 
+#include <rhutils.h>
+
 #include <librhgdb.h>
 #include <string.h>
 
-TWatchDialog::TWatchDialog(const TRect & bounds, char *Title, char *StartVal,
+TWatchDialog::TWatchDialog(const TRect & bounds, const char *Title, const char *StartVal,
                            int evaluate)
   : TDialog(bounds,Title),
   TWindowInit(TWatchDialog::initFrame)
@@ -39,7 +41,9 @@ TWatchDialog::TWatchDialog(const TRect & bounds, char *Title, char *StartVal,
                       tvgdb_History_Watch_Expression));
   if (StartVal)
   {
-    input->setData(StartVal);
+    char *tmp = string_dup(StartVal);
+    input->setData(tmp);
+    string_free(tmp);
   }
   insert(input);
   r.move(0,-1);
@@ -84,6 +88,7 @@ TWatchDialog::TWatchDialog(const TRect & bounds, char *Title, char *StartVal,
 void TWatchDialog::handleEvent(TEvent & event)
 {
   char *ret;
+  static char *empty_string = "";
   TDialog::handleEvent(event);
   switch (event.what)
   {
@@ -97,7 +102,7 @@ void TWatchDialog::handleEvent(TEvent & event)
           ret = EvaluateWatch(input_buffer);
           if (!ret) ret = _("not available");
           result->setData(ret);
-          newval->setData("");
+          newval->setData(empty_string);
           input->selectAll(True);
           clearEvent(event);
           break;

@@ -34,15 +34,13 @@ ALL_OBJFILES=nodebobj/copyrite.o doc/htmlspl.o doc/tx2txi.o\
 	nodebobj/gpr2mak.o nodebobj/gprexp.o librhgdb/test/symify.o\
 	librhgdb/test/listfunc.o librhgdb/test/mygdb.o po/fstrcmp.o\
 	po/msgcat.o rhgdb/gdbedit.o rhgdb/gdbsynt.o rhgdb/main.o\
-	rhgdb/options.o rhgdb/version.o debobj/idecomp.o debobj/idedebug.o\
-	debobj/ideexter.o debobj/ideforma.o debobj/idegcc.o\
-	debobj/idehelp.o debobj/idemain.o debobj/idemenu.o debobj/ideopt.o\
+	rhgdb/options.o rhgdb/version.o debobj/idedebug.o debobj/ideforma.o\
+	debobj/idegcc.o debobj/idemain.o debobj/idemenu.o debobj/ideopt.o\
 	debobj/ideprj.o debobj/idestatu.o debobj/idesynta.o\
-	debobj/rhassert.o nodebobj/idecomp.o nodebobj/idedebug.o\
-	nodebobj/ideexter.o nodebobj/idegcc.o nodebobj/idehelp.o\
-	nodebobj/idemain.o nodebobj/idemenu.o nodebobj/ideopt.o\
-	nodebobj/ideprj.o nodebobj/idestatu.o nodebobj/idesynta.o\
-	nodebobj/rhassert.o nodebobj/tocrlf.o nodebobj/tolf.o
+	nodebobj/idedebug.o nodebobj/idegcc.o nodebobj/idemain.o\
+	nodebobj/idemenu.o nodebobj/ideopt.o nodebobj/ideprj.o\
+	nodebobj/idestatu.o nodebobj/idesynta.o nodebobj/tocrlf.o\
+	nodebobj/tolf.o
 LIBRARIES=
 SOURCE_NAME=$<
 OUTFILE=$@

@@ -64,12 +64,13 @@ LOCAL_OPT=$(subst ___~~~___, ,$(subst $(notdir $<)___,,$(filter $(notdir\
 OBJFILES=nodebobj/gprexp.o
 ALL_OBJFILES=nodebobj/gprexp.o nodebobj/commands.o nodebobj/fstrcmp.o\
 	nodebobj/ideapp.o nodebobj/idebug.o nodebobj/idecheck.o\
-	nodebobj/idecolor.o nodebobj/idedefau.o nodebobj/idedial.o\
-	nodebobj/ideenv.o nodebobj/ideflags.o nodebobj/idehints.o\
+	nodebobj/idecolor.o nodebobj/idecomp.o nodebobj/idedefau.o\
+	nodebobj/idedial.o nodebobj/ideenv.o nodebobj/ideexter.o\
+	nodebobj/ideflags.o nodebobj/idehelp.o nodebobj/idehints.o\
 	nodebobj/idemak.o nodebobj/idemsg.o nodebobj/idercs.o\
 	nodebobj/idespec.o nodebobj/idestrm.o nodebobj/idesupp.o\
 	nodebobj/ideuser.o nodebobj/ideutil.o nodebobj/ideversi.o\
-	nodebobj/openedit.o
+	nodebobj/openedit.o nodebobj/rhassert.o
 LIBRARIES=rh_comm.a
 SOURCE_NAME=$<
 OUTFILE=$@

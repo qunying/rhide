@@ -65,17 +65,16 @@ C_EXTRA_FLAGS=-DRHIDE -DFOR_LIBSET
 LOCAL_OPT=$(subst ___~~~___, ,$(subst $(notdir $<)___,,$(filter $(notdir\
 	$<)___%,$(LOCAL_OPTIONS))))
 
-OBJFILES=nodebobj/idecomp.o nodebobj/idedebug.o nodebobj/ideexter.o\
-	nodebobj/idegcc.o nodebobj/idehelp.o nodebobj/idemain.o\
+OBJFILES=nodebobj/idedebug.o nodebobj/idegcc.o nodebobj/idemain.o\
 	nodebobj/idemenu.o nodebobj/ideopt.o nodebobj/ideprj.o\
-	nodebobj/idestatu.o nodebobj/idesynta.o nodebobj/rhassert.o
-ALL_OBJFILES=nodebobj/idecomp.o nodebobj/idedebug.o nodebobj/ideexter.o\
-	nodebobj/idegcc.o nodebobj/idehelp.o nodebobj/idemain.o\
+	nodebobj/idestatu.o nodebobj/idesynta.o
+ALL_OBJFILES=nodebobj/idedebug.o nodebobj/idegcc.o nodebobj/idemain.o\
 	nodebobj/idemenu.o nodebobj/ideopt.o nodebobj/ideprj.o\
 	nodebobj/idestatu.o nodebobj/idesynta.o nodebobj/commands.o\
 	nodebobj/fstrcmp.o nodebobj/ideapp.o nodebobj/idebug.o\
-	nodebobj/idecheck.o nodebobj/idecolor.o nodebobj/idedefau.o\
-	nodebobj/idedial.o nodebobj/ideenv.o nodebobj/ideflags.o\
+	nodebobj/idecheck.o nodebobj/idecolor.o nodebobj/idecomp.o\
+	nodebobj/idedefau.o nodebobj/idedial.o nodebobj/ideenv.o\
+	nodebobj/ideexter.o nodebobj/ideflags.o nodebobj/idehelp.o\
 	nodebobj/idehints.o nodebobj/idemak.o nodebobj/idemsg.o\
 	nodebobj/idercs.o nodebobj/idespec.o nodebobj/idestrm.o\
 	nodebobj/idesupp.o nodebobj/ideuser.o nodebobj/ideutil.o\
@@ -90,10 +89,10 @@ SRC_DIRS=$(RHIDESRC)
 WUC=
 EDITORS=
 MAIN_TARGET=ide.exe
-PROJECT_ITEMS=idecomp.cc idedebug.cc ideexter.cc idegcc.cc idehelp.cc\
-	idemain.cc idemenu.cc ideopt.cc ideprj.cc idestatu.cc idesynta.cc\
-	libide/libide.gpr librhuti/librhuti.gpr libtvuti/libtvuti.gpr\
-	rh_comm.gpr rhassert.c tvdemo/libtvdem.gpr
+PROJECT_ITEMS=idedebug.cc idegcc.cc idemain.cc idemenu.cc ideopt.cc\
+	ideprj.cc idestatu.cc idesynta.cc libide/libide.gpr\
+	librhuti/librhuti.gpr libtvuti/libtvuti.gpr rh_comm.gpr\
+	tvdemo/libtvdem.gpr
 DEFAULT_MASK=*.[acghmops]*
 RHIDE_BIN_DIR=c:/obj/rhide
 PASCAL_TYPE=GPC
@@ -384,78 +383,62 @@ include rhide.env
 all::
 clean::
 	rm -f $(CLEAN_FILES)
-DEPS_0= nodebobj/idecomp.o nodebobj/idedebug.o nodebobj/ideexter.o\
-	nodebobj/idegcc.o nodebobj/idehelp.o nodebobj/idemain.o\
+DEPS_0= nodebobj/idedebug.o nodebobj/idegcc.o nodebobj/idemain.o\
 	nodebobj/idemenu.o nodebobj/ideopt.o nodebobj/ideprj.o\
-	nodebobj/idestatu.o nodebobj/idesynta.o nodebobj/rhassert.o\
-	libide/libide.a librhuti/librhuti.a libtvuti/libtvuti.a rh_comm.a\
-	tvdemo/libtvdem.a
+	nodebobj/idestatu.o nodebobj/idesynta.o libide/libide.a\
+	librhuti/librhuti.a libtvuti/libtvuti.a rh_comm.a tvdemo/libtvdem.a
 NO_LINK=libide/libide.a librhuti/librhuti.a libtvuti/libtvuti.a\
 	tvdemo/libtvdem.a
 LINK_FILES=$(filter-out $(NO_LINK),$(DEPS_0))
 ide.exe:: $(DEPS_0)
 	$(RHIDE_COMPILE_LINK)
-DEPS_1=idecomp.cc rhide.h ideenums.h idefunct.h libide.h tdepende.h\
-	tfname.h toptions.h tproject.h rhutils.h libtvuti.h msgrec.h\
-	tdirlist.h tenterli.h tmsgcoll.h tmsglist.h tscollec.h tvutilfu.h
-nodebobj/idecomp.o:: $(DEPS_1)
-	$(RHIDE_COMPILE.cc.o)
-DEPS_2=idedebug.cc ideconst.h rhide.h rhidehis.h idecomma.h ideenums.h\
+DEPS_1=idedebug.cc ideconst.h rhide.h rhidehis.h idecomma.h ideenums.h\
 	idefunct.h libide.h tdepende.h tfname.h tideedit.h tidefile.h\
 	toptions.h tproject.h rhutils.h libtvuti.h tdirlist.h tparamli.h\
 	tscollec.h tvutilfu.h
-nodebobj/idedebug.o:: $(DEPS_2)
+nodebobj/idedebug.o:: $(DEPS_1)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_3=ideexter.cc rhide.h rhidehis.h ideenums.h libide.h tdepende.h\
-	tfname.h toptions.h tproject.h rhutils.h libtvuti.h msgrec.h\
-	tdirlist.h tmsgcoll.h tparamli.h tscollec.h
-nodebobj/ideexter.o:: $(DEPS_3)
-	$(RHIDE_COMPILE.cc.o)
-DEPS_4=idegcc.cc ideconst.h rhide.h idecomma.h ideenums.h idefunct.h\
+DEPS_2=idegcc.cc ideconst.h rhide.h idecomma.h ideenums.h idefunct.h\
 	libide.h tdepende.h tfname.h tideedit.h tidefile.h toptions.h\
 	tprjlist.h tprjwind.h tproject.h rhutils.h libtvuti.h msgrec.h\
 	tcheckdi.h tdirlist.h tenterli.h tmsgcoll.h tparamli.h tscollec.h\
 	tvutilfu.h twindowl.h
-nodebobj/idegcc.o:: $(DEPS_4)
+nodebobj/idegcc.o:: $(DEPS_2)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_5=idehelp.cc ideconst.h rhide.h idecomma.h libide.h tideedit.h\
-	tidefile.h rhutils.h libtvuti.h tvutilco.h tvutilfu.h
-nodebobj/idehelp.o:: $(DEPS_5)
-	$(RHIDE_COMPILE.cc.o)
-DEPS_6=idemain.cc ideapp.h ideconst.h rhide.h rhidehis.h idecomma.h\
+DEPS_3=idemain.cc ideapp.h ideconst.h rhide.h rhidehis.h idecomma.h\
 	ideenums.h idefunct.h libide.h tdepende.h tfname.h tideedit.h\
 	tidefile.h toptions.h tproject.h rhutils.h libtvuti.h msgrec.h\
 	tcheckdi.h tdirlist.h tenterli.h thintsta.h tmeminfo.h tmsgcoll.h\
 	tscollec.h tvutilco.h tvutilfu.h twindowl.h libtvdem.h
-nodebobj/idemain.o:: $(DEPS_6)
+nodebobj/idemain.o:: $(DEPS_3)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_7=idemenu.cc ideapp.h ideconst.h rhide.h idecomma.h libide.h rhutils.h\
+DEPS_4=idemenu.cc ideapp.h ideconst.h rhide.h idecomma.h libide.h rhutils.h\
 	libtvuti.h
-nodebobj/idemenu.o:: $(DEPS_7)
+nodebobj/idemenu.o:: $(DEPS_4)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_8=ideopt.cc ideconst.h rhide.h rhidehis.h idecomma.h ideenums.h\
+DEPS_5=ideopt.cc ideconst.h rhide.h rhidehis.h idecomma.h ideenums.h\
 	idefunct.h libide.h tdepende.h tflagcol.h tflagent.h tflaglis.h\
 	tfname.h tidefile.h toptions.h tprjlist.h tprjwind.h tproject.h\
 	rhutils.h libtvuti.h tdirlist.h tenterch.h tenterin.h tenterra.h\
 	tintinpu.h tlbutton.h tparamli.h tscollec.h tvutilco.h tvutilfu.h
-nodebobj/ideopt.o:: $(DEPS_8)
+nodebobj/ideopt.o:: $(DEPS_5)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_9=ideprj.cc ideconst.h rhide.h rhidehis.h idecomma.h ideenums.h\
+DEPS_6=ideprj.cc ideconst.h rhide.h rhidehis.h idecomma.h ideenums.h\
 	idefunct.h libide.h tdepende.h tfname.h tideedit.h tidefile.h\
 	toptions.h tprjlist.h tprjwind.h tproject.h rhutils.h libtvuti.h\
 	tdirlist.h tenterli.h tparamli.h tscollec.h tvutilfu.h twindowl.h
-nodebobj/ideprj.o:: $(DEPS_9)
+nodebobj/ideprj.o:: $(DEPS_6)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_10=idestatu.cc ideapp.h ideconst.h rhide.h idecomma.h libide.h\
+DEPS_7=idestatu.cc ideapp.h ideconst.h rhide.h idecomma.h libide.h\
 	rhutils.h libtvuti.h thintsta.h tscollec.h tvutilco.h
-nodebobj/idestatu.o:: $(DEPS_10)
+nodebobj/idestatu.o:: $(DEPS_7)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_11=idesynta.cc rhide.h ideenums.h libide.h tdepende.h tfname.h\
+DEPS_8=idesynta.cc rhide.h ideenums.h libide.h tdepende.h tfname.h\
 	tproject.h rhutils.h libtvuti.h tenterin.h tintinpu.h tlbutton.h\
 	tparamli.h
-nodebobj/idesynta.o:: $(DEPS_11)
+nodebobj/idesynta.o:: $(DEPS_8)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_12=
+DEPS_9=
 .PHONY: libide/libide.gpr.force
 all:: libide/libide.gpr.force
 libide/libide.gpr.force:
@@ -463,7 +446,7 @@ libide/libide.gpr.force:
 clean::
 	$(MAKE) -C libide/ -f libide.mak $(FLAGS_FOR_SUBPROJECTS) clean
 
-DEPS_13=
+DEPS_10=
 .PHONY: librhuti/librhuti.gpr.force
 all:: librhuti/librhuti.gpr.force
 librhuti/librhuti.gpr.force:
@@ -471,7 +454,7 @@ librhuti/librhuti.gpr.force:
 clean::
 	$(MAKE) -C librhuti/ -f librhuti.mak $(FLAGS_FOR_SUBPROJECTS) clean
 
-DEPS_14=
+DEPS_11=
 .PHONY: libtvuti/libtvuti.gpr.force
 all:: libtvuti/libtvuti.gpr.force
 libtvuti/libtvuti.gpr.force:
@@ -479,7 +462,7 @@ libtvuti/libtvuti.gpr.force:
 clean::
 	$(MAKE) -C libtvuti/ -f libtvuti.mak $(FLAGS_FOR_SUBPROJECTS) clean
 
-DEPS_15=
+DEPS_12=
 .PHONY: rh_comm.gpr.force
 all:: rh_comm.gpr.force
 rh_comm.gpr.force:
@@ -487,10 +470,7 @@ rh_comm.gpr.force:
 clean::
 	$(MAKE) -f rh_comm.mak $(FLAGS_FOR_SUBPROJECTS) clean
 
-DEPS_16=rhassert.c
-nodebobj/rhassert.o:: $(DEPS_16)
-	$(RHIDE_COMPILE.c.o)
-DEPS_17=
+DEPS_13=
 .PHONY: tvdemo/libtvdem.gpr.force
 all:: tvdemo/libtvdem.gpr.force
 tvdemo/libtvdem.gpr.force:

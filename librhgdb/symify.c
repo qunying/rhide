@@ -72,7 +72,7 @@ int main(int argc,char *argv[])
 
   if (argc < 2)
   {
-    fprintf(stderr, "Usage: gsymify [-o <outfile>] [-i <corefile>] <program>\n");
+    fprintf(stderr, "Usage: gsymify [-o <outfile>] [-i <tracefile>] [-a <adjust>] <program>\n");
     fprintf(stderr, "This program adds debug information to DJGPP program call frame tracebacks\n");
     return 1;
   }

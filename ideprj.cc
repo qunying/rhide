@@ -1,7 +1,6 @@
 /* Copyright (C) 1996-1998 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
 #define Uses_ifpstream
-#define Uses_fpstream
 #define Uses_ofpstream
 #define Uses_MsgBox
 #define Uses_TScreen
@@ -592,13 +591,11 @@ void LoadDesktop(ipstream & is,Boolean load_windows = True)
 static
 void SaveProject(TProject *_project, const char *_project_name)
 {
-  fpstream *file;
-  int handle = open(_project_name, O_WRONLY | O_BINARY | O_CREAT | O_TRUNC);
-  file = new fpstream(handle);
+  ofpstream *file = new ofpstream(_project_name);
   file->writeString(PROJECT_IDENT);
   *file << ProjectVersion;
   *file << _project;
-  SavePrintSetUp(*file);
+  SavePrintSetUp(file);
   delete(file);
 }
 
@@ -606,7 +603,7 @@ static
 void LoadOptions(char *_name)
 {
   char *dir,*name,*ext,*pname,*dname,*__name;
-  fpstream *ifile;
+  ifpstream *ifile;
   TProject *_project;
   split_fname(_name,dir,name,ext);
   string_free(ext);
@@ -869,7 +866,7 @@ static Boolean OpenStandardProject(const char *prjname,Boolean with_desktop = Tr
     dskname = string_dup(tmp);
     if (with_desktop == True)
     {
-      fpstream *idfile;
+      ifpstream *idfile;
       idfile = open_ifpstream(tmp);
       if (idfile && idfile->good()) LoadDesktop(*idfile);
       else
@@ -926,7 +923,7 @@ static Boolean OpenStandardProject(const char *prjname,Boolean with_desktop = Tr
 static void LoadDesktop()
 {
   char *dir,*ext;
-  fpstream *idfile;
+  ifpstream *idfile;
   if (dskname) string_free(dskname);
   split_fname(project_name,dir,dskname,ext);
   string_cat(dskname,DESKTOP_EXT);
@@ -943,7 +940,7 @@ void setup_title(const char *); // idemain.cc
 
 Boolean OpenProject(const char * prjname)
 {
-  fpstream *idfile;
+  ifpstream *idfile;
   ofpstream *ofile;
   char ori_dir[256];
   getcwd(ori_dir,255);

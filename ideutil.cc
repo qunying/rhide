@@ -290,7 +290,7 @@ void print_findfiles()
 
 #define USE_OPEN
 
-fpstream *open_ifpstream(const char *name)
+ifpstream *open_ifpstream(const char *name)
 {
 #ifdef USE_OPEN
   int handle;
@@ -303,13 +303,13 @@ fpstream *open_ifpstream(const char *name)
   {
     return NULL;
   }
-  return new fpstream(handle);
+  return new ifpstream(handle);
 #else
-  return new fpstream(name);
+  return new ifpstream(name);
 #endif
 }
 
-void close_ifpstream(fpstream *is)
+void close_ifpstream(ifpstream *is)
 {
 #ifdef USE_OPEN
   is->close();

@@ -180,9 +180,9 @@ extern int debug_dependencies;
 extern int debug_commands;
 extern int debug_tempfiles;
 extern int debug_files;
-class fpstream;
-fpstream *open_ifpstream(const char *name);
-void close_ifpstream(fpstream *is);
+class ifpstream;
+ifpstream *open_ifpstream(const char *name);
+void close_ifpstream(ifpstream *is);
 void ExpandFileNames(TProject *prj);
 
 /* module idemsg.cc */
@@ -265,7 +265,7 @@ void OpenDisWin(int force_open = 0);
 class TProject;
 TProject *ReadProject(const char *, Boolean from_ide = True);
 void WriteMake(char *outname=NULL,int argc=0,char *arg[]=NULL);
-void put_breakline(FILE *f,int start_len,int max_len,char *s);
+void put_breakline(FILE *f,int start_len,int max_len,const char *s);
 extern TProject *project;
 #define Project (*project)
 extern char *project_directory;

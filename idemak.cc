@@ -1,7 +1,6 @@
 /* Copyright (C) 1996-1998 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
 #define Uses_ifpstream
-#define Uses_fpstream
 #define Uses_ofpstream
 #define Uses_MsgBox
 #define Uses_TProject
@@ -36,7 +35,7 @@ unsigned short ProjectVersion = 1;
 
 TProject *ReadProject(const char *prjname, Boolean from_ide)
 {
-  fpstream *ifile;
+  ifpstream *ifile;
   char *magic;
   unsigned short version;
   TProject *_project;
@@ -88,7 +87,7 @@ _("This project was created with a newer RHIDE version and could not be used."))
     if (!_FPCReservedWords(_project)) DefaultFPCReservedWords(_project);
     if (!_RHIDEUserWords(_project)) DefaultUserWords(_project);
     if (version > 0)
-      LoadPrintSetUp(*ifile);
+      LoadPrintSetUp(ifile);
     else
       PrintSetDefaults();
     close_ifpstream(ifile);
@@ -119,7 +118,7 @@ static Boolean AddTarget(const char * name)
   return True;
 }
 
-void put_breakline(FILE *f,int start_len,int max_len,char *s)
+void put_breakline(FILE *f,int start_len,int max_len,const char *s)
 {
   int len;
   char *lf = NULL;
@@ -139,7 +138,7 @@ void put_breakline(FILE *f,int start_len,int max_len,char *s)
       }
       return;
     }
-    char *tmp;
+    const char *tmp;
     tmp = s + max_len-start_len;
     while (tmp > s && *tmp != ' ') tmp--;
     if (tmp == s)
@@ -153,9 +152,13 @@ void put_breakline(FILE *f,int start_len,int max_len,char *s)
       }
       return;
     }
-    *tmp = 0;
-    fprintf(f,"%s\\\n\t",s);
-    *tmp = ' ';
+    const char *_tmp = s;
+    do
+    {
+      fprintf(f, "%c", *_tmp);
+      _tmp++;
+    } while (_tmp < tmp);
+    fprintf(f, "\\\n\t");
     start_len = 8; // tabsize
     s = tmp+1;
   }

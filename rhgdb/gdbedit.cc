@@ -17,7 +17,6 @@
 
 #define Uses_TCEditor
 #define Uses_TCEditWindow
-#define Uses_TSIndicator
 #include <ceditor.h>
 
 #define Uses_TDirList
@@ -63,12 +62,12 @@ public:
   TGDBEditor(const TRect &,TScrollBar *,TScrollBar *,TSIndicator *,const char *);
   virtual void handleEvent(TEvent &event);
   static int (*externalFormatLine)(TCEditor *,void *, unsigned, int,
-                                   unsigned short, unsigned, uint32,
+                                   unsigned short, unsigned, unsigned,
                                    unsigned );
-  void formatLine(void *, unsigned, int, unsigned short, unsigned, uint32, unsigned );
+  void formatLine(void *, unsigned, int, unsigned short, unsigned, unsigned, unsigned );
   void setFormatLine();
   void (TCEditor::*FormatLinePtr)(void *, unsigned, int, unsigned short, unsigned,
-                                  uint32, unsigned );
+                                  unsigned, unsigned );
   ~TGDBEditor();
   char *bname;
 };
@@ -200,7 +199,7 @@ int DebuggerFormatLine(TCEditor *editor,
                        int Width,
                        unsigned short Colors,
                        unsigned lineLen,
-                       uint32 Attr,
+                       unsigned Attr,
                        unsigned LineNo)
 {
 #define drawbuf ((ushort *)DrawBuf)
@@ -233,7 +232,7 @@ int DebuggerFormatLine(TCEditor *editor,
 }
 
 int (*TGDBEditor::externalFormatLine)(TCEditor *,void *, unsigned, int,
-                                   unsigned short, unsigned, uint32,
+                                   unsigned short, unsigned, unsigned,
                                    unsigned ) = NULL;
 
 void TGDBEditor::formatLine( void *DrawBuf,
@@ -241,7 +240,7 @@ void TGDBEditor::formatLine( void *DrawBuf,
 			  int Width,
 			  unsigned short Colors,
                           unsigned lineLen,
-                          uint32 Attr,
+                          unsigned Attr,
                           unsigned lineNo // needed for RHIDE
 			)
 {
@@ -258,7 +257,7 @@ void TGDBEditor::setFormatLine()
   FormatLinePtr = formatLinePtr;
   formatLinePtr = (void (TCEditor::*)
                   (void *, unsigned, int, unsigned short, unsigned,
-                   uint32, unsigned ))&TGDBEditor::formatLine;
+                   unsigned, unsigned ))&TGDBEditor::formatLine;
   update(ufView);
 }
 
@@ -351,8 +350,8 @@ int FindFile(const char *name,char *&retval)
   return dummy == True;
 }
 
-void OpenViewer(char *_fname,int line,Boolean from_debugger,
-                Boolean only_focus)
+Boolean OpenViewer(char *_fname,int line,Boolean from_debugger,
+                   Boolean only_focus)
 {
   int i,count;
   Boolean found;
@@ -360,10 +359,13 @@ void OpenViewer(char *_fname,int line,Boolean from_debugger,
   char *fname = find_file(_fname,_bname,found);
   char full_name[512];
   TCEditor *editor;
-  bname = (char *)alloca(strlen(_bname)+1);
+  //bname = (char *)alloca(strlen(_bname)+1);
+  bname = new char [strlen(_bname)+1];
   strcpy(bname,_bname);
   string_free(_bname);
   TWindow *window = NULL;
+  static char * lastSkippedName = 0; /* This name will be non NULL if user will
+                                        cancel file open dialog below  */
   TView *v = TProgram::deskTop->current;
   if (windows)
   {
@@ -383,15 +385,31 @@ void OpenViewer(char *_fname,int line,Boolean from_debugger,
   if (found == False)
   {
     ushort result;
-    if (only_focus == True) return;
+    if (only_focus == True) return True;
+    if (lastSkippedName)
+    {
+      if (strcmp(lastSkippedName,_fname)==0)
+      {
+        delete [] bname;
+        return False;   /* Don't ask for the same name once more  */
+      }
+      else
+      {
+        string_free (lastSkippedName);
+        lastSkippedName = 0;  /* File name changed. So ask again...  */
+      }
+    }
     messageBox(mfError | mfOKButton,_("Could not find the source "
                                       "file %s."),bname);
     TFileDialog *dialog;
+    string_cat (bname,"*");
     dialog = new TFileDialog(bname,_("Open a file"),
                            _("~N~ame"),fdOpenButton,0);
     result = TProgram::deskTop->execView(dialog);
     if (result != cmCancel)
     {
+      string_free (lastSkippedName);
+      lastSkippedName=0;
       dialog->getData(full_name);
       fname = full_name;
       FExpand(fname,False);
@@ -410,7 +428,10 @@ void OpenViewer(char *_fname,int line,Boolean from_debugger,
     }
     else
     {
-      return;
+      if (lastSkippedName) string_free (lastSkippedName);
+      lastSkippedName=strdup(_fname);
+      delete [] bname;
+      return False;
     }
   }
   if (!window)
@@ -438,6 +459,8 @@ void OpenViewer(char *_fname,int line,Boolean from_debugger,
   if (only_focus == True)
     if (v) v->select();
   TProgram::deskTop->unlock();
+  delete [] bname;
+  return True;
 }
 
 void CenterCursor()
@@ -497,5 +520,16 @@ char *WhereIsCursor(int &line,int &column,char *&bname)
 void OpenFileFromEditor(char *fullName)
 {
   open_editor(fullName);
+}
+
+
+void ClearCPULine (void)
+{
+  if (current_editor)
+    if (TProgram::application->deskTop->indexOf(current_editor->owner))
+      {
+         CPULine = (uint32)-1;
+         current_editor->update(ufView);
+      }
 }
 

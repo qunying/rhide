@@ -844,6 +844,9 @@ msgstr "            -C : Sl† av SIGINT-h†ndtering\n"
 msgid  "            -T : Disable the DOS-box title feature\n"
 msgstr "            -T : Sl† av tittelen til et DOS-vindu\n"
 
+msgid  "            -P : don`t remove temp files when exiting\n"
+msgstr ""
+
 msgid  "using %s as temp directory\n"
 msgstr "Bruker katalogen %s for midlertidige filer\n"
 

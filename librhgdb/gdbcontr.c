@@ -35,6 +35,8 @@ int force_disassembler_window = 0;
 
 static char * start_directory = 0;
 
+static void (*PostCommandHook) (void) = 0;
+
 void Command(char *x,int call_hook)
 {
   in_command++;
@@ -65,6 +67,11 @@ void Command(char *x,int call_hook)
     in_command++;
     ResetDebugger();
     in_command--;
+  }
+  if (PostCommandHook)
+  {
+    PostCommandHook ();
+    PostCommandHook=0;
   }
 }
 
@@ -106,17 +113,33 @@ static void set_source_directories(char **SrcDirs,int count)
 char *_progname = NULL;
 static time_t _progtime = 0;
 
+static void cmdcat (char **command, char *str, int *maxlen)
+{
+  int  len = strlen(*command) + strlen(str);
+  if (len >= *maxlen)
+  {
+     *maxlen = 3*len/2 + 128;
+     *command = realloc(*command, *maxlen);
+     if (*command == 0)
+       abort();
+  }
+  strcat(*command, str);
+}
+
 static int INIT()
 {
   static char gdbVersionShown=0;
-  char command[512],*progname;
-  int i;
+  char *command,*progname;
+  int i, cmdlen=512;
   char **argv;
   int argc;
   char **srcdirs;
   int srccount;
   struct stat st;
   _InitGDBOutWin();
+  command = malloc(cmdlen);
+  if (!command)
+    abort();
   /*
     Show GDB version and copyright notice in GDB output window
     (of course if such is enabled). But do this only once.
@@ -149,12 +172,14 @@ static int INIT()
   {
     _UserWarning(WARN_NOPROGRAM);
     init_count = 0;
+    free (command);
     return 0;
   }
   if (stat(progname,&st) != 0)
   {
     _UserWarning(WARN_NOPROGRAM_FOUND);
     init_count = 0;
+    free (command);
     return 0;
   }
   if (!_progname || _progtime != st.st_atime || strcmp(progname,_progname) != 0)
@@ -167,6 +192,7 @@ static int INIT()
       _UserWarning(WARN_NOSYMBOLS);
       init_count = 0;
       _progname = NULL;
+      free (command);
       return 0;
     }
     _progtime = st.st_atime;
@@ -178,22 +204,23 @@ static int INIT()
   select_source_line = _select_source_line;
 #endif
   argv = _GetProgramArguments(&argc);
+  *command = 0;
   if (argv && argc > 0)
   {
-    strcpy(command,"set args");
+    cmdcat (&command, "set args", &cmdlen);
     for (i=0;i<argc;i++)
     {
-      strcat(command," ");
+      cmdcat (&command, " ", &cmdlen);
       if (strchr(argv[i],' ') != NULL)
       {
         /* the arg must be quoted. What quote should be used " or ' ??
            I'm using " */
-        strcat(command,"\"");
-        strcat(command,argv[i]);
-        strcat(command,"\"");
+        cmdcat (&command,"\"",&cmdlen);
+        cmdcat (&command,argv[i],&cmdlen);
+        cmdcat (&command,"\"",&cmdlen);
       }
       else
-        strcat(command,argv[i]);
+        cmdcat (&command,argv[i],&cmdlen);
     }
     Command(command,0);
   }
@@ -202,6 +229,7 @@ static int INIT()
     Command("set args",0);
   }
   SetBreakPoints();
+  free (command);
   return 1;
 }
 
@@ -379,5 +407,12 @@ int InitRHGDB()
 {
   if (debugger_started) reset_debugger();
   return INIT();
+}
+
+
+void SetPostCommandHook(void (*hook)(void))
+{
+  if (in_command > 0)
+    PostCommandHook = hook;
 }
 

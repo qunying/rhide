@@ -166,6 +166,9 @@ static Boolean check_user_messages(TMsgCollection &errs)
   return True;
 }
 
+
+#define ASSEMBLER_MESSAGES "Assembler messages:"
+
 static Boolean check_compile_c_errors(TMsgCollection &errs)
 {
   Boolean retval = True;
@@ -291,14 +294,32 @@ static Boolean check_compile_c_errors(TMsgCollection &errs)
     if (error == msgError)
     {
       /* Is this message a warning? */
+      /* GCC says "warning:" here, but GAS - "Warning:". Therefore
+         compare ignoring symbol case  */
       while (*temp && *temp == ' ') temp++;
-      if (strncmp(temp,"warning:",8) == 0)
+      if (strncasecmp(temp, "warning:", 8) == 0)
       {
         error = msgWarning;
         temp += 8;
         /* skip whitespaces */
         while (*temp && *temp == ' ') temp++;
         if (*temp) temp--;
+      }
+      /* We should also test for template instantiation messages
+         and assembler messages title line  */
+      else if (strncmp(temp,ASSEMBLER_MESSAGES,sizeof(ASSEMBLER_MESSAGES)) == 0)
+      {
+        error = msgMessage;
+        while (*--temp==' ');
+        temp++;
+        temp++;
+      }
+      else if (strncmp(temp,"instantiated from here",22) == 0)
+      {
+        error = msgMessage;
+        while (*--temp==' ');
+        temp++;
+        *temp=':';
       }
     }
     /* if there was no lineno found, assume it is only a message, not an error */
@@ -460,7 +481,11 @@ static Boolean check_link_errors(TMsgCollection &errs)
       while (rh_isdigit(*temp)) temp--;
       if (*temp != ':')
       {
+#if 0
         if (strncmp(tmp, ": warning: ", 11) == 0)
+#else
+        if (strstr(tmp, ": warning: ") != NULL)
+#endif
           errs.insert(new MsgRec(NULL,buffer,msgWarning));
         else
         {
@@ -523,8 +548,19 @@ static Boolean check_ar_errors(TMsgCollection & errs)
     }
     else
     {
-      errs.insert(new MsgRec(NULL,buffer,msgError));
-      retval = False;
+      /*
+        If the line contains a `warning` somewhere, treat it
+        not as an error. This can happen for instance, if the
+        user has overwritten the spec for the archive to run
+        the linker.
+      */
+      if (strstr(buffer, "warning:") == NULL)
+      {
+        errs.insert(new MsgRec(NULL,buffer,msgError));
+        retval = False;
+      }
+      else
+        errs.insert(new MsgRec(NULL,buffer,msgMessage));
     }
   }
   close_errfile();
@@ -696,6 +732,7 @@ static Boolean compile_archive(TDependency *dep,char *spec)
     remove(cpp_errname);
     remove(cpp_outname);
   }
+  ShowMessages(errs,False);
   if (run_ret != 0) retval = False;
   return retval;
 }

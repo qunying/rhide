@@ -1,10 +1,9 @@
-/* Copyright (C) 1996-2000 Robert H”hne, see COPYING.RH for details */
+/* Copyright (C) 1996-1998 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
 #define Uses_TStringCollection
 #include <tv.h>
 
 #define Uses_TCEditor
-#define Uses_TNoCaseStringCollection
 #define Uses_TCEditor_Internal
 #include <ceditor.h>
 
@@ -40,9 +39,13 @@ static void __attribute__ ((__constructor__))
 init_syntax()
 {
   char *syntax_file;
-  TCEditor::SHLGenList=new TNoCaseStringCollection(5,5);
+//  TCEditor::SHLSOStack=new SOStack;
+//  TCEditor::SHLGenList=new TNoCaseSOSStringCollection(5,5,TCEditor::SHLSOStack);
+  SOStack * SHLSOStack=new SOStack;
+  TCEditor::SHLGenList=new TNoCaseSOSStringCollection(5,5,SHLSOStack);
   syntax_file = ExpandFileNameToThePointWhereTheProgramWasLoaded(SHLFile);
   if (LoadSyntaxHighLightFile(syntax_file,TCEditor::SHLArray,
+//                              *TCEditor::SHLSOStack,TCEditor::SHLGenList,
                               TCEditor::SHLGenList,
                               TCEditor::SHLCant) != 0)
   {
@@ -60,6 +63,7 @@ End\n\
 ");
     fclose(f);
     LoadSyntaxHighLightFile(syntax_file,TCEditor::SHLArray,
+//                            *TCEditor::SHLSOStack,TCEditor::SHLGenList,
                             TCEditor::SHLGenList,
                             TCEditor::SHLCant);
     unlink(syntax_file);

@@ -25,5 +25,8 @@ public:
   static void updateAll();
 };
 
+/* Force update all TDataWindow windows  */
+void    UpdateDataWindows (void);
+
 #endif
 

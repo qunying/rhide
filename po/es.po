@@ -848,6 +848,9 @@ msgstr "            -C : Deshabilitar el manejo de SIGINT (Ctrl-C)\n"
 msgid  "            -T : Disable the DOS-box title feature\n"
 msgstr ""
 
+msgid  "            -P : don`t remove temp files when exiting\n"
+msgstr ""
+
 msgid  "using %s as temp directory\n"
 msgstr "usando %s como directorio temporal\n"
 

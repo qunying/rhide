@@ -36,8 +36,20 @@ ushort BigmessageBox( const char *msg, ushort aOptions );
 ushort BigmessageBox( ushort aOptions, const char *fmt, ... )
                 __attribute__ ((format (printf, 2, 3)));
 ushort BiginputBox( const char *Title, const char *aLabel, char *s, int limit );
+
+class TInputLine;
+extern TInputLine *(*CreateInputLine)(const TRect & rect, int aMaxLen);
+
 ushort HistinputBox( const char *Title, const char *aLabel, char *s,
                      int limit, int hist_id );
+
+ushort HistinputBoxRect(const TRect &bounds,
+                        const char *Title,
+                        const char *aLabel,
+                        char *s,
+                        int limit,
+                        int hist_id);
+
 class TValidator;
 ushort ValidInputBox( const char *Title, const char *aLabel, char *s,
                       int limit, TValidator * validator);

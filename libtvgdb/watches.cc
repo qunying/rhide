@@ -1,4 +1,4 @@
-/* Copyright (C) 1996-2000 Robert H”hne, see COPYING.RH for details */
+/* Copyright (C) 1996-1998 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
 #define Uses_TProgram
 #define Uses_TDeskTop
@@ -51,11 +51,6 @@ void OpenWatchWindow()
 {
   TRect r;
   int i;
-  if (watchwindow)
-  {
-    watchwindow->select();
-    return;
-  }
   if (WatchWindowRect.a.x == -1)
   {
     WatchWindowRect = TProgram::deskTop->getExtent();
@@ -89,10 +84,7 @@ void Evaluate(char *watch)
 void AddWatch(char *buffer, Boolean show_window)
 {
   if ((show_window == True) && !watchwindow) OpenWatchWindow();
-  if (watchwindow)
-    Watches.atInsert(watches->focused, strdup(buffer));
-  else
-    Watches.insert(strdup(buffer));
+  Watches.insert(strdup(buffer));
   if (watchwindow) watches->AddVariable(buffer);
 }
 

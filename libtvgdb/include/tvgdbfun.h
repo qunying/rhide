@@ -31,4 +31,7 @@ class TRect;
 extern TRect WatchWindowRect;
 extern TRect CallStackWindowRect;
 
+void AddDataWindow();
+void ShowStackWindow();
+
 #endif

@@ -29,7 +29,9 @@
   __HC(FunctionListBox,4)\
   __HC(DisassemblerViewer,5)\
   __HC(Register,6)\
-  __HC(BreakListDialog,7)
+  __HC(BreakListDialog,7)\
+  __HC(InspectDialog,8)\
+  __HC(Inspector,9)
 
 __TVGDB_COMMAND_CODES__
 __TVGDB_HELP_CODES__

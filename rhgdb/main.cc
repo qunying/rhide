@@ -35,14 +35,18 @@
 #define Uses_tvgdbCommands
 #define Uses_tvgdbFunctions
 #define Uses_TDisassemblerWindow
+#define Uses_TDataWindow
+#define Uses_TInspector
+#define Uses_TInspectDialog
 #include <libtvgdb.h>
 
+#define Uses_TInputLinePiped
 #define Uses_TCEditor
 #include <ceditor.h>
 
 #include <librhgdb.h>
 #include <stdio.h>
-#include <rhgdb.h>
+#include "rhgdb.h"
 #include <string.h>
 #include <stdlib.h>
 #include <locale.h>
@@ -53,8 +57,52 @@
 #ifdef __DJGPP__
 #include <dir.h>
 #include <sys/exceptn.h>
+#include <dpmi.h>
 #include <crt0.h>
+#else
+#include <curses.h>
 #endif
+
+
+#ifndef DJGPP
+#include <curses.h>
+#endif
+
+extern int RunProgram(const char *cmd,
+                      Boolean redir_stderr,Boolean redir_stdout,
+                      Boolean SwitchToUser);
+
+char *cpp_outname, *cpp_errname;
+
+int RunProgram(const char *cmd,
+                   Boolean redir_stderr,Boolean redir_stdout,
+		   Boolean SwitchToUser)
+{
+  int retval;
+  if (redir_stdout == True) cpp_outname = open_stdout();
+  if (redir_stderr == True) cpp_errname = open_stderr();
+  if (SwitchToUser == True)
+  {
+    TProgram::deskTop->setState(sfVisible,False);
+    TProgram::application->suspend();
+  }
+#ifdef __DJGPP__
+  __djgpp_exception_toggle();
+#endif
+  retval = system(cmd);
+#ifdef __DJGPP__
+  __djgpp_exception_toggle();
+#endif
+  if (redir_stdout == True) close_stdout();
+  if (redir_stderr == True) close_stderr();
+  if (SwitchToUser == True)
+  {
+    TProgram::application->resume();
+    TProgram::deskTop->setState(sfVisible,True);
+  }
+  return retval;
+}
+
 
 void SaveScreen();
 void RestoreScreen();
@@ -159,6 +207,8 @@ TMenuBar *RHGDBApp::initMenuBar(TRect r)
       *new TMenuItem(_("S~t~ack window"),cmStackWindow,kbNoKey,hcNoContext,"") +
       *new TMenuItem(_("~C~all stack"),cmCallStack,kbCtrlF3,hcNoContext,"Ctrl+F3") +
       *new TMenuItem(_("List of ~F~unctions"), cmFunctionList, kbNoKey, hcNoContext, "") +
+      newLine() +
+      *new TMenuItem(_("~I~nspect data"), cmInspectData, kbCtrlF6, hcNoContext,"Ctrl+F6") +
     *new TSubMenu(_("~O~ptions"),kbAltO) +
       *new TMenuItem(_("~D~irectories for sources"),cmSrcDirs,kbNoKey,hcNoContext,"") +
       *new TMenuItem(_("~P~references"),cmPreferences,kbNoKey,hcNoContext,"") +
@@ -267,6 +317,28 @@ static void OpenDisWin()
   }
 }
 
+static
+void AddInspect(const char *expr)
+{
+  char buf[1000];
+  strcpy(buf, expr ? expr : "");
+  TInspectDialog * insp = new TInspectDialog (TRect(0,0,40,8),"Inspect",buf);
+  insp->options |= ofCentered;
+  if (TProgram::deskTop->execView(insp)==cmOK)
+    {
+       insp->getData (buf);
+       TInspector *w = new TInspector(TProgram::deskTop->getExtent(), buf);
+       w->helpCtx = hcInspector;
+       w->options |= ofCentered;
+       w->update(buf);
+       AddWindow(w, (TWindow **)&w);
+    }
+  TObject::destroy (insp);
+}
+
+
+static TDataWindow *stack_win = NULL;
+
 void RHGDBApp::handleEvent(TEvent & event)
 {
   static char *callstack_name = NULL;
@@ -310,11 +382,23 @@ void RHGDBApp::handleEvent(TEvent & event)
           clearEvent(event);
           break;
         case cmDataWindow:
-          AddDataWindow();
+          TDataWindow *data_win;
+          if ((data_win = TDataWindow::createNew()))
+            AddWindow(data_win);
           clearEvent(event);
           break;
         case cmStackWindow:
-          ShowStackWindow();
+          if (!stack_win)
+          {
+            if ((stack_win = TDataWindow::stackWindow()))
+              AddWindow(stack_win,(TWindow **) &stack_win);
+          }
+          else
+            stack_win->select();
+          clearEvent(event);
+          break;
+        case cmInspectData:
+          AddInspect(RHGDBWordUnderCursor());
           clearEvent(event);
           break;
         case cmMainFunction:
@@ -395,7 +479,15 @@ void RHGDBApp::handleEvent(TEvent & event)
           do
           {
             clearEvent(event);
+#ifndef __DJGPP__
+            timeout (1);
+#endif
             event.getKeyEvent();
+#ifdef __DJGPP__
+            __dpmi_yield ();
+#else
+            timeout (0);
+#endif
           } while (event.what == evNothing);
 #if 0
           TScreen::resume();
@@ -460,7 +552,8 @@ static void UPDATE_WATCH()
 {
   if (watchwindow) watches->update();
   UpdateCallStackWindow();
-  UpdateDataWindows();
+  TDataWindow::updateAll();
+  if (dis_win) dis_win->update(stop_pc);
 }
 
 static void InitDebuggerInterface();
@@ -468,11 +561,16 @@ static void InitDebuggerInterface();
 static int show_usage = 0;
 static char *prog_name = NULL;
 
+
 static __attribute__((noreturn))
 void usage()
 {
+//  TEventQueue::suspend();
+//  TScreen::suspend();
+
   TEventQueue::suspend();
   TScreen::suspend();
+
   fprintf(stderr,_("usage: %s [options] exe-file [[arg1 [arg2 ...]]]\n"),prog_name);
   fprintf(stderr,_("options:\n"));
   fprintf(stderr,_("            -c : show filename exactly (no case conversion)\n"));
@@ -557,12 +655,10 @@ static void parse_commandline(int argc,char *argv[])
           TGKey::useBIOS = 1;
           break;
         case 'G':
+//          extern int screen_saving;
           arg = next_option(rhgdb_opt,rhgdb_opt_end,i,argc,argv);
-#ifdef __DJGPP__
-          extern int screen_saving;
           if (!arg) Usage();
-          screen_saving = atoi(arg);
-#endif
+//          screen_saving = atoi(arg);
           break;
         case 'p':
 #if 0
@@ -621,6 +717,14 @@ static void parse_commandline(int argc,char *argv[])
   if (!progname) Usage();
 }
 
+
+
+static TInputLine * rhgdbCreateInputLine (const TRect & rect, int aMaxLen)
+{
+  return new TInputLinePiped (rect, aMaxLen);
+}
+
+
 static
 void init_rhgdb(int __crt0_argc,char **__crt0_argv)
 {
@@ -659,16 +763,24 @@ void init_rhgdb(int __crt0_argc,char **__crt0_argv)
   extern int convert_num_pad;
   convert_num_pad = 1;
 #endif
+#ifdef __DJGPP__
+  extern int __crt0_argc;
+  extern char **__crt0_argv;
+#endif
+
+  CreateInputLine = &rhgdbCreateInputLine;
 
   prog_name = __crt0_argv[0];
   parse_commandline(__crt0_argc,__crt0_argv);
 
-  TEventQueue::suspend();
+//  TEventQueue::suspend();
+//  TScreen::suspend();
+//  fprintf(stderr,_("This is %s. Copyright (c) 1996-1998 by Robert H”hne\n"),RHGDBVersion);
+//  TScreen::resume();
+//  TEventQueue::resume();
   TScreen::suspend();
-  fprintf(stderr,_("This is %s. Copyright (c) 1996-1998 by Robert H”hne\n"),RHGDBVersion);
-  fprintf(stderr,"             (%s %s)\n",build_date,build_time);
+  fprintf(stderr,_("This is %s. Copyright (c) 1996-2000 by Robert H”hne\n"),RHGDBVersion);
   TScreen::resume();
-  TEventQueue::resume();
 }
 
 static void rhgdb_sig(int signo)
@@ -856,9 +968,13 @@ static void DebuggerScreen()
 
 static void select_source_line(char *fname,int line)
 {
+  Boolean isSource=False;
   int select_dis_win = dis_win && TProgram::deskTop->current == dis_win;
-  if (fname) OpenViewer(fname,line,True);
-  else
+  ClearCPULine ();
+  if (fname)
+     isSource=OpenViewer(fname,line,True);
+
+  if (!fname || !isSource)
   {
     OpenDisWin();
     select_dis_win = 1;
@@ -874,11 +990,9 @@ static void select_source_line(char *fname,int line)
 
 int dual_display_supported();
 static int old_mode;
-static char orig_dir[PATH_MAX];
 
 static void StartSession()
 {
-  getcwd(orig_dir, PATH_MAX);
   old_mode = TScreen::getCrtMode();
   if (!dual_display && use_dual_display && dual_display_supported())
   {
@@ -908,7 +1022,6 @@ static void EndSession(int exit_code)
     _("Program exit code: %d (0x%04x)"),exit_code,exit_code);
 
   repaint();
-  chdir(orig_dir);
 }
 
 static void BreakSession()
@@ -923,7 +1036,6 @@ static void BreakSession()
     TProgram::application->setScreenMode(old_mode);
   }
   repaint();
-  chdir(orig_dir);
 }
 
 static char *GetMainFunction()
@@ -1264,12 +1376,11 @@ void InsertEnviromentVar(char *variable,char *contents)
   insert_variable(variable, contents);
 }
 
-int RunProgram(const char *, bool, bool, bool)
+void RunExternalProgram(const char *, int, int)
 {
-  return -1;
 }
 
-void RunExternalProgram(char *, unsigned , char *)
+void RunExternalProgram(char *, unsigned int, char *)
 {
 }
 

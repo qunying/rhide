@@ -289,13 +289,14 @@ C_EXTRA_FLAGS=-DRHIDE
 LOCAL_OPT=$(subst ___~~~___, ,$(subst $(notdir $<)___,,$(filter $(notdir\
 	$<)___%,$(LOCAL_OPTIONS))))
 
-OBJFILES=breakdia.o callstac.o commands.o funcsel.o inspect.o inspectl.o\
-	tbreakli.o tdatawin.o tdiswin.o tfuncinp.o tfunctio.o tgdbwind.o\
-	tregwin.o tvgdb.o twatchdi.o twatchli.o userwarn.o watches.o
-ALL_OBJFILES=breakdia.o callstac.o commands.o funcsel.o inspect.o\
+OBJFILES=breakdia.o callstac.o commands.o funcsel.o inspect.o inspectd.o\
 	inspectl.o tbreakli.o tdatawin.o tdiswin.o tfuncinp.o tfunctio.o\
 	tgdbwind.o tregwin.o tvgdb.o twatchdi.o twatchli.o userwarn.o\
 	watches.o
+ALL_OBJFILES=breakdia.o callstac.o commands.o funcsel.o inspect.o\
+	inspectd.o inspectl.o tbreakli.o tdatawin.o tdiswin.o tfuncinp.o\
+	tfunctio.o tgdbwind.o tregwin.o tvgdb.o twatchdi.o twatchli.o\
+	userwarn.o watches.o
 LIBRARIES=
 SOURCE_NAME=$<
 OUTFILE=$@
@@ -316,9 +317,9 @@ endif
 
 MAIN_TARGET=libtvgdb.a
 PROJECT_ITEMS=breakdia.cc callstac.cc commands.cc funcsel.cc inspect.cc\
-	inspectl.cc tbreakli.cc tdatawin.cc tdiswin.cc tfuncinp.cc\
-	tfunctio.cc tgdbwind.cc tregwin.cc tvgdb.cc twatchdi.cc twatchli.cc\
-	userwarn.cc watches.cc
+	inspectd.cc inspectl.cc tbreakli.cc tdatawin.cc tdiswin.cc\
+	tfuncinp.cc tfunctio.cc tgdbwind.cc tregwin.cc tvgdb.cc twatchdi.cc\
+	twatchli.cc userwarn.cc watches.cc
 DEFAULT_MASK=*
 RHIDE_BIN_DIR=d:/obj/rhide
 PASCAL_TYPE=GPC
@@ -399,9 +400,10 @@ GET_HOME=$(HOME)
 	$(RHIDE_COMPILE.C.s)
 include rhide.env
 all::
-DEPS_0= breakdia.o callstac.o commands.o funcsel.o inspect.o inspectl.o\
-	tbreakli.o tdatawin.o tdiswin.o tfuncinp.o tfunctio.o tgdbwind.o\
-	tregwin.o tvgdb.o twatchdi.o twatchli.o userwarn.o watches.o 
+DEPS_0= breakdia.o callstac.o commands.o funcsel.o inspect.o inspectd.o\
+	inspectl.o tbreakli.o tdatawin.o tdiswin.o tfuncinp.o tfunctio.o\
+	tgdbwind.o tregwin.o tvgdb.o twatchdi.o twatchli.o userwarn.o\
+	watches.o 
 NO_LINK=
 LINK_FILES=$(filter-out $(NO_LINK),$(DEPS_0))
 libtvgdb.a:: $(DEPS_0)
@@ -421,54 +423,59 @@ commands.o:: $(DEPS_3)
 DEPS_4=funcsel.cc librhgdb.h libtvgdb.h tfunctio.h tvgdbfun.h
 funcsel.o:: $(DEPS_4)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_5=inspect.cc inspect.h inspectl.h libtvgdb.h
+DEPS_5=inspect.cc inspect.h inspectl.h libtvgdb.h tvgdbcom.h libtvuti.h\
+	tvutilfu.h
 inspect.o:: $(DEPS_5)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_6=inspectl.cc librhgdb.h rhutils.h inspectl.h libtvgdb.h libtvuti.h\
+DEPS_6=inspectd.cc librhgdb.h inspectd.h libtvgdb.h tvgdbcom.h tvgdbhis.h\
+	libtvuti.h tlbutton.h tvutilfu.h
+inspectd.o:: $(DEPS_6)
+	$(RHIDE_COMPILE.cc.o)
+DEPS_7=inspectl.cc librhgdb.h rhutils.h inspectl.h libtvgdb.h libtvuti.h\
 	tscollec.h
-inspectl.o:: $(DEPS_6)
+inspectl.o:: $(DEPS_7)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_7=tbreakli.cc librhgdb.h libtvgdb.h tbreakli.h libtvuti.h tenterli.h
-tbreakli.o:: $(DEPS_7)
+DEPS_8=tbreakli.cc librhgdb.h libtvgdb.h tbreakli.h libtvuti.h tenterli.h
+tbreakli.o:: $(DEPS_8)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_8=tdatawin.cc librhgdb.h rhgdbint.h rhutils.h libtvgdb.h tdatawin.h\
+DEPS_9=tdatawin.cc librhgdb.h rhgdbint.h rhutils.h libtvgdb.h tdatawin.h\
 	tvgdbcom.h tvgdbhis.h libtvuti.h tvutilfu.h
-tdatawin.o:: $(DEPS_8)
+tdatawin.o:: $(DEPS_9)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_9=tdiswin.cc librhgdb.h rhutils.h libtvgdb.h tdiswin.h tvgdbcom.h\
+DEPS_10=tdiswin.cc librhgdb.h rhutils.h libtvgdb.h tdiswin.h tvgdbcom.h\
 	libtvuti.h tvutilfu.h
-tdiswin.o:: $(DEPS_9)
+tdiswin.o:: $(DEPS_10)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_10=tfuncinp.cc libtvgdb.h tfuncinp.h tfunctio.h tvgdbcom.h tvgdbfun.h\
+DEPS_11=tfuncinp.cc libtvgdb.h tfuncinp.h tfunctio.h tvgdbcom.h tvgdbfun.h\
 	libtvuti.h tenterin.h tvutilfu.h
-tfuncinp.o:: $(DEPS_10)
+tfuncinp.o:: $(DEPS_11)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_11=tfunctio.cc librhgdb.h libtvgdb.h tfunctio.h tvgdbcom.h libtvuti.h\
+DEPS_12=tfunctio.cc librhgdb.h libtvgdb.h tfunctio.h tvgdbcom.h libtvuti.h\
 	tvutilfu.h
-tfunctio.o:: $(DEPS_11)
+tfunctio.o:: $(DEPS_12)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_12=tgdbwind.cc libtvgdb.h tgdbwind.h libtvuti.h tvutilfu.h
-tgdbwind.o:: $(DEPS_12)
+DEPS_13=tgdbwind.cc libtvgdb.h tgdbwind.h libtvuti.h tvutilfu.h
+tgdbwind.o:: $(DEPS_13)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_13=tregwin.cc libtvgdb.h tregwin.h
-tregwin.o:: $(DEPS_13)
+DEPS_14=tregwin.cc libtvgdb.h tregwin.h
+tregwin.o:: $(DEPS_14)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_14=tvgdb.cc libtvgdb.h tdatawin.h libtvuti.h tvutilfu.h
-tvgdb.o:: $(DEPS_14)
+DEPS_15=tvgdb.cc libtvgdb.h tdatawin.h libtvuti.h tvutilfu.h
+tvgdb.o:: $(DEPS_15)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_15=twatchdi.cc librhgdb.h rhutils.h libtvgdb.h tvgdbcom.h tvgdbhis.h\
+DEPS_16=twatchdi.cc librhgdb.h rhutils.h libtvgdb.h tvgdbcom.h tvgdbhis.h\
 	twatchdi.h libtvuti.h tlbutton.h tvutilfu.h
-twatchdi.o:: $(DEPS_15)
+twatchdi.o:: $(DEPS_16)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_16=twatchli.cc librhgdb.h libtvgdb.h tvgdbcom.h tvgdbfun.h tvgdbhis.h\
+DEPS_17=twatchli.cc librhgdb.h libtvgdb.h tvgdbcom.h tvgdbfun.h tvgdbhis.h\
 	twatchli.h libtvuti.h tenterli.h tscollec.h tvutilfu.h
-twatchli.o:: $(DEPS_16)
+twatchli.o:: $(DEPS_17)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_17=userwarn.cc librhgdb.h libtvgdb.h tvgdbfun.h libtvuti.h tvutilfu.h
-userwarn.o:: $(DEPS_17)
+DEPS_18=userwarn.cc librhgdb.h libtvgdb.h tvgdbfun.h libtvuti.h tvutilfu.h
+userwarn.o:: $(DEPS_18)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_18=watches.cc librhgdb.h libtvgdb.h tvgdbfun.h tvgdbhis.h twatchdi.h\
+DEPS_19=watches.cc librhgdb.h libtvgdb.h tvgdbfun.h tvgdbhis.h twatchdi.h\
 	twatchli.h libtvuti.h tenterli.h tscollec.h tvutilfu.h
-watches.o:: $(DEPS_18)
+watches.o:: $(DEPS_19)
 	$(RHIDE_COMPILE.cc.o)
 all:: libtvgdb.a

@@ -141,12 +141,12 @@ void TRegisters::editIRegister(int num)
     if (buf[0] == '0')
     {
       if (buf[1] == 'x' || buf[1] == 'X')
-        sscanf(buf+2, "%lux", &val);
+        sscanf(buf+2, "%lx", &val);
       else
-        sscanf(buf, "%luo", &val);
+        sscanf(buf, "%lo", &val);
     }
     else
-      sscanf(buf, "%lud", &val);
+      sscanf(buf, "%lu", &val);
     if (Registers[num].value != val)
     {
       Registers[num].value = val;

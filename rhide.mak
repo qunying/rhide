@@ -319,7 +319,7 @@ C_P_LANG_FLAGS=
 C_FPC_LANG_FLAGS=
 C_F_LANG_FLAGS=
 C_ADA_LANG_FLAGS=
-LIBS=ide rhuti set rhuti tvdem tvuti tvgdb rhtv rhgdb gdbrh z pcre
+LIBS=ide rhuti set rhuti tvdem tvuti tvgdb rhtv rhgdb z pcre
 LD_EXTRA_FLAGS=
 C_EXTRA_FLAGS=-DRHIDE -DINTERNAL_DEBUGGER -DFOR_LIBSET
 LOCAL_OPT=$(subst ___~~~___, ,$(subst $(notdir $<)___,,$(filter $(notdir\
@@ -352,7 +352,7 @@ SOURCE_NAME=$<
 OUTFILE=$@
 SPECIAL_CFLAGS=
 SPECIAL_LDFLAGS=
-PROG_ARGS=
+PROG_ARGS=rhgdb/rhgdb
 SRC_DIRS=$(RHIDESRC)
 WUC=
 EDITORS=
@@ -374,7 +374,7 @@ PROJECT_ITEMS=commands.cc fstrcmp.c ideapp.cc idebug.cc idecheck.cc\
 	idesynta.cc ideuser.cc ideutil.cc ideversi.cc libide/libide.gpr\
 	librhgdb/librhgdb.gpr librhuti/librhuti.gpr libtvgdb/libtvgdb.gpr\
 	libtvuti/libtvuti.gpr openedit.cc rhassert.c tvdemo/libtvdem.gpr
-DEFAULT_MASK=*
+DEFAULT_MASK=*.rej
 RHIDE_BIN_DIR=d:/obj/rhide
 PASCAL_TYPE=GPC
 GET_HOME=$(HOME)

@@ -842,6 +842,9 @@ msgstr ""
 msgid  "            -T : Disable the DOS-box title feature\n"
 msgstr ""
 
+msgid  "            -P : don`t remove temp files when exiting\n"
+msgstr ""
+
 msgid  "using %s as temp directory\n"
 msgstr "Utilizzer• %s come directory temporanea\n"
 

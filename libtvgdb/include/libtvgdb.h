@@ -1,4 +1,4 @@
-/* Copyright (C) 1996-2000 Robert H”hne, see COPYING.RH for details */
+/* Copyright (C) 1996-1998 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
 #if defined( Uses_TInspector )
 #define Uses_TDialog
@@ -52,6 +52,11 @@
 #define _INC_TWATCHDIALOG
 #endif
 
+#if defined( Uses_TInspectDialog )
+#define Uses_TDialog
+#define _INC_TINSPECTDIALOG
+#endif
+
 #if defined( Uses_TBreakListBox )
 #define Uses_TEnterListBox
 #define _INC_TBREAKLISTBOX
@@ -85,6 +90,10 @@
 
 #if defined( _INC_TWATCHDIALOG )
 #include <twatchdi.h>
+#endif
+
+#if defined( _INC_TINSPECTDIALOG)
+#include <inspectd.h>
 #endif
 
 #if defined( _INC_TWATCHLISTBOX )
@@ -130,8 +139,4 @@
 #if defined( _INC_TINSPECTOR )
 #include <inspect.h>
 #endif
-
-void AddDataWindow();
-void ShowStackWindow();
-void UpdateDataWindows();
 

@@ -71,9 +71,11 @@ static void insertFunction(char *file_name,struct symbol *sym,int bl,
                            CORE_ADDR pc,struct objfile *objfile)
 {
   char *tmp,*temp;
-  struct function_entry *Function = insert_function_common(file_name);
+  struct function_entry *Function; // = insert_function_common(file_name);
   int d_len = 0;
   char *dname;
+  int template_level=0;
+  int is_cplusplus=0;
 
   if (bl == STATIC_BLOCK)
   {
@@ -87,6 +89,7 @@ static void insertFunction(char *file_name,struct symbol *sym,int bl,
       SYMBOL_INIT_LANGUAGE_SPECIFIC(sym,deduce_language_from_filename(file_name));
       SYMBOL_INIT_DEMANGLED_NAME(sym,&objfile->symbol_obstack);
   }
+  if (SYMBOL_LANGUAGE(sym) == language_cplus) is_cplusplus=1;
   reset_gdb_output();
   type_print( SYMBOL_TYPE (sym),
 	      SYMBOL_SOURCE_NAME (sym),gdb_stdout, 0);
@@ -97,12 +100,26 @@ static void insertFunction(char *file_name,struct symbol *sym,int bl,
   else
     *dname = 0;
   strcat(dname,gdb_output_buffer);
+  
+  if (strstr(dname,"virtual function thunk") && strstr(dname,"(delta:"))
+                            return;
+
+  Function = insert_function_common(file_name);
   tmp = strchr(dname,'(');
   temp = tmp-1;
-  while (*temp != ' ') temp--;
+  while (*temp != ' ' || template_level>0)
+    {
+        if (is_cplusplus)
+          {
+              if (*temp=='>') template_level++;
+              if (*temp=='<') template_level--;
+          }
+        temp--;
+    }
   temp++;
   while (*temp == '*' || *temp == '&') temp++;
   Function->demangled_name = strdup(temp);
+
   *temp = 0; 
   Function->return_name = strdup(dname);
   Function->linkage_name = strdup(SYMBOL_NAME(sym));

@@ -9,6 +9,11 @@
 #include <sys/exceptn.h>
 #include <sys/movedata.h>
 #include <crt0.h>
+// I have seen broken versions of DJGPP port of gettext which defines
+// gettext and a result we're getting compiler error.
+// However better cure would be extracting 'if (kbhit()) getch()' in
+// some procedure in another file to hide conio.h away. (AP, 13.6.2000)
+#undef gettext
 #include <conio.h>
 #endif
 #include <dirent.h>
@@ -61,6 +66,7 @@
 #define Uses_TCEditor_Commands
 #include <libide.h>
 
+#define Uses_TInputLinePiped
 #define Uses_TCEditor
 #include <ceditor.h>
 #include <edprint.h>
@@ -1394,7 +1400,7 @@ void IDE::handleEvent(TEvent & event)
                        == cmOK)
           {
             if (SelectFunction(_("List of functions"),regex,NULL,NULL,&func)
-                == cmOK)
+                                      == cmOK)
             {
               TCEditWindow *ew = is_on_desktop(func->file_name);
               if (!ew)
@@ -1505,7 +1511,7 @@ void IDE::handleEvent(TEvent & event)
           ShowMessages(NULL,True);
           if (Make(False) == True)
           {
-            RunMainTarget();
+                 RunMainTarget();
                  if (!DEBUGGER_STARTED() && lasteditor != NULL &&
                      !ShowStderr && !ShowStdout)
                    lasteditor->select();
@@ -2136,6 +2142,14 @@ void __InitHistoryIDs()
   InitHistoryID(100); // Read/Write block
 }
 
+
+
+static TInputLine * rhideCreateInputLine (const TRect & rect, int aMaxLen)
+{
+  return new TInputLinePiped (rect, aMaxLen);
+}
+
+
 static
 void init_rhide(int _argc, char **_argv)
 #define __crt0_argc _argc
@@ -2152,6 +2166,8 @@ void init_rhide(int _argc, char **_argv)
   global_argv = __crt0_argv;
   global_argc = __crt0_argc;
   setup_argv0();
+
+  CreateInputLine = &rhideCreateInputLine;
 
   char *spec = string_dup(
 "INFOPATH=$(subst $(RHIDE_SPACE),$(RHIDE_PATH_SEPARATOR),\
@@ -2313,6 +2329,8 @@ static void rhide_sig(int signo)
       TProgram::application->setScreenMode(TScreen::screenMode);
       Repaint();
       break;
+#endif
+#ifndef __DJGPP__
     case SIGSEGV:
       signal(SIGSEGV,SIG_DFL);
       /* Try to save all opened editors */
@@ -2325,6 +2343,8 @@ static void rhide_sig(int signo)
       remove_tmpdir();
       raise(signo);
       break;
+#endif
+#ifndef __DJGPP__
     case SIGTSTP:
       TProgram::application->suspend();
       signal(SIGTSTP,SIG_DFL);
@@ -2466,6 +2486,8 @@ setup_title(const char *title)
   if (title) return;
 #endif
 }
+
+
 
 int main(int argc, char **argv)
 {

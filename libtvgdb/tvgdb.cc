@@ -26,8 +26,4 @@ void ShowStackWindow()
     stack_win->select();
 }
 
-void UpdateDataWindows()
-{
-  TDataWindow::updateAll();
-}
 

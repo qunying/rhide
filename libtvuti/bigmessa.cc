@@ -17,6 +17,13 @@
 
 #include <stdio.h>
 
+static TInputLine *DefaultCreateInputLine(const TRect & rect, int aMaxLen)
+{
+  return new TInputLine (rect, aMaxLen);
+}
+
+TInputLine *(*CreateInputLine)(const TRect & rect, int aMaxLen) = &DefaultCreateInputLine;
+
 static TRect makeRect()
 {
   TRect r(0,0,60,15);
@@ -63,7 +70,7 @@ ushort HistinputBoxRect( const TRect &bounds,
     dialog = new TDialog(bounds, Title);
 
     r = TRect( 4 + strlen(aLabel), 2, dialog->size.x - 4, 3 );
-    control = new TInputLine( r, limit );
+    control = (*CreateInputLine) ( r, limit );
     dialog->insert( control );
 
     r = TRect(dialog->size.x - 4, 2, dialog->size.x - 1, 3);

@@ -49,6 +49,8 @@ uint32 CPULine;
 #define Uses_TDataWindow
 #include <libtvgdb.h>
 
+static void RemoveSessionTempFiles(void);
+
 TDisassemblerWindow *dis_win;
 
 static void UserScreen()
@@ -73,6 +75,11 @@ void OpenDisWin(int force_open)
     if (debugger_started)
       dis_win->update(stop_pc);
   }
+  else if (dis_win)
+    if (TProgram::application->deskTop->indexOf(dis_win))
+    {
+      dis_win->select();
+    }
 }
 
 static void select_source_line(char *fname,int line)
@@ -235,6 +242,11 @@ void GOTO(int _switch_to_user)
 void RESET()
 {
   ResetDebugger();
+
+  if (ShowStdout) close_stdout();
+  if (ShowStderr) close_stderr();
+  RemoveSessionTempFiles();
+  
   if (project_directory) chdir(project_directory);
   Repaint();
 }
@@ -368,8 +380,11 @@ static void StartSession()
   if (watchwindow) watchwindow->select();
 }
 
-void CheckStderr();
-void CheckStdout();
+static void RemoveSessionTempFiles (void)
+{
+  RemoveStdout ();
+  RemoveStderr ();
+}
 
 static void EndSession(int exit_code)
 {
@@ -405,12 +420,13 @@ static void EndSession(int exit_code)
 
   if (ShowStdout)
   {
-    CheckStdout();
+    CheckStdout(false);
   }
   if (ShowStderr)
   {
-    CheckStderr();
+    CheckStderr(false);
   }
+  SetPostCommandHook(RemoveSessionTempFiles);
   Repaint();
   external_program_executed = 1;
   if (project_directory)

@@ -495,9 +495,10 @@ DEPS_6=gdbsynt.cc flags/gpcreser.h flags/reserved.h rhutils.h libtvuti.h\
 	tdirlist.h rhgdb.h
 gdbsynt.o:: $(DEPS_6)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_7=main.cc pal.h librhgdb.h rhutils.h libtvgdb.h tdiswin.h tvgdbcom.h\
-	tvgdbfun.h twatchli.h libtvuti.h tdirlist.h tenterli.h tparamli.h\
-	tscollec.h tvutilco.h tvutilfu.h twindowl.h rhgdb.h
+DEPS_7=main.cc pal.h librhgdb.h rhutils.h inspect.h inspectd.h libtvgdb.h\
+	tdatawin.h tdiswin.h tvgdbcom.h tvgdbfun.h twatchli.h libtvuti.h\
+	tdirlist.h tenterli.h tparamli.h tscollec.h tvutilco.h tvutilfu.h\
+	twindowl.h rhgdb.h
 main.o:: $(DEPS_7)
 	$(RHIDE_COMPILE.cc.o)
 DEPS_8=options.cc librhgdb.h libtvuti.h tenterch.h tenterin.h tenterra.h\

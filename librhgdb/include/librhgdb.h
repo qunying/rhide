@@ -110,6 +110,13 @@ void Continue();
 int InitRHGDB();
 
 /*
+  If some action should be postponed after return from GDB command.
+  user can set procedure to run once at exit from command
+*/
+
+void SetPostCommandHook(void (*hook)(void));
+
+/*
   Returns the filename for the function 'main' and puts in 'line' the
   linenumber, where it starts.
 */

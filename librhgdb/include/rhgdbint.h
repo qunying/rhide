@@ -3,6 +3,23 @@
 #ifndef __RHDGBINT_H__
 #define __RHGDBINT_H__
 
+#if __GNUC__>2 || (__GNUC__==2 && __GNUC_MINOR__>95)
+
+//  For new GCC versions (newer than 2.95.X)
+
+#define DEBUG_(x,...) printf_unfiltered(x, ## __VA_ARGS__ );
+#if 0
+#define DEBUG(x,...) fprintf(stderr,x, ## __VA_ARGS__);
+#define _DEBUG(x,...) fprintf(stderr,x, ## __VA_ARGS__);
+#else
+#define DEBUG(x,...)
+#define _DEBUG(x,...)
+#endif
+
+#else
+
+//  For old GCC versions (2.95.X or older)
+
 #define DEBUG_(x...) printf_unfiltered(##x);
 #if 0
 #define DEBUG(x...) fprintf(stderr,##x);
@@ -11,6 +28,9 @@
 #define DEBUG(x...)
 #define _DEBUG(x...)
 #endif
+
+#endif
+
 #ifdef __cplusplus
 extern "C" {
 #endif

@@ -861,6 +861,9 @@ msgstr "            -C : Zaka‘ obsluhu SIGINT\n"
 msgid  "            -T : Disable the DOS-box title feature\n"
 msgstr "            -T : Zaka‘ vlastnosti ¨t¡tku u DOSov‚ho boxu\n"
 
+msgid  "            -P : don`t remove temp files when exiting\n"
+msgstr ""
+
 msgid  "using %s as temp directory\n"
 msgstr "adres © %s pou‘¡v n pro pomocn‚ soubory\n"
 

@@ -850,7 +850,7 @@ TIDEFileWindow::TIDEFileWindow(const char *fileName) :
     flags |= wfGrow | wfZoom;
 }
 
-void CheckStderr()
+void CheckStderr(bool erase)
 {
   if (ShowStderr)
   {
@@ -888,10 +888,11 @@ void CheckStderr()
 #endif
     }
   }
-  if (ShowStderr && !debug_tempfiles) remove(cpp_errname);
+  //if (ShowStderr && !debug_tempfiles && erase) remove(cpp_errname);
+  if (erase) RemoveStderr();
 }
 
-void CheckStdout()
+void CheckStdout(bool erase)
 {
   if (ShowStdout)
   {
@@ -926,8 +927,23 @@ void CheckStdout()
       AddWindow(window);
     }
   }
-  if (ShowStdout && !debug_tempfiles) remove(cpp_outname);
+  //if (ShowStdout && !debug_tempfiles && erase) remove(cpp_outname);
+  if (erase) RemoveStdout();
 }
+
+
+void RemoveStdout (void)
+{
+  if (ShowStdout && !debug_tempfiles && cpp_outname) remove(cpp_outname);
+}
+
+
+void RemoveStderr (void)
+{
+  if (ShowStderr && !debug_tempfiles && cpp_errname) remove(cpp_errname);
+}
+
+
 
 Boolean RunMainTarget()
 {
@@ -964,8 +980,8 @@ Boolean RunMainTarget()
       event.message.command = cmUserScreen;
       TProgram::application->handleEvent(event);
     }
-    CheckStderr();
-    CheckStdout();
+    CheckStderr(true);
+    CheckStdout(true);
   }
   return True;
 }

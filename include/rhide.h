@@ -124,6 +124,10 @@ int RunProgram(const char *cmd,
                    Boolean redir_stderr,Boolean redir_stdout,
 		   Boolean SwitchToUser = False);
 void ClearFileHash();
+void CheckStderr(bool erase=true);
+void CheckStdout(bool erase=true);
+void RemoveStdout (void);
+void RemoveStderr (void);
 
 /* module idecomp.cc */
 class TDependency;

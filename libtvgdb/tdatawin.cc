@@ -1,6 +1,6 @@
 /* Copyright (C) 1996-1998 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
-/* DataWindow v0.11 */
+/* DataWindow v0.10 */
 /* Copyright (C) 1998 Laszlo Molnar */
 /* This program is free software, see COPYING for details */
 
@@ -33,6 +33,9 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <ctype.h>
+
+#include <typeinfo>
 
 //FIXME: I should uncomment this stuff someday
 //extern "C" {
@@ -111,7 +114,11 @@ public:
 static Boolean isvalid_address (const char *taddr,unsigned long *addr)
 {
     char buf[300], *p1;
-    sprintf(buf,"x/1xb %s",taddr);
+    while (*taddr && isspace(*taddr)) taddr++;
+    if (isdigit(*taddr) || *taddr=='&' || *taddr=='$')
+        sprintf(buf,"x/1xb %s",taddr);
+    else
+        sprintf(buf,"x/1xb &%s",taddr);
     reset_command++;
     Command(buf,0);
     reset_command--;
@@ -240,10 +247,11 @@ void TDataViewer::update(unsigned long addr,Boolean external)
     }
 
     indi->changeState(TDIndicator::iChanged, ' ');
-    if (external)
+    if (external && autofollow)
     {
+        addr = 0;
         address_changed = False;
-        if (autofollow && isvalid_address(orig_addr_txt,&addr))
+        if (isvalid_address(orig_addr_txt,&addr))
         {
              address_changed = orig_addr != addr;
              orig_addr = addr;
@@ -526,7 +534,6 @@ void TDataViewer::handleEvent(TEvent& event)
     }
     else if (event.what == evKeyDown)
     {
-        FILE *f1 = NULL;
         switch (event.keyDown.keyCode)
         {
         case kbUp:
@@ -715,6 +722,8 @@ checkaddress:
                 AddWindow(dw);
             break;
         case kbCtrlR:                   // read block
+        {
+            FILE *f1 = NULL;
             if (getFilename(buf,0) && (f1=fopen(buf,"rb"))!=NULL)
             {
                 sprintf(buf,"%#lx,", curs2memo() - memo + mem_start);
@@ -734,7 +743,10 @@ checkaddress:
                 fclose(f1);
             }
             break;
+        }
         case kbCtrlW:                   // write block
+        {
+            FILE *f1 = NULL;
             if (getFilename(buf,1) && (f1=fopen(buf,"wb"))!=NULL)
             {
                 sprintf(buf,"%#lx,", curs2memo() - memo + mem_start);
@@ -753,6 +765,7 @@ checkaddress:
                 fclose(f1);
             }
             break;
+        }
         case kbCtrlX:                   // change radix
             radix = (radix + 1) % rxMAX;
             indi->changeState(TDIndicator::iRadix, "XD"[radix]);
@@ -915,7 +928,8 @@ TDataWindow *TDataWindow::createNew(const char *naddr)
             dw->viewer->adjustWindow();
             return dw;
         }
-        messageBox(gdb_output_buffer,mfError|mfOKButton);
+        if (gdb_output_buffer && *gdb_output_buffer)
+           messageBox(gdb_output_buffer,mfError|mfOKButton);
     }
     return NULL;
 }
@@ -940,9 +954,7 @@ TDataWindow *TDataWindow::stackWindow()
 TDIndicator::TDIndicator (const TRect& bounds) :
     TIndicator (bounds)
 {
-    strcpy(thestate,"   X   ");
-    if (TDataViewer::targetEndian >= 0)
-        changeState(iEndian, "eE"[TDataViewer::targetEndian]);
+    strcpy(thestate,"  eX  ");
 }
 
 void TDIndicator::draw()
@@ -970,6 +982,25 @@ void TDIndicator::changeState (IndiType snum,int value)
 {
     thestate[snum] = value;
     drawView();
+}
+
+
+
+static void    UpdateDataWindow (TView * view, void *)
+{
+#if 0
+    if (typeid(*view)!=typeid(TDataWindow)) return;
+    TDataWindow * win = dynamic_cast<TDataWindow *> (view);
+#else
+    TDataWindow * win = (TDataWindow *)view;
+#endif
+    if (win) win->updateAll();
+}
+
+
+void    UpdateDataWindows (void)
+{
+    TProgram::deskTop->forEach (UpdateDataWindow,0);
 }
 
 

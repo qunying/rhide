@@ -850,6 +850,9 @@ msgstr "            -C : Keine SIGINT-Behandlung\n"
 msgid  "            -T : Disable the DOS-box title feature\n"
 msgstr "            -T : Benutze nicht den DOS-Box Titel\n"
 
+msgid  "            -P : don`t remove temp files when exiting\n"
+msgstr ""
+
 msgid  "using %s as temp directory\n"
 msgstr "benutze %s als tempor„res Verzeichnis\n"
 

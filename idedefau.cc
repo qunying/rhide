@@ -87,8 +87,8 @@ static void InitOptions(char *opts[],TFlagCollection * & coll)
 #define GETFLAGS(lower,upper)\
 void Default##upper##Flags()\
 {\
-  if (Options.##lower##_flags) Options.##lower##_flags->freeAll();\
-  InitOptions(lower##_flags,Options.##lower##_flags);\
+  if (Options.lower##_flags) Options.lower##_flags->freeAll();\
+  InitOptions(lower##_flags,Options.lower##_flags);\
 }
 
 GETFLAGS(opt,Opt)

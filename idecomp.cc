@@ -32,7 +32,7 @@
 
 int already_maked = 0;
 
-static char DEPFILE_NAME[PATH_MAX];
+static char *DEPFILE_NAME = NULL;
 static char DEP_ENV[PATH_MAX];
 #ifndef __DJGPP__
 /* DJGPP allocates the memory for the string when doing
@@ -67,7 +67,11 @@ do {\
   putenv("DEPENDENCIES_OUTPUT");\
 } while (0)
 
-#define SET_DEPFILE_NAME() unique_name("de",DEPFILE_NAME)
+#define SET_DEPFILE_NAME() \
+do { \
+  if (DEPFILE_NAME) string_free(DEPFILE_NAME); \
+  DEPFILE_NAME = unique_name("de"); \
+} while (0)
 
 #define SET_DEP() \
 do {\
@@ -912,7 +916,6 @@ fprintf(stderr,"%s\n",spec);
   SET_DEP();
   RunProgram(spec,True,True);
   DEL_DEP();
-fprintf(stderr,"%s\n",cpp_errname);
   string_free(spec);
 }
 

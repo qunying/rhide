@@ -107,7 +107,7 @@ void DefaultReservedWords(TProject *p)
   ccIndex index;
   if (!p) p = project;
   if (_CReservedWords(p)) destroy(_CReservedWords(p));
-  _CReservedWords(p) = new TStringCollection(1,1);
+  _CReservedWords(p) = new TStringCollection(15,16);
   i = 0;
   while (reserved[i])
   {
@@ -124,7 +124,7 @@ void DefaultGPCReservedWords(TProject *p)
   ccIndex index;
   if (!p) p = project;
   if (_GPCReservedWords(p)) destroy(_GPCReservedWords(p));
-  _GPCReservedWords(p) = new TStringCollection(1,1);
+  _GPCReservedWords(p) = new TStringCollection(15,16);
   i = 0;
   while (GPCreserved[i])
   {
@@ -141,7 +141,7 @@ void DefaultFPCReservedWords(TProject *p)
   ccIndex index;
   if (!p) p = project;
   if (_FPCReservedWords(p)) destroy(_FPCReservedWords(p));
-  _FPCReservedWords(p) = new TStringCollection(1,1);
+  _FPCReservedWords(p) = new TStringCollection(15,16);
   i = 0;
   while (FPCreserved[i])
   {
@@ -156,7 +156,7 @@ void DefaultUserWords(TProject *p)
 {
   if (!p) p = project;
   if (_RHIDEUserWords(p)) destroy(_RHIDEUserWords(p));
-  _RHIDEUserWords(p) = new TStringCollection(5,5);
+  _RHIDEUserWords(p) = new TStringCollection(15,16);
   user_words_changed = 1;
 }
 

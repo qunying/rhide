@@ -64,7 +64,11 @@ INCS=$(subst s_gdb,$(GDB_SRC),$(subst o_gdb,$(GDB_OBJ),$(_INCS)))
 
 INC_PATH=$(addprefix -I,$(INCS))
 
-all:: libgdb.h libgdb.a
+all:: libgdb.h
+
+ifeq ($(LIBGDB_A),)
+all:: libgdb.a
+endif
 
 libgdb.c: Makefile
 	echo '#include <defs.h>' > libgdb.c
@@ -102,7 +106,7 @@ $(GDB_OBJ)/bfd/bfd.h: $(GDB_OBJ)/Makefile
 
 ifneq ($(LIBGDB_H),)
 libgdb.h: $(LIBGDB_H)
-	ln -sf $(LIBGDB_H) libgdb.h
+	echo "#include <$(LIBGDB_H)>" > libgdb.h
 else
 libgdb.h: $(GDB_OBJ)/bfd/bfd.h libgdb.c
 	gcc -E -P $(INC_PATH) $(CFLAGS) $(MMALLOC_CFLAGS) libgdb.c \
@@ -135,10 +139,7 @@ T_FILES=libbfd.t libiberty.t libopcodes.t libreadline.t $(notdir $(subst .a,.t,$
 
 list: $(T_FILES)
 
-ifneq ($(LIBGDB_A),)
-libgdb.a: $(LIBGDB_A)
-	ln -sf $(LIBGDB_A) libgdb.a
-else
+ifeq ($(LIBGDB_A),)
 libgdb.a: $(CHECKS) libgdb.h list
 	rm -f libgdb.a
 # do not use any xmalloc.o, because it is defined in utils.o

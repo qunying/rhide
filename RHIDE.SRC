@@ -1,33 +1,51 @@
-RHIDE is Copyright (C) 1996 by Robert H”hne, see COPYING.RH for details
+RHIDE is Copyright (C) 1996-1999 by Robert H”hne, see COPYING.RH for details
 
-This is the source distribution of RHIDE. Normaly the files should be
-installed in the DJGPP root directoy. To install the sources for RHIDE,
-extract the archive rhide??s.zip (here is ?? the version of RHIDE)
-like any other package, which comes with DJGPP.
-If it was successful, all the source files for RHIDE are in the directory
+This is the source distribution of RHIDE. (for notes to the GNU/Linux
+system see the chapter below additionally)
+
+******************************************
+Other sources are required to build RHIDE. These are the editor
+sources from Salvador Eduardo Tropea (setedit) and the Turbo Vision
+library also maintained by Salvador. And of course you need the
+gdb sources. For RHIDE 1.5 you can use ONLY GDB 4.18 and no other
+version!!!! 
+
+For DJGPP you can use the source archives found on any simtelnet
+mirror:
+
+for the editor          v2apps/edi0439s.zip
+for the TV sources      v2tk/tv109s.zip
+for the gdb sources     v2gnu/gdb418s.zip
+
+For GNU/Linux please use for the gdb sources the official GDB 4.18
+sources and for the other sources maintained by Salvador please
+get them from SET's web-site
+
+for the editor          http://www.
+for the TV sources      http://www.
+
+*********************************************
+
+Sources for DJGPP
+=================
+Normaly the files should be installed in the DJGPP root directoy. To 
+install the sources for RHIDE, extract the archive rhide??s.zip 
+(here is ?? the version of RHIDE) like any other package, which comes 
+with DJGPP. If it was successful, all the source files for RHIDE are in 
+the directory
 
 %DJDIR%/contrib/rhide-?.?
 
-and its subdirectories. Because I have changed a lot in the Turbo Vision
-library, which are not compatible with the normal TV, I have decided, not
-longer to support a standalone port of that library. My modified version
-of this library is now part of the source archive for RHIDE.
-
-If you want to use it in an other program than RHIDE, you have either
-link the final program also with libintl.a or rename
-the file 'nointl.h' in the Turbo Vision include directory to 'intl.h'.
-
 If you want to recompile RHIDE you need the following things:
 
-- About 25-30 MB free disk space
+- many free disk space
 
-- DJGPP Version 2.01 or higher. With DJGPP V 2.00 you can not build
-  RHIDE with the integrated debugger but only ide.exe which is RHIDE
-  without the debugger.
+- DJGPP Version 2.02 or higher. I haven't tested any other version.
+  Currently the binaries of RHIDE are build with the latest sources
+  of DJGPP (pre 2.03) from the DJGPP cvs source tree.
 
-(I do not list here any needed program from the packages, because
- it is too hard for me to find it out :-> )
-
+- GNU bash
+- GNU make
 - GNU fileutils
 - GNU shellutils
 - GNU textutils
@@ -37,7 +55,71 @@ If you want to recompile RHIDE you need the following things:
     - msgfmt
     - xgettext
 
-- GNU debugger 4.16. You have to install the sources for gdb 4.16.
+
+Sources for GNU/Linux
+=====================
+
+The sources are in the tar archive in a subdirectory rhide-?.?/
+For building RHIDE you will need also the tools mentioned above for
+DJGPP but I think I can assume, that they are already installed by
+default on your system.
+
+
+Recompiling RHIDE
+=================
+
+Since RHIDE depends on many other packages it is not so easy to describe
+all possible situations where you might have installed them. At first RHIDE
+needs some environment variables set to point to the directories where to
+find the other packages. These are described now here. The defaults given
+there are meant, when you run make in the root RHIDE source director and
+the described variable is not set.
+
+$RHIDESRC       this variable have to be set ALWAYS! and have to be an absolute
+                path to the root source directory of RHIDE.
+		DEFAULT: the actual directory where you are
+		
+		
+$SETSRC         this variable should point to the root setedit source directory
+                DEFAULT for DJGPP:     $DJDIR/contrib/setedit
+		DEFAULT for GNU/Linux: $RHIDESRC/../setedit
+		
+$SETOBJ         this variable should point to the directory, where you have
+                build the editor.
+		DEFAULT for DJGPP:     $DJDIR/contrib/setedit/makes
+		DEFAULT for GNU/Linux: $RHIDESRC/../setedit/makes
+		
+$TVINC          this variable should point to the directory of the Turbo Vision
+                include files.
+		DEFAULT for DJGPP:     $DJDIR/contrib/tvision/include
+		DEFAULT for GNU/Linux: $RHIDESRC/../tvision/include
+		
+$TVOBJ          this variable should point the directory where you have build
+                the librhtv library.
+		DEFAULT for DJGPP:     $DJDIR/contrib/tvision/djgpp
+		DEFAULT for GNU/Linux: $RHIDESRC/../tvision/linux
+		
+$GDB_SRC        this variable should point to the source directory of GDB
+                DEFAULT for DJGPP:     $DJDIR/gnu/gdb-4.18
+		DEFAULT for GNU/Linux: $RHIDESRC/../gdb-4.18
+		
+$GDB_OBJ        this should point to the directory where you have built gdb
+                DEFAULT for DJGPP and GNU/Linux: $GDB_SRC
+		
+If you have already build libgdb.a (and with it libgdb.h) the you can set
+the tou variables
+$
+
+The above mentioned variables does not imply that you really need the sources
+or that you have manually build the sources. In fact the variables are used
+to determine the directories for the header files and libraries used by RHIDE.
+
+If you have for instance (on DJGPP) have installed the binary archive for
+the TV port (from tv109b.zip) then you should set the TV variables to
+
+TVSRC=$DJDIR/include/tvision
+		
+		- GNU debugger 4.18. You have to install the sources for gdb 4.18.
   If you do not install them in the directories like distributed
   with DJGPP ( %DJDIR%/gnu/gdb-4.16 ), you have to add to your DJGPP.ENV
   file the line, if I assume, that they are installed in s:/gnu/gdb-4.16:

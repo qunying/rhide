@@ -980,7 +980,7 @@ _libraries(int check_exclude)
         (dep->dest_file_type == FILE_DLL))
     {
       FindFile(FName(dep->dest_name), tmp);
-      AbsToRelPath(project_directory, tmp);
+      AbsToRelPath(project_directory, tmp, NULL, 1);
       if (retval)
         string_cat(retval, " ");
       string_cat(retval, tmp);

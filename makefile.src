@@ -8,10 +8,11 @@ endif
 
 srcdir=$(RHIDESRC)
 VPATH=$(srcdir)
-projects=gpr2mak rhide_ rhide gprexp rh
+projects=gpr2mak rhide_ rhide gprexp rh tolf.gpr tocrlf.gpr
 project=
 cfg_files=
-
+txt_conv_DJGPP=tocrlf.exe
+txt_conv_Linux=tocr.exe
 
 po_files=\
 	gpr2mak.cc idecolor.cc idedebug.cc idedefau.cc ideexter.cc \
@@ -26,9 +27,10 @@ src_files=$(po_files) Makefile common.mak README.IDE RHIDE.BIN RHIDE.SRC \
 	COPYING.RH COPYING wrong.c copyrite.c makefile.src \
 	gpr2mak.gpr rhide_.gpr rhide.gpr gpr2mak.mak rhide_.mak rhide.mak \
 	rhide_ch.log todo zipcomm.bin zipcomm.src rhide.env \
-	LINUX.TXT rhide.var VCSA.SH common.var \
+	LINUX.TXT rhide.var VCSA.SH common.var configure \
 	ideversi.in ideversi.cc readme.key rhide_.env \
-	moveifch gprexp.gpr gprexp.mak rh.gpr rh.mak config.mak
+	moveifch gprexp.gpr gprexp.mak rh.gpr rh.mak config.mak \
+	tolf.cc tolf.gpr tolf.mak tocrlf.gpr tocrlf.mak
 
 subdirs=libide librhgdb libtvgdb libtvuti include doc libgdb \
 	rhgdb debobj nodebobj po tvdemo librhuti share\
@@ -113,6 +115,12 @@ rhide.exe:: idegc.exe
 
 rhide: rhide.exe
 	$(LN_SF) $< $@
+
+tolf.exe:: tolf.mak force
+	$(MAKE) -f tolf.mak $(FLAGS_TO_PASS)
+
+tocrlf.exe:: tocrlf.mak force
+	$(MAKE) -f tocrlf.mak $(FLAGS_TO_PASS)
 
 clean::
 	rm -f rhide
@@ -208,9 +216,13 @@ LANGUAGES.SRC=
 endif
 
 distrib.src_: $(LANGUAGES.SRC) tmp.start copy.files \
-	     $(MANIFEST_SRC)
+	     $(MANIFEST_SRC) $(txt_conv)
 	rm -f $(rhides).zip
 	$(MAKE) mark.copyright copyrite_srcdir=$(prefix)
+ifneq ($(txt_conv),)
+	find $(copy_dir) -not -type d -a -not -name "*.gpr" \
+	  | xargs $(txt_conv)
+endif
 ifeq ($(rhide_OS),DJGPP)
 	cd $(copy_dir);	zip -9r $(obj_dir)/$(rhides).zip \
 	  @$(copy_dir)/manifest/$(rhides).mft; \
@@ -244,7 +256,7 @@ distrib.src: init.version touch_gprs
 	$(MAKE) $(FLAGS_TO_PASS) gpr2mak.exe
 	$(MAKE) $(FLAGS_TO_PASS) \
 	  prefix=$(copy_dir)/$(install_prefix_src) distrib.src_ \
-	  LFN=y FNCASE=y
+	  LFN=y FNCASE=y txt_conv=$(txt_conv_$(rhide_OS))
 
 doc info dvi:
 	$(MAKE) -C doc $@

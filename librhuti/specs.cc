@@ -404,6 +404,14 @@ char *expand_tokens(char *__tokens)
       *end = c;
       start = tokens = end;
     }
+    else if (start[0] == '$' && start[1] == '$')
+    {
+      start++;
+      *start = 0;
+      string_cat(_tokens,tokens);
+      start++;
+      tokens = start;
+    }
     else start++;
   }
   string_cat(_tokens,tokens);

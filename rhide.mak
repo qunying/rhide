@@ -279,8 +279,8 @@ INCLUDE_DIRS=$(RHIDESRC)/include $(RHIDESRC)/libtvuti/include\
 	$(TVSRC)/include $(RHIDESRC)/tvdemo/include $(SETSRC)/include\
 	$(SETSRC)/settvuti/include $(SETSRC)/infview/include\
 	$(SETSRC)/calcu $(SETSRC)/setedit/include $(TVSRC)
-LIB_DIRS=libide libtvuti $(TVOBJ) $(SETOBJ) tvdemo librhuti libgdb libtvgdb\
-	librhgdb
+LIB_DIRS=libide libtvuti tvdemo librhuti libgdb libtvgdb librhgdb $(TVOBJ)\
+	$(SETOBJ)
 C_DEBUG_FLAGS=-g
 C_OPT_FLAGS=-O2
 C_WARN_FLAGS=

@@ -17,9 +17,9 @@ include $(RHIDESRC)/common.mak
 
 ifeq ($(GDB_SRC),)
 ifeq ($(rhide_OS),DJGPP)
-GDB_SRC=$(DJDIR)/gnu/gdb-4.18
+GDB_SRC=$(DJDIR)/gnu/gdb-5.0
 else
-GDB_SRC=/usr/src/packages/BUILD/gdb-4.18
+GDB_SRC=/usr/src/packages/BUILD/gdb-5.0
 endif
 endif
 

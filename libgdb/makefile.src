@@ -2,6 +2,8 @@
 # This file is part of RHIDE. 
 #
 
+SHELL=/bin/sh
+
 srcdir=$(RHIDESRC)/libgdb
 VPATH=$(srcdir)
 
@@ -94,9 +96,12 @@ libgdb.c: Makefile
 	echo '#include <floatformat.h>' >> libgdb.c
 
 LIBGDB_FLAGS+=$(OS_FLAGS)
-CFLAGS+=$(OS_CFLAGS)
+override CFLAGS+=$(OS_CFLAGS)
 
-$(GDB_OBJ)/bfd/bfd.h:
+$(GDB_OBJ)/Makefile:
+	cd $(GDB_OBJ) && $(GDB_SRC)/configure
+
+$(GDB_OBJ)/bfd/bfd.h: $(GDB_OBJ)/Makefile
 	$(MAKE) -C $(dir $@) $(notdir $@)
 
 ifneq ($(LIBGDB_H),)
@@ -140,7 +145,7 @@ ifneq ($(LIBGDB_A),)
 libgdb.a: $(LIBGDB_A)
 	ln -sf $(LIBGDB_A) libgdb.a
 else
-libgdb.a: $(CHECKS) list
+libgdb.a: $(CHECKS) libgdb.h list
 	rm -f libgdb.a
 # do not use any xmalloc.o, because it is defined in utils.o
 	ar rcs $@ $(shell cat $(T_FILES) | sed -e '/.*xmalloc.*/d')

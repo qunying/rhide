@@ -1,4 +1,4 @@
-RHIDE is Copyright (C) 1996-1999 by Robert H”hne, see COPYING.RH for details
+RHIDE is Copyright (C) 1996-2001 by Robert H”hne, see COPYING.RH for details
 
 This is the source distribution of RHIDE. (for notes to the GNU/Linux
 system see the chapter below additionally)
@@ -13,7 +13,7 @@ is really tested and proved to work!
 For DJGPP you can use the source archives found on any simtelnet
 mirror:
 
-for the editor 0.4.1        v2apps/edi0441s.zip
+for the editor 0.4.41       v2apps/edi0441s.zip
 for the TV sources 1.0.1    v2tk/tv1010s.zip
 for the gdb sources         v2gnu/gdb50s.zip
 

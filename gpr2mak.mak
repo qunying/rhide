@@ -38,6 +38,13 @@ vpath %.ii $(vpath_src)
 vpath %.m $(vpath_src)
 vpath %.asm $(vpath_src)
 vpath %.nsm $(vpath_src)
+vpath_header=$(RHIDESRC)/include $(RHIDESRC)/libtvuti/include\
+	$(RHIDESRC)/librhuti $(RHIDESRC)/libide/include $(TVSRC)/include\
+	$(TVSRC) $(SETSRC)/setedit/include $(SETSRC)
+vpath %.h $(vpath_header)
+vpath %.hpp $(vpath_header)
+vpath %.ha $(vpath_header)
+vpath %.hd $(vpath_header)
 vpath_obj=nodebobj
 vpath %.o $(vpath_obj)
 RHIDE_GCC=gcc
@@ -425,111 +432,45 @@ NO_LINK=libide/libide.a librhuti/librhuti.a libtvuti/libtvuti.a
 LINK_FILES=$(filter-out $(NO_LINK),$(DEPS_0))
 gpr2mak.exe:: $(DEPS_0)
 	$(RHIDE_COMPILE_LINK)
-DEPS_1=gpr2mak.cc $(RHIDESRC)/include/rhide.h\
-	$(RHIDESRC)/libide/include/ideenums.h\
-	$(RHIDESRC)/libide/include/libide.h\
-	$(RHIDESRC)/libide/include/tdepende.h\
-	$(RHIDESRC)/libide/include/tfname.h\
-	$(RHIDESRC)/libide/include/toptions.h\
-	$(RHIDESRC)/libide/include/tproject.h\
-	$(RHIDESRC)/librhuti/rhutils.h
+DEPS_1=gpr2mak.cc ideenums.h libide.h rhide.h rhutils.h tdepende.h tfname.h\
+	toptions.h tproject.h
 nodebobj/gpr2mak.o:: $(DEPS_1)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_2=idedefau.cc $(RHIDESRC)/include/flags/ada_opt.h\
-	$(RHIDESRC)/include/flags/c_opt.h\
-	$(RHIDESRC)/include/flags/cxx_opt.h\
-	$(RHIDESRC)/include/flags/deb_opt.h\
-	$(RHIDESRC)/include/flags/f_opt.h\
-	$(RHIDESRC)/include/flags/fpc_opt.h\
-	$(RHIDESRC)/include/flags/fpcreser.h\
-	$(RHIDESRC)/include/flags/gpcreser.h\
-	$(RHIDESRC)/include/flags/opt_opt.h\
-	$(RHIDESRC)/include/flags/pas_opt.h\
-	$(RHIDESRC)/include/flags/reserved.h\
-	$(RHIDESRC)/include/flags/warn_opt.h $(RHIDESRC)/include/rhide.h\
-	$(RHIDESRC)/libide/include/ideenums.h\
-	$(RHIDESRC)/libide/include/libide.h\
-	$(RHIDESRC)/libide/include/tdepende.h\
-	$(RHIDESRC)/libide/include/tflagcol.h\
-	$(RHIDESRC)/libide/include/tflagent.h\
-	$(RHIDESRC)/libide/include/tfname.h\
-	$(RHIDESRC)/libide/include/toptions.h\
-	$(RHIDESRC)/libide/include/tproject.h
+DEPS_2=idedefau.cc flags/ada_opt.h flags/c_opt.h flags/cxx_opt.h\
+	flags/deb_opt.h flags/f_opt.h flags/fpc_opt.h flags/fpcreser.h\
+	flags/gpcreser.h flags/opt_opt.h flags/pas_opt.h flags/reserved.h\
+	flags/warn_opt.h ideenums.h libide.h rhide.h tdepende.h tflagcol.h\
+	tflagent.h tfname.h toptions.h tproject.h
 nodebobj/idedefau.o:: $(DEPS_2)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_3=ideenv.cc $(RHIDESRC)/include/rhide.h $(RHIDESRC)/librhuti/rhutils.h
+DEPS_3=ideenv.cc rhide.h rhutils.h
 nodebobj/ideenv.o:: $(DEPS_3)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_4=ideflags.cc $(RHIDESRC)/include/rhide.h\
-	$(RHIDESRC)/libide/include/ideenums.h\
-	$(RHIDESRC)/libide/include/libide.h\
-	$(RHIDESRC)/libide/include/tdepende.h\
-	$(RHIDESRC)/libide/include/tflagcol.h\
-	$(RHIDESRC)/libide/include/tflagent.h\
-	$(RHIDESRC)/libide/include/tfname.h\
-	$(RHIDESRC)/libide/include/toptions.h\
-	$(RHIDESRC)/libide/include/tproject.h\
-	$(RHIDESRC)/librhuti/rhutils.h\
-	$(RHIDESRC)/libtvuti/include/libtvuti.h\
-	$(RHIDESRC)/libtvuti/include/tdirlist.h\
-	$(RHIDESRC)/libtvuti/include/tparamli.h\
-	$(RHIDESRC)/libtvuti/include/tscollec.h
+DEPS_4=ideflags.cc ideenums.h libide.h libtvuti.h rhide.h rhutils.h\
+	tdepende.h tdirlist.h tflagcol.h tflagent.h tfname.h toptions.h\
+	tparamli.h tproject.h tscollec.h
 nodebobj/ideflags.o:: $(DEPS_4)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_5=idemak.cc $(RHIDESRC)/include/rhide.h\
-	$(RHIDESRC)/libide/include/ideenums.h\
-	$(RHIDESRC)/libide/include/libide.h\
-	$(RHIDESRC)/libide/include/tdepende.h\
-	$(RHIDESRC)/libide/include/tfname.h\
-	$(RHIDESRC)/libide/include/toptions.h\
-	$(RHIDESRC)/libide/include/tproject.h\
-	$(RHIDESRC)/librhuti/rhutils.h\
-	$(RHIDESRC)/libtvuti/include/libtvuti.h\
-	$(RHIDESRC)/libtvuti/include/tdirlist.h\
-	$(RHIDESRC)/libtvuti/include/tparamli.h\
-	$(RHIDESRC)/libtvuti/include/tscollec.h
+DEPS_5=idemak.cc ideenums.h idefunct.h libide.h libtvuti.h rhide.h\
+	rhutils.h tdepende.h tdirlist.h tfname.h toptions.h tparamli.h\
+	tproject.h tscollec.h
 nodebobj/idemak.o:: $(DEPS_5)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_6=idespec.cc $(RHIDESRC)/include/rhide.h\
-	$(RHIDESRC)/include/rhidehis.h\
-	$(RHIDESRC)/libide/include/idecomma.h\
-	$(RHIDESRC)/libide/include/ideenums.h\
-	$(RHIDESRC)/libide/include/idefunct.h\
-	$(RHIDESRC)/libide/include/libide.h\
-	$(RHIDESRC)/libide/include/tdepende.h\
-	$(RHIDESRC)/libide/include/tflagcol.h\
-	$(RHIDESRC)/libide/include/tfname.h\
-	$(RHIDESRC)/libide/include/toptions.h\
-	$(RHIDESRC)/libide/include/tproject.h\
-	$(RHIDESRC)/librhuti/rhutils.h\
-	$(RHIDESRC)/libtvuti/include/libtvuti.h\
-	$(RHIDESRC)/libtvuti/include/tdirlist.h\
-	$(RHIDESRC)/libtvuti/include/tenterli.h\
-	$(RHIDESRC)/libtvuti/include/tparamli.h\
-	$(RHIDESRC)/libtvuti/include/tscollec.h\
-	$(RHIDESRC)/libtvuti/include/tvutilfu.h\
-	$(RHIDESRC)/libtvuti/include/twindowl.h
+DEPS_6=idespec.cc idecomma.h ideenums.h idefunct.h libide.h libtvuti.h\
+	rhide.h rhidehis.h rhutils.h tdepende.h tdirlist.h tenterli.h\
+	tflagcol.h tfname.h toptions.h tparamli.h tproject.h tscollec.h\
+	tvutilfu.h twindowl.h
 nodebobj/idespec.o:: $(DEPS_6)
 	$(RHIDE_COMPILE.cc.o)
 DEPS_7=idestrm.cc
 nodebobj/idestrm.o:: $(DEPS_7)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_8=idesupp.cc $(RHIDESRC)/include/rhide.h\
-	$(RHIDESRC)/librhuti/rhutils.h
+DEPS_8=idesupp.cc rhide.h rhutils.h
 nodebobj/idesupp.o:: $(DEPS_8)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_9=ideutil.cc $(RHIDESRC)/include/rhide.h\
-	$(RHIDESRC)/libide/include/ideenums.h\
-	$(RHIDESRC)/libide/include/idefunct.h\
-	$(RHIDESRC)/libide/include/libide.h\
-	$(RHIDESRC)/libide/include/tdepende.h\
-	$(RHIDESRC)/libide/include/tfname.h\
-	$(RHIDESRC)/libide/include/toptions.h\
-	$(RHIDESRC)/libide/include/tproject.h\
-	$(RHIDESRC)/librhuti/rhutils.h\
-	$(RHIDESRC)/libtvuti/include/libtvuti.h\
-	$(RHIDESRC)/libtvuti/include/tdirlist.h\
-	$(RHIDESRC)/libtvuti/include/tvutilfu.h
+DEPS_9=ideutil.cc ideenums.h idefunct.h libide.h libtvuti.h rhide.h\
+	rhutils.h tdepende.h tdirlist.h tfname.h toptions.h tproject.h\
+	tvutilfu.h
 nodebobj/ideutil.o:: $(DEPS_9)
 	$(RHIDE_COMPILE.cc.o)
 DEPS_10=ideversi.cc

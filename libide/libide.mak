@@ -29,6 +29,13 @@ vpath %.ii $(vpath_src)
 vpath %.m $(vpath_src)
 vpath %.asm $(vpath_src)
 vpath %.nsm $(vpath_src)
+vpath_header=$(RHIDESRC)/libide/include $(RHIDESRC)/libtvuti/include\
+	$(RHIDESRC)/librhuti $(TVSRC)/include $(TVSRC) $(SETSRC)/include\
+	$(SETSRC)/settvuti/include $(SETSRC)
+vpath %.h $(vpath_header)
+vpath %.hpp $(vpath_header)
+vpath %.ha $(vpath_header)
+vpath %.hd $(vpath_header)
 RHIDE_GCC=gcc
 RHIDE_AS=gcc
 RHIDE_GXX=gcc
@@ -408,16 +415,10 @@ NO_LINK=
 LINK_FILES=$(filter-out $(NO_LINK),$(DEPS_0))
 libide.a:: $(DEPS_0)
 	$(RHIDE_COMPILE_ARCHIVE)
-DEPS_1=commands.cc $(RHIDESRC)/libide/include/idecomma.h\
-	$(RHIDESRC)/libide/include/libide.h\
-	$(RHIDESRC)/libtvuti/include/libtvuti.h\
-	$(RHIDESRC)/libtvuti/include/tvutilfu.h
+DEPS_1=commands.cc idecomma.h libide.h libtvuti.h tvutilfu.h
 commands.o:: $(DEPS_1)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_2=ideclass.cc $(RHIDESRC)/libide/include/ideenums.h\
-	$(RHIDESRC)/libide/include/idefunct.h\
-	$(RHIDESRC)/libide/include/libide.h\
-	$(RHIDESRC)/libtvuti/include/libtvuti.h
+DEPS_2=ideclass.cc ideenums.h idefunct.h libide.h libtvuti.h
 ideclass.o:: $(DEPS_2)
 	$(RHIDE_COMPILE.cc.o)
 DEPS_3=
@@ -430,95 +431,45 @@ DEPS_4=
 all:: stream/stream.gpr.force
 stream/stream.gpr.force:
 	$(MAKE) -C stream/ -f stream.mak
-DEPS_5=tdepende.cc $(RHIDESRC)/libide/include/ideenums.h\
-	$(RHIDESRC)/libide/include/libide.h\
-	$(RHIDESRC)/libide/include/tdepende.h\
-	$(RHIDESRC)/libide/include/tfname.h $(RHIDESRC)/librhuti/rhutils.h\
-	$(RHIDESRC)/libtvuti/include/libtvuti.h\
-	$(RHIDESRC)/libtvuti/include/tparamli.h
+DEPS_5=tdepende.cc ideenums.h libide.h libtvuti.h rhutils.h tdepende.h\
+	tfname.h tparamli.h
 tdepende.o:: $(DEPS_5)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_6=tflagcol.cc $(RHIDESRC)/libide/include/libide.h\
-	$(RHIDESRC)/libide/include/tflagcol.h\
-	$(RHIDESRC)/libide/include/tflagent.h\
-	$(RHIDESRC)/librhuti/rhutils.h
+DEPS_6=tflagcol.cc libide.h rhutils.h tflagcol.h tflagent.h
 tflagcol.o:: $(DEPS_6)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_7=tflagent.cc $(RHIDESRC)/libide/include/libide.h\
-	$(RHIDESRC)/libide/include/tflagent.h\
-	$(RHIDESRC)/librhuti/rhutils.h\
-	$(RHIDESRC)/libtvuti/include/libtvuti.h\
-	$(RHIDESRC)/libtvuti/include/tvutilfu.h
+DEPS_7=tflagent.cc libide.h libtvuti.h rhutils.h tflagent.h tvutilfu.h
 tflagent.o:: $(DEPS_7)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_8=tflaglis.cc $(RHIDESRC)/libide/include/idecomma.h\
-	$(RHIDESRC)/libide/include/libide.h\
-	$(RHIDESRC)/libide/include/tflagcol.h\
-	$(RHIDESRC)/libide/include/tflagent.h\
-	$(RHIDESRC)/libide/include/tflaglis.h\
-	$(RHIDESRC)/librhuti/rhutils.h\
-	$(RHIDESRC)/libtvuti/include/libtvuti.h
+DEPS_8=tflaglis.cc idecomma.h libide.h libtvuti.h rhutils.h tflagcol.h\
+	tflagent.h tflaglis.h
 tflaglis.o:: $(DEPS_8)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_9=tfname.cc $(RHIDESRC)/libide/include/libide.h\
-	$(RHIDESRC)/libide/include/tfname.h $(RHIDESRC)/librhuti/rhutils.h
+DEPS_9=tfname.cc libide.h rhutils.h tfname.h
 tfname.o:: $(DEPS_9)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_10=tideedit.cc $(RHIDESRC)/libide/include/idecomma.h\
-	$(RHIDESRC)/libide/include/libide.h\
-	$(RHIDESRC)/libide/include/tideedit.h\
-	$(RHIDESRC)/libide/include/tidefile.h\
-	$(RHIDESRC)/librhuti/rhutils.h\
-	$(RHIDESRC)/libtvuti/include/libtvuti.h
+DEPS_10=tideedit.cc idecomma.h libide.h libtvuti.h rhutils.h tideedit.h\
+	tidefile.h
 tideedit.o:: $(DEPS_10)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_11=tidefile.cc $(RHIDESRC)/libide/include/idecomma.h\
-	$(RHIDESRC)/libide/include/ideenums.h\
-	$(RHIDESRC)/libide/include/idefunct.h\
-	$(RHIDESRC)/libide/include/libide.h\
-	$(RHIDESRC)/libide/include/tideedit.h\
-	$(RHIDESRC)/libide/include/tidefile.h\
-	$(RHIDESRC)/librhuti/rhutils.h\
-	$(RHIDESRC)/libtvuti/include/libtvuti.h
+DEPS_11=tidefile.cc idecomma.h ideenums.h idefunct.h libide.h libtvuti.h\
+	rhutils.h tideedit.h tidefile.h
 tidefile.o:: $(DEPS_11)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_12=toptions.cc $(RHIDESRC)/libide/include/libide.h\
-	$(RHIDESRC)/libide/include/tflagcol.h\
-	$(RHIDESRC)/libide/include/toptions.h\
-	$(RHIDESRC)/libtvuti/include/libtvuti.h\
-	$(RHIDESRC)/libtvuti/include/tdirlist.h\
-	$(RHIDESRC)/libtvuti/include/tparamli.h
+DEPS_12=toptions.cc libide.h libtvuti.h tdirlist.h tflagcol.h toptions.h\
+	tparamli.h
 toptions.o:: $(DEPS_12)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_13=tprjlist.cc $(RHIDESRC)/libide/include/idecomma.h\
-	$(RHIDESRC)/libide/include/ideenums.h\
-	$(RHIDESRC)/libide/include/idefunct.h\
-	$(RHIDESRC)/libide/include/libide.h\
-	$(RHIDESRC)/libide/include/tdepende.h\
-	$(RHIDESRC)/libide/include/tfname.h\
-	$(RHIDESRC)/libide/include/tideedit.h\
-	$(RHIDESRC)/libide/include/tprjlist.h\
-	$(RHIDESRC)/libtvuti/include/libtvuti.h\
-	$(RHIDESRC)/libtvuti/include/tvutilco.h
+DEPS_13=tprjlist.cc idecomma.h ideenums.h idefunct.h libide.h libtvuti.h\
+	tdepende.h tfname.h tideedit.h tprjlist.h tvutilco.h
 tprjlist.o:: $(DEPS_13)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_14=tprjwind.cc $(RHIDESRC)/libide/include/idecomma.h\
-	$(RHIDESRC)/libide/include/libide.h\
-	$(RHIDESRC)/libide/include/tdepende.h\
-	$(RHIDESRC)/libide/include/tprjlist.h\
-	$(RHIDESRC)/libide/include/tprjwind.h\
-	$(RHIDESRC)/libtvuti/include/libtvuti.h
+DEPS_14=tprjwind.cc idecomma.h libide.h libtvuti.h tdepende.h tprjlist.h\
+	tprjwind.h
 tprjwind.o:: $(DEPS_14)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_15=tproject.cc $(RHIDESRC)/libide/include/ideenums.h\
-	$(RHIDESRC)/libide/include/libide.h\
-	$(RHIDESRC)/libide/include/tdepende.h\
-	$(RHIDESRC)/libide/include/tfname.h\
-	$(RHIDESRC)/libide/include/toptions.h\
-	$(RHIDESRC)/libide/include/tproject.h\
-	$(RHIDESRC)/librhuti/rhutils.h\
-	$(RHIDESRC)/libtvuti/include/libtvuti.h\
-	$(RHIDESRC)/libtvuti/include/tparamli.h
+DEPS_15=tproject.cc ideenums.h libide.h libtvuti.h rhutils.h tdepende.h\
+	tfname.h toptions.h tparamli.h tproject.h
 tproject.o:: $(DEPS_15)
 	$(RHIDE_COMPILE.cc.o)
 all:: libide.a

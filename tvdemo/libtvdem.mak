@@ -26,6 +26,11 @@ vpath %.ii $(vpath_src)
 vpath %.m $(vpath_src)
 vpath %.asm $(vpath_src)
 vpath %.nsm $(vpath_src)
+vpath_header=$(RHIDESRC)/tvdemo/include $(TVSRC)/include $(TVSRC)
+vpath %.h $(vpath_header)
+vpath %.hpp $(vpath_header)
+vpath %.ha $(vpath_header)
+vpath %.hd $(vpath_header)
 RHIDE_GCC=gcc
 RHIDE_AS=gcc
 RHIDE_GXX=gcc
@@ -379,23 +384,19 @@ NO_LINK=
 LINK_FILES=$(filter-out $(NO_LINK),$(DEPS_0))
 libtvdem.a:: $(DEPS_0)
 	$(RHIDE_COMPILE_ARCHIVE)
-DEPS_1=ascii.cc $(RHIDESRC)/tvdemo/include/ascii.h
+DEPS_1=ascii.cc ascii.h
 ascii.o:: $(DEPS_1)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_2=calendar.cc $(RHIDESRC)/tvdemo/include/calendar.h
+DEPS_2=calendar.cc calendar.h
 calendar.o:: $(DEPS_2)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_3=libtvdem.cc $(RHIDESRC)/tvdemo/include/ascii.h\
-	$(RHIDESRC)/tvdemo/include/calendar.h\
-	$(RHIDESRC)/tvdemo/include/libtvdem.h\
-	$(RHIDESRC)/tvdemo/include/mousedlg.h\
-	$(RHIDESRC)/tvdemo/include/puzzle.h
+DEPS_3=libtvdem.cc ascii.h calendar.h libtvdem.h mousedlg.h puzzle.h
 libtvdem.o:: $(DEPS_3)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_4=mousedlg.cc $(RHIDESRC)/tvdemo/include/mousedlg.h
+DEPS_4=mousedlg.cc mousedlg.h
 mousedlg.o:: $(DEPS_4)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_5=puzzle.cc $(RHIDESRC)/tvdemo/include/puzzle.h
+DEPS_5=puzzle.cc puzzle.h
 puzzle.o:: $(DEPS_5)
 	$(RHIDE_COMPILE.cc.o)
 all:: libtvdem.a

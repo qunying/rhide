@@ -26,6 +26,12 @@ vpath %.ii $(vpath_src)
 vpath %.m $(vpath_src)
 vpath %.asm $(vpath_src)
 vpath %.nsm $(vpath_src)
+vpath_header=$(RHIDESRC)/libtvuti/include $(RHIDESRC)/librhuti\
+	$(TVSRC)/include $(TVSRC)
+vpath %.h $(vpath_header)
+vpath %.hpp $(vpath_header)
+vpath %.ha $(vpath_header)
+vpath %.hd $(vpath_header)
 RHIDE_GCC=gcc
 RHIDE_AS=gcc
 RHIDE_GXX=gcc
@@ -340,12 +346,10 @@ DEPS_0= sdirlist.o sparamli.o
 NO_LINK=
 LINK_FILES=$(filter-out $(NO_LINK),$(DEPS_0))
 TARGET_0:: $(DEPS_0)
-DEPS_1=sdirlist.cc $(RHIDESRC)/libtvuti/include/libtvuti.h\
-	$(RHIDESRC)/libtvuti/include/tdirlist.h
+DEPS_1=sdirlist.cc libtvuti.h tdirlist.h
 sdirlist.o:: $(DEPS_1)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_2=sparamli.cc $(RHIDESRC)/libtvuti/include/libtvuti.h\
-	$(RHIDESRC)/libtvuti/include/tparamli.h
+DEPS_2=sparamli.cc libtvuti.h tparamli.h
 sparamli.o:: $(DEPS_2)
 	$(RHIDE_COMPILE.cc.o)
 all:: TARGET_0

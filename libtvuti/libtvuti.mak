@@ -26,6 +26,12 @@ vpath %.ii $(vpath_src)
 vpath %.m $(vpath_src)
 vpath %.asm $(vpath_src)
 vpath %.nsm $(vpath_src)
+vpath_header=$(RHIDESRC)/libtvuti/include $(RHIDESRC)/librhuti\
+	$(TVSRC)/include $(TVSRC)
+vpath %.h $(vpath_header)
+vpath %.hpp $(vpath_header)
+vpath %.ha $(vpath_header)
+vpath %.hd $(vpath_header)
 RHIDE_GCC=gcc
 RHIDE_AS=gcc
 RHIDE_GXX=gcc
@@ -400,47 +406,31 @@ NO_LINK=
 LINK_FILES=$(filter-out $(NO_LINK),$(DEPS_0))
 libtvuti.a:: $(DEPS_0)
 	$(RHIDE_COMPILE_ARCHIVE)
-DEPS_1=bigmessa.cc $(RHIDESRC)/libtvuti/include/libtvuti.h\
-	$(RHIDESRC)/libtvuti/include/tvutilfu.h
+DEPS_1=bigmessa.cc libtvuti.h tvutilfu.h
 bigmessa.o:: $(DEPS_1)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_2=cmd.cc $(RHIDESRC)/librhuti/rhutils.h\
-	$(RHIDESRC)/libtvuti/include/libtvuti.h\
-	$(RHIDESRC)/libtvuti/include/tvutilfu.h
+DEPS_2=cmd.cc libtvuti.h rhutils.h tvutilfu.h
 cmd.o:: $(DEPS_2)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_3=commands.cc $(RHIDESRC)/libtvuti/include/libtvuti.h\
-	$(RHIDESRC)/libtvuti/include/tvutilco.h\
-	$(RHIDESRC)/libtvuti/include/tvutilfu.h
+DEPS_3=commands.cc libtvuti.h tvutilco.h tvutilfu.h
 commands.o:: $(DEPS_3)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_4=editdirl.cc $(RHIDESRC)/librhuti/rhutils.h\
-	$(RHIDESRC)/libtvuti/include/libtvuti.h\
-	$(RHIDESRC)/libtvuti/include/tdirlist.h\
-	$(RHIDESRC)/libtvuti/include/tvutilfu.h
+DEPS_4=editdirl.cc libtvuti.h rhutils.h tdirlist.h tvutilfu.h
 editdirl.o:: $(DEPS_4)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_5=editpara.cc $(RHIDESRC)/librhuti/rhutils.h\
-	$(RHIDESRC)/libtvuti/include/libtvuti.h\
-	$(RHIDESRC)/libtvuti/include/tparamli.h\
-	$(RHIDESRC)/libtvuti/include/tvutilfu.h
+DEPS_5=editpara.cc libtvuti.h rhutils.h tparamli.h tvutilfu.h
 editpara.o:: $(DEPS_5)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_6=execdial.cc $(RHIDESRC)/libtvuti/include/libtvuti.h\
-	$(RHIDESRC)/libtvuti/include/tvutilfu.h
+DEPS_6=execdial.cc libtvuti.h tvutilfu.h
 execdial.o:: $(DEPS_6)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_7=history.cc $(RHIDESRC)/libtvuti/include/libtvuti.h\
-	$(RHIDESRC)/libtvuti/include/tvutilfu.h
+DEPS_7=history.cc libtvuti.h tvutilfu.h
 history.o:: $(DEPS_7)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_8=ihistory.cc $(RHIDESRC)/libtvuti/include/libtvuti.h\
-	$(RHIDESRC)/libtvuti/include/tvutilfu.h
+DEPS_8=ihistory.cc libtvuti.h tvutilfu.h
 ihistory.o:: $(DEPS_8)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_9=msgrec.cc $(RHIDESRC)/librhuti/rhutils.h\
-	$(RHIDESRC)/libtvuti/include/libtvuti.h\
-	$(RHIDESRC)/libtvuti/include/msgrec.h
+DEPS_9=msgrec.cc libtvuti.h msgrec.h rhutils.h
 msgrec.o:: $(DEPS_9)
 	$(RHIDE_COMPILE.cc.o)
 DEPS_10=
@@ -453,90 +443,55 @@ DEPS_11=
 all:: stream/stream.gpr.force
 stream/stream.gpr.force:
 	$(MAKE) -C stream/ -f stream.mak
-DEPS_12=tcheckdi.cc $(RHIDESRC)/libtvuti/include/libtvuti.h\
-	$(RHIDESRC)/libtvuti/include/tcheckdi.h
+DEPS_12=tcheckdi.cc libtvuti.h tcheckdi.h
 tcheckdi.o:: $(DEPS_12)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_13=tdirlist.cc $(RHIDESRC)/librhuti/rhutils.h\
-	$(RHIDESRC)/libtvuti/include/libtvuti.h\
-	$(RHIDESRC)/libtvuti/include/tdirlist.h
+DEPS_13=tdirlist.cc libtvuti.h rhutils.h tdirlist.h
 tdirlist.o:: $(DEPS_13)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_14=tenterch.cc $(RHIDESRC)/libtvuti/include/libtvuti.h\
-	$(RHIDESRC)/libtvuti/include/tenterch.h\
-	$(RHIDESRC)/libtvuti/include/tvutilco.h
+DEPS_14=tenterch.cc libtvuti.h tenterch.h tvutilco.h
 tenterch.o:: $(DEPS_14)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_15=tenterin.cc $(RHIDESRC)/libtvuti/include/libtvuti.h\
-	$(RHIDESRC)/libtvuti/include/tenterin.h
+DEPS_15=tenterin.cc libtvuti.h tenterin.h
 tenterin.o:: $(DEPS_15)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_16=tenterli.cc $(RHIDESRC)/libtvuti/include/libtvuti.h\
-	$(RHIDESRC)/libtvuti/include/tenterli.h\
-	$(RHIDESRC)/libtvuti/include/tvutilco.h
+DEPS_16=tenterli.cc libtvuti.h tenterli.h tvutilco.h
 tenterli.o:: $(DEPS_16)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_17=tenterra.cc $(RHIDESRC)/libtvuti/include/libtvuti.h\
-	$(RHIDESRC)/libtvuti/include/tenterra.h\
-	$(RHIDESRC)/libtvuti/include/tvutilco.h
+DEPS_17=tenterra.cc libtvuti.h tenterra.h tvutilco.h
 tenterra.o:: $(DEPS_17)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_18=tintinpu.cc $(RHIDESRC)/libtvuti/include/libtvuti.h\
-	$(RHIDESRC)/libtvuti/include/tenterin.h\
-	$(RHIDESRC)/libtvuti/include/tintinpu.h
+DEPS_18=tintinpu.cc libtvuti.h tenterin.h tintinpu.h
 tintinpu.o:: $(DEPS_18)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_19=tlbutton.cc $(RHIDESRC)/libtvuti/include/libtvuti.h\
-	$(RHIDESRC)/libtvuti/include/tlbutton.h
+DEPS_19=tlbutton.cc libtvuti.h tlbutton.h
 tlbutton.o:: $(DEPS_19)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_20=tmeminfo.cc $(RHIDESRC)/libtvuti/include/libtvuti.h\
-	$(RHIDESRC)/libtvuti/include/tmeminfo.h
+DEPS_20=tmeminfo.cc libtvuti.h tmeminfo.h
 tmeminfo.o:: $(DEPS_20)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_21=tmemstrm.cc $(RHIDESRC)/libtvuti/include/libtvuti.h\
-	$(RHIDESRC)/libtvuti/include/tmemstrm.h
+DEPS_21=tmemstrm.cc libtvuti.h tmemstrm.h
 tmemstrm.o:: $(DEPS_21)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_22=tmsgcoll.cc $(RHIDESRC)/libtvuti/include/libtvuti.h\
-	$(RHIDESRC)/libtvuti/include/msgrec.h\
-	$(RHIDESRC)/libtvuti/include/tmsgcoll.h
+DEPS_22=tmsgcoll.cc libtvuti.h msgrec.h tmsgcoll.h
 tmsgcoll.o:: $(DEPS_22)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_23=tmsglist.cc $(RHIDESRC)/librhuti/rhutils.h\
-	$(RHIDESRC)/libtvuti/include/libtvuti.h\
-	$(RHIDESRC)/libtvuti/include/msgrec.h\
-	$(RHIDESRC)/libtvuti/include/tenterli.h\
-	$(RHIDESRC)/libtvuti/include/tmsgcoll.h\
-	$(RHIDESRC)/libtvuti/include/tmsglist.h\
-	$(RHIDESRC)/libtvuti/include/tvutilco.h
+DEPS_23=tmsglist.cc libtvuti.h msgrec.h rhutils.h tenterli.h tmsgcoll.h\
+	tmsglist.h tvutilco.h
 tmsglist.o:: $(DEPS_23)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_24=tparamli.cc $(RHIDESRC)/librhuti/rhutils.h\
-	$(RHIDESRC)/libtvuti/include/libtvuti.h\
-	$(RHIDESRC)/libtvuti/include/tparamli.h
+DEPS_24=tparamli.cc libtvuti.h rhutils.h tparamli.h
 tparamli.o:: $(DEPS_24)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_25=tscollec.cc $(RHIDESRC)/libtvuti/include/libtvuti.h\
-	$(RHIDESRC)/libtvuti/include/tscollec.h
+DEPS_25=tscollec.cc libtvuti.h tscollec.h
 tscollec.o:: $(DEPS_25)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_26=twindowl.cc $(RHIDESRC)/librhuti/rhutils.h\
-	$(RHIDESRC)/libtvuti/include/libtvuti.h\
-	$(RHIDESRC)/libtvuti/include/tenterli.h\
-	$(RHIDESRC)/libtvuti/include/tscollec.h\
-	$(RHIDESRC)/libtvuti/include/tvutilco.h\
-	$(RHIDESRC)/libtvuti/include/twindowl.h
+DEPS_26=twindowl.cc libtvuti.h rhutils.h tenterli.h tscollec.h tvutilco.h\
+	twindowl.h
 twindowl.o:: $(DEPS_26)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_27=windowli.cc $(RHIDESRC)/librhuti/rhutils.h\
-	$(RHIDESRC)/libtvuti/include/libtvuti.h\
-	$(RHIDESRC)/libtvuti/include/tenterli.h\
-	$(RHIDESRC)/libtvuti/include/tmemstrm.h\
-	$(RHIDESRC)/libtvuti/include/tscollec.h\
-	$(RHIDESRC)/libtvuti/include/tvutilco.h\
-	$(RHIDESRC)/libtvuti/include/tvutilfu.h\
-	$(RHIDESRC)/libtvuti/include/twindowl.h
+DEPS_27=windowli.cc libtvuti.h rhutils.h tenterli.h tmemstrm.h tscollec.h\
+	tvutilco.h tvutilfu.h twindowl.h
 windowli.o:: $(DEPS_27)
 	$(RHIDE_COMPILE.cc.o)
 all:: libtvuti.a

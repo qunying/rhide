@@ -23,6 +23,11 @@ vpath %.ii $(vpath_src)
 vpath %.m $(vpath_src)
 vpath %.asm $(vpath_src)
 vpath %.nsm $(vpath_src)
+vpath_header=$(RHIDESRC)/librhuti
+vpath %.h $(vpath_header)
+vpath %.hpp $(vpath_header)
+vpath %.ha $(vpath_header)
+vpath %.hd $(vpath_header)
 RHIDE_GCC=gcc
 RHIDE_AS=gcc
 RHIDE_GXX=gcc
@@ -393,8 +398,7 @@ all:: ../librhuti/librhuti.gpr.force
 DEPS_2=fstrcmp.c g:/djgpp/include/sys/version.h
 fstrcmp.o:: $(DEPS_2)
 	$(RHIDE_COMPILE.c.o)
-DEPS_3=msgcat.cc g:/djgpp/include/sys/version.h\
-	$(RHIDESRC)/librhuti/rhutils.h
+DEPS_3=msgcat.cc g:/djgpp/include/sys/version.h rhutils.h
 msgcat.o:: $(DEPS_3)
 	$(RHIDE_COMPILE.cc.o)
 all:: msgcat.exe

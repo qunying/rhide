@@ -29,6 +29,13 @@ vpath %.ii $(vpath_src)
 vpath %.m $(vpath_src)
 vpath %.asm $(vpath_src)
 vpath %.nsm $(vpath_src)
+vpath_header=$(RHIDESRC)/libide/include $(RHIDESRC)/libtvuti/include\
+	$(RHIDESRC)/librhuti $(TVSRC)/include $(TVSRC) $(SETSRC)/include\
+	$(SETSRC)/settvuti/include $(SETSRC)
+vpath %.h $(vpath_header)
+vpath %.hpp $(vpath_header)
+vpath %.ha $(vpath_header)
+vpath %.hd $(vpath_header)
 RHIDE_GCC=gcc
 RHIDE_AS=gcc
 RHIDE_GXX=gcc
@@ -387,41 +394,28 @@ DEPS_0= sdepcoll.o sdepende.o sflagcol.o sflagent.o sideedit.o sidefile.o\
 NO_LINK=
 LINK_FILES=$(filter-out $(NO_LINK),$(DEPS_0))
 TARGET_0:: $(DEPS_0)
-DEPS_1=sdepcoll.cc $(RHIDESRC)/libide/include/libide.h\
-	$(RHIDESRC)/libide/include/tdepende.h
+DEPS_1=sdepcoll.cc libide.h tdepende.h
 sdepcoll.o:: $(DEPS_1)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_2=sdepende.cc $(RHIDESRC)/libide/include/ideenums.h\
-	$(RHIDESRC)/libide/include/libide.h\
-	$(RHIDESRC)/libide/include/tdepende.h\
-	$(RHIDESRC)/libide/include/tfname.h
+DEPS_2=sdepende.cc ideenums.h libide.h tdepende.h tfname.h
 sdepende.o:: $(DEPS_2)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_3=sflagcol.cc $(RHIDESRC)/libide/include/libide.h\
-	$(RHIDESRC)/libide/include/tflagcol.h
+DEPS_3=sflagcol.cc libide.h tflagcol.h
 sflagcol.o:: $(DEPS_3)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_4=sflagent.cc $(RHIDESRC)/libide/include/libide.h\
-	$(RHIDESRC)/libide/include/tflagent.h
+DEPS_4=sflagent.cc libide.h tflagent.h
 sflagent.o:: $(DEPS_4)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_5=sideedit.cc $(RHIDESRC)/libide/include/libide.h\
-	$(RHIDESRC)/libide/include/tideedit.h
+DEPS_5=sideedit.cc libide.h tideedit.h
 sideedit.o:: $(DEPS_5)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_6=sidefile.cc $(RHIDESRC)/libide/include/libide.h\
-	$(RHIDESRC)/libide/include/tidefile.h
+DEPS_6=sidefile.cc libide.h tidefile.h
 sidefile.o:: $(DEPS_6)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_7=soptions.cc $(RHIDESRC)/libide/include/libide.h\
-	$(RHIDESRC)/libide/include/toptions.h
+DEPS_7=soptions.cc libide.h toptions.h
 soptions.o:: $(DEPS_7)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_8=sproject.cc $(RHIDESRC)/libide/include/ideenums.h\
-	$(RHIDESRC)/libide/include/libide.h\
-	$(RHIDESRC)/libide/include/tdepende.h\
-	$(RHIDESRC)/libide/include/tfname.h\
-	$(RHIDESRC)/libide/include/tproject.h
+DEPS_8=sproject.cc ideenums.h libide.h tdepende.h tfname.h tproject.h
 sproject.o:: $(DEPS_8)
 	$(RHIDE_COMPILE.cc.o)
 all:: TARGET_0

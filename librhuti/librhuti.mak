@@ -23,6 +23,11 @@ vpath %.ii $(vpath_src)
 vpath %.m $(vpath_src)
 vpath %.asm $(vpath_src)
 vpath %.nsm $(vpath_src)
+vpath_header=$(RHIDESRC)/librhuti
+vpath %.h $(vpath_header)
+vpath %.hpp $(vpath_header)
+vpath %.ha $(vpath_header)
+vpath %.hd $(vpath_header)
 RHIDE_GCC=gcc
 RHIDE_AS=gcc
 RHIDE_GXX=gcc
@@ -381,40 +386,40 @@ NO_LINK=
 LINK_FILES=$(filter-out $(NO_LINK),$(DEPS_0))
 librhuti.a:: $(DEPS_0)
 	$(RHIDE_COMPILE_ARCHIVE)
-DEPS_1=abstorel.cc $(RHIDESRC)/librhuti/rhutils.h
+DEPS_1=abstorel.cc rhutils.h
 abstorel.o:: $(DEPS_1)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_2=back2sl.cc $(RHIDESRC)/librhuti/rhutils.h
+DEPS_2=back2sl.cc rhutils.h
 back2sl.o:: $(DEPS_2)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_3=basename.cc $(RHIDESRC)/librhuti/rhutils.h
+DEPS_3=basename.cc rhutils.h
 basename.o:: $(DEPS_3)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_4=fexpand.cc $(RHIDESRC)/librhuti/rhutils.h
+DEPS_4=fexpand.cc rhutils.h
 fexpand.o:: $(DEPS_4)
 	$(RHIDE_COMPILE.cc.o)
 DEPS_5=fixpath.cc
 fixpath.o:: $(DEPS_5)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_6=io.cc $(RHIDESRC)/librhuti/rhutils.h
+DEPS_6=io.cc rhutils.h
 io.o:: $(DEPS_6)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_7=specs.cc $(RHIDESRC)/librhuti/rhutils.h
+DEPS_7=specs.cc rhutils.h
 specs.o:: $(DEPS_7)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_8=splitfn.cc $(RHIDESRC)/librhuti/rhutils.h
+DEPS_8=splitfn.cc rhutils.h
 splitfn.o:: $(DEPS_8)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_9=stricat.cc $(RHIDESRC)/librhuti/rhutils.h
+DEPS_9=stricat.cc rhutils.h
 stricat.o:: $(DEPS_9)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_10=stridown.cc $(RHIDESRC)/librhuti/rhutils.h
+DEPS_10=stridown.cc rhutils.h
 stridown.o:: $(DEPS_10)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_11=stridup.cc $(RHIDESRC)/librhuti/rhutils.h
+DEPS_11=stridup.cc rhutils.h
 stridup.o:: $(DEPS_11)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_12=strifree.cc $(RHIDESRC)/librhuti/rhutils.h
+DEPS_12=strifree.cc rhutils.h
 strifree.o:: $(DEPS_12)
 	$(RHIDE_COMPILE.cc.o)
 all:: librhuti.a

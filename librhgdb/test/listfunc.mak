@@ -23,6 +23,11 @@ vpath %.ii $(vpath_src)
 vpath %.m $(vpath_src)
 vpath %.asm $(vpath_src)
 vpath %.nsm $(vpath_src)
+vpath_header=$(RHIDESRC)/librhgdb/include ../../libgdb
+vpath %.h $(vpath_header)
+vpath %.hpp $(vpath_header)
+vpath %.ha $(vpath_header)
+vpath %.hd $(vpath_header)
 RHIDE_GCC=gcc
 RHIDE_AS=gcc
 RHIDE_GXX=gcc
@@ -389,9 +394,7 @@ DEPS_1=
 all:: ../librhgdb.gpr.force
 ../librhgdb.gpr.force:
 	$(MAKE) -C ../ -f librhgdb.mak
-DEPS_2=listfunc.c ../../libgdb/libgdb.h\
-	$(RHIDESRC)/librhgdb/include/librhgdb.h\
-	$(RHIDESRC)/librhgdb/include/rhgdbint.h
+DEPS_2=listfunc.c ../../libgdb/libgdb.h librhgdb.h rhgdbint.h
 listfunc.o:: $(DEPS_2)
 	$(RHIDE_COMPILE.c.o)
 LOCAL_2=\

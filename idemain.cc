@@ -1094,8 +1094,13 @@ void IDE::handleEvent(TEvent & event)
           {
             int line;
             TIDEFileEditor *editor = (TIDEFileEditor *)((TCEditWindow *)ew)->editor;
-            if (doEditDialog(edJumpToFunction,&line,editor->buffer,editor->bufLen))
-              goto_line(editor,line);
+            if (editor)
+              {
+               char *word=editor->WordUnderCursor(80);
+               if (doEditDialog(edJumpToFunction,&line,editor->buffer,editor->bufLen,word))
+                  goto_line(editor,line);
+               delete word;
+              }
           }
           clearEvent(event);
           break;

@@ -120,6 +120,16 @@ char *SourceForMain(int *line);
 */
 extern int debugger_started;
 
+
+/*
+  Non zero when annotate_signal_string_end() allows to continue execution
+  of program to force showing disassembler window (We cannot be sure
+  we'll be in some procedure with source). Cleared when disassembler
+  window is shown.
+*/
+
+extern int force_disassembler_window;
+
 /*
   This is normaly set to zero. If it is set to nonzero by
   the program, which uses this lib, only 3 hw breakpoints

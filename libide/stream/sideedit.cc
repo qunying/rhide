@@ -4,7 +4,7 @@
 #define Uses_TStreamableClass
 #include <libide.h>
 
-__link( RWindow )
+__link( RCEditWindow )
 __link( RIDEFileEditor )
 
 s(IDEEditWindow)

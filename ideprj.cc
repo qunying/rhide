@@ -28,6 +28,15 @@
 #define Uses_TStringCollection
 #define Uses_TPalette
 #define Uses_TEventQueue
+#define Uses_TStreamableClass
+
+/*
+  For old desktop files I need special TSTreamableClass
+  Variables.
+*/
+#define Uses_TSIndicator
+#define Uses_TNoCaseStringCollection
+#define Uses_TStringCollectionW
 
 #define Uses_ideCommands
 #define Uses_ideFunctions
@@ -64,6 +73,19 @@
   project file */
 __link ( RIDEEditWindow )
 
+/*
+  For old desktop files I need special TSTreamableClass
+  Variables.
+*/
+TStreamableClass _RSIndicator("TSIndicator",
+                              TSIndicator::build,
+                              __DELTA(TSIndicator));
+TStreamableClass _RNoCaseStringCollection("TNoCaseStringCollection",
+                              TNoCaseStringCollection::build,
+                              __DELTA(TNoCaseStringCollection));
+TStreamableClass _RStringCollectionW("TStringCollectionW",
+                              TStringCollectionW::build,
+                              __DELTA(TStringCollectionW));
 #ifdef __DJGPP__
 #define RHIDE_OPTIONS_NAME "rh_opt"
 #else

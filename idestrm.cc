@@ -3,9 +3,6 @@
 #include <tv.h>
 
 __link ( RProject )
-#if 0 // I have moved it to ideprj.cc
-__link ( RIDEEditWindow )
-#endif
 
 #define N(CLASS,S)                        \
 class CLASS                               \
@@ -32,7 +29,6 @@ N(TParamList,\x0D)
 N(TStringCollection,\x0E)
 N(TNoCaseStringCollection,\x0F)
 N(TInfViewer,\x10)
-//N(TIDEInfWindow,\x11) // defined in idehelp.cc for now
 N(TSIndicator,\x12)
 N(TStringCollectionW,\x13)
 

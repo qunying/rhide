@@ -94,7 +94,7 @@ TMenuBar *IDE::initMenuBar( TRect r )
     +*new _TMenuItem( __("~O~pen"), cmOpenEditor, kbF3, hcOpenEditor, "F3" )
     +*new _TMenuItem( __("~N~ew"), cmNewEditor, kbNoKey, hcNewEditor )
     +*new _TMenuItem( __("~S~ave"), cmSaveEditor, kbF2, hcSaveEditor, "F2" )
-    +*new _TMenuItem( __("S~a~ve as..."), cmSaveAs, kbNoKey, hcSaveAs )
+    +*new _TMenuItem( __("S~a~ve as..."), cmcSaveAs, kbNoKey, hcSaveAs )
     +*new _TMenuItem( __("Save a~l~l"), cmSaveAll, kbNoKey, hcSaveAll )
     +     newLine()
 #ifdef __DJGPP__

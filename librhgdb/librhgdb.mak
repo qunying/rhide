@@ -49,8 +49,7 @@ C_F_LANG_FLAGS=
 C_ADA_LANG_FLAGS=
 LIBS=gdb bfd opcodes iberty readline
 LD_EXTRA_FLAGS=
-C_EXTRA_FLAGS=-U__GNUC_MINOR__ -UDJGPP_MINOR -U__DJGPP_MINOR\
-	-U__DJGPP_MINOR__
+C_EXTRA_FLAGS=-U__GNUC_MINOR__
 LOCAL_OPT=$(subst ___~~~___, ,$(subst $(notdir $<)___,,$(filter $(notdir\
 	$<)___%,$(LOCAL_OPTIONS))))
 
@@ -383,7 +382,7 @@ gdbinter.o:: $(DEPS_7)
 DEPS_8=listfunc.c ../libgdb/libgdbrh.h librhgdb.h rhgdbint.h
 listfunc.o:: $(DEPS_8)
 	$(RHIDE_COMPILE.c.o)
-DEPS_9=regs.c ../libgdb/libgdbrh.h librhgdb.h
+DEPS_9=regs.c ../libgdb/libgdbrh.h librhgdb.h rhgdbint.h
 regs.o:: $(DEPS_9)
 	$(RHIDE_COMPILE.c.o)
 DEPS_10=symify.c ../libgdb/libgdbrh.h librhgdb.h

@@ -122,9 +122,9 @@ export copyrite.exe:=$(top_obj_dir)/copyrite.exe
 endif
 
 ifeq ($(strip $(rhide_OS)),Linux)
-move-if-change=$(SHELL) $(RHIDESRC)/move-if-change
+move-if-change=$(SHELL) $(RHIDESRC)/moveifch
 else
-move-if-change=$(RHIDESRC)/move-if-change
+move-if-change=$(RHIDESRC)/moveifch
 endif
 
 gpr2mak:=$(wildcard $(top_dir)/gpr2mak.exe)

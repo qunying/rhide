@@ -6,8 +6,11 @@
 ifeq ($(strip $(RHIDESRC)),)
 RHIDESRC=s:/rho/rhide
 endif
+ifeq ($(strip $(SETSRC)),)
+SETSRC=c:/djgpp/contrib/setedit
+endif
 ifeq ($(strip $(TVSRC)),)
-TVSRC=c:/djgpp/contrib/tvsrc
+TVSRC=c:/djgpp/contrib/tvision
 endif
 vpath_src=$(RHIDESRC)/libtvgdb
 vpath %.c $(vpath_src)
@@ -252,8 +255,7 @@ RHIDE_OS_CXXFLAGS=$(RHIDE_OS_CXXFLAGS_$(RHIDE_OS)) $(RH_WARN)\
 	-fno-exceptions -fno-rtti -funsigned-char
 INCLUDE_DIRS=../libgdb $(RHIDESRC)/libtvgdb/include\
 	$(RHIDESRC)/librhgdb/include $(RHIDESRC)/libtvuti/include\
-	$(RHIDESRC)/librhuti $(TVSRC)/include\
-	$(RHIDESRC)/libset/settvuti/include
+	$(RHIDESRC)/librhuti $(TVSRC)/include $(SETSRC)/settvuti/include
 LIB_DIRS=
 C_DEBUG_FLAGS=-g
 C_OPT_FLAGS=-O2
@@ -492,9 +494,9 @@ DEPS_14=tregwin.cc $(RHIDESRC)/libtvgdb/include/libtvgdb.h\
 	$(RHIDESRC)/libtvgdb/include/tregwin.h
 tregwin.o:: $(DEPS_14)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_15=twatchdi.cc $(RHIDESRC)/librhgdb/include/librhgdb.h\
-	$(RHIDESRC)/libset/settvuti/include/settvuti.h\
-	$(RHIDESRC)/libset/settvuti/include/tinppipe.h\
+DEPS_15=twatchdi.cc $(SETSRC)/settvuti/include/settvuti.h\
+	$(SETSRC)/settvuti/include/tinppipe.h\
+	$(RHIDESRC)/librhgdb/include/librhgdb.h\
 	$(RHIDESRC)/libtvgdb/include/libtvgdb.h\
 	$(RHIDESRC)/libtvgdb/include/tvgdbcom.h\
 	$(RHIDESRC)/libtvgdb/include/tvgdbhis.h\

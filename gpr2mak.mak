@@ -7,10 +7,10 @@ ifeq ($(strip $(RHIDESRC)),)
 RHIDESRC=s:/rho/rhide
 endif
 ifeq ($(strip $(TVOBJ)),)
-TVOBJ=c:/djgpp/contrib/tvsrc/djgpp
+TVOBJ=c:/djgpp/contrib/tvision/djgpp
 endif
 ifeq ($(strip $(TVSRC)),)
-TVSRC=c:/djgpp/contrib/tvsrc
+TVSRC=c:/djgpp/contrib/tvision
 endif
 vpath_src=$(RHIDESRC)
 vpath %.c $(vpath_src)
@@ -283,7 +283,7 @@ C_F_LANG_FLAGS=
 C_ADA_LANG_FLAGS=
 LIBS=ide tvuti rhuti tv
 LD_EXTRA_FLAGS=
-C_EXTRA_FLAGS=
+C_EXTRA_FLAGS=-DFOR_LIBSET
 LOCAL_OPT=$(subst ___~~~___, ,$(subst $(notdir $<)___,,$(filter $(notdir\
 	$<)___%,$(LOCAL_OPTIONS))))
 OBJFILES=nodebobj/abstorel.o nodebobj/gpr2mak.o nodebobj/idedefau.o\

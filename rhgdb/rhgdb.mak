@@ -13,10 +13,10 @@ ifeq ($(strip $(SETSRC)),)
 SETSRC=c:/djgpp/contrib/setedit
 endif
 ifeq ($(strip $(TVOBJ)),)
-TVOBJ=c:/djgpp/contrib/tvsrc/djgpp
+TVOBJ=c:/djgpp/contrib/tvision/djgpp
 endif
 ifeq ($(strip $(TVSRC)),)
-TVSRC=c:/djgpp/contrib/tvsrc
+TVSRC=c:/djgpp/contrib/tvision
 endif
 vpath_src=$(RHIDESRC)/rhgdb
 vpath %.c $(vpath_src)
@@ -280,7 +280,7 @@ C_P_LANG_FLAGS=
 C_FPC_LANG_FLAGS=
 C_F_LANG_FLAGS=
 C_ADA_LANG_FLAGS=
-LIBS=tvgdb rhgdb rhuti ediag set tvuti rhuti tv  gdb z
+LIBS=tvgdb rhgdb rhuti set tvuti rhuti tv gdb z
 LD_EXTRA_FLAGS=
 C_EXTRA_FLAGS=-DFOR_LIBSET
 LOCAL_OPT=$(subst ___~~~___, ,$(subst $(notdir $<)___,,$(filter $(notdir\
@@ -307,8 +307,7 @@ endif
 MAIN_TARGET=rhgdb.exe
 PROJECT_ITEMS=gdbedit.cc gdbsynt.cc ../librhgdb/librhgdb.gpr\
 	../librhuti/librhuti.gpr ../libtvuti/libtvuti.gpr\
-	../libtvgdb/libtvgdb.gpr ../setedit/makes/easydiag.gpr\
-	../setedit/makes/libset.gpr main.cc options.cc version.cc
+	../libtvgdb/libtvgdb.gpr main.cc options.cc version.cc
 DEFAULT_MASK=*.[cghiompst]*
 RHIDE_BIN_DIR=o:/rhide
 PASCAL_TYPE=GPC
@@ -389,15 +388,21 @@ PASCAL_TYPE=GPC
 all::
 DEPS_0= gdbedit.o gdbsynt.o main.o options.o version.o\
 	../librhgdb/librhgdb.a ../librhuti/librhuti.a\
-	../libtvuti/libtvuti.a ../libtvgdb/libtvgdb.a\
-	../setedit/makes/libediag.a ../setedit/makes/libset.a
+	../libtvuti/libtvuti.a ../libtvgdb/libtvgdb.a
 NO_LINK=../librhgdb/librhgdb.a ../librhuti/librhuti.a\
-	../libtvuti/libtvuti.a ../libtvgdb/libtvgdb.a\
-	../setedit/makes/libediag.a ../setedit/makes/libset.a
+	../libtvuti/libtvuti.a ../libtvgdb/libtvgdb.a
 LINK_FILES=$(filter-out $(NO_LINK),$(DEPS_0))
 rhgdb.exe:: $(DEPS_0)
 	$(RHIDE_COMPILE_LINK)
-DEPS_1=gdbedit.cc $(RHIDESRC)/librhgdb/include/librhgdb.h\
+DEPS_1=gdbedit.cc $(SETSRC)/include/ced_clas.h $(SETSRC)/include/ced_exte.h\
+	$(SETSRC)/include/ceditor.h $(SETSRC)/include/pmcoll.h\
+	$(SETSRC)/include/sindicat.h $(SETSRC)/include/tvsetuti.h\
+	$(SETSRC)/settvuti/include/sarray.h\
+	$(SETSRC)/settvuti/include/setstack.h\
+	$(SETSRC)/settvuti/include/settvuti.h\
+	$(SETSRC)/settvuti/include/tnocastc.h\
+	$(SETSRC)/settvuti/include/viewplus.h\
+	$(RHIDESRC)/librhgdb/include/librhgdb.h\
 	$(RHIDESRC)/librhuti/rhutils.h\
 	$(RHIDESRC)/libtvuti/include/libtvuti.h\
 	$(RHIDESRC)/libtvuti/include/tdirlist.h\
@@ -405,31 +410,23 @@ DEPS_1=gdbedit.cc $(RHIDESRC)/librhgdb/include/librhgdb.h\
 	$(RHIDESRC)/libtvuti/include/tscollec.h\
 	$(RHIDESRC)/libtvuti/include/tvutilfu.h\
 	$(RHIDESRC)/libtvuti/include/twindowl.h\
-	$(RHIDESRC)/rhgdb/include/rhgdb.h s:/rho/setedit/include/ced_clas.h\
-	s:/rho/setedit/include/ced_exte.h s:/rho/setedit/include/ceditor.h\
-	s:/rho/setedit/include/pmcoll.h s:/rho/setedit/include/sindicat.h\
-	s:/rho/setedit/include/tvsetuti.h\
-	s:/rho/setedit/settvuti/include/sarray.h\
-	s:/rho/setedit/settvuti/include/setstack.h\
-	s:/rho/setedit/settvuti/include/settvuti.h\
-	s:/rho/setedit/settvuti/include/tnocastc.h\
-	s:/rho/setedit/settvuti/include/viewplus.h
+	$(RHIDESRC)/rhgdb/include/rhgdb.h
 gdbedit.o:: $(DEPS_1)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_2=gdbsynt.cc $(RHIDESRC)/librhuti/rhutils.h\
+DEPS_2=gdbsynt.cc $(SETSRC)/include/ced_clas.h $(SETSRC)/include/ced_exte.h\
+	$(SETSRC)/include/ced_inte.h $(SETSRC)/include/ceditor.h\
+	$(SETSRC)/include/pmcoll.h $(SETSRC)/include/sindicat.h\
+	$(SETSRC)/include/tvsetuti.h $(SETSRC)/settvuti/include/sarray.h\
+	$(SETSRC)/settvuti/include/setstack.h\
+	$(SETSRC)/settvuti/include/settvuti.h\
+	$(SETSRC)/settvuti/include/tnocastc.h\
+	$(SETSRC)/settvuti/include/viewplus.h\
+	$(RHIDESRC)/librhuti/rhutils.h\
 	$(RHIDESRC)/libtvuti/include/libtvuti.h\
 	$(RHIDESRC)/libtvuti/include/tdirlist.h\
 	$(RHIDESRC)/include/flags/gpcreser.h\
 	$(RHIDESRC)/include/flags/reserved.h\
-	$(RHIDESRC)/rhgdb/include/rhgdb.h s:/rho/setedit/include/ced_clas.h\
-	s:/rho/setedit/include/ced_exte.h s:/rho/setedit/include/ced_inte.h\
-	s:/rho/setedit/include/ceditor.h s:/rho/setedit/include/pmcoll.h\
-	s:/rho/setedit/include/sindicat.h s:/rho/setedit/include/tvsetuti.h\
-	s:/rho/setedit/settvuti/include/sarray.h\
-	s:/rho/setedit/settvuti/include/setstack.h\
-	s:/rho/setedit/settvuti/include/settvuti.h\
-	s:/rho/setedit/settvuti/include/tnocastc.h\
-	s:/rho/setedit/settvuti/include/viewplus.h
+	$(RHIDESRC)/rhgdb/include/rhgdb.h
 gdbsynt.o:: $(DEPS_2)
 	$(RHIDE_COMPILE.cc.o)
 DEPS_3=
@@ -452,17 +449,15 @@ DEPS_6=
 all:: ../libtvgdb/libtvgdb.gpr.force
 ../libtvgdb/libtvgdb.gpr.force:
 	$(MAKE) -C ../libtvgdb/ -f libtvgdb.mak
-DEPS_7=
-.PHONY: ../setedit/makes/easydiag.gpr.force
-all:: ../setedit/makes/easydiag.gpr.force
-../setedit/makes/easydiag.gpr.force:
-	$(MAKE) -C ../setedit/makes/ -f easydiag.mak
-DEPS_8=
-.PHONY: ../setedit/makes/libset.gpr.force
-all:: ../setedit/makes/libset.gpr.force
-../setedit/makes/libset.gpr.force:
-	$(MAKE) -C ../setedit/makes/ -f libset.mak
-DEPS_9=main.cc $(RHIDESRC)/librhgdb/include/librhgdb.h\
+DEPS_7=main.cc $(SETSRC)/include/ced_clas.h $(SETSRC)/include/ced_exte.h\
+	$(SETSRC)/include/ceditor.h $(SETSRC)/include/pmcoll.h\
+	$(SETSRC)/include/sindicat.h $(SETSRC)/include/tvsetuti.h\
+	$(SETSRC)/settvuti/include/sarray.h\
+	$(SETSRC)/settvuti/include/setstack.h\
+	$(SETSRC)/settvuti/include/settvuti.h\
+	$(SETSRC)/settvuti/include/tnocastc.h\
+	$(SETSRC)/settvuti/include/viewplus.h\
+	$(RHIDESRC)/librhgdb/include/librhgdb.h\
 	$(RHIDESRC)/librhuti/rhutils.h\
 	$(RHIDESRC)/libtvgdb/include/libtvgdb.h\
 	$(RHIDESRC)/libtvgdb/include/tdatawin.h\
@@ -478,18 +473,10 @@ DEPS_9=main.cc $(RHIDESRC)/librhgdb/include/librhgdb.h\
 	$(RHIDESRC)/libtvuti/include/tvutilco.h\
 	$(RHIDESRC)/libtvuti/include/tvutilfu.h\
 	$(RHIDESRC)/libtvuti/include/twindowl.h $(RHIDESRC)/pal.c\
-	$(RHIDESRC)/rhgdb/include/rhgdb.h s:/rho/setedit/include/ced_clas.h\
-	s:/rho/setedit/include/ced_exte.h s:/rho/setedit/include/ceditor.h\
-	s:/rho/setedit/include/pmcoll.h s:/rho/setedit/include/sindicat.h\
-	s:/rho/setedit/include/tvsetuti.h\
-	s:/rho/setedit/settvuti/include/sarray.h\
-	s:/rho/setedit/settvuti/include/setstack.h\
-	s:/rho/setedit/settvuti/include/settvuti.h\
-	s:/rho/setedit/settvuti/include/tnocastc.h\
-	s:/rho/setedit/settvuti/include/viewplus.h
-main.o:: $(DEPS_9)
+	$(RHIDESRC)/rhgdb/include/rhgdb.h
+main.o:: $(DEPS_7)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_10=options.cc $(RHIDESRC)/librhgdb/include/librhgdb.h\
+DEPS_8=options.cc $(RHIDESRC)/librhgdb/include/librhgdb.h\
 	$(RHIDESRC)/libtvuti/include/libtvuti.h\
 	$(RHIDESRC)/libtvuti/include/tenterch.h\
 	$(RHIDESRC)/libtvuti/include/tenterin.h\
@@ -497,9 +484,9 @@ DEPS_10=options.cc $(RHIDESRC)/librhgdb/include/librhgdb.h\
 	$(RHIDESRC)/libtvuti/include/tlbutton.h\
 	$(RHIDESRC)/libtvuti/include/tvutilco.h\
 	$(RHIDESRC)/rhgdb/include/rhgdb.h
-options.o:: $(DEPS_10)
+options.o:: $(DEPS_8)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_11=version.cc
-version.o:: $(DEPS_11)
+DEPS_9=version.cc
+version.o:: $(DEPS_9)
 	$(RHIDE_COMPILE.cc.o)
 all:: rhgdb.exe

@@ -68,7 +68,7 @@ __link ( RIDEEditWindow )
 TProjectWindow *project_window;
 static char *dskname;
 
-static ushort DeskTop_Version = 22;
+static ushort DeskTop_Version = 23;
 static ushort BreakPoint_Version = 0;
 
 static void SetGlobalOptions();
@@ -494,6 +494,12 @@ void LoadDesktop(ipstream & is,Boolean load_windows = True)
         uint16 t1;
         char tab[3];
        } before_0413;
+       struct
+       {
+         uint16 t1;
+         char tab[3];
+         char wcol[3];
+       } before_0417;
        GlobalOptionsRect opt;
     } temp;
     if (version < 22) // applied editor 0.4.13
@@ -502,6 +508,12 @@ void LoadDesktop(ipstream & is,Boolean load_windows = True)
       temp.opt.wcol[0] = '6';
       temp.opt.wcol[1] = '0';
       temp.opt.wcol[2] = 0;
+      temp.opt.wcol[3] = 0;
+    }
+    if (version < 23) // applied editor 0.4.17
+    {
+      is.readBytes(&temp, sizeof(temp.before_0417));
+      temp.opt.wcol[3] = 0;
     }
     else
       is.readBytes(&temp,sizeof(temp));
@@ -923,6 +935,7 @@ Boolean OpenProject(const char * prjname)
     if (project_directory) string_free(project_directory);
     project_directory = getcwd(NULL,512);
     setup_title(_("No project"));
+    push_environment();
     return True;
   }
   {
@@ -967,6 +980,7 @@ Boolean OpenProject(const char * prjname)
     if (!RHIDEUserWords) DefaultUserWords();
     SetGlobalOptions();
     setup_title(project_name);
+    push_environment();
     return True;
   }
   ofile = new ofpstream(project_name);
@@ -986,6 +1000,7 @@ Boolean OpenProject(const char * prjname)
     ShowProject();
     SetGlobalOptions();
     setup_title(project_name);
+    push_environment();
     return True;
   }
   delete(ofile);
@@ -999,6 +1014,7 @@ Boolean OpenProject(const char * prjname)
   messageBox(mfError | mfOKButton,_("Couldn't open %s"),prjname);
   string_free(project_name);
   setup_title(_("No project"));
+  push_environment();
   return False;
 }
 
@@ -1121,6 +1137,7 @@ void CloseProject()
     string_free(project_name);
     string_free(dskname);
   }
+  pop_environment();
 }
 
 class TIDEProjectWindow : public TProjectWindow

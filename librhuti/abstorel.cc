@@ -8,10 +8,11 @@
   optionally have a slash appended
 */
 
-int AbsToRelPath(char *ref_path,char *& ret_path, const char *subst)
+int AbsToRelPath(const char *ref_path,char *& ret_path, const char *subst,
+                 int allow_prevdirs)
 {
-  char *ref = ref_path;
-  char *ret;
+  const char *ref = ref_path;
+  const char *ret;
   char *ret_val;
   // Just in case, that ret_pat is not absolute, make it now absolute
   // relative to the current directory
@@ -63,6 +64,8 @@ int AbsToRelPath(char *ref_path,char *& ret_path, const char *subst)
     ret++;
     ref++;
   }
+  if (!allow_prevdirs)
+    return 0;
   // ret is part of ref
   if (!*ret)
   {

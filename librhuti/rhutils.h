@@ -182,9 +182,12 @@ char *unique_name(char *before,char *retval = (char *)0);
   were total different, 0 is returned, otherwise 1.
   If ref_path was completely inside ret subst != NULL, then the resulting
   will be ret where ref_path is substituted by subst.
+  If allow_prevdirs == 0, then it returns 1 only, if ref is
+  completely part of ref_path.
 */
 
-int AbsToRelPath(char *ref_path,char * & ret, const char *subst = 0);
+int AbsToRelPath(const char *ref_path,char * & ret, const char *subst = 0,
+                 int allow_prevdirs = 1);
 
 /*
   The following macros are used to cast the arguments of the ctype

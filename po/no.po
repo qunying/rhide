@@ -279,6 +279,12 @@ msgstr "Lagre det aktive editorvinduet under et annet navn til disk"
 msgid  "save all opened editors to disk (if modified)"
 msgstr "Lagre alle Üpne editorvinduer til disk (hvis de er endret)"
 
+msgid  "konfigure your print settings"
+msgstr ""
+
+msgid  "print the current editor file"
+msgstr ""
+
 msgid  "switch to DOS (call of %COMSPEC%, return with EXIT)"
 msgstr "Bytter til DOS (bruker %COMSPEC%, avslutt med EXIT)"
 
@@ -362,6 +368,15 @@ msgstr "Stoppe innspillning av en makro"
 
 msgid  "Run the recorded macro"
 msgstr "Kjõre den innspillte makroen"
+
+msgid  "choose a named macro"
+msgstr ""
+
+msgid  "repeat the last macro"
+msgstr ""
+
+msgid  "write code for recorded macro"
+msgstr ""
 
 msgid  "Check the speed of the editor"
 msgstr "Sjekke hastigheten til editoren"
@@ -453,17 +468,26 @@ msgstr "Evaluere eller endre et uttrykk"
 msgid  "Add an expression to the watching list"
 msgstr "Legge til et uttrykk til vaktlisten"
 
+msgid  "Open an inspector window for an expression"
+msgstr ""
+
 msgid  "Show/Modify the breakpoints"
 msgstr "Vise/endre avbruddspunkter"
 
 msgid  "Show a disassembler window at the current execution point"
 msgstr "Vise et disassemblervindu ved gjeldende utfõringspunkt"
 
+msgid  "Shows a window with the function call stack"
+msgstr "Viser et vindu med funksjonskall-stakken"
+
 msgid  "Show a list with all functions"
 msgstr "Viser en liste over alle funksjonene"
 
-msgid  "Shows a window with the function call stack"
-msgstr "Viser et vindu med funksjonskall-stakken"
+msgid  "Open a window with a memory dump"
+msgstr ""
+
+msgid  "Open a window showing the dump of the stack"
+msgstr ""
 
 msgid  "Submenu for handling your projects"
 msgstr "Meny for Ü hÜndtere prosjekt"
@@ -567,8 +591,20 @@ msgstr "Tilpasse det integrerte utviklingsmiljõet"
 msgid  "customize the colors of the IDE"
 msgstr "Tilpasse fargene i utviklingsmiljõet"
 
+msgid  "various options relating to the editor"
+msgstr ""
+
 msgid  "Set the editor options"
 msgstr "Sette editorinnstillinger"
+
+msgid  "Customize your key bindings"
+msgstr ""
+
+msgid  "Define the meaning of the Alt-keys"
+msgstr ""
+
+msgid  "Restore default key bindings"
+msgstr ""
 
 msgid  "set basic options for the IDE"
 msgstr "Sette grunnleggende innstillinger for utviklingsmiljõet"
@@ -645,11 +681,14 @@ msgstr "Vise en liste over alle vinduer pÜ skrivebordet"
 msgid  "show the project window"
 msgstr "Vise prosjektvinduet"
 
-msgid  "show the user screen"
-msgstr "Vise brukerskjerm"
-
 msgid  "Opens the window with watches"
 msgstr "èpner overvÜkningsvinduet"
+
+msgid  "show the message window"
+msgstr ""
+
+msgid  "show the user screen"
+msgstr "Vise brukerskjerm"
 
 msgid  "Several menu entries for getting help"
 msgstr "Et antall menyvalg for hjelp"
@@ -1395,6 +1434,9 @@ msgstr "~H~uske gamle meldinger"
 msgid  "~D~on`t show exit code"
 msgstr ""
 
+msgid  "~C~lean files recursive"
+msgstr ""
+
 msgid  "all dependencies in ~m~akefile"
 msgstr "Alle avhengigheter i make~f~ile"
 
@@ -1629,9 +1671,6 @@ msgstr "Inkluderingsfiler for "
 
 msgid  "clearing dependencies for %s\n"
 msgstr "tõmmer avhengigheter for %s\n"
-
-msgid  "removing %s\n"
-msgstr "fjerner %s\n"
 
 msgid  "~F1~ Help"
 msgstr "~F1~ Hjelp"

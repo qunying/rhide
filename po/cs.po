@@ -293,6 +293,12 @@ msgstr "ulo‘¡ aktu ln¡ obsah editoru pod jin˜m jm‚nem na disk"
 msgid  "save all opened editors to disk (if modified)"
 msgstr "ulo‘¡ v¨echny otev©en‚ soubory na disk (byly-li zmˆnˆny)"
 
+msgid  "konfigure your print settings"
+msgstr ""
+
+msgid  "print the current editor file"
+msgstr ""
+
 msgid  "switch to DOS (call of %COMSPEC%, return with EXIT)"
 msgstr "p©epnut¡ do DOSu (vol  %COMSPEC%, n vrat p©¡kazem EXIT)"
 
@@ -376,6 +382,15 @@ msgstr "Konec z znamu makra"
 
 msgid  "Run the recorded macro"
 msgstr "Spu¨tˆn¡ zaznamenan‚ho makra"
+
+msgid  "choose a named macro"
+msgstr ""
+
+msgid  "repeat the last macro"
+msgstr ""
+
+msgid  "write code for recorded macro"
+msgstr ""
 
 msgid  "Check the speed of the editor"
 msgstr "P©ezkou¨en¡ rychlosti editoru"
@@ -467,17 +482,26 @@ msgstr "OhodnoŸ nebo zmˆ¤ v˜raz"
 msgid  "Add an expression to the watching list"
 msgstr "P©idej v˜raz do prohl¡‘ec¡ho seznamu"
 
+msgid  "Open an inspector window for an expression"
+msgstr ""
+
 msgid  "Show/Modify the breakpoints"
 msgstr "Uka‘/Zmˆ¤ lad¡c¡ body"
 
 msgid  "Show a disassembler window at the current execution point"
 msgstr "Uka‘ okno disasembleru s aktu ln¡m m¡stem v programu"
 
+msgid  "Shows a window with the function call stack"
+msgstr "Uka‘ okno se z sobn¡kem vol n¡ funkc¡"
+
 msgid  "Show a list with all functions"
 msgstr "Uka‘ v˜pis v¨ech funkc¡"
 
-msgid  "Shows a window with the function call stack"
-msgstr "Uka‘ okno se z sobn¡kem vol n¡ funkc¡"
+msgid  "Open a window with a memory dump"
+msgstr ""
+
+msgid  "Open a window showing the dump of the stack"
+msgstr ""
 
 msgid  "Submenu for handling your projects"
 msgstr "Vno©en‚ menu pro spr vu va¨ich projekt–"
@@ -582,8 +606,20 @@ msgstr "p©izp–soben¡ IDE"
 msgid  "customize the colors of the IDE"
 msgstr "nastaven¡ barev IDE"
 
+msgid  "various options relating to the editor"
+msgstr ""
+
 msgid  "Set the editor options"
 msgstr "Nastaven¡ parametr– editoru"
+
+msgid  "Customize your key bindings"
+msgstr ""
+
+msgid  "Define the meaning of the Alt-keys"
+msgstr ""
+
+msgid  "Restore default key bindings"
+msgstr ""
 
 msgid  "set basic options for the IDE"
 msgstr "Nastaven¡ z kladn¡ch parametr– IDE"
@@ -661,11 +697,14 @@ msgstr "uk ‘e seznam v¨ech oken na pracovn¡ plo¨e"
 msgid  "show the project window"
 msgstr "uk ‘e okno projektu"
 
-msgid  "show the user screen"
-msgstr "uk ‘e u‘ivatelskou obrazovku"
-
 msgid  "Opens the window with watches"
 msgstr "Otev©e okno s prohl¡‘e‡em"
+
+msgid  "show the message window"
+msgstr ""
+
+msgid  "show the user screen"
+msgstr "uk ‘e u‘ivatelskou obrazovku"
 
 msgid  "Several menu entries for getting help"
 msgstr "Nˆkolik polo‘ek nab¡dky s n povˆdou"
@@ -1411,6 +1450,9 @@ msgstr "~P~amatuj si star‚ zpr vy"
 msgid  "~D~on`t show exit code"
 msgstr ""
 
+msgid  "~C~lean files recursive"
+msgstr ""
+
 msgid  "all dependencies in ~m~akefile"
 msgstr "v¨echny z vislosti v ~m~akefile"
 
@@ -1644,9 +1686,6 @@ msgstr "Include soubory pro "
 
 msgid  "clearing dependencies for %s\n"
 msgstr "zru¨en¡ z vislost¡ pro %s\n"
-
-msgid  "removing %s\n"
-msgstr "vyj¡m n¡ %s\n"
 
 msgid  "~F1~ Help"
 msgstr "~F1~ N povˆda"

@@ -661,6 +661,7 @@ libide/libide.gpr.force:
 	$(MAKE) -C libide/ -f libide.mak $(FLAGS_FOR_SUBPROJECTS)
 clean::
 	$(MAKE) -C libide/ -f libide.mak $(FLAGS_FOR_SUBPROJECTS) clean
+
 DEPS_34=
 .PHONY: librhgdb/librhgdb.gpr.force
 all:: librhgdb/librhgdb.gpr.force
@@ -668,6 +669,7 @@ librhgdb/librhgdb.gpr.force:
 	$(MAKE) -C librhgdb/ -f librhgdb.mak $(FLAGS_FOR_SUBPROJECTS)
 clean::
 	$(MAKE) -C librhgdb/ -f librhgdb.mak $(FLAGS_FOR_SUBPROJECTS) clean
+
 DEPS_35=
 .PHONY: librhuti/librhuti.gpr.force
 all:: librhuti/librhuti.gpr.force
@@ -675,6 +677,7 @@ librhuti/librhuti.gpr.force:
 	$(MAKE) -C librhuti/ -f librhuti.mak $(FLAGS_FOR_SUBPROJECTS)
 clean::
 	$(MAKE) -C librhuti/ -f librhuti.mak $(FLAGS_FOR_SUBPROJECTS) clean
+
 DEPS_36=
 .PHONY: libtvgdb/libtvgdb.gpr.force
 all:: libtvgdb/libtvgdb.gpr.force
@@ -682,6 +685,7 @@ libtvgdb/libtvgdb.gpr.force:
 	$(MAKE) -C libtvgdb/ -f libtvgdb.mak $(FLAGS_FOR_SUBPROJECTS)
 clean::
 	$(MAKE) -C libtvgdb/ -f libtvgdb.mak $(FLAGS_FOR_SUBPROJECTS) clean
+
 DEPS_37=
 .PHONY: libtvuti/libtvuti.gpr.force
 all:: libtvuti/libtvuti.gpr.force
@@ -689,6 +693,7 @@ libtvuti/libtvuti.gpr.force:
 	$(MAKE) -C libtvuti/ -f libtvuti.mak $(FLAGS_FOR_SUBPROJECTS)
 clean::
 	$(MAKE) -C libtvuti/ -f libtvuti.mak $(FLAGS_FOR_SUBPROJECTS) clean
+
 DEPS_38=openedit.cc ideapp.h rhide.h ideenums.h idefunct.h libide.h\
 	tdepende.h tfname.h tideedit.h toptions.h tproject.h rhutils.h\
 	libtvuti.h tdirlist.h tvutilco.h tvutilfu.h
@@ -704,4 +709,5 @@ tvdemo/libtvdem.gpr.force:
 	$(MAKE) -C tvdemo/ -f libtvdem.mak $(FLAGS_FOR_SUBPROJECTS)
 clean::
 	$(MAKE) -C tvdemo/ -f libtvdem.mak $(FLAGS_FOR_SUBPROJECTS) clean
+
 all:: idegc.exe

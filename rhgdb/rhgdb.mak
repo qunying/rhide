@@ -469,6 +469,7 @@ all:: ../librhgdb/librhgdb.gpr.force
 	$(MAKE) -C ../librhgdb/ -f librhgdb.mak $(FLAGS_FOR_SUBPROJECTS)
 clean::
 	$(MAKE) -C ../librhgdb/ -f librhgdb.mak $(FLAGS_FOR_SUBPROJECTS) clean
+
 DEPS_2=
 .PHONY: ../librhuti/librhuti.gpr.force
 all:: ../librhuti/librhuti.gpr.force
@@ -476,6 +477,7 @@ all:: ../librhuti/librhuti.gpr.force
 	$(MAKE) -C ../librhuti/ -f librhuti.mak $(FLAGS_FOR_SUBPROJECTS)
 clean::
 	$(MAKE) -C ../librhuti/ -f librhuti.mak $(FLAGS_FOR_SUBPROJECTS) clean
+
 DEPS_3=
 .PHONY: ../libtvgdb/libtvgdb.gpr.force
 all:: ../libtvgdb/libtvgdb.gpr.force
@@ -483,6 +485,7 @@ all:: ../libtvgdb/libtvgdb.gpr.force
 	$(MAKE) -C ../libtvgdb/ -f libtvgdb.mak $(FLAGS_FOR_SUBPROJECTS)
 clean::
 	$(MAKE) -C ../libtvgdb/ -f libtvgdb.mak $(FLAGS_FOR_SUBPROJECTS) clean
+
 DEPS_4=
 .PHONY: ../libtvuti/libtvuti.gpr.force
 all:: ../libtvuti/libtvuti.gpr.force
@@ -490,6 +493,7 @@ all:: ../libtvuti/libtvuti.gpr.force
 	$(MAKE) -C ../libtvuti/ -f libtvuti.mak $(FLAGS_FOR_SUBPROJECTS)
 clean::
 	$(MAKE) -C ../libtvuti/ -f libtvuti.mak $(FLAGS_FOR_SUBPROJECTS) clean
+
 DEPS_5=gdbedit.cc librhgdb.h rhutils.h libtvuti.h tdirlist.h tenterli.h\
 	tscollec.h tvutilfu.h twindowl.h rhgdb.h
 gdbedit.o:: $(DEPS_5)

@@ -414,6 +414,7 @@ all:: ../librhgdb.gpr.force
 	$(MAKE) -C ../ -f librhgdb.mak $(FLAGS_FOR_SUBPROJECTS)
 clean::
 	$(MAKE) -C ../ -f librhgdb.mak $(FLAGS_FOR_SUBPROJECTS) clean
+
 DEPS_2=symify.c ../../libgdb/libgdbrh.h librhgdb.h
 symify.o:: $(DEPS_2)
 	$(RHIDE_COMPILE.c.o)

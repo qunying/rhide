@@ -458,6 +458,7 @@ names/names.gpr.force:
 	$(MAKE) -C names/ -f names.mak $(FLAGS_FOR_SUBPROJECTS)
 clean::
 	$(MAKE) -C names/ -f names.mak $(FLAGS_FOR_SUBPROJECTS) clean
+
 DEPS_11=
 .PHONY: stream/stream.gpr.force
 all:: stream/stream.gpr.force
@@ -465,6 +466,7 @@ stream/stream.gpr.force:
 	$(MAKE) -C stream/ -f stream.mak $(FLAGS_FOR_SUBPROJECTS)
 clean::
 	$(MAKE) -C stream/ -f stream.mak $(FLAGS_FOR_SUBPROJECTS) clean
+
 DEPS_12=tcheckdi.cc libtvuti.h tcheckdi.h
 tcheckdi.o:: $(DEPS_12)
 	$(RHIDE_COMPILE.cc.o)

@@ -448,6 +448,7 @@ copyrite.gpr.force:
 	$(MAKE) -f copyrite.mak $(FLAGS_FOR_SUBPROJECTS)
 clean::
 	$(MAKE) -f copyrite.mak $(FLAGS_FOR_SUBPROJECTS) clean
+
 DEPS_2=
 .PHONY: doc/htmlspl.gpr.force
 all:: doc/htmlspl.gpr.force
@@ -455,6 +456,7 @@ doc/htmlspl.gpr.force:
 	$(MAKE) -C doc/ -f htmlspl.mak $(FLAGS_FOR_SUBPROJECTS)
 clean::
 	$(MAKE) -C doc/ -f htmlspl.mak $(FLAGS_FOR_SUBPROJECTS) clean
+
 DEPS_3=
 .PHONY: doc/tx2txi.gpr.force
 all:: doc/tx2txi.gpr.force
@@ -462,6 +464,7 @@ doc/tx2txi.gpr.force:
 	$(MAKE) -C doc/ -f tx2txi.mak $(FLAGS_FOR_SUBPROJECTS)
 clean::
 	$(MAKE) -C doc/ -f tx2txi.mak $(FLAGS_FOR_SUBPROJECTS) clean
+
 DEPS_4=
 .PHONY: gpr2mak.gpr.force
 all:: gpr2mak.gpr.force
@@ -469,6 +472,7 @@ gpr2mak.gpr.force:
 	$(MAKE) -f gpr2mak.mak $(FLAGS_FOR_SUBPROJECTS)
 clean::
 	$(MAKE) -f gpr2mak.mak $(FLAGS_FOR_SUBPROJECTS) clean
+
 DEPS_5=
 .PHONY: gprexp.gpr.force
 all:: gprexp.gpr.force
@@ -476,6 +480,7 @@ gprexp.gpr.force:
 	$(MAKE) -f gprexp.mak $(FLAGS_FOR_SUBPROJECTS)
 clean::
 	$(MAKE) -f gprexp.mak $(FLAGS_FOR_SUBPROJECTS) clean
+
 DEPS_6=
 .PHONY: librhgdb/test/gsymify.gpr.force
 all:: librhgdb/test/gsymify.gpr.force
@@ -483,6 +488,7 @@ librhgdb/test/gsymify.gpr.force:
 	$(MAKE) -C librhgdb/test/ -f gsymify.mak $(FLAGS_FOR_SUBPROJECTS)
 clean::
 	$(MAKE) -C librhgdb/test/ -f gsymify.mak $(FLAGS_FOR_SUBPROJECTS) clean
+
 DEPS_7=
 .PHONY: librhgdb/test/listfunc.gpr.force
 all:: librhgdb/test/listfunc.gpr.force
@@ -490,6 +496,7 @@ librhgdb/test/listfunc.gpr.force:
 	$(MAKE) -C librhgdb/test/ -f listfunc.mak $(FLAGS_FOR_SUBPROJECTS)
 clean::
 	$(MAKE) -C librhgdb/test/ -f listfunc.mak $(FLAGS_FOR_SUBPROJECTS) clean
+
 DEPS_8=
 .PHONY: librhgdb/test/mygdb.gpr.force
 all:: librhgdb/test/mygdb.gpr.force
@@ -497,6 +504,7 @@ librhgdb/test/mygdb.gpr.force:
 	$(MAKE) -C librhgdb/test/ -f mygdb.mak $(FLAGS_FOR_SUBPROJECTS)
 clean::
 	$(MAKE) -C librhgdb/test/ -f mygdb.mak $(FLAGS_FOR_SUBPROJECTS) clean
+
 DEPS_9=
 .PHONY: po/msgcat.gpr.force
 all:: po/msgcat.gpr.force
@@ -504,6 +512,7 @@ po/msgcat.gpr.force:
 	$(MAKE) -C po/ -f msgcat.mak $(FLAGS_FOR_SUBPROJECTS)
 clean::
 	$(MAKE) -C po/ -f msgcat.mak $(FLAGS_FOR_SUBPROJECTS) clean
+
 DEPS_10=
 .PHONY: rhgdb/rhgdb.gpr.force
 all:: rhgdb/rhgdb.gpr.force
@@ -511,6 +520,7 @@ rhgdb/rhgdb.gpr.force:
 	$(MAKE) -C rhgdb/ -f rhgdb.mak $(FLAGS_FOR_SUBPROJECTS)
 clean::
 	$(MAKE) -C rhgdb/ -f rhgdb.mak $(FLAGS_FOR_SUBPROJECTS) clean
+
 DEPS_11=
 .PHONY: rhide.gpr.force
 all:: rhide.gpr.force
@@ -518,6 +528,7 @@ rhide.gpr.force:
 	$(MAKE) -f rhide.mak $(FLAGS_FOR_SUBPROJECTS)
 clean::
 	$(MAKE) -f rhide.mak $(FLAGS_FOR_SUBPROJECTS) clean
+
 DEPS_12=
 .PHONY: rhide_.gpr.force
 all:: rhide_.gpr.force
@@ -525,4 +536,5 @@ rhide_.gpr.force:
 	$(MAKE) -f rhide_.mak $(FLAGS_FOR_SUBPROJECTS)
 clean::
 	$(MAKE) -f rhide_.mak $(FLAGS_FOR_SUBPROJECTS) clean
+
 all:: TARGET_0

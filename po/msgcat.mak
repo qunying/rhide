@@ -414,7 +414,8 @@ all:: ../librhuti/librhuti.gpr.force
 ../librhuti/librhuti.gpr.force:
 	$(MAKE) -C ../librhuti/ -f librhuti.mak $(FLAGS_FOR_SUBPROJECTS)
 clean::
-	DEPS_2=fstrcmp.c
+	
+DEPS_2=fstrcmp.c
 fstrcmp.o:: $(DEPS_2)
 	$(RHIDE_COMPILE.c.o)
 DEPS_3=msgcat.cc rhutils.h

@@ -280,6 +280,12 @@ msgstr "Gem aktuel fil under andet navn"
 msgid  "save all opened editors to disk (if modified)"
 msgstr "Gem alle †bne filer (hvis ‘ndret)"
 
+msgid  "konfigure your print settings"
+msgstr ""
+
+msgid  "print the current editor file"
+msgstr ""
+
 msgid  "switch to DOS (call of %COMSPEC%, return with EXIT)"
 msgstr "Kald DOS (vha. %COMSPEC%, retur med EXIT)"
 
@@ -362,6 +368,15 @@ msgid  "Stop the recording for a macro"
 msgstr ""
 
 msgid  "Run the recorded macro"
+msgstr ""
+
+msgid  "choose a named macro"
+msgstr ""
+
+msgid  "repeat the last macro"
+msgstr ""
+
+msgid  "write code for recorded macro"
 msgstr ""
 
 msgid  "Check the speed of the editor"
@@ -455,16 +470,25 @@ msgstr "Vis/‘ndre et udtryk"
 msgid  "Add an expression to the watching list"
 msgstr ""
 
+msgid  "Open an inspector window for an expression"
+msgstr ""
+
 msgid  "Show/Modify the breakpoints"
 msgstr "Vis/‘ndre programstop"
 
 msgid  "Show a disassembler window at the current execution point"
 msgstr ""
 
+msgid  "Shows a window with the function call stack"
+msgstr ""
+
 msgid  "Show a list with all functions"
 msgstr "Vis liste med alle funktioner"
 
-msgid  "Shows a window with the function call stack"
+msgid  "Open a window with a memory dump"
+msgstr ""
+
+msgid  "Open a window showing the dump of the stack"
 msgstr ""
 
 msgid  "Submenu for handling your projects"
@@ -569,7 +593,19 @@ msgstr "ops‘tning af IDE"
 msgid  "customize the colors of the IDE"
 msgstr "ops‘tning af farvevalg i IDE"
 
+msgid  "various options relating to the editor"
+msgstr ""
+
 msgid  "Set the editor options"
+msgstr ""
+
+msgid  "Customize your key bindings"
+msgstr ""
+
+msgid  "Define the meaning of the Alt-keys"
+msgstr ""
+
+msgid  "Restore default key bindings"
 msgstr ""
 
 msgid  "set basic options for the IDE"
@@ -647,11 +683,14 @@ msgstr "vis liste over alle †bne vinduer"
 msgid  "show the project window"
 msgstr "vis projekt vinduet"
 
-msgid  "show the user screen"
-msgstr "vis bruger sk‘rmbillede"
-
 msgid  "Opens the window with watches"
 msgstr ""
+
+msgid  "show the message window"
+msgstr ""
+
+msgid  "show the user screen"
+msgstr "vis bruger sk‘rmbillede"
 
 msgid  "Several menu entries for getting help"
 msgstr ""
@@ -1392,6 +1431,9 @@ msgstr ""
 msgid  "~D~on`t show exit code"
 msgstr ""
 
+msgid  "~C~lean files recursive"
+msgstr ""
+
 msgid  "all dependencies in ~m~akefile"
 msgstr "alle afh‘ngigheder i MAKE fil"
 
@@ -1625,9 +1667,6 @@ msgstr "Include-filer til "
 
 msgid  "clearing dependencies for %s\n"
 msgstr "sletter afh‘ngigheder for %s\n"
-
-msgid  "removing %s\n"
-msgstr "fjerner %s\n"
 
 msgid  "~F1~ Help"
 msgstr "~F1~ Hj‘lp"

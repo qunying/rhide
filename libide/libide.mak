@@ -446,6 +446,7 @@ names/names.gpr.force:
 	$(MAKE) -C names/ -f names.mak $(FLAGS_FOR_SUBPROJECTS)
 clean::
 	$(MAKE) -C names/ -f names.mak $(FLAGS_FOR_SUBPROJECTS) clean
+
 DEPS_4=
 .PHONY: stream/stream.gpr.force
 all:: stream/stream.gpr.force
@@ -453,6 +454,7 @@ stream/stream.gpr.force:
 	$(MAKE) -C stream/ -f stream.mak $(FLAGS_FOR_SUBPROJECTS)
 clean::
 	$(MAKE) -C stream/ -f stream.mak $(FLAGS_FOR_SUBPROJECTS) clean
+
 DEPS_5=tdepende.cc ideenums.h libide.h tdepende.h tfname.h rhutils.h\
 	libtvuti.h tparamli.h
 tdepende.o:: $(DEPS_5)

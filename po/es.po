@@ -279,6 +279,12 @@ msgstr "graba el contenido de la ventana actual con un nombre distinto"
 msgid  "save all opened editors to disk (if modified)"
 msgstr "graba todas las ventanas modificadas"
 
+msgid  "konfigure your print settings"
+msgstr ""
+
+msgid  "print the current editor file"
+msgstr ""
+
 msgid  "switch to DOS (call of %COMSPEC%, return with EXIT)"
 msgstr "sale a DOS (llama a %COMSPEC%, retorna con EXIT)"
 
@@ -362,6 +368,15 @@ msgstr "Para de grabar las acciones en el macro"
 
 msgid  "Run the recorded macro"
 msgstr "Ejecuta las acciones grabadas en el macro"
+
+msgid  "choose a named macro"
+msgstr ""
+
+msgid  "repeat the last macro"
+msgstr ""
+
+msgid  "write code for recorded macro"
+msgstr ""
 
 msgid  "Check the speed of the editor"
 msgstr "Mide la velocidad del editor"
@@ -453,17 +468,26 @@ msgstr "Evaluar o modificar una expresi¢n"
 msgid  "Add an expression to the watching list"
 msgstr "Agrega una expresi¢n al visor de expresiones"
 
+msgid  "Open an inspector window for an expression"
+msgstr ""
+
 msgid  "Show/Modify the breakpoints"
 msgstr "Mostrar/Modificar los breakpoints (puntos de parada)"
 
 msgid  "Show a disassembler window at the current execution point"
 msgstr "Mostrar una ventana de desensablado a partir del punto actual"
 
+msgid  "Shows a window with the function call stack"
+msgstr "Muestra las llamadas a funciones de la pila (stack)"
+
 msgid  "Show a list with all functions"
 msgstr "Mostrar una lista con todas las funciones"
 
-msgid  "Shows a window with the function call stack"
-msgstr "Muestra las llamadas a funciones de la pila (stack)"
+msgid  "Open a window with a memory dump"
+msgstr ""
+
+msgid  "Open a window showing the dump of the stack"
+msgstr ""
 
 msgid  "Submenu for handling your projects"
 msgstr "Submen£ para el manejo de su proyecto"
@@ -568,8 +592,20 @@ msgstr "Ajusta opciones de RHIDE"
 msgid  "customize the colors of the IDE"
 msgstr "Ajusta los colores de RHIDE"
 
+msgid  "various options relating to the editor"
+msgstr ""
+
 msgid  "Set the editor options"
 msgstr "Selecciona las opciones del editor"
+
+msgid  "Customize your key bindings"
+msgstr ""
+
+msgid  "Define the meaning of the Alt-keys"
+msgstr ""
+
+msgid  "Restore default key bindings"
+msgstr ""
 
 msgid  "set basic options for the IDE"
 msgstr "ajusta las opciones b sicas"
@@ -646,11 +682,14 @@ msgstr "muestra una lista de todas las ventanas del escritorio (desktop)"
 msgid  "show the project window"
 msgstr "muestra la ventana del proyecto"
 
-msgid  "show the user screen"
-msgstr "muestra la pantalla generada por nuestro programa"
-
 msgid  "Opens the window with watches"
 msgstr ""
+
+msgid  "show the message window"
+msgstr ""
+
+msgid  "show the user screen"
+msgstr "muestra la pantalla generada por nuestro programa"
 
 msgid  "Several menu entries for getting help"
 msgstr "Varios items de men£ para obtener ayuda"
@@ -1395,6 +1434,9 @@ msgstr ""
 msgid  "~D~on`t show exit code"
 msgstr ""
 
+msgid  "~C~lean files recursive"
+msgstr ""
+
 msgid  "all dependencies in ~m~akefile"
 msgstr "todas las dependecias en ~m~akefile"
 
@@ -1630,9 +1672,6 @@ msgstr "Includes de "
 
 msgid  "clearing dependencies for %s\n"
 msgstr "borrar las dependencias para %s\n"
-
-msgid  "removing %s\n"
-msgstr "borrando %s\n"
 
 msgid  "~F1~ Help"
 msgstr "~F1~ Ayuda"

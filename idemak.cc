@@ -379,6 +379,7 @@ WriteTarget(FILE * f, TDependency * dep, int depth, TStringCollection * vars)
       depcount = _depcount;
       targets = _targets;
     }
+    fprintf(f, "\n");
     string_free(dir);
     string_free(name);
   }

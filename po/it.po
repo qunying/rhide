@@ -278,6 +278,12 @@ msgstr "Salva il file nella finestra corrente con un nome differente"
 msgid  "save all opened editors to disk (if modified)"
 msgstr "Salva tutti gli editor aperti (se modificati)"
 
+msgid  "konfigure your print settings"
+msgstr ""
+
+msgid  "print the current editor file"
+msgstr ""
+
 msgid  "switch to DOS (call of %COMSPEC%, return with EXIT)"
 msgstr "Apre una sessione DOS (chiama %COMSPEC%, ritorna con EXIT)"
 
@@ -360,6 +366,15 @@ msgid  "Stop the recording for a macro"
 msgstr ""
 
 msgid  "Run the recorded macro"
+msgstr ""
+
+msgid  "choose a named macro"
+msgstr ""
+
+msgid  "repeat the last macro"
+msgstr ""
+
+msgid  "write code for recorded macro"
 msgstr ""
 
 msgid  "Check the speed of the editor"
@@ -452,16 +467,25 @@ msgstr ""
 msgid  "Add an expression to the watching list"
 msgstr ""
 
+msgid  "Open an inspector window for an expression"
+msgstr ""
+
 msgid  "Show/Modify the breakpoints"
 msgstr ""
 
 msgid  "Show a disassembler window at the current execution point"
 msgstr ""
 
+msgid  "Shows a window with the function call stack"
+msgstr ""
+
 msgid  "Show a list with all functions"
 msgstr ""
 
-msgid  "Shows a window with the function call stack"
+msgid  "Open a window with a memory dump"
+msgstr ""
+
+msgid  "Open a window showing the dump of the stack"
 msgstr ""
 
 msgid  "Submenu for handling your projects"
@@ -566,7 +590,19 @@ msgstr "Personalizza la IDE"
 msgid  "customize the colors of the IDE"
 msgstr "Personalizza i colori della IDE"
 
+msgid  "various options relating to the editor"
+msgstr ""
+
 msgid  "Set the editor options"
+msgstr ""
+
+msgid  "Customize your key bindings"
+msgstr ""
+
+msgid  "Define the meaning of the Alt-keys"
+msgstr ""
+
+msgid  "Restore default key bindings"
 msgstr ""
 
 msgid  "set basic options for the IDE"
@@ -644,11 +680,14 @@ msgstr "Mostra la liste delle finestre presenti sul desktop"
 msgid  "show the project window"
 msgstr "Mostra la finestra di progetto"
 
-msgid  "show the user screen"
-msgstr "Mostra l'output del programma"
-
 msgid  "Opens the window with watches"
 msgstr ""
+
+msgid  "show the message window"
+msgstr ""
+
+msgid  "show the user screen"
+msgstr "Mostra l'output del programma"
 
 msgid  "Several menu entries for getting help"
 msgstr ""
@@ -1389,6 +1428,9 @@ msgstr ""
 msgid  "~D~on`t show exit code"
 msgstr ""
 
+msgid  "~C~lean files recursive"
+msgstr ""
+
 msgid  "all dependencies in ~m~akefile"
 msgstr ""
 
@@ -1620,9 +1662,6 @@ msgid  "Include files for "
 msgstr "File di inclusione per "
 
 msgid  "clearing dependencies for %s\n"
-msgstr ""
-
-msgid  "removing %s\n"
 msgstr ""
 
 msgid  "~F1~ Help"

@@ -99,7 +99,7 @@ rhide.ctx: rhide.num cindex.idx kindex.idx html2ctx
 	  sed -n -f $(srcdir)/htmlctx.sed | \
 	 ./html2ctx > rhide.ctx
 
-rhide.html: rhide.num rhide.ctx $(srcdir)/htmlprep.sed mki.chk
+rhide.html: rhide.num rhide.ctx $(srcdir)/htmlprep.sed #mki.chk
 	sed -f $(srcdir)/htmlprep.sed $< | \
 	  $(MAKEINFO) --no-validate --no-split --no-headers --fill-column 200 \
 	  -Dhtml -o rhide.html

@@ -1,0 +1,14 @@
+# Copyright (C) 1996-1998 Robert H”hne, see COPYING.RH for details 
+# This file is part of RHIDE. 
+srcdir=$(RHIDESRC)/share
+VPATH=$(srcdir)
+
+src_files=Makefile makefile.src
+po_files=
+cfg_files=
+update_files=
+
+subdirs=setedit
+po_subdirs=
+
+include $(RHIDESRC)/common.mak

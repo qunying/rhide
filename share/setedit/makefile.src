@@ -1,0 +1,18 @@
+# Copyright (C) 1996-1998 Robert H”hne, see COPYING.RH for details 
+# This file is part of RHIDE. 
+srcdir=$(RHIDESRC)/share/setedit
+VPATH=$(srcdir)
+
+src_files=Makefile makefile.src \
+	  clippmac.pmc cpmacros.pmc htmlmac.pmc perlmac.pmc \
+	  pmacros.pmc syntaxhl.shl
+
+po_files=
+cfg_files=
+update_files=
+install_data_files=clippmac.pmc cpmacros.pmc htmlmac.pmc perlmac.pmc \
+	           pmacros.pmc syntaxhl.shl
+subdirs=
+po_subdirs=
+
+include $(RHIDESRC)/common.mak

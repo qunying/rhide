@@ -18,19 +18,15 @@
 #
 # a little bit modified for RHIDE
 
-if
-test -r $2
-then
-if
-cat $2 | cmp $1 > /dev/null
-then
-echo $2 is unchanged
-rm -f $1
+if test -r $2; then
+  if `cat $2 | cmp $1 > /dev/null`; then
+    echo $2 is unchanged
+    rm -f $1
+  else
+    cp -f $1 $2
+    rm -f $1
+  fi
 else
-cp -f $1 $2
-rm -f $1
-fi
-else
-cp -f $1 $2
-rm -f $1
+  cp -f $1 $2
+  rm -f $1
 fi

@@ -785,7 +785,7 @@ msgid  "last updated: "
 msgstr "zuletzt aktualisiert: "
 
 msgid  "1998-11-29"
-msgstr "17.10.2001"
+msgstr "08.01.2002"
 
 msgid  "~O~K"
 msgstr "~O~K"
@@ -916,8 +916,8 @@ msgstr "benutze %s als temporÑres Verzeichnis\n"
 msgid  "warning: temporary file %s deleted\n"
 msgstr "Warnung: TemporÑre Datei %s wurde gelîscht\n"
 
-msgid  "This is %s. Copyright (c) 1996-2001 by Robert Hîhne\n"
-msgstr "Dies ist %s. Alle Rechte bei Robert Hîhne, 1996-2001\n"
+msgid  "This is %s. Copyright (c) 1996-2002 by Robert Hîhne\n"
+msgstr "Dies ist %s. Alle Rechte bei Robert Hîhne, 1996-2002\n"
 
 msgid  "Do you really want to interrupt RHIDE?"
 msgstr "Mîchtest Du wirklich RHIDE unterbrechen?"
@@ -1328,13 +1328,13 @@ msgid  "Pro~j~ect"
 msgstr "~P~rojekt"
 
 msgid  "~W~atches"
-msgstr "ö~b~erwachte AusdrÅcke"
+msgstr "öber~w~achte AusdrÅcke"
 
 msgid  "~M~essages"
 msgstr "~M~eldungen"
 
 msgid  "~U~serScreen"
-msgstr "Nutzer~b~ildschirm"
+msgstr "N~u~tzerbildschirm"
 
 msgid  "~~"
 msgstr "~~"
@@ -3208,6 +3208,9 @@ msgstr "            -D : Benutze Dualbildschirm zum debuggen\n"
 
 msgid  "            -i INI_FILE : Use INI_FILE as config file\n"
 msgstr "            -i INI_DATEI : Benutze INI_DATEI als Konfig-Datei\n"
+
+msgid  "This is %s. Copyright (c) 1996-2001 by Robert Hîhne\n"
+msgstr "Dies ist %s. Alle Rechte bei Robert Hîhne, 1996-2001\n"
 
 msgid  "Do you really want to interrupt RHGDB?"
 msgstr "Mîchtest Du wirklich RHGDB unterbrechen?"

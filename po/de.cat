@@ -310,7 +310,7 @@ msgid  "-t, --tile-vert:         arranges the windows using vertical tile "
 msgstr "-t, --tile-vert:         ordnet die Fenster vertikal geteilt an.\n"
 
 msgid  "1998-11-29"
-msgstr "29.11.1998"
+msgstr "08.01.2002"
 
 msgid  "1~6~ background colors"
 msgstr "1~6~ Hintergrundfarben"
@@ -3145,6 +3145,9 @@ msgstr "Dies ist %s. Alle Rechte bei Robert Hîhne, 1996-2000\n"
 msgid  "This is %s. Copyright (c) 1996-2001 by Robert Hîhne\n"
 msgstr "Dies ist %s. Alle Rechte bei Robert Hîhne, 1996-2001\n"
 
+msgid  "This is %s. Copyright (c) 1996-2002 by Robert Hîhne\n"
+msgstr "Dies ist %s. Alle Rechte bei Robert Hîhne, 1996-2002\n"
+
 msgid  "This key is allready in use, do you want to replace it?"
 msgstr "Diese Taste ist schon benutzt, mîchtest Du sie ersetzen?"
 
@@ -5379,7 +5382,7 @@ msgid  "~U~ser words ..."
 msgstr "Ben~u~tzerwîrter..."
 
 msgid  "~U~serScreen"
-msgstr "Nutzer~b~ildschirm"
+msgstr "N~u~tzerbildschirm"
 
 msgid  "~V~alue"
 msgstr "~W~ert"
@@ -5400,7 +5403,7 @@ msgid  "~W~atch an expression"
 msgstr "öber~w~ache Ausdruck"
 
 msgid  "~W~atches"
-msgstr "ö~b~erwachte AusdrÅcke"
+msgstr "öber~w~achte AusdrÅcke"
 
 msgid  "~W~hole words only"
 msgstr "Nur ~g~anze Wîrter"

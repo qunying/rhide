@@ -9,8 +9,9 @@ src_files=\
 	  rhidemac.txi rhidemac.htm rhidemac.txt \
 	  chapxref.sed htmlctx.sed htmlidx.sed htmlprep.sed idxref.sed \
 	  indices.sed enum.c html2ctx.c	Makefile rhide.tx tx2txi.c \
-	  htmlspl.c checkmki.txi makeinfo.dif makefile.src rhide.env \
-	  rhide.var doc.gpr doc.mak toc.sed
+	  htmlspl.cc checkmki.txi makeinfo.dif makefile.src rhide.env \
+	  rhide.var doc.gpr doc.mak toc.sed htmlspl.gpr htmlspl.mak \
+	  tx2txi.gpr tx2txi.mak
 po_files=
 cfg_files=
 update_files=
@@ -25,11 +26,15 @@ include $(RHIDESRC)/common.mak
 
 MAKEINFO=makeinfo -I $(srcdir)
 
-all:: all_doc
+all:: doc
 
-doc: rhide.inf rhide.html rhide.txt rhide.pdf $(INFVIEW)
+TARGETS=rhide.inf rhide.html rhide.txt
 
-all_doc: info dvi txt ps html pdf
+ALL_TARGETS=$(TARGETS) rhide.dvi rhide.pdf rhide.ps
+
+doc: $(TARGETS) $(INFVIEW)
+
+all_doc: $(ALL_TARGETS) $(INFVIEW)
 
 info: rhide.inf
 
@@ -81,8 +86,8 @@ split.tmp: rhide.html htmlref.tmp
 htmlspl htmlspl.exe: htmlspl.c
 	gcc -Wall -O2 -s -o $@ $<
 
-htmlsplit: split.tmp htmlspl
-	./htmlspl $< chap
+htmlsplit: rhide.txi
+	$(MAKEINFO) --html --number-sections --no-headers -o $@ $<
 
 rhide.ctx: rhide.num cindex.idx kindex.idx html2ctx
 	sed -f $(srcdir)/htmlprep.sed $< | \
@@ -108,18 +113,13 @@ rhide.txt: rhide.txi contents.idx
 	$(MAKEINFO) --no-split --no-headers --no-validate --fill-column 78 \
 	  --number-sections -Dtext rhide.txi -o $@
 	  
-clean:
+clean::
 	rm -f *.tmp
 	rm -f *.idx
-	rm -f $(filter-out rhide.tx,$(whildcard rhide.??))
-	rm -f rhide.??s
+	rm -f rhide.??
 	rm -f *.log *.bak *.dsk *.dlg *.aux *.idx *.toc *.num
 	rm -f rhide.ct?
-
-distclean: clean
-	rm -f rhide.inf* rhide.htm* rhide.dvi rhide.txt rhide.ps rhide.txi
-	rm -f enum enum.exe html2ctx html2ctx.exe tx2txi tx2txi.exe
-	rm -f htmlspl htmlspl.exe
+	rm -f rhide.inf* $(TARGETS) rhide.txi
 	rm -f chap*.htm*
 
 force:

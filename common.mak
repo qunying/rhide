@@ -115,6 +115,8 @@ export top_obj_dir:=$(shell cd $(top_dir); pwd; cd $(obj_dir))
 endif
 endif
 
+update_src_file=echo
+
 ifeq ($(copyrite.exe),)
 export copyrite.exe:=$(top_obj_dir)/copyrite.exe
 endif
@@ -174,7 +176,8 @@ FLAGS_TO_PASS=\
 	EXEC_MODE="$(EXEC_MODE)" \
 	SETUID="$(SETUID)" \
 	SETGID="$(SETGID)" \
-	prefix=$(prefix)
+	prefix=$(prefix) \
+	update_src_file="$(update_src_file)"
 
 %.sub: Makefile
 	@$(MAKE) -C $* $(FLAGS_TO_PASS) SUBDIR_TARGET=$(SUBDIR_TARGET) \
@@ -202,6 +205,7 @@ update__srcdir:: $(addsuffix .sub,$(subdirs))
 endif
 
 check_src_files:: $(SRC_FILES)
+	@echo > /dev/null
 
 copy_src_files:: $(SRC_FILES)
 ifneq ($(SRC_FILES),)
@@ -255,12 +259,12 @@ endif
 	@-rm -f $*/$(list_file)
 
 %.chk: Makefile
+	@echo Checking in $(obj_dir)/$*
 	@$(MAKE) -C $* $(FLAGS_TO_PASS) --no-print-directory \
 	  check_src_files
 
 ifneq ($(strip $(gpr2mak)),)
 %.mak: %.gpr $(copyrite.exe)
-	@echo Checking '$(notdir $@)'
 ifeq ($(rhide_OS),DJGPP)
 	@$(gpr2mak) -d -r- -o - $(notdir $<) \
 	  | sed -e 's,	$(DJDIR),	$$(DJDIR),g' \
@@ -284,8 +288,9 @@ else
 endif
 	@$(copyrite.exe) __tmp__.mak > /dev/null
 	@$(move-if-change) __tmp__.mak $@ > /dev/null
+	@touch -r $@ $(notdir $<)
 	@rm -f __tmp__.mak
-	@-cp -p $@ $(srcdir)/$(notdir $@)
+	@$(update_src_file) $@ $(srcdir)/$(notdir $@) > /dev/null
 endif
 
 ifneq ($(strip $(project)),)

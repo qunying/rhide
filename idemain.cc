@@ -217,7 +217,7 @@ void check_for_external_modifications()
         unsigned long ft;
 #define IE ((TIDEFileEditor *)(((TCEditWindow *)window)->editor))
         ft = time_of_file(IE->fileName);
-        if (ft != IE->edittime)
+        if (ft > IE->edittime)
         {
           if (messageBox(mfYesNoCancel | mfInformation,
               _("%s has been modified! Reload it?"),
@@ -2252,7 +2252,7 @@ _setup_title(const char *title, int offset, int subfunc)
   __dpmi_regs r;
   if (_title_seg == -1)
     return;
-  movedata(_my_ds(), (int)title, _title_selector, offset, _TITLE_SIZE);
+  movedata(_my_ds(), (unsigned)title, _title_selector, offset, _TITLE_SIZE);
   _farpokeb(_title_selector, offset + _TITLE_SIZE, 0);
   r.x.ax = 0x168E;
   r.x.dx = subfunc;

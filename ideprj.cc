@@ -56,9 +56,7 @@
 #include <limits.h>
 #include <unistd.h>
 #include <ctype.h>
-#ifndef __DJGPP__
 #include <sys/stat.h>
-#endif
 
 /* I have moved it now here, to reduce the size of
   gpr2mak, beause it is needed only, when reading
@@ -850,14 +848,21 @@ static Boolean OpenStandardProject(const char *prjname,Boolean with_desktop = Tr
 #endif
   int found = 0;
   char *try_dir;
-  try_dir = expand_rhide_spec("$(GET_HOME)");
-  if (!found && *try_dir)
+  char *try_dirs = expand_rhide_spec("$(RHIDE_CONFIG_DIRS)");
+  char *try_dirs_p = try_dirs;
+  try_dir = try_dirs;
+  while (!found)
+  {
+    while (*try_dirs_p && (*try_dirs_p != ' '))
+      try_dirs_p++;
+    if (!*try_dirs_p)
+      break;
+    *try_dirs_p = 0;
     found = TryStandardProject(try_dir, RHIDE_OPTIONS_NAME, tmp, dir);
-  string_free(try_dir);
-  try_dir = expand_rhide_spec("$(DJDIR)");
-  if (!found && *try_dir)
-    found = TryStandardProject(try_dir, RHIDE_OPTIONS_NAME, tmp, dir);
-  string_free(try_dir);
+    *try_dirs_p = ' ';
+    try_dirs_p++;
+    try_dir = try_dirs_p;
+  }
   string_free(standard_project_name);
   string_free(dskname);
   if ((project = ReadProject(dir)) != NULL)
@@ -913,8 +918,21 @@ static Boolean OpenStandardProject(const char *prjname,Boolean with_desktop = Tr
   if (!project)
   {
     try_dir = expand_rhide_spec("$(GET_HOME)");
-    TryStandardProject(try_dir, RHIDE_OPTIONS_NAME,
-                       dskname, standard_project_name);
+    struct stat s;
+    if ((stat(try_dir, &s) == 0) &&
+        S_ISDIR(s.st_mode) &&
+        (s.st_mode & S_IWUSR))
+    {
+      TryStandardProject(try_dir, RHIDE_OPTIONS_NAME,
+                         dskname, standard_project_name);
+    }
+    else
+    {
+      string_free(try_dir);
+      try_dir = string_dup(".");
+      TryStandardProject(try_dir, RHIDE_OPTIONS_NAME,
+                         dskname, standard_project_name);
+    }
     string_free(try_dir);
   }
   return False;

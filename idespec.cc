@@ -235,7 +235,7 @@ static char *default_variables[] = {
 
  "RHIDE_COMPILE_LINK_GPC_AUTOMAKE",
  "$(RHIDE_LD_PASCAL) $(RHIDE_LIBDIRS)\
-  -o $(OUTFILE) --automake=\"$(strip $(RHIDE_GPC_FLAGS))\" $(RHIDE_GPC_FLAGS)\
+  -o $(OUTFILE) --automake $(RHIDE_GPC_FLAGS)\
   $(SOURCE_NAME) $(LIBRARIES) $(LDFLAGS) $(RHIDE_LDFLAGS) $(RHIDE_LIBS)",
 
  "RHIDE_COMPILE_PASCAL",

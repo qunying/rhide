@@ -8,7 +8,7 @@ msgid "            -E : Output all env. variables and exit\n"
 msgstr "            -E : Mostrar todas las variables de entorno al salir\n"
 
 msgid "            -G num : Use methode <num> for screen swapping\n"
-msgstr "            -G num : Usar el m‚todo <num> para reesy"
+msgstr "            -G num : Usar el m‚todo <num> para reesy\n"
 
 msgid "            -H : Do not install console switch handler\n"
 msgstr "            -H : No instalar un manejador para el cambio de consola\n"

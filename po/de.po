@@ -1081,19 +1081,19 @@ msgid  "A~d~a-Flags"
 msgstr "A~d~a-Optionen"
 
 msgid  "~E~ditor"
-msgstr ""
+msgstr "~E~ditor"
 
 msgid  "~E~ditor options"
 msgstr "~E~ditor Optionen"
 
 msgid  "E~d~it key assignment"
-msgstr ""
+msgstr "Ž~n~dere Tastenzuordnung"
 
 msgid  "~A~lt-Keys settings"
-msgstr ""
+msgstr "~A~lt-Tasten Einstellungen"
 
 msgid  "~R~estore default editor keys"
-msgstr ""
+msgstr "Standard-Editor-Tasten ~w~iederherstellen"
 
 msgid  "~E~nvironment"
 msgstr "~U~mgebung"

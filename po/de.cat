@@ -640,6 +640,9 @@ msgstr "Bis zum Ende der Funktion ausfÅhren"
 msgid "Expand all tabs to spaces"
 msgstr "Ersetzt alle Tabs durch Leerzeichen"
 
+msgid "E~d~it key assignment"
+msgstr "é~n~dere Tastenzuordnung"
+
 msgid "E~r~ror program"
 msgstr "Fehle~r~programm"
 
@@ -2386,6 +2389,9 @@ msgstr "~H~inzu"
 msgid "~A~dd item"
 msgstr "~H~inzufÅgen"
 
+msgid "~A~lt-Keys settings"
+msgstr "~A~lt-Tasten Einstellungen"
+
 msgid "~A~rguments ..."
 msgstr "~A~rgumente ..."
 
@@ -2532,6 +2538,9 @@ msgstr "~Esc~ Abbruch"
 
 msgid "~E~dit"
 msgstr "~E~dit"
+
+msgid "~E~ditor"
+msgstr "~E~ditor"
 
 msgid "~E~ditor options"
 msgstr "~E~ditor Optionen"
@@ -2850,6 +2859,9 @@ msgstr "~E~rsetzen..."
 
 msgid "~R~eserved words"
 msgstr "~R~eservierte Wîrter"
+
+msgid "~R~estore default editor keys"
+msgstr "Standard-Editor-Tasten ~w~iederherstellen"
 
 msgid "~R~esult"
 msgstr "~E~rgebnis"

@@ -754,7 +754,7 @@ msgid  "            -p : do not convert the numpad keys\n"
 msgstr "            -p : no convertir las teclas del teclado num‚rico\n"
 
 msgid  "            -G num : Use methode <num> for screen swapping\n"
-msgstr "            -G num : Usar el m‚todo <num> para reesy"
+msgstr "            -G num : Usar el m‚todo <num> para reesy\n"
 
 msgid  "            -K : Use the BIOS for keyboard input\n"
 msgstr "            -K : Usar el BIOS para leer el teclado\n"

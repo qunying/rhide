@@ -5,7 +5,7 @@
 # Not all of them are complete!! The only one which will be
 # definitely complete is 'de' (maintained by me) :-)
 #
-# cz - Czech - 
+# cs - Czech - 
 # da - Danish -
 # de - German - 
 # es - Spanish - Salavador Eduardo Tropea <ice@inti.edu.ar>
@@ -18,7 +18,7 @@
 # pt - Portuguese -
 # sv - Swedish -
 
-CURRENT_LANGUAGES=cz da de es fi fr it nl no pl pt sv
+CURRENT_LANGUAGES=cs da de es fi fr it nl no pl pt sv
 FUTURE_LANGUAGES=ee ru # they were not ready when releasing RHIDE
 LANGUAGES=$(CURRENT_LANGUAGES)
 

@@ -1,0 +1,2949 @@
+# Czech translations for GNU gettext package.
+# Copyright (C) 1995 - 1998 Free Software Foundation, Inc.
+# Jaroslav Fojtik <fojtik@vision.felk.cvut.cz> 1998.
+
+msgid  ""
+msgstr "Project-Id-Version: GNU RHIDE-1.4.6\n"
+"POT-Creation-Date:\n"
+"PO-Revision-Date:\n"
+"Last-Translator: Jaroslav Fojtik\n"
+"Language-Team: Czech <cs@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=kamenicky\n"
+"Content-Transfer-Encoding: 8-bit\n"
+
+msgid  "Writing Makefile : %s\n"
+msgstr "Zapisuji Makefile : %s\n"
+
+msgid  "-o needs an argument\n"
+msgstr "-o vy‘aduje parametr\n"
+
+msgid  "a projectfile must be given\n"
+msgstr "soubor projektu mus¡ b˜t zad n\n"
+
+msgid  "-o and -r are not allowed together"
+msgstr "-o a -r nen¡ povovoleno pou‘¡t spole‡nˆ"
+
+msgid  "error reading projectfile %s\n"
+msgstr "chyba p©i na‡¡t n¡ souboru projektu %s\n"
+
+msgid  "Frame disabled"
+msgstr "R me‡ek zak z n"
+
+msgid  "Frame"
+msgstr "R me‡ek"
+
+msgid  "Frame icons"
+msgstr "Ikony r me‡ku"
+
+msgid  "Scroll bar page"
+msgstr "Str nka s posuvn¡kem"
+
+msgid  "Scroll bar icons"
+msgstr "Ikony posuvn¡ku"
+
+msgid  "Static text"
+msgstr "Statick˜ text"
+
+msgid  "Selected text"
+msgstr "Ozna‡en˜ text"
+
+msgid  "reserved"
+msgstr "rezervov n"
+
+msgid  "Frame/background"
+msgstr "R me‡ek/pozad¡"
+
+msgid  "normal text"
+msgstr "norm ln¡ text"
+
+msgid  "marked text"
+msgstr "ozna‡en˜ text"
+
+msgid  "comment"
+msgstr "koment ©"
+
+msgid  "reserved word"
+msgstr "rezervovan‚ slovo"
+
+msgid  "identifier"
+msgstr "identifik tor"
+
+msgid  "symbol"
+msgstr "symbol"
+
+msgid  "string"
+msgstr "©etˆzec"
+
+msgid  "integer"
+msgstr ""
+
+msgid  "float"
+msgstr "float"
+
+msgid  "octal"
+msgstr "oktalov‚"
+
+msgid  "hex"
+msgstr "¨estn ctkov‚"
+
+msgid  "character"
+msgstr "znak"
+
+msgid  "preprocessor"
+msgstr "preprocesor"
+
+msgid  "illegal char"
+msgstr "neplatn˜ znak"
+
+msgid  "user defined words"
+msgstr "slova definovan  u‘ivatelem"
+
+msgid  "CPU line"
+msgstr "CPU © dek"
+
+msgid  "Breakpoint"
+msgstr "Lad¡c¡ bod"
+
+msgid  "symbol2"
+msgstr "symbol2"
+
+msgid  "Cross cursor"
+msgstr "K©¡‘ov˜ kurzor"
+
+msgid  "editor statusline"
+msgstr "stavov˜ © dek editoru"
+
+msgid  "parens matching"
+msgstr "kontrola z vorek"
+
+msgid  "rectangle block"
+msgstr "obd‚ln¡kov˜ blok"
+
+msgid  "Disassembler window"
+msgstr "Okno disasembleru"
+
+msgid  "Could not find the source file %s."
+msgstr "Nemohu naj¡t zdrojov˜ soubor %s."
+
+msgid  "Open a file"
+msgstr "Otev©¡t soubor"
+
+msgid  "~N~ame"
+msgstr "~J~m‚no"
+
+msgid  "Add '%s' to the search path for source files"
+msgstr "P©id n¡ '%s' do vyhled vac¡ cesty pro zdrojov‚ soubory"
+
+msgid  "Untitled"
+msgstr "Bez titulku"
+
+msgid  "Source has been modified. Rebuild it?"
+msgstr "Zdrojov˜ text byl zmˆnˆn. Znovu sestavit?"
+
+msgid  "Program exit code: %d (0x%04x)"
+msgstr "N vratov˜ k¢d programu: %d (0x%04x)"
+
+msgid  "ready"
+msgstr "p©ipraven"
+
+msgid  "arguments for GREP"
+msgstr "parametry pro GREP"
+
+msgid  "There are only %d parameters for GREP. Continue ?"
+msgstr "Je k dispozici pouze %d parametr– pro GREP. Pokra‡ovat?"
+
+msgid  "running GREP:"
+msgstr "bˆ‘¡c¡ GREP:"
+
+msgid  "executing: "
+msgstr "vykon v  se: "
+
+msgid  "Output to stderr:"
+msgstr ""
+
+msgid  "Output to stdout:"
+msgstr ""
+
+msgid  "return value: %d\n"
+msgstr "n vratov  hodnota: %d\n"
+
+msgid  "checking file time for '%s'\n"
+msgstr "ovˆ©ov n¡ ‡asu souboru pro '%s'\n"
+
+msgid  "found '%s' on desktop, time: %08lx\n"
+msgstr "nalezeno '%s' na pracovn¡ plo¨e: %08lx\n"
+
+msgid  "and updating it"
+msgstr "a aktualizuji je"
+
+msgid  "found '%s' not in filetime cache, time: %08lx\n"
+msgstr "nalezeno '%s' nen¡ v ‡asov‚ vyrovn vac¡ pamˆti, ‡as: %08lx\n"
+
+msgid  "found '%s' in filetime cache "
+msgstr "nalezeno '%s' v ‡asov‚ vyrovn vac¡ pamˆti"
+
+msgid  ",time: %08lx\n"
+msgstr ",‡as: %08lx\n"
+
+msgid  "checking"
+msgstr "kontroluji"
+
+msgid  "Could not find the source file '%s'. Make sure, that the file exist "
+"or check the settings in 'Options/Directories' for the correct paths."
+msgstr "Nemohu nal‚zt zdrojov˜ soubor '%s'. Ujistˆtˆ se, ‘e soubor existuje "
+"nebo zkontrolujte nastaven¡ v 'Nastaven¡/Adres ©e' pro spr vn‚ cesty."
+
+msgid  "is up to date"
+msgstr "je st le aktu ln¡"
+
+msgid  "is"
+msgstr "je"
+
+msgid  "newer"
+msgstr "novˆj¨¡"
+
+msgid  "older"
+msgstr "star¨¡"
+
+msgid  "than"
+msgstr "ne‘"
+
+msgid  "must rebuild"
+msgstr "mus¡ b˜t znovu sestaveno"
+
+msgid  "rebuilding of"
+msgstr "opˆtn‚ sestaven¡ z"
+
+msgid  "success"
+msgstr "£spˆch"
+
+msgid  "error"
+msgstr "chyba"
+
+msgid  "clearing the filetime cache\n"
+msgstr "maz n¡ ‡asov‚ vyrovn vac¡ pamˆti soubor–\n"
+
+msgid  "in function "
+msgstr "ve funkci "
+
+msgid  "Call frame traceback:"
+msgstr "Vol n¡ r mce zpˆtn‚ho krokov n¡:"
+
+msgid  "contents of stderr from "
+msgstr "obsah stderr z "
+
+msgid  "contents of stdout from "
+msgstr "obsah stdout z "
+
+msgid  "Info Viewer"
+msgstr "Prohl¡‘e‡ Informac¡"
+
+msgid  "show information about RHIDE"
+msgstr "zobrazen¡ informac¡ o RHIDE"
+
+msgid  "Creates a small bug report"
+msgstr "Vytvo©en¡ mal‚ho ozn men¡ chyb"
+
+msgid  "Creates a sample bug report"
+msgstr "Vytvo©en¡ vzorov‚ho ozn men¡ chyb"
+
+msgid  "Start the FSDB debugger"
+msgstr "Spu¨tˆn¡ FSDB debugeru"
+
+msgid  "Running GREP (arguments are prompted)"
+msgstr "Bˆ‘¡c¡ GREP (parametry jsou vy‘ d ny)"
+
+msgid  "Start the GDB debugger"
+msgstr "Spu¨tˆn¡ GDB debugeru"
+
+msgid  "repaints the desktop"
+msgstr "p©ekreslen¡ obrazovky"
+
+msgid  "Powerful builtin calculator"
+msgstr "V˜konn  vestavˆn  kalkula‡ka"
+
+msgid  "A nice puzzle game"
+msgstr "Pˆkn  hra r‚bus"
+
+msgid  "A simple calender"
+msgstr "Jednoduch˜ kalend ©"
+
+msgid  "A table with all the ASCII characters"
+msgstr "Tabulka obsahuj¡c¡ v¨echny ASCII znaky"
+
+msgid  "Menu entries for handling with files"
+msgstr "Polo‘ky menu pro pr ci se soubory"
+
+msgid  "opens a file in the editor"
+msgstr "otev©e soubor v editoru"
+
+msgid  "create a new editor window"
+msgstr "vytvo©¡ nov‚ okno editoru"
+
+msgid  "save the current editor to disk (if modified)"
+msgstr "ulo‘¡ aktu ln¡ obsah editoru na disk (byl-li zmˆnˆn)"
+
+msgid  "save the current editor under a different name to disk"
+msgstr "ulo‘¡ aktu ln¡ obsah editoru pod jin˜m jm‚nem na disk"
+
+msgid  "save all opened editors to disk (if modified)"
+msgstr "ulo‘¡ v¨echny otev©en‚ soubory na disk (byly-li zmˆnˆny)"
+
+msgid  "switch to DOS (call of %COMSPEC%, return with EXIT)"
+msgstr "p©epnut¡ do DOSu (vol  %COMSPEC%, n vrat p©¡kazem EXIT)"
+
+msgid  "switch to a shell (call of $SHELL or /bin/sh, return with exit)"
+msgstr "p©epnut¡ do shelu (vol  $SHELL nebo /bin/sh, n vrat p©¡kazem exit)"
+
+msgid  "quits the IDE"
+msgstr "opust¡ IDE"
+
+msgid  "Submenu for things dealing with the editor"
+msgstr "Vno©en‚ menu pro vˆci t˜kaj¡c¡ se editoru"
+
+msgid  "undoes the last edit command"
+msgstr "zru¨en¡ posledn¡ho p©¡kazu editoru"
+
+msgid  "undoes the last undo command"
+msgstr "zru¨en¡ posledn¡ho p©¡kazu zru¨"
+
+msgid  "move the selected text to the clipboard"
+msgstr "p©esun ozna‡en‚ho textu do schr nky"
+
+msgid  "copy the selected text to the clipboard"
+msgstr "kop¡ruj ozna‡en˜ text do schr nky"
+
+msgid  "insert the selected text from the clipboard"
+msgstr "vlo‘en¡ ozna‡en‚ho textu ze schr nky"
+
+msgid  "shows the clipboard"
+msgstr "uk ‘e obsah schr nky"
+
+msgid  "delete the selected text "
+msgstr "sma‘e ozna‡en˜ text"
+
+msgid  "Copy the selected text to the Windows clipboard"
+msgstr "P©enese ozna‡en˜ text do schr nky Windows"
+
+msgid  "Paste text from the Windows clipboard"
+msgstr "Vlo‘¡ text ze schr nky Windows"
+
+msgid  "Expand all tabs to spaces"
+msgstr "Rozlo‘en¡ v¨ech tabel tor– na mezery"
+
+msgid  "Replace as much as possible spaces with tabs"
+msgstr "Z mˆna v¨ech mezer za tabel tory, kde je to mo‘n‚"
+
+msgid  "Submenu for handling with macros"
+msgstr "Vno©en‚ menu pro spr vu maker"
+
+msgid  "Start the recording for a macro"
+msgstr "Po‡ tek z znamu makra"
+
+msgid  "Stop the recording for a macro"
+msgstr "Konec z znamu makra"
+
+msgid  "Run the recorded macro"
+msgstr "Spu¨tˆn¡ zaznamenan‚ho makra"
+
+msgid  "Check the speed of the editor"
+msgstr "P©ezkou¨en¡ rychlosti editoru"
+
+msgid  "Submenu for searching/replacing text"
+msgstr "Vno©en‚ menu pro hled n¡/z mˆnu textu"
+
+msgid  "find a string in the current editor"
+msgstr "najdi ©etˆzec v aktu ln¡m oknˆ"
+
+msgid  "find and replace a string in the current editor"
+msgstr "nalezne a zamˆn¡ ©etˆzec v aktu ln¡m edita‡n¡m oknˆ"
+
+msgid  "repeat the last find- or replace-operation"
+msgstr "opakuje posledn¡ operaci nalezen¡ nebo z mˆna"
+
+msgid  "go to line number (after prompting)"
+msgstr "skok na ‡¡slo © dku (po v˜zvˆ)"
+
+msgid  "Select a function from the current editor"
+msgstr "Vyber funkci z aktu ln¡ho editoru"
+
+msgid  "select next message"
+msgstr "v˜bˆr p©¡¨t¡ zpr vy"
+
+msgid  "select previous message"
+msgstr "v˜bˆr p©edchoz¡ zpr vy"
+
+msgid  "Submenu for running your program"
+msgstr "Vno©en‚ menu pro spou¨tˆn¡ va¨eho programu"
+
+msgid  "run the project-target (if executable after doing a make)"
+msgstr "spusŸ c¡lov˜-projekt (je-li spustiteln˜ po proveden¡ make)"
+
+msgid  "Step over function calls"
+msgstr "P©esko‡ vol n¡ funkce"
+
+msgid  "Step over function calls (No display swap)"
+msgstr "P©esko‡ vol n¡ funkce (Nep©ep¡n  obrazovky)"
+
+msgid  "Execute one instruction"
+msgstr "Proveƒ jednu instrukci"
+
+msgid  "Execute one instruction (No display swap)"
+msgstr "Proveƒ jednu instrukci (Nep©ep¡n  obrazovky)"
+
+msgid  "Stops execution at the cursor"
+msgstr "Zastav bˆh na pozici kurzoru"
+
+msgid  "Stops execution at the cursor (No display swap)"
+msgstr "Zastav bˆh na pozici kurzoru (Nep©ep¡n  obrazovky)"
+
+msgid  "Reset the debugged program"
+msgstr "Zru¨ ladˆn¡ programu"
+
+msgid  "Execute until end of function"
+msgstr "Prov dˆj dokud nenaraz¡¨ na konec funkce"
+
+msgid  "Enter the name of the 'main'-function"
+msgstr "Zadej jm‚no 'hlavn¡'-funkce"
+
+msgid  "enter commandline arguments for your program"
+msgstr "zadej parametry p©¡kazov‚ © dky va¨eho programu"
+
+msgid  "Submenu for compiling and/or creating your program/library"
+msgstr "Vno©en‚ menu pro kompilaci a/nebo tvorbu programu/knihovny"
+
+msgid  "compile the current editor or the selected project-item"
+msgstr "p©elo‘ aktu ln¡ okno nebo vybranou polo‘ku projektu"
+
+msgid  "make the project (with checking auto-dependencies)"
+msgstr "vytvo©en¡ projektu (s kontrolou automatick˜ch z vislost¡)"
+
+msgid  "link the project or create the library"
+msgstr "linkov n¡ projektu nebo tvorba knihovny"
+
+msgid  "build the project completely new"
+msgstr "sestaven¡ projektu £plnˆ znovu"
+
+msgid  "Submenu for debugging your program"
+msgstr "Vno©en‚ menu pro ladˆn¡ va¨eho programu"
+
+msgid  "Set/Clear a breakpoint at the current line"
+msgstr "Nastav/Zru¨ lad¡c¡ bod na aktu ln¡ © dce"
+
+msgid  "Evaluate or modify an expression"
+msgstr "OhodnoŸ nebo zmˆ¤ v˜raz"
+
+msgid  "Add an expression to the watching list"
+msgstr "P©idej v˜raz do prohl¡‘ec¡ho seznamu"
+
+msgid  "Show/Modify the breakpoints"
+msgstr "Uka‘/Zmˆ¤ lad¡c¡ body"
+
+msgid  "Show a disassembler window at the current execution point"
+msgstr "Uka‘ okno disasembleru s aktu ln¡m m¡stem v programu"
+
+msgid  "Show a list with all functions"
+msgstr "Uka‘ v˜pis v¨ech funkc¡"
+
+msgid  "Shows a window with the function call stack"
+msgstr "Uka‘ okno se z sobn¡kem vol n¡ funkc¡"
+
+msgid  "Submenu for handling your projects"
+msgstr "Vno©en‚ menu pro spr vu va¨ich projekt–"
+
+msgid  "open a project"
+msgstr "otev©i projekt"
+
+msgid  "close the current project"
+msgstr "uzav©i aktu ln¡ projekt"
+
+msgid  "add an item to the project"
+msgstr "p©idej polo‘ku do projektu"
+
+msgid  "remove the selected item from the project"
+msgstr "vyjmi vybranou polo‘ku z projektu"
+
+msgid  "enter local commandline options for compiling this item"
+msgstr "zadej lok ln¡ © dkov˜ p©¡kaz pro p©eklad t‚to polo‘ky"
+
+msgid  "show the dependencies for the selected item"
+msgstr "uka‘ z vislosti pro vybranou polo‘ku"
+
+msgid  "change the name of the project-target"
+msgstr "zmˆ¤ jm‚no c¡lov‚ho-projektu"
+
+msgid  "Set the primary file (only for GPC with '--automake'!!!)"
+msgstr "Nastaven¡ prim rn¡ho souboru (pouze pro GPC s '--automake'!!!)"
+
+msgid  "remove the list of automaticaly generated dependencies"
+msgstr "zru¨ seznam automaticky vytvo©en˜ch z vislost¡"
+
+msgid  "remove all files, which can be rebuild with this project"
+msgstr "zru¨¡ v¨echny soubory, kter‚ mohou b˜t znovu vytvo©eny z tohoto "
+"projektu"
+
+msgid  "Create for all project items the dependencies"
+msgstr "Vytvo©en¡ z vislost¡ pro v¨echny polo‘ky v projektu"
+
+msgid  "write a makefile for this project"
+msgstr "zapi¨ makefile pro tento projekt"
+
+msgid  "Submenu for most of the options of RHIDE"
+msgstr "Vno©en‚ menu pro vˆt¨inu parametr– t˜kaj¡c¡ch se RHIDE"
+
+msgid  "set various search paths for finding the files"
+msgstr "nastaven¡ r–zn˜ch cest k soubor–m"
+
+msgid  "set where to search for include files"
+msgstr "nastav cestu k include soubor–m"
+
+msgid  "set where to search for libraries"
+msgstr "nastav cestu ke knihovn m"
+
+msgid  "set where to search for object files"
+msgstr "nastav cestu k object soubor–m"
+
+msgid  "set where to search for source files"
+msgstr "nastav cestu ke zdrojov˜m soubor–m"
+
+msgid  "Define, where your standard headers are"
+msgstr "Definuj, kde se nach zej¡ standardn¡ hlavi‡kov‚ soubory"
+
+msgid  "customize various options for the C/C++-compiler"
+msgstr "p©izp–soben¡ r–zn˜ch parametr– pro C/C++-kompil tor"
+
+msgid  "customize the generating of warnings"
+msgstr "nastaven¡ tvorby varovn˜ch hl ¨en¡"
+
+msgid  "customize, how to optimize the code"
+msgstr "nastaven¡ zp–sobu, jak optimalizovat k¢d"
+
+msgid  "customize the generating of debugging information"
+msgstr "nastaven¡ tvorby lad¡c¡ch informac¡"
+
+msgid  "customize C-compiler specific flags"
+msgstr "nastaven¡ specifick˜ch p©ep¡na‡– C-p©eklada‡e"
+
+msgid  "customize C++-compiler specific flags"
+msgstr "nastaven¡ specifick˜ch p©ep¡na‡– C++-p©eklada‡e"
+
+msgid  "Flags only when compiling Pascal files"
+msgstr "P©ep¡na‡e pouze pro p©eklad Pascalov˜ch soubor–"
+
+msgid  "Flags only when compiling Fortran files"
+msgstr "P©ep¡na‡e pouze pro p©eklad Fortranov˜ch soubor–"
+
+msgid  "Flags only when compiling ADA files"
+msgstr "P©ep¡na‡e pouze pro p©eklad soubor– ADA"
+
+msgid  "set which libraries to be linked with the program"
+msgstr "nastaven¡ knihoven, kter‚ maj¡ b˜t linkov ny s programem"
+
+msgid  "set additional flags to the linker"
+msgstr "nastaven¡ dodate‡n˜ch p©ep¡na‡– linkeru"
+
+msgid  "set additional flags to the compiler (defines, ...)"
+msgstr "nastaven¡ dodate‡n˜ch p©ep¡na‡–  Kompil toru (definice, ...)"
+
+msgid  "customize the IDE"
+msgstr "p©izp–soben¡ IDE"
+
+msgid  "customize the colors of the IDE"
+msgstr "nastaven¡ barev IDE"
+
+msgid  "Set the editor options"
+msgstr "Nastaven¡ parametr– editoru"
+
+msgid  "set basic options for the IDE"
+msgstr "Nastaven¡ z kladn¡ch parametr– IDE"
+
+msgid  "Set some options for the mouse"
+msgstr "Nastaven¡ nˆkter˜ch parametr– my¨i"
+
+msgid  "edit the list of reserved words"
+msgstr "editace seznamu rezervovan˜ch slov"
+
+msgid  "Edit the list of reserved words for Pascal files"
+msgstr "editace seznamu rezervovan˜ch slov pro soubory v Pascalu"
+
+msgid  "edit the list of flags for the C-compiler"
+msgstr "editace seznamu indik tor– pro C-kompil tor"
+
+msgid  "edit the list of flags for the C++-compiler"
+msgstr "editace seznamu indik tor– pro C++-kompil tor"
+
+msgid  "Edit the list of pascal options"
+msgstr "Editace seznamu parametr– Pascalu"
+
+msgid  "Edit the list of fortran options"
+msgstr "Editace seznamu parametr– Fortranu"
+
+msgid  "Edit the list of ADA options"
+msgstr "Editace seznamu parametr– ADA"
+
+msgid  "edit the list of flags for warnings"
+msgstr "editace seznamu indik tor– varovn˜ch hl ¨en¡"
+
+msgid  "edit the list of flags for debugging"
+msgstr "editace seznamu indik tor– pro ladˆn¡"
+
+msgid  "edit the list of optimization flags"
+msgstr "editace seznamu indik tor– pro optimalizaci"
+
+msgid  "edit the list of user defined words (for syntaxhighlight)"
+msgstr "editace seznamu u‘ivatelem definovan˜ch slov (pro zv˜raznˆn¡ "
+"syntaxe)"
+
+msgid  "Save all the options to a project file"
+msgstr "Ulo‘ v¨echna nastaven¡ do souboru projektu"
+
+msgid  "Load the options from a project file"
+msgstr "Nahr n¡ parametr– ze souboru projektu"
+
+msgid  "Submenu for dealing with windows"
+msgstr "Vno©en‚ menu pro pr ci s okny"
+
+msgid  "resize/move the current window"
+msgstr "zmˆna_velikosti/p©esun aktu ln¡ho okna"
+
+msgid  "toggles between full size and previous size of the current window"
+msgstr "p©ep¡n  mezi plnou velikost¡ a p©edchoz¡ velikost¡ aktu ln¡ho okna"
+
+msgid  "show all editor windows simultaniously"
+msgstr "uk ‘e v¨echna edita‡n¡ okna sou‡asnˆ"
+
+msgid  "show from each editor the title"
+msgstr "uk ‘e n zev ka‘d‚ho okna editoru"
+
+msgid  "switch to the next window on the desktop"
+msgstr "p©epne se na dal¨¡ okno na pracovn¡ plo¨e"
+
+msgid  "switch to the previous window on the desktop"
+msgstr "p©epne se na p©edchoz¡ okno na pracovn¡ plo¨e"
+
+msgid  "close the current window"
+msgstr "uzav©en¡ aktu ln¡ho okna"
+
+msgid  "show a list of all windows on the desktop"
+msgstr "uk ‘e seznam v¨ech oken na pracovn¡ plo¨e"
+
+msgid  "show the project window"
+msgstr "uk ‘e okno projektu"
+
+msgid  "show the user screen"
+msgstr "uk ‘e u‘ivatelskou obrazovku"
+
+msgid  "Opens the window with watches"
+msgstr "Otev©e okno s prohl¡‘e‡em"
+
+msgid  "Several menu entries for getting help"
+msgstr "Nˆkolik polo‘ek nab¡dky s n povˆdou"
+
+msgid  "opens the Info Viewer"
+msgstr "otev©e Info Prohl¡‘e‡"
+
+msgid  "The main index of the RHIDE help"
+msgstr "Hlavn¡ rejst©¡k n povˆdy pro RHIDE"
+
+msgid  "Submenu for syntax help"
+msgstr "Vno©en‚ menu pro syntaktickou n povˆdu"
+
+msgid  "Help for the function under the cursor"
+msgstr "N povˆda pro funkce vztahuj¡c¡ se ke kurzoru"
+
+msgid  "Files to be searched for syntax help"
+msgstr "Soubory, kter‚ maj¡ b˜t prohled ny pro syntaktickou n povˆdu"
+
+msgid  "Options for the syntax help"
+msgstr "Volby pro syntaktickou n povˆdu"
+
+msgid  "Get a list with all available syntax help topics"
+msgstr "Vytvo©¡ seznam se v¨emi dostupn˜mi t‚maty syntaktick‚ n povˆdy"
+
+msgid  "The main index of the libc reference"
+msgstr "Hlavn¡ rejst©¡k odkaz– k libc"
+
+msgid  "Get help about using the helpsystem"
+msgstr "Zobraz¡ n povˆdu o pou‘it¡ syst‚mu_n povˆdy"
+
+msgid  "Shows the last opened help"
+msgstr "Uk ‘e posledn¡ otev©enou n povˆdu"
+
+msgid  "How many closed windows should I remember"
+msgstr "Kolik uzav©en˜ch oken bych si mˆl zapamatovat"
+
+msgid  "%s has been modified! Reload it?"
+msgstr "%s byl zmˆnˆn! Nahr t znovu?"
+
+msgid  "Name of the main target"
+msgstr "Jm‚no hlavn¡ho £kolu"
+
+msgid  "Goto the line"
+msgstr "Jdi na © dek ‡¡slo"
+
+msgid  "line ~n~umber"
+msgstr "© dek ‡¡slo ~n~"
+
+msgid  "About RHIDE"
+msgstr "O RHIDE"
+
+msgid  "RHIDE is an Integrated Development Environment"
+msgstr "RHIDE je integrovan‚ v˜vojov‚ prost©ed¡ (IDE)"
+
+msgid  "for developing DJGPP apps"
+msgstr "pro v˜voj aplikac¡ DJGPP"
+
+msgid  "for developing Linux apps"
+msgstr "pro v˜voj Linuxov˜ch aplikac¡"
+
+msgid  "Copyright (C) by Robert H”hne, 1996-1998"
+msgstr "Copyright (C) by Robert H”hne, 1996-1998"
+
+msgid  "Language: "
+msgstr ""
+
+msgid  "English"
+msgstr "Czech"
+
+msgid  "Translated by: "
+msgstr ""
+
+msgid  "Nobody"
+msgstr "Jaroslav Fojtik <fojtik@vision.felk.cvut.cz>"
+
+msgid  "last updated: "
+msgstr ""
+
+msgid  "1998-11-29"
+msgstr "1998-12-31"
+
+msgid  "~O~K"
+msgstr "~O~K"
+
+msgid  "Please wait"
+msgstr "Pros¡m po‡kejte"
+
+msgid  "Creating the Bug report"
+msgstr "Vytv ©en¡ zpr vy o chyb ch"
+
+msgid  "Name of the main function"
+msgstr "Jm‚no hlavn¡ 'main'-funkce"
+
+msgid  "Expression to inspect"
+msgstr ""
+
+msgid  "~E~xpression"
+msgstr "~V~˜raz"
+
+msgid  "Regular expression to list functions"
+msgstr "Regul rn¡ v˜raz k seznamu funkc¡"
+
+msgid  "List of functions"
+msgstr "Seznam funkc¡"
+
+msgid  "WindowList"
+msgstr "Seznam oken"
+
+msgid  "Standard Include Directories"
+msgstr "Standardn¡ adres ©e include"
+
+msgid  "Include Directories"
+msgstr "Include adres ©e"
+
+msgid  "Library Directories"
+msgstr "Adres ©e ke knihovn m"
+
+msgid  "Object Directories"
+msgstr "Adres ©e k Object soubor–m"
+
+msgid  "Source Directories"
+msgstr "Adres ©e zdrojov˜ch text–"
+
+msgid  "INFO files for syntaxhelp"
+msgstr "INFOrma‡n¡ soubory syntaktick‚ n povˆdy"
+
+msgid  "Program arguments"
+msgstr "Argumenty programu"
+
+msgid  "Select a project"
+msgstr "Otev©¡t projekt"
+
+msgid  "You can give here only a valid filename for a Pascal source file"
+msgstr "M–‘ete zadat pouze platn‚ jm‚no souboru jako zdrojov˜ soubor Pascalu"
+
+msgid  "or a TeX source file"
+msgstr "nebo zdrojov˜ soubor TeXu"
+
+msgid  "usage: %s [options] [project-file] [edit-file]\n"
+msgstr "pou‘it¡: %s [p©ep¡na‡e] [soubor_projektu] [editovan˜_soubor]\n"
+
+msgid  "options:    -d[actdf]\n"
+msgstr "p©ep¡na‡e:  -d[actdf]\n"
+
+msgid  "            -c : show filename exactly (no case conversion)\n"
+msgstr "            -c : vyp¡¨e p©esn‚ jm‚no souboru (bez konverze velikosti "
+"p¡smen)\n"
+
+msgid  "            -y : force to use long filenames (Windows 95)\n"
+msgstr "            -y : zapnut¡ pou‘¡v n¡ dlouh˜ch jmen (Windows 95)\n"
+
+msgid  "            -n : do not use long filenames (Windows 95)\n"
+msgstr "            -n : vypne pou‘¡v n¡ dlouh˜ch jmen (Windows 95)\n"
+
+msgid  "            -b : use BIOS calls for toggle the blinkstate\n"
+msgstr "            -b : pou‘it¡ vol n¡ BIOSu pro p©ep¡n n¡ stavu blik n¡\n"
+
+msgid  "            -p : do not convert the numpad keys\n"
+msgstr "            -p : zak ‘e prov dˆn¡ konverze kl ves na numerick‚ "
+"kl vesnici\n"
+
+msgid  "            -G num : Use methode <num> for screen swapping\n"
+msgstr "            -G ‡¡s : Pou‘it¡ metody <‡¡s> pro p©ep¡n n¡ obrazovek\n"
+
+msgid  "            -K : Use the BIOS for keyboard input\n"
+msgstr "            -K : Pou‘¡vej BIOS pro komunikaci s kl vesnic¡\n"
+
+msgid  "            -M : Do not install the mouse handler\n"
+msgstr "            -M : Neinstaluje se ovlada‡ my¨i\n"
+
+msgid  "            -S : use slower (safer) screen output\n"
+msgstr "            -S : pou‘ije pomalej¨¡ (bezpe‡n˜) tisk na obrazovku\n"
+
+msgid  "            -K : Do not patch the keytable\n"
+msgstr "            -K : Neopravuj tabulku kl ves\n"
+
+msgid  "            -H : Do not install console switch handler\n"
+msgstr "            -H : Neinstaluj ovlada‡ pro p©ep¡n n¡ konzol¡\n"
+
+msgid  "            -L LANGUAGE : use language LANGUAGE\n"
+msgstr "            -L JAZYK : pou‘ije se jazyk JAZYK\n"
+
+msgid  "            -h : show this help\n"
+msgstr "            -h : vyp¡¨e tuto n povˆdu\n"
+
+msgid  "            -k KEY_FILE : use KEY_FILE for key bindings\n"
+msgstr "            -k KEY_FILE : pou‘ije KEY_FILE pro vazby mezi kl¡‡i\n"
+
+msgid  "            -E : Output all env. variables and exit\n"
+msgstr "            -E : Vyp¡¨e v¨echny promˆnn‚ prost©ed¡ p©i ukon‡en¡\n"
+
+msgid  "            -C : Disable SIGINT handling\n"
+msgstr "            -C : Zaka‘ obsluhu SIGINT\n"
+
+msgid  "            -T : Disable the DOS-box title feature\n"
+msgstr "            -T : Zaka‘ vlastnosti ¨t¡tku u DOSov‚ho boxu\n"
+
+msgid  "using %s as temp directory\n"
+msgstr "adres © %s pou‘¡v n pro pomocn‚ soubory\n"
+
+msgid  "This is %s. Copyright (c) 1996-1998 by Robert H”hne\n"
+msgstr "Toto je %s. V¨echna pr va vyhrazena (c) Robert H”hne, 1996-1998\n"
+
+msgid  "Do you really want to interrupt RHIDE?"
+msgstr "Chcete skute‡nˆ p©eru¨it RHIDE?"
+
+msgid  "RHIDE has detected, that the environment variable 'DJDIR' has not "
+"been set. This means, you haven't installed DJGPP correct. Please read the "
+"file README.1ST from the DJGPP distribution how to install DJGPP. If you "
+"continue now, you will get probably many errors."
+msgstr "RHIDE zjistilo, ‘e syst‚mov  promˆnn  'DJDIR' nebyla nastavena.To "
+"znamen , ‘e nem te spr vnˆ nainstalov no DJGPP. Pros¡m, p©e‡tˆte si "
+"souborREADME.1ST z distribuce DJGPP pojedn vaj¡c¡ o tom, jak nainstalovat "
+"DJGPP.Pokud budete nyn¡ pokra‡ovat, m–‘e se vyskytnout mno‘stv¡ chyb."
+
+msgid  "Invalid project-file %s(%s)"
+msgstr "Neplatn˜ soubor-projektu %s(%s)"
+
+msgid  "This project was created with a newer RHIDE version and could not be "
+"used."
+msgstr "Tento projekt byl vytvo©en novˆj¨¡ verz¡ RHIDE a nem–‘e b˜t pou‘it."
+
+msgid  "~S~yntax help"
+msgstr "~S~yntaktick  n povˆda"
+
+msgid  "~F~iles to search"
+msgstr "~S~oubory k prohled v n¡"
+
+msgid  "~O~ptions for searching"
+msgstr "~P~arametry vyhled v n¡"
+
+msgid  "~H~elp"
+msgstr "~N~ povˆda"
+
+msgid  "RHIDE Help ~i~ndex"
+msgstr "~S~eznam n povˆdy k RHIDE"
+
+msgid  "Index for s~y~ntax help"
+msgstr "Seznam s~y~ntaktick‚ n povˆdy"
+
+msgid  "lib~c~ reference"
+msgstr "lib~c~ odkazy"
+
+msgid  "Help ~a~bout help"
+msgstr "N povˆda ~o~ n povˆdˆ"
+
+msgid  "~L~ast help"
+msgstr "~P~osledn¡ n povˆda"
+
+msgid  "~F~ile"
+msgstr "~S~oubor"
+
+msgid  "~O~pen"
+msgstr "~O~tev©¡t"
+
+msgid  "~N~ew"
+msgstr "~N~ov˜"
+
+msgid  "~S~ave"
+msgstr "~U~lo‘it"
+
+msgid  "S~a~ve as..."
+msgstr "Ulo‘it ~j~ako..."
+
+msgid  "Save a~l~l"
+msgstr "U~l~o‘it v¨e"
+
+msgid  "~P~rint"
+msgstr ""
+
+msgid  "Printer set~u~p"
+msgstr ""
+
+msgid  "~D~OS shell"
+msgstr "P©¡kazov˜ © dek ~D~OS"
+
+msgid  "S~h~ell"
+msgstr "S~h~ell"
+
+msgid  "E~x~it"
+msgstr "~K~onec"
+
+msgid  "~M~acro"
+msgstr "~M~akro"
+
+msgid  "~R~ecord"
+msgstr "~Z~ znam"
+
+msgid  "~S~top"
+msgstr "~S~top"
+
+msgid  "~P~lay"
+msgstr "~P~©ehr t"
+
+msgid  "~C~hoose"
+msgstr ""
+
+msgid  "R~e~peat"
+msgstr ""
+
+msgid  "~G~enerate Code"
+msgstr ""
+
+msgid  "~E~dit"
+msgstr "~E~ditovat"
+
+msgid  "~U~ndo"
+msgstr "~Z~pˆt"
+
+msgid  "~R~edo"
+msgstr "~R~ekonstruovat"
+
+msgid  "Cu~t~"
+msgstr "~V~yst©ihnout"
+
+msgid  "~C~opy"
+msgstr "~K~op¡rovat"
+
+msgid  "~P~aste"
+msgstr "~V~lo‘it"
+
+msgid  "~S~how clipboard"
+msgstr "~U~k zat schr nku"
+
+msgid  "C~l~ear"
+msgstr "~V~ymazat"
+
+msgid  "Cop~y~ to Windows Clipboard"
+msgstr "~K~op¡rovat do schr nky Windows"
+
+msgid  "Paste from ~W~indows Clipboard"
+msgstr ""
+
+msgid  "E~x~pand all tabs"
+msgstr "Expandovat v¨echny ~t~abel tory"
+
+msgid  "C~o~mpact text"
+msgstr "Za~h~ustit text"
+
+msgid  "Profile Editor"
+msgstr "Editor profilu"
+
+msgid  "~S~earch"
+msgstr "~H~ledat"
+
+msgid  "~F~ind..."
+msgstr "~N~alezen¡..."
+
+msgid  "~R~eplace..."
+msgstr "~Z~amˆnit..."
+
+msgid  "~S~earch again"
+msgstr "~O~pˆtovn‚ hled n¡"
+
+msgid  "~G~oto Line..."
+msgstr "~J~¡t na © dek..."
+
+msgid  "~J~ump to function"
+msgstr "Skok na ~f~unkci"
+
+msgid  "~N~ext message"
+msgstr "~D~al¨¡ zpr va"
+
+msgid  "Previ~o~us message"
+msgstr "P©edchoz¡ zpr va"
+
+msgid  "~R~un"
+msgstr "S~p~usŸ"
+
+msgid  "~S~tep over"
+msgstr "~K~rok p©es"
+
+msgid  "Step over (No display swap)"
+msgstr "Krok p©es (nep©ep¡nat displej)"
+
+msgid  "~T~race into"
+msgstr "K~r~okovat do"
+
+msgid  "Trace into (No display swap)"
+msgstr "Krokovat do (nep©ep¡nat displej)"
+
+msgid  "~G~o to cursor"
+msgstr "~J~di na pozici kurzoru"
+
+msgid  "Go to cursor (No display swap)"
+msgstr "J~d~i na pozici kurzoru (nep©ep¡nej displej)"
+
+msgid  "~U~ntil return"
+msgstr "A‘ ~d~o n vratu"
+
+msgid  "~P~rogram reset"
+msgstr "~R~eset programu"
+
+msgid  "~M~ain function"
+msgstr "Funkce ~m~ain"
+
+msgid  "~A~rguments ..."
+msgstr "~P~arametry ..."
+
+msgid  "~C~ompile"
+msgstr "~K~ompiluj"
+
+msgid  "~M~ake"
+msgstr "~V~yrobit"
+
+msgid  "~L~ink"
+msgstr "~L~inkovat"
+
+msgid  "~B~uild all"
+msgstr "~S~estavit znovu"
+
+msgid  "~P~roject"
+msgstr "~P~rojekt"
+
+msgid  "Open ~p~roject"
+msgstr "Otev©¡t ~p~rojekt"
+
+msgid  "~C~lose project"
+msgstr "~U~zav©¡t projekt"
+
+msgid  "~A~dd item"
+msgstr "~P~©idat polo‘ku"
+
+msgid  "D~e~lete item"
+msgstr "~S~mazat polo‘ku"
+
+msgid  "~L~ocal options"
+msgstr "~L~ok ln¡ parametry"
+
+msgid  "~I~ncludes"
+msgstr "~I~nclude"
+
+msgid  "main target~n~ame"
+msgstr "~J~m‚no hlavn¡ho programu"
+
+msgid  "Primary ~f~ile"
+msgstr "~Z~ kladn¡ soubor"
+
+msgid  "Clea~r~ dependencies"
+msgstr "~V~ymazat z vislosti"
+
+msgid  "~D~elete rebuildable files"
+msgstr "~Z~ru¨it znovu vytvo©iteln‚ soubory"
+
+msgid  "Crea~t~e dependencies"
+msgstr "~V~ytvo©it z vislosti"
+
+msgid  "~W~rite Makefile"
+msgstr "~Z~apsat Makefile"
+
+msgid  "~D~irectories"
+msgstr "~A~dres ©e"
+
+msgid  "~I~nclude"
+msgstr "~I~nclude"
+
+msgid  "~L~ibraries"
+msgstr "~K~nihovny"
+
+msgid  "~O~bject"
+msgstr "~O~bjektov‚ soubory"
+
+msgid  "~S~ources"
+msgstr "~Z~drojov‚ soubory"
+
+msgid  "S~t~andard headers"
+msgstr "S~t~andardn¡ hlavi‡ky"
+
+msgid  "~C~ompilers"
+msgstr "Ko~m~pil tor"
+
+msgid  "~W~arnings"
+msgstr "~V~arov n¡"
+
+msgid  "~O~ptimizations"
+msgstr "~O~ptimalizace"
+
+msgid  "De~b~ugging"
+msgstr "~L~adˆn¡"
+
+msgid  "~C~-Flags"
+msgstr "~C~-Parametry"
+
+msgid  "C~X~X-Flags"
+msgstr "C~X~X-Parametry"
+
+msgid  "P~a~scal-Flags"
+msgstr "P~a~scal-Parametry"
+
+msgid  "~F~ortran-Flags"
+msgstr "~F~ortran-Parametry"
+
+msgid  "A~d~a-Flags"
+msgstr "A~d~a-Parametry"
+
+msgid  "~E~ditor"
+msgstr "~E~ditor"
+
+msgid  "~E~ditor options"
+msgstr "Parametry ~e~ditoru"
+
+msgid  "E~d~it key assignment"
+msgstr "E~d~itace p©i©azen¡ kl¡‡–"
+
+msgid  "~A~lt-Keys settings"
+msgstr "Nastaven¡ kl¡‡– ~A~lt"
+
+msgid  "~R~estore default editor keys"
+msgstr "~O~bnov implicitn¡ kl¡‡e editoru"
+
+msgid  "~E~nvironment"
+msgstr "~P~rost©ed¡"
+
+msgid  "~C~olors"
+msgstr "~B~arvy"
+
+msgid  "~P~references"
+msgstr "~P~riority"
+
+msgid  "~M~ouse options"
+msgstr "Nastaven¡ ~M~y¨i"
+
+msgid  "~R~eserved words"
+msgstr "~R~ezervovan  slova"
+
+msgid  "P~a~scal Reserved words"
+msgstr "Rezervovan  slova P~a~scalu"
+
+msgid  "C-~F~lags"
+msgstr "Parametry-~C~"
+
+msgid  "Fortra~n~-Flags"
+msgstr "Parametry ~F~ortranu"
+
+msgid  "Ada-~F~lags"
+msgstr "Parametry-~A~dy"
+
+msgid  "~W~arning-Flags"
+msgstr "Parametry ~v~arov n¡"
+
+msgid  "~D~ebugging-Flags"
+msgstr "Parametry ~l~adˆn¡"
+
+msgid  "~O~ptimization-Flags"
+msgstr "Parametry ~o~ptimalizace"
+
+msgid  "~U~ser words"
+msgstr "~U~‘ivatelsk  slova"
+
+msgid  "~O~ptions"
+msgstr "~V~olby"
+
+msgid  "L~i~nker Options"
+msgstr "Nastaven¡ l~i~nkeru"
+
+msgid  "Compiler ~O~ptions"
+msgstr "Na~s~taven¡ kompil toru"
+
+msgid  "~S~ave options"
+msgstr "Parametry ~u~kl d n¡"
+
+msgid  "Loa~d~ options"
+msgstr "Parametry ~n~a‡¡t n¡"
+
+msgid  "~W~indows"
+msgstr "~O~kno"
+
+msgid  "~S~ize/move"
+msgstr "~V~elikost/Pozice"
+
+msgid  "~Z~oom"
+msgstr "~Z~vˆt¨en¡"
+
+msgid  "~T~ile"
+msgstr "~D~la‘dice"
+
+msgid  "C~a~scade"
+msgstr "~K~ask da"
+
+msgid  "~N~ext"
+msgstr "~D~al¨¡"
+
+msgid  "~P~revious"
+msgstr "~P~©edchoz¡"
+
+msgid  "~C~lose"
+msgstr "~U~zav©¡t"
+
+msgid  "~L~ist"
+msgstr "~S~eznam"
+
+msgid  "Pro~j~ect"
+msgstr "~P~rojekt"
+
+msgid  "~W~atches"
+msgstr "~P~rohl¡‘en¡"
+
+msgid  "~M~essages"
+msgstr "~Z~pr vy"
+
+msgid  "~U~serScreen"
+msgstr "~U~‘ivatelsk Obrazovka"
+
+msgid  "~ð~"
+msgstr "~ð~"
+
+msgid  "about RH~I~DE"
+msgstr "o RH~I~DE"
+
+msgid  "~s~mall bug report"
+msgstr "~m~al  zpr va o chybˆ"
+
+msgid  "~B~ug report"
+msgstr "Chybov‚ ~h~l ¨en¡"
+
+msgid  "~F~SDB"
+msgstr "~F~SDB"
+
+msgid  "~G~REP ..."
+msgstr "~G~REP ..."
+
+msgid  "G~D~B"
+msgstr "G~D~B"
+
+msgid  "Refresh desk~t~op"
+msgstr "P©ekreslen¡ ~p~racovn¡ plochy"
+
+msgid  "~C~alculator"
+msgstr "~K~alkula‡ka"
+
+msgid  "~P~uzzle"
+msgstr "~R~‚bus"
+
+msgid  "Ca~l~endar"
+msgstr "Ka~l~end ©"
+
+msgid  "~A~SCII table"
+msgstr "Tabulka ~A~SCII"
+
+msgid  "~D~ebug"
+msgstr "La~d~ˆn¡"
+
+msgid  "~S~et/Reset Breakpoint"
+msgstr "~N~astaven¡/Vymaz n¡ lad¡c¡ho bodu"
+
+msgid  "~E~valuate/Modify"
+msgstr "~V~yhodnoŸ/Zmˆ¤"
+
+msgid  "~W~atch an expression"
+msgstr "~P~rohl¡dnut¡ v˜razu"
+
+msgid  "~I~nspect an expression"
+msgstr ""
+
+msgid  "~B~reakpoints"
+msgstr "~L~ad¡c¡ body"
+
+msgid  "~D~isassembler window"
+msgstr "Okno ~d~isasembleru"
+
+msgid  "~C~all stack"
+msgstr "Vol n¡ v ~z~ sobn¡ku"
+
+msgid  "List of ~F~unctions"
+msgstr "Seznam ~f~unkc¡"
+
+msgid  "Message Window"
+msgstr "Okno se zpr vami"
+
+msgid  "Optimization Flags"
+msgstr "Parametry optimalizace"
+
+msgid  "Warning Flags"
+msgstr "Parametry varov n¡"
+
+msgid  "Debugging Flags"
+msgstr "Parametry ladˆn¡"
+
+msgid  "C++ Flags"
+msgstr "P©¡znaky C++"
+
+msgid  "C Flags"
+msgstr "P©¡znaky C"
+
+msgid  "Pascal Flags"
+msgstr "P©¡znaky Pascalu"
+
+msgid  "Fortran Flags"
+msgstr "P©¡znaky Fortranu"
+
+msgid  "Ada Flags"
+msgstr "P©¡znaky Ady"
+
+msgid  "Libraries"
+msgstr "Knihovny"
+
+msgid  "Use ~s~tandard libraries"
+msgstr "Pou‘it¡ ~s~tandardn¡ch knihoven"
+
+msgid  "link for ~p~rofiling"
+msgstr "linkov n¡ pro ~a~nal˜zu"
+
+msgid  "Additional linker options"
+msgstr "Dodate‡n  nastaven¡ linkeru"
+
+msgid  "Additional compiler options"
+msgstr "Dodate‡n  nastaven¡ kompil toru"
+
+msgid  "Environment options"
+msgstr "Nastaven¡ prost©ed¡ IDE"
+
+msgid  "~R~emember old messages"
+msgstr "~P~amatuj si star‚ zpr vy"
+
+msgid  "all dependencies in ~m~akefile"
+msgstr "v¨echny z vislosti v ~m~akefile"
+
+msgid  "create ~b~ackupfiles"
+msgstr "vytv ©et ~z~ lohy"
+
+msgid  "syntax ~h~ighlighting"
+msgstr "zv˜raznˆn¡ s~y~ntaxe"
+
+msgid  "U~s~e dual display"
+msgstr "Po~u~‘it¡ du ln¡ho displeje"
+
+msgid  "redirect 'stde~r~r'"
+msgstr "p©esmˆrov n¡ 'stde~r~r'"
+
+msgid  "redirect 'stdou~t~'"
+msgstr "p©esmˆrov n¡ 'stdou~t~'"
+
+msgid  "show ~p~rocess information"
+msgstr "vy~p~i¨ informace o procesu"
+
+msgid  "show free memor~y~"
+msgstr "zobrazuj ~v~elikost voln‚ pamˆti"
+
+msgid  "No file cachin~g~"
+msgstr "’ dn  souborov  cache"
+
+msgid  "1~6~ background colors"
+msgstr "1~6~ barev na pozad¡"
+
+msgid  "Show G~D~B commands"
+msgstr "Zobrazuj p©¡kazy G~D~B "
+
+msgid  "~U~se no shadows"
+msgstr "Nepou‘¡vej st¡nov n¡"
+
+msgid  "Save te~x~t palette"
+msgstr "Ulo‘en¡ te~x~tov‚ palety"
+
+msgid  "Save pro~j~ect only when closing"
+msgstr "Ulo‘en¡ pro~j~ektu pouze p©i uzav©en¡"
+
+msgid  "Sho~w~ user screen after exit"
+msgstr "~Z~obrazen¡ u‘ivatelsk‚ obrazovky po ukon‡en¡"
+
+msgid  "Only #~i~nclude \"...\" as dependencies"
+msgstr "Pouze #~i~nclude \"...\" jako z vislosti"
+
+msgid  "Directories in project items"
+msgstr "~A~dres ©e v polo‘k ch projektu"
+
+msgid  "Show Disassemb~l~er Window when needed"
+msgstr "Zobrazen¡ okna disasemb~l~eru je-li pot©eba"
+
+msgid  "Use RCS"
+msgstr "~P~ou‘it¡ RCS"
+
+msgid  "Use ~F~PC pascal compiler"
+msgstr "Pou‘ij ~F~PC kompil tor Pascalu"
+
+msgid  "O~p~tions"
+msgstr "~P~arametry"
+
+msgid  "other"
+msgstr "ostatn¡"
+
+msgid  "~S~creen mode"
+msgstr "R~e~‘im zobrazen¡"
+
+msgid  "Closed ~W~indows"
+msgstr "~U~zav©en  Okna"
+
+msgid  "Cancel"
+msgstr "Zru¨it"
+
+msgid  "Mor~e~ options"
+msgstr "~D~al¨¡ volby"
+
+msgid  "This video mode (0x%03x) is not supported by the Turbo Vision "
+"library"
+msgstr "Tento video-re‘im (0x%03x) nen¡ podporov n knihovnou Turbo Vision"
+
+msgid  "~A~dd"
+msgstr "~P~©idat"
+
+msgid  "~D~elete"
+msgstr "S~m~azat"
+
+msgid  "Defa~u~lt"
+msgstr "~I~mplicitn¡"
+
+msgid  "New value"
+msgstr "Nov  hodnota"
+
+msgid  "~V~alue"
+msgstr "~H~odnota"
+
+msgid  "Read words from file"
+msgstr "€¡st slova ze souboru"
+
+msgid  "Couldn't open file %s"
+msgstr "Soubor %s nelze otev©¡t"
+
+msgid  "Reserved words"
+msgstr "~R~ezervovan  slova"
+
+msgid  "GPC Reserved words"
+msgstr "GPC rezervovan  slova"
+
+msgid  "FPC Reserved words"
+msgstr "FPC rezervovan  slova"
+
+msgid  "User Reserved words"
+msgstr "U‘ivatelem rezervovan  slova"
+
+msgid  "local options for project-item"
+msgstr "lok ln¡ parametry pro polo‘ky projektu"
+
+msgid  "local ~c~ommandline options"
+msgstr "lok ln¡ © dkov‚ ~p~©¡kazy"
+
+msgid  "~N~ame of the output file"
+msgstr "~J~m‚no v˜stupn¡ho souboru"
+
+msgid  "Auto"
+msgstr "Automaticky"
+
+msgid  "User"
+msgstr "U‘ivatel"
+
+msgid  "None"
+msgstr "Nic"
+
+msgid  "GNU C compiler"
+msgstr "GNU kompil tor C"
+
+msgid  "GNU C++ compiler"
+msgstr "GNU kompil tor C++"
+
+msgid  "GNU assembler"
+msgstr "GNU assembler"
+
+msgid  "GNU Pascal compiler"
+msgstr "GNU kompil tor Pascalu"
+
+msgid  "GNU Fortran compiler"
+msgstr "GNU kompil tor Fortranu"
+
+msgid  "Free Pascal compiler"
+msgstr "Voln˜ kompil tor Pascalu"
+
+msgid  "Comp~i~ler type"
+msgstr "~T~yp komp~i~l toru"
+
+msgid  "Com~p~iler"
+msgstr "Kom~p~il tor"
+
+msgid  "builtin C"
+msgstr "vestavˆn‚ C"
+
+msgid  "builtin assembler"
+msgstr "vestavˆn˜ Assembler"
+
+msgid  "builtin linker"
+msgstr "vestavˆn˜ linkova‡"
+
+msgid  "return value"
+msgstr "n vratov  hodnota"
+
+msgid  "builtin FPC"
+msgstr "vestavˆn˜ FPC"
+
+msgid  "~E~rror checking"
+msgstr "~K~ontrola chyb"
+
+msgid  "E~r~ror program"
+msgstr "Chyba p~r~ogramu"
+
+msgid  "exclude from link"
+msgstr "vyjmout z linkov n¡"
+
+msgid  "rebuild seldom"
+msgstr "rekompiluj m lokdy"
+
+msgid  "o~t~her options"
+msgstr "dal¨¡ parame~t~ry"
+
+msgid  "The desktop file cannot be used, because of a new format"
+msgstr "Vzhledem k nov‚mu form tu nem–‘e b˜t pracovn¡ plocha pou‘ita"
+
+msgid  "The desktop file cannot be used, because it was created by a newer "
+"version of RHIDE"
+msgstr "Pracovn¡ plocha nem–‘e b˜t pou‘ita, proto‘e byla vytvo©ena novˆj¨¡ "
+"verz¡ RHIDE"
+
+msgid  "Save options to a project"
+msgstr "Ulo‘it nastaven¡ do projektu"
+
+msgid  "Read options from project"
+msgstr "Na‡¡st nastaven¡ z projektu"
+
+msgid  "Couldn't open %s"
+msgstr "%s nelze otev©¡t"
+
+msgid  "No project"
+msgstr "Bez projektu"
+
+msgid  "changing cwd to %s\n"
+msgstr "zmˆna cwd na %s\n"
+
+msgid  "temporary opening project %s\n"
+msgstr "do‡asn‚ otev©en¡ projektu %s\n"
+
+msgid  "closing temporary opened project project %s\n"
+msgstr "uzav©en¡ do‡asnˆ otev©en‚ho projektu %s\n"
+
+msgid  "finaly opening project %s\n"
+msgstr "kone‡n‚ otev©en¡ projektu %s\n"
+
+msgid  "Project Window"
+msgstr "Okno projektu"
+
+msgid  "Add Item"
+msgstr "P©idat polo‘ku"
+
+msgid  "The item '%s' is already in your project"
+msgstr "polo‘ka '%s' je ji‘ v projektu obsa‘ena"
+
+msgid  "Remove '%s' from the project"
+msgstr "Vyjmout '%s' z projektu"
+
+msgid  "Include files for "
+msgstr "Include soubory pro "
+
+msgid  "clearing dependencies for %s\n"
+msgstr "zru¨en¡ z vislost¡ pro %s\n"
+
+msgid  "removing %s\n"
+msgstr "vyj¡m n¡ %s\n"
+
+msgid  "~F1~ Help"
+msgstr "~F1~ N povˆda"
+
+msgid  "~F2~ Save"
+msgstr "~F2~ Ulo‘it"
+
+msgid  "~F3~ Open"
+msgstr "~F3~ Otev©¡t"
+
+msgid  "~F5~ Zoom"
+msgstr "~F5~ Zvˆt¨it"
+
+msgid  "~F6~ Next"
+msgstr "~F6~ Dal¨¡"
+
+msgid  "~F10~ Menu"
+msgstr "~F10~ Menu"
+
+msgid  "~Alt+X~ Quit"
+msgstr "~Alt+X~ Konec"
+
+msgid  "~Ins~ Add"
+msgstr "~Ins~ P©idat"
+
+msgid  "~Del~ Delete"
+msgstr "~Del~ Zru¨it"
+
+msgid  "~^O~ Local"
+msgstr "~^O~ Lok ln¡"
+
+msgid  "~^I~ Includes"
+msgstr "~^I~ Includes"
+
+msgid  "~Alt+F9~ Compile"
+msgstr "~Alt+F9~ Kompilovat"
+
+msgid  "~Enter~ Jump to source"
+msgstr "~Enter~ Skok do zdrojov‚ho textu"
+
+msgid  "~Ctrl+Del~ Delete all"
+msgstr "~Ctrl+Del~ Zru¨ v¨e"
+
+msgid  "~Enter~ Select"
+msgstr "~Enter~ V˜bˆr"
+
+msgid  "~Del~ Close"
+msgstr "~Del~ Uzav©¡t"
+
+msgid  "~F1~ Help on InfoViewer"
+msgstr "~F1~ n povˆda k InfoVieweru"
+
+msgid  "~Alt+F1~ last help"
+msgstr "~Alt+F1~ posledn¡ n povˆda"
+
+msgid  "~Alt+F10~ local menu"
+msgstr "~Alt+F10~ lok ln¡ menu"
+
+msgid  "~^F1~ Bookmarks"
+msgstr "~^F1~ Z lo‘ky"
+
+msgid  "~Ctrl+F1~ Select from a list"
+msgstr "~Ctrl+F1~ V˜bˆr ze seznamu"
+
+msgid  "~Enter~ Edit"
+msgstr "~Enter~ Editovat"
+
+msgid  "~Esc~ Cancel"
+msgstr "~Esc~ Zru¨it"
+
+msgid  "~Space~ select"
+msgstr "~Space~ vyber"
+
+msgid  "~^G~ Goto"
+msgstr "~^G~ J¡t na"
+
+msgid  "~Alt+F3~ Close"
+msgstr "~Alt-F3~ Zav©¡t"
+
+msgid  "~Enter~ Modify register"
+msgstr "~Enter~ Zmˆ¤it obsah registr–"
+
+msgid  "Search for file '%s'\n"
+msgstr "Hledat soubor '%s'\n"
+
+msgid  "found '%s'\n"
+msgstr "nalezeno '%s'\n"
+
+msgid  "not found: take '%s'\n"
+msgstr "nelze naj¡t: vezmi si '%s'\n"
+
+msgid  "clearing the FindCache\n"
+msgstr "vymazat vyrovn vac¡ pamˆŸ prohled va‡e\n"
+
+msgid  "found '%s' in FindCache\n"
+msgstr "nalezeno '%s' ve vyrovn vac¡ pamˆti\n"
+
+msgid  "found '%s' in current directory\n"
+msgstr "nalezeno '%s' v aktualn¡m adres ©i\n"
+
+msgid  "found '%s' using the search directory '%s'\n"
+msgstr "nalezeno '%s' s pou‘it¡m prohled vac¡ch adresa©– '%s'\n"
+
+msgid  "Open the file %s"
+msgstr "Otev©¡t soubor %s"
+
+msgid  "An error has occoured when running the program "
+msgstr "Nastala chyba p©i spu¨tˆn¡ programu "
+
+msgid  "The error was : "
+msgstr "Chyba byla: "
+
+msgid  "Messages to stdout:"
+msgstr "Zpr vy do stdout:"
+
+msgid  "Messages to stderr:"
+msgstr "Zpr vy do stderr:"
+
+msgid  "Control-Break Pressed"
+msgstr "Stisknuto Control-Break"
+
+msgid  "Compiling: "
+msgstr "Kompilace: "
+
+msgid  "Creating: "
+msgstr "Vytv ©en¡: "
+
+msgid  "Don't know how to build %s from %s"
+msgstr "Nev¡m, jak p©elo‘it %s podle %s"
+
+msgid  "no errors"
+msgstr "bez chyb"
+
+msgid  "There were some errors"
+msgstr "Nastaly nˆjak‚ chyby"
+
+msgid  "Select a topic"
+msgstr "V˜bˆr t‚matu"
+
+msgid  "Error creating the indices for %s (or nothing found). Remove that "
+"file from the list?"
+msgstr "Chyba p©i tvorbˆ rejst©¡k– pro %s (nebo nic nenalezeno). Vyjmout "
+"dan˜ soubor ze seznamu?"
+
+msgid  "No INFO files for syntax help defined"
+msgstr "INFO soubory syntaktick‚ n povˆdy nebyly definov ny"
+
+msgid  "Couldn't find any matching help"
+msgstr "Nepoda©ilo se nal‚zt vhodnou n povˆdu"
+
+msgid  "Options for syntax help"
+msgstr "Parametry syntaktick‚ n povˆdy"
+
+msgid  "E~x~act"
+msgstr "P©~e~snˆ"
+
+msgid  "~S~ubstring"
+msgstr "Pod©etˆ~z~ec"
+
+msgid  "~F~uzzy"
+msgstr "~P~odobn‚"
+
+msgid  "Search ~m~ethode"
+msgstr "Vyhled vac¡ ~m~etoda"
+
+msgid  "~C~ase sensitive"
+msgstr "~Z~ le‘¡ na velikosti p¡smen"
+
+msgid  "Search o~p~tions"
+msgstr "~P~arametry hled n¡"
+
+msgid  "Fu~z~zy value"
+msgstr "Fu~z~zy hodnota"
+
+msgid  "Calculator"
+msgstr "Kalkula‡ka"
+
+msgid  "~R~esult"
+msgstr "~V~˜sledek"
+
+msgid  "E~v~al"
+msgstr "~V~yhodnoŸ"
+
+msgid  "Error in expression (%d)"
+msgstr "Chyba ve v˜razu (%d)"
+
+msgid  "RHIDE has detected that your DJGPP environment variable was not set. "
+"It is set now automatically. If RHIDE did the right choice, please modify "
+"your autoexec.bat by adding the following line to fix this problem:\n"
+"\n"
+"SET DJGPP=%s\n"
+msgstr ""
+
+msgid  "RHIDE has detected, that the environment variable DJDIR has not been "
+"set (or not correct). This is a fatal mistake. For information about fixing "
+"this, please read the File README.1ST from the DJGPP distribution. (about "
+"setting the DJGPP environment variable!!!) Should I continue?"
+msgstr "RHIDE zjistilo, ‘e syst‚mov  promˆnn  'DJDIR' nebyla nastavena (nebo "
+"nen¡ nastavena spr vnˆ). Toto je kritick  chyba. Pro informaci o jej¡m "
+"odstranˆn¡ si laskavˆ p©e‡tˆte soubor README.1ST z distribuce DJGPP. "
+"(pojedn n¡ o nastaven¡ syst‚mov‚ promˆnn‚ DJGPP!!!) M m pokra‡ovat?"
+
+msgid  "RHIDE could not access the direcory '%s', where it searches for "
+"language specific strings. Please read the file 'RHIDE.BIN' how to install "
+"RHIDE correct. Should I continue?"
+msgstr ""
+
+msgid  "RHIDE has detected, that you are running on a System where long "
+"filenames might be supported and you have installed the C++ compiler. Are "
+"you sure, you have read the DJGPP FAQ and the installing instructions for "
+"gcc when running under such a system? (like Windows 95/Windows NT) There "
+"might be a problem with the standard C++ libraries and the standard C++ "
+"include files because of a LFN-conflict. Should I continue?"
+msgstr ""
+
+msgid  "type not registered: %s\n"
+msgstr "typ nen¡ zaregistrov n: %s\n"
+
+msgid  "Change Directory"
+msgstr "Zmˆna adres ©e"
+
+msgid  "Directory ~n~ame"
+msgstr "~J~m‚no adres ©e"
+
+msgid  "Directory ~t~ree"
+msgstr "Adres ©ov˜ ~s~trom"
+
+msgid  "~C~hdir"
+msgstr "~Z~mˆnit dir"
+
+msgid  "~R~evert"
+msgstr "~O~pakovat"
+
+msgid  "Help"
+msgstr "~N~ povˆda"
+
+msgid  "Drives"
+msgstr "Jednotky"
+
+msgid  "Invalid directory"
+msgstr "Neplatn˜ adres ©"
+
+msgid  "Colors"
+msgstr "~B~arvy"
+
+msgid  "~G~roup"
+msgstr "~S~kupina"
+
+msgid  "~I~tem"
+msgstr "~P~olo‘ka"
+
+msgid  "~F~oreground"
+msgstr "~P~op©ed¡"
+
+msgid  "~B~ackground"
+msgstr "Po~z~ad¡"
+
+msgid  "Text "
+msgstr "Text "
+
+msgid  "Color"
+msgstr "Barva"
+
+msgid  "~F~iles"
+msgstr "~S~oubory"
+
+msgid  "~R~eplace"
+msgstr "~Z~amˆ¤"
+
+msgid  "~C~lear"
+msgstr "~V~ymazat"
+
+msgid  "Invalid drive or directory"
+msgstr "Neplatn‚ jm‚no jednotky nebo adres ©e"
+
+msgid  "Invalid file name."
+msgstr "Neplatn‚ jm‚no souboru."
+
+msgid  "Jan"
+msgstr "Led"
+
+msgid  "Feb"
+msgstr "—no"
+
+msgid  "Mar"
+msgstr "B©e"
+
+msgid  "Apr"
+msgstr "Dub"
+
+msgid  "May"
+msgstr "Kvˆ"
+
+msgid  "Jun"
+msgstr "€er"
+
+msgid  "Jul"
+msgstr "€ne"
+
+msgid  "Aug"
+msgstr "Srp"
+
+msgid  "Sep"
+msgstr "Z ©"
+
+msgid  "Oct"
+msgstr "ž¡j"
+
+msgid  "Nov"
+msgstr "Lis"
+
+msgid  "Dec"
+msgstr "Pro"
+
+msgid  "Invalid character in input"
+msgstr "Neplatn˜ znak na vstupu"
+
+msgid  "<empty>"
+msgstr "<pr zdn˜>"
+
+msgid  "Normal"
+msgstr "Norm ln¡"
+
+msgid  "Highlight"
+msgstr "Zv˜raznˆn˜"
+
+msgid  "Underline"
+msgstr "Podtr‘en˜"
+
+msgid  "Inverse"
+msgstr "Invezn¡"
+
+msgid  "~Alt-X~ Exit"
+msgstr "~Alt-X~ Konec"
+
+msgid  "Value not in the range %U to %U"
+msgstr "Hodnota nen¡ z rozsahu od %U do %U"
+
+msgid  "Value not in the range %D to %D"
+msgstr "Hodnota nen¡ z rozsahu od %D do %D"
+
+msgid  "Could not open '%s' for reading"
+msgstr "'%s' nelze otev©¡t pro ‡ten¡"
+
+msgid  "Save to file"
+msgstr "Ulo‘it do souboru"
+
+msgid  "~Y~es"
+msgstr "~A~no"
+
+msgid  "~N~o"
+msgstr "~N~e"
+
+msgid  "Warning"
+msgstr "Varov n¡"
+
+msgid  "Error"
+msgstr "Chyba"
+
+msgid  "Information"
+msgstr "Informace"
+
+msgid  "Confirm"
+msgstr "Potvrzen¡"
+
+msgid  "Don't warn you next time"
+msgstr "P©¡¨tˆ nezobrazuj varov n¡"
+
+msgid  "You must type a value here"
+msgstr "Mus¡te zde zadat hodnotu"
+
+msgid  "You can type a value here"
+msgstr "M–‘ete zde zadat hodnotu"
+
+msgid  "~V~alue (-1 for none)"
+msgstr "~H~odnota (-1 - nic)"
+
+msgid  " allowed chars "
+msgstr " povolen‚ znaky "
+
+msgid  "You must type a string here"
+msgstr "Mus¡te zde zadat ©etˆzec"
+
+msgid  "You can type a string here"
+msgstr "M–‘ete zde zadat ©etˆzec"
+
+msgid  "You must type a character here"
+msgstr "Mus¡te zde zadat znak"
+
+msgid  "You can type a character here"
+msgstr "M–‘ete zde zadat znak"
+
+msgid  "Warning: %s is write protected"
+msgstr "Varov n¡: %s je chr nˆn proti z pisu"
+
+msgid  "File"
+msgstr "Soubor"
+
+msgid  "Line/Function"
+msgstr "ž dek/Funkce"
+
+msgid  "Condition"
+msgstr "Podm¡nky"
+
+msgid  "Count"
+msgstr "Po‡¡tadlo"
+
+msgid  "~M~odify"
+msgstr "~M~odifikace"
+
+msgid  "~E~nable"
+msgstr "~P~ovolit"
+
+msgid  "D~i~sable"
+msgstr "~Z~ak zat"
+
+msgid  "~S~how"
+msgstr "~U~ka‘"
+
+msgid  "File/L~i~ne"
+msgstr "Soubor/© ~d~ek"
+
+msgid  "Fu~n~ction"
+msgstr "Fu~n~kce"
+
+msgid  "~T~ype"
+msgstr "~T~yp"
+
+msgid  "F~u~nction"
+msgstr "Fu~n~kce"
+
+msgid  "~F~ilename"
+msgstr "~J~m‚no souboru"
+
+msgid  "~L~ine"
+msgstr "~ž~ dek"
+
+msgid  "Con~d~ition"
+msgstr "Podm¡nka"
+
+msgid  "Coun~t~"
+msgstr "Po‡¡tadlo"
+
+msgid  "Edit Breakpoint"
+msgstr "Editace lad¡c¡ch bod–"
+
+msgid  "New Breakpoint"
+msgstr "Nov˜ bod zastaven¡"
+
+msgid  "BreakPoints"
+msgstr "Lad¡c¡ body"
+
+msgid  "Select a function"
+msgstr "V˜bˆr funkce"
+
+msgid  "return type: "
+msgstr "n vratov˜ typ: "
+
+msgid  "file: "
+msgstr "soubor: "
+
+msgid  "Output from GDB"
+msgstr "V˜stup z GDB"
+
+msgid  "~N~ew value"
+msgstr "~N~ov  hodnota"
+
+msgid  "~C~hange"
+msgstr "~Z~mˆnit"
+
+msgid  "not available"
+msgstr "nen¡ dostupn‚"
+
+msgid  "could not change"
+msgstr "nem–‘e b˜t zmˆnˆno"
+
+msgid  "Change the expression to watch"
+msgstr "Zmˆna prohl¡‘en‚ho v˜razu"
+
+msgid  "Watch"
+msgstr "Prohl¡‘en¡"
+
+msgid  "Evaluate and modify"
+msgstr "Vyhodnocen¡ a modifikace"
+
+msgid  "Add to watch list"
+msgstr "P©idat do seznamu prohl¡‘en˜ch"
+
+msgid  "%s\n"
+"\n"
+"(Breakpoint at function '%s' in file %s)"
+msgstr "%s\n"
+"\n"
+"(lad¡c¡ bod ve funkci '%s' v souboru %s)"
+
+msgid  "%s\n"
+"\n"
+"(Breakpoint at line %d in file %s)"
+msgstr "%s\n"
+"\n"
+"(lad¡c¡ bod na © dku '%s' v souboru %s)"
+
+msgid  "Program has received signal: "
+msgstr "Program p©ijal sign l: "
+
+msgid  "For this line is no code generated"
+msgstr "Pro tento © dek nen¡ vytvo©en k¢d"
+
+msgid  "Could not find the program. You must build at first the program to "
+"use this function, because the symbols are taken from that file."
+msgstr "Nelze nal‚zt program. Mus¡te nejprve p©estavˆt program pro u‘it¡ "
+"t‚to funkce, proto‘e symboly jsou br ny z dan‚ho souboru."
+
+msgid  "The selected breakpoint is invalid, probably this file is not "
+"compiled with debugging information or for this line is no code generated."
+msgstr "Zvolen˜ lad¡c¡ bod je neplatn˜, pravdˆpodobnˆ tento soubor nebyl "
+"kompilov n s lad¡c¡mi informacemi nebo pro tento © dek nen¡ vytvo©en k¢d."
+
+msgid  "This program has no usable debugging information. Try to compile it "
+"with the -g switch."
+msgstr "Tento program nem  pou‘iteln‚ lad¡c¡ informace. Zkuste jej p©elo‘it "
+"s nastaven˜m p©ep¡na‡em -g."
+
+msgid  "This breakpoint could not enabled, because you are running under "
+"Windows 3.1x and there the number of breakpoints is limited to 3"
+msgstr "Tento lad¡c¡ bod nemohl b˜t povolen, proto‘e m te spu¨tˆny Windows "
+"3.1x a tam je po‡et lad¡c¡ch bod– omezen na 3"
+
+msgid  "You have already 3 breakpoints set and under Windows 3.1x the number "
+"of breakpoints is limited to 3"
+msgstr "M te ji‘ 3 lad¡c¡ body nastaveny a pod Windows 3.1x je po‡et "
+"lad¡c¡ch bod– omezen na 3 "
+
+msgid  "Function call stack"
+msgstr "Z sobn¡k vol n¡ funkc¡"
+
+msgid  "Change register value"
+msgstr "Zmˆnit hodnotu registru"
+
+msgid  "Write block to file"
+msgstr ""
+
+msgid  "Read block from file"
+msgstr ""
+
+msgid  "Base Address"
+msgstr ""
+
+msgid  "Parameter Error!"
+msgstr ""
+
+msgid  "Data window"
+msgstr ""
+
+msgid  "Fill Block"
+msgstr ""
+
+msgid  "~F~rom, length, value"
+msgstr ""
+
+msgid  "Clear Block"
+msgstr ""
+
+msgid  "~F~rom, length"
+msgstr ""
+
+msgid  "Move Block"
+msgstr ""
+
+msgid  "~F~rom, to, length"
+msgstr ""
+
+msgid  "Read Block"
+msgstr ""
+
+msgid  "~T~o, length"
+msgstr ""
+
+msgid  "%u bytes read."
+msgstr ""
+
+msgid  "Write Block"
+msgstr ""
+
+msgid  "%u bytes written."
+msgstr ""
+
+msgid  "~P~athlist"
+msgstr "~S~eznam cest"
+
+msgid  "~P~arameter"
+msgstr "~P~arametr"
+
+msgid  "There is an unmatched quote in your arguments"
+msgstr "V argumentech je lich˜ po‡et uvozovek"
+
+msgid  "Closed"
+msgstr "Uzav©eno"
+
+msgid  "Error: "
+msgstr "Chyba: "
+
+msgid  "Warning: "
+msgstr "Varov n¡: "
+
+msgid  "about RH~G~DB"
+msgstr "kolem RH~G~DB"
+
+msgid  "~Q~uit"
+msgstr "~K~onec"
+
+msgid  "D~a~ta window"
+msgstr ""
+
+msgid  "S~t~ack window"
+msgstr ""
+
+msgid  "~D~irectories for sources"
+msgstr "~A~dres ©e ke zdrojov˜m soubor–m"
+
+msgid  "~L~oad options"
+msgstr "Parametry ~n~a‡¡t n¡"
+
+msgid  "~U~ser screen"
+msgstr "~U~‘ivatelsk  obrazovka"
+
+msgid  "~W~indow list"
+msgstr "Seznam ~o~ken"
+
+msgid  "~F7~ Trace"
+msgstr "~F7~ Trasov n¡"
+
+msgid  "~F8~ Step"
+msgstr "~F8~ Krokov n¡"
+
+msgid  "~F4~ Goto"
+msgstr "~F4~ J¡t na"
+
+msgid  "~^F2~ Reset"
+msgstr "~^F2~ Reset"
+
+msgid  "~^F8~ Break"
+msgstr "~^F8~ Zastavit"
+
+msgid  "~^F4~ Eval"
+msgstr "~^F4~ Vyhodnotit"
+
+msgid  "~^F9~ Run"
+msgstr "~^F9~ Spustit"
+
+msgid  "About RHGDB"
+msgstr "O RHGDB"
+
+msgid  "RHGDB is a source level debugger"
+msgstr "RHGDB je lad¡c¡ program na £rovni zdrojov˜ch text–"
+
+msgid  "with Turbo Vision interface"
+msgstr "s rozhran¡m Turbo Vision"
+
+msgid  "based on GDB "
+msgstr "zalo‘en˜ na GDB"
+
+msgid  "All windows on the desktop"
+msgstr "V¨echna okna na pracovn¡ plo¨e"
+
+msgid  "usage: %s [options] exe-file [[arg1 [arg2 ...]]]\n"
+msgstr "pou‘it¡: %s [p©ep¡na‡e] exe-soubor [[par1 [par2 ...]]]\n"
+
+msgid  "options:\n"
+msgstr "p©ep¡na‡e:\n"
+
+msgid  "            -D : Use dual-display debugging\n"
+msgstr "            -D : Pou‘¡v n¡ dvou obrazovek pro ladˆn¡\n"
+
+msgid  "            -i INI_FILE : Use INI_FILE as config file\n"
+msgstr "            -i INI_SOUBOR : Pou‘ije INI_SOUBOR jako konfigura‡n¡ "
+"soubor\n"
+
+msgid  "Do you really want to interrupt RHGDB?"
+msgstr "Skute‡nˆ chcete p©eru¨it RHGDB?"
+
+msgid  "Save options to file"
+msgstr "Ulo‘it nastaven¡ do souboru"
+
+msgid  "Read options from file"
+msgstr "P©e‡¡st nastaven¡ ze souboru"
+
+msgid  "Pathlist for source files"
+msgstr "Seznam cest ke zdrojov˜m soubor–m"
+
+msgid  "~T~absize"
+msgstr "Velikost ~o~dr ‘ky"
+
+msgid  "  Char: "
+msgstr "  Znak: "
+
+msgid  " Decimal: "
+msgstr " Dekadicky: "
+
+msgid  " Hex "
+msgstr " ›estn ctkovˆ "
+
+msgid  "ASCII Chart"
+msgstr "Tabulka ASCII"
+
+msgid  "January"
+msgstr "leden"
+
+msgid  "February"
+msgstr "£nor"
+
+msgid  "March"
+msgstr "b©ezen"
+
+msgid  "April"
+msgstr "duben"
+
+msgid  "June"
+msgstr "‡erven"
+
+msgid  "July"
+msgstr "‡ervenec"
+
+msgid  "August"
+msgstr "srpen"
+
+msgid  "September"
+msgstr "z ©¡"
+
+msgid  "October"
+msgstr "©¡jen"
+
+msgid  "November"
+msgstr "listopad"
+
+msgid  "December"
+msgstr "prosinec"
+
+msgid  "Su Mo Tu We Th Fr Sa"
+msgstr "Ne Po —t St €t P  So"
+
+msgid  "Calendar"
+msgstr "Kalend ©"
+
+msgid  "Move"
+msgstr "P©esunout"
+
+msgid  "Puzzle"
+msgstr "R‚bus"
+
+msgid  "Mouse options"
+msgstr "Nastaven¡ my¨i"
+
+msgid  "~M~ouse double click"
+msgstr "Dvojklik ~m~y¨i"
+
+msgid  "Fast       Medium      Slow"
+msgstr "Rychle     St©ednˆ   Pomalu"
+
+msgid  "~R~everse mouse buttons"
+msgstr "~O~br cen¡ tla‡¡tek my¨i"
+
+msgid  "Jump to function"
+msgstr "Sko‡it na ~f~unkci"
+
+msgid  "Hmmm ... I can't find any function, are you sure?"
+msgstr "Hmmm ... Nemohu nal‚zt ‘ dnou funkci, jste si jist˜?"
+
+msgid  "Use a file with 1000 lines or more for that"
+msgstr "Pro to je pot©eba pou‘¡t soubor s "
+
+msgid  "Speed: %f lines/second"
+msgstr "Rychlost: %f © dek/vte©inu"
+
+msgid  "You can't paste a rectangle crossing the end of the file"
+msgstr "Nelze vy©¡znout ‡tverec p©esahuj¡c¡ konec souboru"
+
+msgid  "No match found"
+msgstr "’ dn  shoda nebyla nalezena"
+
+msgid  "Match found at line %d column %d."
+msgstr "Shoda nalezena na © dku %d ve sloupci %d."
+
+msgid  "This file contains ASCII 0 values, all the characters after it in "
+"this line becomes invisible. Be careful."
+msgstr "Tento soubor obsahuje ASCII znak s hodnotou 0. V¨echny znaky za "
+"t¡mto znakem se stanou neviditeln˜mi. Buƒte opatrn¡."
+
+msgid  "Unhandled syntax highlight"
+msgstr "Neovl dan‚ zv˜raz¤ov n¡ syntaxe"
+
+msgid  "Unhandled undo"
+msgstr "Neovl dan  funkce zpˆt"
+
+msgid  "Unhandled redo"
+msgstr "Neovl dan‚ funkce rekonstruovat (redo)"
+
+msgid  "File %s exist. Overwrite ?"
+msgstr "Soubor existuje. P©epsat ?"
+
+msgid  "This file allready exist, overwrite?"
+msgstr "Soubor ji‘ existuje, chcete jej p©epsat?"
+
+msgid  "Saved: %s (%ld bytes)."
+msgstr "Ulo‘eno: %s (%ld bajt–)."
+
+msgid  "Stat failed."
+msgstr "Chybov˜ stav."
+
+msgid  "Clipboard"
+msgstr "Schr nka"
+
+msgid  "Starting SDG:"
+msgstr "Spou¨t¡m SDG:"
+
+msgid  "Error while %s:"
+msgstr "Chyba p©i %s:"
+
+msgid  "(%d) %s in line %d"
+msgstr "(%d) %s na © dce %d"
+
+msgid  "In section %s"
+msgstr "V sekci %s"
+
+msgid  "Error of type: %s"
+msgstr "Chyba ve vzoru: %s"
+
+msgid  "Code: ...%s..."
+msgstr "K¢d: ...%s..."
+
+msgid  "End of SDG"
+msgstr "Konec SDG"
+
+msgid  "SDG Parameters"
+msgstr "Parametry SDG"
+
+msgid  "~F~ormat file (.frt)"
+msgstr "~F~orm tovac¡ soubor (.frt)"
+
+msgid  "~I~ntermediate file"
+msgstr "~D~o‡asn˜ soubor"
+
+msgid  "~B~ase output (no extentions)"
+msgstr "~Z~ kladn¡ v˜stup (bez roz¨¡©en¡)"
+
+msgid  "~D~irectory of formats"
+msgstr "~A~dres ©e form t–"
+
+msgid  "~K~eep intermediate"
+msgstr "~Z~–stat do‡asnˆ"
+
+msgid  "O~K~"
+msgstr "~O~K"
+
+msgid  "Macro definition don't start with Trigger"
+msgstr "Definice makra nem–‘e za‡¡t spou¨tˆ‡em"
+
+msgid  "Missing Trigger sequence or too short"
+msgstr "Chyb¡ spou¨tˆc¡ posloupnost nebo je p©¡li¨ kr tk "
+
+msgid  "Macro definition without mode keyword"
+msgstr "Definice makra je bez m¢dov‚ho kl¡‡ov‚ho slova"
+
+msgid  "Wrong mode definition in pseudo macro."
+msgstr "›patn  definice m¢du makra v pseudo makru."
+
+msgid  "Missing start in pseudo macro"
+msgstr "V pseudo makru chyb¡ po‡ tek"
+
+msgid  "Missing end in pseudo macro"
+msgstr "V pseudo makru chyb¡ konec"
+
+msgid  "Empty pseudo macro"
+msgstr "Pr zdn‚ pseudo makro"
+
+msgid  "Wrong file"
+msgstr "›patn˜ soubor"
+
+msgid  "Wrong version"
+msgstr "›patn  verze"
+
+msgid  "Error while reading"
+msgstr "Chyba p©i ‡ten¡"
+
+msgid  "Error while loading the keyboard binding"
+msgstr "Chyba p©i na‡¡t n¡ propojen¡ kl vesnice"
+
+msgid  "You'll losse all the changes"
+msgstr "Ztrat¡te v¨echny zmˆny"
+
+msgid  "Error in sLisp interpreter:"
+msgstr "Chyba v interpreteru sLipu:"
+
+msgid  "End of SLP"
+msgstr "Konec SLP"
+
+msgid  "No macros defined"
+msgstr "’ dn  makra nebyla definov na"
+
+msgid  "sLisp macros"
+msgstr "makra sLipu"
+
+msgid  "~M~acros"
+msgstr "~M~akra"
+
+msgid  "Regular Expressions Options"
+msgstr "P©ep¡na‡e Regul rn¡ch v˜raz–"
+
+msgid  "RegEx style"
+msgstr "styl RegEx"
+
+msgid  "~B~asic POSIX"
+msgstr "~Z~ kladn¡ POSIX"
+
+msgid  "~E~xtended POSIX"
+msgstr "~R~oz¨¡©en˜ POSIX"
+
+msgid  "~P~erl Compatible"
+msgstr "Kompatibiln¡ s ~P~erlem"
+
+msgid  "Replace text"
+msgstr "Zamˆ¤ text"
+
+msgid  "~N~ormal text"
+msgstr "~N~orm ln¡ text"
+
+msgid  "~D~olar tags"
+msgstr "~D~olarov‚ p©¡znaky"
+
+msgid  "Optimize"
+msgstr "Optimalizuj"
+
+msgid  "~T~ry to use normal search"
+msgstr "~Z~kus pou‘¡t norm ln¡ vyhled v n¡"
+
+msgid  "E~v~er use RegEx"
+msgstr "~V~‘dy pou‘¡vej RegEx"
+
+msgid  "Find"
+msgstr "Naj¡t"
+
+msgid  "~T~ext to find"
+msgstr "~T~ext pro vyhled n¡"
+
+msgid  "~W~hole words only"
+msgstr "Pouze ~c~el  slova"
+
+msgid  "Re~g~ular expressions"
+msgstr "Re~g~ul rn¡ v˜razy"
+
+msgid  "Options"
+msgstr "~P~arametry"
+
+msgid  "~G~lobal"
+msgstr "~G~lob lnˆ"
+
+msgid  "~S~elected text"
+msgstr "~O~zna‘en˜ text"
+
+msgid  "Scope"
+msgstr "Rozsah"
+
+msgid  "~F~rom cursor"
+msgstr "~O~d kurzoru"
+
+msgid  "~E~ntire scope"
+msgstr "Cel˜ ~r~ozsah"
+
+msgid  "Origin"
+msgstr "Po‡ tek"
+
+msgid  "RegEx Ops"
+msgstr "Volby RegEx"
+
+msgid  "Replace"
+msgstr "Zamˆnit"
+
+msgid  "~N~ew text"
+msgstr "~N~ov˜ text"
+
+msgid  "~P~rompt on replace"
+msgstr "~V~˜zva p©i z mˆnˆ"
+
+msgid  "~R~eplace all"
+msgstr "Zamˆnit v¨e"
+
+msgid  "Replace ~A~ll"
+msgstr "Zamˆ¤ ~v~¨e"
+
+msgid  "Goto Line"
+msgstr "Jdi na © dek"
+
+msgid  "Local Options"
+msgstr "Lok ln¡ parametry"
+
+msgid  "~O~verwrite"
+msgstr "~P~©episovat"
+
+msgid  "~A~utoindent"
+msgstr "~A~utomatick‚ odsazen¡"
+
+msgid  "~U~se tabs"
+msgstr "Po~u~‘it¡ tabel tor–"
+
+msgid  "~P~ersistent blocks"
+msgstr "~N~erozru¨iteln‚ bloky"
+
+msgid  "~I~ntelligent C indent"
+msgstr "~I~nteligentn¡ odsazen¡ pro C"
+
+msgid  "~C~olumn cursor"
+msgstr "~S~loupcov˜ kurzor"
+
+msgid  "~R~ow cursor"
+msgstr "ž dek ~k~urzoru"
+
+msgid  "~M~atch pair highlight"
+msgstr "~V~yhledat zv˜raznˆn‚ dvojice"
+
+msgid  "Tra~n~sparent Blocks"
+msgstr "Transparentn¡ Bloky"
+
+msgid  "Optimal ~F~ill"
+msgstr "Optim ln¡ ~V~yplnˆn¡"
+
+msgid  "~W~rap words"
+msgstr "~Z~abalen  slova"
+
+msgid  "O~f~f"
+msgstr "~V~ypnout"
+
+msgid  "~C~++ style"
+msgstr "~C~++ zp–sob"
+
+msgid  "Pa~s~cal style"
+msgstr "Pa~s~calov˜ zp–sob"
+
+msgid  "C~l~ipper style"
+msgstr "Zp–sob C~l~ipperu"
+
+msgid  "U~s~er defined"
+msgstr "~U~‘ivatelem definov no"
+
+msgid  "Syntax ~H~ighlight"
+msgstr "Zv˜raznˆn¡ syntaxe"
+
+msgid  "~T~ab size"
+msgstr "Velikost ~t~abel toru"
+
+msgid  "Wrap column"
+msgstr "Zarovnej sloupec"
+
+msgid  "Global Options"
+msgstr "Glob ln¡ parametry"
+
+msgid  "~D~on't move the cursor on Paste"
+msgstr "Ne~p~©esouvat kurzor p©i kop¡rov n¡"
+
+msgid  "~S~croll Lock centers"
+msgstr "St©edy z mk– ~p~osuvn¡ku"
+
+msgid  "T~o~ all"
+msgstr "~P~ro v¨echny"
+
+msgid  "Search hit"
+msgstr "N mˆt hled n¡"
+
+msgid  "Replace this occurence?"
+msgstr "Zamˆnit tento v˜skyt?"
+
+msgid  "~A~ll"
+msgstr "~V~¨e"
+
+msgid  "Not enough memory for this operation"
+msgstr "Nedostatek pamˆti pro proveden¡ t‚to operace"
+
+msgid  "Error reading file "
+msgstr "Chyba p©i ‡ten¡ souboru "
+
+msgid  "Error writing file "
+msgstr "Chyba p©i z pisu souboru "
+
+msgid  "Error creating file "
+msgstr "Chyba p©i vytv ©en¡ souboru "
+
+msgid  " has been modified. Save?"
+msgstr " byl zmˆnˆn. Ulo‘it?"
+
+msgid  "Save untitled file?"
+msgstr "Ulo‘it nepojmenovan˜ soubor?"
+
+msgid  "Save file as"
+msgstr "Ulo‘it soubor se jm‚nem"
+
+msgid  "Write to file"
+msgstr "Zapsat do souboru"
+
+msgid  "Read from file"
+msgstr "P©e‡¡st ze souboru"
+
+msgid  "Search string not found."
+msgstr "Hledan˜ ©etˆzec nebyl nalezen."
+
+msgid  " bytes selected"
+msgstr " byt– vybr no"
+
+msgid  "Line too long, cut it?"
+msgstr "ž dek je p©¡li¨ dlouh˜, o©¡znout jej?"
+
+msgid  "This file isn't in disk!"
+msgstr "Tento soubor se nenach z¡ na disku!"
+
+msgid  "The file is read-only, try to revert it?"
+msgstr "Soubor je pouze pro ‡ten¡, m m se pokusit povolit z pis?"
+
+msgid  "Failed to revert the read-only status, you won't be able to "
+"overwrite this file"
+msgstr "Selh n¡ p©i odstra¤ov n¡ statusu pouze pro ‡ten¡, nebude mo‘no "
+"p©epsat tento soubor"
+
+msgid  "This action doesn't have undo, are you sure?"
+msgstr "Pro tuto akci neexisstuje undo, jste si jist˜?"
+
+msgid  "Regular expression error: %s"
+msgstr "Chyba v regul rn¡m v˜razu: %s"
+
+msgid  "PCRE Exec error"
+msgstr "Chyba v PCRE Execu"
+
+msgid  "InfView - File: %s - Node: %s"
+msgstr "InfView - Soubor: %s - Uzel: %s"
+
+msgid  "Open Info"
+msgstr "~O~tev©i Info"
+
+msgid  "Sorry can't find the string"
+msgstr "žetˆzec nebyl nalezen"
+
+msgid  "Help Control"
+msgstr "ž¡zen¡ n povˆdy"
+
+msgid  "~U~p"
+msgstr "~N~ahoru"
+
+msgid  "Prev. ~H~ist."
+msgstr "P©edchoz¡. ~H~ist."
+
+msgid  "Nodes ~L~ist"
+msgstr "~S~eznam Uzl–"
+
+msgid  "~B~ookmarks"
+msgstr "~Z~ lo‘ky"
+
+msgid  "~C~onfiguration"
+msgstr "~K~onfigurace"
+
+msgid  "~O~pen Info"
+msgstr "~O~tev©i Info"
+
+msgid  "H~i~de"
+msgstr "~S~chovat"
+
+msgid  "Hi~s~tory"
+msgstr "Hi~s~torie"
+
+msgid  "Inf Find"
+msgstr "Hled n¡ v Infu"
+
+msgid  "In current ~t~opic"
+msgstr "V ~a~ktu ln¡m t‚matu"
+
+msgid  "In the ~f~ile"
+msgstr "V ~s~ouboru"
+
+msgid  "In ~a~ll files"
+msgstr "Ve ~v~¨ech souborech"
+
+msgid  "Go To"
+msgstr "J¡t na"
+
+msgid  "~N~ame of Node"
+msgstr "~J~m‚no uzlu"
+
+msgid  "Tag Table"
+msgstr "Tabulka z znam–"
+
+msgid  "~N~odes"
+msgstr "~U~zly"
+
+msgid  "InfView Configuration"
+msgstr "Konfigurace InfView"
+
+msgid  "Hide '*~N~ote' word"
+msgstr "Zakryj '*~P~ozn mkov‚' slovo"
+
+msgid  "Hide real ~l~ink name"
+msgstr "Zakryj skute‡n‚ jm‚no ~o~dkazu"
+
+msgid  "InfView Bookmarks"
+msgstr "InfView z lo‘ky"
+
+msgid  "~G~o to"
+msgstr "~J~¡t na"
+
+msgid  "~M~arks"
+msgstr "~Z~na‡ky"
+
+msgid  "Attention !! this file is in DOS format, Do you want convert it?, "
+"Make a backup first !!"
+msgstr "Pozor !! Tento soubor je ve form tu DOSu. Chcete prov‚st konverzi? "
+"Vytvo©te si nejprve z lohu !!"
+
+msgid  "Error: can't find the Node info"
+msgstr "Chyba: informaci o uzlu nelze nal‚zt"
+
+msgid  "Attention can't open the help file."
+msgstr "Pozor! Soubor n povˆdy nem–‘e b˜t otev©en."
+
+msgid  "Attention can't open the help file '%s'."
+msgstr "Pozor! Soubor '%s' s n povˆdou nelze otev©¡t."
+
+msgid  "You must install gzip to browse compressed files!"
+msgstr "Mus¡te nainstalovat gzip pro prohl¡‘en¡ zakomprimovan˜ch soubor–!"
+
+msgid  "\n"
+" Sorry I can't find this link (press ALT-F1).\n"
+msgstr "\n"
+" Promi¤. Nemohu nal‚zt linku (stiskni ALT-F1).\n"
+
+msgid  "~I~nsert"
+msgstr ""
+
+msgid  "~O~k"
+msgstr ""
+
+msgid  "~C~ancel"
+msgstr ""
+
+msgid  "Key assigment"
+msgstr ""
+
+msgid  "Command~s~"
+msgstr ""
+
+msgid  "Assigmen~t~"
+msgstr ""
+
+msgid  "Accepting that you'll change the SET's editor behavior"
+msgstr ""
+
+msgid  "Do you really want to discard the changes?"
+msgstr ""
+
+msgid  "Sequence of keys"
+msgstr ""
+
+msgid  "This key is allready in use, do you want to replace it?"
+msgstr ""
+
+msgid  "This sequence is used for more than one key, delete these assigments "
+"first"
+msgstr ""
+
+msgid  "Press a key"
+msgstr ""
+
+msgid  "Key selector"
+msgstr ""
+
+msgid  "Macros"
+msgstr ""
+
+msgid  "Commands"
+msgstr ""
+
+msgid  "A command"
+msgstr ""
+
+msgid  "Scan Viewer"
+msgstr ""
+
+msgid  "Alt keys settings"
+msgstr ""
+
+msgid  "~L~eft Alt"
+msgstr ""
+
+msgid  "~R~ight Alt"
+msgstr ""
+
+msgid  "~B~oth Alt"
+msgstr ""
+
+msgid  "~K~eys used by the menues, etc."
+msgstr ""
+
+msgid  "Key Pad behavior"
+msgstr ""
+
+msgid  "Mantain the ~B~IOS default"
+msgstr ""
+
+msgid  "Ever interpret shift+arrow as ~m~ovement"
+msgstr ""
+
+msgid  "Behavior"
+msgstr ""
+
+msgid  "Page: %d Lines: %d to %d  Date: %s  Time: %s\r\f"
+msgstr ""
+
+msgid  "* Source: %s * Title: %s * Author: %s\n"
+"\n"
+msgstr ""
+
+msgid  "Starting printing module"
+msgstr ""
+
+msgid  "Can't open output file for printing"
+msgstr ""
+
+msgid  "The header is too large, reduce the title and/or author lengths"
+msgstr ""
+
+msgid  "Header length: %d Columns: %d"
+msgstr ""
+
+msgid  "Processed: %d lines, total printed: %d lines"
+msgstr ""
+
+msgid  "Printer Setup"
+msgstr ""
+
+msgid  "Total ~l~ines per page:"
+msgstr ""
+
+msgid  "Columns ~w~/o margin:"
+msgstr ""
+
+msgid  "Left ~m~argin:"
+msgstr ""
+
+msgid  "Print line numbers"
+msgstr ""
+
+msgid  "~T~ime format:"
+msgstr ""
+
+msgid  "~D~ate format:"
+msgstr ""
+
+msgid  "Ho~m~e"
+msgstr "Do~m~–"
+
+msgid  "E~x~tended regex"
+msgstr "~R~oz¨¡©en˜ regex"
+

@@ -448,15 +448,13 @@ void DeleteAllBreakPoints()
   }
 }
 
-/* force to link gdbdummy.o and win31hak.o */
+/* force to link gdbdummy.o */
 
 static __attribute__ (( constructor ))
 void _init_libtvgdb()
 {
   extern int gdbdummy;
-  extern int use_win31hak;
   gdbdummy = 1;
-  use_win31hak = 1;
 }
 
 

@@ -169,13 +169,13 @@ endif
 $(GDB_OBJ)/gdb/version.o: $(GDB_OBJ)/Makefile
 	$(MAKE) -C $(dir $@) $(notdir $@)
 	
-echo_ver: $(GDB_OBJ)/gdb/version.o
+echo_ver.exe: $(GDB_OBJ)/gdb/version.o
 	echo 'int main(int argc, char **argv)\
 	  {extern const char version[];printf("%s",version);return 0;}' | \
 	gcc -s -o echo_ver $< -x c -
 
-gdb_ver.txt: echo_ver
-	$< | sed -e "s,\.,,g" \
+gdb_ver.txt: echo_ver.exe
+	./$< | sed -e "s,\.,,g" \
 	  -e "s,.*,#define GDB_VERSION &,1" > $@
 	
 

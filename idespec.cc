@@ -110,7 +110,7 @@ static char *default_variables[] = {
  "$(RHIDE_TYPED_LIBS_FPC)",
 
  "RHIDE_TYPED_LIBS_DJGPP.cc",
- "stdcx",
+ "stdcxx",
 
  "RHIDE_TYPED_LIBS_Linux.cc",
  "stdc++",
@@ -1412,6 +1412,11 @@ char *GetCompilerSpec(TDependency *dep,Boolean & is_user)
       break;
   }
   return NULL;
+}
+
+void InsertEnviromentVar(char *variable,char *contents)
+{
+  insert_variable(variable, contents);
 }
 
 #ifdef TEST

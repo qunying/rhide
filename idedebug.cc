@@ -576,6 +576,11 @@ ToggleBreak()
   Repaint();
 }
 
+void CLEARSYMBOLS()
+{
+  ClearSymbols();
+}
+
 #else
 void
 GOTO(int)
@@ -610,4 +615,9 @@ DEBUGGER_STARTED()
 {
   return 0;
 }
+void
+CLEARSYMBOLS()
+{
+}
 #endif
+

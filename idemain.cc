@@ -1164,15 +1164,8 @@ void IDE::handleEvent(TEvent & event)
             TIDEFileEditor *editor = (TIDEFileEditor *)((TCEditWindow *)ew)->editor;
             if (editor)
             {
-#if (TCEDITOR_VERSION >= 0x000422)
-               TCEditor::editorDialog(edJumpToFunction);
-#else
-              int line;
-               char *word=editor->WordUnderCursor(80);
-               if (doEditDialog(edJumpToFunction,&line,editor->buffer,editor->bufLen,word))
-                  goto_line(editor,line);
-               delete word;
-#endif
+               event.message.command = cmcJumpToFunction;
+               editor->handleEvent(event);
             }
           }
           clearEvent(event);

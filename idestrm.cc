@@ -26,4 +26,12 @@ N(TIDEFileEditor, \x0C)
 N(TParamList, \x0D)
 N(TStringCollection, \x0E)
 N(TNoCaseStringCollection, \x0F)
-N(TInfViewer, \x10) N(TSIndicator, \x12) N(TStringCollectionW, \x13)
+N(TInfViewer, \x10) N(TSIndicator, \x12)
+N(TStringCollectionW, \x13)
+
+/**
+ dummy variable to referenced by other sources only to
+ force to link this object file in
+*/
+int link_strm;
+

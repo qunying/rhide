@@ -31,36 +31,17 @@ LOCAL_OPT=$(subst ___~~~___, ,$(subst $(notdir $<)___,,$(filter $(notdir\
 
 OBJFILES=
 ALL_OBJFILES=nodebobj/copyrite.o doc/htmlspl.o doc/tx2txi.o\
-	nodebobj/gpr2mak.o nodebobj/idedefau.o nodebobj/ideenv.o\
-	nodebobj/ideflags.o nodebobj/idemak.o nodebobj/idespec.o\
-	nodebobj/idestrm.o nodebobj/idesupp.o nodebobj/ideutil.o\
-	nodebobj/ideversi.o nodebobj/gprexp.o nodebobj/idedefau.o\
-	nodebobj/ideenv.o nodebobj/ideflags.o nodebobj/idemak.o\
-	nodebobj/idespec.o nodebobj/idestrm.o nodebobj/idesupp.o\
-	nodebobj/ideutil.o nodebobj/ideversi.o librhgdb/test/symify.o\
+	nodebobj/gpr2mak.o nodebobj/gprexp.o librhgdb/test/symify.o\
 	librhgdb/test/listfunc.o librhgdb/test/mygdb.o po/fstrcmp.o\
 	po/msgcat.o rhgdb/gdbedit.o rhgdb/gdbsynt.o rhgdb/main.o\
-	rhgdb/options.o rhgdb/version.o debobj/commands.o debobj/fstrcmp.o\
-	debobj/ideapp.o debobj/idebug.o debobj/idecheck.o debobj/idecolor.o\
-	debobj/idecomp.o debobj/idedebug.o debobj/idedefau.o\
-	debobj/idedial.o debobj/ideenv.o debobj/ideexter.o\
-	debobj/ideflags.o debobj/ideforma.o debobj/idegcc.o\
-	debobj/idehelp.o debobj/idehints.o debobj/idemain.o debobj/idemak.o\
-	debobj/idemenu.o debobj/idemsg.o debobj/ideopt.o debobj/ideprj.o\
-	debobj/idercs.o debobj/idespec.o debobj/idestatu.o debobj/idestrm.o\
-	debobj/idesupp.o debobj/idesynta.o debobj/ideuser.o\
-	debobj/ideutil.o debobj/ideversi.o debobj/openedit.o\
-	debobj/rhassert.o nodebobj/commands.o nodebobj/fstrcmp.o\
-	nodebobj/ideapp.o nodebobj/idebug.o nodebobj/idecheck.o\
-	nodebobj/idecolor.o nodebobj/idecomp.o nodebobj/idedebug.o\
-	nodebobj/idedefau.o nodebobj/idedial.o nodebobj/ideenv.o\
-	nodebobj/ideexter.o nodebobj/ideflags.o nodebobj/idegcc.o\
-	nodebobj/idehelp.o nodebobj/idehints.o nodebobj/idemain.o\
-	nodebobj/idemak.o nodebobj/idemenu.o nodebobj/idemsg.o\
-	nodebobj/ideopt.o nodebobj/ideprj.o nodebobj/idercs.o\
-	nodebobj/idespec.o nodebobj/idestatu.o nodebobj/idestrm.o\
-	nodebobj/idesupp.o nodebobj/idesynta.o nodebobj/ideuser.o\
-	nodebobj/ideutil.o nodebobj/ideversi.o nodebobj/openedit.o\
+	rhgdb/options.o rhgdb/version.o debobj/idecomp.o debobj/idedebug.o\
+	debobj/ideexter.o debobj/ideforma.o debobj/idegcc.o\
+	debobj/idehelp.o debobj/idemain.o debobj/idemenu.o debobj/ideopt.o\
+	debobj/ideprj.o debobj/idestatu.o debobj/idesynta.o\
+	debobj/rhassert.o nodebobj/idecomp.o nodebobj/idedebug.o\
+	nodebobj/ideexter.o nodebobj/idegcc.o nodebobj/idehelp.o\
+	nodebobj/idemain.o nodebobj/idemenu.o nodebobj/ideopt.o\
+	nodebobj/ideprj.o nodebobj/idestatu.o nodebobj/idesynta.o\
 	nodebobj/rhassert.o nodebobj/tocrlf.o nodebobj/tolf.o
 LIBRARIES=
 SOURCE_NAME=$<

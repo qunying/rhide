@@ -39,6 +39,7 @@ ReadProject(const char *prjname, bool from_ide)
 {
   ifpstream *ifile;
   char *magic;
+  link_strm = 1;
   unsigned short version;
   TProject *_project;
 

@@ -461,6 +461,8 @@ ide_options1;
 void setup_title(const char *);
 void setup_main_title();
 
+extern int link_strm;
+
 #endif
 
 

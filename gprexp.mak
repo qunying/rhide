@@ -61,15 +61,16 @@ C_EXTRA_FLAGS=-DFOR_LIBSET
 LOCAL_OPT=$(subst ___~~~___, ,$(subst $(notdir $<)___,,$(filter $(notdir\
 	$<)___%,$(LOCAL_OPTIONS))))
 
-OBJFILES=nodebobj/gprexp.o nodebobj/idedefau.o nodebobj/ideenv.o\
-	nodebobj/ideflags.o nodebobj/idemak.o nodebobj/idespec.o\
-	nodebobj/idestrm.o nodebobj/idesupp.o nodebobj/ideutil.o\
-	nodebobj/ideversi.o
-ALL_OBJFILES=nodebobj/gprexp.o nodebobj/idedefau.o nodebobj/ideenv.o\
-	nodebobj/ideflags.o nodebobj/idemak.o nodebobj/idespec.o\
-	nodebobj/idestrm.o nodebobj/idesupp.o nodebobj/ideutil.o\
-	nodebobj/ideversi.o
-LIBRARIES=
+OBJFILES=nodebobj/gprexp.o
+ALL_OBJFILES=nodebobj/gprexp.o nodebobj/commands.o nodebobj/fstrcmp.o\
+	nodebobj/ideapp.o nodebobj/idebug.o nodebobj/idecheck.o\
+	nodebobj/idecolor.o nodebobj/idedefau.o nodebobj/idedial.o\
+	nodebobj/ideenv.o nodebobj/ideflags.o nodebobj/idehints.o\
+	nodebobj/idemak.o nodebobj/idemsg.o nodebobj/idercs.o\
+	nodebobj/idespec.o nodebobj/idestrm.o nodebobj/idesupp.o\
+	nodebobj/ideuser.o nodebobj/ideutil.o nodebobj/ideversi.o\
+	nodebobj/openedit.o
+LIBRARIES=rh_comm.a
 SOURCE_NAME=$<
 OUTFILE=$@
 SPECIAL_CFLAGS=
@@ -79,9 +80,8 @@ SRC_DIRS=$(RHIDESRC)
 WUC=
 EDITORS=
 MAIN_TARGET=gprexp.exe
-PROJECT_ITEMS=gprexp.cc idedefau.cc ideenv.cc ideflags.cc idemak.cc\
-	idespec.cc idestrm.cc idesupp.cc ideutil.cc ideversi.cc\
-	libide/libide.gpr librhuti/librhuti.gpr libtvuti/libtvuti.gpr
+PROJECT_ITEMS=gprexp.cc libide/libide.gpr librhuti/librhuti.gpr\
+	libtvuti/libtvuti.gpr rh_comm.gpr
 DEFAULT_MASK=*.[cghspm]*
 RHIDE_BIN_DIR=c:/obj/rhide
 PASCAL_TYPE=GPC
@@ -372,11 +372,8 @@ include rhide.env
 all::
 clean::
 	rm -f $(CLEAN_FILES)
-DEPS_0= nodebobj/gprexp.o nodebobj/idedefau.o nodebobj/ideenv.o\
-	nodebobj/ideflags.o nodebobj/idemak.o nodebobj/idespec.o\
-	nodebobj/idestrm.o nodebobj/idesupp.o nodebobj/ideutil.o\
-	nodebobj/ideversi.o libide/libide.a librhuti/librhuti.a\
-	libtvuti/libtvuti.a
+DEPS_0= nodebobj/gprexp.o libide/libide.a librhuti/librhuti.a\
+	libtvuti/libtvuti.a rh_comm.a
 NO_LINK=libide/libide.a librhuti/librhuti.a libtvuti/libtvuti.a
 LINK_FILES=$(filter-out $(NO_LINK),$(DEPS_0))
 gprexp.exe:: $(DEPS_0)
@@ -385,71 +382,7 @@ DEPS_1=gprexp.cc rhide.h ideenums.h libide.h tdepende.h tfname.h toptions.h\
 	tproject.h rhutils.h libtvuti.h
 nodebobj/gprexp.o:: $(DEPS_1)
 	$(RHIDE_COMPILE.cc.o)
-DEPS_2=idedefau.cc ../../include/flags/ada_opt.h\
-	../../include/flags/c_opt.h ../../include/flags/cxx_opt.h\
-	../../include/flags/deb_opt.h ../../include/flags/f_opt.h\
-	../../include/flags/fpc_opt.h ../../include/flags/fpcreser.h\
-	../../include/flags/gpcreser.h ../../include/flags/opt_opt.h\
-	../../include/flags/pas_opt.h ../../include/flags/reserved.h\
-	../../include/flags/warn_opt.h ../../include/rhide.h\
-	../../libide/include/ideenums.h ../../libide/include/libide.h\
-	../../libide/include/tdepende.h ../../libide/include/tflagcol.h\
-	../../libide/include/tflagent.h ../../libide/include/tfname.h\
-	../../libide/include/toptions.h ../../libide/include/tproject.h\
-	../../librhuti/rhutils.h ../../libtvuti/include/libtvuti.h
-nodebobj/idedefau.o:: $(DEPS_2)
-	$(RHIDE_COMPILE.cc.o)
-DEPS_3=ideenv.cc ../../include/rhide.h ../../librhuti/rhutils.h
-nodebobj/ideenv.o:: $(DEPS_3)
-	$(RHIDE_COMPILE.cc.o)
-DEPS_4=ideflags.cc ../../include/rhide.h ../../libide/include/ideenums.h\
-	../../libide/include/libide.h ../../libide/include/tdepende.h\
-	../../libide/include/tflagcol.h ../../libide/include/tflagent.h\
-	../../libide/include/tfname.h ../../libide/include/toptions.h\
-	../../libide/include/tproject.h ../../librhuti/rhutils.h\
-	../../libtvuti/include/libtvuti.h ../../libtvuti/include/tdirlist.h\
-	../../libtvuti/include/tparamli.h ../../libtvuti/include/tscollec.h
-nodebobj/ideflags.o:: $(DEPS_4)
-	$(RHIDE_COMPILE.cc.o)
-DEPS_5=idemak.cc ../../include/rhide.h ../../libide/include/ideenums.h\
-	../../libide/include/idefunct.h ../../libide/include/libide.h\
-	../../libide/include/tdepende.h ../../libide/include/tfname.h\
-	../../libide/include/toptions.h ../../libide/include/tproject.h\
-	../../librhuti/rhutils.h ../../libtvuti/include/libtvuti.h\
-	../../libtvuti/include/tdirlist.h ../../libtvuti/include/tparamli.h\
-	../../libtvuti/include/tscollec.h
-nodebobj/idemak.o:: $(DEPS_5)
-	$(RHIDE_COMPILE.cc.o)
-DEPS_6=idespec.cc ../../include/rhide.h ../../include/rhidehis.h\
-	../../libide/include/idecomma.h ../../libide/include/ideenums.h\
-	../../libide/include/idefunct.h ../../libide/include/libide.h\
-	../../libide/include/tdepende.h ../../libide/include/tflagcol.h\
-	../../libide/include/tfname.h ../../libide/include/toptions.h\
-	../../libide/include/tproject.h ../../librhuti/rhutils.h\
-	../../libtvuti/include/libtvuti.h ../../libtvuti/include/tdirlist.h\
-	../../libtvuti/include/tenterli.h ../../libtvuti/include/tparamli.h\
-	../../libtvuti/include/tscollec.h ../../libtvuti/include/tvutilfu.h\
-	../../libtvuti/include/twindowl.h
-nodebobj/idespec.o:: $(DEPS_6)
-	$(RHIDE_COMPILE.cc.o)
-DEPS_7=idestrm.cc
-nodebobj/idestrm.o:: $(DEPS_7)
-	$(RHIDE_COMPILE.cc.o)
-DEPS_8=idesupp.cc ../../include/rhide.h ../../librhuti/rhutils.h
-nodebobj/idesupp.o:: $(DEPS_8)
-	$(RHIDE_COMPILE.cc.o)
-DEPS_9=ideutil.cc ../../include/rhide.h ../../libide/include/ideenums.h\
-	../../libide/include/idefunct.h ../../libide/include/libide.h\
-	../../libide/include/tdepende.h ../../libide/include/tfname.h\
-	../../libide/include/toptions.h ../../libide/include/tproject.h\
-	../../librhuti/rhutils.h ../../libtvuti/include/libtvuti.h\
-	../../libtvuti/include/tdirlist.h ../../libtvuti/include/tvutilfu.h
-nodebobj/ideutil.o:: $(DEPS_9)
-	$(RHIDE_COMPILE.cc.o)
-DEPS_10=ideversi.cc
-nodebobj/ideversi.o:: $(DEPS_10)
-	$(RHIDE_COMPILE.cc.o)
-DEPS_11=
+DEPS_2=
 .PHONY: libide/libide.gpr.force
 all:: libide/libide.gpr.force
 libide/libide.gpr.force:
@@ -457,7 +390,7 @@ libide/libide.gpr.force:
 clean::
 	$(MAKE) -C libide/ -f libide.mak $(FLAGS_FOR_SUBPROJECTS) clean
 
-DEPS_12=
+DEPS_3=
 .PHONY: librhuti/librhuti.gpr.force
 all:: librhuti/librhuti.gpr.force
 librhuti/librhuti.gpr.force:
@@ -465,12 +398,20 @@ librhuti/librhuti.gpr.force:
 clean::
 	$(MAKE) -C librhuti/ -f librhuti.mak $(FLAGS_FOR_SUBPROJECTS) clean
 
-DEPS_13=
+DEPS_4=
 .PHONY: libtvuti/libtvuti.gpr.force
 all:: libtvuti/libtvuti.gpr.force
 libtvuti/libtvuti.gpr.force:
 	$(MAKE) -C libtvuti/ -f libtvuti.mak $(FLAGS_FOR_SUBPROJECTS)
 clean::
 	$(MAKE) -C libtvuti/ -f libtvuti.mak $(FLAGS_FOR_SUBPROJECTS) clean
+
+DEPS_5=
+.PHONY: rh_comm.gpr.force
+all:: rh_comm.gpr.force
+rh_comm.gpr.force:
+	$(MAKE) -f rh_comm.mak $(FLAGS_FOR_SUBPROJECTS)
+clean::
+	$(MAKE) -f rh_comm.mak $(FLAGS_FOR_SUBPROJECTS) clean
 
 all:: gprexp.exe

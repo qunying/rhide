@@ -8,7 +8,7 @@ endif
 
 srcdir=$(RHIDESRC)
 VPATH=$(srcdir)
-projects=gpr2mak rhide_ rhide gprexp rh tolf tocrlf copyrite
+projects=gpr2mak rhide_ rhide gprexp rh tolf tocrlf copyrite rh_comm
 project=
 cfg_files=
 txt_conv_DJGPP=tocrlf.exe
@@ -33,7 +33,7 @@ src_files=$(po_files) Makefile common.mak README.IDE RHIDE.BIN RHIDE.SRC \
 	tolf.cc tolf.gpr tolf.mak tocrlf.gpr tocrlf.mak \
 	copyrite.gpr copyrite.mak rhidex rhgdbx eterm-rhide \
 	rhide.spec aclocal.m4 config.guess config.in config.sub \
-	configure.in configure.sub install.sh
+	configure.in configure.sub install.sh rh_comm.gpr rh_comm.mak
 
 subdirs=libide librhgdb libtvgdb libtvuti include doc libgdb \
 	rhgdb debobj nodebobj po tvdemo librhuti share\

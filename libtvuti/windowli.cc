@@ -1,5 +1,7 @@
 /* Copyright (C) 1996-1998 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
+#include <sys/stat.h>
+
 #define Uses_TWindow
 #define Uses_TProgram
 #define Uses_TDeskTop
@@ -74,6 +76,7 @@ void AddWindow(TWindow *window,TWindow **ref,Boolean before,
                int old_number)
 {
   int i,count,Number;
+  struct stat st;
   DeskTopWindow *window_rec;
   if (!windows)
   {
@@ -124,6 +127,16 @@ void AddWindow(TWindow *window,TWindow **ref,Boolean before,
   window_rec->full_name = strdup(window->getTitle(1000));
   window_rec->remember_closed = remember_closed;
   window_rec->is_removable = is_removable;
+  if (stat(window_rec->full_name, &st) == 0)
+  {
+    window_rec->dev = st.st_dev;
+    window_rec->inode = st.st_ino;
+  }
+  else
+  {
+    window_rec->dev = -1;
+    window_rec->inode = -1;
+  }
   BaseName(window_rec->full_name,window_rec->base_name);
   windows->insert(window_rec);
   if (before == True)

@@ -11,6 +11,8 @@ typedef struct {
   TWindow **ref;
   char *full_name;
   char *base_name;
+  int dev;
+  int inode;
   Boolean remember_closed;
   Boolean is_removable;
 } DeskTopWindow;

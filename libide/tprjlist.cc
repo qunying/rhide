@@ -38,6 +38,7 @@ void TProjectListBox::selectItem(ccIndex item)
 {
   TDependency * rec;
   if (!list()) return;
+  message( owner, evBroadcast, cmListItemSelected, list() );
   rec = (TDependency *)list()->at(item);
   if (!rec->source_name) return;
   switch (rec->source_file_type)

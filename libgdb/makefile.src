@@ -97,6 +97,7 @@ libgdbrh.c: Makefile
 	echo '#include <annotate.h>' >> libgdbrh.c
 	echo '#include <top.h>' >> libgdbrh.c
 	echo '#include <floatformat.h>' >> libgdbrh.c
+	echo '#include <version.h>' >> libgdbrh.c
 
 LIBGDB_FLAGS+=$(OS_FLAGS)
 override CFLAGS+=$(OS_CFLAGS)

@@ -2,7 +2,7 @@
 # This file is part of RHIDE. 
 #
 
-.$(RHIDESRC)/common.var
+include $(RHIDESRC)/common.var
 RHIDE_OS_LIBS_Linux=intl ncurses gpm m
 RHIDE_OS_LIBS_DJGPP_idegc.exe=dbg
 RHIDE_OS_LIBS_DJGPP=intl $(RHIDE_OS_LIBS_DJGPP_$(MAIN_TARGET))

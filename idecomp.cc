@@ -26,10 +26,6 @@
 #include <stdio.h>
 #include <ctype.h>
 
-#ifdef INTERNAL_DEBUGGER
-#include <librhgdb.h>
-#endif
-
 int already_maked = 0;
 
 static char *DEPFILE_NAME = NULL;
@@ -1295,11 +1291,9 @@ compile_dep(TDependency * dep)
   }
   FindFile(FName(dep->dest_name), dname);
   already_maked = 0;
-#ifdef INTERNAL_DEBUGGER
   if (DEBUGGER_STARTED())
     RESET();
-  ClearSymbols();
-#endif
+  CLEARSYMBOLS();
   if (user_spec == True)
   {
     retval = compile_user(dep, spec);
@@ -1383,3 +1377,4 @@ compile_dep(TDependency * dep)
   string_free(spec);
   return retval;
 }
+

@@ -17,10 +17,6 @@
 #include "rhide.h"
 #include "rhidehis.h"
 
-#ifdef INTERNAL_DEBUGGER
-#include <librhgdb.h>
-#endif
-
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
@@ -31,11 +27,9 @@ FSDB()
 {
   char *cmd;
 
-#ifdef INTERNAL_DEBUGGER
   if (DEBUGGER_STARTED())
     RESET();
-  ClearSymbols();
-#endif
+  CLEARSYMBOLS();
   cmd = BuildCompiler(project, "$(RHIDE_FSDB)");
   RunProgram(cmd, False, False, True);
   string_free(cmd);
@@ -46,11 +40,9 @@ GDB()
 {
   char *cmd;
 
-#ifdef INTERNAL_DEBUGGER
   if (DEBUGGER_STARTED())
     RESET();
-  ClearSymbols();
-#endif
+  CLEARSYMBOLS();
   cmd = BuildCompiler(project, "$(RHIDE_GDB)");
   RunProgram(cmd, False, False, True);
   string_free(cmd);
@@ -270,3 +262,4 @@ RunExternalProgram(const char *program, int show_stderr, int show_stdout)
   if (msgs)
     ShowMessages(msgs, False);
 }
+

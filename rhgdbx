@@ -1,2 +1,2 @@
 #!/bin/bash
-Eterm --title "RHGDB in Eterm" --report-as-keysyms --term-name eterm-rhide --scrollbar off -e rhgdb $* &
+Eterm --title "RHGDB in Eterm" --report-as-keysyms --term-name xterm-eterm-tv --scrollbar off -e rhgdb $* &

@@ -1,5 +1,5 @@
 # copied from SET's editor 
-eterm-rhide|Eterm description for RHIDE using Turbo Vision,
+xterm-eterm-tv|Eterm description for RHIDE using Turbo Vision,
 	am, bce, km, mc5i, mir, msgr, xenl, 
 	colors#8, cols#80, it#8, lines#24, pairs#64, 
 	acsc=``aaffggjjkkllmmnnooppqqrrssttuuvvwwxxyyzz{{||}}~~, 

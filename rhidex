@@ -1,2 +1,2 @@
 #!/bin/bash
-Eterm --title "RHIDE in Eterm" --report-as-keysyms --term-name term-rhide --scrollbar off -e rhide $* &
+Eterm --title "RHIDE in Eterm" --report-as-keysyms --term-name xterm-eterm-tv --scrollbar off -e rhide $* &

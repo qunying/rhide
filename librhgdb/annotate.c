@@ -258,3 +258,111 @@ _initialize_annotate ()
 {
 }
 
+void
+_rhgdb_annotate_frame_begin (int level, CORE_ADDR pc);
+
+void
+annotate_frame_begin (int level __attribute__((unused)), CORE_ADDR pc)
+{
+  DEBUG("|frame_begin(%d,%ld)|",level,pc);
+  _rhgdb_annotate_frame_begin(level, pc);
+}
+
+void
+annotate_frame_address ()
+{
+  /* The address is set frame_begin */
+  DEBUG("|frame_address|");
+}
+
+void
+annotate_frame_address_end ()
+{
+  DEBUG("|frame_address_end|");
+}
+
+void
+_rhgdb_annotate_frame_function_name ();
+
+void
+annotate_frame_function_name ()
+{
+  DEBUG("|frame_function_name|");
+  _rhgdb_annotate_frame_function_name();
+}
+
+void
+_rhgdb_annotate_frame_args ();
+
+void
+annotate_frame_args ()
+{
+  DEBUG("|frame_args|");
+  _rhgdb_annotate_frame_args();
+}
+
+void
+_rhgdb_annotate_frame_source_begin ();
+
+void
+annotate_frame_source_begin ()
+{
+  DEBUG("|frame_source_begin|");
+  _rhgdb_annotate_frame_source_begin();
+}
+
+void
+_rhgdb_annotate_frame_source_file ();
+
+void
+annotate_frame_source_file ()
+{
+  DEBUG("|frame_source_file|");
+  _rhgdb_annotate_frame_source_file();
+}
+
+void
+_rhgdb_annotate_frame_source_file_end ();
+
+void
+annotate_frame_source_file_end ()
+{
+  DEBUG("|frame_source_file_end|");
+  _rhgdb_annotate_frame_source_file_end();
+}
+
+void
+_rhgdb_annotate_frame_source_line ();
+
+void
+annotate_frame_source_line ()
+{
+  DEBUG("|frame_source_line|");
+  _rhgdb_annotate_frame_source_line();
+}
+
+void
+_rhgdb_annotate_frame_source_end ();
+
+void
+annotate_frame_source_end ()
+{
+  DEBUG("|frame_source_end|");
+  _rhgdb_annotate_frame_source_end();
+}
+
+void
+annotate_frame_where ()
+{
+  DEBUG("|frame_where|");
+}
+
+void
+_rhgdb_annotate_frame_end ();
+
+void
+annotate_frame_end ()
+{
+  _rhgdb_annotate_frame_end();
+}
+

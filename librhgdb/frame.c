@@ -74,9 +74,8 @@ static int line_start;
 static int line_end;
 
 void
-annotate_frame_begin (int level __attribute__((unused)), CORE_ADDR pc)
+_rhgdb_annotate_frame_begin (int level __attribute__((unused)), CORE_ADDR pc)
 {
-  DEBUG("|frame_begin(%d,%ld)|",level,pc);
   frame_begin_seen = 1;
   current_address = pc;
   current_line_number = -1;
@@ -91,81 +90,54 @@ annotate_frame_begin (int level __attribute__((unused)), CORE_ADDR pc)
 }
 
 void
-annotate_frame_address ()
+_rhgdb_annotate_frame_function_name ()
 {
-  /* The address is set frame_begin */
-  DEBUG("|frame_address|");
-}
-
-void
-annotate_frame_address_end ()
-{
-  DEBUG("|frame_address_end|");
-}
-
-void
-annotate_frame_function_name ()
-{
-  DEBUG("|frame_function_name|");
   /* remember the start of the function name */
   function_start = gdb_output_pos;
 }
 
 void
-annotate_frame_args ()
+_rhgdb_annotate_frame_args ()
 {
-  DEBUG("|frame_args|");
   function_end =
   args_start = gdb_output_pos;
 }
 
 void
-annotate_frame_source_begin ()
+_rhgdb_annotate_frame_source_begin ()
 {
-  DEBUG("|frame_source_begin|");
   args_end = gdb_output_pos;
 }
 
 void
-annotate_frame_source_file ()
+_rhgdb_annotate_frame_source_file ()
 {
-  DEBUG("|frame_source_file|");
   file_start = gdb_output_pos;
 }
 
 void
-annotate_frame_source_file_end ()
+_rhgdb_annotate_frame_source_file_end ()
 {
-  DEBUG("|frame_source_file_end|");
   file_end = gdb_output_pos;
 }
 
 void
-annotate_frame_source_line ()
+_rhgdb_annotate_frame_source_line ()
 {
-  DEBUG("|frame_source_line|");
   line_start = gdb_output_pos;
 }
 
 void
-annotate_frame_source_end ()
+_rhgdb_annotate_frame_source_end ()
 {
-  DEBUG("|frame_source_end|");
   line_end = gdb_output_pos;
 }
 
 void
-annotate_frame_where ()
-{
-  DEBUG("|frame_where|");
-}
-
-void
-annotate_frame_end ()
+_rhgdb_annotate_frame_end ()
 {
   frame_entry *fe;
   char c;
-  DEBUG("|frame_end|");
   if (!record_frames || !frame_begin_seen) return;
   /* This can happen, when the function has no debugging information */
   if (args_start >= 0 && args_end < 0)

@@ -129,9 +129,9 @@ int main(int argc,char *argv[])
   if (argc < 3) return -1;
   string_dup(ref,argv[1]);
   string_dup(ret,argv[2]);
-  printf("%s relative to %s is ",ret,ref);
+  fprintf(stderr, "%s relative to %s is ",ret,ref);
   AbsToRelPath(ref,ret);
-  printf("%s\n",ret);
+  fprintf(stderr, "%s\n",ret);
   return 0;
 }
 

@@ -945,6 +945,7 @@ init_rhgdb(int __crt0_argc, char **__crt0_argv)
 #endif
 
   CreateInputLine = &rhgdbCreateInputLine;
+  TCEditor::staticSeeTabs=False;
 
   prog_name = __crt0_argv[0];
   parse_commandline(__crt0_argc, __crt0_argv);

@@ -713,7 +713,7 @@ static void parse_commandline(int argc,char *argv[])
       progname = string_dup(arg);
     }
   }
-  if (!progname) Usage();
+  if (!init_name && !progname) Usage();
 }
 
 
@@ -836,6 +836,8 @@ int main(int argc,char **argv)
   {
     if (!init_name)
     {
+      if (!progname)
+        usage();
       char *dot;
       strcpy(initname,progname);
       dot = strrchr(initname,'.');
@@ -844,6 +846,18 @@ int main(int argc,char **argv)
       init_name = initname;
     }
     ReadOptions(init_name);
+    if (!progname) // probably an old ini file
+    {
+      char *spec = string_dup("$(subst .rgd,");
+      string_cat(spec, init_name);
+      string_cat(spec, ",");
+#ifndef __linux__
+      string_cat(spec, ".exe");
+#endif
+      string_cat(spec, ")");
+      progname = expand_spec(spec, NULL);
+      string_free(spec);
+    }
     main_source = SourceForMain(&main_line);
     if (main_source)
     {
@@ -1082,6 +1096,7 @@ static void WriteIDEOptions()
   fprintf(opt_file,"VERBOSEGDB: %d\n",verbose_gdb_commands);
   fprintf(opt_file,"MAIN: %s\n",main_function);
   fprintf(opt_file,"USE_DUAL: %d\n",use_dual_display);
+  fprintf(opt_file,"PROGRAM: %s\n", progname);
   count = ProgArgs->getCount();
   for (i=0;i<count;i++)
   {
@@ -1149,6 +1164,12 @@ static int ReadIDEOptions()
     {
       string_free(main_function);
       string_dup(main_function,&read_buffer[index]);
+    }
+    else
+    if ((index == key_index("PROGRAM")) != 0)
+    {
+      string_free(progname);
+      progname = string_dup(&read_buffer[index]);
     }
   }
   return retval;

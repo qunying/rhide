@@ -215,8 +215,8 @@ MANIFEST_SRC=
 LANGUAGES.SRC=
 endif
 
-distrib.src_: $(LANGUAGES.SRC) tmp.start copy.files \
-	     $(MANIFEST_SRC) $(txt_conv)
+distrib.src_: $(notdir $(txt_conv)) $(LANGUAGES.SRC) tmp.start copy.files \
+	     $(MANIFEST_SRC)
 	rm -f $(rhides).zip
 	$(MAKE) mark.copyright copyrite_srcdir=$(prefix)
 ifneq ($(txt_conv),)
@@ -255,9 +255,10 @@ rhgdb/version.cc: rhgdb/version.in common.mak
 distrib.src: init.version touch_gprs
 	$(MAKE) $(FLAGS_TO_PASS) gpr2mak.exe
 	$(MAKE) $(FLAGS_TO_PASS) \
-	  prefix=$(copy_dir)/$(install_prefix_src) distrib.src_ \
-	  LFN=y FNCASE=y txt_conv=$(top_obj_dir)/$(txt_conv_$(rhide_OS))
-
+	  prefix=$(copy_dir)/$(install_prefix_src) \
+	  LFN=y FNCASE=y txt_conv="$(top_obj_dir)/$(txt_conv_$(rhide_OS))" \
+	  distrib.src_
+	  
 doc info dvi:
 	$(MAKE) -C doc $@
 
@@ -286,8 +287,8 @@ install.programs: all install.rhgdb
 	$(INSTALL_DIR) $(prefix)/$(install_bindir)
 	$(INSTALL_PROGRAM) idegc.exe $(prefix)/$(install_bindir)/$(INSTALLED_RHIDE)
 	$(INSTALL_PROGRAM) gpr2mak.exe $(prefix)/$(install_bindir)/$(INSTALLED_GPR2MAK)
-ifeq ($(use_djp),yes)
-	$(DJP) $(addprefix $(prefix)/$(install_bindir)/, \
+ifeq ($(use_upx),yes)
+	$(UPX) $(addprefix $(prefix)/$(install_bindir)/, \
 	  $(INSTALLED_RHIDE) $(INSTALLED_GPR2MAK))
 endif
 	echo $(install_bindir)/$(INSTALLED_RHIDE) \
@@ -367,7 +368,7 @@ install::
 install.all:
 	$(MAKE) $(FLAGS_TO_PASS) install logfile=$(logfile)
 
-distrib.bin_: $(txt_conv) install.all install.bin_src_files $(MANIFEST)
+distrib.bin_: $(notdir $(txt_conv)) install.all install.bin_src_files $(MANIFEST)
 
 distrib.dynamic:
 	$(MAKE) link_type=dynamic archive_id=.dynamic distrib.bin 
@@ -378,8 +379,9 @@ distrib.bin: init.version touch_gprs
 # make at first gpr2mak
 	$(MAKE) $(FLAGS_TO_PASS) $(DISTRIB_BIN_FLAGS) gpr2mak.exe
 	$(MAKE)  $(FLAGS_TO_PASS) prefix=$(copy_dir)$(install_prefix_bin) \
-	  distrib.bin_ \
-	  logfile=rhide.log $(DISTRIB_BIN_FLAGS) txt_conv="$(top_obj_dir)/$(txt_conv_$(rhide_OS))"
+	  logfile=rhide.log $(DISTRIB_BIN_FLAGS) \
+	  txt_conv="$(top_obj_dir)/$(txt_conv_$(rhide_OS))" \
+	  distrib.bin_ 
 ifeq ($(rhide_OS),DJGPP)
 # On DJGPP the ZIP format is default
 	rm -f $(rhideb).zip

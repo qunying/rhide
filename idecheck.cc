@@ -2,6 +2,7 @@
 /* This file is part of RHIDE. */
 #ifdef __DJGPP__
 #include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
 #include <crt0.h>
 #include <sys/stat.h>
@@ -78,7 +79,7 @@ int CheckIDE()
     goto end;
   }
 
-  if (*language)
+  if (*language && (strncasecmp(language, "en", 2) != 0))
   {
     if (!*localedir)
       string_cat(localedir, djdir, "/share/locale", NULL);
@@ -96,7 +97,7 @@ int CheckIDE()
   {
     if (BigmessageBox(mfWarning|mfYesButton|mfNoButton,
          _("RHIDE could not access the direcory '%s', where "
-           "it searches for language specifc strings. Please "
+           "it searches for language specific strings. Please "
            "read the file 'RHIDE.BIN' how to install RHIDE "
            "correct. Should I continue?"), lcdir) == cmNo)
     {

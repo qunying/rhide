@@ -1,6 +1,6 @@
 /* Copyright (C) 1996-1998 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
-/* DataWindow v0.10 */
+/* DataWindow v0.11 */
 /* Copyright (C) 1998 Laszlo Molnar */
 /* This program is free software, see COPYING for details */
 
@@ -240,11 +240,10 @@ void TDataViewer::update(unsigned long addr,Boolean external)
     }
 
     indi->changeState(TDIndicator::iChanged, ' ');
-    if (external && autofollow)
+    if (external)
     {
-        addr = 0;
         address_changed = False;
-        if (isvalid_address(orig_addr_txt,&addr))
+        if (autofollow && isvalid_address(orig_addr_txt,&addr))
         {
              address_changed = orig_addr != addr;
              orig_addr = addr;
@@ -527,6 +526,7 @@ void TDataViewer::handleEvent(TEvent& event)
     }
     else if (event.what == evKeyDown)
     {
+        FILE *f1 = NULL;
         switch (event.keyDown.keyCode)
         {
         case kbUp:
@@ -715,8 +715,6 @@ checkaddress:
                 AddWindow(dw);
             break;
         case kbCtrlR:                   // read block
-        {
-            FILE *f1 = NULL;
             if (getFilename(buf,0) && (f1=fopen(buf,"rb"))!=NULL)
             {
                 sprintf(buf,"%#lx,", curs2memo() - memo + mem_start);
@@ -736,10 +734,7 @@ checkaddress:
                 fclose(f1);
             }
             break;
-        }
         case kbCtrlW:                   // write block
-        {
-            FILE *f1 = NULL;
             if (getFilename(buf,1) && (f1=fopen(buf,"wb"))!=NULL)
             {
                 sprintf(buf,"%#lx,", curs2memo() - memo + mem_start);
@@ -758,7 +753,6 @@ checkaddress:
                 fclose(f1);
             }
             break;
-        }
         case kbCtrlX:                   // change radix
             radix = (radix + 1) % rxMAX;
             indi->changeState(TDIndicator::iRadix, "XD"[radix]);
@@ -946,7 +940,9 @@ TDataWindow *TDataWindow::stackWindow()
 TDIndicator::TDIndicator (const TRect& bounds) :
     TIndicator (bounds)
 {
-    strcpy(thestate,"  eX  ");
+    strcpy(thestate,"   X   ");
+    if (TDataViewer::targetEndian >= 0)
+        changeState(iEndian, "eE"[TDataViewer::targetEndian]);
 }
 
 void TDIndicator::draw()

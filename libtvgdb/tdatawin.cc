@@ -1,3 +1,5 @@
+/* Copyright (C) 1996-1998 Robert H”hne, see COPYING.RH for details */
+/* This file is part of RHIDE. */
 /* DataWindow v0.02 */
 /* Copyright (C) 1998 Laszlo Molnar */
 /* This program is free software, see COPYING for details */
@@ -34,10 +36,10 @@
  02 Normal text (not active)
  03 Focused text
  04 Selected text
- 05 Execution line
- 06 Breakpoint
+ 05 reserved
+ 06 reserved
 */
-#define cpDataViewer "\x06\x04\x00"
+#define cpDataViewer "\x06\x07\x08\x09\x0A\x0B"
 
 #define NONACCESS  0x1
 #define EDITED     0x2
@@ -87,10 +89,10 @@ public:
     unsigned char radix;
     unsigned char endian;
 
-    static char targetEndian;
+    static signed char targetEndian;
 };
 
-char TDataViewer::targetEndian = -1;
+signed char TDataViewer::targetEndian = -1;
 
 static int isvalid_address (char *taddr,unsigned long *addr)
 {
@@ -699,11 +701,10 @@ void TDataViewer::changeBounds(const TRect &bounds)
  04 Scroll bar page
  05 Scroll bar icons
  06-0A TDataViewer
- 0B-0D TRegisters
 */
 
-#define cpDataWindow "\xB0\xB1\xB2\xB3\xB4\xB5\xB6\xB7"\
-                     "\xB8\xB9\xBA\xBB\xBC\xBD\xBE\xBF"
+#define cpDataWindow "\xC0\xC1\xC2\xC3\xC4\xC5\xC6\xC7"\
+                     "\xC8\xC9\xCA"
 
 TPalette &TDataWindow::getPalette() const
 {

@@ -49,6 +49,8 @@ FILE_TYPE get_file_type(const char * _ext)
   if (!strcmp(ext,".exe")) return FILE_EXE;
   if (!strcmp(ext,".h")) return FILE_HEADER;
   if (!strcmp(ext,".hpp")) return FILE_HEADER;
+  if (!strcmp(ext,".ha")) return FILE_HEADER;
+  if (!strcmp(ext,".hd")) return FILE_HEADER;
   if (!strcmp(ext,".m")) return FILE_OBJC_SOURCE;
   if (!strcasecmp(ext,".gpr")) return FILE_PROJECT; // ignore case
   if (!strcmp(ext,".p")) return FILE_PASCAL_SOURCE;

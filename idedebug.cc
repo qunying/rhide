@@ -365,8 +365,9 @@ static void EndSession(int exit_code)
   {
     close_stderr();
   }
-  messageBox(mfInformation|mfOKButton,
-    _("Program exit code: %d (0x%04x)"),exit_code,exit_code);
+  if (!DontShowExitCode)
+    messageBox(mfInformation|mfOKButton,
+      _("Program exit code: %d (0x%04x)"),exit_code,exit_code);
 
   if (ShowUserAfterExit)
   {

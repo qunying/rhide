@@ -215,7 +215,7 @@ long TimeOfFile(const char *name,Boolean update,Boolean is_full_name)
     strcpy(full_name,name);
     FExpand(full_name,False);
   }
-  e = is_on_desktop(full_name,True);
+  e = is_on_desktop(full_name,True,False);
   if (e) 
   {
     if (!NoFileCache && file_times != NULL)
@@ -936,8 +936,9 @@ Boolean RunMainTarget()
     exit_code = RunProgram(cmd,redir_stderr,redir_stdout,True);
     string_free(cmd);
     chdir(project_directory);
-    messageBox(mfInformation|mfOKButton,
-      _("Program exit code: %d (0x%04x)"),exit_code,exit_code);
+    if (!DontShowExitCode)
+      messageBox(mfInformation|mfOKButton,
+        _("Program exit code: %d (0x%04x)"),exit_code,exit_code);
     if (ShowUserAfterExit)
     {
       TEvent event;

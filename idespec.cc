@@ -589,6 +589,7 @@ TF(RHIDE_BIN_DIR);
 TF(PASCAL_TYPE);
 TF(GET_HOME);
 TF(make_GET_HOME);
+TF(CLEAN_FILES);
 
 static _rhide_tokens rhide_tokens[] = {
 #define SF(x,y) {#x,sizeof(#x)-1,rhide_token_##x,y}
@@ -625,9 +626,15 @@ static _rhide_tokens rhide_tokens[] = {
   SF(RHIDE_BIN_DIR, NULL),
   SF(PASCAL_TYPE, NULL),
   SF(GET_HOME, rhide_token_make_GET_HOME),
+  SF(CLEAN_FILES, NULL),
   {NULL, 0, NULL, NULL}
 #undef SF
 };
+
+TF(CLEAN_FILES)
+{
+  return string_dup("$(MAIN_TARGET) $(OBJFILES)");
+}
 
 TF(make_GET_HOME)
 {
@@ -1039,7 +1046,10 @@ _objfiles(int check_exclude, int use_all_obj)
     if ((check_exclude == 2) && !dep->exclude_from_link)
       continue;
     if (dep->source_file_type == FILE_PROJECT &&
-        (use_all_obj || dep->dest_file_type != FILE_LIBRARY))
+        (use_all_obj ||
+         (dep->dest_file_type != FILE_LIBRARY) &&
+         (dep->dest_file_type != FILE_EXE) &&
+         (dep->dest_file_type != FILE_COFF)))
     {
       string_dup(recur_directory, project_directory);
       recursive_object_files(dep, retval, check_exclude);

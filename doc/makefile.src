@@ -1,0 +1,184 @@
+# Copyright (C) 1996,1997 Robert H”hne, see COPYING.RH for details 
+# This file is part of RHIDE. 
+
+srcdir=$(RHIDESRC)/doc
+VPATH=$(srcdir)
+
+# I need this for building rhide.dvi
+SHELL=bash
+
+src_files=\
+	  infeng.txi infger.txi infspa.txi \
+	  rhidemac.txi rhidemac.htm rhidemac.txt \
+	  chapxref.sed htmlctx.sed htmlidx.sed htmlprep.sed idxref.sed \
+	  indices.sed enum.c html2ctx.c	makefile rhide.tx tx2txi.c \
+	  htmlspl.c checkmki.txi makeinfo.dif makefile.src rhide.env \
+	  rhide.var
+po_files=
+cfg_files=
+update_files=
+
+subdirs=
+po_subdirs=
+install_info_files=rhide.inf
+install_doc_files=rhide.txt rhide.html
+
+include $(RHIDESRC)/common.mak
+
+MAKEINFO=makeinfo -I $(srcdir)
+
+all:: all_doc
+
+doc: rhide.inf rhide.html rhide.txt $(INFVIEW)
+
+all_doc: info dvi txt ps html
+
+info: rhide.inf
+
+tx2txi tx2txi.exe: tx2txi.c
+	gcc -o $@ -O -s $<
+
+rhide.txi: rhide.tx tx2txi rhidemac.txi rhidemac.htm rhidemac.txt
+
+%.txi: %.tx
+	./tx2txi $< $@
+
+rhide_info=$(shell ls rhide.i*)
+
+dvi: rhide.dvi
+
+txt: rhide.txt
+
+ps: rhide.ps
+
+html: rhide.html
+
+rhide.inf: rhide.num
+
+%.inf: %.num
+	$(MAKEINFO) --no-split --fill-column 75 -o $@ $<
+
+rhide.num: rhide.txi enum
+
+%.num: %.txi
+	./enum -I $(srcdir) $< $@
+
+enum enum.exe: enum.c
+	gcc -Wall -O2 -s -o $@ $<
+
+html2ctx html2ctx.exe: html2ctx.c
+	gcc -Wall -O2 -s -o $@ $<
+
+%.ps: %.dvi
+	dvips -o $@ $<
+
+rhide.dvi: rhide.txi
+	export MAKEINFO='$(MAKEINFO) -Ddvi'; texi2dvi $<
+
+htmlctx.tmp: rhide.num $(srcdir)/htmlprep.sed
+	sed -f $(srcdir)/htmlprep.sed $< | \
+	  sed -n -f $(srcdir)/htmlctx.sed > $@
+
+html.ctx: htmlctx.tmp html2ctx
+	./html2ctx $< > $@
+
+htmlref.tmp: htmlctx.tmp makefile
+	sed -e \
+	  's/^[^{]*{\([^}]*\)}{\([0-9]\)[0-9\.][0-9\.]*}/s|"#\1"|"chap\2.html#\1"|/' \
+	  $< > $@
+
+split.tmp: rhide.html htmlref.tmp
+	sed -f htmlref.tmp rhide.html > $@
+
+htmlspl htmlspl.exe: htmlspl.c
+	gcc -Wall -O2 -s -o $@ $<
+
+htmlsplit: split.tmp htmlspl
+	./htmlspl $< chap
+
+rhide.ctx: rhide.num cindex.idx kindex.idx html2ctx
+	sed -f $(srcdir)/htmlprep.sed $< | \
+	  sed -n -f $(srcdir)/htmlctx.sed | \
+	 ./html2ctx > rhide.ctx
+
+rhide.html: rhide.num rhide.ctx $(srcdir)/htmlprep.sed mki.chk
+	sed -f $(srcdir)/htmlprep.sed $< | \
+	  $(MAKEINFO) --no-validate --no-split --no-headers --fill-column 200 \
+	  -Dhtml -o rhide.html
+
+rhide.htm: rhide.html
+
+rhide_.inf: rhide.num
+	$(MAKEINFO) --no-split --fill-column 75 -o $@ $<
+
+cindex.tmp kindex.tmp: indices.sed rhide_.inf
+	sed -n -f $^
+
+cindex.idx kindex.idx: htmlidx.sed cindex.tmp kindex.tmp
+	sed -f $< cindex.tmp > cindex.idx
+	sed -f $< kindex.tmp > kindex.idx
+
+contents.idx: rhide.num makefile
+	sed -n \
+	-e 's/^@subsubsection  */  /p' \
+	-e 's/^@subsection  */  /p' \
+	-e 's/^@section  */  /p' \
+	-e 's/^@chapter  *//p' \
+	$< > $@
+
+chapters.tmp: rhide.num makefile
+	sed -n \
+	 -e '/^@node[ 	]/p' \
+	 -e '/^@top[ 	]/p' \
+	 -e '/^@chapter[ 	]/p' \
+	 -e '/^@subsubsection[ 	]/p' \
+	 -e '/^@subsection[ 	]/p' \
+	 -e '/^@section[ 	]/p' \
+	 -e '/^@unnumbered[ 	]/p' \
+	 $< > $@
+
+textprep.tmp: chapters.tmp $(srcdir)/chapxref.sed
+	sed -n -f $(srcdir)/chapxref.sed chapters.tmp > $@
+
+textpost.tmp: chapters.tmp $(srcdir)/idxref.sed
+	sed -n -f $(srcdir)/idxref.sed chapters.tmp > $@
+
+rhide.txt: rhide.num textprep.tmp textpost.tmp contents.idx
+	@echo The following command may take a long time.  Be patient.
+	sed -f textprep.tmp $< | \
+	  $(MAKEINFO) --no-split --no-headers --no-validate --fill-column 78 \
+	  -Dtext -o - | \
+	  sed -f textpost.tmp > $@
+	  
+clean:
+	rm -f *.tmp
+	rm -f *.idx
+	rm -f $(filter-out rhide.tx,$(whildcard rhide.??))
+	rm -f rhide.??s
+	rm -f *.log *.bak *.dsk *.dlg *.aux *.idx *.toc *.num
+	rm -f rhide.ct?
+
+distclean: clean
+	rm -f rhide.inf* rhide.htm* rhide.dvi rhide.txt rhide.ps rhide.txi
+	rm -f enum enum.exe html2ctx html2ctx.exe tx2txi tx2txi.exe
+	rm -f htmlspl htmlspl.exe
+	rm -f chap*.htm*
+	rm -f mki.chk checkmki.err
+
+mki.chk: checkmki.txi
+ifeq ($(rhide_OS),DJGPP)
+	@-redir -o /dev/null -e checkmki.err makeinfo -o /dev/null $<
+else
+	@-makeinfo -o /dev/null $< 2>checkmki.err > /dev/null
+endif
+	@echo If make stops here you need at least makeinfo.exe from
+	@echo texinfo 3.9 with the patch \'$(srcdir)/makeinfo.dif\', otherwise
+	@echo you will not be able to produce the html format.
+	@echo Apply the patch like the following command:
+	@echo ''
+	@echo patch $(DJDIR)/gnu/texinfo3.9/makeinfo/makeinfo.c $(srcdir)/makeinfo.dif
+	@echo ''
+	@test ! -s checkmki.err
+	touch mki.chk
+
+force:

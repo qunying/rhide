@@ -1,0 +1,25 @@
+# Copyright (C) 1996,1997 Robert H”hne, see COPYING.RH for details 
+# This file is part of RHIDE. 
+#
+# $Id$
+#
+
+srcdir=$(RHIDESRC)/rhgdb
+VPATH=$(srcdir)
+project=rhgdb
+
+po_files=gdbedit.cc main.cc options.cc version.cc gdbsynt.cc
+src_files=$(po_files) makefile rhgdb.gpr rhgdb.mak makefile.src \
+	  rhide.env rhide.var version.in
+update_files=rhgdb.gpr rhgdb.mak
+cfg_files=
+
+subdirs=include
+po_subdirs=
+
+install_bin_files=rhgdb
+
+include $(RHIDESRC)/common.mak
+
+rhgdb:: rhgdb.exe
+	ln -sf $< $@

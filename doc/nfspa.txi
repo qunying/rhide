@@ -1,0 +1,101 @@
+@c -*-texinfo-*-  not \input texinfo.tex, as this is not to be TeX'ed
+@setfilename infview.spa
+
+@format
+START-INFO-DIR-ENTRY
+* InfView: (infview).           Documentaciўn de InfView.
+END-INFO-DIR-ENTRY
+@end format
+
+ This document is copyrighted by Salvador E. Tropea (SET), use it for any
+purpose, but don't remove my credits and copyrights.
+
+@node Top, Como usar InfView, (dir), (dir)
+
+ Esta es la ayuda de InfView.
+
+@format
+ Use los cursores para posicionarse sobre las palabras en amarillo (links),
+seleccione la que desea y presione INTRO (o ENTER).
+@end format
+
+@menu
+* Como usar InfView::.
+* ЁQui‚n hizo InfView?::.
+* Agradecimientos::.
+@end menu
+
+@node Como usar InfView, ЁQui‚n hizo InfView?, Top, Top
+
+Teclas disponibles:
+
+@format
+Tab        Mueve al prўimo link (con respecto a la posiciўn del cursor).
+Shift Tab  Mueve al link anterior (con respecto a la posiciўn del cursor).
+Alt F1     Vuelve al link anterior.
+Ctrl s     BЈsqueda.
+Ctrl l     Repetir la Јltima bЈsqueda.
+Alt F10    Ventana de control de InfView.
+Ctrl p     Va al link designado como previo por el actual.
+Ctrl n     Va al link designado como prўximo por el actual.
+Ctrl u     Va al link designado como superior por el actual.
+Ctrl t     Va al link principal del archivo que se est  leyendo.
+Ctrl d     Va al directorio de ayudas.
+Ctrl h     Esta ayuda.
+Ctrl g     @xref{GoTo, ,Permite ir a cualquier link}.
+1-9        Toman los links 1 a 9.
+0          Toma el Јltimo link.
+a-z A-Z    Seleccionan el prўximo link que comienza con esa letra.
+@end format
+
+@node ЁQui‚n hizo InfView?, Agradecimientos, Como usar InfView, Top 
+@*
+0BЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫ@*
+0FЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫ@*
+0BЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫ
+
+  InfView fue creado por Salvador Eduardo Tropea, con la ayuda de Robert
+Hoehne.
+
+@format
+E-Mail: salvador@@inti.edu.ar
+
+Tel‚fono: (+541) 759-0013
+Direcciўn Postal:
+Salvador E. Tropea
+CurapaligЃe 2124
+(1678) Caseros - 3 de Febrero
+Prov: Buenos Aires
+Argentina
+@end format
+
+@*
+0BЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫ@*
+0FЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫ@*
+0BЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫ@*
+
+@node Agradecimientos, , ЁQui‚n hizo InfView?, Top
+@format
+* A toda la gente que ha contribuido con lo proyectos DJGPP y GNU.
+
+* Especialmente a:
+
+  DJ Delorie.
+  Robert Hoehne (autor de RHIDE).
+  Eli Zaretskii (que mantiene la FAQ).
+
+* A toda la gente de la lista DJGPP.
+@end format
+@node GoTo, , Como usar InfView, Como usar InfView
+
+Ventana de Go To:
+
+@format
+  Deber  ingresar el nombre exacto del link al que desea ir, el formato es el
+siguiente:
+@end format
+
+(archivo)nodo
+
+por ejemplo: "(libc)printf" lo llevar  a la ayuda sobre la funciўn de
+librerЎa printf.

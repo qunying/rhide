@@ -1,0 +1,19 @@
+# Copyright (C) 1996,1997 Robert H”hne, see COPYING.RH for details 
+# This file is part of RHIDE. 
+
+srcdir=$(RHIDESRC)/tvdemo
+VPATH=$(srcdir)
+
+project=libtvdem
+
+po_files=libtvdem.cc ascii.cc calendar.cc puzzle.cc mousedlg.cc
+src_files=$(po_files) makefile libtvdem.gpr \
+	libtvdem.mak makefile.src rhide.env rhide.var
+
+cfg_files=
+update_files=libtvdem.gpr libtvdem.mak
+
+subdirs=include
+po_subdirs=
+
+include $(RHIDESRC)/common.mak

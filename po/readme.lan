@@ -1,0 +1,83 @@
+How to update the language strings for RHIDE??
+
+I describe here the files, which are part of the langauage packe,
+for a single language. If you have the sources for RHIDE, look
+at the makefile, which files are collected to such a language package.
+
+And I describe all the steps on the German example.
+
+I have written a program, called 'msgcat.exe' as replacement for the
+'msgmerge.exe' from the gettext package. My program is interactive
+and (I think so) better.
+
+The syntax for running msgcat is very simple. But remember before you
+overwrite any old translations, make a backup first. The most important
+files are 'de.cat' and 'de.po'.
+'de.cat' contains any translations, I ever made here. There may be also
+some strings, which are currently not used. The file 'de.po' contains the
+actual used strings together with their translations.
+
+Run now
+
+msgcat -cat de.cat de.po potfiles.po de.po
+
+If you have already a file with translations, you can give it also on
+commandline. This file have to put before the 'potfiles.po' file. Example:
+
+msgcat -cat de.cat de.po already.po potfiles.po de.po
+
+Hint: The last argument is the output file. That means, the file 'de.po'
+is read at first and then it is overwritten.
+
+If you want to translate for a language, for which there are not already
+some translations, you can do it in the same way, like the first command.
+But, if the file 'de.po' is not existing, do not put it after 'de.cat'.
+Example:
+
+msgcat -cat de.cat potfiles.po de.po
+
+Notes for the run of msgcat:
+============================
+You will be prompted for any not already translated string. If there was
+found a similar translation, you can take that translation, change it
+or not translated it.
+
+If there was found no similar translation you will be prompted for the
+translation. If you don't want to translate, enter an empty string and
+answer after this with Cancel.
+
+But you can translate the strings also by manually editing the file 'de.po'.
+The po-file contains for every string also the source lines, where the
+string is used.
+
+To create the file 'de.mo', which is used by RHIDE to get the translations,
+you have to run the 'msgfmt.exe' program (This program is part of the GNU
+gettext package which is available for DJGPP and Linux)
+
+msgfmt -o de.mo de.po
+
+To test the translations, copy this file as
+
+%DJDIR%/share/locale/de/LC_MESSAGES/rhide.mo
+
+under linux copy it to
+
+/usr/share/locale/de/LC_MESSAGES/rhide.mo
+
+Note: If you are running W95 with long filenames enabled, it is IMPORTANT
+to use the exact directory name.
+
+Set now the environment variable LANGUAGE to de or run rhide with
+the swith '-L de'.
+
+If you have made the translations ready, please send me the files
+'de.cat' and 'de.po', so I can update on the RHIDE home page the
+'de.mo' file. (The file 'de.cat' is not really needed)
+
+So, I hope you understand me and remember, that I described all for German,
+(de). If you translate to an other langauge, replace all references of
+'de' to your language shortcut. For a summary of the language shortcuts
+you can look in the file 'locale.alias'.
+
+Robert H”hne <robert.hoehne@mathematik.tu-chemnitz.de>
+

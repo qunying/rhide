@@ -1,0 +1,21 @@
+# Copyright (C) 1996,1997 Robert H”hne, see COPYING.RH for details 
+# This file is part of RHIDE. 
+
+srcdir=$(RHIDESRC)/tvdemo/stream
+VPATH=$(srcdir)
+
+project=
+
+po_files=
+
+src_files=$(po_files) \
+	sascii.cc scalview.cc scalwind.cc spuzzlv.cc \
+	spuzzlw.cc sreport.cc stable.cc \
+	makefile makefile.src
+cfg_files=
+update_files=
+
+subdirs=
+po_subdirs=
+
+include $(RHIDESRC)/common.mak

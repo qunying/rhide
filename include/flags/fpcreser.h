@@ -1,0 +1,107 @@
+/* Copyright (C) 1996,1997 Robert H"hne, see COPYING.RH for details */
+/* This file is part of RHIDE. */
+/*
+  $Id$
+*/
+/* List from FPK scanner.pas
+    CVS version scanner.pas,v 1.12 1997/12/12 13:28:41
+
+                 'ABSOLUTE','AND',
+                 'ARRAY','AS','ASM','BEGIN',
+                 'BREAK','CASE','CLASS',
+                 'CONST','CONSTRUCTOR','CONTINUE',
+                 'DESTRUCTOR','DISPOSE','DIV','DO','DOWNTO','ELSE','END',
+                     'EXCEPT',
+                 'EXIT','EXPORT','EXPORTS','EXTERNAL','FAIL','FALSE','FAR',
+                 'FILE','FINALLY','FOR',
+                 'FORWARD','FUNCTION','GOTO','IF','IMPLEMENTATION','IN',
+                 'INHERITED','INITIALIZATION',
+                 'INLINE','INTERFACE','INTERRUPT','IS',
+                 'LABEL','LIBRARY','MOD','NEAR','NEW','NIL','NOT','OBJECT',
+                 'OF','ON','OPERATOR','OR','OTHERWISE','PACKED','PRIVATE',
+                 'PROCEDURE','PROGRAM','PROPERTY','PROTECTED','PUBLIC',
+                 'RAISE','RECORD','REPEAT','SELF',
+                 'SET','SHL','SHR','STRING','THEN','TO',
+                 'TRUE','TRY','TYPE','UNIT','UNTIL',
+                 'USES','VAR','VIRTUAL','WHILE','WITH','XOR'); */
+
+F("Absolute")
+F("Abstract")
+F("And")
+F("Array")
+F("Asm")
+F("Begin")
+F("Break")
+F("Case")
+F("Class")
+F("Const")
+F("Constructor")
+F("Destructor")
+F("Dispose")
+F("Div")
+F("Do")
+F("Downto")
+F("Else")
+F("End")
+F("Except")
+F("Export")
+F("Exports")
+F("External")
+F("Fail")
+F("False")
+F("Far")
+F("File")
+F("Finally")
+F("For")
+F("Forward")
+F("Function")
+F("Goto")
+F("If")
+F("Implementation")
+F("In")
+F("Inherited")
+F("Initialization")
+F("Inline")
+F("Interface")
+F("Interrupt")
+F("Is")
+F("Label")
+F("Library")
+F("Mod")
+F("Near")
+F("New")
+F("Nil")
+F("Not")
+F("Object")
+F("Of")
+F("On")
+F("Operator")
+F("Or")
+F("Otherwise")
+F("Packed")
+F("Private")
+F("Procedure")
+F("Program")
+F("Property")
+F("Protected")
+F("Public")
+F("Raise")
+F("Record")
+F("Repeat")
+F("Self")
+F("Set")
+F("Shl")
+F("Shr")
+F("String")
+F("Then")
+F("To")
+F("True")
+F("Type")
+F("Unit")
+F("Until")
+F("Uses")
+F("Var")
+F("Virtual")
+F("While")
+F("With")
+F("Xor")

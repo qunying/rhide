@@ -1,0 +1,22 @@
+# Copyright (C) 1996,1997 Robert H”hne, see COPYING.RH for details 
+# This file is part of RHIDE. 
+#
+# $Id$
+#
+
+srcdir=$(RHIDESRC)/libtvuti/stream
+VPATH=$(srcdir)
+
+project=stream
+
+po_files=
+
+src_files=$(po_files) makefile.src \
+	sdirlist.cc sparamli.cc makefile stream.gpr stream.mak
+cfg_files=
+update_files=
+
+subdirs=
+po_subdirs=
+
+include $(RHIDESRC)/common.mak

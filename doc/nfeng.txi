@@ -1,0 +1,100 @@
+@c -*-texinfo-*-  not \input texinfo.tex, as this is not to be TeX'ed
+@setfilename infview.eng
+
+@format
+START-INFO-DIR-ENTRY
+* InfView: (infview).           InfView Documentation.
+END-INFO-DIR-ENTRY
+@end format
+
+ This document is copyright (C) 1996 by Salvador E. Tropea (SET), use it for any
+purpose, but don't remove my credits and copyrights.
+
+@node Top, Como usar InfView, (dir), (dir)
+
+ This is the help for InfView.
+
+@format
+ Use the cursor arrows to move the cursor over the link (yellow words) that
+you want and press ENTER.
+@end format
+
+@menu
+* How to use InfView: Como usar InfView.
+* ЁWho made InfView?: ЁQui‚n hizo InfView?.
+* Greetings: Agradecimientos.
+@end menu
+
+@node Como usar InfView, ЁQui‚n hizo InfView?, Top, Top
+
+Available Keys:
+
+@format
+Tab        Move to the next link (from the cursor position).
+Shift Tab  Move to the previous link (from the cursor position).
+Alt F1     Go to the last viewed topic.
+Ctrl s     Search.
+Ctrl l     Repeat the last search.
+Alt F10    InfView control dialog window.
+Ctrl p     Go to the "previous" link.
+Ctrl n     Go to the "next" link.
+Ctrl u     Go to the "up" link.
+Ctrl t     Go to the "top" link.
+Ctrl d     Go to the directory.
+Ctrl h     This help.
+Ctrl g     @xref{GoTo, ,Allow to jump to any topic}.
+1-9        Take the link 1 to 9.
+0          Take the last link available in that topic.
+a-z A-Z    Select the next link that starts with this letter.
+@end format
+
+@node ЁQui‚n hizo InfView?, Agradecimientos, Como usar InfView, Top 
+@*
+0BЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫ@*
+0FЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫ@*
+0BЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫ
+
+  InfView was made by Salvador Eduardo Tropea (SET), with the help of Robert
+Hoehne.
+
+@format
+E-Mail: salvador@@inti.edu.ar
+
+Telephone: (+541) 759-0013
+Postal Address:
+Salvador E. Tropea
+CurapaligЃe 2124
+(1678) Caseros - 3 de Febrero
+Prov: Buenos Aires
+Argentina
+@end format
+
+@*
+0BЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫ@*
+0FЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫ@*
+0BЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫ@*
+
+@node Agradecimientos, , ЁQui‚n hizo InfView?, Top
+@format
+* To all the people who have contributed with DJGPP and GNU projects.
+
+* Specially to:
+
+  DJ Delorie    (DJGPP's author).
+  Robert Hoehne (RHIDE's author).
+  Eli Zaretskii (FAQ's maintainer).
+
+* To all the people of DJGPP's list.
+@end format
+@node GoTo, , Como usar InfView, Como usar InfView
+
+Go To Window:
+
+@format
+  You must enter the exact name of the topic that you want in the following
+format:
+@end format
+
+(file)node
+
+for example: "(libc)printf" will go to the printf help.

@@ -1,0 +1,153 @@
+*** s:infeng.txi	Tue Jul  9 18:38:32 1996
+--- infeng.txi	Fri Jan 10 21:39:42 1997
+***************
+*** 12,27 ****
+  
+  @node Top, Como usar InfView, (dir), (dir)
+  
+!  This is the help for InfView.
+  
+  @format
+   Use the cursor arrows to move the cursor over the link (yellow words) that
+  you want and press ENTER.
+  @end format
+  
+  @menu
+  * How to use InfView: Como usar InfView.
+  * ЁWho made InfView?: ЁQui‚n hizo InfView?.
+  * Greetings: Agradecimientos.
+  @end menu
+  
+--- 12,29 ----
+  
+  @node Top, Como usar InfView, (dir), (dir)
+  
+!  This is the help for InfView v0.1.0.
+  
+  @format
+   Use the cursor arrows to move the cursor over the link (yellow words) that
+  you want and press ENTER.
++  Press F5 to use all the available screen.
+  @end format
+  
+  @menu
+  * How to use InfView: Como usar InfView.
+  * ЁWho made InfView?: ЁQui‚n hizo InfView?.
++ * Linux version : Linux.
+  * Greetings: Agradecimientos.
+  @end menu
+  
+***************
+*** 32,48 ****
+  @format
+  Tab        Move to the next link (from the cursor position).
+  Shift Tab  Move to the previous link (from the cursor position).
+! Alt F1     Go to the last viewed topic.
+  Ctrl s     Search.
+  Ctrl l     Repeat the last search.
+! Alt F10    InfView control dialog window.
+  Ctrl p     Go to the "previous" link.
+  Ctrl n     Go to the "next" link.
+  Ctrl u     Go to the "up" link.
+  Ctrl t     Go to the "top" link.
+  Ctrl d     Go to the directory.
+! Ctrl h     This help.
+  Ctrl g     @xref{GoTo, ,Allow to jump to any topic}.
+  1-9        Take the link 1 to 9.
+  0          Take the last link available in that topic.
+  a-z A-Z    Select the next link that starts with this letter.
+--- 34,51 ----
+  @format
+  Tab        Move to the next link (from the cursor position).
+  Shift Tab  Move to the previous link (from the cursor position).
+! Alt F1     Go to the last viewed topic (@xref{Linux, ,Different in Linux}.).
+  Ctrl s     Search.
+  Ctrl l     Repeat the last search.
+! Alt F10    InfView control dialog window (@xref{Linux, ,Different in Linux}.).
+  Ctrl p     Go to the "previous" link.
+  Ctrl n     Go to the "next" link.
+  Ctrl u     Go to the "up" link.
+  Ctrl t     Go to the "top" link.
+  Ctrl d     Go to the directory.
+! Ctrl h     This help (@xref{Linux, ,Different in Linux}.).
+  Ctrl g     @xref{GoTo, ,Allow to jump to any topic}.
++ Ctrl o     @xref{Jump to node, ,Allows to jump to any node in the file}.
+  1-9        Take the link 1 to 9.
+  0          Take the last link available in that topic.
+  a-z A-Z    Select the next link that starts with this letter.
+***************
+*** 55,61 ****
+  0BЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫ
+  
+    InfView was made by Salvador Eduardo Tropea (SET), with the help of Robert
+! Hoehne.
+  
+  @format
+  E-Mail: salvador@@inti.edu.ar
+--- 58,64 ----
+  0BЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫ
+  
+    InfView was made by Salvador Eduardo Tropea (SET), with the help of Robert
+! H”hne.
+  
+  @format
+  E-Mail: salvador@@inti.edu.ar
+***************
+*** 80,88 ****
+  
+  * Specially to:
+  
+!   DJ Delorie    (DJGPP's author).
+!   Robert Hoehne (RHIDE's author).
+!   Eli Zaretskii (FAQ's maintainer).
+  
+  * To all the people of DJGPP's list.
+  @end format
+--- 83,94 ----
+  
+  * Specially to:
+  
+!   DJ Delorie       (DJGPP's author).
+!   Robert H”hne     (RHIDE's author).
+!   Eli Zaretskii    (FAQ's maintainer).
+!   Charles Sandsman (CWSDPMI's author).
+!   Laszlo Molnar    (DJP's author sorry ML for the reverse order ;-).
+!   Marek Habersack  (Installer's author, don't worry the position was random).
+  
+  * To all the people of DJGPP's list.
+  @end format
+***************
+*** 98,100 ****
+--- 104,134 ----
+  (file)node
+  
+  for example: "(libc)printf" will go to the printf help.
++ 
++ @node Jump to node, , Como usar InfView, Como usar InfView
++ 
++ @format
++   This option will show you a window with all the nodes available in the
++ current help file, you'll be able to select any of them and pressing ENTER
++ you'll jump to that node.
++   The names are alphabetically sorted and pressing the first letters of the
++ name of the node you'll be guided to the desired node.
++ @end format
++ 
++ @node Linux, , Top, Top
++ 
++ @format
++  InfView can be used under Linux, but is experimental by now.
++  To make InfView for Linux you need the "TurboVision for Linux" library by
++ Sergio Sigala.
++ 
++  Differences:
++ 
++  * tv-0.1.tar.gz doesn't supports double click so you'll get an emulation of
++    that.
++  * Alt-F1 and Alt-F10 are used to switch the virtual console so use Ctrl-F1
++    and Ctrl-F10 instead.
++  * I replaced Ctrl-H by F1 in this version.
++  * The program is unstable and generates Segmentation faults from time to
++    time, I really don't know why.
++ @end format
+

@@ -1,0 +1,439 @@
+Diese Datei enth„lt einige Hinweise zur Installation und Benutzung
+von RHIDE.
+
+Erste Bemerkung fr alle eingefleischten DOS Benutzer:
+
+Da DJGPP immer mehr ein Bindeglied zwischen Unix und DOS wird, ist
+es dort blich als Trennzeichen in Dateinamen zwischen den Verzeichnissen
+'/' statt '\' zu verwenden. Ich folge diesem Brauch und werde berall dort
+'/' verwenden wo es erlaubt ist. Wenn '\' verwendet wird, so ist dies auch
+zwingend notwendig (Bei der Arbeit mit RHIDE werden brigens alle '\'
+automatisch in '/' gewandelt).
+
+Installation von RHIDE
+======================
+
+Installation der DJGPP Version
+------------------------------
+
+Ich gehe hier nur auf die Installation von RHIDE an sich ein und setze
+voraus, daá DJGPP schon installiert ist mit allen notwendigen Dateien
+die zum šbersetzten und Linken von C und/oder C++ Programmen notwendig
+sind.
+
+Falls dies noch nicht geschehen ist, so MUá dies gemacht werden, bevor
+RHIDE installiert wird.
+
+RHIDE ist in zwei Archiven erh„ltlich:
+
+rhide??b.zip
+rhide??s.zip
+
+wobei die zwei Fragezeichen fr die jeweilige Versionnnummer steht.
+Beim Schreiben dieses Textes ist sie 1.3a womit sich die vollst„ndigen
+Dateinamen wie folgt ergeben:
+
+rhide13b.zip
+rhide13s.zip
+
+Der letzte Buchstabe vor dem Punkt kennzeichnet den Typ des Archives.
+Das 'b' bedeuted, das in diesem Archiv die (engl.) 'binaries', also
+Ausfhrbaren Programme befinden und das 's' steht fr die (engl.) 'sourcen',
+also die Quelldateien, aus denen RHIDE erzeugt wird.
+
+Fr den normalen Anwender von RHIDE wird sicherlich nur 'rhide13b.zip'
+von Interesse sein. Dieses Archiv enth„lt auch die Dokumentation fr
+RHIDE die allerding z.Z. nur in Englisch verfaát ist.
+
+Um RHIDE zu installieren wird als erstes das Archiv 'rhide13b.zip' in
+ein beliebiges Verzeichnis kopiert wo man es wom”glich sp„ter (nach der
+Installation) wieder l”schen kann. Ich nehme den Fall an das dafr das
+Verzeichnis 'c:/temp' in Frage kommt.
+
+Nun wird in das DJGPP Hauptverzeichnis gewechselt welches ich hier als
+'c:/djgpp' annehme. (Wenn diese Verzeichnis einen anderen Namen haben sollte,
+so muá dieses Verzeichnis in allen weiteren Erwa„hnungen von 'c:/djgpp'
+entspechend ersetzt werden).
+
+Auspacken des Archives
+......................
+
+Wenn nicht unter Windows 95 gearbeitet wird, kann der folgende Text bis
+zur Stelle, die mit
+
+***********Ende Windows 95 speziefisch*****************
+
+markiert ist bersprungen werden.
+
+Da Windows 95 lange Dateinamen untersttzt (und auch DJGPP und damit RHIDE)
+gilt es einiges zu Beachten, wenn man unter diesem Betriebssytem arbeitet.
+
+Zur korrekten Arbeit mit RHIDE ist notwendig das bestimmte Verzeichnisse
+ganz spezielle Namen bekommen. Keine Angst, diese werden automatisch angelegt,
+es kommt eben nur zu Problemen, wenn man zum Teil unter Windows 95 mit
+den langen Dateinamen arbeitet und zum anderen Teil (evtl. auch unter
+Windows 95) die Benutzung der langen Dateinamen ausgescahltet ist.
+
+Windows 95 erzeugt fr jeden Dateinamen, der vor dem Punkt mehr als
+8 Zeichen hat oder nach dem Punkt mehr als 3 Zeichen hat, zus„tzlich 
+einen Dateinamen an, der dieser 8+3 Konvention entspricht und in dem
+jeweiligen Verzeichnis eindeutig ist. Dieser Name ist aber (wenn nicht
+anders eingestellt) i.a. etwas kryptisch. Z.B. erzeugt der Dateiname
+
+langer_dateiname.mit_langer_endung
+
+den 8+3 Namen:
+
+langer~1.mit
+
+Dieses Verhalten von Windows 95 kann und muá (zumindest fr die Zeit
+der Installation von RHIDE ver„ndert werden). Dazu muá in der Windows 95
+Registratur etwas ver„ndert werden.
+
+Hier die Schritte dafr:
+
+   * Im "Start" Man den Punkt "Ausfhren" w„hlen und "regedit" eingeben
+     um den Registrierungseditor zu starten.
+
+   * Den Punkt `HKEY_LOCAL_MACHINE' der Registratur so lange erweitern, bis
+     im linken Fenster der Punkt
+     `HKEY_LOCAL_MACHINE\System\CurrentCotrolSet\Control\FileSystem'
+     erscheint. Nun darauf klicken.
+
+   * Das rechte Fenster zeigt nun eine Liste von Werten die dem 'FileSystem'
+     Schlssel zugeordnet sind. Wenn dort kein Schlssel mit dem Namen
+     `NameNumericTail' zu sehen ist muá er ber das Men
+     "Bearbeiten", "Neu", "Bin„rwert" neu erzeugt werden.
+     Nun wird der Schlssel mit einem Doppelklick aktiviert und der Wert
+     0 eingegeben.
+
+   * Die Registratur verlassen und Windows 95 neu starten.
+
+------------
+Alternative kann auch folgender Schritt gemacht werden. Kopieren der folgenden
+4 Zeilen in eine Datei mit dem Namen num.reg:
+REGEDIT4
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\control\FileSystem]
+"NameNumericTail"=hex:00
+
+Nun an der Eingabeauffforderung in einem Dos-Fenster starten von
+
+regedit num.reg
+
+und dann den Computer neu starten.
+-------------
+
+Wenn oben gesetzter Wert von 0 fr `NameNumericTail' Probleme mit anderen
+Programmen machen sollte (was ich bisher noch nicht feststellen konnte), so
+kann obige Prozedur nach der RHIDE Installation wieder rckg„ngig gemacht
+werden.
+`NameNumericTail' beeinfluát nur die kurzen Namen von neu erzeugten Dateien,
+es hat keinen Einfluá auf die langen Dateinamen und auch nicht auf schon
+existierende Dateinamen.
+
+***********Ende Windows 95 speziefisch*****************
+
+Nun wird die Datei 'rhide13b.zip' ausgepack mit einem unzip program.
+Dazu kann PKUNZIP verwendet werden oder das unzip program, welches
+auch fr DJGPP erh„ltlich ist (von der gleichen Stelle, von der
+DJGPP bezogen wurde).
+
+unzip rhide13b
+
+oder wenn PKUNZIP verwendet wird
+
+pkunzip -d rhide13
+
+Hierbei ist der Schalter -d wichtig, damit auch alle Unterverzeichnisse
+erzeugt werden.
+
+Nun ist RHIDE wenn alles ohne Fehler gemacht ordentlich installiert.
+Der Start von RHIDE erfolgt nun ganz einfach mit
+
+rhide
+
+Eine weitere eventuelle Konfigurationsmaánahme ist die Festlegung
+der Sprache in der RHIDE die Mens usw. anzeigen soll.
+
+Installation der Linux Version
+==============================
+
+Die Linux version wird (wie fr Linux blich) in gepackten
+tar Archiven verbreitet.
+
+Die AUsfrbahren Dateien befinden sich in
+
+rhide-?.?.bin.Linux-2.0.29.tar.gz
+
+und die Quellen in
+
+rhide-?.?.tar.gz
+
+wobei die Fragezeichen wieder fr die konkrete Version von RHIDE
+stehen.
+
+Die Installation der Linux Version ist sehr erlichtert, da ich
+dafr ein kleines Shell-Script geschrieben habe, welches RHIDE
+korrkt installieren sollte.
+
+Also muá nur das Archiv in ein belibiges Verzeichnis ausgepackt
+werden und dort das Script INSTALL.SH ausgefhrt werden. Fr evtl.
+weitere Optionen bitte ich den Kommentar am Anfang von INSTALL.SH
+zu lesen.
+
+Besonderheit fr Windows NT Benutzer
+====================================
+
+Da Windows NT einige Fehler beim Behandeln von speziellen
+DPMI-Funktionen aufweist, ist es n”tig den Kommandozeilenschalter
+-M beim Aufruf von RHIDE unter Windows NT zu benutzen, d.h.
+statt
+
+rhide
+
+ist dort
+
+rhide -M
+
+Erste Kontakaufnahme mit RHIDE
+==============================
+
+RHIDE ist am besten dafr geeignet mit sogenannten Projekten zu arbeiten.
+Ein Projekt ist ganz einfach eine Datei in der alle Informationen
+gespeichert sind die n”tig sind um eine ausfhrbare Datei von einer
+oder mehreren Quelldateien zu erzeugen. Diese Projektdateien haben
+die Endung '.gpr'.
+
+Hier will ich nun die Schritte angeben um ein Projekt zu erzeugen fr
+das Standard 'Hello world' Program.
+
+Zun„chst wird in ein Verzeichnis gewechselt in welchem die Quelldateien
+gespeichert werden sollen (z.B. c:/quellen).
+Dort wird RHIDE gestarted:
+
+rhide hello
+
+Nun ist nur ein leerer Desktop (dt. Arbeitsplatz) zu sehen. Nun nicht
+ganz leer. Ganz oben ist die Menleiste, ganz unten die Statuszeile
+und darber das Projektfenster, welches erst einmal leer ist.
+
+Durch den Aufruf 'rhide hello' wurden automatisch von RHIDE zwei
+Dateien angelegt hello.gpr und hello.gdt. Die erste Datei enth„lt
+(oder wird enthalten) alle Informationen, die n”tig sind um das
+zu erstellende Programm hello.exe zu erzeugen. Die zweite Datei
+(hello.gdt) ist die Desktopdatei, die alle Informationen ber ge”ffnete
+Fenster, die Farben usw. enth„lt.
+
+Nun wird als erstes die Datei 'hello.c' in das Projekt eingefgt.
+Dafr ist der Menpunkt "Projekt|Hinzufgen" zust„ndig. Alternativ
+kann auch (wenn das Projektfenster aktiv ist, was man am doppeltem
+Rahmen erkennt) die Einfgetaste (oder Insert auf einer englischen
+Tastatur) benutzen.
+
+In dem nun erscheinenden Datei-Dialog wird einfach in die Eingabezeile
+'hello.c' (ohne die Apostrophe) eingegeben und Enter gedrckt (oder
+mit der Maus auf Ok klicken). Nun ist die Date hello.c in das Projekt
+eingefgt. Um den Dialog zu verlassen einfach Esc drcken (oder mit
+der Maus auf Abbruch klicken).
+
+Nun muá nur noch der Quelltext fr das Programm geschrieben werden.
+Dazu wird im Projektfenster die Datei hello.c ausgew„hlt und Enter
+gedrckt (oder Doppelklick mit der Maus auf den Dateinamen). Jetzt
+ist ein leeres Editorfenster zu sehen, in das der Folgende Quelltext
+eingegeben wird:
+
+/* Beginn der Datei hello.c */
+#include <stdio.h>
+
+int main()
+{
+  printf("Hello world\n");
+  return 0;
+}
+/* Ende der Datei hello.c */
+
+Dies war nun aber wirklich die meiste Arbeit. Um das Programm hello.exe
+zu erzeugen, ist der Menpunkt "Compile|Make" zust„ndig (oder alternativ
+die Funktionstaste F9). RHIDE wird nun automatisch alle n”tigen Schritte
+ausfhren, um das Programm zu erzeugen (bersetzen des Quelltextes in eine
+Objektdatei und dann Linken des Programms).
+
+Wenn alles richtig war (keine Schreibfehler oder sonstige Fehler) wird
+dies im Meldungsfenster angezeigt. Falls doch z.B. irgendetwas falsch
+getippt wurde, so wird das gcc (der benutzte C Compiler) melden und RHIDE
+zeigt dies dann im Meldungsfenster an. Um nun an die Stelle des Quelltextes
+zu gehen, an dem der Fehler auftrat, einfach Enter auf der Zeile drcken,
+die die Meldung des Fehlers im Meldungsfenster enth„lt.
+
+Wenn nun das Program erfolgreich erzeugt wurde soll es natrlich auch
+ausgefhrt werden. Dazu gibt es den Menpunkt "Start|Start" (oder die
+Funktionstaste Ctrl+F9, was bedeutet die Ctrl Taste und die Taste F9
+gleichzeitig zu drcken).
+
+Nach Beendigung des Programm wird RHIDE den Rckgabewert des Programmes
+anzeigen. Fr eine ordnungsgem„áe Beendigung des Programmes sollte dies
+immer der Wert 0 sein. Dies muá aber nicht sein, da der Rckgabewert im
+obigen Beispielprogram auch ge„ndert werden kann. Teste es z.B. mit der
+Zeile:
+
+  return 3;
+
+anstatt
+
+  return 0;
+
+Hilfe mit RHIDE
+===============
+
+RHIDE bietet eine umfangreiche Hilfe zu fast allen Menpunkten. Die
+Hilfe zu einem speziellen Menpunkt wird, wenn der entsprechende Punkt
+im Men hervorgehoben ist, durch Drcken der Taste F1 aufgerufen.
+
+Innerhalb der Hilfetexte sind i.a. verschiedene Kreuzverweise
+farblich hervorgehoben, die mittels Tab oder Shift-Tab selektiert werden
+k”nnen und durch drcken von Enter wird der entsprechende Hilfetext
+dann angezeigt.
+
+Hilfe zur Bedienung der Hifefuktion erh„lt man durch nochmaliges
+drcken von F1 wenn man sich im Hilfefenster befindet.
+
+RHIDE bietet auch die M”glichkeit, sich zu Funktionen der Bibliothek
+libc anzeigen zu lassen. Dies geschieht ganz einfach, indem man im
+Quelltext den Cursor auf dem Wort plaziert zu dem man Hilfe haben
+will und dann Ctrl-F1 drckt.
+
+Weitere M”glichkeiten zum šbersetzen
+====================================
+
+Natrlich ist es auch m”glich nur einzelne Dateien zu berstzen, ohne
+jedesmal das Programm komplett neu zu erzeugen. Dafr steht die Tasten-
+kombination Alt-F9 zu Verfgung. Hiermit kann die Datei im gerade aktiven
+Editorfenster berstzt werden.
+
+RHIDE w„hlt brigens je nach Suffix der Quelldatei den korrekten Compiler
+zum šberstzten, so wird z.B. fr Dateien mit der Endung .cc der C++ Compiler
+und fr Dateien mit der Endung .c der C Compiler aufgerufen. Hirbei ist
+aber auch zu beachten, daá die Groá/Klein-Schreibung wichtig ist. Eine
+Datei mit der Endung .C wird als C++ Quelldatei behandelt wogegen .c eine
+C Datei bedeutet. Dies kann aber i.A. nur unter Windows 95 (oder Linux)
+passieren, da dort Dateinamen aus Groá- und/oder Kleinbuchstaben bestehen
+k”nnen.
+
+RHIDE erkennt zwar auch Dateien mit der Endung .cpp als C++ Quelldateien,
+ich empfehle aber die Endung .cc zu benutzen, da der GNU Compiler einen
+bekannten Fehler aufweist der es nicht (oder nur mit zus„tzlichen Tricks)
+gestattet Programme in RHIDE zu debuggen die die Endung .cpp aufweisen,
+da gcc irrtmlicherweise in den Debug-Informationen vermerkt, daá die
+Quelldatei die Endung .cc hatte.
+
+Debuggen eines Programmes
+=========================
+
+Wohl eines der wichtigsten Elemente einer IDE ist die M”glichkeit,
+ein zu erstellendes Programm schrittweise ausfhren zu k”nnen. RHIDE
+bietet diese M”glichkeit mit einer komfortalen Oberfl„che.
+
+Die Debug-Funktionen sind von ihrem Kern her von dem GNU Debugger
+gdb der Version 4.16 aber fr RHIDE so aufbereitet, dass man komfortabel
+damit arbeiten kann.
+
+Voraussetzung zum Debuggen ist, daá das Programm mit Debuginformationen
+berstzt und gelinkt wurde.
+
+Um ein Programm innerhalb der IDE zu debuggen, bietet RHIDE mehrer
+Varianten. Zum schrittweisen abarbeiten einer Quelltextzeile stehen
+zwei Methoden zur Auswahl: F8 (Men Start/Ganze Routine) und F7
+(Men Start/Einzelne Anweisung). Mit F8 wird ein Funktionsaufruf,
+falls er gerade an der aktuellen Zeile auftritt komplett ausgefhrt
+wogegen bei Benutzung von F7 in diese Funktion hineingesprungen wird.
+
+RHIDE getstattet es auch, sich w„hrend des schritteisen Abarbeiten
+des Programmes den Inhalt von Variablen anzusehen und/oder zu ver„ndern.
+Dafr ist die Tastenkombination Ctrl-F4 (Men Debug/Auswerten/ndern).
+In dem erscheinenden Dialog kann man sich jede beliebige Variable
+(sofern sie an diesem Punkt des Programmes verfgbar ist) anzeigen
+lassen oder einen neuen Wert zuweisen.
+
+Oder man kann sich den Wert einer Variable st„ndig als sogenannten
+berwachten Ausdruck anzeigen lassen mit Ctrl-F7
+(Men Debug/šberwache Ausdruck). In diesem Fall wird der Wert nach jedem
+Abareiten einer Quelltextzeile aktualisiert.
+
+Desweiteren ist es auch m”glich sich das Ergebnis eines Funktionsaufrufes
+anzeigen zu lasse, jedoch kann man natrlich diesem keinen neuen Wert
+zuweisen.
+
+All diese Variablen und/oder Funktionen k”nnen in exakt der gleichen
+Weise eingegeben werden wie sie im Quelltext stehen.
+
+Spezielle Optionen zum šberstzen oder Linken
+============================================
+
+šber den Menpunkt Optionen|Compiler sind die verschiedensten
+Optionen zum Kompilieren einstellbar. Diese sind gruppiert in
+in verschiedene Gruppen. Fr die Bedeutung der einzelnen Optionen
+kann man in der Hilfe fr gcc nachlesen.
+
+Benutzung von Bibliotheken
+==========================
+
+Wenn vorhandenen Bibliotheken benutzt werden wollen, so ist dafr
+der Menpunkt Optionen|Bibliotheken zu benutzen. Hier k”nnen bis zu
+16 Bibliotheken angegeben werden. Bibliotheken haben in DJGPP normalerweise
+die Form lib?????.a wobei die 5 Fragezeichen fr beliebige Zeichen
+stehen k”nnen.
+
+Angenommen, es soll die Bibliothek libfoo.a benutzt werden, so ist in
+einer der freien Eingabezeilen nur foo anzugeben. Also immer der Teil,
+der nach lib kommt und vor .a steht. Auáerdem muá noch noch die
+Checkbox vor dem Namen aktiviert werden (Alt und die hervorgehobene
+Ziffer oder Buchstaben gleichzeitig drcken).
+
+Falls sich diese Bibliotheken nicht im Standardverzeichnis fr
+Bibliotheken (%DJDIR%/lib) befinden, so muá das entsprechende Verzeichnis
+noch in Optionen|Verzeichnisse|Bibliotheken angegeben werden.
+
+Einstellen der Suchpfade
+========================
+
+Falls sich die Quelldateien, Bibliotheken, Header-Dateien oder
+Objekt-Dateien nicht in den stdandardm„áigen Verzeichnissen befinden, so
+k”nnen die verschiedensten Verzeichnisse eingestellt werden. Diese
+k”nnen ber die Untermens im Menpunkt Optionen|Verzeichnisse
+erreicht werden.
+
+Eine Besonderheit is bei dem Verzeichnis fr Objekt-Dateien zu beachten.
+Falls dort nur ein Verzeichnis angegeben wird, so weredn auch die
+erzeugten Objekt-Dateien in diesem Verzeichnis statt im aktuellen
+Verzeichnis abgelegt.
+
+Die Syntax fr diese Verzeichnisse ist, daá wenn mehrere Verezichnisse
+angegeben werden, diese durch Leerzeichen zu trennen sind.
+
+Benutzung von Projekten
+=======================
+
+RHIDE ist speziell zur Arbeit mit Projekten ausgelegt. Ein Projekt
+besteht eigentlich aus zwei Dateien. der eigentlichen Projekt-Datei
+mit der Endung .gpr und der Desktop-Datei mit der Endung .gdt.
+In der Projekt-Daei sind alle Informationen gespeichert, die n”tig sind
+um ein ausfhrbares Programm oder eine Bibliothek von mehreren Quelldateien
+zu erzeugen. Die Desktop-Datei enth„lt alle anderen mit dem Aussehen
+verbundenen Optionen (z.B. die ge”ffneten Fenster, die eingestellten
+Farben usw.)
+
+Um ein schon bestehendes Projekt mit RHIDE zu benutzen, kann man dies
+schon beim Aufruf von RHIDE angeben. Wenn zum Beispiel das Projekt
+hello benutzt werden soll so ruft man RHIDE wie folgt auf:
+
+rhide hello
+
+oder
+
+rhide hello.gpr
+
+Wie man daran sieht, kann man die Endung .gpr auch weglassen. Alternativ
+dazu kann man auch innerhalb von RHIDE ein bestehendes Projekt ber den
+Manpunkt 'Projekt|Projekt ”ffnen' ”ffnen.
+

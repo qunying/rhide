@@ -1,0 +1,193 @@
+# Copyright (C) 1996,1997 Robert H”hne, see COPYING.RH for details 
+# This file is part of RHIDE. 
+#
+# $Id$
+#
+
+srcdir=$(RHIDESRC)/libgdb
+VPATH=$(srcdir)
+
+project=
+
+src_files=makefile makefile.src
+po_files=
+cfg_files=
+update_files=
+
+subdirs=
+po_subdirs=
+
+include $(RHIDESRC)/common.mak
+
+ifeq ($(GDB_SRC),)
+ifeq ($(rhide_OS),DJGPP)
+GDB_SRC=$(DJDIR)/gnu/gdb-4.16
+else
+GDB_SRC=/usr/src/gdb-4.16
+endif
+endif
+
+ifeq ($(GDB_OBJ),)
+GDB_OBJ=$(GDB_SRC)
+endif
+
+ifeq ($(strip $(rhide_OS)),DJGPP)
+OS_CFLAGS=-DMAINTENANCE_CMDS=0 -DHAVE_CONFIG_H -O2 -DHAVE_LONG_DOUBLE=1 \
+	  -DPRINTF_HAS_LONG_DOUBLE=1
+OS_FLAGS=
+MMALLOC_INC=
+MMALLOC_CFLAGS=-DNO_MMALLOC -DNO_MMALLOC_CHECK
+MMALLOC_LIB=
+MMALLOC_LIB_DIR=
+OS_FLAGS+=MMALLOC=$(MMALLOC) MMALLOC_CFLAGS="$(MMALLOC_CFLAGS)"
+CHECKS=check_echo check_awk
+endif
+
+ifeq ($(strip $(rhide_OS)),Linux)
+OS_CFLAGS=-DMAINTENANCE_CMDS=0 -DHAVE_CONFIG_H -O2 -g -DNO_MMALLOC
+#MMALLOC=../mmalloc/libmmalloc.a
+#MMALLOC_INC=o_gdb/mmalloc s_gdb/mmalloc
+CHECKS=
+endif
+
+MMALLOC_LIB=$(subst ..,$(GDB_OBJ),$(MMALLOC))
+MMALLOC_LIB_DIR=$(subst /libmmalloc.a,,$(MMALLOC_LIB))
+
+vpath %.a $(GDB_OBJ)/bfd $(GDB_OBJ)/libiberty $(GDB_OBJ)/opcodes $(GDB_OBJ)/readline $(MMALLOC_LIB_DIR)
+
+_INCS=o_gdb/gdb s_gdb/gdb s_gdb/include s_gdb/gdb/config \
+	o_gdb/bfd s_gdb/bfd \
+	o_gdb/opcodes s_gdb/opcodes \
+	o_gdb/readline s_gdb/readline \
+	o_gdb/libiberty s_gdb/libiberty \
+	$(MMALLOC_INC)
+
+INCS=$(subst s_gdb,$(GDB_SRC),$(subst o_gdb,$(GDB_OBJ),$(_INCS)))
+
+INC_PATH=$(addprefix -I,$(INCS))
+
+all:: libgdb.a
+
+libgdb.c: makefile
+	echo '#include <defs.h>' > libgdb.c
+	echo '#include <breakpoint.h>' >> libgdb.c
+	echo '#include <symtab.h>' >> libgdb.c
+	echo '#include <symfile.h>' >> libgdb.c
+	echo '#include <objfiles.h>' >> libgdb.c
+	echo '#include <inferior.h>' >> libgdb.c
+	echo '#include <gnu-regex.h>' >> libgdb.c
+	echo '#include <expression.h>' >> libgdb.c
+	echo '#include <language.h>' >> libgdb.c
+	echo '#include <complaints.h>' >> libgdb.c
+	echo '#include <coff/internal.h>' >> libgdb.c
+	echo '#include <libcoff.h>' >> libgdb.c
+	echo '#include <ctype.h>' >> libgdb.c
+	echo '#include <string.h>' >> libgdb.c
+	echo '#include <buildsym.h>' >> libgdb.c
+	echo '#include <gdb-stabs.h>' >> libgdb.c
+	echo '#include <stabsread.h>' >> libgdb.c
+	echo '#include <gdbcmd.h>' >> libgdb.c
+	echo '#include <setjmp.h>' >> libgdb.c
+	echo '#include <demangle.h>' >> libgdb.c
+	echo '#include <annotate.h>' >> libgdb.c
+	echo '#include <top.h>' >> libgdb.c
+
+LIBGDB_FLAGS+=$(OS_FLAGS)
+CFLAGS+=$(OS_CFLAGS)
+
+$(GDB_OBJ)/bfd/bfd.h:
+	$(MAKE) -C $(dir $@) $(notdir $@)
+
+ifneq ($(LIBGDB_H),)
+libgdb.h: $(LIBGDB_H)
+	ln -sf $(LIBGDB_H) libgdb.h
+else
+libgdb.h: $(GDB_OBJ)/bfd/bfd.h libgdb.c
+	gcc -E -P $(INC_PATH) $(CFLAGS) $(MMALLOC_CFLAGS) libgdb.c \
+	  | sed -e '/^[ 	]*$$/d' > libgdb.h
+	gcc -E -P -dM $(INC_PATH) $(CFLAGS) $(MMALLOC_CFLAGS) libgdb.c \
+	  | sed -e '/^[ 	]*$$/d' >> libgdb.h
+endif
+
+gdb.t: $(GDB_OBJ)/gdb/libgdb-files
+	printf "%s\n" $(shell cat $<) | sed -n -e 's,^.*\.o,$(dir $<)&,p' > $@
+
+%.t: %.a
+	ar t $< | sed -e 's,^.*\.o,$(dir $<)&,' > $@
+
+libbfd.t: $(GDB_OBJ)/bfd/libbfd.a
+libiberty.t: $(GDB_OBJ)/libiberty/libiberty.a
+libopcodes.t: $(GDB_OBJ)/opcodes/libopcodes.a
+libreadline.t: $(GDB_OBJ)/readline/libreadline.a
+libmmalloc.t: $(GDB_OBJ)/mmalloc/libmmalloc.a
+
+$(GDB_OBJ)/%.a:
+#	$(MAKE) -C $(dir $@) $(notdir $@) CFLAGS="$(CFLAGS)" $(LIBGDB_FLAGS)
+	$(MAKE) -C $(dir $@) CFLAGS="$(CFLAGS)" $(LIBGDB_FLAGS)
+
+$(GDB_OBJ)/gdb/libgdb-files: force
+# this is needed, because the file is part of the src distrib, but
+# the object files not (at least in DJGPP)
+	rm -f $@
+	$(MAKE) -C $(dir $@) $(notdir $@) CFLAGS="$(CFLAGS)" $(LIBGDB_FLAGS)
+
+T_FILES=libbfd.t libiberty.t libopcodes.t libreadline.t $(notdir $(subst .a,.t,$(MMALLOC_LIB))) gdb.t
+
+list: $(T_FILES)
+
+ifneq ($(LIBGDB_A),)
+libgdb.a: $(LIBGDB_A)
+	ln -sf $(LIBGDB_A) libgdb.a
+else
+libgdb.a: $(CHECKS) list
+	rm -f libgdb.a
+# do not use any xmalloc.o, because it is defined in utils.o
+	ar rcs $@ $(shell cat $(T_FILES) | sed '/.*xmalloc.*/d')
+	rm -f $(T_FILES)
+endif
+
+awks=$(strip $(wildcard $(addsuffix /awk.exe,$(subst ;, ,$(PATH)))))
+gawks=$(strip $(wildcard $(addsuffix /gawk.exe,$(subst ;, ,$(PATH)))))
+gawk=$(subst \,/,$(word 1,$(gawks)))
+
+check_awk:
+ifeq ($(awks),)
+ifeq ($(gawk),)
+# no awk found
+	@echo No awk program found, please install gawk or any other awk
+# this forces make to abort
+	@rm -f awk_check
+	@test -f awk_check
+else
+	@echo You have installed an awk program ($(gawk))
+	@echo You should rename or copy it $(subst gawk,awk,$(gawk))
+	@echo or create a symbolic link (but only if it is a DJGPP program) like:
+	@echo ""
+	@echo ""
+	@echo    ln -s $(gawk) $(subst gawk,awk,$(gawk))
+	@echo ""
+	@echo ""
+# this forces make to abort
+	@rm -f awk_check
+	@test -f awk_check
+endif
+else
+	@rem
+endif
+
+# this is the check for the correct echo.exe, because gdb needs the
+# echo.exe from the base DJGPP distribution
+check_echo:
+	@rm -f echo_check
+	@echo.exe -o echo_check echo_check > /dev/null
+	@echo If the make fails here, you have installed the wrong echo.exe
+	@echo You have probably installed the echo.exe from GNU fileutils
+	@echo In this case rename it to gecho.exe and reinstall the echo.exe
+	@echo from the base DJGPP archive (djdev???.zip)
+	@test -f echo_check
+	@rm -f echo_check
+	@echo ""
+	@echo The check for echo.exe was successfull
+
+
+force:

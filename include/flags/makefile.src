@@ -1,0 +1,23 @@
+# Copyright (C) 1996,1997 Robert H”hne, see COPYING.RH for details 
+# This file is part of RHIDE. 
+#
+# $Id$
+#
+
+srcdir=$(RHIDESRC)/include/flags
+VPATH=$(srcdir)
+
+project=
+
+src_files=\
+	  c_opt.h cxx_opt.h deb_opt.h gpcreser.h opt_opt.h pas_opt.h \
+	  reserved.h warn_opt.h makefile f_opt.h makefile.src ada_opt.h \
+	  fpc_opt.h fpcreser.h
+po_files=
+cfg_files=
+update_files=
+
+subdirs=
+po_subdirs=
+
+include $(RHIDESRC)/common.mak

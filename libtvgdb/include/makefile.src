@@ -1,0 +1,22 @@
+# Copyright (C) 1996,1997 Robert H”hne, see COPYING.RH for details 
+# This file is part of RHIDE. 
+#
+# $Id$
+#
+
+srcdir=$(RHIDESRC)/libtvgdb/include
+VPATH=$(srcdir)
+
+project=
+
+po_files=
+src_files=$(po_files) makefile makefile.src \
+	libtvgdb.h tbreakli.h tfuncinp.h tfunctio.h tgdbwind.h tvgdbcom.h \
+	twatchdi.h twatchli.h tvgdbfun.h tvgdbhis.h tregwin.h tdiswin.h
+cfg_files=
+update_files=
+
+subdirs=
+po_subdirs=
+
+include $(RHIDESRC)/common.mak

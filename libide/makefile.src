@@ -1,0 +1,28 @@
+# Copyright (C) 1996,1997 Robert H”hne, see COPYING.RH for details 
+# This file is part of RHIDE. 
+#
+# $Id$
+#
+
+srcdir=$(RHIDESRC)/libide
+VPATH=$(srcdir)
+project=libide
+
+po_files=\
+	ideclass.cc tdepende.cc tflagcol.cc tflagent.cc tflaglis.cc \
+	tideedit.cc tidefile.cc toptions.cc tprjlist.cc tprjwind.cc \
+	tproject.cc tfname.cc commands.cc
+
+src_files=$(po_files) makefile libide.gpr libide.mak makefile.src \
+	  rhide.env rhide.var
+
+update_files=libide.gpr libide.mak
+cfg_files=
+
+subdirs=include names stream
+po_subdirs=
+
+include $(RHIDESRC)/common.mak
+
+all:: libide.a
+

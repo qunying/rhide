@@ -1,0 +1,47 @@
+#!/bin/sh
+# This script should be used, to install the binaries from
+# the RHIDE binary distribution on your system.
+#
+# DO NOT USE IT TO INSTALL RHIDE AFTER A REBUILD FROM THE
+# SOURCES. FOR THIS RUN 'make install' INSTEAD, WITH AN
+# OPTIONALLY 'prefix=YOUR_WANTED_PREFIX' ARGUMENT, WHICH
+# DEFAULTS TO '/usr/local'.
+#
+#
+# This script will install RHIDE on your system using
+# a prefix as the root for the installed programs. This
+# prefix is as default '/usr/local' but you can change
+# it by giving this script on commandline your
+# wanted prefix. If you want for instance to install
+# RHIDE in '/usr' and not in '/usr/local' run this script
+# like
+#
+# INSTALL.SH --prefix=/usr
+#
+# As already written in the docs, RHIDE will run and
+# look the best, if it is installed as a root setuid
+# program. (It will give up the root rights after opening
+# the connections to the screen and the keyboard).
+# The programs which need this are 'rhide' and 'rhgdb'.
+#
+# For securety resons, I have mad as default NOT to
+# use the setuid permissons when installing RHIDE.
+# But you can tell this script to use it with the
+# option '--setuid=USER_ID' which installs the executables
+# as setuid program of user 'USER_ID'.
+#
+# If you have executed the script VCSA.SH, you can use
+# also the --setgid=GROUP_ID' option, which installs
+# the executables as a setgid program of group 'GROUP_ID'.
+#
+# After installing RHIDE you will find all the files,
+# which are in the subdirectories of this directory
+# (where this script is) relative to the directory
+# wich is pointed to by the prefix.
+#
+
+
+# Because I'm not so familar with shell scripts, I use
+# a makefile, which I know how to write.
+
+make -f INSTALL.MAK install $*

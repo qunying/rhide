@@ -1,0 +1,172 @@
+RHIDE is Copyright (C) 1996 by Robert H”hne, see COPYING.RH for details
+
+This is the source distribution of RHIDE. Normaly the files should be
+installed in the DJGPP root directoy. To install the sources for RHIDE,
+extract the archive rhide??s.zip (here is ?? the version of RHIDE)
+like any other package, which comes with DJGPP.
+If it was successful, all the source files for RHIDE are in the directory
+
+%DJDIR%/contrib/rhide-?.?
+
+and its subdirectories. Because I have changed a lot in the Turbo Vision
+library, which are not compatible with the normal TV, I have decided, not
+longer to support a standalone port of that library. My modified version
+of this library is now part of the source archive for RHIDE.
+
+If you want to use it in an other program than RHIDE, you have either
+link the final program also with libintl.a or rename
+the file 'nointl.h' in the Turbo Vision include directory to 'intl.h'.
+
+If you want to recompile RHIDE you need the following things:
+
+- About 25-30 MB free disk space
+
+- DJGPP Version 2.01 or higher. With DJGPP V 2.00 you can not build
+  RHIDE with the integrated debugger but only ide.exe which is RHIDE
+  without the debugger.
+
+(I do not list here any needed program from the packages, because
+ it is too hard for me to find it out :-> )
+
+- GNU fileutils
+- GNU shellutils
+- GNU textutils
+- GNU findutils
+- GNU gettext
+    - libintl.a (in your library path)
+    - msgfmt
+    - xgettext
+
+- GNU debugger 4.16. You have to install the sources for gdb 4.16.
+  If you do not install them in the directories like distributed
+  with DJGPP ( %DJDIR%/gnu/gdb-4.16 ), you have to add to your DJGPP.ENV
+  file the line, if I assume, that they are installed in s:/gnu/gdb-4.16:
+
+GDB_SRC=s:/gnu/gdb-4.16
+
+  If you have setup gdb 4.16, to compile in an other directory than
+  the source directory (see in that package, how this can be done),
+  you must also set in your DJGPP.ENV the variable GDB_OBJ to point
+  to that directory.
+
+- The original sources for the Turbo Vision libraray version 2.0 from
+  Borland. Because of the copying conditions of Borland I cannot distribute
+  the full modified sources for that lib but only diffs against them.
+  But you can get the sources from Borland's public FTP-site
+
+  ftp://ftp.borland.com/pub/techinfo/techdocs/language/cpp/bcpp/patch/tv.zip
+
+- And some time.
+
+=======================================================================
+                       WARNING (only for DJGPP)
+=======================================================================
+Because GDB was ported, before gawk and fileutils, it uses echo.exe
+from the base DJGPP distribution and awk.exe which was not available
+at this time as official port to DJGPP. If you have installed gawk.exe
+the problem with awk.exe can be solved by creating a symbolic link with
+
+ln -s gawk awk
+
+in the DJGPP bin-directory. gawk.exe is found in the archive gwk300b.zip.
+The problem with echo.exe can be solved only by overwriting the the
+echo.exe from the shell utils with the echo.exe from the base DJGPP,
+because the GNU echo.exe does not understand the switches -o, -i and -s.
+If you want to use also the GNU echo.exe, you should rename it to
+gecho.exe (and reinstall of course the echo.exe from the djdev???.zip)
+
+========================================================================
+
+Configuring for compiling in an other directory
+-----------------------------------------------
+
+RHIDE can be configured to compile in an other directory than the
+source directory. This is, how I maintain RHIDE and it is needed,
+if you have the sources for RHIDE installed on a readonly filesystem
+like a CD or in a network where you haven't write access to the
+RHIDE source directory.
+
+For doing this, you have to change to the root RHIDE source directory
+(normally %DJDIR%/contrib/rhide-?.?/src) and type there
+
+make config objdir=THE_WANTED_ROOT_DIRECTORY
+
+[but be warned, this is not tested by me for a long time]
+
+where THE_WANTED_ROOT_DIRECTORY is the directory, where you want to compile
+RHIDE. This can be a relative or absolute path.
+
+When you are ready, you can change to THE_WANTED_ROOT_DIRECTORY and
+build RHIDE there without modifying anything in the RHIDE source
+directory.
+
+And as the last thing, you have to set in the environment
+variable RHIDESRC, to point to the directory, where the sources for
+RHIDE are installed. For DJGPP you can do this in your autoexec.bat
+by adding a line
+
+SET RHIDESRC=c:/djgpp/contrib/rhide-1.3/src
+
+(if you DJGPP base directory is different replace c:/djppp with the
+correct one) or add a line to you djgpp.env file near the top like:
+
+RHIDESRC=%DJDIR%/contrib/rhide-1.3/src
+
+For linux when using bash you can do it like
+
+export RHIDESRC=/usr/src/rhide-1.3/src
+
+BTW: If you run make only from the top RHIDE source directory,
+then you don't need to set this variable, because it is examined
+by the makefile.
+
+Now change the makefiles in the libgdb directory to assign
+to the GDB_SRC variable the correct directory of the installed
+GDB 4.16 sources and in the 'tv2' directory the variable
+TV2_SRC to the directory, where you have placed the original sources
+for the Turbo Vision library.
+
+Now you are ready to build RHIDE. At first there must be build some
+things, which can be done only with GNU make. For this change to
+the RHIDESRC directory and run
+
+make needed
+
+If this was successfull, you have now two ways to build RHIDE:
+
+1) Build it with GNU make and the makefiles. In this case go to the
+   RHIDESRC directory and run make.
+
+2) Build it with the help of RHIDE. In this case you need at least
+   a version of RHIDE, which is not lower than the version you want
+   to build. Run now RHIDE with the project RHIDE.GPR and make the
+   program (F9). The generated program will be IDEGC.EXE and not
+   RHIDE.EXE.
+
+
+For all of you, who don't want to use the integrated debugger of RHIDE
+(are there realy some??), there is a project file RHIDE_.GPR, which 
+will build the program IDE.EXE, which is RHIDE without the integrated
+debugger.
+
+Installing the new build RHIDE
+==============================
+
+If you have compiled RHIDE successfull, type
+
+make install
+
+to install RHIDE in %DJDIR%/bin together with the docs and the language
+files. If you want to install only parts of RHIDE, see at the makefile,
+how this can be done.
+
+
+Please do not expect too much from a look at the source files. I haven't
+the time yet to comment it good. May be I will find the time later, but
+until this future day you must try to understand my code or ask me.
+
+
+                   Have fun with RHIDE
+
+           Robert H”hne <Robert.Hoehne@Mathematik.TU-Chemnitz.DE>
+(my email will be probably not valid after 30. September 1997)

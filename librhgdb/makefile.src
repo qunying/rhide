@@ -1,0 +1,28 @@
+# Copyright (C) 1996,1997 Robert H”hne, see COPYING.RH for details 
+# This file is part of RHIDE. 
+#
+# $Id$
+#
+
+srcdir=$(RHIDESRC)/librhgdb
+VPATH=$(srcdir)
+project=librhgdb
+
+po_files=\
+	annotate.c breakpoi.c defaults.c gdbcontr.c gdbinter.c \
+	listfunc.c symify.c watches.c watchdog.c frame.c dis.c \
+	regs.c
+
+src_files=$(po_files) makefile librhgdb.gpr librhgdb.mak makefile.src \
+	  rhide.env rhide.var
+
+update_files=librhgdb.gpr librhgdb.mak
+cfg_files=
+
+subdirs=include test
+po_subdirs=
+
+include $(RHIDESRC)/common.mak
+
+librhgdb.a:: ../libgdb/libgdb.h
+

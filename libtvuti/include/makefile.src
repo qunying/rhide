@@ -1,0 +1,26 @@
+# Copyright (C) 1996,1997 Robert H”hne, see COPYING.RH for details 
+# This file is part of RHIDE. 
+#
+# $Id$
+#
+
+srcdir=$(RHIDESRC)/libtvuti/include
+VPATH=$(srcdir)
+
+project=
+
+po_files=
+
+src_files=$(po_files) makefile.src \
+	libtvuti.h tdirlist.h tenterin.h tenterli.h tenterra.h tintinpu.h \
+	tlbutton.h tmeminfo.h tparamli.h tscollec.h tvutilco.h twindowl.h \
+	tvutilfu.h makefile tenterch.h tcheckdi.h thintsta.h tmsgcoll.h \
+	tmsglist.h msgrec.h tmemstrm.h
+
+cfg_files=
+update_files=
+
+subdirs=
+po_subdirs=
+
+include $(RHIDESRC)/common.mak

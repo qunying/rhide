@@ -1,0 +1,12 @@
+*** makeinfo.c~	Fri Oct 11 21:13:10 1996
+--- makeinfo.c	Sat Nov  9 00:06:04 1996
+***************
+*** 8623,8628 ****
+--- 8623,8629 ----
+        {
+  	memmove (macro_list + i, macro_list + i + 1,
+  	       ((macro_list_len + 1) - i) * sizeof (MACRO_DEF *));
++ 	macro_list_len--;
+  	break;
+        }
+    return (def);

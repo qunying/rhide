@@ -1,0 +1,109 @@
+# Copyright (C) 1996,1997 Robert H”hne, see COPYING.RH for details 
+# This file is part of RHIDE. 
+
+# Current used languages with the corresponding translators.
+# Not all of them are complete!! The only one which will be
+# definitely complete is 'de' (maintained by me) :-)
+#
+# cz - Czech - 
+# da - Danish -
+# de - German - 
+# es - Spanish - Salavador Eduardo Tropea <ice@inti.edu.ar>
+# fi - Finnish -
+# fr - French -
+# it - Italian -
+# nl - Dutch -
+# no - Norwegian - Trond Endrestol <endrestol@hotmail.com>
+# pl - Polish -
+# pt - Portuguese -
+# sv - Swedish -
+
+CURRENT_LANGUAGES=cz da de es fi fr it nl no pl pt sv
+FUTURE_LANGUAGES=ee ru # they were not ready when releasing RHIDE
+LANGUAGES=$(CURRENT_LANGUAGES)
+
+srcdir=$(RHIDESRC)/po
+VPATH=$(srcdir)
+
+project=
+po_files=
+src_files=$(po_files) msgcat.c msgcat.gpr msgcat.mak makefile \
+	$(addsuffix .po,$(LANGUAGES)) \
+	readme.lan makefile.src rhide.env rhide.var
+#	$(addsuffix .cat,$(LANGUAGES))
+
+update_files=msgcat.gpr msgcat.mak
+cfg_files=msgcat.gpr msgcat.mak
+
+subdirs=
+po_subdirs=..
+
+include $(RHIDESRC)/common.mak
+
+ifeq ($(msgfmt),)
+msgfmt=msgfmt
+endif
+
+ifeq ($(xgettext),)
+xgettext=xgettext
+endif
+
+MSGCAT=./msgcat.exe
+
+_po_list: po_list
+	sed -e 's,^../,,' -e 's, ../, ,g' po_list > _po_list
+
+potfiles.po: _po_list
+	$(xgettext) --default-domain=potfiles --add-comments --keyword=_ \
+	  --keyword=__ --directory=$(RHIDESRC) --omit-header \
+	  --add-location $(shell cat _po_list)
+	touch $@
+	rm -f _po_list
+
+T=$(subst /,\,$@)
+
+# I'm using now my own program to merge previous translations
+# the rule here translates only the exact matchings. If you 
+# want translate all the needed strings, look in the file
+# msgcat.c for a description of it's usage
+MSGCAT_OPTIONS=-s
+
+$(addsuffix .po,$(LANGUAGES)): potfiles.po $(MSGCAT)
+	-cp -f $@ $(subst .po,.bak,$@)
+	$(MSGCAT) $(MSGCAT_OPTIONS) -cat $(subst .po,.cat,$@) \
+	  $(wildcard $@) $< $@
+	
+%.mo: %.po
+	-$(msgfmt) -o $@ $<
+	touch $@
+
+languages: $(addsuffix .mo,$(LANGUAGES))
+
+languages.src: $(addsuffix .po,$(LANGUAGES))
+
+%.ins: %.mo
+	$(INSTALL_DIR) $(prefix)/$(install_localedir)/$*/LC_MESSAGES
+	$(INSTALL_DATA) $< $(prefix)/$(install_localedir)/$*/LC_MESSAGES/$(PACKAGE).mo
+	echo $(install_localedir)/$*/LC_MESSAGES/$(PACKAGE).mo >> $(logfile)
+
+install.languages.start:
+	rm -f $(logfile)
+
+install.languages: languages install.languages.start \
+	  $(addsuffix .ins,$(LANGUAGES))
+
+install:: install.languages
+
+include msgcat.mak
+
+%.zip: %.po
+	rm -f $@
+	zip -9j $@ $< $(subst .po,.cat,$<) potfiles.po $(MSGCAT) $(msgfmt) \
+	  $(srcdir)/readme.lan
+	
+$(addsuffix .zip,$(LANGUAGES)): $(MSGCAT)
+
+lang_packages: $(addsuffix .zip,$(LANGUAGES))
+CURRENT_LANGUAGES=cz da de es fi fr it nl no pl pt sv
+LANGUAGES=$(CURRENT_LANGUAGES)
+FUTURE_LANGUAGES=ee ru # they were not ready when releasing RHIDE

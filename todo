@@ -1,0 +1,13 @@
+Add watchpoints.
+
+Porting to other OS's (at least to Linux).
+
+Support for flex and bison.
+
+Syntaxhighlight for assembler.
+
+Add the possibility of Dependency from other project items.
+
+CPU debugging window (with registers, assembler code, ...)
+
+Making a standalone INFO viewer.

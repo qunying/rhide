@@ -1,0 +1,196 @@
+@node General information about the work of RHIDE, Description of the pull-down menus, Introduction, Top
+@chapter General information about the work of RHIDE
+
+In this section I will give you some comments about the concept of RHIDE.
+RHIDE works with the GNU compilers. As a result of this, most of the
+options are fixed and they are mostly also specific only for these
+compiler. If I speak about compilers, I mean GCC, which calls the right
+compilers for you
+(@file{cpp} for preprocessing your input files,
+@file{cc1} for compiling C programs, @file{cc1plus} for
+compiling C++ programs and @file{as} for compiling assembler files and so on)
+@paragraph{}
+
+Selecting the right compiler for a specific file is done by RHIDE in the
+same way as GCC does it. They look for the extension of the file
+and determine the language of this file.
+@paragraph{}
+
+@menu
+* Known suffixes::              
+* Syntax of arguments::         
+* Running under Windows 95::    
+* Running under OS/2::          
+@end menu
+
+@node Known suffixes, Syntax of arguments, General information about the work of RHIDE, General information about the work of RHIDE
+@section Known suffixes
+
+The list of the known suffixes is taken from gcc. Remember the fact, that
+gcc and RHIDE check the suffixes in a case sensitive way especially when
+running under Windows 95 (@xref{Running under Windows 95}).
+
+@itemize @bullet
+  @item Valid suffixes for C source files are
+    @itemize @minus
+      @item @file{.c} Normal C source file
+      @item @file{.i} C source file, which doesn't need the preprocessor
+    @end itemize
+  @item Valid suffixes for C++ source files are
+    @itemize @minus
+      @item @file{.cc} Normal C++ source file
+      @item @file{.cpp} Normal C++ source file
+      @item @file{.cxx} Normal C++ source file
+      @item @file{.C} Normal C++ source file
+      @item @file{.ii} C++ source file, which doesn't need the preprocessor
+    @end itemize
+  @item Valid suffixes for Objective C source files
+    @itemize @minus
+      @item @file{.m} Normal Objective C source file
+    @end itemize
+  @item Valid suffixes for Pascal source files
+    @itemize @minus
+      @item @file{.p} Normal Pascal source file
+      @item @file{.pas} Normal Pascal source file
+    @end itemize
+  @item Valid suffixes for object files
+    @itemize @minus
+      @item @file{.o} Normal object file
+      @item any other suffix, which has no predefined meaning
+    @end itemize
+  @item Valid suffixes for libraries
+    @itemize @minus
+      @item @file{.a} Normal library file
+    @end itemize
+  @item Valid suffixes for executable files
+    @itemize @minus
+      @item @file{.exe} Normal executable file for MS-DOS
+      @item No suffix means the raw COFF image of an executable file. These
+        can be handled only by programs, which know about this format.
+        (DJGPP programs know this)
+    @end itemize
+  @item Valid suffixes for include files
+    @itemize @minus
+      @item @file{.h} Normal include files
+      @item Theoretically there is no restriction for such a suffix, but
+        RHIDE searches and finds only files with the suffix @file{.h}
+        in the specified directories (@xref{Include directories})
+    @end itemize
+@ignore
+  @item Valid suffixes for flex source files
+    @itemize @minus
+      @item @file{.l} Normal flex source file
+    @end itemize
+  @item Valid suffixes for bison source files
+    @itemize @minus
+      @item @file{.y} Normal bison source file
+    @end itemize
+@end ignore
+@cindex Preprocessing Assembler files
+@cindex Assembler files, which must be preprocessed
+  @item Valid suffixes for Assembler source files
+    @itemize @minus
+      @item @file{.s} Normal Assembler source file
+      @item @file{.S} Assembler source file, which must be preprocessed
+        by @file{cpp}. If you have such files, there is a problem, when
+        long filenames are not enabled (default in MS-DOS), because
+        RHIDE converts all filenames in this case to lower case. But you
+        can add to the local options for this item (@xref{Local options})
+        the commandline argument @var{-x assembler-with-cpp}, to tell
+        @file{gcc} to preprocess this file first before assembling it.
+    @end itemize
+@end itemize
+
+@node Syntax of arguments, Running under Windows 95, Known suffixes, General information about the work of RHIDE
+@section Syntax of arguments
+@cindex Space as part of an argument
+
+In RHIDE you can specify some arguments to other programs. These arguments
+must be a space separated list of strings. If you want to have one or
+more spaces as part of an argument, you have to enclose the whole argument
+in single quotes.
+@paragraph{}
+
+@node Running under Windows 95, Running under OS/2, Syntax of arguments, General information about the work of RHIDE
+@section Running under Windows 95
+@cindex Windows 95
+@cindex Long filenames
+@cindex LFN
+@cindex Temp directory
+@cindex Directory for temp files
+
+With DJGPP 2.01 were many bugs fixed, which caused problems under
+Windows 95 with the long (and case sensetive) filenames. Now are
+all filenames shown in lower case, except they contain characters
+with different case. That means, all normal 8+3 DOS filenames, which
+are normaly reported in Windows 95 in upper cases, are automaticaly
+converted to lower case. For more information about the filename
+conversion look at the libc reference.
+@paragraph{}
+
+If you realy need the filenames exactly, as they are reported by the
+OS you can use the @var{-c} switch @xref{Getting started}.
+@paragraph{}
+
+You can also run more than one instance of RHIDE at once, in several
+DOS-boxes, because RHIDE creates and uses every time it starts, its
+own temp directory to disable conflicts, when running multiple compilers
+at the same time. This is done by creating a directory in the directory,
+pointed to by the environment variable %TMPDIR%, %TEMP% or %TMP%
+in that order, until one of them exists. If there exists none of them,
+the current directory is assumed. Then RHIDE puts in the
+environment the variable %TMPDIR% with the value of this directory.
+After leaving RHIDE this directory will be removed, if it is empty.
+@paragraph{}
+
+@node Running under OS/2,  , Running under Windows 95, General information about the work of RHIDE
+@section Running under OS/2
+@cindex OS/2
+
+Because I have no access to OS/2, I cannot say something about it. But
+some people said, that they run RHIDE under OS/2 successfully, but there
+must be the exclusive mouse access to the DOS window disabled.
+@paragraph{}
+
+@section General use of RHIDE
+
+@subsection Creating a program
+
+For creating a program, RHIDE allows you to define multiple source
+files which should be compiled and linked to your final program. This
+is done by creating a project. In this project you insert your source
+files (and not all the include files).
+@paragraph{}
+
+After a source file (which is inserted in your project) compiled at least
+once, RHIDE knows about all dependencies of this file, so this file will
+be compiled again only, if one of the include files have changed.
+@paragraph{}
+
+
+@subsubsection Creating a program without a project
+
+Because of many requests of user I made now RHIDE to work also without
+using a project. This may be good, if you have a single file, but if
+your program should be build from more than one file I suggest you to
+use project.
+@paragraph{}
+
+If you have only one editor window opened, the name of the resulting
+program is taken from the name of the source file by removing the suffix
+and appending @file{.exe}.
+@paragraph{}
+
+If you have more than one files opened, I saw no other way for determining
+the name of the produced program, than naming it @file{aout.exe}.
+
+@subsection Creating a library
+
+With RHIDE you can also create libraries (a collection of object files,
+which can be linked with other programs). The way for doing this is very
+simple. Because RHIDE knows about the meaning of file suffixes, you can
+change the name of the main target @xref{Main target name} to have a
+suffix @file{.a} and that's all. Now RHIDE will run @file{ar.exe} instead
+of linking the object files.
+@paragraph{}
+

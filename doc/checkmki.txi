@@ -1,0 +1,20 @@
+\input texinfo
+@c check for a usable makeinfo which handles correct the @unmacro directive
+
+@macro test{arg}
+@macro test_macro{argg}
+\argg\
+@end macro
+@test_macro{\arg\}
+@end macro
+
+@macro test_end
+@unmacro test_macro
+@end macro
+
+@node Top
+@top
+
+This is a @test{test1} @test_end{} and a @test{test2} @test_end{}
+
+@bye

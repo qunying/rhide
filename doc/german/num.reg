@@ -1,0 +1,6 @@
+REGEDIT4
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\control\FileSystem]
+"NameNumericTail"=hex:00
+
+

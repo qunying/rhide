@@ -1,0 +1,22 @@
+# This fixes some conflicts in the keyboard termainal settings for
+# rxvt. Compile this file with
+#  tic xterm-rhide
+# which places the compiled terminfo file in /usr/lib/terminfo/x
+#
+# If you have no root access, create the directory $HOME/.terminfo
+# set $TERMINFO _BEFORE_ running tic to this directory
+#  export TERMINFO=$HOME/.terminfo
+# 
+# And finally you have to set the $TERM variable to this terminal
+# in your xterm _BEFORE_ running RHIDE with (for bash)
+#  export TERM=xterm-rhide
+rxvt-rhide|rxvt for RHIDE,
+        key_dc=\E[3~,
+        key_down=\E[B,
+        key_left=\E[D,
+        key_right=\E[C,
+# to get no conflict with key_end
+        key_select=\EOE,
+        key_up=\E[A,
+        use=rxvt,
+

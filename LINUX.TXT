@@ -1,0 +1,125 @@
+This file will give you some hints to the linux port
+of RHIDE.
+
+It is currently available ONLY on my website and NOT
+via FTP. The main URL for RHIDE is
+
+http://www.tu-chemnitz.de/~rho/rhide.html
+
+and specific to the linux RHIDE you can use also
+
+http://www.tu-chemnitz.de/~rho/rhide-linux.html
+
+I will place there the sources and also ready binaries.
+After seeing the problems with shared linked binaries,
+I include in the bin archive now only static linked 
+binaries.
+
+Installing RHIDE
+================
+
+The binary archive has all the RHIDE files stored
+in a subdirectoy called rhide-?.??. In this directory
+is also a installation script, which installs the
+the binaries and other needed files on your system.
+Look at INSTALL.LINUX for additional options to that
+script.
+
+Documentation about RHIDE
+=========================
+The doc (which is also the core of the integrated
+help system) is in INFO format and is also part
+of the binary distribution. Because of missing time
+I haven't updated it yet to the linux version, so
+many things there are DJGPP specific (especially
+the directory and insatllation descriptions). But
+the other things about the functionality can be read
+and used also on linux.
+
+Linux specific remarks
+======================
+
+Because RHIDE was designed originaly for DJGPP many
+things in RHIDE are specifiy for that environment.
+I have tried to make it as much as possible unix-like,
+but not all is fineshed yet.
+
+The main differences (and difficulties when porting
+RHIDE to linux) is all the stuff which depends on
+the hardware. These are the keyboard, the screen and
+the mouse.
+
+Since a normal user under linux has no direct access
+to the hardware you will get the best results with
+RHIDE (speed, look and feel ...) only when you run
+RHIDE as root or install it as root with the setuid
+bit set. In that case RHIDE will use root rights only
+until it has accessed the screen, then it will use
+the real user id for any other things.
+
+But you can make RHIDE also as a setgid program, when
+you create a new group and allow this group rw permissions
+to the /dev/vcsa.. devices. I have written a small
+script, which setup the correct things for that. Look
+at VCSA.SH.
+
+Other known problems:
+  - RHIDE knows currently nothing about any installed fonts.
+    It uses at any time the IBM PC charset.
+
+
+Because I found until now no documentation about a
+standard directory tree for such a package like RHIDE,
+I hope I made a tree which is acceptable. After a hint
+of a first RHIDE tester on linux, I made now a directory
+tree for RHIDE, where all is placed in one directory,
+called after the RHIDE version, as writing this it is
+
+rhide-1.3
+
+
+Running RHIDE in a xterm
+========================
+
+I had many problems, when running RHIDE in a xterm. I don't
+know what is wrong (either the terminfo file for the xterm
+or my X setup) but I think it is the terminfo file.
+
+At first I recommend to run RHIDE in a rxvt because of a better
+color support. In a standard xterm RHIDE will use only black
+and white.
+For the keys I have patched my xterm-color terminfo file to
+have the keysequences the same as generated. For instance there
+was a difference in the cursor key sequences. In the terminfo
+file, there was \EOA for the cursor up key, but \E[A is generated.
+So I have changed simply most of the \EO to \E[ and after this
+most of the keys worked.
+
+
+Problems with the editor
+========================
+
+Since the editor was designed to be used on DJGPP, it was written
+in the hardly assumption, that the text files are in MS-DOS style
+(CR/LF). I have tried to make it now working also on files from
+the unix world by accepting only LF as line terminator, but
+not all is working correct (you can see this when you select
+text, use autoindent and so on), but I think for a first try to
+RHIDE you can live with it.
+
+Reporting bugs
+==============
+
+Please do use the bug-report feature of RHIDE because it contains at
+least the most important information for me about your system.
+Since the newsgroup comp.os.linux.misc is so huge, I do not read it
+regulary. You can post it there to get also help from others but please
+send also a CC to me.
+But before doing so, please remember at first the above mentioned
+problems, because they are known to me and they need not to be reported
+to me.
+
+      Have fun with RHIDE, 
+
+  Robert Hoehne <Robert.Hoehne@Mathematik.TU-Chemnitz.de>
+

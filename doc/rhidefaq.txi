@@ -1,0 +1,62 @@
+\input texinfo @c -*-texinfo-*-
+
+@setfilename rhidefaq.info
+
+@settitle RHIDE FAQ
+
+@node Top
+Here are some common asked question with answers:
+
+@section C++ debugging problems
+
+@subsection Debugging of inlined functions/templates
+@emph{RHIDE cannot debug C++ templates}
+
+@emph{RHIDE cannot debug inlined functions from header files}
+
+@strong{Answer: }This is not a limitation of RHIDE or
+GDB (which has the same problem), but it is an limitation
+of the gcc 2.7.1 distributed with DJGPP 2.01 which produces
+only the standard COFF debug information. This format
+is not able to handle more than one source file in one
+object file but you need this when you want to debug
+C++ inlined functions from header files or also for
+templates.
+
+There are several solutions for it depending on your
+motivation, time and free disk space. In general I
+recommend to use the stabs debugging information format.
+Here the tips how tho get this format, which disables
+all the above (and much more) limiattions of the standard
+COFF debug information format.
+
+1. Get pgcc, the pentium optimized gcc snapshot which is
+able to produce stabs debugging format. If you don't know
+from where to get it, please seach the DJGPP mailing list
+archive for pgcc.
+
+2. Get a patch for gcc and rebuild gcc for your own with that
+patch applied and you can produce with the newly build gcc
+stabs debugging information. This patch is available from
+SET's website http://www.geocities.com/SiliconValley/Vista/6552/
+
+
+But if you are not able to get pgcc or patch gcc, you have to
+do some tricks, by moving out all the functons you want to debug
+from the header files in separate source files and compile
+them separarte.
+
+@subsection Accessing variables of classes
+
+
+@emph{How I can evaluate/modify the members of a class?}
+
+@strong{Answer: } When you use stabs debuggig informatio
+you will mostly no problems with that topic, since you
+can access them exactly the same way like you would do it
+in your source file.
+
+For an other wellknown solution look at
+@url{http://www.tu-chemnitz.de/~rho/rhide/doc/chap5.html#Problems with C++ programs}
+
+@bye

@@ -1,0 +1,11 @@
+# Copyright (C) 1996,1997 Robert H”hne, see COPYING.RH for details 
+# This file is part of RHIDE. 
+#
+# $Id$
+#
+
+.$(RHIDESRC)/common.var
+RHIDE_OS_LIBS_Linux=ncurses gpm m
+RHIDE_OS_LIBS_DJGPP_idegc.exe=dbg
+RHIDE_OS_LIBS_DJGPP=$(RHIDE_OS_LIBS_DJGPP_$(MAIN_TARGET))
+RHIDE_OS_LIBS=$(RHIDE_OS_LIBS_$(RHIDE_OS))

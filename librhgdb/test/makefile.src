@@ -1,0 +1,26 @@
+# Copyright (C) 1996,1997 Robert H”hne, see COPYING.RH for details 
+# This file is part of RHIDE. 
+#
+# $Id$
+#
+
+srcdir=$(RHIDESRC)/librhgdb/test
+VPATH=$(srcdir)
+project=
+
+po_files=
+
+src_files=$(po_files) makefile gsymify.gpr gsymify.mak \
+	  listfunc.gpr listfunc.mak mygdb.c mygdb.mak mygdb.gpr \
+	  makefile.src rhide.env rhide.var
+
+update_files=gsymify.gpr gsymify.mak listfunc.gpr listfunc.mak \
+	mygdb.mak mygdb.gpr
+cfg_files=gsymify.gpr gsymify.mak listfunc.gpr listfunc.mak \
+	mygdb.mak mygdb.gpr
+
+subdirs=
+po_subdirs=
+
+include $(RHIDESRC)/common.mak
+

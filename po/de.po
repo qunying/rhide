@@ -1,0 +1,3482 @@
+#: gpr2mak.cc:128
+msgid "-o needs an argument\n"
+msgstr "-o benîtigt ein Argument\n"
+
+#: gpr2mak.cc:141
+msgid "a projectfile must be given\n"
+msgstr "es mu· eine Projektdatei angegeben werden\n"
+
+#: gpr2mak.cc:147
+msgid "error reading projectfile %s\n"
+msgstr "Fehler beim Lesen der Projektdatei %s\n"
+
+#: :6 idecolor.cc:37 idecolor.cc:54
+msgid "Frame disabled"
+msgstr "Rahmen inaktiv"
+
+#: :6 idecolor.cc:38
+msgid "Frame"
+msgstr "Rahmen"
+
+#: :6 idecolor.cc:39 idecolor.cc:56
+msgid "Frame icons"
+msgstr "Rahmen Symbole"
+
+#: :6 idecolor.cc:40 idecolor.cc:57
+msgid "Scroll bar page"
+msgstr "Laufleiste"
+
+#: :6 idecolor.cc:41 idecolor.cc:58
+msgid "Scroll bar icons"
+msgstr "Laufleiste Symbole"
+
+#: :6 idecolor.cc:42
+msgid "Static text"
+msgstr "Text"
+
+#: :6 idecolor.cc:43
+msgid "Selected text"
+msgstr "AusgewÑhlter Text"
+
+#: :6 idecolor.cc:45
+msgid "reserved"
+msgstr "reserviert"
+
+#: idecolor.cc:55
+msgid "Frame/background"
+msgstr "Rahmen/Hintergrund"
+
+#: :6 idecolor.cc:59
+msgid "normal text"
+msgstr "normaler Text"
+
+#: :6 idecolor.cc:60
+msgid "marked text"
+msgstr "markierter Text"
+
+#: :6 idecolor.cc:61
+msgid "comment"
+msgstr "Kommentar"
+
+#: :6 idecolor.cc:62
+msgid "reserved word"
+msgstr "reserviertes Wort"
+
+#: :6 idecolor.cc:63
+msgid "identifier"
+msgstr "Bezeichner"
+
+#: :6 idecolor.cc:64
+msgid "symbol"
+msgstr "Symbol"
+
+#: :6 idecolor.cc:65
+msgid "string"
+msgstr "String"
+
+#: :6 idecolor.cc:66
+msgid "integer"
+msgstr "Integer"
+
+#: :6 idecolor.cc:67
+msgid "float"
+msgstr "Float"
+
+#: :6 idecolor.cc:68
+msgid "octal"
+msgstr "Octal"
+
+#: :6 idecolor.cc:69
+msgid "hex"
+msgstr "Hex"
+
+#: :6 idecolor.cc:70
+msgid "character"
+msgstr "Zeichen"
+
+#: :6 idecolor.cc:71
+msgid "preprocessor"
+msgstr "Preprozessor"
+
+#: :6 idecolor.cc:72
+msgid "illegal char"
+msgstr "illegales Zeichen"
+
+#: :6 idecolor.cc:73
+msgid "user defined words"
+msgstr "benutzerdef. Wîrter"
+
+#: :6 idecolor.cc:74
+msgid "CPU line"
+msgstr "CPU Zeile"
+
+#: :6 idecolor.cc:75
+msgid "Breakpoint"
+msgstr "Haltepunkt"
+
+#: :6 idecolor.cc:76
+msgid "symbol2"
+msgstr "Symbol2"
+
+#: :6 idecolor.cc:77
+msgid "Cross cursor"
+msgstr "Kreuzcursor"
+
+#: :6 idecolor.cc:78
+msgid "editor statusline"
+msgstr "Editor Statuszeile"
+
+#: :6 idecolor.cc:79
+msgid "parens matching"
+msgstr "KlammerÅbereinstimmung"
+
+#: :6 idecolor.cc:80
+msgid "rectangle block"
+msgstr "Rechteckiger Block"
+
+#: idedebug.cc:73 rhgdb/main.cc:264
+msgid "Disassembler window"
+msgstr "Disassembler Fenster"
+
+#: idedebug.cc:110 idemain.cc:1217 rhgdb/gdbedit.cc:391
+msgid "Could not find the source file %s."
+msgstr "Konnte die Quelldatei %s nicht finden."
+
+#: idedebug.cc:115 idemain.cc:1222 idemain.cc:2286 rhgdb/gdbedit.cc:394 rhgdb/main.cc:1214
+msgid "Open a file"
+msgstr "Eine Datei îffnen"
+
+#: idedebug.cc:116 idedial.cc:344 idemain.cc:667 idemain.cc:940 idemain.cc:1223 idemain.cc:1389 idemain.cc:1452 idemain.cc:2286 ideopt.cc:801 ideprj.cc:653 ideprj.cc:1326 libset/ceditor.cc:10260 libset/ceditor.cc:10311 rhgdb/gdbedit.cc:395 rhgdb/main.cc:249 rhgdb/main.cc:1184 rhgdb/main.cc:1200 rhgdb/main.cc:1215 tvision/fileview.cc:213
+msgid "~N~ame"
+msgstr "~N~ame"
+
+#: idedebug.cc:132 ideprj.cc:1386 rhgdb/gdbedit.cc:408
+msgid "Add '%s' to the search path for source files"
+msgstr "'%s' zum Suchpfad fÅr Quelldateien hinzufÅgen?"
+
+#: idedebug.cc:267
+msgid "Source has been modified. Rebuild it?"
+msgstr "Quelltext wurde verÑndert. Neu erzeugen?"
+
+#: idedebug.cc:359 idegcc.cc:903 rhgdb/main.cc:910
+msgid "Program exit code: %d (0x%04x)"
+msgstr "RÅckgabewert des Programmes: %d (0x%04x)"
+
+#: ideexter.cc:106
+msgid "ready"
+msgstr "fertig"
+
+#: ideexter.cc:152 idespec.cc:315
+msgid "arguments for GREP"
+msgstr "Argumente fÅr GREP"
+
+#: ideexter.cc:161
+msgid "There are only %d parameters for GREP. Continue ?"
+msgstr "Da sind nur %d Parameter fÅr GREP. Fortfahren ?"
+
+#: ideexter.cc:179
+msgid "running GREP:"
+msgstr "GREP wird ausgefÅhrt:"
+
+#: ideapp.cc:145 ideapp.cc:155 idebug.cc:62 idegcc.cc:87 idegcc.cc:319
+msgid "executing: "
+msgstr "fÅhre aus: "
+
+#: idegcc.cc:118
+msgid "return value: %d\n"
+msgstr "RÅckgabewert: %d\n"
+
+#: idegcc.cc:213
+msgid "checking file time for '%s'\n"
+msgstr "teste Dateizeit von '%s'\n"
+
+#: idegcc.cc:236
+msgid "found '%s' on desktop, time: %08lx\n"
+msgstr "fand '%s' auf dem Desktop, Zeit: %08lx\n"
+
+#: idegcc.cc:243 idegcc.cc:278
+msgid "and updating it"
+msgstr "und aktualisiere es"
+
+#: idegcc.cc:261 idegcc.cc:299
+msgid "found '%s' not in filetime cache, time: %08lx\n"
+msgstr "fand '%s' nicht im Dateizeitcache, Zeit: %08lx\n"
+
+#: idegcc.cc:272
+msgid "found '%s' in filetime cache "
+msgstr "fand '%s' im Dateizeitcache "
+
+#: idegcc.cc:288
+msgid ",time: %08lx\n"
+msgstr ",Zeit: %08lx\n"
+
+#: idegcc.cc:328 idegcc.cc:466 idegcc.cc:476
+msgid "checking"
+msgstr "ÅberprÅfe"
+
+#: idecomp.cc:808 idegcc.cc:494
+msgid "Could not find the source file '%s'. Make sure, that the file exist or check the settings in 'Options/Directories' for the correct paths."
+msgstr "Konnte die Quelldatei '%s' nicht finden, Stelle sicher, da· sie existiert oder ÅberprÅfe die Einstellungen in 'Optionen/Verzeichnisse' auf korrekte Pfade"
+
+#: idegcc.cc:505 idegcc.cc:695
+msgid "is up to date"
+msgstr "ist aktuell"
+
+#: idegcc.cc:508 idegcc.cc:533
+msgid "is"
+msgstr "ist"
+
+#: idegcc.cc:509 idegcc.cc:533
+msgid "newer"
+msgstr "neuer"
+
+#: idegcc.cc:509 idegcc.cc:533
+msgid "older"
+msgstr "Ñlter"
+
+#: idegcc.cc:509 idegcc.cc:534
+msgid "than"
+msgstr "als"
+
+#: idegcc.cc:547
+msgid "must rebuild"
+msgstr "mu· erzeugen"
+
+#: idegcc.cc:557
+msgid "rebuilding of"
+msgstr "Erzeugung von"
+
+#: idegcc.cc:558
+msgid "success"
+msgstr "Erfolg"
+
+#: idegcc.cc:558
+msgid "error"
+msgstr "Fehler"
+
+#: idegcc.cc:570
+msgid "clearing the filetime cache\n"
+msgstr "loîsche den Dateizeitcache\n"
+
+#: idegcc.cc:750
+msgid "in function "
+msgstr "in Funktion "
+
+#: idegcc.cc:767
+msgid "Call frame traceback:"
+msgstr "RÅckverfolgen des Aufrufstapels:"
+
+#: idegcc.cc:807
+msgid "contents of stderr from "
+msgstr "Ausgaben zu 'stderr' von "
+
+#: idegcc.cc:848
+msgid "contents of stdout from "
+msgstr "Ausgaben zu 'stdout' von "
+
+#: idehelp.cc:147
+msgid "Info Viewer"
+msgstr "Info Betrachter"
+
+#: idehints.cc:20
+msgid "show information about RHIDE"
+msgstr "zeigt Informationen Åber RHIDE"
+
+#: idehints.cc:23
+msgid "Creates a small bug report"
+msgstr "Erzeugt einen kleinen Bugreport"
+
+#: idehints.cc:26
+msgid "Creates a sample bug report"
+msgstr "Erzeugt einen Beispiel-Bugreport"
+
+#: idehints.cc:29
+msgid "Start the FSDB debugger"
+msgstr "Started den debugger FSDB"
+
+#: idehints.cc:32
+msgid "Running GREP (arguments are prompted)"
+msgstr "Startet GREP (Argumente werden abgefragt)"
+
+#: idehints.cc:35
+msgid "Start the GDB debugger"
+msgstr "Started den debugger GDB"
+
+#: idehints.cc:38
+msgid "repaints the desktop"
+msgstr "zeichnet den Arbeitsbereich neu"
+
+#: idehints.cc:41
+msgid "Powerful builtin calculator"
+msgstr "LeistungsfÑhiger eingebauter Rechner"
+
+#: idehints.cc:44
+msgid "A nice puzzle game"
+msgstr "Ein niedliches Puzzelspiel"
+
+#: idehints.cc:47
+msgid "A simple calender"
+msgstr "Ein einfacher Kalender"
+
+#: idehints.cc:50
+msgid "A table with all the ASCII characters"
+msgstr "Eine Tabelle mit allen ASCII-Zeichen"
+
+#: idehints.cc:54
+msgid "Menu entries for handling with files"
+msgstr "MenÅpunkte zu den Dateifunktionen"
+
+#: idehints.cc:57
+msgid "opens a file in the editor"
+msgstr "îffnet eine Datei in ein neues Editorfenster"
+
+#: idehints.cc:60
+msgid "create a new editor window"
+msgstr "erstellt ein neues Editorfenster"
+
+#: idehints.cc:63
+msgid "save the current editor to disk (if modified)"
+msgstr "speichert das aktuelle Editorfenster (falls geÑndert)"
+
+#: idehints.cc:66
+msgid "save the current editor under a different name to disk"
+msgstr "speichert das aktuelle Editorfenster unter einem anderen Namen"
+
+#: idehints.cc:69
+msgid "save all opened editors to disk (if modified)"
+msgstr "speichert alle geîffneten Editorfenster (falls geÑndert)"
+
+#: idehints.cc:73
+msgid "switch to DOS (call of %COMSPEC%, return with EXIT)"
+msgstr "geht zu MSDOS (Aufruf von %COMSPEC%, RÅckkehr mit EXIT)"
+
+#: idehints.cc:77
+msgid "switch to a shell (call of $SHELL or /bin/sh, return with exit)"
+msgstr "Ruft die shell auf ($SHELL oder /bin/sh, zurÅck mit exit)"
+
+#: idehints.cc:81
+msgid "quits the IDE"
+msgstr "Beendet die IDE"
+
+#: idehints.cc:85
+msgid "Submenu for things dealing with the editor"
+msgstr "UntermenÅ zu den Editorfunktionen"
+
+#: idehints.cc:88
+msgid "undoes the last edit command"
+msgstr "macht das letzte Editierkommando rÅckgÑngig"
+
+#: idehints.cc:91
+msgid "undoes the last undo command"
+msgstr "macht das letzte undo Kommando rÅckgÑngig"
+
+#: idehints.cc:94
+msgid "move the selected text to the clipboard"
+msgstr "verschiebt den ausgewÑhlten Text in die Zwischenablage"
+
+#: idehints.cc:97
+msgid "copy the selected text to the clipboard"
+msgstr "kopiert den ausgewÑhlten Text in die Zwischenablage"
+
+#: idehints.cc:100
+msgid "insert the selected text from the clipboard"
+msgstr "fÅgt den ausgewÑhlten Text aus der Zwischenablage ein"
+
+#: idehints.cc:103
+msgid "shows the clipboard"
+msgstr "zeigt die Zwischenablage"
+
+#: idehints.cc:106
+msgid "delete the selected text "
+msgstr "lîscht den ausgewÑhlten Text"
+
+#: idehints.cc:109
+msgid "Copy the selected text to the Windows clipboard"
+msgstr "kopiert den ausgewÑhlten Text in die Windows-Zwischenablage"
+
+#: idehints.cc:112
+msgid "Paste text from the Windows clipboard"
+msgstr "fÅgt Text aus der Windows-Zwischenablage ein"
+
+#: idehints.cc:115
+msgid "Expand all tabs to spaces"
+msgstr "Ersetzt alle Tabs durch Leerzeichen"
+
+#: idehints.cc:118
+msgid "Replace as much as possible spaces with tabs"
+msgstr "Erzetzt soviel wie mîglich Leerzeichen durch Tabs"
+
+#: idehints.cc:122
+msgid "Submenu for handling with macros"
+msgstr "Untermenu zu den Makrofunctionen"
+
+#: idehints.cc:125
+msgid "Start the recording for a macro"
+msgstr "Beginnt die Aufzeichnung eines Makros"
+
+#: idehints.cc:128
+msgid "Stop the recording for a macro"
+msgstr "Stoppt die Aufzeichnung eines Makros"
+
+#: idehints.cc:131
+msgid "Run the recorded macro"
+msgstr "Started das aufgezeichnete Makro"
+
+#: idehints.cc:134
+msgid "Check the speed of the editor"
+msgstr "Testet die Geschwindingkeit des Editors"
+
+#: idehints.cc:138
+msgid "Submenu for searching/replacing text"
+msgstr "UntermenÅ zum Suchen/Ersetzen von Text"
+
+#: idehints.cc:141
+msgid "find a string in the current editor"
+msgstr "sucht eine Zeichenkette im aktuellen Editorfenster"
+
+#: idehints.cc:144
+msgid "find and replace a string in the current editor"
+msgstr "sucht und ersetzt eine Zeichenkette im aktuellen Editorfenster"
+
+#: idehints.cc:147
+msgid "repeat the last find- or replace-operation"
+msgstr "wiederholt die letzte Such- oder Ersetz-Operation"
+
+#: idehints.cc:150
+msgid "go to line number (after prompting)"
+msgstr "gehe zur Zeilennummer (nach Abfrage)"
+
+#: idehints.cc:153
+msgid "Select a function from the current editor"
+msgstr "WÑhle eine Funktion aus dem aktuellen editor"
+
+#: idehints.cc:156
+msgid "select next message"
+msgstr "wÑhle nÑchste Meldung aus"
+
+#: idehints.cc:159
+msgid "select previous message"
+msgstr "wÑhle vorhergehende Meldung aus"
+
+#: idehints.cc:163
+msgid "Submenu for running your program"
+msgstr "UntermenÅ zum AusfÅhren Deines Programmes"
+
+#: idehints.cc:166
+msgid "run the project-target (if executable after doing a make)"
+msgstr "fÅhrt das erzeugte Programm aus (falls ausfÅhrbar nach Make)"
+
+#: idehints.cc:169
+msgid "Step over function calls"
+msgstr "NÑchste Anweisung ausfÅhren (Routine komplett ausfÅhren)"
+
+#: idehints.cc:172
+msgid "Step over function calls (No display swap)"
+msgstr "NÑchste Anweisung/Routine komplett ausfÅhren (Kein Displayswap)"
+
+#: idehints.cc:175
+msgid "Execute one instruction"
+msgstr "NÑchste Anweisung in Einzelschritten ausfÅhren"
+
+#: idehints.cc:178
+msgid "Execute one instruction (No display swap)"
+msgstr "NÑchste Anweisung in Einzelschritten ausfÅhren (Kein Displayswap)"
+
+#: idehints.cc:181
+msgid "Stops execution at the cursor"
+msgstr "Program bis zur Cursorposition ausfÅhren"
+
+#: idehints.cc:184
+msgid "Stops execution at the cursor (No display swap)"
+msgstr "Program bis zur Cursorposition ausfÅhren (Kein Displayswap)"
+
+#: idehints.cc:187
+msgid "Reset the debugged program"
+msgstr "Debugger-Sitzung abbrechen"
+
+#: idehints.cc:190
+msgid "Enter the name of the 'main'-function"
+msgstr "Gebe den Namen der 'main'-Funktion ein"
+
+#: idehints.cc:193
+msgid "enter commandline arguments for your program"
+msgstr "angeben der Kommandozeilenargumente fÅr das Programm"
+
+#: idehints.cc:197
+msgid "Submenu for compiling and/or creating your program/library"
+msgstr "UntermenÅ zum öbersetzen und/oder Erzeugen des Programms/Bibliothek"
+
+#: idehints.cc:200
+msgid "compile the current editor or the selected project-item"
+msgstr "Åbersetzt das akt. Editorfenster oder das ausgewÑhlte Projekt-Element"
+
+#: idehints.cc:203
+msgid "make the project (with checking auto-dependencies)"
+msgstr "fÅhrt ein Make zur Erzeugung des Programms (Bibliothek) durch"
+
+#: idehints.cc:206
+msgid "link the project or create the library"
+msgstr "linkt oder erzeugt nur das Programm/die Bibliothek"
+
+#: idehints.cc:209
+msgid "build the project completely new"
+msgstr "erzeugt das Programm/die Bibliothek komplett neu"
+
+#: idehints.cc:213
+msgid "Submenu for debugging your program"
+msgstr "UntermenÅ zum Debuggen Deines Programmes"
+
+#: idehints.cc:216
+msgid "Set/Clear a breakpoint at the current line"
+msgstr "Setzen/Lîschen eines Haltepunktes an der aktuellen Zeile"
+
+#: idehints.cc:219
+msgid "Evaluate or modify an expression"
+msgstr "Berechne oder verÑndere einen Ausdruck"
+
+#: idehints.cc:222
+msgid "Add an expression to the watching list"
+msgstr "FÅgt einen Ausdruck zur öberwachungsliste hinzu"
+
+#: idehints.cc:225
+msgid "Show/Modify the breakpoints"
+msgstr "Zeige/éndere die Haltepunkte"
+
+#: idehints.cc:228
+msgid "Show a disassembler window at the current execution point"
+msgstr "Zeigt Disassembler-Fenster an der aktuellen ProgrammausfÅhrungsstelle"
+
+#: idehints.cc:231
+msgid "Show a list with all functions"
+msgstr "Zeigt einen Liste mit allen Funktionen"
+
+#: idehints.cc:234
+msgid "Shows a window with the function call stack"
+msgstr "Zeigt ein Fenster mit dem Funktionsaufrufstapel"
+
+#: idehints.cc:238
+msgid "Submenu for handling your projects"
+msgstr "UntermenÅ zu den Projektfunktionen"
+
+#: idehints.cc:241
+msgid "open a project"
+msgstr "îffnet ein Projekt"
+
+#: idehints.cc:244
+msgid "close the current project"
+msgstr "schlie·t das aktuelle Projekt"
+
+#: idehints.cc:247
+msgid "add an item to the project"
+msgstr "hinzufÅgen von Dateien zum Projekt"
+
+#: idehints.cc:250
+msgid "remove the selected item from the project"
+msgstr "entfernt das ausgewÑhlte Element aus dem Projekt"
+
+#: idehints.cc:253
+msgid "enter local commandline options for compiling this item"
+msgstr "lokale Kommandozeilenargumente fÅr das öbersetzen"
+
+#: idehints.cc:256
+msgid "show the dependencies for the selected item"
+msgstr "zeigt die AbhÑngigkeiten (Include-Dateien) fÅr dieses Element"
+
+#: idehints.cc:259
+msgid "change the name of the project-target"
+msgstr "Ñndert den Namen des erzeugten Programmes (Bibliothek)"
+
+#: idehints.cc:262
+msgid "Set the primary file (only for GPC with '--automake'!!!)"
+msgstr "Setzt die Hauptdatei (nur fÅr GPC mit '--automake'!!!)"
+
+#: idehints.cc:265
+msgid "remove the list of automaticaly generated dependencies"
+msgstr "lîscht die Liste der automatisch erzeugten AbhÑngkeiten"
+
+#: idehints.cc:268
+msgid "remove all files, which can be rebuild with this project"
+msgstr "lîscht alle Dateien, die mit diesem Project erzeugt werden kînnen"
+
+#: idehints.cc:271
+msgid "Create for all project items the dependencies"
+msgstr "Erzeuge fÅr alle Projektelemente die AbhÑngigkeiten"
+
+#: idehints.cc:274
+msgid "write a makefile for this project"
+msgstr "erzeugt ein Makefile zur Erzeugung des Projektes mit GNU-Make"
+
+#: idehints.cc:278
+msgid "Submenu for most of the options of RHIDE"
+msgstr "UntermenÅ fÅr fast alle Optionen von RHIDE"
+
+#: idehints.cc:282
+msgid "set various search paths for finding the files"
+msgstr "einstellen der Suchpfade"
+
+#: idehints.cc:285
+msgid "set where to search for include files"
+msgstr "Suchpfad fÅr Include-Dateien"
+
+#: idehints.cc:288
+msgid "set where to search for libraries"
+msgstr "Suchpfad fÅr Bibliotheken"
+
+#: idehints.cc:291
+msgid "set where to search for object files"
+msgstr "Suchpfad fÅr Objekt-Dateien"
+
+#: idehints.cc:294
+msgid "set where to search for source files"
+msgstr "Suchpfad fÅr Quelldateien"
+
+#: idehints.cc:297
+msgid "Define, where your standard headers are"
+msgstr "Definiere, wo Deine Standard-Header sind"
+
+#: idehints.cc:301
+msgid "customize various options for the C/C++-compiler"
+msgstr "verschiedene Optionen fÅr den C/C++-Compiler"
+
+#: idehints.cc:304
+msgid "customize the generating of warnings"
+msgstr "einstellen der Warnungsoptionen"
+
+#: idehints.cc:307
+msgid "customize, how to optimize the code"
+msgstr "einstellen der Optimierungsoptionen"
+
+#: idehints.cc:310
+msgid "customize the generating of debugging information"
+msgstr "einstellen der Debugoptionen"
+
+#: idehints.cc:313
+msgid "customize C-compiler specific flags"
+msgstr "spezielle Optionen nur fÅr den C-Compiler"
+
+#: idehints.cc:316
+msgid "customize C++-compiler specific flags"
+msgstr "spezielle Optionen nur fÅr den C++-Compiler"
+
+#: idehints.cc:319
+msgid "Flags only when compiling Pascal files"
+msgstr "Optionen, die nur zum öbersetzen von Pascal-Dateien verwendet werden"
+
+#: idehints.cc:322
+msgid "Flags only when compiling Fortran files"
+msgstr "Optionen, die nur zum öberstzen von Fortran-Dateien verwendet werden"
+
+#: idehints.cc:325
+msgid "Flags only when compiling ADA files"
+msgstr "Optionen, die nur zum öbersetzen von ADA-Dateien verwendet werden"
+
+#: idehints.cc:329
+msgid "set which libraries to be linked with the program"
+msgstr "welche Bibliotheken sollen hinzugelinkt werden"
+
+#: idehints.cc:332
+msgid "set additional flags to the linker"
+msgstr "spezielle Optionen fÅr den Linker"
+
+#: idehints.cc:335
+msgid "set additional flags to the compiler (defines, ...)"
+msgstr "zusÑtzliche Optionen fÅr den Compiler (Defines, ...)"
+
+#: idehints.cc:339
+msgid "customize the IDE"
+msgstr "spezielle Optionen der IDE"
+
+#: idehints.cc:342
+msgid "customize the colors of the IDE"
+msgstr "einstellen der Farben der IDE"
+
+#: idehints.cc:345
+msgid "Set the editor options"
+msgstr "Setze die Editoroptionen"
+
+#: idehints.cc:348
+msgid "set basic options for the IDE"
+msgstr "grundlegende Optionen der IDE"
+
+#: idehints.cc:351
+msgid "Set some options for the mouse"
+msgstr "Setze einige Optionen der Maus"
+
+#: idehints.cc:354
+msgid "edit the list of reserved words"
+msgstr "Ñndert die Liste der reservierten Wîrter"
+
+#: idehints.cc:357
+msgid "Edit the list of reserved words for Pascal files"
+msgstr "Ñndert die Liste der reservierten Wîrter fÅr Pascal-Dateien"
+
+#: idehints.cc:360
+msgid "edit the list of flags for the C-compiler"
+msgstr "Ñndert die Liste der C-spezifischen Optionen"
+
+#: idehints.cc:363
+msgid "edit the list of flags for the C++-compiler"
+msgstr "Ñndert die Liste der C++-spezifischen Optionen"
+
+#: idehints.cc:366
+msgid "Edit the list of pascal options"
+msgstr "Editieren der Pascaloptionen"
+
+#: idehints.cc:369
+msgid "Edit the list of fortran options"
+msgstr "Editieren der Fortranoptionen"
+
+#: idehints.cc:372
+msgid "Edit the list of ADA options"
+msgstr "Editieren der ADAoptionen"
+
+#: idehints.cc:375
+msgid "edit the list of flags for warnings"
+msgstr "Ñndert die Liste der Warnungsoptionen"
+
+#: idehints.cc:378
+msgid "edit the list of flags for debugging"
+msgstr "Ñndert die Liste der Debugoptionen"
+
+#: idehints.cc:381
+msgid "edit the list of optimization flags"
+msgstr "Ñndert die Liste der Optimierungsoptionen"
+
+#: idehints.cc:384
+msgid "edit the list of user defined words (for syntaxhighlight)"
+msgstr "Ñndert die Liste der nutzerspez. Wîrter (fÅr Syntaxhervorhebung)"
+
+#: idehints.cc:387
+msgid "Save all the options to a project file"
+msgstr "Speichere die Optionen in eine Projektdatei"
+
+#: idehints.cc:390
+msgid "Load the options from a project file"
+msgstr "Lade die Optionen aus einer Projektdatei"
+
+#: idehints.cc:394
+msgid "Submenu for dealing with windows"
+msgstr "UntermenÅ zu den Fensterfunktionen"
+
+#: idehints.cc:397
+msgid "resize/move the current window"
+msgstr "vergrî·ert/verschiebt das aktuelle Fenster"
+
+#: idehints.cc:400
+msgid "toggles between full size and previous size of the current window"
+msgstr "schaltet zwischen voller und vorhergehender Grî·e des Fensters um"
+
+#: idehints.cc:403
+msgid "show all editor windows simultaniously"
+msgstr "zeigt alle Editorfenster gleichzeitig"
+
+#: idehints.cc:406
+msgid "show from each editor the title"
+msgstr "zeigt von jedem Editorfenster mindestens den Titel"
+
+#: idehints.cc:409
+msgid "switch to the next window on the desktop"
+msgstr "wechselt zum nÑchsten Fenster"
+
+#: idehints.cc:412
+msgid "switch to the previous window on the desktop"
+msgstr "wechselt zum vorhergehenden Fenster"
+
+#: idehints.cc:415
+msgid "close the current window"
+msgstr "schlie·t das auktuelle Fenster"
+
+#: idehints.cc:418
+msgid "show a list of all windows on the desktop"
+msgstr "zeigt eine Liste aller Fenster an"
+
+#: idehints.cc:421
+msgid "show the project window"
+msgstr "zeigt das Projekt-Fenster"
+
+#: idehints.cc:424
+msgid "show the user screen"
+msgstr "zeigt den Nutzer-Bildschirm"
+
+#: idehints.cc:428
+msgid "Several menu entries for getting help"
+msgstr "Verschiedene MenÅpunkte zur Hilfe"
+
+#: idehints.cc:431
+msgid "opens the Info Viewer"
+msgstr "îffnet den Info Betrachter"
+
+#: idehints.cc:434
+msgid "The main index of the RHIDE help"
+msgstr "Der Hauptindex der RHIDE Hilfe"
+
+#: idehints.cc:438
+msgid "Submenu for syntax help"
+msgstr "UntermenÅ zur Syntaxhilfe"
+
+#: idehints.cc:441
+msgid "Help for the function under the cursor"
+msgstr "Hilfe zur Funktion unter dem Cursor"
+
+#: idehints.cc:444
+msgid "Files to be searched for syntax help"
+msgstr "Dateien, in denen nach Syntaxhilfe gesucht wird"
+
+#: idehints.cc:447
+msgid "Options for the syntax help"
+msgstr "Optionen fÅr die Syntaxhilfe"
+
+#: idehints.cc:451
+msgid "Get a list with all available syntax help topics"
+msgstr "Liste mit allen zur VerfÅgung stehenden Syntaxhilfethemen"
+
+#: idehints.cc:454
+msgid "The main index of the libc reference"
+msgstr "Der Haupindex der libc Referenz"
+
+#: idehints.cc:457
+msgid "Get help about using the helpsystem"
+msgstr "Hilfe zur Benutzung des Hilfesystems"
+
+#: idehints.cc:460
+msgid "Shows the last opened help"
+msgstr "Zeigt die letzte Hilfe"
+
+#: idehints.cc:464
+msgid "How many closed windows should I remember"
+msgstr ""
+
+#: idemain.cc:211
+msgid "%s has been modified! Reload it?"
+msgstr "%s wurde verÑndert! Neu laden?"
+
+#: idemain.cc:667 idemain.cc:1452
+msgid "Name of the main target"
+msgstr "Name des zu erzeugenden Programms"
+
+#: idemain.cc:681
+msgid "Goto the line"
+msgstr "Gehe zur Zeile"
+
+#: idemain.cc:681
+msgid "line ~n~umber"
+msgstr "Zeilen~n~ummer"
+
+#: idemain.cc:706
+msgid "About RHIDE"
+msgstr "öber RHIDE"
+
+#: idemain.cc:716
+msgid "RHIDE is an Integrated Development Environment"
+msgstr "RHIDE ist eine Integrierte Entwicklungsumgebung"
+
+#: idemain.cc:718
+msgid "for developing DJGPP apps"
+msgstr "zur Entwicklung von DJGPP Applikationen"
+
+#: idemain.cc:721
+msgid "for developing Linux apps"
+msgstr "zur Entwicklung von Linux Applikationen"
+
+#: idemain.cc:723 rhgdb/main.cc:233
+msgid "Copyright (C) by Robert Hîhne, 1996,1997"
+msgstr "Alle Rechte bei Robert Hîhne, 1996,1997"
+
+#: idedial.cc:279 idemain.cc:727 ideopt.cc:161 ideopt.cc:313 ideopt.cc:484 ideopt.cc:646 ideopt.cc:1065 idesynta.cc:611 libset/bufun.cc:447 libset/infview/inf.cc:1898 libset/infview/inf.cc:1921 libset/infview/inf.cc:1944 libset/infview/inf.cc:1970 libtvgdb/breakdia.cc:114 libtvgdb/breakdia.cc:287 libtvuti/bigmessa.cc:81 libtvuti/bigmessa.cc:132 rhgdb/main.cc:237 rhgdb/options.cc:115 tvdemo/mousedlg.cc:116 tvision/classes/t/tchdirdi.cc:56 tvision/classes/t/tcolordi.cc:96 tvision/classes/t/tfiledia.cc:87 tvision/msgbox.cc:34 tvision/msgbox.cc:174
+msgid "~O~K"
+msgstr "~O~K"
+
+#: idemain.cc:917
+msgid "Please wait"
+msgstr "Bitte warten"
+
+#: idemain.cc:919
+msgid "Creating the Bug report"
+msgstr "Erzeuge den Bugreport"
+
+#: idemain.cc:940 rhgdb/main.cc:249
+msgid "Name of the main function"
+msgstr "Name der 'main'-Funktion"
+
+#: idemain.cc:1203 libtvgdb/tfuncinp.cc:37 rhgdb/main.cc:328
+msgid "Regular expression to list functions"
+msgstr "RegulÑrer Ausdruck zum Auflisten der Funktionen"
+
+#: idedial.cc:459 idemain.cc:1204 libset/calcu/calcu.cc:72 libtvgdb/tfuncinp.cc:38 libtvgdb/twatchdi.cc:48 libtvgdb/twatchli.cc:100 libtvgdb/watches.cc:98 rhgdb/main.cc:329
+msgid "~E~xpression"
+msgstr "~A~usdruck"
+
+#: idemain.cc:1207 libset/bufun.cc:445 rhgdb/main.cc:331
+msgid "List of functions"
+msgstr "Liste der Funktionen"
+
+#: idemain.cc:1245
+msgid "WindowList"
+msgstr "Fensterliste"
+
+#: idemain.cc:1348
+msgid "Standard Include Directories"
+msgstr "Standard Include-Verzeichnisse"
+
+#: idemain.cc:1353
+msgid "Include Directories"
+msgstr "Verzeichnisse der Header-Dateien"
+
+#: idemain.cc:1358
+msgid "Library Directories"
+msgstr "Verzeichnisse der Bibliotheken"
+
+#: idemain.cc:1363
+msgid "Object Directories"
+msgstr "Verzeichnisse der Objektdateien"
+
+#: idemain.cc:1368
+msgid "Source Directories"
+msgstr "Verzeichnisse der Quelldateieen"
+
+#: idemain.cc:1373
+msgid "INFO files for syntaxhelp"
+msgstr "INFO-Dateien fÅr die Syntaxhilfe"
+
+#: idemain.cc:1378 rhgdb/main.cc:320
+msgid "Program arguments"
+msgstr "Programmargumente"
+
+#: idemain.cc:1388
+msgid "Select a project"
+msgstr "Ein Projekt auswÑhlen"
+
+#: idemain.cc:1458
+msgid "You can give here only a valid filename for a Pascal source file"
+msgstr "Du kannst hier nur einen zulÑssigen Namen fÅr eine Pascal Quelldatei angeben"
+
+#: idemain.cc:1495
+msgid "usage: %s [options] [project-file] [edit-file]\n"
+msgstr "Aufruf: %s [Optionen] [Projekt-Datei] [Edit-Datei]\n"
+
+#: idemain.cc:1496
+msgid "options:    -d[actdf]\n"
+msgstr "Optionen:    -d[actdf]\n"
+
+#: idemain.cc:1498 rhgdb/main.cc:464
+msgid "            -c : show filename exactly (no case conversion)\n"
+msgstr "            -c : zeige Dateinamen exakt (keine Gro·/Klein-Umwandlung)\n"
+
+#: idemain.cc:1499 rhgdb/main.cc:465
+msgid "            -y : force to use long filenames (Windows 95)\n"
+msgstr "            -y : erzwinge Benutzung von langen Dateinamen (Windows 95)\n"
+
+#: idemain.cc:1500 rhgdb/main.cc:466
+msgid "            -n : do not use long filenames (Windows 95)\n"
+msgstr "            -n : keine langen Dateinamen benutzen (Windows 95)\n"
+
+#: idemain.cc:1501 rhgdb/main.cc:469
+msgid "            -b : use BIOS calls for toggle the blinkstate\n"
+msgstr "            -b : benutze BIOS zum Umschalten des Blinkstatus\n"
+
+#: idemain.cc:1502 rhgdb/main.cc:470
+msgid "            -p : do not convert the numpad keys\n"
+msgstr "            -p : keine Konvertierung der Tasten der num. Tastatur\n"
+
+#: idemain.cc:1503 rhgdb/main.cc:471
+msgid "            -G num : Use methode <num> for screen swapping\n"
+msgstr "            -G num : Benutze Methode <num> zum Screenswapping\n"
+
+#: idemain.cc:1504 rhgdb/main.cc:472
+msgid "            -K : Use the BIOS for keyboard input\n"
+msgstr "            -K : Benutze das BIOS fÅr Tastatureingaben\n"
+
+#: idemain.cc:1505 rhgdb/main.cc:475
+msgid "            -M : Do not install the mouse handler\n"
+msgstr "            -M : Installiere nicht den Maus-Handler\n"
+
+#: idemain.cc:1506
+msgid "            -S : use slower (safer) screen output\n"
+msgstr "            -S : benutze langsame (sichere) Bildschirmausgabe\n"
+
+#: idemain.cc:1509
+msgid "            -K : Do not patch the keytable\n"
+msgstr "            -K : Nicht die Tastaturtabelle patchen\n"
+
+#: idemain.cc:1510
+msgid "            -H : Do not install console switch handler\n"
+msgstr "            -H : Keinen Console-Handler installieren\n"
+
+#: idemain.cc:1512 rhgdb/main.cc:467
+msgid "            -L LANGUAGE : use language LANGUAGE\n"
+msgstr "            -L SPRACHE : benutze Sprache SPRACHE\n"
+
+#: idemain.cc:1513 rhgdb/main.cc:468
+msgid "            -h : show this help\n"
+msgstr "            -h : zeige diese Hilfe\n"
+
+#: idemain.cc:1514
+msgid "            -k KEY_FILE : use KEY_FILE for key bindings\n"
+msgstr "            -k TAST_DATEI : benutze TAST_DATEI als Tastaturbelegung\n"
+
+#: idemain.cc:1515
+msgid "            -E : Output all env. variables and exit\n"
+msgstr "            -E : Gebe all Env.-Variablen aus und beende\n"
+
+#: idemain.cc:1516
+msgid "            -C : Disable SIGINT handling\n"
+msgstr "            -C : Keine SIGINT-Behandlung\n"
+
+#: idemain.cc:1839
+msgid "using %s as temp directory\n"
+msgstr "benutze %s als temporÑres Verzeichnis\n"
+
+#: idemain.cc:1971 rhgdb/main.cc:662
+msgid "This is %s. Copyright (c) 1996,1997 by Robert Hîhne\n"
+msgstr "Dies ist %s. Alle Rechte bei Robert Hîhne, 1996,1997\n"
+
+#: idemain.cc:2061
+msgid "Do you really want to interrupt RHIDE?"
+msgstr "Mîchtest Du wirklich RHIDE unterbrechen?"
+
+#: idemak.cc:46 ideprj.cc:581
+msgid "Invalid project-file %s(%s)"
+msgstr "UngÅltige Projektdatei %s(%s)"
+
+#: idemenu.cc:78 idemenu.cc:79
+msgid "~S~yntax help"
+msgstr "~S~yntaxhilfe"
+
+#: idemenu.cc:80
+msgid "~F~iles to search"
+msgstr "~D~ateien fÅr die Suche"
+
+#: idemenu.cc:81
+msgid "~O~ptions for searching"
+msgstr "~O~ptionen fÅr die Suche"
+
+#: idedial.cc:474 idemenu.cc:84 idemenu.cc:85 tvision/classes/t/tfiledia.cc:115
+msgid "~H~elp"
+msgstr "~H~ilfe"
+
+#: idemenu.cc:86
+msgid "RHIDE Help ~i~ndex"
+msgstr "RHIDE Hilfe ~I~ndex"
+
+#: idemenu.cc:88
+msgid "Index for s~y~ntax help"
+msgstr "Index der S~y~ntaxhilfe"
+
+#: idemenu.cc:89
+msgid "lib~c~ reference"
+msgstr "lib~c~ Referenz"
+
+#: idemenu.cc:90
+msgid "Help ~a~bout help"
+msgstr "Hilfe Å~b~er Hilfe"
+
+#: idemenu.cc:91
+msgid "~L~ast help"
+msgstr "~L~etzte Hilfe"
+
+#: idemenu.cc:94 ideopt.cc:662 rhgdb/main.cc:135
+msgid "~F~ile"
+msgstr "~D~atei"
+
+#: idemenu.cc:95 rhgdb/main.cc:136 tvision/classes/t/tfiledia.cc:79
+msgid "~O~pen"
+msgstr "ô~f~fnen"
+
+#: idemenu.cc:96 libtvgdb/breakdia.cc:100
+msgid "~N~ew"
+msgstr "~N~eu"
+
+#: idemenu.cc:97
+msgid "~S~ave"
+msgstr "~S~peichern"
+
+#: idemenu.cc:98
+msgid "S~a~ve as..."
+msgstr "Speichern ~a~ls..."
+
+#: idemenu.cc:99
+msgid "Save a~l~l"
+msgstr "A~l~le speichern"
+
+#: idemenu.cc:102
+msgid "~D~OS shell"
+msgstr "~D~OS shell"
+
+#: idemenu.cc:104
+msgid "S~h~ell"
+msgstr "S~h~ell"
+
+#: idemenu.cc:106
+msgid "E~x~it"
+msgstr "~E~nde"
+
+#: idemenu.cc:109
+msgid "~M~acro"
+msgstr "~M~akro"
+
+#: idemenu.cc:110
+msgid "~R~ecord"
+msgstr "~A~ufnehmen"
+
+#: idemenu.cc:111
+msgid "~S~top"
+msgstr "~S~toppen"
+
+#: idemenu.cc:112
+msgid "~P~lay"
+msgstr "A~b~spielen"
+
+#: idemenu.cc:115 ideopt.cc:652
+msgid "~E~dit"
+msgstr "~E~dit"
+
+#: idemenu.cc:116
+msgid "~U~ndo"
+msgstr "~R~ÅckgÑngig"
+
+#: idemenu.cc:117
+msgid "~R~edo"
+msgstr "~R~edo"
+
+#: idemenu.cc:119
+msgid "Cu~t~"
+msgstr "~A~usschneiden"
+
+#: idemenu.cc:120
+msgid "~C~opy"
+msgstr "~K~opieren"
+
+#: idemenu.cc:121
+msgid "~P~aste"
+msgstr "~E~infÅgen"
+
+#: idemenu.cc:122
+msgid "~S~how clipboard"
+msgstr "~Z~wischenablage"
+
+#: idemenu.cc:124
+msgid "C~l~ear"
+msgstr "~L~îschen"
+
+#: idemenu.cc:127
+msgid "Cop~y~ to Windows Clipboard"
+msgstr "Kopiere zur ~W~indows Zwischenablage"
+
+#: idemenu.cc:128
+msgid "Pas~t~e from Windows Clipboard"
+msgstr "FÅ~g~e aus Windows Zwischenablage ein"
+
+#: idemenu.cc:131
+msgid "E~x~pand all tabs"
+msgstr "Alle Tabs e~x~pandieren"
+
+#: idemenu.cc:132
+msgid "C~o~mpact text"
+msgstr "Text c~o~mpakt machen"
+
+#: idemenu.cc:136
+msgid "Profile Editor"
+msgstr "Profile den Editor"
+
+#: idemenu.cc:139
+msgid "~S~earch"
+msgstr "~S~uchen"
+
+#: idemenu.cc:140
+msgid "~F~ind..."
+msgstr "~S~uchen..."
+
+#: idemenu.cc:141
+msgid "~R~eplace..."
+msgstr "~E~rsetzen..."
+
+#: idemenu.cc:142
+msgid "~S~earch again"
+msgstr "~W~iederholen"
+
+#: idemenu.cc:143 rhgdb/main.cc:139
+msgid "~G~oto Line..."
+msgstr "~G~ehe zu Zeile..."
+
+#: idemenu.cc:144 rhgdb/main.cc:140
+msgid "~J~ump to function"
+msgstr "Gehe zu ~F~unktion"
+
+#: idemenu.cc:146
+msgid "~N~ext message"
+msgstr "~N~Ñchste Meldung"
+
+#: idemenu.cc:147
+msgid "Previ~o~us message"
+msgstr "V~o~rhergehende Meldung"
+
+#: idemenu.cc:150 idemenu.cc:151 rhgdb/main.cc:141 rhgdb/main.cc:142
+msgid "~R~un"
+msgstr "Sta~r~t"
+
+#: idemenu.cc:153 rhgdb/main.cc:143
+msgid "~S~tep over"
+msgstr "~G~esamte Routine"
+
+#: idemenu.cc:154 rhgdb/main.cc:144
+msgid "Step over (No display swap)"
+msgstr "Ganze Routine (Kein Displayswap)"
+
+#: idemenu.cc:155 rhgdb/main.cc:145
+msgid "~T~race into"
+msgstr "~E~inzelne Anweisung"
+
+#: idemenu.cc:156 rhgdb/main.cc:146
+msgid "Trace into (No display swap)"
+msgstr "Einzelne Anweisung (Kein Displayswap)"
+
+#: idemenu.cc:157 rhgdb/main.cc:147
+msgid "~G~o to cursor"
+msgstr "Gehe zur ~C~ursorposition"
+
+#: idemenu.cc:158 rhgdb/main.cc:148
+msgid "Go to cursor (No display swap)"
+msgstr "Gehe zur Cursorposition (Kein Displayswap)"
+
+#: idemenu.cc:159 rhgdb/main.cc:149
+msgid "~P~rogram reset"
+msgstr "~P~rogram reset"
+
+#: idemenu.cc:161 rhgdb/main.cc:151
+msgid "~M~ain function"
+msgstr "~M~ain Funktion"
+
+#: idemenu.cc:163 rhgdb/main.cc:152
+msgid "~A~rguments ..."
+msgstr "~A~rgumente ..."
+
+#: idemenu.cc:166 idemenu.cc:167
+msgid "~C~ompile"
+msgstr "~C~ompile"
+
+#: idemenu.cc:168
+msgid "~M~ake"
+msgstr "~M~ake"
+
+#: idemenu.cc:169
+msgid "~L~ink"
+msgstr "~L~ink"
+
+#: idemenu.cc:170
+msgid "~B~uild all"
+msgstr "~N~eu erzeugen"
+
+#: idemenu.cc:173
+msgid "~P~roject"
+msgstr "~P~rojekt"
+
+#: idemenu.cc:174
+msgid "Open ~p~roject"
+msgstr "~P~rojekt îffnen"
+
+#: idemenu.cc:175
+msgid "~C~lose project"
+msgstr "Projekt s~c~hlie·en"
+
+#: idemenu.cc:176
+msgid "~A~dd item"
+msgstr "~H~inzufÅgen"
+
+#: idemenu.cc:177
+msgid "D~e~lete item"
+msgstr "Ent~f~ernen"
+
+#: idemenu.cc:178
+msgid "~L~ocal options"
+msgstr "~L~okale Optionen"
+
+#: idemenu.cc:179
+msgid "~I~ncludes"
+msgstr "~I~ncludes"
+
+#: idemenu.cc:181
+msgid "main target~n~ame"
+msgstr "~N~ame des Programms"
+
+#: idemenu.cc:182
+msgid "Primary ~f~ile"
+msgstr "Ha~u~ptdatei"
+
+#: idemenu.cc:183
+msgid "Clea~r~ dependencies"
+msgstr "Lîsche die ~A~bhÑngigkeiten"
+
+#: idemenu.cc:184
+msgid "~D~elete rebuildable files"
+msgstr "Lîsche wiederherstellbare ~D~ateien"
+
+#: idemenu.cc:186
+msgid "Crea~t~e dependencies"
+msgstr "Er~z~euge die AbhÑngigkeiten"
+
+#: idemenu.cc:189
+msgid "~W~rite Makefile"
+msgstr "~E~rzeuge Makefile"
+
+#: idemenu.cc:192
+msgid "~D~irectories"
+msgstr "~V~erzeichnisse"
+
+#: idemenu.cc:193
+msgid "~I~nclude"
+msgstr "~I~nclude"
+
+#: idemenu.cc:194 idemenu.cc:233
+msgid "~L~ibraries"
+msgstr "~B~ibliotheken"
+
+#: idemenu.cc:195
+msgid "~O~bject"
+msgstr "~O~bjektdateien"
+
+#: idemenu.cc:196
+msgid "~S~ources"
+msgstr "~Q~uelldateien"
+
+#: idemenu.cc:198
+msgid "S~t~andard headers"
+msgstr "S~t~andard Header"
+
+#: idemenu.cc:201
+msgid "~C~ompilers"
+msgstr "~C~ompiler"
+
+#: idemenu.cc:202
+msgid "~W~arnings"
+msgstr "~W~arnungen"
+
+#: idemenu.cc:203
+msgid "~O~ptimizations"
+msgstr "~O~ptimierungen"
+
+#: idemenu.cc:204
+msgid "De~b~ugging"
+msgstr "~D~ebugoptionen"
+
+#: idemenu.cc:205
+msgid "~C~-Flags"
+msgstr "~C~-Optionen"
+
+#: idemenu.cc:206 idemenu.cc:220
+msgid "C~X~X-Flags"
+msgstr "C~X~X-Optionen"
+
+#: idemenu.cc:207 idemenu.cc:221
+msgid "P~a~scal-Flags"
+msgstr "P~a~scal-Optionen"
+
+#: idemenu.cc:208
+msgid "~F~ortran-Flags"
+msgstr "~F~ortran-Flags"
+
+#: idemenu.cc:209
+msgid "A~d~a-Flags"
+msgstr "A~d~a-Optionen"
+
+#: idemenu.cc:212
+msgid "~E~nvironment"
+msgstr "~U~mgebung"
+
+#: idemenu.cc:213
+msgid "~C~olors"
+msgstr "~F~arben"
+
+#: idemenu.cc:214
+msgid "~E~ditor options"
+msgstr "~E~ditor Optionen"
+
+#: idemenu.cc:215 rhgdb/main.cc:164
+msgid "~P~references"
+msgstr "~G~rundeinstellungen"
+
+#: idemenu.cc:216
+msgid "~M~ouse options"
+msgstr "~M~aus Optionen"
+
+#: idemenu.cc:217
+msgid "~R~eserved words"
+msgstr "~R~eservierte Wîrter"
+
+#: idemenu.cc:218
+msgid "P~a~scal Reserved words"
+msgstr "P~a~scal reservierte Wîrter"
+
+#: idemenu.cc:219
+msgid "C-~F~lags"
+msgstr "~C~-Optionen"
+
+#: idemenu.cc:222
+msgid "Fortra~n~-Flags"
+msgstr "Fortra~n~-Optionen"
+
+#: idemenu.cc:223
+msgid "Ada-~F~lags"
+msgstr "A~d~a-Optionen"
+
+#: idemenu.cc:224
+msgid "~W~arning-Flags"
+msgstr "~W~arnungs-Optionen"
+
+#: idemenu.cc:225
+msgid "~D~ebugging-Flags"
+msgstr "~D~ebug-Optionen"
+
+#: idemenu.cc:226
+msgid "~O~ptimization-Flags"
+msgstr "~O~ptimierungs-Optionen"
+
+#: idemenu.cc:227
+msgid "~U~ser words"
+msgstr "~N~utzer Wîrter"
+
+#: idemenu.cc:230 rhgdb/main.cc:162
+msgid "~O~ptions"
+msgstr "~O~ptionen"
+
+#: idemenu.cc:234
+msgid "L~i~nker Options"
+msgstr "L~i~nker Optionen"
+
+#: idemenu.cc:235
+msgid "Compiler ~O~ptions"
+msgstr "Compiler ~O~ptionen"
+
+#: idemenu.cc:237 rhgdb/main.cc:165
+msgid "~S~ave options"
+msgstr "~S~peichere Optionen"
+
+#: idemenu.cc:238
+msgid "Loa~d~ options"
+msgstr "~L~ade Optionen"
+
+#: idemenu.cc:240 rhgdb/main.cc:167
+msgid "~W~indows"
+msgstr "~F~enster"
+
+#: idemenu.cc:241 rhgdb/main.cc:168
+msgid "~S~ize/move"
+msgstr "~G~rî·e/Position"
+
+#: idemenu.cc:242 rhgdb/main.cc:169
+msgid "~Z~oom"
+msgstr "~Z~oom"
+
+#: idemenu.cc:243
+msgid "~T~ile"
+msgstr "~T~eilen"
+
+#: idemenu.cc:244
+msgid "C~a~scade"
+msgstr "~K~askade"
+
+#: idemenu.cc:245 libset/infview/inf.cc:1848 rhgdb/main.cc:170
+msgid "~N~ext"
+msgstr "~N~Ñchstes"
+
+#: idemenu.cc:246 libset/infview/inf.cc:1851 rhgdb/main.cc:171
+msgid "~P~revious"
+msgstr "~V~orher"
+
+#: idemenu.cc:247 rhgdb/main.cc:172
+msgid "~C~lose"
+msgstr "~S~chlie·en"
+
+#: idemenu.cc:248
+msgid "~L~ist"
+msgstr "~L~iste"
+
+#: idemenu.cc:249
+msgid "Pro~j~ect"
+msgstr "~P~rojekt"
+
+#: idemenu.cc:251
+msgid "~U~serScreen"
+msgstr "Nutzer~b~ildschirm"
+
+#: idemenu.cc:254 rhgdb/main.cc:133
+msgid "~~"
+msgstr "~~"
+
+#: idemenu.cc:255
+msgid "about RH~I~DE"
+msgstr "Åber RH~I~DE"
+
+#: idemenu.cc:256
+msgid "~s~mall bug report"
+msgstr "~K~leiner Bugreport"
+
+#: idemenu.cc:257
+msgid "~B~ug report"
+msgstr "~B~ug Report"
+
+#: idemenu.cc:260
+msgid "~F~SDB"
+msgstr "~F~SDB"
+
+#: idemenu.cc:262
+msgid "~G~REP ..."
+msgstr "~G~REP ..."
+
+#: idemenu.cc:263
+msgid "G~D~B"
+msgstr "G~D~B"
+
+#: idemenu.cc:265
+msgid "Refresh desk~t~op"
+msgstr "Desk~t~op erneuern"
+
+#: idemenu.cc:267
+msgid "~C~alculator"
+msgstr "~R~echner"
+
+#: idemenu.cc:268
+msgid "~P~uzzle"
+msgstr "~P~uzzel"
+
+#: idemenu.cc:269
+msgid "Ca~l~endar"
+msgstr "Ka~l~ender"
+
+#: idemenu.cc:270
+msgid "~A~SCII table"
+msgstr "~A~SCII Tabelle"
+
+#: idemenu.cc:274 rhgdb/main.cc:153
+msgid "~D~ebug"
+msgstr "Debu~g~"
+
+#: idemenu.cc:275 rhgdb/main.cc:154
+msgid "~S~et/Reset Breakpoint"
+msgstr "~S~etze/Entferne Haltepunkt"
+
+#: idemenu.cc:276 rhgdb/main.cc:155
+msgid "~E~valuate/Modify"
+msgstr "~A~uswerten/éndern"
+
+#: idemenu.cc:277 rhgdb/main.cc:156
+msgid "~W~atch an expression"
+msgstr "öber~w~ache Ausdruck"
+
+#: idemenu.cc:278 rhgdb/main.cc:157
+msgid "~B~reakpoints"
+msgstr "~H~altepunkte"
+
+#: idemenu.cc:280 rhgdb/main.cc:159
+msgid "~D~isassembler window"
+msgstr "~D~isassembler Fenster"
+
+#: idemenu.cc:281 rhgdb/main.cc:160
+msgid "~C~all stack"
+msgstr "Aufruf~s~tapel"
+
+#: idemenu.cc:282 rhgdb/main.cc:161
+msgid "List of ~F~unctions"
+msgstr "Liste der ~F~unktionen"
+
+#: idemsg.cc:99 libset/edmsg.cc:91
+msgid "Message Window"
+msgstr "Meldungsfenster"
+
+#: ideopt.cc:175 ideopt.cc:922
+msgid "Optimization Flags"
+msgstr "Optimierungs Optionen"
+
+#: ideopt.cc:180 ideopt.cc:917
+msgid "Warning Flags"
+msgstr "Warnungs Optionen"
+
+#: ideopt.cc:185 ideopt.cc:912
+msgid "Debugging Flags"
+msgstr "Debugging Optionen"
+
+#: ideopt.cc:190 ideopt.cc:907
+msgid "C++ Flags"
+msgstr "C++-spezifische Optionen"
+
+#: ideopt.cc:195 ideopt.cc:902
+msgid "C Flags"
+msgstr "C-spezifische Optionen"
+
+#: ideopt.cc:200 ideopt.cc:927
+msgid "Pascal Flags"
+msgstr "Pascal-spezifische Optionen"
+
+#: ideopt.cc:205 ideopt.cc:932
+msgid "Fortran Flags"
+msgstr "Fortran Flags"
+
+#: ideopt.cc:210 ideopt.cc:937
+msgid "Ada Flags"
+msgstr "Ada Optionen"
+
+#: ideopt.cc:261
+msgid "Libraries"
+msgstr "~B~ibliotheken"
+
+#: ideopt.cc:302
+msgid "Use ~s~tandard libraries"
+msgstr "Benutze ~s~tandard Bibliotheken"
+
+#: ideopt.cc:303
+msgid "link for ~p~rofiling"
+msgstr "Linken zum ~p~rofeilen"
+
+#: ideopt.cc:339
+msgid "Additional linker options"
+msgstr "ZusÑtzliche Linkeroptionen"
+
+#: ideopt.cc:345
+msgid "Additional compiler options"
+msgstr "ZusÑtzliche Compileroptionen"
+
+#: ideopt.cc:385 rhgdb/options.cc:44
+msgid "Environment options"
+msgstr "Optionen der IDE"
+
+#: ideopt.cc:397
+msgid "all dependencies in ~m~akefile"
+msgstr "All AbhÑngigkeiten im ~M~akefile"
+
+#: ideopt.cc:398
+msgid "create ~b~ackupfiles"
+msgstr "Erzeuge ~B~ackupdateien"
+
+#: ideopt.cc:399
+msgid "syntax ~h~ighlighting"
+msgstr "S~y~ntaxhervorhebung"
+
+#: ideopt.cc:400 rhgdb/options.cc:105
+msgid "U~s~e dual display"
+msgstr "Be~n~utze Dualbildschirm"
+
+#: ideopt.cc:401
+msgid "redirect 'stde~r~r'"
+msgstr "Umlenken von 'stde~r~r'"
+
+#: ideopt.cc:402
+msgid "redirect 'stdou~t~'"
+msgstr "Umlenken von 'stdou~t~'"
+
+#: ideopt.cc:403
+msgid "show ~p~rocess information"
+msgstr "~z~eigt Prozessinformation"
+
+#: ideopt.cc:404
+msgid "show free memor~y~"
+msgstr "zeigt freien ~S~peicher"
+
+#: ideopt.cc:405
+msgid "No file cachin~g~"
+msgstr "Kein Datei \"Cachin~g~\""
+
+#: ideopt.cc:406
+msgid "1~6~ background colors"
+msgstr "1~6~ Hintergrundfarben"
+
+#: ideopt.cc:407 rhgdb/options.cc:104
+msgid "Show G~D~B commands"
+msgstr "Zeige G~D~B Kommandos"
+
+#: ideopt.cc:408
+msgid "~U~se no shadows"
+msgstr "Benutze ~k~eine Schatten"
+
+#: ideopt.cc:409
+msgid "Save te~x~t palette"
+msgstr "Sichere die Te~x~tpalette"
+
+#: ideopt.cc:410
+msgid "Save pro~j~ect only when closing"
+msgstr "Speichere Pro~j~ekt nur beim Schlie·en"
+
+#: ideopt.cc:411
+msgid "Sho~w~ user screen after exit"
+msgstr "~Z~eige den Nutzerbildschirm nach exit"
+
+#: ideopt.cc:412
+msgid "Only #~i~nclude \"...\" as dependencies"
+msgstr "Nur #~i~nclude \"...\" als AbhÑngigkeiten"
+
+#: ideopt.cc:413
+msgid "Directories in pr~o~ject items"
+msgstr "~V~erzeichnisse in Projekt-Items"
+
+#: ideopt.cc:414
+msgid "Show Disassemb~l~er Window when needed"
+msgstr "Zeige Disassemb~l~er Fenster wenn nîtig"
+
+#: ideopt.cc:415
+msgid "Us~e~ RCS"
+msgstr "B~e~nutze RCS"
+
+#: ideopt.cc:422
+msgid "O~p~tions"
+msgstr "~O~ptionen"
+
+#: ideopt.cc:439 rhgdb/options.cc:59
+msgid "other"
+msgstr "anderer"
+
+#: ideopt.cc:447 rhgdb/options.cc:67
+msgid "~S~creen mode"
+msgstr "B~i~ldschirmmodus"
+
+#: ideopt.cc:473
+msgid "Closed ~W~indows"
+msgstr "Geschlossene ~F~enster"
+
+#: idedial.cc:109 idedial.cc:164 idedial.cc:235 idedial.cc:281 idedial.cc:471 ideopt.cc:487 ideopt.cc:654 ideopt.cc:1068 idesynta.cc:614 libset/bufun.cc:451 libset/calcu/calcu.cc:85 libset/infview/inf.cc:1900 libset/infview/inf.cc:1923 libset/infview/inf.cc:1948 libset/infview/inf.cc:1972 libset/infview/inf.cc:2027 libset/sdginter.cc:161 libset/setedit/editdiag.cc:92 libset/setedit/editdiag.cc:146 libset/setedit/editdiag.cc:166 libset/setedit/editdiag.cc:236 libset/setedit/editdiag.cc:281 libtvgdb/breakdia.cc:289 libtvgdb/twatchdi.cc:71 libtvuti/bigmessa.cc:85 libtvuti/bigmessa.cc:136 rhgdb/options.cc:118 tvdemo/mousedlg.cc:119 tvision/classes/t/tcolordi.cc:98 tvision/classes/t/tfiledia.cc:109 tvision/msgbox.cc:35 tvision/msgbox.cc:178
+msgid "Cancel"
+msgstr "Abbruch"
+
+#: ideopt.cc:611 rhgdb/options.cc:201
+msgid "This video mode (0x%03x) is not supported by the Turbo Vision library"
+msgstr "Dieser Videomodus (0x%03x) wird nicht von der Turbo Vision Bibliothek unterstÅtzt"
+
+#: ideopt.cc:648 libset/infview/inf.cc:2019
+msgid "~A~dd"
+msgstr "~H~inzu"
+
+#: ideopt.cc:650 libset/infview/inf.cc:2023 libtvgdb/breakdia.cc:103
+msgid "~D~elete"
+msgstr "Ent~f~ernen"
+
+#: ideopt.cc:659
+msgid "De~f~ault"
+msgstr "~S~tandard"
+
+#: ideopt.cc:738 ideopt.cc:748
+msgid "New value"
+msgstr "Neuer Wert"
+
+#: ideopt.cc:738 ideopt.cc:748 libide/tflagent.cc:50 libide/tflagent.cc:69 libide/tflagent.cc:90 libide/tflagent.cc:109 libide/tflagent.cc:122 libtvgdb/tdiswin.cc:84
+msgid "~V~alue"
+msgstr "~W~ert"
+
+#: ideopt.cc:801
+msgid "Read words from file"
+msgstr "Lese Wîrter aus Datei"
+
+#: ideopt.cc:828
+msgid "Couldn't open file %s"
+msgstr "Konnte Datei %s nicht îffnen"
+
+#: ideopt.cc:841
+msgid "Reserved words"
+msgstr "~R~eservierte Wîrter"
+
+#: ideopt.cc:847
+msgid "GPC Reserved words"
+msgstr "GPC reservierte Wîrter"
+
+#: ideopt.cc:853
+msgid "User Reserved words"
+msgstr "Nutzer reservierte Wîrter"
+
+#: ideopt.cc:956
+msgid "local options for project-item"
+msgstr "lokale Optionen fÅr Projektelement"
+
+#: ideopt.cc:966
+msgid "local ~c~ommandline options"
+msgstr "lokale ~K~ommandozeilenoptionen"
+
+#: ideopt.cc:977
+msgid "~N~ame of the output file"
+msgstr "~N~ame der Ausgabedatei"
+
+#: ideopt.cc:984 ideopt.cc:1017
+msgid "Auto"
+msgstr "Auto"
+
+#: ideopt.cc:985 ideopt.cc:1018
+msgid "User"
+msgstr "Nutzer"
+
+#: ideopt.cc:986 ideopt.cc:1019
+msgid "None"
+msgstr "Kein"
+
+#: ideopt.cc:987
+msgid "GNU C compiler"
+msgstr "GNU C Compiler"
+
+#: ideopt.cc:988
+msgid "GNU C++ compiler"
+msgstr "GNU C++ Compiler"
+
+#: ideopt.cc:989
+msgid "GNU assembler"
+msgstr "GNU Assembler"
+
+#: ideopt.cc:990
+msgid "GNU Pascal compiler"
+msgstr "GNU Pascal Compiler"
+
+#: ideopt.cc:991
+msgid "GNU Fortran compiler"
+msgstr "GNU Fortran Compiler"
+
+#: ideopt.cc:996
+msgid "Comp~i~ler type"
+msgstr "Komp~i~lertyp"
+
+#: ideopt.cc:1008
+msgid "Com~p~iler"
+msgstr "Kom~p~iler"
+
+#: ideopt.cc:1020
+msgid "builtin C"
+msgstr "eingebautes C"
+
+#: ideopt.cc:1021
+msgid "builtin assembler"
+msgstr "eingebauter Assembler"
+
+#: ideopt.cc:1022
+msgid "builtin linker"
+msgstr "eingebauter Linker"
+
+#: ideopt.cc:1023
+msgid "return value"
+msgstr "RÅckgabewert"
+
+#: ideopt.cc:1027
+msgid "~E~rror checking"
+msgstr "F~e~hlertest"
+
+#: ideopt.cc:1040
+msgid "E~r~ror program"
+msgstr "Fehle~r~programm"
+
+#: ideopt.cc:1050
+msgid "exclude from link"
+msgstr "vom linken ausschlie·en"
+
+#: ideopt.cc:1051
+msgid "rebuild seldom"
+msgstr "Erzeuge selten"
+
+#: ideopt.cc:1054
+msgid "o~t~her options"
+msgstr "an~d~ere Optionen"
+
+#: ideprj.cc:304 ideprj.cc:319
+msgid "The desktop file cannot be used, because of a new format"
+msgstr "Die Desktopdatei kann aufgrund eines neuen Formates nicht verwendet werden"
+
+#: ideprj.cc:327
+msgid "The desktop file cannot be used, because it was created by a newer version of RHIDE"
+msgstr "Die Desktopdatei kann nicht benutzt werden, da sie durch eine neuere Version von RHIDE erzeugt wurde"
+
+#: ideprj.cc:670
+msgid "Save options to a project"
+msgstr "Speichere Optionen in ein Projekt"
+
+#: ideprj.cc:680
+msgid "Read options from project"
+msgstr "Lade Optionen aus Projekt"
+
+#: ideprj.cc:862 ideprj.cc:999
+msgid "Couldn't open %s"
+msgstr "Konnte %s nicht îffnen"
+
+#: ideprj.cc:926 ideprj.cc:1001
+msgid "No project"
+msgstr "Kein Projekt"
+
+#: ideprj.cc:1071 ideprj.cc:1107
+msgid "changing cwd to %s\n"
+msgstr "Wechsle akt.Verzeichnis zu %s\n"
+
+#: ideprj.cc:1080
+msgid "temporary opening project %s\n"
+msgstr "Projekt %s wird temporÑr geîffnet\n"
+
+#: ideprj.cc:1108
+msgid "closing temporary opened project project %s\n"
+msgstr "Schlie·e temporÑr geîffnetes Projekt %s\n"
+
+#: ideprj.cc:1138
+msgid "finaly opening project %s\n"
+msgstr "EndgÅltiges ôfnnen des Projektes %s\n"
+
+#: ideprj.cc:1202
+msgid "Project Window"
+msgstr "Projekt Fenster"
+
+#: ideprj.cc:1326
+msgid "Add Item"
+msgstr "Element hinzufÅgen"
+
+#: ideprj.cc:1346
+msgid "The item '%s' is already in your project"
+msgstr "Das Element '%s' ist schon im Projekt"
+
+#: ideprj.cc:1419
+msgid "Remove '%s' from the project"
+msgstr "'%s' aus dem Projekt entfernen"
+
+#: ideprj.cc:1496
+msgid "Include files for "
+msgstr "Include-Dateien fÅr "
+
+#: ideprj.cc:1552
+msgid "clearing dependencies for %s\n"
+msgstr "Lîsche die AbhÑngigkeiten fÅr %s\n"
+
+#: ideprj.cc:1564
+msgid "removing %s\n"
+msgstr "lîsche %s\n"
+
+#: idestatu.cc:50 idestatu.cc:107 idestatu.cc:112 idestatu.cc:122 idestatu.cc:140 idestatu.cc:144 idestatu.cc:148 idestatu.cc:153
+msgid "~F1~ Help"
+msgstr "~F1~ Hilfe"
+
+#: idestatu.cc:52 idestatu.cc:87 idestatu.cc:130 idestatu.cc:155
+msgid "~F2~ Save"
+msgstr "~F2~ Speichern"
+
+#: idestatu.cc:53 idestatu.cc:88 idestatu.cc:131 idestatu.cc:156
+msgid "~F3~ Open"
+msgstr "~F3~ ôffnen"
+
+#: idestatu.cc:54 idestatu.cc:65 idestatu.cc:72 idestatu.cc:89 idestatu.cc:117 idestatu.cc:132 idestatu.cc:157 rhgdb/main.cc:190
+msgid "~F5~ Zoom"
+msgstr "~F5~ Zoom"
+
+#: idestatu.cc:55 idestatu.cc:73 idestatu.cc:90 idestatu.cc:133 idestatu.cc:158
+msgid "~F6~ Next"
+msgstr "~F6~ NÑchst."
+
+#: idestatu.cc:56 idestatu.cc:75 idestatu.cc:92 idestatu.cc:119 idestatu.cc:135 idestatu.cc:160 rhgdb/main.cc:192
+msgid "~F10~ Menu"
+msgstr "~F10~ MenÅ"
+
+#: idestatu.cc:57 idestatu.cc:67 idestatu.cc:76 idestatu.cc:93 idestatu.cc:118 idestatu.cc:136 idestatu.cc:161 rhgdb/main.cc:191
+msgid "~Alt+X~ Quit"
+msgstr "~Alt+X~ Ende"
+
+#: idestatu.cc:61 idestatu.cc:114 rhgdb/main.cc:187
+msgid "~Ins~ Add"
+msgstr "~Ins~ Hinzu"
+
+#: idestatu.cc:62 idestatu.cc:115 rhgdb/main.cc:188
+msgid "~Del~ Delete"
+msgstr "~Del~ Entfernen"
+
+#: idestatu.cc:63
+msgid "~^O~ Local"
+msgstr "~^O~ Lokal"
+
+#: idestatu.cc:64
+msgid "~^I~ Includes"
+msgstr "~^I~ Includes"
+
+#: idestatu.cc:66 idestatu.cc:74 idestatu.cc:91 idestatu.cc:134 idestatu.cc:159
+msgid "~Alt+F9~ Compile"
+msgstr "~Alt+F9~ öbers."
+
+#: idestatu.cc:71 idestatu.cc:108
+msgid "~Enter~ Jump to source"
+msgstr "~Enter~ Zu Quelltext"
+
+#: idestatu.cc:80
+msgid "~Enter~ Select"
+msgstr "~Enter~ AuswÑhlen"
+
+#: idestatu.cc:81
+msgid "~Del~ Close"
+msgstr "~Del~ Schlie·en"
+
+#: idestatu.cc:98
+msgid "~F1~ Help on InfoViewer"
+msgstr "~F1~ Hilfe Åber InfoViewer"
+
+#: idestatu.cc:99
+msgid "~Alt+F1~ last help"
+msgstr "~Alt+F1~ letzte Hilfe"
+
+#: idestatu.cc:100
+msgid "~Alt+F10~ local menu"
+msgstr "~Alt+F10~ lokales MenÅ"
+
+#: idestatu.cc:102
+msgid "~^F1~ Bookmarks"
+msgstr "~^F1~ Lesezeichen"
+
+#: idestatu.cc:110 rhgdb/main.cc:185
+msgid "~Ctrl+F1~ Select from a list"
+msgstr "~Ctrl+F1~ WÑhle aus einer Liste"
+
+#: idestatu.cc:116 rhgdb/main.cc:189
+msgid "~Enter~ Edit"
+msgstr "~Enter~ Editieren"
+
+#: idestatu.cc:123
+msgid "~Esc~ Cancel"
+msgstr "~Esc~ Abbruch"
+
+#: idestatu.cc:124
+msgid "~Space~ select"
+msgstr "~Space~ AuswÑhlen"
+
+#: idestatu.cc:145
+msgid "~^G~ Goto"
+msgstr "~^G~ Gehe zu"
+
+#: idestatu.cc:146 idestatu.cc:150
+msgid "~Alt+F3~ Close"
+msgstr "~Alt+F3~ Schlie·en"
+
+#: idestatu.cc:149
+msgid "~Enter~ Modify register"
+msgstr "~Enter~ VerÑnder Register"
+
+#: ideutil.cc:55
+msgid "Search for file '%s'\n"
+msgstr "Suche nach Datei '%s'\n"
+
+#: ideutil.cc:118
+msgid "found '%s'\n"
+msgstr "fand '%s'\n"
+
+#: ideutil.cc:120
+msgid "not found: take '%s'\n"
+msgstr "nicht gefunden: nehme '%s'\n"
+
+#: ideutil.cc:169
+msgid "clearing the FindCache\n"
+msgstr "lîsche den FindCache\n"
+
+#: ideutil.cc:202
+msgid "found '%s' in FindCache\n"
+msgstr "fand '%s' im FindCache\n"
+
+#: ideutil.cc:213
+msgid "found '%s' in current directory\n"
+msgstr "fand '%s' im aktuellen Verzeichnis\n"
+
+#: ideutil.cc:231 ideutil.cc:257
+msgid "found '%s' using the search directory '%s'\n"
+msgstr "fand '%s' unter Benutzung des Suchverzeichnisses '%s'\n"
+
+#: openedit.cc:55
+msgid "Open the file %s"
+msgstr "ôffne die Datei %s"
+
+#: ideuser.cc:129
+msgid "An error has occoured when running the program "
+msgstr "Ein Fehler trat auf beim AusfÅhren des Programmes "
+
+#: ideuser.cc:133
+msgid "The error was : "
+msgstr "Der Fehler war: "
+
+#: idecomp.cc:146 idecomp.cc:636
+msgid "Messages to stdout:"
+msgstr "Meldungen nach stdout:"
+
+#: idecomp.cc:158
+msgid "Messages to stderr:"
+msgstr "Meldungen nach stderr:"
+
+#: idecomp.cc:189
+msgid "Control-Break Pressed"
+msgstr "Control-Pause wurde gedrÅckt"
+
+#: idecomp.cc:400
+msgid "Compiling: "
+msgstr "öbersetze: "
+
+#: idecomp.cc:405
+msgid "Creating: "
+msgstr "Erzeuge: "
+
+#: idecomp.cc:782
+msgid "Don't know how to build %s from %s"
+msgstr "Wei· nicht, wie %s von %s erzeugt werden soll"
+
+#: idecomp.cc:874
+msgid "no errors"
+msgstr "keine Fehler"
+
+#: idecomp.cc:886
+msgid "There were some errors"
+msgstr "Da waren einige Fehler"
+
+#: idesynta.cc:373
+msgid "Select a topic"
+msgstr "WÑhle ein Thema"
+
+#: idesynta.cc:468 idesynta.cc:497
+msgid "Error creating the indices for %s (or nothing found). Remove that file from the list?"
+msgstr "Fehler beim Erzeugen der Indizes fÅr %s (oder nichts gefunden). Diese Datei aus der Liste streichen?"
+
+#: idesynta.cc:527
+msgid "No INFO files for syntax help defined"
+msgstr "Keine INF-Dateien fÅr die Syntaxhilfe definiert"
+
+#: idesynta.cc:550
+msgid "Couldn't find any matching help"
+msgstr "Konnte keine entsprechende Hilfe finden"
+
+#: idesynta.cc:569
+msgid "Options for syntax help"
+msgstr "Optionen fÅr die Syntaxhilfe"
+
+#: idesynta.cc:572
+msgid "E~x~act"
+msgstr "E~x~akt"
+
+#: idesynta.cc:573
+msgid "~S~ubstring"
+msgstr "Teil~s~tring"
+
+#: idesynta.cc:574
+msgid "~F~uzzy"
+msgstr "~F~uzzy"
+
+#: idesynta.cc:577
+msgid "Search ~m~ethode"
+msgstr "Such~m~ethode"
+
+#: idedial.cc:87 idedial.cc:137 idesynta.cc:586 libset/infview/inf.cc:1889 libset/setedit/editdiag.cc:70 libset/setedit/editdiag.cc:117
+msgid "~C~ase sensitive"
+msgstr "Gro·/~K~lein beachten"
+
+#: idesynta.cc:589
+msgid "Search o~p~tions"
+msgstr "Sucho~p~tionen"
+
+#: idesynta.cc:602
+msgid "Fu~z~zy value"
+msgstr "Fu~z~zy Wert"
+
+#: idedial.cc:74 libset/setedit/editdiag.cc:58
+msgid "Find"
+msgstr "Finde"
+
+#: idedial.cc:81 idedial.cc:125 libset/infview/inf.cc:1884 libset/setedit/editdiag.cc:65 libset/setedit/editdiag.cc:107
+msgid "~T~ext to find"
+msgstr "Such~t~ext"
+
+#: idedial.cc:88 idedial.cc:138 libset/infview/inf.cc:1890 libset/setedit/editdiag.cc:71 libset/setedit/editdiag.cc:118
+msgid "~W~hole words only"
+msgstr "Nur ganze ~W~îrter"
+
+#: idedial.cc:92 idedial.cc:147 libset/setedit/editdiag.cc:75 libset/setedit/editdiag.cc:127
+msgid "~G~lobal"
+msgstr "~G~lobal"
+
+#: idedial.cc:93 idedial.cc:148 libset/setedit/editdiag.cc:76 libset/setedit/editdiag.cc:128
+msgid "~S~elected text"
+msgstr "~M~arkierter Text"
+
+#: idedial.cc:96 idedial.cc:151 libset/setedit/editdiag.cc:79 libset/setedit/editdiag.cc:131
+msgid "Scope"
+msgstr "Bereich"
+
+#: idedial.cc:100 idedial.cc:155 libset/setedit/editdiag.cc:83 libset/setedit/editdiag.cc:135
+msgid "~F~rom cursor"
+msgstr "~V~om Cursor"
+
+#: idedial.cc:101 idedial.cc:156 libset/setedit/editdiag.cc:84 libset/setedit/editdiag.cc:136
+msgid "~E~ntire scope"
+msgstr "Ganzer ~B~ereich"
+
+#: idedial.cc:104 idedial.cc:159 libset/setedit/editdiag.cc:87 libset/setedit/editdiag.cc:139
+msgid "Origin"
+msgstr "Start"
+
+#: idedial.cc:107 idedial.cc:162 idedial.cc:233 libset/sdginter.cc:160 libset/setedit/editdiag.cc:90 libset/setedit/editdiag.cc:142 libset/setedit/editdiag.cc:164 libset/setedit/editdiag.cc:234 libset/setedit/editdiag.cc:279
+msgid "O~K~"
+msgstr "~O~K"
+
+#: idedial.cc:118 libset/setedit/editdiag.cc:100
+msgid "Replace"
+msgstr "Ersetzen"
+
+#: idedial.cc:131 libset/setedit/editdiag.cc:112
+msgid "~N~ew text"
+msgstr "~N~euer Text"
+
+#: idedial.cc:139 libset/setedit/editdiag.cc:119
+msgid "~P~rompt on replace"
+msgstr "~F~ragen vor ersetzen"
+
+#: idedial.cc:140 libset/setedit/editdiag.cc:120
+msgid "~R~eplace all"
+msgstr "Alle e~r~setzen"
+
+#: idedial.cc:143 libset/setedit/editdiag.cc:123
+msgid "Options"
+msgstr "~O~ptionen"
+
+#: idedial.cc:195 libset/setedit/editdiag.cc:196
+msgid "Local Options"
+msgstr "Lokale Optionen"
+
+#: idedial.cc:200 libset/setedit/editdiag.cc:201
+msgid "~O~verwrite"
+msgstr "öb~e~rschreiben"
+
+#: idedial.cc:201 idedial.cc:259 libset/setedit/editdiag.cc:202 libset/setedit/editdiag.cc:259
+msgid "~A~utoindent"
+msgstr "~A~utomatisches EinrÅcken"
+
+#: idedial.cc:202 idedial.cc:260 libset/setedit/editdiag.cc:203 libset/setedit/editdiag.cc:260
+msgid "~U~se tabs"
+msgstr "Benut~z~e Tabs"
+
+#: idedial.cc:203 idedial.cc:261 libset/setedit/editdiag.cc:204 libset/setedit/editdiag.cc:261
+msgid "~P~ersistent blocks"
+msgstr "~B~estÑndige Blîcke"
+
+#: idedial.cc:204 idedial.cc:262
+msgid "~I~ntelligent C indent"
+msgstr "~I~ntelligentes C einrÅcken"
+
+#: idedial.cc:205 idedial.cc:263 libset/setedit/editdiag.cc:206 libset/setedit/editdiag.cc:263
+msgid "~C~olumn cursor"
+msgstr "Spaltencursor"
+
+#: idedial.cc:206 idedial.cc:264 libset/setedit/editdiag.cc:207 libset/setedit/editdiag.cc:264
+msgid "~R~ow cursor"
+msgstr "Zeilencursor"
+
+#: idedial.cc:207 libset/setedit/editdiag.cc:208 libset/setedit/editdiag.cc:265
+msgid "~M~atch pair highligth"
+msgstr "~K~lammerpaar hervorheben"
+
+#: idedial.cc:208 idedial.cc:267 libset/setedit/editdiag.cc:209 libset/setedit/editdiag.cc:267
+msgid "Tra~n~sparent Blocks"
+msgstr "Transparente Blîcke"
+
+#: idedial.cc:209 idedial.cc:268 libset/setedit/editdiag.cc:210 libset/setedit/editdiag.cc:268
+msgid "Optimal ~F~ill"
+msgstr "Optimale ~F~Ållung"
+
+#: idedial.cc:213 libset/setedit/editdiag.cc:214
+msgid "O~f~f"
+msgstr "A~u~s"
+
+#: idedial.cc:214 libset/setedit/editdiag.cc:215
+msgid "~C~++ style"
+msgstr "~C~++ Stil"
+
+#: idedial.cc:215 libset/setedit/editdiag.cc:216
+msgid "Pa~s~cal style"
+msgstr "Pa~s~cal Stil"
+
+#: idedial.cc:216 libset/setedit/editdiag.cc:217
+msgid "C~l~ipper style"
+msgstr "C~l~ipper Stil"
+
+#: idedial.cc:217 libset/setedit/editdiag.cc:218
+msgid "U~s~er defined"
+msgstr "Nut~z~er definiert"
+
+#: idedial.cc:220 libset/setedit/editdiag.cc:221
+msgid "Syntax ~H~ighlight"
+msgstr "Syntax~h~ervorhebung"
+
+#: idedial.cc:230 idedial.cc:274 libset/setedit/editdiag.cc:231 libset/setedit/editdiag.cc:274
+msgid "~T~ab size"
+msgstr "~T~abgrî·e"
+
+#: idedial.cc:254 libset/setedit/editdiag.cc:254
+msgid "Global Options"
+msgstr "Globale Optionen"
+
+#: idedial.cc:265
+msgid "~M~atch pair highlight"
+msgstr "~K~lammerpaar hervorheben"
+
+#: idedial.cc:266 libset/setedit/editdiag.cc:266
+msgid "~D~on't move the cursor on Paste"
+msgstr "Bewege nicht den Cursor bei Paste"
+
+#: idedial.cc:277
+msgid "To a~l~l"
+msgstr "~F~År alle"
+
+#: idedial.cc:301
+msgid "Not enough memory for this operation"
+msgstr "Nicht genÅgend Speicher fÅr diese Operation"
+
+#: idedial.cc:310
+msgid "Error reading file "
+msgstr "Fehler beim Lesen der Datei"
+
+#: idedial.cc:315
+msgid "Error writing file "
+msgstr "Fehler beim Schreiben der Datei"
+
+#: idedial.cc:323
+msgid "Error creating file "
+msgstr "Feheler beim Erstellen der Datei"
+
+#: idedial.cc:332
+msgid " has been modified. Save?"
+msgstr " wurde verÑndert. Speichern?"
+
+#: idedial.cc:337
+msgid "Save untitled file?"
+msgstr "Namenlose Datei speichern?"
+
+#: idedial.cc:344
+msgid "Save file as"
+msgstr "Speichere Datei als"
+
+#: idedial.cc:358
+msgid "Search string not found."
+msgstr "Suchtext wurde nicht gefunden"
+
+#: idedial.cc:378
+msgid "Replace this occurence?"
+msgstr "Dieses Vorkommen ersetzen?"
+
+#: idedial.cc:424
+msgid "Line too long, cut it?"
+msgstr "Zeile zu lang, kÅrzen ?"
+
+#: idedial.cc:441 libset/calcu/calcu.cc:123
+msgid "Calculator"
+msgstr "Rechner"
+
+#: idedial.cc:464 libset/calcu/calcu.cc:78 libtvgdb/twatchdi.cc:53
+msgid "~R~esult"
+msgstr "~E~rgebnis"
+
+#: idedial.cc:468 libset/calcu/calcu.cc:82 libtvgdb/twatchdi.cc:65
+msgid "E~v~al"
+msgstr "~B~erechnen"
+
+#: idedial.cc:489 libset/calcu/calcu.cc:107
+msgid "Error in expression (%d)"
+msgstr "Fehler in Ausdruck (%d)"
+
+#: :6 tvision/classes/t/tcolordi.cc:86
+msgid "Color"
+msgstr "Farbe"
+
+#: :6
+msgid "Desktop"
+msgstr "Arbeitsplatz"
+
+#: :6 tvision/classes/t/tmonosel.cc:30
+msgid "Normal"
+msgstr "Normal"
+
+#: :6
+msgid "Menus"
+msgstr "MenÅs"
+
+#: :6
+msgid "Disabled"
+msgstr "Inaktiv"
+
+#: :6
+msgid "Shortcut"
+msgstr "Kurzzeichen"
+
+#: :6
+msgid "Selected"
+msgstr "AusgewÑhlt"
+
+#: :6
+msgid "Selected disabled"
+msgstr "Inaktiv ausgewÑhlt"
+
+#: :6
+msgid "Shortcut selected"
+msgstr "Abk. ausgewÑhlt"
+
+#: :6
+msgid "Blue Windows"
+msgstr "Blaue Fenster"
+
+#: :6
+msgid "Cyan Windows"
+msgstr "TÅrkisene Fenster"
+
+#: :6
+msgid "Gray Windows"
+msgstr "Graue Fenster"
+
+#: :6
+msgid "Dialogs"
+msgstr "Dialoge"
+
+#: :6
+msgid "Label normal"
+msgstr "Etikett normal"
+
+#: :6
+msgid "Label selected"
+msgstr "Etikett ausgewÑhlt"
+
+#: :6
+msgid "Label shortcut"
+msgstr "Etikett Kurzzeichen"
+
+#: :6
+msgid "Button normal"
+msgstr "Knopf normal"
+
+#: :6
+msgid "Button default"
+msgstr "Knopf standard"
+
+#: :6
+msgid "Button selected"
+msgstr "Knopf ausgewÑhlt"
+
+#: :6
+msgid "Button disabled"
+msgstr "Knopf inaktiv"
+
+#: :6
+msgid "Button shortcut"
+msgstr "Knopf Kurzzeichen"
+
+#: :6
+msgid "Button shadow"
+msgstr "Knopf Schatten"
+
+#: :6
+msgid "Cluster normal"
+msgstr "Cluster normal"
+
+#: :6
+msgid "Cluster selected"
+msgstr "Cluster ausgewÑhlt"
+
+#: :6
+msgid "Cluster shortcut"
+msgstr "Cluster Kurzzeichen"
+
+#: :6
+msgid "Input normal"
+msgstr "Eingabe normal"
+
+#: :6
+msgid "Input selected"
+msgstr "Eingabe ausgewÑhlt"
+
+#: :6
+msgid "Input arrow"
+msgstr "Eingabe Zeiger"
+
+#: :6
+msgid "History button"
+msgstr "History-Knopf"
+
+#: :6
+msgid "History sides"
+msgstr "History-Seiten"
+
+#: :6
+msgid "History bar page"
+msgstr "History-Balken"
+
+#: :6
+msgid "History bar icons"
+msgstr "History-Balken Symbole"
+
+#: :6
+msgid "List normal"
+msgstr "Liste normal"
+
+#: :6
+msgid "List focused"
+msgstr "Liste fokussiert"
+
+#: :6
+msgid "List selected"
+msgstr "Liste ausgewÑhlt"
+
+#: :6
+msgid "List divider"
+msgstr "Liste Teiler"
+
+#: :6
+msgid "Information pane"
+msgstr "Informationsseite"
+
+#: :6
+msgid "Blue Editor"
+msgstr "Blauer Editor"
+
+#: :6
+msgid "Cyan Editor"
+msgstr "Cyan Editor"
+
+#: :6
+msgid "Gray Editor"
+msgstr "Grauer Editor"
+
+#: :6
+msgid "Info viewer"
+msgstr "Info Betrachter"
+
+#: :6
+msgid "keyword"
+msgstr "SchlÅsselwort"
+
+#: :6
+msgid "selected keyword"
+msgstr "AusgewÑhltes SchlÅsselwort"
+
+#: :6
+msgid "marked keyword"
+msgstr "Markiertes SchlÅsselwort"
+
+#: :6
+msgid "Disassembler"
+msgstr ""
+
+#: :6
+msgid "Unchanged register"
+msgstr ""
+
+#: :6
+msgid "Changed register"
+msgstr ""
+
+#: :6
+msgid "Focused register"
+msgstr ""
+
+#: libide/tflagent.cc:49
+msgid "You must type a value here"
+msgstr "Du mu·t hier einen Wert eingeben"
+
+#: libide/tflagent.cc:60
+msgid "You can type a value here"
+msgstr "Du kannst hier einen Wert eingeben"
+
+#: libide/tflagent.cc:61
+msgid "~V~alue (-1 for none)"
+msgstr "~W~ert (-1 fÅr keinen)"
+
+#: libide/tflagent.cc:72 libide/tflagent.cc:93
+msgid " allowed chars "
+msgstr " erlaubte Zeichen "
+
+#: libide/tflagent.cc:80
+msgid "You must type a string here"
+msgstr "Du mu·t hier einen String eingeben"
+
+#: libide/tflagent.cc:101
+msgid "You can type a string here"
+msgstr "Du kannst hier einen String eingeben"
+
+#: libide/tflagent.cc:112
+msgid "You must type a character here"
+msgstr "Du mu·t hier ein Zeichen eingeben"
+
+#: libide/tflagent.cc:125
+msgid "You can type a character here"
+msgstr "Du kannst hier ein Zeichen eingeben"
+
+#: libide/tidefile.cc:98 libide/tidefile.cc:287
+msgid "Warning: %s is write protected"
+msgstr "Warnung: %s is schreibgeschÅtzt"
+
+#: libtvgdb/breakdia.cc:77
+msgid "File"
+msgstr "~D~atei"
+
+#: libtvgdb/breakdia.cc:81
+msgid "Line/Function"
+msgstr "Zeile/Funktion"
+
+#: libtvgdb/breakdia.cc:85
+msgid "Condition"
+msgstr "Bedingung"
+
+#: libtvgdb/breakdia.cc:89
+msgid "Count"
+msgstr "Durchlauf"
+
+#: libtvgdb/breakdia.cc:97
+msgid "~M~odify"
+msgstr "énd~e~rn"
+
+#: libtvgdb/breakdia.cc:106
+msgid "~E~nable"
+msgstr "~A~ktivieren"
+
+#: libtvgdb/breakdia.cc:110
+msgid "D~i~sable"
+msgstr "~D~eaktivieren"
+
+#: libtvgdb/breakdia.cc:233
+msgid "File/L~i~ne"
+msgstr "Datei/Ze~i~le"
+
+#: libtvgdb/breakdia.cc:234
+msgid "Fu~n~ction"
+msgstr "Fu~n~ktion"
+
+#: libtvgdb/breakdia.cc:237
+msgid "~T~ype"
+msgstr "~T~yp"
+
+#: libtvgdb/breakdia.cc:245
+msgid "F~u~nction"
+msgstr "Fu~n~ktion"
+
+#: libtvgdb/breakdia.cc:253
+msgid "~F~ilename"
+msgstr "~D~ateiname"
+
+#: libtvgdb/breakdia.cc:263
+msgid "~L~ine"
+msgstr "~Z~eile"
+
+#: libtvgdb/breakdia.cc:273
+msgid "Con~d~ition"
+msgstr "Bedingung"
+
+#: libtvgdb/breakdia.cc:282
+msgid "Coun~t~"
+msgstr "Durchlauf"
+
+#: libtvgdb/breakdia.cc:302
+msgid "Edit Breakpoint"
+msgstr "éndere Haltepunkt"
+
+#: libtvgdb/breakdia.cc:364
+msgid "BreakPoints"
+msgstr "Haltepunkte"
+
+#: libtvgdb/tfuncinp.cc:40
+msgid "Select a function"
+msgstr "WÑhle eine Funktion"
+
+#: libtvgdb/tfunctio.cc:77
+msgid "return type: "
+msgstr "RÅckgabetyp: "
+
+#: libtvgdb/tfunctio.cc:80
+msgid "file: "
+msgstr "Datei: "
+
+#: libtvgdb/tgdbwind.cc:77
+msgid "Output from GDB"
+msgstr "Ausgabe von GDB"
+
+#: libtvgdb/twatchdi.cc:61
+msgid "~N~ew value"
+msgstr "~N~euer Wert"
+
+#: libtvgdb/twatchdi.cc:68
+msgid "~C~hange"
+msgstr "é~n~dern"
+
+#: libtvgdb/twatchdi.cc:90 libtvgdb/twatchli.cc:54
+msgid "not available"
+msgstr "nicht auswertbar"
+
+#: libtvgdb/twatchdi.cc:103
+msgid "could not change"
+msgstr "konnte nicht Ñndern"
+
+#: libtvgdb/twatchli.cc:100
+msgid "Change the expression to watch"
+msgstr "éndere den Åberwachten Ausdruck"
+
+#: libtvgdb/watches.cc:61
+msgid "Watch"
+msgstr "öberwachter Ausdruck"
+
+#: libtvgdb/watches.cc:81
+msgid "Evaluate and modify"
+msgstr "Berechnen und éndern"
+
+#: libtvgdb/watches.cc:98
+msgid "Add to watch list"
+msgstr "FÅge zu den Åberwachten AusdrÅcken hinzu"
+
+#: libtvgdb/userwarn.cc:24
+msgid ""
+"%s\n"
+"\n"
+"(Breakpoint at function '%s' in file %s)"
+msgstr "%s\n"
+"\n"
+"(Haltepunkt in Funktion '%s' in Datei %s)"
+
+#: libtvgdb/userwarn.cc:29
+msgid ""
+"%s\n"
+"\n"
+"(Breakpoint at line %d in file %s)"
+msgstr "%s\n"
+"\n"
+"(Haltepunkt in Zeile %d in Datei %s)"
+
+#: libtvgdb/userwarn.cc:55
+msgid "Program has received signal: "
+msgstr "Das Program erhielt das Signal: "
+
+#: libtvgdb/userwarn.cc:59
+msgid "For this line is no code generated"
+msgstr "FÅr diese Zeile ist kein Code erzeugt"
+
+#: libtvgdb/userwarn.cc:63
+msgid "Could not find the program. You must build at first the program to use this function, because the symbols are taken from that file."
+msgstr "Konnte das Programm nicht finden. Du mu·t zuerst das Programm erzeugen, da die Symbole von dieser Datei genommen werden."
+
+#: libtvgdb/userwarn.cc:68
+msgid "The selected breakpoint is invalid, probably this file is not compiled with debugging information or for this line is no code generated."
+msgstr "Der gewÑhlte Haltepunkt ist ungÅltig, wahrscheinlich ist die Datei nicht mit Debuginformationen Åbersetzt worden oder fÅr die Zeile wurde kein Code erzeugt"
+
+#: libtvgdb/userwarn.cc:75
+msgid "This program has no usable debugging information. Try to compile it with the -g switch."
+msgstr "Dieses Programm hat keine nutzbaren Debuginformation. Versuche es mit dem -g Switch."
+
+#: libtvgdb/userwarn.cc:79
+msgid "This breakpoint could not enabled, because you are running under Windows 3.1x and there the number of breakpoints is limited to 3"
+msgstr "Dieser Haltepunkt konnte nicht aktiviert werden, da das program unter Windows 3.1x lÑuft (max 3 Haltepunkte)"
+
+#: libtvgdb/userwarn.cc:86
+msgid "You have already 3 breakpoints set and under Windows 3.1x the number of breakpoints is limited to 3"
+msgstr "Du hast schon 3 Haltepunkte gesetzt und unter Windows 3.1x sind nur maximal 3 erlaubt"
+
+#: libtvgdb/callstac.cc:164
+msgid "Function call stack"
+msgstr "Funktionsaufrufstapel"
+
+#: libtvgdb/tdiswin.cc:84
+msgid "Change register value"
+msgstr "VerÑnder Registerwert"
+
+#: libtvgdb/tdiswin.cc:380 tvision/classes/t/tlistvie.cc:148
+msgid "<empty>"
+msgstr "<leer>"
+
+#: libtvuti/editdirl.cc:22
+msgid "~P~athlist"
+msgstr "~P~fadliste"
+
+#: libtvuti/editpara.cc:26
+msgid "~P~arameter"
+msgstr "~P~arameter"
+
+#: libtvuti/editpara.cc:32
+msgid "There is an unmatched quote in your arguments"
+msgstr "Die Anzahl der Appostrophe ist nicht korrekt"
+
+#: libtvuti/twindowl.cc:106
+msgid "Closed"
+msgstr "Geschlossen"
+
+#. Do not add closed 'Untitled' windows
+#: libset/editwind.cc:229 libtvuti/windowli.cc:156
+msgid "Untitled"
+msgstr "Namenlos"
+
+#: libtvuti/tmsglist.cc:121 libtvuti/tmsglist.cc:149
+msgid "Error: "
+msgstr "Fehler: "
+
+#: libtvuti/tmsglist.cc:124 libtvuti/tmsglist.cc:152
+msgid "Warning: "
+msgstr "Warnung: "
+
+#: tvision/fileview.cc:147
+msgid "Could not open '%s' for reading"
+msgstr "Konnte '%s' nicht zum Lesen îffnen"
+
+#: tvision/fileview.cc:212
+msgid "Save to file"
+msgstr "Speichere in Datei"
+
+#: tvision/msgbox.cc:32
+msgid "~Y~es"
+msgstr "~J~a"
+
+#: tvision/msgbox.cc:33
+msgid "~N~o"
+msgstr "~N~ein"
+
+#: tvision/msgbox.cc:48
+msgid "Warning"
+msgstr "Warnung"
+
+#: tvision/msgbox.cc:49
+msgid "Error"
+msgstr "Fehler"
+
+#: tvision/msgbox.cc:50
+msgid "Information"
+msgstr "Information"
+
+#: tvision/msgbox.cc:51
+msgid "Confirm"
+msgstr "EinverstÑndnis"
+
+#: tvision/classes/opstream.cc:202
+msgid "type not registered: %s\n"
+msgstr "Typ nicht registriert: %s\n"
+
+#: tvision/classes/t/tchdirdi.cc:37
+msgid "Change Directory"
+msgstr "Wechsle Verzeichnis"
+
+#: tvision/classes/t/tchdirdi.cc:45
+msgid "Directory ~n~ame"
+msgstr "Verzeichnis ~N~ame"
+
+#: tvision/classes/t/tchdirdi.cc:53
+msgid "Directory ~t~ree"
+msgstr "Verzeichnis ~B~aum"
+
+#: tvision/classes/t/tchdirdi.cc:58
+msgid "~C~hdir"
+msgstr "~W~echsle"
+
+#: tvision/classes/t/tchdirdi.cc:60
+msgid "~R~evert"
+msgstr "~R~evert"
+
+#: tvision/classes/t/tchdirdi.cc:62
+msgid "Help"
+msgstr "~H~ilfe"
+
+#: tvision/classes/t/tchdirdi.cc:104 tvision/classes/t/tdirlist.cc:217
+msgid "Drives"
+msgstr "Laufwerke"
+
+#: tvision/classes/t/tchdirdi.cc:176
+msgid "Invalid directory"
+msgstr "UngÅltiges Verzeichnis"
+
+#: tvision/classes/t/tcolordi.cc:40
+msgid "Colors"
+msgstr "Farben"
+
+#: tvision/classes/t/tcolordi.cc:52
+msgid "~G~roup"
+msgstr "~G~ruppe"
+
+#: tvision/classes/t/tcolordi.cc:60
+msgid "~I~tem"
+msgstr "~E~lement"
+
+#: tvision/classes/t/tcolordi.cc:66
+msgid "~F~oreground"
+msgstr "~V~ordergrund"
+
+#: tvision/classes/t/tcolordi.cc:75
+msgid "~B~ackground"
+msgstr "~H~intergrund"
+
+#: tvision/classes/t/tcolordi.cc:80
+msgid "Text "
+msgstr "Text "
+
+#: tvision/classes/t/tfiledia.cc:71
+msgid "~F~iles"
+msgstr "~D~ateien"
+
+#: tvision/classes/t/tfiledia.cc:95
+msgid "~R~eplace"
+msgstr "Ersetzen"
+
+#: tvision/classes/t/tfiledia.cc:103
+msgid "~C~lear"
+msgstr "~L~îschen"
+
+#: tvision/classes/t/tfiledia.cc:243
+msgid "Invalid drive or directory"
+msgstr "UngÅltiges Verzeichnis oder Laufwerk."
+
+#: tvision/classes/t/tfiledia.cc:292
+msgid "Invalid file name."
+msgstr "UngÅltiger Dateiname."
+
+#: tvision/classes/t/tfileinf.cc:37
+msgid ""
+msgstr ""
+
+#: tvision/classes/t/tfileinf.cc:37
+msgid "Jan"
+msgstr "Jan"
+
+#: tvision/classes/t/tfileinf.cc:37
+msgid "Feb"
+msgstr "Feb"
+
+#: tvision/classes/t/tfileinf.cc:37
+msgid "Mar"
+msgstr "MÑr"
+
+#: tvision/classes/t/tfileinf.cc:37
+msgid "Apr"
+msgstr "Apr"
+
+#: tvdemo/calendar.cc:33 tvision/classes/t/tfileinf.cc:37
+msgid "May"
+msgstr "Mai"
+
+#: tvision/classes/t/tfileinf.cc:37
+msgid "Jun"
+msgstr "Jun"
+
+#: tvision/classes/t/tfileinf.cc:38
+msgid "Jul"
+msgstr "Jul"
+
+#: tvision/classes/t/tfileinf.cc:38
+msgid "Aug"
+msgstr "Aug"
+
+#: tvision/classes/t/tfileinf.cc:38
+msgid "Sep"
+msgstr "Sep"
+
+#: tvision/classes/t/tfileinf.cc:38
+msgid "Oct"
+msgstr "Okt"
+
+#: tvision/classes/t/tfileinf.cc:38
+msgid "Nov"
+msgstr "Nov"
+
+#: tvision/classes/t/tfileinf.cc:38
+msgid "Dec"
+msgstr "Dez"
+
+#: tvision/classes/t/tfilterv.cc:59
+msgid "Invalid character in input"
+msgstr "UngÅltiges Zeichen in der Eingabe"
+
+#: tvision/classes/t/tmonosel.cc:31
+msgid "Highlight"
+msgstr "Hervorgehoben"
+
+#: tvision/classes/t/tmonosel.cc:32
+msgid "Underline"
+msgstr "Unterstrichen"
+
+#: tvision/classes/t/tmonosel.cc:33
+msgid "Inverse"
+msgstr "Invertiert"
+
+#: tvision/classes/t/tprogram.cc:218
+msgid "~Alt-X~ Exit"
+msgstr "~Alt-X~ Ende"
+
+#: tvision/classes/t/trangeva.cc:41
+msgid "Value not in the range %uld to %uld"
+msgstr "Wert ist nicht im Bereich von %uld bis %uld"
+
+#: tvision/classes/t/trangeva.cc:44
+msgid "Value not in the range %ld to %ld"
+msgstr "Wert ist nicht im Bereich von %ld bis %ld"
+
+#: rhgdb/main.cc:134
+msgid "about RH~G~DB"
+msgstr "öber RH~G~DB"
+
+#: rhgdb/main.cc:137
+msgid "~Q~uit"
+msgstr "~E~nde"
+
+#: rhgdb/main.cc:163
+msgid "~D~irectories for sources"
+msgstr "~V~erzeichnisse fÅr Quelldateien"
+
+#: rhgdb/main.cc:166
+msgid "~L~oad options"
+msgstr "~L~ade Optionen"
+
+#: rhgdb/main.cc:174
+msgid "~U~ser screen"
+msgstr "Nutzer~b~ildschirm"
+
+#: rhgdb/main.cc:175
+msgid "~W~indow list"
+msgstr "~F~ensterliste"
+
+#: rhgdb/main.cc:195
+msgid "~F7~ Trace"
+msgstr "~F7~ Anweisung"
+
+#: rhgdb/main.cc:196
+msgid "~F8~ Step"
+msgstr "~F8~ Routine"
+
+#: rhgdb/main.cc:197
+msgid "~F4~ Goto"
+msgstr "~F4~ Gehe zu"
+
+#: rhgdb/main.cc:198
+msgid "~^F2~ Reset"
+msgstr "~^F2~ ZurÅcks."
+
+#: rhgdb/main.cc:199
+msgid "~^F8~ Break"
+msgstr "~^F8~ Haltep."
+
+#: rhgdb/main.cc:200
+msgid "~^F4~ Eval"
+msgstr "~^F4~ Berech."
+
+#: rhgdb/main.cc:201
+msgid "~^F9~ Run"
+msgstr "~^F9~ Start"
+
+#: rhgdb/main.cc:218
+msgid "About RHGDB"
+msgstr "öber RHGDB"
+
+#: rhgdb/main.cc:230
+msgid "RHGDB is a source level debugger"
+msgstr "RHGDB ist ein Quelltextdebugger"
+
+#: rhgdb/main.cc:231
+msgid "with Turbo Vision interface"
+msgstr "mit Turbo Vision Schnittstelle"
+
+#: rhgdb/main.cc:232
+msgid "based on GDB "
+msgstr "basierend auf GDB"
+
+#: rhgdb/main.cc:433
+msgid "All windows on the desktop"
+msgstr "Alle Fenster auf der ArbeitsflÑche"
+
+#: rhgdb/main.cc:462
+msgid "usage: %s [options] exe-file [[arg1 [arg2 ...]]]\n"
+msgstr "Aufruf: %s [Optionen] exe-Datei [[arg1 [arg2 ...]]]\n"
+
+#: rhgdb/main.cc:463
+msgid "options:\n"
+msgstr "Optionen:\n"
+
+#: rhgdb/main.cc:473
+msgid "            -D : Use dual-display debugging\n"
+msgstr "            -D : Benutze Dualbildschirm zum debuggen\n"
+
+#: rhgdb/main.cc:474
+msgid "            -i INI_FILE : Use INI_FILE as config file\n"
+msgstr "            -i INI_DATEI : Benutze INI_DATEI als Konfig-Datei\n"
+
+#: rhgdb/main.cc:678
+msgid "Do you really want to interrupt RHGDB?"
+msgstr "Mîchtest Du wirklich RHGDB unterbrechen?"
+
+#: rhgdb/main.cc:1183
+msgid "Save options to file"
+msgstr "Speichere Optionen in Datei"
+
+#: rhgdb/main.cc:1199
+msgid "Read options from file"
+msgstr "Lade Optionen aus Datei"
+
+#: rhgdb/main.cc:1227
+msgid "Pathlist for source files"
+msgstr "Pfadliste fÅr Quelldateien"
+
+#: rhgdb/options.cc:87
+msgid "~T~absize"
+msgstr "~T~abgrî·e"
+
+#: tvdemo/ascii.cc:145
+msgid "  Char: "
+msgstr "  Zeichen: "
+
+#: tvdemo/ascii.cc:146
+msgid " Decimal: "
+msgstr " Dezimal: "
+
+#: tvdemo/ascii.cc:147
+msgid " Hex "
+msgstr " Hex "
+
+#: tvdemo/ascii.cc:174
+msgid "ASCII Chart"
+msgstr "ASCII Diagramm"
+
+#: tvdemo/calendar.cc:33
+msgid "January"
+msgstr "Januar"
+
+#: tvdemo/calendar.cc:33
+msgid "February"
+msgstr "Februar"
+
+#: tvdemo/calendar.cc:33
+msgid "March"
+msgstr "MÑrz"
+
+#: tvdemo/calendar.cc:33
+msgid "April"
+msgstr "April"
+
+#: tvdemo/calendar.cc:34
+msgid "June"
+msgstr "Juni"
+
+#: tvdemo/calendar.cc:34
+msgid "July"
+msgstr "Juli"
+
+#: tvdemo/calendar.cc:34
+msgid "August"
+msgstr "August"
+
+#: tvdemo/calendar.cc:34
+msgid "September"
+msgstr "September"
+
+#: tvdemo/calendar.cc:34
+msgid "October"
+msgstr "Oktober"
+
+#: tvdemo/calendar.cc:35
+msgid "November"
+msgstr "November"
+
+#: tvdemo/calendar.cc:35
+msgid "December"
+msgstr "Dezember"
+
+#: tvdemo/calendar.cc:110
+msgid "Su Mo Tu We Th Fr Sa"
+msgstr "So Mo Di Mi Do Fr Sa"
+
+#: tvdemo/calendar.cc:199
+msgid "Calendar"
+msgstr "Kalender"
+
+#: tvdemo/puzzle.cc:80
+msgid "Move"
+msgstr "Zug"
+
+#: tvdemo/puzzle.cc:270
+msgid "Puzzle"
+msgstr "Puzzel"
+
+#: tvdemo/mousedlg.cc:92
+msgid "Mouse options"
+msgstr "Mausoptionen"
+
+#: tvdemo/mousedlg.cc:106
+msgid "~M~ouse double click"
+msgstr "~M~aus Doppelklick"
+
+#: tvdemo/mousedlg.cc:109
+msgid "Fast       Medium      Slow"
+msgstr "Schnell    Mittel   Langsam"
+
+#: tvdemo/mousedlg.cc:112
+msgid "~R~everse mouse buttons"
+msgstr "~V~ertauschte Mausknîpfe"
+
+#: libset/bufun.cc:434
+msgid "Jump to function"
+msgstr "Gehe zu Funktion"
+
+#: libset/bufun.cc:481
+msgid "Hmmm ... I can't find any function, are you sure?"
+msgstr "Hmmm ... Ich kann keine Funktion finden. Bist Du sicher?"
+
+#: libset/ceditor.cc:3243 libset/ceditor.cc:3262
+msgid "Speed: %f lines/second"
+msgstr "Geschwindigkeit: %f Zeilen/Sekunde"
+
+#: libset/ceditor.cc:3663
+msgid "You can't paste a rectangle crossing the end of the file"
+msgstr "Du kannst kein Rechteck Åber das Dateiende hinaus markieren"
+
+#: libset/ceditor.cc:4370
+msgid "No match found"
+msgstr "Keine öbereinstimmung gefunden"
+
+#: libset/ceditor.cc:4382
+msgid "Match found at line %d column %d."
+msgstr "öbereinstimmung in Zeile %d Spalte %d gefunden"
+
+#: libset/ceditor.cc:8790
+msgid "Unhandled syntax highlight"
+msgstr "Nicht behandelte Syntaxhervorhebung"
+
+#: libset/ceditor.cc:9626
+msgid "Unhandled undo"
+msgstr "Nicht behandelets Undo"
+
+#: libset/ceditor.cc:9806
+msgid "Unhandled redo"
+msgstr "Nicht behandeltes Redo"
+
+#: libset/ceditor.cc:10259
+msgid "Read from file"
+msgstr "Lese aus Datei"
+
+#: libset/ceditor.cc:10311
+msgid "Write to file"
+msgstr "Schreibe in Datei"
+
+#: libset/ceditor.cc:10323
+msgid "File %s exist. Overwrite ?"
+msgstr "Datei existiert. öberschreiben ?"
+
+#: libset/ceditor.cc:10626
+msgid "Saved: %s (%ld bytes)."
+msgstr "Gespeichert: %s (%ld Byte)."
+
+#: libset/ceditor.cc:10628
+msgid "Stat failed."
+msgstr "Stat ist fehlgeschlagen."
+
+#: libset/editwind.cc:228
+msgid "Clipboard"
+msgstr "Zwischenablage"
+
+#: libset/sdginter.cc:67
+msgid "Starting SDG:"
+msgstr "Starte SDG:"
+
+#: libset/sdginter.cc:73
+msgid "Error while %s:"
+msgstr "Fehler wÑhrend %s:"
+
+#: libset/sdginter.cc:78
+msgid "(%d) %s in line %d"
+msgstr "(%d) %s in Zeile %d"
+
+#: libset/sdginter.cc:87
+msgid "In section %s"
+msgstr "In Abschnitt %s"
+
+#: libset/sdginter.cc:89
+msgid "Error of type: %s"
+msgstr "Fehler vom Typ: %s"
+
+#: libset/sdginter.cc:92
+msgid "Code: ...%s..."
+msgstr "Code: ...%s..."
+
+#: libset/sdginter.cc:97
+msgid "End of SDG"
+msgstr "Ende von SDG"
+
+#: libset/sdginter.cc:137
+msgid "SDG Parameters"
+msgstr "SDG Parameter"
+
+#: libset/sdginter.cc:143
+msgid "~F~ormat file (.frt)"
+msgstr "~F~ormatdatei (.frt)"
+
+#: libset/sdginter.cc:147
+msgid "~I~ntermediate file"
+msgstr ""
+
+#: libset/sdginter.cc:151
+msgid "~B~ase output (no extentions)"
+msgstr "~B~asis Ausgabe (keine Endung)"
+
+#: libset/sdginter.cc:155
+msgid "~D~irectory of formats"
+msgstr "~V~erzeichnisse der Formate"
+
+#: libset/sdginter.cc:158
+msgid "~K~eep intermediate"
+msgstr ""
+
+#: libset/loadkbin.cc:76
+msgid "Can't open %s\n"
+msgstr "Konnte %s nicht îffnen\n"
+
+#: libset/loadkbin.cc:90
+msgid "[ without ]"
+msgstr "[ ohne ]"
+
+#: libset/loadkbin.cc:94
+msgid "Section out of range"
+msgstr "Abschnitt au·erhalb des zulÑssigen Bereiches"
+
+#: libset/loadkbin.cc:101
+msgid "Missing ="
+msgstr "Fehlendes ="
+
+#: libset/loadkbin.cc:105
+msgid "Scan code out of range"
+msgstr "Scancode au·erhalb des zulÑssigen Bereiches"
+
+#: libset/loadkbin.cc:108
+msgid "Command out of range"
+msgstr "Kommando au·erhalb des zulÑssigen Bereiches"
+
+#: libset/pmacros.cc:76
+msgid "Macro definition don't start with Trigger"
+msgstr "Makrodefinition beginnt nicht mit Trigger"
+
+#: libset/pmacros.cc:84
+msgid "Missing Trigger sequence or too short"
+msgstr "Fehlende Triggersequenz oder zu kurz"
+
+#: libset/pmacros.cc:102
+msgid "Macro definition without mode keyword"
+msgstr "Makrodefinition ohne SchlÅsselwort"
+
+#: libset/pmacros.cc:111
+msgid "Wrong mode definition in pseudo macro."
+msgstr "Schlechte Modedefinition im Pseudomakro"
+
+#: libset/pmacros.cc:135
+msgid "Missing start in pseudo macro"
+msgstr "Fehlnder Start im Pseudomakro"
+
+#: libset/pmacros.cc:140
+msgid "Missing end in pseudo macro"
+msgstr "Fehlendes Ende im Pseudomakro"
+
+#: libset/pmacros.cc:149
+msgid "Empty pseudo macro"
+msgstr "Leeres Pseudomakro"
+
+#: libset/infview/inf.cc:596
+msgid "InfView - File: %s - Node: %s"
+msgstr "InfView - Datei: %s - Knoten: %s"
+
+#: libset/infview/inf.cc:1553
+msgid "Sorry can't find the string"
+msgstr "Sorry, konnte den Text nicht finden"
+
+#: libset/infview/inf.cc:1844
+msgid "Help Control"
+msgstr "Hilfe Kontrolle"
+
+#: libset/infview/inf.cc:1854
+msgid "~U~p"
+msgstr "A~u~f"
+
+#: libset/infview/inf.cc:1857
+msgid "Prev. ~H~ist."
+msgstr "Vorh. ~H~ist."
+
+#: libset/infview/inf.cc:1860
+msgid "H~i~de"
+msgstr "~V~erstecke"
+
+#: libset/infview/inf.cc:1867
+msgid "Hi~s~tory"
+msgstr "Hi~s~tory"
+
+#: libset/infview/inf.cc:1877
+msgid "Inf Find"
+msgstr "Inf finden"
+
+#: libset/infview/inf.cc:1893
+msgid "In current ~t~opic"
+msgstr "~I~n aktuellem Thema"
+
+#: libset/infview/inf.cc:1894
+msgid "In the ~f~ile"
+msgstr "In der ~D~atei"
+
+#: libset/infview/inf.cc:1895
+msgid "In ~a~ll files"
+msgstr "In ~a~llen Dateien"
+
+#: libset/infview/inf.cc:1909
+msgid "Go To"
+msgstr "Gehe zu"
+
+#: libset/infview/inf.cc:1916
+msgid "~N~ame of Node"
+msgstr "~N~ame des Knotens"
+
+#: libset/infview/inf.cc:1935
+msgid "Tag Table"
+msgstr "Tag Tabelle"
+
+#: libset/infview/inf.cc:1942
+msgid "~N~odes"
+msgstr "~K~noten"
+
+#: libset/infview/inf.cc:1962
+msgid "InfView Configuration"
+msgstr "InfView Konfiguration"
+
+#: libset/infview/inf.cc:1967
+msgid "Hide '*~N~ode' word"
+msgstr "Verstecke '*~N~ode' Wort"
+
+#: libset/infview/inf.cc:1968
+msgid "Hide real ~l~ink name"
+msgstr "Verstecke den richtigen ~L~ink-Name"
+
+#: libset/infview/inf.cc:2010
+msgid "InfView Bookmarks"
+msgstr "InfView Lesezeichen"
+
+#: libset/infview/inf.cc:2030
+msgid "~G~o to"
+msgstr "~G~ehe zu"
+
+#: libset/infview/inf.cc:2042
+msgid "~M~arks"
+msgstr "~M~arkieren"
+
+#: libset/infview/infbase.cc:223
+msgid "Attention !! this file is in DOS format,"
+msgstr "Achtung !! Diese Datei ist im DOS format,"
+
+#: libset/infview/infbase.cc:237
+msgid "Attention !! this file is in DOS format, Do you want convert it?, Make a backup first !!"
+msgstr "Achtung !! Diese Datei is im DOS format. Wills Du sie konvertieren? Mache zuerst eine Sicherungskopie !!"
+
+#: libset/infview/infbase.cc:254
+msgid "Error: can't find the Node info"
+msgstr "Fehler: Konnte den Info Knoten nicht finden"
+
+#: libset/infview/infbase.cc:1199
+msgid "Attention can't open the help file."
+msgstr "Achtung! Konnte die Hilfedatei nicht îffnen."
+
+#: libset/infview/infbase.cc:1201
+msgid "Attention can't open the help file '%s'."
+msgstr "Achtung! Konnte die Hilfedatei '%s' nicht îffnen."
+
+#: libset/infview/infbase.cc:1725
+msgid ""
+"\n"
+" Sorry I can't find this link (press ALT-F1).\n"
+msgstr "\n"
+" Sorry. Konnte diesen Link nicht finden (drÅcke ALT-F1).\n"
+
+#: libset/setedit/editdiag.cc:144
+msgid "Replace ~A~ll"
+msgstr "Alle e~r~setzen"
+
+#: libset/setedit/editdiag.cc:155
+msgid "Goto Line"
+msgstr "Gehe zu Zeile"
+
+#: libset/setedit/editdiag.cc:161
+msgid "Line number"
+msgstr "Zeilennummer"
+
+#: libset/setedit/editdiag.cc:205 libset/setedit/editdiag.cc:262
+msgid "~I~nteligent C indent"
+msgstr "~I~ntelligentes C einrÅcken"
+
+#: libset/setedit/editdiag.cc:277
+msgid "T~o~ all"
+msgstr "~F~År alle"
+

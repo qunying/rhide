@@ -1,0 +1,247 @@
+@node Introduction, General information about the work of RHIDE, Top, Top
+@chapter Introduction
+
+The program RHIDE is freeware, but
+the souce-code of this IDE is copyright by @value{rh}. You can
+modify and use it freely, but if you want to distibute it, you have
+to distribute the complete unmodified package with my copyright
+notice. There are two archives
+@itemize @minus
+@item @file{rhideb.zip} This contains the executable and the documentation
+@item @file{rhides.zip} This contains the sources for the IDE.
+@end itemize
+@paragraph{}
+
+These archives you can find at
+@www{The RHIDE home page, www.tu-chemnitz.de/~rho/rhide.html}
+or at any ftp site, which mirrors DJGPP.
+@paragraph{}
+
+To install these archives, you have to unzip them in the DJGPP-root
+directory, like any other DJGPP package.
+@paragraph{}
+
+@section What is RHIDE?
+
+What is RHIDE? RHIDE is an Integrated Development Environment for 
+compiling C- or C++-files (GNU-Assembler source files also supported)
+in an environment, which has an integrated editor where you can edit your
+source files and a project management, where you can define, which
+files are needed to build a program or a library.
+@paragraph{}
+
+RHIDE works like the IDE from Borland, which comes with Turbo C++ 3.1 and
+is written with the Turbo Vision library, which I have ported to use with
+DJGPP. Features of this IDE are:
+@itemize @minus
+
+@item Syntaxhighlighting is now supported and you can customize all
+ colors on your desktop.
+
+@item You can redirect the stdout and stderr from your program to
+ a window in the IDE.
+
+@item You can generate a makefile for your project, so you can build
+ the program also without the IDE.
+
+@item Most of the commandline-options of gcc can be customized.
+
+@item You can also build a library instead of an executable.
+
+@item When saving a file to disk, the modification time of this file
+ will be set to the time of the last modification in the editor.
+
+@item You can interrupt external programs (the compilers or your
+ program) by pressing @ikey{Ctrl+C,Ignoring} or 
+ @ikey{Ctrl+Break,Interrupting the compilers},
+ which are ignored by the IDE. That means also, that you cannot interrupt the
+ IDE by pressing these keys. If you want to enable this, compile
+ the IDE without the @code{-DNO_BREAK}-flag.
+
+@item The integrated debugger. You can debug your program within RHIDE by
+  executing each source line of your code and evaluating/modifying variables
+  and expressions.
+
+@item You can define other compliler to compile your source files.
+
+@end itemize
+@paragraph{}
+
+RHIDE is not only one program. Becaus you cannot use the integrated
+debugger in a DOS-Box of Windows 3.1x, there is distributed also a
+version of RHIDE without the integrated debugger called @file{ide.exe}.
+This program can also be used, if you have not so much memory, because
+it is also not so large.
+@paragraph{}
+
+In addition I have included a standalone debugger (called @file{rhgdb.exe}),
+which is GDB 4.16 with a Turbo Vision user interface.
+@paragraph{}
+
+@menu
+* Requirements::                
+* Getting started::             
+@end menu
+
+@node Requirements, Getting started, Introduction, Introduction
+@section Requirements
+
+RHIDE works under and is compiled with DJGPP V2.0. I think it doesn't work
+under DJGPP V1.xx, but I never tried it. To compile your programs you need
+a working GCC-configuration, that means, gcc must be found in your 
+path. Because DJGPP V2.0 works only under DPMI you need a DPMI-Server.
+If you run it under Windows 3.1(1)/95, you have DPMI. Under MS-DOS you
+need either a memory-manager, which give you DPMI-services (I think QEMM is
+it, EMM386 has no DPMI-support), or you use CWSDPMI, the free DPMI-server
+from Charles Sandman, which you can find on SimTel-ftp-sites. I use it
+and it works fine for me.
+@paragraph{}
+
+The built-in editor uses a simple heuristic to check, if a file
+is in UNIX or DOS text format. It checks the first 1024 Bytes, and if
+there is a lf without a cr, all lf's will be translated to cr/lf's. This
+is done at first only in memory. But if you save your file to disk,
+it will be saved in DOS text format.
+@paragraph{}
+
+At this time the program is only
+tested with a SVGA-video card (et4000), I don't know if it works with
+other cards, but I think so.
+@paragraph{}
+
+@node Getting started,  , Requirements, Introduction
+@section Getting started
+@cindex Start
+@cindex Commandline options
+
+To run RHIDE type
+@display
+rhide [options] ['file-name']
+@end display
+or 
+@display
+rhide [options] 'project-name' [options]
+@end display
+Here stands 'file-name', for file, which you want to open at start up.
+If it has no suffix it is assumed to be a 'project-name'.
+@paragraph{}
+
+'project-name' stands for a name of your project. If you don't type
+it, RHIDE searches the current directory for a project file. If there exists
+only one, it will be open. If there exists more than one or none, RHIDE
+will not open a project, you have to do it manually 
+(@xref{Open project})
+@paragraph{}
+
+Possible options are
+for debugging RHIDE itself (@xref{Debugging RHIDE}).
+If no project was open, you will see an empty desktop.
+At the top-line of the screen you can see the menu. This is activated by
+pressing @ikey{F10,Menu} or by clicking with the mouse at this line.
+Alternatively
+you can press @key{Alt} plus the highlighted character of a pull-down
+menu. e.g. to activate the @emph{File} menu, press @key{Alt+F}. At the
+bottom-line you can see the statusline with some hotkeys and it functions.
+@paragraph{}
+
+Other options are:
+@itemize @bullet
+  @item @var{-y} Use long filenames (only under Windows 95)
+
+  @item @var{-n} Do not use long filenames (only under Windows 95)
+
+  @item @var{-c} Do not convert the case of any file name
+@end itemize
+
+At the upper right corner of the screen you can see the free virtual/physical
+memory (where M stands for Megabytes, K for Kilobytes and B for Bytes), when
+enabled (@xref{Preferences}).
+@paragraph{}
+
+If you try to open a project, which does not exist, RHIDE will create a
+new one.
+The way for creating a new project is done by RHIDE as the following.
+If there exist in the directory of RHIDE (usually in %DJDIR%/bin) a
+project file with the root name of the executable and the suffix @file{.gpr},
+this file is copied as your new project file with all customizations, which
+you have done in it. If this standard project file doesn't exist, a new
+project file is created with the hardcoded defaults.
+@paragraph{}
+
+To create such a standard project file, change to the directory, where the
+executable is and call the exe-file with the argument of its name without
+the suffix @file{.exe}. After leaving the program, the standard project file
+is created.
+@paragraph{}
+
+@menu
+* Supported languages::         
+* Debugging RHIDE::             
+@end menu
+
+@node Supported languages, Debugging RHIDE, Getting started, Getting started
+@subsection Supported languages
+@cindex Languages
+
+There is also support for multiple languages. For this RHIDE uses the
+GNU gettext library. With this lib it is possible, to support multiple
+languages without changing any code of RHIDE, when adding a new language.
+@paragraph{}
+
+There are two ways for selecting the language. Either you set the environment
+variable @var{LANGUAGE} to the language you want or give it as a commandline
+argument to RHIDE. The normal way is by setting @var{LANGUAGE}. If you
+have installed RHIDE like described in the @file{readme}, you should
+specify the language with a two character shortcut. Here is the list of
+the current supported languages together with the two cahracter code:
+
+@itemize @bullet
+  @item @var{da} Danish maintained by @DANISH
+  @item @var{de} German maintained by @GERMAN
+  @item @var{es} Spanish maintained by @SPANISH
+  @item @var{fi} Finnish maintained by @FINNISH
+  @item @var{fr} Frensh maintained by @FRENSH
+  @item @var{it} Italian maintained by @ITALIAN
+  @item @var{nl} Dutch maintained by @DUTCH
+  @item @var{pl} Polish maintained by @POLISH
+  @item @var{pt} Portuguese maintained by @PORTUGUESE
+  @item @var{ru} Russian maintained by @RUSSIAN
+  @item @var{sv} Swedish maintained by @SWEDISH
+@end itemize
+
+When you want to give it on the commandline, use the following syntax:
+@format
+rhide -L <lang>
+@end format
+where <lang> for the language stands.
+@paragraph{}
+
+If you do not specify any language, English is assumed.
+@paragraph{}
+
+@node Debugging RHIDE,  , Supported languages, Getting started
+@subsection Debugging RHIDE
+@cindex Debugging
+
+I have added some commandline options, to debug the IDE itself. These options
+are the following:
+@itemize @minus
+@item @var{-dt} Do not remove the temporary files, which the IDE creates. The
+ names of these files will be printed to stderr.
+@item @var{-dc} Print to stderr the commands, which the IDE executes.
+@item @var{-dd} Print to stderr, how the IDE checks the dependencies.
+@item @var{-df} Print to stderr, how the IDE searches for files.
+@item @var{-da} Turns on all of the above
+@end itemize
+You can also combine these options like @var{-dct}, which is the same as
+@var{-dc -dt}.
+@paragraph{}
+
+To examine this debugging information, it is the best to use the redir
+command, to redirect the stderr to a file like
+@format
+redir -e err rhide -da project
+@end format
+which will redirect stderr to the file @file{err}.
+@paragraph{}
+

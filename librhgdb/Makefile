@@ -1,0 +1,8 @@
+# Copyright (C) 1996,1997 Robert H”hne, see COPYING.RH for details 
+# This file is part of RHIDE. 
+ifeq ($(strip $(RHIDESRC)),)
+error!! You have to set the variable RHIDESRC
+endif
+
+_srcdir=$(RHIDESRC)/librhgdb
+include $(_srcdir)/makefile.src

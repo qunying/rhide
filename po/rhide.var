@@ -1,0 +1,5 @@
+# Copyright (C) 1996,1997 Robert H”hne, see COPYING.RH for details 
+# This file is part of RHIDE. 
+.$(RHIDESRC)/common.var
+RHIDE_OS_LIBS_Linux=ncurses
+RHIDE_OS_LIBS=$(RHIDE_OS_LIBS_$(RHIDE_OS))

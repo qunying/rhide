@@ -1,0 +1,118 @@
+@c  rhidemac.txt: -*- Texinfo -*-
+
+@c -------------------------------------------------------------------------
+@c
+@c Macros for making RHIDE documentation in text format.
+@c
+@c Author: Robert H”hne (robert.hoehne@mathematik.tu-chemitz.de)
+@c         November 1996.
+@c
+@c Derived from 'faqmacros.txi', which is part of DJGPP FAQ written
+@c by Eli Eli Zaretskii (eliz@is.elta.co.il)
+@c
+@c Many ideas taken from files `multifmt.texi' and html.texi'
+@c written by Brian J. Fox and distributed with GNU Texinfo archive:
+@c
+@c Author: Brian J. Fox  (bfox@ua.com)	       Sun Apr  2 07:56:23 1995.
+@c
+@c -------------------------------------------------------------------------
+
+
+@macro html
+@end macro
+
+@macro htmltitle{line}
+@end macro
+
+@macro htmlsubtitle{line}
+@end macro
+
+@macro htmlauthor{line}
+@end macro
+
+@macro bye
+@end macro
+
+@macro anchor{text, link}
+\text\, \link\
+@end macro
+
+@macro TeX
+@TeX{}
+@end macro
+
+@macro paragraph{}
+@sp 1
+@end macro
+
+@macro mail{name, address}
+\name\ <\address\>
+@end macro
+
+@macro ftp{desc, path}
+\desc\, e.g. ftp://\path\
+@end macro
+
+@macro ftpdir{host, dir}
+\host\, directory \dir\
+@end macro
+
+@macro ftpusr{desc, host, login, passwd}
+\desc\ (FTP to \host\, login as \login\, give \passwd\ as password)
+@end macro
+
+@macro www{desc, path}
+\desc\, at this URL:
+@sp 1
+@display
+http://\path\
+@end display
+@sp 1
+@end macro
+
+@macro gopher{desc, path}
+\desc\, gopher://\path\
+@end macro
+
+@macro news{name}
+\name\ Newsgroup
+@end macro
+
+@macro titem{line}
+@item \line\
+@end macro
+@macro titemx{line}
+@itemx \line\
+@end macro
+@macro titeml{line}
+@itemx \line\
+@end macro
+
+@macro quest{stuff}
+@quote-arg
+@emph{@strong{Question}: \stuff\}
+@end macro
+
+@macro ans
+@strong{Answer}:
+@end macro
+
+@c
+
+@macro mxref{node, desc, title, file, doc}
+See Section '\node\' in documentation for '\doc\'
+@end macro
+
+@macro xref{node}
+See \node\
+@end macro
+
+@macro extref{node, desc, file, title, url}
+See \desc\ in ``\title\'', or point your Web browser to http://\url\
+@end macro
+
+@macro footnote{stuff}
+@quote-arg
+(\stuff\)
+@end macro
+

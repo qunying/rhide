@@ -1,0 +1,24 @@
+# Copyright (C) 1996,1997 Robert H”hne, see COPYING.RH for details 
+# This file is part of RHIDE. 
+#
+# $Id$
+#
+
+srcdir=$(RHIDESRC)/libide/stream
+VPATH=$(srcdir)
+
+project=stream
+
+po_files=
+
+src_files=$(po_files) \
+	sdepcoll.cc sdepende.cc sflagcol.cc sflagent.cc \
+	sideedit.cc sidefile.cc soptions.cc sproject.cc \
+	makefile makefile.src stream.gpr stream.mak
+cfg_files=
+update_files=
+
+subdirs=
+po_subdirs=
+
+include $(RHIDESRC)/common.mak

@@ -1,0 +1,134 @@
+@c -*-texinfo-*-  not \input texinfo.tex, as this is not to be TeX'ed
+@setfilename infview.spa
+
+@format
+START-INFO-DIR-ENTRY
+* InfView: (infview).           Documentaciўn de InfView.
+END-INFO-DIR-ENTRY
+@end format
+
+ This document is copyrighted by Salvador E. Tropea (SET), use it for any
+purpose, but don't remove my credits and copyrights.
+
+@node Top, Como usar InfView, (dir), (dir)
+
+ Esta es la ayuda de InfView v0.1.0.
+
+@format
+ Use los cursores para posicionarse sobre las palabras en amarillo (links),
+seleccione la que desea y presione INTRO (o ENTER).
+ Presione F5 para que InfView ocupe toda su pantalla.
+@end format
+
+@menu
+* Como usar InfView::.
+* ЁQui‚n hizo InfView?::.
+* Versiўn para Linux : Linux.
+* Agradecimientos::.
+@end menu
+
+@node Como usar InfView, ЁQui‚n hizo InfView?, Top, Top
+
+Teclas disponibles:
+
+@format
+Tab        Mueve al prўximo link (con respecto a la posiciўn del cursor).
+Shift Tab  Mueve al link anterior (con respecto a la posiciўn del cursor).
+Alt F1     Vuelve al link anterior (@xref{Linux, ,Diferente en Linux}.).
+Ctrl s     BЈsqueda.
+Ctrl l     Repetir la Јltima bЈsqueda.
+Alt F10    Ventana de control de InfView (@xref{Linux, ,Diferente en Linux}.).
+Ctrl p     Va al link designado como previo por el actual.
+Ctrl n     Va al link designado como prўximo por el actual.
+Ctrl u     Va al link designado como superior por el actual.
+Ctrl t     Va al link principal del archivo que se est  leyendo.
+Ctrl d     Va al directorio de ayudas.
+Ctrl h     Esta ayuda (@xref{Linux, ,Diferente en Linux}.).
+Ctrl g     @xref{GoTo, ,Permite ir a cualquier link}.
+Ctrl o     @xref{Jump to node, ,Permite saltar a cualquier nodo}.
+1-9        Toman los links 1 a 9.
+0          Toma el Јltimo link.
+a-z A-Z    Seleccionan el prўximo link que comienza con esa letra, las letras
+           son acumuladas.
+@end format
+
+@node ЁQui‚n hizo InfView?, Agradecimientos, Como usar InfView, Top 
+@*
+0BЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫ@*
+0FЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫ@*
+0BЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫ
+
+  InfView fue creado por Salvador Eduardo Tropea (SET), con la ayuda de Robert
+H”hne.
+
+@format
+E-Mail: salvador@@inti.edu.ar
+
+Tel‚fono: (+541) 759-0013
+Direcciўn Postal:
+Salvador E. Tropea
+CurapaligЃe 2124
+(1678) Caseros - 3 de Febrero
+Prov: Buenos Aires
+Argentina
+@end format
+
+@*
+0BЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫ@*
+0FЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫ@*
+0BЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫЫ@*
+
+@node Agradecimientos, , ЁQui‚n hizo InfView?, Top
+@format
+ * A toda la gente que ha contribuido con lo proyectos DJGPP y GNU.
+
+ * Especialmente a:
+
+  DJ Delorie.
+  Robert Hoehne    (autor de RHIDE).
+  Eli Zaretskii    (que mantiene la FAQ).
+  Charles Sandsman (autor del CWSDPMI).
+  Laszlo Molnar    (autor del DJP).
+  Marek Habersack  (autor del Instalador).
+
+ * A toda la gente de la lista DJGPP.
+@end format
+@node GoTo, , Como usar InfView, Como usar InfView
+
+Ventana de Go To:
+
+@format
+  Deber  ingresar el nombre exacto del link al que desea ir, el formato es el
+siguiente:
+@end format
+
+(archivo)nodo
+
+por ejemplo: "(libc)printf" lo llevar  a la ayuda sobre la funciўn de
+librerЎa printf.
+
+@node Jump to node, , Como usar InfView, Como usar InfView
+
+@format
+  Esta opciўn le mostrar  una ventana con todos los nodos contenidos en el
+archivo de ayuda actual, Ud. puede seleccionar cualquiera y presionando
+ENTER saltar  al mismo.
+  Los nombres est n ordenados alfabeticamente y presionando las primeras
+letras de cualquiera de ellos el programa lo guiar  al mismo.
+@end format
+
+@node Linux, , Top, Top
+
+@format
+ InfView puede ser usado bajo Linux, pero por el momento es solo experimental.
+ Para ello se necesita la librerЎa TurboVision for Linux de Sergio Sigala.
+
+ Diferencias:
+
+ * tv-0.1.tar.gz no soporta doble click por lo que esta facilidad es emulada.
+ * Alt-F1 y Alt-F10 cambian de consola virtual por lo que en su lugar debe
+   usarse Ctrl-F1 y Ctrl-F10.
+ * Para mayor claridad Ctrl-H fue reemplazado por F1.
+ * El programa es inestable y es propenso a generar Segmentation faults, aЈn
+ no conozco la razўn.
+@end format

@@ -1,0 +1,10 @@
+/* Copyright (C) 1996,1997 Robert H”hne, see COPYING.RH for details */
+/* This file is part of RHIDE. */
+/* WARN */
+/*
+ $Id$
+*/
+char RHGDBVersion[] = "RHGDB Version @version@";
+char build_date[] = __DATE__;
+char build_time[] = __TIME__;
+

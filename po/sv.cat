@@ -1,0 +1,2250 @@
+msgid "-o needs an argument\n"
+msgstr "-o behîver ett argument\n"
+
+msgid "a projectfile must be given\n"
+msgstr "en projektfil mÜste anges\n"
+
+msgid "error reading projectfile %s\n"
+msgstr "fel vid lÑsning av projektfil %s\n"
+
+msgid "Desktop"
+msgstr "Skrivbord"
+
+msgid "Color"
+msgstr "FÑrg"
+
+msgid "Menus"
+msgstr "Menyer"
+
+msgid "Normal"
+msgstr "Normal"
+
+msgid "Disabled"
+msgstr "Inaktiv"
+
+msgid "Shortcut"
+msgstr "GenvÑg"
+
+msgid "Selected"
+msgstr "Vald"
+
+msgid "Selected disabled"
+msgstr "Vald inaktiv"
+
+msgid "Shortcut selected"
+msgstr "Vald genvÑg"
+
+msgid "Blue Windows"
+msgstr "BlÜ fînster"
+
+msgid "Frame disabled"
+msgstr "Inaktiv ram"
+
+msgid "Frame"
+msgstr "Ram"
+
+msgid "Frame icons"
+msgstr "Ikoner i ram"
+
+msgid "Scroll bar page"
+msgstr "Rullningslist"
+
+msgid "Scroll bar icons"
+msgstr "Ikon i rulln.list"
+
+msgid "Static text"
+msgstr "Text"
+
+msgid "Selected text"
+msgstr "Vald text"
+
+msgid "reserved"
+msgstr "reserverad"
+
+msgid "Cyan Windows"
+msgstr "Turkos fînster"
+
+msgid "Gray Windows"
+msgstr "GrÜ fînster"
+
+msgid "Dialogs"
+msgstr "Dialogrutor"
+
+msgid "Frame/background"
+msgstr "Ram/bakgrund"
+
+msgid "Label normal"
+msgstr "Normal etikett"
+
+msgid "Label selected"
+msgstr "Vald etikett"
+
+msgid "Label shortcut"
+msgstr "GenvÑg fîr etikett"
+
+msgid "Button normal"
+msgstr "Normal knapp"
+
+msgid "Button default"
+msgstr "Fîrvald knapp"
+
+msgid "Button selected"
+msgstr "Vald knapp"
+
+msgid "Button disabled"
+msgstr "Inaktiv knapp"
+
+msgid "Button shortcut"
+msgstr "GenvÑg fîr knapp"
+
+msgid "Button shadow"
+msgstr "Knappskugga"
+
+msgid "Cluster normal"
+msgstr "Normal grupp"
+
+msgid "Cluster selected"
+msgstr "Vald grupp"
+
+msgid "Cluster shortcut"
+msgstr "GenvÑg fîr grupp"
+
+msgid "Input normal"
+msgstr "Normalt editfÑlt"
+
+msgid "Input selected"
+msgstr "Valt editfÑlt"
+
+msgid "Input arrow"
+msgstr "Inmatningspil"
+
+msgid "History button"
+msgstr "Knapp fîr historia"
+
+msgid "History sides"
+msgstr "Sida fîr historia"
+
+msgid "History bar page"
+msgstr "List fîr historia"
+
+msgid "History bar icons"
+msgstr "Ikoner i hist.list"
+
+msgid "List normal"
+msgstr "Normal lista"
+
+msgid "List focused"
+msgstr "Aktiv lista"
+
+msgid "List selected"
+msgstr "Valt i lista"
+
+msgid "List divider"
+msgstr "Avdelare i lista"
+
+msgid "Information pane"
+msgstr "Informationspanel"
+
+msgid "Blue Editor"
+msgstr "BlÜ editor"
+
+msgid "normal text"
+msgstr "normal text"
+
+msgid "marked text"
+msgstr "markerad text"
+
+msgid "comment"
+msgstr "kommentar"
+
+msgid "reserved word"
+msgstr "reserverat ord"
+
+msgid "identifier"
+msgstr "identifierare"
+
+msgid "symbol"
+msgstr "symbol"
+
+msgid "symbol2"
+msgstr "symbol2"
+
+msgid "string"
+msgstr "strÑng"
+
+msgid "integer"
+msgstr "heltal"
+
+msgid "float"
+msgstr "flyttal"
+
+msgid "octal"
+msgstr "oktal"
+
+msgid "hex"
+msgstr "hexadecimal"
+
+msgid "character"
+msgstr "tecken"
+
+msgid "preprocessor"
+msgstr "preprocessor"
+
+msgid "illegal char"
+msgstr "ogiltigt tecken"
+
+msgid "user defined words"
+msgstr "anvÑndardef. ord"
+
+msgid "CPU line"
+msgstr "CPU rad"
+
+msgid "Breakpoint"
+msgstr "Brytpunkt"
+
+msgid "Could not find the source file %s."
+msgstr "Kunde inte hitta kÑllkodsfil %s."
+
+msgid "Open a file"
+msgstr "ôppna en fil"
+
+msgid "~N~ame"
+msgstr "~N~amn"
+
+msgid "Add '%s' to the search path for source files"
+msgstr "LÑgg '%s' till sîkvÑgen fîr kÑllfiler"
+
+msgid "Because %s cannot read .exe files, you must set up the main targetname without extension"
+msgstr "DÜ %s inte kan lÑsa exe. filer, mÜste ni ange mÜlfilens namn utan filtillÑgg"
+
+msgid "arguments for GREP"
+msgstr "argument fîr GREP"
+
+msgid "running GREP:"
+msgstr "kîr GREP:"
+
+msgid "executing: "
+msgstr "exekverar: "
+
+msgid "return value: %d\n"
+msgstr "returvÑrde: %d\n"
+
+msgid "checking file time for '%s'\n"
+msgstr "kontrollerar tid fîr fil '%s'\n"
+
+msgid "found '%s' on desktop, time: %08lx\n"
+msgstr "fann '%s' pÜ skrivbord, tid: %08lx\n"
+
+msgid "found '%s' not in filetime cache, time: %08lx\n"
+msgstr "fann 's%' ,ej i filtidscache, tid: %08lx\n"
+
+msgid "found '%s' in filetime cache "
+msgstr "fann '%s' i filtidscache "
+
+msgid "and updating it"
+msgstr "och uppdaterar den"
+
+msgid ",time: %08lx\n"
+msgstr ",tid: %08lx\n"
+
+msgid "checking"
+msgstr "kontrollerar"
+
+msgid "Could not find the source file '%s'. Make shure, that the file exist or check the settings in 'Options/Directories' for the correct paths."
+msgstr "Kunde inte hitta kÑllkodsfil 's%'. Kontrollera att filen existerar och att rÑtt sîkvÑgar Ñr angivna under menyn 'Alternativ/Kataloger'."
+
+msgid "is up to date"
+msgstr "Ñr aktuell"
+
+msgid "is"
+msgstr "Ñr"
+
+msgid "newer"
+msgstr "nyare"
+
+msgid "older"
+msgstr "Ñldre"
+
+msgid "than"
+msgstr "Ñn"
+
+msgid "must rebuild"
+msgstr "mÜste bygga om"
+
+msgid "rebuilding of"
+msgstr "ombyggnad av"
+
+msgid "success"
+msgstr "framgÜng"
+
+msgid "error"
+msgstr "fel"
+
+msgid "clearing the filetime cache\n"
+msgstr "rensar filtidscachet\n"
+
+msgid "in function "
+msgstr "i funktion "
+
+msgid "Call frame traceback:"
+msgstr "Anropa frame traceback:"
+
+msgid "contents of stderr from "
+msgstr "innehÜll av stderr frÜn "
+
+msgid "contents of stdout from "
+msgstr "innehÜll av stdout frÜn "
+
+msgid "show information about RHIDE"
+msgstr "visa information om RHIDE"
+
+msgid "Start the FSDB debugger"
+msgstr "starta FSDB avlusare (debugger)"
+
+msgid "Running GREP (arguments are prompted)"
+msgstr "kîr GREP (argument efterfrÜgas)"
+
+msgid "repaints the desktop"
+msgstr "uppdaterar skrivbordet"
+
+msgid "Start the GDB debugger"
+msgstr "starta GDB avlusare (debugger)"
+
+msgid "opens the Info Viewer"
+msgstr "îppnar Infogranskaren"
+
+msgid "opens a file in the editor"
+msgstr "îppna en fil i ett nytt editorfînster"
+
+msgid "create a new editor window"
+msgstr "skapa ett nytt editorfînster"
+
+msgid "save the current editor to disk (if modified)"
+msgstr "spara det aktiva editorfînstret till disk (om den Ñndrats)"
+
+msgid "save the current editor under a different name to disk"
+msgstr "spara det aktiva editorfînstret med ett annat namn till disk"
+
+msgid "save all opened editors to disk (if modified)"
+msgstr "spara alla îppna editorfînster till disk (om de Ñndrats)"
+
+msgid "switch to DOS (call of %COMSPEC%, return with EXIT)"
+msgstr "gÜ tillfÑlligt îver till DOS (anropar %COMSPEC%, ÜtervÑnd med EXIT)"
+
+msgid "quits the IDE"
+msgstr "avslutar den integrerade programmeringsmiljîn"
+
+msgid "move the selected text to the clipboard"
+msgstr "flytta den valda texten till klippbordet"
+
+msgid "copy the selected text to the clipboard"
+msgstr "kopiera den valda texten till klippbordet"
+
+msgid "insert the selected text from the clipboard"
+msgstr "infoga den valda texten frÜn klippbordet"
+
+msgid "shows the clipboard"
+msgstr "visa klippbordet"
+
+msgid "delete the selected text "
+msgstr "radera den valda texten"
+
+msgid "find a string in the current editor"
+msgstr "hitta en textstrÑng i det aktuella editorfînstret"
+
+msgid "find and replace a string in the current editor"
+msgstr "hitta och ersÑtt en textstrÑng i det aktuella editorfînstret"
+
+msgid "repeat the last find- or replace-operation"
+msgstr "upprepa den senaste hitta- eller ersÑtt-operationen"
+
+msgid "go to line number (after prompting)"
+msgstr "gÜ till viss rad (efter frÜga om radnummer)"
+
+msgid "select next message"
+msgstr "vÑlj nÑsta meddelande"
+
+msgid "select previous message"
+msgstr "vÑlj fîregÜende meddelande"
+
+msgid "run the project-target (if executable after doing a make)"
+msgstr "kîr projektets mÜlfil (skapar mÜlfilen om nîdvÑndigt)"
+
+msgid "Step over function calls"
+msgstr "Utfîr en instruktion, stega îver funktionsanrop"
+
+msgid "Execute one instruction"
+msgstr "Utfîr en instruktion, fîlj funktionsanrop"
+
+msgid "Stops execution at the cursor"
+msgstr "Avbryter programkîrning vid markîren"
+
+msgid "Reset the debugged program"
+msgstr "èterstÑll det avlusade programmet"
+
+msgid "enter commandline arguments for your program"
+msgstr "skriv in argument till kommandoraden fîr ditt program "
+
+msgid "compile the current editor or the selected project-item"
+msgstr "kompilera aktivt editorfînster eller vald delfil i projektet"
+
+msgid "make the project (with checking auto-dependencies)"
+msgstr "skapa projektets mÜlfil (kontrollera beroenden mellan delfiler)"
+
+msgid "link the project or create the library"
+msgstr "lÑnka samman projektets mÜlfil eller skapa biblioteket"
+
+msgid "build the project completely new"
+msgstr "kompilera om alla delfiler och bygg projektet helt frÜn grunden"
+
+msgid "Set/Clear a breakpoint at the current line"
+msgstr "SÑtt/Ta bort en brytpunkt vid markîren"
+
+msgid "Evaluate or modify an expression"
+msgstr "UtvÑrdera eller Ñndra ett uttryck"
+
+msgid "Show/Modify the breakpoints"
+msgstr "Visa/éndra brytpunkter"
+
+msgid "Show a list with all functions"
+msgstr "Visa en lista îver alla funktioner"
+
+msgid "open a project"
+msgstr "îppna ett projekt"
+
+msgid "close the current project"
+msgstr "stÑng det aktiva projektet"
+
+msgid "add an item to the project"
+msgstr "lÑgg till en fil i projektet"
+
+msgid "remove the selected item from the project"
+msgstr "ta bort den valda filen frÜn projektet"
+
+msgid "enter local commandline options for compiling this item"
+msgstr "skriv in extra kompileringsvÑxlar sÑrskilt fîr denna delfil"
+
+msgid "show the dependencies for the selected item"
+msgstr "visa beroenden fîr den valda filen"
+
+msgid "change the name of the project-target"
+msgstr "Ñndra namnet fîr projektets mÜlfil"
+
+msgid "remove the list of automaticly generated dependencies"
+msgstr "ta bort listan îver automatiskt skapade beroenden"
+
+msgid "remove all files, which can be rebuild with this project"
+msgstr "ta bort alla filer som Üterskapas inom detta projekt"
+
+msgid "set various search paths for finding the files"
+msgstr "stÑll in diverse sîkvÑgar fîr att hitta filerna"
+
+msgid "set where to search for include files"
+msgstr "stÑll in sîkvÑg fîr inkluderingsfiler"
+
+msgid "set where to search for libraries"
+msgstr "stÑll in sîkvÑg fîr bibliotek"
+
+msgid "set where to search for object files"
+msgstr "stÑll in sîkvÑg fîr objektkodsfiler"
+
+msgid "set where to search for source files"
+msgstr "stÑll in sîkvÑg fîr kÑllkodsfiler"
+
+msgid "Flags only when compiling Pascal files"
+msgstr "VÑxlar enbart fîr kompilering av Pascalfiler"
+
+msgid "set which libraries to be linked with the program"
+msgstr "stÑll in vilka bibliotek som skall lÑnkas in i programmet"
+
+msgid "set additional flags to the linker"
+msgstr "stÑll in ytterligare vÑxlar fîr lÑnkaren"
+
+msgid "set addition flags to the compiler (defines, ...)"
+msgstr "stÑll in ytterligare vÑxlar fîr kompilatorn (defines, ...)"
+
+msgid "set basic options for the IDE"
+msgstr "gîr grundlÑggande instÑllningar fîr programmeringsmiljîn"
+
+msgid "edit the list of reserved words"
+msgstr "Ñndra i listan îver reserverade ord"
+
+msgid "Edit the list of reserved words for Pascal files"
+msgstr "éndra i listan îver reserverade ord fîr Pascal"
+
+msgid "edit the list of flags for the C-compiler"
+msgstr "Ñndra i listan îver giltiga vÑxlar till C-kompilatorn"
+
+msgid "edit the list of flags for the C++-compiler"
+msgstr "Ñndra i listan îver giltiga vÑxlar till C++ kompilatorn"
+
+msgid "edit the list of flags for warnings"
+msgstr "Ñndra i listan îver varningsvÑxlar"
+
+msgid "edit the list of flags for debugging"
+msgstr "Ñndra i listan îver vÑxlar fîr avlusning (debug)"
+
+msgid "edit the list of optimization flags"
+msgstr "Ñndra i listan îver optimeringsvÑxlar"
+
+msgid "edit the list of user defined words (for syntaxhighlight)"
+msgstr "Ñndra i listan îver anvÑndardefinierade ord (fîr syntaxupplysning)"
+
+msgid "write a makefile for this project"
+msgstr "skriv en makefil (GNU Make) fîr detta projekt"
+
+msgid "resize/move the current window"
+msgstr "Ñndra storlek pÜ/flytta det aktiva fînstret"
+
+msgid "toggles between full size and previous size of the current window"
+msgstr "skiftar mellan maximal och fîreg. storlek pÜ det aktiva fînstret"
+
+msgid "show all editor windows simultaniously"
+msgstr "visa alla editorfînster samtidigt, sida vid sida"
+
+msgid "show from each editor the title"
+msgstr "visa alla editorfînster samtidigt, îverlappande"
+
+msgid "switch to the next window on the desktop"
+msgstr "skifta till nÑsta fînster pÜ skrivbordet"
+
+msgid "switch to the previous window on the desktop"
+msgstr "skifta till fîregÜende fînster pÜ skrivbordet"
+
+msgid "close the current window"
+msgstr "stÑng det aktiva fînstret"
+
+msgid "show a list of all windows on the desktop"
+msgstr "visa en lista îver alla fînster pÜ skrivbordet"
+
+msgid "show the project window"
+msgstr "visa projektfînstret"
+
+msgid "show the user screen"
+msgstr "visa skÑrmbild med utmatning frÜn anvÑndarens program"
+
+msgid "redirecting %s to %s\n"
+msgstr "omriktar %s till %s\n"
+
+msgid "Name of the main target"
+msgstr "Namn pÜ mÜlfilen"
+
+msgid "Goto the line"
+msgstr "GÜ till rad"
+
+msgid "line ~n~umber"
+msgstr "rad~n~ummer"
+
+msgid "About RHIDE"
+msgstr "Om RHIDE"
+
+msgid "RHIDE is an Integrated Development Environment"
+msgstr "RHIDE Ñr en integrerad programmeringsmiljî"
+
+msgid "for developing DJGPP apps"
+msgstr "fîr utveckling av applikationer med DJGPP"
+
+msgid "Copyright (C) by Robert Hîhne, 1996"
+msgstr "Copyright (C) Robert Hîhne, 1996"
+
+msgid "~O~K"
+msgstr "~O~K"
+
+msgid "Regular expression to list functions"
+msgstr "RegulÑrt sîkuttryck fîr funktioner"
+
+msgid "~E~xpression"
+msgstr "~U~ttryck"
+
+msgid "List of functions"
+msgstr "Lista îver funktioner"
+
+msgid "WindowList"
+msgstr "Fînsterlista"
+
+msgid "Include Directories"
+msgstr "Kataloger fîr inkluderade filer"
+
+msgid "Library Directories"
+msgstr "Kataloger fîr bibliotek"
+
+msgid "Object Directories"
+msgstr "Kataloger fîr objektkod"
+
+msgid "Source Directories"
+msgstr "Kataloger fîr kÑllkod"
+
+msgid "Program arguments"
+msgstr "Programargument"
+
+msgid "Select a project"
+msgstr "VÑlj ett projekt"
+
+msgid "using %s as temp directory\n"
+msgstr "anvÑnder katalog %s fîr tillfÑlliga filer\n"
+
+msgid "This is %s. Copyright (c) 1996 by Robert Hîhne\n"
+msgstr "Detta Ñr %s. Copyright (c) 1996 , Robert Hîhne\n"
+
+msgid "Invalid project-file %s(%s)"
+msgstr "Ogiltig projektfil %s(%s)"
+
+msgid "~F~ile"
+msgstr "Ar~k~iv"
+
+msgid "~O~pen"
+msgstr "ô~p~pna"
+
+msgid "~N~ew"
+msgstr "~N~ytt"
+
+msgid "~S~ave"
+msgstr "~S~para"
+
+msgid "S~a~ve as..."
+msgstr "Spara so~m~ ..."
+
+msgid "Save a~l~l"
+msgstr "Spara a~l~lt"
+
+msgid "~D~OS shell"
+msgstr "~D~OS shell"
+
+msgid "E~x~it"
+msgstr "~A~vsluta"
+
+msgid "~E~dit"
+msgstr "~R~edigera"
+
+msgid "~U~ndo"
+msgstr "è~n~gra"
+
+msgid "~R~edo"
+msgstr "~G~îr om"
+
+msgid "Cu~t~"
+msgstr "~K~lipp ut"
+
+msgid "~C~opy"
+msgstr "K~o~piera"
+
+msgid "~P~aste"
+msgstr "K~l~istra in"
+
+msgid "~S~how clipboard"
+msgstr "~V~isa klippbord"
+
+msgid "~C~lear"
+msgstr "~R~adera"
+
+msgid "S~e~t Local"
+msgstr "~S~Ñtt Lokal"
+
+msgid "~S~earch"
+msgstr "~S~îk"
+
+msgid "~F~ind..."
+msgstr "~S~îk ..."
+
+msgid "~R~eplace..."
+msgstr "~E~rsÑtt ..."
+
+msgid "~S~earch again"
+msgstr "Sîk ~i~gen"
+
+msgid "~G~oto Line..."
+msgstr "GÜ ~t~ill rad"
+
+msgid "~N~ext message"
+msgstr "~N~Ñsta meddelande"
+
+msgid "Previ~o~us message"
+msgstr "~F~îregÜende meddelande"
+
+msgid "~R~un"
+msgstr "~K~îr"
+
+msgid "~S~tep over"
+msgstr "~S~tega îver"
+
+msgid "~T~race into"
+msgstr "~F~îlj in i"
+
+msgid "~G~o to cursor"
+msgstr "~G~Ü till markîr"
+
+msgid "~P~rogram reset"
+msgstr "è~t~erstÑll program"
+
+msgid "~A~rguments ..."
+msgstr "~A~rgument ..."
+
+msgid "~C~ompile"
+msgstr "K~o~mpilera"
+
+msgid "~M~ake"
+msgstr "~S~kapa"
+
+msgid "~L~ink"
+msgstr "~L~Ñnka"
+
+msgid "~B~uild all"
+msgstr "~B~ygg allt"
+
+msgid "~P~roject"
+msgstr "~P~rojekt"
+
+msgid "Open ~p~roject"
+msgstr "ô~p~pna projekt"
+
+msgid "~C~lose project"
+msgstr "~S~tÑng projekt"
+
+msgid "~A~dd item"
+msgstr "~L~Ñgg till fil"
+
+msgid "D~e~lete item"
+msgstr "~T~a bort fil"
+
+msgid "~L~ocal options"
+msgstr "L~o~kala vÑxlar"
+
+msgid "~I~ncludes"
+msgstr "~I~nkluderat"
+
+msgid "main target~n~ame"
+msgstr "MÜlfilens ~N~amn"
+
+msgid "Clea~r~ dependencies"
+msgstr "NollstÑll ~b~eroenden"
+
+msgid "~D~elete rebuildable files"
+msgstr "Ta bort byggda ~f~iler"
+
+msgid "~D~irectories"
+msgstr "~K~ataloger"
+
+msgid "~I~nclude"
+msgstr "~I~nkludera"
+
+msgid "~L~ibraries"
+msgstr "~B~ibliotek"
+
+msgid "~O~bject"
+msgstr "~O~bjektkod"
+
+msgid "~S~ources"
+msgstr "~K~Ñllkod"
+
+msgid "~C~/C++-Compiler"
+msgstr "~C~/C++ kompilator"
+
+msgid "~W~arnings"
+msgstr "~V~arningar"
+
+msgid "~O~ptimizations"
+msgstr "~O~ptimeringar"
+
+msgid "De~b~ugging"
+msgstr "~A~vlusning"
+
+msgid "~C~-Flags"
+msgstr "~C~ vÑxlar"
+
+msgid "C~X~X-Flags"
+msgstr "C~X~X vÑxlar"
+
+msgid "P~a~scal-Flags"
+msgstr "Pa~s~cal vÑxlar"
+
+msgid "~E~nvironment"
+msgstr "~M~iljî"
+
+msgid "~C~olors"
+msgstr "~F~Ñrger"
+
+msgid "~P~references"
+msgstr "~G~rundinstÑllning"
+
+msgid "~R~eserved words"
+msgstr "~R~eserverade ord"
+
+msgid "P~a~scal Reserved words"
+msgstr "~P~ascal Reserverade ord"
+
+msgid "C-~F~lags"
+msgstr "~C~-vÑxlar"
+
+msgid "~W~arning-Flags"
+msgstr "~V~arningar"
+
+msgid "~D~ebugging-Flags"
+msgstr "~A~vlusning"
+
+msgid "~O~ptimization-Flags"
+msgstr "~O~ptimering"
+
+msgid "~U~ser words"
+msgstr "A~n~vÑndardef. ord"
+
+msgid "~O~ptions"
+msgstr "A~l~t."
+
+msgid "L~i~nker Options"
+msgstr "~L~ÑnkarvÑxlar"
+
+msgid "Compiler ~O~ptions"
+msgstr "K~o~mpilatorvÑxlar"
+
+msgid "~W~rite Makefile"
+msgstr "Skriv ~m~akefil"
+
+msgid "~W~indows"
+msgstr "~F~înster"
+
+msgid "~S~ize/move"
+msgstr "~S~torlek/pos."
+
+msgid "~Z~oom"
+msgstr "~Z~ooma"
+
+msgid "~T~ile"
+msgstr "S~i~da vid sida"
+
+msgid "C~a~scade"
+msgstr "ô~v~erlappande"
+
+msgid "~N~ext"
+msgstr "~N~Ñsta"
+
+msgid "~P~revious"
+msgstr "~F~îregÜende"
+
+msgid "~C~lose"
+msgstr "S~t~Ñng"
+
+msgid "~L~ist"
+msgstr "~L~ista"
+
+msgid "Pro~j~ect"
+msgstr "~P~rojekt"
+
+msgid "~U~serScreen"
+msgstr "~A~nvÑndarskÑrm"
+
+msgid "~H~elp"
+msgstr "~H~jÑlp"
+
+msgid "~~"
+msgstr "~~"
+
+msgid "about RH~I~DE"
+msgstr "om RH~I~DE"
+
+msgid "~F~SDB"
+msgstr "~F~SDB"
+
+msgid "~G~REP ..."
+msgstr "~G~REP ..."
+
+msgid "G~D~B"
+msgstr "G~D~B"
+
+msgid "Refresh desk~t~op"
+msgstr "Uppda~t~era skrivbord"
+
+msgid "~D~ebug"
+msgstr "A~v~lusa"
+
+msgid "~S~et/Reset Breakpoint"
+msgstr "~S~Ñtt/Ta bort brytpunkt"
+
+msgid "~E~valuate/Modify"
+msgstr "~U~tvÑrdera/éndra"
+
+msgid "~W~atch an expression"
+msgstr "~V~akta uttryck"
+
+msgid "~B~reakpoints"
+msgstr "~B~rytpunkter"
+
+msgid "List of ~F~unctions"
+msgstr "Lista îver ~F~unktioner"
+
+msgid "Messages Window"
+msgstr "Meddelandefînster"
+
+msgid "Optimization Flags"
+msgstr "OptimeringsvÑxlar"
+
+msgid "Warning Flags"
+msgstr "VarningsvÑxlar"
+
+msgid "Debugging Flags"
+msgstr "AvlusningsvÑxlar"
+
+msgid "C++ Flags"
+msgstr "C++ vÑxlar"
+
+msgid "C Flags"
+msgstr "C vÑxlar"
+
+msgid "Pascal Flags"
+msgstr "Pascal vÑxlar"
+
+msgid "Libraries"
+msgstr "Bibliotek"
+
+msgid "Use ~s~tandard libraries"
+msgstr "AnvÑnd ~s~tandardbibliotek"
+
+msgid "link for ~p~rofiling"
+msgstr "LÑnka fîr ~p~rofilering"
+
+msgid "Additional linker options"
+msgstr "Extra lÑnkarvÑxlar"
+
+msgid "Addition compiler options"
+msgstr "Extra kompilatorvÑxlar"
+
+msgid "Environment options"
+msgstr "MiljîinstÑllningar"
+
+msgid "create ~b~ackupfiles"
+msgstr "skapa ~b~ackupfiler"
+
+msgid "syntax ~h~ighlighting"
+msgstr "s~y~ntaxupplysning"
+
+msgid "~s~ave before compiling"
+msgstr "~s~para innan kompilering"
+
+msgid "~a~utoindent"
+msgstr "~a~utoindent"
+
+msgid "o~v~erwrite mode"
+msgstr "~e~rsÑttningslÑge"
+
+msgid "redirect 'stde~r~r'"
+msgstr "omrikta 'stde~r~r'"
+
+msgid "redirect 'stdou~t~'"
+msgstr "omrikta 'stdou~t~'"
+
+msgid "O~p~tions"
+msgstr "~I~nstÑllningar"
+
+msgid "other"
+msgstr "annan"
+
+msgid "~S~creen mode"
+msgstr "~S~kÑrmlÑge"
+
+msgid "~T~absize"
+msgstr "~T~ablÑngd"
+
+msgid "Cancel"
+msgstr "~A~vbryt"
+
+msgid "This video mode (0x%03x) is not supported by the Turbo Vision library"
+msgstr "Detta skÑrmlÑge (0x%03x) understîds inte av Turbo Vision library"
+
+msgid "~A~dd"
+msgstr "~L~Ñgg till"
+
+msgid "~D~elete"
+msgstr "~T~a bort"
+
+msgid "De~f~ault"
+msgstr "~S~tandard"
+
+msgid "New value"
+msgstr "Nytt vÑrde"
+
+msgid "~V~alue"
+msgstr "~V~Ñrde"
+
+msgid "Read words from file"
+msgstr "LÑs ord frÜn fil"
+
+msgid "Couldn't open file %s"
+msgstr "Kunde inte îppna fil %s"
+
+msgid "Reserved words"
+msgstr "Reserverade ord"
+
+msgid "GPC Reserved words"
+msgstr "GPC reserverade ord"
+
+msgid "User Reserved words"
+msgstr "AnvÑndardefinierade ord"
+
+msgid "local options for project-item"
+msgstr "lokala alternativ fîr delfil i projekt"
+
+msgid "local ~c~ommandline options"
+msgstr "lokala ~k~ommandoradsvÑxlar"
+
+msgid "~N~ame of the output file"
+msgstr "~N~amn fîr utmatningsfil"
+
+msgid "Auto"
+msgstr "Auto"
+
+msgid "User"
+msgstr "AnvÑndardefinierad"
+
+msgid "None"
+msgstr "Ingen"
+
+msgid "GNU C compiler"
+msgstr "GNU C kompilator"
+
+msgid "GNU C++ compiler"
+msgstr "GNU C++ kompilator"
+
+msgid "GNU assembler"
+msgstr "GNU assembler"
+
+msgid "GNU Pascal compiler"
+msgstr "GNU Pascal kompilator"
+
+msgid "Comp~i~ler type"
+msgstr "Komp~i~latortyp"
+
+msgid "Com~p~iler"
+msgstr "Kom~p~ilator"
+
+msgid "builtin C"
+msgstr "inbyggd C"
+
+msgid "builtin assembler"
+msgstr "inbyggd assembler"
+
+msgid "builtin linker"
+msgstr "inbyggd lÑnkare"
+
+msgid "return value"
+msgstr "returvÑrde"
+
+msgid "~E~rror checking"
+msgstr "F~e~lkontroll"
+
+msgid "E~r~ror program"
+msgstr "Felhanteringsp~r~ogram"
+
+msgid "exclude from link"
+msgstr "exkludera frÜn lÑnkning"
+
+msgid "o~t~her options"
+msgstr "andra al~t~ernativ"
+
+msgid "The desktop file cannot be used, because of a new format"
+msgstr "Skrivbordsfilen kan inte anvÑndas p g a nytt format"
+
+msgid "Couldn't open %s"
+msgstr "Kunde inte îppna %s"
+
+msgid "changing cwd to %s\n"
+msgstr "byter cwd till %s\n"
+
+msgid "temporary opening project %s\n"
+msgstr "îppnar tillfÑlligt projekt %s\n"
+
+msgid "closing temporary opened project project %s\n"
+msgstr "stÑnger tillfÑlligt îppnat project %s\n"
+
+msgid "finaly opening project %s\n"
+msgstr "îppnar slutligen projekt %s\n"
+
+msgid "Project Window"
+msgstr "Projektfînster"
+
+msgid "Add Item"
+msgstr "LÑgg till fil"
+
+msgid "The item '%s' is already in your project"
+msgstr "Filen '%s' finns redan i projektet"
+
+msgid "Remove '%s' from the project"
+msgstr "Ta bort '%s' frÜn projektet"
+
+msgid "Include files for "
+msgstr "Inkluderade filer i "
+
+msgid "clearing dependencies for %s\n"
+msgstr "rensar beroenden fîr %s\n"
+
+msgid "removing %s\n"
+msgstr "tar bort %s\n"
+
+msgid "~F2~ Save"
+msgstr "~F2~ Spara"
+
+msgid "~F3~ Open"
+msgstr "~F3~ ôppna"
+
+msgid "~F5~ Zoom"
+msgstr "~F5~ Zooma"
+
+msgid "~F6~ Next"
+msgstr "~F6~ NÑsta"
+
+msgid "~Alt+F9~ Compile"
+msgstr "~Alt+F9~ Kompilera"
+
+msgid "~F10~ Menu"
+msgstr "~F10~ Meny"
+
+msgid "~Alt+X~ Quit"
+msgstr "~Alt+X~ Avsluta"
+
+msgid "~F1~ Help"
+msgstr "~F1~ HjÑlp"
+
+msgid "~Ins~ Add"
+msgstr "~Ins~ LÑgg till"
+
+msgid "~Del~ Delete"
+msgstr "~Del~ Ta bort"
+
+msgid "~^O~ Local"
+msgstr "~^O~ Lokalt"
+
+msgid "~^I~ Includes"
+msgstr "~^I~ Inkluderat"
+
+msgid "~Enter~ Jump to source"
+msgstr "~Enter~ GÜ till kÑllkod"
+
+msgid "~Esc~ Cancel"
+msgstr "~Esc~ Avbryt"
+
+msgid "~Space~ select"
+msgstr "~Space~ VÑlj"
+
+msgid "~Enter~ Select"
+msgstr "~Enter~ VÑlj"
+
+msgid "~Del~ Close"
+msgstr "~Del~ StÑng"
+
+msgid "~F1~ Help on InfoViewer"
+msgstr "~F1~ HjÑlp om InfoViewer"
+
+msgid "~Alt+F1~ last help"
+msgstr "~Alt+F1~ fîrra hjÑlpen"
+
+msgid "~Alt+F10~ local menu"
+msgstr "~Alt+F10~ lokal meny"
+
+msgid "~Ctrl+F1~ Select from a list"
+msgstr "~Ctrl+F1~ VÑlj frÜn lista"
+
+msgid "~Enter~ Edit"
+msgstr "~Enter~ Redigera"
+
+msgid "Search for file '%s'\n"
+msgstr "Sîker efter fil '%s'\n"
+
+msgid "found '%s'\n"
+msgstr "fann '%s'\n"
+
+msgid "not found: take '%s'\n"
+msgstr "ej funnen: ta '%s'\n"
+
+msgid "clearing the FindCache\n"
+msgstr "rensar Sîkcachet\n"
+
+msgid "found '%s' in FindCache\n"
+msgstr "fann '%s' i Sîkcache\n"
+
+msgid "found '%s' in current directory\n"
+msgstr "fann '%s' i aktuell katalog\n"
+
+msgid "found '%s' using the search directory '%s'\n"
+msgstr "fann '%s' genom att anvÑnda sîkvÑg '%s'\n"
+
+msgid "Sorry can't find the string"
+msgstr "Ledsen, kan inte hitta strÑngen"
+
+msgid "Help Control"
+msgstr "HjÑlpkontroll"
+
+msgid "~U~p"
+msgstr "~U~pp"
+
+msgid "Prev. ~H~ist."
+msgstr "Fîreg ~H~ist."
+
+msgid "H~i~de"
+msgstr "~G~îm"
+
+msgid "Hi~s~tory"
+msgstr "Hi~s~toria"
+
+msgid "Inf Find"
+msgstr "Inf Sîk"
+
+msgid "~T~ext to find"
+msgstr "~T~ext att sîka"
+
+msgid "~C~ase sensitive"
+msgstr "Mat~c~ha gemener/VERSALER"
+
+msgid "~W~hole words only"
+msgstr "Matcha ~h~ela ord"
+
+msgid "In current ~t~opic"
+msgstr "I aktuellt Ñ~m~ne"
+
+msgid "In the ~f~ile"
+msgstr "I ~f~ilen"
+
+msgid "In ~a~ll files"
+msgstr "I ~a~lla filer"
+
+msgid "Go To"
+msgstr "GÜ Till"
+
+msgid "~N~ame of Node"
+msgstr "~N~amn pÜ Nod"
+
+msgid "Attention !! this file is in DOS format, Do you want convert it?, Make a backup first !!"
+msgstr "Viktigt !! Denna fil Ñr i DOS-format, vill ni konvertera den ? Gîr en backup fîrst !!"
+
+msgid "Error: can't find the Node info"
+msgstr "Fel: Kan inte hitta Nodinfo"
+
+msgid "An error has occoured when running the program "
+msgstr "Ett fel har uppstÜtt under kîrning av program "
+
+msgid "The error was : "
+msgstr "Felet var : "
+
+msgid "Control-Break Pressed"
+msgstr "Control-Break har tryckts"
+
+msgid "Compiling: "
+msgstr "Kompilerar: "
+
+msgid "Don't know how to build %s from %s"
+msgstr "Vet ej hur man bygger %s frÜn %s"
+
+msgid "no errors"
+msgstr "inga fel"
+
+msgid "Error: "
+msgstr "Fel: "
+
+msgid "Warning: "
+msgstr "Varning: "
+
+msgid "File"
+msgstr "Fil"
+
+msgid "Line/Function"
+msgstr "Rad/Funktion"
+
+msgid "Condition"
+msgstr "Villkor"
+
+msgid "Count"
+msgstr "RÑknare"
+
+msgid "~M~odify"
+msgstr "én~d~ra"
+
+msgid "~E~nable"
+msgstr "~S~Ñtt pÜ"
+
+msgid "D~i~sable"
+msgstr "S~t~Ñng av"
+
+msgid "File/L~i~ne"
+msgstr "F~i~l/Rad"
+
+msgid "Fu~n~ction"
+msgstr "Fu~n~ktion"
+
+msgid "~T~ype"
+msgstr "~T~yp"
+
+msgid "F~u~nction"
+msgstr "F~u~nktion"
+
+msgid "~F~ilename"
+msgstr "~F~ilnamn"
+
+msgid "~L~ine"
+msgstr "~R~ad"
+
+msgid "Con~d~ition"
+msgstr "~V~illkor"
+
+msgid "Coun~t~"
+msgstr "RÑ~k~nare"
+
+msgid "Edit Breakpoint"
+msgstr "Editera Brytpunkt"
+
+msgid "BreakPoints"
+msgstr "BrytPunkter"
+
+msgid "Select a functions"
+msgstr "VÑlj en funktions"
+
+msgid "return type: "
+msgstr "returtyp: "
+
+msgid "file: "
+msgstr "fil: "
+
+msgid "Output from GDB"
+msgstr "Utmatning frÜn GDB"
+
+msgid "~R~esult"
+msgstr "~R~esultat"
+
+msgid "~N~ew value"
+msgstr "~N~ytt vÑrde"
+
+msgid "E~v~al"
+msgstr "Ut~v~Ñrdera"
+
+msgid "~C~hange"
+msgstr "én~d~ra"
+
+msgid "not available"
+msgstr "ej tillgÑnglig"
+
+msgid "could not change"
+msgstr "kunde inte Ñndra"
+
+msgid "Change the expression to watch"
+msgstr "éndra uttrycket att vakta"
+
+msgid "Watches"
+msgstr "Vaktlista"
+
+msgid "Watch"
+msgstr "Vakt"
+
+msgid "Add to watch list"
+msgstr "LÑgg till vakt"
+
+msgid "~P~athlist"
+msgstr "~S~îkvÑgar"
+
+msgid "~P~arameter"
+msgstr "~P~arameter"
+
+msgid "There is an unmatched quote in your arguments"
+msgstr "Ett omatchat citattecken finns i era argument"
+
+msgid "Could not open '%s' for reading"
+msgstr "Kunde inte îppna '%s' fîr lÑsning"
+
+msgid "~Y~es"
+msgstr "~J~a"
+
+msgid "~N~o"
+msgstr "~N~ej"
+
+msgid "Warning"
+msgstr "Varning"
+
+msgid "Error"
+msgstr "Fel"
+
+msgid "Information"
+msgstr "Information"
+
+msgid "Confirm"
+msgstr "BekrÑfta"
+
+msgid "Open file"
+msgstr "ôppna fil"
+
+msgid "Type EXIT to return..."
+msgstr "Skriv EXIT fîr att ÜtervÑnda..."
+
+msgid "Find"
+msgstr "Sîk"
+
+msgid "Replace"
+msgstr "ErsÑtt"
+
+msgid "~N~ew text"
+msgstr "~N~y text"
+
+msgid "~P~rompt on replace"
+msgstr "~B~ekrÑfta ersÑttning"
+
+msgid "~R~eplace all"
+msgstr "~E~rsÑtt alla"
+
+msgid "~C~hange dir..."
+msgstr "Byt ~k~atalog..."
+
+msgid "~M~acros"
+msgstr "~M~akron"
+
+msgid "~Alt-F3~ Close"
+msgstr "~Alt-F3~ StÑng"
+
+msgid "Not enough memory for this operation."
+msgstr "OtillrÑckligt minne fîr denna operation."
+
+msgid "Not enough memory for this operation"
+msgstr "OtillrÑckligt minne fîr denna operation"
+
+msgid "Error reading file "
+msgstr "Fel vid lÑsning av fil "
+
+msgid "Error writing file "
+msgstr "Fel vid skrivning av fil "
+
+msgid "Error creating file "
+msgstr "Fel vid skapande av fil "
+
+msgid " has been modified. Save?"
+msgstr " har Ñndrats. Spara ?"
+
+msgid "Save untitled file?"
+msgstr "Spara namnlîs fil ?"
+
+msgid "Save file as"
+msgstr "Spara fil som"
+
+msgid "Search string not found."
+msgstr "SîkstrÑng ej funnen."
+
+msgid "Replace this occurence?"
+msgstr "Skall detta ersÑttas ?"
+
+msgid " bytes selected"
+msgstr " bytes valda"
+
+msgid "\n No help available in this context."
+msgstr "\n Ingen hjÑlp tillgÑnglig i detta sammanhang."
+
+msgid "type not registered: %s\n"
+msgstr "oregistrerad typ: %s\n"
+
+msgid "Change Directory"
+msgstr "Byt katalog"
+
+msgid "Directory ~n~ame"
+msgstr "Katalog~n~amn"
+
+msgid "Directory ~t~ree"
+msgstr "Katalog~t~rÑd"
+
+msgid "~C~hdir"
+msgstr "~B~yt kat"
+
+msgid "~R~evert"
+msgstr "ète~r~"
+
+msgid "Help"
+msgstr "HjÑlp"
+
+msgid "Drives"
+msgstr "Diskar"
+
+msgid "Invalid directory"
+msgstr "Ogiltig katalog"
+
+msgid "Colors"
+msgstr "FÑrger"
+
+msgid "~G~roup"
+msgstr "~G~rupp"
+
+msgid "~I~tem"
+msgstr "~E~lement"
+
+msgid "~F~oreground"
+msgstr "~F~îrgrund"
+
+msgid "~B~ackground"
+msgstr "~B~akgrund"
+
+msgid "Text "
+msgstr "Text "
+
+msgid "Clipboard"
+msgstr "Klippbord"
+
+msgid "Untitled"
+msgstr "Namnlîs"
+
+msgid "~F~iles"
+msgstr "~F~iler"
+
+msgid "~R~eplace"
+msgstr "~E~rsÑtt"
+
+msgid "Invalid drive or directory"
+msgstr "Ogiltig diskenhet eller katalog"
+
+msgid "Invalid file name."
+msgstr "Ogiltigt filnamn"
+
+msgid "Jan"
+msgstr "Jan"
+
+msgid "Feb"
+msgstr "Feb"
+
+msgid "Mar"
+msgstr "Mar"
+
+msgid "Apr"
+msgstr "Apr"
+
+msgid "May"
+msgstr "Maj"
+
+msgid "Jun"
+msgstr "Jun"
+
+msgid "Jul"
+msgstr "Jul"
+
+msgid "Aug"
+msgstr "Aug"
+
+msgid "Sep"
+msgstr "Sep"
+
+msgid "Oct"
+msgstr "Okt"
+
+msgid "Nov"
+msgstr "Nov"
+
+msgid "Dec"
+msgstr "Dec"
+
+msgid "Invalid character in input"
+msgstr "Ogiltigt tecken i inmatning"
+
+msgid "<empty>"
+msgstr "<tom>"
+
+msgid "Highlight"
+msgstr "Upplyst"
+
+msgid "Underline"
+msgstr "Understruken"
+
+msgid "Inverse"
+msgstr "Inverterad"
+
+msgid "~Alt-X~ Exit"
+msgstr "~Alt-X~ Avsluta"
+
+msgid "Value not in the range %d to %d"
+msgstr "VÑrde ej i intervall %d till %d"
+
+msgid "Macro definition don't start with Trigger"
+msgstr "Makrodefinition bîrjar inte med Trigger"
+
+msgid "Missing Trigger sequence or too short"
+msgstr "Triggersekvens saknas eller Ñr fîr kort"
+
+msgid "Empty pseudo macro"
+msgstr "Tomt pseudomakro"
+
+msgid "Read from file"
+msgstr "LÑs frÜn fil"
+
+msgid "Write to file"
+msgstr "Skriv till fil"
+
+msgid "File %s exist. Overwrite ?"
+msgstr "Fil %s finns redan. Skriva îver ?"
+
+msgid "Could not find desktop file"
+msgstr "Kunde inte hitta skrivbordsfil"
+
+msgid "Could not open desktop file"
+msgstr "Kunde inte îppna skrivbordsfil"
+
+msgid "Error reading desktop file"
+msgstr "Fel vid lÑsning av skrivbordsfil"
+
+msgid "Could not create "
+msgstr "Kunde inte skapa "
+
+msgid "O~K~"
+msgstr "~O~K"
+
+msgid "Goto Line"
+msgstr "GÜ till Rad"
+
+msgid "Line number"
+msgstr "Radnummer"
+
+msgid "Local Options"
+msgstr "Lokala Alternativ"
+
+msgid "~O~verwrite"
+msgstr "~E~rsÑttningslÑge"
+
+msgid "~A~utoindent"
+msgstr "~A~utoindent"
+
+msgid "~U~se tabs"
+msgstr "A~n~vÑnd tabbar"
+
+msgid "~P~ersistent blocks"
+msgstr "Persistenta b~l~ock"
+
+msgid "O~f~f"
+msgstr "~A~v"
+
+msgid "~C~++ style"
+msgstr "~C~++ stil"
+
+msgid "C~l~ipper style"
+msgstr "C~l~ipper stil"
+
+msgid "~T~ab size"
+msgstr "~T~ablÑngd"
+
+msgid "~Q~uit"
+msgstr "~A~vsluta"
+
+msgid "Goto ~f~unction"
+msgstr "GÜ till f~u~nktion"
+
+msgid "~D~irectories for sources"
+msgstr "~K~ataloger fîr kÑllkod"
+
+msgid "~S~ave options"
+msgstr "S~p~ara alternativ"
+
+msgid "~L~oad options"
+msgstr "~L~adda alternativ"
+
+msgid "~U~ser screen"
+msgstr "A~n~vÑndarskÑrm"
+
+msgid "~W~indow list"
+msgstr "Fîns~t~erlista"
+
+msgid "~F7~ Trace"
+msgstr "~F7~ Fîlj"
+
+msgid "~F8~ Step"
+msgstr "~F8~ Stega"
+
+msgid "~F4~ Goto"
+msgstr "~F4~ GÜ till"
+
+msgid "~^F2~ Reset"
+msgstr "~^F2~ èters"
+
+msgid "~^F8~ Break"
+msgstr "~^F8~ Bryt"
+
+msgid "~^F4~ Eval"
+msgstr "~^F4~ UtvÑ"
+
+msgid "~^F9~ Run"
+msgstr "~^F9~ Kîr"
+
+msgid "All windows on the desktop"
+msgstr "Alla fînster pÜ skrivbordet"
+
+msgid "Save options to file"
+msgstr "Spara instÑllningar till fil"
+
+msgid "Read options from file"
+msgstr "LÑs instÑllningar frÜn fil"
+
+msgid "Pathlist for source files"
+msgstr "SîkvÑg fîr kÑllkodsfiler"
+
+msgid "costumize, how to optimize the code"
+msgstr "anpassa optimering av kod"
+
+msgid "costumize the generating of debugging information"
+msgstr "anpassa skapandet av information fîr avlusning (debugging)"
+
+msgid "costumize C-compiler specific flags"
+msgstr "gîr instÑllningar sÑrskilt fîr C-kompilatorn"
+
+msgid "costumize C++-compiler specific flags"
+msgstr "gîr instÑllningar sÑrskilt fîr C++ kompilatorn"
+
+msgid "costumize the colors of the IDE"
+msgstr "anpassa fÑrgerna i programmeringsmiljîn"
+
+msgid "undoes the last edit command (no cursor moving)"
+msgstr "Üngra det senaste editeringskommandot (ingen markîrfîrflyttning)"
+
+msgid "customize various options for the C/C++-compiler"
+msgstr "gîr instÑllningar fîr C/C++ kompilatorn"
+
+msgid "customize the IDE"
+msgstr "anpassa den integrerade programmeringsmiljîn"
+
+msgid "customize the generating of warnings"
+msgstr "anpassa rapporteringen av varningar"
+
+msgid "Show the GPL"
+msgstr "Visa GNU:s AllmÑnna Licens (The GPL)"
+
+msgid "sho~w~ process information"
+msgstr "~v~isa processinformation"
+
+msgid "show free ~m~emory"
+msgstr "visa fritt ~m~inne"
+
+msgid "No file ~c~aching"
+msgstr "Ingen fil~c~achning"
+
+msgid "Attention can't open the file '%s'."
+msgstr "Viktigt! Kan inte îppna fil '%s'."
+
+msgid "\n Sorry i can't find this link (press ALT-F1).\n"
+msgstr "\n Ledsen, kan inte hitta denna lÑnk (tryck ALT-F1).\n"
+
+msgid "usage: %s [options] [project-file]\n"
+msgstr "AnvÑndning: %s [vÑxlar] [projektfil]\n"
+
+msgid "options:    -d[actd]\n"
+msgstr "vÑxlar:     -d[actd]\n"
+
+msgid "all dependencies in makefile"
+msgstr "alla beroenden i makefil"
+
+msgid "80x25 Color"
+msgstr "80x25 FÑrg"
+
+msgid "80x28 Color"
+msgstr "80x28 FÑrg"
+
+msgid "80x35 Color"
+msgstr "80x35 FÑrg"
+
+msgid "80x40 Color"
+msgstr "80x40 FÑrg"
+
+msgid "80x43 Color"
+msgstr "80x43 FÑrg"
+
+msgid "80x50 Color"
+msgstr "80x50 FÑrg"
+
+msgid "Too many files."
+msgstr "Fîr mÜnga filer."
+
+msgid "Missing start"
+msgstr "Saknar start"
+
+msgid "Missing end"
+msgstr "Saknar slut"
+
+msgid "~P~ascal style"
+msgstr "~P~ascal stil"
+
+msgid "Syntax Highlight"
+msgstr "Syntaxupplysning"
+
+msgid "~S~tep"
+msgstr "~S~tega"
+
+msgid "~T~race"
+msgstr "~F~îlj"
+
+msgid "~G~oto"
+msgstr "~G~Ü till"
+
+msgid "~R~eset"
+msgstr "~è~terstÑll"
+
+msgid "Could not find the source file '%s'. Make sure, that the file exist or check the settings in 'Options/Directories' for the correct paths."
+msgstr "Kunde inte hitta kÑllkodsfil 's%'. Kontrollera att filen existerar och att rÑtt sîkvÑgar Ñr angivna under menyn 'Alternativ/Kataloger'."
+
+msgid "undoes the last edit command"
+msgstr "Üngra det senaste editeringskommandot"
+
+msgid "remove the list of automaticaly generated dependencies"
+msgstr "ta bort listan îver automatiskt skapade beroenden"
+
+msgid "customize, how to optimize the code"
+msgstr "anpassa optimering av kod"
+
+msgid "customize the generating of debugging information"
+msgstr "anpassa skapandet av information fîr avlusning (debugging)"
+
+msgid "customize C-compiler specific flags"
+msgstr "gîr instÑllningar sÑrskilt fîr C-kompilatorn"
+
+msgid "customize C++-compiler specific flags"
+msgstr "gîr instaÑllningar sÑrkilt fîr C++-kompilatorn"
+
+msgid "set additional flags to the compiler (defines, ...)"
+msgstr "stÑll in ytterligare vÑxlar fîr kompilatorn (defines, ...)"
+
+msgid "customize the colors of the IDE"
+msgstr "anpassa fÑrgerna i programmeringsmiljîn"
+
+msgid "options:    -d[actdf]\n"
+msgstr "vÑxlar:     -d[actdf]\n"
+
+msgid "The Error was: %s\n"
+msgstr "Felet var: %s\n"
+
+msgid "Additional compiler options"
+msgstr "Extra kompilatorvÑxlar"
+
+msgid "all dependencies in ~m~akefile"
+msgstr "alla beroenden i make~f~il"
+
+msgid "show ~p~rocess information"
+msgstr "~v~isa processinformation"
+
+msgid "show free memor~y~"
+msgstr "visa fritt ~m~inne"
+
+msgid "No file cachin~g~"
+msgstr "Ingen fil~c~achning"
+
+msgid "~U~se real tabs"
+msgstr "A~n~vÑnd tabbar"
+
+msgid "Select a function"
+msgstr "VÑlj en funktions"
+
+msgid "Options"
+msgstr "Alternativ"
+
+msgid "Pa~s~cal style"
+msgstr "~P~ascal stil"
+
+msgid "Syntax ~H~ighlight"
+msgstr "~S~yntaxupplysning"
+
+msgid "~H~ide"
+msgstr "~G~îm"
+
+msgid "C~l~ear"
+msgstr "~R~adera"
+
+msgid "Attention !! this file is in DOS format,"
+msgstr "Viktigt !! Denna fil Ñr i DOS-format,"
+
+msgid "Attention can't open the file."
+msgstr "Viktigt! Kan inte îppna fil."
+
+msgid "\n Sorry I can't find this link (press ALT-F1).\n"
+msgstr "\n Ledsen, kan inte hitta denna lÑnk (tryck ALT-F1).\n"
+
+msgid "Message Window"
+msgstr "Meddelandefînster"
+
+msgid "Cross cursor"
+msgstr "Korsmarkîr"
+
+msgid "editor statusline"
+msgstr "editor statusrad"
+
+msgid "parens matching"
+msgstr "parent matchning"
+
+msgid "rectangle block"
+msgstr "fyrkantblock"
+
+msgid "Source has been modified. Rebuild it?"
+msgstr "KÑllkod har Ñndrats. Bygg om den?"
+
+msgid "Program exit code: %d (0x%04x)"
+msgstr "Program exit kod: %d (0x%04x)"
+
+msgid "ready"
+msgstr "klar"
+
+msgid "There are only %d parameters for GREP. Continue ?"
+msgstr "Det finns bara %d parametrar fîr GREP. FortsÑtta?"
+
+msgid "Info Viewer"
+msgstr "InfoGranskare"
+
+msgid "Menu entries for handling with files"
+msgstr "Meny fîr filhantering"
+
+msgid "Submenu for things dealing with the editor"
+msgstr "Meny fîr saker som har med editering att gîra"
+
+msgid "undoes the last undo command"
+msgstr "Üngrar senaste Üngrakommandot"
+
+msgid "Expand all tabs to spaces"
+msgstr "Expandera alla tabbar till blanksteg"
+
+msgid "Replace as much as possible spaces with tabs"
+msgstr "ErsÑtt blanksteg med tabbar sÜ lÜngt mîjligt"
+
+msgid "Submenu for handling with macros"
+msgstr "Undermeny fîr makrohantering"
+
+msgid "Start the recording for a macro"
+msgstr "Starta inspelning av ett makro"
+
+msgid "Stop the recording for a macro"
+msgstr "Stoppa inspelning av ett makro"
+
+msgid "Run the recorded macro"
+msgstr "Kîr det inspelade makrot"
+
+msgid "Submenu for searching/replacing text"
+msgstr "Meny fîr att sîka/ersÑtta text"
+
+msgid "Select a function from the current editor"
+msgstr "VÑlj en funktion i aktuellt editorfînster"
+
+msgid "Submenu for running your program"
+msgstr "Meny fîr att kîra ert program"
+
+msgid "Submenu for compiling and/or creating your program/library"
+msgstr "Meny fîr att kompilera och skapa ert program/bibliotek"
+
+msgid "Submenu for debugging your program"
+msgstr "Meny fîr att avlusa ert program"
+
+msgid "Add an expression to the watching list"
+msgstr "LÑgg till ett uttryck till vaktlistan"
+
+msgid "Submenu for handling your projects"
+msgstr "Meny fîr att hantera projekt"
+
+msgid "Set the primary file (only for GPC with '--automake'!!!)"
+msgstr "BestÑm primÑr fil (bara fîr GPC med '--automake'!!!)"
+
+msgid "Submenu for most of the options of RHIDE"
+msgstr "Meny fîr de flesta instÑllningar i RHIDE"
+
+msgid "Edit the list of pascal options"
+msgstr "éndra i listan îver giltiga vÑxlar fîr Pascal"
+
+msgid "Submenu for dealing with windows"
+msgstr "Meny fîr fînsterhnatering"
+
+msgid "Several menu entries for getting help"
+msgstr "Ett antal menyval fîr hjÑlp"
+
+msgid "The main index of the RHIDE help"
+msgstr "Huvudfîrteckningen fîr RHIDE hjÑlpen"
+
+msgid "Help for the function under the cursor"
+msgstr "HjÑlp fîr funktionen under markîren"
+
+msgid "The main index of the libc reference"
+msgstr "Huvudfîrteckningen fîr referensen fîr libc"
+
+msgid "Get help about using the helpsystem"
+msgstr "HjÑlp om hjÑlpsystemet"
+
+msgid "Shows the last opened help"
+msgstr "Visar den sist îppnade hjÑlpen"
+
+msgid "Copyright (C) by Robert Hîhne, 1996,1997"
+msgstr "Copyright (C) Robert Hîhne, 1996,1997"
+
+msgid "You can give here only a valid filename for a Pascal source file"
+msgstr "HÑr kan endast anges ett giltigt namn fîr en Pascal kÑllkodsfil"
+
+msgid "usage: %s [options] [project-file] [edit-file]\n"
+msgstr "anvÑndning: %s [vÑxlar] [projektfil] [edit-fil]\n"
+
+msgid "            -c : show filename exactly (no case conversion)\n"
+msgstr "            -c : visa filnamn exakt (ingen case konvertering)\n"
+
+msgid "            -y : force to use long filenames (Windows 95)\n"
+msgstr "            -y : AnvÑnd lÜnga filnamn (Windows 95)\n"
+
+msgid "            -n : do not use long filenames (Windows 95)\n"
+msgstr "            -n : AnvÑnd inte lÜnga filnamn (Windows 95)\n"
+
+msgid "            -L LANGUAGE : use language LANGUAGE\n"
+msgstr "            -L SPRèK : anvÑnd sprÜk SPRèK\n"
+
+msgid "            -h : show this help\n"
+msgstr "            -H : visa denna hjÑlp\n"
+
+msgid "            -b : use BIOS calls for toggle the blinkstate\n"
+msgstr "            -b : anvÑnd BIOS-anrop fîr att byta blinkstate\n"
+
+msgid "            -k KEY_FILE : use KEY_FILE for key bindings\n"
+msgstr "            -k KEY_FIL : anvÑnd KEY_FIL fîr tangentbindningar\n"
+
+msgid "            -p : do not convert the numpad keys\n"
+msgstr "            -p : konvertera inte siffertangenterna pÜ numpaden\n"
+
+msgid "Error while loading the keybinding file %s\n"
+msgstr "Fel vid lÑsning av tangentbindningsfil %s\n"
+
+msgid "This is %s. Copyright (c) 1996,1997 by Robert Hîhne\n"
+msgstr "Detta Ñr %s. Copyright (c) 1996,1997 Robert Hîhne\n"
+
+msgid "RHIDE Help ~i~ndex"
+msgstr "RHIDE hjÑlp ~i~ndex"
+
+msgid "~S~yntax help"
+msgstr "~S~yntaxhjÑlp"
+
+msgid "lib~c~ reference"
+msgstr "lib~c~ referens"
+
+msgid "Help ~a~bout help"
+msgstr "HjÑlp ~o~m hjÑlp"
+
+msgid "~L~ast help"
+msgstr "~F~îrra hjÑlpen"
+
+msgid "~M~acro"
+msgstr "~M~akro"
+
+msgid "~R~ecord"
+msgstr "~S~pela in"
+
+msgid "~S~top"
+msgstr "Sto~p~"
+
+msgid "~P~lay"
+msgstr "~K~îr"
+
+msgid "Set ~G~lobal"
+msgstr "SÑtt ~G~lobal"
+
+msgid "E~x~pand all tabs"
+msgstr "E~x~pandera tabbar"
+
+msgid "C~o~mpact text"
+msgstr "Kom~p~rimera text"
+
+msgid "~J~ump to function"
+msgstr "~G~Ü till funktion"
+
+msgid "Primary ~f~ile"
+msgstr "P~r~imÑr fil"
+
+msgid "~C~ompilers"
+msgstr "Kom~p~ilator"
+
+msgid "~C~ intelligent indenting"
+msgstr "C smart ~i~ndentering"
+
+msgid "No persistent b~l~ocks"
+msgstr "Ej persistenta b~l~ock"
+
+msgid "Colum~n~ cursor"
+msgstr "K~o~lumnmarkîr"
+
+msgid "Ro~w~ cursor"
+msgstr "Radmar~k~îr"
+
+msgid "1~6~ background colors"
+msgstr "1~6~ bakgrundsfÑrger"
+
+msgid "Show G~D~B commands"
+msgstr "Visa G~D~B kommandon"
+
+msgid "Use no shadows"
+msgstr "Inga sk~u~ggor"
+
+msgid "Transparent Blocks"
+msgstr "Trans~p~arenta Block"
+
+msgid "The desktop file cannot be used, because it was created by a newer version of RHIDE"
+msgstr "Skrivbordsfilen kan inte anvÑndas, eftersom den skapats av en nyare version av RHIDE"
+
+msgid "Creating: "
+msgstr "Skapar: "
+
+msgid "You must type a value here"
+msgstr "Ni mÜste ange ett vÑrde hÑr"
+
+msgid "You can type a value here"
+msgstr "Ni kan ange ett vÑrde hÑr"
+
+msgid "~V~alue (-1 for none)"
+msgstr "~V~Ñrde (-1 fîr inget)"
+
+msgid " allowed chars "
+msgstr " tillÜtna tecken"
+
+msgid "You must type a string here"
+msgstr "Ni mÜste ange en strÑng hÑr"
+
+msgid "You can type a string here"
+msgstr "Ni kan ange en strÑng hÑr"
+
+msgid "You must type a character here"
+msgstr "Ni mÜste ange ett tecken hÑr"
+
+msgid "You can type a character here"
+msgstr "Ni kan ange ett tecken hÑr"
+
+msgid "%s\n\n(Breakpoint at function '%s' in file %s)"
+msgstr "%s\n\n(Brytpunkt vid funktion '%s' i fil %s)"
+
+msgid "%s\n\n(Breakpoint at line %d in file %s)"
+msgstr "%s\n\n(Brytpunkt vid rad %d i fil %s)"
+
+msgid "For this line is no code generated"
+msgstr "Ingen kod genereras fîr denna rad"
+
+msgid "Could not find the program. You must build at first the program to use this function, because the symbols are taken from that file."
+msgstr "Kunde inte hitta programmet. Ni mÜste fîrst bygga programmet fîr att anvÑnda denna funktion, eftersom symbolerna tas frÜn den filen."
+
+msgid "The selected breakpoint is invalid, probably this file is not compiled with debugging information or for this line is no code generated."
+msgstr "Den valda brytpunkten Ñr ogiltig, fîrmodligen Ñr denna fil ej kompilerad med avlusningsinformation eller sÜ har ingen kod genererats fîr denna rad."
+
+msgid "This program has no usable debugging information. Try to compile it with the -g switch."
+msgstr "Detta program har ingen anvÑndbar avlusningsinformation. Fîrsîk kompilera med vÑxel -g"
+
+msgid "This breakpoint could not enabled, because you are running under Windows 3.1x and there the number of breakpoints is limited to 3"
+msgstr "Denna brytpunkt kan ej anvÑndas, eftersom ni kîr under Windows 3.1x och dÜ Ñr antalet brytpunkter begrÑnsat till 3 stycken."
+
+msgid "You have already 3 breakpoints set and under Windows 3.1x the number of breakpoints is limited to 3"
+msgstr "Ni har redan satt 3 brytpunkter och under Windows 3.1x kan man inte ha fler."
+
+msgid "Save to file"
+msgstr "Spara till fil"
+
+msgid "Macro definition without mode keyword"
+msgstr "Makrodefinition utan mode nyckelord"
+
+msgid "Wrong mode definition in pseudo macro."
+msgstr "Fel mode definition i pseudomakro."
+
+msgid "Missing start in pseudo macro"
+msgstr "Ingen start i pseudomakro"
+
+msgid "Missing end in pseudo macro"
+msgstr "Inget slut i pseudomakro"
+
+msgid "Speed: %f lines/second"
+msgstr "Hastighet: %f rader/sekund"
+
+msgid "You can't paste a rectangle crossing the end of the file"
+msgstr "Ni kan inte klistra in en rektangel rakt îver slutet pÜ filen"
+
+msgid "No match found"
+msgstr "Ingen match funnen"
+
+msgid "Match found at line %d column %d."
+msgstr "Match funnen pÜ rad %d kolumn %d."
+
+msgid "Unhandled syntax highlight"
+msgstr "Ohanterad syntaxupplysning"
+
+msgid "Unhandled undo"
+msgstr "Ohanterad Üngra"
+
+msgid "Unhandled redo"
+msgstr "Ohanterad gîr om"
+
+msgid "Saved: %s (%ld bytes)."
+msgstr "Sparad: %s (%ld bytes)."
+
+msgid "Stat failed."
+msgstr "Stat misslyckades."
+
+msgid "Can't open %s\n"
+msgstr "Kan inte îppna %s\n"
+
+msgid "[ without ]"
+msgstr "[ utan ]"
+
+msgid "Section out of range"
+msgstr "Sektion utanfîr giltigt intervall"
+
+msgid "Missing ="
+msgstr "Saknas ="
+
+msgid "Scan code out of range"
+msgstr "Scankod utanfîr giltigt intervall"
+
+msgid "Command out of range"
+msgstr "Kommando utanfîr giltigt intervall"
+
+msgid "Wrong desktop file."
+msgstr "Fel skrivbordsfil."
+
+msgid "The desktop file belongs to another version."
+msgstr "Skrivbordsfilen hîr till en annan version."
+
+msgid "~G~lobal"
+msgstr "~G~lobal"
+
+msgid "~S~elected text"
+msgstr "~V~ald text"
+
+msgid "Scope"
+msgstr "RÑckvidd"
+
+msgid "~F~rom cursor"
+msgstr "~F~rÜn markîr"
+
+msgid "~E~ntire scope"
+msgstr "~H~ela rÑckvidden"
+
+msgid "Origin"
+msgstr "Startpunkt"
+
+msgid "~I~nteligent C indent"
+msgstr "C smart ~i~ndentering"
+
+msgid "~C~olumn cursor"
+msgstr "Kolumn~m~arkîr"
+
+msgid "~R~ow cursor"
+msgstr "Radmar~k~îr"
+
+msgid "~M~atch pair highligth"
+msgstr "Uppl~y~s matchade par"
+
+msgid "Tra~n~sparent Blocks"
+msgstr "Trans~p~arenta Block"
+
+msgid "~D~on't move the cursor on Paste"
+msgstr "~F~lytta inte markîren vid inklistring"
+
+msgid "T~o~ all"
+msgstr "Till allt"
+
+msgid "S~a~ve as UNIX..."
+msgstr "Sp~a~ra som UNIX..."
+
+msgid "~P~rofile Editor"
+msgstr "~P~rofile Editor"
+
+msgid "Re~c~tangle"
+msgstr "Re~k~tangel"
+
+msgid "~S~tart"
+msgstr "~S~tart"
+
+msgid "~E~nd"
+msgstr "S~l~ut"
+
+msgid "~M~ove"
+msgstr "~F~lytta"
+
+msgid "Line too long, cut it?"
+msgstr "Rad fîr lÜng, kapa den ?"
+
+msgid "InfView - File: %s - Node: %s"
+msgstr "InfView - Fil: %s - Nod: %s"
+
+msgid "~I~ntelligent C indent"
+msgstr "C smart ~i~ndentering"
+

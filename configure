@@ -1,4 +1,9 @@
 #!/bin/sh
-BASE_DIR_REL=`dirname $0`
-BASE_DIR=`cd $BASE_DIR_REL && pwd`
-make -f $BASE_DIR/Makefile config
+CURRENT_DIR=`pwd`
+_SRC_DIR=`dirname $0`
+SRC_DIR=`cd $_SRC_DIR && pwd`
+
+if [ $SRC_DIR != $CURRENT_DIR ] ; then
+  make -C $SRC_DIR config config_dir=$CURRENT_DIR
+fi
+

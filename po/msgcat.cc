@@ -138,6 +138,25 @@ static int last_lines_count = 0;
 static int last_lines_size = 0;
 #define line_diff 5
 
+static
+int read_line(char *buf, int max_size, FILE *f)
+{
+  char *p = buf;
+  while (!feof(f))
+  {
+    *p = fgetc(f);
+    if (*p == '\n')
+    {
+      *p = 0;
+      return 1;
+    }
+    if (p-buf < max_size)
+      p++;
+  }
+  *p = 0;
+  return 0;
+}
+
 static int
 read_source_file(char *fname)
 {
@@ -163,7 +182,7 @@ read_source_file(char *fname)
   if (!f)
     return 0;
   char buf[80];
-  while (fgets(buf, 79, f))
+  while (read_line(buf, 80, f))
   {
     if (last_lines_count == last_lines_size)
     {
@@ -433,6 +452,13 @@ static void convert(char *s)
   }
 }
 
+/*
+  return >= 0 normal
+           -1 end
+           -2 quit
+           -3 empty
+*/
+
 int fuzzy_search(char *id,char *idd)
 {
   int i;
@@ -452,7 +478,7 @@ int fuzzy_search(char *id,char *idd)
   }
   while (best == -1)
   {
-    if (only_similar) return -1;
+    if (only_similar) return -3;
     NORM();
     cprintf("Please translate:"CRLF"  ");
     LIGHT();
@@ -464,11 +490,18 @@ int fuzzy_search(char *id,char *idd)
     cscanf("%[^"CR"]",line);
     convert(line);
     NORM();
-    cprintf("\nAccept ? (y)es/(n)o/(c)ancel ");
+    cprintf("\nAccept ? (y)es/(n)o/(c)ancel/(e)nd/(q)uit ");
     c = tolower(getch());
     do
     {
       c = tolower(getch());
+      switch (c)
+      {
+        case 'q':
+          return -2;
+        case 'e':
+          return -1;
+      }
     } while (c != 'y' && c != 'n' && c != 'c');
     NORM();
     cprintf("%c"CRLF,c);
@@ -477,7 +510,7 @@ int fuzzy_search(char *id,char *idd)
       add_msg(idd,line);
       return msg_count-1;
     }
-    if (c == 'c') return -1;
+    if (c == 'c') return -3;
   }
   NORM();
   cprintf("translate:"CRLF"  ");
@@ -492,10 +525,17 @@ int fuzzy_search(char *id,char *idd)
   LIGHT();
   cprintf("%s",msgs[best].Msg);
   NORM();
-  cprintf(CRLF"??? (y)es/(n)o/(c)hange ");
+  cprintf(CRLF"??? (y)es/(n)o/(c)hange/(e)nd/(q)uit ");
   do
   {
     c = tolower(getch());
+    switch (c)
+    {
+      case 'q':
+        return -2;
+      case 'e':
+        return -1;
+    }
   } while (c != 'y' && c != 'n' && c != 'c');
   NORM();
   cprintf("%c"CRLF,c);
@@ -517,20 +557,33 @@ int fuzzy_search(char *id,char *idd)
     convert(line);
     NORM();
     c = tolower(getch());
-    cprintf("\nAccept ? (y)es/(n)o/(c)hange ");
+    cprintf("\nAccept ? (y)es/(n)o/(c)hange/(e)nd/(q)uit ");
     do
     {
       c = tolower(getch());
+      switch (c)
+      {
+        case 'q':
+          return -2;
+        case 'e':
+          return -1;
+      }
     } while (c != 'y' && c != 'n' && c != 'c');
     NORM();
     cprintf("%c"CRLF,c);
   }
-  if (c == 'n') return -1;
+  if (c == 'n') return -3;
   add_msg(idd,line);
   return msg_count-1;
 }
 
-void translate()
+/*
+  return 0 for normal
+         1 for end
+         2 for quit
+*/
+
+int translate()
 {
   int i;
   char *id_;
@@ -545,14 +598,14 @@ void translate()
     {
       write_id(msgs[i].id, msgs[i].comment);
       write_msg(msgs[i].Msg);
-      return;
+      return 0;
     }
   }
   if (silent)
   {
     write_id(ID, NULL);
     write_msg("");
-    return;
+    return 0;
   }
   id_ = similar(ID);
   for (i=0;i<msg_count;i++)
@@ -574,10 +627,17 @@ void translate()
       LIGHT();
       cprintf("%s",msgs[i].Msg);
       NORM();
-      cprintf(CRLF"??? (y)es/(n)o/(c)hange ");
+      cprintf(CRLF"??? (y)es/(n)o/(c)hange/(e)nd/(q)uit ");
       do
       {
         c = tolower(getch());
+        switch (c)
+        {
+          case 'q':
+            return 2;
+          case 'e':
+            return 1;
+        }
       } while (c != 'y' && c != 'n' && c != 'c');
       NORM();
       cprintf("%c"CRLF,c);
@@ -585,7 +645,7 @@ void translate()
       {
         add_msg(ID,msgs[i].Msg);
         write_msg(msgs[i].Msg);
-        return;
+        return 0;
       }
       while (c == 'c')
       {
@@ -597,10 +657,17 @@ void translate()
         convert(line);
         NORM();
         c = tolower(getch());
-        cprintf("\nAccept ? (y)es/(n)o/(c)hange ");
+        cprintf("\nAccept ? (y)es/(n)o/(c)hange/(e)nd/(q)uit ");
         do
         {
           c = tolower(getch());
+          switch (c)
+          {
+            case 'q':
+              return 2;
+            case 'e':
+              return 1;
+          }
         } while (c != 'y' && c != 'n' && c != 'c');
         NORM();
         cprintf("%c"CRLF,c);
@@ -609,17 +676,22 @@ void translate()
       {
         add_msg(ID,line);
         write_msg(line);
-        return;
+        return 0;
       }
     }
   }
   write_source_lines(SOURCE_FILE, SOURCE_LINE);
   i = fuzzy_search(id_,ID);
   write_id(ID, NULL);
-  if (i != -1)
+  if (i > -1)
     write_msg(msgs[i].Msg);
   else
     write_msg("");
+  if (i == -1)
+    return 1;
+  if (i == -2)
+    return 2;
+  return 0;
 }
 
 char **potable;
@@ -802,14 +874,20 @@ int main(int argc,char *argv[])
   }
 
 /* Write output po file to the disk */
+  char *wd = getcwd(NULL, 100);
+  printf("%s\n",wd);
   if ((fi = fopen(potfile,"r"))==NULL)
   {
+    perror(potfile);
     printf("Error: Cannot open pot file!");
     return(-3);
   }
-  if ((fo = fopen(outputfile,"w"))==NULL)
+  char _outputfile[9];
+  strcpy(_outputfile, "poXXXXXX");
+  mktemp(_outputfile);
+  if ((fo = fopen(_outputfile,"w"))==NULL)
   {
-    printf("Error: Cannot open output file!");
+    printf("Error: Cannot open temp. output file!");
     return(-3);
   }
   line_count = 0;
@@ -819,13 +897,29 @@ int main(int argc,char *argv[])
     write_id(_msg->id, _msg->comment);
     write_msg(_msg->Msg);
   }
+  int trans_ret = 0;
   while (read_id(0))
   {
     read_msg();
-    translate();
+    if ((trans_ret = translate()) != 0)
+      break;
+  }
+  if (trans_ret == 1)
+  {
+    silent = 1;
+    while (read_id(0))
+    {
+      read_msg();
+      translate();
+    }
   }
   fclose(fi);
   fclose(fo);
+  if (trans_ret != 2)
+  {
+    unlink(outputfile);
+    rename(_outputfile, outputfile);
+  }
 
 /* Write output cat file to the disk */
   if (ocatfile)

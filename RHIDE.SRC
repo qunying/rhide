@@ -13,16 +13,16 @@ is really tested and proved to work!
 For DJGPP you can use the source archives found on any simtelnet
 mirror:
 
-for the editor          v2apps/edi0439s.zip
-for the TV sources      v2tk/tv109s.zip
-for the gdb sources     v2gnu/gdb50s.zip
+for the editor 0.4.1        v2apps/edi0441s.zip
+for the TV sources 1.0.1    v2tk/tv1010s.zip
+for the gdb sources         v2gnu/gdb50s.zip
 
 For GNU/Linux please use for the gdb sources the official GDB 5.0
 sources and for the other sources maintained by Salvador please
 get them from SET's web-site
 
-for the editor          http://www.
-for the TV sources      http://www.
+for the editor          http://www.geocities.com/setedit2001/setedit.html
+for the TV sources      http://www.geocities.com/setedit2001/tvision.html
 
 *********************************************
 

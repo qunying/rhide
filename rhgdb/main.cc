@@ -60,11 +60,7 @@
 #include <dpmi.h>
 #include <crt0.h>
 #else
-#include <curses.h>
-#endif
-
-
-#ifndef DJGPP
+#undef ERR
 #include <curses.h>
 #endif
 

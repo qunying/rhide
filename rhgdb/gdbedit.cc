@@ -421,7 +421,6 @@ OpenViewer(char *_fname, int line, Boolean from_debugger, Boolean only_focus)
   int i, count;
   Boolean found;
   char *_bname, *bname;
-  fprintf(stderr, "searching %s\n", _fname);
   char *fname = find_file(_fname, _bname, found);
   char full_name[512];
   TCEditor *editor;

@@ -1195,7 +1195,6 @@ select_source_line(char *fname, int line, char *dirname, char *fullname)
 {
   Boolean isSource = False;
   int select_dis_win = dis_win && TProgram::deskTop->current == dis_win;
-  fprintf(stderr, "%s   %s   %s\n", fname, dirname, fullname);
   ClearCPULine();
   
   if (fullname)

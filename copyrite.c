@@ -1,5 +1,5 @@
 /* Copyright (C) 1995 DJ Delorie, see COPYING.DJ for details */
-/* Copyright (C) 1996-1998 Robert H”hne, see COPYING.RH for details */
+/* Copyright (C) 1996-2000 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
 #include <stdio.h>
 #include <stdlib.h>
@@ -13,13 +13,17 @@
 #define CP \
 "%s Copyright (C) 1996-%d Robert H”hne, see COPYING.RH for details %s\n" \
 "%s This file is part of RHIDE. %s\n"
+#define CP1 \
+"%s Copyright (C) 1996-%d Robert H”hne, see COPYING.RHU for details %s\n" \
 
-#define CO(start,end) sprintf(cline, CP, start, y, end, start, end)
+#define CO(start,end) sprintf(cline, CP, start, y, end, start, end); \
+                      sprintf(cline1, CP1, start, y, end)
 
   int i,y,j;
   char pathp[PATH_MAX], fname[PATH_MAX], ext[PATH_MAX];
   struct stat st;
   char cline[200];
+  char cline1[200];
   struct tm *tm;
   char line1[2000];
   char tmp[300];
@@ -60,20 +64,17 @@ void split_fname(char *_fname,char *path,char *name, char *ext)
 int
 main(int argc, char *argv[])
 {
+  int l;
   for (i = 1; i<argc; i++)
   {
     split_fname(argv[i], pathp, fname, ext);
     
     if (stat(argv[i], &st) < 0)
       continue;
-#if 1
     tm = localtime(&st.st_mtime);
     y = tm->tm_year;
     if (y<80) y += 2000;
     if (y<200) y += 1900;
-#else
-    y = 1998;
-#endif
     /* Compute what we'd like the first line to be */
     if (!strcmp(ext, ".c")
 	|| !strcmp(ext, ".h")
@@ -134,11 +135,28 @@ main(int argc, char *argv[])
       sprintf(tmp, "%stempxxx.crn", pathp);
     printf("updating %s\n", argv[i]);
 
-    wf = fopen(tmp, "w");
-    fputs(cline, wf);
-    fputs(line1, wf);
+    wf = fopen(tmp, "w+");
+    if (strstr(line1, "COPYING.RHU"))
+    {
+      fputs(cline1, wf);
+      l = 1;
+    }
+    else
+    {
+      fputs(cline, wf);
+      l = 0;
+    }
     while (fgets(line1, 2000, f))
+    {
+      l++;
+      if (l == 1) /* forget the second line if it starts with
+                     the same comment character */
+      {
+        if (line1[0] == cline[0])
+          continue;
+      }
       fputs(line1, wf);
+    }
     fclose(wf);
 
     fclose(f);

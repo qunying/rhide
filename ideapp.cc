@@ -85,12 +85,12 @@ IDE::resume()
 TCEditWindow *
 IDE::openEditor(char *fileName, Boolean visible)
 {
-  char *fname = fileName;
+  char *fname = string_dup(fileName);
   TRect r = deskTop->getExtent();
   TWindow *p;
 
   r.b.y -= 7;
-  if (UseRCS && fname && *fname)
+  if (UseRCS && *fname)
   {
     if (!__file_exists(fname))
     {
@@ -100,8 +100,8 @@ IDE::openEditor(char *fileName, Boolean visible)
       if (found == True)
       {
         CheckoutRCSFile(rcs_name, _fname, 1);
-        fname = (char *) alloca(strlen(_fname) + 1);
-        strcpy(fname, _fname);
+        string_free(fname);
+        fname = string_dup(_fname);
         string_free(rcs_name);
       }
     }
@@ -122,6 +122,7 @@ IDE::openEditor(char *fileName, Boolean visible)
   if (fname && *fname)
     TimeOfFile(((TCEditWindow *) p)->editor->fileName, True);	// this removes the file from the hashtable
   p->growMode = gfGrowHiX | gfGrowHiY;
+  string_free(fname);
   return (TCEditWindow *) p;
 }
 

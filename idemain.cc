@@ -1991,7 +1991,7 @@ int DebuggerFormatLine(TCEditor *editor,
                        int Width,
                        unsigned short Colors,
                        unsigned lineLen,
-                       unsigned short Attr,
+                       uint32 Attr,
                        unsigned LineNo);
 
 #ifdef __DJGPP__

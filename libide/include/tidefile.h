@@ -15,12 +15,12 @@ public:
   virtual void handleEvent(TEvent &);
   virtual Boolean valid(ushort);
   static int (*externalFormatLine)(TCEditor *,void *, unsigned, int,
-                                   unsigned short, unsigned, unsigned short,
+                                   unsigned short, unsigned, uint32,
                                    unsigned );
-  void formatLine(void *, unsigned, int, unsigned short, unsigned, unsigned short, unsigned );
+  void formatLine(void *, unsigned, int, unsigned short, unsigned, uint32, unsigned );
   void setFormatLine();
   void (TCEditor::*FormatLinePtr)(void *, unsigned, int, unsigned short, unsigned,
-                                  unsigned short, unsigned );
+                                  uint32, unsigned );
 private:
   virtual const char * streamableName() const { return name; }
 

@@ -37,7 +37,7 @@ TIDEFileEditor::~TIDEFileEditor()
 int TIDEFileEditor::use_syntax = 1;
 
 int (*TIDEFileEditor::externalFormatLine)(TCEditor *,void *, unsigned, int,
-                                   unsigned short, unsigned, unsigned short,
+                                   unsigned short, unsigned, uint32,
                                    unsigned ) = NULL;
 
 void TIDEFileEditor::formatLine( void *DrawBuf,
@@ -45,7 +45,7 @@ void TIDEFileEditor::formatLine( void *DrawBuf,
 			  int Width,
 			  unsigned short Colors,
                           unsigned lineLen,
-                          unsigned short Attr,
+                          uint32 Attr,
                           unsigned lineNo // needed for RHIDE
 			)
 {
@@ -67,7 +67,7 @@ void TIDEFileEditor::setFormatLine()
   FormatLinePtr = formatLinePtr;
   formatLinePtr = (void (TCEditor::*)
                   (void *, unsigned, int, unsigned short, unsigned,
-                   unsigned short, unsigned ))&formatLine;
+                   uint32, unsigned ))&formatLine;
   update(ufView);
 }
 

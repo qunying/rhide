@@ -32,8 +32,7 @@ GDB_OBJ=$(GDB_SRC)
 endif
 
 ifeq ($(strip $(rhide_OS)),DJGPP)
-OS_CFLAGS=-DHAVE_CONFIG_H -O2 -DHAVE_LONG_DOUBLE=1 \
-	  -DPRINTF_HAS_LONG_DOUBLE=1
+OS_CFLAGS=-O2
 OS_FLAGS=
 MMALLOC_INC=
 MMALLOC_CFLAGS=-DNO_MMALLOC -DNO_MMALLOC_CHECK
@@ -68,7 +67,7 @@ INCS=$(subst s_gdb,$(GDB_SRC),$(subst o_gdb,$(GDB_OBJ),$(_INCS)))
 
 INC_PATH=$(addprefix -I,$(INCS))
 
-all:: libgdb.a
+all:: libgdb.h libgdb.a
 
 libgdb.c: Makefile
 	echo '#include <defs.h>' > libgdb.c
@@ -147,7 +146,7 @@ libgdb.a: $(CHECKS) libgdb.h list
 	rm -f libgdb.a
 # do not use any xmalloc.o, because it is defined in utils.o
 	ar rcs $@ $(shell cat $(T_FILES) | sed -e '/.*xmalloc.*/d')
-	rm -f $(T_FILES)
+	rm -f $(T_FILES) libgdb-files
 endif
 
 force:

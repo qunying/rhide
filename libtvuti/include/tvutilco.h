@@ -23,7 +23,8 @@
   __CM(NextMsg,11)\
   __CM(PrevMsg,12)\
   __CM(SelectClosedWindow,13)\
-  __CM(DeleteClosedWindow,14)
+  __CM(DeleteClosedWindow,14)\
+  __CM(WindowOpened,15)
 
 #define __TVUTIL_HELP_CODES__\
   __HC(WindowList,1)\

@@ -360,6 +360,7 @@ class TEnvironmentDialog : public TDialog
 public:
   TEnvironmentDialog();
   virtual void handleEvent(TEvent &);
+  virtual void shutDown();
 #define max_cluster 2
   TCheckBoxes *cluster[max_cluster];
 #ifdef __DJGPP__
@@ -414,6 +415,7 @@ TEnvironmentDialog::TEnvironmentDialog()
   cluster[1] = new TEnterCheckBoxes(r1,
                 new TSItem(_("~R~emember old messages"),                 // r
                 NULL),1);
+  cluster[1]->helpCtx = hcPreferenceCheckbox1;
 
   r1.b.y = r1.a.y+20;
   cluster[0] = new TEnterCheckBoxes(r1,
@@ -433,9 +435,9 @@ TEnvironmentDialog::TEnvironmentDialog()
                 new TSItem(_("Save pro~j~ect only when closing"),        // j
                 new TSItem(_("Sho~w~ user screen after exit"),           // w
                 new TSItem(_("Only #~i~nclude \"...\" as dependencies"), // i
-                new TSItem(_("Directories in pr~o~ject items"),          // o
+                new TSItem(_("Directories in project items"),            //
                 new TSItem(_("Show Disassemb~l~er Window when needed"),  // l
-                new TSItem(_("Us~e~ RCS"),                               // e
+                new TSItem(_("Use RCS"),                                 //
                 new TSItem(_("Use ~F~PC pascal compiler"),               // f
                 NULL)))))))))))))))))))),1);
   cluster[0]->helpCtx = hcPreferenceCheckbox;
@@ -450,8 +452,6 @@ TEnvironmentDialog::TEnvironmentDialog()
   options_label = new TLabel(
     TRect(r1.a.x,r1.a.y-1,r1.a.x+cstrlen(tmp)+1,r1.a.y),tmp,cluster[0]);
   insert(options_label);
-  insert(cluster[1]);
-  cluster[1]->hide();
   insert(cluster[0]);
   current_cluster = 0;
   cluster[0]->setData(&global_options[0]);
@@ -511,7 +511,7 @@ TEnvironmentDialog::TEnvironmentDialog()
 
   r.a.x = r2.a.x;
   r.b.x = r.a.x + 10;
-  r.a.y = r2.b.y + 1;
+  r.a.y = r2.b.y + 0;
   r.b.y = r.a.y + 2;
   insert(new TLButton(r,_("~O~K"),cmOK,bfNormal));
   r.a.x = r.b.x + 3;
@@ -519,12 +519,23 @@ TEnvironmentDialog::TEnvironmentDialog()
   insert(new TLButton(r,_("Cancel"),cmCancel,bfNormal));
   r.a.x = r2.a.x;
   r.b.x = r.a.x + 23;
-  r.a.y += 1;
-  r.b.y += 1;
-  insert(new TLButton(r, _("~M~ore options"), cmMoreOptions, bfNormal));
+  r.a.y += 2;
+  r.b.y += 2;
+  insert(new TLButton(r, _("Mor~e~ options"), cmMoreOptions, bfNormal));
 
   options |= ofCentered;
   cluster[0]->select();
+}
+
+void TEnvironmentDialog::shutDown()
+{
+  int i;
+  remove(cluster[current_cluster]);
+  for (i=0; i<max_cluster; i++)
+  {
+    destroy(cluster[i]);
+  }
+  TDialog::shutDown();
 }
 
 void TEnvironmentDialog::handleEvent(TEvent &event)
@@ -555,11 +566,11 @@ void TEnvironmentDialog::handleEvent(TEvent &event)
       switch (event.message.command)
       {
         case cmMoreOptions:
-          cluster[current_cluster]->hide();
+          remove(cluster[current_cluster]);
           current_cluster++;
           if (current_cluster == max_cluster)
             current_cluster = 0;
-          cluster[current_cluster]->show();
+          insert(cluster[current_cluster]);
           options_label->link = cluster[current_cluster];
           clearEvent(event);
           break;

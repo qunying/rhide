@@ -80,7 +80,7 @@ void TRegisters::editRegister(int num)
   }
   valid = new TRangeValidator(0,max_val);
   if (ValidInputBox( _("Change register value"), _("~V~alue"),
-                     buf, 255, valid))
+                     buf, 255, valid) == cmOK)
   {
     if (buf[0] == '0')
     {

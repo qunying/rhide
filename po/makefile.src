@@ -21,6 +21,7 @@
 CURRENT_LANGUAGES=cs da de es fi fr it nl no pl pt sv
 FUTURE_LANGUAGES=ee ru # they were not ready when releasing RHIDE
 LANGUAGES=$(CURRENT_LANGUAGES)
+ADDITIONAL_LANG_es=$(SETSRC)/internac/es.po
 
 srcdir=$(RHIDESRC)/po
 VPATH=$(srcdir)
@@ -69,14 +70,17 @@ T=$(subst /,\,$@)
 # msgcat.c for a description of it's usage
 MSGCAT_OPTIONS=-s
 
+CURRENT_LANG=$(subst .po,,$(notdir $@))
+ADDITIONAL_LANG=$(ADDITIONAL_LANG_$(CURRENT_LANG))
+
 $(addsuffix .po,$(LANGUAGES)): potfiles.po $(MSGCAT)
-	@echo updating $@
-	@-cp -f $@ $(subst .po,.bak,$@)
-	@$(MSGCAT) $(MSGCAT_OPTIONS) -directory $(RHIDESRC) \
+	echo updating $@
+	-cp -f $@ $(subst .po,.bak,$@)
+	$(MSGCAT) $(MSGCAT_OPTIONS) -directory $(RHIDESRC) \
 	  -cat $(subst .po,.cat,$@) \
-	  -ocat __cat__ $(wildcard $@) $< __po__
-	@$(move-if-change) __cat__ $(subst .po,.cat,$@)
-	@$(move-if-change) __po__ $@
+	  -ocat __cat__ $(wildcard $@) $(ADDITIONAL_LANG) $< __po__
+	$(move-if-change) __cat__ $(subst .po,.cat,$@)
+	$(move-if-change) __po__ $@
 	
 %.mo: %.po
 	@echo creating $@

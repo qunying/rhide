@@ -310,13 +310,9 @@ void RHGDBApp::handleEvent(TEvent & event)
           clearEvent(event);
           break;
         case cmDataWindow:
-          if (!data_win)
-          {
-            if ((data_win = TDataWindow::createNew()))
-              AddWindow(data_win, (TWindow **)&data_win);
-          }
-          else
-            data_win->select();
+          TDataWindow *data_win;
+          if ((data_win = TDataWindow::createNew()))
+            AddWindow(data_win);
           clearEvent(event);
           break;
         case cmMainFunction:

@@ -402,7 +402,7 @@ text file @file{keybind.txt}, which is searched in the following
 directories (in that order). If it was not found in any of these
 directories RHIDE uses builtin defaults. For more information about
 creating (customizing) the file and about the syntax of that file
-@extref{Keyboard,Documentation about the keyboard,editor,SET's editor,editor.html}
+@extref{Keyboard,Documentation about the keyboard,setedit,SET's editor,setedit.html}
 
 @itemize @bullet
 @item The current directory
@@ -1503,7 +1503,7 @@ This brings up a dialog, where you can do some calculations. This
 dialog is similar to the evaluate dialog (@xref{Evaluate/Modify}), but it
 uses not the feature of GDB, but it is a separate calculator.
 For more information
-@extref{Calculator,Documentation for the editor,editor,SET's editor,editor.html}
+@extref{Calculator,Documentation for the editor,setedit,SET's editor,setedit.html}
 @paragraph{}
 
 There can be used also some of the standard functions like
@@ -2480,7 +2480,7 @@ the next line by referring to the previous line if you press enter.
 @paragraph{}
 
 For more information
-@extref{Autoindent,Documentation for the editor,editor,SET's editor,editor.html}
+@extref{Autoindent,Documentation for the editor,setedit,SET's editor,setedit.html}
 @paragraph{}
 
 (@xref{Editor options})
@@ -2496,7 +2496,7 @@ the number of spaces (defined by tabsize) is inserted.
 @paragraph{}
 
 For more information see
-@extref{Real Tabs,Documentation for the editor,editor,SET's editor,editor.html}
+@extref{Real Tabs,Documentation for the editor,setedit,SET's editor,setedit.html}
 @paragraph{}
 
 (@xref{Editor options})
@@ -2511,7 +2511,7 @@ like the behavior of earlier versions of RHIDE, disable this option.
 @paragraph{}
 
 For more information see
-@extref{Persistent Blocks,Documentation for the editor,editor,SET's editor,editor.html}
+@extref{Persistent Blocks,Documentation for the editor,setedit,SET's editor,setedit.html}
 @paragraph{}
 
 (@xref{Editor options})
@@ -2528,7 +2528,7 @@ autoindenting. This works only if @var{autoindent} is enabled.
 @paragraph{}
 
 For more information see
-@extref{Intelligent C indent,Documentation for the editor,editor,SET's editor,editor.html}
+@extref{Intelligent C indent,Documentation for the editor,setedit,SET's editor,setedit.html}
 @paragraph{}
 
 (@xref{Editor options})
@@ -2544,7 +2544,7 @@ editor window at the cursor column.
 @paragraph{}
 
 For more information see
-@extref{Column cursor,Documentation for the editor,editor,SET's editor,editor.html}
+@extref{Column cursor,Documentation for the editor,setedit,SET's editor,setedit.html}
 @paragraph{}
 
 (@xref{Editor options})
@@ -2560,7 +2560,7 @@ editor window at the cursor row.
 @paragraph{}
 
 For more information see
-@extref{Row cursor,Documentation for the editor,editor,SET's editor,editor.html}
+@extref{Row cursor,Documentation for the editor,setedit,SET's editor,setedit.html}
 @paragraph{}
 
 (@xref{Editor options})
@@ -2575,7 +2575,7 @@ there was no matching found.
 @paragraph{}
 
 For more information see
-@extref{Match pair highlight,Documentation for the editor,editor,SET's editor,editor.html}
+@extref{Match pair highlight,Documentation for the editor,setedit,SET's editor,setedit.html}
 @paragraph{}
 
 (@xref{Editor options})
@@ -2631,7 +2631,7 @@ will use also this setting.
 @c @paragraph{}
 @c
 @c For more information
-@c @extref{Overwrite,Documentation for the editor,editor,SET's editor,editor.html}
+@c @extref{Overwrite,Documentation for the editor,setedit,SET's editor,setedit.html}
 @c @paragraph{}
 @c
 @c (@xref{Editor options})
@@ -3344,7 +3344,7 @@ frame of the window with your mouse.
 
 This section should describe the work of the editor. But because the editor
 is now so complex and, not my own work, there is now separate documentation,
-@extref{Top,Documentation for the editor,editor,SET's editor,editor.html}
+@extref{Top,Documentation for the editor,setedit,SET's editor,setedit.html}
 for a detailed and better doc. But you
 can read also more from my doc, which describes the most common (for me)
 usage of the editor.
@@ -4268,7 +4268,7 @@ one of all the shown options.
 @cindex Pseudo Macros
 
 Please look for a detailed documentation here:
-@extref{Pseudo Macros,Documentation about Pseudo Macros,editor,SET's editor,editor.html}
+@extref{Pseudo Macros,Documentation about Pseudo Macros,setedit,SET's editor,setedit.html}
 @paragraph{}
 
 @section The INFO Viewer

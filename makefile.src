@@ -443,4 +443,6 @@ tv_po_files=bc.cc \
 	vesa.cc \
 	vga.cc
 
-additional_po_files=$(addprefix tvision/,$(tv_po_files))
+additional_po_files:=$(addprefix $(TVSRC)/,$(shell cat $(RHIDESRC)/tv_po.lst))\
+	$(addprefix $(SETSRC)/,$(shell cat $(RHIDESRC)/set_po.lst))
+

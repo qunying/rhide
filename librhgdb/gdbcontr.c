@@ -43,6 +43,7 @@ void Command(char *x,int call_hook)
   if (verbose_gdb_commands)
   {
     DEBUG_("executing command: %s\n",x);
+     get_gdb_output_buffer ();
     _UpdateGDBOutWin(gdb_output_buffer);
     reset_gdb_output();
   }

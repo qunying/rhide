@@ -103,7 +103,7 @@ char *SetValue(char *var,char *expr)
   ret = EvaluateWatch(var);
   if (!ret) return NULL;
   tmp = strdup(ret);
-  sprintf(command,"set %s=%s",var,expr);
+  sprintf(command,"set variable %s=%s",var,expr);
   reset_command++;
   Command(command,0);
   reset_command--;

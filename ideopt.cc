@@ -393,7 +393,8 @@ const ushort cmMoreOptions = 9999;
     S(UseFPC,19);
 
 #define SetGetOptions1()      \
-    S(SaveMessages,0);
+    S(SaveMessages,0);\
+    S(DontShowExitCode,1);
 
 TEnvironmentDialog::TEnvironmentDialog()
    : TDialog(TRect(0,0,76,23),_("Environment options")),
@@ -408,10 +409,11 @@ TEnvironmentDialog::TEnvironmentDialog()
   uint32 global_options[max_cluster];
   r1 = TRect(3,2,49,2+20);
 
-  r1.b.y = r1.a.y+1;
+  r1.b.y = r1.a.y+2;
   cluster[1] = new TEnterCheckBoxes(r1,
                 new TSItem(_("~R~emember old messages"),                 // r
-                NULL),1);
+                new TSItem(_("~D~on`t show exit code"),                  // d
+                NULL)),1);
   cluster[1]->helpCtx = hcPreferenceCheckbox1;
 
   r1.b.y = r1.a.y+20;

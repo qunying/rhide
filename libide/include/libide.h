@@ -5,7 +5,6 @@
 #endif
 
 #if defined( Uses_ideCommands )
-#define __INC_LIBTVUTI__
 #define __INC_IDECOMMA__
 #endif
 
@@ -21,9 +20,6 @@
 #define Uses_TStreamable
 #define Uses_ipstream
 #define Uses_opstream
-
-#define s(TYPE)\
-  TStreamableClass R##TYPE( T##TYPE::name, T##TYPE::build, __DELTA(T##TYPE));
 
 #if defined( Uses_TIDEEditWindow )
 #define Uses_TCEditWindow
@@ -99,16 +95,13 @@
 
 #include <tv.h>
 
-#if defined( __INC_LIBTVUTI__ )
+/*
+  always include libtvuti.h
+*/
 #include <libtvuti.h>
-#endif
 
 #if defined( __INC_CEDITOR__ )
 #include <ceditor.h>
-#endif
-
-#if defined( __INC_LIBTVUTI__ )
-#include <libtvuti.h>
 #endif
 
 #if defined( _INC_TFILENAME )

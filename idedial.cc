@@ -37,162 +37,24 @@
 
 #include <string.h>
 #include <errno.h>
-#include <strstream.h>
 
+int dialog_handled;
 
-#define Uses_SETAppDialogs
-#include <../setedit/include/setapp.h>
-int SelectFunctionToJump(char *b, unsigned l,char*);
-
-static void ApplyBroadcast(TView *p, void *e)
+static unsigned IDEdoEditDialog(int /* dialog */, ...)
 {
-  p->handleEvent(*(TEvent *)e);
+  dialog_handled = 0;
+  return 0;
 }
 
-unsigned doEditDialog( int dialog, ... )
-{
-    va_list arg;
-
-    char buf[256]; // 80 is not enough
-    ostrstream os( buf, sizeof( buf ) );
-    switch( dialog )
-        {
-        case edOutOfMemory:
-            return messageBox( _("Not enough memory for this operation"),
-                               mfError | mfOKButton );
-        case edReadError:
-            {
-            char *fname;
-            va_start( arg, dialog );
-            fname = va_arg(arg,char *);
-            va_end(arg);
-            return messageBox(mfError|mfOKButton,"%s %s. %s(%d)",
-                  _("Error reading file "),fname,strerror(errno),errno);
-            }
-        case edWriteError:
-            {
-            va_start( arg, dialog );
-            os << _("Error writing file ") << va_arg(arg, char *)
-               << "." << ends;
-            va_end( arg );
-            return messageBox( buf, mfError | mfOKButton );
-            }
-        case edCreateError:
-            {
-            va_start( arg, dialog );
-            os << _("Error creating file ") << va_arg( arg, char *)
-               << "." << ends;
-            va_end( arg );
-            return messageBox( buf, mfError | mfOKButton );
-            }
-        case edSaveModify:
-            {
-            va_start( arg, dialog );
-            os << va_arg( arg, char *)
-               << _(" has been modified. Save?") << ends;
-            va_end( arg );
-            return messageBox( buf, mfInformation | mfYesNoCancel );
-            }
-        case edSaveUntitled:
-            return messageBox( _("Save untitled file?"),
-                               mfInformation | mfYesNoCancel );
-        case edSaveAs:
-            {
-            va_start( arg, dialog );
-            ushort retval = execDialog(
-             FileOpenDialog(Project.defaultprojectmask,
-                    _("Save file as"),_("~N~ame"),fdOpenButton|fdHelpButton,
-                    RHIDE_History_source_file,default_directory),
-                    va_arg(arg, char *));
-            va_end(arg);
-            return retval;
-            }
-
-        case edFind:
-            {
-            va_start( arg, dialog );
-            void *arg1 = va_arg(arg, void *);
-            return execDialog( createFindDialog(va_arg(arg, void *)), arg1);
-            }
-
-        case edSearchFailed:
-            return messageBox(_("Search string not found."),
-                               mfError | mfOKButton );
-        case edReplace:
-            {
-            va_start(arg, dialog);
-            void *arg1 = va_arg(arg, void *);
-            return execDialog(createReplaceDialog(va_arg(arg, void *)), arg1);
-            }
-
-        case edReplacePrompt:
-            {
-            //  Avoid placing the dialog on the same line as the cursor
-            TRect r( 0, 1, 40, 8 );
-            r.move( (TProgram::deskTop->size.x-r.b.x)/2, 0 );
-            TPoint t = TProgram::deskTop->makeGlobal( r.b );
-            t.y++;
-            va_start( arg, dialog );
-            TPoint *pt = va_arg( arg, TPoint *);
-            if( pt->y <= t.y )
-                r.move( 0, TProgram::deskTop->size.y - r.b.y - 2 );
-            va_end( arg );
-            return messageBoxRect( r, _("Replace this occurence?"),
-                                   mfYesNoCancel | mfInformation );
-            }
-
-        case edJumpToFunction:
-            {
-             int *p;
-
-             va_start( arg, dialog );
-             p=va_arg(arg,int *);
-
-             *p=SelectFunctionToJump(va_arg(arg, char*),
-                                     va_arg(arg, unsigned),
-                                     va_arg(arg, char*));
-
-             return (*p!=-1);
-            }
-
-        case edSetLocalOptions:
-            {
-             void *p;
-             va_start( arg, dialog );
-             p=va_arg(arg,void *);
-             return (execDialog( createSetLocalOptions(), p ) == cmOK);
-            }
-
-        case edSetGlobalOptions:
-            {
-             void *p;
-             va_start( arg, dialog );
-             p=va_arg(arg,void *);
-             ushort ret=execDialog( createSetGlobalOptions(), p );
-             if (ret==cmYes)
-               {
-                TEvent event;
-                event.what = evBroadcast;
-                event.message.command = cmcSetGlobalOptions;
-                event.message.infoPtr = p;
-                TProgram::deskTop->forEach(ApplyBroadcast,&event);
-               }
-             return (ret==cmYes) || (ret==cmOK);
-            }
-
-        case edLineOverflow:
-            return messageBox( _("Line too long, cut it?"),
-                               mfError | mfYesButton | mfNoButton);
-        }
- return 0;
-}
+unsigned (*dial_ori)(int, ...) = doEditDialog;
+unsigned (*dial_new)(int, ...) = IDEdoEditDialog;
 
 extern "C" int eval(char *mit,char **out);
 
+/* I had to rewrite this to get the help-button available */
 
 void ShowCalculator()
 {
-#if 1
   TRect r(10,2,72,11);
   TDialog *dialog;
   TInputLine *input;
@@ -255,8 +117,5 @@ void ShowCalculator()
     }
   } while (retval == cmOK);
   destroy(dialog);
-#else
-  executeCalc(NULL);
-#endif
 }
 

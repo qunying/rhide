@@ -47,8 +47,8 @@ IDE::IDE() :
 {
 
     TCommandSet ts;
-    ts.enableCmd( cmSave );
-    ts.enableCmd( cmSaveAs );
+    ts.enableCmd( cmcSave );
+    ts.enableCmd( cmcSaveAs );
     ts.enableCmd( cmcCut );
     ts.enableCmd( cmcCopy );
     ts.enableCmd( cmcPaste );

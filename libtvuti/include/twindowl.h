@@ -12,8 +12,8 @@ typedef struct
   TWindow **ref;
   char *full_name;
   char *base_name;
-  int dev;
-  int inode;
+  dev_t dev;
+  ino_t inode;
   Boolean remember_closed;
   Boolean is_removable;
 }
@@ -42,3 +42,4 @@ public:
 };
 
 #endif
+

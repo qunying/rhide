@@ -141,8 +141,8 @@ AddWindow(TWindow * window, TWindow ** ref, Boolean before,
   }
   else
   {
-    window_rec->dev = -1;
-    window_rec->inode = -1;
+    window_rec->dev = 0;
+    window_rec->inode = 0;
   }
   BaseName(window_rec->full_name, window_rec->base_name);
   windows->insert(window_rec);
@@ -471,3 +471,4 @@ LoadClosedWindows(ipstream & is)
     LoadClosedWindow(is);
   }
 }
+

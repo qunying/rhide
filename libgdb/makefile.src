@@ -28,7 +28,7 @@ GDB_OBJ=$(GDB_SRC)
 endif
 
 ifeq ($(strip $(rhide_OS)),DJGPP)
-OS_CFLAGS=-O2 -g
+OS_CFLAGS=-O2
 OS_FLAGS=
 MMALLOC_INC=
 MMALLOC_CFLAGS=-DNO_MMALLOC -DNO_MMALLOC_CHECK
@@ -40,7 +40,7 @@ EXCLUDE_REGEX=| sed -e '/main.o/d'
 endif
 
 ifneq ($(strip $(rhide_OS)),DJGPP)
-OS_CFLAGS=-DHAVE_CONFIG_H -O2 -DNO_MMALLOC -g
+OS_CFLAGS=-DHAVE_CONFIG_H -O2 -DNO_MMALLOC
 #MMALLOC=../mmalloc/libmmalloc.a
 #MMALLOC_INC=o_gdb/mmalloc s_gdb/mmalloc
 CHECKS=

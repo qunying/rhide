@@ -1,6 +1,6 @@
 # Copyright (C) 1996-2000 Robert H”hne, see COPYING.RH for details 
 # This file is part of RHIDE. 
-# d:/obj/rhide/gpr2mak.exe -d -r- -o  gpr2mak.gpr
+# d:/obj/rhide/gpr2mak.exe -d -r- -o __tmp__.mak gpr2mak.gpr
 ifeq ($(strip $(PCRE_OBJ)),)
 PCRE_OBJ=
 endif

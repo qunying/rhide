@@ -94,9 +94,9 @@ ReadProject(const char *prjname, bool from_ide)
       DefaultFPCReservedWords(_project);
     if (!_RHIDEUserWords(_project))
       DefaultUserWords(_project);
-    if (version > 0)
+    if (version > 0 && !ifile->eof())
       LoadPrintSetUp(ifile);
-    else
+    if (version < 1 || ifile->eof())
       PrintSetDefaults();
     close_ifpstream(ifile);
     if (project_directory)
@@ -736,3 +736,17 @@ _PopProject()
     PROJECT_STACK = NULL;
   ClearFindCache();
 }
+
+void
+SaveProject(TProject * _project, const char *_project_name)
+{
+  ofpstream *file = new ofpstream(_project_name);
+
+  file->writeString(PROJECT_IDENT);
+  *file << ProjectVersion;
+  *file << _project;
+  SavePrintSetUp(file);
+  delete(file);
+}
+
+

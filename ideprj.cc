@@ -716,18 +716,6 @@ LoadDesktop(ipstream & is, Boolean load_windows = True)
 }
 
 static void
-SaveProject(TProject * _project, const char *_project_name)
-{
-  ofpstream *file = new ofpstream(_project_name);
-
-  file->writeString(PROJECT_IDENT);
-  *file << ProjectVersion;
-  *file << _project;
-  SavePrintSetUp(file);
-  delete(file);
-}
-
-static void
 LoadOptions(char *_name)
 {
   char *dir, *name, *ext, *pname, *dname, *__name;
@@ -1994,3 +1982,4 @@ MakeClear()
   ClearFileHash();
   ClearFindCache();
 }
+

@@ -29,7 +29,7 @@ src_files=$(po_files) Makefile common.mak README.IDE RHIDE.BIN RHIDE.SRC \
 	rhide_ch.log todo zipcomm.bin zipcomm.src rhide.env \
 	LINUX.TXT rhide.var VCSA.SH common.var configure \
 	ideversi.in ideversi.cc readme.key rhide_.env \
-	moveifch gprexp.gpr gprexp.mak rh.gpr rh.mak \
+	moveifch gprexp.gpr gprexp.mak rh.gpr rh.mak conio.o \
 	tolf.cc tolf.gpr tolf.mak tocrlf.gpr tocrlf.mak \
 	copyrite.gpr copyrite.mak rhidex rhgdbx eterm-rhide \
 	rhide.spec aclocal.m4 config.guess config.in config.sub \

@@ -1937,6 +1937,8 @@ parse_commandline(int argc, char *argv[])
   char *_rhide_opt = expand_rhide_spec("$(RHIDEOPT)");
   char *rhide_opt = NULL;
 
+  TGKey::useBIOS = 0;
+
   if (*_rhide_opt)
   {
     rhide_opt = (char *) alloca(strlen(_rhide_opt));
@@ -2150,7 +2152,6 @@ parse_commandline(int argc, char *argv[])
     use_mouse_handler = 0;
     extern int slow_screen;
 
-    TGKey::useBIOS = 1;
     slow_screen = 1;
   }
 #endif

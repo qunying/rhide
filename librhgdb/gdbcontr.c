@@ -25,6 +25,8 @@ int verbose_gdb_commands = 0;
 
 int call_reset = 0;
 
+int force_disassembler_window = 0;
+
 void Command(char *x,int call_hook)
 {
   in_command++;

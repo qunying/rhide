@@ -17,10 +17,10 @@
 #define Yellow E
 #define White F
 
-#define __S(color) #color
-#define _S(bg,fg) __S(\x##bg##fg)
-#define S(index,foreground,background,name,comment...) _S(background,foreground)
-#define S_(index,foreground,background,name,group,comment...) _S(background,foreground)
+#define __RH___S(color) #color
+#define __RH__S(bg,fg) __RH___S(\x##bg##fg)
+#define S(index,foreground,background,name,comment...) __RH__S(background,foreground)
+#define S_(index,foreground,background,name,group,comment...) __RH__S(background,foreground)
 
 /* This is the palette for the system when in color mode */
 #define cpIDEColor\

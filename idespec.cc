@@ -32,6 +32,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <unistd.h>
 #include <ctype.h>
 #include <sys/utsname.h>
 
@@ -966,6 +967,8 @@ char *_objfiles(int check_exclude)
     string_cat(retval,tmp);
     string_free(tmp);
   }
+  if (!retval)
+    retval = string_dup("");
   return retval;
 }
 

@@ -1,5 +1,6 @@
 /* Copyright (C) 1996-1998 Robert H”hne, see COPYING.RH for details */
 /* This file is part of RHIDE. */
+#include <libgdb.h>
 #include <librhgdb.h>
 #include <rhgdbint.h>
 #include <stdlib.h>
@@ -9,15 +10,13 @@
 static char command[1024];
 
 void
-annotate_field (num)
-     int num;
+annotate_field (int num __attribute__((unused)))
 {
 _DEBUG("a_field(%d)\n",num);
 }
 
 void
-annotate_field_begin (type)
-     struct type *type;
+annotate_field_begin (struct type *type __attribute__((unused)))
 {
 _DEBUG("a_field_begin\n");
 }
@@ -41,16 +40,14 @@ _DEBUG("a_field_end\n");
 }
 
 void
-annotate_value_history_begin (histindex, type)
-     int histindex;
-     struct type *type;
+annotate_value_history_begin (int histindex __attribute__((unused)),
+                              struct type *type __attribute__((unused)))
 {
 _DEBUG("a_value_history_begin(%d)\n",histindex);
 }
 
 void
-annotate_value_begin (type)
-     struct type *type;
+annotate_value_begin (struct type *type __attribute__((unused)))
 {
 _DEBUG("a_value_begin\n");
 }

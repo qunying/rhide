@@ -2,7 +2,8 @@
 /* This file is part of RHIDE. */
 #include <librhgdb.h>
 
-static void __select_source_line(char *fname,int lineno)
+static void __select_source_line(char *fname __attribute__((unused)),
+                                 int lineno __attribute__((unused)))
 {
 }
 
@@ -50,7 +51,7 @@ static void __InitGDBOutWin(void)
 
 void (*_InitGDBOutWin)(void) = __InitGDBOutWin;
 
-static void __UpdateGDBOutWin(char *buffer)
+static void __UpdateGDBOutWin(char *buffer __attribute__((unused)))
 {
 }
 
@@ -62,7 +63,7 @@ static void __UserScreen(void)
 
 void (*_UserScreen)(void) = __UserScreen;
 
-static void __UserWarning(int number, ...)
+static void __UserWarning(int number __attribute__((unused)), ...)
 {
 }
 
@@ -74,7 +75,7 @@ static void __StartSession(void)
 
 void (*_StartSession)(void) = __StartSession;
 
-static void __EndSession(int exit_code)
+static void __EndSession(int exit_code __attribute__((unused)))
 {
 }
 

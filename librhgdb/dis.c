@@ -142,9 +142,8 @@ my_print_address_symbolic (CORE_ADDR addr, int only_exact,
 }
 
 static void
-my_print_address (addr, info)
-     bfd_vma addr;
-     struct disassemble_info *info;
+my_print_address (bfd_vma addr,
+                  struct disassemble_info *info __attribute__((unused)))
 {
   if (!mark_functions || !my_print_address_symbolic(addr,0,0,"",""))
     my_fprintf(NULL,"0x%lx",addr);

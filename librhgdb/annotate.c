@@ -7,7 +7,7 @@
     libgdb.a but it is defined in main.c from gdb which does
     nothing */
     
-void proc_remove_foreign(int pid)
+void proc_remove_foreign(int pid __attribute__((unused)))
 {
 }
 
@@ -20,15 +20,13 @@ DEBUG("|breakpoints_changed|");
 }
 
 void
-annotate_breakpoint (num)
-     int num;
+annotate_breakpoint (int num __attribute__((unused)))
 {
 DEBUG("|breakpoint(%d)|",num);
 }
 
 void
-annotate_watchpoint (num)
-     int num;
+annotate_watchpoint (int num __attribute__((unused)))
 {
 DEBUG("|watchpoint(%d)|",num);
 }
@@ -82,8 +80,7 @@ DEBUG("|arg_name_end|");
 }
 
 void
-annotate_arg_value (type)
-     struct type *type;
+annotate_arg_value (struct type *type __attribute__((unused)))
 {
 DEBUG("|arg_value|");
 }
@@ -95,12 +92,11 @@ DEBUG("|arg_end|");
 }
 
 void
-annotate_source (filename, line, character, mid, pc)
-     char *filename;
-     int line;
-     int character;
-     int mid;
-     CORE_ADDR pc;
+annotate_source (char *filename __attribute__((unused)),
+                 int line __attribute__((unused)),
+                 int character __attribute__((unused)),
+                 int mid __attribute__((unused)),
+                 CORE_ADDR pc __attribute__((unused)))
 {
 DEBUG("|source(%s,%d,%d,%d,%ld)|",filename,line,character,mid,pc);
 }
@@ -118,16 +114,14 @@ DEBUG("|signal_handler_caller|");
 }
 
 void
-annotate_array_section_begin (index, elttype)
-     int index;
-     struct type *elttype;
+annotate_array_section_begin (int index __attribute__((unused)),
+                              struct type *elttype __attribute__((unused)))
 {
 DEBUG("|array_section_begin(%d)|",index);
 }
 
 void
-annotate_elt_rep (repcount)
-     unsigned int repcount;
+annotate_elt_rep (unsigned int repcount __attribute__((unused)))
 {
 DEBUG("|elt_rep(%d)|",repcount);
 }

@@ -74,9 +74,7 @@ static int line_start;
 static int line_end;
 
 void
-annotate_frame_begin (level, pc)
-     int level;
-     CORE_ADDR pc;
+annotate_frame_begin (int level __attribute__((unused)), CORE_ADDR pc)
 {
   DEBUG("|frame_begin(%d,%ld)|",level,pc);
   frame_begin_seen = 1;

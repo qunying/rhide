@@ -61,9 +61,6 @@ annotate_signal_string_end ()
   char *signal;
 DEBUG("|signal_string_end|");
   signal_end = gdb_output_pos;
-#if 0 /* def __DJGPP__ */
-  inferior_pid = 0;
-#endif
   signal = (char *)alloca(signal_end-signal_start+1);
   strncpy(signal,gdb_output_buffer+signal_start,signal_end-signal_start);
   signal[signal_end-signal_start] = 0;
@@ -231,7 +228,7 @@ _init_librhgdb()
   Command("set print null-stop",0);
 }
 
-void init_gdb(char *fname)
+void init_gdb(char *fname __attribute__((unused)))
 {
   reset_gdb_output();
   reset_gdb_error();
@@ -265,9 +262,7 @@ void handle_gdb_command(char *command)
 }
 
 void
-fputs_unfiltered (linebuffer, stream)
-     const char *linebuffer;
-     FILE *stream;
+fputs_unfiltered(const char *linebuffer, FILE *stream __attribute__((unused)))
 {
   _DEBUG("fputs_unfiltered(%s)\n",linebuffer);
   APPEND(gdb_output,linebuffer);

@@ -1,6 +1,6 @@
 dnl Process this file with autoconf to produce a configure script.
 
-AC_PREREQ(2.52)
+AC_PREREQ(2.50)
 AC_INIT(libtvuti.gpr)
 AC_CONFIG_HEADER(config.h:config.hin)
 AC_PROG_CC

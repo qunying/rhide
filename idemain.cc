@@ -479,6 +479,8 @@ void IDE::update()
       D(cmProgArgs);
       D(cmFunctionList);
       D(cmInspect);
+      D(cmAddDataWindow);
+      D(cmShowStackWindow);
     }
     else
     {
@@ -497,6 +499,8 @@ void IDE::update()
       E(cmFunctionList);
       E(cmCallStack);
       E(cmInspect);
+      E(cmAddDataWindow);
+      E(cmShowStackWindow);
     }
   }
 
@@ -1273,6 +1277,8 @@ void IDE::handleEvent(TEvent & event)
           clearEvent(event);
           break;
 #ifdef INTERNAL_DEBUGGER
+        SC(AddDataWindow);
+        SC(ShowStackWindow);
         SC2(ShowWatchWindow, OpenWatchWindow);
         case cmDisWindow:
           OpenDisWin(1);

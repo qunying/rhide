@@ -109,7 +109,7 @@ TBreakListDialog::TBreakListDialog(const TRect &bounds,const char *Title) :
   insert(disableButton);
   r.a.x = r.b.x + 1;
   r.b.x = r.a.x + 10;
-  insert(new TLButton(r,_("~A~nzeigen"),cmSelectBreak,bfDefault));
+  insert(new TLButton(r,_("~S~how"),cmSelectBreak,bfDefault));
   bl->select();
 }
 

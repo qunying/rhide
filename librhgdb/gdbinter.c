@@ -183,10 +183,15 @@ annotate_stopped()
   debugger_started = inferior_pid;
   if (!reset_command)
   {
+    char *dirname = NULL, *fullname = NULL;
     s = find_pc_line(stop_pc, 0);
-    fname = s.symtab ? s.symtab->filename : NULL;
-    
-    _select_source_line(fname, s.line, s.symtab->dirname, s.symtab->fullname);
+    if (s.symtab != NULL)
+    {
+      fname = s.symtab->filename;
+      dirname = s.symtab->dirname;
+      fullname = s.symtab->fullname;
+    }
+    _select_source_line(fname, s.line, dirname, fullname);
   }
   _DEBUG("a_stopped(%s,%d)\n", fname, s.line);
 }

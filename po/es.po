@@ -312,7 +312,7 @@ msgstr "redibuja el Escritorio (Desktop)"
 
 #: idehints.cc:41
 msgid "Powerful builtin calculator"
-msgstr "Poderosa a"
+msgstr "Poderosa calculadora"
 
 #: idehints.cc:44
 msgid "A nice puzzle game"

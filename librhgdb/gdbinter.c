@@ -73,19 +73,19 @@ DEBUG("|signal_string_end|");
   else
     _UserWarning(WARN_SIGNALED,signal);
   // An attempt to recover after SIGINT
-#if !defined(__DJGPP__) || __DJGPP__ > 2 || (__DJGPP__ >= 2 && __DJGPP_MINOR__ >= 3)
-    if (     strncmp(signal,"SIGINT," ,7)==0
-          || strncmp(signal,"SIGFPE," ,7)==0
-          || strncmp(signal,"SIGABRT,",8)==0
-          || strncmp(signal,"SIGSEGV,",8)==0
-       )
-      {
-          force_disassembler_window = 1;
-      }
-    else
-      {
-          call_reset=1;
-      }
+#if !defined(__DJGPP__) || (__DJGPP__ >= 2 && __DJGPP_MINOR__ >= 3)
+  if (     strncmp(signal,"SIGINT," ,7) == 0
+        || strncmp(signal,"SIGFPE," ,7) == 0
+        || strncmp(signal,"SIGABRT,",8) == 0
+        || strncmp(signal,"SIGSEGV,",8) == 0
+     )
+  {
+    force_disassembler_window = 1;
+  }
+  else
+  {
+    call_reset = 1;
+  }
 #else
   call_reset = 1;
 #endif

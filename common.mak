@@ -24,9 +24,9 @@ locale_dir=$(prefix)/share/locale
 PACKAGE=rhide
 # for the DJGPP archives $(PACKAGE_FILE)$(FILE_VERSION) must not
 # exceed 8 characters, the well known DOS limitation :-(
-PACKAGE_FILE=rhid
+PACKAGE_FILE=rhide
 PACKAGE_DIR=rhide
-VERSION=1.4.9
+VERSION=1.5
 RHIDE_MAJOR=$(word 1,$(subst ., ,$(VERSION)))
 RHIDE_MINOR=$(subst $(RHIDE_MAJOR),,$(VERSION))
 # for the DJGPP archives
@@ -87,6 +87,7 @@ ifeq ($(rhide_OS),DJGPP)
 exe=.exe
 else
 exe=
+use_upx=
 endif
 
 SETMODE=0
@@ -145,7 +146,7 @@ endif
 endif
 
 install_datadir=share/$(PACKAGE)
-install_docdir=doc/$(PACKAGE)
+install_docdir=share/doc/$(PACKAGE)
 install_infodir=share/info
 install_bindir=bin
 install_localedir=share/locale

@@ -236,6 +236,7 @@ RHIDE_OS_CXXFLAGS_Linux=-D_GNU_SOURCE
 RHIDE_OS_CXXFLAGS_DJGPP=
 RHIDE_OS_CXXFLAGS=$(RHIDE_OS_CXXFLAGS_$(RHIDE_OS)) $(RH_WARN)\
 	-fno-exceptions -fno-rtti
+PCRE_OBJ=$(subst Linux,linux,$(SETOBJ)/$(RHIDE_OS))
 RHIDE_STDINC_C_DJGPP_BETA=$(DJGPP_ALPHA)/include
 RHIDE_STDINC_C_DJGPP=$(DJDIR)/include $(RHIDE_STDINC_C_DJGPP_BETA)
 RHIDE_STDINC_CXX_DJGPP=$(DJDIR)/lang/cxx 
@@ -254,6 +255,7 @@ RHIDE_OS_CXXFLAGS_Linux=-D_GNU_SOURCE
 RHIDE_OS_CXXFLAGS_DJGPP=
 RHIDE_OS_CXXFLAGS=$(RHIDE_OS_CXXFLAGS_$(RHIDE_OS)) $(RH_WARN)\
 	-fno-exceptions -fno-rtti
+PCRE_OBJ=$(subst Linux,linux,$(SETOBJ)/$(RHIDE_OS))
 INCLUDE_DIRS=$(RHIDESRC)/libide/include $(RHIDESRC)/libtvuti/include\
 	$(RHIDESRC)/librhuti $(TVSRC)/include $(SETSRC)/include\
 	$(SETSRC)/settvuti/include

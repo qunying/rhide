@@ -1,2844 +1,4782 @@
-msgid "            -C : Disable SIGINT handling\n"
+msgid  "Do you really want to delete\n"
+"this file from disk?"
+msgstr "¨Est  seguro que desea borrar\n"
+"el archivo del disco?"
+
+msgid  "You are about switching to the user screen\n"
+"Press ENTER to go back"
+msgstr "Ud. est  por cambiar a la pantalla de usuario\n"
+"Presione INTRO para regresar"
+
+msgid  "            -C : Disable SIGINT handling\n"
 msgstr "            -C : Deshabilitar el manejo de SIGINT (Ctrl-C)\n"
 
-msgid "            -D : Use dual-display debugging\n"
+msgid  "            -D : Use dual-display debugging\n"
 msgstr "            -D : Usar dos monitores\n"
 
-msgid "            -E : Output all env. variables and exit\n"
+msgid  "            -E : Output all env. variables and exit\n"
 msgstr "            -E : Mostrar todas las variables de entorno al salir\n"
 
-msgid "            -G num : Use methode <num> for screen swapping\n"
+msgid  "            -G num : Use methode <num> for screen swapping\n"
 msgstr "            -G num : Usar el m‚todo <num> para reesy\n"
 
-msgid "            -H : Do not install console switch handler\n"
-msgstr "            -H : No instalar un manejador para el cambio de consola\n"
+msgid  "            -H : Do not install console switch handler\n"
+msgstr "            -H : No instalar un manejador para el cambio de "
+"consola\n"
 
-msgid "            -K : Do not patch the keytable\n"
+msgid  "            -K : Do not patch the keytable\n"
 msgstr "            -K : No modificar la tabla del teclado\n"
 
-msgid "            -K : Use the BIOS for keyboard input\n"
+msgid  "            -K : Use the BIOS for keyboard input\n"
 msgstr "            -K : Usar el BIOS para leer el teclado\n"
 
-msgid "            -L LANGUAGE : use language LANGUAGE\n"
+msgid  "            -L LANGUAGE : use language LANGUAGE\n"
 msgstr "            -L LENGUAJE : usar el lenguaje LENGUAJE\n"
 
-msgid "            -M : Do not install the mouse handler\n"
+msgid  "            -M : Do not install the mouse handler\n"
 msgstr "            -M : No instalar el manejador del rat¢n (mouse)\n"
 
-msgid "            -S : use slower (safer) screen output\n"
-msgstr "            -S : usar un m‚todo lento (m s seguro) para acceder a la pantalla\n"
+msgid  "            -S : use slower (safer) screen output\n"
+msgstr "            -S : usar un m‚todo lento (m s seguro) para acceder a la "
+"pantalla\n"
 
-msgid "            -b : use BIOS calls for toggle the blinkstate\n"
+msgid  "            -b : use BIOS calls for toggle the blinkstate\n"
 msgstr "            -b : usar el BIOS para cambiar el titilado\n"
 
-msgid "            -c : show filename exactly (no case conversion)\n"
+msgid  "            -c : show filename exactly (no case conversion)\n"
 msgstr "            -c : mostrar los archivos sin convertir may. y min.\n"
 
-msgid "            -h : show this help\n"
+msgid  "            -h : show this help\n"
 msgstr "            -h : mostrar esta ayuda\n"
 
-msgid "            -i INI_FILE : Use INI_FILE as config file\n"
+msgid  "            -i INI_FILE : Use INI_FILE as config file\n"
 msgstr "           -i INI : Usar INI como archivo de configuraci¢n\n"
 
-msgid "            -k KEY_FILE : use KEY_FILE for key bindings\n"
-msgstr "             -k ARCHIVO : usar ese ARCHIVO para la configuraci¢n del teclado\n"
+msgid  "            -k KEY_FILE : use KEY_FILE for key bindings\n"
+msgstr "             -k ARCHIVO : usar ese ARCHIVO para la configuraci¢n del "
+"teclado\n"
 
-msgid "            -n : do not use long filenames (Windows 95)\n"
+msgid  "            -n : do not use long filenames (Windows 95)\n"
 msgstr "            -n : No usar nombres de archivos largos (Win95)\n"
 
-msgid "            -p : do not convert the numpad keys\n"
+msgid  "            -p : do not convert the numpad keys\n"
 msgstr "            -p : no convertir las teclas del teclado num‚rico\n"
 
-msgid "            -y : force to use long filenames (Windows 95)\n"
-msgstr "            -y : fuerza el uso de nombres de archivos largos (Win95)\n"
+msgid  "            -y : force to use long filenames (Windows 95)\n"
+msgstr "            -y : fuerza el uso de nombres de archivos largos "
+"(Win95)\n"
 
-msgid "  Char: "
-msgstr " Carac: "
+msgid  "   ASCII chart"
+msgstr "   Tabla ASCII"
 
-msgid " Decimal: "
-msgstr " Decimal: "
+msgid  "   Calendar "
+msgstr "   Calendario "
 
-msgid " Hex "
+msgid  "   Clipboard (%d bytes)"
+msgstr "   Portapapeles (%d bytes)"
+
+msgid  "   Closed: "
+msgstr "   Cerrado: "
+
+msgid  "   InfView "
+msgstr "   InfView "
+
+msgid  "   MP3 Control panel"
+msgstr "   Panel de control MP3"
+
+msgid  "   Main InfView "
+msgstr "   InfView principal "
+
+msgid  "   Man page: "
+msgstr "   P gina del manual: "
+
+msgid  "   Message Window (%d lines)"
+msgstr "   Ventana de mensajes (%d l¡neas)"
+
+msgid  "  Char: "
+msgstr "  Caracter: "
+
+msgid  "  For djgpp programmers"
+msgstr "  Para programadores con djgpp"
+
+msgid  "  For programmers"
+msgstr "  Para programadores"
+
+msgid  "  Normal"
+msgstr "  Normal"
+
+msgid  " 1 Project Window"
+msgstr " 1 Ventana del Proyecto"
+
+msgid  " Decimal: "
+msgstr " Dec: "
+
+msgid  " Hex "
 msgstr " Hexa: "
 
-msgid " allowed chars "
+msgid  " Hex: "
+msgstr " Hex: "
+
+msgid  " [%d nodes]"
+msgstr " [%d nodos]"
+
+msgid  " allowed chars "
 msgstr " caracteres permitidos "
 
-msgid " bytes selected"
+msgid  " already exist, overwrite?"
+msgstr " ya existe, ¨lo sobreescribo?"
+
+msgid  " bytes selected"
 msgstr " caracteres seleccionados"
 
-msgid " has been modified. Save?"
+msgid  " bytes selected, in "
+msgstr " caracteres seleccionados en "
+
+msgid  " has been modified. Save?"
 msgstr " ha sido modificado. ¨Grabo?"
 
-msgid "%s has been modified! Reload it?"
+msgid  " isn't a file, probably a device, go ahead?"
+msgstr " no es un archivo, probablemente un dispositivo, ¨continuo?"
+
+msgid  " lines"
+msgstr " l¡neas"
+
+msgid  "%s has been modified! Reload it?"
 msgstr "­%s ha sido modificado! ¨Vuelvo a cargarlo?"
 
-msgid "%s\n\n(Breakpoint at function '%s' in file %s)"
-msgstr "%s\n\n(Breakpoint en la funci¢n '%s' en el archivo %s)"
+msgid  "%s\n"
+"\n"
+"(Breakpoint at function '%s' in file %s)"
+msgstr "%s\n"
+"\n"
+"(Breakpoint en la funci¢n '%s' en el archivo %s)"
 
-msgid "%s\n\n(Breakpoint at line %d in file %s)"
-msgstr "%s\n\n(Breakpoint en la l¡nea %d en el archivo %s)"
+msgid  "%s\n"
+"\n"
+"(Breakpoint at line %d in file %s)"
+msgstr "%s\n"
+"\n"
+"(Breakpoint en la l¡nea %d en el archivo %s)"
 
-msgid "(%d) %s in line %d"
+msgid  "(%d) %s in line %d"
 msgstr "(%d) %s en la l¡nea %d"
 
-msgid ",time: %08lx\n"
+msgid  "* Source: %s * Title: %s * Author: %s\n"
+"\n"
+msgstr "* Fuente: %s * T¡tulo: %s * Autor: %s\n"
+"\n"
+
+msgid  ", after rebooting your system you'll be able to use the editor"
+msgstr ", luego de reinicializar su sistem ud. podr  usarlo"
+
+msgid  ",time: %08lx\n"
 msgstr ",hora: %08lx\n"
 
-msgid "-o needs an argument\n"
+msgid  "-L, --force-lfn          forces the use of long file names under "
+"W9x.\n"
+msgstr "-L, --force-lfn          fuerza el uso de nombres largos en W9x.\n"
+
+msgid  "-L, --force-lfn:         forces the use of long file names under "
+"W9x.\n"
+msgstr "-L, --force-lfn:         fuerza el uso de nombres largos en W9x.\n"
+
+msgid  "-S, --low-vga-save:      use low level functions to save/restore VGA "
+"state.\n"
+msgstr "-S, --low-vga-save:      usar rutinas de bajo nivel para "
+"grabar/restaurar el\n"
+"                         estado del chip VGA.\n"
+
+msgid  "-d, --directory DIR      adds a directory to the list of directories "
+"to search\n"
+"                         (DIR to INFOPATH)\n"
+msgstr "-d, --directorio DIR     agrega el directorio especificado a la "
+"lista de\n"
+"                         directorios a buscar (DIR a INFOPATH)\n"
+
+msgid  "-f, --file FILENAME      load FILENAME info file.\n"
+msgstr "-f, --file NOMBRE_ARCH   abre la ayuda NOMBRE_ARCH.\n"
+
+msgid  "-h, --help               displays this text ;-).\n"
+"\n"
+msgstr "-h, --help               muestra este texto ;-).\n"
+"\n"
+
+msgid  "-h, --help:              displays this text ;-).\n"
+"\n"
+msgstr "-h, --help:              muestra este texto ;-).\n"
+"\n"
+
+msgid  "-k, --use-rh-52-keys     enables the Red Hat 5.2 style keyboard "
+"mapping.\n"
+msgstr "-k, --use-rh-52-keys     habilita el mapeo de teclado usado en Red "
+"Hat 5.2.\n"
+
+msgid  "-k, --use-rh-52-keys:    enables the Red Hat 5.2 style keyboard "
+"mapping.\n"
+msgstr "-k, --use-rh-52-keys:    usar el mapeo de teclado de Red Hat 5.2.\n"
+
+msgid  "-m, --no-mouse-hook:     don't hook the mouse.\n"
+msgstr "-m, --no-mouse-hook:     no utilizar la interrupci¢n del mouse.\n"
+
+msgid  "-n, --node NODE          jumps to this node.\n"
+msgstr "-n, --node NODO          salta a este nodo.\n"
+
+msgid  "-o needs an argument\n"
 msgstr "-o necesita un argumento\n"
 
-msgid "1~6~ background colors"
+msgid  "-p, --project file_name: loads the indicated project, if the file "
+"doesn't exist\n"
+"                         the editor creates a new one\n"
+msgstr "-p, --project nombre_ar: carga el proyecto indicado, si no existe "
+"uno nuevo\n"
+"                         es creado\n"
+
+msgid  "-r, --no-redirect:       disables the stderr redirection. Only used "
+"during\n"
+"                         debugging.\n"
+msgstr "-r, --no-redirect:       desabilita el redireccionamiento de "
+"`stderr'. Solo\n"
+"                         usado durante la depuraci¢n del programa.\n"
+
+msgid  "-r, --read-dkt FILENAME  if no file is opened use this desktop "
+"file.\n"
+msgstr "-r, --read-dkt NOMBREAR  si no se especific¢ abrir ninguna ayuda "
+"abrir el\n"
+"                         archivo de escritorio NOMBREAR\n"
+
+msgid  "-s, --no-signal:         disables the hook of signals to save the "
+"modified\n"
+"                         buffers during a crash. Could be needed if the "
+"editor\n"
+"                         hangs in an extraordinary way.\n"
+msgstr "-s, --no-signal:         deshabilita el uso de `signals' para grabar "
+"archivos\n"
+"                         modificados en caso de errores severos.\n"
+
+msgid  "-s, --save-dkt FILENAME  save the desktop to this file at exit.\n"
+msgstr "-s, --save-dkt NOMBREAR  grabar el archivo de escritorio como "
+"NOMBREAR.\n"
+
+msgid  "1~6~ background colors"
 msgstr "1~6~ colores de fondo"
 
-msgid "80x25 Color"
+msgid  "24 hs"
+msgstr "24 hs"
+
+msgid  "80x25 Color"
 msgstr "80x25 Color"
 
-msgid "80x28 Color"
+msgid  "80x28 Color"
 msgstr "80x28 Color"
 
-msgid "80x35 Color"
+msgid  "80x35 Color"
 msgstr "80x35 Color"
 
-msgid "80x40 Color"
+msgid  "80x40 Color"
 msgstr "80x40 Color"
 
-msgid "80x43 Color"
+msgid  "80x43 Color"
 msgstr "80x43 Color"
 
-msgid "80x50 Color"
+msgid  "80x50 Color"
 msgstr "80x50 Color"
 
-msgid "<empty>"
+msgid  "< ~P~rev"
+msgstr "< ~A~nterior"
+
+msgid  "<empty>"
 msgstr "<vac¡o>"
 
-msgid "A nice puzzle game"
+msgid  "> ~N~ext"
+msgstr "> P~r~¢xima"
+
+msgid  "A command"
+msgstr "Un comando"
+
+msgid  "A copy of the original autoexec.bat was stored in autoexec.bak"
+msgstr "Una copia del autoexec.bat original fue guardada como autoexec.bak"
+
+msgid  "A friendly text editor."
+msgstr "Un editor de texto amigable."
+
+msgid  "A nice puzzle game"
 msgstr "Un divertido juego de rompecabezas"
 
-msgid "A simple calender"
+msgid  "A simple calender"
 msgstr "Un simple calendario"
 
-msgid "A table with all the ASCII characters"
+msgid  "A table with all the ASCII characters"
 msgstr "Una tabla con todos los caracteres ASCII"
 
-msgid "ASCII Chart"
-msgstr "Tabla de Caracteres"
+msgid  "AM/PM"
+msgstr "AM/PM"
 
-msgid "About RHGDB"
+msgid  "ASCII Chart"
+msgstr "Tabla ASCII"
+
+msgid  "About"
+msgstr "Acerca de"
+
+msgid  "About RHGDB"
 msgstr "Acerca de RHGDB"
 
-msgid "About RHIDE"
+msgid  "About RHIDE"
 msgstr "Acerca de RHIDE"
 
-msgid "Ada Flags"
+msgid  "Accepting that you'll change the SET's editor behavior"
+msgstr "Aceptando ud. modificar  el comportamiento del editor"
+
+msgid  "Action"
+msgstr "Acci¢n"
+
+msgid  "Ada Flags"
 msgstr "Opciones de Ada"
 
-msgid "Ada-~F~lags"
+msgid  "Ada-~F~lags"
 msgstr "Opciones de A~d~a"
 
-msgid "Add '%s' to the search path for source files"
+msgid  "Add '%s' to the search path for source files"
 msgstr "Agregar '%s' al path (camino) para los fuentes"
 
-msgid "Add Item"
+msgid  "Add File"
+msgstr "Agregar Archivo"
+
+msgid  "Add Item"
 msgstr "Agregar elemento"
 
-msgid "Add an expression to the watching list"
+msgid  "Add a direct access to the desktop"
+msgstr "Agregar un acceso directo al escritorio"
+
+msgid  "Add an expression to the watching list"
 msgstr "Agrega una expresi¢n al visor de expresiones"
 
-msgid "Add to watch list"
+msgid  "Add setedit to the Start\\Programs menu"
+msgstr "Agregar setedit al men£ Inicio\\Programas"
+
+msgid  "Add to watch list"
 msgstr "Agregar a la lista del visor"
 
-msgid "Addition compiler options"
+msgid  "Adding icon to desktop"
+msgstr "Agregando un ¡cono al escritorio"
+
+msgid  "Adding icon to menu"
+msgstr "Agregando un ¡cono al men£"
+
+msgid  "Addition compiler options"
 msgstr "Opciones Adicionales del Compilador"
 
-msgid "Additional compiler options"
+msgid  "Additional compiler options"
 msgstr "Opciones Adicionales del Compilador"
 
-msgid "Additional linker options"
+msgid  "Additional linker options"
 msgstr "Opciones Adicionales del Linker"
 
-msgid "All windows on the desktop"
+msgid  "Advice"
+msgstr "Concejo"
+
+msgid  "After foote~r~"
+msgstr "Despu‚s del pie de p ~g~ina"
+
+msgid  "Album:  %s"
+msgstr "Album:  %s"
+
+msgid  "All my friends that support my project (Laszlo, Marek, Ivan, etc)"
+msgstr "Todos mis amigos que soportaron mi proyecto (Laszlo, Marek, Ivan, "
+"etc)"
+
+msgid  "All windows on the desktop"
 msgstr "Todas las ventanas del escritorio"
 
-msgid "An error has occoured when running the program "
+msgid  "Alt keys settings"
+msgstr "Seteo de las teclas Alt"
+
+msgid  "An error has occoured when running the program "
 msgstr "Ocurri¢ un error al ejecutar el programa "
 
-msgid "Apr"
+msgid  "Apr"
 msgstr "Abr"
 
-msgid "April"
+msgid  "April"
 msgstr "Abril"
 
-msgid "Attention !! this file is in DOS format,"
-msgstr "­Atenci¢n! este archivo est  en formato DOS, ¨quiere convertirlo?, Haga una copia primero"
+msgid  "Arbitrary indent"
+msgstr "Indentado arbitrario"
 
-msgid "Attention !! this file is in DOS format, Do you want convert it?, Make a backup first !!"
-msgstr "­Atenci¢n! este archivo est  en formato DOS, ¨quiere convertirlo?, Haga una copia primero"
+msgid  "Are these options correct?"
+msgstr "¨Son correctas estas opciones?"
 
-msgid "Attention can't open the file '%s'."
+msgid  "Assignmen~t~"
+msgstr "Asi~g~naci¢n"
+
+msgid  "Associated value"
+msgstr "Valor asociado"
+
+msgid  "At the ~e~nd of the list"
+msgstr "Es es ~e~l £ltimo en la lista"
+
+msgid  "Attention !! this file is in DOS format,"
+msgstr "­Atenci¢n! este archivo est  en formato DOS, ¨quiere convertirlo?, "
+"Haga una copia primero"
+
+msgid  "Attention !! this file is in DOS format, Do you want convert it?, "
+"Make a backup first !!"
+msgstr "­Atenci¢n! este archivo est  en formato DOS, ¨quiere convertirlo?, "
+"Haga una copia primero"
+
+msgid  "Attention can't open the file '%s'."
 msgstr "­Atenci¢n! no puedo abrir el archivo '%s'."
 
-msgid "Attention can't open the file."
+msgid  "Attention can't open the file."
 msgstr "­Atenci¢n! no puedo abrir el archivo."
 
-msgid "Attention can't open the help file '%s'."
-msgstr "­Atenci¢n! no puedo abrir el archivo de ayuda '%s'."
+msgid  "Attention can't open the help file '%s'."
+msgstr "Atenci¢n no puedo abrir el archivo de ayuda '%s'."
 
-msgid "Attention can't open the help file."
-msgstr "­Atenci¢n! no puedo abrir el archivo de ayuda."
+msgid  "Attention can't open the help file."
+msgstr "­Atenci¢n no puedo abrir el archivo de ayuda!"
 
-msgid "Aug"
+msgid  "Aug"
 msgstr "Ago"
 
-msgid "August"
+msgid  "August"
 msgstr "Agosto"
 
-msgid "Auto"
+msgid  "Author: %s"
+msgstr "Autor:  %s"
+
+msgid  "Auto"
 msgstr "Autom tico"
 
-msgid "A~d~a-Flags"
+msgid  "Available"
+msgstr "Disponible"
+
+msgid  "Avoid using files that aren't in a directory that isn't relative to "
+"the working one. For example: in another drive. If you do it you'll have "
+"problems if the directories are moved or transported to other machine."
+msgstr "Evita utilizar archivos que no se encuentran en un directorio que se "
+"pueda expresar en forma relativa al de trabajo. Por ejemplo: en otro disco. "
+"Si ud. hace esto puede tener problemas al mover el proyecto a otro "
+"directorio o computadora."
+
+msgid  "A~b~out"
+msgstr "~A~cerca de"
+
+msgid  "A~d~a-Flags"
 msgstr "Opciones de A~d~a"
 
-msgid "Because %s cannot read .exe files, you must set up the main targetname without extension"
-msgstr "Como %s no puede leer archivos .exe, ud. debe colocar el nombre sin extensi¢n"
+msgid  "A~f~ter heading"
+msgstr "~D~espu‚s del encabezado"
 
-msgid "Blue Editor"
+msgid  "Back in the editor"
+msgstr "Nuevamente en el editor"
+
+msgid  "Basic regular expression (-~G~)"
+msgstr "Expresiones regul. b sicas (-~G~)"
+
+msgid  "Because %s cannot read .exe files, you must set up the main "
+"targetname without extension"
+msgstr "Como %s no puede leer archivos .exe, ud. debe colocar el nombre sin "
+"extensi¢n"
+
+msgid  "Before ~h~eading"
+msgstr "Antes del encabe~z~ado"
+
+msgid  "Behavior"
+msgstr "Comportamiento"
+
+msgid  "Block to ~l~ower"
+msgstr "Bloque a min£scu~l~as"
+
+msgid  "Block to ~u~pper"
+msgstr "Bloque a may£sc~u~las"
+
+msgid  "Blue"
+msgstr "Azul"
+
+msgid  "Blue Editor"
 msgstr "Editor Azul"
 
-msgid "Blue Windows"
+msgid  "Blue Windows"
 msgstr "Ventanas azules"
 
-msgid "BreakPoints"
+msgid  "Bo~l~d attribute"
+msgstr "Letras en n~e~grita"
+
+msgid  "BreakPoints"
 msgstr "BreakPoints"
 
-msgid "Breakpoint"
+msgid  "Breakpoint"
 msgstr "Breakpoint"
 
-msgid "Button default"
+msgid  "Button default"
 msgstr "Bot¢n por defecto"
 
-msgid "Button disabled"
+msgid  "Button disabled"
 msgstr "Bot¢n inactivo"
 
-msgid "Button normal"
+msgid  "Button normal"
 msgstr "Bot¢n normal"
 
-msgid "Button selected"
+msgid  "Button selected"
 msgstr "Bot¢n seleccionado"
 
-msgid "Button shadow"
+msgid  "Button shadow"
 msgstr "Sombra del Bot¢n"
 
-msgid "Button shortcut"
+msgid  "Button shortcut"
 msgstr "Bot¢n de shortcut"
 
-msgid "C Flags"
+msgid  "C Flags"
 msgstr "Opciones Espec¡ficas de C"
 
-msgid "C++ Flags"
+msgid  "C++ Flags"
 msgstr "Opciones Espec¡ficas de C++"
 
-msgid "C-~F~lags"
+msgid  "C++ st~y~le"
+msgstr "Estilo C~+~+"
+
+msgid  "C-~F~lags"
 msgstr "Opciones de ~C~"
 
-msgid "CPU line"
+msgid  "CPU line"
 msgstr "l¡nea de CPU"
 
-msgid "Calculator"
+msgid  "Calculator"
 msgstr "Calculadora"
 
-msgid "Calendar"
+msgid  "Calendar"
 msgstr "Calendario"
 
-msgid "Call frame traceback:"
+msgid  "Call frame traceback:"
 msgstr "Llamadas a funciones en el stack:"
 
-msgid "Can't open %s\n"
+msgid  "Can't backup the autoexec.bat, sorry do it by hand"
+msgstr "No puedo crear una copia de resplado del autoexec.bat, deber  hacer "
+"los cambios manualmente"
+
+msgid  "Can't create files there"
+msgstr "No puedo crear archivos en ese lugar"
+
+msgid  "Can't create temporal copy of autoexec.bat"
+msgstr "No puedo crear una copia temporal del autoexec.bat"
+
+msgid  "Can't create the directory:"
+msgstr "No puedo crear el directorio:"
+
+msgid  "Can't make a back up file, continue saving?"
+msgstr "No puedo crear un archivo de respaldo, ¨continuo?"
+
+msgid  "Can't open %s\n"
 msgstr "No puedo abrir %s\n"
 
-msgid "Cancel"
+msgid  "Can't open output file for printing"
+msgstr "No pudo enviar informaci¢n a la impresora"
+
+msgid  "Cancel"
 msgstr "Cancela"
 
-msgid "Ca~l~endar"
+msgid  "Case style"
+msgstr "May£sculas/Min£sculas"
+
+msgid  "Case ~i~nsensitive"
+msgstr "No ~i~mportan"
+
+msgid  "Ca~l~endar"
 msgstr "Ca~l~endario"
 
-msgid "Change Directory"
+msgid  "Change Directory"
 msgstr "Cambiar Directorio"
 
-msgid "Change register value"
+msgid  "Change register value"
 msgstr "Cambiar el valor de un registro"
 
-msgid "Change the expression to watch"
+msgid  "Change the expression to watch"
 msgstr "Cambiar la expresi¢n a Ver"
 
-msgid "Changed register"
+msgid  "Changed register"
 msgstr "Registro modificado"
 
-msgid "Check the speed of the editor"
+msgid  "Check the speed of the editor"
 msgstr "Mide la velocidad del editor"
 
-msgid "Clea~r~ dependencies"
+msgid  "Choose a node"
+msgstr "Elegir un nodo"
+
+msgid  "Clea~r~ dependencies"
 msgstr "Borrar dep~e~ndencias"
 
-msgid "Clipboard"
+msgid  "Clipboard"
 msgstr "Portapapeles"
 
-msgid "Closed"
+msgid  "Closed"
 msgstr "Cerrada"
 
-msgid "Closed ~W~indows"
+msgid  "Closed ~W~indows"
 msgstr "~V~entanas cerradas"
 
-msgid "Cluster normal"
+msgid  "Cluster normal"
 msgstr "Cluster normal"
 
-msgid "Cluster selected"
+msgid  "Cluster selected"
 msgstr "Cluster seleccio."
 
-msgid "Cluster shortcut"
+msgid  "Cluster shortcut"
 msgstr "Cluster de shortcut"
 
-msgid "Code: ...%s..."
+msgid  "Code page remap"
+msgstr "Cambio de codificaci¢n"
+
+msgid  "Code: ...%s..."
 msgstr "C¢digo: ...%s..."
 
-msgid "Color"
+msgid  "Color"
 msgstr "Color"
 
-msgid "Colors"
-msgstr "~C~olores"
+msgid  "Color RGB composition"
+msgstr "Composici¢n de colores RVA"
 
-msgid "Colum~n~ cursor"
+msgid  "Color ~P~alette ..."
+msgstr "~P~aleta de colores ..."
+
+msgid  "Colors"
+msgstr "Colores"
+
+msgid  "Columns ~w~/o margin:"
+msgstr "Columnas ~s~in margen:"
+
+msgid  "Colum~n~ cursor"
 msgstr "cursor de ~C~olumna"
 
-msgid "Command out of range"
+msgid  "Command out of range"
 msgstr "Comando fuera de rango"
 
-msgid "Compiler ~O~ptions"
+msgid  "Command to run"
+msgstr "Comando a ejecutar"
+
+msgid  "Commands"
+msgstr "Comandos"
+
+msgid  "Command~s~"
+msgstr "Comando~s~"
+
+msgid  "Comme.: %s"
+msgstr "Comen.: %s"
+
+msgid  "Compiler ~O~ptions"
 msgstr "~O~pciones del Compilador"
 
-msgid "Compiling: "
+msgid  "Compiling: "
 msgstr "Compilando: "
 
-msgid "Comp~i~ler type"
+msgid  "Comp~i~ler type"
 msgstr "Tipo de Comp~i~lador"
 
-msgid "Com~p~iler"
+msgid  "Com~p~iler"
 msgstr "Com~p~ilador"
 
-msgid "Condition"
+msgid  "Condition"
 msgstr "Condici¢n"
 
-msgid "Confirm"
+msgid  "Configure the editor's menu like in Win. programs (eg. ^C=copy)"
+msgstr "Configurar el men£ como en los programas Windows (ej.^C=copiar)"
+
+msgid  "Configuring the system"
+msgstr "Configurando el sistema"
+
+msgid  "Confirm"
 msgstr "Confirma"
 
-msgid "Control-Break Pressed"
+msgid  "Confirm options"
+msgstr "Confirmar opciones"
+
+msgid  "Consult ~s~can codes"
+msgstr "Consultar c¢digos de ~t~eclas"
+
+msgid  "Control-Break Pressed"
 msgstr "Presion¢ Control-Break"
 
-msgid "Con~d~ition"
+msgid  "Con~d~ition"
 msgstr "Condici¢n"
 
-msgid "Copy the selected text to the Windows clipboard"
+msgid  "Copy the selected text to the Windows clipboard"
 msgstr "Copia el texto seleccionado al portapapeles de Windows"
 
-msgid "Copyright (C) by Robert H”hne, 1996"
+msgid  "Copy to ~W~indows Clip."
+msgstr "Copiar al Porta. de ~W~indows"
+
+msgid  "Copyright (C) by Robert H”hne, 1996"
 msgstr "Copyright (C) por Robert H”hne, 1996"
 
-msgid "Copyright (C) by Robert H”hne, 1996-1998"
+msgid  "Copyright (C) by Robert H”hne, 1996-1998"
 msgstr "Copyright (C) por Robert H”hne, 1996-1998"
 
-msgid "Cop~y~ to Windows Clipboard"
+msgid  "Cop~y~ to Windows Clipboard"
 msgstr "Co~p~iar al portapapeles de Windows"
 
-msgid "Could not create "
+msgid  "Could not create "
 msgstr "No puedo crear "
 
-msgid "Could not find desktop file"
+msgid  "Could not create %s."
+msgstr "No puedo crear %s."
+
+msgid  "Could not create the list file."
+msgstr "No puedo crear la lista de archivos."
+
+msgid  "Could not find '%s'."
+msgstr "No pude encontrar '%s'."
+
+msgid  "Could not find desktop file"
 msgstr "No puedo hallar el archivo del escritorio"
 
-msgid "Could not find the program. You must build at first the program to use this function, because the symbols are taken from that file."
-msgstr "No puedo hallar el programa. Ud. debe hacer primero el programa pues los s¡mboloes son tomados del ejecutable."
+msgid  "Could not find the program. You must build at first the program to "
+"use this function, because the symbols are taken from that file."
+msgstr "No puedo hallar el programa. Ud. debe hacer primero el programa pues "
+"los s¡mboloes son tomados del ejecutable."
 
-msgid "Could not find the source file %s."
+msgid  "Could not find the source file %s."
 msgstr "No puedo hallar el fuente %s"
 
-msgid "Could not find the source file '%s'. Make shure, that the file exist or check the settings in 'Options/Directories' for the correct paths."
-msgstr "No puedo hallar el archivo fuente '%s'. Aseg£rese de que el archivo exista o que el directorio donde est  figure en 'Opciones/Directorios'."
+msgid  "Could not find the source file '%s'. Make shure, that the file exist "
+"or check the settings in 'Options/Directories' for the correct paths."
+msgstr "No puedo hallar el archivo fuente '%s'. Aseg£rese de que el archivo "
+"exista o que el directorio donde est  figure en 'Opciones/Directorios'."
 
-msgid "Could not find the source file '%s'. Make sure, that the file exist or check the settings in 'Options/Directories' for the correct paths."
-msgstr "No puedo hallar el archivo fuente '%s'. Aseg£rese de que el archivo exista o que el directorio donde est  figure en 'Opciones/Directorios'."
+msgid  "Could not find the source file '%s'. Make sure, that the file exist "
+"or check the settings in 'Options/Directories' for the correct paths."
+msgstr "No puedo hallar el archivo fuente '%s'. Aseg£rese de que el archivo "
+"exista o que el directorio donde est  figure en 'Opciones/Directorios'."
 
-msgid "Could not open '%s' for reading"
+msgid  "Could not open '%s' for reading"
 msgstr "No puedo abrir '%s' para leerlo"
 
-msgid "Could not open desktop file"
+msgid  "Could not open desktop file"
 msgstr "No puedo abrir el archivo del escritorio"
 
-msgid "Couldn't find any matching help"
-msgstr "No pude encontrar ayuda para esto"
+msgid  "Could not open project file"
+msgstr "No puedo abrir el archivo de proyecto"
 
-msgid "Couldn't open %s"
+msgid  "Could not open the list file"
+msgstr "No puedo abrir la lista de archivos"
+
+msgid  "Could not save the project."
+msgstr "No puedo crear el archivo de proyecto."
+
+msgid  "Couldn't find any matching help"
+msgstr "No pude encontrar ninguna ayuda"
+
+msgid  "Couldn't open %s"
 msgstr "No puedo abrir %s"
 
-msgid "Couldn't open file %s"
+msgid  "Couldn't open file %s"
 msgstr "No puedo abrir el archivo %s"
 
-msgid "Count"
+msgid  "Count"
 msgstr "Contador"
 
-msgid "Coun~t~"
+msgid  "Coun~t~"
 msgstr "Contador"
 
-msgid "Create for all project items the dependencies"
+msgid  "Co~l~ors"
+msgstr "Co~l~ores"
+
+msgid  "Create for all project items the dependencies"
 msgstr "Crear las dependencias para todos los items del proyecto"
 
-msgid "Creates a sample bug report"
+msgid  "Creates a sample bug report"
 msgstr "Genera un ejemplo de reporte de problemas (bugs)"
 
-msgid "Creates a small bug report"
+msgid  "Creates a small bug report"
 msgstr "Genera un reporte de problemas (bugs) peque¤o"
 
-msgid "Creating the Bug report"
+msgid  "Creating the Bug report"
 msgstr "Creando el reporte de problemas (bugs)"
 
-msgid "Creating: "
+msgid  "Creating: "
 msgstr "Creando: "
 
-msgid "Crea~t~e dependencies"
+msgid  "Crea~t~e dependencies"
 msgstr "Crea~r~ dependencias"
 
-msgid "Cross cursor"
+msgid  "Cross cursor"
 msgstr "Cursor tipo cruz"
 
-msgid "Cu~t~"
+msgid  "Cu~t~"
 msgstr "Cor~t~ar"
 
-msgid "Cyan Editor"
+msgid  "Cyan Editor"
 msgstr "Editores cian"
 
-msgid "Cyan Windows"
+msgid  "Cyan Windows"
 msgstr "Ventanas cyan"
 
-msgid "C~X~X-Flags"
+msgid  "C~X~X-Flags"
 msgstr "Opciones de C~X~X"
 
-msgid "C~a~scade"
-msgstr "C~a~scada"
+msgid  "C~a~scade"
+msgstr "~C~ascada"
 
-msgid "C~l~ear"
+msgid  "C~a~se (upper/lower)"
+msgstr "Ma~y~£sculas/Min£sculas"
+
+msgid  "C~l~ear"
 msgstr "~B~orrar"
 
-msgid "C~l~ipper style"
-msgstr "Estilo C~l~ipper"
+msgid  "C~l~ipper style"
+msgstr "Estilo Clipper ~5~"
 
-msgid "C~o~mpact text"
+msgid  "C~o~mpact text"
 msgstr "C~o~mpactar el texto"
 
-msgid "Debugging Flags"
+msgid  "DJ Delorie and colaborators for porting it to DOS"
+msgstr "DJ Delorie y sus colaboradores por portarlas a DOS"
+
+msgid  "Debugging Flags"
 msgstr "Opciones de Depuraci¢n"
 
-msgid "Dec"
+msgid  "Dec"
 msgstr "Dic"
 
-msgid "December"
+msgid  "December"
 msgstr "Diciembre"
 
-msgid "Define, where your standard headers are"
+msgid  "Default global options"
+msgstr "Opciones globales por defecto"
+
+msgid  "Define, where your standard headers are"
 msgstr "Definir donde se encuentran los encabezados (headers) standard"
 
-msgid "Desktop"
+msgid  "Desired line"
+msgstr "L¡nea deseada"
+
+msgid  "Desktop"
 msgstr "Escritorio"
 
-msgid "De~b~ugging"
+msgid  "Destination directory"
+msgstr "Directorio de destino"
+
+msgid  "De~b~ugging"
 msgstr "De~p~uraci¢n"
 
-msgid "De~f~ault"
+msgid  "De~f~ault"
 msgstr "De~f~ecto"
 
-msgid "Dialogs"
+msgid  "De~f~ault global edition ..."
+msgstr "Globales por de~f~ecto p/edici¢n ..."
+
+msgid  "Dialogs"
 msgstr "Vent. de Di logo"
 
-msgid "Directories in pr~o~ject items"
+msgid  "Directories in pr~o~ject items"
 msgstr "Directorios en los items del pr~o~yecto"
 
-msgid "Directory ~n~ame"
+msgid  "Directory ~n~ame"
 msgstr "~N~ombre Directorio"
 
-msgid "Directory ~t~ree"
+msgid  "Directory ~t~ree"
 msgstr "~A~rbol de Dir."
 
-msgid "Disabled"
+msgid  "Disabled"
 msgstr "Deshabilitado"
 
-msgid "Disassembler"
+msgid  "Disassembler"
 msgstr "Desensamblador"
 
-msgid "Disassembler window"
+msgid  "Disassembler window"
 msgstr "Ventana del desensamblador"
 
-msgid "Do you really want to interrupt RHGDB?"
+msgid  "Do it yourself but now"
+msgstr "Hacerlo ud. ahora"
+
+msgid  "Do it yourself editing autoexec.bat latter"
+msgstr "Hacerlo ud. editando el autoexec.bat luego"
+
+msgid  "Do you really want to discard the changes?"
+msgstr "¨Verdaderamente desea descartar los cambios?"
+
+msgid  "Do you really want to interrupt RHGDB?"
 msgstr "¨Est  seguro que desea detener RHGDB?"
 
-msgid "Do you really want to interrupt RHIDE?"
+msgid  "Do you really want to interrupt RHIDE?"
 msgstr "¨Est  seguro que desea detener RHIDE?"
 
-msgid "Don't know how to build %s from %s"
+msgid  "Do you want to delete all the .BKP, desktop and project files?"
+msgstr "¨Desea borrar todos los archivos de respaldo y escritorio?"
+
+msgid  "Do you want to discard the changes?"
+msgstr "¨Desea descartar los cambios?"
+
+msgid  "Don't forget to update your autoexec.bat latter!"
+msgstr "­No olvide actualizar su autoexec.bat m s tarde!"
+
+msgid  "Don't know how to build %s from %s"
 msgstr "No se como crear %s a partir de %s"
 
-msgid "Drives"
+msgid  "Don't move inside ta~b~s"
+msgstr "No moverse dentro de los ta~b~s"
+
+msgid  "Don't show it next time"
+msgstr "No mostrar esto la pr¢xima vez"
+
+msgid  "Don't ~s~how it again"
+msgstr "No ~m~ostrar esto nuevamente"
+
+msgid  "Drives"
 msgstr "Discos"
 
-msgid "D~e~lete item"
+msgid  "D~e~lete item"
 msgstr "~B~orrar item"
 
-msgid "D~i~sable"
+msgid  "D~i~sable"
 msgstr "~D~eshabilitar"
 
-msgid "Edit Breakpoint"
+msgid  "Edit Breakpoint"
 msgstr "Editar Breakpoint"
 
-msgid "Edit the list of ADA options"
+msgid  "Edit the list of ADA options"
 msgstr "Edita la lista de opciones de ADA"
 
-msgid "Edit the list of fortran options"
+msgid  "Edit the list of fortran options"
 msgstr "Edita la lista de opciones de Fortran"
 
-msgid "Edit the list of pascal options"
+msgid  "Edit the list of pascal options"
 msgstr "Edita la lista de opciones de Pascal"
 
-msgid "Edit the list of reserved words for Pascal files"
+msgid  "Edit the list of reserved words for Pascal files"
 msgstr "Editar la lista de palabras reservadas para Pascal"
 
-msgid "Empty pseudo macro"
+msgid  "Editor installed succesfully%s. Run it using e.bat"
+msgstr "Editor instalado con ‚xito%s. Inv¢quelo usando e.bat"
+
+msgid  "Editor ~G~eneral ..."
+msgstr "~G~enerales del editor ..."
+
+msgid  "Empty pseudo macro"
 msgstr "Pseudo macro vac¡o"
 
-msgid "End of SDG"
+msgid  "Empty submenu"
+msgstr "Submen£ vac¡o"
+
+msgid  "End of SDG"
 msgstr "Fin de SDG"
 
-msgid "Enter the name of the 'main'-function"
+msgid  "End of SLP"
+msgstr "Fin de SLP"
+
+msgid  "End of grep search"
+msgstr "Fin de la b£squeda"
+
+msgid  "Enter the name of the 'main'-function"
 msgstr "Ingrese el nombre de la funci¢n principal (main-function)"
 
-msgid "Environment options"
+msgid  "Environment options"
 msgstr "Opciones del Entorno"
 
-msgid "Error"
+msgid  "Error"
 msgstr "Error"
 
-msgid "Error creating file "
+msgid  "Error creating autoexec.bat"
+msgstr "Error al crear el autoexec.bat"
+
+msgid  "Error creating file "
 msgstr "Error al crear el archivo "
 
-msgid "Error creating the indices for %s (or nothing found). Remove that file from the list?"
-msgstr "Errror al crear los ¡ndices para %s (o no encontrado). ¨Lo quito de la lista?"
+msgid  "Error creating the indices for %s (or nothing found). Remove that "
+"file from the list?"
+msgstr "Errror al crear los ¡ndices para %s (o no encontrado). ¨Lo quito de "
+"la lista?"
 
-msgid "Error in expression (%d)"
-msgstr "Error en el valor ingresado (%d)"
+msgid  "Error in expression (%d)"
+msgstr "Error en la expresi¢n (%d)"
 
-msgid "Error of type: %s"
-msgstr "Error del tipo: %s"
+msgid  "Error in sLisp interpreter:"
+msgstr "Error en el int‚rprete de sLisp:"
 
-msgid "Error reading desktop file"
+msgid  "Error loading menu: (%d) %s in line %d of %s."
+msgstr "Error cargando el men£: (%d) %s en la l¡nea %d de %s."
+
+msgid  "Error of type: %s"
+msgstr "Error de tipo: %s"
+
+msgid  "Error reading desktop file"
 msgstr "Error al leer el archivo de escritorio"
 
-msgid "Error reading file "
+msgid  "Error reading file "
 msgstr "Error al leer el archivo "
 
-msgid "Error while %s:"
-msgstr "Error al %s:"
+msgid  "Error reading project file"
+msgstr "Error al leer el archivo de proyecto"
 
-msgid "Error while loading the keybinding file %s\n"
+msgid  "Error reading the file list"
+msgstr "Error al leer la lista de archivos"
+
+msgid  "Error while %s:"
+msgstr "Error mientras %s:"
+
+msgid  "Error while loading the keybinding file %s\n"
 msgstr "Error al leer el archivo de asignaciones del teclado '%s'\n"
 
-msgid "Error writing file "
+msgid  "Error while loading the keyboard binding"
+msgstr "Error al cargar la configuraci¢n de teclado"
+
+msgid  "Error while reading"
+msgstr "Error al leer"
+
+msgid  "Error writing file "
 msgstr "Error al escribir el archivo "
 
-msgid "Error: "
+msgid  "Error: "
 msgstr "Error: "
 
-msgid "Error: can't find the Node info"
+msgid  "Error: can't find the Node info"
 msgstr "Error: no puedo hallar el Nodo"
 
-msgid "Evaluate and modify"
+msgid  "Evaluate and modify"
 msgstr "Evaluar y modificar"
 
-msgid "Evaluate or modify an expression"
+msgid  "Evaluate or modify an expression"
 msgstr "Evaluar o modificar una expresi¢n"
 
-msgid "Execute one instruction"
+msgid  "Ever interpret shift+arrow as ~m~ovement"
+msgstr "Siempre interpretar shift+flecha como ~m~ovimiento"
+
+msgid  "Execute one instruction"
 msgstr "Ejecutar una instrucci¢n"
 
-msgid "Execute one instruction (No display swap)"
+msgid  "Execute one instruction (No display swap)"
 msgstr "Ejecutar una instrucci¢n (no cambiar pantalla)"
 
-msgid "Expand all tabs to spaces"
+msgid  "Expand all tabs to spaces"
 msgstr "Expandir todos los tabs usando espacios"
 
-msgid "E~r~ror program"
+msgid  "Export Options"
+msgstr "Opciones para exportar"
+
+msgid  "Export file as"
+msgstr "Exportar archivo como"
+
+msgid  "Extra characters in line"
+msgstr "Caracteres extra en la l¡nea"
+
+msgid  "Extra screen savers (around 160 Kb)"
+msgstr "Salva pantallas extra (aprox. 160 Kb)"
+
+msgid  "E~r~ror program"
 msgstr "Programa de E~r~ror"
 
-msgid "E~v~al"
+msgid  "E~v~al"
 msgstr "E~v~aluar"
 
-msgid "E~x~act"
+msgid  "E~v~er use RegEx"
+msgstr "Siempre usar E~x~pReg"
+
+msgid  "E~x~act"
 msgstr "E~x~acto"
 
-msgid "E~x~it"
+msgid  "E~x~it"
 msgstr "~S~alir"
 
-msgid "E~x~pand all tabs"
+msgid  "E~x~pand all tabs"
 msgstr "E~x~pandir todos los tabs"
 
-msgid "Fast       Medium      Slow"
+msgid  "E~x~port as HTML ..."
+msgstr "E~x~portar como HTML ..."
+
+msgid  "E~x~ternal options"
+msgstr "Opciones e~x~ternas"
+
+msgid  "Failed to revert the read-only status, you won't be able to "
+"overwrite this file"
+msgstr "No pude revertir el atributo de solo lectura, ud. no podr  "
+"sobreescribir este archivo"
+
+msgid  "Failed, disabling all or part of the Win9x specific stuff"
+msgstr "Error, deshabilitando todo o parte del soporte espec¡fico para Win9x"
+
+msgid  "Fast       Medium      Slow"
 msgstr "R pido     Medio     Lento"
 
-msgid "Feb"
+msgid  "Feb"
 msgstr "Feb"
 
-msgid "February"
+msgid  "February"
 msgstr "Febrero"
 
-msgid "File"
+msgid  "File"
 msgstr "Archivo"
 
-msgid "File %s exist. Overwrite ?"
+msgid  "File %s exist. Overwrite ?"
 msgstr "El archivo existe, ¨lo sobreescribo?"
 
-msgid "File/L~i~ne"
-msgstr "Archivo/L¡~n~ea"
-
-msgid "Files to be searched for syntax help"
-msgstr "Archivos a usar en la b£squeda de ayuda para la sintaxis"
-
-msgid "Find"
-msgstr "Buscar"
-
-msgid "Flags only when compiling ADA files"
-msgstr "Opciones usadas solo cuando se compilan archivos en ADA"
-
-msgid "Flags only when compiling Fortran files"
-msgstr "Opciones usadas solo cuando se compilan archivos en Fortran"
-
-msgid "Flags only when compiling Pascal files"
-msgstr "Opciones usadas solo cuando se compilan archivos en Pascal"
-
-msgid "Focused register"
-msgstr "Registro seleccionado"
-
-msgid "For this line is no code generated"
-msgstr "No hay c¢digo generado para esta l¡nea"
-
-msgid "Fortran Flags"
-msgstr "Opciones de Fortran"
-
-msgid "Fortra~n~-Flags"
-msgstr "Opciones de ~F~ortran"
-
-msgid "Frame"
-msgstr "Marco"
-
-msgid "Frame disabled"
-msgstr "Marco inactivo"
-
-msgid "Frame icons"
-msgstr "Iconos del Marco"
-
-msgid "Frame/background"
-msgstr "Marco/Fondo"
-
-msgid "Function call stack"
-msgstr "Llamadas en la pila"
-
-msgid "Fu~n~ction"
-msgstr "~F~unci¢n"
-
-msgid "Fu~z~zy value"
-msgstr "~V~alor difuso"
-
-msgid "F~u~nction"
-msgstr "~F~unci¢n"
-
-msgid "GNU C compiler"
-msgstr "Compilador C de GNU"
-
-msgid "GNU C++ compiler"
-msgstr "Compilador C++ de GNU"
-
-msgid "GNU Fortran compiler"
-msgstr "Compilador Fortran de GNU"
-
-msgid "GNU Pascal compiler"
-msgstr "Compilador Pascal de GNU"
-
-msgid "GNU assembler"
-msgstr "Ensamblador de GNU"
-
-msgid "GPC Reserved words"
-msgstr "Palabras reservadas para GPC"
-
-msgid "Get a list with all available syntax help topics"
-msgstr "Ver una lista de todos los t¢picos de ayuda de sintaxis disponibles"
-
-msgid "Get help about using the helpsystem"
-msgstr "Ver la ayuda de como se usa el sistema de ayuda"
-
-msgid "Global Options"
-msgstr "Opciones globales"
-
-msgid "Go To"
-msgstr "Ir a"
-
-msgid "Go to cursor (No display swap)"
-msgstr "Ir hasta cursor (No rep. pan.)"
-
-msgid "Goto Line"
-msgstr "Ir a l¡nea"
-
-msgid "Goto the line"
-msgstr "Ir a la l¡nea"
-
-msgid "Goto ~f~unction"
-msgstr "Ir a la ~f~unci¢n"
-
-msgid "Gray Editor"
-msgstr "Editores grises"
-
-msgid "Gray Windows"
-msgstr "Ventanas grises"
-
-msgid "G~D~B"
-msgstr "G~D~B"
-
-msgid "Help"
-msgstr "Ayuda"
-
-msgid "Help Control"
-msgstr "Control de la ayuda"
-
-msgid "Help for the function under the cursor"
-msgstr "Ayuda para la funci¢n que est  debajo del cursor"
-
-msgid "Help ~a~bout help"
-msgstr "~A~yuda de ayudas"
-
-msgid "Hide '*~N~ode' word"
-msgstr "Ocultar los *~N~ode"
-
-msgid "Hide real ~l~ink name"
-msgstr "Ocultar los ~l~inks"
-
-msgid "Highlight"
-msgstr "Resaltado"
-
-msgid "History bar icons"
-msgstr "Ico. Scr. de Hist."
-
-msgid "History bar page"
-msgstr "P g. Scr. de Hist."
-
-msgid "History button"
-msgstr "Bot¢n de Historia"
-
-msgid "History sides"
-msgstr "Lados de Historia"
-
-msgid "Hi~s~tory"
-msgstr "Hi~s~toria"
-
-msgid "Hmmm ... I can't find any function, are you sure?"
-msgstr "Hmmm ... no puedo encontrar ninguna funci¢n, ¨est  seguro?"
-
-msgid "H~i~de"
-msgstr "Ocu~l~tar"
-
-msgid "INFO files for syntaxhelp"
-msgstr ".INFO usados para ayuda de sintaxis"
-
-msgid "In current ~t~opic"
-msgstr "En el ~i~tem actual"
-
-msgid "In section %s"
-msgstr "En la secci¢n %s"
-
-msgid "In the ~f~ile"
-msgstr "En todo el ~a~rchivo"
-
-msgid "In ~a~ll files"
-msgstr "En ~t~odos los archivos"
-
-msgid "Include Directories"
-msgstr "Directorios de Include"
-
-msgid "Include files for "
-msgstr "Includes de "
-
-msgid "Index for s~y~ntax help"
-msgstr "Indice de ayuda de sinta~x~is"
-
-msgid "Inf Find"
-msgstr "B£squeda en Infos"
-
-msgid "InfView - File: %s - Node: %s"
-msgstr "InfView - Archivo: %s - Nodo: %s"
-
-msgid "InfView Bookmarks"
-msgstr "Bookmarks de InfView"
-
-msgid "InfView Configuration"
-msgstr "Configuraci¢n de InfView"
-
-msgid "Info Viewer"
-msgstr "Visor de Infos"
-
-msgid "Info viewer"
-msgstr "Visor de Infos"
-
-msgid "Information"
-msgstr "Informaci¢n"
-
-msgid "Information pane"
-msgstr "Panel de Informaci¢n"
-
-msgid "Input arrow"
-msgstr "Cursor de Ingreso"
-
-msgid "Input normal"
-msgstr "Ingreso normal"
-
-msgid "Input selected"
-msgstr "Ingreso seleccio."
-
-msgid "Invalid character in input"
-msgstr "Caracter inv lido ingresado"
-
-msgid "Invalid directory"
-msgstr "Directorio Inv lido"
-
-msgid "Invalid drive or directory"
-msgstr "Disco o directorio inv lido"
-
-msgid "Invalid file name."
-msgstr "Nombre de archivo Inv lido."
-
-msgid "Invalid project-file %s(%s)"
-msgstr "Archivo de Proyecto inv lido %s(%s)"
-
-msgid "Inverse"
-msgstr "Invertido"
-
-msgid "Jan"
-msgstr "Ene"
-
-msgid "January"
-msgstr "Enero"
-
-msgid "Jul"
-msgstr "Jul"
-
-msgid "July"
-msgstr "Julio"
-
-msgid "Jump to function"
-msgstr "Saltar a una funci¢n"
-
-msgid "Jun"
-msgstr "Jun"
-
-msgid "June"
-msgstr "Junio"
-
-msgid "Label normal"
-msgstr "Etiqueta normal"
-
-msgid "Label selected"
-msgstr "Etiqueta seleccio."
-
-msgid "Label shortcut"
-msgstr "Etiqueta shortcut"
-
-msgid "Libraries"
-msgstr "Librer¡as"
-
-msgid "Library Directories"
-msgstr "Directorios de Librer¡as"
-
-msgid "Line number"
-msgstr "N£mero de l¡nea"
-
-msgid "Line too long, cut it?"
-msgstr "L¡nea demasiado larga, ¨la corto?"
-
-msgid "Line/Function"
-msgstr "L¡nea/Funci¢n"
-
-msgid "List divider"
-msgstr "Divisor de Lista"
-
-msgid "List focused"
-msgstr "Lista activa"
-
-msgid "List normal"
-msgstr "Lista normal"
-
-msgid "List of functions"
-msgstr "Lista de funciones"
-
-msgid "List of ~F~unctions"
-msgstr "Lista de ~F~unciones"
-
-msgid "List selected"
-msgstr "Lista seleccio."
-
-msgid "Load the options from a project file"
-msgstr "Carga todas las opciones desde un archivo de proyecto"
-
-msgid "Loa~d~ options"
-msgstr "~R~ecuperar opciones"
-
-msgid "Local Options"
-msgstr "Opciones locales"
-
-msgid "L~i~nker Options"
-msgstr "Opciones del L~i~nker"
-
-msgid "Macro definition don't start with Trigger"
-msgstr "Definici¢n de macro que no comienza con Trigger"
-
-msgid "Macro definition without mode keyword"
-msgstr "Definici¢n de macro que no contiene la palabra 'mode'"
-
-msgid "Mar"
-msgstr "Mar"
-
-msgid "March"
-msgstr "Marzo"
-
-msgid "Match found at line %d column %d."
-msgstr "Complemento hallado en la l¡nea %d columna %d."
-
-msgid "May"
-msgstr "May"
-
-msgid "Menu entries for handling with files"
-msgstr "Items del men£ para el manejo de archivos"
-
-msgid "Menus"
-msgstr "Menues"
-
-msgid "Message Window"
-msgstr "Ventana de Mensajes"
-
-msgid "Messages Window"
-msgstr "Ventana de Mensajes"
-
-msgid "Messages to stderr:"
-msgstr "Mensajes desde stderr:"
-
-msgid "Messages to stdout:"
-msgstr "Mensajes desde stdout:"
-
-msgid "Missing ="
-msgstr "No encontre el ="
-
-msgid "Missing Trigger sequence or too short"
-msgstr "Secuencia de Trigger muy corta o no colocada"
-
-msgid "Missing end"
-msgstr "No encontr‚ el final"
-
-msgid "Missing end in pseudo macro"
-msgstr "No puedo hallar el fin del pseudo macro"
-
-msgid "Missing start"
-msgstr "No encontr‚ el comienzo"
-
-msgid "Missing start in pseudo macro"
-msgstr "No puedo hallar el comienzo del pseudo macro"
-
-msgid "Mouse options"
-msgstr "Opciones del rat¢n"
-
-msgid "Move"
-msgstr "Mover"
-
-msgid "Name of the main function"
-msgstr "Nombre de la funci¢n principal"
-
-msgid "Name of the main target"
-msgstr "Nombre del programa"
-
-msgid "New value"
-msgstr "Nuevo valor"
-
-msgid "No INFO files for syntax help defined"
-msgstr "No se han definido .INFO para ayuda de sintaxis"
-
-msgid "No file cachin~g~"
-msgstr "no memori~z~ar archivos"
-
-msgid "No file ~c~aching"
-msgstr "No ~c~achear archivos"
-
-msgid "No match found"
-msgstr "No encontr‚ el complemento"
-
-msgid "No persistent b~l~ocks"
-msgstr "b~l~oques no persistentes"
-
-msgid "No project"
-msgstr "Sin proyecto"
-
-msgid "None"
-msgstr "Ninguno"
-
-msgid "Normal"
-msgstr "Normal"
-
-msgid "Not enough memory for this operation"
-msgstr "No hay suficiente memoria para esta operaci¢n"
-
-msgid "Not enough memory for this operation."
-msgstr "No hay suficiente memoria para esta operaci¢n"
-
-msgid "Nov"
-msgstr "Nov"
-
-msgid "November"
-msgstr "Noviembre"
-
-msgid "Object Directories"
-msgstr "Directorios de Objetos (.o)"
-
-msgid "Oct"
-msgstr "Oct"
-
-msgid "October"
-msgstr "Octubre"
-
-msgid "Only #~i~nclude \"...\" as dependencies"
-msgstr "Solo los #~i~nclude \"...\" como dependencias"
-
-msgid "Open a file"
+msgid  "File Open"
 msgstr "Abrir archivo"
 
-msgid "Open file"
-msgstr "Abrir Archivo"
+msgid  "File Open options"
+msgstr "Opciones de `Abrir Archivo'"
 
-msgid "Open the file %s"
-msgstr "Abrir el archivo %s"
+msgid  "File allready in project (or another with the same name)"
+msgstr "El archivo ya est  en el proyecto (u otro con el mismo nombre)"
 
-msgid "Open ~p~roject"
-msgstr "~A~brir proyecto"
+msgid  "File name in path:"
+msgstr "Nombre de archivo en la ruta:"
 
-msgid "Optimal ~F~ill"
-msgstr "~R~ellenado ¢ptimo"
+msgid  "File ~o~pen dialog ..."
+msgstr "D~e~l di logo `Abrir Archivo' ..."
 
-msgid "Optimization Flags"
-msgstr "Opciones de Optimizaci¢n"
+msgid  "File/L~i~ne"
+msgstr "Archivo/L¡~n~ea"
 
-msgid "Options"
-msgstr "Opciones"
+msgid  "Files to be searched for syntax help"
+msgstr "Archivos a usar en la b£squeda de ayuda para la sintaxis"
 
-msgid "Options for syntax help"
-msgstr "Opsiones para la ayuda de sintaxis"
+msgid  "Files to ~s~earch"
+msgstr "Archivo~s~ a buscar"
 
-msgid "Options for the syntax help"
-msgstr "Opciones para la ayuda de sintaxis"
+msgid  "Find"
+msgstr "Buscar"
 
-msgid "Origin"
-msgstr "Origen"
+msgid  "First in the ~l~ist"
+msgstr "Es el primero en la ~l~ista"
 
-msgid "Output from GDB"
-msgstr "Salida de GDB"
+msgid  "First select a file"
+msgstr "Primero seleccione un archivo"
 
-msgid "O~K~"
-msgstr "O~K~"
+msgid  "Flags only when compiling ADA files"
+msgstr "Opciones usadas solo cuando se compilan archivos en ADA"
 
-msgid "O~f~f"
-msgstr "Apa~g~ado"
+msgid  "Flags only when compiling Fortran files"
+msgstr "Opciones usadas solo cuando se compilan archivos en Fortran"
 
-msgid "O~p~tions"
-msgstr "~O~pciones"
+msgid  "Flags only when compiling Pascal files"
+msgstr "Opciones usadas solo cuando se compilan archivos en Pascal"
 
-msgid "Pascal Flags"
-msgstr "Opciones de Pascal"
+msgid  "Focused register"
+msgstr "Registro seleccionado"
 
-msgid "Paste text from the Windows clipboard"
-msgstr "Inserta texto proveniente del portapapeles de Windows"
+msgid  "For djgpp programmers"
+msgstr "Para programadores con djgpp"
 
-msgid "Pas~t~e from Windows Clipboard"
-msgstr "~I~nsertar desde el portapapeles de Windows"
+msgid  "For programmers"
+msgstr "Para programadores"
 
-msgid "Pathlist for source files"
-msgstr "Lista de directorios para los fuentes"
+msgid  "For this line is no code generated"
+msgstr "No hay c¢digo generado para esta l¡nea"
 
-msgid "Pa~s~cal style"
-msgstr "Estilo Pa~s~cal"
+msgid  "Fortran Flags"
+msgstr "Opciones de Fortran"
 
-msgid "Please wait"
-msgstr "Por favor espere"
-
-msgid "Powerful builtin calculator"
-msgstr "Poderosa calculadora"
-
-msgid "Prev. ~H~ist."
-msgstr "Ant. en ~H~ist."
-
-msgid "Previ~o~us message"
-msgstr "Mensaje ~A~nterior"
-
-msgid "Primary ~f~ile"
-msgstr "Archivo ~p~rincipal"
-
-msgid "Profile Editor"
-msgstr "~V~elocidad del editor"
-
-msgid "Program arguments"
-msgstr "Par metros del programa"
-
-msgid "Program exit code: %d (0x%04x)"
-msgstr "C¢digo de salida del programa %d (0x%04X)"
-
-msgid "Program has received signal: "
-msgstr "El programa ha recibido una se¤al: "
-
-msgid "Project Window"
-msgstr "Ventana del Proyecto"
-
-msgid "Pro~j~ect"
-msgstr "~P~royecto"
-
-msgid "Puzzle"
-msgstr "Rompecabezas"
-
-msgid "P~a~scal Reserved words"
-msgstr "Palabras reserv. p/P~a~scal"
-
-msgid "P~a~scal-Flags"
-msgstr "Opciones de Pa~s~cal"
-
-msgid "RHGDB is a source level debugger"
-msgstr "RHGDB es un depurador a nivel de c¢digo fuente"
-
-msgid "RHIDE Help ~i~ndex"
-msgstr "~I~ndice de RHIDE"
-
-msgid "RHIDE is an Integrated Development Environment"
-msgstr "RHIDE es un Entorno de Desarrollo Integrado"
-
-msgid "Read from file"
-msgstr "Leer desde un archivo"
-
-msgid "Read options from file"
-msgstr "Leer las opciones desde un archivo"
-
-msgid "Read options from project"
-msgstr "Leer las opciones desde un proyecto"
-
-msgid "Read words from file"
-msgstr "Leer palabras desde un archivo"
-
-msgid "Refresh desk~t~op"
-msgstr "Redibuja el Escri~t~orio"
-
-msgid "Regular expression to list functions"
-msgstr "Expresiones regulares para la lista de funciones"
-
-msgid "Remove '%s' from the project"
-msgstr "Quito '%s' del proyecto"
-
-msgid "Replace"
-msgstr "Reemplazar"
-
-msgid "Replace as much as possible spaces with tabs"
-msgstr "Reemplazar todos los espacios que sean posibles por tabs"
-
-msgid "Replace this occurence?"
-msgstr "¨Reemplazo aqu¡?"
-
-msgid "Reserved words"
-msgstr "Palabras ~R~eservadas"
-
-msgid "Reset the debugged program"
-msgstr "Volver al estado inicial el programa que se esta depurando"
-
-msgid "Re~c~tangle"
-msgstr "Re~c~t ngulo"
-
-msgid "Ro~w~ cursor"
-msgstr "cursor de L¡~n~ea"
-
-msgid "Run the recorded macro"
-msgstr "Ejecuta las acciones grabadas en el macro"
-
-msgid "Running GREP (arguments are prompted)"
-msgstr "Ejecutando GREP (se pedir n los par metros)"
-
-msgid "SDG Parameters"
-msgstr "Par metros del SDG"
-
-msgid "Save all the options to a project file"
-msgstr "Graba todas las opciones en un archivo de proyecto"
-
-msgid "Save a~l~l"
-msgstr "Guardar ~t~odo"
-
-msgid "Save file as"
-msgstr "Grabar como"
-
-msgid "Save options to a project"
-msgstr "Grabar las opciones a un proyecto"
-
-msgid "Save options to file"
-msgstr "Grabar las opciones en un archivo"
-
-msgid "Save pro~j~ect only when closing"
-msgstr "Guardar el pro~y~ecto solo al salir"
-
-msgid "Save te~x~t palette"
-msgstr "Guardar la paleta de modo te~x~to"
-
-msgid "Save to file"
-msgstr "Grabar en un archivo"
-
-msgid "Save untitled file?"
-msgstr "¨Grabo el archivo sin t¡tulo?"
-
-msgid "Saved: %s (%ld bytes)."
-msgstr "Grabado %s (%ld bytes de longitud)."
-
-msgid "Scan code out of range"
-msgstr "C¢digo de scan fuera de rango"
-
-msgid "Scope"
-msgstr "Ambito"
-
-msgid "Scroll bar icons"
-msgstr "Icono de Scroll bar"
-
-msgid "Scroll bar page"
-msgstr "P g. de Scroll bar"
-
-msgid "Search for file '%s'\n"
-msgstr "Buscar el archivo '%s'\n"
-
-msgid "Search o~p~tions"
-msgstr "~O~pciones de b£squeda"
-
-msgid "Search string not found."
-msgstr "No se pudo hallar el texto."
-
-msgid "Search ~m~ethode"
-msgstr "~M~‚todo de b£squeda"
-
-msgid "Section out of range"
-msgstr "Secci¢n fuera de rango"
-
-msgid "Select a function"
-msgstr "Seleccionar una funci¢n"
-
-msgid "Select a function from the current editor"
-msgstr "Selecciona una funci¢n del fuente en edici¢n"
-
-msgid "Select a functions"
-msgstr "Seleccionar una funci¢n"
-
-msgid "Select a project"
-msgstr "Seleccionar un proyecto"
-
-msgid "Select a topic"
-msgstr "Seleccionar un t¢pico"
-
-msgid "Selected"
-msgstr "Seleccionado"
-
-msgid "Selected disabled"
-msgstr "Selec. Inactivo"
-
-msgid "Selected text"
-msgstr "Texto seleccionado"
-
-msgid "Sep"
-msgstr "Sep"
-
-msgid "September"
-msgstr "Septiembre"
-
-msgid "Set some options for the mouse"
-msgstr "Selecciona opciones relacionadas al rat¢n (mouse)"
-
-msgid "Set the editor options"
-msgstr "Selecciona las opciones del editor"
-
-msgid "Set the primary file (only for GPC with '--automake'!!!)"
-msgstr "Selecciona el archivo principal (solo para GPC con automake!)"
-
-msgid "Set ~G~lobal"
-msgstr "Seteos ~g~lobales"
-
-msgid "Set/Clear a breakpoint at the current line"
-msgstr "Colocar/Quitar un breakpoint (punto de parada) en la l¡nea actual"
-
-msgid "Several menu enries for getting help"
-msgstr "Varios items de men£ para obtener ayuda"
-
-msgid "Several menu entries for getting help"
-msgstr "Varios items de men£ para obtener ayuda"
-
-msgid "Shortcut"
-msgstr "Shortcut"
-
-msgid "Shortcut selected"
-msgstr "Shortcut selec."
-
-msgid "Show Diassemb~l~er Window when needed"
-msgstr "Mostrar la ventana de desesamblador cuando es necesario"
-
-msgid "Show G~D~B commands"
-msgstr "Mostrar los c~o~mandos del GDB"
-
-msgid "Show a disassembler window at the current execution point"
-msgstr "Mostrar una ventana de desensablado a partir del punto actual"
-
-msgid "Show a list with all functions"
-msgstr "Mostrar una lista con todas las funciones"
-
-msgid "Show the GPL"
-msgstr "Mostrar el GPL"
-
-msgid "Show/Modify the breakpoints"
-msgstr "Mostrar/Modificar los breakpoints (puntos de parada)"
-
-msgid "Shows a window with the function call stack"
-msgstr "Muestra las llamadas a funciones de la pila (stack)"
-
-msgid "Shows the last opened help"
-msgstr "Muestra la £ltima ayuda abierta"
-
-msgid "Sho~w~ user screen after exit"
-msgstr "~M~ostrar la pantalla de usuario al salir"
-
-msgid "Sorry can't find the string"
-msgstr "Lo lamento, no puedo hallar la cadena de caracteres"
-
-msgid "Source Directories"
-msgstr "Directorios de Fuentes (.cc)"
-
-msgid "Source has been modified. Rebuild it?"
-msgstr "El fuente ha sido modificado. ¨Grabo?"
-
-msgid "Speed: %f lines/second"
-msgstr "Velocidad: %f l¡neas/segundo"
-
-msgid "Standard Include Directories"
-msgstr "Directorios de los Encabezados"
-
-msgid "Start the FSDB debugger"
-msgstr "Inicia el debugger (FSDB)"
-
-msgid "Start the GDB debugger"
-msgstr "Inicia el debugger (GDB)"
-
-msgid "Start the recording for a macro"
-msgstr "Comienza a grabar las acciones del editor en un macro"
-
-msgid "Starting SDG:"
-msgstr "Comenzando SDG:"
-
-msgid "Stat failed."
-msgstr "­Fallo al usar 'stat'!"
-
-msgid "Stat filed."
-msgstr "­Fallo al usar 'stat'!"
-
-msgid "Static text"
-msgstr "Texto"
-
-msgid "Step over (No display swap)"
-msgstr "Paso sin entrar (No rep. pan.)"
-
-msgid "Step over function calls"
-msgstr "Caminar sobre los llamados a funciones"
-
-msgid "Step over function calls (No display swap)"
-msgstr "Caminar sobre los llamados a funciones (no cambiar pantalla)"
-
-msgid "Stop the recording for a macro"
-msgstr "Para de grabar las acciones en el macro"
-
-msgid "Stops execution at the cursor"
-msgstr "Frenar la ejecuci¢n en la posici¢n del cursor"
-
-msgid "Stops execution at the cursor (No display swap)"
-msgstr "Ejecutar hasta la posici¢n del cursor (no cambiar pantalla)"
-
-msgid "Su Mo Tu We Th Fr Sa"
-msgstr "Do Lu Ma Mi Ju Vi Sa"
-
-msgid "Submenu for compiling and/or creating your program/library"
-msgstr "Submen£ para compilar y/o crear su programa/librer¡a"
-
-msgid "Submenu for dealing with windows"
-msgstr "Submen£ para el manejo de ventanas"
-
-msgid "Submenu for debugging your program"
-msgstr "Submen£ para depurar su programa"
-
-msgid "Submenu for handling with macros"
-msgstr "Submen£ para el manejo de macros"
-
-msgid "Submenu for handling your projects"
-msgstr "Submen£ para el manejo de su proyecto"
-
-msgid "Submenu for most of the options of RHIDE"
-msgstr "Submen£ para la mayor parte de las opciones de RHIDE"
-
-msgid "Submenu for running your program"
-msgstr "Submen£ para ejecutar su programa"
-
-msgid "Submenu for searching/replacing text"
-msgstr "Submen£ para la b£squeda y reemplazo de texto"
-
-msgid "Submenu for syntax help"
-msgstr "Submen£ de ayuda de sintaxis"
-
-msgid "Submenu for things dealing with the editor"
-msgstr "Submen£ para cosas relacionadas con el editor"
-
-msgid "Syntax Highlight"
-msgstr "Resaltado de sintaxis"
-
-msgid "Syntax ~H~ighlight"
-msgstr "Resaltado de ~S~intaxis"
-
-msgid "S~a~ve as UNIX..."
-msgstr "Gr~a~bar como UNIX ..."
-
-msgid "S~a~ve as..."
-msgstr "Grabar ~c~omo ..."
-
-msgid "S~e~t Local"
-msgstr "S~e~teos locales"
-
-msgid "S~h~ell"
-msgstr "S~h~ell"
-
-msgid "S~t~andard headers"
-msgstr "~E~ncabezados standard"
-
-msgid "Tag Table"
-msgstr "Tag Table"
-
-msgid "Text "
-msgstr "Texto "
-
-msgid "The Error was: %s\n"
-msgstr "El error fue: %s\n"
-
-msgid "The desktop file belongs to another version."
-msgstr "El archivo de escritorio es de otra versi¢n del editor."
-
-msgid "The desktop file cannot be used, because it was created by a newer version of RHIDE"
-msgstr "El archivo de escritorio no puede ser usado pues fue creado por una versi¢n m s nueva de RHIDE"
-
-msgid "The desktop file cannot be used, because of a new format"
-msgstr "El archivo de escritorio no puede ser usado pues usa un formato anterior"
-
-msgid "The error was : "
-msgstr "El error fue: "
-
-msgid "The item '%s' is already in your project"
-msgstr "El elemento '%s' ya est  en el proyecto"
-
-msgid "The main index of the RHIDE help"
-msgstr "El ¡ndice principal de la ayuda de RHIDE"
-
-msgid "The main index of the libc reference"
-msgstr "El ¡ndice principal de la ayuda de la libc"
-
-msgid "The selected breakpoint is invalid, probably this file is not compiled with debugging information or for this line is no code generated."
-msgstr "El breakpoint seleccionado es inv lido, probablemente este archivo no fue compilado con informaci¢n de depuraci¢n o bien el compilador no gener¢ c¢digo para esta l¡nea (la optimiz¢)."
-
-msgid "There are only %d parameters for GREP. Continue ?"
-msgstr "Hay solo %d par metros para GREP. ¨Continuo?"
-
-msgid "There is an unmatched quote in your arguments"
-msgstr "Hay una comilla sin cerra en sus par metros"
-
-msgid "There were some errors"
-msgstr "Hubieron algunos errores"
-
-msgid "This breakpoint could not enabled, because you are running under Windows 3.1x and there the number of breakpoints is limited to 3"
-msgstr "Este breakpoint no puede ser colocado debido a que Ud. est  usando Win 3.1x y el n"
-
-msgid "This breakpoint could not enabled, because you are running under Windows 3.1x and there the number ofbreakpoints is limited to 3"
-msgstr "Este breakpoint no puede ser colocado debido a que Ud. est  usando Win 3.1x y el n"
-
-msgid "This is %s. Copyright (c) 1996 by Robert H”hne\n"
-msgstr "Esto es %s. Copyright (C) por Robert H”hne, 1996\n"
-
-msgid "This is %s. Copyright (c) 1996-1998 by Robert H”hne\n"
-msgstr "Esto es %s. Copyright (c) 1996-1998 por Robert H”hne\n"
-
-msgid "This program has no usable debugging information. Try to compile it with the -g switch."
-msgstr "Este programa no posee informaci¢n de depuraci¢n que sea £til. Intente compilando con la opci¢n -g."
-
-msgid "This video mode (0x%03x) is not supported by the Turbo Vision library"
-msgstr "El modo de video (0x%03x)  no es soportado por la librer¡a Turbo Vision"
-
-msgid "To a~l~l"
-msgstr "a ~T~odos"
-
-msgid "Too many files."
-msgstr "Demasiados archivos."
-
-msgid "Trace into (No display swap)"
-msgstr "Paso entrando (No rep. pan.)"
-
-msgid "Transparent Blocks"
-msgstr "Bloques Transparentes"
-
-msgid "Tra~n~sparent Blocks"
-msgstr "Bloques Tra~n~sparentes"
-
-msgid "Type EXIT to return..."
-msgstr "Tipee EXIT para volver ..."
-
-msgid "T~o~ all"
-msgstr "a ~T~odos"
-
-msgid "Unchanged register"
-msgstr "Registro no modificado"
-
-msgid "Underline"
-msgstr "Subrayado"
-
-msgid "Unhandled redo"
-msgstr "­Redo no soportado!"
-
-msgid "Unhandled syntax highlight"
-msgstr "­Resaltado de sintaxis no soportado!"
-
-msgid "Unhandled undo"
-msgstr "­Undo no soportado!"
-
-msgid "Untitled"
-msgstr "Sin T¡tulo"
-
-msgid "Use no shadows"
-msgstr "No usar sombras"
-
-msgid "Use ~s~tandard libraries"
-msgstr "Usar librer¡a ~s~tandard"
-
-msgid "User"
-msgstr "Usuario"
-
-msgid "User Reserved words"
-msgstr "Palabras reservadas de Usuario"
-
-msgid "Us~e~ RCS"
-msgstr "Usar R~C~S"
-
-msgid "U~s~e dual display"
-msgstr "U~s~ar dos monitores"
-
-msgid "Value not in the range %d to %d"
-msgstr "Valor fuera del rango %d a %d"
-
-msgid "Value not in the range %ld to %ld"
-msgstr "Valor fuera del rango %ld a %ld"
-
-msgid "Value not in the range %uld to %uld"
-msgstr "Valor fuera del rango %uld a %uld"
-
-msgid "Warning"
-msgstr "Advertencia"
-
-msgid "Warning Flags"
-msgstr "Opciones de Warning"
-
-msgid "Warning: "
-msgstr "Cuidado: "
-
-msgid "Warning: %s is write protected"
-msgstr "Cuidado: %s est  protegido contra escritura"
-
-msgid "Watch"
-msgstr "Visor"
-
-msgid "Watches"
-msgstr "Visores"
-
-msgid "WindowList"
-msgstr "Lista de Ventanas"
-
-msgid "Write to file"
-msgstr "Guardar a un archivo"
-
-msgid "Wrong desktop file."
-msgstr "Archivo de escritorio incorrecto."
-
-msgid "Wrong mode definition in pseudo macro."
-msgstr "Definici¢n de 'mode' err¢nea en un pseudo macro."
-
-msgid "You can give here only a valid filename for a Pascal source file"
-msgstr "Ud. solo puede escribir el nombre de un archivo Pascal aqu¡"
-
-msgid "You can type a character here"
-msgstr "Ud. puede ingresar un caracter aqu¡"
-
-msgid "You can type a string here"
-msgstr "Ud. puede ingresar una cadena de caracteres aqu¡"
-
-msgid "You can type a value here"
-msgstr "Ud. puede ingresar un valor aqu¡"
-
-msgid "You can't paste a rectangle crossing the end of the file"
-msgstr "No se puede pegar un rect ngulo que cruce el fin del archivo"
-
-msgid "You have already 3 breakpoints set and under Windows 3.1 the number of breakpoints is limited to 3"
-msgstr "Ud. ya posee 3 breakpoints que es lo m ximo posible bajo Windows 3.1x"
-
-msgid "You have already 3 breakpoints set and under Windows 3.1x the number of breakpoints is limited to 3"
-msgstr "Ud. ya posee 3 breakpoints que es lo m ximo posible bajo Windows 3.1x"
-
-msgid "You must type a character here"
-msgstr "Ud. debe ingresar una cadena de caracteres aqu¡"
-
-msgid "You must type a string here"
-msgstr "Ud. debe ingresar una cadena de caracteres aqu¡"
-
-msgid "You must type a value here"
-msgstr "Ud. debe ingresar un valor a"
-
-msgid "[ without ]"
-msgstr "[ sin ]"
-
-msgid "\n No help available in this context."
-msgstr "\n No hay ayuda disponible para esta parte del programa."
-
-msgid "\n Sorry I can't find this link (press ALT-F1).\n"
-msgstr "\n Lo lamento no puedo encontrar este nodo (presione ALT-F1).\n"
-
-msgid "\n Sorry i can't find this link (press ALT-F1).\n"
-msgstr "\n Lo lamento, no puedo hallar la ayuda (presione ALT-F1 para volver atr s).\n"
-
-msgid "a projectfile must be given\n"
-msgstr "debe indicarse un proyecto\n"
-
-msgid "about RH~G~DB"
-msgstr "~a~cerca de RHGDB"
-
-msgid "about RH~I~DE"
-msgstr "~a~cerca de RHIDE"
-
-msgid "add an item to the project"
-msgstr "agrega un elemento al proyecto"
-
-msgid "all dependencies in makefile"
-msgstr "todas las dependencias en el archivo 'makefile'"
-
-msgid "all dependencies in ~m~akefile"
-msgstr "todas las dependecias en ~m~akefile"
-
-msgid "and updating it"
-msgstr "y poni‚ndolo al d¡a"
-
-msgid "arguments for GREP"
-msgstr "Par metros para GREP"
-
-msgid "based on GDB "
-msgstr "basado en GDB "
-
-msgid "build the project completely new"
-msgstr "rehace todo el proyecto de nuevo"
-
-msgid "builtin C"
-msgstr "C interno"
-
-msgid "builtin assembler"
-msgstr "ensamblador interno"
-
-msgid "builtin linker"
-msgstr "linker interno"
-
-msgid "change the name of the project-target"
-msgstr "cambia el nombre del programa, o biblioteca, a generar"
-
-msgid "changing cwd to %s\n"
-msgstr "cambiando cwd a %s\n"
-
-msgid "character"
-msgstr "Caracter"
-
-msgid "checking"
-msgstr "chequeando"
-
-msgid "checking file time for '%s'\n"
-msgstr "chequeando el horario de creaci¢n de '%s'\n"
-
-msgid "clearing dependencies for %s\n"
-msgstr "borrar las dependencias para %s\n"
-
-msgid "clearing the FindCache\n"
-msgstr "borrando la cach‚ de b£squeda\n"
-
-msgid "clearing the filetime cache\n"
-msgstr "borrando la cach‚ de horarios\n"
-
-msgid "close the current project"
-msgstr "cierra el proyecto en curso"
-
-msgid "close the current window"
-msgstr "cierra la ventana en uso"
-
-msgid "closing temporary opened project project %s\n"
-msgstr "cerrando el proyecto temporario %s\n"
-
-msgid "comment"
-msgstr "comentario"
-
-msgid "compile the current editor or the selected project-item"
-msgstr "compila la ventana actual o el item seleccionado en el proyecto"
-
-msgid "contents of stderr from "
-msgstr "contenido de stderr desde "
-
-msgid "contents of stdout from "
-msgstr "contenido de stdout desde "
-
-msgid "copy the selected text to the clipboard"
-msgstr "copia el texto seleccionado al portapapeles (clipboard)"
-
-msgid "costumize C++-compiler specific flags"
-msgstr "ajusta par metros espec¡ficos del compilador de C++"
-
-msgid "costumize C-compiler specific flags"
-msgstr "ajusta par metros espec¡ficos del compilador de C"
-
-msgid "costumize the colors of the IDE"
-msgstr "ajusta los colores"
-
-msgid "costumize the generating of debugging information"
-msgstr "ajusta que informaci¢n de depuraci¢n (debug) ser  generada"
-
-msgid "costumize, how to optimize the code"
-msgstr "ajusta como ser  optimizado el c¢digo"
-
-msgid "could not change"
-msgstr "no puedo cambiarlo"
-
-msgid "create a new editor window"
-msgstr "crea una ventana nueva"
-
-msgid "create ~b~ackupfiles"
-msgstr "crear archivos de ~r~espaldo"
-
-msgid "customize C++-compiler specific flags"
-msgstr "Ajusta opciones espec¡ficas del compilador de C++"
-
-msgid "customize C-compiler specific flags"
-msgstr "Ajusta opciones espec¡ficas del compilador de C"
-
-msgid "customize the IDE"
-msgstr "Ajusta opciones de RHIDE"
-
-msgid "customize the colors of the IDE"
-msgstr "Ajusta los colores de RHIDE"
-
-msgid "customize the generating of debugging information"
-msgstr "Ajusta que informaci¢n de depuraci¢n se generar "
-
-msgid "customize the generating of warnings"
-msgstr "Ajusta cuales advertencias son reportadas"
-
-msgid "customize various options for the C/C++-compiler"
-msgstr "Ajusta varias opciones del compilador de C/C++"
-
-msgid "customize, how to optimize the code"
-msgstr "Ajusta que optimizaciones se aplicar n al c¢digo"
-
-msgid "delete the selected text "
-msgstr "borra el texto seleccionado"
-
-msgid "edit the list of flags for debugging"
-msgstr "edita la lista de par metros de depuraci¢n (debug)"
-
-msgid "edit the list of flags for the C++-compiler"
-msgstr "edita la lista del par metros del compilador de C++"
-
-msgid "edit the list of flags for the C-compiler"
-msgstr "edita la lista de par metros del compilador de C"
-
-msgid "edit the list of flags for warnings"
-msgstr "edita la lista de par metros de advertencia (warnings)"
-
-msgid "edit the list of optimization flags"
-msgstr "edita la lista de par metros de optimizaci¢n"
-
-msgid "edit the list of reserved words"
-msgstr "edita la lista de palabras reservadas"
-
-msgid "edit the list of user defined words (for syntaxhighlight)"
-msgstr "edita la lista de palabras del usuario para ser resaltadas"
-
-msgid "editor statusline"
-msgstr "L¡nea de status (ed.)"
-
-msgid "enter commandline arguments for your program"
-msgstr "permite ingresar la l¡nea de par metros de su programa"
-
-msgid "enter local commandline options for compiling this item"
-msgstr "ingresa par metros especiales para compilar este elemento en particular"
-
-msgid "error"
-msgstr "error"
-
-msgid "error reading projectfile %s\n"
-msgstr "error al leer el proyecto: %s\n"
-
-msgid "exclude from link"
-msgstr "ejecutar desde el linker"
-
-msgid "executing: "
-msgstr "ejecutando: "
-
-msgid "file: "
-msgstr "archivo: "
-
-msgid "finaly opening project %s\n"
-msgstr "finalmente abriendo el proyecto %s\n"
-
-msgid "find a string in the current editor"
-msgstr "busca palabras en la ventana actual"
-
-msgid "find and replace a string in the current editor"
-msgstr "busca y reemplaza palabras en la ventana actual"
-
-msgid "float"
-msgstr "coma flotante"
-
-msgid "for developing DJGPP apps"
-msgstr "para realizar aplicaciones con DJGPP"
-
-msgid "for developing Linux apps"
-msgstr "para realizar aplicaciones en Linux"
-
-msgid "found '%s' in FindCache\n"
-msgstr "encontrado '%s' en la cach‚ de b£squeda\n"
-
-msgid "found '%s' in current directory\n"
-msgstr "encontrado '%s' en el directorio en curso\n"
-
-msgid "found '%s' in filetime cache "
-msgstr "encontrado '%s' en la cach‚ de horarios "
-
-msgid "found '%s' not in filetime cache, time: %08lx\n"
-msgstr "encontrado '%s' que no est  en la cach‚ de horarios, hora: %08lx\n"
-
-msgid "found '%s' on desktop, time: %08lx\n"
-msgstr "encontrado '%s' en el escritorio, hora: %08lx\n"
-
-msgid "found '%s' using the search directory '%s'\n"
-msgstr "encontrado '%s' en el directorio de b£squeda '%s'\n"
-
-msgid "found '%s'\n"
-msgstr "encontrado '%s'\n"
-
-msgid "go to line number (after prompting)"
-msgstr "salta a la l¡nea que usted desee"
-
-msgid "hex"
-msgstr "Hexadecimal"
-
-msgid "identifier"
-msgstr "Identificador"
-
-msgid "illegal char"
-msgstr "caracter ilegal"
-
-msgid "in function "
-msgstr "en la funci¢n "
-
-msgid "insert the selected text from the clipboard"
-msgstr "inserta texto desde el portapapeles (clipboard)"
-
-msgid "integer"
-msgstr "entero"
-
-msgid "is"
-msgstr "es"
-
-msgid "is up to date"
-msgstr "est  al d¡a"
-
-msgid "keyword"
-msgstr "palabra reservada"
-
-msgid "lib~c~ reference"
-msgstr "Referencia de lib~c~"
-
-msgid "line ~n~umber"
-msgstr "l¡nea ~n~ro."
-
-msgid "link for ~p~rofiling"
-msgstr "enlazar para ~p~rofiling"
-
-msgid "link the project or create the library"
-msgstr "Enlaza el proyecto o crea la librer¡a"
-
-msgid "local options for project-item"
-msgstr "Opciones locales para un item en el proyecto"
-
-msgid "local ~c~ommandline options"
-msgstr "Opciones l¡nea de ~c~omandos"
-
-msgid "main target~n~ame"
-msgstr "~N~ombre del Programa"
-
-msgid "make the project (with checking auto-dependencies)"
-msgstr "hace el proyecto (crea el .EXE chequeando las dependencias)"
-
-msgid "marked keyword"
-msgstr "pal. res. marcada"
-
-msgid "marked text"
-msgstr "texto marcado"
-
-msgid "move the selected text to the clipboard"
-msgstr "mueve el texto seleccionado al portapapeles (clipboard)"
-
-msgid "must rebuild"
-msgstr "debe rehacerse"
-
-msgid "newer"
-msgstr "m s nuevo"
-
-msgid "no errors"
-msgstr "sin errores"
-
-msgid "normal text"
-msgstr "texto normal"
-
-msgid "not available"
-msgstr "no disponible"
-
-msgid "not found: take '%s'\n"
-msgstr "no encontrado: tomando '%s'\n"
-
-msgid "octal"
-msgstr "Octal"
-
-msgid "older"
-msgstr "m s viejo"
-
-msgid "open a project"
-msgstr "abre un proyecto"
-
-msgid "opens a file in the editor"
-msgstr "abre un archivo en el editor"
-
-msgid "opens the Info Viewer"
-msgstr "abre el Visor de .INFs (formato de Info)"
-
-msgid "options:    -d[actd]\n"
-msgstr "opciones:   -d[actd]\n"
-
-msgid "options:    -d[actdf]\n"
-msgstr "opciones:   -d[actdf]\n"
-
-msgid "options:\n"
-msgstr "opciones:\n"
-
-msgid "other"
-msgstr "otro"
-
-msgid "o~t~her options"
-msgstr "o~t~ras opciones"
-
-msgid "o~v~erwrite mode"
-msgstr "modo de so~b~reescritura"
-
-msgid "parens matching"
-msgstr "Pares coincidentes"
-
-msgid "preprocessor"
-msgstr "Preprocesador"
-
-msgid "quits the IDE"
-msgstr "Abandona el programa"
-
-msgid "ready"
-msgstr "listo"
-
-msgid "rebuild seldom"
-msgstr "rehacer pocas veces"
-
-msgid "rebuilding of"
-msgstr "rehaciendo "
-
-msgid "rectangle block"
-msgstr "Bloques rectangulares"
-
-msgid "redirect 'stde~r~r'"
-msgstr "redireccionar 'st~d~err'"
-
-msgid "redirect 'stdou~t~'"
-msgstr "redireccionar 'stdou~t~'"
-
-msgid "redirecting %s to %s\n"
-msgstr "redireccionando %s a %s\n"
-
-msgid "remove all files, which can be rebuild with this project"
-msgstr "borra todos los archivos que pueden rehacerse con este proyecto"
-
-msgid "remove the list of automaticaly generated dependencies"
-msgstr "borra la lista de dependencias generadas automaticamente"
-
-msgid "remove the list of automaticly generated dependencies"
-msgstr "borra la lista de dependencias generadas automaticamente"
-
-msgid "remove the selected item from the project"
-msgstr "quita el elemento seleccionado del proyecto"
-
-msgid "removing %s\n"
-msgstr "borrando %s\n"
-
-msgid "repaints the desktop"
-msgstr "redibuja el Escritorio (Desktop)"
-
-msgid "repeat the last find- or replace-operation"
-msgstr "repite la £ltima operaci¢n de b£squeda o reemplazo"
-
-msgid "reserved"
-msgstr "reversa"
-
-msgid "reserved word"
-msgstr "palabras reservadas"
-
-msgid "resize/move the current window"
-msgstr "Ajustar el tama¤o o mover la ventana actual"
-
-msgid "return type: "
-msgstr "tipo de retorno: "
-
-msgid "return value"
-msgstr "valor retornado"
-
-msgid "return value: %d\n"
-msgstr "valor retornado: %d\n"
-
-msgid "run the project-target (if executable after doing a make)"
-msgstr "ejecuta el .EXE generado (si es que pudo crearse)"
-
-msgid "running GREP:"
-msgstr "ejecutando GREP:"
-
-msgid "save all opened editors to disk (if modified)"
-msgstr "graba todas las ventanas modificadas"
-
-msgid "save the current editor to disk (if modified)"
-msgstr "graba el contenido de la ventana actual (si fue modificada)"
-
-msgid "save the current editor under a different name to disk"
-msgstr "graba el contenido de la ventana actual con un nombre distinto"
-
-msgid "select next message"
-msgstr "selecciona el pr¢ximo mensaje"
-
-msgid "select previous message"
-msgstr "selecciona el mensaje anterior"
-
-msgid "selected keyword"
-msgstr "pal. res. seleccionada"
-
-msgid "set addition flags to the compiler (defines, ...)"
-msgstr "ajusta par metros adicionales del Compilador (#defines, ...)"
-
-msgid "set additional flags to the compiler (defines, ...)"
-msgstr "ajusta par metros adicionales del Compilador (#defines, ...)"
-
-msgid "set additional flags to the linker"
-msgstr "ajusta par metros adicionales del linker"
-
-msgid "set basic options for the IDE"
-msgstr "ajusta las opciones b sicas"
-
-msgid "set various search paths for finding the files"
-msgstr "permite indicar los caminos (paths) donde se buscar n los archivos"
-
-msgid "set where to search for include files"
-msgstr "para indicar donde se buscar n los include (.h,.hpp)"
-
-msgid "set where to search for libraries"
-msgstr "para indicar donde se buscar n las librer¡as (.a)"
-
-msgid "set where to search for object files"
-msgstr "para indicar donde se buscar n los object (.o)"
-
-msgid "set where to search for source files"
-msgstr "para indicar donde se buscar n los fuentes (.cc,.c,.cpp)"
-
-msgid "set which libraries to be linked with the program"
-msgstr "para indicar que librer¡as ser n enlazadas con el programa"
-
-msgid "show a list of all windows on the desktop"
-msgstr "muestra una lista de todas las ventanas del escritorio (desktop)"
-
-msgid "show all editor windows simultaniously"
-msgstr "ajusta el tama¤o de las ventanas para que se vean todas a la vez"
-
-msgid "show free memor~y~"
-msgstr "mo~s~trar la memoria libre"
-
-msgid "show free ~m~emory"
-msgstr "muestra memoria ~l~ibre"
-
-msgid "show from each editor the title"
-msgstr "ajusta las ventanas para que se vean los t¡tulos de todas"
-
-msgid "show information about RHIDE"
-msgstr "muestra la informaci¢n acerca de RHIDE"
-
-msgid "show the dependencies for the selected item"
-msgstr "muestra las dependencvas del elemento seleccionado"
-
-msgid "show the project window"
-msgstr "muestra la ventana del proyecto"
-
-msgid "show the user screen"
-msgstr "muestra la pantalla generada por nuestro programa"
-
-msgid "show ~p~rocess information"
-msgstr "mostrar informaci¢n del ~p~roceso"
-
-msgid "shows the clipboard"
-msgstr "muestra el portapapeles (clipboard)"
-
-msgid "sho~w~ process information"
-msgstr "~m~uestra inf. del proceso"
-
-msgid "string"
-msgstr "String"
-
-msgid "success"
-msgstr "‚xito"
-
-msgid "switch to DOS (call of %COMSPEC%, return with EXIT)"
-msgstr "sale a DOS (llama a %COMSPEC%, retorna con EXIT)"
-
-msgid "switch to a shell (call of $SHELL or /bin/sh, return with exit)"
-msgstr "llama al shell (usa $SHELL o /bin/sh, retorna con exit)"
-
-msgid "switch to the next window on the desktop"
-msgstr "pasa a la pr¢xima ventana en el escritorio (desktop)"
-
-msgid "switch to the previous window on the desktop"
-msgstr "pasa a la ventana anterior en el escritorio (desktop)"
-
-msgid "symbol"
-msgstr "S¡mbolo"
-
-msgid "symbol2"
-msgstr "S¡mbolo 2"
-
-msgid "syntax ~h~ighlighting"
-msgstr "resaltar la sinta~x~is"
-
-msgid "temporary opening project %s\n"
-msgstr "abriendo el proyecto temporario %s\n"
-
-msgid "than"
-msgstr "que"
-
-msgid "toggles between full size and previous size of the current window"
-msgstr "lleva a pantalla completa o a tama¤o normal la ventana en uso"
-
-msgid "type not registered: %s\n"
-msgstr "tipo no registrado: %s\n"
-
-msgid "undoes the last edit command"
-msgstr "deshace la £ltima operaci¢n realizada en el editor"
-
-msgid "undoes the last edit command (no cursor moving)"
-msgstr "deshace el £ltimo comando de edici¢n (no los movimientos de cursor)"
-
-msgid "undoes the last undo command"
-msgstr "rehace la £ltima operaci¢n deshecha en el editor"
-
-msgid "usage: %s [options] [project-file] [edit-file]\n"
-msgstr "Uso: %s [opciones] [archivo-de-proyecto] [archivo-a-editar]\n"
-
-msgid "usage: %s [options] [project-file]\n"
-msgstr "uso: %s [opciones] [proyecto]\n"
-
-msgid "usage: %s [options] exe-file [[arg1 [arg2 ...]]]\n"
-msgstr "uso: %s [opciones] ejecutable [[arg1 [arg2 ...]]]\n"
-
-msgid "user defined words"
-msgstr "palabras de usuario"
-
-msgid "using %s as temp directory\n"
-msgstr "usando %s como directorio temporal\n"
-
-msgid "with Turbo Vision interface"
-msgstr "con interfaz Turbo Vision"
-
-msgid "write a makefile for this project"
-msgstr "crea un 'makefile' a partir del proyecto (para el GNU make)"
-
-msgid "~Alt+F10~ local menu"
-msgstr "~Alt+F10~ men£ local"
-
-msgid "~Alt+F1~ last help"
-msgstr "~Alt+F1~ ayuda anterior"
-
-msgid "~Alt+F3~ Close"
-msgstr "~Alt+F3~ Cerrar"
-
-msgid "~Alt+F9~ Compile"
-msgstr "~Alt+F9~ Compilar"
-
-msgid "~Alt+X~ Quit"
-msgstr "~Alt+X~ Salir"
-
-msgid "~Alt-F3~ Close"
-msgstr "~Alt-F3~ Cerrar"
-
-msgid "~Alt-X~ Exit"
-msgstr "~Alt-X~ Sale"
-
-msgid "~A~SCII table"
-msgstr "Tabla ASC~I~I"
-
-msgid "~A~dd"
-msgstr "~A~gregar"
-
-msgid "~A~dd item"
-msgstr "A~g~regar item"
-
-msgid "~A~rguments ..."
-msgstr "~A~rgumentos ..."
-
-msgid "~A~utoindent"
-msgstr "~A~utoindentar"
-
-msgid "~B~ackground"
-msgstr "~F~ondo"
-
-msgid "~B~ase output (no extentions)"
-msgstr "Nombre ~b~as de salida (sin extensi¢n)"
-
-msgid "~B~reakpoints"
-msgstr "~B~reakpoints"
-
-msgid "~B~ug report"
-msgstr "Reporte de ~p~roblemas"
-
-msgid "~B~uild all"
-msgstr "~R~ehacer todo"
-
-msgid "~Ctrl+F1~ Select from a list"
-msgstr "~Ctrl+F1~ Seleccionar de la lista"
-
-msgid "~C~ intelligent indenting"
-msgstr "~i~ndentado de C inteligente"
-
-msgid "~C~++ style"
-msgstr "Estilo ~C~++"
-
-msgid "~C~-Flags"
-msgstr "Opciones de ~C~"
-
-msgid "~C~/C++-Compiler"
-msgstr "Compilador de ~C~/C++"
-
-msgid "~C~alculator"
-msgstr "~C~alculadora"
-
-msgid "~C~all stack"
-msgstr "~L~lamadas de la pila"
-
-msgid "~C~ase sensitive"
-msgstr "May£s~c~ulas y min."
-
-msgid "~C~hange"
-msgstr "~C~ambiar"
-
-msgid "~C~hange dir..."
-msgstr "~C~ambiar directorio ..."
-
-msgid "~C~hdir"
-msgstr "~C~am Dir"
-
-msgid "~C~lear"
-msgstr "~B~orrar"
-
-msgid "~C~lose"
-msgstr "~C~errar"
-
-msgid "~C~lose project"
-msgstr "~C~errar proyecto"
-
-msgid "~C~olors"
-msgstr "C~o~lores"
-
-msgid "~C~olumn cursor"
-msgstr "Cursor de ~C~olumna"
-
-msgid "~C~ompile"
-msgstr "~C~ompilar"
-
-msgid "~C~ompilers"
-msgstr "~C~ompiladores"
-
-msgid "~C~opy"
-msgstr "~C~opiar"
-
-msgid "~Del~ Close"
-msgstr "~Del~ Cierra"
-
-msgid "~Del~ Delete"
-msgstr "~Del~ Borrar"
-
-msgid "~D~OS shell"
-msgstr "Ir a ~D~OS"
-
-msgid "~D~ebug"
-msgstr "~D~epuraci¢n"
-
-msgid "~D~ebugging-Flags"
-msgstr "Opciones Depu~r~aci¢n"
-
-msgid "~D~elete"
-msgstr "~B~orrar"
-
-msgid "~D~elete rebuildable files"
-msgstr "Borrar archivos ~r~egenerables"
-
-msgid "~D~irectories"
-msgstr "~D~irectorios"
-
-msgid "~D~irectories for sources"
-msgstr "~D~irectorio de recursos"
-
-msgid "~D~irectory of formats"
-msgstr "~D~irectorio donde est n los formatos"
-
-msgid "~D~isassembler window"
-msgstr "Ventana del ~d~esensamblador"
-
-msgid "~D~on't move the cursor on Paste"
-msgstr "No mo~v~er el cursor al insertar"
-
-msgid "~Enter~ Edit"
-msgstr "~Enter~ Edita"
-
-msgid "~Enter~ Jump to source"
-msgstr "~Enter~ Ver el fuente"
-
-msgid "~Enter~ Modify register"
-msgstr "~Intro~ Modif. registro"
-
-msgid "~Enter~ Select"
-msgstr "~Intro~ Selecciona"
-
-msgid "~Esc~ Cancel"
-msgstr "~Esc~ Sale"
-
-msgid "~E~dit"
-msgstr "~E~ditar"
-
-msgid "~E~ditor options"
-msgstr "Opciones del ~E~ditor"
-
-msgid "~E~nable"
-msgstr "~H~abilitar"
-
-msgid "~E~nd"
-msgstr "~F~in"
-
-msgid "~E~ntire scope"
-msgstr "~T~odo"
-
-msgid "~E~nvironment"
-msgstr "~E~ntorno"
-
-msgid "~E~rror checking"
-msgstr "Chequeo de ~E~rror"
-
-msgid "~E~valuate/Modify"
-msgstr "~E~valuar/Modificar"
-
-msgid "~E~xpression"
-msgstr "~E~xpresi¢n"
-
-msgid "~F10~ Menu"
-msgstr "~F10~ Men£"
-
-msgid "~F1~ Help"
-msgstr "~F1~ Ayuda"
-
-msgid "~F1~ Help on InfoViewer"
-msgstr "~F1~ Ayuda de InfoViewer"
-
-msgid "~F2~ Save"
-msgstr "~F2~ Grabar"
-
-msgid "~F3~ Open"
-msgstr "~F3~ Abrir"
-
-msgid "~F4~ Goto"
-msgstr "~F4~ Ir a"
-
-msgid "~F5~ Zoom"
-msgstr "~F5~ Zoom"
-
-msgid "~F6~ Next"
-msgstr "~F6~ Pr¢xima"
-
-msgid "~F7~ Trace"
-msgstr "~F7~ Avanzar"
-
-msgid "~F8~ Step"
-msgstr "~F8~ Paso"
-
-msgid "~F~SDB"
-msgstr "~F~SDB"
-
-msgid "~F~ile"
-msgstr "~A~rchivo"
-
-msgid "~F~ilename"
-msgstr "~A~rchivo"
-
-msgid "~F~iles"
-msgstr "~A~rchivo"
-
-msgid "~F~iles to search"
-msgstr "~A~rchivos a buscar"
-
-msgid "~F~ind..."
-msgstr "~B~uscar ..."
-
-msgid "~F~oreground"
-msgstr "~P~rimer Plano"
-
-msgid "~F~ormat file (.frt)"
-msgstr "~A~rchivo de formato (.frt)"
-
-msgid "~F~ortran-Flags"
+msgid  "Fortra~n~-Flags"
 msgstr "Opciones de ~F~ortran"
 
-msgid "~F~rom cursor"
-msgstr "~D~esde el cursor"
+msgid  "Frame"
+msgstr "Marco"
 
-msgid "~F~uzzy"
-msgstr "~D~ifuso"
+msgid  "Frame disabled"
+msgstr "Marco inactivo"
 
-msgid "~G~REP ..."
-msgstr "~G~REP ..."
+msgid  "Frame icons"
+msgstr "Iconos del Marco"
 
-msgid "~G~lobal"
-msgstr "~G~lobal"
+msgid  "Frame/background"
+msgstr "Marco/Fondo"
 
-msgid "~G~o to"
-msgstr "~I~r a"
+msgid  "Function call stack"
+msgstr "Llamadas en la pila"
 
-msgid "~G~o to cursor"
-msgstr "~I~r hasta cursor"
+msgid  "Fu~n~ction"
+msgstr "~F~unci¢n"
 
-msgid "~G~oto"
-msgstr "~I~r a"
+msgid  "Fu~z~zy value"
+msgstr "~V~alor difuso"
 
-msgid "~G~oto Line..."
-msgstr "~I~r a l¡nea..."
+msgid  "Fu~z~zy value [1..1000]"
+msgstr "Valor `dif~u~so' [1..1000]"
 
-msgid "~G~roup"
-msgstr "~G~rupo"
+msgid  "F~u~nction"
+msgstr "~F~unci¢n"
 
-msgid "~H~elp"
-msgstr "A~y~uda"
+msgid  "GNU C compiler"
+msgstr "Compilador C de GNU"
 
-msgid "~H~ide"
+msgid  "GNU C++ compiler"
+msgstr "Compilador C++ de GNU"
+
+msgid  "GNU Fortran compiler"
+msgstr "Compilador Fortran de GNU"
+
+msgid  "GNU Pascal compiler"
+msgstr "Compilador Pascal de GNU"
+
+msgid  "GNU assembler"
+msgstr "Ensamblador de GNU"
+
+msgid  "GPC Reserved words"
+msgstr "Palabras reservadas para GPC"
+
+msgid  "General editor options"
+msgstr "Opciones generales del editor"
+
+msgid  "Genre:  %s"
+msgstr "G‚nero: %s"
+
+msgid  "Get a list with all available syntax help topics"
+msgstr "Ver una lista de todos los t¢picos de ayuda de sintaxis disponibles"
+
+msgid  "Get help about using the helpsystem"
+msgstr "Ver la ayuda de como se usa el sistema de ayuda"
+
+msgid  "Global Options"
+msgstr "Opciones Globales"
+
+msgid  "Glo~b~al edition ..."
+msgstr "Glo~b~ales de edici¢n ..."
+
+msgid  "Go To"
+msgstr "Ir a"
+
+msgid  "Go to cursor (No display swap)"
+msgstr "Ir hasta cursor (No rep. pan.)"
+
+msgid  "Goto Line"
+msgstr "Ir a l¡nea"
+
+msgid  "Goto the line"
+msgstr "Ir a la l¡nea"
+
+msgid  "Goto ~f~unction"
+msgstr "Ir a la ~f~unci¢n"
+
+msgid  "Gray Editor"
+msgstr "Editores grises"
+
+msgid  "Gray Windows"
+msgstr "Ventanas grises"
+
+msgid  "Green"
+msgstr "Verde"
+
+msgid  "G~D~B"
+msgstr "G~D~B"
+
+msgid  "Header length: %d Columns: %d"
+msgstr "Largo del encabezado: %d Columnas: %d"
+
+msgid  "Help"
+msgstr "Ayuda"
+
+msgid  "Help Control"
+msgstr "Control de la ayuda"
+
+msgid  "Help for screen saver"
+msgstr "Ayuda del salvapantallas"
+
+msgid  "Help for the function under the cursor"
+msgstr "Ayuda para la funci¢n que est  debajo del cursor"
+
+msgid  "Help ~a~bout help"
+msgstr "~A~yuda de ayudas"
+
+msgid  "Hide '*~N~ode' word"
+msgstr "Ocultar los *~N~ode"
+
+msgid  "Hide '*~N~ote' word"
+msgstr "Ocultar la palabra '*~N~ode'"
+
+msgid  "Hide real ~l~ink name"
+msgstr "Ocultar los nombres de los ~l~inks"
+
+msgid  "Highlight"
+msgstr "Resaltado"
+
+msgid  "History bar icons"
+msgstr "Ico. Scr. de Hist."
+
+msgid  "History bar page"
+msgstr "P g. Scr. de Hist."
+
+msgid  "History button"
+msgstr "Bot¢n de Historia"
+
+msgid  "History sides"
+msgstr "Lados de Historia"
+
+msgid  "Hi~s~tory"
+msgstr "Hi~s~toria"
+
+msgid  "Hmmm ... I can't find any function, are you sure?"
+msgstr "Hmmm ... no puedo encontrar ninguna funci¢n ¨est  seguro?"
+
+msgid  "Holding SHIFT the incremental search is done for the directory "
+"names, otherwise applies to files. Don't forget it."
+msgstr "Manteniendo SHIFT apretada las b£squedas incrementales ser n hechas "
+"con los nombres de los directorios, sino con los nombres de los archivos. "
+"No olvide este detalle."
+
+msgid  "Ho~m~e"
+msgstr "~C~asa"
+
+msgid  "H~i~dden backups"
+msgstr "Arch~i~vos de respaldo ocultos"
+
+msgid  "H~i~de"
 msgstr "Ocu~l~tar"
 
-msgid "~Ins~ Add"
-msgstr "~Ins~ Agregar"
+msgid  "I added the needed command, it is marked with a comment. Please "
+"don't remove the comment is used to know where is the text added by the "
+"installer."
+msgstr "El comando necesario fue agregado y est  marcado con un comentario. "
+"Por favor no quite este comentario ya que es necesario para saber donde "
+"est  hubicado."
 
-msgid "~I~nclude"
-msgstr "~I~nclude"
+msgid  "I can't find the readme.1st file, please look for it the .ZIP and "
+"read the file."
+msgstr "No puedo encontrar el archivo readme.1st, b£squelo en el paquete que "
+"instal¢."
 
-msgid "~I~ncludes"
-msgstr "~I~ncludes"
+msgid  "I suggest that: SET %s=%s/%s\n"
+"\n"
+msgstr "Sugiero usar esto: SET %s=%s/%s\n"
+"\n"
 
-msgid "~I~nteligent C indent"
-msgstr "~I~ndentado de C inteligente"
+msgid  "I suggest that: SET %s=%s\n"
+"\n"
+msgstr "Sugiero usar esto: SET %s=%s\n"
+"\n"
 
-msgid "~I~ntelligent C indent"
-msgstr "~I~ndentado de C inteligente"
+msgid  "INFO files for syntaxhelp"
+msgstr ".INFO usados para ayuda de sintaxis"
 
-msgid "~I~ntermediate file"
-msgstr "Archivo ~t~emporal"
+msgid  "In current ~t~opic"
+msgstr "En el ~i~tem actual"
 
-msgid "~I~tem"
-msgstr "~I~tem"
+msgid  "In section %s"
+msgstr "En la secci¢n %s"
 
-msgid "~J~ump to function"
-msgstr "~S~altar a una funci¢n"
+msgid  "In the ~f~ile"
+msgstr "En todo el ~a~rchivo"
 
-msgid "~K~eep intermediate"
-msgstr "~N~o borrar el temporal"
+msgid  "In ~a~ll files"
+msgstr "En ~t~odos los archivos"
 
-msgid "~L~ast help"
-msgstr "~U~ltima ayuda"
+msgid  "Include Directories"
+msgstr "Directorios de Include"
 
-msgid "~L~ibraries"
-msgstr "~L~ibrer¡as"
+msgid  "Include files for "
+msgstr "Includes de "
 
-msgid "~L~ine"
-msgstr "~L~¡nea"
+msgid  "Indent one ~t~ab/gap"
+msgstr "Indentar un ~t~ab o hueco"
 
-msgid "~L~ink"
-msgstr "En~l~azar"
+msgid  "Indent ~o~ne space"
+msgstr "Indentar ~u~n espacio"
 
-msgid "~L~ist"
-msgstr "~L~ista"
+msgid  "Indentation text"
+msgstr "Texto a usar para indentar"
 
-msgid "~L~oad options"
+msgid  "Index for s~y~ntax help"
+msgstr "Indice de ayuda de sinta~x~is"
+
+msgid  "Inf Find"
+msgstr "B£squeda en Infos"
+
+msgid  "InfView"
+msgstr "InfView"
+
+msgid  "InfView - File: %s - Node: %s"
+msgstr "InfView - Archivo: %s - Nodo: %s"
+
+msgid  "InfView Bookmarks"
+msgstr "Marcas del InfView"
+
+msgid  "InfView Configuration"
+msgstr "Configuraci¢n de InfView"
+
+msgid  "InfView v"
+msgstr "InfView v"
+
+msgid  "Info Viewer"
+msgstr "Visor de Infos"
+
+msgid  "Info viewer"
+msgstr "Visor de Infos"
+
+msgid  "Information"
+msgstr "Informac¡on"
+
+msgid  "Information pane"
+msgstr "Panel de Informaci¢n"
+
+msgid  "Input arrow"
+msgstr "Cursor de Ingreso"
+
+msgid  "Input normal"
+msgstr "Ingreso normal"
+
+msgid  "Input selected"
+msgstr "Ingreso seleccio."
+
+msgid  "Installing"
+msgstr "Instalando"
+
+msgid  "Installing files for the editor"
+msgstr "Instalando archivos del editor"
+
+msgid  "Instructions for edition"
+msgstr "Instrucciones para editar"
+
+msgid  "Invalid character in input"
+msgstr "Caracter inv lido ingresado"
+
+msgid  "Invalid directory"
+msgstr "Directorio Inv lido"
+
+msgid  "Invalid drive"
+msgstr "Disco inv lido"
+
+msgid  "Invalid drive or directory"
+msgstr "Disco o directorio inv lido"
+
+msgid  "Invalid file name."
+msgstr "Nombre de archivo Inv lido."
+
+msgid  "Invalid project-file %s(%s)"
+msgstr "Archivo de Proyecto inv lido %s(%s)"
+
+msgid  "Inverse"
+msgstr "Invertido"
+
+msgid  "In~v~erse matching (-v)"
+msgstr "B£squeda inversa (-~v~)"
+
+msgid  "Jan"
+msgstr "Ene"
+
+msgid  "January"
+msgstr "Enero"
+
+msgid  "Jul"
+msgstr "Jul"
+
+msgid  "July"
+msgstr "Julio"
+
+msgid  "Jump to function"
+msgstr "Saltar a una funci¢n"
+
+msgid  "Jump to ~p~rototype"
+msgstr "Saltar al ~p~rototipo"
+
+msgid  "Jun"
+msgstr "Jun"
+
+msgid  "June"
+msgstr "Junio"
+
+msgid  "Key Pad behavior"
+msgstr "Comportamiento del teclado num‚rico"
+
+msgid  "Key assignment"
+msgstr "Asignaci¢n de teclas"
+
+msgid  "Key selector"
+msgstr "Selector de teclas"
+
+msgid  "Key ~p~ad behavior"
+msgstr "Comportamiento del teclado ~n~um‚rico"
+
+msgid  "Keyboard setup"
+msgstr "Configuraci¢n del teclado"
+
+msgid  "Label normal"
+msgstr "Etiqueta normal"
+
+msgid  "Label selected"
+msgstr "Etiqueta seleccio."
+
+msgid  "Label shortcut"
+msgstr "Etiqueta shortcut"
+
+msgid  "Left ~m~argin:"
+msgstr "~M~argen izq.:"
+
+msgid  "Let me do it and don't show you the result"
+msgstr "Dejar que yo lo haga sin mostrarselo"
+
+msgid  "Let me do it and show you the result"
+msgstr "Dejar que yo lo haga y le muestre el resultado"
+
+msgid  "Libraries"
+msgstr "Librer¡as"
+
+msgid  "Library Directories"
+msgstr "Directorios de Librer¡as"
+
+msgid  "Line extremely long, can't handle it reliably, sorry"
+msgstr "L¡nea extremadamente larga, no puede ser manejado correctamente, lo "
+"lamento"
+
+msgid  "Line number"
+msgstr "N£mero de l¡nea"
+
+msgid  "Line too long, cut it?"
+msgstr "L¡nea demasiado larga, ¨la corto?"
+
+msgid  "Line/Function"
+msgstr "L¡nea/Funci¢n"
+
+msgid  "List divider"
+msgstr "Divisor de Lista"
+
+msgid  "List focused"
+msgstr "Lista activa"
+
+msgid  "List normal"
+msgstr "Lista normal"
+
+msgid  "List of files"
+msgstr "Lista de archivos"
+
+msgid  "List of functions"
+msgstr "Lista de funciones"
+
+msgid  "List of words"
+msgstr "Lista de palabras"
+
+msgid  "List of ~F~unctions"
+msgstr "Lista de ~F~unciones"
+
+msgid  "List selected"
+msgstr "Lista seleccio."
+
+msgid  "Load list of files"
+msgstr "Cargar la lista de archivos"
+
+msgid  "Load the options from a project file"
+msgstr "Carga todas las opciones desde un archivo de proyecto"
+
+msgid  "Loa~d~ options"
 msgstr "~R~ecuperar opciones"
 
-msgid "~L~ocal options"
-msgstr "Opciones ~l~ocales"
+msgid  "Local Options"
+msgstr "Opciones locales"
 
-msgid "~M~acro"
-msgstr "~M~acro"
+msgid  "Looking in registry       "
+msgstr "Buscando en el registro            "
 
-msgid "~M~acros"
-msgstr "~M~acros"
+msgid  "Looks like djgpp isn't installed. DJGPP environment variable isn't "
+"defined or is wrong. Exit to fix it first?"
+msgstr "Parece que djgpp no est  instalado. La variable de entorno DJGPP no "
+"est  definida o est  mal definida. ¨Desea arreglar esto antes de instalar?"
 
-msgid "~M~ain function"
-msgstr "~F~unci¢n principal"
+msgid  "L~i~nker Options"
+msgstr "Opciones del L~i~nker"
 
-msgid "~M~ake"
-msgstr "~H~acer"
+msgid  "MP3 Open"
+msgstr "Abrir MP3"
 
-msgid "~M~arks"
-msgstr "~M~arcas"
+msgid  "MP3 Player"
+msgstr "Reproductor de MP3s"
 
-msgid "~M~atch pair highlight"
-msgstr "~R~esaltar el par complementario"
+msgid  "MP3 support not linked"
+msgstr "Soporte para MP3s no incluido"
 
-msgid "~M~atch pair highligth"
-msgstr "~R~esaltar el par complementario"
+msgid  "Macro definition don't start with Trigger"
+msgstr "Definici¢n de macro que no comienza con Trigger"
 
-msgid "~M~odify"
-msgstr "~M~odificar"
+msgid  "Macro definition without mode keyword"
+msgstr "Definici¢n de macro que no contiene la palabra 'mode'"
 
-msgid "~M~ouse double click"
-msgstr "~D~oble click"
+msgid  "Macros"
+msgstr "Macros"
 
-msgid "~M~ouse options"
-msgstr "Opciones del ~M~ouse"
+msgid  "Made in Argentina"
+msgstr "Hecho en Argentina"
 
-msgid "~M~ove"
-msgstr "~M~over"
+msgid  "Make ~b~ackups"
+msgstr "Crear ~a~rchivos de respaldo"
 
-msgid "~N~ame"
-msgstr "~N~ombre"
+msgid  "Man page to view"
+msgstr "Visor de p ginas del manual"
 
-msgid "~N~ame of Node"
-msgstr "~N~ombre del Nodo"
+msgid  "Mantain the ~B~IOS default"
+msgstr "Mantener el valor del ~B~IOS"
 
-msgid "~N~ame of the output file"
-msgstr "~N~ombre del archivo de salida"
+msgid  "Mar"
+msgstr "Mar"
 
-msgid "~N~ew"
-msgstr "~N~uevo"
+msgid  "March"
+msgstr "Marzo"
 
-msgid "~N~ew text"
-msgstr "~N~uevo texto"
+msgid  "Match found at line %d column %d."
+msgstr "Complemento hallado en la l¡nea %d columna %d."
 
-msgid "~N~ew value"
+msgid  "Match pair on the fly ~1~"
+msgstr "Resaltar el par `al vuel~o~'"
+
+msgid  "Match pair on the fly ~4~"
+msgstr "Resaltar el par `al vuelo' ~4~"
+
+msgid  "Max. c~l~osed to remmember"
+msgstr "Max. de ventanas ~c~erradas a recordar"
+
+msgid  "May"
+msgstr "Mayo"
+
+msgid  "Memory is nearly full. Please exit, and restart."
+msgstr "La memoria esta casi agotada. Por favor vuelva a iniciar el "
+"programa."
+
+msgid  "Menu entries for handling with files"
+msgstr "Items del men£ para el manejo de archivos"
+
+msgid  "Menus"
+msgstr "Menues"
+
+msgid  "Message Window"
+msgstr "Ventana de Mensajes"
+
+msgid  "Messages Window"
+msgstr "Ventana de Mensajes"
+
+msgid  "Messages to stderr:"
+msgstr "Mensajes desde stderr:"
+
+msgid  "Messages to stdout:"
+msgstr "Mensajes desde stdout:"
+
+msgid  "Miscellaneous options"
+msgstr "Opciones varias"
+
+msgid  "Missing ="
+msgstr "No encontre el ="
+
+msgid  "Missing Trigger sequence or too short"
+msgstr "Secuencia de Trigger muy corta o no colocada"
+
+msgid  "Missing end"
+msgstr "No encontr‚ el final"
+
+msgid  "Missing end in pseudo macro"
+msgstr "No puedo hallar el fin del pseudo macro"
+
+msgid  "Missing start"
+msgstr "No encontr‚ el comienzo"
+
+msgid  "Missing start in pseudo macro"
+msgstr "No puedo hallar el comienzo del pseudo macro"
+
+msgid  "Mode: %6s            File: MPEG %1d.0 layer %1d"
+msgstr "Modo: %6s            Archivo: MPEG %1d.0 layer %1d"
+
+msgid  "Mouse options"
+msgstr "Opciones del rat¢n"
+
+msgid  "Move"
+msgstr "Mover"
+
+msgid  "Name of the info file"
+msgstr "Nombre del archivo .info"
+
+msgid  "Name of the main function"
+msgstr "Nombre de la funci¢n principal"
+
+msgid  "Name of the main target"
+msgstr "Nombre del programa"
+
+msgid  "Name of the node (leave blank for all)"
+msgstr "Nombre del nodo (dejar en blanco para usar todos)"
+
+msgid  "New node for search"
+msgstr "Nuevo nodo a buscar"
+
+msgid  "New user word"
+msgstr "Nueva palabra de usuario"
+
+msgid  "New value"
 msgstr "Nuevo valor"
 
-msgid "~N~ext"
-msgstr "P~r~¢xima"
+msgid  "Next"
+msgstr "Pr¢x."
 
-msgid "~N~ext message"
-msgstr "~P~r¢ximo Mensaje"
+msgid  "No INFO files for syntax help defined"
+msgstr "No se definieron archivos de ayuda para buscar sintaxis"
 
-msgid "~N~o"
-msgstr "~N~o"
+msgid  "No command for MenuItem"
+msgstr "Falta el comando para el `MenuItem'"
 
-msgid "~N~odes"
-msgstr "~N~odos"
+msgid  "No error"
+msgstr "Sin errores"
 
-msgid "~O~K"
-msgstr "O~K~"
+msgid  "No file cachin~g~"
+msgstr "no memori~z~ar archivos"
 
-msgid "~O~bject"
-msgstr "~O~bjetos"
+msgid  "No file ~c~aching"
+msgstr "No ~c~achear archivos"
 
-msgid "~O~pen"
-msgstr "~A~brir"
+msgid  "No files in project"
+msgstr "No hay archivos en el proyecto"
 
-msgid "~O~ptimization-Flags"
-msgstr "Opciones de Opt~i~mizaci¢n"
+msgid  "No fonts found"
+msgstr "No se encontraron fonts"
 
-msgid "~O~ptimizations"
-msgstr "~O~ptimizaciones"
+msgid  "No key for SubMenu"
+msgstr "Falta la tecla a usar para el `SubMenu'"
 
-msgid "~O~ptions"
+msgid  "No macros defined"
+msgstr "No hay macros definidos"
+
+msgid  "No match found"
+msgstr "No encontr‚ el complemento"
+
+msgid  "No menu definition"
+msgstr "No se defini¢ el men£"
+
+msgid  "No number for a context"
+msgstr "Falta el n£mero para el contexto"
+
+msgid  "No persistent b~l~ocks"
+msgstr "b~l~oques no persistentes"
+
+msgid  "No project"
+msgstr "Sin proyecto"
+
+msgid  "No pseudo macros available"
+msgstr "No hay pseudo macros disponibles"
+
+msgid  "Nodes for syntax help"
+msgstr "Nodos para ayuda de sintaxis"
+
+msgid  "Nodes ~L~ist"
+msgstr "~L~ista de temas"
+
+msgid  "None"
+msgstr "Ninguno"
+
+msgid  "Normal"
+msgstr "Normal"
+
+msgid  "Not enough memory for this operation"
+msgstr "No hay suficiente memoria para esta operaci¢n"
+
+msgid  "Not enough memory for this operation."
+msgstr "No hay suficiente memoria para esta operaci¢n."
+
+msgid  "Not implemented in Linux"
+msgstr "No implementado en Linux"
+
+msgid  "Nov"
+msgstr "Nov"
+
+msgid  "November"
+msgstr "Noviembre"
+
+msgid  "Now I'll give you the oportunity to edit the autoexec.bat. To finish "
+"click in the small rectable found in the top-left corner or press Ctrl+F4."
+msgstr "Ahora ud. podr  editar el autoexec.bat. Para terminar haga click en "
+"el peque¤o rect ngulo hubicado en el el  ngulo superior izquierdo o "
+"presione Ctrl+F4"
+
+msgid  "OFF"
+msgstr "Apagado"
+
+msgid  "OF~F~"
+msgstr "Apagado"
+
+msgid  "ON"
+msgstr "Encendido"
+
+msgid  "Object Directories"
+msgstr "Directorios de Objetos (.o)"
+
+msgid  "Oct"
+msgstr "Oct"
+
+msgid  "October"
+msgstr "Octubre"
+
+msgid  "Off ~1~"
+msgstr "Apa~g~ado"
+
+msgid  "Only #~i~nclude \"...\" as dependencies"
+msgstr "Solo los #~i~nclude \"...\" como dependencias"
+
+msgid  "Only o~u~tside comments"
+msgstr "Solo ~f~uera de comentarios"
+
+msgid  "Only ~i~nside comments"
+msgstr "So~l~o dentro de comentarios"
+
+msgid  "Open Info"
+msgstr "Abrir Info"
+
+msgid  "Open Project"
+msgstr "Abrir Proyecto"
+
+msgid  "Open Read-only ~c~opy"
+msgstr "Abrir una ~c~opia de solo lectura"
+
+msgid  "Open a file"
+msgstr "Abrir archivo"
+
+msgid  "Open file"
+msgstr "Abrir Archivo"
+
+msgid  "Open the file %s"
+msgstr "Abrir el archivo %s"
+
+msgid  "Open ~p~roject"
+msgstr "~A~brir proyecto"
+
+msgid  "Optimal ~F~ill"
+msgstr "Rell~e~nado ¢ptimo"
+
+msgid  "Optimization Flags"
+msgstr "Opciones de Optimizaci¢n"
+
+msgid  "Optimize"
+msgstr "Optimizar"
+
+msgid  "Options"
+msgstr "Opc~i~ones"
+
+msgid  "Options for syntax help"
+msgstr "Opciones para la ayuda de sintaxis"
+
+msgid  "Options for the syntax help"
+msgstr "Opciones para la ayuda de sintaxis"
+
+msgid  "Options ~3~"
+msgstr "Opciones ~3~"
+
+msgid  "Origin"
+msgstr "Origen"
+
+msgid  "Or~i~gin"
+msgstr "Origen"
+
+msgid  "Other ~f~ont"
+msgstr "Otra ~f~ont"
+
+msgid  "Output WAV file"
+msgstr "Generar un .WAV"
+
+msgid  "Output from GDB"
+msgstr "Salida de GDB"
+
+msgid  "Output is a de~v~ice/file"
+msgstr "Salida es disposi~t~ivo/archivo"
+
+msgid  "Output i~s~ a program"
+msgstr "Salida es un programa ~1~"
+
+msgid  "Ove Kaaven for LibAmp, the Allegro adaptation of AMP"
+msgstr "Ove Kaaven por LibAmp, adaptaci¢n de AMP a Allegro"
+
+msgid  "O~K~"
+msgstr "O~k~"
+
+msgid  "O~N~"
+msgstr "Encendido"
+
+msgid  "O~f~f"
+msgstr "Apa~g~ado"
+
+msgid  "O~p~en only specified files"
+msgstr "Solo abrir archivos in~d~icados"
+
+msgid  "O~p~tions"
 msgstr "~O~pciones"
 
-msgid "~O~ptions for searching"
-msgstr "~O~pciones de b£squeda"
+msgid  "O~t~her font"
+msgstr "O~t~ra font"
 
-msgid "~O~verwrite"
-msgstr "S~o~breescritura"
+msgid  "O~u~tput file"
+msgstr "A~r~chivo de salida"
 
-msgid "~P~arameter"
-msgstr "~P~ar metros"
+msgid  "PCRE Exec error"
+msgstr "Error de ejecuci¢n del a ExpReg"
 
-msgid "~P~ascal style"
-msgstr "Estilo ~P~ascal"
+msgid  "Page: %d Lines: %d to %d  Date: %s  Time: %s%s"
+msgstr "P gina: %d L¡neas: %d a %d  D¡a: %s  Hora: %s%s"
 
-msgid "~P~aste"
-msgstr "~P~egar"
+msgid  "Palette editor"
+msgstr "Paleta del editor"
 
-msgid "~P~athlist"
-msgstr "~C~aminos"
+msgid  "Parent directory (..)"
+msgstr "Directorio padre (..)"
 
-msgid "~P~ersistent blocks"
-msgstr "Bloques ~p~ersistentes"
+msgid  "Parsing file"
+msgstr "Analizando el archivo"
 
-msgid "~P~lay"
-msgstr "~R~eproducir"
+msgid  "Pascal Flags"
+msgstr "Opciones de Pascal"
 
-msgid "~P~references"
-msgstr "~P~referencias"
+msgid  "Paste text from the Windows clipboard"
+msgstr "Inserta texto proveniente del portapapeles de Windows"
 
-msgid "~P~revious"
-msgstr "A~n~terior"
+msgid  "Paste ~E~macs mode"
+msgstr "Pegar el modo ~E~macs"
 
-msgid "~P~rofile Editor"
-msgstr "~M~edir la velocidad del editor"
+msgid  "Paste ~f~rom Wind. Clip."
+msgstr "Pegar desde e~l~ Porta. de Windows"
 
-msgid "~P~rogram reset"
-msgstr "Resetear el ~P~rograma"
+msgid  "Pas~t~e from Windows Clipboard"
+msgstr "~I~nsertar desde el portapapeles de Windows"
 
-msgid "~P~roject"
+msgid  "Pathlist for source files"
+msgstr "Lista de directorios para los fuentes"
+
+msgid  "Pa~s~cal style"
+msgstr "Estilo Pascal ~1~"
+
+msgid  "Play List"
+msgstr "Lista de MP3s"
+
+msgid  "Player status"
+msgstr "Estado del reproductor"
+
+msgid  "Please wait"
+msgstr "Por favor espere"
+
+msgid  "Pl~a~ces to search"
+msgstr "Lug~a~res a buscar"
+
+msgid  "Poc~k~et calculator"
+msgstr "Calculadora de ~B~olsillo"
+
+msgid  "Pop cursor pos~i~tion"
+msgstr "Recuperar la po~s~ici¢n del cursor"
+
+msgid  "Powered Grep by SET"
+msgstr "Grep Potenciado por SET"
+
+msgid  "Powered grep"
+msgstr "Grep potenciado"
+
+msgid  "Powerful builtin calculator"
+msgstr "Poderosa calculadora"
+
+msgid  "Press a key"
+msgstr "Presione una tecla"
+
+msgid  "Press a key to continue"
+msgstr "Presione una tecla para continuar"
+
+msgid  "Prev."
+msgstr "Prev."
+
+msgid  "Prev. ~H~ist."
+msgstr "Ant. en ~H~ist."
+
+msgid  "Previ~o~us message"
+msgstr "Mensaje ~A~nterior"
+
+msgid  "Primary ~e~ncoding"
+msgstr "Co~d~ificaci¢n primaria"
+
+msgid  "Primary ~f~ile"
+msgstr "Archivo ~p~rincipal"
+
+msgid  "Print line numbers"
+msgstr "~I~mprimir n£meros de p gina"
+
+msgid  "Printer Setup"
+msgstr "Opciones de impresora"
+
+msgid  "Processed: %d lines, total printed: %d lines"
+msgstr "Procesadas: %d l¡neas, total impresas: %d l¡neas"
+
+msgid  "Profile Editor"
+msgstr "~V~elocidad del editor"
+
+msgid  "Program arguments"
+msgstr "Par metros del programa"
+
+msgid  "Program exit code: %d (0x%04x)"
+msgstr "C¢digo de salida del programa %d (0x%04X)"
+
+msgid  "Program has received signal: "
+msgstr "El programa ha recibido una se¤al: "
+
+msgid  "Project Window"
+msgstr "Ventana del Proyecto"
+
+msgid  "Pro~j~ect"
 msgstr "~P~royecto"
 
-msgid "~P~rompt on replace"
-msgstr "~P~reguntar"
+msgid  "Pr~i~nt Setup..."
+msgstr "Opciones de im~p~resi¢n..."
 
-msgid "~P~uzzle"
-msgstr "~R~ompecabezas"
+msgid  "Pseudo Macros"
+msgstr "Pseudo Macros"
 
-msgid "~Q~uit"
-msgstr "~S~alir"
+msgid  "Pse~u~do macros ..."
+msgstr "Pse~u~do Macros ..."
 
-msgid "~R~ecord"
-msgstr "~G~rabar"
+msgid  "Pus~h~ cursor position"
+msgstr "G~u~ardar la posici¢n del cursor"
 
-msgid "~R~edo"
-msgstr "~R~ehacer"
+msgid  "Puzzle"
+msgstr "Rompecabezas"
 
-msgid "~R~eplace"
+msgid  "P~a~scal Reserved words"
+msgstr "Palabras reserv. p/P~a~scal"
+
+msgid  "P~a~scal-Flags"
+msgstr "Opciones de Pa~s~cal"
+
+msgid  "P~l~ay list"
+msgstr "Reproducir ~L~ista"
+
+msgid  "RHGDB is a source level debugger"
+msgstr "RHGDB es un depurador a nivel de c¢digo fuente"
+
+msgid  "RHIDE Help ~i~ndex"
+msgstr "~I~ndice de RHIDE"
+
+msgid  "RHIDE is an Integrated Development Environment"
+msgstr "RHIDE es un Entorno de Desarrollo Integrado"
+
+msgid  "Read from file"
+msgstr "Leer desde un archivo"
+
+msgid  "Read options from file"
+msgstr "Leer las opciones desde un archivo"
+
+msgid  "Read options from project"
+msgstr "Leer las opciones desde un proyecto"
+
+msgid  "Read the readme.1st file included in the .zip distribution file.\n"
+"\n"
+msgstr "Lea el archivo readme.1st incluido en la distribuci¢n.\n"
+"\n"
+
+msgid  "Read words from file"
+msgstr "Leer palabras desde un archivo"
+
+msgid  "Reading index table for: "
+msgstr "Leyendo el ¡ndice de: "
+
+msgid  "Recurse & dirs. ignored, using internal names"
+msgstr "Recursividad y directorios ignorados ya que especific¢ una b£squeda "
+"interna"
+
+msgid  "Red"
+msgstr "Rojo"
+
+msgid  "Redra~w~ screen"
+msgstr "~R~edibujar la pantalla"
+
+msgid  "Refresh desk~t~op"
+msgstr "Redibuja el Escri~t~orio"
+
+msgid  "RegEx style"
+msgstr "Tipo de ExpReg"
+
+msgid  "RegEx ~O~ps"
+msgstr "~O~ps ExpReg"
+
+msgid  "Regular Expressions Options"
+msgstr "Opciones de Expresiones Regulares"
+
+msgid  "Regular expression error: %s"
+msgstr "Error en la expresi¢n regular: %s"
+
+msgid  "Regular expression to list functions"
+msgstr "Expresiones regulares para la lista de funciones"
+
+msgid  "Regular e~x~pressions"
+msgstr "E~x~presiones regulares"
+
+msgid  "Remove '%s' from the project"
+msgstr "Quito '%s' del proyecto"
+
+msgid  "Replace"
 msgstr "Reemplazar"
 
-msgid "~R~eplace all"
-msgstr "~R~eemplazar todo"
+msgid  "Replace as much as possible spaces with tabs"
+msgstr "Reemplazar todos los espacios que sean posibles por tabs"
 
-msgid "~R~eplace..."
-msgstr "~R~eemplazar ..."
+msgid  "Replace text"
+msgstr "Texto a reemplazar"
 
-msgid "~R~eserved words"
+msgid  "Replace this occurence?"
+msgstr "¨Reemplazo aqu¡?"
+
+msgid  "Replace ~A~ll"
+msgstr "Ree~m~plazar Todo"
+
+msgid  "Replacing default menu"
+msgstr "Reemplazando el men£ original"
+
+msgid  "Reserved words"
 msgstr "Palabras ~R~eservadas"
 
-msgid "~R~eset"
-msgstr "~R~estear"
+msgid  "Reset the debugged program"
+msgstr "Volver al estado inicial el programa que se esta depurando"
 
-msgid "~R~esult"
-msgstr "~R~esultado"
+msgid  "Re~c~tangle"
+msgstr "Re~c~t ngulo"
 
-msgid "~R~everse mouse buttons"
-msgstr "~I~nvertir los botones"
+msgid  "Re~m~ap code page ..."
+msgstr "Camb~i~ar la codificaci¢n ..."
 
-msgid "~R~evert"
-msgstr "~R~evertir"
+msgid  "Robert H”hne for porting TVision and making RHIDE"
+msgstr "Robert H”hne por portar TV y comenzar RHIDE"
 
-msgid "~R~ow cursor"
-msgstr "Cursor de ~L~¡nea"
+msgid  "Ro~w~ cursor"
+msgstr "cursor de L¡~n~ea"
 
-msgid "~R~un"
-msgstr "~R~un"
+msgid  "Run the recorded macro"
+msgstr "Ejecuta las acciones grabadas en el macro"
 
-msgid "~Space~ select"
-msgstr "~Space~ selecciona"
+msgid  "Running %s"
+msgstr "Ejecutando %s"
 
-msgid "~S~ave"
+msgid  "Running GREP (arguments are prompted)"
+msgstr "Ejecutando GREP (se pedir n los par metros)"
+
+msgid  "Running grep in: %s"
+msgstr "Ejecutando grep en: %s"
+
+msgid  "R~e~mmember bkps to delete"
+msgstr "Recordar los arch. de resp. para ~b~orrarlos"
+
+msgid  "R~e~peat"
+msgstr "Repe~t~ir"
+
+msgid  "SDG Parameters"
+msgstr "Par metros de SDG"
+
+msgid  "SDG ~O~ptions"
+msgstr "~O~pciones del SDG"
+
+msgid  "SET's Editor v%lX.%lX.%lX, (c) 1996-1999"
+msgstr "SET's Editor v%lX.%lX.%lX, (c) 1996-1999"
+
+msgid  "Same ~b~ackground color as the editor"
+msgstr "Mismo color de ~f~ondo que en el editor"
+
+msgid  "Sample Rate: %5d Hz   Bitrate: %4d Kbits/s"
+msgstr "Frecuencia: %5d Hz    Bitrate: %4d Kbits/s"
+
+msgid  "Save DOS files ~a~s DOS"
+msgstr "Grabar archivos DOS en ~f~ormato DOS"
+
+msgid  "Save UNIX files ~a~s UNIX"
+msgstr "Grabar archivos UNIX en ~f~ormato UNIX"
+
+msgid  "Save all the options to a project file"
+msgstr "Graba todas las opciones en un archivo de proyecto"
+
+msgid  "Save as ~U~NIX..."
+msgstr "Guardar como UNI~X~ ..."
+
+msgid  "Save a~l~l"
+msgstr "Guardar ~t~odo"
+
+msgid  "Save desktop files ~h~idden"
+msgstr "Archivos de ~e~scritorio ocultos"
+
+msgid  "Save file as"
+msgstr "Grabar como"
+
+msgid  "Save files list"
+msgstr "Grabar la lista de archivos"
+
+msgid  "Save options to a project"
+msgstr "Grabar las opciones a un proyecto"
+
+msgid  "Save options to file"
+msgstr "Grabar las opciones en un archivo"
+
+msgid  "Save pro~j~ect only when closing"
+msgstr "Guardar el pro~y~ecto solo al salir"
+
+msgid  "Save te~x~t palette"
+msgstr "Guardar la paleta de modo te~x~to"
+
+msgid  "Save to file"
+msgstr "Grabar en un archivo"
+
+msgid  "Save untitled file?"
+msgstr "¨Grabo el archivo sin t¡tulo?"
+
+msgid  "Save w/same ~t~ime..."
+msgstr "G~u~ardar c/igual ~h~ora..."
+
+msgid  "Saved: %s (%ld bytes)."
+msgstr "Grabado %s (%ld bytes de longitud)."
+
+msgid  "Scan Viewer"
+msgstr "Visor de c¢digos scan"
+
+msgid  "Scan code out of range"
+msgstr "C¢digo de scan fuera de rango"
+
+msgid  "Scope"
+msgstr "Ambito"
+
+msgid  "Screen Options"
+msgstr "Opciones de Pantalla"
+
+msgid  "Screen saver"
+msgstr "Salvapantallas"
+
+msgid  "Screen saver, press a key"
+msgstr "Salvapantallas, presione una tecla"
+
+msgid  "Scroll bar icons"
+msgstr "Icono de Scroll bar"
+
+msgid  "Scroll bar page"
+msgstr "P g. de Scroll bar"
+
+msgid  "Scr~e~en saver ..."
+msgstr "~S~alvapantallas ..."
+
+msgid  "Sc~r~een saver (?)"
+msgstr "~S~alvapantalla (?)"
+
+msgid  "Search O~p~tions"
+msgstr "~O~pciones de B£squeda"
+
+msgid  "Search for file '%s'\n"
+msgstr "Buscar el archivo '%s'\n"
+
+msgid  "Search hit"
+msgstr "Valor encontrado"
+
+msgid  "Search in ope~n~ed windows"
+msgstr "Buscar e~n~ las ventanas abiertas"
+
+msgid  "Search in pro~j~ect"
+msgstr "Buscar en el pro~y~ecto"
+
+msgid  "Search o~p~tions"
+msgstr "~O~pciones de b£squeda"
+
+msgid  "Search string not found."
+msgstr "No se pudo hallar el texto."
+
+msgid  "Search ~m~ethod"
+msgstr "~M~‚todo de b£squeda"
+
+msgid  "Search ~m~ethode"
+msgstr "~M~‚todo de b£squeda"
+
+msgid  "Searching ..."
+msgstr "Buscando ..."
+
+msgid  "Searching Windows information"
+msgstr "Buscando informaci¢n de Windows"
+
+msgid  "Searching desktop and menu"
+msgstr "Buscando el escritorio y el men£   "
+
+msgid  "Searching programs dir"
+msgstr "Buscando el directorio de programas"
+
+msgid  "Secondary encoding"
+msgstr "Codificaci¢n sec~u~ndaria"
+
+msgid  "Section out of range"
+msgstr "Secci¢n fuera de rango"
+
+msgid  "Select a file"
+msgstr "Seleccione un archivo"
+
+msgid  "Select a function"
+msgstr "Seleccionar una funci¢n"
+
+msgid  "Select a function from the current editor"
+msgstr "Selecciona una funci¢n del fuente en edici¢n"
+
+msgid  "Select a functions"
+msgstr "Seleccionar una funci¢n"
+
+msgid  "Select a project"
+msgstr "Seleccionar un proyecto"
+
+msgid  "Select a topic"
+msgstr "Seleccionar un t¢pico"
+
+msgid  "Select how to do it"
+msgstr "Seleccione como hacerlo"
+
+msgid  "Select the type"
+msgstr "Seleccione el tipo"
+
+msgid  "Selected"
+msgstr "Seleccionado"
+
+msgid  "Selected disabled"
+msgstr "Selec. Inactivo"
+
+msgid  "Selected text"
+msgstr "Texto seleccionado"
+
+msgid  "Sep"
+msgstr "Sep"
+
+msgid  "September"
+msgstr "Septiembre"
+
+msgid  "Sequence of keys"
+msgstr "Secuencia de teclas"
+
+msgid  "Set some options for the mouse"
+msgstr "Selecciona opciones relacionadas al rat¢n (mouse)"
+
+msgid  "Set the editor options"
+msgstr "Selecciona las opciones del editor"
+
+msgid  "Set the primary file (only for GPC with '--automake'!!!)"
+msgstr "Selecciona el archivo principal (solo para GPC con automake!)"
+
+msgid  "Set ~G~lobal"
+msgstr "Seteos ~g~lobales"
+
+msgid  "Set ~G~lobal options"
+msgstr "Opciones ~G~lobales"
+
+msgid  "Set/Clear a breakpoint at the current line"
+msgstr "Colocar/Quitar un breakpoint (punto de parada) en la l¡nea actual"
+
+msgid  "Setedit "
+msgstr "Setedit "
+
+msgid  "Settings"
+msgstr "Seteos"
+
+msgid  "Several menu enries for getting help"
+msgstr "Varios items de men£ para obtener ayuda"
+
+msgid  "Several menu entries for getting help"
+msgstr "Varios items de men£ para obtener ayuda"
+
+msgid  "Shawn Hargreaves for Allegro, used as sound engine"
+msgstr "Shawn Hargreaves por Allegro, usado como motor de sonido"
+
+msgid  "Shortcut"
+msgstr "Shortcut"
+
+msgid  "Shortcut selected"
+msgstr "Shortcut selec."
+
+msgid  "Show Diassemb~l~er Window when needed"
+msgstr "Mostrar la ventana de desesamblador cuando es necesario"
+
+msgid  "Show G~D~B commands"
+msgstr "Mostrar los c~o~mandos del GDB"
+
+msgid  "Show a disassembler window at the current execution point"
+msgstr "Mostrar una ventana de desensablado a partir del punto actual"
+
+msgid  "Show a list with all functions"
+msgstr "Mostrar una lista con todas las funciones"
+
+msgid  "Show it in the ~m~essage window"
+msgstr "Mostrarlo en la ~v~entana de mensajes"
+
+msgid  "Show it once a ~d~ay"
+msgstr "Mostrarlo una vez por ~d~¡a"
+
+msgid  "Show the GPL"
+msgstr "Mostrar el GPL"
+
+msgid  "Show/Modify the breakpoints"
+msgstr "Mostrar/Modificar los breakpoints (puntos de parada)"
+
+msgid  "Shows a window with the function call stack"
+msgstr "Muestra las llamadas a funciones de la pila (stack)"
+
+msgid  "Shows the last opened help"
+msgstr "Muestra la £ltima ayuda abierta"
+
+msgid  "Sho~w~ user screen after exit"
+msgstr "~M~ostrar la pantalla de usuario al salir"
+
+msgid  "Simplifying configuration"
+msgstr "Simplificando la configuraci¢n"
+
+msgid  "Sorry can't find the string"
+msgstr "Lo lamento, no puedo hallar la cadena de caracteres"
+
+msgid  "Sorry, I can't find autoexec.bat"
+msgstr "Lo lamento, no puedo hallar el autoexec.bat"
+
+msgid  "Source Directories"
+msgstr "Directorios de Fuentes (.cc)"
+
+msgid  "Source has been modified. Rebuild it?"
+msgstr "El fuente ha sido modificado. ¨Grabo?"
+
+msgid  "Source of Pattern"
+msgstr "Fuente del patr¢n a buscar"
+
+msgid  "So~r~t by score"
+msgstr "O~r~denar por puntaje"
+
+msgid  "Speed: %f lines/second"
+msgstr "Velocidad: %f l¡neas/segundo"
+
+msgid  "Standard Include Directories"
+msgstr "Directorios de los Encabezados"
+
+msgid  "Start the FSDB debugger"
+msgstr "Inicia el debugger (FSDB)"
+
+msgid  "Start the GDB debugger"
+msgstr "Inicia el debugger (GDB)"
+
+msgid  "Start the recording for a macro"
+msgstr "Comienza a grabar las acciones del editor en un macro"
+
+msgid  "Starting SDG:"
+msgstr "Comenzando SDG:"
+
+msgid  "Starting printing module"
+msgstr "Inicializando el m¢dulo de impresi¢n"
+
+msgid  "Stat failed."
+msgstr "­Fallo al usar 'stat'!"
+
+msgid  "Stat filed."
+msgstr "­Fallo al usar 'stat'!"
+
+msgid  "Static text"
+msgstr "Texto"
+
+msgid  "Step over (No display swap)"
+msgstr "Paso sin entrar (No rep. pan.)"
+
+msgid  "Step over function calls"
+msgstr "Caminar sobre los llamados a funciones"
+
+msgid  "Step over function calls (No display swap)"
+msgstr "Caminar sobre los llamados a funciones (no cambiar pantalla)"
+
+msgid  "Stop the recording for a macro"
+msgstr "Para de grabar las acciones en el macro"
+
+msgid  "Stops execution at the cursor"
+msgstr "Frenar la ejecuci¢n en la posici¢n del cursor"
+
+msgid  "Stops execution at the cursor (No display swap)"
+msgstr "Ejecutar hasta la posici¢n del cursor (no cambiar pantalla)"
+
+msgid  "String expected"
+msgstr "Se esperaba una cadena de caracteres"
+
+msgid  "St~o~p list"
+msgstr "Dete~n~er lista"
+
+msgid  "St~y~le"
+msgstr "Es~t~ilo"
+
+msgid  "Su Mo Tu We Th Fr Sa"
+msgstr "Do Lu Ma Mi Ju Vi Sa"
+
+msgid  "Submenu for compiling and/or creating your program/library"
+msgstr "Submen£ para compilar y/o crear su programa/librer¡a"
+
+msgid  "Submenu for dealing with windows"
+msgstr "Submen£ para el manejo de ventanas"
+
+msgid  "Submenu for debugging your program"
+msgstr "Submen£ para depurar su programa"
+
+msgid  "Submenu for handling with macros"
+msgstr "Submen£ para el manejo de macros"
+
+msgid  "Submenu for handling your projects"
+msgstr "Submen£ para el manejo de su proyecto"
+
+msgid  "Submenu for most of the options of RHIDE"
+msgstr "Submen£ para la mayor parte de las opciones de RHIDE"
+
+msgid  "Submenu for running your program"
+msgstr "Submen£ para ejecutar su programa"
+
+msgid  "Submenu for searching/replacing text"
+msgstr "Submen£ para la b£squeda y reemplazo de texto"
+
+msgid  "Submenu for syntax help"
+msgstr "Submen£ de ayuda de sintaxis"
+
+msgid  "Submenu for things dealing with the editor"
+msgstr "Submen£ para cosas relacionadas con el editor"
+
+msgid  "Syntax Highlight"
+msgstr "Resaltado de sintaxis"
+
+msgid  "Syntax error"
+msgstr "Error de sintaxis"
+
+msgid  "Syntax ~H~ighlight"
+msgstr "Resaltado de Sinta~x~is"
+
+msgid  "S~D~G Options ..."
+msgstr "Opciones del S~D~G ..."
+
+msgid  "S~a~ve as UNIX..."
+msgstr "Gr~a~bar como UNIX ..."
+
+msgid  "S~a~ve as..."
+msgstr "G~u~ardar como ..."
+
+msgid  "S~e~e tabs"
+msgstr "~V~er los tabuladores"
+
+msgid  "S~e~t Local"
+msgstr "S~e~teos locales"
+
+msgid  "S~e~t Local options"
+msgstr "Opcion~e~s Locales"
+
+msgid  "S~h~ell"
+msgstr "S~h~ell"
+
+msgid  "S~t~andard headers"
+msgstr "~E~ncabezados standard"
+
+msgid  "S~t~op selected"
+msgstr "De~t~ener"
+
+msgid  "Tag Table"
+msgstr "Lista de temas"
+
+msgid  "Test of macro from menu"
+msgstr "Prueba de macro desde el men£"
+
+msgid  "Text "
+msgstr "Texto "
+
+msgid  "Thanks to:"
+msgstr "Agradecimientos para:"
+
+msgid  "That's SET's Editor v%lX.%lX.%lX, (c) 1996-1999"
+msgstr "Este es el editor de SET v%lX.%lX.%lX, (c) 1996-1999"
+
+msgid  "That's a 'safe' screen saver. The editor have a beautiful plasma "
+"screen saver but currently isn't the default because some (really buggy) "
+"Winshit 9x video drivers makes strange things when a windowed DOS program "
+"switchs to video mode. I hate it ...."
+msgstr "Este es un salvapantallas seguro. El editor tiene varios "
+"salvapantallas mucho mejores, pero actualmente no son usados por defecto "
+"porque algunos WinCaca 9x tienen serios problemas en los drivers de video y "
+"hacen cosas verdaderamente extra¤as cuando una aplicaci¢n DOS que corre en "
+"una ventana entra a modo gr fico. Odio esto ...."
+
+msgid  "The Error was: %s\n"
+msgstr "El error fue: %s\n"
+
+msgid  "The FSF and GNU people for such a good tools"
+msgstr "La gente de la FSF y el proyecto GNU por tan buenas herramientas"
+
+msgid  "The MP3 routines aren't linked in the editor"
+msgstr "Las rutinas MP3 no fueron incluidas al compilar el editor"
+
+msgid  "The University of California, Berkeley and its contributors"
+msgstr "La Universidad de California, Berkeley y sus colaboradores"
+
+msgid  "The University of Cambridge for the PCRE package"
+msgstr "La University of Cambridge por la librer¡a PCRE"
+
+msgid  "The clipboard is empty"
+msgstr "El portapapeles est  vac¡o"
+
+msgid  "The desktop file belongs to another version."
+msgstr "El archivo de escritorio es de otra versi¢n del editor."
+
+msgid  "The desktop file cannot be used, because it was created by a newer "
+"version of RHIDE"
+msgstr "El archivo de escritorio no puede ser usado pues fue creado por una "
+"versi¢n m s nueva de RHIDE"
+
+msgid  "The desktop file cannot be used, because of a new format"
+msgstr "El archivo de escritorio no puede ser usado pues usa un formato "
+"anterior"
+
+msgid  "The desktop file is too old."
+msgstr "El archivo de escritorio es de una version muy vieja."
+
+msgid  "The disk copy of %s is newer, reload it?"
+msgstr "La copia en disco de `%s' es m s nueva, ¨la cargo?"
+
+msgid  "The editor was succesfully installed, now you must add the "
+"directory\n"
+"where the editor was installed to your PATH, like this:"
+msgstr "El editor fue exitosamente instalado, ahora debe agregar el "
+"directorio\n"
+"donde el editor fue instalado a su PATH de esta manera:"
+
+msgid  "The error was : "
+msgstr "El error fue: "
+
+msgid  "The file is read-only, try to revert it?"
+msgstr "El archivo es de solo lectura, ¨revierto esto?"
+
+msgid  "The header is too large, reduce the title and/or author lengths"
+msgstr "El encabezado es demasiado largo, reduzca el t¡tulo y/o autor"
+
+msgid  "The item '%s' is already in your project"
+msgstr "El elemento '%s' ya est  en el proyecto"
+
+msgid  "The main index of the RHIDE help"
+msgstr "El ¡ndice principal de la ayuda de RHIDE"
+
+msgid  "The main index of the libc reference"
+msgstr "El ¡ndice principal de la ayuda de la libc"
+
+msgid  "The selected breakpoint is invalid, probably this file is not "
+"compiled with debugging information or for this line is no code generated."
+msgstr "El breakpoint seleccionado es inv lido, probablemente este archivo "
+"no fue compilado con informaci¢n de depuraci¢n o bien el compilador no "
+"gener¢ c¢digo para esta l¡nea (la optimiz¢)."
+
+msgid  "The text I suggest to add is currently in the clipboard."
+msgstr "El texto que le sugiero agregar se encuentra en el porta papeles."
+
+msgid  "There are only %d parameters for GREP. Continue ?"
+msgstr "Hay solo %d par metros para GREP. ¨Continuo?"
+
+msgid  "There aren't opened files"
+msgstr "No hay archivos abiertos"
+
+msgid  "There is an unmatched quote in your arguments"
+msgstr "Hay una comilla sin cerra en sus par metros"
+
+msgid  "There were some errors"
+msgstr "Hubieron algunos errores"
+
+msgid  "This action doesn't have undo, are you sure?"
+msgstr "Esta acci¢n no puede deshacerse, ¨est  seguro?"
+
+msgid  "This breakpoint could not enabled, because you are running under "
+"Windows 3.1x and there the number of breakpoints is limited to 3"
+msgstr "Este breakpoint no puede ser colocado debido a que Ud. est  usando "
+"Win 3.1x y el n"
+
+msgid  "This breakpoint could not enabled, because you are running under "
+"Windows 3.1x and there the number ofbreakpoints is limited to 3"
+msgstr "Este breakpoint no puede ser colocado debido a que Ud. est  usando "
+"Win 3.1x y el n"
+
+msgid  "This file contains ASCII 0 values, all the characters after it in "
+"this line becomes invisible. Be careful."
+msgstr "Este archivo contiene caracteres con valor 0, todos los caracteres "
+"luego del 0 no se podr n ver en esa l¡nea. Tenga cuidado"
+
+msgid  "This file is already opened, first close it."
+msgstr "Este archivo ya esta abierto, primero ci‚rrelo."
+
+msgid  "This file isn't in disk!"
+msgstr "­Este archivo no se encuentra en disco!"
+
+msgid  "This is %s. Copyright (c) 1996 by Robert H”hne\n"
+msgstr "Esto es %s. Copyright (C) por Robert H”hne, 1996\n"
+
+msgid  "This is %s. Copyright (c) 1996-1998 by Robert H”hne\n"
+msgstr "Esto es %s. Copyright (c) 1996-1998 por Robert H”hne\n"
+
+msgid  "This key is allready in use, do you want to replace it?"
+msgstr "Esta tecla ya est  en uso, ¨desea reemplazarla?"
+
+msgid  "This line no longer exists"
+msgstr "Esta l¡nea ya no existe"
+
+msgid  "This program has no usable debugging information. Try to compile it "
+"with the -g switch."
+msgstr "Este programa no posee informaci¢n de depuraci¢n que sea £til. "
+"Intente compilando con la opci¢n -g."
+
+msgid  "This sequence is used for more than one key, delete these "
+"assignments first"
+msgstr "Esta secuencia es usada por m s de una tecla, primero elimine esas "
+"asignaciones"
+
+msgid  "This video mode (0x%03x) is not supported by the Turbo Vision "
+"library"
+msgstr "Este modo de video (0x%03x) no es soportado por la librer¡a Turbo "
+"Vision"
+
+msgid  "This window can't be printed select an editor"
+msgstr "Esta ventana no puede imprimirse, selecciona un editor"
+
+msgid  "Tile windows ~v~ertically first"
+msgstr "Mosaico de ventanas primero en sentido ~v~ertical"
+
+msgid  "Time: %3d:%02d"
+msgstr "Tiempo: %3d:%02d"
+
+msgid  "Time: %f seconds\n"
+"Speed: %f lines/second\n"
+"%5.2f%% Editor\n"
+"%f chars/sec"
+msgstr "Tiempo: %f segundos\n"
+"Velocidad: %f l¡neas/seg\n"
+"%5.2f%% Editor\n"
+"%f caracteres/seg"
+
+msgid  "Time: %f seconds\n"
+"Speed: %f lines/second\n"
+"%f chars/sec"
+msgstr "Tiempo: %f segundos\n"
+"Velocidad: %f l¡neas/segundo\n"
+"%f caracteres/seg"
+
+msgid  "Time: 000:00"
+msgstr "Tiempo: 000:00"
+
+msgid  "Tip of the day"
+msgstr "Concejo del d¡a"
+
+msgid  "Title:  %s"
+msgstr "T¡tulo: %s"
+
+msgid  "Ti~m~e"
+msgstr "Tie~m~po"
+
+msgid  "To a~l~l"
+msgstr "a ~T~odos"
+
+msgid  "To l~o~wer"
+msgstr "A min£sc~u~las"
+
+msgid  "To ~u~pper"
+msgstr "A ma~y~£sculas"
+
+msgid  "Tomislav Uzelac for AMP, the MP3 engine"
+msgstr "Tomislav Uzelac por AMP, motor MP3"
+
+msgid  "Too many files."
+msgstr "Demasiados archivos."
+
+msgid  "Total ~l~ines per page:"
+msgstr "Total de ~l~¡neas por p gina:"
+
+msgid  "Total: %3d:%02d"
+msgstr "Total: %3d:%02d"
+
+msgid  "Total: 000:00"
+msgstr "Total: 000:00"
+
+msgid  "Trace into (No display swap)"
+msgstr "Paso entrando (No rep. pan.)"
+
+msgid  "Transparent Blocks"
+msgstr "Bloques Transparentes"
+
+msgid  "Tra~n~sparent Blocks"
+msgstr "Bloques Tran~s~parentes"
+
+msgid  "Type EXIT to return..."
+msgstr "Tipee EXIT para volver ..."
+
+msgid  "Type of Pattern"
+msgstr "Tipo de patr¢n"
+
+msgid  "Type of installation"
+msgstr "Tipo de instalaci¢n"
+
+msgid  "Type of keyboard"
+msgstr "Tipo de teclado"
+
+msgid  "T~e~st"
+msgstr "~P~robar"
+
+msgid  "T~i~tle"
+msgstr "T¡t~u~lo"
+
+msgid  "T~o~ all"
+msgstr "a To~d~os"
+
+msgid  "Un/~I~ndent block"
+msgstr "Des/indentar blo~q~ue"
+
+msgid  "Unable to register macro"
+msgstr "No puedo resgistrar el macro"
+
+msgid  "Unable to uncompress %s, most probably this file is damaged"
+msgstr "No puedo descomprimir %s, lo m s probable es que el archivo este "
+"da¤ado"
+
+msgid  "Unable to uncompress files, most probably this file is damaged"
+msgstr "No puedo descomprimir archivos, probablemente esten da¤ados"
+
+msgid  "Unchanged register"
+msgstr "Registro no modificado"
+
+msgid  "Unclosed SubMenu"
+msgstr "SubMenu no cerrado"
+
+msgid  "Unclosed string"
+msgstr "Cadena de caracteres no cerrada"
+
+msgid  "Underline"
+msgstr "Subrayado"
+
+msgid  "Unfinished macro name"
+msgstr "Nombre de un macro no terminado"
+
+msgid  "Unhandled redo"
+msgstr "­Redo no soportado!"
+
+msgid  "Unhandled syntax highlight"
+msgstr "­Resaltado de sintaxis no soportado!"
+
+msgid  "Unhandled undo"
+msgstr "­Undo no soportado!"
+
+msgid  "Unindent o~n~e character"
+msgstr "Desindentar u~n~ espacio"
+
+msgid  "Unknown"
+msgstr "Desconocido"
+
+msgid  "Untitled"
+msgstr "Sin T¡tulo"
+
+msgid  "Use a file with 1000 lines or more for that"
+msgstr "Utilice un archivo con al menos 1000 l¡neas"
+
+msgid  "Use external program"
+msgstr "Usar un programa ~e~xterno"
+
+msgid  "Use no shadows"
+msgstr "No usar sombras"
+
+msgid  "Use the ~c~lipboard selection"
+msgstr "Usar la sele~c~ci¢n del portapapeles"
+
+msgid  "Use ~c~olors"
+msgstr "Usar ~c~olores"
+
+msgid  "Use ~s~tandard libraries"
+msgstr "Usar librer¡a ~s~tandard"
+
+msgid  "User"
+msgstr "Usuario"
+
+msgid  "User Reserved words"
+msgstr "Palabras reservadas de Usuario"
+
+msgid  "User words"
+msgstr "Palabras de usuario"
+
+msgid  "User ~d~efined"
+msgstr "~D~efinido por el usuario"
+
+msgid  "Us~e~ RCS"
+msgstr "Usar R~C~S"
+
+msgid  "U~s~e dual display"
+msgstr "U~s~ar dos monitores"
+
+msgid  "Valid options are:\n"
+msgstr "Las opciones disponibles son:\n"
+
+msgid  "Value not in the range %d to %d"
+msgstr "Valor fuera del rango %d a %d"
+
+msgid  "Value not in the range %ld to %ld"
+msgstr "Valor fuera del rango %ld a %ld"
+
+msgid  "Value not in the range %uld to %uld"
+msgstr "Valor fuera del rango %uld a %uld"
+
+msgid  "Value:"
+msgstr "Valor:"
+
+msgid  "Warning"
+msgstr "Advertencia"
+
+msgid  "Warning Flags"
+msgstr "Opciones de Warning"
+
+msgid  "Warning: "
+msgstr "Cuidado: "
+
+msgid  "Warning: %s is write protected"
+msgstr "Cuidado: %s est  protegido contra escritura"
+
+msgid  "Watch"
+msgstr "Visor"
+
+msgid  "Watches"
+msgstr "Visores"
+
+msgid  "What to do"
+msgstr "Que hacer"
+
+msgid  "Where do you want to install the editor?"
+msgstr "¨Donde desea instalar el editor?"
+
+msgid  "Whole line (-~x~)"
+msgstr "L¡neas completas (-~x~)"
+
+msgid  "WindowList"
+msgstr "Lista de Ventanas"
+
+msgid  "Windows 9x or similar detected, wait while\n"
+"finding information about your system"
+msgstr "Windows 9x o similar fue detectado, por favor\n"
+"espere mientras busco informaci¢n sobre su sistema"
+
+msgid  "Windows List"
+msgstr "Lista de Ventanas"
+
+msgid  "With this settings SHIFT key will affect the case of the letters "
+"during incremental searchs, CAPS-LOCK too. Don't forget it."
+msgstr "Con estas opciones la tecla SHIFT afectar  a las letras (haci‚ndolas "
+"may£sculas o min£sculas) durante las b£squedas incrementales, lo mismo "
+"suceder  con CAPS-LOCK. No olvide este detalle."
+
+msgid  "With this settings incremental searchs aren't very intuitive, "
+"specially when pressing SHIFT. Don't forget it."
+msgstr "Con estas opciones las b£squedas incrementales no ser n muy "
+"intuituvas, especialmente al presionar SHIFT. No olvide este detalle."
+
+msgid  "Word:"
+msgstr "Palabra:"
+
+msgid  "Wrap column ~2~"
+msgstr "Columna l¡mite ~2~"
+
+msgid  "Wrap co~l~umn"
+msgstr "Colu~m~na l¡mite"
+
+msgid  "Write to file"
+msgstr "Guardar a un archivo"
+
+msgid  "Wrong command name"
+msgstr "Nombre de comando err¢neo"
+
+msgid  "Wrong context name"
+msgstr "Nombre de contexto equivocado"
+
+msgid  "Wrong desktop file"
+msgstr "Archivo de escritorio incorrecto."
+
+msgid  "Wrong desktop file."
+msgstr "Archivo de escritorio incorrecto."
+
+msgid  "Wrong file"
+msgstr "Archivo incorrecto"
+
+msgid  "Wrong file type."
+msgstr "Tipo de archivo incorrecto."
+
+msgid  "Wrong key name"
+msgstr "Nombre de tecla err¢neo"
+
+msgid  "Wrong mode definition in pseudo macro."
+msgstr "Definici¢n de 'mode' err¢nea en un pseudo macro."
+
+msgid  "Wrong project file."
+msgstr "Archivo de proyecto incorrecto."
+
+msgid  "Wrong version"
+msgstr "Versi¢n incorrecta"
+
+msgid  "You already installed (or tried) the editor, but in a different "
+"place. Do you want to continue?"
+msgstr "Ud. ya ha instalado (o al menos intent¢) el editor, pero en un lugar "
+"diferente. ¨Desea continuar?"
+
+msgid  "You are expanding a MP3 file, do you really want to quit?"
+msgstr "Ud. est  descomprimiendo un archivo MP3, ¨realmente desea abortar?"
+
+msgid  "You can give here only a valid filename for a Pascal source file"
+msgstr "Ud. solo puede escribir el nombre de un archivo Pascal aqu¡"
+
+msgid  "You can move lines using:\n"
+"Shift + arrows keys: Select text\n"
+"Ctrl+Insert: Copy to the clipboard\n"
+"Ctrl+Delete: Delete a block\n"
+"Shift+Insert: Paste from the clipboard\n"
+"Shift+Delete: Copy to clipboard and then delete the block\n"
+"Ctrl+U: Undo (only one action)"
+msgstr "Ud. puede mover l¡neas usando:\n"
+"Shift + flechas: Seleccionar texto\n"
+"Ctrl+Insertar: Copiar al porta papeles\n"
+"Ctrl+Suprimir: Borrar un bloque\n"
+"Shift+Insertar: Pegar desde el porta papeles\n"
+"Shift+Suprimir: Copia al porta papeles y borra el bloque\n"
+"Ctrl+U: Deshacer (solo una acci¢n)"
+
+msgid  "You can type a character here"
+msgstr "Ud. puede ingresar un caracter aqu¡"
+
+msgid  "You can type a string here"
+msgstr "Ud. puede ingresar una cadena de caracteres aqu¡"
+
+msgid  "You can type a value here"
+msgstr "Ud. puede ingresar un valor aqu¡"
+
+msgid  "You can't delete it from disk"
+msgstr "No puede ser borrado del disco"
+
+msgid  "You can't paste a rectangle crossing the end of the file"
+msgstr "No se puede pegar un rect ngulo que cruce el fin del archivo"
+
+msgid  "You defined SET_FILES environment variable in a way that isn't "
+"compatible with the installer, be careful"
+msgstr "Ud. defini¢ la variable de entorno SET_FILES de una manera que es "
+"incompatible con el instalador, ­tenga cuidado!"
+
+msgid  "You have already 3 breakpoints set and under Windows 3.1 the number "
+"of breakpoints is limited to 3"
+msgstr "Ud. ya posee 3 breakpoints que es lo m ximo posible bajo Windows "
+"3.1x"
+
+msgid  "You have already 3 breakpoints set and under Windows 3.1x the number "
+"of breakpoints is limited to 3"
+msgstr "Ud. ya posee 3 breakpoints que es lo m ximo posible bajo Windows "
+"3.1x"
+
+msgid  "You modified the autoexec.bat, Do you want to save the changes?"
+msgstr "El autoexec.bat fue modificado, ¨Desea guardar los cambios?"
+
+msgid  "You must configure it first in the Options submenu"
+msgstr "Debe configurar que programa ejecutar en el men£ de opciones"
+
+msgid  "You must install grep to use it!"
+msgstr "­Debe instalar grep para usar esto!"
+
+msgid  "You must install gzip to browse compressed files!"
+msgstr "­Debe instalar gzip para leer archivos comprimidos!"
+
+msgid  "You must install man to use it!"
+msgstr "­Debe instalar el programa man para usar esto!"
+
+msgid  "You must provide at least one directory to search"
+msgstr "Debe especificar al menos un directorio donde buscar"
+
+msgid  "You must select an editor window for this operation"
+msgstr "Ud. debe seleccionar una ventana de esitor para esta operaci¢n"
+
+msgid  "You must select the editor window first"
+msgstr "Ud. debe seleccionar una ventana de editor primero"
+
+msgid  "You must type a character here"
+msgstr "Ud. debe ingresar una cadena de caracteres aqu¡"
+
+msgid  "You must type a string here"
+msgstr "Ud. debe ingresar una cadena de caracteres aqu¡"
+
+msgid  "You must type a value here"
+msgstr "Ud. debe ingresar un valor a"
+
+msgid  "You need a newer editor for this desktop file."
+msgstr "Ud. necesita una nueva versi¢n del editor para este archivo de "
+"escritorio."
+
+msgid  "You'll lose all the changes"
+msgstr "Perder  todos los cambios"
+
+msgid  "[  PLAY  ]"
+msgstr "[TOCANDO ]"
+
+msgid  "[  STOP  ]"
+msgstr "[DETENIDO]"
+
+msgid  "[ PAUSE  ]"
+msgstr "[ PAUSA  ]"
+
+msgid  "[ without ]"
+msgstr "[ sin ]"
+
+msgid  "\n"
+" No help available in this context."
+msgstr "\n"
+" No hay ayuda disponible para esta parte del programa."
+
+msgid  "\n"
+" Sorry I can't find this link (press ALT-F1).\n"
+msgstr "\n"
+" Lo lamento no puedo encontrar este nodo (presione ALT-F1).\n"
+
+msgid  "\n"
+" Sorry i can't find this link (press ALT-F1).\n"
+msgstr "\n"
+" Lo lamento, no puedo hallar la ayuda (presione ALT-F1 para volver "
+"atr s).\n"
+
+msgid  "\n"
+"Error! please run the editor from a valid directory\n"
+"\n"
+msgstr "\n"
+"­Error! por favor ejecute el editor desde un directorio v lido\n"
+"\n"
+
+msgid  "\n"
+"Wrong installation! You must define the %s environment variable.\n"
+msgstr "\n"
+"­Instalaci¢n err¢nea! Debe definir la variable de entorno %s.\n"
+
+msgid  "\n"
+"You defined SET_FILES wrongly, it doesn't point to a directory.\n"
+"\n"
+msgstr "\n"
+"Ud. defini¢ SET_FILES equivocadamente, no apunta a un directorio.\n"
+"\n"
+
+msgid  "`Pattern box' is a fi~l~e name"
+msgstr "El `Patr¢n' es un arc~h~ivo"
+
+msgid  "`Pattern box' is the pa~t~tern"
+msgstr "El `Pa~t~r¢n' es eso mismo"
+
+msgid  "a projectfile must be given\n"
+msgstr "debe indicarse un proyecto\n"
+
+msgid  "about RH~G~DB"
+msgstr "~a~cerca de RHGDB"
+
+msgid  "about RH~I~DE"
+msgstr "~a~cerca de RHIDE"
+
+msgid  "add an item to the project"
+msgstr "agrega un elemento al proyecto"
+
+msgid  "all dependencies in makefile"
+msgstr "todas las dependencias en el archivo 'makefile'"
+
+msgid  "all dependencies in ~m~akefile"
+msgstr "todas las dependecias en ~m~akefile"
+
+msgid  "and updating it"
+msgstr "y poni‚ndolo al d¡a"
+
+msgid  "arguments for GREP"
+msgstr "Par metros para GREP"
+
+msgid  "based on GDB "
+msgstr "basado en GDB "
+
+msgid  "build the project completely new"
+msgstr "rehace todo el proyecto de nuevo"
+
+msgid  "builtin C"
+msgstr "C interno"
+
+msgid  "builtin assembler"
+msgstr "ensamblador interno"
+
+msgid  "builtin linker"
+msgstr "linker interno"
+
+msgid  "by Salvador Eduardo Tropea"
+msgstr "hecho por Salvador Eduardo Tropea"
+
+msgid  "change the name of the project-target"
+msgstr "cambia el nombre del programa, o biblioteca, a generar"
+
+msgid  "changing cwd to %s\n"
+msgstr "cambiando cwd a %s\n"
+
+msgid  "character"
+msgstr "Caracter"
+
+msgid  "chdir error: %s"
+msgstr "error al entrar al directorio: %s"
+
+msgid  "checking"
+msgstr "chequeando"
+
+msgid  "checking file time for '%s'\n"
+msgstr "chequeando el horario de creaci¢n de '%s'\n"
+
+msgid  "clearing dependencies for %s\n"
+msgstr "borrar las dependencias para %s\n"
+
+msgid  "clearing the FindCache\n"
+msgstr "borrando la cach‚ de b£squeda\n"
+
+msgid  "clearing the filetime cache\n"
+msgstr "borrando la cach‚ de horarios\n"
+
+msgid  "close the current project"
+msgstr "cierra el proyecto en curso"
+
+msgid  "close the current window"
+msgstr "cierra la ventana en uso"
+
+msgid  "closing temporary opened project project %s\n"
+msgstr "cerrando el proyecto temporario %s\n"
+
+msgid  "command expected"
+msgstr "se esperaba un comando"
+
+msgid  "command where a parameter was expected"
+msgstr "comando donde se esperaba un par metro"
+
+msgid  "comment"
+msgstr "comentario"
+
+msgid  "compile the current editor or the selected project-item"
+msgstr "compila la ventana actual o el item seleccionado en el proyecto"
+
+msgid  "contents of stderr from "
+msgstr "contenido de stderr desde "
+
+msgid  "contents of stdout from "
+msgstr "contenido de stdout desde "
+
+msgid  "copy the selected text to the clipboard"
+msgstr "copia el texto seleccionado al portapapeles (clipboard)"
+
+msgid  "costumize C++-compiler specific flags"
+msgstr "ajusta par metros espec¡ficos del compilador de C++"
+
+msgid  "costumize C-compiler specific flags"
+msgstr "ajusta par metros espec¡ficos del compilador de C"
+
+msgid  "costumize the colors of the IDE"
+msgstr "ajusta los colores"
+
+msgid  "costumize the generating of debugging information"
+msgstr "ajusta que informaci¢n de depuraci¢n (debug) ser  generada"
+
+msgid  "costumize, how to optimize the code"
+msgstr "ajusta como ser  optimizado el c¢digo"
+
+msgid  "could not change"
+msgstr "no puedo cambiarlo"
+
+msgid  "create a new editor window"
+msgstr "crea una ventana nueva"
+
+msgid  "create ~b~ackupfiles"
+msgstr "crear archivos de ~r~espaldo"
+
+msgid  "customize C++-compiler specific flags"
+msgstr "Ajusta opciones espec¡ficas del compilador de C++"
+
+msgid  "customize C-compiler specific flags"
+msgstr "Ajusta opciones espec¡ficas del compilador de C"
+
+msgid  "customize the IDE"
+msgstr "Ajusta opciones de RHIDE"
+
+msgid  "customize the colors of the IDE"
+msgstr "Ajusta los colores de RHIDE"
+
+msgid  "customize the generating of debugging information"
+msgstr "Ajusta que informaci¢n de depuraci¢n se generar "
+
+msgid  "customize the generating of warnings"
+msgstr "Ajusta cuales advertencias son reportadas"
+
+msgid  "customize various options for the C/C++-compiler"
+msgstr "Ajusta varias opciones del compilador de C/C++"
+
+msgid  "customize, how to optimize the code"
+msgstr "Ajusta que optimizaciones se aplicar n al c¢digo"
+
+msgid  "delete the selected text "
+msgstr "borra el texto seleccionado"
+
+msgid  "edit the list of flags for debugging"
+msgstr "edita la lista de par metros de depuraci¢n (debug)"
+
+msgid  "edit the list of flags for the C++-compiler"
+msgstr "edita la lista del par metros del compilador de C++"
+
+msgid  "edit the list of flags for the C-compiler"
+msgstr "edita la lista de par metros del compilador de C"
+
+msgid  "edit the list of flags for warnings"
+msgstr "edita la lista de par metros de advertencia (warnings)"
+
+msgid  "edit the list of optimization flags"
+msgstr "edita la lista de par metros de optimizaci¢n"
+
+msgid  "edit the list of reserved words"
+msgstr "edita la lista de palabras reservadas"
+
+msgid  "edit the list of user defined words (for syntaxhighlight)"
+msgstr "edita la lista de palabras del usuario para ser resaltadas"
+
+msgid  "editor statusline"
+msgstr "L¡nea de status (ed.)"
+
+msgid  "enter commandline arguments for your program"
+msgstr "permite ingresar la l¡nea de par metros de su programa"
+
+msgid  "enter local commandline options for compiling this item"
+msgstr "ingresa par metros especiales para compilar este elemento en "
+"particular"
+
+msgid  "error"
+msgstr "error"
+
+msgid  "error reading projectfile %s\n"
+msgstr "error al leer el proyecto: %s\n"
+
+msgid  "exclude from link"
+msgstr "ejecutar desde el linker"
+
+msgid  "executing: "
+msgstr "ejecutando: "
+
+msgid  "file: "
+msgstr "archivo: "
+
+msgid  "finaly opening project %s\n"
+msgstr "finalmente abriendo el proyecto %s\n"
+
+msgid  "find a string in the current editor"
+msgstr "busca palabras en la ventana actual"
+
+msgid  "find and replace a string in the current editor"
+msgstr "busca y reemplaza palabras en la ventana actual"
+
+msgid  "float"
+msgstr "coma flotante"
+
+msgid  "for developing DJGPP apps"
+msgstr "para realizar aplicaciones con DJGPP"
+
+msgid  "for developing Linux apps"
+msgstr "para realizar aplicaciones en Linux"
+
+msgid  "found '%s' in FindCache\n"
+msgstr "encontrado '%s' en la cach‚ de b£squeda\n"
+
+msgid  "found '%s' in current directory\n"
+msgstr "encontrado '%s' en el directorio en curso\n"
+
+msgid  "found '%s' in filetime cache "
+msgstr "encontrado '%s' en la cach‚ de horarios "
+
+msgid  "found '%s' not in filetime cache, time: %08lx\n"
+msgstr "encontrado '%s' que no est  en la cach‚ de horarios, hora: %08lx\n"
+
+msgid  "found '%s' on desktop, time: %08lx\n"
+msgstr "encontrado '%s' en el escritorio, hora: %08lx\n"
+
+msgid  "found '%s' using the search directory '%s'\n"
+msgstr "encontrado '%s' en el directorio de b£squeda '%s'\n"
+
+msgid  "found '%s'\n"
+msgstr "encontrado '%s'\n"
+
+msgid  "go to line number (after prompting)"
+msgstr "salta a la l¡nea que usted desee"
+
+msgid  "hex"
+msgstr "Hexadecimal"
+
+msgid  "identifier"
+msgstr "Identificador"
+
+msgid  "illegal char"
+msgstr "caracter ilegal"
+
+msgid  "in function "
+msgstr "en la funci¢n "
+
+msgid  "infview [option]... [info_file [menu_item...]]\n"
+"\n"
+msgstr "infview [opci¢n]... [archivo_info [item_del_menu...]]\n"
+"\n"
+
+msgid  "insert the selected text from the clipboard"
+msgstr "inserta texto desde el portapapeles (clipboard)"
+
+msgid  "integer"
+msgstr "entero"
+
+msgid  "is"
+msgstr "es"
+
+msgid  "is up to date"
+msgstr "est  al d¡a"
+
+msgid  "keyword"
+msgstr "palabra reservada"
+
+msgid  "lib~c~ reference"
+msgstr "Referencia de lib~c~"
+
+msgid  "line ~n~umber"
+msgstr "l¡nea ~n~ro."
+
+msgid  "link for ~p~rofiling"
+msgstr "enlazar para ~p~rofiling"
+
+msgid  "link the project or create the library"
+msgstr "Enlaza el proyecto o crea la librer¡a"
+
+msgid  "local options for project-item"
+msgstr "Opciones locales para un item en el proyecto"
+
+msgid  "local ~c~ommandline options"
+msgstr "Opciones l¡nea de ~c~omandos"
+
+msgid  "main target~n~ame"
+msgstr "~N~ombre del Programa"
+
+msgid  "make the project (with checking auto-dependencies)"
+msgstr "hace el proyecto (crea el .EXE chequeando las dependencias)"
+
+msgid  "marked keyword"
+msgstr "pal. res. marcada"
+
+msgid  "marked text"
+msgstr "texto marcado"
+
+msgid  "mouse sec."
+msgstr "rat¢n seg."
+
+msgid  "move the selected text to the clipboard"
+msgstr "mueve el texto seleccionado al portapapeles (clipboard)"
+
+msgid  "must rebuild"
+msgstr "debe rehacerse"
+
+msgid  "newer"
+msgstr "m s nuevo"
+
+msgid  "no ) end of code"
+msgstr ") no encontrado"
+
+msgid  "no errors"
+msgstr "sin errores"
+
+msgid  "no starting ("
+msgstr "( al ppio. no encontrado"
+
+msgid  "normal text"
+msgstr "texto normal"
+
+msgid  "not available"
+msgstr "no disponible"
+
+msgid  "not found: take '%s'\n"
+msgstr "no encontrado: tomando '%s'\n"
+
+msgid  "octal"
+msgstr "Octal"
+
+msgid  "older"
+msgstr "m s viejo"
+
+msgid  "open a project"
+msgstr "abre un proyecto"
+
+msgid  "opens a file in the editor"
+msgstr "abre un archivo en el editor"
+
+msgid  "opens the Info Viewer"
+msgstr "abre el Visor de .INFs (formato de Info)"
+
+msgid  "operation not defined"
+msgstr "operaci¢n no definida"
+
+msgid  "options:    -d[actd]\n"
+msgstr "opciones:   -d[actd]\n"
+
+msgid  "options:    -d[actdf]\n"
+msgstr "opciones:   -d[actdf]\n"
+
+msgid  "options:\n"
+msgstr "opciones:\n"
+
+msgid  "other"
+msgstr "~o~tro"
+
+msgid  "o~t~her options"
+msgstr "o~t~ras opciones"
+
+msgid  "o~v~erwrite mode"
+msgstr "modo de so~b~reescritura"
+
+msgid  "parameter after command"
+msgstr "par metro luego de un comando"
+
+msgid  "parens matching"
+msgstr "Pares coincidentes"
+
+msgid  "parser"
+msgstr "parseo"
+
+msgid  "preprocessor"
+msgstr "Preprocesador"
+
+msgid  "press ENTER to continue\n"
+msgstr "presione INTRO para continuar\n"
+
+msgid  "quits the IDE"
+msgstr "Abandona el programa"
+
+msgid  "ready"
+msgstr "listo"
+
+msgid  "rebuild seldom"
+msgstr "rehacer pocas veces"
+
+msgid  "rebuilding of"
+msgstr "rehaciendo "
+
+msgid  "rectangle block"
+msgstr "Bloques rectangulares"
+
+msgid  "redirect 'stde~r~r'"
+msgstr "redireccionar 'st~d~err'"
+
+msgid  "redirect 'stdou~t~'"
+msgstr "redireccionar 'stdou~t~'"
+
+msgid  "redirecting %s to %s\n"
+msgstr "redireccionando %s a %s\n"
+
+msgid  "remove all files, which can be rebuild with this project"
+msgstr "borra todos los archivos que pueden rehacerse con este proyecto"
+
+msgid  "remove the list of automaticaly generated dependencies"
+msgstr "borra la lista de dependencias generadas automaticamente"
+
+msgid  "remove the list of automaticly generated dependencies"
+msgstr "borra la lista de dependencias generadas automaticamente"
+
+msgid  "remove the selected item from the project"
+msgstr "quita el elemento seleccionado del proyecto"
+
+msgid  "removing %s\n"
+msgstr "borrando %s\n"
+
+msgid  "repaints the desktop"
+msgstr "redibuja el Escritorio (Desktop)"
+
+msgid  "repeat the last find- or replace-operation"
+msgstr "repite la £ltima operaci¢n de b£squeda o reemplazo"
+
+msgid  "reserved"
+msgstr "reversa"
+
+msgid  "reserved word"
+msgstr "palabras reservadas"
+
+msgid  "resize/move the current window"
+msgstr "Ajustar el tama¤o o mover la ventana actual"
+
+msgid  "return type: "
+msgstr "tipo de retorno: "
+
+msgid  "return value"
+msgstr "valor retornado"
+
+msgid  "return value: %d\n"
+msgstr "valor retornado: %d\n"
+
+msgid  "run the project-target (if executable after doing a make)"
+msgstr "ejecuta el .EXE generado (si es que pudo crearse)"
+
+msgid  "running GREP:"
+msgstr "ejecutando GREP:"
+
+msgid  "sLisp macros"
+msgstr "Macros sLisp"
+
+msgid  "save all opened editors to disk (if modified)"
+msgstr "graba todas las ventanas modificadas"
+
+msgid  "save the current editor to disk (if modified)"
+msgstr "graba el contenido de la ventana actual (si fue modificada)"
+
+msgid  "save the current editor under a different name to disk"
+msgstr "graba el contenido de la ventana actual con un nombre distinto"
+
+msgid  "seconds"
+msgstr "segundos"
+
+msgid  "select next message"
+msgstr "selecciona el pr¢ximo mensaje"
+
+msgid  "select previous message"
+msgstr "selecciona el mensaje anterior"
+
+msgid  "selected keyword"
+msgstr "pal. res. seleccionada"
+
+msgid  "set addition flags to the compiler (defines, ...)"
+msgstr "ajusta par metros adicionales del Compilador (#defines, ...)"
+
+msgid  "set additional flags to the compiler (defines, ...)"
+msgstr "ajusta par metros adicionales del Compilador (#defines, ...)"
+
+msgid  "set additional flags to the linker"
+msgstr "ajusta par metros adicionales del linker"
+
+msgid  "set basic options for the IDE"
+msgstr "ajusta las opciones b sicas"
+
+msgid  "set various search paths for finding the files"
+msgstr "permite indicar los caminos (paths) donde se buscar n los archivos"
+
+msgid  "set where to search for include files"
+msgstr "para indicar donde se buscar n los include (.h,.hpp)"
+
+msgid  "set where to search for libraries"
+msgstr "para indicar donde se buscar n las librer¡as (.a)"
+
+msgid  "set where to search for object files"
+msgstr "para indicar donde se buscar n los object (.o)"
+
+msgid  "set where to search for source files"
+msgstr "para indicar donde se buscar n los fuentes (.cc,.c,.cpp)"
+
+msgid  "set which libraries to be linked with the program"
+msgstr "para indicar que librer¡as ser n enlazadas con el programa"
+
+msgid  "setedit [options] [file_name ...]\n"
+"\n"
+msgstr "setedit [opciones] [nombre_archivo ...]\n"
+"\n"
+
+msgid  "show a list of all windows on the desktop"
+msgstr "muestra una lista de todas las ventanas del escritorio (desktop)"
+
+msgid  "show all editor windows simultaniously"
+msgstr "ajusta el tama¤o de las ventanas para que se vean todas a la vez"
+
+msgid  "show free memor~y~"
+msgstr "mo~s~trar la memoria libre"
+
+msgid  "show free ~m~emory"
+msgstr "muestra memoria ~l~ibre"
+
+msgid  "show from each editor the title"
+msgstr "ajusta las ventanas para que se vean los t¡tulos de todas"
+
+msgid  "show information about RHIDE"
+msgstr "muestra la informaci¢n acerca de RHIDE"
+
+msgid  "show the dependencies for the selected item"
+msgstr "muestra las dependencvas del elemento seleccionado"
+
+msgid  "show the project window"
+msgstr "muestra la ventana del proyecto"
+
+msgid  "show the user screen"
+msgstr "muestra la pantalla generada por nuestro programa"
+
+msgid  "show ~p~rocess information"
+msgstr "mostrar informaci¢n del ~p~roceso"
+
+msgid  "shows the clipboard"
+msgstr "muestra el portapapeles (clipboard)"
+
+msgid  "sho~w~ process information"
+msgstr "~m~uestra inf. del proceso"
+
+msgid  "string"
+msgstr "String"
+
+msgid  "string no closed"
+msgstr "cadena de caracteres no cerrada"
+
+msgid  "success"
+msgstr "‚xito"
+
+msgid  "switch to DOS (call of %COMSPEC%, return with EXIT)"
+msgstr "sale a DOS (llama a %COMSPEC%, retorna con EXIT)"
+
+msgid  "switch to a shell (call of $SHELL or /bin/sh, return with exit)"
+msgstr "llama al shell (usa $SHELL o /bin/sh, retorna con exit)"
+
+msgid  "switch to the next window on the desktop"
+msgstr "pasa a la pr¢xima ventana en el escritorio (desktop)"
+
+msgid  "switch to the previous window on the desktop"
+msgstr "pasa a la ventana anterior en el escritorio (desktop)"
+
+msgid  "symbol"
+msgstr "S¡mbolo"
+
+msgid  "symbol2"
+msgstr "S¡mbolo 2"
+
+msgid  "syntax"
+msgstr "sintaxis"
+
+msgid  "syntax ~h~ighlighting"
+msgstr "resaltar la sinta~x~is"
+
+msgid  "temporary opening project %s\n"
+msgstr "abriendo el proyecto temporario %s\n"
+
+msgid  "than"
+msgstr "que"
+
+msgid  "toggles between full size and previous size of the current window"
+msgstr "lleva a pantalla completa o a tama¤o normal la ventana en uso"
+
+msgid  "type not registered: %s\n"
+msgstr "tipo no registrado: %s\n"
+
+msgid  "undefined symbol"
+msgstr "s¡mbolo no definido"
+
+msgid  "undefined variable"
+msgstr "variable no definida"
+
+msgid  "undoes the last edit command"
+msgstr "deshace la £ltima operaci¢n realizada en el editor"
+
+msgid  "undoes the last edit command (no cursor moving)"
+msgstr "deshace el £ltimo comando de edici¢n (no los movimientos de cursor)"
+
+msgid  "undoes the last undo command"
+msgstr "rehace la £ltima operaci¢n deshecha en el editor"
+
+msgid  "unknown"
+msgstr "desconocido"
+
+msgid  "unknown value"
+msgstr "valor desconocido"
+
+msgid  "usage: %s [options] [project-file] [edit-file]\n"
+msgstr "Uso: %s [opciones] [archivo-de-proyecto] [archivo-a-editar]\n"
+
+msgid  "usage: %s [options] [project-file]\n"
+msgstr "uso: %s [opciones] [proyecto]\n"
+
+msgid  "usage: %s [options] exe-file [[arg1 [arg2 ...]]]\n"
+msgstr "uso: %s [opciones] ejecutable [[arg1 [arg2 ...]]]\n"
+
+msgid  "user defined words"
+msgstr "palabras de usuario"
+
+msgid  "using %s as temp directory\n"
+msgstr "usando %s como directorio temporal\n"
+
+msgid  "with Turbo Vision interface"
+msgstr "con interfaz Turbo Vision"
+
+msgid  "write a makefile for this project"
+msgstr "crea un 'makefile' a partir del proyecto (para el GNU make)"
+
+msgid  "wrong number"
+msgstr "n£mero err¢neo"
+
+msgid  "wrong number of parameters"
+msgstr "n£mero equivocado de par metros"
+
+msgid  "wrong parameter type"
+msgstr "tipo de par metro equivocado"
+
+msgid  "~Alt+B~ Bookmark"
+msgstr "~Alt+B~ Bookmark"
+
+msgid  "~Alt+F10~ Control"
+msgstr "~Alt+F10~ Control"
+
+msgid  "~Alt+F10~ local menu"
+msgstr "~Alt+F10~ men£ local"
+
+msgid  "~Alt+F1~ Back"
+msgstr "~Alt+F1~ Atras"
+
+msgid  "~Alt+F1~ last help"
+msgstr "~Alt+F1~ ayuda anterior"
+
+msgid  "~Alt+F3~ Close"
+msgstr "~Alt+F3~ Cerrar"
+
+msgid  "~Alt+F9~ Compile"
+msgstr "~Alt+F9~ Compilar"
+
+msgid  "~Alt+I~ Include"
+msgstr "~Alt+I~ Include"
+
+msgid  "~Alt+X~ Quit"
+msgstr "~Alt+X~ Salir"
+
+msgid  "~Alt-F3~ Close"
+msgstr "~Alt-F3~ Cerrar"
+
+msgid  "~Alt-X~ Exit"
+msgstr "~Alt-X~ Sale"
+
+msgid  "~A~SCII Chart"
+msgstr "Tabla ~A~SCII"
+
+msgid  "~A~SCII table"
+msgstr "Tabla ASC~I~I"
+
+msgid  "~A~dd"
+msgstr "~A~gregar"
+
+msgid  "~A~dd item"
+msgstr "A~g~regar item"
+
+msgid  "~A~ll"
+msgstr "~T~odos"
+
+msgid  "~A~lphabetical"
+msgstr "~A~lfab‚tico"
+
+msgid  "~A~nother InfView"
+msgstr "~O~tro InfView"
+
+msgid  "~A~rbitrary indent"
+msgstr "Indentado ~a~rbitrario"
+
+msgid  "~A~rguments ..."
+msgstr "~A~rgumentos ..."
+
+msgid  "~A~uthor"
+msgstr "~A~utor"
+
+msgid  "~A~utoindent"
+msgstr "~A~utoindentar"
+
+msgid  "~B~ack to defaults"
+msgstr "~V~alores originales"
+
+msgid  "~B~ackground"
+msgstr "~F~ondo"
+
+msgid  "~B~ase output (no extentions)"
+msgstr "Nombre ~b~ase de salida (sin exten.)"
+
+msgid  "~B~asic POSIX"
+msgstr "POSIX ~B~ sicas"
+
+msgid  "~B~efore footer"
+msgstr "A~n~tes del pie de p gina"
+
+msgid  "~B~lock quoted printable decode"
+msgstr "~D~ecodificar bloque quoted printable"
+
+msgid  "~B~ookmarks"
+msgstr "~M~arcadores"
+
+msgid  "~B~oth Alt"
+msgstr "Am~b~os Alt"
+
+msgid  "~B~reakpoints"
+msgstr "~B~reakpoints"
+
+msgid  "~B~ug report"
+msgstr "Reporte de ~p~roblemas"
+
+msgid  "~B~uild all"
+msgstr "~R~ehacer todo"
+
+msgid  "~Ctrl+Del~ Delete File"
+msgstr "~Ctrl+Del~ Borrar Archivo"
+
+msgid  "~Ctrl+F1~ Select from a list"
+msgstr "~Ctrl+F1~ Seleccionar de la lista"
+
+msgid  "~Ctrl+Ins~ Copy"
+msgstr "~Ctrl+Ins~ Copiar"
+
+msgid  "~Ctrl-F4~ Finish edition, or click in the button found in the top "
+"left corner"
+msgstr "~Ctrl-F4~ Terminar, o haga click en el bot¢n del  ngulo superior "
+"izquierdo"
+
+msgid  "~C~ intelligent indenting"
+msgstr "~i~ndentado de C inteligente"
+
+msgid  "~C~++ style"
+msgstr "Estilo ~C~++"
+
+msgid  "~C~-Flags"
+msgstr "Opciones de ~C~"
+
+msgid  "~C~/C++-Compiler"
+msgstr "Compilador de ~C~/C++"
+
+msgid  "~C~alculator"
+msgstr "~C~alculadora"
+
+msgid  "~C~all stack"
+msgstr "~L~lamadas de la pila"
+
+msgid  "~C~ancel"
+msgstr "~C~ancela"
+
+msgid  "~C~apital letters goes first"
+msgstr "~M~ay£sculas primero"
+
+msgid  "~C~ase sensitive"
+msgstr "May£s~c~ulas y min."
+
+msgid  "~C~hange"
+msgstr "~C~ambiar"
+
+msgid  "~C~hange dir..."
+msgstr "~C~ambiar directorio ..."
+
+msgid  "~C~haracter toggle"
+msgstr "Invertir ~c~aracter"
+
+msgid  "~C~hdir"
+msgstr "~C~am Dir"
+
+msgid  "~C~hoose ..."
+msgstr "~E~legir ..."
+
+msgid  "~C~lear"
+msgstr "~B~orrar"
+
+msgid  "~C~lock"
+msgstr "Relo~j~"
+
+msgid  "~C~lose"
+msgstr "C~e~rrar"
+
+msgid  "~C~lose project"
+msgstr "~C~errar proyecto"
+
+msgid  "~C~olors"
+msgstr "C~o~lores"
+
+msgid  "~C~olors ..."
+msgstr "~C~olores ..."
+
+msgid  "~C~olumn cursor"
+msgstr "Cursor de ~C~olumna"
+
+msgid  "~C~ompile"
+msgstr "~C~ompilar"
+
+msgid  "~C~ompilers"
+msgstr "~C~ompiladores"
+
+msgid  "~C~onfiguration"
+msgstr "~C~onfiguraci¢n"
+
+msgid  "~C~onvert to WAV"
+msgstr "~C~onvertir a WAV"
+
+msgid  "~C~opy"
+msgstr "~C~opiar"
+
+msgid  "~Del~ Close"
+msgstr "~Del~ Cierra"
+
+msgid  "~Del~ Delete"
+msgstr "~Del~ Borrar"
+
+msgid  "~D~OS shell"
+msgstr "Ir a ~D~OS"
+
+msgid  "~D~ate format:"
+msgstr "~F~ormato de la fecha:"
+
+msgid  "~D~ebug"
+msgstr "~D~epuraci¢n"
+
+msgid  "~D~ebugging-Flags"
+msgstr "Opciones Depu~r~aci¢n"
+
+msgid  "~D~efault"
+msgstr "~O~riginal"
+
+msgid  "~D~elete"
+msgstr "~B~orrar"
+
+msgid  "~D~elete memorized backups"
+msgstr "Borrar arch. de respaldo memori~z~ados"
+
+msgid  "~D~elete rebuildable files"
+msgstr "Borrar archivos ~r~egenerables"
+
+msgid  "~D~irectories"
+msgstr "~D~irectorios"
+
+msgid  "~D~irectories first"
+msgstr "Los ~d~irectorios primero"
+
+msgid  "~D~irectories for sources"
+msgstr "~D~irectorio de recursos"
+
+msgid  "~D~irectories to search"
+msgstr "~D~irectorio a buscar"
+
+msgid  "~D~irectory of formats"
+msgstr "~D~irectorio de los formatos"
+
+msgid  "~D~isable"
+msgstr "~D~eshabilitar"
+
+msgid  "~D~isassembler window"
+msgstr "Ventana del ~d~esensamblador"
+
+msgid  "~D~olar tags"
+msgstr "Son ~s~ubexpresiones con $n"
+
+msgid  "~D~on't create desktop files"
+msgstr "No c~r~ear archivos de escritorio"
+
+msgid  "~D~on't move the cursor on Paste"
+msgstr "No mover el cursor al pe~g~ar"
+
+msgid  "~D~on't remap codes under 32"
+msgstr "No ~a~lterar los c¢digos menores que 32"
+
+msgid  "~D~on't use colors"
+msgstr "No ~u~sar colores"
+
+msgid  "~D~on't use it"
+msgstr "~N~o usar esto"
+
+msgid  "~ENTER~ Evaluate"
+msgstr "~INTRO~ Evaluar"
+
+msgid  "~ESC~ Close"
+msgstr "~ESC~ Cerrar"
+
+msgid  "~Enter~ Edit"
+msgstr "~Enter~ Edita"
+
+msgid  "~Enter~ Jump to source"
+msgstr "~Enter~ Ver el fuente"
+
+msgid  "~Enter~ Modify register"
+msgstr "~Intro~ Modif. registro"
+
+msgid  "~Enter~ Select"
+msgstr "~Intro~ Selecciona"
+
+msgid  "~Esc~ Cancel"
+msgstr "~Esc~ Sale"
+
+msgid  "~E~dit"
+msgstr "~E~ditar"
+
+msgid  "~E~dit/Create list"
+msgstr "~E~ditar/Crear lista"
+
+msgid  "~E~ditor options"
+msgstr "Opciones del ~E~ditor"
+
+msgid  "~E~nable"
+msgstr "~H~abilitar"
+
+msgid  "~E~nd"
+msgstr "~F~in"
+
+msgid  "~E~nter the program name"
+msgstr "~I~ngrese el nombre del programa"
+
+msgid  "~E~ntire scope"
+msgstr "~T~odo"
+
+msgid  "~E~nvironment"
+msgstr "~E~ntorno"
+
+msgid  "~E~rror checking"
+msgstr "Chequeo de ~E~rror"
+
+msgid  "~E~valuate/Modify"
+msgstr "~E~valuar/Modificar"
+
+msgid  "~E~xpression"
+msgstr "~E~xpresi¢n"
+
+msgid  "~E~xtended POSIX"
+msgstr "POSIX ~E~xtendidas"
+
+msgid  "~E~xtended regular expression (-E)"
+msgstr "~E~xpresiones regulares extendidas (-E)"
+
+msgid  "~E~xtra options"
+msgstr "Opciones ~e~xtra"
+
+msgid  "~F10~ Menu"
+msgstr "~F10~ Men£"
+
+msgid  "~F1~ Help"
+msgstr "~F1~ Ayuda"
+
+msgid  "~F1~ Help on InfoViewer"
+msgstr "~F1~ Ayuda de InfoViewer"
+
+msgid  "~F2~ Save"
+msgstr "~F2~ Grabar"
+
+msgid  "~F3~ Open"
+msgstr "~F3~ Abrir"
+
+msgid  "~F4~ Goto"
+msgstr "~F4~ Ir a"
+
+msgid  "~F5~ Zoom"
+msgstr "~F5~ Zoom"
+
+msgid  "~F6~ Next"
+msgstr "~F6~ Pr¢xima"
+
+msgid  "~F7~ Trace"
+msgstr "~F7~ Avanzar"
+
+msgid  "~F8~ Step"
+msgstr "~F8~ Paso"
+
+msgid  "~F~SDB"
+msgstr "~F~SDB"
+
+msgid  "~F~ile"
+msgstr "~A~rchivo"
+
+msgid  "~F~ile name as title"
+msgstr "~N~ombre del archivo como t¡tulo"
+
+msgid  "~F~ilename"
+msgstr "~A~rchivo"
+
+msgid  "~F~iles"
+msgstr "~A~rchivo"
+
+msgid  "~F~iles first"
+msgstr "Los a~r~chivos primero"
+
+msgid  "~F~iles to search"
+msgstr "Archivo~s~ a buscar"
+
+msgid  "~F~ind..."
+msgstr "~B~uscar ..."
+
+msgid  "~F~ixed separated by CR (-F)"
+msgstr "~F~ijos separados por CR (-F)"
+
+msgid  "~F~oreground"
+msgstr "Prim. ~p~lano"
+
+msgid  "~F~ormat file (.frt)"
+msgstr "Archivo de ~F~ormato (.frt)"
+
+msgid  "~F~ortran-Flags"
+msgstr "Opciones de ~F~ortran"
+
+msgid  "~F~rom code page"
+msgstr "Codificaci¢n ~o~riginal"
+
+msgid  "~F~rom cursor"
+msgstr "~D~esde el cursor"
+
+msgid  "~F~uzzy"
+msgstr "~D~ifuso"
+
+msgid  "~G~REP ..."
+msgstr "~G~REP ..."
+
+msgid  "~G~enerate Code"
+msgstr "Generar ~c~¢digo"
+
+msgid  "~G~lobal"
+msgstr "~G~lobal"
+
+msgid  "~G~o"
+msgstr "~I~r a"
+
+msgid  "~G~o to"
+msgstr "~I~r a"
+
+msgid  "~G~o to cursor"
+msgstr "~I~r hasta cursor"
+
+msgid  "~G~o to line"
+msgstr "~I~r a l¡nea"
+
+msgid  "~G~oto"
+msgstr "~I~r a"
+
+msgid  "~G~oto Line..."
+msgstr "~I~r a l¡nea..."
+
+msgid  "~G~reek keyboard (CP 737)"
+msgstr "Teclado ~g~riego (CP 737)"
+
+msgid  "~G~roup"
+msgstr "~G~rupo"
+
+msgid  "~H~TML Accents"
+msgstr "Acentos ~H~TML"
+
+msgid  "~H~elp"
+msgstr "A~y~uda"
+
+msgid  "~H~ide"
+msgstr "Ocu~l~tar"
+
+msgid  "~Ins~ Add"
+msgstr "~Ins~ Agregar"
+
+msgid  "~Ins~ Insert"
+msgstr "~Ins~ Insertar"
+
+msgid  "~Ins~ Open"
+msgstr "~Ins~ Abrir"
+
+msgid  "~I~NF View"
+msgstr "~I~NF View"
+
+msgid  "~I~gnore case (-i)"
+msgstr "~I~gnorar may/min (-i)"
+
+msgid  "~I~nclude"
+msgstr "~I~nclude"
+
+msgid  "~I~ncludes"
+msgstr "~I~ncludes"
+
+msgid  "~I~nfo"
+msgstr "~I~nfo"
+
+msgid  "~I~nsert"
+msgstr "~I~nsertar"
+
+msgid  "~I~nteligent C indent"
+msgstr "~I~ndentado de C inteligente"
+
+msgid  "~I~ntelligent C indent"
+msgstr "~I~ndentado de C inteligente"
+
+msgid  "~I~ntermediate file"
+msgstr "Archivo ~i~ntermedio (temporal)"
+
+msgid  "~I~tem"
+msgstr "O~b~jeto"
+
+msgid  "~J~ump to function"
+msgstr "~S~altar a la funci¢n"
+
+msgid  "~K~eep intermediate"
+msgstr "~N~o borrar el intermedio"
+
+msgid  "~K~ey assignment"
+msgstr "~A~signaci¢n de teclas"
+
+msgid  "~K~eyboard"
+msgstr "~T~eclado"
+
+msgid  "~K~eys used by the menues, etc."
+msgstr "~T~eclas usadas por men£es, etc."
+
+msgid  "~L~ast help"
+msgstr "~U~ltima ayuda"
+
+msgid  "~L~eft Alt"
+msgstr "Alt ~I~zquierdo"
+
+msgid  "~L~ibraries"
+msgstr "~L~ibrer¡as"
+
+msgid  "~L~ine"
+msgstr "~L~¡nea"
+
+msgid  "~L~ink"
+msgstr "En~l~azar"
+
+msgid  "~L~ist"
+msgstr "~L~ista"
+
+msgid  "~L~oad"
+msgstr "~C~argar"
+
+msgid  "~L~oad options"
+msgstr "~R~ecuperar opciones"
+
+msgid  "~L~ocal edition ..."
+msgstr "~L~ocales de edici¢n ..."
+
+msgid  "~L~ocal options"
+msgstr "Opciones ~l~ocales"
+
+msgid  "~M~P3 songs"
+msgstr "Sonidos ~M~P3"
+
+msgid  "~M~acro"
+msgstr "~M~acro"
+
+msgid  "~M~acros"
+msgstr "~M~acros"
+
+msgid  "~M~ain function"
+msgstr "~F~unci¢n principal"
+
+msgid  "~M~ake"
+msgstr "~H~acer"
+
+msgid  "~M~an page View"
+msgstr "Visor de p ginas del ~m~anual"
+
+msgid  "~M~an page for ..."
+msgstr "~P~ gina del manual para ..."
+
+msgid  "~M~arks"
+msgstr "~M~arcas"
+
+msgid  "~M~atch pair highlight"
+msgstr "~R~esaltar el par complementario"
+
+msgid  "~M~atch pair highligth"
+msgstr "~R~esaltar el par complementario"
+
+msgid  "~M~ax. editor copies"
+msgstr "~M~ ximo n£mero de copias abiertas"
+
+msgid  "~M~odify"
+msgstr "~M~odificar"
+
+msgid  "~M~onospacied font"
+msgstr "Letras ~m~onoespaciadas"
+
+msgid  "~M~ouse double click"
+msgstr "~D~oble click"
+
+msgid  "~M~ouse options"
+msgstr "Opciones del ~M~ouse"
+
+msgid  "~M~ove"
+msgstr "~M~over"
+
+msgid  "~N~ame"
+msgstr "~N~ombre"
+
+msgid  "~N~ame of Node"
+msgstr "~N~ombre del Nodo"
+
+msgid  "~N~ame of the output file"
+msgstr "~N~ombre del archivo de salida"
+
+msgid  "~N~ew"
+msgstr "~N~uevo"
+
+msgid  "~N~ew text"
+msgstr "~N~uevo texto"
+
+msgid  "~N~ew value"
+msgstr "Nuevo valor"
+
+msgid  "~N~ext"
+msgstr "P~r~¢xima"
+
+msgid  "~N~ext message"
+msgstr "~P~r¢ximo Mensaje"
+
+msgid  "~N~ext tip"
+msgstr "P~r~¢ximo"
+
+msgid  "~N~o"
+msgstr "~N~o"
+
+msgid  "~N~o SHL"
+msgstr "~S~in SHL"
+
+msgid  "~N~odes"
+msgstr "~N~odos"
+
+msgid  "~N~ormal text"
+msgstr "Es texto ~n~ormal"
+
+msgid  "~O~K"
+msgstr "~O~k"
+
+msgid  "~O~bject"
+msgstr "~O~bjetos"
+
+msgid  "~O~k"
+msgstr "~O~k"
+
+msgid  "~O~pen"
+msgstr "~A~brir"
+
+msgid  "~O~pen Info"
+msgstr "~A~brir Info"
+
+msgid  "~O~pen..."
+msgstr "~A~brir ..."
+
+msgid  "~O~ptimization-Flags"
+msgstr "Opciones de Opt~i~mizaci¢n"
+
+msgid  "~O~ptimizations"
+msgstr "~O~ptimizaciones"
+
+msgid  "~O~ptions"
+msgstr "~O~pciones"
+
+msgid  "~O~ptions for searching"
+msgstr "~O~pciones de b£squeda"
+
+msgid  "~O~verwrite"
+msgstr "S~o~breescritura"
+
+msgid  "~P~arameter"
+msgstr "~P~ar metros"
+
+msgid  "~P~ascal style"
+msgstr "Estilo ~P~ascal"
+
+msgid  "~P~aste"
+msgstr "~P~egar"
+
+msgid  "~P~athlist"
+msgstr "~C~aminos"
+
+msgid  "~P~attern box"
+msgstr "~P~atr¢n de b£squeda"
+
+msgid  "~P~erl Compatible"
+msgstr "Compatibles con ~P~erl"
+
+msgid  "~P~ersistent blocks"
+msgstr "Bloques ~p~ersistentes"
+
+msgid  "~P~lay"
+msgstr "~R~eproducir"
+
+msgid  "~P~lay selected"
+msgstr "Re~p~roducir"
+
+msgid  "~P~references"
+msgstr "~P~referencias"
+
+msgid  "~P~revious"
+msgstr "~A~nterior"
+
+msgid  "~P~rimary font (intense)"
+msgstr "Font ~p~rincipal (intenso)"
+
+msgid  "~P~rint"
+msgstr "~I~mprimir"
+
+msgid  "~P~rinter initialization"
+msgstr "Inicializaci¢n de la im~p~resora"
+
+msgid  "~P~rofile Editor"
+msgstr "Medir la ~v~elocidad del editor"
+
+msgid  "~P~rogram reset"
+msgstr "Resetear el ~P~rograma"
+
+msgid  "~P~roject"
+msgstr "~P~royecto"
+
+msgid  "~P~rompt on replace"
+msgstr "Pr~e~guntar"
+
+msgid  "~P~uzzle"
+msgstr "~R~ompecabezas"
+
+msgid  "~Q~uit"
+msgstr "A~b~andonar"
+
+msgid  "~R~OM BIOS fonts"
+msgstr "Font de la ~R~OM BIOS"
+
+msgid  "~R~ecord"
 msgstr "~G~rabar"
 
-msgid "~S~ave options"
+msgid  "~R~ecurse in subdirs"
+msgstr "~R~ecursividad en subdirs"
+
+msgid  "~R~edo"
+msgstr "~R~ehacer"
+
+msgid  "~R~eplace"
+msgstr "Reemplazar"
+
+msgid  "~R~eplace all"
+msgstr "~R~eemplazar todo"
+
+msgid  "~R~eplace..."
+msgstr "R~e~emplazar ..."
+
+msgid  "~R~eserved words"
+msgstr "Palabras ~R~eservadas"
+
+msgid  "~R~eset"
+msgstr "~R~estear"
+
+msgid  "~R~esult"
+msgstr "~R~esultado"
+
+msgid  "~R~everse mouse buttons"
+msgstr "~I~nvertir los botones"
+
+msgid  "~R~evert"
+msgstr "~R~evertir"
+
+msgid  "~R~ight Alt"
+msgstr "Alt ~D~erecho"
+
+msgid  "~R~ow cursor"
+msgstr "Cursor de ~L~¡nea"
+
+msgid  "~R~un"
+msgstr "~R~un"
+
+msgid  "~R~un program"
+msgstr "E~j~ecutar programa"
+
+msgid  "~R~un program (which one) ..."
+msgstr "P~r~ograma a ejecutar (cu l) ..."
+
+msgid  "~Shift+Ins~ Paste"
+msgstr "~Shift+Ins~ Pegar"
+
+msgid  "~Space~ select"
+msgstr "~Space~ selecciona"
+
+msgid  "~S~DG"
+msgstr "~S~DG"
+
+msgid  "~S~ave"
+msgstr "~G~uardar"
+
+msgid  "~S~ave options"
 msgstr "~G~rabar opciones"
 
-msgid "~S~creen mode"
-msgstr "Modo~s~ de pantalla"
+msgid  "~S~ave/Desktop options"
+msgstr "Opcione~s~ de grabado/escritorio"
 
-msgid "~S~earch"
+msgid  "~S~creen Options ..."
+msgstr "P~a~ntalla ..."
+
+msgid  "~S~creen mode"
+msgstr "Modos de ~V~ideo"
+
+msgid  "~S~croll Lock centers"
+msgstr "Blo~q~ Despl centra"
+
+msgid  "~S~earch"
 msgstr "~B~uscar"
 
-msgid "~S~earch again"
-msgstr "B~u~scar de nuevo"
+msgid  "~S~earch again"
+msgstr "~R~epetir b£squeda"
 
-msgid "~S~elect text"
+msgid  "~S~econdary font"
+msgstr "Font ~S~ecundaria"
+
+msgid  "~S~ection"
+msgstr "~S~ecci¢n"
+
+msgid  "~S~elect a song"
+msgstr "~S~eleccionar una canci¢n"
+
+msgid  "~S~elect text"
 msgstr "Texto ~s~eleccionado"
 
-msgid "~S~elected text"
+msgid  "~S~elected text"
 msgstr "Texto ~s~eleccionado"
 
-msgid "~S~et/Reset Breakpoint"
+msgid  "~S~et/Reset Breakpoint"
 msgstr "~C~olocar/Quitar un Breakpoint"
 
-msgid "~S~how clipboard"
-msgstr "Po~r~tapapeles"
+msgid  "~S~etup Alt keys"
+msgstr "~C~onfiguraci¢n teclas Alt"
 
-msgid "~S~ize/move"
-msgstr "~T~ama¤o/mover"
+msgid  "~S~how clipboard"
+msgstr "~V~er portapapeles"
 
-msgid "~S~ources"
+msgid  "~S~ize/move"
+msgstr "Tama¤o/Po~s~ici¢n"
+
+msgid  "~S~ort type"
+msgstr "~T~ipo de ordenamiento"
+
+msgid  "~S~ources"
 msgstr "Fuente~s~"
 
-msgid "~S~tart"
+msgid  "~S~tart"
 msgstr "~I~nicio"
 
-msgid "~S~tep"
+msgid  "~S~tep"
 msgstr "~P~aso"
 
-msgid "~S~tep over"
+msgid  "~S~tep over"
 msgstr "Pa~s~o sin entrar"
 
-msgid "~S~top"
+msgid  "~S~top"
 msgstr "~P~arar"
 
-msgid "~S~ubstring"
+msgid  "~S~ubstring"
 msgstr "~P~arcial"
 
-msgid "~S~yntax help"
-msgstr "Ayuda de ~S~intaxis"
+msgid  "~S~yntax help"
+msgstr "Ayuda de ~s~intaxis"
 
-msgid "~T~ab size"
+msgid  "~T~ab size"
 msgstr "~T~ama¤o del tab"
 
-msgid "~T~absize"
+msgid  "~T~absize"
 msgstr "Tama¤o del ~T~ab"
 
-msgid "~T~ext to find"
-msgstr "Te~x~to a buscar"
+msgid  "~T~ext to find"
+msgstr "Texto a ~b~uscar"
 
-msgid "~T~ile"
+msgid  "~T~ile"
 msgstr "~M~osaico"
 
-msgid "~T~race"
+msgid  "~T~ime"
+msgstr "~T~iempo"
+
+msgid  "~T~ime format:"
+msgstr "Formato de la ~h~ora:"
+
+msgid  "~T~ip"
+msgstr "~C~oncejo"
+
+msgid  "~T~ip of the day"
+msgstr "~C~oncejo del d¡a"
+
+msgid  "~T~o code page"
+msgstr "~N~ueva codificaci¢n"
+
+msgid  "~T~race"
 msgstr "~A~vanzar"
 
-msgid "~T~race into"
+msgid  "~T~race into"
 msgstr "Paso en~t~rando"
 
-msgid "~T~ype"
+msgid  "~T~ree"
+msgstr "A~r~bol"
+
+msgid  "~T~ry"
+msgstr "P~r~obar"
+
+msgid  "~T~ry to use normal search"
+msgstr "In~t~entar usar una b£squeda com£n"
+
+msgid  "~T~ype"
 msgstr "~T~ipo"
 
-msgid "~U~ndo"
+msgid  "~U~NIX style backups"
+msgstr "Archivos de respaldo estilo ~U~NIX"
+
+msgid  "~U~S keyboard and most others"
+msgstr "~T~eclados norteamericanos y otros"
+
+msgid  "~U~ndo"
 msgstr "~D~eshacer"
 
-msgid "~U~p"
+msgid  "~U~nindent one tab/gap"
+msgstr "~D~esindentar un tab o hueco"
+
+msgid  "~U~p"
 msgstr "~A~rriba"
 
-msgid "~U~se no shadows"
+msgid  "~U~se OS screen to run the program"
+msgstr "~U~sar la pantalla del SO para correr el programa"
+
+msgid  "~U~se `Files to search'"
+msgstr "~U~sar `Archivos a buscar'"
+
+msgid  "~U~se no shadows"
 msgstr "~N~o usar sombras"
 
-msgid "~U~se real tabs"
+msgid  "~U~se real tabs"
 msgstr "~u~sar verdaderos tabs"
 
-msgid "~U~se tabs"
+msgid  "~U~se tabs"
 msgstr "~U~sar tabs"
 
-msgid "~U~ser screen"
-msgstr "~P~antalla de usuario"
-
-msgid "~U~ser words"
-msgstr "Palabras de ~U~suario"
-
-msgid "~U~serScreen"
+msgid  "~U~ser Screen"
 msgstr "Pantalla de ~U~suario"
 
-msgid "~V~alue"
+msgid  "~U~ser screen"
+msgstr "~P~antalla de usuario"
+
+msgid  "~U~ser words"
+msgstr "Palabras de ~U~suario"
+
+msgid  "~U~ser words ..."
+msgstr "Palabras reservadas de ~u~suario ..."
+
+msgid  "~U~serScreen"
+msgstr "Pantalla de ~U~suario"
+
+msgid  "~V~alue"
 msgstr "~V~alor"
 
-msgid "~V~alue (-1 for none)"
+msgid  "~V~alue (-1 for none)"
 msgstr "~V~alor (-1 ninguno)"
 
-msgid "~W~arning-Flags"
+msgid  "~V~arious"
+msgstr "Va~r~ios"
+
+msgid  "~W~arning-Flags"
 msgstr "Opciones Ad~v~ertencias"
 
-msgid "~W~arnings"
+msgid  "~W~arnings"
 msgstr "~A~dvertencias"
 
-msgid "~W~atch an expression"
+msgid  "~W~atch an expression"
 msgstr "~V~er una expresi¢n"
 
-msgid "~W~hole words only"
+msgid  "~W~hole words only"
 msgstr "~P~alabras completas"
 
-msgid "~W~indow list"
+msgid  "~W~hole words only (-w)"
+msgstr "Palabras co~m~pletas (-w)"
+
+msgid  "~W~indow list"
 msgstr "~L~ista de ventanas"
 
-msgid "~W~indows"
-msgstr "~V~entanas"
+msgid  "~W~indows"
+msgstr "~V~entana"
 
-msgid "~W~rite Makefile"
+msgid  "~W~rap words"
+msgstr "Cortar l¡~n~eas"
+
+msgid  "~W~rite Makefile"
 msgstr "Crear ~M~akefile"
 
-msgid "~Y~es"
+msgid  "~Y~es"
 msgstr "~S~i"
 
-msgid "~Z~oom"
+msgid  "~Z~oom"
 msgstr "~Z~oom"
 
-msgid "~^F1~ Bookmarks"
+msgid  "~^F1~ Bookmarks"
 msgstr "~^F1~ Bookmarks"
 
-msgid "~^F2~ Reset"
+msgid  "~^F2~ Reset"
 msgstr "~^F2~ Resetear"
 
-msgid "~^F4~ Eval"
+msgid  "~^F4~ Eval"
 msgstr "~^F4~ Eval"
 
-msgid "~^F8~ Break"
+msgid  "~^F8~ Break"
 msgstr "~^F8~ Break"
 
-msgid "~^F9~ Run"
+msgid  "~^F9~ Run"
 msgstr "~^F9~ Ejecutar"
 
-msgid "~^G~ Goto"
+msgid  "~^G~ Goto"
 msgstr "~^G~ Ir a"
 
-msgid "~^I~ Includes"
+msgid  "~^H~ Help"
+msgstr "~^H~ Ayuda"
+
+msgid  "~^I~ Includes"
 msgstr "~^I~ Includes"
 
-msgid "~^O~ Local"
+msgid  "~^O~ Local"
 msgstr "~^O~ Local"
 
-msgid "~a~utoindent"
+msgid  "~a~utoindent"
 msgstr "~a~utoindentar"
 
-msgid "~s~ave before compiling"
+msgid  "~s~ave before compiling"
 msgstr "~g~rabar antes de compilar"
 
-msgid "~s~mall bug report"
+msgid  "~s~mall bug report"
 msgstr "R~e~porte chico"
 
-msgid "~ð~"
+msgid  "~ð~"
 msgstr "~ð~"
 

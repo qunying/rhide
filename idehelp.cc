@@ -298,7 +298,6 @@ static CtxInfoRec
   HH(PrevMessage, "Previous message"),
   HH(RunMenu, "RUN"),
   H(Run),
-#ifdef INTERNAL_DEBUGGER
   HH(Step, "Step over"),
   HH(StepNo, "Step over"),
   HH(Trace, "Trace into"),
@@ -308,7 +307,6 @@ static CtxInfoRec
   HH(Finish, "Until return"),
   HH(Reset, "Program reset"),
   HH(MainFunction, "Main function"),
-#endif
   HH(ProgArgs, "Arguments"),
   HH(CompileMenu, "Compile menu"),
   H(Compile),
@@ -649,3 +647,4 @@ SyntaxHelp(const char *word, const char *fname)
     AddWindow(InfWindow, NULL, False, True, False);
   }
 }
+

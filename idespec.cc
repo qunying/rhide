@@ -227,6 +227,9 @@ static char *default_variables[] = {
  "RHIDE_SHARED_LDFLAGS_Linux",
  "-shared",
 
+ "RHIDE_SHARED_LDFLAGS",
+ "$(RHIDE_SHARED_LDFLAGS_$(RHIDE_OS))",
+
  "RHIDE_COMPILE_FPC_FORCE",
  "$(RHIDE_FPC) $(RHIDE_FPC_FLAGS) -B -E- $(SOURCE_NAME)",
 

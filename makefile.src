@@ -374,7 +374,7 @@ ifeq ($(rhide_OS),DJGPP)
 	cat $(srcdir)/zipcomm.bin | zip -z $(rhideb).zip
 else
 	tar -C $(copy_dir) -cvf - `ls $(copy_dir) | sed 's,$(copy_dir)/,,g'` \
-	  | gzip -9c > $(obj_dir)/$(PACKAGE)$(DIR_VERSION).bin$(archive_id).`uname -sr | sed 's/ /-/g'`.tar.gz
+	  | gzip -9c > $(obj_dir)/$(PACKAGE)$(DIR_VERSION).bin$(archive_id).`uname -s | sed 's/ /-/g'`.tar.gz
 endif
 
 RAW_TV_SRC=$(sort $(subst .o,.cc,$(shell ar t $(TVOBJ)/librhtv.a)))

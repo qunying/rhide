@@ -333,7 +333,7 @@ static __attribute__ ((__destructor__))
 }
 #endif
 
-#define USE_OPEN
+//#define USE_OPEN
 
 ifpstream *
 open_ifpstream(const char *name)

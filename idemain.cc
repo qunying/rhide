@@ -1988,7 +1988,8 @@ parse_commandline(int argc, char *argv[])
         case 'S':
 #ifdef __DJGPP__
           extern int slow_screen;
-
+          extern char useBIOS_VGA_State;
+          useBIOS_VGA_State = 0;
           slow_screen = 1;
 #endif
           break;
@@ -2860,3 +2861,4 @@ IDE::fileOpen()
   TProgram::deskTop->remove(dialog);
   destroy(dialog);
 }
+

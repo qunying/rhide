@@ -461,7 +461,6 @@ static void UPDATE_WATCH()
   if (watchwindow) watches->update();
   UpdateCallStackWindow();
   UpdateDataWindows();
-  if (dis_win) dis_win->update(stop_pc);
 }
 
 static void InitDebuggerInterface();

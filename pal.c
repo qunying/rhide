@@ -124,9 +124,9 @@
         S(58,Black,Lightgray,editor statusline) \
         S(59,Lightred,Lightgray,parens matching) \
         S(5A,White,Magenta,rectangle block) \
+        S(5B,Blue,Black,Odd tab) \
+        S(5C,Lightblue,Black,Even tab) \
         \
-        S(5B,Black,Black,reserved) \
-        S(5C,Black,Black,reserved) \
         S(5D,Black,Black,reserved) \
         S(5E,Black,Black,reserved) \
         S(5F,Black,Black,reserved) \
@@ -158,9 +158,9 @@
         S(78,Black,Lightgray,editor statusline) \
         S(79,Lightred,Lightgray,parens matching) \
         S(7A,White,Magenta,rectangle block) \
+        S(7B,Blue,Black,Odd tab) \
+        S(7C,Lightblue,Black,Even tab) \
         \
-        S(7B,Black,Black,reserved) \
-        S(7C,Black,Black,reserved) \
         S(7D,Black,Black,reserved) \
         S(7E,Black,Black,reserved) \
         S(7F,Black,Black,reserved) \
@@ -192,9 +192,9 @@
         S(98,Black,Lightgray,editor statusline) \
         S(99,Lightred,Lightgray,parens matching) \
         S(9A,White,Magenta,rectangle block) \
+        S(9B,White,Black,Odd tab) \
+        S(9C,LightGray,Black,Even tab) \
         \
-        S(9B,Black,Black,reserved) \
-        S(9C,Black,Black,reserved) \
         S(9D,Black,Black,reserved) \
         S(9E,Black,Black,reserved) \
         S(9F,Black,Black,reserved) \

@@ -2,7 +2,7 @@
 /* This file is part of RHIDE. */
 /* WARN */
 
-char IDEVersion[] = "RHIDE Version @version@";
+char IDEVersion[] = "RHIDE @version@";
 char build_date[] = __DATE__;
 char build_time[] = __TIME__;
 

@@ -9,10 +9,10 @@ Description:    An Integrated Development Environment similar to the IDE
 		G77, ...), context help for functions which are documented
 		in any (customizable) INFO-file(s).
 Keywords:       IDE debugger editor
-Author:         robert.hoehne@mathematik.tu-chemnitz.de (Robert Hoehne)
+Author:         robert.hoehne@gmx.net (Robert Hoehne)
 		salvador@inti.edu.ar (Salvador Eduardo Tropea)
-Maintained-by:  robert.hoehne@mathematik.tu-chemnitz.de (Robert Hoehne)
-Primary-site:   http://www.tu-chemnitz.de/~rho/rhide-linux.html
+Maintained-by:  robert.hoehne@gmx.net (Robert Hoehne)
+Primary-site:   http://www.tu-chemnitz.de/~sho/rho/rhide-linux.html
 Alternate-site: 
 Original-site:  
 Platforms:      GDB version 4.16 (sources)

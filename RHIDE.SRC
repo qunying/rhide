@@ -54,7 +54,7 @@ GDB_SRC=s:/gnu/gdb-4.16
   the full modified sources for that lib but only diffs against them.
   But you can get the sources from Borland's public FTP-site
 
-  ftp://ftp.borland.com/pub/techinfo/techdocs/language/cpp/bcpp/patch/tv.zip
+  ftp://ftp.borland.com/pub/borlandcpp/devsupport/archive/turbovision/tv.zip
 
 - And some time.
 
@@ -105,16 +105,16 @@ variable RHIDESRC, to point to the directory, where the sources for
 RHIDE are installed. For DJGPP you can do this in your autoexec.bat
 by adding a line
 
-SET RHIDESRC=c:/djgpp/contrib/rhide-1.3/src
+SET RHIDESRC=c:/djgpp/contrib/rhide-1.5/src
 
 (if you DJGPP base directory is different replace c:/djppp with the
 correct one) or add a line to you djgpp.env file near the top like:
 
-RHIDESRC=%DJDIR%/contrib/rhide-1.3/src
+RHIDESRC=%DJDIR%/contrib/rhide-1.5/src
 
 For linux when using bash you can do it like
 
-export RHIDESRC=/usr/src/rhide-1.3/src
+export RHIDESRC=/usr/src/rhide-1.5/src
 
 BTW: If you run make only from the top RHIDE source directory,
 then you don't need to set this variable, because it is examined
@@ -168,5 +168,4 @@ until this future day you must try to understand my code or ask me.
 
                    Have fun with RHIDE
 
-           Robert H”hne <Robert.Hoehne@Mathematik.TU-Chemnitz.DE>
-(my email will be probably not valid after 30. September 1997)
+           Robert H”hne <robert.hoehne@gmx>

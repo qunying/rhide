@@ -22,6 +22,7 @@ int convert_file(const char *arg)
   {
     string_free(fname);
     string_free(tmp_name);
+    perror(arg);
     return -1;
   }
   struct utimbuf ut;

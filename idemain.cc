@@ -1652,13 +1652,8 @@ static void parse_commandline(int argc,char *argv[])
           use_mouse_handler = 0;
 #endif
           break;
-          case 'K':
-#if 1
-#if defined( __DJGPP__ ) || defined( __linux__ )
-          extern int use_real_keyboard_bios;
-          use_real_keyboard_bios = 1;
-#endif
-#endif
+        case 'K':
+          TGKey::useBIOS = 1;
           break;
         case 'G':
 #ifdef __DJGPP__
@@ -1669,7 +1664,7 @@ static void parse_commandline(int argc,char *argv[])
 #endif
           break;
         case 'p':
-#if 1
+#if 0
           extern int convert_num_pad;
           convert_num_pad = 0;
 #endif
@@ -1792,10 +1787,7 @@ static void parse_commandline(int argc,char *argv[])
   {
     extern int use_mouse_handler;
     extern int slow_screen;
-#if 1
-    extern int use_real_keyboard_bios;
-    use_real_keyboard_bios = 1;
-#endif
+    TGKey::useBIOS = 1;
     use_mouse_handler = 0;
     slow_screen = 1;
   }
@@ -1995,7 +1987,7 @@ void init_rhide(int _argc, char **_argv)
   BINDTEXTDOMAIN("rhide",locale_dir);
   string_free(locale_dir);
   TEXTDOMAIN("rhide");
-#if 1
+#if 0
   extern int convert_num_pad;
   convert_num_pad = 1;
 #endif

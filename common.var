@@ -2,7 +2,8 @@
 # This file is part of RHIDE. 
 #
 
-RHIDE_STDINC_C_DJGPP=$(DJDIR)/include
+RHIDE_STDINC_C_DJGPP_BETA=e:/djgpp.202/include
+RHIDE_STDINC_C_DJGPP=$(DJDIR)/include $(RHIDE_STDINC_C_DJGPP_BETA)
 RHIDE_STDINC_CXX_DJGPP=$(DJDIR)/lang/cxx 
 RHIDE_STDINC_GCC_DJGPP=$(DJDIR)/lib/gcc-lib
 RHIDE_STDINC_C_Linux=/usr/include /usr/local/include

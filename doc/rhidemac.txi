@@ -36,9 +36,6 @@
 @macro htmlauthor{line}
 @end macro
 
-@macro bye
-@end macro
-
 @macro anchor{text, link}
 \text\, \link\
 @end macro

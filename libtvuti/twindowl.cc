@@ -74,7 +74,7 @@ void TWindowList::update(TSCollection *_open_windows,
 {
   ow = _open_windows;
   cw = _closed_windows;
-  open_count = ow->getCount();
+  open_count = ow ? ow->getCount() : 0;
   closed_count = cw ? cw->getCount() : 0;
   setRange(open_count+closed_count);
   if (focused < range) focusItem(focused);

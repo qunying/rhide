@@ -78,7 +78,7 @@ static void add_node_from_file(char *node_name,char *visible_name,file_info *fil
   node = (node_info *)malloc(sizeof(node_info));
   node->name = strdup(visible_name);
   node->iname = strdup(visible_name);
-  strlwr(node->iname);
+  string_down(node->iname);
   node->real_name = strdup(node_name);
   add_node_from_file(file,node);
 }
@@ -217,7 +217,7 @@ node_info *find_exact_node(const char *word,int &cancel)
   info.name = (char *)word;
   info.iname = (char *)alloca(lw+1);
   strcpy(info.iname,word);
-  strlwr(info.iname);
+  string_down(info.iname);
   for (i=0;i<file_count;i++)
   {
     if ((result = (node_info **)bsearch(&_info,
@@ -335,7 +335,7 @@ node_info *find_node(const char *word,
   {
     _word = (char *)alloca(strlen(word)+1);
     strcpy(_word,word);
-    strlwr(_word);
+    string_down(_word);
   }
   for (i=0;i<file_count;i++)
   {

@@ -968,7 +968,9 @@ main(int argc, char *argv[])
   char _outputfile[9];
 
   strcpy(_outputfile, "poXXXXXX");
-  mktemp(_outputfile);
+  int fd = mkstemp(_outputfile);
+  if (fd != -1)
+    close(fd);
   if ((fo = fopen(_outputfile, "w")) == NULL)
   {
     printf("Error: Cannot open temp. output file!");

@@ -398,10 +398,10 @@ DEPS_1=
 all:: ../librhuti/librhuti.gpr.force
 ../librhuti/librhuti.gpr.force:
 	$(MAKE) -C ../librhuti/ -f librhuti.mak
-DEPS_2=fstrcmp.c g:/djgpp/include/sys/version.h
+DEPS_2=fstrcmp.c
 fstrcmp.o:: $(DEPS_2)
 	$(RHIDE_COMPILE.c.o)
-DEPS_3=msgcat.cc g:/djgpp/include/sys/version.h rhutils.h
+DEPS_3=msgcat.cc rhutils.h
 msgcat.o:: $(DEPS_3)
 	$(RHIDE_COMPILE.cc.o)
 all:: msgcat.exe

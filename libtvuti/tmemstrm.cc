@@ -3,45 +3,48 @@
 #define Uses_TMemoryStream
 #include <libtvuti.h>
 
-#include <strstream.h>
+#include "config.h"
+#ifdef HAVE_STREAMBUF
+#include <streambuf>
+#else
+#include <streambuf.h>
+#endif
 
-class _S:public strstreambuf
+class rh_sstream : public std::streambuf
 {
 public:
-  _S():strstreambuf()
+  rh_sstream() : std::streambuf()
   {
   }
-  _S(const void *b, int len):strstreambuf((const char *) b, len)
+  const void *Buffer()
   {
-  }
-  void *Buffer()
-  {
-#if 0
-    return base();
-#else
     return eback();
-#endif
+  }
+  void set_buf(void *buf, int size)
+  {
+    setbuf((char *)buf, size);
   }
 };
 
 TMemoryStream::TMemoryStream():
-iopstream(new _S())
+iopstream(new rh_sstream())
 {
 }
 
-TMemoryStream::TMemoryStream(const void *b, int len):
-iopstream(new _S(b, len))
+TMemoryStream::TMemoryStream(void *b, int len):
+iopstream(new rh_sstream())
 {
+  ((rh_sstream *) bp)->set_buf(b, len);
 }
 
 unsigned long
 TMemoryStream::getSize()
 {
-  return ((_S *) bp)->pcount();
+  return ((rh_sstream *) bp)->in_avail();
 }
 
-void *
+const void *
 TMemoryStream::getBuffer()
 {
-  return ((_S *) bp)->Buffer();
+  return ((rh_sstream *) bp)->Buffer();
 }

@@ -1,0 +1,4 @@
+/* config.hin.  Generated automatically from configure.in by autoheader.  */
+
+/* Define if you have the <streambuf> header file. */
+#undef HAVE_STREAMBUF

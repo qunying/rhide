@@ -146,7 +146,7 @@ $(wildcard $(path)/$(notdir ",tmp,"))))", NULL);
         fprintf(stderr,_("-o needs an argument\n"));
         return -1;
       }
-      outname = argv[i];
+      outname = string_dup(argv[i]);
     }
     else if (argv[i][0] != '-')
     {

@@ -1,4 +1,4 @@
-# Copyright (C) 1996,1997,1998,1999 by Salvador E. Tropea (SET),
+# Copyright (C) 1996-2001 by Salvador E. Tropea (SET),
 # see copyrigh file for details
 #
 # Syntax highlight file for SET's editor
@@ -28,6 +28,7 @@ String2='
 Escape=\
 Preprocessor=#
 PMacros=cpmacros.pmc
+Preload
 Keywords=asm,auto,break,case,catch,char,class,const,continue,default,delete
 Keywords=do,double,else,enum,except,extern,far,finally,float,for,friend,goto
 Keywords=huge,if,inline,int,long,near,new,operator,private,protected,public
@@ -163,7 +164,8 @@ EOLComment1=#
 EOLComment2=//
 HexMarker=0x
 Symbols1=!$%&(),-./:;<>?[]
-String1='"
+String1="
+String2="
 AllowedInsideNames=$.
 CanStartAName=.
 Keywords=aaa,aad,aam,aas,adc,adcb,adcw,adcl,add,addb,addw,addl,and,andb,andw
@@ -256,7 +258,7 @@ End
 
 # ----------- HTML, that's really bad!, sorry ---------------
 Name=HTML
-Files=htm,html
+Files=htm,html,sht,shtml
 OpenComment1=<!--
 CloseComment1=-->
 AllowedInsideNames=/
@@ -271,7 +273,7 @@ Keywords=do,else,for,goto,if,return,switch,this,while
 Keywords=<a,<script,</script,href,<img,src,<pre,<p,</p,</a,<br,<b
 Keywords=</b,</pre,<xmp,</xmp,<table,</table,<table,<center,</center,<i,</i
 Keywords=<h1,</h1,<h2,</h2,<h3,</h3,<h4,</h4,<h5,</h5,<h6,</h6
-Keywords=<td,</td,<tr,</tr,<li,<menu,</menu,<u,</u,<font,</font,<hr
+Keywords=<td,</td,<tr,</tr,<li,</li,<menu,</menu,<u,</u,<font,</font,<hr
 Keywords=<title,</title,<html,</html,<head,</head,<meta,width,height,<body,</body
 Keywords=align,valign,<applet,<param,name,value,archive,code,codebase
 Keywords=</applet,alt,ismap,border,face,size,target,cellspacing,hspace,vspace
@@ -285,7 +287,8 @@ Keywords=background,scrolling,noresize,frameborder,onload,alink,language
 Keywords=<div,</div,<frameset,</frameset,<noframes,</noframes,<frame,</frame
 Keywords=<strong,</strong,<dd,<base,<cite,</cite,<code,</code,</option,<nobr
 Keywords=http-equiv,<sub,</sub,<th,</th,<blink,</blink,<noscript,</noscript
-Keywords=style
+Keywords=style,clear,<link,<style,</style,<col,<colgroup,</colgroup
+Keywords=<tbody,</tbody,<thead,</thead,<tfoot,</tfoot,rel,rev
 End
 
 # ---------------- SDG Format files ----------------
@@ -293,6 +296,7 @@ End
 # Documentation Generator
 Name=SDG Format
 Files=frt
+EmacsModes=sdg
 EOLComment1=#
 EOLCInFirstCol1=1
 AllowedInsideNames=]@
@@ -343,7 +347,7 @@ Keywords=CanStartAName,PMacros,End,NoCheckNumbers,EOLCInFirstCol,Preprocessor2
 Keywords=String3,PartialKeywords,ShortString,SpecialSymbol,SpecialSymbolCont
 Keywords=RelaxNumberCheck,EmacsModes,ShellScript,EOLCInFirstCol2,FullNameMatch
 Keywords=EOLCInFirstUse1,EOLCInFirstUse2,EOLCInFirstCol1,NameMatch
-Keywords=EscapeAnywhere
+Keywords=EscapeAnywhere,Preload
 End
 
 # ---------------- sLisp Files ----------------
@@ -356,12 +360,15 @@ String1="
 String2='
 Escape=\
 Case=1
+HexMarker=0x
 Symbols1=()
-Symbols2=+
+Symbols2=+-&|~
 Keywords=InsertText,SendCommands,SendCommSel,defmacro,eval,CR,RunProgram,not
 Keywords=WhichEditor,GetSelection,left,right,substr,sstr,gstr,setv,strxlt,if
 Keywords=WordUnderCursor,RunProgramRedir,ShowInStatusLine,ComplChoose,getenv
-Keywords=or,and,GetSyntaxAtCursor,ForceUpdate,ShortFileName,AskString
+Keywords=or,and,GetSyntaxAtCursor,ForceUpdate,ShortFileName,AskString,strcmp
+Keywords=strcasecmp,length,strstr,OpenFile,print,MessageBox,progn,EvalString
+Keywords=cond,ShowInMessageWindow,SelectionExists,tostr
 End
 
 # ---------------- Menu File ------------------
@@ -373,7 +380,9 @@ EOLCInFirstCol1=1
 String1="
 Symbols1=:,
 Preprocessor=$
+HexMarker=0x
 Keywords=SubMenu,MenuItem,MenuItemC,MenuSeparator,EndSubMenu
+Keywords=StatusRange,StatusEntry,StatusHiddenEntry,EndStatusRange
 End
 
 #----------------------- Netwide Assembler (nasm) -------------------------
@@ -466,7 +475,6 @@ End
 
 #---------------------------------- Perl ------------------------------------
 #
-#
 # Original version contributed by Herb Kateley (herb@ke.com).  Another version
 # was contributed by Jeff Wang (jeffw@enterprise.advance.com).  What you see
 # here is the merger of those two, with other modifications.  The "font normal"
@@ -493,6 +501,7 @@ String3=`
 SpecialSymbol=$
 SpecialSymbolCont=#
 PMacros=perlmac.pmc
+Preload
 Keywords=BEGIN,END,CORE,__END__,__FILE__,__LINE__,AUTOLOAD,DESTROY
 Keywords=abs,accept,alarm,and,atan2,bind,binmode,bless,caller,chdir,chmod
 Keywords=chomp,chop,chown,chr,chroot,close,closedir,cmp,connect,continue,cos
@@ -521,39 +530,81 @@ Keywords=wantarray,warn,while,write,x,xor,y
 End
 
 
-# ---------------- 8051 asm ----------------
+# ---------------------------- 8051 asm ------------------------------------
 #
 # Contributed by Alex Lozano <alex@inti.gov.ar>
+# Keil A51 (8 bit) and A251 (16 bit) assembler for 8x51/52 and MCS 251
+# Extracted from the Keil A51/A251 User's Guide version 04.95
+# This replace the former 8051 Syntax Highlight definition
+# Compatible with the 'ASM51' CrossAssembler (freeware Version) by MetaLink
 #
 Name=8x51 asm
-Files=a51
-OpenComment1=/*
-CloseComment1=*/
+Files=a51,inc
+EmacsModes=Asm51,Asm251
+Pmacros=asm51.pmc
+Preprocessor=$
 EOLComment1=;
-EOLComment2=//
-HexMarker=0x
-Symbols1=!$%&(),-./:<>?[]
+Escape=\
+Symbols1=-+*/=
+Symbols2=#@!$%&(),.:<>?[]
 String1='"
 AllowedInsideNames=.
 NoCheckNumbers=1
-# Instruction set
-Keywords=add,addc,subb,inc,dec,mul,div,da,anl,orl,xrl,clr,cpl,rl,rlc,rr,rrc
-Keywords=swap,mov,movc,movx,push,pop,xch,xchd,clr,setb,nop,ajmp,cjne,djnz,jb
-Keywords=jbc,jc,jmp,jnb,jnc,jnz,jz,ljmp,sjmp,acalllcall,ret,reti,jmp,cal
-# Franklin compiler reserved words
-Keywords=a,ab,ac,acc,and,ar0,ar1,ar2,ar3,ar4,ar5,ar6,ar7,b,bit,bseg,c,code
-Keywords=cseg,cy,data,db,dbit,dph,dpl,dptr,ds,dseg,dw,ea,end,endm,eq,equ,es
-Keywords=et0,et1,ex0,ex1,exitm,extrn,f0,gt,gte,high,idata,ie,ie0,ie1,int0,int1
-Keywords=irp,irpc,iseg,it0,it1,local,low,lt,lte,macro,mode,name,ne,not,or,org
-Keywords=ov,p,p0,p1,p2,p3,pc,ps,psw,pt0,pt1,public,px0,px1,r0,r1,r2,r3,r4,r5
-Keywords=r6,r7,rb8,rd,ren,rept,ri,rs0,rs1,rseg,rxd,sbuf,scon,segment,set,shl
-Keywords=shr,sm0,sm1,sm2,sp,t0,t1,tb8,tcon,tf0,tf1,th0,th1,ti,tl0,tl1,tmod
-Keywords=tr0,tr1,txd,using,wr,xdata,xor,xseg
-# Bit addressing
+# HexMarker only valid for A251 Assembler
+HexMarker=0x
+# A51, A251 Reserved Words
+Keywords=a,ab,and,ar0,ar1,ar2,ar3,ar4,ar5,ar6,ar7,at,bit,bitaddressable,block
+Keywords=bseg,byte,byte0,byte1,byte2,byte3,c,call,code,const,cseg,data,db,dbit
+Keywords=dd,dptr,dr0,dr12,dr16,dr20,dr24,dr28,dr4,dr56,dr60,dr8,ds,dsb,dsd
+Keywords=dseg,dsw,dw,dword,ebit,ebitaddressable,ecode,edata,else,elseif,end
+Keywords=endif,endm,endp,eq,equ,even,exitm,extern,extrn,far,ge,gt,hconst
+Keywords=hdata,high,idata,if,inblock,inpage,inseg,irp,irpc,iseg,label,le,lit
+Keywords=local,low,lt,macro,mod,h,name,nconst,ne,near,not,nul,number,offs,or
+Keywords=org,overlayable,page,pc,proc,public,r0,r1,r2,r3,r4,r5,r6,r7,r8,r9
+Keywords=r10,r11,r12,r13,r14,r15,rept,rseg,seg,segment,set,shl,shr,unit,using
+Keywords=word,word0,word2,wr0,wr2,wr4,wr6,wr8,wr10,wr12,wr14,wr16,wr18,wr20
+Keywords=wr22,wr24,wr26,wr28,wr30,xdata,xor,xseg
+# 8051 Instruction Set
+Keywords=acall,add,addc,ajmp,anl,cjne,clr,cmp,cpl,da,dec,div,djnz,inc,jb,jbc
+Keywords=jc,jmp,jnb,jnc,jnz,jz,lcall,ljmp,mov,movc,movx,mul,nop,orl,pop
+Keywords=push,ret,reti,rl,rlc,rr,rrc,setb,sjmp,subb,swap,xch,xchd,xrl
+# MCS 251 added Instruction Set
+Keywords=ecall,ejmp,eret,je,jg,jle,jne,jsg,jsge,jsl,jsle,movh,movs,movz,
+Keywords=sll,sra,srl,sub
+# ***** Special Function Registers *****
+# BYTE Registers:
+Keywords=P0,P1,P2,P3,PSW,ACC,B,SP,DPL,DPH,PCON,TCON,TMOD,TL0,TL1,TH0,TH1,IE,IP      DATA    0B8H
+Keywords=SCON,SBUF
+# 8052 Extensions
+Keywords=T2CON,RCAP2L,RCAP2H,TL2,TH2
+# MCS 251 Extensions
+Keywords=
+# BIT Registers:
+# PSW
+Keywords=CY,AC,F0,RS1,RS0,OV,P
+# TCON
+Keywords=TF1,TR1,TF0,TR0,IE1,IT1,IE0,IT0,IE,ET1,EX1,ET0,EX0
+# IP
+Keywords=PS,PT1,PX1,PT0,PX0
+# IE
+Keywords=EA,ET2,ES,ET1,EX1,ET0,EX0
+# P3
+Keywords=RD,WR,T1,T0,INT1,INT0,TXD,RXD
+# SCON
+Keywords=SM0,SM1,SM2,REN,TB8,RB8,TI,RI
+# P1 (8052 only)
+Keywords=T2EX,T2
+# T2CON (8052 only)
+Keywords=TF2,EXF2,RCLK,TCLK,EXEN2,TR2,C_T2,CP_RL2
+#  Port Bits addressing
 Keywords=p0.0,p0.1,p0.2,p0.3,p0.4,p0.5,p0.6,p0.7
 Keywords=p1.0,p1.1,p1.2,p1.3,p1.4,p1.5,p1.6,p1.7
 Keywords=p2.0,p2.1,p2.2,p2.3,p2.4,p2.5,p2.6,p2.7
 Keywords=p3.0,p3.1,p3.2,p3.3,p3.4,p3.5,p3.6,p3.7
+#  PSW Bits addressing
+Keywords=psw.0,psw.1,psw.2,psw.3,psw.4,psw.5,psw.6,psw.7
+#  ACC Bits addressing
+Keywords=acc.0,acc.1,acc.2,acc.3,acc.4,acc.5,acc.6,acc.7
 End
 
 # --------------------------- JAVA files ---------------------------
@@ -648,6 +699,7 @@ String1="
 String2='
 String3=`
 Escape=\
+EscapeAnywhere=1
 CanStartAName=-
 AllowedInsideNames=-
 # $# is a special case and can be confused with a comment
@@ -769,6 +821,7 @@ End
 Name=Makefile
 Files=mak
 NameMatch=(GNU)?[mM]akefile
+ShellScript=make
 Case=1
 EOLComment1=#
 NoCheckNumbers=1
@@ -779,6 +832,7 @@ String2='
 String3=`
 CanStartAName=./
 AllowedInsideNames=./~+
+Preload
 # Special . definitions
 Keywords=.DEFAULT,.DELETE_ON_ERROR,.EXPORT_ALL_VARIABLES,.IGNORE
 Keywords=.INTERMEDIATE,.PHONY,.POSIX,.PRECIOUS,.SECONDARY,.SILENT,.SUFFIXES
@@ -792,17 +846,22 @@ Keywords=SUFFIXES,TANGLE,TEX,TEXI2DVI,VPATH,WEAVE,YACC,YACCR,YFLAGS
 Keywords=addprefix,addsuffix,basename,define,dir,else,endef,endif,export
 Keywords=filter,filter-out,findstring,firstword,foreach,ifdef,ifeq,ifndef
 Keywords=ifneq,include,join,notdir,origin,override,patsubst,shell,sort,strip
-Keywords=subst,suffix,unexport,vpath,vpath,wildcard,word,wordlist,words
+Keywords=subst,suffix,unexport,vpath,wildcard,word,wordlist,words
 End
 
-# -------------------------- TCL scripts ------------------------------------
+# -------------------------------- TCL/Tk scripts -----------------------------
 #
-# Contributed by FireEgl <FireEgl@EMail.com>
-# http://www.Scriptics.com - http://www.EggHeads.org
+# Contributed by Philip Moore <FireEgl@EMail.com>
+# TCL/Tk - http://Dev.Scriptics.com/software/tcltk/
+# Also, all of these integrate with or extend TCL/Tk.
+# Therefore their keywords are also listed below:
+# [incr Tcl] & [incr Tk] - http://www.TCLTk.com/itcl/  (TCL and Tk extensions)
+# TclX - http://www.NeoSoft.com/tclx/  (TCL extension)
+# Expect - http://Expect.Nist.Gov  (TCL extension)
+# Eggdrop - http://www.EggHeads.org  (IRC bot that uses TCL for it's scripting)
 #
 Name=TCL/Tk-Eggdrop
 Files=tcl,TCL,Tcl,tCL,tcL,TcL,tCl,TCl
-# SET: I commented the following, they are too fuzzy: dist,cfg,config,dis
 Case=1
 RelaxNumberCheck=1
 EOLComment1=#
@@ -811,7 +870,7 @@ EOLComment2=;#
 AllowedInsideNames=1234567890-=\~!@#$%^&*_+|;,./:<>?`'
 CanStartAName=1234567890-=\~!@#$%^&*()_+|;,./:<>?`'
 HexMarker=\x
-Symbols1=!&*+-/<=>?^|~$%;:@#_\"(),`'"
+Symbols1=!&*+-/<=>?^|~$%;:@#_\"(),`'".
 Symbols2={}[]()"
 String1="
 Escape=\
@@ -819,40 +878,133 @@ Escape=\
 # so that's why there's a SpecialSymbol setting here.
 SpecialSymbol=\
 SpecialSymbolCont={}[]()$\"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-=\~!@#%^&*_+|;,./:<>?`'
-# TCL Specific:
-Keywords=Base,Http,Safe,Safe Tcl,Tcl,Tcltest
-Keywords=after,append,array,bgerror,binary,break,case,catch,cd,clock,close
-Keywords=concat,continue,dde,encoding,eof,error,eval,exec,exit,expr,fblocked
-Keywords=fconfigure,fcopy,file,fileevent,filename,flush,for,foreach,format
-Keywords=gets,glob,global,history,if,incr,info,interp,join,lappend,library
-Keywords=lindex,linsert,list,llength,load,lrange,lreplace,lsearch,lsort
-Keywords=msgcat,namespace,open,package,pid,pkg_mkIndex,proc,puts,pwd
-Keywords=re_syntax,read,regexp,registry,regsub,rename,resource,return,scan
-Keywords=seek,set,socket,source,split,string,subst,switch,tclvars,tell,time
-Keywords=trace,unknown,unset,update,uplevel,upvar,variable,vwait,while
-Keywords=::safe::interpCreate,::safe::interpInit,::safe::interpConfigure
-Keywords=::safe::interpDelete,::safe::interpAddToAccessPath
-Keywords=::safe::interpFindInAccessPath,::safe::setLogCmd
+
+# TCL (8.4a1) Specific:
+Keywords=after,append,array,auto_execok,auto_import,auto_load,auto_load_index
+Keywords=auto_mkindex,auto_mkindex_old,auto_qualify,auto_reset,bgerror,binary
+Keywords=break,case,catch,cd,clock,close,concat,continue,dde,encoding,eof
+Keywords=error,eval,exec,exit,expr,fblocked,fconfigure,fcopy,file,fileevent
+Keywords=filename,flush,for,foreach,format,gets,glob,global,history,if,incr
+Keywords=info,interp,join,lappend,library,lindex,linsert,list,llength,load
+Keywords=lrange,lreplace,lsearch,lsort,memory,msgcat,namespace,open,package
+Keywords=parray,pid,pkg_mkIndex,proc,puts,pwd,re_syntax,read,regexp,registry
+Keywords=regsub,rename,resource,return,scan,seek,set,socket,source,split
+Keywords=string,subst,switch,tclvars,tell,time,trace,unknown,unset,update
+Keywords=uplevel,upvar,variable,vwait,while
+Keywords=tcl_endOfWord,tcl_findLibrary,tcl_startOfNextWord
+Keywords=tcl_startOfPreviousWord,tcl_wordBreakAfter,tcl_wordBreakBefore
+Keywords=tclPkgSetup,tclLog,tclMacPkgSearch,tclPkgUnknown,pkg_compareExtension
+Keywords=else,then,elseif
+# Tk (8.4a1) Specific:
+Keywords=bell,bind,bindtags,bitmap,button,canvas,checkbutton,clipboard,colors
+Keywords=cursors,destroy,entry,event,focus,font,frame,grab,grid,image,keysyms
+Keywords=label,listbox,lower,menu,menubutton,message,option,options,pack,
+Keywords=pack-old,photo,place,radiobutton,raise,scale,scrollbar,selection,send
+Keywords=spinbox,text,tk,tk_bindForTraversal,tk_bisque,tk_chooseColor,tk_dialog
+Keywords=tk_focusFollowsMouse,tk_focusNext,tk_focusPrev,tk_getSaveFile
+Keywords=tk_menuBar,tk_messageBox,tk_optionMenu,tk_popup,tk_setPalette,tkerror
+Keywords=tkvars,tkwait,toplevel,winfo,wm,tk_chooseDirectory,tk_getOpenFile
+Keywords=tkButtonAutoInvoke,::safe::loadTk,::safe::InitTk
+# TCL package commands (tell me if I missed any):
 Keywords=::http::config,::http::geturl,::http::formatQuery
 Keywords=::http::reset,::http::wait,::http::status
 Keywords=::http::size,::http::code,::http::data,::http::cleanup
+Keywords=::http::register,::http::unregister,::http::Finish
+Keywords=::http::ncode,::http::error,::http::Connect,::http::Write
+Keywords=::http::Event,::http::CopyStart,http::CopyDone,::http::Eof
+Keywords=::http::mapReply,::http::ProxyRequired
+Keywords=::safe::interpCreate,::safe::interpInit,::safe::interpConfigure
+Keywords=::safe::interpDelete,::safe::interpAddToAccessPath
+Keywords=::safe::interpFindInAccessPath,::safe::setLogCmd
+Keywords=::safe::InterpStatics,InterpStatics,::safe::InterpNested,InterpNested
+Keywords=::safe::CheckInterp,::safe::interpConfigure,::safe::InterpSetConfig
+Keywords=::safe::InterpInit,::safe::AddSubDirs,::safe::SyncAccessPath
+Keywords=::safe::InterpStateName,::safe::IsInterp,::safe::PathToken
+Keywords=::safe::PathListName,::safe::VirtualPathListName
+Keywords=::safe::PathNumberName,::safe::StaticsOkName,::safe::NestedOkName
+Keywords=::safe::Toplevel,::safe::Set,::safe::Lappend,::safe::Unset
+Keywords=::safe::Exists,::safe::GetAccessPath,::safe::StaticsOk
+Keywords=::safe::NestedOk,::safe::DeleteHookName,::safe::TranslatePath
+Keywords=::safe::Log,::safe::CheckFileName,::safe::AliasSource
+Keywords=::safe::AliasLoad,::safe::FileInAccessPath,::safe::Subset
+Keywords=::safe::AliasSubset,::safe::AliasEncoding
+Keywords=::msgcat::mc,::msgcat::mclocale,::msgcat::mcpreferences
+Keywords=::msgcat::mcload,::msgcat::mcset,::msgcat::mcunknown
 Keywords=::tcltest::test,::tcltest::cleanupTests
 Keywords=::tcltest::getMatchingTestFiles,::tcltest::makeFile
 Keywords=::tcltest::removeFile,::tcltest::makeDirectory
 Keywords=::tcltest::removeDirectory,::tcltest::viewFile
 Keywords=::tcltest::normalizeMsg,::tcltest::bytestring,::tcltest::saveState
 Keywords=::tcltest::restoreState,::tcltest::threadReap
-# Tk Specific:
-Keywords=Safe Tk,bell,bind,bindtags,bitmap,button,canvas,checkbutton
-Keywords=clipboard,destroy,entry,event,focus,font,frame,grab,grid,image
-Keywords=label,listbox,loadTk,lower,menu,menubutton,message,option,options
-Keywords=pack,pack-old,photo,place,radiobutton,raise,scale,scrollbar
-Keywords=selection,send,text,tk,tk_bindForTraversal,tk_bisque
-Keywords=tk_chooseColor,tk_dialog,tk_focusFollowsMouse,tk_focusNext
-Keywords=tk_focusPrev,tk_getSaveFile,tk_menuBar,tk_messageBox,tk_optionMenu
-Keywords=tk_popup,tk_setPalette,tkerror,tkvars,tkwait,toplevel,winfo,wm
-Keywords=::safe::loadTk
-# Eggdrop Specific:
+Keywords=::tcltest::DebugPuts,::tcltest::DebugPArray,::tcltest::DebugDo
+Keywords=::tcltest::AddToSkippedBecause,::tcltest::PrintError
+Keywords=::tcltest::initConstraints,::tcltest::PrintUsageInfo
+Keywords=::tcltest::CheckDirectory,::tcltest::normalizePath
+Keywords=::tcltest::MakeAbsolutePath,::tcltest::processCmdLineArgs
+Keywords=::tcltest::loadTestedCommands,::tcltest::getMatchingFiles
+Keywords=::tcltest::openfiles,::tcltest::leakfiles,::tcltest::grep
+Keywords=::tcltest::set_iso8859_1_locale,::tcltest::restore_locale
+Keywords=::tcl::HistAdd,::tcl::HistKeep,::tcl::HistClear,::tcl::HistInfo
+Keywords=::tcl::HistRedo,::tcl::HistIndex,::tcl::HistEvent,::tcl::HistChange
+Keywords=::tcl::OptKeyRegister,::tcl::OptKeyDelete,::tcl::OptParse
+Keywords=::tcl::OptProc,::tcl::OptProcArgGiven,::tcl::OptKeyParse
+Keywords=::tcl::OptCheckType,::tcl::OptKeyError,::tcl::OptError,::tcl::Lempty
+Keywords=::tcl::Lget,::tcl::Lvarset,::tcl::Lvarset1,::tcl::Lvarset1nc
+Keywords=::tcl::Lvarincr,::tcl::Lvarincr1,::tcl::Lfirst,::tcl::Lrest
+Keywords=::tcl::Lvarpop1,::tcl::Lvarpop,::tcl::Lassign,::tcl::SetMax
+Keywords=::tcl::SetMin,::pkg::create
+# [incr Tcl] (8.3.1+) Specific commands:
+Keywords=itcl_info,itcl_class,delete,ensemble,local
+Keywords=body,find,scope,code,configbody,class
+# [incr Tk] (8.0.4) Specific commands:
+Keywords=tkCheckRadioInvoke,tkScrollByPages,tkCheckRadioEnter,tkPostOverPoint
+Keywords=tkTextNextWord,tkMenuNextMenu,tkListboxUpDown,tkMenuDownArrow
+Keywords=tkListboxBeginExtend,tk_textPaste,tkEntryTranspose,tkScaleButtonDown
+Keywords=tkEventMotifBindings,tkButtonLeave,tkMenuMotion,.,tkSaveGrabInfo
+Keywords=tkTextPaste,tkTextResetAnchor,tkTraverseToMenu,tkScaleControlPress
+Keywords=tkScrollButtonUp,tkTextTranspose,tkEntryNextWord,tkScaleActivate
+Keywords=tkListboxBeginSelect,tkTextScrollPages,tkButtonDown,tkMenuRightArrow
+Keywords=tkMenuFirstEntry,tkMenuInvoke,tkScrollButtonDown,tkEntrySeeInsert
+Keywords=tkScrollByUnits,tkFirstMenu,tkEntryInsert,tkMenuLeftArrow
+Keywords=tkEntrySetCursor,tkListboxDataExtend,tkMbMotion,tkCancelRepeat
+Keywords=tkGenerateMenuSelect,tkButtonUp,tkTabToWindow,tkCheckRadioDown
+Keywords=tkMbPost,tkEntryBackspace,tkTextAutoScan,tkScaleIncrement
+Keywords=tkMenuEscape,tkMenuUnpost,tkTextSetCursor,tkMbEnter,tkButtonInvoke
+Keywords=tkMenuButtonDown,tkTraverseWithinMenu,tkTextKeyExtend
+Keywords=tkRestoreOldGrab,tk_textCut,tkScrollToPos,tkScrollButton2Down
+Keywords=tkScaleEndDrag,tkTextPrevPara,tkEntryClosestGap,tkEntryKeySelect
+Keywords=tkEntryPreviousWord,tkTextNextPos,tkEntryMouseSelect,tkEntryAutoScan
+Keywords=tkListboxMotion,tkListboxAutoScan,tkMenuNextEntry,tkEntryButton1
+Keywords=tkTextNextPara,tkTextInsert,tkScreenChanged,tkScrollStartDrag
+Keywords=tkScaleDrag,tkMenuFind,tk_textCopy,tkScrollTopBottom,tkTextKeySelect
+Keywords=tkListboxSelectAll,tkTextSelectTo,tkTextClosestGap,tkTextPrevPos
+Keywords=tkMbLeave,tkScrollDrag,tkButtonEnter,tkScrollEndDrag,tkMenuFindName
+Keywords=tk_menuSetFocus,tkTextUpDownLine,tkTextButton1,tkListboxExtendUpDown
+Keywords=tkListboxBeginToggle,tkMenuLeave,tkListboxCancel,tkMenuUpArrow
+Keywords=tkScaleButton2Down,tkScrollSelect,tkEntryPaste,tkMbButtonUp
+Keywords=tkEntryGetSelection
+# TclX Specific:
+Keywords=auto_load_pkg,commandloop,fork,loop,funlock,cequal,sync,lvarpush
+Keywords=host_info,replicate,lassign,scanmatch,readdir,cconcat,cindex
+Keywords=ftruncate,catclose,try_eval,sleep,keylkeys,cmdtrace,clength,id,nice
+Keywords=crange,lcontain,execl,scancontext,min,max,chroot,fcntl,select,bsearch
+Keywords=umask,profile,kill,lvarcat,keylget,scanfile,signal,tclx_findinit
+Keywords=chown,ccollate,translit,lmatch,keyldel,infox,system,alarm,csubstr,dup
+Keywords=keylset,tclx_load_tndxs,times,catopen,fstat,chmod,lempty,chgrp,wait
+Keywords=ctype,lgets,flock,random,catgets,ctoken,lvarpop,pipe,loadlibindex
+# Expect Specific:
+Keywords=exp_timestamp,exp_getpid,exp_version,debug,expect_background,exp_pid
+Keywords=interact,expect_after,exp_debug,interpreter,exp_inter_return
+Keywords=exp_log_file,send_user,exp_interpreter,exp_system,spawn,exp_continue
+Keywords=strace,disconnect,expect_before,exp_send_user,exp_spawn,exp_sleep
+Keywords=exp_send,exp_remove_nulls,exp_send_log,log_user,parity,exp_wait
+Keywords=overlay,prompt1,send_error,prompt2,getpid,expect_version,exp_send_tty
+Keywords=exp_overlay,exp_exit,exp_stty,expect_tty,match_max,exp_close,exp_trap
+Keywords=exp_match_max,exp_open,exp_fork,inter_return,log_file,exp_interact
+Keywords=expect_user,exp_internal,remove_nulls,send_log,exp_strace
+Keywords=exp_disconnect,expect,send_tty,stty,timestamp,exp_log_user,exp_parity
+Keywords=trap,exp_send_error
+# Eggdrop (1.5.4) TCL Specific:
 Keywords=putserv,puthelp,putquick,putlog,putcmdlog,putxferlog,putloglev
 Keywords=dumpfile,queuesize,clearqueue,countusers,validuser,finduser,userlist
 Keywords=passwdok,getuser,setuser,chnick,chattr,botattr,matchattr
@@ -862,10 +1014,9 @@ Keywords=newinvite,stick,unstick,killchanban,killban,killchanexempt
 Keywords=killexempt,killchaninvite,killinvite,isban,ispermban,isexempt
 Keywords=ispermexempt,isinvite,isperminvite,isbansticky,isexemptsticky
 Keywords=isinvitesticky,matchban,matchexempt,matchinvite,banlist,exemptlist
-Keywords=invitelist,newignore,killignore,ignorelist,isignore,save,reload,
-Keywords=backup,getting-users,channel add,channel set,channel info 
-Keywords=channel remove,savechannels,loadchannels,channels,isbotnick
-Keywords=botisop,botisvoice,botonchan,isop,isvoice,onchan,nick2hand
+Keywords=invitelist,newignore,killignore,ignorelist,isignore,save,reload
+Keywords=backup,getting-users,channel,savechannels,loadchannels,channels
+Keywords=isbotnick,botisop,botisvoice,botonchan,isop,isvoice,onchan,nick2hand
 Keywords=handonchan,hand2nick,ischanban,ischanexempt,ischaninvite,chanbans
 Keywords=chanexempts,chaninvites,resetbans,resetexempts,resetinvites,
 Keywords=resetchan,getchanhost,getchanjoin,onchansplit,chanlist,getchanidle
@@ -876,108 +1027,179 @@ Keywords=killdcc,bots,botlist,islinked,dccused,dcclist,whom,getdccidle
 Keywords=getdccaway,setdccaway,connect,listen,dccdumpfile,bind,unbind,logfile
 Keywords=maskhost,timer,utimer,timers,utimers,killtimer,killutimer,unixtime
 Keywords=time,duration,strftime,date,ctime,myip,rand,control,sendnote,link
-Keywords=unlink,encrypt,decrypt,encpass,die,unames,matchchanattr
-Keywords=notes,erasenotes,listnotes,storenote
-Keywords=assoc,killassoc
-Keywords=setpwd,getpwd,getfiles,getdirs,dccsend,filesend,setdesc,getdesc
-Keywords=setowner,getowner,setlink,getlink,getfileq,setuploads,getuploads
-Keywords=setdnloads,getdnloads,mkdir,rmdir,mv,cp,getflags,setflags
-# procs found in compat.tcl (an Eggdrop TCL script):
-Keywords=gethosts,addhost,chpass,getxtra,setxtra,setinfo,getinfo,getaddr
-Keywords=setaddr,getdccdir,setdccdir,getcomment,setcomment,getemail,setemail
-Keywords=getchanlaston,time,date
+Keywords=unlink,encrypt,decrypt,encpass,die,unames,matchchanattr,notes
+Keywords=erasenotes,listnotes,storenote,assoc,killassoc,setpwd,getpwd
+Keywords=getfiles,getdirs,dccsend,filesend,setdesc,getdesc,setowner,getowner
+Keywords=setlink,getlink,getfileq,setuploads,getuploads,setdnloads,getdnloads
+Keywords=mkdir,rmdir,mv,cp,getflags,setflags,stickexempt,unstickexempt
+Keywords=stickinvite,unstickinvite,ischanjuped,channame2dname,chandname2name
+Keywords=wasop,setudef,renudef,deludef,md5,compressfile,uncompressfile
+Keywords=iscompressed,putkick,chhandle,fileresend
+# Other Eggdrop TCL commands (undocumented):
+Keywords=putidx,unshare,reloadhelp,putdccraw,dellang,hide
+Keywords=page,loadhelp,unloadhelp,loadmodule,unloadmodule
 # procs found in alltools.tcl (an Eggdrop TCL script):
 Keywords=putmsg,putchan,putnotc,putact,strlwr,strupr,strcmp,stricmp,strlen
 Keywords=stridx,iscommand,timerexists,utimerexists,inchain,randstring
 Keywords=putdccall,putdccbut,killdccall,killdccbut,iso,realtime,testip
-Keywords=number_to_number
-# procs found in moretools.tcl by MC_8 (an Eggdrop TCL script):
+Keywords=number_to_number,isnumber,ispermowner
+# procs found in compat.tcl (an Eggdrop TCL script):
+Keywords=gethosts,addhost,chpass,getxtra,setxtra,setinfo,getinfo,getaddr
+Keywords=setaddr,getdccdir,setdccdir,getcomment,setcomment,getemail
+Keywords=setemail,getchanlaston,time,date
+# procs found in mc.moretools.tcl by MC_8 (an Eggdrop TCL script):
 Keywords=findip,filt,strip:color,strip:bold,strip:uline,strip:reverse
 Keywords=strip:all,lremove,wholetime,dnslookup,llowest,lbiggest,islink
-Keywords=isparty,notice,msg,ctcp,bold,uline,reverse,color
+Keywords=isparty,notice,msg,ctcp,bold,uline,reverse,color,str,findchanuser
+Keywords=masktype,replace,finduserchan,getchanhost2,which
 # procs found in netbots.tcl by slennox (an Eggdrop TCL script):
-Keywords=slindex,stl
+Keywords=slindex,isbotnetnick,stl,nb_randomise,putwrap
+# procs found in..I've no idea where:
+Keywords=boolean,makedir,timesince,timeago
+# The built-in commands to Eggdrop bindings:
+Keywords=*raw:ERROR,*dcc:resetbans,*dcc:unstick,*msg:jump,*dcc:whom,*msg:who
+Keywords=*fil:cancel,*ctcp:ERRMSG,*raw:WALLOPS,*msg:addhost,*dcc:+lang
+Keywords=*dcc:topic,*dcc:noteigns,*msg:notes,*fil:pwd,*bot:notes2
+Keywords=*dcc:adduser,*dcc:unlink,*dcc:help,*msg:seen,*msg:ident,*dcc:bottree
+Keywords=*dcc:+chan,*fil:reget,*dcc:act,*dcc:channel,*dcc:resetinvites
+Keywords=*dcc:chaninfo,*fil:mkdir,*raw:irc:join,*dcc:handle
+Keywords=*dcc:+chrec,*dcc:msg,*chon:notes,*dcc:-host,*dcc:-ignore
+Keywords=*raw:lagcheck:401,*dcc:notes2,*dcc:note,*dcc:traffic,*dcc:-lsec
+Keywords=*raw:MODE,*dcc:store,*raw:irc:mode,*dcc:+ignore,*fil:get,*dcc:whois
+Keywords=*load:irc,*raw:lagcheck:441,*raw:lagcheck:MODE,*dcc:rehelp
+Keywords=*dcc:addlog,*dcc:link,*dcc:deop,*fil:share,*dcc:voice
+Keywords=*raw:lagcheck:478,*dcc:invite,*dcc:binds,*dcc:chanload,*dcc:-invite
+Keywords=*dcc:chhandle,*dcc:status,*dcc:+invite,*raw:KICK,*dcc:comment
+Keywords=*raw:irc:kick,*dcc:server:die,*dcc:+ban,*dcc:clearqueue,*msg:help
+Keywords=*raw:001,*dcc:me,*pub:seen,*dcc:chansave,*dcc:reset,*dcc:language
+Keywords=*load:notes:server,*dcc:kickban,*dcc:chaddr,*dcc:op,*msg:rehash
+Keywords=*fil:quit,*dcc:+host,*raw:PART,*dcc:strip,*dcc:die,*msg:whois
+Keywords=*raw:irc:part,*raw:irc:315,*dcc:+lsec,*dcc:module,*dcc:su
+Keywords=*dcc:page,*raw:irc:331,*raw:irc:332,*dcc:back,*dcc:ldump,*msg:voice
+Keywords=*raw:irc:346,*raw:irc:347,*dcc:debug,*raw:irc:348,*raw:irc:349
+Keywords=*away:notes,*raw:irc:352,*raw:irc:354,*dcc:newpass,*dcc:away
+Keywords=*raw:PONG,*fil:cp,*ctcp:CHAT,*raw:irc:367,*raw:irc:368
+Keywords=*raw:NICK,*dcc:+bot,*dcc:kick,*dcc:info,*raw:irc:nick,*dcc:assoc
+Keywords=*raw:irc:403,*raw:irc:405,*fil:unhide,*dcc:invites,*raw:200
+Keywords=*load:notes:irc,*raw:206,*dcc:motd,*msg:reset,*dcc:-chrec,*dcc:match
+Keywords=*dcc:chanset,*dcc:dump,*raw:irc:invite,*dcc:loadmod,*fil:ln
+Keywords=*dcc:bans,*dcc:say,*msg:die,*fil:ls,*raw:irc:471,*raw:irc:473
+Keywords=*ctcp:ECHO,*raw:irc:474,*raw:251,*raw:irc:475,*chon:channels:chon
+Keywords=*fil:mv,*dcc:set,*load:filesys:server,*raw:303,*ctcp:files:DCC
+Keywords=*fil:rm,*dcc:resetexempts,*dcc:uptime,*raw:318,*dcc:vbottree
+Keywords=*dcc:restart,*dcc:nick,*dcc:dccstat,*fil:rmdir,*raw:QUIT,*dcc:tcl
+Keywords=*ctcp:FINGER,*raw:irc:quit,*raw:346,*raw:348,*link:assoc
+Keywords=*dcc:stick,*raw:irc:msg,*raw:367,*dcc:boot,*dcc:-user,*msg:go
+Keywords=*raw:401,*raw:402,*chon:notes2,*msg:invite,*dcc:unloadmod,*dcc:fwd
+Keywords=*dcc:chat,*dcc:modules,*raw:432,*dcc:-noteign,*raw:433
+Keywords=*raw:irc:notice,*raw:437,*dcc:save,*raw:438,*dcc:bots,*raw:442
+Keywords=*dcc:ignores,*msg:status,*raw:451,*msg:info,*dcc:flush,*msg:op
+Keywords=*raw:482,*msg:memory,*ctcp:TIME,*fil:help,*fil:lsa,*raw:NOTICE
+Keywords=*dcc:quit,*dcc:-ban,*dcc:console,*dcc:files,*dcc:echo,*dcc:relay
+Keywords=*msg:pass,*dcc:chattr,*ctcp:USERINFO,*dcc:reload,*dcc:jump
+Keywords=*dcc:relang,*bot:notes2reply,*ctcp:CLIENTINFO,*fil:pending
+Keywords=*dcc:+user,*nkch:notes,*fil:note,*fil:stats,*dcc:seen
+Keywords=*chon:console:chon,*dcc:chinfo,*raw:irc:topic,*fil:optimise
+Keywords=*dcc:-lang,*dcc:botattr,*dcc:-bot,*ctcp:PING,*dcc:who,*dcc:-exempt
+Keywords=*dcc:banner,*fil:filestats,*dcc:servers,*dcc:-chan,*dcc:lstat
+Keywords=*dcc:notes,*msg:save,*dcc:+exempt,*join:notes,*dcc:resolve
+Keywords=*fil:desc,*fil:chdir,*msg:hello,*dcc:exempts,*dcc:+noteign
+Keywords=*dcc:chpass,*dcc:devoice,*fil:hide,*dcc:trace,*dcc:deluser
+Keywords=*load:server,*raw:PING,*dcc:botinfo,*dcc:backup,*dcc:rehash
+Keywords=*dcc:chnick,*bot:assoc,*dcc:fixcodes,*ctcp:VERSION,*fil:unshare
+Keywords=*raw:irc:324,*fil:cd,*ctcp:server:DCC,*msg:key,*ctcp:transfer:DCC
+Keywords=*raw:PRIVMSG,*dcc:simul
 End
 
 # ----------- TeX, that's really bad!, sorry ---------------
 #
 # Contributed by: Alexander Bokovoy <bokovoy@minsk.lug.net>
+# Modified by:    Jan Cnops <Jan.Cnops@hogent.be>
 #
 Name=TeX
 Files=tex,ltx,sty
 EOLComment1=%
-CanStartAName=\
+AllowedInsideNames=},*
+CanStartAName=\,{
 Case=1
 Symbols1=\.,;{}()[]%
 NoCheckNumbers=1
-Keywords=documentstyle,document,documentclass,pagestyle,pagenumbering,thispagestyle
-Keywords=title,author,date,maketitle,begin,end,part,chapter,section,subsection,subsubsection
-Keywords=paragraph,subparagraph,appendix,tableofcontents,listoffigures,listoftables,rm,em,bf,sc,it,sl,sf,tt
-Keywords=tiny,scriptsize,footnotesize,small,normalsize,large,Large,LARGE,huge,HUGE,bibitem,cite
-Keywords=label,ref,pageref,footnote,item,caption,kill,hline,cline,multicolumn
-Keywords=def,hspace,vspace,linebreak,nolinebreak,newpage,clearpage,pagebreak,nopagebreak,samepage
-Keywords=newcommand,renewcommand,newenvironment,newtheorem,newcounter,setcounter,addtocounter,value,stepcounter,\the*
-Keywords=newlength,setlength,addtolength,settowidth,textheight,textwidth,topmargin,hoffset,voffset,oddsidemargin,evensidemargin
-Keywords=mbox,makebox,fbos,framebox,newsavebox,sbox,savebox,usebox,raisebox,put,framebox,dashbox,line,vector,circle,oval
-Keywords=frame,shortstack,multiput,thinlines,thicklines,linethickness,font,magnification,magstephalf,magstep
-Keywords=hsize,vsize,voffset,hoffset,topskip,leftskip,rightskip,eject,vfill,eject,goodbreak,nobreak,nopagenumbers
-Keywords=headline,headheight,headsep,footnote,pageno,folio,par,parindent,noindent,break,hfill,break,line
-Keywords=rightline,centerline,includegraphics,enskip,hskip,hfil,hfill,hss,smallskip
-Keywords=vskip,vglue,vfil ,vfill,vss,baselineskip,parskip,topinsert,midinsert,handindent
-Keywords=footnote,hrule,vrule,leaders,hrulefill,settabs,haling,hbox,vbox,newbox,setbox
-Keywords=arccos,cos,csc,exp,ker,limsup,min,sinh,arcsin,cosh,deg,gcd,lg,ln,Pr,sup
-Keywords=arctan,cot,det,hom,lim,log,sec,tan,arg,coth,dim,inf,liminfo,max,sin,tanh
-Keywords=displaystyle,textstyle,alpha,beta,gamma,delta,epsilon,varepsilon,zeta
-Keywords=eta,theta,vartheta,iota,kappa,lambda,mu,nu,xi,o,pi,varpi,rho,varrho,sigma,varsigma
-Keywords=tau,upsilon,phi,varphi,chi,psi,omega,Gamma,Delta,Theta,Lambda,Xi,Pi,Sigma,Upsilon
-Keywords=Phi,Psi,Omega,aleph,hbar,imath,jmath,ell,wp,Re,Im,partial,infty,backslash,prime,emptyset,nabla
-Keywords=surd,triangle,angle,bot,top,forall,exists,neg,lnot,flat,natural,sharp,clubsuit
-Keywords=diamondsuit,heartsuit,spadesuit,pm,mp,setminus,cdot,times,ast,star,diamond,circ,bullet,triangleleft,cap,cup,uplus,sqcap
-Keywords=sqcup,amalg,div,wr,bigcirc,vee,lor,wedge,land,oplus,ominus,otimes,oslash,odot,dagger,ddagger
-Keywords=bigtriangleleft,bigtriangledown,sum,prod,coprod,int,oint,bigcap,bigcup,bigsqcup,bigvee,bigwedge,bigodot,bigotimes,bigoplus
-Keywords=biguplus,hat,acute,ddot,vec,check,grave,breve,tilde,dot,bar,widehat,widetilde
-Keywords=ldots,vdots,cdots,ddots,leq,le,prec,preceq,ll,subset,subsetqe,supsetqe,in,vdash,smile,frown,geq,ge
-Keywords=succ,succeq,gg,supset,sqsubseteq,sqsupsetqe,ni,owns,dashv,mid,parallel,equiv,sim,simeq,asymp,approx,cong,bowtie,propto,models
-Keywords=doteq,perp,not,leftarrow,Leftarrow,gets,longleftarrow,Longleftarrow,rightarrow,Rightarrow,to,longrightarrow,Longrightarrow
-Keywords=leftrightarrow,Leftrightarrow,longleftrightarrow,Longleftrightarrow,mapsto,longmapsto,hookleftarrow,hookrightarrow
-Keywords=leftharpoonup,rightharpoonup,leftharpoondown,rightharpoondown,uparrow,Uparrow,downarrow,Downarrow
-Keywords=updownarrow,Updownarrow,nearrow,searrow,swarrow,nwarrow,lbrack,lfloor,rbrack,rfloor
-Keywords=lceil,lbrace,langle,rceil,rbrace,rangle,quad,qquad,Biggl,biggl,Bigl,bigl
-Keywords=bigr,Bigr,biggr,Biggr,lgroup,rgroup,langle,rangle,vert,Vert,uparrow
-Keywords=left,right,overline,overrightarrow,overleftarrow,overbrace,underbrace,atop,choose,brack,above,brace
-Keywords=pmatrix,matrix,bordermatrix,eqalign,eqno,eqalignno,quad,def,gdef,edef
-Keywords=newcount,advance,multiply,divide,number,romannumeral,newdimen,newread
-Keywords=openin,closein,input,endinput,newwrite,openouput,closeout,write,jobname,if,else,fi,ifx,ifeof
-Keywords=ifhmode,ifvmode,ifmmode,ifcat,ifnum,ifdim,ifodd,ifcase,or,loop,repeat
-Keywords=beginpicture,setcoordinatesystem,endpicture,plotheading,lines,putrule,linethickness,setlinear,setquadratic,sethistograms,setsolid,setdashes
-Keywords=setdots,setdashpattern,setplotsymbol,plot,arrow,put,multiput,circulararc,ellipticarc,startrotation,stoprotation,setshadegrid,setshadesymbol
-Keywords=shaderectangleson,sharerectanglesoff,vshade,setquadratic,hshade,setplotarea,inboundscheckon,inboundscheckoff
-Keywords=axis,setbox,endpicturesave,newdimen,Alph,AtBeginDocument,AtBeginDvi,AtEndDocument,AtEndOfPackage,Big,Bigg,Box,CheckCommand
-Keywords=ClassError,ClassInfo,ClassWarning,ClassWarningNoLine,DeclareErrorFont,DeclareFixedFont,DeclareFontEncoding
-Keywords=DeclareFontEncodingDefaults,DeclareFontFamily,DeclareFontShape,DeclareFontSubstitution,DeclareMathAccent,DeclareMathAlphabet
-Keywords=DeclareMathDelimiter,DeclareMathRadical,DeclareMathSizes,DeclareMathSymbol,DeclareMathVersion,DeclareOldFontCommand
-Keywords=DeclareOption,DeclarePreloadSizes,DeclareRobustCommand,DeclareSizeFunction,DeclareSymbolFont,DeclareSymbolFontAlphabet
-Keywords=DeclareTextAccent,DeclareTextAccentDefault,DeclareTextCommand,DeclareTextCommandDefault,DeclareTextComposite,DeclareTextCompositeCommand
-Keywords=DeclareTextFontCommand,DeclareTextSymbol,DeclareTextSymbolDefault,ExecuteOptions,IfFileExists,InputIfFileExists
-Keywords=Join,LoadClass,LoadClassWithOptions,MessageBreak,NeedsTeXFormat,OptionNotUsed,PackageError,PackageInfo,PackageWarning
-Keywords=PackageWarningNoLine,PassOptionsToClass,PassOptionsToPackage,ProcessOptions,ProvideTextCommand,ProvideTextCommandDefault
-Keywords=ProvidesFile,ProvidesPackage,RequirePackage,RequirePackageWithOptions,Roman,SetMathAlphabet,SetSymbolFont,TeX
-Keywords=TextSymbolUnavailable,UseTextAccent,UseTextSymbol,addcontentsline,addpenalty,addtocontents,addtoversion,addvspace,afterassignment,allocationnumber,allowbreak
-Keywords=alph,arrayrulewidth,arraystretch,baselinestretch,bezier,bfdefault,bfseries,bibcite,bibliography,bibliographystyle,big,bigbreak,bigg,bigskip
-Keywords=bigskipamount,bigskipamount,bmod,boldmath,buildrel,cases,catcode,center,centering,chardef,cleardoublepage,contentsline,countdef
-Keywords=cr,csname,depth,discretionary,displaymath,dospecials,dotfill,encodingdefault,endcsname,everycr,expandafter,expandafter,extracolsep
-Keywords=familydefault,familydefault,fbox,filbreak,flushleft,flushright,fmtname,fmtversion,fontencoding,fontfamily,fontseries,fontshape,footnotemark,footnoterule,footnotetext,frac
-Keywords=frenchspacing,fussy,futurelet,global,glossary,halign,height,hphantom,ifinner,immediate,include,includeonly,itdefault,iterate,kern
-Keywords=lastskip,leadsto,leavevmode,lefteqn,leftline,leftmark,let,lhd,liminf,lineskip,lower,lowercase,makeatletter,makeatother,makeglossary
-Keywords=makeindex,marginpar,markboth,markright,mathclose,mathop,mathopen,mathrel,mathstrut,mddefault,medbreak,medmuskip,medskip,mho,minipage,mskip
-Keywords=multispan,narrower,negthinspace,newfont,newhelp,newif,newinsert,newlabel,newlanguage,newline,newmathalphabet,newmuskip,newskip,newtoks,nocite
-Keywords=nocorrlist,noexpand,nointerlineskip,nolimits,nonfrenchspacing,nonumber,normalbaselines,normallineskip,normalmarginpar,null,numberline,obeylines
-Keywords=obeyspaces,offinterlineskip,onecolumn,openup,pagenumberin,parbox,penalty,phantom,pmod,protect,providecommand,raggedbottom
-Keywords=raggedleft,raggedright,refstepcounter,relax,removelastskip,renewenvironment,reversemarginpar,rhd,rightmark,rlap,rmdefault,roman,root,rq,rule
-Keywords=scdefault,secdef,selectfont,seriesdefault,settodepth,settoheight,sfdefault,shapedefault,showhyphens,showoutput,showoverfull,sldefault,sloppy,sloppypar,smallbreak
-Keywords=space,spacefactor,sqsubset,stackrel,stretch,strut,suppressfloats,symbol,tabskip,thanks,thefootnote,thickmuskip,thinmuskip,thinspace,today
-Keywords=tracingfonts,tracingoutput,trivlist,ttdefault,twocolumn,typein,typeout,unboldmath,undefinedpagestyle,underbar,underline,unlhd,unrhd,updefault
-Keywords=usecounter,usefont,usepackage,vcenter,verb,verbatim,vline,vphantom,width,wlog,xdef
+Keywords=documentstyle,documentclass
+Keywords={document},{array},{equation},{eqnarray},{tabbing},{eqnarray*}
+Keywords={tabular},{center},{enumerate},{itemize},{theorem}
+Keywords={picture},{bibliography},{verbatim}
+Keywords=\pagestyle,\pagenumbering,\thispagestyle
+Keywords=\title,\author,\date,\maketitle,\begin,\end,\part,\chapter
+Keywords=\section,\subsection,\subsubsection
+Keywords=\chapter*,\section*,\subsection*,\subsubsection*
+Keywords=\paragraph,\subparagraph,\appendix,\tableofcontents,\listoffigures
+Keywords=\listoftables,\rm,\em,\bf,\sc,\it,\sl,\sf,\tt
+Keywords=\tiny,\scriptsize,\footnotesize,\small,\normalsize,\large,\Large
+Keywords=\LARGE,\huge,\HUGE,\bibitem,\cite
+Keywords=\label,\ref,\pageref,\footnote,\item,\caption,\kill,\hline,\cline,\multicolumn
+Keywords=\def,\hspace,\vspace,\linebreak,\nolinebreak,\newpage,\clearpage,\pagebreak,\nopagebreak,\samepage
+Keywords=\newcommand,\renewcommand,\newenvironment,\newtheorem,\newcounter,\setcounter,\addtocounter,\value,\stepcounter,\\the*
+Keywords=\newlength,\setlength,\addtolength,\settowidth,\textheight,\textwidth,\topmargin,\hoffset,\voffset,\oddsidemargin,\evensidemargin
+Keywords=\mbox,\makebox,\fbos,\framebox,\newsavebox,\sbox,\savebox,\usebox,\raisebox,\put,\framebox,\dashbox,\line,\vector,\circle,\oval
+Keywords=\frame,\shortstack,\multiput,\thinlines,\thicklines,\linethickness,\font,\magnification,\magstephalf,\magstep
+Keywords=\hsize,\vsize,\voffset,\hoffset,\topskip,\leftskip,\rightskip,\eject,\vfill,\eject,\goodbreak,\nobreak,\nopagenumbers
+Keywords=\headline,\headheight,\headsep,\footnote,\pageno,\folio,\par,\parindent,\noindent,\break,\hfill,\break,\line
+Keywords=\rightline,\centerline,\includegraphics,\enskip,\hskip,\hfil,\hfill,\hss,\smallskip
+Keywords=\vskip,\vglue,\vfil,\vfill,\vss,\baselineskip,\parskip,\topinsert,\midinsert,\handindent
+Keywords=\footnote,\hrule,\vrule,\leaders,\hrulefill,\settabs,\haling,\hbox,\vbox,\newbox,\setbox
+Keywords=\arccos,\cos,\csc,\exp,\ker,\limsup,\min,\sinh,\arcsin,\cosh,\deg,\gcd,\lg,\ln,\Pr,\sup
+Keywords=\arctan,\cot,\det,\hom,\lim,\log,\sec,\tan,\arg,\coth,\dim,\inf,\liminfo,\max,\sin,\tanh
+Keywords=\displaystyle,\textstyle,\alpha,\beta,\gamma,\delta,\epsilon,\varepsilon,\zeta
+Keywords=\eta,\theta,\vartheta,\iota,\kappa,\lambda,\mu,\nu,\xi,\o,\pi,\varpi,\rho,\varrho,\sigma,\varsigma
+Keywords=\tau,\upsilon,\phi,\varphi,\chi,\psi,\omega,\Gamma,\Delta,\Theta,\Lambda,\Xi,\Pi,\Sigma,\Upsilon
+Keywords=\Phi,\Psi,\Omega,\aleph,\hbar,\imath,\jmath,\ell,\wp,\Re,\Im,\partial,\infty,\backslash,\prime,\emptyset,\nabla
+Keywords=\surd,\triangle,\angle,\bot,\top,\forall,\exists,\neg,\lnot,\flat,\natural,\sharp,\clubsuit
+Keywords=\diamondsuit,\heartsuit,\spadesuit,\pm,\mp,\setminus,\cdot,\times,\ast,\star,\diamond,\circ,\bullet,\triangleleft,\cap,\cup,\uplus,\sqcap
+Keywords=\sqcup,\amalg,\div,\wr,\bigcirc,\vee,\lor,\wedge,\land,\oplus,\ominus,\otimes,\oslash,\odot,\dagger,\ddagger
+Keywords=\bigtriangleleft,\bigtriangledown,\sum,\prod,\coprod,\int,\oint,\bigcap,\bigcup,\bigsqcup,\bigvee,\bigwedge,\bigodot,\bigotimes,\bigoplus
+Keywords=\biguplus,\hat,\acute,\ddot,\vec,\check,\grave,\breve,\tilde,\dot,\bar,\widehat,\widetilde
+Keywords=\ldots,\vdots,\cdots,\ddots,\leq,\le,\prec,\preceq,\ll,\subset,\subsetqe,\supsetqe,\\in,\vdash,\smile,\frown,\geq,\ge
+Keywords=\succ,\succeq,\gg,\supset,\sqsubseteq,\sqsupsetqe,\ni,\owns,\dashv,\mid,\parallel,\equiv,\sim,\simeq,\asymp,\approx,\cong,\bowtie,\propto,\models
+Keywords=\doteq,\perp,\not,\leftarrow,\Leftarrow,\gets,\longleftarrow,\Longleftarrow,\rightarrow,\Rightarrow,\to,\longrightarrow,\Longrightarrow
+Keywords=\leftrightarrow,\Leftrightarrow,\longleftrightarrow,\Longleftrightarrow,\mapsto,\longmapsto,\hookleftarrow,\hookrightarrow
+Keywords=\leftharpoonup,\rightharpoonup,\leftharpoondown,\rightharpoondown,\uparrow,\Uparrow,\downarrow,\Downarrow
+Keywords=\updownarrow,\Updownarrow,\nearrow,\searrow,\swarrow,\nwarrow,\lbrack,\lfloor,\rbrack,\rfloor
+Keywords=\lceil,\lbrace,\langle,\rceil,\rbrace,\rangle,\quad,\qquad,\Biggl,\biggl,\Bigl,\bigl
+Keywords=\bigr,\Bigr,\biggr,\Biggr,\lgroup,\rgroup,\langle,\rangle,\vert,\Vert,\uparrow
+Keywords=\left,\right,\overline,\overrightarrow,\overleftarrow,\overbrace,\underbrace,\atop,\choose,\brack,\above,\brace
+Keywords=\pmatrix,\matrix,\bordermatrix,\eqalign,\eqno,\eqalignno,\quad,\def,\gdef,\edef
+Keywords=\newcount,\advance,\multiply,\divide,\number,\romannumeral,\newdimen,\newread
+Keywords=\openin,\closein,\input,\endinput,\newwrite,\openouput,\closeout,\write,\jobname,\if,\else,\fi,\ifx,\ifeof
+Keywords=\ifhmode,\ifvmode,\ifmmode,\ifcat,\ifnum,\ifdim,\ifodd,\ifcase,\or,\loop,\repeat
+Keywords=\beginpicture,\setcoordinatesystem,\endpicture,\plotheading,\lines,\putrule,\linethickness,\setlinear,\setquadratic,\sethistograms,\setsolid,\setdashes
+Keywords=\setdots,\setdashpattern,\setplotsymbol,\plot,\arrow,\put,\multiput,\circulararc,\ellipticarc,\startrotation,\stoprotation,\setshadegrid,\setshadesymbol
+Keywords=\shaderectangleson,\sharerectanglesoff,\vshade,\setquadratic,\hshade,\setplotarea,\inboundscheckon,\inboundscheckoff
+Keywords=\axis,\setbox,\endpicturesave,\newdimen,\Alph,\AtBeginDocument,\AtBeginDvi,\AtEndDocument,\AtEndOfPackage,\Big,\Bigg,\Box,\CheckCommand
+Keywords=\ClassError,\ClassInfo,\ClassWarning,\ClassWarningNoLine,\DeclareErrorFont,\DeclareFixedFont,\DeclareFontEncoding
+Keywords=\DeclareFontEncodingDefaults,\DeclareFontFamily,\DeclareFontShape,\DeclareFontSubstitution,\DeclareMathAccent,\DeclareMathAlphabet
+Keywords=\DeclareMathDelimiter,\DeclareMathRadical,\DeclareMathSizes,\DeclareMathSymbol,\DeclareMathVersion,\DeclareOldFontCommand
+Keywords=\DeclareOption,\DeclarePreloadSizes,\DeclareRobustCommand,\DeclareSizeFunction,\DeclareSymbolFont,\DeclareSymbolFontAlphabet
+Keywords=\DeclareTextAccent,\DeclareTextAccentDefault,\DeclareTextCommand,\DeclareTextCommandDefault,\DeclareTextComposite,\DeclareTextCompositeCommand
+Keywords=\DeclareTextFontCommand,\DeclareTextSymbol,\DeclareTextSymbolDefault,\ExecuteOptions,\IfFileExists,\InputIfFileExists
+Keywords=\Join,\LoadClass,\LoadClassWithOptions,\MessageBreak,\NeedsTeXFormat,\OptionNotUsed,\PackageError,\PackageInfo,\PackageWarning
+Keywords=\PackageWarningNoLine,\PassOptionsToClass,\PassOptionsToPackage,\ProcessOptions,\ProvideTextCommand,\ProvideTextCommandDefault
+Keywords=\ProvidesFile,\ProvidesPackage,\RequirePackage,\RequirePackageWithOptions,\Roman,\SetMathAlphabet,\SetSymbolFont,\TeX
+Keywords=\TextSymbolUnavailable,\UseTextAccent,\UseTextSymbol,\addcontentsline,\addpenalty,\addtocontents,\addtoversion,\addvspace,\afterassignment,\allocationnumber,\allowbreak
+Keywords=\alph,\arrayrulewidth,\arraystretch,\baselinestretch,\bezier,\bfdefault,\bfseries,\bibcite,\bibliography,\bibliographystyle,\big,\bigbreak,\bigg,\bigskip
+Keywords=\bigskipamount,\bigskipamount,\bmod,\boldmath,\buildrel,\cases,\catcode,\centering,\chardef,\cleardoublepage,\contentsline,\countdef
+Keywords=\cr,\csname,\depth,\discretionary,\displaymath,\dospecials,\dotfill,\encodingdefault,\endcsname,\everycr,\expandafter,\expandafter,\extracolsep
+Keywords=\familydefault,\familydefault,\fbox,\filbreak,\flushleft,\flushright,\fmtname,\fmtversion,\fontencoding,\fontfamily,\fontseries,\fontshape,\footnotemark,\footnoterule,\footnotetext,\frac
+Keywords=\frenchspacing,\fussy,\futurelet,\global,\glossary,\halign,\height,\hphantom,\ifinner,\immediate,\include,\includeonly,\itdefault,\iterate,\kern
+Keywords=\lastskip,\leadsto,\leavevmode,\lefteqn,\leftline,\leftmark,\let,\lhd,\liminf,\lineskip,\lower,\lowercase,\makeatletter,\makeatother,\makeglossary
+Keywords=\makeindex,\marginpar,\markboth,\markright,\mathclose,\mathop,\mathopen,\mathrel,\mathstrut,\mddefault,\medbreak,\medmuskip,\medskip,\mho,\minipage,\mskip
+Keywords=\multispan,\narrower,\negthinspace,\newfont,\newhelp,\newif,\newinsert,\newlabel,\newlanguage,\newline,\newmathalphabet,\newmuskip,\newskip,\newtoks,\nocite
+Keywords=\nocorrlist,\noexpand,\nointerlineskip,\nolimits,\nonfrenchspacing,\nonumber,\normalbaselines,\normallineskip,\normalmarginpar,\null,\numberline,\obeylines
+Keywords=\obeyspaces,\offinterlineskip,\onecolumn,\openup,\pagenumberin,\parbox,\penalty,\phantom,\pmod,\protect,\providecommand,\raggedbottom
+Keywords=\raggedleft,\raggedright,\refstepcounter,\relax,\removelastskip,\renewenvironment,\reversemarginpar,\rhd,\rightmark,\rlap,\rmdefault,\roman,\root,\rq,\rule
+Keywords=\scdefault,\secdef,\selectfont,\seriesdefault,\settodepth,\settoheight,\sfdefault,\shapedefault,\showhyphens,\showoutput,\showoverfull,\sldefault,\sloppy,\sloppypar,\smallbreak
+Keywords=\space,\spacefactor,\sqsubset,\stackrel,\stretch,\strut,\suppressfloats,\symbol,\tabskip,\thanks,\thefootnote,\thickmuskip,\thinmuskip,\thinspace,\today
+Keywords=\tracingfonts,\tracingoutput,\trivlist,\ttdefault,\twocolumn,\typein,\typeout,\unboldmath,\undefinedpagestyle,\underbar,\underline,\unlhd,\unrhd,\updefault
+Keywords=\usecounter,\usefont,\usepackage,\vcenter,\verb,\verbatim,\vline,\vphantom,\width,\wlog,\xdef
 End
 
 # ---------------- PLM/51 ----------------
@@ -1009,6 +1231,282 @@ EOLCInFirstCol1=1
 Symbols1=,=
 NoCheckNumbers=1
 Keywords=Name,Pattern,File,Line,Description,Severity,EnterDirPat,EnterDirDir
-Keywords=LeaveDir,End
+Keywords=LeaveDir,UseInternal,End
 End
+
+# --------------------------------- SQL -----------------------------------
+#
+# Contributed by: Jeremy W. Murphy <jwm@amc.com.au>
+#
+Name=SQL
+Files=sql,SQL,dml,DML
+OpenComment1=/*
+CloseComment1=*/
+EOLComment1=--
+EOLCInFirstCol=1
+HexMarker=0x
+Symbols1=+-*/|&<>!=
+Symbols2=(),;
+String1="
+String2='
+Escape=\
+Keywords=action,add,all,alter,after,and,as,asc,auto_increment,between,bigint
+Keywords=bit,binary,blob,bool,both,by,cascade,char,character,change,check
+Keywords=column,columns,constraint,create,cross,current_date,current_time
+Keywords=current_timestamp,data,database,databases,date,datetime,day,day_hour
+Keywords=day_minute,day_second,dayofmonth,dayofweek,dayofyear,dec,decimal
+Keywords=default,delete,desc,describe,distinct,distinctrow,double,drop,escaped
+Keywords=enclosed,enum,explain,exists,fields,first,float,float4,float8,foreign
+Keywords=from,for,full,function,grant,group,having,hour,hour_minute,hour_second
+Keywords=ignore,in,index,infile,insert,int,integer,interval,int1,int2,int3,int4
+Keywords=int8,into,if,is,join,key,keys,last_insert_id,leading,left,like,lines
+Keywords=limit,load,lock,long,longblob,longtext,low_priority,match,mediumblob
+Keywords=mediumtext,mediumint,middleint,minute,minute_second,month,monthname
+Keywords=natural,numeric,no,not,null,on,option,optionally,or,order,outer,outfile
+Keywords=partial,password,precision,primary,procedure,processlist,privileges
+Keywords=quarter,read,real,references,rename,regexp,reverse,repeat,replace
+Keywords=restrict,returns,rlike,second,select,set,show,smallint,soname
+Keywords=sql_big_tables,sql_big_selects,sql_select_limit,sql_low_priority_updates
+Keywords=sql_log_off,sql_log_update,straight_join,starting,status,string,table
+Keywords=tables,terminated,text,time,timestamp,tinyblob,tinytext,tinyint
+Keywords=trailing,to,use,using,unique,unlock,unsigned,update,usage,values
+Keywords=varchar,variables,varying,varbinary,with,write,where,year,year_month
+Keywords=zerofill
+End
+
+# ---------------------------- Objective C ---------------------------------
+#
+# This are based on C/C++ definitions.
+# Contributed by: Beni Cherniavsky <cben@crosswinds.net>
+#
+Name=ObjC
+Files=m
+UseInternal=0
+Case=1
+OpenComment1=/*
+CloseComment1=*/
+EOLComment1=//
+HexMarker=0x
+Symbols1=(){}[],;
+Symbols2=!&*+-./:<=>?^|~
+String1="
+String2='
+CanStartAName=@
+Escape=\
+Preprocessor=#
+PMacros=cpmacros.pmc
+# Keywords taken from C/C++ with anything I knew as C++ words stripped
+Keywords=asm,auto,break,case,char,const,continue,default,delete
+Keywords=do,double,else,enum,extern,far,float,for,goto
+Keywords=huge,if,inline,int,long,near,
+Keywords=register,return,short,signed,sizeof,static,struct,switch
+Keywords=typedef,union,unsigned,void,volatile,while
+# ObjC Keywords
+Keywords=id,Object,class,Class,@interface,@end,@class,@implementation,
+Keywords=@private,@protected,@public,SEL,@selector,self,super
+End
+
+# --------------------------------- PDP11 asm -------------------------------
+#
+# Contributed by: Beni Cherniavsky <cben@crosswinds.net>
+#
+Name=PDP11 asm
+Files=s11
+EOLComment1=;
+Escape=\
+AllowedInsideNames=$.?_-
+CanStartAName=.
+Symbols1=@#(),:=
+Symbols2=!-+`*/%<>&^|
+String1=<>
+NoCheckNumbers=1
+Keywords=adc,adcb,add,ash,ashc,asl,aslb,asr,asrb,bcc,bcs,beq,bge,bgt
+Keywords=bhi,bhis,bic,bicb,bis,bisb,bit,bitb,ble,blo,blos,blt,bmi
+Keywords=bne,bpl,bpt,br,bvc,bvs,clr,clrb,c,ccc,clc,cln,clv,clz,cmp
+Keywords=cmpb,com,comb,dec,decb,div,emt,halt,inc,incb,iot,jmp,jsr
+Keywords=mark,mfps,mtps,mov,movb,mul,neg,negb,,nop,reset,rol,rolb
+Keywords=ror,rorb,rti,rts,rtt,sbc,sbcb,s,scc,sec,sen,sev,sez,sob,spl
+Keywords=sub,swab,sxt,trap,tst,tstb,wait,xor
+#Registers
+Keywords=r0,r1,r2,r3,r4,r5,r6,sp,r7,pc
+#Floating Point
+Keywords=cfcc,setf,seti,setd,setl,ldfps,stfps,clrf,tstf
+Keywords=absf,negf,mulf,modf,addf,movf,subf,cmpf,divf
+Keywords=movei,movfi,movfo,movie,movif,movof
+#Directives
+Keywords=.ascii,.byte,.blkw,.bss,.even,.comm,.data,.endm,.endc
+Keywords=.endr,.globl,.if,.iff,.ift,.iftf,.iif,.include,.irp
+Keywords=.irpc,.list,.macro,.mexit,.narg,.nchr,.nolist,.align
+Keywords=.rept,.text,.word
+End
+
+# ---------------- Internationalization files ----------------
+#
+Name=Internationalization files
+Files=po
+EOLComment1=#
+EOLCInFirstCol1=1
+Symbols1=:
+String1="
+Escape=\
+NoCheckNumbers=1
+Keywords=msgid,msgstr
+End
+
+# ----------- Cascading Style Sheets version 2 -----------
+# Contributed by: S. M. Halloran <mitch@duzen.com.tr>
+#
+Name=Cascading Style Sheets v2
+Files=css,css2,cs2
+HexMarker=#
+OpenComment1=/*
+CloseComment1=*/
+AllowedInsideNames=-
+CanStartAName=.
+String1="
+Symbols1={}[]>*=|~+()
+Symbols2=:;
+NoCheckNumbers=1
+Keywords=azimuth,background,background-attachment,background-color
+Keywords=background-image,background-position,background-repeat,border
+Keywords=border-collapse,border-color,border-spacing,border-style,border-top
+Keywords=border-right,border-bottom,border-left,border-top-color
+Keywords=border-right-color,border-bottom-color,border-left-color
+Keywords=border-top-style,border-right-style,border-bottom-style
+Keywords=border-left-style,border-top-width,border-right-width
+Keywords=border-bottom-width,border-left-width,border-width,bottom,caption-side
+Keywords=clear,clip,color,content,counter-increment,counter-reset,cue
+Keywords=cue-after,cue-before,cursor,direction,display,elevation,empty-cells
+Keywords=float,font,font-family,font-size,font-size-adjust,font-stretch
+Keywords=font-style,font-variant,font-weight,height,left,letter-spacing
+Keywords=line-height,list-style,list-style-image,list-style-position
+Keywords=list-style-type,margin,margin-top,margin-right,margin-bottom
+Keywords=margin-left,marker-offset,marks,max-height,max-width,min-height
+Keywords=min-width,orphans,outline,outline-color,outline-style,outline-width
+Keywords=overflow,padding,padding-top,padding-right,padding-bottom,padding-left
+Keywords=page,page-break-after,page-break-before,page-break-inside,pause
+Keywords=pause-after,pause-before,pitch,pitch-range,play-during,position
+Keywords=quotes,richness,right,size,speak,speak-header,speak-numeral
+Keywords=speak-punctuation,speech-rate,stress,table-layout,text-align
+Keywords=text-decoration,text-indent,text-shadow,text-transform,top,unicode-bidi
+Keywords=vertical-align,visibility,voice-family,volume,white-space,widows
+Keywords=width,word-spacing,z-index
+End
+
+# ----------------- JavaScript Files -----------------
+# Contributed by: S. M. Halloran <mitch@duzen.com.tr>
+#
+Name=JavaScript
+Files=js
+Case=1
+OpenComment1=/*
+CloseComment1=*/
+EOLComment1=//
+HexMarker=0x
+Symbols1=!&*+-./:<=>?^|~
+Symbols2=(){}[],;
+String1="
+String2='
+Escape=\
+Keywords=break,case,catch,continue,default,delete,do,else,false,finally,for
+Keywords=function,if,new,return,switch,this,throw,true,try,var,while
+End
+
+# -------------------- PostScript Files --------------------
+# Contributed by: S. M. Halloran <mitch@duzen.com.tr>
+# Contains all reserved word to PostScript Language Level 3
+#
+Name=PostScript
+Files=ps
+Case=1
+EOLComment1=%
+HexMarker=<>
+Symbols1={}/
+String1=()
+Escape=\
+Keywords=pop,exch,dup,copy,index,roll,clear,count,mark,cleartomark
+Keywords=counttomark,add,div,idiv,mod,mul,sub,abs,neg,ceiling,floor
+Keywords=round,truncate,sqrt,atan,cos,sin,exp,ln,log,rand,srand,rrand
+Keywords=array,[,],length,get,put,getinterval,putinterval,astore,aload
+Keywords=forall,packedarray,setpacking,currentpacking,dict,maxlength
+Keywords=begin,end,def,load,store,undef,known,where,currentdict
+Keywords=errordict,$error,systemdict,userdict,globaldict,statusdict
+Keywords=countdictstack,dictstack,cleardictstack,string,anchorsearch
+Keywords=search,token,eq,ne,ge,gt,le,lt,and,not,or,xor,true,false,bitshift
+Keywords=exec,if,ifelse,for,repeat,loop,exit,stop,stopped,countexecstack
+Keywords=execstack,quit,start,type,cvlit,cvx,xcheck,executeonly,noaccess
+Keywords=readonly,rcheck,wcheck,cvi,cvn,cvr,cvrs,cvs,file,filter,closefile
+Keywords=read,write,readhexstring,writehexstring,readstring,writestring
+Keywords=readline,bytesavailable,flush,flushfile,resetfile,status,run
+Keywords=currentfile,deletefile,renamefile,filenameforall,setfileposition
+Keywords=fileposition,print,=,==,stack,pstack,printobject,writeobject
+Keywords=setobjectformat,currentobjectformat,defineresource,undefineresource
+Keywords=findresource,findcolorrendering,resourcestatus,resourceforall
+Keywords=save,restore,setglobal,currentglobal,gcheck,startjob,defineuserobject
+Keywords=execuserobject,undefineuserobject,UserObjects,bind,null,version,
+Keywords=realtime,usertime,languagelevel,product,revision,serialnumber
+Keywords=executive,echo,prompt,gsave,grestore,clipsave,cliprestore,grestoreall
+Keywords=initgraphics,gstate,setgstate,currentgstate,setlinewidth
+Keywords=currentlinewidth,setlinecap,currentlinecap,setlinejoin
+Keywords=currentlinejoin,setmiterlimit,currentmiterlimit,setstrokeadjust
+Keywords=currentstrokeadjust,setdash,currentdash,setcolorspace
+Keywords=currentcolorspace,setcolor,currentcolor,setgray,currentgray
+Keywords=setrgbcolor,currentrgbcolor,setcmykcolor,currentcymkcolor
+Keywords=sethalftone,currenthalftone,setscreen,currentscreen,setcolorscreen
+Keywords=currentcolorscreen,settransfer,currenttransfer,setcolortransfer
+Keywords=currentcolortransfer,setblackgeneration,currentblackgeneration
+Keywords=setundercolorremoval,currentundercolorremoval,setcolorrendering
+Keywords=currentcolorrendering,setflat,currentflat,setoverprint
+Keywords=currentoverprint,setsmoothness,currentsmoothness,matrix,initmatrix
+Keywords=identmatrix,defaultmatrix,currentmatrix,setmatrix,translate
+Keywords=scale,rotate,concat,concatmatrix,transform,dtransform,itransform
+Keywords=idtransform,invertmatrix,newpath,currentpoint,moveto,lineto,
+Keywords=rmoveto,rlineto,arc,arcn,arcto,curveto,rcurveto,closepath
+Keywords=flattenpath,reversepath,strokepath,ustrokepath,charpath
+Keywords=uappdend,clippath,setbbox,pathbbox,pathforall,upath,initclip,clip
+Keywords=eoclip,rectclip,ucache,erasepage,stroke,fill,eofill,rectstroke
+Keywords=rectfill,ustroke,ufill,ueofill,shfill,image,colorimage,imagemask
+Keywords=infill,ineofill,inufill,inueofill,instroke,inustroke,makepattern
+Keywords=setpattern,execform,showpage,copypage,setpagedevice
+Keywords=currentpagedevice,nulldevice,definefont,composefont,undefinefont
+Keywords=findfont,scalefont,makefont,setfont,rootfont,currentfont,selectfont
+Keywords=show,ashow,widthshow,awidthsho,xshow,xyshow,yshow,glyphshow
+Keywords=stringwidth,cshow,kshow,FontDirectory,GlobalFontDirectory
+Keywords=StandardEncoding,ISOLatin1Encoding,findencoding,setcachedevice
+Keywords=setcachedevice2,setcharwidth,setsystemparams,currentsystemparams
+Keywords=currentuserparams,setuserparams,setdevparams,currentdevparams
+Keywords=vmreclaim,setvmthreshold,vmstatus,cachestatus,setcachelimit
+Keywords=setcacheparams,currentcacheparams,setucacheparams,ucachestatus
+Keywords=configurationerror,dictfull,dictstackoverflow,dictstackunderflow
+Keywords=execstackoverflow,handleerror,interrupt,invalidaccess,invalidexit
+Keywords=invalidfileaccess,invalidfont,ioerror,limitcheck,nocurrentpoint
+Keywords=rangecheck,stackoverflow,stackunderflow,syntaxerror,timeout
+Keywords=typecheck,undefined,undefinedfilename,undefineresource
+Keywords=undefineresult,unmatchedmark,unregistered,VMerror
+Keywords=[,],<<,>>
+End
+
+# ---------------------- Fortran ----------------------
+# Contributed by: Martijn Versteegh <versteegh@kvi.nl>.
+#
+Name=Fortran
+Files=F,f
+Case=0
+EOLComment1=c
+EOLCInFirstCol1=1
+EOLComment2=!
+Symbols1=+-/*=
+Symbols2=(){}[];
+String1="
+String2='
+NoChecknumbers=1
+Escape=\
+Keywords=common,integer,real,logical,character,double,precision,implicit,equivalence,kind
+Keywords=subroutine,parameter,program,include,save,intrinsic
+#flow control
+Keywords=do,end,stop,if,then,else,endif,elseif,goto,continue,call,return,select, case
+#file handling
+Keywords=read,write,format,rewind,open,close,print
+End
+#---------- end of fortran shl definition -----------------------
 

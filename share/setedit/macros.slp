@@ -1,4 +1,4 @@
-; Copyright 1996,1997,1998,1999 by Salvador E. Tropea [SET],
+; Copyright 1996-2001 by Salvador E. Tropea [SET],
 ; see copyrigh file for details
 ;
 ;;;
@@ -110,6 +110,47 @@
 
 ;*******************************************************************
 ;
+; MACRO:   Test RunProgam Filter
+;
+; DESCRIPTION: Example of how to use an external filter program, it
+; takes the current selection, sends it to an external program (using
+; the shell input redirection) and collects the output of the
+; program. Finally the selected text is replaced by the output of
+; the filter.
+;
+;*******************************************************************/
+
+(defmacro 'Test RunProgram Filter'
+ (eval
+  (setv "input" (GetSelection))
+  (if (length input)
+   ; Call the filter
+   (eval
+    (setv "program" (AskString "The output of the filter will replace the selection" "External filter"))
+    (if (length program)
+     (eval
+      (setv "output" (RunProgramRedir program input))
+      (if (length output)
+       (eval
+        (SendCommands cmcCut)
+        (InsertText output 1)
+       )
+       ; Inform we didn't get text
+       (MessageBox "No output from the filter")
+      )
+     )
+     ; Ask the user to enter something
+     (MessageBox "Please enter the filter to use")
+    )
+   )
+   ; Ask the user to select something firt
+   (MessageBox "Please select a text first")
+  )
+ )
+)
+
+;*******************************************************************
+;
 ; These macro were created by Rolf Campbell (Endlisnis)
 ; email: s257m@unb.ca Endlisnis@hotmail.com
 ; and uses an external program provided by him.
@@ -120,36 +161,203 @@
 ; prototype, even when partially typed.
 ;
 ; http://www.geocities.com/CollegePark/Quad/1974/LEMUR02.ZIP
+; As Lemur is currently unavailable I commented these macros.
 ;
 ;*******************************************************************/
 
-(defmacro 'List Members'
- (eval
-  (RunProgram (+ "lemur " (WhichEditor) " -s " (WordUnderCursor 256 1)))
-  (SendCommands cmcGoEndOfWord)
- )
-)
+; (defmacro 'List Members'
+;  (eval
+;   (RunProgram (+ "lemur " (WhichEditor) " -s " (WordUnderCursor 256 1)))
+;   (SendCommands cmcGoEndOfWord)
+;  )
+; )
+; 
+; (defmacro 'Prototype'
+;  (eval
+;   (ShowInStatusLine
+;    (RunProgramRedir
+;     (+ "lemur " (WhichEditor) " " (WordUnderCursor 256 1))
+;    )
+;   )
+;  )
+; )
+; 
+; (defmacro 'Prototype Complete'
+;  (eval
+;   (setv "proto"
+;    (RunProgramRedir
+;     (+ "lemur " (WhichEditor) " -c " (WordUnderCursor 256 1))
+;    )
+;   )
+;   (SendCommands cmcGoEndOfWord)
+;   (InsertText (+ proto "(") 1)
+;   (ShowInStatusLine (+ "Added: " proto))
+;  )
+; )
 
-(defmacro 'Prototype'
- (eval
-  (ShowInStatusLine
-   (RunProgramRedir
-    (+ "lemur " (WhichEditor) " " (WordUnderCursor 256 1))
-   )
+;*******************************************************************
+;
+;    These examples were contributed by Thiago F.G. Albuquerque
+;  <tfga@terra.com.br>.
+;    I added them commented to save memory, you can uncoment them
+;  using the "Indent uncommenting" editor command found in Tool&Ops|
+;  Un/Indent block menu.
+;
+;*******************************************************************
+
+(defmacro 'DuplicateLineOrSelection'
+ (if (SelectionExists)
+  (InsertText (GetSelection))
+  (progn
+   (SendCommands cmcLineStart cmcSelectOn cmcLineEnd cmcSelectOff cmcCopy cmcLineEnd)
+   (InsertText "\n")
+   (SendCommands cmcPaste)
   )
  )
 )
 
-(defmacro 'Prototype Complete'
- (eval
-  (setv "proto"
-   (RunProgramRedir
-    (+ "lemur " (WhichEditor) " -c " (WordUnderCursor 256 1))
-   )
-  )
-  (SendCommands cmcGoEndOfWord)
-  (InsertText (+ proto "(") 1)
-  (ShowInStatusLine (+ "Added: " proto))
- )
+(defmacro 'EvalSelection_Print'
+ (InsertText (+ "\n" (EvalString (GetSelection))))
 )
+
+(defmacro 'EvalSelection_StatusLine'
+ (ShowInStatusLine (EvalString (GetSelection)))
+)
+
+; (defmacro 'EvalSelection_MessageWindow'
+;  (eval
+;   (ShowInMessageWindow "Return value:" 1)
+;   (ShowInMessageWindow (EvalString (GetSelection)))
+;  )
+; )
+;
+; (defmacro 'Compile'
+;  (eval
+;   (RunProgram
+;    (+ "make obj/" (WhichEditor edfWENameNoExt) ".o")
+;   )
+;  )
+; )
+; 
+; (defmacro 'Make'
+;  (eval
+;   (RunProgram "make")
+;  )
+; )
+;
+; If you are editing a file named "stuff.cpp",
+; this macro takes you to "stuff.h" and vice-versa.
+; (OpenFile) checks first if the file is already open,
+; in which case it just switches to the right window.
+;
+; (defmacro 'Switch-cpp-h'
+;  (eval
+;   (setv "name" (WhichEditor edfWENameNoExt)) ; name without extension
+;   (setv "ext"  (WhichEditor edfWEExtension)) ; extension
+;   (cond (not (strcmp ext ".cpp"))  (OpenFile (+ name ".h"))
+;         (not (strcmp ext ".h"))    (OpenFile (+ name ".cpp"))
+;   )
+;  )
+; )
+; 
+; This is an implementation of pseudo-macros in sLisp.
+; Assign to Ctrl-Space.
+;
+; (defmacro 'pmacro'
+;  (progn
+;   (SendCommands cmcSelectOn cmcCharLeft cmcCharLeft cmcSelectOff)
+;   (setv "str" (GetSelection))
+;   (SendCommands cmcClear)
+;   (cond (not (strcmp str "#I"))    (progn  (InsertText '#include ".h"')
+;                                            (SendCommands cmcCharLeft cmcCharLeft cmcCharLeft)
+;                                    )
+; 
+;         (not (strcmp str "#i"))    (progn  (InsertText '#include <.h>')
+;                                            (SendCommands cmcCharLeft cmcCharLeft cmcCharLeft)
+;                                    )
+; 
+;         (not (strcmp str "#d"))    (InsertText '#define ')
+;
+;         (not (strcmp str "pr"))    (progn  (InsertText 'printf("");')
+;                                            (SendCommands cmcCharLeft cmcCharLeft cmcCharLeft)
+;                                    )
+; 
+;         (not (strcmp str "re"))    (progn  (InsertText 'return ;')
+;                                            (SendCommands cmcCharLeft)
+;                                    )
+; 
+;         (not (strcmp str "{}"))    (progn  (InsertText "{}")
+;                                            (SendCommands cmcCharLeft cmcNewLine cmcNewLine cmcLineUp)
+;                                            (InsertText "    ")
+;                                    )
+; 
+;         (not (strcmp str "//"))    (progn (InsertText "///////////////////////////////////////////////////////////////////////////")
+;                                           (SendCommands cmcNewLine)
+;                                    )
+; 
+;         (not (strcmp str "/*"))    (progn (InsertText "/****************************************************************************")
+;                                           (SendCommands cmcNewLine cmcNewLine)
+;                                           (InsertText "*****************************************************************************/")
+;                                           (SendCommands cmcNewLine cmcLineUp cmcLineUp)
+;                                    )
+; 
+;         (not (strcmp str "in"))    (progn (InsertText "#ifndef \n")
+;                                           (InsertText "#define \n")
+;                                           (InsertText "\n")
+;                                           (InsertText "#endif")
+;                                           (SendCommands cmcLineUp cmcLineUp cmcLineUp cmcLineEnd)
+;                                    )
+;
+;         (not (strcmp str ".h"))    (progn
+;                                           (setv "filename" (+ (WhichEditor edfWENameNoExt) "_h_____"))
+;                                           (InsertText (+ "#ifndef " filename "\n"))
+;                                           (InsertText (+ "#define " filename "\n"))
+;                                           (InsertText "\n")
+;                                           (InsertText "#endif")
+;                                    )
+; 
+;         (not (strcmp str "fo"))    (progn (InsertText "for (int i=0; i<; i++)")
+;                                           (SendCommands cmcNewLine)
+;                                           (InsertText "{}")
+;                                           (SendCommands cmcCharLeft cmcNewLine cmcNewLine cmcLineUp)
+;                                           (InsertText "    ")
+;                                    )
+; 
+;         (not (strcmp str "ma"))    (progn (InsertText "int main(int argc, char *argv[])\n")
+;                                           (InsertText "{\n")
+;                                           (InsertText "\n")
+;                                           (InsertText "    return 0;\n")
+;                                           (InsertText "}")
+;                                           (SendCommands cmcLineUp cmcLineUp
+;                                                         cmcCharRight cmcCharRight cmcCharRight)
+;                                    )
+; 
+;         (not (strcmp str "cl"))    (progn (InsertText "class\n")
+;                                           (InsertText "{\n")
+;                                           (InsertText " public:\n")
+;                                           (InsertText " // Data\n")
+;                                           (InsertText " \n")
+;                                           (InsertText " // Construction\n")
+;                                           (InsertText " \n")
+;                                           (InsertText " // Methods\n")
+;                                           (InsertText " \n")
+;                                           (InsertText " // Operators\n")
+;                                           (InsertText "};")
+;                                           (SendCommands cmcLineUp cmcLineUp cmcLineUp cmcLineUp cmcLineUp cmcLineUp cmcLineUp cmcLineUp cmcLineUp cmcLineUp
+;                                                         cmcLineEnd cmcCharRight)
+;                                    )
+; 
+;         1                          (InsertText str)
+;   )
+;  )
+; )
+;
+; I assigned this to TAB and then I assigned cmcUnIndentBlk to Shift-Tab.
+;
+; (defmacro 'IndentLineOrBlock'
+;  (if (SelectionExists)
+;   (SendCommands cmcIndentBlk)
+;   (InsertText "    ")
+;  )
+; )
 

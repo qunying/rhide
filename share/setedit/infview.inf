@@ -1,13 +1,12 @@
-This is Info file infeng.inf, produced by Makeinfo version 1.68 from the
-input file infeng.num.
+Dies ist infeng.inf, hergestellt von Makeinfo Version 4.0 aus infeng.num.
 
 START-INFO-DIR-ENTRY
-* InfView: (infeng.info). An info viewer.
+* InfView: (infview). An info viewer.
 END-INFO-DIR-ENTRY
 
 This is the documentation for InfView.
 
-Copyright (C) 1996, 1997, 1998, 1999 Salvador Eduardo Tropea
+Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001 Salvador Eduardo Tropea
 
 This documentation may be freely distributed, provided this copyright
 notice is left intact on all copies.
@@ -25,7 +24,7 @@ Press <F5> to use all the available screen.
 
 This is the documentation for InfView.
 
-Copyright (C) 1996, 1997, 1998, 1999 Salvador Eduardo Tropea
+Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001 Salvador Eduardo Tropea
 
 This documentation may be freely distributed, provided this copyright
 notice is left intact on all copies.
@@ -164,6 +163,7 @@ Available Keys:
      editor uses an incremental search so you can type various letters
      until you reach the desired item
 
+
 * Menu:
 
 * Jumping to any file or node::
@@ -238,6 +238,7 @@ following buttons:
 
    * Hide
      - Action: Hides the control dialog
+
 
 Additionally the dialog contains a list with the last 40 nodes visited, you
 can choose any of them with the mouse of the cursors.
@@ -368,12 +369,12 @@ File: infeng.inf,  Node: Greetings,  Prev: About the Author,  Up: Top
 
 
 Tag Table:
-Node: Top390
-Node: Features and motivation1041
-Node: How to use InfView2557
-Node: Jumping to any file or node4331
-Node: Jumping to any node in the current file4724
-Node: Control dialog5270
+Node: Top376
+Node: Features and motivation1039
+Node: How to use InfView2555
+Node: Jumping to any file or node4330
+Node: Jumping to any node in the current file4723
+Node: Control dialog5269
 Node: Bookmarks dialog6350
 Node: Configuration dialog6742
 Node: Searching7279

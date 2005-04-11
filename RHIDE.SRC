@@ -104,6 +104,8 @@ TV_INC               directory, where the TV headers are
 TV_OBJ               directory, where librhtv.a is
 SETSRC               root directory, where the setedit sources are
 SETOBJ               root directory, where the setedit libs are
+                     (i.e. /usr/src/setedit/makes)
+                     (i.e. $SETSRC/makes)
 GDB_SRC              root directory of the GDB sources
 GDB_OBJ              root directory of the GDB objects
 

@@ -49,7 +49,7 @@ $DJDIR/include/rhtvision \
 RH_CHECK_FILE_LIST(TV_INC, tv.h, $TV_INC_SEARCH,[Turbo Vision header files])
 
 TV_OBJ_SEARCH="$TV_INC/../makes $TV_INC/../../lib"
-RH_CHECK_FILE_LIST(TVOBJ, librhtv.a, $TV_OBJ_SEARCH,[Turbo Vision library])
+RH_CHECK_FILE_LIST(TVOBJ, librhtv.so, $TV_OBJ_SEARCH,[Turbo Vision library])
 
 SETSRC_SEARCH="$abs_srcdir/../setedit \
 $DJDIR/contrib/setedit \

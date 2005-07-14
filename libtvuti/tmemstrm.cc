@@ -4,17 +4,16 @@
 #include <libtvuti.h>
 
 #include "config.h"
-#include <strstream>
+#define Uses_strstream_simple
+#include <compatlayer.h>
 
-#define strbase std::strstreambuf
-
-class rh_sstream : public strbase
+class rh_sstream : public CLY_strstreambuf
 {
 public:
-  rh_sstream() : strbase()
+  rh_sstream() : CLY_strstreambuf()
   {
   }
-  rh_sstream(char *buf, int len) : strbase(buf, len)
+  rh_sstream(char *buf, int len) : CLY_strstreambuf(buf, len)
   {
   }
   const void *Buffer()

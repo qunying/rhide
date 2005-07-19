@@ -339,7 +339,7 @@ ShowWindowList(const char *title)
   TDialog *dialog;
   TWindowList *list;
   TScrollBar *scrollbar;
-  int i;
+  int i, nWin;
   TWindow *window;
 
   dialog = new TDialog(TRect(0, 0, 75, 16), title);
@@ -358,7 +358,8 @@ ShowWindowList(const char *title)
     switch (i)
     {
       case cmSelectClosedWindow:
-        window = OpenClosedWindow(list->focused - windows->getCount());
+        nWin = windows ? windows->getCount() : 0;
+        window = OpenClosedWindow(list->focused - nWin);
         window->select();
         window->show();
         message(TProgram::application, evBroadcast, cmWindowOpened,

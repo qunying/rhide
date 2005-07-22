@@ -2,7 +2,7 @@
 /* This file is part of RHIDE. */
 #define Uses_TDialog
 #define Uses_TRect
-#define Uses_TValidator
+#define Uses_TRangeValidator
 #define Uses_TInputLine
 #define Uses_TProgram
 #define Uses_TApplication

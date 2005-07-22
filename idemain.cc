@@ -36,7 +36,7 @@
 #define Uses_TMouse
 #define Uses_TFileDialog
 #define Uses_TFileInputLine
-#define Uses_TValidator
+#define Uses_TRangeValidator
 #define Uses_TDirList
 #define Uses_TButton
 #define Uses_TEventQueue

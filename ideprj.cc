@@ -636,12 +636,12 @@ LoadDesktop(ipstream & is, Boolean load_windows = True)
       {
         is >> len;
         // FIXME: GlobalOptionsRect>256!!!!
-        if (len == sizeof(GlobalOptionsRect))
+        /*if (len == sizeof(GlobalOptionsRect))
         {
           is.readBytes(&temp, len);
           TCEditor::ExpandGlobalOptions(&temp.opt);
         }
-        else
+        else*/
         {
           char buf[len];
           is.readBytes(buf, len);

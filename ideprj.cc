@@ -635,6 +635,7 @@ LoadDesktop(ipstream & is, Boolean load_windows = True)
       if (version < 27)
       {
         is >> len;
+        // FIXME: GlobalOptionsRect>256!!!!
         if (len == sizeof(GlobalOptionsRect))
         {
           is.readBytes(&temp, len);

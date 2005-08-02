@@ -14,9 +14,9 @@ TIntInputLine::TIntInputLine(const TRect & bounds, int aMaxlen,
 TEnterInputLine(bounds, aMaxlen)
 {
   if (_unsigned)
-    SetValidator(new TRangeValidator(0, UINT_MAX));
+    setValidator(new TRangeValidator(0, UINT_MAX));
   else
-    SetValidator(new TRangeValidator(INT_MIN, INT_MAX));
+    setValidator(new TRangeValidator(INT_MIN, INT_MAX));
 }
 
 void

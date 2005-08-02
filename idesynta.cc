@@ -668,7 +668,7 @@ SyntaxOptions()
   r1.b.y = r1.a.y + 1;
   r1.b.x = r1.a.x + 7;
   inp = new TIntInputLine(r1, 4);
-  inp->SetValidator(new TRangeValidator(1, 1000));
+  inp->setValidator(new TRangeValidator(1, 1000));
   r = r1;
   r1.move(0, -1);
   tmp = _("Fu~z~zy value");

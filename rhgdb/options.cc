@@ -129,7 +129,7 @@ TDialog(TRect(0, 0, 65, 17), _("Environment options"))
   r.b.y = r.a.y + 1;
   tab = new TEnterInputLine(r, 4);
   tab->setData(tabstring);
-  tab->SetValidator(new TRangeValidator(1, 100));
+  tab->setValidator(new TRangeValidator(1, 100));
   insert(tab);
   r.a.x = 2 + 20 + 2;
   r.b.x = r.a.x + cstrlen(tmp) + 1;

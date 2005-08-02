@@ -74,18 +74,18 @@ public:
   TFloatValidator():TFilterValidator("+-.0123456789eE")
   {
   }
-  virtual void Error()
+  virtual void error()
   {
     messageBox(mfError | mfOKButton, _("invalid number"));
   }
-  virtual Boolean IsValid(const char *buf)
+  virtual Boolean isValid(const char *buf)
   {
     long double d;
     if (sscanf(buf, "%Lg", &d) == 1)
         return True;
       return False;
   }
-  virtual void Format(char *buf)
+  virtual void format(char *buf)
   {
     long double d;
       sscanf(buf, "%Lg", &d);

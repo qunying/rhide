@@ -136,7 +136,7 @@ ValidInputBoxRect(const TRect & bounds,
   r = TRect(4, 3, dialog->size.x - 3, 4);
 //    r = TRect( 4 + strlen(aLabel), 2, dialog->size.x - 3, 3 );
   control = new TInputLine(r, limit);
-  ((TInputLine *) control)->SetValidator(validator);
+  ((TInputLine *) control)->setValidator(validator);
   dialog->insert(control);
 
   r = TRect(2, 2, 3 + strlen(aLabel), 3);

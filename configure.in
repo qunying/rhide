@@ -8,6 +8,7 @@ AC_CONFIG_SUBDIRS(libtvuti)
 
 case "$host" in
   i?86-*-linux*) rhide_OS=Linux ;;
+  x86_64-*-linux*) rhide_OS=Linux ;;
   i?86-pc-msdosdjgpp) rhide_OS=DJGPP ;;
   *-pc-cygwin) rhide_OS=CYGWIN ;;
   *) AC_MSG_ERROR([$host is not supported (yet). Sorry.]) ;;

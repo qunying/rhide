@@ -2304,6 +2304,7 @@ subdirs="$subdirs libtvuti"
 
 case "$host" in
   i?86-*-linux*) rhide_OS=Linux ;;
+  x86_64-*-linux*) rhide_OS=Linux ;;
   i?86-pc-msdosdjgpp) rhide_OS=DJGPP ;;
   *-pc-cygwin) rhide_OS=CYGWIN ;;
   *) { { echo "$as_me:$LINENO: error: $host is not supported (yet). Sorry." >&5

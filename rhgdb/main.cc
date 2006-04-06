@@ -1266,9 +1266,7 @@ EndSession(int exit_code)
     TProgram::application->setScreenMode(old_mode);
   }
 
-  messageBox(mfInformation | mfOKButton,
-             _("Program exit code: %d (0x%04x)"), exit_code, exit_code);
-
+  ShowExitCode(exit_code);
   repaint();
 }
 

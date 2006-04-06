@@ -188,7 +188,7 @@ push_environment()
 {
   if (debug_specs)
      fprintf(stderr,"--------------------------\nPush\n--------------------------\n");
-  _rhide_load_environment_file("rhide.env", 0);
+  rhide_load_environment_file(NULL, "rhide.env", 0, 0);
 }
 
 void
@@ -196,5 +196,5 @@ pop_environment()
 {
   if (debug_specs)
      fprintf(stderr,"--------------------------\nPop\n--------------------------\n");
-  _rhide_load_environment_file("rhide.env", 1);
+  rhide_load_environment_file(NULL, "rhide.env", 0, 1);
 }

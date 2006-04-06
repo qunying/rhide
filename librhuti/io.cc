@@ -44,6 +44,37 @@ unique_name(char *before, char *retval)
   return name;
 }
 
+/* returns a malloced unique tempname in $TMPDIR */
+FILE *unique_name_f(char *&retname, char *before, char *retval)
+{
+  char *name, *tmp = getenv("TMPDIR");
+
+  if (!tmp)
+    tmp = ".";
+  if (retval)
+  {
+    strcpy(retval, tmp);
+    strcat(retval, "/");
+    strcat(retval, before);
+    strcat(retval, "XXXXXX");
+    name = string_dup(retval);
+  }
+  else
+  {
+    string_dup(name, tmp);
+    string_cat(name, "/");
+    string_cat(name, before);
+    string_cat(name, "XXXXXX");
+  }
+  int handle = mkstemp(name);
+  if (handle!=-1)
+    {
+     retname=name;
+     return fdopen(handle,"w+");
+    }
+  return NULL;
+}
+
 char *
 open_stderr(void)
 {

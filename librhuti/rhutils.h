@@ -219,7 +219,9 @@ void close_stderr_out(void);
    Store the result also in 'retval' if it is != NULL. This function
    creates the file to make sure that it is really unique. That means
    the application is responsible for deleting this file */
-char *unique_name(char *before, char *retval = (char *) 0);
+char *unique_name(char *before,char *retval=NULL);
+/* Returns the file already opened and unlinked for UNIX */
+FILE *unique_name_f(char *&retname, char *before, char *retval=NULL);
 
 
 /*

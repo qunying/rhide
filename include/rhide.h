@@ -135,7 +135,6 @@ void CheckStderr(bool erase = true);
 void CheckStdout(bool erase = true);
 void RemoveStdout(void);
 void RemoveStderr(void);
-void ShowExitCode(int exit_code);
 
 /* module idecomp.cc */
 class TDependency;

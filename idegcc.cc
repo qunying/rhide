@@ -46,7 +46,6 @@
 #include <sys/stat.h>
 #include <setjmp.h>
 #include <ctype.h>
-#include <sys/wait.h>
 
 #ifdef INTERNAL_DEBUGGER
 #include <librhgdb.h>
@@ -55,6 +54,9 @@
 #ifndef __DJGPP__
 #include <termios.h>
 #endif
+
+#define Uses_tvgdbFunctions
+#include <libtvgdb.h> // ShowExitCode
 
 int
 project_index(const char *name)
@@ -1006,24 +1008,6 @@ CheckStderr(bool erase)
   //if (ShowStderr && !debug_tempfiles && erase) remove(cpp_errname);
   if (erase)
     RemoveStderr();
-}
-
-void ShowExitCode(int exit_code)
-{
-  #if defined(WIFEXITED)
-  if (WIFEXITED(exit_code))
-    messageBox(mfInformation | mfOKButton,
-    _("Program exited normally with code: %d"), WEXITSTATUS(exit_code));
-  else if (WIFSIGNALED(exit_code))
-    messageBox(mfInformation | mfOKButton,
-    _("Program was terminated by signal: %d"), WTERMSIG(exit_code));
-  else if (WIFSTOPPED(exit_code))
-    messageBox(mfInformation | mfOKButton,
-    _("Program was stopped by signal: %d"), WSTOPSIG(exit_code));
-  #else
-  messageBox(mfInformation | mfOKButton,
-             _("Program exit code: %d (0x%04x)"), exit_code, exit_code);
-  #endif
 }
 
 void

@@ -34,4 +34,7 @@ extern TRect CallStackWindowRect;
 void AddDataWindow();
 void ShowStackWindow();
 
+// Show a message box with the interpreted exit code. (SET).
+void ShowExitCode(int exit_code);
+
 #endif
